@@ -1,0 +1,17 @@
+Copyright 2006-2017 Coppelia Robotics GmbH. All rights reserved. 
+
+The shared memory part of the remote API is courtesy of Benjamin Navarro
+
+The '_dirent.h' file is part of this repository, but has its own
+licensing terms and copyrights. See the respective file for details.
+
+-----------------------------------------------------------------------
+THE FILES IN THIS REPOSITORY (THE 'FILES'), UNLESS OTHERWISE INDICATED,
+ARE DISTRIBUTED "AS IS", WITHOUT ANY EXPRESS OR IMPLIED WARRANTY. THE
+USER WILL USE THEM AT HIS/HER OWN RISK. THE ORIGINAL AUTHORS AND
+COPPELIA ROBOTICS GMBH WILL NOT BE LIABLE FOR DATA LOSS, DAMAGES, LOSS
+OF PROFITS OR ANY OTHER KIND OF LOSS WHILE USING OR MISUSING THIS
+SOFTWARE.
+
+You are free to use/modify/distribute the 'files' for whatever purpose.
+-----------------------------------------------------------------------
