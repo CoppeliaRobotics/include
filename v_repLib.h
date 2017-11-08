@@ -446,6 +446,7 @@ typedef simInt (__cdecl *ptrSimGetVisionSensorFilter)(simInt visionSensorHandle,
 typedef simInt (__cdecl *ptrSimSetReferencedHandles)(simInt objectHandle,simInt count,const simInt* referencedHandles,const simInt* reserved1,const simInt* reserved2);
 typedef simInt (__cdecl *ptrSimGetReferencedHandles)(simInt objectHandle,simInt** referencedHandles,simInt** reserved1,simInt** reserved2);
 typedef simInt (__cdecl *ptrSimGetShapeViz)(simInt shapeHandle,simInt index,struct SShapeVizInfo* info);
+typedef simInt (__cdecl *ptrSimExecuteScriptString)(simInt scriptHandleOrType,const simChar* stringAtScriptName,simInt stackHandle);
 
 
 typedef simInt (__cdecl *ptr_simGetContactCallbackCount)();
@@ -957,6 +958,7 @@ extern ptrSimGetVisionSensorFilter simGetVisionSensorFilter;
 extern ptrSimSetReferencedHandles simSetReferencedHandles;
 extern ptrSimGetReferencedHandles simGetReferencedHandles;
 extern ptrSimGetShapeViz simGetShapeViz;
+extern ptrSimExecuteScriptString simExecuteScriptString;
 
 
 extern ptr_simGetContactCallbackCount _simGetContactCallbackCount;
