@@ -418,6 +418,7 @@ enum { /* Script types (serialized!) */
     sim_scripttype_contactcallback, /* deprecated */
     sim_scripttype_customizationscript,
     sim_scripttype_generalcallback, /* deprecated */
+    sim_scripttype_sandboxscript, /* special */
     sim_scripttype_threaded=0x00f0          /* Combine with sim_scripttype_childscript if you want */
 };
 
