@@ -694,15 +694,8 @@ enum { /* Boolean parameters: */
     sim_boolparam_scene_closing,
     sim_boolparam_show_w_emitters,
     sim_boolparam_show_w_receivers,
+    sim_boolparam_br_jobfunc
 };
-/*
-sim_boolparam_br_showpackml,
-sim_boolparam_br_showsimplifiedpackml,
-sim_boolparam_br_showtime,
-sim_boolparam_br_showsimplifiedtime,
-sim_boolparam_br_showoee,
-sim_boolparam_br_generalproperties
-*/
 
 enum { /* Integer parameters: */
     sim_intparam_error_report_mode=0, /* Check sim_api_errormessage_... constants above for valid values */
