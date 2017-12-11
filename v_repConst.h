@@ -449,6 +449,7 @@ enum { /* System callbacks */
     sim_syscb_beforedelete, /* called just before objects are deleted (in an object delete or cut operation). Arg1 is a map with 'objectHandles' and 'allObjects' keys */
     sim_syscb_afterdelete, /* called just after objects were deleted. Arg1 is a map with 'objectHandles' keys */
     sim_syscb_aftercreate, /* called just after objects were created/pasted/loaded. Not called for the created objects. Arg1 is a map with 'objectHandles' array */
+    sim_syscb_threadmain, /* the main section of a threaded child script */
     sim_syscb_br=sim_syscb_init+200, /* reserved for BR */
     /* sim_syscb_brend=sim_syscb_br+1000  reserved for BR */
 };
