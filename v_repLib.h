@@ -449,6 +449,8 @@ typedef simInt (__cdecl *ptrSimGetShapeViz)(simInt shapeHandle,simInt index,stru
 typedef simInt (__cdecl *ptrSimExecuteScriptString)(simInt scriptHandleOrType,const simChar* stringAtScriptName,simInt stackHandle);
 typedef simChar* (__cdecl *ptrSimGetApiFunc)(simInt scriptHandleOrType,const simChar* apiWord);
 typedef simChar* (__cdecl *ptrSimGetApiInfo)(simInt scriptHandleOrType,const simChar* apiWord);
+typedef simInt (__cdecl *ptrSimSetModuleInfo)(const simChar* moduleName,simInt infoType,const simChar* stringInfo,simInt intInfo);
+typedef simInt (__cdecl *ptrSimGetModuleInfo)(const simChar* moduleName,simInt infoType,simChar** stringInfo,simInt* intInfo);
 
 
 typedef simInt (__cdecl *ptr_simGetContactCallbackCount)();
@@ -963,6 +965,9 @@ extern ptrSimGetShapeViz simGetShapeViz;
 extern ptrSimExecuteScriptString simExecuteScriptString;
 extern ptrSimGetApiFunc simGetApiFunc;
 extern ptrSimGetApiInfo simGetApiInfo;
+extern ptrSimSetModuleInfo simSetModuleInfo;
+extern ptrSimGetModuleInfo simGetModuleInfo;
+
 
 
 extern ptr_simGetContactCallbackCount _simGetContactCallbackCount;
