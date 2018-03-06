@@ -450,6 +450,7 @@ enum { /* System callbacks */
     sim_syscb_afterdelete, /* called just after objects were deleted. Arg1 is a map with 'objectHandles' keys */
     sim_syscb_aftercreate, /* called just after objects were created/pasted/loaded. Not called for the created objects. Arg1 is a map with 'objectHandles' array */
     sim_syscb_threadmain, /* the main section of a threaded child script */
+    sim_syscb_dyncallback, /* called by the physics engine twice per dyn. simulation pass */
     sim_syscb_br=sim_syscb_init+200, /* reserved for BR */
     /* sim_syscb_brend=sim_syscb_br+1000  reserved for BR */
 };
@@ -521,6 +522,8 @@ enum { /* special handle flags: */
     sim_handleflag_codedstring          =0x00400000,
     sim_handleflag_camera               =0x00400000,
     sim_handleflag_altname              =0x00400000,
+    sim_handleflag_resetforce           =0x00400000,
+    sim_handleflag_resettorque          =0x00800000,
     sim_handleflag_model                =0x00800000,
     sim_handleflag_rawvalue             =0x01000000,
     sim_handleflag_silenterror          =0x02000000

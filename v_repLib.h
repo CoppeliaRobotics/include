@@ -541,6 +541,8 @@ typedef simInt (__cdecl *ptr_simHandleJointControl)(const simVoid* joint,simInt 
 typedef simInt (__cdecl *ptr_simHandleCustomContact)(simInt objHandle1,simInt objHandle2,simInt engine,simInt* dataInt,simFloat* dataFloat);
 typedef simFloat (__cdecl *ptr_simGetPureHollowScaling)(const simVoid* geometric);
 typedef simInt (__cdecl *ptr_simGetJointCallbackCallOrder)(const simVoid* joint);
+typedef simVoid (__cdecl *ptr_simDynCallback)(const simInt* intData,const simFloat* floatData);
+
 
 
 extern ptrSimRunSimulator simRunSimulator;
@@ -1058,7 +1060,7 @@ extern ptr_simHandleJointControl _simHandleJointControl;
 extern ptr_simHandleCustomContact _simHandleCustomContact;
 extern ptr_simGetPureHollowScaling _simGetPureHollowScaling;
 extern ptr_simGetJointCallbackCallOrder _simGetJointCallbackCallOrder;
-
+extern ptr_simDynCallback _simDynCallback;
 
 
 // Deprecated begin
