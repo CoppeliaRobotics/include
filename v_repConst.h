@@ -4,8 +4,8 @@
 #define VREP_PROGRAM_VERSION_NB 30500
 #define VREP_PROGRAM_VERSION "3.5.0."
 
-#define VREP_PROGRAM_REVISION_NB 4
-#define VREP_PROGRAM_REVISION "(rev. 4)"
+#define VREP_PROGRAM_REVISION_NB 6
+#define VREP_PROGRAM_REVISION "(rev. 6)"
 
 /* Scene object types. Values are serialized */
 enum {
@@ -451,6 +451,7 @@ enum { /* System callbacks */
     sim_syscb_aftercreate, /* called just after objects were created/pasted/loaded. Not called for the created objects. Arg1 is a map with 'objectHandles' array */
     sim_syscb_threadmain, /* the main section of a threaded child script */
     sim_syscb_dyncallback, /* called by the physics engine twice per dyn. simulation pass */
+    sim_syscb_beforemainscript, /* called in customization scripts just before calling the main script */
     sim_syscb_br=sim_syscb_init+200, /* reserved for BR */
     /* sim_syscb_brend=sim_syscb_br+1000  reserved for BR */
 };
