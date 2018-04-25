@@ -122,8 +122,6 @@ typedef simInt (__cdecl *ptrSimHandleMill)(simInt millHandle,simFloat* removedSu
 typedef simInt (__cdecl *ptrSimHandleIkGroup)(simInt ikGroupHandle);
 typedef simInt (__cdecl *ptrSimCheckIkGroup)(simInt ikGroupHandle,simInt jointCnt,const simInt* jointHandles,simFloat* jointValues,const simInt* jointOptions);
 typedef simInt (__cdecl *ptrSimHandleDynamics)(simFloat deltaTime);
-typedef simInt (__cdecl *ptrSimGetMechanismHandle)(const simChar* mechanismName);
-typedef simInt (__cdecl *ptrSimHandleMechanism)(simInt mechanismHandle);
 typedef simInt (__cdecl *ptrSimGetScriptHandle)(const simChar* scriptName);
 typedef simInt (__cdecl *ptrSimSetScriptText)(simInt scriptHandle,const simChar* scriptText);
 typedef const simChar* (__cdecl *ptrSimGetScriptText)(simInt scriptHandle);
@@ -360,7 +358,6 @@ typedef simInt (__cdecl *ptrSimScaleObject)(simInt objectHandle,simFloat xScale,
 typedef simInt (__cdecl *ptrSimSetShapeTexture)(simInt shapeHandle,simInt textureId,simInt mappingMode,simInt options,const simFloat* uvScaling,const simFloat* position,const simFloat* orientation);
 typedef simInt (__cdecl *ptrSimGetShapeTextureId)(simInt shapeHandle);
 typedef simInt* (__cdecl *ptrSimGetCollectionObjects)(simInt collectionHandle,simInt* objectCount);
-typedef simInt (__cdecl *ptrSimHandleCustomizationScripts)(simInt callType);
 typedef simInt (__cdecl *ptrSimSetScriptAttribute)(simInt scriptHandle,simInt attributeID,simFloat floatVal,simInt intOrBoolVal);
 typedef simInt (__cdecl *ptrSimGetScriptAttribute)(simInt scriptHandle,simInt attributeID,simFloat* floatVal,simInt* intOrBoolVal);
 typedef simInt (__cdecl *ptrSimReorientShapeBoundingBox)(simInt shapeHandle,simInt relativeToHandle,simInt reservedSetToZero);
@@ -640,8 +637,6 @@ extern ptrSimHandleMill simHandleMill;
 extern ptrSimHandleIkGroup simHandleIkGroup;
 extern ptrSimCheckIkGroup simCheckIkGroup;
 extern ptrSimHandleDynamics simHandleDynamics;
-extern ptrSimGetMechanismHandle simGetMechanismHandle;
-extern ptrSimHandleMechanism simHandleMechanism;
 extern ptrSimGetScriptHandle simGetScriptHandle;
 extern ptrSimSetScriptText simSetScriptText;
 extern ptrSimGetScriptText simGetScriptText;
@@ -878,7 +873,6 @@ extern ptrSimScaleObject simScaleObject;
 extern ptrSimSetShapeTexture simSetShapeTexture;
 extern ptrSimGetShapeTextureId simGetShapeTextureId;
 extern ptrSimGetCollectionObjects simGetCollectionObjects;
-extern ptrSimHandleCustomizationScripts simHandleCustomizationScripts;
 extern ptrSimSetScriptAttribute simSetScriptAttribute;
 extern ptrSimGetScriptAttribute simGetScriptAttribute;
 extern ptrSimReorientShapeBoundingBox simReorientShapeBoundingBox;
@@ -1135,6 +1129,9 @@ typedef simInt (__cdecl *ptrSimHandleGeneralCallbackScript)(simInt callbackId,si
 typedef simInt (__cdecl *ptrSimRegisterCustomLuaFunction)(const simChar* funcName,const simChar* callTips,const simInt* inputArgumentTypes,simVoid(*callBack)(struct SLuaCallBack* p));
 typedef simInt (__cdecl *ptrSimRegisterCustomLuaVariable)(const simChar* varName,const simChar* varValue);
 typedef simInt (__cdecl *ptrSimRegisterContactCallback)(simInt(*callBack)(simInt,simInt,simInt,simInt*,simFloat*));
+typedef simInt (__cdecl *ptrSimGetMechanismHandle)(const simChar* mechanismName);
+typedef simInt (__cdecl *ptrSimHandleMechanism)(simInt mechanismHandle);
+typedef simInt (__cdecl *ptrSimHandleCustomizationScripts)(simInt callType);
 extern ptrSimGetMaterialId simGetMaterialId;
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1206,6 +1203,9 @@ extern ptrSimHandleGeneralCallbackScript simHandleGeneralCallbackScript;
 extern ptrSimRegisterCustomLuaFunction simRegisterCustomLuaFunction;
 extern ptrSimRegisterCustomLuaVariable simRegisterCustomLuaVariable;
 extern ptrSimRegisterContactCallback simRegisterContactCallback;
+extern ptrSimGetMechanismHandle simGetMechanismHandle;
+extern ptrSimHandleMechanism simHandleMechanism;
+extern ptrSimHandleCustomizationScripts simHandleCustomizationScripts;
 // Deprecated end
 
 #endif // !defined(V_REPLIB_INCLUDED_)

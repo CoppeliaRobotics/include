@@ -472,7 +472,14 @@ enum { /* Script execution order, is serialized */
     sim_scriptexecorder_last
 };
 
+enum { /* Script tree traversal direction, is serialized */
+    sim_scripttreetraversal_reverse=0,
+    sim_scripttreetraversal_forward,
+    sim_scripttreetraversal_parent
+};
+
 enum { /* Threaded script resume location */
+    sim_scriptthreadresume_launch           =-2,
     sim_scriptthreadresume_allnotyetresumed =-1,
     sim_scriptthreadresume_default          =0,
     sim_scriptthreadresume_actuation_first  =1,
