@@ -4,8 +4,8 @@
 #define VREP_PROGRAM_VERSION_NB 30500
 #define VREP_PROGRAM_VERSION "3.5.0."
 
-#define VREP_PROGRAM_REVISION_NB 6
-#define VREP_PROGRAM_REVISION "(rev. 6)"
+#define VREP_PROGRAM_REVISION_NB 7
+#define VREP_PROGRAM_REVISION "(rev. 7)"
 
 /* Scene object types. Values are serialized */
 enum {
@@ -1068,6 +1068,7 @@ enum { /* Object int/float/string parameters */
     sim_objintparam_illumination_handle= 32,
     sim_objstringparam_dna= 33,
     sim_objfloatparam_size_factor= 34,
+    sim_objstringparam_unique_id= 35,
 
     sim_objparam_end= 999,
 
