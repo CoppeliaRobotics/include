@@ -39,6 +39,9 @@ public:
     bool isString(size_t index);
     bool isArray(size_t index,size_t minSize=0);
     bool isMap(size_t index);
+    
+    void setCircularRef();
+    bool isCircularRef();
 
     bool getBool(size_t index);
     float getFloat(size_t index);
@@ -58,4 +61,5 @@ protected:
     std::vector<CStackObject*> _objectValues;
     std::vector<double> _doubleValues;
     std::vector<int> _intValues;
+    bool _circularRef;
 };

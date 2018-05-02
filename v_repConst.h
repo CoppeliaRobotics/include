@@ -747,7 +747,8 @@ enum { /* Integer parameters: */
     sim_intparam_scene_index, /* can be used to switch to a different instance programmatically */
     sim_intparam_motionplanning_seed,
     sim_intparam_speedmodifier, /* can only be used while simulation is not stopped */
-    sim_intparam_dynamic_iteration_count
+    sim_intparam_dynamic_iteration_count,
+    sim_intparam_job_count /* can only be read */
 };
 
 enum { /* uint64 parameters: */
@@ -1216,6 +1217,7 @@ enum { /* Object int/float/string parameters */
 };
 
 enum { /* stack table info */
+    sim_stack_table_circular_ref=-4,
     sim_stack_table_not_table=-3,
     sim_stack_table_map=-2,
     sim_stack_table_empty=0
