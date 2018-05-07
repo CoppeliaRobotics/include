@@ -185,7 +185,7 @@ typedef simInt (__cdecl *ptrSimGetDialogResult)(simInt genericDialogHandle);
 typedef simChar* (__cdecl *ptrSimGetDialogInput)(simInt genericDialogHandle);
 typedef simInt (__cdecl *ptrSimEndDialog)(simInt genericDialogHandle);
 typedef simInt (__cdecl *ptrSimRegisterScriptCallbackFunction)(const simChar* funcNameAtPluginName,const simChar* callTips,simVoid(*callBack)(struct SScriptCallBack* cb));
-typedef simInt (__cdecl *ptrSimRegisterScriptVariable)(const simChar* varName,const simChar* varValue,simInt stackHandle);
+typedef simInt (__cdecl *ptrSimRegisterScriptVariable)(const simChar* varNameAtPluginName,const simChar* varValue,simInt stackHandle);
 typedef simInt (__cdecl *ptrSimSetJointTargetVelocity)(simInt objectHandle,simFloat targetVelocity);
 typedef simInt (__cdecl *ptrSimGetJointTargetVelocity)(simInt objectHandle,simFloat* targetVelocity);
 typedef simInt (__cdecl *ptrSimSetPathTargetNominalVelocity)(simInt objectHandle,simFloat targetNominalVelocity);

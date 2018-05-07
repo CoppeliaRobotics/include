@@ -457,13 +457,14 @@ enum { /* System callbacks */
 };
 
 enum { /* Script attributes */
-    sim_customizationscriptattribute_activeduringsimulation=0, /* boolean attribute */
+    sim_customizationscriptattribute_activeduringsimulation=0, /* deprecated */
     sim_scriptattribute_executionorder, /* integer attribute, see sim_scriptexecorder_normal, etc. */
     sim_scriptattribute_executioncount, /* integer attribute */
-    sim_childscriptattribute_automaticcascadingcalls, /* boolean attribute */
+    sim_childscriptattribute_automaticcascadingcalls, /* deprecated */
     sim_scriptattribute_enabled, /* boolean attribute */
     sim_childscriptattribute_enabled=sim_scriptattribute_enabled, /* boolean attribute */
-    sim_customizationscriptattribute_cleanupbeforesave /* boolean attribute */
+    sim_customizationscriptattribute_cleanupbeforesave, /* deprecated */
+    sim_scriptattribute_debuglevel /* debug */
 };
 
 enum { /* Script execution order, is serialized */
@@ -476,6 +477,14 @@ enum { /* Script tree traversal direction, is serialized */
     sim_scripttreetraversal_reverse=0,
     sim_scripttreetraversal_forward,
     sim_scripttreetraversal_parent
+};
+
+enum { /* Script debug level, is serialized */
+    sim_scriptdebug_none=0,
+    sim_scriptdebug_syscalls=1,
+    sim_scriptdebug_allcalls=2,
+    sim_scriptdebug_vars=3,
+    sim_scriptdebug_callsandvars=4
 };
 
 enum { /* Threaded script resume location */
