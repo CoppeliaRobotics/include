@@ -482,9 +482,10 @@ enum { /* Script tree traversal direction, is serialized */
 enum { /* Script debug level, is serialized */
     sim_scriptdebug_none=0,
     sim_scriptdebug_syscalls=1,
-    sim_scriptdebug_allcalls=2,
-    sim_scriptdebug_vars=3,
-    sim_scriptdebug_callsandvars=4
+    sim_scriptdebug_vars_interval=2,
+    sim_scriptdebug_allcalls=3,
+    sim_scriptdebug_vars=4,
+    sim_scriptdebug_callsandvars=5
 };
 
 enum { /* Threaded script resume location */
