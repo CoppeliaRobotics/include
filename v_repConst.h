@@ -464,7 +464,8 @@ enum { /* Script attributes */
     sim_scriptattribute_enabled, /* boolean attribute */
     sim_childscriptattribute_enabled=sim_scriptattribute_enabled, /* boolean attribute */
     sim_customizationscriptattribute_cleanupbeforesave, /* deprecated */
-    sim_scriptattribute_debuglevel /* debug */
+    sim_scriptattribute_debuglevel, /* debug */
+    sim_scriptattribute_scripttype
 };
 
 enum { /* Script execution order, is serialized */

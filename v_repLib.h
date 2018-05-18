@@ -374,7 +374,6 @@ typedef simInt (__cdecl *ptrSimTransformImage)(simUChar* image,const simInt* res
 typedef simInt (__cdecl *ptrSimGetQHull)(const simFloat* inVertices,simInt inVerticesL,simFloat** verticesOut,simInt* verticesOutL,simInt** indicesOut,simInt* indicesOutL,simInt reserved1,const simFloat* reserved2);
 typedef simInt (__cdecl *ptrSimGetDecimatedMesh)(const simFloat* inVertices,simInt inVerticesL,const simInt* inIndices,simInt inIndicesL,simFloat** verticesOut,simInt* verticesOutL,simInt** indicesOut,simInt* indicesOutL,simFloat decimationPercent,simInt reserved1,const simFloat* reserved2);
 typedef simInt (__cdecl *ptrSimExportIk)(const simChar* pathAndFilename,simInt reserved1,simVoid* reserved2);
-typedef simInt (__cdecl *ptrSimCallScriptFunction)(simInt scriptHandleOrType,const simChar* functionNameAtScriptName,SLuaCallBack* data,const simChar* reservedSetToNull);
 typedef simInt (__cdecl *ptrSimCallScriptFunctionEx)(simInt scriptHandleOrType,const simChar* functionNameAtScriptName,simInt stackId);
 typedef simInt (__cdecl *ptrSimComputeJacobian)(simInt ikGroupHandle,simInt options,simVoid* reserved);
 typedef simInt (__cdecl *ptrSimGetConfigForTipPose)(simInt ikGroupHandle,simInt jointCnt,const simInt* jointHandles,simFloat thresholdDist,simInt maxTimeInMs,simFloat* retConfig,const simFloat* metric,simInt collisionPairCnt,const simInt* collisionPairs,const simInt* jointOptions,const simFloat* lowLimits,const simFloat* ranges,simVoid* reserved);
@@ -889,7 +888,6 @@ extern ptrSimTransformImage simTransformImage;
 extern ptrSimGetQHull simGetQHull;
 extern ptrSimGetDecimatedMesh simGetDecimatedMesh;
 extern ptrSimExportIk simExportIk;
-extern ptrSimCallScriptFunction simCallScriptFunction;
 extern ptrSimCallScriptFunctionEx simCallScriptFunctionEx;
 extern ptrSimComputeJacobian simComputeJacobian;
 extern ptrSimGetConfigForTipPose simGetConfigForTipPose;
@@ -1132,6 +1130,7 @@ typedef simInt (__cdecl *ptrSimRegisterContactCallback)(simInt(*callBack)(simInt
 typedef simInt (__cdecl *ptrSimGetMechanismHandle)(const simChar* mechanismName);
 typedef simInt (__cdecl *ptrSimHandleMechanism)(simInt mechanismHandle);
 typedef simInt (__cdecl *ptrSimHandleCustomizationScripts)(simInt callType);
+typedef simInt (__cdecl *ptrSimCallScriptFunction)(simInt scriptHandleOrType,const simChar* functionNameAtScriptName,SLuaCallBack* data,const simChar* reservedSetToNull);
 extern ptrSimGetMaterialId simGetMaterialId;
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1206,6 +1205,7 @@ extern ptrSimRegisterContactCallback simRegisterContactCallback;
 extern ptrSimGetMechanismHandle simGetMechanismHandle;
 extern ptrSimHandleMechanism simHandleMechanism;
 extern ptrSimHandleCustomizationScripts simHandleCustomizationScripts;
+extern ptrSimCallScriptFunction simCallScriptFunction;
 // Deprecated end
 
 #endif // !defined(V_REPLIB_INCLUDED_)
