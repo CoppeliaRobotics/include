@@ -447,6 +447,8 @@ typedef simChar* (__cdecl *ptrSimGetApiFunc)(simInt scriptHandleOrType,const sim
 typedef simChar* (__cdecl *ptrSimGetApiInfo)(simInt scriptHandleOrType,const simChar* apiWord);
 typedef simInt (__cdecl *ptrSimSetModuleInfo)(const simChar* moduleName,simInt infoType,const simChar* stringInfo,simInt intInfo);
 typedef simInt (__cdecl *ptrSimGetModuleInfo)(const simChar* moduleName,simInt infoType,simChar** stringInfo,simInt* intInfo);
+typedef simInt (__cdecl *ptrSimIsDeprecated)(const simChar* funcOrConst);
+typedef simChar* (__cdecl *ptrSimGetPersistentDataTags)(simInt* tagCount);
 
 
 typedef simInt (__cdecl *ptr_simGetContactCallbackCount)();
@@ -961,6 +963,10 @@ extern ptrSimGetApiFunc simGetApiFunc;
 extern ptrSimGetApiInfo simGetApiInfo;
 extern ptrSimSetModuleInfo simSetModuleInfo;
 extern ptrSimGetModuleInfo simGetModuleInfo;
+extern ptrSimIsDeprecated simIsDeprecated;
+extern ptrSimGetPersistentDataTags simGetPersistentDataTags;
+
+
 
 
 
