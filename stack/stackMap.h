@@ -95,9 +95,9 @@ public:
     CStackArray* getArray(bool key);
     CStackMap* getMap(bool key);
 
-    bool contains(const char* key,int theType,size_t theMinSizeIfArray=0,bool onlyNumbersInArray=false);
-    bool contains(int key,int theType,size_t theMinSizeIfArray=0,bool onlyNumbersInArray=false);
-    bool contains(bool key,int theType,size_t theMinSizeIfArray=0,bool onlyNumbersInArray=false);
+    bool contains(const char* key,int theType=-1,size_t theMinSizeIfArray=0,bool onlyNumbersInArray=false);
+    bool contains(int key,int theType=-1,size_t theMinSizeIfArray=0,bool onlyNumbersInArray=false);
+    bool contains(bool key,int theType=-1,size_t theMinSizeIfArray=0,bool onlyNumbersInArray=false);
 
     std::map<std::string,CStackObject*>* getKeyValuePairs();
     std::map<std::string,CStackObject*>* getKeyValuePairsKStr();
