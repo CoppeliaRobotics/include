@@ -8,5 +8,7 @@ public:
     CStackNull();
     virtual ~CStackNull();
 
+    std::string toString() const;
+
     CStackObject* copyYourself();
 };

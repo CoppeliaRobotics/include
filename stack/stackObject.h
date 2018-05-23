@@ -10,6 +10,13 @@ enum {  STACK_NULL=0,
         STACK_MAP
 };
 
+class CStackNull;
+class CStackNumber;
+class CStackBool;
+class CStackString;
+class CStackArray;
+class CStackMap;
+
 class CStackObject
 {
 public:
@@ -22,6 +29,16 @@ public:
 
     static void buildItemOntoStack(int stackId,CStackObject* obj);
     static CStackObject* buildItemFromTopStackPosition(int stackId);
+
+    CStackNull* asNull();
+    CStackNumber* asNumber();
+    CStackBool* asBool();
+    CStackString* asString();
+    CStackArray* asArray();
+    CStackMap* asMap();
+
+    virtual std::string toString() const = 0;
+    std::string getObjectTypeString() const;
 
 protected:
     int _objectType;

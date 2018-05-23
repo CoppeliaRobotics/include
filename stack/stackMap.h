@@ -11,6 +11,8 @@ public:
     CStackMap();
     virtual ~CStackMap();
 
+    std::string toString() const;
+
     void appendTopStackItem(const char* key,int stackId);
     void appendTopStackItem(int key,int stackId);
     void appendTopStackItem(bool key,int stackId);

@@ -8,6 +8,8 @@ public:
     CStackNumber(double n);
     virtual ~CStackNumber();
 
+    std::string toString() const;
+
     CStackObject* copyYourself();
 
     float getFloatValue();

@@ -8,6 +8,8 @@ public:
     CStackString(const char* str,int l);
     virtual ~CStackString();
 
+    std::string toString() const;
+
     CStackObject* copyYourself();
 
     std::string getValue();

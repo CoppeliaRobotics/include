@@ -11,6 +11,8 @@ public:
     CStackArray();
     virtual ~CStackArray();
 
+    std::string toString() const;
+
     bool buildFromStack(int stackId);
     void buildOntoStack(int stackId);
 
