@@ -449,6 +449,7 @@ typedef simInt (__cdecl *ptrSimSetModuleInfo)(const simChar* moduleName,simInt i
 typedef simInt (__cdecl *ptrSimGetModuleInfo)(const simChar* moduleName,simInt infoType,simChar** stringInfo,simInt* intInfo);
 typedef simInt (__cdecl *ptrSimIsDeprecated)(const simChar* funcOrConst);
 typedef simChar* (__cdecl *ptrSimGetPersistentDataTags)(simInt* tagCount);
+typedef simInt (__cdecl *ptrSimEventNotification)(const simChar* event);
 
 
 typedef simInt (__cdecl *ptr_simGetContactCallbackCount)();
@@ -965,7 +966,7 @@ extern ptrSimSetModuleInfo simSetModuleInfo;
 extern ptrSimGetModuleInfo simGetModuleInfo;
 extern ptrSimIsDeprecated simIsDeprecated;
 extern ptrSimGetPersistentDataTags simGetPersistentDataTags;
-
+extern ptrSimEventNotification simEventNotification;
 
 
 
