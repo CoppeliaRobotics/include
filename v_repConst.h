@@ -1160,9 +1160,12 @@ enum { /* Object int/float/string parameters */
     sim_shapeintparam_convex= 3017,
     sim_shapeintparam_convex_check= 3018,
     sim_shapeintparam_respondable_mask= 3019,
-    sim_shapefloatparam_init_velocity_a= 3020,
-    sim_shapefloatparam_init_velocity_b= 3021,
-    sim_shapefloatparam_init_velocity_g= 3022,
+    sim_shapefloatparam_init_velocity_a= 3020, /* DEPRECATED */
+    sim_shapefloatparam_init_ang_velocity_x= 3020,
+    sim_shapefloatparam_init_velocity_b= 3021, /* DEPRECATED */
+    sim_shapefloatparam_init_ang_velocity_y= 3021,
+    sim_shapefloatparam_init_velocity_g= 3022, /* DEPRECATED */
+    sim_shapefloatparam_init_ang_velocity_z= 3022,
     sim_shapestringparam_color_name= 3023,
     sim_shapeintparam_edge_visibility= 3024,
     sim_shapefloatparam_shading_angle= 3025,
