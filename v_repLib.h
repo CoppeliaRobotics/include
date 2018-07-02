@@ -326,7 +326,7 @@ typedef simInt (__cdecl *ptrSimRMLRemove)(simInt handle);
 typedef simInt (__cdecl *ptrSimBuildMatrixQ)(const simFloat* position,const simFloat* quaternion,simFloat* matrix);
 typedef simInt (__cdecl *ptrSimGetQuaternionFromMatrix)(const simFloat* matrix,simFloat* quaternion);
 typedef simChar* (__cdecl *ptrSimFileDialog)(simInt mode,const simChar* title,const simChar* startPath,const simChar* initName,const simChar* extName,const simChar* ext);
-typedef simChar* (__cdecl *ptrSimMsgBox)(simInt dlgType,simInt buttons,const simChar* title,const simChar* message);
+typedef simInt (__cdecl *ptrSimMsgBox)(simInt dlgType,simInt buttons,const simChar* title,const simChar* message);
 typedef simInt (__cdecl *ptrSimSetShapeMassAndInertia)(simInt shapeHandle,simFloat mass,const simFloat* inertiaMatrix,const simFloat* centerOfMass,const simFloat* transformation);
 typedef simInt (__cdecl *ptrSimGetShapeMassAndInertia)(simInt shapeHandle,simFloat* mass,simFloat* inertiaMatrix,simFloat* centerOfMass,const simFloat* transformation);
 typedef simInt (__cdecl *ptrSimGroupShapes)(const simInt* shapeHandles,simInt shapeCount);
