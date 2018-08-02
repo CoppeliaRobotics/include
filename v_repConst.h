@@ -539,10 +539,12 @@ enum { /* special handle flags: */
     sim_handleflag_extended             =0x00400000,
     sim_handleflag_greyscale            =0x00400000,
     sim_handleflag_codedstring          =0x00400000,
+    sim_handleflag_depthbuffermeters    =0x00800000,
     sim_handleflag_camera               =0x00400000,
     sim_handleflag_altname              =0x00400000,
     sim_handleflag_resetforce           =0x00400000,
     sim_handleflag_resettorque          =0x00800000,
+    sim_handleflag_resetforcetorque     =sim_handleflag_resetforce|sim_handleflag_resettorque,
     sim_handleflag_model                =0x00800000,
     sim_handleflag_rawvalue             =0x01000000,
     sim_handleflag_silenterror          =0x02000000
