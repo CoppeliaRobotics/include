@@ -4,8 +4,8 @@
 #define VREP_PROGRAM_VERSION_NB 30500
 #define VREP_PROGRAM_VERSION "3.5.0."
 
-#define VREP_PROGRAM_REVISION_NB 9
-#define VREP_PROGRAM_REVISION "(rev. 9)"
+#define VREP_PROGRAM_REVISION_NB 10
+#define VREP_PROGRAM_REVISION "(rev. 10)"
 
 /* Scene object types. Values are serialized */
 enum {
@@ -542,6 +542,7 @@ enum { /* special handle flags: */
     sim_handleflag_depthbuffermeters    =0x00800000,
     sim_handleflag_camera               =0x00400000,
     sim_handleflag_altname              =0x00400000,
+    sim_handleflag_axis                 =0x00400000,
     sim_handleflag_resetforce           =0x00400000,
     sim_handleflag_resettorque          =0x00800000,
     sim_handleflag_resetforcetorque     =sim_handleflag_resetforce|sim_handleflag_resettorque,
