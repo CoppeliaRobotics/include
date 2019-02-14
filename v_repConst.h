@@ -1,11 +1,11 @@
 #if !defined(V_REPCONST_INCLUDED_)
 #define V_REPCONST_INCLUDED_
 
-#define VREP_PROGRAM_VERSION_NB 30500
-#define VREP_PROGRAM_VERSION "3.5.0."
+#define VREP_PROGRAM_VERSION_NB 30600
+#define VREP_PROGRAM_VERSION "3.6.0."
 
-#define VREP_PROGRAM_REVISION_NB 17
-#define VREP_PROGRAM_REVISION "(rev. 17)"
+#define VREP_PROGRAM_REVISION_NB 0
+#define VREP_PROGRAM_REVISION "(rev. 0)"
 
 /* Scene object types. Values are serialized */
 enum {
