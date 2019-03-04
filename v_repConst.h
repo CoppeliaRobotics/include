@@ -4,8 +4,8 @@
 #define VREP_PROGRAM_VERSION_NB 30600
 #define VREP_PROGRAM_VERSION "3.6.0."
 
-#define VREP_PROGRAM_REVISION_NB 2
-#define VREP_PROGRAM_REVISION "(rev. 2)"
+#define VREP_PROGRAM_REVISION_NB 3
+#define VREP_PROGRAM_REVISION "(rev. 3)"
 
 /* Scene object types. Values are serialized */
 enum {

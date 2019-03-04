@@ -269,7 +269,7 @@ typedef simInt (__cdecl *ptrSimAuxiliaryConsoleShow)(simInt consoleHandle,simBoo
 typedef simInt (__cdecl *ptrSimAuxiliaryConsolePrint)(simInt consoleHandle,const simChar* text);
 typedef simInt (__cdecl *ptrSimImportShape)(simInt fileformat,const simChar* pathAndFilename,simInt options,simFloat identicalVerticeTolerance,simFloat scalingFactor);
 typedef simInt (__cdecl *ptrSimImportMesh)(simInt fileformat,const simChar* pathAndFilename,simInt options,simFloat identicalVerticeTolerance,simFloat scalingFactor,simFloat*** vertices,simInt** verticesSizes,simInt*** indices,simInt** indicesSizes,simFloat*** reserved,simChar*** names);
-typedef simInt (__cdecl *ptrSimExportMesh)(simInt fileformat,const simChar* pathAndFilename,simInt options,simFloat scalingFactor,simInt elementCount,simFloat** vertices,const simInt* verticesSizes,simInt** indices,const simInt* indicesSizes,simFloat** reserved,simChar** names);
+typedef simInt (__cdecl *ptrSimExportMesh)(simInt fileformat,const simChar* pathAndFilename,simInt options,simFloat scalingFactor,simInt elementCount,const simFloat** vertices,const simInt* verticesSizes,const simInt** indices,const simInt* indicesSizes,simFloat** reserved,const simChar** names);
 typedef simInt (__cdecl *ptrSimCreateMeshShape)(simInt options,simFloat shadingAngle,const simFloat* vertices,simInt verticesSize,const simInt* indices,simInt indicesSize,simFloat* reserved);
 typedef simInt (__cdecl *ptrSimCreatePureShape)(simInt primitiveType,simInt options,const simFloat* sizes,simFloat mass,const simInt* precision);
 typedef simInt (__cdecl *ptrSimCreateHeightfieldShape)(simInt options,simFloat shadingAngle,simInt xPointCount,simInt yPointCount,simFloat xSize,const simFloat* heights);
@@ -450,6 +450,7 @@ typedef simInt (__cdecl *ptrSimGetModuleInfo)(const simChar* moduleName,simInt i
 typedef simInt (__cdecl *ptrSimIsDeprecated)(const simChar* funcOrConst);
 typedef simChar* (__cdecl *ptrSimGetPersistentDataTags)(simInt* tagCount);
 typedef simInt (__cdecl *ptrSimEventNotification)(const simChar* event);
+typedef simInt (__cdecl *ptrSimApplyTexture)(simInt shapeHandle,const simFloat* textureCoordinates,simInt textCoordSize,const simUChar* texture,const simInt* textureResolution,simInt options);
 
 
 typedef simInt (__cdecl *ptr_simGetContactCallbackCount)();
@@ -967,6 +968,7 @@ extern ptrSimGetModuleInfo simGetModuleInfo;
 extern ptrSimIsDeprecated simIsDeprecated;
 extern ptrSimGetPersistentDataTags simGetPersistentDataTags;
 extern ptrSimEventNotification simEventNotification;
+extern ptrSimApplyTexture simApplyTexture;
 
 
 
