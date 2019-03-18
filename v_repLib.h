@@ -451,6 +451,7 @@ typedef simInt (__cdecl *ptrSimIsDeprecated)(const simChar* funcOrConst);
 typedef simChar* (__cdecl *ptrSimGetPersistentDataTags)(simInt* tagCount);
 typedef simInt (__cdecl *ptrSimEventNotification)(const simChar* event);
 typedef simInt (__cdecl *ptrSimApplyTexture)(simInt shapeHandle,const simFloat* textureCoordinates,simInt textCoordSize,const simUChar* texture,const simInt* textureResolution,simInt options);
+typedef simInt (__cdecl *ptrSimSetJointDependency)(simInt jointHandle,simInt masterJointHandle,simFloat offset,simFloat coeff);
 
 
 typedef simInt (__cdecl *ptr_simGetContactCallbackCount)();
@@ -969,7 +970,7 @@ extern ptrSimIsDeprecated simIsDeprecated;
 extern ptrSimGetPersistentDataTags simGetPersistentDataTags;
 extern ptrSimEventNotification simEventNotification;
 extern ptrSimApplyTexture simApplyTexture;
-
+extern ptrSimSetJointDependency simSetJointDependency;
 
 
 
