@@ -4,8 +4,8 @@
 #define VREP_PROGRAM_VERSION_NB 30601
 #define VREP_PROGRAM_VERSION "3.6.1."
 
-#define VREP_PROGRAM_REVISION_NB 1
-#define VREP_PROGRAM_REVISION "(rev. 1)"
+#define VREP_PROGRAM_REVISION_NB 2
+#define VREP_PROGRAM_REVISION "(rev. 2)"
 
 /* Scene object types. Values are serialized */
 enum {
@@ -414,10 +414,10 @@ enum { /* Script types (serialized!) */
     sim_scripttype_childscript,
     sim_scripttype_addonscript,
     sim_scripttype_addonfunction,
-    sim_scripttype_jointctrlcallback, /* deprecated */
-    sim_scripttype_contactcallback, /* deprecated */
+    sim_scripttype_jointctrlcallback_old, /* deprecated */
+    sim_scripttype_contactcallback_old, /* deprecated */
     sim_scripttype_customizationscript,
-    sim_scripttype_generalcallback, /* deprecated */
+    sim_scripttype_generalcallback_old, /* deprecated */
     sim_scripttype_sandboxscript, /* special */
     sim_scripttype_threaded=0x00f0          /* Combine with sim_scripttype_childscript if you want */
 };
