@@ -801,6 +801,8 @@ enum { /* String parameters: */
     sim_stringparam_job0, /* Job0. can only be read */
     sim_stringparam_job99=sim_stringparam_job0+99, /* can only be read */
     sim_stringparam_scene_unique_id, /* can only be read */
+    sim_stringparam_machine_id1,
+    sim_stringparam_machine_id2,
 };
 
 enum { /* Array parameters: */
