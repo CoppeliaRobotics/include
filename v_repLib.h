@@ -335,7 +335,7 @@ typedef simInt (__cdecl *ptrSimConvexDecompose)(simInt shapeHandle,simInt option
 typedef simFloat* (__cdecl *ptrSimGetIkGroupMatrix)(simInt ikGroupHandle,simInt options,simInt* matrixSize);
 typedef simInt (__cdecl *ptrSimAddGhost)(simInt ghostGroup,simInt objectHandle,simInt options,simFloat startTime,simFloat endTime,const simFloat* color);
 typedef simInt (__cdecl *ptrSimModifyGhost)(simInt ghostGroup,simInt ghostId,simInt operation,simFloat floatValue,simInt options,simInt optionsMask,const simFloat* colorOrTransformation);
-typedef simVoid (__cdecl *ptrSimQuitSimulator)(simBool doNotDisplayMessages);
+typedef simVoid (__cdecl *ptrSimQuitSimulator)(simBool ignoredArgument);
 typedef simInt (__cdecl *ptrSimGetThreadId)();
 typedef simInt (__cdecl *ptrSimLockResources)(simInt lockType,simInt reserved);
 typedef simInt (__cdecl *ptrSimUnlockResources)(simInt lockHandle);

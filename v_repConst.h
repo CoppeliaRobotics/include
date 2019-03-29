@@ -4,8 +4,10 @@
 #define VREP_PROGRAM_VERSION_NB 30601
 #define VREP_PROGRAM_VERSION "3.6.1."
 
-#define VREP_PROGRAM_REVISION_NB 2
-#define VREP_PROGRAM_REVISION "(rev. 2)"
+#define VREP_PROGRAM_REVISION_NB 3
+#define VREP_PROGRAM_REVISION "(rev. 3)"
+
+#define VREP_PROGRAM_FULL_VERSION_NB ((VREP_PROGRAM_VERSION_NB) * 100 + (VREP_PROGRAM_REVISION_NB))
 
 /* Scene object types. Values are serialized */
 enum {
@@ -763,7 +765,8 @@ enum { /* Integer parameters: */
     sim_intparam_motionplanning_seed,
     sim_intparam_speedmodifier, /* can only be used while simulation is not stopped */
     sim_intparam_dynamic_iteration_count,
-    sim_intparam_job_count /* can only be read */
+    sim_intparam_job_count, /* can only be read */
+    sim_intparam_program_full_version, /* can only be read */
 };
 
 enum { /* uint64 parameters: */
