@@ -454,6 +454,16 @@ typedef simInt (__cdecl *ptrSimApplyTexture)(simInt shapeHandle,const simFloat* 
 typedef simInt (__cdecl *ptrSimSetJointDependency)(simInt jointHandle,simInt masterJointHandle,simFloat offset,simFloat coeff);
 
 
+// Following courtesy of Stephen James:
+typedef simInt (__cdecl *ptrSimExtLaunchUIThread)(const simChar* applicationName,simInt options,const simChar* sceneOrModelOrUiToLoad,const simChar* applicationDir_);
+typedef simInt (__cdecl *ptrSimExtCanInitSimThread)();
+typedef simInt (__cdecl *ptrSimExtSimThreadInit)();
+typedef simInt (__cdecl *ptrSimExtSimThreadDestroy)();
+typedef simInt (__cdecl *ptrSimExtPostExitRequest)();
+typedef simInt (__cdecl *ptrSimExtGetExitRequest)();
+typedef simInt (__cdecl *ptrSimExtStep)(simBool stepIfRunning);
+typedef simInt (__cdecl *ptrSimExtCallScriptFunction)(simInt scriptHandleOrType, const simChar* functionNameAtScriptName,const simInt* inIntData, simInt inIntCnt,const simFloat* inFloatData, simInt inFloatCnt,const simChar** inStringData, simInt inStringCnt,const simChar* inBufferData, simInt inBufferCnt,simInt** outIntData, simInt* outIntCnt,simFloat** outFloatData, simInt* outFloatCnt,simChar*** outStringData, simInt* outStringCnt,simChar** outBufferData, simInt* outBufferSize);
+
 typedef simInt (__cdecl *ptr_simGetContactCallbackCount)();
 typedef const void* (__cdecl *ptr_simGetContactCallback)(simInt index);
 typedef simVoid (__cdecl *ptr_simSetDynamicSimulationIconCode)(simVoid* object,simInt code);
@@ -973,6 +983,15 @@ extern ptrSimApplyTexture simApplyTexture;
 extern ptrSimSetJointDependency simSetJointDependency;
 
 
+// Following courtesy of Stephen James:
+extern ptrSimExtLaunchUIThread simExtLaunchUIThread;
+extern ptrSimExtCanInitSimThread simExtCanInitSimThread;
+extern ptrSimExtSimThreadInit simExtSimThreadInit;
+extern ptrSimExtSimThreadDestroy simExtSimThreadDestroy;
+extern ptrSimExtPostExitRequest simExtPostExitRequest;
+extern ptrSimExtGetExitRequest simExtGetExitRequest;
+extern ptrSimExtStep simExtStep;
+extern ptrSimExtCallScriptFunction simExtCallScriptFunction;
 
 extern ptr_simGetContactCallbackCount _simGetContactCallbackCount;
 extern ptr_simGetContactCallback _simGetContactCallback;
