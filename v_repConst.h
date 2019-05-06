@@ -261,6 +261,8 @@ enum { /* Check the documentation instead of comments below!! */
         sim_message_eventcallback_simulationabouttoend,
         sim_message_eventcallback_instanceabouttoswitch,
 
+        sim_message_eventcallback_lastinstancepass,
+
         sim_message_simulation_start_resume_request=0x1000,
         sim_message_simulation_pause_request,
         sim_message_simulation_stop_request
