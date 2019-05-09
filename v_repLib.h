@@ -27,7 +27,8 @@ LIBRARY loadVrepLibrary(const char* pathAndFilename);
 void unloadVrepLibrary(LIBRARY lib);
 FARPROC _getProcAddress(LIBRARY lib,const char* funcName);
 
-typedef simInt (__cdecl *ptrSimRunSimulator)(const simChar* applicationName,simInt options,simVoid(*initCallBack)(),simVoid(*loopCallBack)(),simVoid(*deinitCallBack)(),simInt stopDelay,const simChar* sceneOrModelToLoad);
+typedef simInt (__cdecl *ptrSimRunSimulator)(const simChar* applicationName,simInt options,simVoid(*initCallBack)(),simVoid(*loopCallBack)(),simVoid(*deinitCallBack)());
+typedef simInt (__cdecl *ptrSimRunSimulatorEx)(const simChar* applicationName,simInt options,simVoid(*initCallBack)(),simVoid(*loopCallBack)(),simVoid(*deinitCallBack)(),simInt stopDelay,const simChar* sceneOrModelToLoad);
 typedef simChar* (__cdecl *ptrSimGetSimulatorMessage)(simInt* messageID,simInt* auxiliaryData,simInt* returnedDataSize);
 typedef simVoid* (__cdecl *ptrSimGetMainWindow)(simInt type);
 typedef simChar* (__cdecl *ptrSimGetLastError)();
@@ -557,6 +558,7 @@ typedef simVoid (__cdecl *ptr_simDynCallback)(const simInt* intData,const simFlo
 
 
 extern ptrSimRunSimulator simRunSimulator;
+extern ptrSimRunSimulatorEx simRunSimulatorEx;
 extern ptrSimGetSimulatorMessage simGetSimulatorMessage;
 extern ptrSimGetMainWindow simGetMainWindow;
 extern ptrSimGetLastError simGetLastError;
