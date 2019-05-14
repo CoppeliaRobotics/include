@@ -149,7 +149,7 @@ typedef simInt (__cdecl *ptrSimCheckProximitySensor)(simInt sensorHandle,simInt 
 typedef simInt (__cdecl *ptrSimCheckProximitySensorEx)(simInt sensorHandle,simInt entityHandle,simInt detectionMode,simFloat detectionThreshold,simFloat maxAngle,simFloat* detectedPoint,simInt* detectedObjectHandle,simFloat* normalVector);
 typedef simInt (__cdecl *ptrSimCheckProximitySensorEx2)(simInt sensorHandle,simFloat* vertexPointer,simInt itemType,simInt itemCount,simInt detectionMode,simFloat detectionThreshold,simFloat maxAngle,simFloat* detectedPoint,simFloat* normalVector);
 typedef simChar* (__cdecl *ptrSimCreateBuffer)(simInt size);
-typedef simInt (__cdecl *ptrSimReleaseBuffer)(simChar* buffer);
+typedef simInt (__cdecl *ptrSimReleaseBuffer)(const simChar* buffer);
 typedef simInt (__cdecl *ptrSimCheckCollision)(simInt entity1Handle,simInt entity2Handle);
 typedef simInt (__cdecl *ptrSimCheckCollisionEx)(simInt entity1Handle,simInt entity2Handle,simFloat** intersectionSegments);
 typedef simInt (__cdecl *ptrSimCheckDistance)(simInt entity1Handle,simInt entity2Handle,simFloat threshold,simFloat* distanceData);
