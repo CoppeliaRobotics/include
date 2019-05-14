@@ -1666,6 +1666,19 @@ enum { /* Default dynamic materials */
     sim_dynmat_floor
 };
 
+enum { /* Vision sensors render modes */
+    sim_rendermode_opengl=0,
+    sim_rendermode_auxchannels,
+    sim_rendermode_colorcoded,
+    sim_rendermode_povray,
+    sim_rendermode_reserved,
+    sim_rendermode_extrenderer,
+    sim_rendermode_extrendererwindowed,
+    sim_rendermode_opengl3,
+    sim_rendermode_opengl3windowed
+};
+
+
 
 /******************************************
 *******************************************
