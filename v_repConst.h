@@ -1202,6 +1202,11 @@ enum { /* Object int/float/string parameters */
 
     /* lights */
     sim_lightintparam_pov_casts_shadows= 8000,
+    sim_lightfloatparam_spot_exponent= 8001,
+    sim_lightfloatparam_spot_cutoff= 8002,
+    sim_lightfloatparam_const_attenuation= 8003,
+    sim_lightfloatparam_lin_attenuation= 8004,
+    sim_lightfloatparam_quad_attenuation= 8005,
 
     /* cameras */
     sim_cameraintparam_disabled_light_components= 9000,
