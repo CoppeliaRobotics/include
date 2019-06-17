@@ -1,11 +1,11 @@
 #if !defined(V_REPCONST_INCLUDED_)
 #define V_REPCONST_INCLUDED_
 
-#define VREP_PROGRAM_VERSION_NB 30601
-#define VREP_PROGRAM_VERSION "3.6.1."
+#define VREP_PROGRAM_VERSION_NB 30602
+#define VREP_PROGRAM_VERSION "3.6.2."
 
-#define VREP_PROGRAM_REVISION_NB 5
-#define VREP_PROGRAM_REVISION "(rev. 5)"
+#define VREP_PROGRAM_REVISION_NB 0
+#define VREP_PROGRAM_REVISION "(rev. 0)"
 
 #define VREP_PROGRAM_FULL_VERSION_NB ((VREP_PROGRAM_VERSION_NB) * 100 + (VREP_PROGRAM_REVISION_NB))
 
@@ -157,9 +157,9 @@ enum { /* Check the documentation instead of comments below!! */
 
         sim_message_eventcallback_scenesave,                /* about to save a scene */
         sim_message_eventcallback_modelsave,                /* about to save a model (current selection will be saved) */
-        sim_message_eventcallback_moduleopen,               /* called when simOpenModule in Lua is called */
-        sim_message_eventcallback_modulehandle,             /* called when simHandleModule in Lua is called with argument false */
-        sim_message_eventcallback_moduleclose,              /* called when simCloseModule in Lua is called */
+        sim_message_eventcallback_moduleopen,               /* deprecated */
+        sim_message_eventcallback_modulehandle,             /* deprecated */
+        sim_message_eventcallback_moduleclose,              /* deprecated */
         sim_message_reserved4,                              /* Do not use */
         sim_message_reserved5,                              /* Do not use */
         sim_message_reserved6,                              /* Do not use */
@@ -179,12 +179,12 @@ enum { /* Check the documentation instead of comments below!! */
                                                             /* bit11 set: simulation started */
                                                             /* bit12 set: simulation ended */
 
-        sim_message_eventcallback_broadcast,
-        sim_message_eventcallback_imagefilter_enumreset,
-        sim_message_eventcallback_imagefilter_enumerate,
-        sim_message_eventcallback_imagefilter_adjustparams,
-        sim_message_eventcallback_imagefilter_reserved,
-        sim_message_eventcallback_imagefilter_process,
+        sim_message_eventcallback_broadcast, /* deprecated */
+        sim_message_eventcallback_imagefilter_enumreset, /* deprecated */
+        sim_message_eventcallback_imagefilter_enumerate, /* deprecated */
+        sim_message_eventcallback_imagefilter_adjustparams, /* deprecated */
+        sim_message_eventcallback_imagefilter_reserved, /* deprecated */
+        sim_message_eventcallback_imagefilter_process, /* deprecated */
 
         sim_message_eventcallback_reserved1, /* do not use */
         sim_message_eventcallback_reserved2, /* do not use */
@@ -201,9 +201,9 @@ enum { /* Check the documentation instead of comments below!! */
 
         sim_message_eventcallback_reserved5,            /* do not use */
         sim_message_eventcallback_keypress,         /* a key was pressed while the focus was on a page (aux[0]=key, aux[1]=ctrl and shift key state) */
-        sim_message_eventcallback_modulehandleinsensingpart, /* called when simHandleModule in Lua is called with argument true */
+        sim_message_eventcallback_modulehandleinsensingpart, /* deprecated */
 
-        sim_message_eventcallback_renderingpass, /* called just before the scene is rendered. From the UI thread! */
+        sim_message_eventcallback_renderingpass, /* deprecated */
         sim_message_eventcallback_bannerclicked, /* called when a banner was clicked (aux[0]=banner ID) */
         sim_message_eventcallback_menuitemselected, /* auxiliaryData[0] indicates the handle of the item, auxiliaryData[1] indicates the state of the item */
         sim_message_eventcallback_refreshdialogs, /* aux[0]=refresh degree (0=light, 1=medium, 2=full) */
@@ -220,12 +220,12 @@ enum { /* Check the documentation instead of comments below!! */
 
         sim_message_eventcallback_reserved18,
         sim_message_eventcallback_reserved19,
-        sim_message_eventcallback_pathplanningplugin, /* to interact with the path planning plugin */
+        sim_message_eventcallback_pathplanningplugin, /* deprecated */
         sim_message_eventcallback_colladaplugin, /* to interact with the collada plugin */
 
-        sim_message_eventcallback_opengl, /* a simple callback at different rendering stages */
-        sim_message_eventcallback_openglframe, /* a callback with the full rendered opengl frame data (that can be modified then returned) */
-        sim_message_eventcallback_openglcameraview, /* a callback with the rendered opengl view data (that can be modified then returned) */
+        sim_message_eventcallback_opengl, /* deprecated */
+        sim_message_eventcallback_openglframe, /* deprecated */
+        sim_message_eventcallback_openglcameraview, /* deprecated */
 
         sim_message_eventcallback_proxsensorselectdown, /* a "geometric" click select (mouse down) was registered. Enable with sim_intparam_prox_sensor_select_down. aux[0]=objectID, customData[0-2]=pt coord (floats), customData[3-5]=pt normal vector (floats)*/
         sim_message_eventcallback_proxsensorselectup, /* a "geometric" click select (mouse up) was registered. Enable with sim_intparam_prox_sensor_select_down. aux[0]=objectID, customData[0-2]=pt coord (floats), customData[3-5]=pt normal vector (floats)*/
@@ -262,6 +262,7 @@ enum { /* Check the documentation instead of comments below!! */
         sim_message_eventcallback_instanceabouttoswitch,
 
         sim_message_eventcallback_lastinstancepass,
+        sim_message_eventcallback_uipass,             /* Called from the UI thread, just after sim_message_eventcallback_instancepass was called from the SIM thread */
 
         sim_message_simulation_start_resume_request=0x1000,
         sim_message_simulation_pause_request,
