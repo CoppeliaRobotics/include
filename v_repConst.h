@@ -445,7 +445,7 @@ enum { /* System callbacks */
     sim_syscb_aos_run, /* special for add-on scripts */
     sim_syscb_aos_suspend, /* special for add-on scripts */
     sim_syscb_aos_resume, /* special for add-on scripts */
-    sim_syscb_jointcallback, /* special for joint callback scripts */
+    sim_syscb_jointcallback, /* called by the physics engine for a dynamically enabled joint */
     sim_syscb_contactcallback, /* called by the physics engine when two respondable shapes are contacting */
     sim_syscb_customcallback1, /* custom call */
     sim_syscb_customcallback2, /* custom call */
@@ -1117,6 +1117,7 @@ enum { /* Object int/float/string parameters */
     sim_visionfloatparam_pov_aperture= 1015,
     sim_visionintparam_pov_blur_sampled= 1016,
     sim_visionintparam_render_mode= 1017,
+    sim_visionintparam_perspective_operation= 1018,
 
     /* joints */
     sim_jointintparam_motor_enabled= 2000,
@@ -1652,7 +1653,8 @@ enum { /* Buffer types */
     sim_buffer_uint8rgba,
     sim_buffer_uint8argb,
     sim_buffer_base64,
-    sim_buffer_split
+    sim_buffer_split,
+    sim_buffer_clamp=256 /* flag */
 };
 
 enum { /* Image combination */
