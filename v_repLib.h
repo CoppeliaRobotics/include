@@ -441,8 +441,6 @@ typedef simInt (__cdecl *ptrSimCheckOctreePointOccupancy)(simInt octreeHandle,si
 typedef simChar* (__cdecl *ptrSimOpenTextEditor)(const simChar* initText,const simChar* xml,simInt* various);
 typedef simChar* (__cdecl *ptrSimPackTable)(simInt stackHandle,simInt* bufferSize);
 typedef simInt (__cdecl *ptrSimUnpackTable)(simInt stackHandle,const simChar* buffer,simInt bufferSize);
-typedef simInt (__cdecl *ptrSimSetVisionSensorFilter)(simInt visionSensorHandle,simInt filterIndex,simInt options,const simInt* pSizes,const simUChar* bytes,const simInt* ints,const simFloat* floats,const simUChar* custom);
-typedef simInt (__cdecl *ptrSimGetVisionSensorFilter)(simInt visionSensorHandle,simInt filterIndex,simInt* options,simInt* pSizes,simUChar** bytes,simInt** ints,simFloat** floats,simUChar** custom);
 typedef simInt (__cdecl *ptrSimSetReferencedHandles)(simInt objectHandle,simInt count,const simInt* referencedHandles,const simInt* reserved1,const simInt* reserved2);
 typedef simInt (__cdecl *ptrSimGetReferencedHandles)(simInt objectHandle,simInt** referencedHandles,simInt** reserved1,simInt** reserved2);
 typedef simInt (__cdecl *ptrSimGetShapeViz)(simInt shapeHandle,simInt index,struct SShapeVizInfo* info);
@@ -976,8 +974,6 @@ extern ptrSimCheckOctreePointOccupancy simCheckOctreePointOccupancy;
 extern ptrSimOpenTextEditor simOpenTextEditor;
 extern ptrSimPackTable simPackTable;
 extern ptrSimUnpackTable simUnpackTable;
-extern ptrSimSetVisionSensorFilter simSetVisionSensorFilter;
-extern ptrSimGetVisionSensorFilter simGetVisionSensorFilter;
 extern ptrSimSetReferencedHandles simSetReferencedHandles;
 extern ptrSimGetReferencedHandles simGetReferencedHandles;
 extern ptrSimGetShapeViz simGetShapeViz;
@@ -1172,6 +1168,8 @@ typedef simInt (__cdecl *ptrSimGetMechanismHandle)(const simChar* mechanismName)
 typedef simInt (__cdecl *ptrSimHandleMechanism)(simInt mechanismHandle);
 typedef simInt (__cdecl *ptrSimHandleCustomizationScripts)(simInt callType);
 typedef simInt (__cdecl *ptrSimCallScriptFunction)(simInt scriptHandleOrType,const simChar* functionNameAtScriptName,SLuaCallBack* data,const simChar* reservedSetToNull);
+typedef simInt (__cdecl *ptrSimSetVisionSensorFilter)(simInt visionSensorHandle,simInt filterIndex,simInt options,const simInt* pSizes,const simUChar* bytes,const simInt* ints,const simFloat* floats,const simUChar* custom);
+typedef simInt (__cdecl *ptrSimGetVisionSensorFilter)(simInt visionSensorHandle,simInt filterIndex,simInt* options,simInt* pSizes,simUChar** bytes,simInt** ints,simFloat** floats,simUChar** custom);
 extern ptrSimGetMaterialId simGetMaterialId;
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1247,6 +1245,8 @@ extern ptrSimGetMechanismHandle simGetMechanismHandle;
 extern ptrSimHandleMechanism simHandleMechanism;
 extern ptrSimHandleCustomizationScripts simHandleCustomizationScripts;
 extern ptrSimCallScriptFunction simCallScriptFunction;
+extern ptrSimSetVisionSensorFilter simSetVisionSensorFilter;
+extern ptrSimGetVisionSensorFilter simGetVisionSensorFilter;
 // Deprecated end
 
 #endif // !defined(V_REPLIB_INCLUDED_)

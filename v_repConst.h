@@ -4,8 +4,8 @@
 #define VREP_PROGRAM_VERSION_NB 30602
 #define VREP_PROGRAM_VERSION "3.6.2."
 
-#define VREP_PROGRAM_REVISION_NB 0
-#define VREP_PROGRAM_REVISION "(rev. 0)"
+#define VREP_PROGRAM_REVISION_NB 1
+#define VREP_PROGRAM_REVISION "(rev. 1)"
 
 #define VREP_PROGRAM_FULL_VERSION_NB ((VREP_PROGRAM_VERSION_NB) * 100 + (VREP_PROGRAM_REVISION_NB))
 
@@ -457,6 +457,8 @@ enum { /* System callbacks */
     sim_syscb_threadmain, /* the main section of a threaded child script */
     sim_syscb_dyncallback, /* called by the physics engine twice per dyn. simulation pass */
     sim_syscb_beforemainscript, /* called in customization scripts just before calling the main script */
+    sim_syscb_vision, /* called just after a vision sensor image was acquired, for processing */
+    sim_syscb_trigger, /* called by vision, proximity or force/torque sensors when they trigger */
     sim_syscb_br=sim_syscb_init+200, /* reserved for BR */
     /* sim_syscb_brend=sim_syscb_br+1000  reserved for BR */
 };
@@ -1597,46 +1599,46 @@ enum {
     sim_dynamicsimicon_objectisnotdynamicallyenabled
 };
 
-enum { /* Filter component types */
-    sim_filtercomponent_originalimage=1,
-    sim_filtercomponent_originaldepth,
-    sim_filtercomponent_uniformimage,
-    sim_filtercomponent_tooutput,
-    sim_filtercomponent_tobuffer1,
-    sim_filtercomponent_tobuffer2,
-    sim_filtercomponent_frombuffer1,
-    sim_filtercomponent_frombuffer2,
-    sim_filtercomponent_swapbuffers,
-    sim_filtercomponent_addbuffer1,
-    sim_filtercomponent_subtractbuffer1,
-    sim_filtercomponent_multiplywithbuffer1,
-    sim_filtercomponent_horizontalflip,
-    sim_filtercomponent_verticalflip,
-    sim_filtercomponent_rotate,
-    sim_filtercomponent_shift,
-    sim_filtercomponent_resize,
-    sim_filtercomponent_3x3filter,
-    sim_filtercomponent_5x5filter,
-    sim_filtercomponent_sharpen,
-    sim_filtercomponent_edge,
-    sim_filtercomponent_rectangularcut,
-    sim_filtercomponent_circularcut,
-    sim_filtercomponent_normalize,
-    sim_filtercomponent_intensityscale,
-    sim_filtercomponent_keeporremovecolors,
-    sim_filtercomponent_scaleandoffsetcolors,
-    sim_filtercomponent_binary,
-    sim_filtercomponent_swapwithbuffer1,
-    sim_filtercomponent_addtobuffer1,
-    sim_filtercomponent_subtractfrombuffer1,
-    sim_filtercomponent_correlationwithbuffer1,
-    sim_filtercomponent_colorsegmentation,
-    sim_filtercomponent_blobextraction,
-    sim_filtercomponent_imagetocoord,
-    sim_filtercomponent_pixelchange,
-    sim_filtercomponent_velodyne,
-    sim_filtercomponent_todepthoutput,
-    sim_filtercomponent_customized=1000
+enum { /* Filter component types. Not used anymore (use vision callback functions instead) */
+    sim_filtercomponent_originalimage_deprecated=1,
+    sim_filtercomponent_originaldepth_deprecated,
+    sim_filtercomponent_uniformimage_deprecated,
+    sim_filtercomponent_tooutput_deprecated,
+    sim_filtercomponent_tobuffer1_deprecated,
+    sim_filtercomponent_tobuffer2_deprecated,
+    sim_filtercomponent_frombuffer1_deprecated,
+    sim_filtercomponent_frombuffer2_deprecated,
+    sim_filtercomponent_swapbuffers_deprecated,
+    sim_filtercomponent_addbuffer1_deprecated,
+    sim_filtercomponent_subtractbuffer1_deprecated,
+    sim_filtercomponent_multiplywithbuffer1_deprecated,
+    sim_filtercomponent_horizontalflip_deprecated,
+    sim_filtercomponent_verticalflip_deprecated,
+    sim_filtercomponent_rotate_deprecated,
+    sim_filtercomponent_shift_deprecated,
+    sim_filtercomponent_resize_deprecated,
+    sim_filtercomponent_3x3filter_deprecated,
+    sim_filtercomponent_5x5filter_deprecated,
+    sim_filtercomponent_sharpen_deprecated,
+    sim_filtercomponent_edge_deprecated,
+    sim_filtercomponent_rectangularcut_deprecated,
+    sim_filtercomponent_circularcut_deprecated,
+    sim_filtercomponent_normalize_deprecated,
+    sim_filtercomponent_intensityscale_deprecated,
+    sim_filtercomponent_keeporremovecolors_deprecated,
+    sim_filtercomponent_scaleandoffsetcolors_deprecated,
+    sim_filtercomponent_binary_deprecated,
+    sim_filtercomponent_swapwithbuffer1_deprecated,
+    sim_filtercomponent_addtobuffer1_deprecated,
+    sim_filtercomponent_subtractfrombuffer1_deprecated,
+    sim_filtercomponent_correlationwithbuffer1_deprecated,
+    sim_filtercomponent_colorsegmentation_deprecated,
+    sim_filtercomponent_blobextraction_deprecated,
+    sim_filtercomponent_imagetocoord_deprecated,
+    sim_filtercomponent_pixelchange_deprecated,
+    sim_filtercomponent_velodyne_deprecated,
+    sim_filtercomponent_todepthoutput_deprecated,
+    sim_filtercomponent_customized_deprecated=1000
 };
 
 enum { /* Buffer types */
