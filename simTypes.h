@@ -1,5 +1,5 @@
-#if !defined(V_REPTYPES_INCLUDED_)
-#define V_REPTYPES_INCLUDED_
+#if !defined(SIMTYPES_INCLUDED_)
+#define SIMTYPES_INCLUDED_
 
 // Various types used in the interface functions:
 typedef unsigned char simBool;
@@ -64,4 +64,4 @@ struct SLuaCallBack
 typedef int (*contactCallback)(int,int,int,int*,float*);
 typedef int (*jointCtrlCallback)(int,int,int,const int*,const float*,float*);
 
-#endif // !defined(V_REPTYPES_INCLUDED_)
+#endif // !defined(SIMTYPES_INCLUDED_)

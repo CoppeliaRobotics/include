@@ -1,13 +1,13 @@
-#if !defined(V_REPCONST_INCLUDED_)
-#define V_REPCONST_INCLUDED_
+#if !defined(SIMCONST_INCLUDED_)
+#define SIMCONST_INCLUDED_
 
-#define VREP_PROGRAM_VERSION_NB 30602
-#define VREP_PROGRAM_VERSION "3.6.2."
+#define SIM_PROGRAM_VERSION_NB 40000
+#define SIM_PROGRAM_VERSION "4.0.0."
 
-#define VREP_PROGRAM_REVISION_NB 1
-#define VREP_PROGRAM_REVISION "(rev. 1)"
+#define SIM_PROGRAM_REVISION_NB 0
+#define SIM_PROGRAM_REVISION "(rev. 0)"
 
-#define VREP_PROGRAM_FULL_VERSION_NB ((VREP_PROGRAM_VERSION_NB) * 100 + (VREP_PROGRAM_REVISION_NB))
+#define SIM_PROGRAM_FULL_VERSION_NB ((SIM_PROGRAM_VERSION_NB) * 100 + (SIM_PROGRAM_REVISION_NB))
 
 /* Scene object types. Values are serialized */
 enum {
@@ -459,8 +459,10 @@ enum { /* System callbacks */
     sim_syscb_beforemainscript, /* called in customization scripts just before calling the main script */
     sim_syscb_vision, /* called just after a vision sensor image was acquired, for processing */
     sim_syscb_trigger, /* called by vision, proximity or force/torque sensors when they trigger */
-    sim_syscb_br=sim_syscb_init+200, /* reserved for BR */
-    /* sim_syscb_brend=sim_syscb_br+1000  reserved for BR */
+    sim_syscb_userconfig, /* called for the customization script, when the user double-clicks the script simulation parameters icon */
+    sim_syscb_xr=sim_syscb_init+200, /* reserved for XR */
+    sim_syscb_br=sim_syscb_xr, /* reserved for XR */
+    /* sim_syscb_xrend=sim_syscb_xr+1000  reserved for XR */
 };
 
 enum { /* Script attributes */
@@ -723,18 +725,18 @@ enum { /* Boolean parameters: */
     sim_boolparam_calcmodules_toolbarbutton_enabled,
     sim_boolparam_rosinterface_donotrunmainscript,
     sim_boolparam_online_mode,
-    sim_boolparam_br_partrepository,
-    sim_boolparam_br_palletrepository,
+    sim_boolparam_xr_partrepository,
+    sim_boolparam_xr_palletrepository,
     sim_boolparam_scene_closing,
     sim_boolparam_show_w_emitters,
     sim_boolparam_show_w_receivers,
-    sim_boolparam_br_jobfunc
+    sim_boolparam_xr_jobfunc
 };
 
 enum { /* Integer parameters: */
     sim_intparam_error_report_mode=0, /* Check sim_api_errormessage_... constants above for valid values */
     sim_intparam_program_version,       /* e.g Version 2.1.4 --> 20104. Can only be read. See also sim_intparam_program_revision */
-    sim_intparam_instance_count,    /* do not use anymore (always returns 1 since V-REP 2.5.11) */
+    sim_intparam_instance_count,    /* do not use anymore (always returns 1 since CoppeliaSim 2.5.11) */
     sim_intparam_custom_cmd_start_id, /* can only be read */
     sim_intparam_compilation_version, /* 0=evaluation version, 1=full version, 2=player version. Can only be read */
     sim_intparam_current_page,
@@ -788,9 +790,9 @@ enum { /* Float parameters: */
 };
 
 enum { /* String parameters: */
-    sim_stringparam_application_path=0, /* path of V-REP's executable */
+    sim_stringparam_application_path=0, /* path of CoppeliaSim's executable */
     sim_stringparam_video_filename, /* name + path without extension! */
-    sim_stringparam_app_arg1, /* specify those args with "vrep -gxxxx" */
+    sim_stringparam_app_arg1, /* specify those args with "coppeliaSim -gxxxx" */
     sim_stringparam_app_arg2,
     sim_stringparam_app_arg3,
     sim_stringparam_app_arg4,
@@ -2031,4 +2033,4 @@ enum {  simros_strmcmdnull_start                =0,
         simros_strmcmdreserved_start            =0x005000,
 };
 
-#endif /* !defined(V_REPCONST_INCLUDED_) */
+#endif /* !defined(SIMCONST_INCLUDED_) */

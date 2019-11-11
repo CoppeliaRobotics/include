@@ -1,7 +1,7 @@
 #pragma once
 
 #include "luaFunctionDataItem.h"
-#include "v_repLib.h"
+#include "simLib.h"
 
 #define SIM_LUA_ARG_NIL_ALLOWED (65536)
 

@@ -1,10 +1,10 @@
-// Use this header to dynamically load and bind v_rep.dll and its functions (call loadVrepLibrary and unloadVrepLibrary)
+// Use this header to dynamically load and bind coppeliaSim.dll and its functions (call loadSimLibrary and unloadSimLibrary)
 
-#if !defined(V_REPLIB_INCLUDED_)
-#define V_REPLIB_INCLUDED_
+#if !defined(SIMLIB_INCLUDED_)
+#define SIMLIB_INCLUDED_
 
-#include "v_repConst.h"
-#include "v_repTypes.h"
+#include "simConst.h"
+#include "simTypes.h"
 
 #ifdef QT_FRAMEWORK
     #include <QLibrary>
@@ -22,9 +22,9 @@
     #endif
 #endif // QT_FRAMEWORK
 
-int getVrepProcAddresses(LIBRARY lib);
-LIBRARY loadVrepLibrary(const char* pathAndFilename);
-void unloadVrepLibrary(LIBRARY lib);
+int getSimProcAddresses(LIBRARY lib);
+LIBRARY loadSimLibrary(const char* pathAndFilename);
+void unloadSimLibrary(LIBRARY lib);
 FARPROC _getProcAddress(LIBRARY lib,const char* funcName);
 
 typedef simInt (__cdecl *ptrSimRunSimulator)(const simChar* applicationName,simInt options,simVoid(*initCallBack)(),simVoid(*loopCallBack)(),simVoid(*deinitCallBack)());
@@ -169,8 +169,6 @@ typedef simInt (__cdecl *ptrSimStopSimulation)();
 typedef simInt (__cdecl *ptrSimPauseSimulation)();
 typedef simVoid* (__cdecl *ptrSimBroadcastMessage)(simInt* auxiliaryData,simVoid* customData,simInt* replyData);
 typedef simChar* (__cdecl *ptrSimGetModuleName)(simInt index,simUChar* moduleVersion);
-typedef simChar* (__cdecl *ptrSimGetScriptSimulationParameter)(simInt scriptHandle,const simChar* parameterName,simInt* parameterLength);
-typedef simInt (__cdecl *ptrSimSetScriptSimulationParameter)(simInt scriptHandle,const simChar* parameterName,const simChar* parameterValue,simInt parameterLength);
 typedef simInt (__cdecl *ptrSimFloatingViewAdd)(simFloat posX,simFloat posY,simFloat sizeX,simFloat sizeY,simInt options);
 typedef simInt (__cdecl *ptrSimFloatingViewRemove)(simInt floatingViewHandle);
 typedef simInt (__cdecl *ptrSimAdjustView)(simInt viewHandleOrIndex,simInt associatedViewableObjectHandle,simInt options,const simChar* viewLabel);
@@ -456,6 +454,8 @@ typedef simInt (__cdecl *ptrSimApplyTexture)(simInt shapeHandle,const simFloat* 
 typedef simInt (__cdecl *ptrSimSetJointDependency)(simInt jointHandle,simInt masterJointHandle,simFloat offset,simFloat coeff);
 typedef simInt (__cdecl *ptrSimSetStringNamedParam)(const simChar* paramName,const simChar* stringParam,simInt paramLength);
 typedef simChar* (__cdecl *ptrSimGetStringNamedParam)(const simChar* paramName,simInt* paramLength);
+typedef simChar* (__cdecl *ptrSimGetUserParameter)(simInt objectHandle,const simChar* parameterName,simInt* parameterLength);
+typedef simInt (__cdecl *ptrSimSetUserParameter)(simInt objectHandle,const simChar* parameterName,const simChar* parameterValue,simInt parameterLength);
 
 
 // Following courtesy of Stephen James:
@@ -702,8 +702,6 @@ extern ptrSimStopSimulation simStopSimulation;
 extern ptrSimPauseSimulation simPauseSimulation;
 extern ptrSimBroadcastMessage simBroadcastMessage;
 extern ptrSimGetModuleName simGetModuleName;
-extern ptrSimGetScriptSimulationParameter simGetScriptSimulationParameter;
-extern ptrSimSetScriptSimulationParameter simSetScriptSimulationParameter;
 extern ptrSimFloatingViewAdd simFloatingViewAdd;
 extern ptrSimFloatingViewRemove simFloatingViewRemove;
 extern ptrSimAdjustView simAdjustView;
@@ -989,6 +987,8 @@ extern ptrSimApplyTexture simApplyTexture;
 extern ptrSimSetJointDependency simSetJointDependency;
 extern ptrSimSetStringNamedParam simSetStringNamedParam;
 extern ptrSimGetStringNamedParam simGetStringNamedParam;
+extern ptrSimGetUserParameter simGetUserParameter;
+extern ptrSimSetUserParameter simSetUserParameter;
 
 
 // Following courtesy of Stephen James:
@@ -1170,6 +1170,8 @@ typedef simInt (__cdecl *ptrSimHandleCustomizationScripts)(simInt callType);
 typedef simInt (__cdecl *ptrSimCallScriptFunction)(simInt scriptHandleOrType,const simChar* functionNameAtScriptName,SLuaCallBack* data,const simChar* reservedSetToNull);
 typedef simInt (__cdecl *ptrSimSetVisionSensorFilter)(simInt visionSensorHandle,simInt filterIndex,simInt options,const simInt* pSizes,const simUChar* bytes,const simInt* ints,const simFloat* floats,const simUChar* custom);
 typedef simInt (__cdecl *ptrSimGetVisionSensorFilter)(simInt visionSensorHandle,simInt filterIndex,simInt* options,simInt* pSizes,simUChar** bytes,simInt** ints,simFloat** floats,simUChar** custom);
+typedef simChar* (__cdecl *ptrSimGetScriptSimulationParameter)(simInt scriptHandle,const simChar* parameterName,simInt* parameterLength);
+typedef simInt (__cdecl *ptrSimSetScriptSimulationParameter)(simInt scriptHandle,const simChar* parameterName,const simChar* parameterValue,simInt parameterLength);
 extern ptrSimGetMaterialId simGetMaterialId;
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1247,6 +1249,8 @@ extern ptrSimHandleCustomizationScripts simHandleCustomizationScripts;
 extern ptrSimCallScriptFunction simCallScriptFunction;
 extern ptrSimSetVisionSensorFilter simSetVisionSensorFilter;
 extern ptrSimGetVisionSensorFilter simGetVisionSensorFilter;
+extern ptrSimGetScriptSimulationParameter simGetScriptSimulationParameter;
+extern ptrSimSetScriptSimulationParameter simSetScriptSimulationParameter;
 // Deprecated end
 
-#endif // !defined(V_REPLIB_INCLUDED_)
+#endif // !defined(SIMLIB_INCLUDED_)

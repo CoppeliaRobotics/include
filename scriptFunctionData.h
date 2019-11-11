@@ -1,7 +1,7 @@
 #pragma once
 
 #include "scriptFunctionDataItem.h"
-#include "v_repLib.h"
+#include "simLib.h"
 
 #define SIM_SCRIPT_ARG_NULL_ALLOWED (65536)
 
