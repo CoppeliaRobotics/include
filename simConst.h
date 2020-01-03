@@ -1815,6 +1815,7 @@ enum {  simx_cmdnull_start              =0,
         simx_cmd_set_model_property,
         simx_cmd_get_object_velocity,
         simx_cmd_remove_model,
+        simx_cmd_get_joint_max_force,
 
         simx_cmd4bytes_custom_start =0x001800,
         simx_cmd_set_object_quaternion,
