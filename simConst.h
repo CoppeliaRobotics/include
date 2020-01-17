@@ -802,8 +802,10 @@ enum { /* String parameters: */
     sim_stringparam_app_arg7,
     sim_stringparam_app_arg8,
     sim_stringparam_app_arg9,
-    sim_stringparam_additional_addonscript_firstscene, /* do not use. Can only be written. */
-    sim_stringparam_additional_addonscript, /* do not use. Can only be written. */
+    sim_stringparam_additional_addonscript1, /* do not use. Can only be written. */
+    sim_stringparam_additional_addonscript_firstscene=sim_stringparam_additional_addonscript1, /* deprecated */
+    sim_stringparam_additional_addonscript2, /* do not use. Can only be written. */
+    sim_stringparam_additional_addonscript=sim_stringparam_additional_addonscript2, /* deprecated */
     sim_stringparam_scene_path_and_name, /* can only be read */
     sim_stringparam_scene_path, /* can only be read */
     sim_stringparam_scene_name, /* can only be read */
