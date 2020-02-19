@@ -35,7 +35,7 @@ struct SShapeVizInfo
     simInt textureRes[2];
     simFloat* textureCoords;
     simInt textureApplyMode;
-    simInt textureOptions;
+    simInt textureOptions; /* not just textures options */
 };
 
 struct SLuaCallBack
