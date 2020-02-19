@@ -4,8 +4,8 @@
 #define SIM_PROGRAM_VERSION_NB 40000
 #define SIM_PROGRAM_VERSION "4.0.0."
 
-#define SIM_PROGRAM_REVISION_NB 4
-#define SIM_PROGRAM_REVISION "(rev. 4)"
+#define SIM_PROGRAM_REVISION_NB 5
+#define SIM_PROGRAM_REVISION "(rev. 5)"
 
 #define SIM_PROGRAM_FULL_VERSION_NB ((SIM_PROGRAM_VERSION_NB) * 100 + (SIM_PROGRAM_REVISION_NB))
 
@@ -548,6 +548,7 @@ enum { /* special handle flags: */
     sim_handleflag_extended             =0x00400000,
     sim_handleflag_greyscale            =0x00400000,
     sim_handleflag_codedstring          =0x00400000,
+    sim_handleflag_wxyzquaternion       =0x00400000,
     sim_handleflag_depthbuffer          =0x00800000,
     sim_handleflag_depthbuffermeters    =0x00800000,
     sim_handleflag_keeporiginal         =0x00400000,
@@ -1102,6 +1103,7 @@ enum { /* Object int/float/string parameters */
     sim_objstringparam_dna= 33,
     sim_objfloatparam_size_factor= 34,
     sim_objstringparam_unique_id= 35,
+    sim_objintparam_visible= 10,
 
     sim_objparam_end= 999,
 
