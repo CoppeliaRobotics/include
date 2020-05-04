@@ -1,6 +1,8 @@
 #if !defined(SIMTYPES_INCLUDED_)
 #define SIMTYPES_INCLUDED_
 
+#include <cstddef>
+
 // Various types used in the interface functions:
 typedef unsigned char simBool;
 typedef char simChar;
