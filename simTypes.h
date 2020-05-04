@@ -61,6 +61,19 @@ struct SLuaCallBack
     simDouble* outputDouble;
 };
 
+struct SSyncMsg
+{
+    unsigned char msg;
+    void* data;
+    size_t dataSize;
+};
+
+struct SSyncRt
+{
+    unsigned char objTypes[3];
+    int objHandles[3];
+};
+
 typedef int (*contactCallback)(int,int,int,int*,float*);
 typedef int (*jointCtrlCallback)(int,int,int,const int*,const float*,float*);
 

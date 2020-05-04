@@ -38,14 +38,14 @@ enum {
     sim_appobj_distance_type,
     sim_appobj_simulation_type,
     sim_appobj_ik_type,
-    sim_appobj_constraintsolver_type,
+    sim_appobj_constraintsolver_type_old,
     sim_appobj_collection_type,
     sim_appobj_ui_type,
     sim_appobj_script_type,
     sim_appobj_pathplanning_type,
     sim_appobj_RESERVED_type,
     sim_appobj_texture_type,
-    sim_appobj_motionplanning_type
+    sim_appobj_motionplanning_type_old
 };
 
 /* Ik calculation methods. Values are serialized */
@@ -62,7 +62,7 @@ enum {
         sim_ik_z_constraint=4,
         sim_ik_alpha_beta_constraint=8,
         sim_ik_gamma_constraint=16,
-        sim_ik_avoidance_constraint=64
+        sim_ik_avoidance_constraint_old=64 /* not supported anymore */
 };
 
 /* Ik calculation results */
@@ -112,7 +112,7 @@ enum { /* Scene object main properties (serialized): */
         sim_objectspecialproperty_detectable_capacitive         =0x0100,
         sim_objectspecialproperty_renderable                    =0x0200,
         sim_objectspecialproperty_detectable_all                =sim_objectspecialproperty_detectable_ultrasonic|sim_objectspecialproperty_detectable_infrared|sim_objectspecialproperty_detectable_laser|sim_objectspecialproperty_detectable_inductive|sim_objectspecialproperty_detectable_capacitive,
-        sim_objectspecialproperty_cuttable                      =0x0400,
+        sim_objectspecialproperty_cuttable_old                  =0x0400,
         sim_objectspecialproperty_pathplanning_ignored          =0x0800
 };
 
@@ -121,7 +121,7 @@ enum { /* Model properties (serialized): */
         sim_modelproperty_not_measurable                =0x0002,
         sim_modelproperty_not_renderable                =0x0004,
         sim_modelproperty_not_detectable                =0x0008,
-        sim_modelproperty_not_cuttable                  =0x0010,
+        sim_modelproperty_not_cuttable_old              =0x0010,
         sim_modelproperty_not_dynamic                   =0x0020,
         sim_modelproperty_not_respondable               =0x0040, /* cannot be selected if sim_modelproperty_not_dynamic is not selected */
         sim_modelproperty_not_reset                     =0x0080, /* Model is not reset at simulation end. This flag is cleared at simulation end */
@@ -276,7 +276,7 @@ enum {
         sim_displayattribute_depthpass      =0x0002,
         sim_displayattribute_pickpass       =0x0004,
         sim_displayattribute_selected       =0x0008,
-        sim_displayattribute_groupselection =0x0010,
+        sim_displayattribute_groupselection_old =0x0010,
         sim_displayattribute_mainselection  =0x0020,
         sim_displayattribute_forcewireframe =0x0040,
         sim_displayattribute_forbidwireframe=0x0080,
@@ -709,7 +709,7 @@ enum { /* Boolean parameters: */
     sim_boolparam_video_recording_triggered,
     sim_boolparam_reserved1,
     sim_boolparam_reserved2,
-    sim_boolparam_threaded_rendering_enabled,
+    sim_boolparam_threaded_rendering_enabled_old, /* deprecated */
     sim_boolparam_fullscreen,
     sim_boolparam_headless,
     sim_boolparam_hierarchy_toolbarbutton_enabled,
@@ -753,8 +753,8 @@ enum { /* Integer parameters: */
     sim_intparam_edit_mode_type, /* can only be read */
     sim_intparam_server_port_next, /* is initialized at sim_intparam_server_port_start */
     sim_intparam_qt_version, /* version of the used Qt framework */
-    sim_intparam_event_flags_read, /* can only be read */
-    sim_intparam_event_flags_read_clear, /* can only be read */
+    sim_intparam_event_flags_read_old, /* deprecated */
+    sim_intparam_event_flags_read_clear_old, /* deprecated */
     sim_intparam_platform, /* can only be read */
     sim_intparam_scene_unique_id, /* can only be read */
     sim_intparam_work_thread_count, /* deprecated */
@@ -776,6 +776,7 @@ enum { /* Integer parameters: */
     sim_intparam_dynamic_iteration_count,
     sim_intparam_job_count, /* can only be read */
     sim_intparam_program_full_version, /* can only be read */
+    sim_intparam_verbosity, /* can only be read */
 };
 
 enum { /* uint64 parameters: */
@@ -854,6 +855,14 @@ enum { /* Joint modes: */
     sim_jointmode_reserved_previously_ikdependent,
     sim_jointmode_dependent,
     sim_jointmode_force
+};
+
+enum { /* verbosity */
+    sim_verbosity_none=0,
+    sim_verbosity_errors,
+    sim_verbosity_warnings,
+    sim_verbosity_infos,
+    sim_verbosity_debug,
 };
 
 enum { /* Navigation and selection modes with the mouse. Lower byte values are mutually exclusive, upper byte bits can be combined */
@@ -1228,6 +1237,8 @@ enum { /* Object int/float/string parameters */
     sim_camerafloatparam_pov_blur_distance= 9005,
     sim_camerafloatparam_pov_aperture= 9006,
     sim_cameraintparam_pov_blur_samples= 9007,
+    sim_camerafloatparam_near_clipping= 9008,
+    sim_camerafloatparam_far_clipping= 9009,
 
     /* dummies */
     sim_dummyintparam_link_type= 10000,
@@ -1254,9 +1265,9 @@ enum { /* Object int/float/string parameters */
     sim_pplanfloatparam_delta_range= 20007,
 
     /* motion planning */
-    sim_mplanintparam_nodes_computed= 25000,
-    sim_mplanintparam_prepare_nodes= 25001,
-    sim_mplanintparam_clear_nodes= 25002
+    sim_mplanintparam_nodes_computed_old= 25000,
+    sim_mplanintparam_prepare_nodes_old= 25001,
+    sim_mplanintparam_clear_nodes_old= 25002
 };
 
 enum { /* stack table info */
@@ -1695,7 +1706,21 @@ enum { /* Vision sensors render modes */
     sim_rendermode_opengl3windowed
 };
 
-
+enum { /* sync objects */
+    sim_syncobj_worldcont=0,
+    sim_syncobj_world,
+    sim_syncobj_ikgroup,
+    sim_syncobj_ikelement,
+    sim_syncobj_collision,
+    sim_syncobj_distance,
+    sim_syncobj_collection,
+    sim_syncobj_collectionelement,
+    sim_syncobj_color,
+    sim_syncobj_sceneobjectstart,
+    sim_syncobj_dummy=sim_syncobj_sceneobjectstart,
+    sim_syncobj_joint,
+    sim_syncobj_sceneobjectend=sim_syncobj_joint,
+};
 
 /******************************************
 *******************************************
