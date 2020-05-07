@@ -862,7 +862,8 @@ enum { /* verbosity */
     sim_verbosity_none=100,
     sim_verbosity_errors=200,
     sim_verbosity_warnings=300,
-    sim_verbosity_loadinfos=400,
+    sim_verbosity_msgs=350,
+    sim_verbosity_loadinfos=400, /* <-- default, this and above are printed */
     sim_verbosity_infos=500,
     sim_verbosity_debug=600,
     sim_verbosity_trace=700,
