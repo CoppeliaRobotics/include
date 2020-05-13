@@ -818,6 +818,7 @@ enum { /* String parameters: */
     sim_stringparam_scene_unique_id, /* can only be read */
     sim_stringparam_machine_id,
     sim_stringparam_machine_id_legacy,
+    sim_stringparam_verbosity, /* can only be written */
 };
 
 enum { /* Array parameters: */
@@ -867,6 +868,8 @@ enum { /* verbosity */
     sim_verbosity_infos=500,
     sim_verbosity_debug=600,
     sim_verbosity_trace=700,
+    sim_verbosity_tracelua=800,
+    sim_verbosity_traceall=900,
     sim_verbosity_default=sim_verbosity_loadinfos
 };
 
