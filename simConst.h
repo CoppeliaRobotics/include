@@ -776,7 +776,8 @@ enum { /* Integer parameters: */
     sim_intparam_dynamic_iteration_count,
     sim_intparam_job_count, /* can only be read */
     sim_intparam_program_full_version, /* can only be read */
-    sim_intparam_globalverbosity, /* see  sim_verbosity_none, sim_verbosity_errors, etc. */
+    sim_intparam_verbosity, /* see  sim_verbosity_none, sim_verbosity_errors, etc. */
+    sim_intparam_statusbarverbosity, /* see  sim_verbosity_none, sim_verbosity_errors, etc. */
 };
 
 enum { /* uint64 parameters: */
@@ -819,6 +820,7 @@ enum { /* String parameters: */
     sim_stringparam_machine_id,
     sim_stringparam_machine_id_legacy,
     sim_stringparam_verbosity, /* can only be written */
+    sim_stringparam_statusbarverbosity, /* can only be written */
 };
 
 enum { /* Array parameters: */
@@ -878,6 +880,7 @@ enum { /* module info */
     sim_moduleinfo_builddatestr,
     sim_moduleinfo_extversionint,
     sim_moduleinfo_verbosity,
+    sim_moduleinfo_statusbarverbosity,
 };
 
 enum { /* Navigation and selection modes with the mouse. Lower byte values are mutually exclusive, upper byte bits can be combined */

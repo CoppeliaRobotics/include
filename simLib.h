@@ -453,6 +453,7 @@ typedef simInt (__cdecl *ptrSimSetStringNamedParam)(const simChar* paramName,con
 typedef simChar* (__cdecl *ptrSimGetStringNamedParam)(const simChar* paramName,simInt* paramLength);
 typedef simChar* (__cdecl *ptrSimGetUserParameter)(simInt objectHandle,const simChar* parameterName,simInt* parameterLength);
 typedef simInt (__cdecl *ptrSimSetUserParameter)(simInt objectHandle,const simChar* parameterName,const simChar* parameterValue,simInt parameterLength);
+typedef simInt (__cdecl *ptrSimAddLog)(const simChar* pluginName,simInt verbosityLevel,const simChar* logMsg);
 
 
 // Following courtesy of Stephen James:
@@ -982,6 +983,8 @@ extern ptrSimSetStringNamedParam simSetStringNamedParam;
 extern ptrSimGetStringNamedParam simGetStringNamedParam;
 extern ptrSimGetUserParameter simGetUserParameter;
 extern ptrSimSetUserParameter simSetUserParameter;
+extern ptrSimAddLog simAddLog;
+
 
 
 // Following courtesy of Stephen James:
