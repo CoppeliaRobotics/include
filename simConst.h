@@ -1,11 +1,11 @@
 #if !defined(SIMCONST_INCLUDED_)
 #define SIMCONST_INCLUDED_
 
-#define SIM_PROGRAM_VERSION_NB 40000
-#define SIM_PROGRAM_VERSION "4.0.0."
+#define SIM_PROGRAM_VERSION_NB 40001
+#define SIM_PROGRAM_VERSION "4.0.1."
 
-#define SIM_PROGRAM_REVISION_NB 5
-#define SIM_PROGRAM_REVISION "(rev. 5)"
+#define SIM_PROGRAM_REVISION_NB 0
+#define SIM_PROGRAM_REVISION "(rev. 0)"
 
 #define SIM_PROGRAM_FULL_VERSION_NB ((SIM_PROGRAM_VERSION_NB) * 100 + (SIM_PROGRAM_REVISION_NB))
 
@@ -549,6 +549,7 @@ enum { /* special handle flags: */
     sim_handleflag_greyscale            =0x00400000,
     sim_handleflag_codedstring          =0x00400000,
     sim_handleflag_wxyzquaternion       =0x00400000,
+    sim_handleflag_reljointbaseframe    =0x00400000,
     sim_handleflag_depthbuffer          =0x00800000,
     sim_handleflag_depthbuffermeters    =0x00800000,
     sim_handleflag_keeporiginal         =0x00400000,
@@ -821,6 +822,7 @@ enum { /* String parameters: */
     sim_stringparam_machine_id_legacy,
     sim_stringparam_verbosity, /* can only be written */
     sim_stringparam_statusbarverbosity, /* can only be written */
+    sim_stringparam_logfilter,
 };
 
 enum { /* Array parameters: */
@@ -865,7 +867,6 @@ enum { /* verbosity */
     sim_verbosity_none=100,
     sim_verbosity_errors=200,
     sim_verbosity_warnings=300,
-    sim_verbosity_msgs=350,
     sim_verbosity_loadinfos=400, /* <-- default, this and above are printed */
     sim_verbosity_infos=500,
     sim_verbosity_debug=600,
