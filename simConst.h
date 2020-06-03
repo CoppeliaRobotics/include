@@ -516,15 +516,14 @@ enum { /* General callback IDs */
 };
 
 
-enum { /* API call error messages */
+enum { /* DEPRECATED */
     sim_api_error_report =1,
     sim_api_error_output =2,
     sim_api_warning_output =4,
 
-    /* for backward compatibility */
-    sim_api_errormessage_ignore =0, /* does not memorize nor output errors */
-    sim_api_errormessage_report =1, /* memorizes errors (default for C-API calls) */
-    sim_api_errormessage_output =2  /* memorizes and outputs errors (default for Lua-API calls) */
+    sim_api_errormessage_ignore =0,
+    sim_api_errormessage_report =1,
+    sim_api_errormessage_output =2
 };
 
 enum { /* special argument of some functions: */
@@ -737,7 +736,7 @@ enum { /* Boolean parameters: */
 };
 
 enum { /* Integer parameters: */
-    sim_intparam_error_report_mode=0, /* Check sim_api_errormessage_... constants above for valid values */
+    sim_intparam_error_report_mode=0, /* DEPRECATED */
     sim_intparam_program_version,       /* e.g Version 2.1.4 --> 20104. Can only be read. See also sim_intparam_program_revision */
     sim_intparam_instance_count,    /* do not use anymore (always returns 1 since CoppeliaSim 2.5.11) */
     sim_intparam_custom_cmd_start_id, /* can only be read */
@@ -867,7 +866,8 @@ enum { /* verbosity */
     sim_verbosity_none=100,
     sim_verbosity_errors=200,
     sim_verbosity_warnings=300,
-    sim_verbosity_loadinfos=400, /* <-- default, this and above are printed */
+    sim_verbosity_loadinfos=400, /* default for console */
+    sim_verbosity_msgs=450, /* mainly for statusbar info prints. Default for statusbar */
     sim_verbosity_infos=500,
     sim_verbosity_debug=600,
     sim_verbosity_trace=700,

@@ -194,11 +194,9 @@ typedef simInt (__cdecl *ptrSimScaleSelectedObjects)(simFloat scalingFactor,simB
 typedef simInt (__cdecl *ptrSimScaleObjects)(const simInt* objectHandles,simInt objectCount,simFloat scalingFactor,simBool scalePositionsToo);
 typedef simInt (__cdecl *ptrSimDeleteSelectedObjects)();
 typedef simInt (__cdecl *ptrSimGetObjectUniqueIdentifier)(simInt objectHandle,simInt* uniqueIdentifier);
-typedef simInt (__cdecl *ptrSimGetNameSuffix)(const simChar* name);
 typedef simInt (__cdecl *ptrSimSendData)(simInt targetID,simInt dataHeader,const simChar* dataName,const simChar* data,simInt dataLength,simInt antennaHandle,simFloat actionRadius,simFloat emissionAngle1,simFloat emissionAngle2,simFloat persistence);
 typedef simChar* (__cdecl *ptrSimReceiveData)(simInt dataHeader,const simChar* dataName,simInt antennaHandle,simInt index,simInt* dataLength,simInt* senderID,simInt* dataHeaderR,simChar** dataNameR);
 typedef simInt (__cdecl *ptrSimSetGraphUserData)(simInt graphHandle,const simChar* dataStreamName,simFloat data);
-typedef simInt (__cdecl *ptrSimSetNameSuffix)(simInt nameSuffixNumber);
 typedef simInt (__cdecl *ptrSimAddDrawingObject)(simInt objectType,simFloat size,simFloat duplicateTolerance,simInt parentObjectHandle,simInt maxItemCount,const simFloat* ambient_diffuse,const simFloat* setToNULL,const simFloat* specular,const simFloat* emission);
 typedef simInt (__cdecl *ptrSimRemoveDrawingObject)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimAddDrawingObjectItem)(simInt objectHandle,const simFloat* itemData);
@@ -724,11 +722,9 @@ extern ptrSimScaleSelectedObjects simScaleSelectedObjects;
 extern ptrSimScaleObjects simScaleObjects;
 extern ptrSimDeleteSelectedObjects simDeleteSelectedObjects;
 extern ptrSimGetObjectUniqueIdentifier simGetObjectUniqueIdentifier;
-extern ptrSimGetNameSuffix simGetNameSuffix;
 extern ptrSimSendData simSendData;
 extern ptrSimReceiveData simReceiveData;
 extern ptrSimSetGraphUserData simSetGraphUserData;
-extern ptrSimSetNameSuffix simSetNameSuffix;
 extern ptrSimAddDrawingObject simAddDrawingObject;
 extern ptrSimRemoveDrawingObject simRemoveDrawingObject;
 extern ptrSimAddDrawingObjectItem simAddDrawingObjectItem;
@@ -1173,6 +1169,8 @@ typedef simInt (__cdecl *ptrSimResetMilling)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimResetMill)(simInt millHandle);
 typedef simInt (__cdecl *ptrSimApplyMilling)(simInt objectHandle);
 typedef simBool (__cdecl *ptr_simGetParentFollowsDynamic)(const simVoid* shape);
+typedef simInt (__cdecl *ptrSimGetNameSuffix)(const simChar* name);
+typedef simInt (__cdecl *ptrSimSetNameSuffix)(simInt nameSuffixNumber);
 extern ptrSimGetMaterialId simGetMaterialId;
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1258,6 +1256,8 @@ extern ptrSimResetMill simResetMill;
 extern ptrSimResetMilling simResetMilling;
 extern ptrSimApplyMilling simApplyMilling;
 extern ptr_simGetParentFollowsDynamic _simGetParentFollowsDynamic;
+extern ptrSimGetNameSuffix simGetNameSuffix;
+extern ptrSimSetNameSuffix simSetNameSuffix;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
