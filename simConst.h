@@ -128,7 +128,7 @@ enum { /* Model properties (serialized): */
         sim_modelproperty_not_visible                   =0x0100, /* Whole model is invisible, independent of local visibility settings */
         sim_modelproperty_scripts_inactive              =0x0200, /* All scripts in the model will not be executed */
         sim_modelproperty_not_showasinsidemodel         =0x0400, /* Whole model is invisible to any model bounding box */
-        sim_modelproperty_not_model                     =0xf000  /* object is not a model */
+        sim_modelproperty_not_model                     =0xf000  /* object is not a model. 0x1000 was intended, 0xf000 kept for backward compatibility */
 };
 
 enum { /* Check the documentation instead of comments below!! */
@@ -821,7 +821,7 @@ enum { /* String parameters: */
     sim_stringparam_machine_id_legacy,
     sim_stringparam_verbosity, /* can only be written */
     sim_stringparam_statusbarverbosity, /* can only be written */
-    sim_stringparam_logfilter,
+    sim_stringparam_consolelogfilter,
 };
 
 enum { /* Array parameters: */
@@ -867,13 +867,16 @@ enum { /* verbosity */
     sim_verbosity_errors=200,
     sim_verbosity_warnings=300,
     sim_verbosity_loadinfos=400, /* default for console */
+    sim_verbosity_scripterrors=420,
+    sim_verbosity_scriptwarnings=430,
     sim_verbosity_msgs=450, /* mainly for statusbar info prints. Default for statusbar */
     sim_verbosity_infos=500,
     sim_verbosity_debug=600,
     sim_verbosity_trace=700,
     sim_verbosity_tracelua=800,
     sim_verbosity_traceall=900,
-    sim_verbosity_default=sim_verbosity_loadinfos
+    sim_verbosity_default=sim_verbosity_loadinfos,
+    sim_verbosity_undecorated=0xf000,
 };
 
 enum { /* module info */

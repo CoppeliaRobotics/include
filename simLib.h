@@ -103,7 +103,6 @@ typedef simInt (__cdecl *ptrSimCloseScene)();
 typedef simInt (__cdecl *ptrSimSaveScene)(const simChar* filename);
 typedef simInt (__cdecl *ptrSimLoadModel)(const simChar* filename);
 typedef simInt (__cdecl *ptrSimSaveModel)(int baseOfModelHandle,const simChar* filename);
-typedef simInt (__cdecl *ptrSimAddStatusbarMessage)(const simChar* message);
 typedef simInt (__cdecl *ptrSimAddModuleMenuEntry)(const simChar* entryLabel,simInt itemCount,simInt* itemHandles);
 typedef simInt (__cdecl *ptrSimSetModuleMenuItemState)(simInt itemHandle,simInt state,const simChar* label);
 typedef simInt (__cdecl *ptrSimDoesFileExist)(const simChar* filename);
@@ -631,7 +630,6 @@ extern ptrSimCloseScene simCloseScene;
 extern ptrSimSaveScene simSaveScene;
 extern ptrSimLoadModel simLoadModel;
 extern ptrSimSaveModel simSaveModel;
-extern ptrSimAddStatusbarMessage simAddStatusbarMessage;
 extern ptrSimAddModuleMenuEntry simAddModuleMenuEntry;
 extern ptrSimSetModuleMenuItemState simSetModuleMenuItemState;
 extern ptrSimDoesFileExist simDoesFileExist;
@@ -1171,6 +1169,7 @@ typedef simInt (__cdecl *ptrSimApplyMilling)(simInt objectHandle);
 typedef simBool (__cdecl *ptr_simGetParentFollowsDynamic)(const simVoid* shape);
 typedef simInt (__cdecl *ptrSimGetNameSuffix)(const simChar* name);
 typedef simInt (__cdecl *ptrSimSetNameSuffix)(simInt nameSuffixNumber);
+typedef simInt (__cdecl *ptrSimAddStatusbarMessage)(const simChar* message);
 extern ptrSimGetMaterialId simGetMaterialId;
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1258,6 +1257,7 @@ extern ptrSimApplyMilling simApplyMilling;
 extern ptr_simGetParentFollowsDynamic _simGetParentFollowsDynamic;
 extern ptrSimGetNameSuffix simGetNameSuffix;
 extern ptrSimSetNameSuffix simSetNameSuffix;
+extern ptrSimAddStatusbarMessage simAddStatusbarMessage;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
