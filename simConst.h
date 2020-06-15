@@ -1,8 +1,8 @@
 #if !defined(SIMCONST_INCLUDED_)
 #define SIMCONST_INCLUDED_
 
-#define SIM_PROGRAM_VERSION_NB 40001
-#define SIM_PROGRAM_VERSION "4.0.1."
+#define SIM_PROGRAM_VERSION_NB 40100
+#define SIM_PROGRAM_VERSION "4.1.0."
 
 #define SIM_PROGRAM_REVISION_NB 0
 #define SIM_PROGRAM_REVISION "(rev. 0)"
@@ -869,7 +869,8 @@ enum { /* verbosity */
     sim_verbosity_loadinfos=400, /* default for console */
     sim_verbosity_scripterrors=420,
     sim_verbosity_scriptwarnings=430,
-    sim_verbosity_msgs=450, /* mainly for statusbar info prints. Default for statusbar */
+    sim_verbosity_scriptinfos=450, /* mainly for statusbar info prints. Default for statusbar */
+    sim_verbosity_msgs=sim_verbosity_scriptinfos,
     sim_verbosity_infos=500,
     sim_verbosity_debug=600,
     sim_verbosity_trace=700,
