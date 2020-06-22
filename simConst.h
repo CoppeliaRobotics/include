@@ -778,6 +778,8 @@ enum { /* Integer parameters: */
     sim_intparam_program_full_version, /* can only be read */
     sim_intparam_verbosity, /* see  sim_verbosity_none, sim_verbosity_errors, etc. */
     sim_intparam_statusbarverbosity, /* see  sim_verbosity_none, sim_verbosity_errors, etc. */
+    sim_intparam_dlgverbosity, /* see  sim_verbosity_none, sim_verbosity_errors, etc. */
+    sim_intparam_videoencoder_index,
 };
 
 enum { /* uint64 parameters: */
@@ -821,6 +823,7 @@ enum { /* String parameters: */
     sim_stringparam_machine_id_legacy,
     sim_stringparam_verbosity, /* can only be written */
     sim_stringparam_statusbarverbosity, /* can only be written */
+    sim_stringparam_dlgverbosity, /* can only be written */
     sim_stringparam_consolelogfilter,
 };
 
@@ -867,6 +870,7 @@ enum { /* verbosity */
     sim_verbosity_errors=200,
     sim_verbosity_warnings=300,
     sim_verbosity_loadinfos=400, /* default for console */
+    sim_verbosity_questions=410, /* only for dialog verbosity */
     sim_verbosity_scripterrors=420,
     sim_verbosity_scriptwarnings=430,
     sim_verbosity_scriptinfos=450, /* mainly for statusbar info prints. Default for statusbar */
