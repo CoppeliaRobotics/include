@@ -825,6 +825,7 @@ enum { /* String parameters: */
     sim_stringparam_statusbarverbosity, /* can only be written */
     sim_stringparam_dlgverbosity, /* can only be written */
     sim_stringparam_consolelogfilter,
+    sim_stringparam_startupscriptstring,
 };
 
 enum { /* Array parameters: */
