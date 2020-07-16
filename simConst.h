@@ -549,6 +549,7 @@ enum { /* special handle flags: */
     sim_handleflag_codedstring          =0x00400000,
     sim_handleflag_wxyzquaternion       =0x00400000,
     sim_handleflag_reljointbaseframe    =0x00400000,
+    sim_handleflag_abscoords            =0x00800000,
     sim_handleflag_depthbuffer          =0x00800000,
     sim_handleflag_depthbuffermeters    =0x00800000,
     sim_handleflag_keeporiginal         =0x00400000,

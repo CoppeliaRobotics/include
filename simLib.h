@@ -185,9 +185,6 @@ typedef simInt (__cdecl *ptrSimRegisterScriptVariable)(const simChar* varNameAtP
 typedef simInt (__cdecl *ptrSimSetJointTargetVelocity)(simInt objectHandle,simFloat targetVelocity);
 typedef simInt (__cdecl *ptrSimGetJointTargetVelocity)(simInt objectHandle,simFloat* targetVelocity);
 typedef simInt (__cdecl *ptrSimSetPathTargetNominalVelocity)(simInt objectHandle,simFloat targetNominalVelocity);
-typedef simChar* (__cdecl *ptrSimGetScriptRawBuffer)(simInt scriptHandle,simInt bufferHandle);
-typedef simInt (__cdecl *ptrSimSetScriptRawBuffer)(simInt scriptHandle,const simChar* buffer,simInt bufferSize);
-typedef simInt (__cdecl *ptrSimReleaseScriptRawBuffer)(simInt scriptHandle,simInt bufferHandle);
 typedef simInt (__cdecl *ptrSimCopyPasteObjects)(simInt* objectHandles,simInt objectCount,simInt options);
 typedef simInt (__cdecl *ptrSimScaleSelectedObjects)(simFloat scalingFactor,simBool scalePositionsToo);
 typedef simInt (__cdecl *ptrSimScaleObjects)(const simInt* objectHandles,simInt objectCount,simFloat scalingFactor,simBool scalePositionsToo);
@@ -712,9 +709,6 @@ extern ptrSimRegisterScriptVariable simRegisterScriptVariable;
 extern ptrSimSetJointTargetVelocity simSetJointTargetVelocity;
 extern ptrSimGetJointTargetVelocity simGetJointTargetVelocity;
 extern ptrSimSetPathTargetNominalVelocity simSetPathTargetNominalVelocity;
-extern ptrSimGetScriptRawBuffer simGetScriptRawBuffer;
-extern ptrSimSetScriptRawBuffer simSetScriptRawBuffer;
-extern ptrSimReleaseScriptRawBuffer simReleaseScriptRawBuffer;
 extern ptrSimCopyPasteObjects simCopyPasteObjects;
 extern ptrSimScaleSelectedObjects simScaleSelectedObjects;
 extern ptrSimScaleObjects simScaleObjects;
@@ -1170,6 +1164,9 @@ typedef simBool (__cdecl *ptr_simGetParentFollowsDynamic)(const simVoid* shape);
 typedef simInt (__cdecl *ptrSimGetNameSuffix)(const simChar* name);
 typedef simInt (__cdecl *ptrSimSetNameSuffix)(simInt nameSuffixNumber);
 typedef simInt (__cdecl *ptrSimAddStatusbarMessage)(const simChar* message);
+typedef simChar* (__cdecl *ptrSimGetScriptRawBuffer)(simInt scriptHandle,simInt bufferHandle);
+typedef simInt (__cdecl *ptrSimSetScriptRawBuffer)(simInt scriptHandle,const simChar* buffer,simInt bufferSize);
+typedef simInt (__cdecl *ptrSimReleaseScriptRawBuffer)(simInt scriptHandle,simInt bufferHandle);
 extern ptrSimGetMaterialId simGetMaterialId;
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1258,6 +1255,9 @@ extern ptr_simGetParentFollowsDynamic _simGetParentFollowsDynamic;
 extern ptrSimGetNameSuffix simGetNameSuffix;
 extern ptrSimSetNameSuffix simSetNameSuffix;
 extern ptrSimAddStatusbarMessage simAddStatusbarMessage;
+extern ptrSimGetScriptRawBuffer simGetScriptRawBuffer;
+extern ptrSimSetScriptRawBuffer simSetScriptRawBuffer;
+extern ptrSimReleaseScriptRawBuffer simReleaseScriptRawBuffer;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
