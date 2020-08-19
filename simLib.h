@@ -320,8 +320,6 @@ typedef simInt (__cdecl *ptrSimBuildMatrixQ)(const simFloat* position,const simF
 typedef simInt (__cdecl *ptrSimGetQuaternionFromMatrix)(const simFloat* matrix,simFloat* quaternion);
 typedef simChar* (__cdecl *ptrSimFileDialog)(simInt mode,const simChar* title,const simChar* startPath,const simChar* initName,const simChar* extName,const simChar* ext);
 typedef simInt (__cdecl *ptrSimMsgBox)(simInt dlgType,simInt buttons,const simChar* title,const simChar* message);
-typedef simInt (__cdecl *ptrSimSetShapeMassAndInertia)(simInt shapeHandle,simFloat mass,const simFloat* inertiaMatrix,const simFloat* centerOfMass,const simFloat* transformation);
-typedef simInt (__cdecl *ptrSimGetShapeMassAndInertia)(simInt shapeHandle,simFloat* mass,simFloat* inertiaMatrix,simFloat* centerOfMass,const simFloat* transformation);
 typedef simInt (__cdecl *ptrSimGroupShapes)(const simInt* shapeHandles,simInt shapeCount);
 typedef simInt* (__cdecl *ptrSimUngroupShape)(simInt shapeHandle,simInt* shapeCount);
 typedef simInt (__cdecl *ptrSimConvexDecompose)(simInt shapeHandle,simInt options,const simInt* intParams,const simFloat* floatParams);
@@ -448,6 +446,10 @@ typedef simChar* (__cdecl *ptrSimGetStringNamedParam)(const simChar* paramName,s
 typedef simChar* (__cdecl *ptrSimGetUserParameter)(simInt objectHandle,const simChar* parameterName,simInt* parameterLength);
 typedef simInt (__cdecl *ptrSimSetUserParameter)(simInt objectHandle,const simChar* parameterName,const simChar* parameterValue,simInt parameterLength);
 typedef simInt (__cdecl *ptrSimAddLog)(const simChar* pluginName,simInt verbosityLevel,const simChar* logMsg);
+typedef simInt (__cdecl *ptrSimGetShapeMass)(simInt shapeHandle,simFloat* mass);
+typedef simInt (__cdecl *ptrSimSetShapeMass)(simInt shapeHandle,simFloat mass);
+typedef simInt (__cdecl *ptrSimGetShapeInertia)(simInt shapeHandle,simFloat* inertiaMatrix,simFloat* transformationMatrix);
+typedef simInt (__cdecl *ptrSimSetShapeInertia)(simInt shapeHandle,const simFloat* inertiaMatrix,const simFloat* transformationMatrix);
 
 
 // Following courtesy of Stephen James:
@@ -844,8 +846,6 @@ extern ptrSimBuildMatrixQ simBuildMatrixQ;
 extern ptrSimGetQuaternionFromMatrix simGetQuaternionFromMatrix;
 extern ptrSimFileDialog simFileDialog;
 extern ptrSimMsgBox simMsgBox;
-extern ptrSimSetShapeMassAndInertia simSetShapeMassAndInertia;
-extern ptrSimGetShapeMassAndInertia simGetShapeMassAndInertia;
 extern ptrSimGroupShapes simGroupShapes;
 extern ptrSimUngroupShape simUngroupShape;
 extern ptrSimConvexDecompose simConvexDecompose;
@@ -972,6 +972,10 @@ extern ptrSimGetStringNamedParam simGetStringNamedParam;
 extern ptrSimGetUserParameter simGetUserParameter;
 extern ptrSimSetUserParameter simSetUserParameter;
 extern ptrSimAddLog simAddLog;
+extern ptrSimGetShapeMass simGetShapeMass;
+extern ptrSimSetShapeMass simSetShapeMass;
+extern ptrSimGetShapeInertia simGetShapeInertia;
+extern ptrSimSetShapeInertia simSetShapeInertia;
 
 
 
@@ -1167,6 +1171,8 @@ typedef simInt (__cdecl *ptrSimAddStatusbarMessage)(const simChar* message);
 typedef simChar* (__cdecl *ptrSimGetScriptRawBuffer)(simInt scriptHandle,simInt bufferHandle);
 typedef simInt (__cdecl *ptrSimSetScriptRawBuffer)(simInt scriptHandle,const simChar* buffer,simInt bufferSize);
 typedef simInt (__cdecl *ptrSimReleaseScriptRawBuffer)(simInt scriptHandle,simInt bufferHandle);
+typedef simInt (__cdecl *ptrSimSetShapeMassAndInertia)(simInt shapeHandle,simFloat mass,const simFloat* inertiaMatrix,const simFloat* centerOfMass,const simFloat* transformation);
+typedef simInt (__cdecl *ptrSimGetShapeMassAndInertia)(simInt shapeHandle,simFloat* mass,simFloat* inertiaMatrix,simFloat* centerOfMass,const simFloat* transformation);
 extern ptrSimGetMaterialId simGetMaterialId;
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1258,6 +1264,8 @@ extern ptrSimAddStatusbarMessage simAddStatusbarMessage;
 extern ptrSimGetScriptRawBuffer simGetScriptRawBuffer;
 extern ptrSimSetScriptRawBuffer simSetScriptRawBuffer;
 extern ptrSimReleaseScriptRawBuffer simReleaseScriptRawBuffer;
+extern ptrSimSetShapeMassAndInertia simSetShapeMassAndInertia;
+extern ptrSimGetShapeMassAndInertia simGetShapeMassAndInertia;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
