@@ -4,8 +4,8 @@
 #define SIM_PROGRAM_VERSION_NB 40100
 #define SIM_PROGRAM_VERSION "4.1.0."
 
-#define SIM_PROGRAM_REVISION_NB 2
-#define SIM_PROGRAM_REVISION "(rev. 2)"
+#define SIM_PROGRAM_REVISION_NB 3
+#define SIM_PROGRAM_REVISION "(rev. 3)"
 
 #define SIM_PROGRAM_FULL_VERSION_NB ((SIM_PROGRAM_VERSION_NB) * 100 + (SIM_PROGRAM_REVISION_NB))
 
@@ -50,9 +50,10 @@ enum {
 
 /* Ik calculation methods. Values are serialized */
 enum {
-        sim_ik_pseudo_inverse_method=0,
+        sim_ik_pseudo_inverse_method=0, /* with a tiny little bit of hard-coded damping */
         sim_ik_damped_least_squares_method,
-        sim_ik_jacobian_transpose_method
+        sim_ik_jacobian_transpose_method,
+        sim_ik_undamped_pseudo_inverse_method
 };
 
 /* Ik constraints. Values are serialized */
@@ -1200,6 +1201,8 @@ enum { /* Object int/float/string parameters */
     sim_jointintparam_vortex_dep_handle= 2031,
     sim_jointfloatparam_vortex_dep_multiplication= 2032,
     sim_jointfloatparam_vortex_dep_offset= 2033,
+    sim_jointfloatparam_screw_pitch= 2034,
+    sim_jointfloatparam_step_size= 2035,
 
     /* shapes */
     sim_shapefloatparam_init_velocity_x= 3000,

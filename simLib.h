@@ -440,7 +440,8 @@ typedef simInt (__cdecl *ptrSimIsDeprecated)(const simChar* funcOrConst);
 typedef simChar* (__cdecl *ptrSimGetPersistentDataTags)(simInt* tagCount);
 typedef simInt (__cdecl *ptrSimEventNotification)(const simChar* event);
 typedef simInt (__cdecl *ptrSimApplyTexture)(simInt shapeHandle,const simFloat* textureCoordinates,simInt textCoordSize,const simUChar* texture,const simInt* textureResolution,simInt options);
-typedef simInt (__cdecl *ptrSimSetJointDependency)(simInt jointHandle,simInt masterJointHandle,simFloat offset,simFloat coeff);
+typedef simInt (__cdecl *ptrSimSetJointDependency)(simInt jointHandle,simInt masterJointHandle,simFloat offset,simFloat multCoeff);
+typedef simInt (__cdecl *ptrSimGetJointDependency)(simInt jointHandle,simInt* masterJointHandle,simFloat* offset,simFloat* multCoeff);
 typedef simInt (__cdecl *ptrSimSetStringNamedParam)(const simChar* paramName,const simChar* stringParam,simInt paramLength);
 typedef simChar* (__cdecl *ptrSimGetStringNamedParam)(const simChar* paramName,simInt* paramLength);
 typedef simChar* (__cdecl *ptrSimGetUserParameter)(simInt objectHandle,const simChar* parameterName,simInt* parameterLength);
@@ -450,6 +451,7 @@ typedef simInt (__cdecl *ptrSimGetShapeMass)(simInt shapeHandle,simFloat* mass);
 typedef simInt (__cdecl *ptrSimSetShapeMass)(simInt shapeHandle,simFloat mass);
 typedef simInt (__cdecl *ptrSimGetShapeInertia)(simInt shapeHandle,simFloat* inertiaMatrix,simFloat* transformationMatrix);
 typedef simInt (__cdecl *ptrSimSetShapeInertia)(simInt shapeHandle,const simFloat* inertiaMatrix,const simFloat* transformationMatrix);
+typedef simInt (__cdecl *ptrSimIsDynamicallyEnabled)(simInt objectHandle);
 
 
 // Following courtesy of Stephen James:
@@ -967,6 +969,7 @@ extern ptrSimGetPersistentDataTags simGetPersistentDataTags;
 extern ptrSimEventNotification simEventNotification;
 extern ptrSimApplyTexture simApplyTexture;
 extern ptrSimSetJointDependency simSetJointDependency;
+extern ptrSimGetJointDependency simGetJointDependency;
 extern ptrSimSetStringNamedParam simSetStringNamedParam;
 extern ptrSimGetStringNamedParam simGetStringNamedParam;
 extern ptrSimGetUserParameter simGetUserParameter;
@@ -976,6 +979,7 @@ extern ptrSimGetShapeMass simGetShapeMass;
 extern ptrSimSetShapeMass simSetShapeMass;
 extern ptrSimGetShapeInertia simGetShapeInertia;
 extern ptrSimSetShapeInertia simSetShapeInertia;
+extern ptrSimIsDynamicallyEnabled simIsDynamicallyEnabled;
 
 
 
