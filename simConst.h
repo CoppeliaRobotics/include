@@ -425,7 +425,11 @@ enum { /* Script types (serialized!) */
     sim_scripttype_customizationscript,
     sim_scripttype_generalcallback_old, /* deprecated */
     sim_scripttype_sandboxscript, /* special */
-    sim_scripttype_threaded_old=0x00f0          /* deprecated, do not use */
+#if COPPELIASIM_ENABLE_DEPRECATED_SINCE >= 20201014
+    sim_scripttype_threaded=0x00f0 /* deprecated, do not use */
+#else
+    sim_scripttype_threaded_old=0x00f0 /* deprecated, do not use */
+#endif
 };
 
 enum { /* System callbacks */
@@ -443,7 +447,7 @@ enum { /* System callbacks */
     sim_syscb_afterinstanceswitch, /* called just after an instance switch (switch to another scene) */
     sim_syscb_beforecopy, /* called just before objects are copied (in an object copy/cut operation, or a model save operation). Arg1 is a map with 'objectHandles' keys */
     sim_syscb_aftercopy, /* called just after objects were copied. Arg1 is a map with 'objectHandles' keys */
-    sim_syscb_aos_run, /* special for add-on scripts */
+    sim_syscb_aos_run_old, /* deprecated */
     sim_syscb_aos_suspend, /* special for add-on scripts */
     sim_syscb_aos_resume, /* special for add-on scripts */
     sim_syscb_jointcallback, /* called by the physics engine for a dynamically enabled joint */
@@ -1020,7 +1024,7 @@ enum { /* Holonomic path planning types */
     sim_holonomicpathplanning_xyzabg    // 6 Dof
 };
 
-enum { /* resource lock types */
+enum { /* deprecated */
     sim_lock_ui_wants_to_read=0,
     sim_lock_ui_wants_to_write,
     sim_lock_nonui_wants_to_write
