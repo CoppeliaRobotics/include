@@ -323,6 +323,7 @@ enum { /* Scene object properties. Combine with the | operator */
     sim_objectproperty_depthinvisible           =0x1000,
     sim_objectproperty_cannotdelete             =0x2000,
     sim_objectproperty_cannotdeleteduringsim    =0x4000,
+    sim_objectproperty_hierarchyhiddenmodelchild=0x8000,
 };
 
 enum { /* DEPRECATED, check below */
@@ -907,7 +908,7 @@ enum { /* Navigation and selection modes with the mouse. Lower byte values are m
     sim_navigation_camerazoom               =0x000003,
     sim_navigation_cameratilt               =0x000004,
     sim_navigation_cameraangle              =0x000005,
-    sim_navigation_camerafly                =0x000006,
+    sim_navigation_camerafly_old            =0x000006, // deprecated
     sim_navigation_objectshift              =0x000007,
     sim_navigation_objectrotate             =0x000008,
     sim_navigation_reserved2                =0x000009,

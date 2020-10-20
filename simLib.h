@@ -262,7 +262,7 @@ typedef simInt (__cdecl *ptrSimSetObjectInt32Parameter)(simInt objectHandle,simI
 typedef simInt (__cdecl *ptrSimGetObjectFloatParameter)(simInt objectHandle,simInt parameterID,simFloat* parameter);
 typedef simInt (__cdecl *ptrSimSetObjectFloatParameter)(simInt objectHandle,simInt parameterID,simFloat parameter);
 typedef simChar* (__cdecl *ptrSimGetObjectStringParameter)(simInt objectHandle,simInt parameterID,simInt* parameterLength);
-typedef simInt (__cdecl *ptrSimSetObjectStringParameter)(simInt objectHandle,simInt parameterID,simChar* parameter,simInt parameterLength);
+typedef simInt (__cdecl *ptrSimSetObjectStringParameter)(simInt objectHandle,simInt parameterID,const simChar* parameter,simInt parameterLength);
 typedef simInt (__cdecl *ptrSimSetSimulationPassesPerRenderingPass)(simInt p);
 typedef simInt (__cdecl *ptrSimGetRotationAxis)(const simFloat* matrixStart,const simFloat* matrixGoal,simFloat* axis,simFloat* angle);
 typedef simInt (__cdecl *ptrSimRotateAroundAxis)(const simFloat* matrixIn,const simFloat* axis,const simFloat* axisPos,simFloat angle,simFloat* matrixOut);
