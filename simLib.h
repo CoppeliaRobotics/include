@@ -220,8 +220,8 @@ typedef simInt (__cdecl *ptrSimGetVelocity)(simInt shapeHandle,simFloat* linearV
 typedef simInt (__cdecl *ptrSimGetObjectVelocity)(simInt objectHandle,simFloat* linearVelocity,simFloat* angularVelocity);
 typedef simInt (__cdecl *ptrSimAddForceAndTorque)(simInt shapeHandle,const simFloat* force,const simFloat* torque);
 typedef simInt (__cdecl *ptrSimAddForce)(simInt shapeHandle,const simFloat* position,const simFloat* force);
-typedef simInt (__cdecl *ptrSimSetExplicitHandling)(simInt generalObjectHandle,int explicitFlags);
-typedef simInt (__cdecl *ptrSimGetExplicitHandling)(simInt generalObjectHandle);
+typedef simInt (__cdecl *ptrSimSetExplicitHandling)(simInt objectHandle,int explicitFlags);
+typedef simInt (__cdecl *ptrSimGetExplicitHandling)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimGetLinkDummy)(simInt dummyHandle);
 typedef simInt (__cdecl *ptrSimSetLinkDummy)(simInt dummyHandle,simInt linkedDummyHandle);
 typedef simInt (__cdecl *ptrSimSetModelProperty)(simInt objectHandle,simInt modelProperty);
