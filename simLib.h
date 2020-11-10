@@ -178,7 +178,6 @@ typedef simInt (__cdecl *ptrSimRegisterScriptCallbackFunction)(const simChar* fu
 typedef simInt (__cdecl *ptrSimRegisterScriptVariable)(const simChar* varNameAtPluginName,const simChar* varValue,simInt stackHandle);
 typedef simInt (__cdecl *ptrSimSetJointTargetVelocity)(simInt objectHandle,simFloat targetVelocity);
 typedef simInt (__cdecl *ptrSimGetJointTargetVelocity)(simInt objectHandle,simFloat* targetVelocity);
-typedef simInt (__cdecl *ptrSimSetPathTargetNominalVelocity)(simInt objectHandle,simFloat targetNominalVelocity);
 typedef simInt (__cdecl *ptrSimCopyPasteObjects)(simInt* objectHandles,simInt objectCount,simInt options);
 typedef simInt (__cdecl *ptrSimScaleSelectedObjects)(simFloat scalingFactor,simBool scalePositionsToo);
 typedef simInt (__cdecl *ptrSimScaleObjects)(const simInt* objectHandles,simInt objectCount,simFloat scalingFactor,simBool scalePositionsToo);
@@ -669,7 +668,6 @@ extern ptrSimRegisterScriptCallbackFunction simRegisterScriptCallbackFunction;
 extern ptrSimRegisterScriptVariable simRegisterScriptVariable;
 extern ptrSimSetJointTargetVelocity simSetJointTargetVelocity;
 extern ptrSimGetJointTargetVelocity simGetJointTargetVelocity;
-extern ptrSimSetPathTargetNominalVelocity simSetPathTargetNominalVelocity;
 extern ptrSimCopyPasteObjects simCopyPasteObjects;
 extern ptrSimScaleSelectedObjects simScaleSelectedObjects;
 extern ptrSimScaleObjects simScaleObjects;
@@ -1140,6 +1138,7 @@ typedef simInt (__cdecl *ptrSimLockResources)(simInt lockType,simInt reserved);
 typedef simInt (__cdecl *ptrSimUnlockResources)(simInt lockHandle);
 typedef simChar* (__cdecl *ptrSimGetUserParameter)(simInt objectHandle,const simChar* parameterName,simInt* parameterLength);
 typedef simInt (__cdecl *ptrSimSetUserParameter)(simInt objectHandle,const simChar* parameterName,const simChar* parameterValue,simInt parameterLength);
+typedef simInt (__cdecl *ptrSimSetPathTargetNominalVelocity)(simInt objectHandle,simFloat targetNominalVelocity);
 extern ptrSimGetMaterialId simGetMaterialId;
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1270,6 +1269,7 @@ extern ptrSimLockResources simLockResources;
 extern ptrSimUnlockResources simUnlockResources;
 extern ptrSimGetUserParameter simGetUserParameter;
 extern ptrSimSetUserParameter simSetUserParameter;
+extern ptrSimSetPathTargetNominalVelocity simSetPathTargetNominalVelocity;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
