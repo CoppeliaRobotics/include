@@ -1905,6 +1905,8 @@ enum {  simx_cmdnull_start              =0,
         simx_cmd_get_object_group_data,
         simx_cmd_get_object_orientation2,
         simx_cmd_get_object_position2,
+        simx_cmd_check_collision,
+        simx_cmd_check_distance,
 
         simx_cmd8bytes_custom_start     =0x002800,
         simx_cmd_get_object_quaternion,
