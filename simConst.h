@@ -1243,6 +1243,7 @@ enum { /* Object int/float/string parameters */
     sim_shapefloatparam_shading_angle= 3025,
     sim_shapefloatparam_edge_angle= 3026,
     sim_shapeintparam_edge_borders_hidden= 3027,
+    sim_shapeintparam_component_cnt= 3028,
 
     /* proximity sensors */
     sim_proxintparam_ray_invisibility= 4000,
@@ -1719,6 +1720,13 @@ enum { /* Buffer types */
 enum { /* Image combination */
     sim_imgcomb_vertical=0,
     sim_imgcomb_horizontal
+};
+
+enum { /* Graph data stream transformations */
+    sim_datastream_transf_raw=0,
+    sim_datastream_transf_derivative,
+    sim_datastream_transf_integral,
+    sim_datastream_transf_cumulative
 };
 
 enum { /* Default dynamic materials */
