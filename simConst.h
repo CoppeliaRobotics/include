@@ -1726,10 +1726,10 @@ enum { /* Image combination */
 };
 
 enum { /* Graph data stream transformations */
-    sim_datastream_transf_raw=0,
-    sim_datastream_transf_derivative,
-    sim_datastream_transf_integral,
-    sim_datastream_transf_cumulative
+    sim_stream_transf_raw=0,
+    sim_stream_transf_derivative,
+    sim_stream_transf_integral,
+    sim_stream_transf_cumulative
 };
 
 enum { /* Default dynamic materials */
