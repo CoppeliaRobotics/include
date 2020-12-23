@@ -77,7 +77,6 @@ typedef simInt (__cdecl *ptrSimSetObjectParent)(simInt objectHandle,simInt paren
 typedef simInt (__cdecl *ptrSimGetObjectType)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimGetJointType)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimBuildIdentityMatrix)(simFloat* matrix);
-typedef simInt (__cdecl *ptrSimCopyMatrix)(const simFloat* matrixIn,simFloat* matrixOut);
 typedef simInt (__cdecl *ptrSimBuildMatrix)(const simFloat* position,const simFloat* eulerAngles,simFloat* matrix);
 typedef simInt (__cdecl *ptrSimGetEulerAnglesFromMatrix)(const simFloat* matrix,simFloat* eulerAngles);
 typedef simInt (__cdecl *ptrSimInvertMatrix)(simFloat* matrix);
@@ -329,11 +328,13 @@ typedef simInt (__cdecl *ptrSimCopyStack)(simInt stackHandle);
 typedef simInt (__cdecl *ptrSimPushNullOntoStack)(simInt stackHandle);
 typedef simInt (__cdecl *ptrSimPushBoolOntoStack)(simInt stackHandle,simBool value);
 typedef simInt (__cdecl *ptrSimPushInt32OntoStack)(simInt stackHandle,simInt value);
+typedef simInt (__cdecl *ptrSimPushInt64OntoStack)(simInt stackHandle,simInt64 value);
 typedef simInt (__cdecl *ptrSimPushFloatOntoStack)(simInt stackHandle,simFloat value);
 typedef simInt (__cdecl *ptrSimPushDoubleOntoStack)(simInt stackHandle,simDouble value);
 typedef simInt (__cdecl *ptrSimPushStringOntoStack)(simInt stackHandle,const simChar* value,simInt stringSize);
 typedef simInt (__cdecl *ptrSimPushUInt8TableOntoStack)(simInt stackHandle,const simUChar* values,simInt valueCnt);
 typedef simInt (__cdecl *ptrSimPushInt32TableOntoStack)(simInt stackHandle,const simInt* values,simInt valueCnt);
+typedef simInt (__cdecl *ptrSimPushInt64TableOntoStack)(simInt stackHandle,const simInt64* values,simInt valueCnt);
 typedef simInt (__cdecl *ptrSimPushFloatTableOntoStack)(simInt stackHandle,const simFloat* values,simInt valueCnt);
 typedef simInt (__cdecl *ptrSimPushDoubleTableOntoStack)(simInt stackHandle,const simDouble* values,simInt valueCnt);
 typedef simInt (__cdecl *ptrSimPushTableOntoStack)(simInt stackHandle);
@@ -344,12 +345,14 @@ typedef simInt (__cdecl *ptrSimMoveStackItemToTop)(simInt stackHandle,simInt cIn
 typedef simInt (__cdecl *ptrSimIsStackValueNull)(simInt stackHandle);
 typedef simInt (__cdecl *ptrSimGetStackBoolValue)(simInt stackHandle,simBool* boolValue);
 typedef simInt (__cdecl *ptrSimGetStackInt32Value)(simInt stackHandle,simInt* numberValue);
+typedef simInt (__cdecl *ptrSimGetStackInt64Value)(simInt stackHandle,simInt64* numberValue);
 typedef simInt (__cdecl *ptrSimGetStackFloatValue)(simInt stackHandle,simFloat* numberValue);
 typedef simInt (__cdecl *ptrSimGetStackDoubleValue)(simInt stackHandle,simDouble* numberValue);
 typedef simChar* (__cdecl *ptrSimGetStackStringValue)(simInt stackHandle,simInt* stringSize);
 typedef simInt (__cdecl *ptrSimGetStackTableInfo)(simInt stackHandle,simInt infoType);
 typedef simInt (__cdecl *ptrSimGetStackUInt8Table)(simInt stackHandle,simUChar* array,simInt count);
 typedef simInt (__cdecl *ptrSimGetStackInt32Table)(simInt stackHandle,simInt* array,simInt count);
+typedef simInt (__cdecl *ptrSimGetStackInt64Table)(simInt stackHandle,simInt64* array,simInt count);
 typedef simInt (__cdecl *ptrSimGetStackFloatTable)(simInt stackHandle,simFloat* array,simInt count);
 typedef simInt (__cdecl *ptrSimGetStackDoubleTable)(simInt stackHandle,simDouble* array,simInt count);
 typedef simInt (__cdecl *ptrSimUnfoldStackTable)(simInt stackHandle);
@@ -402,6 +405,8 @@ typedef simInt (__cdecl *ptrSimSetShapeMass)(simInt shapeHandle,simFloat mass);
 typedef simInt (__cdecl *ptrSimGetShapeInertia)(simInt shapeHandle,simFloat* inertiaMatrix,simFloat* transformationMatrix);
 typedef simInt (__cdecl *ptrSimSetShapeInertia)(simInt shapeHandle,const simFloat* inertiaMatrix,const simFloat* transformationMatrix);
 typedef simInt (__cdecl *ptrSimIsDynamicallyEnabled)(simInt objectHandle);
+typedef simInt (__cdecl *ptrSimGenerateShapeFromPath)(const simFloat* path,simInt pathSize,const simFloat* section,simInt sectionSize,const simFloat* upVector,simInt options,simFloat reserved);
+
 
 
 // Following courtesy of Stephen James:
@@ -555,7 +560,6 @@ extern ptrSimSetObjectParent simSetObjectParent;
 extern ptrSimGetObjectType simGetObjectType;
 extern ptrSimGetJointType simGetJointType;
 extern ptrSimBuildIdentityMatrix simBuildIdentityMatrix;
-extern ptrSimCopyMatrix simCopyMatrix;
 extern ptrSimBuildMatrix simBuildMatrix;
 extern ptrSimGetEulerAnglesFromMatrix simGetEulerAnglesFromMatrix;
 extern ptrSimInvertMatrix simInvertMatrix;
@@ -807,11 +811,13 @@ extern ptrSimCopyStack simCopyStack;
 extern ptrSimPushNullOntoStack simPushNullOntoStack;
 extern ptrSimPushBoolOntoStack simPushBoolOntoStack;
 extern ptrSimPushInt32OntoStack simPushInt32OntoStack;
+extern ptrSimPushInt64OntoStack simPushInt64OntoStack;
 extern ptrSimPushFloatOntoStack simPushFloatOntoStack;
 extern ptrSimPushDoubleOntoStack simPushDoubleOntoStack;
 extern ptrSimPushStringOntoStack simPushStringOntoStack;
 extern ptrSimPushUInt8TableOntoStack simPushUInt8TableOntoStack;
 extern ptrSimPushInt32TableOntoStack simPushInt32TableOntoStack;
+extern ptrSimPushInt64TableOntoStack simPushInt64TableOntoStack;
 extern ptrSimPushFloatTableOntoStack simPushFloatTableOntoStack;
 extern ptrSimPushDoubleTableOntoStack simPushDoubleTableOntoStack;
 extern ptrSimPushTableOntoStack simPushTableOntoStack;
@@ -822,12 +828,14 @@ extern ptrSimMoveStackItemToTop simMoveStackItemToTop;
 extern ptrSimIsStackValueNull simIsStackValueNull;
 extern ptrSimGetStackBoolValue simGetStackBoolValue;
 extern ptrSimGetStackInt32Value simGetStackInt32Value;
+extern ptrSimGetStackInt64Value simGetStackInt64Value;
 extern ptrSimGetStackFloatValue simGetStackFloatValue;
 extern ptrSimGetStackDoubleValue simGetStackDoubleValue;
 extern ptrSimGetStackStringValue simGetStackStringValue;
 extern ptrSimGetStackTableInfo simGetStackTableInfo;
 extern ptrSimGetStackUInt8Table simGetStackUInt8Table;
 extern ptrSimGetStackInt32Table simGetStackInt32Table;
+extern ptrSimGetStackInt64Table simGetStackInt64Table;
 extern ptrSimGetStackFloatTable simGetStackFloatTable;
 extern ptrSimGetStackDoubleTable simGetStackDoubleTable;
 extern ptrSimUnfoldStackTable simUnfoldStackTable;
@@ -880,6 +888,7 @@ extern ptrSimSetShapeMass simSetShapeMass;
 extern ptrSimGetShapeInertia simGetShapeInertia;
 extern ptrSimSetShapeInertia simSetShapeInertia;
 extern ptrSimIsDynamicallyEnabled simIsDynamicallyEnabled;
+extern ptrSimGenerateShapeFromPath simGenerateShapeFromPath;
 
 
 
@@ -1137,6 +1146,7 @@ typedef simInt (__cdecl *ptrSimModifyGhost)(simInt ghostGroup,simInt ghostId,sim
 typedef simInt (__cdecl *ptrSimSetGraphUserData)(simInt graphHandle,const simChar* streamName,simFloat data);
 typedef simInt (__cdecl *ptrSimAddPointCloud)(simInt pageMask,simInt layerMask,simInt objectHandle,simInt options,simFloat pointSize,simInt ptCnt,const simFloat* pointCoordinates,const simChar* defaultColors,const simChar* pointColors,const simFloat* pointNormals);
 typedef simInt (__cdecl *ptrSimModifyPointCloud)(simInt pointCloudHandle,simInt operation,const simInt* intParam,const simFloat* floatParam);
+typedef simInt (__cdecl *ptrSimCopyMatrix)(const simFloat* matrixIn,simFloat* matrixOut);
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
 extern ptrSimSerialPortOpen simSerialPortOpen;
@@ -1289,6 +1299,7 @@ extern ptrSimModifyGhost simModifyGhost;
 extern ptrSimSetGraphUserData simSetGraphUserData;
 extern ptrSimAddPointCloud simAddPointCloud;
 extern ptrSimModifyPointCloud simModifyPointCloud;
+extern ptrSimCopyMatrix simCopyMatrix;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)

@@ -13,6 +13,7 @@ typedef void simVoid;
 typedef unsigned char simUChar;
 typedef unsigned int simUInt;
 typedef unsigned long long int simUInt64;
+typedef long long int simInt64;
 
 struct SScriptCallBack
 {

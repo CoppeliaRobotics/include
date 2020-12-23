@@ -555,6 +555,7 @@ enum { /* special handle flags: */
     sim_handleflag_codedstring          =0x00400000,
     sim_handleflag_wxyzquaternion       =0x00400000,
     sim_handleflag_reljointbaseframe    =0x00400000,
+    sim_handleflag_setmultiple          =0x00400000,
     sim_handleflag_abscoords            =0x00800000,
     sim_handleflag_depthbuffer          =0x00800000,
     sim_handleflag_depthbuffermeters    =0x00800000,
@@ -621,7 +622,8 @@ enum { /* drawing objects: */
     sim_drawing_quadpoints,         /* 6 values per point (3 for quad position, 3 for quad normal vector) (quad size in meters) */
     sim_drawing_discpoints,         /* 6 values per point (3 for disc position, 3 for disc normal vector) (disc size in meters) */
     sim_drawing_cubepoints,         /* 6 values per point (3 for cube position, 3 for cube normal vector) (cube size in meters) */
-    sim_drawing_spherepoints,           /* 3 values per point (sphere size in meters) */
+    sim_drawing_spherepoints,       /* 3 values per point (sphere size in meters) */
+    sim_drawing_linestrip,
 
     /* following can be or-combined: */
     sim_drawing_itemcolors              =0x000020, /* +3 values per item (each item has its own ambient color (r,g,b values)). Mutually exclusive with sim_drawing_vertexcolors */
@@ -834,6 +836,7 @@ enum { /* String parameters: */
     sim_stringparam_dlgverbosity, /* can only be written */
     sim_stringparam_consolelogfilter,
     sim_stringparam_startupscriptstring,
+    sim_stringparam_uniqueid, /* can only be read */
 };
 
 enum { /* Array parameters: */
