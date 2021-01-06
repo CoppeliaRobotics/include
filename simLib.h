@@ -405,7 +405,7 @@ typedef simInt (__cdecl *ptrSimSetShapeMass)(simInt shapeHandle,simFloat mass);
 typedef simInt (__cdecl *ptrSimGetShapeInertia)(simInt shapeHandle,simFloat* inertiaMatrix,simFloat* transformationMatrix);
 typedef simInt (__cdecl *ptrSimSetShapeInertia)(simInt shapeHandle,const simFloat* inertiaMatrix,const simFloat* transformationMatrix);
 typedef simInt (__cdecl *ptrSimIsDynamicallyEnabled)(simInt objectHandle);
-typedef simInt (__cdecl *ptrSimGenerateShapeFromPath)(const simFloat* path,simInt pathSize,const simFloat* section,simInt sectionSize,const simFloat* upVector,simInt options,simFloat reserved);
+typedef simInt (__cdecl *ptrSimGenerateShapeFromPath)(const simFloat* path,simInt pathSize,const simFloat* section,simInt sectionSize,simInt options,const simFloat* upVector,simFloat reserved);
 
 
 
