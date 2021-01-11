@@ -1287,6 +1287,7 @@ enum { /* Object int/float/string parameters */
     sim_dummyintparam_link_type= 10000,
     sim_dummyintparam_follow_path= 10001,
     sim_dummyfloatparam_follow_path_offset= 10002,
+    sim_dummyfloatparam_size= 10003,
 
     /* graphs */
     sim_graphintparam_needs_refresh= 10500,

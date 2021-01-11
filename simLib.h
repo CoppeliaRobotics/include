@@ -306,7 +306,7 @@ typedef simInt (__cdecl *ptrSimGetObjectSizeValues)(simInt objectHandle,simFloat
 typedef simInt (__cdecl *ptrSimScaleObject)(simInt objectHandle,simFloat xScale,simFloat yScale,simFloat zScale,simInt options);
 typedef simInt (__cdecl *ptrSimSetShapeTexture)(simInt shapeHandle,simInt textureId,simInt mappingMode,simInt options,const simFloat* uvScaling,const simFloat* position,const simFloat* orientation);
 typedef simInt (__cdecl *ptrSimGetShapeTextureId)(simInt shapeHandle);
-typedef simInt (__cdecl *ptrSimAddCollection)(simInt options);
+typedef simInt (__cdecl *ptrSimCreateCollectionEx)(simInt options);
 typedef simInt (__cdecl *ptrSimAddItemToCollection)(simInt collectionHandle,simInt what,simInt objectHandle,simInt options);
 typedef simInt (__cdecl *ptrSimDestroyCollection)(simInt collectionHandle);
 typedef simInt* (__cdecl *ptrSimGetCollectionObjects)(simInt collectionHandle,simInt* objectCount);
@@ -406,6 +406,7 @@ typedef simInt (__cdecl *ptrSimGetShapeInertia)(simInt shapeHandle,simFloat* ine
 typedef simInt (__cdecl *ptrSimSetShapeInertia)(simInt shapeHandle,const simFloat* inertiaMatrix,const simFloat* transformationMatrix);
 typedef simInt (__cdecl *ptrSimIsDynamicallyEnabled)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimGenerateShapeFromPath)(const simFloat* path,simInt pathSize,const simFloat* section,simInt sectionSize,simInt options,const simFloat* upVector,simFloat reserved);
+typedef simInt (__cdecl *ptrSimInitScript)(simInt scriptHandle);
 
 
 
@@ -789,7 +790,7 @@ extern ptrSimGetObjectSizeValues simGetObjectSizeValues;
 extern ptrSimScaleObject simScaleObject;
 extern ptrSimSetShapeTexture simSetShapeTexture;
 extern ptrSimGetShapeTextureId simGetShapeTextureId;
-extern ptrSimAddCollection simAddCollection;
+extern ptrSimCreateCollectionEx simCreateCollectionEx;
 extern ptrSimAddItemToCollection simAddItemToCollection;
 extern ptrSimDestroyCollection simDestroyCollection;
 extern ptrSimGetCollectionObjects simGetCollectionObjects;
@@ -889,6 +890,7 @@ extern ptrSimGetShapeInertia simGetShapeInertia;
 extern ptrSimSetShapeInertia simSetShapeInertia;
 extern ptrSimIsDynamicallyEnabled simIsDynamicallyEnabled;
 extern ptrSimGenerateShapeFromPath simGenerateShapeFromPath;
+extern ptrSimInitScript simInitScript;
 
 
 
