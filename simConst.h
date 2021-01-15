@@ -19,13 +19,13 @@ enum {
         sim_object_proximitysensor_type,
         sim_object_reserved1,
         sim_object_reserved2,
-        sim_object_path_type,
+        sim_object_path_type,               /* deprecated */
         sim_object_visionsensor_type,
         sim_object_reserved3,
-        sim_object_mill_type,
+        sim_object_mill_type,               /* deprecated */
         sim_object_forcesensor_type,
         sim_object_light_type,
-        sim_object_mirror_type,
+        sim_object_mirror_type,             /* deprecated */
         sim_object_octree_type,
         sim_object_pointcloud_type,
         sim_object_type_end=sim_object_path_type+100
