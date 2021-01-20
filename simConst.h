@@ -420,7 +420,7 @@ enum { /* Script types (serialized!) */
     sim_scripttype_mainscript=0,
     sim_scripttype_childscript,
     sim_scripttype_addonscript,
-    sim_scripttype_addonfunction,
+    sim_scripttype_addonfunction, /* deprecated */
     sim_scripttype_jointctrlcallback_old, /* deprecated */
     sim_scripttype_contactcallback_old, /* deprecated */
     sim_scripttype_customizationscript,
