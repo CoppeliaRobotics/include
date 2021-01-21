@@ -434,8 +434,9 @@ enum { /* Script types (serialized!) */
 };
 
 enum { /* System callbacks */
-    sim_syscb_init=0,
+    sim_syscb_info=0,
     sim_syscb_cleanup, /* last time called. Do some clean-up */
+    sim_syscb_init,
     sim_syscb_nonsimulation, /* called while simulation not running */
     sim_syscb_beforesimulation, /* called just before simulation starts */
     sim_syscb_aftersimulation, /* called just after simulation ended */
