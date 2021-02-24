@@ -34,18 +34,18 @@ enum {
 /* General object types. Values are serialized */
 enum {
     sim_appobj_object_type=sim_object_type_end+1,
-    sim_appobj_collision_type,
-    sim_appobj_distance_type,
+    sim_appobj_collision_type, /* deprecated */
+    sim_appobj_distance_type, /* deprecated */
     sim_appobj_simulation_type,
     sim_appobj_ik_type, /* deprecated */
-    sim_appobj_constraintsolver_type_old,
+    sim_appobj_constraintsolver_type_old, /* deprecated */
     sim_appobj_collection_type,
-    sim_appobj_ui_type,
+    sim_appobj_ui_type, /* deprecated */
     sim_appobj_script_type,
-    sim_appobj_pathplanning_type,
+    sim_appobj_pathplanning_type, /* deprecated */
     sim_appobj_RESERVED_type,
     sim_appobj_texture_type,
-    sim_appobj_motionplanning_type_old
+    sim_appobj_motionplanning_type_old /* deprecated */
 };
 
 /* Ik calculation methods. DEPRECATED */
@@ -264,6 +264,7 @@ enum { /* Check the documentation instead of comments below!! */
 
         sim_message_eventcallback_lastinstancepass,
         sim_message_eventcallback_uipass,             /* Called from the UI thread, just after sim_message_eventcallback_instancepass was called from the SIM thread */
+        sim_message_eventcallback_scriptstatedestroyed,
 
         sim_message_simulation_start_resume_request=0x1000,
         sim_message_simulation_pause_request,
@@ -467,9 +468,6 @@ enum { /* System callbacks */
     sim_syscb_vision, /* called just after a vision sensor image was acquired, for processing */
     sim_syscb_trigger, /* called by vision, proximity or force/torque sensors when they trigger */
     sim_syscb_userconfig, /* called for the customization script, when the user double-clicks the script simulation parameters icon */
-    sim_syscb_xr=sim_syscb_init+200, /* reserved for XR */
-    sim_syscb_br=sim_syscb_xr, /* reserved for XR */
-    /* sim_syscb_xrend=sim_syscb_xr+1000  reserved for XR */
 };
 
 enum { /* Script attributes */

@@ -408,6 +408,7 @@ typedef simInt (__cdecl *ptrSimGetShapeInertia)(simInt shapeHandle,simFloat* ine
 typedef simInt (__cdecl *ptrSimSetShapeInertia)(simInt shapeHandle,const simFloat* inertiaMatrix,const simFloat* transformationMatrix);
 typedef simInt (__cdecl *ptrSimIsDynamicallyEnabled)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimGenerateShapeFromPath)(const simFloat* path,simInt pathSize,const simFloat* section,simInt sectionSize,simInt options,const simFloat* upVector,simFloat reserved);
+typedef simFloat (__cdecl *ptrSimGetClosestPosOnPath)(const simFloat* path,simInt pathSize,const simFloat* pathLengths,const simFloat* absPt);
 typedef simInt (__cdecl *ptrSimInitScript)(simInt scriptHandle);
 
 
@@ -894,6 +895,7 @@ extern ptrSimGetShapeInertia simGetShapeInertia;
 extern ptrSimSetShapeInertia simSetShapeInertia;
 extern ptrSimIsDynamicallyEnabled simIsDynamicallyEnabled;
 extern ptrSimGenerateShapeFromPath simGenerateShapeFromPath;
+extern ptrSimGetClosestPosOnPath simGetClosestPosOnPath;
 extern ptrSimInitScript simInitScript;
 
 
