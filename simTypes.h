@@ -20,8 +20,10 @@ struct SScriptCallBack
     simInt objectID;
     simInt scriptID;
     simInt stackID;
-    simChar waitUntilZero;
-    simChar* raiseErrorWithMessage;
+    simChar waitUntilZero; /* do not use */
+    simChar* raiseErrorWithMessage; /* do not use */
+    simChar* source;
+    simInt line;
 };
 
 struct SShapeVizInfo

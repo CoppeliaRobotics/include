@@ -789,6 +789,7 @@ enum { /* Integer parameters: */
     sim_intparam_dlgverbosity, /* see  sim_verbosity_none, sim_verbosity_errors, etc. */
     sim_intparam_videoencoder_index,
     sim_intparam_exitcode,
+    sim_intparam_bugfix1,
 };
 
 enum { /* uint64 parameters: */
