@@ -265,6 +265,7 @@ enum { /* Check the documentation instead of comments below!! */
         sim_message_eventcallback_lastinstancepass,
         sim_message_eventcallback_uipass,             /* Called from the UI thread, just after sim_message_eventcallback_instancepass was called from the SIM thread */
         sim_message_eventcallback_scriptstatedestroyed,
+        sim_message_eventcallback_scriptdestroyed,
 
         sim_message_simulation_start_resume_request=0x1000,
         sim_message_simulation_pause_request,
