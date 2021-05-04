@@ -96,8 +96,6 @@ typedef simInt (__cdecl *ptrSimCloseScene)();
 typedef simInt (__cdecl *ptrSimSaveScene)(const simChar* filename);
 typedef simInt (__cdecl *ptrSimLoadModel)(const simChar* filename);
 typedef simInt (__cdecl *ptrSimSaveModel)(int baseOfModelHandle,const simChar* filename);
-typedef simInt (__cdecl *ptrSimAddModuleMenuEntry)(const simChar* entryLabel,simInt itemCount,simInt* itemHandles);
-typedef simInt (__cdecl *ptrSimSetModuleMenuItemState)(simInt itemHandle,simInt state,const simChar* label);
 typedef simInt (__cdecl *ptrSimDoesFileExist)(const simChar* filename);
 typedef simInt (__cdecl *ptrSimIsObjectInSelection)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimAddObjectToSelection)(simInt what,simInt objectHandle);
@@ -575,8 +573,6 @@ extern ptrSimCloseScene simCloseScene;
 extern ptrSimSaveScene simSaveScene;
 extern ptrSimLoadModel simLoadModel;
 extern ptrSimSaveModel simSaveModel;
-extern ptrSimAddModuleMenuEntry simAddModuleMenuEntry;
-extern ptrSimSetModuleMenuItemState simSetModuleMenuItemState;
 extern ptrSimDoesFileExist simDoesFileExist;
 extern ptrSimIsObjectInSelection simIsObjectInSelection;
 extern ptrSimAddObjectToSelection simAddObjectToSelection;
@@ -1141,6 +1137,8 @@ typedef simInt (__cdecl *ptrSimSetGraphUserData)(simInt graphHandle,const simCha
 typedef simInt (__cdecl *ptrSimAddPointCloud)(simInt pageMask,simInt layerMask,simInt objectHandle,simInt options,simFloat pointSize,simInt ptCnt,const simFloat* pointCoordinates,const simChar* defaultColors,const simChar* pointColors,const simFloat* pointNormals);
 typedef simInt (__cdecl *ptrSimModifyPointCloud)(simInt pointCloudHandle,simInt operation,const simInt* intParam,const simFloat* floatParam);
 typedef simInt (__cdecl *ptrSimCopyMatrix)(const simFloat* matrixIn,simFloat* matrixOut);
+typedef simInt (__cdecl *ptrSimAddModuleMenuEntry)(const simChar* entryLabel,simInt itemCount,simInt* itemHandles);
+typedef simInt (__cdecl *ptrSimSetModuleMenuItemState)(simInt itemHandle,simInt state,const simChar* label);
 
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1327,6 +1325,8 @@ extern ptrSimSetEngineFloatParam simSetEngineFloatParameter;
 extern ptrSimSetEngineInt32Param simSetEngineInt32Parameter;
 extern ptrSimSetEngineBoolParam simSetEngineBoolParameter;
 extern ptrSimIsHandle simIsHandleValid;
+extern ptrSimAddModuleMenuEntry simAddModuleMenuEntry;
+extern ptrSimSetModuleMenuItemState simSetModuleMenuItemState;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)

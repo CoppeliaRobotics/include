@@ -838,6 +838,9 @@ enum { /* String parameters: */
     sim_stringparam_consolelogfilter,
     sim_stringparam_startupscriptstring,
     sim_stringparam_uniqueid, /* can only be read */
+    sim_stringparam_tempdir, /* can only be read */
+    sim_stringparam_tempscenedir, /* can only be read */
+    sim_stringparam_datadir, /* can only be read */
 };
 
 enum { /* Array parameters: */
