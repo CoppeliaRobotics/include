@@ -183,9 +183,9 @@ typedef simInt (__cdecl *ptrSimRemoveParticleObject)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimAddParticleObjectItem)(simInt objectHandle,const simFloat* itemData);
 typedef simFloat (__cdecl *ptrSimGetObjectSizeFactor)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimAnnounceSceneContentChange)();
-typedef simInt (__cdecl *ptrSimSetIntegerSignal)(const simChar* signalName,simInt signalValue);
-typedef simInt (__cdecl *ptrSimGetIntegerSignal)(const simChar* signalName,simInt* signalValue);
-typedef simInt (__cdecl *ptrSimClearIntegerSignal)(const simChar* signalName);
+typedef simInt (__cdecl *ptrSimSetInt32Signal)(const simChar* signalName,simInt signalValue);
+typedef simInt (__cdecl *ptrSimGetInt32Signal)(const simChar* signalName,simInt* signalValue);
+typedef simInt (__cdecl *ptrSimClearInt32Signal)(const simChar* signalName);
 typedef simInt (__cdecl *ptrSimSetFloatSignal)(const simChar* signalName,simFloat signalValue);
 typedef simInt (__cdecl *ptrSimGetFloatSignal)(const simChar* signalName,simFloat* signalValue);
 typedef simInt (__cdecl *ptrSimClearFloatSignal)(const simChar* signalName);
@@ -660,9 +660,9 @@ extern ptrSimRemoveParticleObject simRemoveParticleObject;
 extern ptrSimAddParticleObjectItem simAddParticleObjectItem;
 extern ptrSimGetObjectSizeFactor simGetObjectSizeFactor;
 extern ptrSimAnnounceSceneContentChange simAnnounceSceneContentChange;
-extern ptrSimSetIntegerSignal simSetIntegerSignal;
-extern ptrSimGetIntegerSignal simGetIntegerSignal;
-extern ptrSimClearIntegerSignal simClearIntegerSignal;
+extern ptrSimSetInt32Signal simSetInt32Signal;
+extern ptrSimGetInt32Signal simGetInt32Signal;
+extern ptrSimClearInt32Signal simClearInt32Signal;
 extern ptrSimSetFloatSignal simSetFloatSignal;
 extern ptrSimGetFloatSignal simGetFloatSignal;
 extern ptrSimClearFloatSignal simClearFloatSignal;
@@ -1327,6 +1327,9 @@ extern ptrSimSetEngineBoolParam simSetEngineBoolParameter;
 extern ptrSimIsHandle simIsHandleValid;
 extern ptrSimAddModuleMenuEntry simAddModuleMenuEntry;
 extern ptrSimSetModuleMenuItemState simSetModuleMenuItemState;
+extern ptrSimSetInt32Signal simSetIntegerSignal;
+extern ptrSimGetInt32Signal simGetIntegerSignal;
+extern ptrSimClearInt32Signal simClearIntegerSignal;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
