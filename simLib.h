@@ -50,12 +50,13 @@ typedef simInt (__cdecl *ptrSimSetArrayParam)(simInt Param,const simVoid* arrayO
 typedef simInt (__cdecl *ptrSimGetArrayParam)(simInt Param,simVoid* arrayOfValues);
 typedef simInt (__cdecl *ptrSimSetStringNamedParam)(const simChar* paramName,const simChar* stringParam,simInt paramLength);
 typedef simChar* (__cdecl *ptrSimGetStringNamedParam)(const simChar* paramName,simInt* paramLength);
-typedef simInt (__cdecl *ptrSimGetObjectHandle)(const simChar* objectName);
+typedef simInt (__cdecl *ptrSimGetObjectHandle)(const simChar* objectAlias);
+typedef simInt (__cdecl *ptrSimGetObjectHandleEx)(const simChar* objectAlias,int index,int proxy,int options);
 typedef simInt (__cdecl *ptrSimRemoveObject)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimRemoveModel)(simInt objectHandle);
-typedef simChar* (__cdecl *ptrSimGetObjectName)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimGetObjects)(simInt index,simInt objectType);
-typedef simInt (__cdecl *ptrSimSetObjectName)(simInt objectHandle,const simChar* objectName);
+typedef simChar* (__cdecl *ptrSimGetObjectAlias)(simInt objectHandle);
+typedef simInt (__cdecl *ptrSimSetObjectAlias)(simInt objectHandle,const simChar* objectAlias,int options);
 typedef simInt (__cdecl *ptrSimGetObjectMatrix)(simInt objectHandle,simInt relativeToObjectHandle,simFloat* matrix);
 typedef simInt (__cdecl *ptrSimSetObjectMatrix)(simInt objectHandle,simInt relativeToObjectHandle,const simFloat* matrix);
 typedef simInt (__cdecl *ptrSimGetObjectPose)(simInt objectHandle,simInt relativeToObjectHandle,simFloat* pose);
@@ -527,12 +528,13 @@ extern ptrSimSetArrayParam simSetArrayParam;
 extern ptrSimGetArrayParam simGetArrayParam;
 extern ptrSimSetStringNamedParam simSetStringNamedParam;
 extern ptrSimGetStringNamedParam simGetStringNamedParam;
-extern ptrSimGetObjectHandle simGetObjectHandle;
+extern ptrSimGetObjectHandleEx simGetObjectHandleEx;
 extern ptrSimRemoveObject simRemoveObject;
 extern ptrSimRemoveModel simRemoveModel;
-extern ptrSimGetObjectName simGetObjectName;
+extern ptrSimGetObjectHandle simGetObjectHandle;
+extern ptrSimGetObjectAlias simGetObjectAlias;
+extern ptrSimSetObjectAlias simSetObjectAlias;
 extern ptrSimGetObjects simGetObjects;
-extern ptrSimSetObjectName simSetObjectName;
 extern ptrSimGetObjectMatrix simGetObjectMatrix;
 extern ptrSimSetObjectMatrix simSetObjectMatrix;
 extern ptrSimGetObjectPose simGetObjectPose;
@@ -1139,6 +1141,8 @@ typedef simInt (__cdecl *ptrSimModifyPointCloud)(simInt pointCloudHandle,simInt 
 typedef simInt (__cdecl *ptrSimCopyMatrix)(const simFloat* matrixIn,simFloat* matrixOut);
 typedef simInt (__cdecl *ptrSimAddModuleMenuEntry)(const simChar* entryLabel,simInt itemCount,simInt* itemHandles);
 typedef simInt (__cdecl *ptrSimSetModuleMenuItemState)(simInt itemHandle,simInt state,const simChar* label);
+typedef simChar* (__cdecl *ptrSimGetObjectName)(simInt objectHandle);
+typedef simInt (__cdecl *ptrSimSetObjectName)(simInt objectHandle,const simChar* objectName);
 
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1330,6 +1334,8 @@ extern ptrSimSetModuleMenuItemState simSetModuleMenuItemState;
 extern ptrSimSetInt32Signal simSetIntegerSignal;
 extern ptrSimGetInt32Signal simGetIntegerSignal;
 extern ptrSimClearInt32Signal simClearIntegerSignal;
+extern ptrSimGetObjectName simGetObjectName;
+extern ptrSimSetObjectName simSetObjectName;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
