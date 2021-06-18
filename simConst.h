@@ -562,7 +562,7 @@ enum { /* special handle flags: */
     sim_handleflag_depthbuffermeters    =0x00800000,
     sim_handleflag_keeporiginal         =0x00400000,
     sim_handleflag_camera               =0x00400000,
-    sim_handleflag_altname              =0x00400000,
+    sim_handleflag_altname              =0x00400000, /* deprecated */
     sim_handleflag_axis                 =0x00400000,
     sim_handleflag_resetforce           =0x00400000,
     sim_handleflag_resettorque          =0x00800000,
