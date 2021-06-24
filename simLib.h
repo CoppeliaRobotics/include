@@ -276,7 +276,6 @@ typedef simInt (__cdecl *ptrSimGroupShapes)(const simInt* shapeHandles,simInt sh
 typedef simInt* (__cdecl *ptrSimUngroupShape)(simInt shapeHandle,simInt* shapeCount);
 typedef simInt (__cdecl *ptrSimConvexDecompose)(simInt shapeHandle,simInt options,const simInt* intParams,const simFloat* floatParams);
 typedef simVoid (__cdecl *ptrSimQuitSimulator)(simBool ignoredArgument);
-typedef simInt (__cdecl *ptrSimEnableEventCallback)(simInt eventCallbackType,const simChar* plugin,simInt reserved);
 typedef simInt (__cdecl *ptrSimSetShapeMaterial)(simInt shapeHandle,simInt materialIdOrShapeHandle);
 typedef simInt (__cdecl *ptrSimGetTextureId)(const simChar* textureName,simInt* resolution);
 typedef simChar* (__cdecl *ptrSimReadTexture)(simInt textureId,simInt options,simInt posX,simInt posY,simInt sizeX,simInt sizeY);
@@ -743,7 +742,6 @@ extern ptrSimGroupShapes simGroupShapes;
 extern ptrSimUngroupShape simUngroupShape;
 extern ptrSimConvexDecompose simConvexDecompose;
 extern ptrSimQuitSimulator simQuitSimulator;
-extern ptrSimEnableEventCallback simEnableEventCallback;
 extern ptrSimSetShapeMaterial simSetShapeMaterial;
 extern ptrSimGetTextureId simGetTextureId;
 extern ptrSimReadTexture simReadTexture;
@@ -1133,6 +1131,7 @@ typedef simChar* (__cdecl *ptrSimGetObjectConfiguration)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimSetObjectConfiguration)(const simChar* data);
 typedef simChar* (__cdecl *ptrSimGetConfigurationTree)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimSetConfigurationTree)(const simChar* data);
+typedef simInt (__cdecl *ptrSimEnableEventCallback)(simInt eventCallbackType,const simChar* plugin,simInt reserved);
 
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1338,6 +1337,7 @@ extern ptrSimGetObjectConfiguration simGetObjectConfiguration;
 extern ptrSimSetObjectConfiguration simSetObjectConfiguration;
 extern ptrSimGetConfigurationTree simGetConfigurationTree;
 extern ptrSimSetConfigurationTree simSetConfigurationTree;
+extern ptrSimEnableEventCallback simEnableEventCallback;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)

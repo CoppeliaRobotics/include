@@ -106,21 +106,22 @@ enum { /* Scene object main properties (serialized): */
         sim_objectspecialproperty_measurable                    =0x0002,
         /*reserved                      =0x0004, */
         /*reserved                      =0x0008, */
-        sim_objectspecialproperty_detectable_ultrasonic         =0x0010,
-        sim_objectspecialproperty_detectable_infrared           =0x0020,
-        sim_objectspecialproperty_detectable_laser              =0x0040,
-        sim_objectspecialproperty_detectable_inductive          =0x0080,
-        sim_objectspecialproperty_detectable_capacitive         =0x0100,
-        sim_objectspecialproperty_renderable                    =0x0200,
-        sim_objectspecialproperty_detectable_all                =sim_objectspecialproperty_detectable_ultrasonic|sim_objectspecialproperty_detectable_infrared|sim_objectspecialproperty_detectable_laser|sim_objectspecialproperty_detectable_inductive|sim_objectspecialproperty_detectable_capacitive,
-        sim_objectspecialproperty_cuttable_old                  =0x0400,
-        sim_objectspecialproperty_pathplanning_ignored          =0x0800
+        sim_objectspecialproperty_detectable_ultrasonic         =0x0010, /* deprecated */
+        sim_objectspecialproperty_detectable_infrared           =0x0020, /* deprecated */
+        sim_objectspecialproperty_detectable_laser              =0x0040, /* deprecated */
+        sim_objectspecialproperty_detectable_inductive          =0x0080, /* deprecated */
+        sim_objectspecialproperty_detectable_capacitive         =0x0100, /* deprecated */
+        sim_objectspecialproperty_renderable                    =0x0200, /* deprecated */
+        sim_objectspecialproperty_detectable_all                =0x01f0, /* deprecated */
+        sim_objectspecialproperty_detectable                    =0x01f0,
+        sim_objectspecialproperty_cuttable_old                  =0x0400, /* deprecated */
+        sim_objectspecialproperty_pathplanning_ignored          =0x0800  /* deprecated */
 };
 
 enum { /* Model properties (serialized): */
         sim_modelproperty_not_collidable                =0x0001,
         sim_modelproperty_not_measurable                =0x0002,
-        sim_modelproperty_not_renderable                =0x0004,
+        sim_modelproperty_not_renderable                =0x0004, /* deprecated */
         sim_modelproperty_not_detectable                =0x0008,
         sim_modelproperty_not_cuttable_old              =0x0010,
         sim_modelproperty_not_dynamic                   =0x0020,
@@ -320,12 +321,12 @@ enum { /* Scene object properties. Combine with the | operator */
     sim_objectproperty_selectmodelbaseinstead   =0x0080,
     sim_objectproperty_dontshowasinsidemodel    =0x0100,
     /* reserved                                 =0x0200, */
-    sim_objectproperty_canupdatedna             =0x0400,
+    sim_objectproperty_canupdatedna             =0x0400, /* deprecated */
     sim_objectproperty_selectinvisible          =0x0800,
     sim_objectproperty_depthinvisible           =0x1000,
     sim_objectproperty_cannotdelete             =0x2000,
     sim_objectproperty_cannotdeleteduringsim    =0x4000,
-    sim_objectproperty_hierarchyhiddenmodelchild=0x8000,
+    sim_objectproperty_hierarchyhiddenmodelchild=0x8000, /* deprecated */
 };
 
 enum { /* DEPRECATED, check below */
@@ -1154,7 +1155,7 @@ enum { /* Object int/float/string parameters */
     sim_objintparam_parent_role= 30, /* DEPRECATED */
     sim_objintparam_manipulation_permissions= 31,
     sim_objintparam_illumination_handle= 32,
-    sim_objstringparam_dna= 33,
+    sim_objstringparam_dna= 33, /* DEPRECATED */
     sim_objfloatparam_size_factor= 34,
     sim_objstringparam_unique_id= 35,
     sim_objintparam_visible= 36,
