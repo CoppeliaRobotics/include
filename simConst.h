@@ -690,16 +690,16 @@ enum { /* particle objects: */
 enum { /* Boolean parameters: */
     sim_boolparam_hierarchy_visible=0,
     sim_boolparam_console_visible,
-    sim_boolparam_collision_handling_enabled,
-    sim_boolparam_distance_handling_enabled,
+    sim_boolparam_collision_handling_enabled, /* deprecated */
+    sim_boolparam_distance_handling_enabled, /* deprecated */
     sim_boolparam_ik_handling_enabled, /* deprecated */
-    sim_boolparam_gcs_handling_enabled,
+    sim_boolparam_gcs_handling_enabled, /* deprecated */
     sim_boolparam_dynamics_handling_enabled,
-    sim_boolparam_joint_motion_handling_enabled_deprecated,
-    sim_boolparam_path_motion_handling_enabled_deprecated,
-    sim_boolparam_proximity_sensor_handling_enabled,
-    sim_boolparam_vision_sensor_handling_enabled,
-    sim_boolparam_mill_handling_enabled,
+    sim_boolparam_joint_motion_handling_enabled_deprecated, /* deprecated */
+    sim_boolparam_path_motion_handling_enabled_deprecated, /* deprecated */
+    sim_boolparam_proximity_sensor_handling_enabled, /* deprecated */
+    sim_boolparam_vision_sensor_handling_enabled, /* deprecated */
+    sim_boolparam_mill_handling_enabled, /* deprecated */
     sim_boolparam_browser_visible,
     sim_boolparam_scene_and_model_load_messages,
     sim_reserved0,
@@ -715,8 +715,8 @@ enum { /* Boolean parameters: */
     sim_boolparam_reserved3,
     sim_boolparam_realtime_simulation,
     sim_boolparam_use_glfinish_cmd,
-    sim_boolparam_force_show_wireless_emission,
-    sim_boolparam_force_show_wireless_reception,
+    sim_boolparam_force_show_wireless_emission, /* deprecated */
+    sim_boolparam_force_show_wireless_reception, /* deprecated */
     sim_boolparam_video_recording_triggered,
     sim_boolparam_reserved1,
     sim_boolparam_reserved2,
