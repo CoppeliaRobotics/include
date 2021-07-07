@@ -287,8 +287,6 @@ typedef simChar* (__cdecl *ptrSimReadCustomDataBlockTags)(simInt objectHandle,si
 typedef simInt (__cdecl *ptrSimGetShapeGeomInfo)(simInt shapeHandle,simInt* intData,simFloat* floatData,simVoid* reserved);
 typedef simInt (__cdecl *ptrSimGetObjects)(simInt index,simInt objectType);
 typedef simInt* (__cdecl *ptrSimGetObjectsInTree)(simInt treeBaseHandle,simInt objectType,simInt options,simInt* objectCount);
-typedef simInt (__cdecl *ptrSimSetObjectSizeValues)(simInt objectHandle,const simFloat* sizeValues);
-typedef simInt (__cdecl *ptrSimGetObjectSizeValues)(simInt objectHandle,simFloat* sizeValues);
 typedef simInt (__cdecl *ptrSimScaleObject)(simInt objectHandle,simFloat xScale,simFloat yScale,simFloat zScale,simInt options);
 typedef simInt (__cdecl *ptrSimSetShapeTexture)(simInt shapeHandle,simInt textureId,simInt mappingMode,simInt options,const simFloat* uvScaling,const simFloat* position,const simFloat* orientation);
 typedef simInt (__cdecl *ptrSimGetShapeTextureId)(simInt shapeHandle);
@@ -753,8 +751,6 @@ extern ptrSimReadCustomDataBlockTags simReadCustomDataBlockTags;
 extern ptrSimGetShapeGeomInfo simGetShapeGeomInfo;
 extern ptrSimGetObjects simGetObjects;
 extern ptrSimGetObjectsInTree simGetObjectsInTree;
-extern ptrSimSetObjectSizeValues simSetObjectSizeValues;
-extern ptrSimGetObjectSizeValues simGetObjectSizeValues;
 extern ptrSimScaleObject simScaleObject;
 extern ptrSimSetShapeTexture simSetShapeTexture;
 extern ptrSimGetShapeTextureId simGetShapeTextureId;
@@ -1132,6 +1128,8 @@ typedef simInt (__cdecl *ptrSimSetObjectConfiguration)(const simChar* data);
 typedef simChar* (__cdecl *ptrSimGetConfigurationTree)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimSetConfigurationTree)(const simChar* data);
 typedef simInt (__cdecl *ptrSimEnableEventCallback)(simInt eventCallbackType,const simChar* plugin,simInt reserved);
+typedef simInt (__cdecl *ptrSimSetObjectSizeValues)(simInt objectHandle,const simFloat* sizeValues);
+typedef simInt (__cdecl *ptrSimGetObjectSizeValues)(simInt objectHandle,simFloat* sizeValues);
 
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1338,6 +1336,8 @@ extern ptrSimSetObjectConfiguration simSetObjectConfiguration;
 extern ptrSimGetConfigurationTree simGetConfigurationTree;
 extern ptrSimSetConfigurationTree simSetConfigurationTree;
 extern ptrSimEnableEventCallback simEnableEventCallback;
+extern ptrSimSetObjectSizeValues simSetObjectSizeValues;
+extern ptrSimGetObjectSizeValues simGetObjectSizeValues;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
