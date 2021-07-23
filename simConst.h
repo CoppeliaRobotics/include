@@ -1,11 +1,11 @@
 #if !defined(SIMCONST_INCLUDED_)
 #define SIMCONST_INCLUDED_
 
-#define SIM_PROGRAM_VERSION_NB 40200
-#define SIM_PROGRAM_VERSION "4.2.0."
+#define SIM_PROGRAM_VERSION_NB 40300
+#define SIM_PROGRAM_VERSION "4.3.0."
 
-#define SIM_PROGRAM_REVISION_NB 6
-#define SIM_PROGRAM_REVISION "(rev. 6)"
+#define SIM_PROGRAM_REVISION_NB 0
+#define SIM_PROGRAM_REVISION "(rev. 0)"
 
 #define SIM_PROGRAM_FULL_VERSION_NB ((SIM_PROGRAM_VERSION_NB) * 100 + (SIM_PROGRAM_REVISION_NB))
 
@@ -497,7 +497,7 @@ enum { /* Script tree traversal direction, is serialized */
     sim_scripttreetraversal_parent
 };
 
-enum { /* Script debug level, is serialized */
+enum { /* Script debug level, deprecated */
     sim_scriptdebug_none=0,
     sim_scriptdebug_syscalls=1,
     sim_scriptdebug_vars_interval=2,
@@ -753,7 +753,7 @@ enum { /* Integer parameters: */
     sim_intparam_custom_cmd_start_id, /* can only be read */
     sim_intparam_compilation_version, /* 0=evaluation version, 1=full version, 2=player version. Can only be read */
     sim_intparam_current_page,
-    sim_intparam_flymode_camera_handle, /* can only be read */
+    sim_intparam_flymode_camera_handle, /* deprecated */
     sim_intparam_dynamic_step_divider, /* can only be read */
     sim_intparam_dynamic_engine, /* 0=Bullet, 1=ODE. 2=Vortex. 3=Newton. Can only be read */
     sim_intparam_server_port_start, /* can only be read */
