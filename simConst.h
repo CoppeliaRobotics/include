@@ -217,8 +217,8 @@ enum { /* Check the documentation instead of comments below!! */
         sim_message_eventcallback_guipass,
         sim_message_eventcallback_mainscriptabouttobecalled,
 
-        sim_message_eventcallback_rmlposition, /* the command simRMLPosition was called. The appropriate plugin should handle the call */
-        sim_message_eventcallback_rmlvelocity, /* the command simRMLVelocity was called. The appropriate plugin should handle the call */
+        sim_message_eventcallback_rmlposition, /* deprecated */
+        sim_message_eventcallback_rmlvelocity, /* deprecated */
 
         sim_message_eventcallback_reserved18,
         sim_message_eventcallback_reserved19,
@@ -233,11 +233,11 @@ enum { /* Check the documentation instead of comments below!! */
         sim_message_eventcallback_proxsensorselectup, /* a "geometric" click select (mouse up) was registered. Enable with sim_intparam_prox_sensor_select_down. aux[0]=objectID, customData[0-2]=pt coord (floats), customData[3-5]=pt normal vector (floats)*/
         sim_message_eventcallback_pickselectdown, /* a "pick" click select (mouse down) was registered. aux[0]=objectID */
 
-        sim_message_eventcallback_rmlpos, /* the command simRMLPos was called. The appropriate plugin should handle the call */
-        sim_message_eventcallback_rmlvel, /* the command simRMLVel was called. The appropriate plugin should handle the call */
-        sim_message_eventcallback_rmlstep, /* the command simRMLStep was called. The appropriate plugin should handle the call */
-        sim_message_eventcallback_rmlremove, /* the command simRMLRemove was called. The appropriate plugin should handle the call */
-        sim_message_eventcallback_rmlinfo, /* used internally */
+        sim_message_eventcallback_rmlpos, /* deprecated */
+        sim_message_eventcallback_rmlvel, /* deprecated */
+        sim_message_eventcallback_rmlstep, /* deprecated */
+        sim_message_eventcallback_rmlremove, /* deprecated */
+        sim_message_eventcallback_rmlinfo, /* deprecated */
 
         sim_message_eventcallback_beforerendering, /* called just before the scene is rendered. From the main SIM thread! */
 
@@ -937,7 +937,7 @@ enum { /* Navigation and selection modes with the mouse. Lower byte values are m
 };
 
 
-enum { /* Reflexxes Motion Library flags */
+enum { /* Reflexxes Motion Library flags, deprecated. Use Ruckig instead. */
     /* enable one of following: */
     simrml_phase_sync_if_possible                   =0x0000,
     simrml_only_time_sync                           =0x0001,
@@ -951,6 +951,13 @@ enum { /* Reflexxes Motion Library flags */
     /* enable any: */
     simrml_disable_extremum_motion_states_calc      =0x0008,
     simrml_keep_current_vel_if_fallback_strategy    =0x0010
+};
+
+enum { /* Ruckig Library flags */
+    /* enable one of following: */
+    sim_ruckig_phasesync                            =0x0000,
+    sim_ruckig_timesync                             =0x0001,
+    sim_ruckig_nosync                               =0x0003,
 };
 
 enum { /* file dialog styles */
