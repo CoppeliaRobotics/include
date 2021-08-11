@@ -263,9 +263,9 @@ typedef simInt (__cdecl *ptrSimSetVisionSensorCharImage)(simInt visionSensorHand
 typedef simFloat* (__cdecl *ptrSimGetVisionSensorDepthBuffer)(simInt visionSensorHandle);
 typedef simInt (__cdecl *ptrSimGetObjectQuaternion)(simInt objectHandle,simInt relativeToObjectHandle,simFloat* quaternion);
 typedef simInt (__cdecl *ptrSimSetObjectQuaternion)(simInt objectHandle,simInt relativeToObjectHandle,const simFloat* quaternion);
-typedef simInt (__cdecl *ptrSimRuckigPos)(simInt dofs,simDouble smallestTimeStep,simInt flags,const simDouble* currentPos,const simDouble* currentVel,const simDouble* currentAccel,const simDouble* maxVel,const simDouble* maxAccel,const simDouble* maxJerk,const simBool* selection,const simDouble* targetPos,const simDouble* targetVel);
-typedef simInt (__cdecl *ptrSimRuckigVel)(simInt dofs,simDouble smallestTimeStep,simInt flags,const simDouble* currentPos,const simDouble* currentVel,const simDouble* currentAccel,const simDouble* maxAccel,const simDouble* maxJerk,const simBool* selection,const simDouble* targetVel);
-typedef simInt (__cdecl *ptrSimRuckigStep)(simInt objHandle,simDouble timeStep,simDouble* newPos,simDouble* newVel,simDouble* newAccel,simDouble* syncTime);
+typedef simInt (__cdecl *ptrSimRuckigPos)(simInt dofs,simDouble smallestTimeStep,simInt flags,const simDouble* currentPos,const simDouble* currentVel,const simDouble* currentAccel,const simDouble* maxVel,const simDouble* maxAccel,const simDouble* maxJerk,const simBool* selection,const simDouble* targetPos,const simDouble* targetVel,simDouble* reserved1,simInt* reserved2);
+typedef simInt (__cdecl *ptrSimRuckigVel)(simInt dofs,simDouble smallestTimeStep,simInt flags,const simDouble* currentPos,const simDouble* currentVel,const simDouble* currentAccel,const simDouble* maxAccel,const simDouble* maxJerk,const simBool* selection,const simDouble* targetVel,simDouble* reserved1,simInt* reserved2);
+typedef simInt (__cdecl *ptrSimRuckigStep)(simInt objHandle,simDouble timeStep,simDouble* newPos,simDouble* newVel,simDouble* newAccel,simDouble* syncTime,simDouble* reserved1,simInt* reserved2);
 typedef simInt (__cdecl *ptrSimRuckigRemove)(simInt objHandle);
 typedef simInt (__cdecl *ptrSimBuildMatrixQ)(const simFloat* position,const simFloat* quaternion,simFloat* matrix);
 typedef simInt (__cdecl *ptrSimGetQuaternionFromMatrix)(const simFloat* matrix,simFloat* quaternion);
