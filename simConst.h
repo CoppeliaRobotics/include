@@ -268,6 +268,12 @@ enum { /* Check the documentation instead of comments below!! */
         sim_message_eventcallback_scriptstatedestroyed,
         sim_message_eventcallback_scriptdestroyed,
 
+        /* Following called before/after the main script's corresponding sections. auxData[0]=0:before, auxData[0]=1:after */
+        sim_message_eventcallback_simulationinit,
+        sim_message_eventcallback_simulationactuation,
+        sim_message_eventcallback_simulationsensing,
+        sim_message_eventcallback_simulationcleanup,
+
         sim_message_simulation_start_resume_request=0x1000,
         sim_message_simulation_pause_request,
         sim_message_simulation_stop_request
