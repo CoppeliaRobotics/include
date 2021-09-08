@@ -589,7 +589,7 @@ enum { /* distance calculation methods: (serialized) */
     sim_distcalcmethod_dac_if_nonzero
 };
 
-enum { /* Generic dialog styles: */
+enum { /* Deprecated */
     sim_dlgstyle_message        =0,
     sim_dlgstyle_input,
     sim_dlgstyle_ok,
@@ -598,7 +598,7 @@ enum { /* Generic dialog styles: */
     sim_dlgstyle_dont_center    =32 /* can be combined with one of above values. Only with this flag can the position of the related UI be set just after dialog creation  */
 };
 
-enum { /* Generic dialog return values: */
+enum { /* Deprecated */
     sim_dlgret_still_open=0,
     sim_dlgret_ok,
     sim_dlgret_cancel,
@@ -966,28 +966,28 @@ enum { /* Ruckig Library flags */
     sim_ruckig_nosync                               =0x0003,
 };
 
-enum { /* file dialog styles */
+enum { /* deprecated */
     sim_filedlg_type_load=0,
     sim_filedlg_type_save,
     sim_filedlg_type_load_multiple,
     sim_filedlg_type_folder
 };
 
-enum { /* message box styles */
+enum { /* deprecated */
     sim_msgbox_type_info=0,
     sim_msgbox_type_question,
     sim_msgbox_type_warning,
     sim_msgbox_type_critical
 };
 
-enum { /* message box buttons */
+enum { /* deprecated */
     sim_msgbox_buttons_ok=0,
     sim_msgbox_buttons_yesno,
     sim_msgbox_buttons_yesnocancel,
     sim_msgbox_buttons_okcancel
 };
 
-enum { /* message box return values */
+enum { /* deprecated */
     sim_msgbox_return_cancel=0,
     sim_msgbox_return_no,
     sim_msgbox_return_yes,
