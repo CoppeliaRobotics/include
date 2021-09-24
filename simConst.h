@@ -2027,14 +2027,7 @@ enum {  simx_error_noerror                  =0x000000,
 };
 
 
-/******************************************
-*******************************************
-ROS API constants:
-*******************************************
-*******************************************/
-
-
-/* All stream command codes (followed by operation mode codes) */
+/* deprecated */
 enum {  simros_strmcmdnull_start                =0,
 
         /* from here on, commands are only identified by their code */

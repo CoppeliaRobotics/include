@@ -95,12 +95,8 @@ typedef simInt (__cdecl *ptrSimSaveScene)(const simChar* filename);
 typedef simInt (__cdecl *ptrSimLoadModel)(const simChar* filename);
 typedef simInt (__cdecl *ptrSimSaveModel)(int baseOfModelHandle,const simChar* filename);
 typedef simInt (__cdecl *ptrSimDoesFileExist)(const simChar* filename);
-typedef simInt (__cdecl *ptrSimIsObjectInSelection)(simInt objectHandle);
-typedef simInt (__cdecl *ptrSimAddObjectToSelection)(simInt what,simInt objectHandle);
-typedef simInt (__cdecl *ptrSimRemoveObjectFromSelection)(simInt what,simInt objectHandle);
-typedef simInt (__cdecl *ptrSimGetObjectSelectionSize)();
-typedef simInt (__cdecl *ptrSimGetObjectLastSelection)();
-typedef simInt (__cdecl *ptrSimGetObjectSelection)(simInt* objectHandles);
+typedef simInt* (__cdecl *ptrSimGetObjectSel)(simInt* cnt);
+typedef simInt (__cdecl *ptrSimSetObjectSel)(const simInt* handles,simInt cnt);
 typedef simInt (__cdecl *ptrSimHandleProximitySensor)(simInt sensorHandle,simFloat* detectedPoint,simInt* detectedObjectHandle,simFloat* normalVector);
 typedef simInt (__cdecl *ptrSimReadProximitySensor)(simInt sensorHandle,simFloat* detectedPoint,simInt* detectedObjectHandle,simFloat* normalVector);
 typedef simInt (__cdecl *ptrSimHandleDynamics)(simFloat deltaTime);
@@ -156,9 +152,7 @@ typedef simInt (__cdecl *ptrSimRegisterScriptFuncHook)(simInt scriptHandle,const
 typedef simInt (__cdecl *ptrSimSetJointTargetVelocity)(simInt objectHandle,simFloat targetVelocity);
 typedef simInt (__cdecl *ptrSimGetJointTargetVelocity)(simInt objectHandle,simFloat* targetVelocity);
 typedef simInt (__cdecl *ptrSimCopyPasteObjects)(simInt* objectHandles,simInt objectCount,simInt options);
-typedef simInt (__cdecl *ptrSimScaleSelectedObjects)(simFloat scalingFactor,simBool scalePositionsToo);
 typedef simInt (__cdecl *ptrSimScaleObjects)(const simInt* objectHandles,simInt objectCount,simFloat scalingFactor,simBool scalePositionsToo);
-typedef simInt (__cdecl *ptrSimDeleteSelectedObjects)();
 typedef simInt (__cdecl *ptrSimGetObjectUniqueIdentifier)(simInt objectHandle,simInt* uniqueIdentifier);
 typedef simInt (__cdecl *ptrSimAddDrawingObject)(simInt objectType,simFloat size,simFloat duplicateTolerance,simInt parentObjectHandle,simInt maxItemCount,const simFloat* ambient_diffuse,const simFloat* setToNULL,const simFloat* specular,const simFloat* emission);
 typedef simInt (__cdecl *ptrSimRemoveDrawingObject)(simInt objectHandle);
@@ -550,12 +544,8 @@ extern ptrSimSaveScene simSaveScene;
 extern ptrSimLoadModel simLoadModel;
 extern ptrSimSaveModel simSaveModel;
 extern ptrSimDoesFileExist simDoesFileExist;
-extern ptrSimIsObjectInSelection simIsObjectInSelection;
-extern ptrSimAddObjectToSelection simAddObjectToSelection;
-extern ptrSimRemoveObjectFromSelection simRemoveObjectFromSelection;
-extern ptrSimGetObjectSelectionSize simGetObjectSelectionSize;
-extern ptrSimGetObjectLastSelection simGetObjectLastSelection;
-extern ptrSimGetObjectSelection simGetObjectSelection;
+extern ptrSimGetObjectSel simGetObjectSel
+extern ptrSimSetObjectSel simSetObjectSel
 extern ptrSimHandleProximitySensor simHandleProximitySensor;
 extern ptrSimReadProximitySensor simReadProximitySensor;
 extern ptrSimHandleDynamics simHandleDynamics;
@@ -611,9 +601,7 @@ extern ptrSimRegisterScriptFuncHook simRegisterScriptFuncHook;
 extern ptrSimSetJointTargetVelocity simSetJointTargetVelocity;
 extern ptrSimGetJointTargetVelocity simGetJointTargetVelocity;
 extern ptrSimCopyPasteObjects simCopyPasteObjects;
-extern ptrSimScaleSelectedObjects simScaleSelectedObjects;
 extern ptrSimScaleObjects simScaleObjects;
-extern ptrSimDeleteSelectedObjects simDeleteSelectedObjects;
 extern ptrSimGetObjectUniqueIdentifier simGetObjectUniqueIdentifier;
 extern ptrSimAddDrawingObject simAddDrawingObject;
 extern ptrSimRemoveDrawingObject simRemoveDrawingObject;
@@ -1126,6 +1114,14 @@ typedef simInt (__cdecl *ptrSimDisplayDialog)(const simChar* titleText,const sim
 typedef simInt (__cdecl *ptrSimGetDialogResult)(simInt genericDialogHandle);
 typedef simChar* (__cdecl *ptrSimGetDialogInput)(simInt genericDialogHandle);
 typedef simInt (__cdecl *ptrSimEndDialog)(simInt genericDialogHandle);
+typedef simInt (__cdecl *ptrSimIsObjectInSelection)(simInt objectHandle);
+typedef simInt (__cdecl *ptrSimAddObjectToSelection)(simInt what,simInt objectHandle);
+typedef simInt (__cdecl *ptrSimRemoveObjectFromSelection)(simInt what,simInt objectHandle);
+typedef simInt (__cdecl *ptrSimGetObjectSelectionSize)();
+typedef simInt (__cdecl *ptrSimGetObjectLastSelection)();
+typedef simInt (__cdecl *ptrSimGetObjectSelection)(simInt* objectHandles);
+typedef simInt (__cdecl *ptrSimScaleSelectedObjects)(simFloat scalingFactor,simBool scalePositionsToo);
+typedef simInt (__cdecl *ptrSimDeleteSelectedObjects)();
 
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1348,6 +1344,14 @@ extern ptrSimDisplayDialog simDisplayDialog;
 extern ptrSimGetDialogResult simGetDialogResult;
 extern ptrSimGetDialogInput simGetDialogInput;
 extern ptrSimEndDialog simEndDialog;
+extern ptrSimIsObjectInSelection simIsObjectInSelection;
+extern ptrSimAddObjectToSelection simAddObjectToSelection;
+extern ptrSimRemoveObjectFromSelection simRemoveObjectFromSelection;
+extern ptrSimGetObjectSelectionSize simGetObjectSelectionSize;
+extern ptrSimGetObjectLastSelection simGetObjectLastSelection;
+extern ptrSimGetObjectSelection simGetObjectSelection;
+extern ptrSimScaleSelectedObjects simScaleSelectedObjects;
+extern ptrSimDeleteSelectedObjects simDeleteSelectedObjects;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
