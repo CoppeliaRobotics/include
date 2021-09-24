@@ -849,6 +849,7 @@ enum { /* String parameters: */
     sim_stringparam_tempdir, /* can only be read */
     sim_stringparam_tempscenedir, /* can only be read */
     sim_stringparam_datadir, /* can only be read */
+    sim_stringparam_importexportdir,
 };
 
 enum { /* Array parameters: */

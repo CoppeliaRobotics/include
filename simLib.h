@@ -544,8 +544,8 @@ extern ptrSimSaveScene simSaveScene;
 extern ptrSimLoadModel simLoadModel;
 extern ptrSimSaveModel simSaveModel;
 extern ptrSimDoesFileExist simDoesFileExist;
-extern ptrSimGetObjectSel simGetObjectSel
-extern ptrSimSetObjectSel simSetObjectSel
+extern ptrSimGetObjectSel simGetObjectSel;
+extern ptrSimSetObjectSel simSetObjectSel;
 extern ptrSimHandleProximitySensor simHandleProximitySensor;
 extern ptrSimReadProximitySensor simReadProximitySensor;
 extern ptrSimHandleDynamics simHandleDynamics;
