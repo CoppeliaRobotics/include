@@ -476,6 +476,7 @@ enum { /* System callbacks */
     sim_syscb_vision, /* called just after a vision sensor image was acquired, for processing */
     sim_syscb_trigger, /* called by vision, proximity or force/torque sensors when they trigger */
     sim_syscb_userconfig, /* called for the customization script, when the user double-clicks the script simulation parameters icon */
+    sim_syscb_moduleentry, /* called when a module menu entry is selected. Must be first created with sim.moduleEntry */
 };
 
 enum { /* Script attributes */
