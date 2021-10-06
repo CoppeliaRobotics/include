@@ -48,8 +48,8 @@ typedef simInt (__cdecl *ptrSimSetStringParam)(simInt Param,const simChar* strin
 typedef simChar* (__cdecl *ptrSimGetStringParam)(simInt Param);
 typedef simInt (__cdecl *ptrSimSetArrayParam)(simInt Param,const simVoid* arrayOfValues);
 typedef simInt (__cdecl *ptrSimGetArrayParam)(simInt Param,simVoid* arrayOfValues);
-typedef simInt (__cdecl *ptrSimSetStringNamedParam)(const simChar* paramName,const simChar* stringParam,simInt paramLength);
-typedef simChar* (__cdecl *ptrSimGetStringNamedParam)(const simChar* paramName,simInt* paramLength);
+typedef simInt (__cdecl *ptrSimSetNamedStringParam)(const simChar* paramName,const simChar* stringParam,simInt paramLength);
+typedef simChar* (__cdecl *ptrSimGetNamedStringParam)(const simChar* paramName,simInt* paramLength);
 typedef simInt (__cdecl *ptrSimGetObjectHandleEx)(const simChar* objectAlias,simInt index,simInt proxy,simInt options);
 typedef simInt (__cdecl *ptrSimGetScriptHandleEx)(simInt scriptType,simInt objHandle,const simChar* scriptName);
 typedef simInt (__cdecl *ptrSimRemoveObject)(simInt objectHandle);
@@ -497,8 +497,8 @@ extern ptrSimSetStringParam simSetStringParam;
 extern ptrSimGetStringParam simGetStringParam;
 extern ptrSimSetArrayParam simSetArrayParam;
 extern ptrSimGetArrayParam simGetArrayParam;
-extern ptrSimSetStringNamedParam simSetStringNamedParam;
-extern ptrSimGetStringNamedParam simGetStringNamedParam;
+extern ptrSimSetNamedStringParam simSetNamedStringParam;
+extern ptrSimGetNamedStringParam simGetNamedStringParam;
 extern ptrSimGetObjectHandleEx simGetObjectHandleEx;
 extern ptrSimGetScriptHandleEx simGetScriptHandleEx;
 extern ptrSimRemoveObject simRemoveObject;
@@ -1354,6 +1354,8 @@ extern ptrSimGetObjectLastSelection simGetObjectLastSelection;
 extern ptrSimGetObjectSelection simGetObjectSelection;
 extern ptrSimScaleSelectedObjects simScaleSelectedObjects;
 extern ptrSimDeleteSelectedObjects simDeleteSelectedObjects;
+extern ptrSimSetNamedStringParam simSetStringNamedParam;
+extern ptrSimGetNamedStringParam simGetStringNamedParam;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
