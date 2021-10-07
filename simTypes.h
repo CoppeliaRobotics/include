@@ -41,6 +41,8 @@ struct SShapeVizInfo
     simFloat* textureCoords;
     simInt textureApplyMode;
     simInt textureOptions; /* not just textures options */
+    simFloat transparency;
+    simInt options;
 };
 
 struct SLuaCallBack
