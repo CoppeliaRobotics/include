@@ -33,7 +33,7 @@ enum {
 
 /* General object types. Values are serialized */
 enum {
-    sim_appobj_object_type=sim_object_type_end+1,
+    sim_appobj_object_type=109,
     sim_appobj_collision_type, /* deprecated */
     sim_appobj_distance_type, /* deprecated */
     sim_appobj_simulation_type,
@@ -851,6 +851,7 @@ enum { /* String parameters: */
     sim_stringparam_tempscenedir, /* can only be read */
     sim_stringparam_datadir, /* can only be read */
     sim_stringparam_importexportdir,
+    sim_stringparam_addonpath, /* can only be read */
 };
 
 enum { /* Array parameters: */
