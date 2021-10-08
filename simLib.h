@@ -153,7 +153,6 @@ typedef simInt (__cdecl *ptrSimSetJointTargetVelocity)(simInt objectHandle,simFl
 typedef simInt (__cdecl *ptrSimGetJointTargetVelocity)(simInt objectHandle,simFloat* targetVelocity);
 typedef simInt (__cdecl *ptrSimCopyPasteObjects)(simInt* objectHandles,simInt objectCount,simInt options);
 typedef simInt (__cdecl *ptrSimScaleObjects)(const simInt* objectHandles,simInt objectCount,simFloat scalingFactor,simBool scalePositionsToo);
-typedef simInt (__cdecl *ptrSimGetObjectUniqueIdentifier)(simInt objectHandle,simInt* uniqueIdentifier);
 typedef simInt (__cdecl *ptrSimAddDrawingObject)(simInt objectType,simFloat size,simFloat duplicateTolerance,simInt parentObjectHandle,simInt maxItemCount,const simFloat* ambient_diffuse,const simFloat* setToNULL,const simFloat* specular,const simFloat* emission);
 typedef simInt (__cdecl *ptrSimRemoveDrawingObject)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimAddDrawingObjectItem)(simInt objectHandle,const simFloat* itemData);
@@ -602,7 +601,6 @@ extern ptrSimSetJointTargetVelocity simSetJointTargetVelocity;
 extern ptrSimGetJointTargetVelocity simGetJointTargetVelocity;
 extern ptrSimCopyPasteObjects simCopyPasteObjects;
 extern ptrSimScaleObjects simScaleObjects;
-extern ptrSimGetObjectUniqueIdentifier simGetObjectUniqueIdentifier;
 extern ptrSimAddDrawingObject simAddDrawingObject;
 extern ptrSimRemoveDrawingObject simRemoveDrawingObject;
 extern ptrSimAddDrawingObjectItem simAddDrawingObjectItem;
@@ -1124,6 +1122,7 @@ typedef simInt (__cdecl *ptrSimGetObjectLastSelection)();
 typedef simInt (__cdecl *ptrSimGetObjectSelection)(simInt* objectHandles);
 typedef simInt (__cdecl *ptrSimScaleSelectedObjects)(simFloat scalingFactor,simBool scalePositionsToo);
 typedef simInt (__cdecl *ptrSimDeleteSelectedObjects)();
+typedef simInt (__cdecl *ptrSimGetObjectUniqueIdentifier)(simInt objectHandle,simInt* uniqueIdentifier);
 
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1356,6 +1355,7 @@ extern ptrSimScaleSelectedObjects simScaleSelectedObjects;
 extern ptrSimDeleteSelectedObjects simDeleteSelectedObjects;
 extern ptrSimSetNamedStringParam simSetStringNamedParam;
 extern ptrSimGetNamedStringParam simGetStringNamedParam;
+extern ptrSimGetObjectUniqueIdentifier simGetObjectUniqueIdentifier;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)

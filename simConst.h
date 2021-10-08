@@ -1174,6 +1174,7 @@ enum { /* Object int/float/string parameters */
     sim_objfloatparam_size_factor= 34,
     sim_objstringparam_unique_id= 35,
     sim_objintparam_visible= 36,
+    sim_objintparam_unique_id= 37,
 
     sim_objparam_end= 999,
 
