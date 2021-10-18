@@ -71,6 +71,8 @@ typedef simInt (__cdecl *ptrSimGetJointTargetPosition)(simInt objectHandle,simFl
 typedef simInt (__cdecl *ptrSimSetJointMaxForce)(simInt objectHandle,simFloat forceOrTorque);
 typedef simInt (__cdecl *ptrSimGetJointMatrix)(simInt objectHandle,simFloat* matrix);
 typedef simInt (__cdecl *ptrSimSetSphericalJointMatrix)(simInt objectHandle,const simFloat* matrix);
+typedef simInt (__cdecl *ptrSimGetJointPose)(simInt objectHandle,simFloat* pose);
+typedef simInt (__cdecl *ptrSimSetJointPose)(simInt objectHandle,const simFloat* pose);
 typedef simInt (__cdecl *ptrSimGetJointInterval)(simInt objectHandle,simBool* cyclic,simFloat* interval);
 typedef simInt (__cdecl *ptrSimSetJointInterval)(simInt objectHandle,simBool cyclic,const simFloat* interval);
 typedef simInt (__cdecl *ptrSimGetObjectParent)(simInt objectHandle);
@@ -519,6 +521,8 @@ extern ptrSimGetJointTargetPosition simGetJointTargetPosition;
 extern ptrSimSetJointMaxForce simSetJointMaxForce;
 extern ptrSimGetJointMatrix simGetJointMatrix;
 extern ptrSimSetSphericalJointMatrix simSetSphericalJointMatrix;
+extern ptrSimGetJointPose simGetJointPose;
+extern ptrSimSetJointPose simSetJointPose;
 extern ptrSimGetJointInterval simGetJointInterval;
 extern ptrSimSetJointInterval simSetJointInterval;
 extern ptrSimGetObjectParent simGetObjectParent;
