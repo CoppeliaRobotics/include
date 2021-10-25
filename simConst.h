@@ -1306,6 +1306,7 @@ enum { /* Object int/float/string parameters */
     sim_cameraintparam_pov_blur_samples= 9007,
     sim_camerafloatparam_near_clipping= 9008,
     sim_camerafloatparam_far_clipping= 9009,
+    sim_cameraintparam_perspective_operation= 9010,
 
     /* dummies */
     sim_dummyintparam_link_type= 10000,
