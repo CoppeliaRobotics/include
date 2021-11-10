@@ -69,10 +69,8 @@ typedef simInt (__cdecl *ptrSimSetJointPosition)(simInt objectHandle,simFloat po
 typedef simInt (__cdecl *ptrSimSetJointTargetPosition)(simInt objectHandle,simFloat targetPosition);
 typedef simInt (__cdecl *ptrSimGetJointTargetPosition)(simInt objectHandle,simFloat* targetPosition);
 typedef simInt (__cdecl *ptrSimSetJointMaxForce)(simInt objectHandle,simFloat forceOrTorque);
-typedef simInt (__cdecl *ptrSimGetJointMatrix)(simInt objectHandle,simFloat* matrix);
-typedef simInt (__cdecl *ptrSimSetSphericalJointMatrix)(simInt objectHandle,const simFloat* matrix);
-typedef simInt (__cdecl *ptrSimGetJointPose)(simInt objectHandle,simFloat* pose);
-typedef simInt (__cdecl *ptrSimSetJointPose)(simInt objectHandle,const simFloat* pose);
+typedef simInt (__cdecl *ptrSimGetObjectChildPose)(simInt objectHandle,simFloat* pose);
+typedef simInt (__cdecl *ptrSimSetObjectChildPose)(simInt objectHandle,const simFloat* pose);
 typedef simInt (__cdecl *ptrSimGetJointInterval)(simInt objectHandle,simBool* cyclic,simFloat* interval);
 typedef simInt (__cdecl *ptrSimSetJointInterval)(simInt objectHandle,simBool cyclic,const simFloat* interval);
 typedef simInt (__cdecl *ptrSimGetObjectParent)(simInt objectHandle);
@@ -515,10 +513,8 @@ extern ptrSimSetJointPosition simSetJointPosition;
 extern ptrSimSetJointTargetPosition simSetJointTargetPosition;
 extern ptrSimGetJointTargetPosition simGetJointTargetPosition;
 extern ptrSimSetJointMaxForce simSetJointMaxForce;
-extern ptrSimGetJointMatrix simGetJointMatrix;
-extern ptrSimSetSphericalJointMatrix simSetSphericalJointMatrix;
-extern ptrSimGetJointPose simGetJointPose;
-extern ptrSimSetJointPose simSetJointPose;
+extern ptrSimGetObjectChildPose simGetObjectChildPose;
+extern ptrSimSetObjectChildPose simSetObjectChildPose;
 extern ptrSimGetJointInterval simGetJointInterval;
 extern ptrSimSetJointInterval simSetJointInterval;
 extern ptrSimGetObjectParent simGetObjectParent;
@@ -1126,6 +1122,8 @@ typedef simVoid (__cdecl *ptr_simSetDynamicForceSensorLocalTransformationPart2Is
 typedef simBool (__cdecl *ptr_simIsForceSensorBroken)(const simVoid* forceSensor);
 typedef simInt (__cdecl *ptrSimBreakForceSensor)(simInt objectHandle);
 typedef simVoid (__cdecl *ptr_simGetDynamicForceSensorLocalTransformationPart2)(const simVoid* forceSensor,simFloat* pos,simFloat* quat);
+typedef simInt (__cdecl *ptrSimGetJointMatrix)(simInt objectHandle,simFloat* matrix);
+typedef simInt (__cdecl *ptrSimSetSphericalJointMatrix)(simInt objectHandle,const simFloat* matrix);
 
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1366,6 +1364,8 @@ extern ptr_simSetDynamicForceSensorLocalTransformationPart2IsValid _simSetDynami
 extern ptr_simIsForceSensorBroken _simIsForceSensorBroken;
 extern ptrSimBreakForceSensor simBreakForceSensor;
 extern ptr_simGetDynamicForceSensorLocalTransformationPart2 _simGetDynamicForceSensorLocalTransformationPart2;
+extern ptrSimGetJointMatrix simGetJointMatrix;
+extern ptrSimSetSphericalJointMatrix simSetSphericalJointMatrix;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
