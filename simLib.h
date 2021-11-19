@@ -218,11 +218,11 @@ typedef simInt (__cdecl *ptrSimCreateMeshShape)(simInt options,simFloat shadingA
 typedef simInt (__cdecl *ptrSimCreatePureShape)(simInt primitiveType,simInt options,const simFloat* sizes,simFloat mass,const simInt* precision);
 typedef simInt (__cdecl *ptrSimCreateHeightfieldShape)(simInt options,simFloat shadingAngle,simInt xPointCount,simInt yPointCount,simFloat xSize,const simFloat* heights);
 typedef simInt (__cdecl *ptrSimGetShapeMesh)(simInt shapeHandle,simFloat** vertices,simInt* verticesSize,simInt** indices,simInt* indicesSize,simFloat** normals);
-typedef simInt (__cdecl *ptrSimCreateJoint)(simInt jointType,simInt jointMode,simInt options,const simFloat* sizes,const simFloat* colorA,const simFloat* colorB);
-typedef simInt (__cdecl *ptrSimCreateDummy)(simFloat size,const simFloat* color);
-typedef simInt (__cdecl *ptrSimCreateForceSensor)(simInt options,const simInt* intParams,const simFloat* floatParams,const simFloat* color);
-typedef simInt (__cdecl *ptrSimCreateVisionSensor)(simInt options,const simInt* intParams,const simFloat* floatParams,const simFloat* color);
-typedef simInt (__cdecl *ptrSimCreateProximitySensor)(simInt sensorType,simInt subType,simInt options,const simInt* intParams,const simFloat* floatParams,const simFloat* color);
+typedef simInt (__cdecl *ptrSimCreateJoint)(simInt jointType,simInt jointMode,simInt options,const simFloat* sizes,const simFloat* reservedA,const simFloat* reservedB);
+typedef simInt (__cdecl *ptrSimCreateDummy)(simFloat size,const simFloat* reserved);
+typedef simInt (__cdecl *ptrSimCreateForceSensor)(simInt options,const simInt* intParams,const simFloat* floatParams,const simFloat* reserved);
+typedef simInt (__cdecl *ptrSimCreateVisionSensor)(simInt options,const simInt* intParams,const simFloat* floatParams,const simFloat* reserved);
+typedef simInt (__cdecl *ptrSimCreateProximitySensor)(simInt sensorType,simInt subType,simInt options,const simInt* intParams,const simFloat* floatParams,const simFloat* reserved);
 typedef simInt (__cdecl *ptrSimGetObjectInt32Param)(simInt objectHandle,simInt parameterID,simInt* parameter);
 typedef simInt (__cdecl *ptrSimSetObjectInt32Param)(simInt objectHandle,simInt parameterID,simInt parameter);
 typedef simInt (__cdecl *ptrSimGetObjectFloatParam)(simInt objectHandle,simInt parameterID,simFloat* parameter);
