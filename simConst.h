@@ -853,6 +853,8 @@ enum { /* String parameters: */
     sim_stringparam_datadir, /* can only be read */
     sim_stringparam_importexportdir,
     sim_stringparam_addonpath, /* can only be read */
+    sim_stringparam_scenedefaultdir, /* can only be read */
+    sim_stringparam_modeldefaultdir, /* can only be read */
 };
 
 enum { /* Array parameters: */
