@@ -50,7 +50,9 @@ typedef simInt (__cdecl *ptrSimSetArrayParam)(simInt Param,const simVoid* arrayO
 typedef simInt (__cdecl *ptrSimGetArrayParam)(simInt Param,simVoid* arrayOfValues);
 typedef simInt (__cdecl *ptrSimSetNamedStringParam)(const simChar* paramName,const simChar* stringParam,simInt paramLength);
 typedef simChar* (__cdecl *ptrSimGetNamedStringParam)(const simChar* paramName,simInt* paramLength);
-typedef simInt (__cdecl *ptrSimGetObjectHandleEx)(const simChar* objectAlias,simInt index,simInt proxy,simInt options);
+typedef simInt (__cdecl *ptrSimGetObject)(const simChar* objectAlias,simInt index,simInt proxy,simInt options);
+typedef simInt64 (__cdecl *ptrSimGetObjectUid)(simInt objectHandle);
+typedef simInt (__cdecl *ptrSimGetObjectFromUid)(simInt64 uid,simInt options);
 typedef simInt (__cdecl *ptrSimGetScriptHandleEx)(simInt scriptType,simInt objHandle,const simChar* scriptName);
 typedef simInt (__cdecl *ptrSimRemoveObject)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimRemoveModel)(simInt objectHandle);
@@ -495,7 +497,9 @@ extern ptrSimSetArrayParam simSetArrayParam;
 extern ptrSimGetArrayParam simGetArrayParam;
 extern ptrSimSetNamedStringParam simSetNamedStringParam;
 extern ptrSimGetNamedStringParam simGetNamedStringParam;
-extern ptrSimGetObjectHandleEx simGetObjectHandleEx;
+extern ptrSimGetObject simGetObject;
+extern ptrSimGetObjectUid simGetObjectUid;
+extern ptrSimGetObjectFromUid simGetObjectFromUid;
 extern ptrSimGetScriptHandleEx simGetScriptHandleEx;
 extern ptrSimRemoveObject simRemoveObject;
 extern ptrSimRemoveModel simRemoveModel;
@@ -1083,6 +1087,7 @@ typedef simChar* (__cdecl *ptrSimGetScriptName)(simInt scriptHandle);
 typedef simInt (__cdecl *ptrSimGetScriptHandle)(const simChar* scriptName);
 typedef simInt (__cdecl *ptrSimSetScriptVariable)(simInt scriptHandleOrType,const simChar* variableNameAtScriptName,simInt stackHandle);
 typedef simInt (__cdecl *ptrSimGetObjectHandle)(const simChar* objectAlias);
+typedef simInt (__cdecl *ptrSimGetObjectHandleEx)(const simChar* objectAlias,simInt index,simInt proxy,simInt options);
 typedef simInt (__cdecl *ptrSimGetScript)(simInt index);
 typedef simInt (__cdecl *ptrSimGetScriptAssociatedWithObject)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimGetCustomizationScriptAssociatedWithObject)(simInt objectHandle);
@@ -1368,6 +1373,7 @@ extern ptrSimBreakForceSensor simBreakForceSensor;
 extern ptr_simGetDynamicForceSensorLocalTransformationPart2 _simGetDynamicForceSensorLocalTransformationPart2;
 extern ptrSimGetJointMatrix simGetJointMatrix;
 extern ptrSimSetSphericalJointMatrix simSetSphericalJointMatrix;
+extern ptrSimGetObjectHandleEx simGetObjectHandleEx;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
