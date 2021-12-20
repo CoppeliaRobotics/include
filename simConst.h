@@ -1311,6 +1311,7 @@ enum { /* Object int/float/string parameters */
     sim_camerafloatparam_far_clipping= 9009,
     sim_cameraintparam_perspective_operation= 9010,
     sim_cameraintparam_trackedobject= 9011,
+    sim_cameraintparam_remotecameramode= 9012,
 
     /* dummies */
     sim_dummyintparam_link_type= 10000,
