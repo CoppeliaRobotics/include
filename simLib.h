@@ -378,6 +378,7 @@ typedef simInt (__cdecl *ptrSimGenerateShapeFromPath)(const simFloat* path,simIn
 typedef simFloat (__cdecl *ptrSimGetClosestPosOnPath)(const simFloat* path,simInt pathSize,const simFloat* pathLengths,const simFloat* absPt);
 typedef simInt (__cdecl *ptrSimInitScript)(simInt scriptHandle);
 typedef simInt (__cdecl *ptrSimModuleEntry)(simInt handle,const simChar* label,simInt state);
+typedef simInt (__cdecl *ptrSimCheckExecAuthorization)(const simChar* what,const simChar* args);
 
 
 // Following courtesy of Stephen James:
@@ -826,8 +827,7 @@ extern ptrSimGenerateShapeFromPath simGenerateShapeFromPath;
 extern ptrSimGetClosestPosOnPath simGetClosestPosOnPath;
 extern ptrSimInitScript simInitScript;
 extern ptrSimModuleEntry simModuleEntry;
-
-
+extern ptrSimCheckExecAuthorization simCheckExecAuthorization;
 
 
 // Following courtesy of Stephen James:
