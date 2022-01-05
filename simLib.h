@@ -282,8 +282,10 @@ typedef simInt (__cdecl *ptrSimCreateCollectionEx)(simInt options);
 typedef simInt (__cdecl *ptrSimAddItemToCollection)(simInt collectionHandle,simInt what,simInt objectHandle,simInt options);
 typedef simInt (__cdecl *ptrSimDestroyCollection)(simInt collectionHandle);
 typedef simInt* (__cdecl *ptrSimGetCollectionObjects)(simInt collectionHandle,simInt* objectCount);
-typedef simInt (__cdecl *ptrSimSetScriptAttribute)(simInt scriptHandle,simInt attributeID,simFloat floatVal,simInt intOrBoolVal);
-typedef simInt (__cdecl *ptrSimGetScriptAttribute)(simInt scriptHandle,simInt attributeID,simFloat* floatVal,simInt* intOrBoolVal);
+typedef simInt (__cdecl *ptrSimGetScriptInt32Param)(simInt scriptHandle,simInt parameterID,simInt* parameter);
+typedef simInt (__cdecl *ptrSimSetScriptInt32Param)(simInt scriptHandle,simInt parameterID,simInt parameter);
+typedef simChar* (__cdecl *ptrSimGetScriptStringParam)(simInt scriptHandle,simInt parameterID,simInt* parameterLength);
+typedef simInt (__cdecl *ptrSimSetScriptStringParam)(simInt scriptHandle,simInt parameterID,const simChar* parameter,simInt parameterLength);
 typedef simInt (__cdecl *ptrSimReorientShapeBoundingBox)(simInt shapeHandle,simInt relativeToHandle,simInt reservedSetToZero);
 typedef simInt (__cdecl *ptrSimSaveImage)(const simUChar* image,const simInt* resolution,simInt options,const simChar* filename,simInt quality,simVoid* reserved);
 typedef simUChar* (__cdecl *ptrSimLoadImage)(simInt* resolution,simInt options,const simChar* filename,simVoid* reserved);
@@ -731,8 +733,10 @@ extern ptrSimCreateCollectionEx simCreateCollectionEx;
 extern ptrSimAddItemToCollection simAddItemToCollection;
 extern ptrSimDestroyCollection simDestroyCollection;
 extern ptrSimGetCollectionObjects simGetCollectionObjects;
-extern ptrSimSetScriptAttribute simSetScriptAttribute;
-extern ptrSimGetScriptAttribute simGetScriptAttribute;
+extern ptrSimGetScriptInt32Param simGetScriptInt32Param;
+extern ptrSimSetScriptInt32Param simSetScriptInt32Param;
+extern ptrSimGetScriptStringParam simGetScriptStringParam;
+extern ptrSimSetScriptStringParam simSetScriptStringParam;
 extern ptrSimReorientShapeBoundingBox simReorientShapeBoundingBox;
 extern ptrSimSaveImage simSaveImage;
 extern ptrSimLoadImage simLoadImage;
@@ -1133,6 +1137,8 @@ typedef simInt (__cdecl *ptrSimBreakForceSensor)(simInt objectHandle);
 typedef simVoid (__cdecl *ptr_simGetDynamicForceSensorLocalTransformationPart2)(const simVoid* forceSensor,simFloat* pos,simFloat* quat);
 typedef simInt (__cdecl *ptrSimGetJointMatrix)(simInt objectHandle,simFloat* matrix);
 typedef simInt (__cdecl *ptrSimSetSphericalJointMatrix)(simInt objectHandle,const simFloat* matrix);
+typedef simInt (__cdecl *ptrSimSetScriptAttribute)(simInt scriptHandle,simInt attributeID,simFloat floatVal,simInt intOrBoolVal);
+typedef simInt (__cdecl *ptrSimGetScriptAttribute)(simInt scriptHandle,simInt attributeID,simFloat* floatVal,simInt* intOrBoolVal);
 
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1376,6 +1382,8 @@ extern ptr_simGetDynamicForceSensorLocalTransformationPart2 _simGetDynamicForceS
 extern ptrSimGetJointMatrix simGetJointMatrix;
 extern ptrSimSetSphericalJointMatrix simSetSphericalJointMatrix;
 extern ptrSimGetObjectHandleEx simGetObjectHandleEx;
+extern ptrSimSetScriptAttribute simSetScriptAttribute;
+extern ptrSimGetScriptAttribute simGetScriptAttribute;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)

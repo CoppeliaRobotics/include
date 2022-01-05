@@ -480,7 +480,20 @@ enum { /* System callbacks */
     sim_syscb_event, /* called on many different occasions, mainly to synchronize CoppeliaSim with an external application */
 };
 
-enum { /* Script attributes */
+enum { /* Script int params */
+    sim_scriptintparam_execorder=0,
+    sim_scriptintparam_execcount,
+    sim_scriptintparam_type,
+    sim_scriptintparam_handle,
+    sim_scriptintparam_enabled
+};
+
+enum { /* Script string params */
+    sim_scriptstringparam_description=0,
+    sim_scriptstringparam_name
+};
+
+enum { /* deprecated */
     sim_customizationscriptattribute_activeduringsimulation=0, /* deprecated */
     sim_scriptattribute_executionorder, /* integer attribute, see sim_scriptexecorder_normal, etc. */
     sim_scriptattribute_executioncount, /* integer attribute */
