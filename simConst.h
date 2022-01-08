@@ -869,6 +869,7 @@ enum { /* String parameters: */
     sim_stringparam_scenedefaultdir, /* can only be read */
     sim_stringparam_modeldefaultdir, /* can only be read */
     sim_stringparam_defaultpython, /* can only be read. See also pythonWrapper.python named string parameter */
+    sim_stringparam_additionalpythonpath, /* can only be read */
 };
 
 enum { /* Array parameters: */
