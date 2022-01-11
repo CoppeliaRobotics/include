@@ -478,6 +478,7 @@ enum { /* System callbacks */
     sim_syscb_userconfig, /* called for the customization script, when the user double-clicks the script simulation parameters icon */
     sim_syscb_moduleentry, /* called when a module menu entry is selected. Must be first created with sim.moduleEntry */
     sim_syscb_event, /* called on many different occasions, mainly to synchronize CoppeliaSim with an external application */
+    sim_syscb_ext, /* intercepts user callback calls */
 };
 
 enum { /* Script int params */
