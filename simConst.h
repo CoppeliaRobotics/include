@@ -486,7 +486,8 @@ enum { /* Script int params */
     sim_scriptintparam_execcount,
     sim_scriptintparam_type,
     sim_scriptintparam_handle,
-    sim_scriptintparam_enabled
+    sim_scriptintparam_enabled,
+    sim_scriptintparam_objecthandle
 };
 
 enum { /* Script string params */
