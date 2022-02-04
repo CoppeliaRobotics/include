@@ -492,7 +492,8 @@ enum { /* Script int params */
 
 enum { /* Script string params */
     sim_scriptstringparam_description=0,
-    sim_scriptstringparam_name
+    sim_scriptstringparam_name,
+    sim_scriptstringparam_text
 };
 
 enum { /* deprecated */
