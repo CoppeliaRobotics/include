@@ -104,9 +104,6 @@ typedef simInt (__cdecl *ptrSimSetObjectSel)(const simInt* handles,simInt cnt);
 typedef simInt (__cdecl *ptrSimHandleProximitySensor)(simInt sensorHandle,simFloat* detectedPoint,simInt* detectedObjectHandle,simFloat* normalVector);
 typedef simInt (__cdecl *ptrSimReadProximitySensor)(simInt sensorHandle,simFloat* detectedPoint,simInt* detectedObjectHandle,simFloat* normalVector);
 typedef simInt (__cdecl *ptrSimHandleDynamics)(simFloat deltaTime);
-typedef simInt (__cdecl *ptrSimSetScriptText)(simInt scriptHandle,const simChar* scriptText);
-typedef const simChar* (__cdecl *ptrSimGetScriptText)(simInt scriptHandle);
-typedef simInt (__cdecl *ptrSimGetScriptProperty)(simInt scriptHandle,simInt* scriptProperty,simInt* associatedObjectHandle);
 typedef simInt (__cdecl *ptrSimAssociateScriptWithObject)(simInt scriptHandle,simInt associatedObjectHandle);
 typedef simInt (__cdecl *ptrSimHandleMainScript)();
 typedef simInt (__cdecl *ptrSimResetScript)(simInt scriptHandle);
@@ -555,9 +552,6 @@ extern ptrSimSetObjectSel simSetObjectSel;
 extern ptrSimHandleProximitySensor simHandleProximitySensor;
 extern ptrSimReadProximitySensor simReadProximitySensor;
 extern ptrSimHandleDynamics simHandleDynamics;
-extern ptrSimSetScriptText simSetScriptText;
-extern ptrSimGetScriptText simGetScriptText;
-extern ptrSimGetScriptProperty simGetScriptProperty;
 extern ptrSimAssociateScriptWithObject simAssociateScriptWithObject;
 extern ptrSimHandleMainScript simHandleMainScript;
 extern ptrSimResetScript simResetScript;
@@ -1139,6 +1133,9 @@ typedef simInt (__cdecl *ptrSimGetJointMatrix)(simInt objectHandle,simFloat* mat
 typedef simInt (__cdecl *ptrSimSetSphericalJointMatrix)(simInt objectHandle,const simFloat* matrix);
 typedef simInt (__cdecl *ptrSimSetScriptAttribute)(simInt scriptHandle,simInt attributeID,simFloat floatVal,simInt intOrBoolVal);
 typedef simInt (__cdecl *ptrSimGetScriptAttribute)(simInt scriptHandle,simInt attributeID,simFloat* floatVal,simInt* intOrBoolVal);
+typedef simInt (__cdecl *ptrSimSetScriptText)(simInt scriptHandle,const simChar* scriptText);
+typedef const simChar* (__cdecl *ptrSimGetScriptText)(simInt scriptHandle);
+typedef simInt (__cdecl *ptrSimGetScriptProperty)(simInt scriptHandle,simInt* scriptProperty,simInt* associatedObjectHandle);
 
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1384,6 +1381,9 @@ extern ptrSimSetSphericalJointMatrix simSetSphericalJointMatrix;
 extern ptrSimGetObjectHandleEx simGetObjectHandleEx;
 extern ptrSimSetScriptAttribute simSetScriptAttribute;
 extern ptrSimGetScriptAttribute simGetScriptAttribute;
+extern ptrSimSetScriptText simSetScriptText;
+extern ptrSimGetScriptText simGetScriptText;
+extern ptrSimGetScriptProperty simGetScriptProperty;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
