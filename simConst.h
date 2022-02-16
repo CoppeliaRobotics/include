@@ -4,8 +4,8 @@
 #define SIM_PROGRAM_VERSION_NB 40300
 #define SIM_PROGRAM_VERSION "4.3.0."
 
-#define SIM_PROGRAM_REVISION_NB 3
-#define SIM_PROGRAM_REVISION "(rev. 3)"
+#define SIM_PROGRAM_REVISION_NB 4
+#define SIM_PROGRAM_REVISION "(rev. 4)"
 
 #define SIM_PROGRAM_FULL_VERSION_NB ((SIM_PROGRAM_VERSION_NB) * 100 + (SIM_PROGRAM_REVISION_NB))
 
@@ -1293,6 +1293,7 @@ enum { /* Object int/float/string parameters */
     sim_shapefloatparam_edge_angle= 3026,
     sim_shapeintparam_edge_borders_hidden= 3027,
     sim_shapeintparam_component_cnt= 3028,
+    sim_shapeintparam_sleepmodestart= 3029,
 
     /* proximity sensors */
     sim_proxintparam_ray_invisibility= 4000,
