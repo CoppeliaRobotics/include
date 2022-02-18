@@ -559,6 +559,7 @@ enum { /* DEPRECATED */
 };
 
 enum { /* special argument of some functions: */
+    sim_handle_world                    =-1,
     sim_handle_all                      =-2,
     sim_handle_all_except_explicit      =-3,
     sim_handle_self                     =-4,
@@ -570,7 +571,8 @@ enum { /* special argument of some functions: */
     sim_handle_all_except_self          =-10,
     sim_handle_parent                   =-11,
     sim_handle_scene                    =-12,
-    sim_handle_app                      =-13
+    sim_handle_app                      =-13,
+    sim_handle_inverse                  =-14
 };
 
 enum { /* special handle flags: */
