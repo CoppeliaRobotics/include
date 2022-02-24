@@ -71,7 +71,8 @@ typedef simInt (__cdecl *ptrSimGetJointPosition)(simInt objectHandle,simFloat* p
 typedef simInt (__cdecl *ptrSimSetJointPosition)(simInt objectHandle,simFloat position);
 typedef simInt (__cdecl *ptrSimSetJointTargetPosition)(simInt objectHandle,simFloat targetPosition);
 typedef simInt (__cdecl *ptrSimGetJointTargetPosition)(simInt objectHandle,simFloat* targetPosition);
-typedef simInt (__cdecl *ptrSimSetJointMaxForce)(simInt objectHandle,simFloat forceOrTorque);
+typedef simInt (__cdecl *ptrSimGetJointTargetForce)(simInt jointHandle,simFloat* forceOrTorque);
+typedef simInt (__cdecl *ptrSimSetJointTargetForce)(simInt objectHandle,simFloat forceOrTorque,simBool signedValue);
 typedef simInt (__cdecl *ptrSimGetObjectChildPose)(simInt objectHandle,simFloat* pose);
 typedef simInt (__cdecl *ptrSimSetObjectChildPose)(simInt objectHandle,const simFloat* pose);
 typedef simInt (__cdecl *ptrSimGetJointInterval)(simInt objectHandle,simBool* cyclic,simFloat* interval);
@@ -234,7 +235,6 @@ typedef simInt (__cdecl *ptrSimSetSimulationPassesPerRenderingPass)(simInt p);
 typedef simInt (__cdecl *ptrSimGetRotationAxis)(const simFloat* matrixStart,const simFloat* matrixGoal,simFloat* axis,simFloat* angle);
 typedef simInt (__cdecl *ptrSimRotateAroundAxis)(const simFloat* matrixIn,const simFloat* axis,const simFloat* axisPos,simFloat angle,simFloat* matrixOut);
 typedef simInt (__cdecl *ptrSimGetJointForce)(simInt jointHandle,simFloat* forceOrTorque);
-typedef simInt (__cdecl *ptrSimGetJointMaxForce)(simInt jointHandle,simFloat* forceOrTorque);
 typedef simInt (__cdecl *ptrSimCameraFitToView)(simInt viewHandleOrIndex,simInt objectCount,const simInt* objectHandles,simInt options,simFloat scaling);
 typedef simInt (__cdecl *ptrSimPersistentDataWrite)(const simChar* dataName,const simChar* dataValue,simInt dataLength,simInt options);
 typedef simChar* (__cdecl *ptrSimPersistentDataRead)(const simChar* dataName,simInt* dataLength);
@@ -519,7 +519,6 @@ extern ptrSimGetJointPosition simGetJointPosition;
 extern ptrSimSetJointPosition simSetJointPosition;
 extern ptrSimSetJointTargetPosition simSetJointTargetPosition;
 extern ptrSimGetJointTargetPosition simGetJointTargetPosition;
-extern ptrSimSetJointMaxForce simSetJointMaxForce;
 extern ptrSimGetObjectChildPose simGetObjectChildPose;
 extern ptrSimSetObjectChildPose simSetObjectChildPose;
 extern ptrSimGetJointInterval simGetJointInterval;
@@ -682,7 +681,8 @@ extern ptrSimSetSimulationPassesPerRenderingPass simSetSimulationPassesPerRender
 extern ptrSimGetRotationAxis simGetRotationAxis;
 extern ptrSimRotateAroundAxis simRotateAroundAxis;
 extern ptrSimGetJointForce simGetJointForce;
-extern ptrSimGetJointMaxForce simGetJointMaxForce;
+extern ptrSimGetJointTargetForce simGetJointTargetForce;
+extern ptrSimSetJointTargetForce simSetJointTargetForce;
 extern ptrSimCameraFitToView simCameraFitToView;
 extern ptrSimPersistentDataWrite simPersistentDataWrite;
 extern ptrSimPersistentDataRead simPersistentDataRead;
@@ -1136,6 +1136,8 @@ typedef simInt (__cdecl *ptrSimGetScriptAttribute)(simInt scriptHandle,simInt at
 typedef simInt (__cdecl *ptrSimSetScriptText)(simInt scriptHandle,const simChar* scriptText);
 typedef const simChar* (__cdecl *ptrSimGetScriptText)(simInt scriptHandle);
 typedef simInt (__cdecl *ptrSimGetScriptProperty)(simInt scriptHandle,simInt* scriptProperty,simInt* associatedObjectHandle);
+typedef simInt (__cdecl *ptrSimGetJointMaxForce)(simInt jointHandle,simFloat* forceOrTorque);
+typedef simInt (__cdecl *ptrSimSetJointMaxForce)(simInt objectHandle,simFloat forceOrTorque);
 
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1384,6 +1386,8 @@ extern ptrSimGetScriptAttribute simGetScriptAttribute;
 extern ptrSimSetScriptText simSetScriptText;
 extern ptrSimGetScriptText simGetScriptText;
 extern ptrSimGetScriptProperty simGetScriptProperty;
+extern ptrSimGetJointMaxForce simGetJointMaxForce;
+extern ptrSimSetJointMaxForce simSetJointMaxForce;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
