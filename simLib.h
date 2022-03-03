@@ -432,8 +432,6 @@ typedef simBool (__cdecl *ptr_simGetStartSleeping)(const simVoid* shape);
 typedef simBool (__cdecl *ptr_simGetWasPutToSleepOnce)(const simVoid* shape);
 typedef simBool (__cdecl *ptr_simGetDynamicsFullRefreshFlag)(const simVoid* object);
 typedef simVoid (__cdecl *ptr_simSetDynamicsFullRefreshFlag)(const simVoid* object,simBool flag);
-typedef simVoid (__cdecl *ptr_simSetGeomProxyDynamicsFullRefreshFlag)(simVoid* geomData,simBool flag);
-typedef simBool (__cdecl *ptr_simGetGeomProxyDynamicsFullRefreshFlag)(const simVoid* geomData);
 typedef simVoid (__cdecl *ptr_simSetShapeDynamicVelocity)(simVoid* shape,const simFloat* linear,const simFloat* angular);
 typedef simVoid (__cdecl *ptr_simGetAdditionalForceAndTorque)(const simVoid* shape,simFloat* force,simFloat* torque);
 typedef simVoid (__cdecl *ptr_simClearAdditionalForceAndTorque)(const simVoid* shape);
@@ -880,8 +878,6 @@ extern ptr_simGetStartSleeping _simGetStartSleeping;
 extern ptr_simGetWasPutToSleepOnce _simGetWasPutToSleepOnce;
 extern ptr_simGetDynamicsFullRefreshFlag _simGetDynamicsFullRefreshFlag;
 extern ptr_simSetDynamicsFullRefreshFlag _simSetDynamicsFullRefreshFlag;
-extern ptr_simSetGeomProxyDynamicsFullRefreshFlag _simSetGeomProxyDynamicsFullRefreshFlag;
-extern ptr_simGetGeomProxyDynamicsFullRefreshFlag _simGetGeomProxyDynamicsFullRefreshFlag;
 extern ptr_simSetShapeDynamicVelocity _simSetShapeDynamicVelocity;
 extern ptr_simGetAdditionalForceAndTorque _simGetAdditionalForceAndTorque;
 extern ptr_simClearAdditionalForceAndTorque _simClearAdditionalForceAndTorque;
@@ -1138,6 +1134,8 @@ typedef const simChar* (__cdecl *ptrSimGetScriptText)(simInt scriptHandle);
 typedef simInt (__cdecl *ptrSimGetScriptProperty)(simInt scriptHandle,simInt* scriptProperty,simInt* associatedObjectHandle);
 typedef simInt (__cdecl *ptrSimGetJointMaxForce)(simInt jointHandle,simFloat* forceOrTorque);
 typedef simInt (__cdecl *ptrSimSetJointMaxForce)(simInt objectHandle,simFloat forceOrTorque);
+typedef simVoid (__cdecl *ptr_simSetGeomProxyDynamicsFullRefreshFlag)(simVoid* geomData,simBool flag);
+typedef simBool (__cdecl *ptr_simGetGeomProxyDynamicsFullRefreshFlag)(const simVoid* geomData);
 
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1388,6 +1386,8 @@ extern ptrSimGetScriptText simGetScriptText;
 extern ptrSimGetScriptProperty simGetScriptProperty;
 extern ptrSimGetJointMaxForce simGetJointMaxForce;
 extern ptrSimSetJointMaxForce simSetJointMaxForce;
+extern ptr_simSetGeomProxyDynamicsFullRefreshFlag _simSetGeomProxyDynamicsFullRefreshFlag;
+extern ptr_simGetGeomProxyDynamicsFullRefreshFlag _simGetGeomProxyDynamicsFullRefreshFlag;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
