@@ -54,7 +54,6 @@ typedef simInt (__cdecl *ptrSimGetObject)(const simChar* objectAlias,simInt inde
 typedef simInt64 (__cdecl *ptrSimGetObjectUid)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimGetObjectFromUid)(simInt64 uid,simInt options);
 typedef simInt (__cdecl *ptrSimGetScriptHandleEx)(simInt scriptType,simInt objHandle,const simChar* scriptName);
-typedef simInt (__cdecl *ptrSimRemoveObject)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimRemoveObjects)(const simInt* objectHandles,simInt count);
 typedef simInt (__cdecl *ptrSimRemoveModel)(simInt objectHandle);
 typedef simChar* (__cdecl *ptrSimGetObjectAlias)(simInt objectHandle,simInt options);
@@ -500,7 +499,6 @@ extern ptrSimGetObject simGetObject;
 extern ptrSimGetObjectUid simGetObjectUid;
 extern ptrSimGetObjectFromUid simGetObjectFromUid;
 extern ptrSimGetScriptHandleEx simGetScriptHandleEx;
-extern ptrSimRemoveObject simRemoveObject;
 extern ptrSimRemoveObjects simRemoveObjects;
 extern ptrSimRemoveModel simRemoveModel;
 extern ptrSimGetObjectAlias simGetObjectAlias;
@@ -1136,6 +1134,7 @@ typedef simInt (__cdecl *ptrSimGetJointMaxForce)(simInt jointHandle,simFloat* fo
 typedef simInt (__cdecl *ptrSimSetJointMaxForce)(simInt objectHandle,simFloat forceOrTorque);
 typedef simVoid (__cdecl *ptr_simSetGeomProxyDynamicsFullRefreshFlag)(simVoid* geomData,simBool flag);
 typedef simBool (__cdecl *ptr_simGetGeomProxyDynamicsFullRefreshFlag)(const simVoid* geomData);
+typedef simInt (__cdecl *ptrSimRemoveObject)(simInt objectHandle);
 
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1388,6 +1387,7 @@ extern ptrSimGetJointMaxForce simGetJointMaxForce;
 extern ptrSimSetJointMaxForce simSetJointMaxForce;
 extern ptr_simSetGeomProxyDynamicsFullRefreshFlag _simSetGeomProxyDynamicsFullRefreshFlag;
 extern ptr_simGetGeomProxyDynamicsFullRefreshFlag _simGetGeomProxyDynamicsFullRefreshFlag;
+extern ptrSimRemoveObject simRemoveObject;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
