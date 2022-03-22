@@ -781,7 +781,7 @@ enum { /* Integer parameters: */
     sim_intparam_current_page,
     sim_intparam_flymode_camera_handle, /* deprecated */
     sim_intparam_dynamic_step_divider, /* can only be read */
-    sim_intparam_dynamic_engine, /* 0=Bullet, 1=ODE. 2=Vortex. 3=Newton. Can only be read */
+    sim_intparam_dynamic_engine, /* 0=Bullet, 1=ODE, 2=Vortex, 3=Newton, 4=Mujoco. Can only be read */
     sim_intparam_server_port_start, /* can only be read */
     sim_intparam_server_port_range, /* can only be read */
     sim_intparam_visible_layers,
@@ -1027,7 +1027,8 @@ enum { /* physics engine */
     sim_physics_bullet=0,
     sim_physics_ode,
     sim_physics_vortex,
-    sim_physics_newton
+    sim_physics_newton,
+    sim_physics_mujoco
 };
 
 enum { /* pure primitives type */
@@ -1675,7 +1676,56 @@ enum { /* Physics engines params */
 
     sim_newton_body_bool_start=35000,
     sim_newton_body_fastmoving,
-    sim_newton_body_bool_end
+    sim_newton_body_bool_end,
+
+
+    /* Mujoco */
+    //TODOMUJOCO
+    sim_mujoco_global_float_start=37000,
+    sim_mujoco_global_stepsize,
+    //sim_mujoco_global_contactmergetolerance,
+    sim_mujoco_global_float_end,
+
+    sim_mujoco_global_int_start=38000,
+    //sim_mujoco_global_constraintsolvingiterations,
+    sim_mujoco_global_bitcoded,
+    sim_mujoco_global_int_end,
+
+    sim_mujoco_global_bool_start=39000,
+    //sim_mujoco_global_multithreading,
+    //sim_mujoco_global_exactsolver,
+    //sim_mujoco_global_highjointaccuracy,
+    sim_mujoco_global_bool_end,
+
+    sim_mujoco_joint_float_start=40000,
+    //sim_mujoco_joint_dependencyfactor,
+    //sim_mujoco_joint_dependencyoffset,
+    sim_mujoco_joint_float_end,
+
+    sim_mujoco_joint_int_start=41000,
+    //sim_mujoco_joint_objectid,
+    //sim_mujoco_joint_dependentobjectid,
+    sim_mujoco_joint_int_end,
+
+    sim_mujoco_joint_bool_start=42000,
+    /* if you add something here, search for njb11032016 */
+    sim_mujoco_joint_bool_end,
+
+    sim_mujoco_body_float_start=43000,
+    //sim_mujoco_body_staticfriction,
+    //sim_mujoco_body_kineticfriction,
+    //sim_mujoco_body_restitution,
+    //sim_mujoco_body_lineardrag,
+    //sim_mujoco_body_angulardrag,
+    sim_mujoco_body_float_end,
+
+    sim_mujoco_body_int_start=44000,
+    sim_mujoco_body_bitcoded,
+    sim_mujoco_body_int_end,
+
+    sim_mujoco_body_bool_start=45000,
+    //sim_mujoco_body_fastmoving,
+    sim_mujoco_body_bool_end
 };
 
 enum { /* Vortex friction models */
