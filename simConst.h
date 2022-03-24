@@ -646,12 +646,17 @@ enum { /* drawing objects: */
     sim_drawing_points=0,           /* 3 values per point (point size in pixels) */
     sim_drawing_lines,              /* 6 values per line (line size in pixels) */
     sim_drawing_triangles,          /* 9 values per triangle */
-    sim_drawing_trianglepoints,     /* 6 values per point (3 for triangle position, 3 for triangle normal vector) (triangle size in meters) */
-    sim_drawing_quadpoints,         /* 6 values per point (3 for quad position, 3 for quad normal vector) (quad size in meters) */
-    sim_drawing_discpoints,         /* 6 values per point (3 for disc position, 3 for disc normal vector) (disc size in meters) */
-    sim_drawing_cubepoints,         /* 6 values per point (3 for cube position, 3 for cube normal vector) (cube size in meters) */
-    sim_drawing_spherepoints,       /* 3 values per point (sphere size in meters) */
-    sim_drawing_linestrip,
+    sim_drawing_trianglepoints,     /* deprecated */
+    sim_drawing_quadpoints,         /* deprecated */
+    sim_drawing_discpoints,         /* deprecated */
+    sim_drawing_cubepoints,         /* deprecated */
+    sim_drawing_spherepoints,       /* deprecated */
+    sim_drawing_spherepts=sim_drawing_spherepoints,       /* 3 values per point (sphere size in meters) */
+    sim_drawing_linestrip,       /* 3 values per point */
+    sim_drawing_trianglepts,     /* 7 values per point (3 for triangle position, 4 for orientation as quaternion) (triangle size in meters) */
+    sim_drawing_quadpts,         /* 7 values per point (3 for quad position, 4 for orientation as quaternion) (quad size in meters) */
+    sim_drawing_discpts,         /* 7 values per point (3 for disc position, 4 for orientation as quaternion) (disc size in meters) */
+    sim_drawing_cubepts,         /* 7 values per point (3 for cube position, 4 for orientation as quaternion) (cube size in meters) */
 
     /* following can be or-combined: */
     sim_drawing_itemcolors              =0x000020, /* +3 values per item (each item has its own ambient color (r,g,b values)). Mutually exclusive with sim_drawing_vertexcolors */
