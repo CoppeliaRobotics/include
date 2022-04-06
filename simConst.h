@@ -997,6 +997,8 @@ enum { /* Ruckig Library flags */
     sim_ruckig_phasesync                            =0x0000,
     sim_ruckig_timesync                             =0x0001,
     sim_ruckig_nosync                               =0x0003,
+    sim_ruckig_minvel                               =0x0100,
+    sim_ruckig_minaccel                             =0x0200,
 };
 
 enum { /* deprecated */
