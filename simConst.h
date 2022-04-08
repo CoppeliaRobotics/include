@@ -472,13 +472,14 @@ enum { /* System callbacks */
     sim_syscb_aftercreate, /* called just after objects were created/pasted/loaded. Not called for the created objects. Arg1 is a map with 'objectHandles' array */
     sim_syscb_threadmain, /* the main section of a threaded child script */
     sim_syscb_dyncallback, /* called by the physics engine twice per dyn. simulation pass */
-    sim_syscb_beforemainscript, /* called in customization scripts just before calling the main script */
+    sim_syscb_beforemainscript, /* called just before calling the main script. Can be used to step a simulation */
     sim_syscb_vision, /* called just after a vision sensor image was acquired, for processing */
     sim_syscb_trigger, /* called by vision, proximity or force/torque sensors when they trigger */
     sim_syscb_userconfig, /* called for the customization script, when the user double-clicks the script simulation parameters icon */
     sim_syscb_moduleentry, /* called when a module menu entry is selected. Must be first created with sim.moduleEntry */
     sim_syscb_event, /* called on many different occasions, mainly to synchronize CoppeliaSim with an external application */
     sim_syscb_ext, /* intercepts user callback calls */
+    sim_syscb_realtimeidle, /* when in real-time mode, idle signaling */
 };
 
 enum { /* Script int params */
