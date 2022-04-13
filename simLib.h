@@ -243,12 +243,9 @@ typedef simInt (__cdecl *ptrSimReadVisionSensor)(simInt visionSensorHandle,simFl
 typedef simInt (__cdecl *ptrSimResetVisionSensor)(simInt visionSensorHandle);
 typedef simInt (__cdecl *ptrSimCheckVisionSensor)(simInt visionSensorHandle,simInt entityHandle,simFloat** auxValues,simInt** auxValuesCount);
 typedef simFloat* (__cdecl *ptrSimCheckVisionSensorEx)(simInt visionSensorHandle,simInt entityHandle,simBool returnImage);
-typedef simInt (__cdecl *ptrSimGetVisionSensorResolution)(simInt visionSensorHandle,simInt* resolution);
-typedef simFloat* (__cdecl *ptrSimGetVisionSensorImage)(simInt visionSensorHandle);
-typedef simUChar* (__cdecl *ptrSimGetVisionSensorCharImage)(simInt visionSensorHandle,simInt* resolutionX,simInt* resolutionY);
-typedef simInt (__cdecl *ptrSimSetVisionSensorImage)(simInt visionSensorHandle,const simFloat* image);
-typedef simInt (__cdecl *ptrSimSetVisionSensorCharImage)(simInt visionSensorHandle,const simUChar* image);
-typedef simFloat* (__cdecl *ptrSimGetVisionSensorDepthBuffer)(simInt visionSensorHandle);
+typedef simUChar* (__cdecl *ptrSimGetVisionSensorImg)(simInt sensorHandle,simInt options,simFloat rgbaCutOff,const simInt* pos,const simInt* size,simInt* resolution);
+typedef simInt (__cdecl *ptrSimSetVisionSensorImg)(simInt sensorHandle,const simUChar* img,simInt options,const simInt* pos,const simInt* size);
+typedef simFloat* (__cdecl *ptrSimGetVisionSensorDepth)(simInt sensorHandle,simInt options,const simInt* pos,const simInt* size,simInt* resolution);
 typedef simInt (__cdecl *ptrSimGetObjectQuaternion)(simInt objectHandle,simInt relativeToObjectHandle,simFloat* quaternion);
 typedef simInt (__cdecl *ptrSimSetObjectQuaternion)(simInt objectHandle,simInt relativeToObjectHandle,const simFloat* quaternion);
 typedef simInt (__cdecl *ptrSimRuckigPos)(simInt dofs,simDouble smallestTimeStep,simInt flags,const simDouble* currentPos,const simDouble* currentVel,const simDouble* currentAccel,const simDouble* maxVel,const simDouble* maxAccel,const simDouble* maxJerk,const simBool* selection,const simDouble* targetPos,const simDouble* targetVel,simDouble* reserved1,simInt* reserved2);
@@ -686,12 +683,9 @@ extern ptrSimReadVisionSensor simReadVisionSensor;
 extern ptrSimResetVisionSensor simResetVisionSensor;
 extern ptrSimCheckVisionSensor simCheckVisionSensor;
 extern ptrSimCheckVisionSensorEx simCheckVisionSensorEx;
-extern ptrSimGetVisionSensorResolution simGetVisionSensorResolution;
-extern ptrSimGetVisionSensorImage simGetVisionSensorImage;
-extern ptrSimGetVisionSensorCharImage simGetVisionSensorCharImage;
-extern ptrSimSetVisionSensorImage simSetVisionSensorImage;
-extern ptrSimSetVisionSensorCharImage simSetVisionSensorCharImage;
-extern ptrSimGetVisionSensorDepthBuffer simGetVisionSensorDepthBuffer;
+extern ptrSimGetVisionSensorImg simGetVisionSensorImg;
+extern ptrSimSetVisionSensorImg simSetVisionSensorImg;
+extern ptrSimGetVisionSensorDepth simGetVisionSensorDepth;
 extern ptrSimGetObjectQuaternion simGetObjectQuaternion;
 extern ptrSimSetObjectQuaternion simSetObjectQuaternion;
 extern ptrSimRuckigPos simRuckigPos;
@@ -1133,6 +1127,12 @@ typedef simBool (__cdecl *ptr_simGetGeomProxyDynamicsFullRefreshFlag)(const simV
 typedef simInt (__cdecl *ptrSimRemoveObject)(simInt objectHandle);
 typedef simVoid (__cdecl *ptr_simSetShapeIsStaticAndNotRespondableButDynamicTag)(const simVoid* shape,simBool tag);
 typedef simBool (__cdecl *ptr_simGetShapeIsStaticAndNotRespondableButDynamicTag)(const simVoid* shape);
+typedef simInt (__cdecl *ptrSimGetVisionSensorResolution)(simInt visionSensorHandle,simInt* resolution);
+typedef simFloat* (__cdecl *ptrSimGetVisionSensorImage)(simInt visionSensorHandle);
+typedef simUChar* (__cdecl *ptrSimGetVisionSensorCharImage)(simInt visionSensorHandle,simInt* resolutionX,simInt* resolutionY);
+typedef simInt (__cdecl *ptrSimSetVisionSensorImage)(simInt visionSensorHandle,const simFloat* image);
+typedef simInt (__cdecl *ptrSimSetVisionSensorCharImage)(simInt visionSensorHandle,const simUChar* image);
+typedef simFloat* (__cdecl *ptrSimGetVisionSensorDepthBuffer)(simInt visionSensorHandle);
 
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1388,6 +1388,12 @@ extern ptr_simGetGeomProxyDynamicsFullRefreshFlag _simGetGeomProxyDynamicsFullRe
 extern ptrSimRemoveObject simRemoveObject;
 extern ptr_simSetShapeIsStaticAndNotRespondableButDynamicTag _simSetShapeIsStaticAndNotRespondableButDynamicTag;
 extern ptr_simGetShapeIsStaticAndNotRespondableButDynamicTag _simGetShapeIsStaticAndNotRespondableButDynamicTag;
+extern ptrSimGetVisionSensorResolution simGetVisionSensorResolution;
+extern ptrSimGetVisionSensorImage simGetVisionSensorImage;
+extern ptrSimGetVisionSensorCharImage simGetVisionSensorCharImage;
+extern ptrSimSetVisionSensorImage simSetVisionSensorImage;
+extern ptrSimSetVisionSensorCharImage simSetVisionSensorCharImage;
+extern ptrSimGetVisionSensorDepthBuffer simGetVisionSensorDepthBuffer;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
