@@ -4,8 +4,8 @@
 #define SIM_PROGRAM_VERSION_NB 40300
 #define SIM_PROGRAM_VERSION "4.3.0."
 
-#define SIM_PROGRAM_REVISION_NB 5
-#define SIM_PROGRAM_REVISION "(rev. 5)"
+#define SIM_PROGRAM_REVISION_NB 6
+#define SIM_PROGRAM_REVISION "(rev. 6)"
 
 #define SIM_PROGRAM_FULL_VERSION_NB ((SIM_PROGRAM_VERSION_NB) * 100 + (SIM_PROGRAM_REVISION_NB))
 
@@ -316,7 +316,7 @@ enum {
 
 enum { /* Scene object properties. Combine with the | operator */
     sim_objectproperty_reserved1    =0x0000,
-    sim_objectproperty_reserved2    =0x0001,
+    sim_objectproperty_ignoreviewfitting        =0x0001,
     sim_objectproperty_reserved3    =0x0002,
     sim_objectproperty_reserved4    =0x0003,
     sim_objectproperty_reserved5    =0x0004, /* formely sim_objectproperty_visible */
@@ -1039,7 +1039,7 @@ enum { /* physics engine */
     sim_physics_mujoco
 };
 
-enum { /* pure primitives type */
+enum { /* deprecated */
     sim_pure_primitive_none=0,
     sim_pure_primitive_plane,
     sim_pure_primitive_disc,
@@ -1048,6 +1048,18 @@ enum { /* pure primitives type */
     sim_pure_primitive_cylinder,
     sim_pure_primitive_cone,
     sim_pure_primitive_heightfield
+};
+
+enum { /* primitive shapes */
+    sim_primitiveshape_none=0,
+    sim_primitiveshape_plane=1,
+    sim_primitiveshape_disc=2,
+    sim_primitiveshape_cuboid=3,
+    sim_primitiveshape_spheroid=4,
+    sim_primitiveshape_cylinder=5,
+    sim_primitiveshape_cone=6,
+    sim_primitiveshape_heightfield=7,
+    sim_primitiveshape_capsule=8,
 };
 
 enum { /* dummy-dummy link types */

@@ -216,7 +216,7 @@ typedef simInt (__cdecl *ptrSimImportShape)(simInt fileformat,const simChar* pat
 typedef simInt (__cdecl *ptrSimImportMesh)(simInt fileformat,const simChar* pathAndFilename,simInt options,simFloat identicalVerticeTolerance,simFloat scalingFactor,simFloat*** vertices,simInt** verticesSizes,simInt*** indices,simInt** indicesSizes,simFloat*** reserved,simChar*** names);
 typedef simInt (__cdecl *ptrSimExportMesh)(simInt fileformat,const simChar* pathAndFilename,simInt options,simFloat scalingFactor,simInt elementCount,const simFloat** vertices,const simInt* verticesSizes,const simInt** indices,const simInt* indicesSizes,simFloat** reserved,const simChar** names);
 typedef simInt (__cdecl *ptrSimCreateMeshShape)(simInt options,simFloat shadingAngle,const simFloat* vertices,simInt verticesSize,const simInt* indices,simInt indicesSize,simFloat* reserved);
-typedef simInt (__cdecl *ptrSimCreatePureShape)(simInt primitiveType,simInt options,const simFloat* sizes,simFloat mass,const simInt* precision);
+typedef simInt (__cdecl *ptrSimCreatePrimitiveShape)(simInt primitiveType,const simFloat* sizes,simInt options);
 typedef simInt (__cdecl *ptrSimCreateHeightfieldShape)(simInt options,simFloat shadingAngle,simInt xPointCount,simInt yPointCount,simFloat xSize,const simFloat* heights);
 typedef simInt (__cdecl *ptrSimGetShapeMesh)(simInt shapeHandle,simFloat** vertices,simInt* verticesSize,simInt** indices,simInt* indicesSize,simFloat** normals);
 typedef simInt (__cdecl *ptrSimCreateJoint)(simInt jointType,simInt jointMode,simInt options,const simFloat* sizes,const simFloat* reservedA,const simFloat* reservedB);
@@ -654,7 +654,7 @@ extern ptrSimImportShape simImportShape;
 extern ptrSimImportMesh simImportMesh;
 extern ptrSimExportMesh simExportMesh;
 extern ptrSimCreateMeshShape simCreateMeshShape;
-extern ptrSimCreatePureShape simCreatePureShape;
+extern ptrSimCreatePrimitiveShape simCreatePrimitiveShape;
 extern ptrSimCreateHeightfieldShape simCreateHeightfieldShape;
 extern ptrSimGetShapeMesh simGetShapeMesh;
 extern ptrSimCreateJoint simCreateJoint;
@@ -1133,6 +1133,7 @@ typedef simUChar* (__cdecl *ptrSimGetVisionSensorCharImage)(simInt visionSensorH
 typedef simInt (__cdecl *ptrSimSetVisionSensorImage)(simInt visionSensorHandle,const simFloat* image);
 typedef simInt (__cdecl *ptrSimSetVisionSensorCharImage)(simInt visionSensorHandle,const simUChar* image);
 typedef simFloat* (__cdecl *ptrSimGetVisionSensorDepthBuffer)(simInt visionSensorHandle);
+typedef simInt (__cdecl *ptrSimCreatePureShape)(simInt primitiveType,simInt options,const simFloat* sizes,simFloat mass,const simInt* precision);
 
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1394,6 +1395,7 @@ extern ptrSimGetVisionSensorCharImage simGetVisionSensorCharImage;
 extern ptrSimSetVisionSensorImage simSetVisionSensorImage;
 extern ptrSimSetVisionSensorCharImage simSetVisionSensorCharImage;
 extern ptrSimGetVisionSensorDepthBuffer simGetVisionSensorDepthBuffer;
+extern ptrSimCreatePureShape simCreatePureShape;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
