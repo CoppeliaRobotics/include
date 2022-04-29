@@ -775,7 +775,8 @@ enum { /* Boolean parameters: */
     sim_boolparam_scene_closing,
     sim_boolparam_show_w_emitters,
     sim_boolparam_show_w_receivers,
-    sim_boolparam_xr_jobfunc
+    sim_boolparam_xr_jobfunc,
+    sim_boolparam_rayvalid
 };
 
 enum { /* Integer parameters: */
@@ -892,7 +893,9 @@ enum { /* Array parameters: */
     sim_arrayparam_background_color1,
     sim_arrayparam_background_color2,
     sim_arrayparam_ambient_light,
-    sim_arrayparam_random_euler
+    sim_arrayparam_random_euler,
+    sim_arrayparam_rayorigin,
+    sim_arrayparam_raydirection
 };
 
 enum { /* UI properties: */
