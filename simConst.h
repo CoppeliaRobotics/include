@@ -480,6 +480,8 @@ enum { /* System callbacks */
     sim_syscb_event, /* called on many different occasions, mainly to synchronize CoppeliaSim with an external application */
     sim_syscb_ext, /* intercepts user callback calls */
     sim_syscb_realtimeidle, /* when in real-time mode, idle signaling */
+    sim_syscb_beforesave, /* called just before a scene save operation */
+    sim_syscb_aftersave, /* called just after a scene save operation */
 };
 
 enum { /* Script int params */
@@ -826,6 +828,8 @@ enum { /* Integer parameters: */
     sim_intparam_videoencoder_index,
     sim_intparam_exitcode,
     sim_intparam_bugfix1,
+    sim_intparam_mouseclickcounterdown,
+    sim_intparam_mouseclickcounterup,
 };
 
 enum { /* uint64 parameters: */
