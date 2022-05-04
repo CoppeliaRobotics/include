@@ -482,6 +482,7 @@ enum { /* System callbacks */
     sim_syscb_realtimeidle, /* when in real-time mode, idle signaling */
     sim_syscb_beforesave, /* called just before a scene save operation */
     sim_syscb_aftersave, /* called just after a scene save operation */
+    sim_syscb_message, /* triggered via sim.broadcastMessage */
 };
 
 enum { /* Script int params */
@@ -524,7 +525,7 @@ enum { /* Script tree traversal direction, is serialized */
     sim_scripttreetraversal_parent
 };
 
-enum { /* Script debug level, deprecated */
+enum { /* Deprecated */
     sim_scriptdebug_none=0,
     sim_scriptdebug_syscalls=1,
     sim_scriptdebug_vars_interval=2,
@@ -533,7 +534,7 @@ enum { /* Script debug level, deprecated */
     sim_scriptdebug_callsandvars=5
 };
 
-enum { /* Threaded script resume location */
+enum { /* Deprecated */
     sim_scriptthreadresume_launch           =-2,
     sim_scriptthreadresume_allnotyetresumed =-1,
     sim_scriptthreadresume_default          =0,
@@ -544,7 +545,7 @@ enum { /* Threaded script resume location */
     sim_scriptthreadresume_custom           =5
 };
 
-enum { /* General callback IDs */
+enum { /* Deprecated */
     sim_callbackid_rossubscriber            =1,
     sim_callbackid_dynstep                  =2,
     sim_callbackid_userdefined              =1000
