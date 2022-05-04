@@ -34,7 +34,6 @@ typedef simVoid* (__cdecl *ptrSimGetMainWindow)(simInt type);
 typedef simChar* (__cdecl *ptrSimGetLastError)();
 typedef simInt (__cdecl *ptrSimLoadModule)(const simChar* filenameAndPath,const simChar* pluginName);
 typedef simInt (__cdecl *ptrSimUnloadModule)(simInt pluginhandle);
-typedef simVoid* (__cdecl *ptrSimSendModuleMessage)(simInt message,simInt* auxiliaryData,simVoid* customData,simInt* replyData);
 
 
 typedef simInt (__cdecl *ptrSimSetBoolParam)(simInt Param,simBool boolState);
@@ -129,7 +128,6 @@ typedef simInt (__cdecl *ptrSimAdvanceSimulationByOneStep)();
 typedef simInt (__cdecl *ptrSimStartSimulation)();
 typedef simInt (__cdecl *ptrSimStopSimulation)();
 typedef simInt (__cdecl *ptrSimPauseSimulation)();
-typedef simVoid* (__cdecl *ptrSimBroadcastMessage)(simInt* auxiliaryData,simVoid* customData,simInt* replyData);
 typedef simChar* (__cdecl *ptrSimGetModuleName)(simInt index,simUChar* moduleVersion);
 typedef simInt (__cdecl *ptrSimFloatingViewAdd)(simFloat posX,simFloat posY,simFloat sizeX,simFloat sizeY,simInt options);
 typedef simInt (__cdecl *ptrSimFloatingViewRemove)(simInt floatingViewHandle);
@@ -476,7 +474,6 @@ extern ptrSimGetMainWindow simGetMainWindow;
 extern ptrSimGetLastError simGetLastError;
 extern ptrSimLoadModule simLoadModule;
 extern ptrSimUnloadModule simUnloadModule;
-extern ptrSimSendModuleMessage simSendModuleMessage;
 extern ptrSimSetBoolParam simSetBoolParam;
 extern ptrSimGetBoolParam simGetBoolParam;
 extern ptrSimSetInt32Param simSetInt32Param;
@@ -567,7 +564,6 @@ extern ptrSimAdvanceSimulationByOneStep simAdvanceSimulationByOneStep;
 extern ptrSimStartSimulation simStartSimulation;
 extern ptrSimStopSimulation simStopSimulation;
 extern ptrSimPauseSimulation simPauseSimulation;
-extern ptrSimBroadcastMessage simBroadcastMessage;
 extern ptrSimGetModuleName simGetModuleName;
 extern ptrSimFloatingViewAdd simFloatingViewAdd;
 extern ptrSimFloatingViewRemove simFloatingViewRemove;
@@ -1134,6 +1130,8 @@ typedef simInt (__cdecl *ptrSimSetVisionSensorImage)(simInt visionSensorHandle,c
 typedef simInt (__cdecl *ptrSimSetVisionSensorCharImage)(simInt visionSensorHandle,const simUChar* image);
 typedef simFloat* (__cdecl *ptrSimGetVisionSensorDepthBuffer)(simInt visionSensorHandle);
 typedef simInt (__cdecl *ptrSimCreatePureShape)(simInt primitiveType,simInt options,const simFloat* sizes,simFloat mass,const simInt* precision);
+typedef simVoid* (__cdecl *ptrSimBroadcastMessage)(simInt* auxiliaryData,simVoid* customData,simInt* replyData);
+typedef simVoid* (__cdecl *ptrSimSendModuleMessage)(simInt message,simInt* auxiliaryData,simVoid* customData,simInt* replyData);
 
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1396,6 +1394,8 @@ extern ptrSimSetVisionSensorImage simSetVisionSensorImage;
 extern ptrSimSetVisionSensorCharImage simSetVisionSensorCharImage;
 extern ptrSimGetVisionSensorDepthBuffer simGetVisionSensorDepthBuffer;
 extern ptrSimCreatePureShape simCreatePureShape;
+extern ptrSimBroadcastMessage simBroadcastMessage;
+extern ptrSimSendModuleMessage simSendModuleMessage;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)

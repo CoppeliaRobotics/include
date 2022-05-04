@@ -482,7 +482,7 @@ enum { /* System callbacks */
     sim_syscb_realtimeidle, /* when in real-time mode, idle signaling */
     sim_syscb_beforesave, /* called just before a scene save operation */
     sim_syscb_aftersave, /* called just after a scene save operation */
-    sim_syscb_message, /* triggered via sim.broadcastMessage */
+    sim_syscb_msg, /* triggered via sim.broadcastMsg */
 };
 
 enum { /* Script int params */
