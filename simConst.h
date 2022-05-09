@@ -145,9 +145,9 @@ enum { /* Check the documentation instead of comments below!! */
         sim_message_bannerclicked,              /* a banner was clicked (aux[0]=banner ID) */
         sim_message_scene_loaded,               /* a scene was loaded */
 
-        sim_message_prox_sensor_select_down,    /* a "geometric" click select (mouse down) was registered. Enable with sim_intparam_prox_sensor_select_down. aux[0]=objectID, aux2[0-2]=pt coord, aux2[3-5]=pt normal vector */
-        sim_message_prox_sensor_select_up,      /* a "geometric" click select (mouse up) was registered. Enable with sim_intparam_prox_sensor_select_up. aux[0]=objectID, aux2[0-2]=pt coord, aux2[3-5]=pt normal vector */
-        sim_message_pick_select_down,           /* a "pick" click select (mouse down) was registered. aux[0]=objectID */
+        sim_message_prox_sensor_select_down,    /* deprecated */
+        sim_message_prox_sensor_select_up,      /* deprecated */
+        sim_message_pick_select_down,           /* deprecated */
 
 
         /* Following messages are dispatched only to the C-API (not available from Lua): */
@@ -229,9 +229,9 @@ enum { /* Check the documentation instead of comments below!! */
         sim_message_eventcallback_openglframe, /* deprecated */
         sim_message_eventcallback_openglcameraview, /* deprecated */
 
-        sim_message_eventcallback_proxsensorselectdown, /* a "geometric" click select (mouse down) was registered. Enable with sim_intparam_prox_sensor_select_down. aux[0]=objectID, customData[0-2]=pt coord (floats), customData[3-5]=pt normal vector (floats)*/
-        sim_message_eventcallback_proxsensorselectup, /* a "geometric" click select (mouse up) was registered. Enable with sim_intparam_prox_sensor_select_down. aux[0]=objectID, customData[0-2]=pt coord (floats), customData[3-5]=pt normal vector (floats)*/
-        sim_message_eventcallback_pickselectdown, /* a "pick" click select (mouse down) was registered. aux[0]=objectID */
+        sim_message_eventcallback_proxsensorselectdown, /* deprecated */
+        sim_message_eventcallback_proxsensorselectup, /* deprecated */
+        sim_message_eventcallback_pickselectdown, /* deprecated */
 
         sim_message_eventcallback_rmlpos, /* deprecated */
         sim_message_eventcallback_rmlvel, /* deprecated */
@@ -922,12 +922,14 @@ enum { /* UI properties: */
 };
 
 enum { /* Joint modes: */
-    sim_jointmode_passive=0,
+    sim_jointmode_kinematic=0,
+    sim_jointmode_passive=sim_jointmode_kinematic, /* deprecated */
     sim_jointmode_motion_deprecated, /* deprecated */
     sim_jointmode_ik_deprecated, /* deprecated */
     sim_jointmode_reserved_previously_ikdependent, /* deprecated */
     sim_jointmode_dependent,
-    sim_jointmode_force,
+    sim_jointmode_dynamic,
+    sim_jointmode_force=sim_jointmode_dynamic, /* deprecated */
     sim_jointmode_hybrid_deprecated=32 /* deprecated */
 };
 
