@@ -4,8 +4,8 @@
 #define SIM_PROGRAM_VERSION_NB 40300
 #define SIM_PROGRAM_VERSION "4.3.0."
 
-#define SIM_PROGRAM_REVISION_NB 6
-#define SIM_PROGRAM_REVISION "(rev. 6)"
+#define SIM_PROGRAM_REVISION_NB 7
+#define SIM_PROGRAM_REVISION "(rev. 7)"
 
 #define SIM_PROGRAM_FULL_VERSION_NB ((SIM_PROGRAM_VERSION_NB) * 100 + (SIM_PROGRAM_REVISION_NB))
 
@@ -933,6 +933,17 @@ enum { /* Joint modes: */
     sim_jointmode_hybrid_deprecated=32 /* deprecated */
 };
 
+enum { /* Joint dyn. ctrl modes: */
+    sim_jointdynctrl_free=0,
+    sim_jointdynctrl_force,
+    sim_jointdynctrl_velocity=4,
+    sim_jointdynctrl_position=8,
+    sim_jointdynctrl_positioncb, /* reserved */
+    sim_jointdynctrl_spring=12,
+    sim_jointdynctrl_springcb, /* reserved */
+    sim_jointdynctrl_callback=16
+};
+
 enum { /* verbosity */
     sim_verbosity_useglobal=-1,
     sim_verbosity_none=100,
@@ -1257,8 +1268,8 @@ enum { /* Object int/float/string parameters */
     sim_visionintparam_perspective_operation= 1018,
 
     /* joints */
-    sim_jointintparam_motor_enabled= 2000,
-    sim_jointintparam_ctrl_enabled= 2001,
+    sim_jointintparam_motor_enabled= 2000, /* deprecated */
+    sim_jointintparam_ctrl_enabled= 2001, /* deprecated */
     sim_jointfloatparam_pid_p= 2002,
     sim_jointfloatparam_pid_i= 2003,
     sim_jointfloatparam_pid_d= 2004,
@@ -1274,7 +1285,7 @@ enum { /* Object int/float/string parameters */
     sim_jointfloatparam_spherical_qy= 2014,
     sim_jointfloatparam_spherical_qz= 2015,
     sim_jointfloatparam_spherical_qw= 2016,
-    sim_jointfloatparam_upper_limit= 2017,
+    sim_jointfloatparam_upper_limit= 2017, /* deprecated, use sim_jointfloatparam_maxvel instead */
     sim_jointfloatparam_kc_k= 2018,
     sim_jointfloatparam_kc_c= 2019,
     sim_jointfloatparam_ik_weight= 2021, /* deprecated */
@@ -1292,6 +1303,10 @@ enum { /* Object int/float/string parameters */
     sim_jointfloatparam_vortex_dep_offset= 2033,
     sim_jointfloatparam_screw_pitch= 2034,
     sim_jointfloatparam_step_size= 2035, /* deprecated */
+    sim_jointfloatparam_maxvel= 2036,
+    sim_jointfloatparam_maxaccel= 2037,
+    sim_jointfloatparam_maxjerk= 2038,
+    sim_jointintparam_dynctrlmode= 2039,
 
     /* shapes */
     sim_shapefloatparam_init_velocity_x= 3000,

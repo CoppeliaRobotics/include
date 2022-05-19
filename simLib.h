@@ -246,9 +246,9 @@ typedef simInt (__cdecl *ptrSimSetVisionSensorImg)(simInt sensorHandle,const sim
 typedef simFloat* (__cdecl *ptrSimGetVisionSensorDepth)(simInt sensorHandle,simInt options,const simInt* pos,const simInt* size,simInt* resolution);
 typedef simInt (__cdecl *ptrSimGetObjectQuaternion)(simInt objectHandle,simInt relativeToObjectHandle,simFloat* quaternion);
 typedef simInt (__cdecl *ptrSimSetObjectQuaternion)(simInt objectHandle,simInt relativeToObjectHandle,const simFloat* quaternion);
-typedef simInt (__cdecl *ptrSimRuckigPos)(simInt dofs,simDouble smallestTimeStep,simInt flags,const simDouble* currentPos,const simDouble* currentVel,const simDouble* currentAccel,const simDouble* maxVel,const simDouble* maxAccel,const simDouble* maxJerk,const simBool* selection,const simDouble* targetPos,const simDouble* targetVel,simDouble* reserved1,simInt* reserved2);
-typedef simInt (__cdecl *ptrSimRuckigVel)(simInt dofs,simDouble smallestTimeStep,simInt flags,const simDouble* currentPos,const simDouble* currentVel,const simDouble* currentAccel,const simDouble* maxAccel,const simDouble* maxJerk,const simBool* selection,const simDouble* targetVel,simDouble* reserved1,simInt* reserved2);
-typedef simInt (__cdecl *ptrSimRuckigStep)(simInt objHandle,simDouble timeStep,simDouble* newPos,simDouble* newVel,simDouble* newAccel,simDouble* syncTime,simDouble* reserved1,simInt* reserved2);
+typedef simInt (__cdecl *ptrSimRuckigPos)(simInt dofs,simDouble baseCycleTime,simInt flags,const simDouble* currentPos,const simDouble* currentVel,const simDouble* currentAccel,const simDouble* maxVel,const simDouble* maxAccel,const simDouble* maxJerk,const simBool* selection,const simDouble* targetPos,const simDouble* targetVel,simDouble* reserved1,simInt* reserved2);
+typedef simInt (__cdecl *ptrSimRuckigVel)(simInt dofs,simDouble baseCycleTime,simInt flags,const simDouble* currentPos,const simDouble* currentVel,const simDouble* currentAccel,const simDouble* maxAccel,const simDouble* maxJerk,const simBool* selection,const simDouble* targetVel,simDouble* reserved1,simInt* reserved2);
+typedef simInt (__cdecl *ptrSimRuckigStep)(simInt objHandle,simDouble cycleTime,simDouble* newPos,simDouble* newVel,simDouble* newAccel,simDouble* syncTime,simDouble* reserved1,simInt* reserved2);
 typedef simInt (__cdecl *ptrSimRuckigRemove)(simInt objHandle);
 typedef simInt (__cdecl *ptrSimBuildMatrixQ)(const simFloat* position,const simFloat* quaternion,simFloat* matrix);
 typedef simInt (__cdecl *ptrSimGetQuaternionFromMatrix)(const simFloat* matrix,simFloat* quaternion);
@@ -385,8 +385,6 @@ typedef simInt (__cdecl *ptrSimExtGetExitRequest)();
 typedef simInt (__cdecl *ptrSimExtStep)(simBool stepIfRunning);
 typedef simInt (__cdecl *ptrSimExtCallScriptFunction)(simInt scriptHandleOrType, const simChar* functionNameAtScriptName,const simInt* inIntData, simInt inIntCnt,const simFloat* inFloatData, simInt inFloatCnt,const simChar** inStringData, simInt inStringCnt,const simChar* inBufferData, simInt inBufferCnt,simInt** outIntData, simInt* outIntCnt,simFloat** outFloatData, simInt* outFloatCnt,simChar*** outStringData, simInt* outStringCnt,simChar** outBufferData, simInt* outBufferSize);
 
-typedef simInt (__cdecl *ptr_simGetContactCallbackCount)();
-typedef const void* (__cdecl *ptr_simGetContactCallback)(simInt index);
 typedef simVoid (__cdecl *ptr_simSetDynamicSimulationIconCode)(simVoid* object,simInt code);
 typedef simVoid (__cdecl *ptr_simSetDynamicObjectFlagForVisualization)(simVoid* object,simInt flag);
 typedef simInt (__cdecl *ptr_simGetObjectListSize)(simInt objType);
@@ -429,10 +427,6 @@ typedef simVoid (__cdecl *ptr_simGetAdditionalForceAndTorque)(const simVoid* sha
 typedef simVoid (__cdecl *ptr_simClearAdditionalForceAndTorque)(const simVoid* shape);
 typedef simBool (__cdecl *ptr_simGetJointPositionInterval)(const simVoid* joint,simFloat* minValue,simFloat* rangeValue);
 typedef simInt (__cdecl *ptr_simGetJointType)(const simVoid* joint);
-typedef simBool (__cdecl *ptr_simIsDynamicMotorEnabled)(const simVoid* joint);
-typedef simBool (__cdecl *ptr_simIsDynamicMotorPositionCtrlEnabled)(const simVoid* joint);
-typedef simBool (__cdecl *ptr_simIsDynamicMotorTorqueModulationEnabled)(const simVoid* joint);
-typedef simVoid (__cdecl *ptr_simGetMotorPid)(const simVoid* joint,simFloat* pParam,simFloat* iParam,simFloat* dParam);
 typedef simFloat (__cdecl *ptr_simGetDynamicMotorTargetPosition)(const simVoid* joint);
 typedef simFloat (__cdecl *ptr_simGetDynamicMotorTargetVelocity)(const simVoid* joint);
 typedef simFloat (__cdecl *ptr_simGetDynamicMotorMaxForce)(const simVoid* joint);
@@ -463,6 +457,7 @@ typedef simInt (__cdecl *ptr_simHandleJointControl)(const simVoid* joint,simInt 
 typedef simInt (__cdecl *ptr_simHandleCustomContact)(simInt objHandle1,simInt objHandle2,simInt engine,simInt* dataInt,simFloat* dataFloat);
 typedef simFloat (__cdecl *ptr_simGetPureHollowScaling)(const simVoid* geometric);
 typedef simInt (__cdecl *ptr_simGetJointCallbackCallOrder)(const simVoid* joint);
+typedef simInt (__cdecl *ptr_simGetJointDynCtrlMode)(const simVoid* joint);
 typedef simVoid (__cdecl *ptr_simDynCallback)(const simInt* intData,const simFloat* floatData);
 
 
@@ -823,8 +818,6 @@ extern ptrSimExtGetExitRequest simExtGetExitRequest;
 extern ptrSimExtStep simExtStep;
 extern ptrSimExtCallScriptFunction simExtCallScriptFunction;
 
-extern ptr_simGetContactCallbackCount _simGetContactCallbackCount;
-extern ptr_simGetContactCallback _simGetContactCallback;
 extern ptr_simSetDynamicSimulationIconCode _simSetDynamicSimulationIconCode;
 extern ptr_simSetDynamicObjectFlagForVisualization _simSetDynamicObjectFlagForVisualization;
 extern ptr_simGetObjectListSize _simGetObjectListSize;
@@ -867,10 +860,6 @@ extern ptr_simGetAdditionalForceAndTorque _simGetAdditionalForceAndTorque;
 extern ptr_simClearAdditionalForceAndTorque _simClearAdditionalForceAndTorque;
 extern ptr_simGetJointPositionInterval _simGetJointPositionInterval;
 extern ptr_simGetJointType _simGetJointType;
-extern ptr_simIsDynamicMotorEnabled _simIsDynamicMotorEnabled;
-extern ptr_simIsDynamicMotorPositionCtrlEnabled _simIsDynamicMotorPositionCtrlEnabled;
-extern ptr_simIsDynamicMotorTorqueModulationEnabled _simIsDynamicMotorTorqueModulationEnabled;
-extern ptr_simGetMotorPid _simGetMotorPid;
 extern ptr_simGetDynamicMotorTargetPosition _simGetDynamicMotorTargetPosition;
 extern ptr_simGetDynamicMotorTargetVelocity _simGetDynamicMotorTargetVelocity;
 extern ptr_simGetDynamicMotorMaxForce _simGetDynamicMotorMaxForce;
@@ -901,6 +890,7 @@ extern ptr_simHandleJointControl _simHandleJointControl;
 extern ptr_simHandleCustomContact _simHandleCustomContact;
 extern ptr_simGetPureHollowScaling _simGetPureHollowScaling;
 extern ptr_simGetJointCallbackCallOrder _simGetJointCallbackCallOrder;
+extern ptr_simGetJointDynCtrlMode _simGetJointDynCtrlMode;
 extern ptr_simDynCallback _simDynCallback;
 
 
@@ -1132,6 +1122,12 @@ typedef simFloat* (__cdecl *ptrSimGetVisionSensorDepthBuffer)(simInt visionSenso
 typedef simInt (__cdecl *ptrSimCreatePureShape)(simInt primitiveType,simInt options,const simFloat* sizes,simFloat mass,const simInt* precision);
 typedef simVoid* (__cdecl *ptrSimBroadcastMessage)(simInt* auxiliaryData,simVoid* customData,simInt* replyData);
 typedef simVoid* (__cdecl *ptrSimSendModuleMessage)(simInt message,simInt* auxiliaryData,simVoid* customData,simInt* replyData);
+typedef simBool (__cdecl *ptr_simIsDynamicMotorEnabled)(const simVoid* joint);
+typedef simBool (__cdecl *ptr_simIsDynamicMotorPositionCtrlEnabled)(const simVoid* joint);
+typedef simBool (__cdecl *ptr_simIsDynamicMotorTorqueModulationEnabled)(const simVoid* joint);
+typedef simVoid (__cdecl *ptr_simGetMotorPid)(const simVoid* joint,simFloat* pParam,simFloat* iParam,simFloat* dParam);
+typedef simInt (__cdecl *ptr_simGetContactCallbackCount)();
+typedef const void* (__cdecl *ptr_simGetContactCallback)(simInt index);
 
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1396,6 +1392,12 @@ extern ptrSimGetVisionSensorDepthBuffer simGetVisionSensorDepthBuffer;
 extern ptrSimCreatePureShape simCreatePureShape;
 extern ptrSimBroadcastMessage simBroadcastMessage;
 extern ptrSimSendModuleMessage simSendModuleMessage;
+extern ptr_simIsDynamicMotorEnabled _simIsDynamicMotorEnabled;
+extern ptr_simIsDynamicMotorPositionCtrlEnabled _simIsDynamicMotorPositionCtrlEnabled;
+extern ptr_simIsDynamicMotorTorqueModulationEnabled _simIsDynamicMotorTorqueModulationEnabled;
+extern ptr_simGetMotorPid _simGetMotorPid;
+extern ptr_simGetContactCallbackCount _simGetContactCallbackCount;
+extern ptr_simGetContactCallback _simGetContactCallback;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
