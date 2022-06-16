@@ -4,8 +4,8 @@
 #define SIM_PROGRAM_VERSION_NB 40300
 #define SIM_PROGRAM_VERSION "4.3.0"
 
-#define SIM_PROGRAM_REVISION_NB 10
-#define SIM_PROGRAM_REVISION "(rev. 10)"
+#define SIM_PROGRAM_REVISION_NB 11
+#define SIM_PROGRAM_REVISION "(rev. 11)"
 
 #define SIM_PROGRAM_FULL_VERSION_NB ((SIM_PROGRAM_VERSION_NB) * 100 + (SIM_PROGRAM_REVISION_NB))
 
@@ -1307,6 +1307,8 @@ enum { /* Object int/float/string parameters */
     sim_jointfloatparam_maxaccel= 2037,
     sim_jointfloatparam_maxjerk= 2038,
     sim_jointintparam_dynctrlmode= 2039,
+    sim_jointintparam_dynvelctrltype= 2040,
+    sim_jointintparam_dynposctrltype= 2041,
 
     /* shapes */
     sim_shapefloatparam_init_velocity_x= 3000,
