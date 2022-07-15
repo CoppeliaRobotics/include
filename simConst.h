@@ -4,8 +4,8 @@
 #define SIM_PROGRAM_VERSION_NB 40300
 #define SIM_PROGRAM_VERSION "4.3.0"
 
-#define SIM_PROGRAM_REVISION_NB 12
-#define SIM_PROGRAM_REVISION "(rev. 12)"
+#define SIM_PROGRAM_REVISION_NB 13
+#define SIM_PROGRAM_REVISION "(rev. 13)"
 
 #define SIM_PROGRAM_FULL_VERSION_NB ((SIM_PROGRAM_VERSION_NB) * 100 + (SIM_PROGRAM_REVISION_NB))
 
@@ -889,6 +889,7 @@ enum { /* String parameters: */
     sim_stringparam_additionalpythonpath, /* can only be read */
     sim_stringparam_luadir, /* can only be read */
     sim_stringparam_pythondir, /* can only be read */
+    sim_stringparam_mujocodir, /* can only be read */
 };
 
 enum { /* Array parameters: */
@@ -1344,6 +1345,7 @@ enum { /* Object int/float/string parameters */
     sim_shapeintparam_edge_borders_hidden= 3027,
     sim_shapeintparam_component_cnt= 3028,
     sim_shapeintparam_sleepmodestart= 3029,
+    sim_shapeintparam_kinematic= 3030,
 
     /* proximity sensors */
     sim_proxintparam_ray_invisibility= 4000,

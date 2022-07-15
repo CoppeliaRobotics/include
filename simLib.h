@@ -152,10 +152,10 @@ typedef simInt (__cdecl *ptrSimSetJointTargetVelocity)(simInt objectHandle,simFl
 typedef simInt (__cdecl *ptrSimGetJointTargetVelocity)(simInt objectHandle,simFloat* targetVelocity);
 typedef simInt (__cdecl *ptrSimCopyPasteObjects)(simInt* objectHandles,simInt objectCount,simInt options);
 typedef simInt (__cdecl *ptrSimScaleObjects)(const simInt* objectHandles,simInt objectCount,simFloat scalingFactor,simBool scalePositionsToo);
-typedef simInt (__cdecl *ptrSimAddDrawingObject)(simInt objectType,simFloat size,simFloat duplicateTolerance,simInt parentObjectHandle,simInt maxItemCount,const simFloat* ambient_diffuse,const simFloat* setToNULL,const simFloat* specular,const simFloat* emission);
+typedef simInt (__cdecl *ptrSimAddDrawingObject)(simInt objectType,simFloat size,simFloat duplicateTolerance,simInt parentObjectHandle,simInt maxItemCount,const simFloat* color,const simFloat* setToNULL,const simFloat* setToNULL2,const simFloat* setToNULL3);
 typedef simInt (__cdecl *ptrSimRemoveDrawingObject)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimAddDrawingObjectItem)(simInt objectHandle,const simFloat* itemData);
-typedef simInt (__cdecl *ptrSimAddParticleObject)(simInt objectType,simFloat size,simFloat density,const simVoid* params,simFloat lifeTime,simInt maxItemCount,const simFloat* ambient_diffuse,const simFloat* setToNULL,const simFloat* specular,const simFloat* emission);
+typedef simInt (__cdecl *ptrSimAddParticleObject)(simInt objectType,simFloat size,simFloat density,const simVoid* params,simFloat lifeTime,simInt maxItemCount,const simFloat* color,const simFloat* setToNULL,const simFloat* setToNULL2,const simFloat* setToNULL3);
 typedef simInt (__cdecl *ptrSimRemoveParticleObject)(simInt objectHandle);
 typedef simInt (__cdecl *ptrSimAddParticleObjectItem)(simInt objectHandle,const simFloat* itemData);
 typedef simFloat (__cdecl *ptrSimGetObjectSizeFactor)(simInt objectHandle);
