@@ -8,6 +8,7 @@
 
 #ifdef QT_FRAMEWORK
     #include <QLibrary>
+    #include <QDebug>
     #define LIBRARY QLibrary*
     #define __cdecl
     #define FARPROC void*
@@ -20,6 +21,7 @@
         #define FARPROC void*
         #define LIBRARY void*
     #endif
+    #include <stdio.h>
 #endif // QT_FRAMEWORK
 
 int getSimProcAddresses(LIBRARY lib);
