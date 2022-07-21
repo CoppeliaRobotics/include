@@ -1298,7 +1298,7 @@ enum { /* Object int/float/string parameters */
     sim_jointfloatparam_error_g= 2027,
     sim_jointfloatparam_error_pos= 2028,
     sim_jointfloatparam_error_angle= 2029,
-    sim_jointintparam_velocity_lock= 2030,
+    sim_jointintparam_velocity_lock= 2030, /* deprecated */
     sim_jointintparam_vortex_dep_handle= 2031,
     sim_jointfloatparam_vortex_dep_multiplication= 2032,
     sim_jointfloatparam_vortex_dep_offset= 2033,
