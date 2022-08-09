@@ -88,6 +88,11 @@ typedef simInt (__cdecl *ptrSimBuildPose)(const simFloat* position,const simFloa
 typedef simInt (__cdecl *ptrSimGetEulerAnglesFromMatrix)(const simFloat* matrix,simFloat* eulerAngles);
 typedef simInt (__cdecl *ptrSimInvertMatrix)(simFloat* matrix);
 typedef simInt (__cdecl *ptrSimMultiplyMatrices)(const simFloat* matrixIn1,const simFloat* matrixIn2,simFloat* matrixOut);
+typedef simInt (__cdecl *ptrSimMultiplyPoses)(const simFloat* poseIn1,const simFloat* poseIn2,simFloat* poseOut);
+typedef simInt (__cdecl *ptrSimInvertPose)(simFloat* pose);
+typedef simInt (__cdecl *ptrSimInterpolatePoses)(const simFloat* poseIn1,const simFloat* poseIn2,simFloat interpolFactor,simFloat* poseOut);
+typedef simInt (__cdecl *ptrSimPoseToMatrix)(const simFloat* poseIn,simFloat* matrixOut);
+typedef simInt (__cdecl *ptrSimMatrixToPose)(const simFloat* matrixIn,simFloat* poseOut);
 typedef simInt (__cdecl *ptrSimInterpolateMatrices)(const simFloat* matrixIn1,const simFloat* matrixIn2,simFloat interpolFactor,simFloat* matrixOut);
 typedef simInt (__cdecl *ptrSimTransformVector)(const simFloat* matrix,simFloat* vect);
 typedef simInt (__cdecl *ptrSimReservedCommand)(simInt v,simInt w);
@@ -252,8 +257,6 @@ typedef simInt (__cdecl *ptrSimRuckigPos)(simInt dofs,simDouble baseCycleTime,si
 typedef simInt (__cdecl *ptrSimRuckigVel)(simInt dofs,simDouble baseCycleTime,simInt flags,const simDouble* currentPos,const simDouble* currentVel,const simDouble* currentAccel,const simDouble* maxAccel,const simDouble* maxJerk,const simBool* selection,const simDouble* targetVel,simDouble* reserved1,simInt* reserved2);
 typedef simInt (__cdecl *ptrSimRuckigStep)(simInt objHandle,simDouble cycleTime,simDouble* newPos,simDouble* newVel,simDouble* newAccel,simDouble* syncTime,simDouble* reserved1,simInt* reserved2);
 typedef simInt (__cdecl *ptrSimRuckigRemove)(simInt objHandle);
-typedef simInt (__cdecl *ptrSimBuildMatrixQ)(const simFloat* position,const simFloat* quaternion,simFloat* matrix);
-typedef simInt (__cdecl *ptrSimGetQuaternionFromMatrix)(const simFloat* matrix,simFloat* quaternion);
 typedef simInt (__cdecl *ptrSimGroupShapes)(const simInt* shapeHandles,simInt shapeCount);
 typedef simInt* (__cdecl *ptrSimUngroupShape)(simInt shapeHandle,simInt* shapeCount);
 typedef simInt (__cdecl *ptrSimConvexDecompose)(simInt shapeHandle,simInt options,const simInt* intParams,const simFloat* floatParams);
@@ -520,6 +523,11 @@ extern ptrSimBuildPose simBuildPose;
 extern ptrSimGetEulerAnglesFromMatrix simGetEulerAnglesFromMatrix;
 extern ptrSimInvertMatrix simInvertMatrix;
 extern ptrSimMultiplyMatrices simMultiplyMatrices;
+extern ptrSimMultiplyPoses simMultiplyPoses;
+extern ptrSimInvertPose simInvertPose;
+extern ptrSimInterpolatePoses simInterpolatePoses;
+extern ptrSimPoseToMatrix simPoseToMatrix;
+extern ptrSimMatrixToPose simMatrixToPose;
 extern ptrSimInterpolateMatrices simInterpolateMatrices;
 extern ptrSimTransformVector simTransformVector;
 extern ptrSimReservedCommand simReservedCommand;
@@ -686,8 +694,6 @@ extern ptrSimRuckigPos simRuckigPos;
 extern ptrSimRuckigVel simRuckigVel;
 extern ptrSimRuckigStep simRuckigStep;
 extern ptrSimRuckigRemove simRuckigRemove;
-extern ptrSimBuildMatrixQ simBuildMatrixQ;
-extern ptrSimGetQuaternionFromMatrix simGetQuaternionFromMatrix;
 extern ptrSimGroupShapes simGroupShapes;
 extern ptrSimUngroupShape simUngroupShape;
 extern ptrSimConvexDecompose simConvexDecompose;
@@ -1132,6 +1138,8 @@ typedef simBool (__cdecl *ptr_simIsDynamicMotorTorqueModulationEnabled)(const si
 typedef simVoid (__cdecl *ptr_simGetMotorPid)(const simVoid* joint,simFloat* pParam,simFloat* iParam,simFloat* dParam);
 typedef simInt (__cdecl *ptr_simGetContactCallbackCount)();
 typedef const void* (__cdecl *ptr_simGetContactCallback)(simInt index);
+typedef simInt (__cdecl *ptrSimBuildMatrixQ)(const simFloat* position,const simFloat* quaternion,simFloat* matrix);
+typedef simInt (__cdecl *ptrSimGetQuaternionFromMatrix)(const simFloat* matrix,simFloat* quaternion);
 
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1402,6 +1410,8 @@ extern ptr_simIsDynamicMotorTorqueModulationEnabled _simIsDynamicMotorTorqueModu
 extern ptr_simGetMotorPid _simGetMotorPid;
 extern ptr_simGetContactCallbackCount _simGetContactCallbackCount;
 extern ptr_simGetContactCallback _simGetContactCallback;
+extern ptrSimBuildMatrixQ simBuildMatrixQ;
+extern ptrSimGetQuaternionFromMatrix simGetQuaternionFromMatrix;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
