@@ -890,6 +890,7 @@ enum { /* String parameters: */
     sim_stringparam_luadir, /* can only be read */
     sim_stringparam_pythondir, /* can only be read */
     sim_stringparam_mujocodir, /* can only be read */
+    sim_stringparam_usersettingsdir, /* can only be read */
 };
 
 enum { /* Array parameters: */
@@ -1661,8 +1662,10 @@ enum { /* Physics engines params */
     sim_vortex_body_primlinearaxisfrictionmodel,
     sim_vortex_body_seclinearaxisfrictionmodel,
     sim_vortex_body_primangulararaxisfrictionmodel,
-    sim_vortex_body_secmangulararaxisfrictionmodel,
-    sim_vortex_body_normalmangulararaxisfrictionmodel,
+    sim_vortex_body_secangularaxisfrictionmodel,
+    sim_vortex_body_secmangulararaxisfrictionmodel=sim_vortex_body_secangularaxisfrictionmodel,
+    sim_vortex_body_normalangularaxisfrictionmodel,
+    sim_vortex_body_normalmangulararaxisfrictionmodel=sim_vortex_body_normalangularaxisfrictionmodel,
     sim_vortex_body_bitcoded,
     sim_vortex_body_autosleepsteplivethreshold,
     sim_vortex_body_materialuniqueid,
@@ -1729,51 +1732,45 @@ enum { /* Physics engines params */
 
 
     /* Mujoco */
-    //TODOMUJOCO
     sim_mujoco_global_float_start=37000,
     sim_mujoco_global_stepsize,
-    //sim_mujoco_global_contactmergetolerance,
     sim_mujoco_global_float_end,
 
     sim_mujoco_global_int_start=38000,
-    //sim_mujoco_global_constraintsolvingiterations,
     sim_mujoco_global_bitcoded,
     sim_mujoco_global_int_end,
 
     sim_mujoco_global_bool_start=39000,
-    //sim_mujoco_global_multithreading,
-    //sim_mujoco_global_exactsolver,
-    //sim_mujoco_global_highjointaccuracy,
     sim_mujoco_global_bool_end,
 
     sim_mujoco_joint_float_start=40000,
-    //sim_mujoco_joint_dependencyfactor,
-    //sim_mujoco_joint_dependencyoffset,
     sim_mujoco_joint_float_end,
 
     sim_mujoco_joint_int_start=41000,
-    //sim_mujoco_joint_objectid,
-    //sim_mujoco_joint_dependentobjectid,
     sim_mujoco_joint_int_end,
 
     sim_mujoco_joint_bool_start=42000,
-    /* if you add something here, search for njb11032016 */
     sim_mujoco_joint_bool_end,
 
     sim_mujoco_body_float_start=43000,
-    //sim_mujoco_body_staticfriction,
-    //sim_mujoco_body_kineticfriction,
-    //sim_mujoco_body_restitution,
-    //sim_mujoco_body_lineardrag,
-    //sim_mujoco_body_angulardrag,
+    sim_mujoco_body_friction1,
+    sim_mujoco_body_friction2,
+    sim_mujoco_body_friction3,
+    sim_mujoco_body_solref1,
+    sim_mujoco_body_solref2,
+    sim_mujoco_body_solimp1,
+    sim_mujoco_body_solimp2,
+    sim_mujoco_body_solimp3,
+    sim_mujoco_body_solimp4,
+    sim_mujoco_body_solimp5,
+    sim_mujoco_body_solmix,
     sim_mujoco_body_float_end,
 
     sim_mujoco_body_int_start=44000,
-    sim_mujoco_body_bitcoded,
+    sim_mujoco_body_condim,
     sim_mujoco_body_int_end,
 
     sim_mujoco_body_bool_start=45000,
-    //sim_mujoco_body_fastmoving,
     sim_mujoco_body_bool_end
 };
 
