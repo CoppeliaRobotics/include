@@ -1734,13 +1734,40 @@ enum { /* Physics engines params */
     /* Mujoco */
     sim_mujoco_global_float_start=37000,
     sim_mujoco_global_stepsize,
+    sim_mujoco_global_impratio,
+    sim_mujoco_global_wind1,
+    sim_mujoco_global_wind2,
+    sim_mujoco_global_wind3,
+    sim_mujoco_global_density,
+    sim_mujoco_global_viscosity,
+    sim_mujoco_global_boundmass,
+    sim_mujoco_global_boundinertia,
+    sim_mujoco_global_overridemargin,
+    sim_mujoco_global_overridesolref1,
+    sim_mujoco_global_overridesolref2,
+    sim_mujoco_global_overridesolimp1,
+    sim_mujoco_global_overridesolimp2,
+    sim_mujoco_global_overridesolimp3,
+    sim_mujoco_global_overridesolimp4,
+    sim_mujoco_global_overridesolimp5,
     sim_mujoco_global_float_end,
 
     sim_mujoco_global_int_start=38000,
-    sim_mujoco_global_bitcoded,
+    sim_mujoco_global_bitcoded, /* b0=compute inertias,b1=multithreaded,b2=multiccd,b3=balance inertias,b4=override contacts */
+    sim_mujoco_global_iterations,
+    sim_mujoco_global_integrator, /* 0=euler,1=rk4,2=implicit */
+    sim_mujoco_global_solver, /* 0=pgs,1=cg,2=newton */
+    sim_mujoco_global_njmax,
+    sim_mujoco_global_nconmax,
+    sim_mujoco_global_cone,
     sim_mujoco_global_int_end,
 
     sim_mujoco_global_bool_start=39000,
+    sim_mujoco_global_computeinertias,
+    sim_mujoco_global_multithreaded,
+    sim_mujoco_global_multiccd,
+    sim_mujoco_global_balanceinertias,
+    sim_mujoco_global_overridecontacts,
     sim_mujoco_global_bool_end,
 
     sim_mujoco_joint_float_start=40000,
