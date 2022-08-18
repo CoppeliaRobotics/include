@@ -843,7 +843,8 @@ enum { /* Float parameters: */
     sim_floatparam_simulation_time_step,
     sim_floatparam_stereo_distance,
     sim_floatparam_dynamic_step_size,
-    sim_floatparam_mouse_wheel_zoom_factor
+    sim_floatparam_mouse_wheel_zoom_factor,
+    sim_floatparam_physicstimestep,
 };
 
 enum { /* String parameters: */
@@ -1430,7 +1431,7 @@ enum { /* stack table info */
 enum { /* Physics engines params */
     /* Bullet */
     sim_bullet_global_float_start=0,
-    sim_bullet_global_stepsize,
+    sim_bullet_global_stepsize,                 /* deprecated, use sim_floatparam_physics_timestep instead */
     sim_bullet_global_internalscalingfactor,
     sim_bullet_global_collisionmarginfactor,
     sim_bullet_global_float_end,
@@ -1443,6 +1444,7 @@ enum { /* Physics engines params */
 
     sim_bullet_global_bool_start=2000,
     sim_bullet_global_fullinternalscaling,
+    sim_bullet_global_computeinertias,
     sim_bullet_global_bool_end,
 
     sim_bullet_joint_float_start=3000,
@@ -1482,7 +1484,7 @@ enum { /* Physics engines params */
 
     /* ODE */
     sim_ode_global_float_start=9000,
-    sim_ode_global_stepsize,
+    sim_ode_global_stepsize,                /* deprecated, use sim_floatparam_physics_timestep instead */
     sim_ode_global_internalscalingfactor,
     sim_ode_global_cfm,
     sim_ode_global_erp,
@@ -1497,6 +1499,7 @@ enum { /* Physics engines params */
     sim_ode_global_bool_start=11000,
     sim_ode_global_fullinternalscaling,
     sim_ode_global_quickstep,
+    sim_ode_global_computeinertias,
     sim_ode_global_bool_end,
 
     sim_ode_joint_float_start=12000,
@@ -1533,7 +1536,7 @@ enum { /* Physics engines params */
 
     /* Vortex */
     sim_vortex_global_float_start=18000,
-    sim_vortex_global_stepsize,
+    sim_vortex_global_stepsize,                     /* deprecated, use sim_floatparam_physics_timestep instead */
     sim_vortex_global_internalscalingfactor,
     sim_vortex_global_contacttolerance,
     sim_vortex_global_constraintlinearcompliance,
@@ -1551,6 +1554,7 @@ enum { /* Physics engines params */
     sim_vortex_global_bool_start=20000,
     sim_vortex_global_autosleep,
     sim_vortex_global_multithreading,
+    sim_vortex_global_computeinertias=sim_vortex_global_multithreading+3, /* previous 2 are reserved */
     sim_vortex_global_bool_end,
 
     sim_vortex_joint_float_start=21000,
@@ -1685,7 +1689,7 @@ enum { /* Physics engines params */
 
     /* Newton */
     sim_newton_global_float_start=27000,
-    sim_newton_global_stepsize,
+    sim_newton_global_stepsize,                     /* deprecated, use sim_floatparam_physics_timestep instead */
     sim_newton_global_contactmergetolerance,
     sim_newton_global_float_end,
 
@@ -1698,6 +1702,7 @@ enum { /* Physics engines params */
     sim_newton_global_multithreading,
     sim_newton_global_exactsolver,
     sim_newton_global_highjointaccuracy,
+    sim_newton_global_computeinertias,
     sim_newton_global_bool_end,
 
     sim_newton_joint_float_start=30000,
@@ -1733,7 +1738,7 @@ enum { /* Physics engines params */
 
     /* Mujoco */
     sim_mujoco_global_float_start=37000,
-    sim_mujoco_global_stepsize,
+    sim_mujoco_global_stepsize,             /* deprecated, use sim_floatparam_physics_timestep instead */
     sim_mujoco_global_impratio,
     sim_mujoco_global_wind1,
     sim_mujoco_global_wind2,
@@ -1750,6 +1755,8 @@ enum { /* Physics engines params */
     sim_mujoco_global_overridesolimp3,
     sim_mujoco_global_overridesolimp4,
     sim_mujoco_global_overridesolimp5,
+    sim_mujoco_global_kinmass,
+    sim_mujoco_global_kininertia,
     sim_mujoco_global_float_end,
 
     sim_mujoco_global_int_start=38000,
@@ -1759,7 +1766,8 @@ enum { /* Physics engines params */
     sim_mujoco_global_solver, /* 0=pgs,1=cg,2=newton */
     sim_mujoco_global_njmax,
     sim_mujoco_global_nconmax,
-    sim_mujoco_global_cone,
+    sim_mujoco_global_cone, /* 0=pyramidal,1=elliptic */
+    sim_mujoco_global_overridekin, /* 0=do not override,1=all disabled,2=all enabled */
     sim_mujoco_global_int_end,
 
     sim_mujoco_global_bool_start=39000,
