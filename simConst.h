@@ -842,7 +842,7 @@ enum { /* Float parameters: */
     sim_floatparam_rand=0, /* random value (0.0-1.0) */
     sim_floatparam_simulation_time_step,
     sim_floatparam_stereo_distance,
-    sim_floatparam_dynamic_step_size,
+    sim_floatparam_dynamic_step_size, /* deprecated, use sim_floatparam_physicstimestep instead */
     sim_floatparam_mouse_wheel_zoom_factor,
     sim_floatparam_physicstimestep,
 };
@@ -1433,7 +1433,7 @@ enum { /* stack table info */
 enum { /* Physics engines params */
     /* Bullet */
     sim_bullet_global_float_start=0,
-    sim_bullet_global_stepsize,                 /* deprecated, use sim_floatparam_physics_timestep instead */
+    sim_bullet_global_stepsize,                 /* deprecated, use sim_floatparam_physicstimestep instead */
     sim_bullet_global_internalscalingfactor,
     sim_bullet_global_collisionmarginfactor,
     sim_bullet_global_float_end,
@@ -1484,7 +1484,7 @@ enum { /* Physics engines params */
 
     /* ODE */
     sim_ode_global_float_start=9000,
-    sim_ode_global_stepsize,                /* deprecated, use sim_floatparam_physics_timestep instead */
+    sim_ode_global_stepsize,                /* deprecated, use sim_floatparam_physicstimestep instead */
     sim_ode_global_internalscalingfactor,
     sim_ode_global_cfm,
     sim_ode_global_erp,
@@ -1533,7 +1533,7 @@ enum { /* Physics engines params */
 
     /* Vortex */
     sim_vortex_global_float_start=18000,
-    sim_vortex_global_stepsize,                     /* deprecated, use sim_floatparam_physics_timestep instead */
+    sim_vortex_global_stepsize,                     /* deprecated, use sim_floatparam_physicstimestep instead */
     sim_vortex_global_internalscalingfactor,
     sim_vortex_global_contacttolerance,
     sim_vortex_global_constraintlinearcompliance,
@@ -1686,7 +1686,7 @@ enum { /* Physics engines params */
 
     /* Newton */
     sim_newton_global_float_start=27000,
-    sim_newton_global_stepsize,                     /* deprecated, use sim_floatparam_physics_timestep instead */
+    sim_newton_global_stepsize,                     /* deprecated, use sim_floatparam_physicstimestep instead */
     sim_newton_global_contactmergetolerance,
     sim_newton_global_float_end,
 
@@ -1735,7 +1735,7 @@ enum { /* Physics engines params */
 
     /* Mujoco */
     sim_mujoco_global_float_start=37000,
-    sim_mujoco_global_stepsize,             /* deprecated, use sim_floatparam_physics_timestep instead */
+    sim_mujoco_global_stepsize,             /* deprecated, use sim_floatparam_physicstimestep instead */
     sim_mujoco_global_impratio,
     sim_mujoco_global_wind1,
     sim_mujoco_global_wind2,
@@ -1832,7 +1832,32 @@ enum { /* Physics engines params */
     sim_mujoco_body_int_end,
 
     sim_mujoco_body_bool_start=45000,
-    sim_mujoco_body_bool_end
+    sim_mujoco_body_bool_end,
+
+    sim_mujoco_dummy_float_start=46000,
+    sim_mujoco_dummy_range1,
+    sim_mujoco_dummy_range2,
+    sim_mujoco_dummy_solreflimit1,
+    sim_mujoco_dummy_solreflimit2,
+    sim_mujoco_dummy_solimplimit1,
+    sim_mujoco_dummy_solimplimit2,
+    sim_mujoco_dummy_solimplimit3,
+    sim_mujoco_dummy_solimplimit4,
+    sim_mujoco_dummy_solimplimit5,
+    sim_mujoco_dummy_margin,
+    sim_mujoco_dummy_springlength,
+    sim_mujoco_dummy_stiffness,
+    sim_mujoco_dummy_damping,
+    sim_mujoco_dummy_float_end,
+
+    sim_mujoco_dummy_int_start=47000,
+    sim_mujoco_dummy_bitcoded,
+    sim_mujoco_dummy_int_end,
+
+    sim_mujoco_dummy_bool_start=48000,
+    sim_mujoco_dummy_limited,
+    sim_mujoco_dummy_bool_end
+
 };
 
 enum { /* Vortex friction models */
