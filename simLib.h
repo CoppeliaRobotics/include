@@ -442,8 +442,6 @@ typedef simVoid (__cdecl *ptr_simAddForceSensorCumulativeForcesAndTorques)(simVo
 typedef simVoid (__cdecl *ptr_simAddJointCumulativeForcesOrTorques)(simVoid* joint,simFloat forceOrTorque,int totalPassesCount,simFloat simTime);
 typedef const simVoid* (__cdecl *ptr_simGetGeomWrapFromGeomProxy)(const simVoid* geomData);
 typedef simFloat (__cdecl *ptr_simGetMass)(const simVoid* geomInfo);
-typedef simVoid (__cdecl *ptr_simGetPrincipalMomentOfInertia)(const simVoid* geomInfo,simFloat* inertia);
-typedef simVoid (__cdecl *ptr_simGetLocalInertiaFrame)(const simVoid* geomInfo,simFloat* pos,simFloat* quat);
 typedef simFloat (__cdecl *ptr_simGetLocalInertiaInfo)(const simVoid* object,simFloat* pos,simFloat* quat,simFloat* diagI);
 typedef simInt (__cdecl *ptr_simGetPurePrimitiveType)(const simVoid* geomInfo);
 typedef simBool (__cdecl *ptr_simIsGeomWrapGeometric)(const simVoid* geomInfo);
@@ -889,8 +887,6 @@ extern ptr_simGetVerticesLocalFrame _simGetVerticesLocalFrame;
 extern ptr_simGetHeightfieldData _simGetHeightfieldData;
 extern ptr_simGetCumulativeMeshes _simGetCumulativeMeshes;
 extern ptr_simGetMass _simGetMass;
-extern ptr_simGetLocalInertiaFrame _simGetLocalInertiaFrame;
-extern ptr_simGetPrincipalMomentOfInertia _simGetPrincipalMomentOfInertia;
 extern ptr_simGetLocalInertiaInfo _simGetLocalInertiaInfo;
 extern ptr_simGetGravity _simGetGravity;
 extern ptr_simGetTimeDiffInMs _simGetTimeDiffInMs;
@@ -1140,6 +1136,8 @@ typedef simInt (__cdecl *ptr_simGetContactCallbackCount)();
 typedef const void* (__cdecl *ptr_simGetContactCallback)(simInt index);
 typedef simInt (__cdecl *ptrSimBuildMatrixQ)(const simFloat* position,const simFloat* quaternion,simFloat* matrix);
 typedef simInt (__cdecl *ptrSimGetQuaternionFromMatrix)(const simFloat* matrix,simFloat* quaternion);
+typedef simVoid (__cdecl *ptr_simGetPrincipalMomentOfInertia)(const simVoid* geomInfo,simFloat* inertia);
+typedef simVoid (__cdecl *ptr_simGetLocalInertiaFrame)(const simVoid* geomInfo,simFloat* pos,simFloat* quat);
 
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1412,6 +1410,8 @@ extern ptr_simGetContactCallbackCount _simGetContactCallbackCount;
 extern ptr_simGetContactCallback _simGetContactCallback;
 extern ptrSimBuildMatrixQ simBuildMatrixQ;
 extern ptrSimGetQuaternionFromMatrix simGetQuaternionFromMatrix;
+extern ptr_simGetLocalInertiaFrame _simGetLocalInertiaFrame;
+extern ptr_simGetPrincipalMomentOfInertia _simGetPrincipalMomentOfInertia;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)

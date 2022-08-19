@@ -1454,11 +1454,9 @@ enum { /* Physics engines params */
     sim_bullet_joint_float_end,
 
     sim_bullet_joint_int_start=4000,
-    /* if you add something here, search for bji11032016 */
     sim_bullet_joint_int_end,
 
     sim_bullet_joint_bool_start=5000,
-    /* if you add something here, search for bjb11032016 */
     sim_bullet_joint_bool_end,
 
     sim_bullet_body_float_start=6000,
@@ -1511,11 +1509,9 @@ enum { /* Physics engines params */
     sim_ode_joint_float_end,
 
     sim_ode_joint_int_start=13000,
-    /* if you add something here, search for oji11032016 */
     sim_ode_joint_int_end,
 
     sim_ode_joint_bool_start=14000,
-    /* if you add something here, search for ojb11032016 */
     sim_ode_joint_bool_end,
 
     sim_ode_body_float_start=15000,
@@ -1531,7 +1527,6 @@ enum { /* Physics engines params */
     sim_ode_body_int_end,
 
     sim_ode_body_bool_start=17000,
-    /* if you add something here, search for obb11032016 */
     sim_ode_body_bool_end,
 
     /* Vortex */
