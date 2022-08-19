@@ -1087,13 +1087,15 @@ enum { /* primitive shapes */
 };
 
 enum { /* dummy-dummy link types */
-    sim_dummy_linktype_dynamics_loop_closure=0,
+    sim_dummylink_dynloopclosure=0,
+    sim_dummy_linktype_dynamics_loop_closure=sim_dummylink_dynloopclosure,
     sim_dummy_linktype_dynamics_force_constraint, /* deprecated */
     sim_dummy_linktype_gcs_loop_closure, /* deprecated */
     sim_dummy_linktype_gcs_tip, /* deprecated */
     sim_dummy_linktype_gcs_target, /* deprecated */
     sim_dummy_linktype_ik_tip_target, /* deprecated */
-    sim_dummy_linktype_reserved
+    sim_dummy_linktype_reserved,
+    sim_dummylink_dyntendon,
 };
 
 enum { /* texture map modes (serialized) */
