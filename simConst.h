@@ -585,9 +585,10 @@ enum { /* special handle flags: */
     sim_handleflag_extended             =0x00400000,
     sim_handleflag_greyscale            =0x00400000,
     sim_handleflag_codedstring          =0x00400000,
-    sim_handleflag_wxyzquaternion       =0x00400000,
+    sim_handleflag_wxyzquat             =0x01000000,
     sim_handleflag_reljointbaseframe    =0x00400000,
     sim_handleflag_setmultiple          =0x00400000,
+    sim_handleflag_addmultiple          =0x01000000,
     sim_handleflag_abscoords            =0x00800000,
     sim_handleflag_depthbuffer          =0x00800000,
     sim_handleflag_depthbuffermeters    =0x00800000,
@@ -1765,6 +1766,7 @@ enum { /* Physics engines params */
     sim_mujoco_global_nconmax,
     sim_mujoco_global_cone, /* 0=pyramidal,1=elliptic */
     sim_mujoco_global_overridekin, /* 0=do not override,1=all disabled,2=all enabled */
+    sim_mujoco_global_nstack,
     sim_mujoco_global_int_end,
 
     sim_mujoco_global_bool_start=39000,
