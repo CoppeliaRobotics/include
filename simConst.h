@@ -1276,9 +1276,9 @@ enum { /* Object int/float/string parameters */
     /* joints */
     sim_jointintparam_motor_enabled= 2000, /* deprecated */
     sim_jointintparam_ctrl_enabled= 2001, /* deprecated */
-    sim_jointfloatparam_pid_p= 2002,
-    sim_jointfloatparam_pid_i= 2003,
-    sim_jointfloatparam_pid_d= 2004,
+    sim_jointfloatparam_pid_p= 2002, /* deprecated, use e.g. sim_bullet_joint_pospid1 and similar */
+    sim_jointfloatparam_pid_i= 2003, /* deprecated, use e.g. sim_bullet_joint_pospid2 and similar */
+    sim_jointfloatparam_pid_d= 2004, /* deprecated, use e.g. sim_bullet_joint_pospid3 and similar */
     sim_jointfloatparam_intrinsic_x= 2005,
     sim_jointfloatparam_intrinsic_y= 2006,
     sim_jointfloatparam_intrinsic_z= 2007,
@@ -1454,6 +1454,11 @@ enum { /* Physics engines params */
     sim_bullet_joint_stoperp,
     sim_bullet_joint_stopcfm,
     sim_bullet_joint_normalcfm,
+    sim_bullet_joint_free1,
+    sim_bullet_joint_free2,
+    sim_bullet_joint_pospid1,
+    sim_bullet_joint_pospid2,
+    sim_bullet_joint_pospid3,
     sim_bullet_joint_float_end,
 
     sim_bullet_joint_int_start=4000,
@@ -1509,6 +1514,9 @@ enum { /* Physics engines params */
     sim_ode_joint_bounce,
     sim_ode_joint_fudgefactor,
     sim_ode_joint_normalcfm,
+    sim_ode_joint_pospid1,
+    sim_ode_joint_pospid2,
+    sim_ode_joint_pospid3,
     sim_ode_joint_float_end,
 
     sim_ode_joint_int_start=13000,
@@ -1605,6 +1613,11 @@ enum { /* Physics engines params */
     sim_vortex_joint_a2frictionloss,
     sim_vortex_joint_dependencyfactor,
     sim_vortex_joint_dependencyoffset,
+    sim_vortex_joint_free1,
+    sim_vortex_joint_free2,
+    sim_vortex_joint_pospid1,
+    sim_vortex_joint_pospid2,
+    sim_vortex_joint_pospid3,
     sim_vortex_joint_float_end,
 
     sim_vortex_joint_int_start=22000,
@@ -1706,6 +1719,9 @@ enum { /* Physics engines params */
     sim_newton_joint_float_start=30000,
     sim_newton_joint_dependencyfactor,
     sim_newton_joint_dependencyoffset,
+    sim_newton_joint_pospid1,
+    sim_newton_joint_pospid2,
+    sim_newton_joint_pospid3,
     sim_newton_joint_float_end,
 
     sim_newton_joint_int_start=31000,
@@ -1805,6 +1821,9 @@ enum { /* Physics engines params */
     sim_mujoco_joint_polycoef3,
     sim_mujoco_joint_polycoef4,
     sim_mujoco_joint_polycoef5,
+    sim_mujoco_joint_pospid1,
+    sim_mujoco_joint_pospid2,
+    sim_mujoco_joint_pospid3,
     sim_mujoco_joint_float_end,
 
     sim_mujoco_joint_int_start=41000,
