@@ -832,6 +832,9 @@ enum { /* Integer parameters: */
     sim_intparam_bugfix1,
     sim_intparam_mouseclickcounterdown,
     sim_intparam_mouseclickcounterup,
+    sim_intparam_objectcreationcounter,
+    sim_intparam_objectdestructioncounter,
+    sim_intparam_hierarchychangecounter,
 };
 
 enum { /* uint64 parameters: */
@@ -965,7 +968,8 @@ enum { /* verbosity */
     sim_verbosity_tracelua=800,
     sim_verbosity_traceall=900,
     sim_verbosity_default=sim_verbosity_loadinfos,
-    sim_verbosity_undecorated=0xf000,
+    sim_verbosity_undecorated=0x0f000,
+    sim_verbosity_onlyterminal=0x10000,
 };
 
 enum { /* module info */
@@ -1783,6 +1787,7 @@ enum { /* Physics engines params */
     sim_mujoco_global_cone, /* 0=pyramidal,1=elliptic */
     sim_mujoco_global_overridekin, /* 0=do not override,1=all disabled,2=all enabled */
     sim_mujoco_global_nstack,
+    sim_mujoco_global_rebuildtrigger, /* bit coded: bit0=object added, bit1=object removed, bit2=hierarchy changed, bit3=dynamic refresh flag found, bit4=xml injections, bit5=CoppeliaSim particles */
     sim_mujoco_global_int_end,
 
     sim_mujoco_global_bool_start=39000,
