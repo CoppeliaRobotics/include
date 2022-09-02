@@ -896,6 +896,7 @@ enum { /* String parameters: */
     sim_stringparam_pythondir, /* can only be read */
     sim_stringparam_mujocodir, /* can only be read */
     sim_stringparam_usersettingsdir, /* can only be read */
+    sim_stringparam_systemdir, /* can only be read */
 };
 
 enum { /* Array parameters: */
@@ -1915,7 +1916,6 @@ enum {
     sim_announce_containsstaticshapesondynamicconstruction,
     sim_announce_purehollowshapenotsupported,
     sim_announce_vortexpluginisdemo,
-    sim_announce_newtondynamicrandommeshnotsupported,
 };
 
 enum {
