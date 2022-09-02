@@ -897,6 +897,7 @@ enum { /* String parameters: */
     sim_stringparam_mujocodir, /* can only be read */
     sim_stringparam_usersettingsdir, /* can only be read */
     sim_stringparam_systemdir, /* can only be read */
+    sim_stringparam_resourcesdir, /* can only be read */
 };
 
 enum { /* Array parameters: */
