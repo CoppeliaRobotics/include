@@ -1853,10 +1853,12 @@ enum { /* Physics engines params */
     sim_mujoco_body_solimp4,
     sim_mujoco_body_solimp5,
     sim_mujoco_body_solmix,
+    sim_mujoco_body_margin,
     sim_mujoco_body_float_end,
 
     sim_mujoco_body_int_start=44000,
     sim_mujoco_body_condim,
+    sim_mujoco_body_priority,
     sim_mujoco_body_int_end,
 
     sim_mujoco_body_bool_start=45000,
