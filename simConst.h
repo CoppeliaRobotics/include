@@ -771,7 +771,7 @@ enum { /* Boolean parameters: */
     sim_boolparam_stop_toolbarbutton_enabled,
     sim_boolparam_waiting_for_trigger,
     sim_boolparam_objproperties_toolbarbutton_enabled,
-    sim_boolparam_calcmodules_toolbarbutton_enabled,
+    sim_boolparam_calcmodules_toolbarbutton_enabled, /* deprecated */
     sim_boolparam_rosinterface_donotrunmainscript,
     sim_boolparam_online_mode,
     sim_boolparam_xr_partrepository,
@@ -817,7 +817,7 @@ enum { /* Integer parameters: */
     sim_intparam_program_revision, /* Can only be read. See also sim_intparam_program_version */
     sim_intparam_mouse_buttons, /* can only be read */
     sim_intparam_dynamic_warning_disabled_mask,
-    sim_intparam_simulation_warning_disabled_mask,
+    sim_intparam_simulation_warning_disabled_mask, /* deprecated */
     sim_intparam_scene_index, /* can be used to switch to a different instance programmatically */
     sim_intparam_motionplanning_seed,
     sim_intparam_speedmodifier, /* can only be used while simulation is not stopped */
@@ -838,13 +838,13 @@ enum { /* Integer parameters: */
 };
 
 enum { /* uint64 parameters: */
-    sim_uint64param_simulation_time_step_ns=0, /* simulation time step in nanoseconds */
-    sim_uint64param_simulation_time_ns      /* simulation time in nanoseconds */
+    sim_uint64param_simulation_time_step_ns=0, /* deprecated. Use simGet/SetSimulationTimeStep instead */
+    sim_uint64param_simulation_time_ns      /* deprecated. Use simGetSimulationTime instead */
 };
 
 enum { /* Float parameters: */
     sim_floatparam_rand=0, /* random value (0.0-1.0) */
-    sim_floatparam_simulation_time_step,
+    sim_floatparam_simulation_time_step, /* deprecated, use simGet/SetSimulationTimeStep instead */
     sim_floatparam_stereo_distance,
     sim_floatparam_dynamic_step_size, /* deprecated, use sim_floatparam_physicstimestep instead */
     sim_floatparam_mouse_wheel_zoom_factor,
@@ -875,8 +875,8 @@ enum { /* String parameters: */
     sim_stringparam_job0, /* Job0. can only be read */
     sim_stringparam_job99=sim_stringparam_job0+99, /* can only be read */
     sim_stringparam_scene_unique_id, /* can only be read */
-    sim_stringparam_machine_id,
-    sim_stringparam_machine_id_legacy,
+    sim_stringparam_machine_id, /* can only be read */
+    sim_stringparam_machine_id_legacy, /* can only be read */
     sim_stringparam_verbosity, /* can only be written */
     sim_stringparam_statusbarverbosity, /* can only be written */
     sim_stringparam_dlgverbosity, /* can only be written */
