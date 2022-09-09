@@ -416,6 +416,7 @@ typedef simVoid (__cdecl *ptr_simDisableDynamicTreeForManipulation)(const simVoi
 typedef simBool (__cdecl *ptr_simIsShapeDynamicallyRespondable)(const simVoid* shape);
 typedef simInt (__cdecl *ptr_simGetDynamicCollisionMask)(const simVoid* shape);
 typedef const simVoid* (__cdecl *ptr_simGetLastParentForLocalGlobalCollidable)(const simVoid* shape);
+typedef simVoid (__cdecl *ptr_simSetJointVelocity)(const simVoid* joint,simFloat vel);
 typedef simVoid (__cdecl *ptr_simSetJointPosition)(const simVoid* joint,simFloat pos);
 typedef simFloat (__cdecl *ptr_simGetJointPosition)(const simVoid* joint);
 typedef simVoid (__cdecl *ptr_simSetDynamicMotorPositionControlTargetPosition)(const simVoid* joint,simFloat pos);
@@ -851,6 +852,7 @@ extern ptr_simDisableDynamicTreeForManipulation _simDisableDynamicTreeForManipul
 extern ptr_simIsShapeDynamicallyRespondable _simIsShapeDynamicallyRespondable;
 extern ptr_simGetDynamicCollisionMask _simGetDynamicCollisionMask;
 extern ptr_simGetLastParentForLocalGlobalCollidable _simGetLastParentForLocalGlobalCollidable;
+extern ptr_simSetJointVelocity _simSetJointVelocity;
 extern ptr_simSetJointPosition _simSetJointPosition;
 extern ptr_simGetJointPosition _simGetJointPosition;
 extern ptr_simSetDynamicMotorPositionControlTargetPosition _simSetDynamicMotorPositionControlTargetPosition;

@@ -792,7 +792,7 @@ enum { /* Integer parameters: */
     sim_intparam_current_page,
     sim_intparam_flymode_camera_handle, /* deprecated */
     sim_intparam_dynamic_step_divider, /* can only be read */
-    sim_intparam_dynamic_engine, /* 0=Bullet, 1=ODE, 2=Vortex, 3=Newton, 4=Mujoco. Can only be read */
+    sim_intparam_dynamic_engine, /* 0=Bullet, 1=ODE, 2=Vortex, 3=Newton, 4=MuJoCo. Can only be read */
     sim_intparam_server_port_start, /* can only be read */
     sim_intparam_server_port_range, /* can only be read */
     sim_intparam_visible_layers,
@@ -1756,7 +1756,7 @@ enum { /* Physics engines params */
     sim_newton_body_bool_end,
 
 
-    /* Mujoco */
+    /* MuJoCo */
     sim_mujoco_global_float_start=37000,
     sim_mujoco_global_stepsize,             /* deprecated, use sim_floatparam_physicstimestep instead */
     sim_mujoco_global_impratio,
