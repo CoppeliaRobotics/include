@@ -1357,6 +1357,7 @@ enum { /* Object int/float/string parameters */
     sim_shapeintparam_component_cnt= 3028,
     sim_shapeintparam_sleepmodestart= 3029,
     sim_shapeintparam_kinematic= 3030,
+    sim_shapeintparam_respondablesuspendcnt= 3031,
 
     /* proximity sensors */
     sim_proxintparam_ray_invisibility= 4000,
@@ -1882,6 +1883,7 @@ enum { /* Physics engines params */
 
     sim_mujoco_dummy_int_start=47000,
     sim_mujoco_dummy_bitcoded,
+    sim_mujoco_dummy_proxyjointid,
     sim_mujoco_dummy_int_end,
 
     sim_mujoco_dummy_bool_start=48000,
