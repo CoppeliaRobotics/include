@@ -1,11 +1,11 @@
 #if !defined(SIMCONST_INCLUDED_)
 #define SIMCONST_INCLUDED_
 
-#define SIM_PROGRAM_VERSION_NB 40300
-#define SIM_PROGRAM_VERSION "4.3.0"
+#define SIM_PROGRAM_VERSION_NB 40400
+#define SIM_PROGRAM_VERSION "4.4.0"
 
-#define SIM_PROGRAM_REVISION_NB 13
-#define SIM_PROGRAM_REVISION "(rev. 13)"
+#define SIM_PROGRAM_REVISION_NB 0
+#define SIM_PROGRAM_REVISION "(rev. 0)"
 
 #define SIM_PROGRAM_FULL_VERSION_NB ((SIM_PROGRAM_VERSION_NB) * 100 + (SIM_PROGRAM_REVISION_NB))
 
@@ -461,17 +461,17 @@ enum { /* System callbacks */
     sim_syscb_aos_run_old, /* deprecated */
     sim_syscb_aos_suspend, /* special for add-on scripts */
     sim_syscb_aos_resume, /* special for add-on scripts */
-    sim_syscb_jointcallback, /* called by the physics engine for a dynamically enabled joint */
-    sim_syscb_contactcallback, /* called by the physics engine when two respondable shapes are contacting */
-    sim_syscb_customcallback1, /* custom call */
-    sim_syscb_customcallback2, /* custom call */
-    sim_syscb_customcallback3, /* custom call */
-    sim_syscb_customcallback4, /* custom call */
+    sim_syscb_jointcallback, /* deprecated. Use sim_syscb_joint instead */
+    sim_syscb_contactcallback, /* deprecated. Use sim_syscb_contact instead */
+    sim_syscb_customcallback1, /* reserved */
+    sim_syscb_customcallback2, /* reserved */
+    sim_syscb_customcallback3, /* reserved */
+    sim_syscb_customcallback4, /* reserved */
     sim_syscb_beforedelete, /* called just before objects are deleted (in an object delete or cut operation). Arg1 is a map with 'objectHandles' and 'allObjects' keys */
     sim_syscb_afterdelete, /* called just after objects were deleted. Arg1 is a map with 'objectHandles' keys */
     sim_syscb_aftercreate, /* called just after objects were created/pasted/loaded. Not called for the created objects. Arg1 is a map with 'objectHandles' array */
     sim_syscb_threadmain, /* the main section of a threaded child script */
-    sim_syscb_dyncallback, /* called by the physics engine twice per dyn. simulation pass */
+    sim_syscb_dyncallback, /* deprecated. Use sim_syscb_dyn instead */
     sim_syscb_beforemainscript, /* called just before calling the main script. Can be used to step a simulation */
     sim_syscb_vision, /* called just after a vision sensor image was acquired, for processing */
     sim_syscb_trigger, /* called by vision, proximity or force/torque sensors when they trigger */
@@ -483,6 +483,10 @@ enum { /* System callbacks */
     sim_syscb_beforesave, /* called just before a scene save operation */
     sim_syscb_aftersave, /* called just after a scene save operation */
     sim_syscb_msg, /* triggered via sim.broadcastMsg */
+    sim_syscb_dyn, /* called by the physics engine twice per dyn. simulation pass */
+    sim_syscb_contact, /* called by the physics engine when two respondable shapes are contacting */
+    sim_syscb_joint, /* called with dyn. joints in custom ctrl mode, and kin. joints with sim.setJointTargetPosition & similar commands */
+    sim_syscb_endoflist
 };
 
 enum { /* Script int params */
@@ -519,7 +523,7 @@ enum { /* Script execution order, is serialized */
     sim_scriptexecorder_last
 };
 
-enum { /* Script tree traversal direction, is serialized */
+enum { /* deprecated */
     sim_scripttreetraversal_reverse=0,
     sim_scripttreetraversal_forward,
     sim_scripttreetraversal_parent
@@ -780,7 +784,7 @@ enum { /* Boolean parameters: */
     sim_boolparam_show_w_emitters,
     sim_boolparam_show_w_receivers,
     sim_boolparam_xr_jobfunc,
-    sim_boolparam_rayvalid
+    sim_boolparam_rayvalid,
 };
 
 enum { /* Integer parameters: */

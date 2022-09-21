@@ -461,7 +461,6 @@ typedef simBool (__cdecl *ptr_simGetDistanceBetweenEntitiesIfSmaller)(simInt ent
 typedef simInt (__cdecl *ptr_simHandleJointControl)(const simVoid* joint,simInt auxV,const simInt* inputValuesInt,const simFloat* inputValuesFloat,simFloat* outputValues);
 typedef simInt (__cdecl *ptr_simHandleCustomContact)(simInt objHandle1,simInt objHandle2,simInt engine,simInt* dataInt,simFloat* dataFloat);
 typedef simFloat (__cdecl *ptr_simGetPureHollowScaling)(const simVoid* geometric);
-typedef simInt (__cdecl *ptr_simGetJointCallbackCallOrder)(const simVoid* joint);
 typedef simInt (__cdecl *ptr_simGetJointDynCtrlMode)(const simVoid* joint);
 typedef simVoid (__cdecl *ptr_simDynCallback)(const simInt* intData,const simFloat* floatData);
 
@@ -897,7 +896,6 @@ extern ptr_simGetDistanceBetweenEntitiesIfSmaller _simGetDistanceBetweenEntities
 extern ptr_simHandleJointControl _simHandleJointControl;
 extern ptr_simHandleCustomContact _simHandleCustomContact;
 extern ptr_simGetPureHollowScaling _simGetPureHollowScaling;
-extern ptr_simGetJointCallbackCallOrder _simGetJointCallbackCallOrder;
 extern ptr_simGetJointDynCtrlMode _simGetJointDynCtrlMode;
 extern ptr_simDynCallback _simDynCallback;
 
@@ -1140,6 +1138,7 @@ typedef simInt (__cdecl *ptrSimBuildMatrixQ)(const simFloat* position,const simF
 typedef simInt (__cdecl *ptrSimGetQuaternionFromMatrix)(const simFloat* matrix,simFloat* quaternion);
 typedef simVoid (__cdecl *ptr_simGetPrincipalMomentOfInertia)(const simVoid* geomInfo,simFloat* inertia);
 typedef simVoid (__cdecl *ptr_simGetLocalInertiaFrame)(const simVoid* geomInfo,simFloat* pos,simFloat* quat);
+typedef simInt (__cdecl *ptr_simGetJointCallbackCallOrder)(const simVoid* joint);
 
 extern ptrSimGetShapeMaterial simGetShapeMaterial;
 extern ptrSimHandleVarious simHandleVarious;
@@ -1414,6 +1413,7 @@ extern ptrSimBuildMatrixQ simBuildMatrixQ;
 extern ptrSimGetQuaternionFromMatrix simGetQuaternionFromMatrix;
 extern ptr_simGetLocalInertiaFrame _simGetLocalInertiaFrame;
 extern ptr_simGetPrincipalMomentOfInertia _simGetPrincipalMomentOfInertia;
+extern ptr_simGetJointCallbackCallOrder _simGetJointCallbackCallOrder;
 // Deprecated end
 
 #endif // !defined(SIMLIB_INCLUDED_)
