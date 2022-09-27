@@ -4,8 +4,8 @@
 #define SIM_PROGRAM_VERSION_NB 40400
 #define SIM_PROGRAM_VERSION "4.4.0"
 
-#define SIM_PROGRAM_REVISION_NB 0
-#define SIM_PROGRAM_REVISION "(rev. 0)"
+#define SIM_PROGRAM_REVISION_NB 1
+#define SIM_PROGRAM_REVISION "(rev. 1)"
 
 #define SIM_PROGRAM_FULL_VERSION_NB ((SIM_PROGRAM_VERSION_NB) * 100 + (SIM_PROGRAM_REVISION_NB))
 
@@ -913,7 +913,7 @@ enum { /* Array parameters: */
     sim_arrayparam_ambient_light,
     sim_arrayparam_random_euler,
     sim_arrayparam_rayorigin,
-    sim_arrayparam_raydirection
+    sim_arrayparam_raydirection,
 };
 
 enum { /* UI properties: */
@@ -1282,6 +1282,7 @@ enum { /* Object int/float/string parameters */
     sim_visionintparam_pov_blur_sampled= 1016,
     sim_visionintparam_render_mode= 1017,
     sim_visionintparam_perspective_operation= 1018,
+    sim_visionfarrayparam_viewfrustum= 1019,
 
     /* joints */
     sim_jointintparam_motor_enabled= 2000, /* deprecated */
@@ -1400,6 +1401,7 @@ enum { /* Object int/float/string parameters */
     sim_cameraintparam_perspective_operation= 9010,
     sim_cameraintparam_trackedobject= 9011,
     sim_cameraintparam_remotecameramode= 9012,
+    sim_camerafarrayparam_viewfrustum= 9013,
 
     /* dummies */
     sim_dummyintparam_link_type= 10000,

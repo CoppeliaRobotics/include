@@ -233,6 +233,8 @@ typedef simInt (__cdecl *ptrSimGetObjectInt32Param)(simInt objectHandle,simInt p
 typedef simInt (__cdecl *ptrSimSetObjectInt32Param)(simInt objectHandle,simInt parameterID,simInt parameter);
 typedef simInt (__cdecl *ptrSimGetObjectFloatParam)(simInt objectHandle,simInt parameterID,simFloat* parameter);
 typedef simInt (__cdecl *ptrSimSetObjectFloatParam)(simInt objectHandle,simInt parameterID,simFloat parameter);
+typedef simFloat* (__cdecl *ptrSimGetObjectFloatArrayParam)(simInt objectHandle,simInt parameterID,simInt* size);
+typedef simInt (__cdecl *ptrSimSetObjectFloatArrayParam)(simInt objectHandle,simInt parameterID,const simFloat* params,simInt size);
 typedef simChar* (__cdecl *ptrSimGetObjectStringParam)(simInt objectHandle,simInt parameterID,simInt* parameterLength);
 typedef simInt (__cdecl *ptrSimSetObjectStringParam)(simInt objectHandle,simInt parameterID,const simChar* parameter,simInt parameterLength);
 typedef simInt (__cdecl *ptrSimSetSimulationPassesPerRenderingPass)(simInt p);
@@ -666,6 +668,8 @@ extern ptrSimGetObjectInt32Param simGetObjectInt32Param;
 extern ptrSimSetObjectInt32Param simSetObjectInt32Param;
 extern ptrSimGetObjectFloatParam simGetObjectFloatParam;
 extern ptrSimSetObjectFloatParam simSetObjectFloatParam;
+extern ptrSimGetObjectFloatArrayParam simGetObjectFloatArrayParam;
+extern ptrSimSetObjectFloatArrayParam simSetObjectFloatArrayParam;
 extern ptrSimGetObjectStringParam simGetObjectStringParam;
 extern ptrSimSetObjectStringParam simSetObjectStringParam;
 extern ptrSimSetSimulationPassesPerRenderingPass simSetSimulationPassesPerRenderingPass;
