@@ -991,9 +991,9 @@ enum { /* Navigation and selection modes with the mouse. Lower byte values are m
     sim_navigation_camerashift              =0x000001,
     sim_navigation_camerarotate             =0x000002,
     sim_navigation_camerazoom               =0x000003,
-    sim_navigation_cameratilt               =0x000004,
+    sim_navigation_cameratilt               =0x000004, /* deprecated */
     sim_navigation_cameraangle              =0x000005,
-    sim_navigation_camerafly_old            =0x000006, // deprecated
+    sim_navigation_camerafly_old            =0x000006, /* deprecated */
     sim_navigation_objectshift              =0x000007,
     sim_navigation_objectrotate             =0x000008,
     sim_navigation_reserved2                =0x000009,
