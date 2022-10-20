@@ -3,6 +3,15 @@
 
 #include <cstddef>
 
+// Temp, during transition from float to double:
+//#define switchToDouble true
+#ifdef switchToDouble
+typedef double SIMDOUBLE;
+#else
+typedef float SIMDOUBLE;
+#define interfaceIsSinglePrecision true
+#endif
+
 // Various types used in the interface functions:
 typedef unsigned char simBool;
 typedef char simChar;
