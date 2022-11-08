@@ -5,6 +5,7 @@
 
 // Temp, during transition from float to double:
 //#define switchToDouble true
+typedef float simFloatFloat;
 #ifdef switchToDouble
 typedef double SIMDOUBLE;
 #else

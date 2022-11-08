@@ -1624,8 +1624,8 @@ enum { /* Physics engines params */
     sim_vortex_joint_a2frictioncoeff,
     sim_vortex_joint_a2frictionmaxforce,
     sim_vortex_joint_a2frictionloss,
-    sim_vortex_joint_dependencyfactor,
-    sim_vortex_joint_dependencyoffset,
+    sim_vortex_joint_dependencyfactor, /* deprecated. Use simGetJointDependency instead */
+    sim_vortex_joint_dependencyoffset, /* deprecated. Use simGetJointDependency instead */
     sim_vortex_joint_free1,
     sim_vortex_joint_free2,
     sim_vortex_joint_pospid1,
@@ -1638,8 +1638,8 @@ enum { /* Physics engines params */
     sim_vortex_joint_relaxationenabledbc,
     sim_vortex_joint_frictionenabledbc,
     sim_vortex_joint_frictionproportionalbc,
-    sim_vortex_joint_objectid,
-    sim_vortex_joint_dependentobjectid,
+    sim_vortex_joint_objectid, /* deprecated. */
+    sim_vortex_joint_dependentobjectid, /* deprecated. Use simGetJointDependency instead */
     sim_vortex_joint_int_end,
 
     sim_vortex_joint_bool_start=23000,
@@ -1713,7 +1713,7 @@ enum { /* Physics engines params */
 
     /* Newton */
     sim_newton_global_float_start=27000,
-    sim_newton_global_stepsize,                     /* deprecated, use sim_floatparam_physicstimestep instead */
+    sim_newton_global_stepsize, /* deprecated, use sim_floatparam_physicstimestep instead */
     sim_newton_global_contactmergetolerance,
     sim_newton_global_float_end,
 
@@ -1730,16 +1730,16 @@ enum { /* Physics engines params */
     sim_newton_global_bool_end,
 
     sim_newton_joint_float_start=30000,
-    sim_newton_joint_dependencyfactor,
-    sim_newton_joint_dependencyoffset,
+    sim_newton_joint_dependencyfactor, /* deprecated. Use simGetJointDependency instead */
+    sim_newton_joint_dependencyoffset, /* deprecated. Use simGetJointDependency instead */
     sim_newton_joint_pospid1,
     sim_newton_joint_pospid2,
     sim_newton_joint_pospid3,
     sim_newton_joint_float_end,
 
     sim_newton_joint_int_start=31000,
-    sim_newton_joint_objectid,
-    sim_newton_joint_dependentobjectid,
+    sim_newton_joint_objectid, /* deprecated. */
+    sim_newton_joint_dependentobjectid, /* deprecated. Use simGetJointDependency instead */
     sim_newton_joint_int_end,
 
     sim_newton_joint_bool_start=32000,
@@ -1830,8 +1830,8 @@ enum { /* Physics engines params */
     sim_mujoco_joint_springdamper2,
     sim_mujoco_joint_armature,
     sim_mujoco_joint_margin,
-    sim_mujoco_joint_polycoef1,
-    sim_mujoco_joint_polycoef2,
+    sim_mujoco_joint_polycoef1, /* deprecated. Use simGetJointDependency instead */
+    sim_mujoco_joint_polycoef2, /* deprecated. Use simGetJointDependency instead */
     sim_mujoco_joint_polycoef3,
     sim_mujoco_joint_polycoef4,
     sim_mujoco_joint_polycoef5,
@@ -1841,8 +1841,8 @@ enum { /* Physics engines params */
     sim_mujoco_joint_float_end,
 
     sim_mujoco_joint_int_start=41000,
-    sim_mujoco_joint_objectid,
-    sim_mujoco_joint_dependentobjectid,
+    sim_mujoco_joint_objectid, /* deprecated. */
+    sim_mujoco_joint_dependentobjectid, /* deprecated. Use simGetJointDependency instead */
     sim_mujoco_joint_int_end,
 
     sim_mujoco_joint_bool_start=42000,
