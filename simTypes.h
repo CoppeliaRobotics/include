@@ -5,77 +5,68 @@
 
 // Temp, during transition from float to double:
 //#define switchToDouble true
-typedef float simFloatFloat;
-#ifdef switchToDouble
-typedef double SIMDOUBLE;
-#else
-typedef float SIMDOUBLE;
+#ifndef switchToDouble
 #define interfaceIsSinglePrecision true
 #endif
-
-// Various types used in the interface functions:
-typedef unsigned char simBool;
-typedef char simChar;
-typedef int simInt;
-typedef float simFloat;
-typedef double simDouble;
-typedef void simVoid;
-typedef unsigned char simUChar;
-typedef unsigned int simUInt;
-typedef unsigned long long int simUInt64;
-typedef long long int simInt64;
+#define floatFloat float
+#define floatDouble float
+#ifdef interfaceIsSinglePrecision
+#define SIMDOUBLE float
+#else
+#define SIMDOUBLE double
+#endif
 
 struct SScriptCallBack
 {
-    simInt objectID;
-    simInt scriptID;
-    simInt stackID;
-    simChar waitUntilZero; /* do not use */
-    simChar* raiseErrorWithMessage; /* do not use */
-    simChar* source;
-    simInt line;
+    int objectID;
+    int scriptID;
+    int stackID;
+    char waitUntilZero; /* do not use */
+    char* raiseErrorWithMessage; /* do not use */
+    char* source;
+    int line;
 };
 
 struct SShapeVizInfo
 {
-    simFloat* vertices;
-    simInt verticesSize;
-    simInt* indices;
-    simInt indicesSize;
-    simFloat shadingAngle;
-    simFloat* normals;
-    simFloat colors[9];
-    simChar* texture; /*rgba*/
-    simInt textureId;
-    simInt textureRes[2];
-    simFloat* textureCoords;
-    simInt textureApplyMode;
-    simInt textureOptions; /* not just textures options */
-    simFloat transparency;
-    simInt options;
+    floatDouble* vertices;
+    int verticesSize;
+    int* indices;
+    int indicesSize;
+    floatDouble shadingAngle;
+    floatDouble* normals;
+    floatDouble colors[9];
+    char* texture; /*rgba*/
+    int textureId;
+    int textureRes[2];
+    floatDouble* textureCoords;
+    int textureApplyMode;
+    int textureOptions; /* not just textures options */
+    floatDouble transparency;
+    int options;
 };
 
 struct SLuaCallBack
 {
-    simInt objectID;
-    simBool* inputBool;
-    simInt* inputInt;
-    simFloat* inputFloat;
-    simChar* inputChar;
-    simInt inputArgCount;
-    simInt* inputArgTypeAndSize;
-    simBool* outputBool;
-    simInt* outputInt;
-    simFloat* outputFloat;
-    simChar* outputChar;
-    simInt outputArgCount;
-    simInt* outputArgTypeAndSize;
-    simChar waitUntilZero;
-    simChar* inputCharBuff;
-    simChar* outputCharBuff;
-    simInt scriptID;
-    simDouble* inputDouble;
-    simDouble* outputDouble;
+    int objectID;
+    bool* inputBool;
+    int* inputInt;
+    floatFloat* inputFloat;
+    char* inputChar;
+    int inputArgCount;
+    int* inputArgTypeAndSize;
+    bool* outputBool;
+    int* outputInt;
+    floatFloat* outputFloat;
+    char* outputChar;
+    int outputArgCount;
+    int* outputArgTypeAndSize;
+    char waitUntilZero;
+    char* inputCharBuff;
+    char* outputCharBuff;
+    int scriptID;
+    double* inputDouble;
+    double* outputDouble;
 };
 
 struct SSyncMsg
@@ -93,5 +84,17 @@ struct SSyncRt
 
 typedef int (*contactCallback)(int,int,int,int*,float*);
 typedef int (*jointCtrlCallback)(int,int,int,const int*,const float*,float*);
+
+/* do not use anymore: */
+typedef bool simBool;
+typedef void simVoid;
+typedef unsigned char simUChar;
+typedef int simInt;
+typedef char simChar;
+typedef unsigned int simUInt;
+typedef long long int simInt64;
+typedef unsigned long long int simUInt64;
+typedef double simDouble;
+typedef float simFloat;
 
 #endif // !defined(SIMTYPES_INCLUDED_)
