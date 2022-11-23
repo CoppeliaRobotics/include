@@ -4,12 +4,15 @@
 #include <cstddef>
 
 // Temp, during transition from float to double:
+#define floatFloat float
 //#define switchToDouble true
 #ifndef switchToDouble
 #define interfaceIsSinglePrecision true
-#endif
-#define floatFloat float
 #define floatDouble float
+#else
+#define DOUBLESERIALIZATIONOPERATION
+#define floatDouble double
+#endif
 #ifdef interfaceIsSinglePrecision
 #define SIMDOUBLE float
 #else
