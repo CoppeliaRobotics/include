@@ -5,6 +5,11 @@
 
 #include "simConst.h"
 #include "simTypes.h"
+#ifdef SIM_INTERFACE_SINGLE
+#define SIMDOUBLE float
+#else
+#define SIMDOUBLE double
+#endif
 
 #ifdef QT_FRAMEWORK
     #include <QLibrary>
@@ -43,8 +48,6 @@ typedef int (__cdecl *ptrSimGetInt32Param)(int Param,int* intState);
 typedef int (__cdecl *ptrSimGetUInt64Param)(int Param,unsigned long long int* intState);
 typedef int (__cdecl *ptrSimSetStringParam)(int Param,const char* stringState);
 typedef char* (__cdecl *ptrSimGetStringParam)(int Param);
-typedef int (__cdecl *ptrSimSetArrayParam)(int Param,const void* arrayOfValues);
-typedef int (__cdecl *ptrSimGetArrayParam)(int Param,void* arrayOfValues);
 typedef int (__cdecl *ptrSimSetNamedStringParam)(const char* paramName,const char* stringParam,int paramLength);
 typedef char* (__cdecl *ptrSimGetNamedStringParam)(const char* paramName,int* paramLength);
 typedef int (__cdecl *ptrSimGetObject)(const char* objectAlias,int index,int proxy,int options);
@@ -77,8 +80,8 @@ typedef int (__cdecl *ptrSimAddScript)(int scriptProperty);
 typedef int (__cdecl *ptrSimRemoveScript)(int scriptHandle);
 typedef int (__cdecl *ptrSimRefreshDialogs)(int refreshDegree);
 typedef int (__cdecl *ptrSimResetProximitySensor)(int sensorHandle);
-typedef char* (__cdecl *ptrSimCreateBuffer)(int size);
-typedef int (__cdecl *ptrSimReleaseBuffer)(const char* buffer);
+typedef void* (__cdecl *ptrSimCreateBuffer)(int size);
+typedef int (__cdecl *ptrSimReleaseBuffer)(void* buffer);
 typedef int (__cdecl *ptrSimCheckCollision)(int entity1Handle,int entity2Handle);
 typedef int (__cdecl *ptrSimGetRealTimeSimulation)();
 typedef int (__cdecl *ptrSimIsRealTimeSimulationStepNeeded)();
@@ -148,7 +151,7 @@ typedef int* (__cdecl *ptrSimUngroupShape)(int shapeHandle,int* shapeCount);
 typedef void (__cdecl *ptrSimQuitSimulator)(bool ignoredArgument);
 typedef int (__cdecl *ptrSimSetShapeMaterial)(int shapeHandle,int materialIdOrShapeHandle);
 typedef int (__cdecl *ptrSimGetTextureId)(const char* textureName,int* resolution);
-typedef char* (__cdecl *ptrSimReadTexture)(int textureId,int options,int posX,int posY,int sizeX,int sizeY);
+typedef unsigned char* (__cdecl *ptrSimReadTexture)(int textureId,int options,int posX,int posY,int sizeX,int sizeY);
 typedef int (__cdecl *ptrSimWriteCustomDataBlock)(int objectHandle,const char* tagName,const char* data,int dataSize);
 typedef char* (__cdecl *ptrSimReadCustomDataBlock)(int objectHandle,const char* tagName,int* dataSize);
 typedef char* (__cdecl *ptrSimReadCustomDataBlockTags)(int objectHandle,int* tagCount);
@@ -207,7 +210,6 @@ typedef char* (__cdecl *ptrSimPackTable)(int stackHandle,int* bufferSize);
 typedef int (__cdecl *ptrSimUnpackTable)(int stackHandle,const char* buffer,int bufferSize);
 typedef int (__cdecl *ptrSimSetReferencedHandles)(int objectHandle,int count,const int* referencedHandles,const int* reserved1,const int* reserved2);
 typedef int (__cdecl *ptrSimGetReferencedHandles)(int objectHandle,int** referencedHandles,int** reserved1,int** reserved2);
-typedef int (__cdecl *ptrSimGetShapeViz)(int shapeHandle,int index,struct SShapeVizInfo* info);
 typedef int (__cdecl *ptrSimExecuteScriptString)(int scriptHandleOrType,const char* stringAtScriptName,int stackHandle);
 typedef char* (__cdecl *ptrSimGetApiFunc)(int scriptHandleOrType,const char* apiWord);
 typedef char* (__cdecl *ptrSimGetApiInfo)(int scriptHandleOrType,const char* apiWord);
@@ -226,6 +228,9 @@ typedef int (__cdecl *ptrSimPushFloatOntoStack)(int stackHandle,floatFloat value
 typedef int (__cdecl *ptrSimPushFloatTableOntoStack)(int stackHandle,const floatFloat* values,int valueCnt);
 typedef int (__cdecl *ptrSimGetStackFloatValue)(int stackHandle,floatFloat* numberValue);
 typedef int (__cdecl *ptrSimGetStackFloatTable)(int stackHandle,floatFloat* array,int count);
+typedef floatFloat* (__cdecl *ptrSimGetVisionSensorDepth)(int sensorHandle,int options,const int* pos,const int* size,int* resolution);
+typedef int (__cdecl *ptr_simSetVisionSensorDepth)(int sensorHandle,int options,const floatFloat* depth);
+typedef floatFloat* (__cdecl *ptrSimCheckVisionSensorEx)(int visionSensorHandle,int entityHandle,bool returnImage);
 /* ------------------------------------------------------- */
 typedef int (__cdecl *ptrSimRuckigPos)(int dofs,double baseCycleTime,int flags,const double* currentPos,const double* currentVel,const double* currentAccel,const double* maxVel,const double* maxAccel,const double* maxJerk,const bool* selection,const double* targetPos,const double* targetVel,double* reserved1,int* reserved2);
 typedef int (__cdecl *ptrSimRuckigVel)(int dofs,double baseCycleTime,int flags,const double* currentPos,const double* currentVel,const double* currentAccel,const double* maxAccel,const double* maxJerk,const bool* selection,const double* targetVel,double* reserved1,int* reserved2);
@@ -281,7 +286,14 @@ typedef int (__cdecl *ptr_simGetTimeDiffInMs)(int previousTime);
 typedef bool (__cdecl *ptr_simDoEntitiesCollide)(int entity1ID,int entity2ID,int* cacheBuffer,bool overrideCollidableFlagIfShape1,bool overrideCollidableFlagIfShape2,bool pathPlanningRoutineCalling);
 typedef int (__cdecl *ptr_simGetJointDynCtrlMode)(const void* joint);
 typedef int (__cdecl *ptrSimFloatingViewRemove)(int floatingViewHandle);
+#ifdef interfaceIsSinglePrecision
+typedef int (__cdecl *ptrSimGetShapeViz)(int shapeHandle,int index,struct SShapeVizInfof* info);
+#else
+typedef int (__cdecl *ptrSimGetShapeViz)(int shapeHandle,int index,struct SShapeVizInfo* info);
+#endif
 /* previously single precision functions: */
+typedef int (__cdecl *ptrSimSetArrayParam)(int Param,const SIMDOUBLE* arrayOfValues);
+typedef int (__cdecl *ptrSimGetArrayParam)(int Param,SIMDOUBLE* arrayOfValues);
 typedef int (__cdecl *ptrSimSetFloatSignal)(const char* signalName,SIMDOUBLE signalValue);
 typedef int (__cdecl *ptrSimGetFloatSignal)(const char* signalName,SIMDOUBLE* signalValue);
 typedef int (__cdecl *ptrSimSetFloatParam)(int Param,SIMDOUBLE floatState);
@@ -342,29 +354,29 @@ typedef int (__cdecl *ptrSimAdjustRealTimeTimer)(int instanceIndex,SIMDOUBLE del
 typedef int (__cdecl *ptrSimFloatingViewAdd)(SIMDOUBLE posX,SIMDOUBLE posY,SIMDOUBLE sizeX,SIMDOUBLE sizeY,int options);
 typedef int (__cdecl *ptrSimHandleGraph)(int graphHandle,SIMDOUBLE simulationTime);
 typedef int (__cdecl *ptrSimSetGraphStreamTransformation)(int graphHandle,int streamId,int trType,SIMDOUBLE mult,SIMDOUBLE off,int movingAvgPeriod);
-typedef int (__cdecl *ptrSimAddGraphCurve)(int graphHandle,const char* curveName,int dim,const int* streamIds,const SIMDOUBLE* defaultValues,const char* unitStr,int options,const SIMDOUBLE* color,int curveWidth);
+typedef int (__cdecl *ptrSimAddGraphCurve)(int graphHandle,const char* curveName,int dim,const int* streamIds,const SIMDOUBLE* defaultValues,const char* unitStr,int options,const floatFloat* color,int curveWidth);
 typedef int (__cdecl *ptrSimSetGraphStreamValue)(int graphHandle,int streamId,SIMDOUBLE value);
 typedef int (__cdecl *ptrSimSetJointTargetVelocity)(int objectHandle,SIMDOUBLE targetVelocity);
 typedef int (__cdecl *ptrSimGetJointTargetVelocity)(int objectHandle,SIMDOUBLE* targetVelocity);
 typedef int (__cdecl *ptrSimScaleObjects)(const int* objectHandles,int objectCount,SIMDOUBLE scalingFactor,bool scalePositionsToo);
-typedef int (__cdecl *ptrSimAddDrawingObject)(int objectType,SIMDOUBLE size,SIMDOUBLE duplicateTolerance,int parentObjectHandle,int maxItemCount,const SIMDOUBLE* color,const SIMDOUBLE* setToNULL,const SIMDOUBLE* setToNULL2,const SIMDOUBLE* setToNULL3);
-typedef int (__cdecl *ptrSimAddGraphStream)(int graphHandle,const char* streamName,const char* unitStr,int options,const SIMDOUBLE* color,SIMDOUBLE cyclicRange);
+typedef int (__cdecl *ptrSimAddDrawingObject)(int objectType,SIMDOUBLE size,SIMDOUBLE duplicateTolerance,int parentObjectHandle,int maxItemCount,const floatFloat* color,const floatFloat* setToNULL,const floatFloat* setToNULL2,const floatFloat* setToNULL3);
+typedef int (__cdecl *ptrSimAddGraphStream)(int graphHandle,const char* streamName,const char* unitStr,int options,const floatFloat* color,SIMDOUBLE cyclicRange);
 typedef int (__cdecl *ptrSimAddDrawingObjectItem)(int objectHandle,const SIMDOUBLE* itemData);
 typedef SIMDOUBLE (__cdecl *ptrSimGetObjectSizeFactor)(int objectHandle);
 typedef int (__cdecl *ptrSimReadForceSensor)(int objectHandle,SIMDOUBLE* forceVector,SIMDOUBLE* torqueVector);
-typedef int (__cdecl *ptrSimSetLightParameters)(int objectHandle,int state,const SIMDOUBLE* setToNULL,const SIMDOUBLE* diffusePart,const SIMDOUBLE* specularPart);
+typedef int (__cdecl *ptrSimSetLightParameters)(int objectHandle,int state,const floatFloat* setToNULL,const floatFloat* diffusePart,const floatFloat* specularPart);
 typedef int (__cdecl *ptrSimGetLightParameters)(int objectHandle,SIMDOUBLE* setToNULL,SIMDOUBLE* diffusePart,SIMDOUBLE* specularPart);
 typedef int (__cdecl *ptrSimGetVelocity)(int shapeHandle,SIMDOUBLE* linearVelocity,SIMDOUBLE* angularVelocity);
 typedef int (__cdecl *ptrSimGetObjectVelocity)(int objectHandle,SIMDOUBLE* linearVelocity,SIMDOUBLE* angularVelocity);
 typedef int (__cdecl *ptrSimGetJointVelocity)(int jointHandle,SIMDOUBLE* velocity);
 typedef int (__cdecl *ptrSimAddForceAndTorque)(int shapeHandle,const SIMDOUBLE* force,const SIMDOUBLE* torque);
 typedef int (__cdecl *ptrSimAddForce)(int shapeHandle,const SIMDOUBLE* position,const SIMDOUBLE* force);
-typedef int (__cdecl *ptrSimSetObjectColor)(int objectHandle,int index,int colorComponent,const SIMDOUBLE* rgbData);
-typedef int (__cdecl *ptrSimGetObjectColor)(int objectHandle,int index,int colorComponent,SIMDOUBLE* rgbData);
-typedef int (__cdecl *ptrSimSetShapeColor)(int shapeHandle,const char* colorName,int colorComponent,const SIMDOUBLE* rgbData);
-typedef int (__cdecl *ptrSimGetShapeColor)(int shapeHandle,const char* colorName,int colorComponent,SIMDOUBLE* rgbData);
+typedef int (__cdecl *ptrSimSetObjectColor)(int objectHandle,int index,int colorComponent,const floatFloat* rgbData);
+typedef int (__cdecl *ptrSimGetObjectColor)(int objectHandle,int index,int colorComponent,floatFloat* rgbData);
+typedef int (__cdecl *ptrSimSetShapeColor)(int shapeHandle,const char* colorName,int colorComponent,const floatFloat* rgbData);
+typedef int (__cdecl *ptrSimGetShapeColor)(int shapeHandle,const char* colorName,int colorComponent,floatFloat* rgbData);
 typedef int (__cdecl *ptrSimGetContactInfo)(int dynamicPass,int objectHandle,int index,int* objectHandles,SIMDOUBLE* contactInfo);
-typedef int (__cdecl *ptrSimAuxiliaryConsoleOpen)(const char* title,int maxLines,int mode,const int* position,const int* size,const SIMDOUBLE* textColor,const SIMDOUBLE* backgroundColor);
+typedef int (__cdecl *ptrSimAuxiliaryConsoleOpen)(const char* title,int maxLines,int mode,const int* position,const int* size,const floatFloat* textColor,const floatFloat* backgroundColor);
 typedef int (__cdecl *ptrSimImportShape)(int fileformat,const char* pathAndFilename,int options,SIMDOUBLE identicalVerticeTolerance,SIMDOUBLE scalingFactor);
 typedef int (__cdecl *ptrSimImportMesh)(int fileformat,const char* pathAndFilename,int options,SIMDOUBLE identicalVerticeTolerance,SIMDOUBLE scalingFactor,SIMDOUBLE*** vertices,int** verticesSizes,int*** indices,int** indicesSizes,SIMDOUBLE*** reserved,char*** names);
 typedef int (__cdecl *ptrSimExportMesh)(int fileformat,const char* pathAndFilename,int options,SIMDOUBLE scalingFactor,int elementCount,const SIMDOUBLE** vertices,const int* verticesSizes,const int** indices,const int* indicesSizes,SIMDOUBLE** reserved,const char** names);
@@ -373,7 +385,7 @@ typedef int (__cdecl *ptrSimCreatePrimitiveShape)(int primitiveType,const SIMDOU
 typedef int (__cdecl *ptrSimCreateHeightfieldShape)(int options,SIMDOUBLE shadingAngle,int xPointCount,int yPointCount,SIMDOUBLE xSize,const SIMDOUBLE* heights);
 typedef int (__cdecl *ptrSimGetShapeMesh)(int shapeHandle,SIMDOUBLE** vertices,int* verticesSize,int** indices,int* indicesSize,SIMDOUBLE** normals);
 typedef int (__cdecl *ptrSimCreateJoint)(int jointType,int jointMode,int options,const SIMDOUBLE* sizes,const SIMDOUBLE* reservedA,const SIMDOUBLE* reservedB);
-typedef int (__cdecl *ptrSimCreateDummy)(SIMDOUBLE size,const SIMDOUBLE* reserved);
+typedef int (__cdecl *ptrSimCreateDummy)(SIMDOUBLE size,const floatFloat* reserved);
 typedef int (__cdecl *ptrSimCreateForceSensor)(int options,const int* intParams,const SIMDOUBLE* floatParams,const SIMDOUBLE* reserved);
 typedef int (__cdecl *ptrSimCreateVisionSensor)(int options,const int* intParams,const SIMDOUBLE* floatParams,const SIMDOUBLE* reserved);
 typedef int (__cdecl *ptrSimCreateProximitySensor)(int sensorType,int subType,int options,const int* intParams,const SIMDOUBLE* floatParams,const SIMDOUBLE* reserved);
@@ -384,9 +396,8 @@ typedef int (__cdecl *ptrSimCameraFitToView)(int viewHandleOrIndex,int objectCou
 typedef int (__cdecl *ptrSimHandleVisionSensor)(int visionSensorHandle,SIMDOUBLE** auxValues,int** auxValuesCount);
 typedef int (__cdecl *ptrSimReadVisionSensor)(int visionSensorHandle,SIMDOUBLE** auxValues,int** auxValuesCount);
 typedef int (__cdecl *ptrSimCheckVisionSensor)(int visionSensorHandle,int entityHandle,SIMDOUBLE** auxValues,int** auxValuesCount);
-typedef SIMDOUBLE* (__cdecl *ptrSimCheckVisionSensorEx)(int visionSensorHandle,int entityHandle,bool returnImage);
 typedef unsigned char* (__cdecl *ptrSimGetVisionSensorImg)(int sensorHandle,int options,SIMDOUBLE rgbaCutOff,const int* pos,const int* size,int* resolution);
-typedef SIMDOUBLE* (__cdecl *ptrSimGetVisionSensorDepth)(int sensorHandle,int options,const int* pos,const int* size,int* resolution);
+typedef int (__cdecl *ptrSimGetVisionSensorRes)(int visionSensorHandle,int* resolution);
 typedef int (__cdecl *ptrSimGetObjectQuaternion)(int objectHandle,int relativeToObjectHandle,SIMDOUBLE* quaternion);
 typedef int (__cdecl *ptrSimSetObjectQuaternion)(int objectHandle,int relativeToObjectHandle,const SIMDOUBLE* quaternion);
 typedef int (__cdecl *ptrSimConvexDecompose)(int shapeHandle,int options,const int* intParams,const SIMDOUBLE* floatParams);
@@ -671,7 +682,9 @@ extern ptrSimCheckVisionSensor simCheckVisionSensor;
 extern ptrSimCheckVisionSensorEx simCheckVisionSensorEx;
 extern ptrSimGetVisionSensorImg simGetVisionSensorImg;
 extern ptrSimSetVisionSensorImg simSetVisionSensorImg;
+extern ptrSimGetVisionSensorRes simGetVisionSensorRes;
 extern ptrSimGetVisionSensorDepth simGetVisionSensorDepth;
+extern ptr_simSetVisionSensorDepth _simSetVisionSensorDepth;
 extern ptrSimGetObjectQuaternion simGetObjectQuaternion;
 extern ptrSimSetObjectQuaternion simSetObjectQuaternion;
 extern ptrSimRuckigPos simRuckigPos;

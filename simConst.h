@@ -1,11 +1,11 @@
 #if !defined(SIMCONST_INCLUDED_)
 #define SIMCONST_INCLUDED_
 
-#define SIM_PROGRAM_VERSION_NB 40400
-#define SIM_PROGRAM_VERSION "4.4.0"
+#define SIM_PROGRAM_VERSION_NB 40500
+#define SIM_PROGRAM_VERSION "4.5.0"
 
-#define SIM_PROGRAM_REVISION_NB 3
-#define SIM_PROGRAM_REVISION "(rev. 3)"
+#define SIM_PROGRAM_REVISION_NB 0
+#define SIM_PROGRAM_REVISION "(rev. 0)"
 
 #define SIM_PROGRAM_FULL_VERSION_NB ((SIM_PROGRAM_VERSION_NB) * 100 + (SIM_PROGRAM_REVISION_NB))
 
@@ -1229,7 +1229,7 @@ enum { /* Pov pattern types */
 };
 
 
-enum { /* Object int/float/string parameters */
+enum { /* Object int/double/string parameters */
     /* scene objects */
     sim_objintparam_visibility_layer= 10,
     sim_objfloatparam_abs_x_velocity= 11,

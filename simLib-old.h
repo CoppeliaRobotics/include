@@ -162,9 +162,9 @@ typedef int (__cdecl *ptrSimSetDoubleSignal)(const char* signalName,double signa
 typedef int (__cdecl *ptrSimGetDoubleSignal)(const char* signalName,double* signalValue);
 typedef int (__cdecl *ptrSimClearDoubleSignal)(const char* signalName);
 typedef int (__cdecl *ptrSimRemoveParticleObject)(int objectHandle);
-typedef int (__cdecl *ptrSimAddParticleObject)(int objectType,float size,float density,const void* params,float lifeTime,int maxItemCount,const float* color,const float* setToNULL,const float* setToNULL2,const float* setToNULL3);
-typedef int (__cdecl *ptrSimAddParticleObjectItem)(int objectHandle,const float* itemData);
 /* deprecated, and previously single precision functions: */
+typedef int (__cdecl *ptrSimAddParticleObject)(int objectType,SIMDOUBLE size,SIMDOUBLE density,const void* params,SIMDOUBLE lifeTime,int maxItemCount,const floatFloat* color,const floatFloat* setToNULL,const floatFloat* setToNULL2,const floatFloat* setToNULL3);
+typedef int (__cdecl *ptrSimAddParticleObjectItem)(int objectHandle,const SIMDOUBLE* itemData);
 typedef int (__cdecl *ptrSimJointGetForce)(int jointHandle,SIMDOUBLE* forceOrTorque);
 typedef int (__cdecl *ptrSimGetMpConfigForTipPose)(int motionPlanningObjectHandle,int options,SIMDOUBLE closeNodesDistance,int trialCount,const SIMDOUBLE* tipPose,int maxTimeInMs,SIMDOUBLE* outputJointPositions,const SIMDOUBLE* referenceConfigs,int referenceConfigCount,const SIMDOUBLE* jointWeights,const int* jointBehaviour,int correctionPasses);
 typedef SIMDOUBLE* (__cdecl *ptrSimFindMpPath)(int motionPlanningObjectHandle,const SIMDOUBLE* startConfig,const SIMDOUBLE* goalConfig,int options,SIMDOUBLE stepSize,int* outputConfigsCnt,int maxTimeInMs,SIMDOUBLE* reserved,const int* auxIntParams,const SIMDOUBLE* auxFloatParams);
@@ -185,8 +185,8 @@ typedef void (__cdecl *ptr_simGetVortexParameters)(const void* object,int versio
 typedef void (__cdecl *ptr_simGetNewtonParameters)(const void* object,int* version,SIMDOUBLE* floatParams,int* intParams);
 typedef void (__cdecl *ptr_simGetDamping)(const void* geomInfo,SIMDOUBLE* linDamping,SIMDOUBLE* angDamping);
 typedef SIMDOUBLE (__cdecl *ptr_simGetFriction)(const void* geomInfo);
-typedef int (__cdecl *ptrSimSetUIButtonColor)(int uiHandle,int buttonHandle,const SIMDOUBLE* upStateColor,const SIMDOUBLE* downStateColor,const SIMDOUBLE* labelColor);
-typedef int (__cdecl *ptrSimSetUIButtonArrayColor)(int uiHandle,int buttonHandle,const int* position,const SIMDOUBLE* color);
+typedef int (__cdecl *ptrSimSetUIButtonColor)(int uiHandle,int buttonHandle,const floatFloat* upStateColor,const floatFloat* downStateColor,const floatFloat* labelColor);
+typedef int (__cdecl *ptrSimSetUIButtonArrayColor)(int uiHandle,int buttonHandle,const int* position,const floatFloat* color);
 typedef int (__cdecl *ptrSimRegisterContactCallback)(int(*callBack)(int,int,int,int*,SIMDOUBLE*));
 typedef int (__cdecl *ptrSimSetJointForce)(int objectHandle,SIMDOUBLE forceOrTorque);
 typedef int (__cdecl *ptrSimHandleMill)(int millHandle,SIMDOUBLE* removedSurfaceAndVolume);
@@ -206,12 +206,12 @@ typedef int (__cdecl *ptrSimGetClosestPositionOnPath)(int pathHandle,SIMDOUBLE* 
 typedef int (__cdecl *ptrSimGetPathPosition)(int objectHandle,SIMDOUBLE* position);
 typedef int (__cdecl *ptrSimSetPathPosition)(int objectHandle,SIMDOUBLE position);
 typedef int (__cdecl *ptrSimGetPathLength)(int objectHandle,SIMDOUBLE* length);
-typedef int (__cdecl *ptrSimCreatePath)(int attributes,const int* intParams,const SIMDOUBLE* floatParams,const SIMDOUBLE* color);
+typedef int (__cdecl *ptrSimCreatePath)(int attributes,const int* intParams,const SIMDOUBLE* floatParams,const floatFloat* color);
 typedef int (__cdecl *ptrSimSetPathTargetNominalVelocity)(int objectHandle,SIMDOUBLE targetNominalVelocity);
 typedef int (__cdecl *ptrSimHandleDistance)(int distanceObjectHandle,SIMDOUBLE* smallestDistance);
 typedef int (__cdecl *ptrSimReadDistance)(int distanceObjectHandle,SIMDOUBLE* smallestDistance);
-typedef int (__cdecl *ptrSimAddBanner)(const char* label,SIMDOUBLE size,int options,const SIMDOUBLE* positionAndEulerAngles,int parentObjectHandle,const SIMDOUBLE* labelColors,const SIMDOUBLE* backgroundColors);
-typedef int (__cdecl *ptrSimAddGhost)(int ghostGroup,int objectHandle,int options,SIMDOUBLE startTime,SIMDOUBLE endTime,const SIMDOUBLE* color);
+typedef int (__cdecl *ptrSimAddBanner)(const char* label,SIMDOUBLE size,int options,const SIMDOUBLE* positionAndEulerAngles,int parentObjectHandle,const floatFloat* labelColors,const floatFloat* backgroundColors);
+typedef int (__cdecl *ptrSimAddGhost)(int ghostGroup,int objectHandle,int options,SIMDOUBLE startTime,SIMDOUBLE endTime,const floatFloat* color);
 typedef int (__cdecl *ptrSimModifyGhost)(int ghostGroup,int ghostId,int operation,SIMDOUBLE floatValue,int options,int optionsMask,const SIMDOUBLE* colorOrTransformation);
 typedef int (__cdecl *ptrSimSetGraphUserData)(int graphHandle,const char* streamName,SIMDOUBLE data);
 typedef int (__cdecl *ptrSimAddPointCloud)(int pageMask,int layerMask,int objectHandle,int options,SIMDOUBLE pointSize,int ptCnt,const SIMDOUBLE* pointCoordinates,const char* defaultColors,const char* pointColors,const SIMDOUBLE* pointNormals);
@@ -223,7 +223,7 @@ typedef int (__cdecl *ptrSimSetIkElementProperties)(int ikGroupHandle,int tipDum
 typedef int (__cdecl *ptrSimSendData)(int targetID,int dataHeader,const char* dataName,const char* data,int dataLength,int antennaHandle,SIMDOUBLE actionRadius,SIMDOUBLE emissionAngle1,SIMDOUBLE emissionAngle2,SIMDOUBLE persistence);
 typedef int (__cdecl *ptrSimSetObjectSizeValues)(int objectHandle,const SIMDOUBLE* sizeValues);
 typedef int (__cdecl *ptrSimGetObjectSizeValues)(int objectHandle,SIMDOUBLE* sizeValues);
-typedef int (__cdecl *ptrSimDisplayDialog)(const char* titleText,const char* mainText,int dialogType,const char* initialText,const SIMDOUBLE* titleColors,const SIMDOUBLE* dialogColors,int* elementHandle);
+typedef int (__cdecl *ptrSimDisplayDialog)(const char* titleText,const char* mainText,int dialogType,const char* initialText,const floatFloat* titleColors,const floatFloat* dialogColors,int* elementHandle);
 typedef int (__cdecl *ptrSimScaleSelectedObjects)(SIMDOUBLE scalingFactor,bool scalePositionsToo);
 typedef void (__cdecl *ptr_simSetDynamicJointLocalTransformationPart2)(void* joint,const SIMDOUBLE* pos,const SIMDOUBLE* quat);
 typedef void (__cdecl *ptr_simSetDynamicForceSensorLocalTransformationPart2)(void* forceSensor,const SIMDOUBLE* pos,const SIMDOUBLE* quat);
@@ -234,9 +234,9 @@ typedef int (__cdecl *ptrSimSetScriptAttribute)(int scriptHandle,int attributeID
 typedef int (__cdecl *ptrSimGetScriptAttribute)(int scriptHandle,int attributeID,SIMDOUBLE* floatVal,int* intOrBoolVal);
 typedef int (__cdecl *ptrSimGetJointMaxForce)(int jointHandle,SIMDOUBLE* forceOrTorque);
 typedef int (__cdecl *ptrSimSetJointMaxForce)(int objectHandle,SIMDOUBLE forceOrTorque);
-typedef SIMDOUBLE* (__cdecl *ptrSimGetVisionSensorImage)(int visionSensorHandle);
-typedef int (__cdecl *ptrSimSetVisionSensorImage)(int visionSensorHandle,const SIMDOUBLE* image);
-typedef SIMDOUBLE* (__cdecl *ptrSimGetVisionSensorDepthBuffer)(int visionSensorHandle);
+typedef floatFloat* (__cdecl *ptrSimGetVisionSensorImage)(int visionSensorHandle);
+typedef int (__cdecl *ptrSimSetVisionSensorImage)(int visionSensorHandle,const floatFloat* image);
+typedef floatFloat* (__cdecl *ptrSimGetVisionSensorDepthBuffer)(int visionSensorHandle);
 typedef int (__cdecl *ptrSimCreatePureShape)(int primitiveType,int options,const SIMDOUBLE* sizes,SIMDOUBLE mass,const int* precision);
 typedef void (__cdecl *ptr_simGetMotorPid)(const void* joint,SIMDOUBLE* pParam,SIMDOUBLE* iParam,SIMDOUBLE* dParam);
 typedef int (__cdecl *ptrSimBuildMatrixQ)(const SIMDOUBLE* position,const SIMDOUBLE* quaternion,SIMDOUBLE* matrix);

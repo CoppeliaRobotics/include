@@ -1,24 +1,6 @@
 #if !defined(SIMTYPES_INCLUDED_)
 #define SIMTYPES_INCLUDED_
 
-#include <cstddef>
-
-// Temp, during transition from float to double:
-#define floatFloat float
-//#define switchToDouble true
-#ifndef switchToDouble
-#define interfaceIsSinglePrecision true
-#define floatDouble float
-#else
-#define DOUBLESERIALIZATIONOPERATION
-#define floatDouble double
-#endif
-#ifdef interfaceIsSinglePrecision
-#define SIMDOUBLE float
-#else
-#define SIMDOUBLE double
-#endif
-
 struct SScriptCallBack
 {
     int objectID;
@@ -32,20 +14,39 @@ struct SScriptCallBack
 
 struct SShapeVizInfo
 {
-    floatDouble* vertices;
+    double* vertices;
     int verticesSize;
     int* indices;
     int indicesSize;
-    floatDouble shadingAngle;
-    floatDouble* normals;
-    floatDouble colors[9];
+    double shadingAngle;
+    double* normals;
+    float colors[9];
     char* texture; /*rgba*/
     int textureId;
     int textureRes[2];
-    floatDouble* textureCoords;
+    double* textureCoords;
     int textureApplyMode;
     int textureOptions; /* not just textures options */
-    floatDouble transparency;
+    double transparency;
+    int options;
+};
+
+struct SShapeVizInfof
+{
+    float* vertices;
+    int verticesSize;
+    int* indices;
+    int indicesSize;
+    float shadingAngle;
+    float* normals;
+    float colors[9];
+    char* texture; /*rgba*/
+    int textureId;
+    int textureRes[2];
+    float* textureCoords;
+    int textureApplyMode;
+    int textureOptions; /* not just textures options */
+    float transparency;
     int options;
 };
 
@@ -54,13 +55,13 @@ struct SLuaCallBack
     int objectID;
     bool* inputBool;
     int* inputInt;
-    floatFloat* inputFloat;
+    float* inputFloat;
     char* inputChar;
     int inputArgCount;
     int* inputArgTypeAndSize;
     bool* outputBool;
     int* outputInt;
-    floatFloat* outputFloat;
+    float* outputFloat;
     char* outputChar;
     int outputArgCount;
     int* outputArgTypeAndSize;
@@ -84,20 +85,5 @@ struct SSyncRt
     unsigned char objTypes[3];
     int objHandles[3];
 };
-
-typedef int (*contactCallback)(int,int,int,int*,float*);
-typedef int (*jointCtrlCallback)(int,int,int,const int*,const float*,float*);
-
-/* do not use anymore: */
-typedef bool simBool;
-typedef void simVoid;
-typedef unsigned char simUChar;
-typedef int simInt;
-typedef char simChar;
-typedef unsigned int simUInt;
-typedef long long int simInt64;
-typedef unsigned long long int simUInt64;
-typedef double simDouble;
-typedef float simFloat;
 
 #endif // !defined(SIMTYPES_INCLUDED_)
