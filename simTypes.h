@@ -73,13 +73,6 @@ struct SLuaCallBack
     double* outputDouble;
 };
 
-struct SSyncMsg
-{
-    unsigned char msg;
-    void* data;
-    size_t dataSize;
-};
-
 struct SSyncRt
 {
     unsigned char objTypes[3];
