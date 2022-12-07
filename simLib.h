@@ -81,7 +81,7 @@ typedef int (__cdecl *ptrSimRemoveScript)(int scriptHandle);
 typedef int (__cdecl *ptrSimRefreshDialogs)(int refreshDegree);
 typedef int (__cdecl *ptrSimResetProximitySensor)(int sensorHandle);
 typedef void* (__cdecl *ptrSimCreateBuffer)(int size);
-typedef int (__cdecl *ptrSimReleaseBuffer)(void* buffer);
+typedef int (__cdecl *ptrSimReleaseBuffer)(const void* buffer);
 typedef int (__cdecl *ptrSimCheckCollision)(int entity1Handle,int entity2Handle);
 typedef int (__cdecl *ptrSimGetRealTimeSimulation)();
 typedef int (__cdecl *ptrSimIsRealTimeSimulationStepNeeded)();
