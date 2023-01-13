@@ -1071,7 +1071,8 @@ enum { /* physics engine */
     sim_physics_ode,
     sim_physics_vortex,
     sim_physics_newton,
-    sim_physics_mujoco
+    sim_physics_mujoco,
+    sim_physics_physx
 };
 
 enum { /* deprecated */
