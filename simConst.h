@@ -4,8 +4,8 @@
 #define SIM_PROGRAM_VERSION_NB 40500
 #define SIM_PROGRAM_VERSION "4.5.0"
 
-#define SIM_PROGRAM_REVISION_NB 0
-#define SIM_PROGRAM_REVISION "(rev. 0)"
+#define SIM_PROGRAM_REVISION_NB 1
+#define SIM_PROGRAM_REVISION "(rev. 1)"
 
 #define SIM_PROGRAM_FULL_VERSION_NB ((SIM_PROGRAM_VERSION_NB) * 100 + (SIM_PROGRAM_REVISION_NB))
 
@@ -686,6 +686,7 @@ enum { /* drawing objects: */
     sim_drawing_persistent              =0x100000,  /* object is not automatically removed when created via a simulation script */
     sim_drawing_auxchannelcolor1        =0x200000,  /* when specifying the emission color component in the simAddDrawingObject function, 6 values should be specified instead of 3: 3 for the emission component, and 3 for the aux channel component */
     sim_drawing_auxchannelcolor2        =0x400000,  /* When used in combination with sim_drawing_itemcolors or sim_drawing_vertexcolors, then the specified colors will be for the aux channel component */
+    sim_drawing_local                   =0x800000,  /* coordinates are specified locally to the attached object */
 };
 
 enum { /* banner values: */

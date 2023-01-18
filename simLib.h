@@ -50,7 +50,7 @@ typedef int (__cdecl *ptrSimSetStringParam)(int Param,const char* stringState);
 typedef char* (__cdecl *ptrSimGetStringParam)(int Param);
 typedef int (__cdecl *ptrSimSetNamedStringParam)(const char* paramName,const char* stringParam,int paramLength);
 typedef char* (__cdecl *ptrSimGetNamedStringParam)(const char* paramName,int* paramLength);
-typedef int (__cdecl *ptrSimGetObject)(const char* objectAlias,int index,int proxy,int options);
+typedef int (__cdecl *ptrSimGetObject)(const char* objectPath,int index,int proxy,int options);
 typedef long long int (__cdecl *ptrSimGetObjectUid)(int objectHandle);
 typedef int (__cdecl *ptrSimGetObjectFromUid)(long long int uid,int options);
 typedef int (__cdecl *ptrSimGetScriptHandleEx)(int scriptType,int objHandle,const char* scriptName);
