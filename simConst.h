@@ -274,6 +274,8 @@ enum { /* Check the documentation instead of comments below!! */
         sim_message_eventcallback_simulationsensing,
         sim_message_eventcallback_simulationcleanup,
 
+        sim_message_eventcallback_moduleentry, /* auxiliaryData[0] indicates the handle of the item, auxiliaryData[1] indicates the state of the item */
+
         sim_message_simulation_start_resume_request=0x1000,
         sim_message_simulation_pause_request,
         sim_message_simulation_stop_request
@@ -2010,7 +2012,7 @@ enum { /* Graph data stream transformations */
 };
 
 enum { /* Default dynamic materials */
-    sim_dynmat_default=2310013, /* i.e. SIM_IDSTART_DEFDYNMATERIAL */
+    sim_dynmat_default=2310013, /* i.e. SIM_IDSTART_DEFDYNMATERIAL_old */
     sim_dynmat_highfriction,
     sim_dynmat_lowfriction,
     sim_dynmat_nofriction,
