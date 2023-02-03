@@ -1,4 +1,4 @@
-#include "../include/simLib.h"
+#include "simLib.h"
 #include <cstdio>
 #include <string>
 #include <cstring>
