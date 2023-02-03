@@ -12,7 +12,7 @@
 #include <boost/optional.hpp>
 #include <boost/format.hpp>
 
-#include <simLib.h>
+#include <simLib/simLib.h>
 
 namespace sim
 {

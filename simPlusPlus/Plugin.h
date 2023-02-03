@@ -12,7 +12,7 @@
 #include <stdexcept>
 #include <boost/format.hpp>
 
-#include "simLib.h"
+#include <simLib/simLib.h>
 
 #if SIM_PROGRAM_FULL_VERSION_NB < 4010005
     #error CoppeliaSim headers are not up to date
