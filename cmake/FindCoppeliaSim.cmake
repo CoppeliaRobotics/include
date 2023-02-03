@@ -57,7 +57,6 @@ if(NOT IS_DIRECTORY "${COPPELIASIM_ROOT_DIR}/programming/include")
     coppeliasim_find_error("Directory ${COPPELIASIM_ROOT_DIR}/programming/include does not exist.")
     return()
 endif()
-set(COPPELIASIM_INCLUDE_DIR "${COPPELIASIM_ROOT_DIR}/programming/include")
 
 foreach(F IN ITEMS
         "${COPPELIASIM_INCLUDE_DIR}/simLib/simLib.h"
