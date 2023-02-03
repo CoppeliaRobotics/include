@@ -20,25 +20,18 @@ function(COPPELIASIM_FIND_ERROR MESSAGE)
     endif()
 endfunction()
 
-# redefine LIBPLUGIN_DIR as the directory containing this module:
+# redefine COPPELIASIM_INCLUDE_DIR as the directory containing this module:
 
-get_filename_component(LIBPLUGIN_DIR ${CMAKE_CURRENT_LIST_DIR} DIRECTORY)
+get_filename_component(COPPELIASIM_INCLUDE_DIR ${CMAKE_CURRENT_LIST_DIR} DIRECTORY)
 if(NOT CoppeliaSim_FIND_QUIETLY)
-    message(STATUS "CoppeliaSim: LIBPLUGIN_DIR: ${LIBPLUGIN_DIR}.")
+    message(STATUS "CoppeliaSim: COPPELIASIM_INCLUDE_DIR: ${COPPELIASIM_INCLUDE_DIR}.")
 endif()
 
 # determine the value of COPPELIASIM_ROOT_DIR:
 
 if(NOT COPPELIASIM_ROOT_DIR)
     if(NOT DEFINED ENV{COPPELIASIM_ROOT_DIR})
-        if(EXISTS "${LIBPLUGIN_DIR}/../../programming/include")
-            get_filename_component(COPPELIASIM_PROGRAMMING_DIR ${LIBPLUGIN_DIR} DIRECTORY)
-        elseif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/../../programming/include")
-            get_filename_component(COPPELIASIM_PROGRAMMING_DIR ${CMAKE_CURRENT_SOURCE_DIR} DIRECTORY)
-        else()
-            coppeliasim_find_error("Cannot figure out the value for COPPELIASIM_ROOT_DIR.")
-            return()
-        endif()
+        get_filename_component(COPPELIASIM_PROGRAMMING_DIR ${COPPELIASIM_INCLUDE_DIR} DIRECTORY)
         get_filename_component(COPPELIASIM_ROOT_DIR ${COPPELIASIM_PROGRAMMING_DIR} DIRECTORY)
         unset(COPPELIASIM_PROGRAMMING_DIR)
     else()
@@ -66,18 +59,12 @@ if(NOT IS_DIRECTORY "${COPPELIASIM_ROOT_DIR}/programming/include")
 endif()
 set(COPPELIASIM_INCLUDE_DIR "${COPPELIASIM_ROOT_DIR}/programming/include")
 
-if(IS_DIRECTORY "${COPPELIASIM_ROOT_DIR}/programming/common")
-    set(COPPELIASIM_COMMON_DIR "${COPPELIASIM_ROOT_DIR}/programming/common")
-else()
-    set(COPPELIASIM_COMMON_DIR "${COPPELIASIM_INCLUDE_DIR}")
-endif()
-
 foreach(F IN ITEMS
-        "${COPPELIASIM_INCLUDE_DIR}/simLib.h"
-        "${COPPELIASIM_INCLUDE_DIR}/simConst.h"
-        "${COPPELIASIM_COMMON_DIR}/simLib.cpp"
-        "${LIBPLUGIN_DIR}/simPlusPlus/Lib.cpp"
-        "${LIBPLUGIN_DIR}/simPlusPlus/Plugin.cpp"
+        "${COPPELIASIM_INCLUDE_DIR}/simLib/simLib.h"
+        "${COPPELIASIM_INCLUDE_DIR}/simLib/simConst.h"
+        "${COPPELIASIM_INCLUDE_DIR}/simLib/simLib.cpp"
+        "${COPPELIASIM_INCLUDE_DIR}/simPlusPlus/Lib.cpp"
+        "${COPPELIASIM_INCLUDE_DIR}/simPlusPlus/Plugin.cpp"
 )
     if(NOT EXISTS "${F}")
         coppeliasim_find_error("File ${F} does not exist.")
@@ -87,7 +74,7 @@ endforeach()
 
 set(COPPELIASIM_EXPORTED_SOURCES
     "${COPPELIASIM_EXPORTED_SOURCES}"
-    "${COPPELIASIM_COMMON_DIR}/simLib.cpp")
+    "${COPPELIASIM_INCLUDE_DIR}/simLib/simLib.cpp")
 
 if(NOT CoppeliaSim_FIND_QUIETLY)
     message(STATUS "Found CoppeliaSim installation at ${COPPELIASIM_ROOT_DIR}.")
@@ -103,7 +90,7 @@ if(DEFINED CoppeliaSim_FIND_VERSION)
     set(COPPELIASIM_VERSION_CHECK_BIN "${CMAKE_BINARY_DIR}/sim_version_check")
     file(WRITE ${COPPELIASIM_VERSION_CHECK_SRC} "
 #include <iostream>
-#include <simConst.h>
+#include <simLib/simConst.h>
 int main() {
     char sep = ';';
     std::cout
@@ -207,7 +194,7 @@ elseif(UNIX AND APPLE)
 endif()
 set(COPPELIASIM_LUA_DIR ${COPPELIASIM_RESOURCES_DIR}/lua)
 
-include_directories(${LIBPLUGIN_DIR})
+include_directories(${COPPELIASIM_INCLUDE_DIR})
 
 function(COPPELIASIM_GENERATE_STUBS GENERATED_OUTPUT_DIR)
     cmake_parse_arguments(COPPELIASIM_GENERATE_STUBS "" "XML_FILE;LUA_FILE" "" ${ARGN})
@@ -223,7 +210,7 @@ function(COPPELIASIM_GENERATE_STUBS GENERATED_OUTPUT_DIR)
     endif()
     execute_process(
         COMMAND ${Python3_EXECUTABLE}
-            ${LIBPLUGIN_DIR}/simStubsGen/generate.py
+            ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate.py
             --xml-file ${COPPELIASIM_GENERATE_STUBS_XML_FILE}
             --gen-cmake-meta
             ${GENERATED_OUTPUT_DIR}
@@ -249,33 +236,33 @@ function(COPPELIASIM_GENERATE_STUBS GENERATED_OUTPUT_DIR)
     )
     set(COMMAND_ARGS
         ${Python3_EXECUTABLE}
-        ${LIBPLUGIN_DIR}/simStubsGen/generate.py
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate.py
         --verbose
         --xml-file ${COPPELIASIM_GENERATE_STUBS_XML_FILE}
         --gen-all ${GENERATED_OUTPUT_DIR}
     )
     set(DEPENDENCIES
-        ${LIBPLUGIN_DIR}/simStubsGen/__init__.py
-        ${LIBPLUGIN_DIR}/simStubsGen/generate.py
-        ${LIBPLUGIN_DIR}/simStubsGen/generate_api_index.py
-        ${LIBPLUGIN_DIR}/simStubsGen/generate_cmake_metadata.py
-        ${LIBPLUGIN_DIR}/simStubsGen/generate_lua_calltips.py
-        ${LIBPLUGIN_DIR}/simStubsGen/generate_lua_typechecker.py
-        ${LIBPLUGIN_DIR}/simStubsGen/generate_lua_xml.py
-        ${LIBPLUGIN_DIR}/simStubsGen/parse.py
-        ${LIBPLUGIN_DIR}/simStubsGen/model/__init__.py
-        ${LIBPLUGIN_DIR}/simStubsGen/model/command.py
-        ${LIBPLUGIN_DIR}/simStubsGen/model/enum.py
-        ${LIBPLUGIN_DIR}/simStubsGen/model/param.py
-        ${LIBPLUGIN_DIR}/simStubsGen/model/plugin.py
-        ${LIBPLUGIN_DIR}/simStubsGen/model/script_function.py
-        ${LIBPLUGIN_DIR}/simStubsGen/model/struct.py
-        ${LIBPLUGIN_DIR}/simStubsGen/cpp/plugin.h
-        ${LIBPLUGIN_DIR}/simStubsGen/cpp/stubs.cpp
-        ${LIBPLUGIN_DIR}/simStubsGen/cpp/stubs.h
-        ${LIBPLUGIN_DIR}/simStubsGen/cpp/stubsPlusPlus.cpp
-        ${LIBPLUGIN_DIR}/simStubsGen/xsd/callbacks.xsd
-        ${LIBPLUGIN_DIR}/simStubsGen/xsl/reference.xsl
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/__init__.py
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate.py
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_api_index.py
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_cmake_metadata.py
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_lua_calltips.py
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_lua_typechecker.py
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_lua_xml.py
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/parse.py
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/model/__init__.py
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/model/command.py
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/model/enum.py
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/model/param.py
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/model/plugin.py
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/model/script_function.py
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/model/struct.py
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/cpp/plugin.h
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/cpp/stubs.cpp
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/cpp/stubs.h
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/cpp/stubsPlusPlus.cpp
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/xsd/callbacks.xsd
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/xsl/reference.xsl
         ${COPPELIASIM_GENERATE_STUBS_XML_FILE}
     )
     if(NOT "${COPPELIASIM_GENERATE_STUBS_LUA_FILE}" STREQUAL "")
@@ -320,8 +307,8 @@ function(COPPELIASIM_ADD_PLUGIN PLUGIN_TARGET_NAME)
         set(PLUGIN_TARGET_NAME_V "${PLUGIN_TARGET_NAME}")
     endif()
     if(NOT COPPELIASIM_ADD_PLUGIN_LEGACY)
-        set(COPPELIASIM_EXPORTED_SOURCES "${COPPELIASIM_EXPORTED_SOURCES}" "${LIBPLUGIN_DIR}/simPlusPlus/Lib.cpp" "${LIBPLUGIN_DIR}/simPlusPlus/Plugin.cpp" PARENT_SCOPE)
-        set(COPPELIASIM_EXPORTED_SOURCES "${COPPELIASIM_EXPORTED_SOURCES}" "${LIBPLUGIN_DIR}/simPlusPlus/Lib.cpp" "${LIBPLUGIN_DIR}/simPlusPlus/Plugin.cpp")
+        set(COPPELIASIM_EXPORTED_SOURCES "${COPPELIASIM_EXPORTED_SOURCES}" "${COPPELIASIM_INCLUDE_DIR}/simPlusPlus/Lib.cpp" "${COPPELIASIM_INCLUDE_DIR}/simPlusPlus/Plugin.cpp" PARENT_SCOPE)
+        set(COPPELIASIM_EXPORTED_SOURCES "${COPPELIASIM_EXPORTED_SOURCES}" "${COPPELIASIM_INCLUDE_DIR}/simPlusPlus/Lib.cpp" "${COPPELIASIM_INCLUDE_DIR}/simPlusPlus/Plugin.cpp")
     endif()
     add_library(${PLUGIN_TARGET_NAME_V} SHARED ${COPPELIASIM_EXPORTED_SOURCES} ${COPPELIASIM_ADD_PLUGIN_SOURCES})
     target_include_directories(${PLUGIN_TARGET_NAME_V} PRIVATE ${COPPELIASIM_INCLUDE_DIR})
