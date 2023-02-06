@@ -23,8 +23,8 @@ public:
     }
 };
 
-SIM_PLUGIN("PluginSkeletonNG", 1, Plugin)
+SIM_PLUGIN("Skel", 1, Plugin)
 #include "stubsPlusPlus.cpp"
 ```
 
-See [simExtPluginSkeletonNG](https://github.com/CoppeliaRobotics/simExtPluginSkeletonNG) for a complete example.
+See [simExtSkel](https://github.com/CoppeliaRobotics/simExtSkel) for a complete example.
