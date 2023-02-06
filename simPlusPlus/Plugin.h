@@ -14,10 +14,6 @@
 
 #include <simLib/simLib.h>
 
-#if SIM_PROGRAM_FULL_VERSION_NB < 4010005
-    #error CoppeliaSim headers are not up to date
-#endif
-
 #ifdef _WIN32
 	#define SIM_DLLEXPORT extern "C" __declspec(dllexport)
 #endif /* _WIN32 */
