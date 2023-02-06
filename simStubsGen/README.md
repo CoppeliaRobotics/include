@@ -19,8 +19,6 @@ similar documentation for pure Lua functions. See [below](#lua-comments).
 
 ## Usage
 
-This tool is normally used within the [libPlugin](https://github.com/CoppeliaRobotics/libPlugin) framework.
-
 For CMake, use the `coppeliasim_generate_stubs` CMake macro, e.g.:
 
 ```cmake

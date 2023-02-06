@@ -542,7 +542,7 @@ void checkRuntimeVersion()
     // version required by simStubsGen:
     int minVer = 4010000; // 4.1.0rev0
     if(simVer < minVer)
-        throw sim::exception("requires at least %s (libPlugin)", sim::versionString(minVer));
+        throw sim::exception("requires at least %s (simStubsGen)", sim::versionString(minVer));
 
     // version required by plugin:
     if(simVer < SIM_REQUIRED_PROGRAM_VERSION_NB)
