@@ -5,7 +5,7 @@
 #include <float.h>
 #include <cstdlib>
 #include <cmath>
-#include <simTypes.h>
+#include <simLib/simTypes.h>
 
 #ifdef SIM_MATH_DOUBLE
 typedef double simReal;
