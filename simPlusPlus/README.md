@@ -5,11 +5,10 @@ Compile with your C++ project.
 Example plugin (uses also [simStubsGen](https://github.com/CoppeliaRobotics/libPlugin/simStubsGen)):
 
 ```
-#include "simExtPluginSkeletonNG.h"
-#include "simPlusPlus/Plugin.h"
+#include <simPlusPlus/Plugin.h>
 #include "stubs.h"
 
-class Plugin : public sim:Plugin
+class Plugin : public sim::Plugin
 {
 public:
     void onStart()
