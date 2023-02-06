@@ -12,7 +12,7 @@
 #include <stdexcept>
 #include <boost/format.hpp>
 
-#include <simLib/simLib.h>
+#include "Lib.h"
 
 #ifdef _WIN32
 	#define SIM_DLLEXPORT extern "C" __declspec(dllexport)
@@ -158,7 +158,7 @@ SIM_DLLEXPORT unsigned char simStart(void *reservedPointer, int reservedInt) \
     } \
     catch(std::exception &ex) \
     { \
-        simAddLog(sim::pluginName.c_str(), sim_verbosity_errors, ex.what()); \
+        sim::addLog(sim_verbosity_errors, ex.what()); \
         return 0; \
     } \
 } \
@@ -175,7 +175,7 @@ SIM_DLLEXPORT void simEnd() \
     } \
     catch(std::exception &ex) \
     { \
-        simAddLog(sim::pluginName.c_str(), sim_verbosity_errors, ex.what()); \
+        sim::addLog(sim_verbosity_errors, ex.what()); \
     } \
     unloadSimLibrary(sim::lib); \
 } \
@@ -190,7 +190,7 @@ SIM_DLLEXPORT void * simMessage(int message, int *auxiliaryData, void *customDat
     } \
     catch(std::exception &ex) \
     { \
-        simAddLog(sim::pluginName.c_str(), sim_verbosity_errors, ex.what()); \
+        sim::addLog(sim_verbosity_errors, ex.what()); \
     } \
     return 0L; \
 }

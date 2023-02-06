@@ -19,29 +19,27 @@ namespace sim
 
     void Plugin::setExtVersion(const std::string &s)
     {
-        simSetModuleInfo(pluginNameAndVersion.c_str(), sim_moduleinfo_extversionstr, s.c_str(), 0);
+        sim::setModuleInfo(sim_moduleinfo_extversionstr, s);
     }
 
     void Plugin::setExtVersion(int i)
     {
-        simSetModuleInfo(pluginNameAndVersion.c_str(), sim_moduleinfo_extversionint, 0, i);
+        sim::setModuleInfo(sim_moduleinfo_extversionint, i);
     }
 
     void Plugin::setBuildDate(const std::string &s)
     {
-        simSetModuleInfo(pluginNameAndVersion.c_str(), sim_moduleinfo_builddatestr, s.c_str(), 0);
+        sim::setModuleInfo(sim_moduleinfo_builddatestr, s);
     }
 
     void Plugin::setVerbosity(int i)
     {
-        simSetModuleInfo(pluginNameAndVersion.c_str(), sim_moduleinfo_verbosity, 0, i);
+        sim::setModuleInfo(sim_moduleinfo_verbosity, i);
     }
 
     int Plugin::getVerbosity()
     {
-        int v = sim_verbosity_default;
-        simGetModuleInfo(pluginNameAndVersion.c_str(), sim_moduleinfo_verbosity, nullptr, &v);
-        return v;
+        return sim::getModuleInfoInt(sim_moduleinfo_verbosity);
     }
 
     void Plugin::onStart()
@@ -54,9 +52,8 @@ namespace sim
 
     void * Plugin::onMessage(int message, int *auxiliaryData, void *customData, int *replyData)
     {
-        int errorModeSaved;
-        simGetInt32Param(sim_intparam_error_report_mode, &errorModeSaved);
-        simSetInt32Param(sim_intparam_error_report_mode, sim_api_errormessage_ignore);
+        int errorModeSaved = sim::getInt32Param(sim_intparam_error_report_mode);
+        sim::setInt32Param(sim_intparam_error_report_mode, sim_api_errormessage_ignore);
         void *retVal = NULL;
 
         switch(message)
@@ -596,7 +593,7 @@ namespace sim
         }
 
         // Keep following unchanged:
-        simSetInt32Param(sim_intparam_error_report_mode, errorModeSaved);
+        sim::setInt32Param(sim_intparam_error_report_mode, errorModeSaved);
         return retVal;
     }
 
