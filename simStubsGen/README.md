@@ -15,7 +15,7 @@ similar documentation for pure Lua functions. See [below](#lua-comments).
 
 - Python interpreter (3.8 or greater)
 - xsltproc (available via `apt`/`brew`/`choco`)
-- (optional) Python package 'xmlschema' (`pip install xmlschema`)
+- (optional) Python package 'xmlschema' (`python3 -m pip install xmlschema`)
 
 ## Usage
 
