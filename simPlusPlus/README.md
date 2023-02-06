@@ -2,7 +2,7 @@
 
 Compile with your C++ project.
 
-Example plugin (uses also [simStubsGen](https://github.com/CoppeliaRobotics/include/simStubsGen)):
+Example plugin (uses also simStubsGen):
 
 ```
 #include <simPlusPlus/Plugin.h>

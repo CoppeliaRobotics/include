@@ -302,5 +302,5 @@ end
 
 ## Complete example
 
-See [simExtPluginSkeletonNG](https://github.com/CoppeliaRobotics/simExtPluginSkeletonNG) for an example of a CoppeliaSim plugin using this framework.
+See [simExtSkel](https://github.com/CoppeliaRobotics/simExtSkel) for an example of a CoppeliaSim plugin using this framework.
 
