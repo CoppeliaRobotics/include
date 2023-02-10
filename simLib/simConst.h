@@ -1322,7 +1322,7 @@ enum { /* Object int/double/string parameters */
     sim_jointintparam_vortex_dep_handle= 2031,
     sim_jointfloatparam_vortex_dep_multiplication= 2032,
     sim_jointfloatparam_vortex_dep_offset= 2033,
-    sim_jointfloatparam_screw_pitch= 2034,
+    sim_jointfloatparam_screw_pitch= 2034, /* deprecated */
     sim_jointfloatparam_step_size= 2035, /* deprecated */
     sim_jointfloatparam_maxvel= 2036,
     sim_jointfloatparam_maxaccel= 2037,
@@ -1330,6 +1330,7 @@ enum { /* Object int/double/string parameters */
     sim_jointintparam_dynctrlmode= 2039,
     sim_jointintparam_dynvelctrltype= 2040,
     sim_jointintparam_dynposctrltype= 2041,
+    sim_jointfloatparam_screwlead= 2042,
 
     /* shapes */
     sim_shapefloatparam_init_velocity_x= 3000,
