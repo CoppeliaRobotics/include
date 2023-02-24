@@ -399,7 +399,6 @@ ptr_simGetObjectFromIndex _simGetObjectFromIndex=nullptr;
 ptr_simGetObjectID _simGetObjectID=nullptr;
 ptr_simGetObjectType _simGetObjectType=nullptr;
 ptr_simGetObjectChildren _simGetObjectChildren=nullptr;
-ptr_simGetGeomProxyFromShape _simGetGeomProxyFromShape=nullptr;
 ptr_simGetParentObject _simGetParentObject=nullptr;
 ptr_simGetObject _simGetObject=nullptr;
 ptr_simGetIkGroupObject _simGetIkGroupObject=nullptr;
@@ -760,7 +759,6 @@ int getSimProcAddresses(LIBRARY lib)
     _simGetObjectID=(ptr_simGetObjectID)(_getProcAddress(lib,"_simGetObjectID",false));
     _simGetObjectType=(ptr_simGetObjectType)(_getProcAddress(lib,"_simGetObjectType",false));
     _simGetObjectChildren=(ptr_simGetObjectChildren)(_getProcAddress(lib,"_simGetObjectChildren",false));
-    _simGetGeomProxyFromShape=(ptr_simGetGeomProxyFromShape)(_getProcAddress(lib,"_simGetGeomProxyFromShape",false));
     _simGetParentObject=(ptr_simGetParentObject)(_getProcAddress(lib,"_simGetParentObject",false));
     _simGetObject=(ptr_simGetObject)(_getProcAddress(lib,"_simGetObject",false));
     _simGetIkGroupObject=(ptr_simGetIkGroupObject)(_getProcAddress(lib,"_simGetIkGroupObject",false));
@@ -2758,11 +2756,6 @@ int getSimProcAddresses(LIBRARY lib)
     if (_simGetObjectChildren==nullptr)
     {
         printf("%s _simGetObjectChildren\n",couldNotFind);
-        return 0;
-    }
-    if (_simGetGeomProxyFromShape==nullptr)
-    {
-        printf("%s _simGetGeomProxyFromShape\n",couldNotFind);
         return 0;
     }
     if (_simGetParentObject==nullptr)

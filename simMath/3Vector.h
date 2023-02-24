@@ -12,7 +12,8 @@ public:
 
     C3Vector();
     C3Vector(simReal v0,simReal v1,simReal v2);
-    C3Vector(const simReal v[3]);
+    C3Vector(const float v[3]);
+    C3Vector(const double v[3]);
     C3Vector(const C3Vector& v);
     ~C3Vector();
 
@@ -58,6 +59,8 @@ public:
     static const C3Vector unitYVector;
     static const C3Vector unitZVector;
     static const C3Vector zeroVector;
+    static const C3Vector ninf;
+    static const C3Vector inf;
 
     simReal data[3];
 };

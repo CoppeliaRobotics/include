@@ -15,6 +15,7 @@ typedef bool (__cdecl *ptr_simGetBulletStickyContact)(const void* geomInfo);
 typedef int (__cdecl *ptrSimCallScriptFunction)(int scriptHandleOrType,const char* functionNameAtScriptName,SLuaCallBack* data,const char* reservedSetToNull);
 typedef int (__cdecl *ptrSimGetJointMatrix)(int objectHandle,SIMDOUBLE* matrix);
 typedef int (__cdecl *ptrSimSetSphericalJointMatrix)(int objectHandle,const SIMDOUBLE* matrix);
+typedef const void* (__cdecl *ptr_simGetGeomProxyFromShape)(const void* shape);
 
 extern ptrSimAddModuleMenuEntry simAddModuleMenuEntry;
 extern ptrSimSetModuleMenuItemState simSetModuleMenuItemState;
@@ -33,6 +34,7 @@ extern ptr_simGetFriction _simGetFriction;
 extern ptrSimCallScriptFunction simCallScriptFunction;
 extern ptrSimGetJointMatrix simGetJointMatrix;
 extern ptrSimSetSphericalJointMatrix simSetSphericalJointMatrix;
+extern ptr_simGetGeomProxyFromShape _simGetGeomProxyFromShape;
 
 #ifdef SIM_INTERFACE_OLD
 #include "simLib-old2.h"

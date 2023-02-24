@@ -8,6 +8,8 @@ const C3Vector C3Vector::unitXVector(1.0,0.0,0.0);
 const C3Vector C3Vector::unitYVector(0.0,1.0,0.0);
 const C3Vector C3Vector::unitZVector(0.0,0.0,1.0);
 const C3Vector C3Vector::zeroVector(0.0,0.0,0.0);
+const C3Vector C3Vector::ninf(-REAL_MAX,-REAL_MAX,-REAL_MAX);
+const C3Vector C3Vector::inf(REAL_MAX,REAL_MAX,REAL_MAX);
 
 C3Vector::C3Vector()
 {
@@ -20,11 +22,18 @@ C3Vector::C3Vector(simReal v0,simReal v1,simReal v2)
     data[2]=v2;
 }
 
-C3Vector::C3Vector(const simReal v[3])
+C3Vector::C3Vector(const float v[3])
 {
-    data[0]=v[0];
-    data[1]=v[1];
-    data[2]=v[2];
+    data[0]=(simReal)v[0];
+    data[1]=(simReal)v[1];
+    data[2]=(simReal)v[2];
+}
+
+C3Vector::C3Vector(const double v[3])
+{
+    data[0]=(simReal)v[0];
+    data[1]=(simReal)v[1];
+    data[2]=(simReal)v[2];
 }
 
 C3Vector::C3Vector(const C3Vector& v)

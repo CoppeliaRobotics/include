@@ -15,6 +15,7 @@ ptrSimAddModuleMenuEntry simAddModuleMenuEntry=nullptr;
 ptrSimSetModuleMenuItemState simSetModuleMenuItemState=nullptr;
 ptrSimGetJointMatrix simGetJointMatrix=nullptr;
 ptrSimSetSphericalJointMatrix simSetSphericalJointMatrix=nullptr;
+ptr_simGetGeomProxyFromShape _simGetGeomProxyFromShape=nullptr;
 
 #ifdef SIM_INTERFACE_OLD
 #include "simLib-old2.cpp"
@@ -44,6 +45,7 @@ int getSimProcAddressesOld(LIBRARY lib)
     simModifyPointCloud=(ptrSimModifyPointCloud)(_getProcAddress(lib,"simModifyPointCloud",true));
     simGetJointMatrix=(ptrSimGetJointMatrix)(_getProcAddress(lib,"simGetJointMatrix",true));
     simSetSphericalJointMatrix=(ptrSimSetSphericalJointMatrix)(_getProcAddress(lib,"simSetSphericalJointMatrix",true));
+    _simGetGeomProxyFromShape=(ptr_simGetGeomProxyFromShape)(_getProcAddress(lib,"_simGetGeomProxyFromShape",false));
 
     char *ps=std::getenv("COPPELIASIMPLUGIN_IGNORE_MISSING_SYMBOLS");
     if (ps!=nullptr)
@@ -134,6 +136,11 @@ int getSimProcAddressesOld(LIBRARY lib)
     if (simSetSphericalJointMatrix==nullptr)
     {
         printf("%s simSetSphericalJointMatrix\n",couldNotFind);
+        return 0;
+    }
+    if (_simGetGeomProxyFromShape==nullptr)
+    {
+        printf("%s _simGetGeomProxyFromShape\n",couldNotFind);
         return 0;
     }
     return 1;
