@@ -643,57 +643,6 @@ const char* `enum.name.lower()`_string(`enum.name` x)
 #py endfor
 }
 
-void `cmd.c_name`(SScriptCallBack *p, `cmd.c_in_name` *in_args, `cmd.c_out_name` *out_args)
-{
-    `cmd.c_name`(p, "sim`plugin.name`.`cmd.name`", in_args, out_args);
-}
-
-#py if len(cmd.returns) == 1:
-`cmd.returns[0].ctype()` `cmd.c_name`(`cmd.c_arg_list(pre_args=['SScriptCallBack *p'])`)
-{
-    `cmd.c_in_name` in_args;
-    if(p)
-    {
-        std::memcpy(&in_args._, p, sizeof(SScriptCallBack));
-    }
-#py for p in cmd.params:
-    in_args.`p.name` = `p.name`;
-#py endfor
-    `cmd.c_out_name` out_args;
-    `cmd.c_name`(p, &in_args, &out_args);
-    return out_args.`cmd.returns[0].name`;
-}
-
-#py endif
-#py if len(cmd.returns) == 0:
-void `cmd.c_name`(`cmd.c_arg_list(pre_args=['SScriptCallBack *p'])`)
-{
-    `cmd.c_in_name` in_args;
-    if(p)
-    {
-        std::memcpy(&in_args._, p, sizeof(SScriptCallBack));
-    }
-#py for p in cmd.params:
-    in_args.`p.name` = `p.name`;
-#py endfor
-    `cmd.c_out_name` out_args;
-    `cmd.c_name`(p, &in_args, &out_args);
-}
-
-#py endif
-void `cmd.c_name`(`cmd.c_arg_list(pre_args=['SScriptCallBack *p', '%s *out_args' % cmd.c_out_name])`)
-{
-    `cmd.c_in_name` in_args;
-    if(p)
-    {
-        std::memcpy(&in_args._, p, sizeof(SScriptCallBack));
-    }
-#py for p in cmd.params:
-    in_args.`p.name` = `p.name`;
-#py endfor
-    `cmd.c_name`(p, &in_args, out_args);
-}
-
 void `cmd.c_name`_callback(SScriptCallBack *p)
 {
     addStubsDebugLog("`cmd.c_name`_callback: reading input arguments...");
@@ -752,7 +701,7 @@ void `cmd.c_name`_callback(SScriptCallBack *p)
 #py endif
 
         addStubsDebugLog("`cmd.c_name`_callback: calling callback (`cmd.c_name`)");
-        `cmd.c_name`(p, cmd, &in_args, &out_args);
+        `cmd.c_name`(&in_args, &out_args);
     }
     catch(std::exception &ex)
     {

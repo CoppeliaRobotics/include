@@ -225,15 +225,8 @@ struct `cmd.c_out_name`
     `cmd.c_out_name`();
 };
 
-void `cmd.c_name`(SScriptCallBack *p, `cmd.c_in_name` *in, `cmd.c_out_name` *out);
-#py if len(cmd.returns) == 1:
-`cmd.returns[0].ctype()` `cmd.c_name`(`cmd.c_arg_list(pre_args=['SScriptCallBack *p'], defaults=True)`);
-#py endif
-#py if len(cmd.returns) == 0:
-void `cmd.c_name`(`cmd.c_arg_list(pre_args=['SScriptCallBack *p'], defaults=True)`);
-#py endif
-void `cmd.c_name`(`cmd.c_arg_list(pre_args=['SScriptCallBack *p', '%s *out' % cmd.c_out_name], defaults=True)`);
 void `cmd.c_name`_callback(SScriptCallBack *p);
+SIM_DLLEXPORT void `cmd.c_name`(`cmd.c_in_name` *in, `cmd.c_out_name` *out);
 
 #py endfor
 #py for fn in plugin.script_functions:
