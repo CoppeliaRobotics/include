@@ -57,6 +57,7 @@ function sim{plugin.name}.__addTypeCheck()
     end)
 """)
     f.write(f"""
+    sim{plugin.name}.__addTypeCheck=nil
 end
 
 sim.registerScriptFuncHook('sysCall_init','sim{plugin.name}.__addTypeCheck',true)
