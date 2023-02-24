@@ -701,7 +701,7 @@ void `cmd.c_name`_callback(SScriptCallBack *p)
 #py endif
 
         addStubsDebugLog("`cmd.c_name`_callback: calling callback (`cmd.c_name`)");
-        `cmd.c_name`(&in_args, &out_args);
+        simExt`plugin.name`_`cmd.c_name`(&in_args, &out_args);
     }
     catch(std::exception &ex)
     {

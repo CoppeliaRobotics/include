@@ -226,7 +226,7 @@ struct `cmd.c_out_name`
 };
 
 void `cmd.c_name`_callback(SScriptCallBack *p);
-SIM_DLLEXPORT void `cmd.c_name`(`cmd.c_in_name` *in, `cmd.c_out_name` *out);
+SIM_DLLEXPORT void simExt`plugin.name`_`cmd.c_name`(`cmd.c_in_name` *in, `cmd.c_out_name` *out);
 
 #py endfor
 #py for fn in plugin.script_functions:
