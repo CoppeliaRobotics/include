@@ -52,7 +52,8 @@ function sim{plugin.name}.__addTypeCheck()
         f.write(f"""                }},
                 ...
             )
-            return origFunc({paramList})
+            local _rets={{origFunc({paramList})}}
+            return table.unpack(_rets)
         end
     end)
 """)
