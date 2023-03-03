@@ -23,6 +23,7 @@ public:
     simReal* ptr();
     bool isColinear(const C3Vector& v,simReal precision) const;
     simReal getLength() const;
+    void sort(int idx[3]=nullptr);
     void setData(const float v[3]);
     void setData(const double v[3]);
     void getData(simReal v[3]) const;
@@ -31,7 +32,7 @@ public:
     void keepMax(const C3Vector& v);
     void keepMin(const C3Vector& v);
     bool isValid() const;
-    void normalize();
+    simReal normalize();
     void clear();
 
     simReal& operator() (size_t i);

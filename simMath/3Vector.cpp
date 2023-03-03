@@ -129,6 +129,48 @@ simReal C3Vector::getLength() const
     return(sqrt(data[0]*data[0]+data[1]*data[1]+data[2]*data[2]));
 }
 
+void C3Vector::sort(int idx[3]/*=nullptr*/)
+{ // descending
+    simReal tmp;
+    int a;
+    if (data[0]<data[1])
+    {
+        tmp=data[1];
+        data[1]=data[0];
+        data[0]=tmp;
+        if (idx!=nullptr)
+        {
+            a=idx[1];
+            idx[1]=idx[0];
+            idx[0]=a;
+        }
+    }
+    if (data[1]<data[2])
+    {
+        tmp=data[2];
+        data[2]=data[1];
+        data[1]=tmp;
+        if (idx!=nullptr)
+        {
+            a=idx[2];
+            idx[2]=idx[1];
+            idx[1]=a;
+        }
+    }
+    if (data[0]<data[1])
+    {
+        tmp=data[1];
+        data[1]=data[0];
+        data[0]=tmp;
+        if (idx!=nullptr)
+        {
+            a=idx[1];
+            idx[1]=idx[0];
+            idx[0]=a;
+        }
+    }
+}
+
 void C3Vector::setData(const float v[3])
 {
     data[0]=(simReal)v[0];
@@ -196,7 +238,7 @@ bool C3Vector::isValid() const
     return((SIM_IS_FINITE(data[0])!=0)&&(SIM_IS_FINITE(data[1])!=0)&&(SIM_IS_FINITE(data[2])!=0)&&(SIM_IS_NAN(data[0])==0)&&(SIM_IS_NAN(data[1])==0)&&(SIM_IS_NAN(data[2])==0));
 }
 
-void C3Vector::normalize()
+simReal C3Vector::normalize()
 {
     simReal l=sqrt(data[0]*data[0]+data[1]*data[1]+data[2]*data[2]);
     if (l!=0.0)
@@ -205,6 +247,7 @@ void C3Vector::normalize()
         data[1]=data[1]/l;
         data[2]=data[2]/l;
     }
+    return(l);
 }
 
 void C3Vector::clear()

@@ -24,7 +24,7 @@ struct SShapeVizInfo
     char* texture; /*rgba*/
     int textureId;
     int textureRes[2];
-    double* textureCoords;
+    float* textureCoords;
     int textureApplyMode;
     int textureOptions; /* not just textures options */
     double transparency;
