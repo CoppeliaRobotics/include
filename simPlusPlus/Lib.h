@@ -200,7 +200,8 @@ namespace sim
 
     std::vector<int> getObjectSel();
 
-    // setObjectSel
+    int setObjectSel(const int *handles, int count);
+    int setObjectSel(const std::vector<int> &handles);
 
     // associateScriptWithObject
 

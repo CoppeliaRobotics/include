@@ -448,15 +448,17 @@ std::vector<int> getObjectSel()
     return handles;
 }
 
-void setObjectSel(const int *handles, int cnt)
+int setObjectSel(const int *handles, int cnt)
 {
-    if(simSetObjectSel(handles, cnt) == -1)
+    int ret = simSetObjectSel(handles, cnt);
+    if(ret == -1)
         throw api_error("simSetObjectSel");
+    return ret;
 }
 
-void setObjectSel(const std::vector<int> &handles)
+int setObjectSel(const std::vector<int> &handles)
 {
-    setObjectSel(handles.data(), handles.size());
+    return setObjectSel(handles.data(), handles.size());
 }
 
 // int simAssociateScriptWithObject(int scriptHandle, int associatedObjectHandle);
