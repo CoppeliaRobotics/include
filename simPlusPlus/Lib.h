@@ -839,11 +839,13 @@ namespace sim
 
     // addForce
 
-    // setObjectColor
+    void setObjectColor(int objectHandle, int index, int colorComponent, const float *rgbData);
+    void setObjectColor(int objectHandle, int index, int colorComponent, const std::array<float, 3> &rgbData);
 
-    // getObjectColor
+    boost::optional<std::array<float, 3>> getObjectColor(int objectHandle, int index, int colorComponent);
 
-    // setShapeColor
+    void setShapeColor(int shapeHandle, const char *colorName, int colorComponent, const float *rgbData);
+    void setShapeColor(int shapeHandle, boost::optional<std::string> colorName, int colorComponent, const std::array<float, 3> &rgbData);
 
     boost::optional<std::array<float, 3>> getShapeColor(int shapeHandle, boost::optional<std::string> colorName, int colorComponent);
     boost::optional<std::array<float, 3>> getShapeColor(int shapeHandle, int colorComponent);

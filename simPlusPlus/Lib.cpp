@@ -2268,11 +2268,40 @@ std::pair<std::array<double, 3>, std::array<double, 3>> getObjectVelocity(int ob
 
 // int simAddForce(int shapeHandle, const double *position, const double *force);
 
-// int simSetObjectColor(int objectHandle, int index, int colorComponent, const float *rgbData);
+void setObjectColor(int objectHandle, int index, int colorComponent, const float *rgbData)
+{
+    int ret = simSetObjectColor(objectHandle, index, colorComponent, rgbData);
+    if(ret == -1)
+        throw api_error("simSetObjectColor");
+}
 
-// int simGetObjectColor(int objectHandle, int index, int colorComponent, float *rgbData);
+void setObjectColor(int objectHandle, int index, int colorComponent, const std::array<float, 3> &rgbData)
+{
+    setObjectColor(objectHandle, index, colorComponent, rgbData.data());
+}
 
-// int simSetShapeColor(int shapeHandle, const char *colorName, int colorComponent, const float *rgbData);
+boost::optional<std::array<float, 3>> getObjectColor(int objectHandle, int index, int colorComponent)
+{
+    std::array<float, 3> rgbData;
+    int ret = simGetObjectColor(objectHandle, index, colorComponent, rgbData.data());
+    if(ret == -1)
+        throw api_error("simGetObjectColor");
+    if(ret == 0)
+        return {};
+    return rgbData;
+}
+
+void setShapeColor(int shapeHandle, const char *colorName, int colorComponent, const float *rgbData)
+{
+    int ret = simSetShapeColor(shapeHandle, colorName, colorComponent, rgbData);
+    if(ret == -1)
+        throw api_error("simSetShapeColor");
+}
+
+void setShapeColor(int shapeHandle, boost::optional<std::string> colorName, int colorComponent, const std::array<float, 3> &rgbData)
+{
+    setShapeColor(shapeHandle, colorName ? colorName->c_str() : nullptr, colorComponent, rgbData.data());
+}
 
 boost::optional<std::array<float, 3>> getShapeColor(int shapeHandle, boost::optional<std::string> colorName, int colorComponent)
 {
