@@ -856,6 +856,8 @@ enum { /* Float parameters: */
     sim_floatparam_dynamic_step_size, /* deprecated, use sim_floatparam_physicstimestep instead */
     sim_floatparam_mouse_wheel_zoom_factor,
     sim_floatparam_physicstimestep,
+    sim_floatparam_maxtrisizeabs,
+    sim_floatparam_mintrisizerel,
 };
 
 enum { /* String parameters: */
@@ -1351,7 +1353,7 @@ enum { /* Object int/double/string parameters */
     sim_shapeintparam_wireframe= 3015,
     sim_shapeintparam_compound= 3016,
     sim_shapeintparam_convex= 3017,
-    sim_shapeintparam_convex_check= 3018,
+    sim_shapeintparam_convex_check= 3018, /* DEPRECATED */
     sim_shapeintparam_respondable_mask= 3019,
     sim_shapefloatparam_init_velocity_a= 3020, /* DEPRECATED */
     sim_shapefloatparam_init_ang_velocity_x= 3020,
