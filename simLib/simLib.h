@@ -380,6 +380,7 @@ typedef int (__cdecl *ptrSimAuxiliaryConsoleOpen)(const char* title,int maxLines
 typedef int (__cdecl *ptrSimImportShape)(int fileformat,const char* pathAndFilename,int options,SIMDOUBLE identicalVerticeTolerance,SIMDOUBLE scalingFactor);
 typedef int (__cdecl *ptrSimImportMesh)(int fileformat,const char* pathAndFilename,int options,SIMDOUBLE identicalVerticeTolerance,SIMDOUBLE scalingFactor,SIMDOUBLE*** vertices,int** verticesSizes,int*** indices,int** indicesSizes,SIMDOUBLE*** reserved,char*** names);
 typedef int (__cdecl *ptrSimExportMesh)(int fileformat,const char* pathAndFilename,int options,SIMDOUBLE scalingFactor,int elementCount,const SIMDOUBLE** vertices,const int* verticesSizes,const int** indices,const int* indicesSizes,SIMDOUBLE** reserved,const char** names);
+typedef int (__cdecl *ptrSimCreateShape)(int options,double shadingAngle,const double* vertices,int verticesSize,const int* indices,int indicesSize,const double* normals,const float* textCoords,const unsigned char* texture,const int* textureResolution);
 typedef int (__cdecl *ptrSimCreateMeshShape)(int options,SIMDOUBLE shadingAngle,const SIMDOUBLE* vertices,int verticesSize,const int* indices,int indicesSize,SIMDOUBLE* reserved);
 typedef int (__cdecl *ptrSimCreatePrimitiveShape)(int primitiveType,const SIMDOUBLE* sizes,int options);
 typedef int (__cdecl *ptrSimCreateHeightfieldShape)(int options,SIMDOUBLE shadingAngle,int xPointCount,int yPointCount,SIMDOUBLE xSize,const SIMDOUBLE* heights);
@@ -648,6 +649,7 @@ extern ptrSimAuxiliaryConsolePrint simAuxiliaryConsolePrint;
 extern ptrSimImportShape simImportShape;
 extern ptrSimImportMesh simImportMesh;
 extern ptrSimExportMesh simExportMesh;
+extern ptrSimCreateShape simCreateShape;
 extern ptrSimCreateMeshShape simCreateMeshShape;
 extern ptrSimCreatePrimitiveShape simCreatePrimitiveShape;
 extern ptrSimCreateHeightfieldShape simCreateHeightfieldShape;

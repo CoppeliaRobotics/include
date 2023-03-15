@@ -217,6 +217,7 @@ ptrSimAuxiliaryConsolePrint simAuxiliaryConsolePrint=nullptr;
 ptrSimImportShape simImportShape=nullptr;
 ptrSimImportMesh simImportMesh=nullptr;
 ptrSimExportMesh simExportMesh=nullptr;
+ptrSimCreateShape simCreateShape=nullptr;
 ptrSimCreateMeshShape simCreateMeshShape=nullptr;
 ptrSimCreatePrimitiveShape simCreatePrimitiveShape=nullptr;
 ptrSimCreateHeightfieldShape simCreateHeightfieldShape=nullptr;
@@ -882,6 +883,7 @@ int getSimProcAddresses(LIBRARY lib)
     simImportShape=(ptrSimImportShape)(_getProcAddress(lib,"simImportShape",true));
     simImportMesh=(ptrSimImportMesh)(_getProcAddress(lib,"simImportMesh",true));
     simExportMesh=(ptrSimExportMesh)(_getProcAddress(lib,"simExportMesh",true));
+    simCreateShape=(ptrSimCreateShape)(_getProcAddress(lib,"simCreateShape",false));
     simCreateMeshShape=(ptrSimCreateMeshShape)(_getProcAddress(lib,"simCreateMeshShape",true));
     simCreatePrimitiveShape=(ptrSimCreatePrimitiveShape)(_getProcAddress(lib,"simCreatePrimitiveShape",true));
     simCreateHeightfieldShape=(ptrSimCreateHeightfieldShape)(_getProcAddress(lib,"simCreateHeightfieldShape",true));
@@ -1869,6 +1871,11 @@ int getSimProcAddresses(LIBRARY lib)
     if (simExportMesh==nullptr)
     {
         printf("%s simExportMesh\n",couldNotFind);
+        return 0;
+    }
+    if (simCreateShape==nullptr)
+    {
+        printf("%s simCreateShape\n",couldNotFind);
         return 0;
     }
     if (simCreateMeshShape==nullptr)
