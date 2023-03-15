@@ -16,6 +16,7 @@ typedef int (__cdecl *ptrSimCallScriptFunction)(int scriptHandleOrType,const cha
 typedef int (__cdecl *ptrSimGetJointMatrix)(int objectHandle,SIMDOUBLE* matrix);
 typedef int (__cdecl *ptrSimSetSphericalJointMatrix)(int objectHandle,const SIMDOUBLE* matrix);
 typedef const void* (__cdecl *ptr_simGetGeomProxyFromShape)(const void* shape);
+typedef int (__cdecl *ptrSimReorientShapeBoundingBox)(int shapeHandle,int relativeToHandle,int reservedSetToZero);
 
 extern ptrSimAddModuleMenuEntry simAddModuleMenuEntry;
 extern ptrSimSetModuleMenuItemState simSetModuleMenuItemState;
@@ -35,6 +36,7 @@ extern ptrSimCallScriptFunction simCallScriptFunction;
 extern ptrSimGetJointMatrix simGetJointMatrix;
 extern ptrSimSetSphericalJointMatrix simSetSphericalJointMatrix;
 extern ptr_simGetGeomProxyFromShape _simGetGeomProxyFromShape;
+extern ptrSimReorientShapeBoundingBox simReorientShapeBoundingBox;
 
 #ifdef SIM_INTERFACE_OLD
 #include "simLib-old2.h"

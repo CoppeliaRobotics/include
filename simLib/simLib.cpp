@@ -286,7 +286,9 @@ ptrSimCreateCollectionEx simCreateCollectionEx=nullptr;
 ptrSimAddItemToCollection simAddItemToCollection=nullptr;
 ptrSimDestroyCollection simDestroyCollection=nullptr;
 ptrSimGetCollectionObjects simGetCollectionObjects=nullptr;
-ptrSimReorientShapeBoundingBox simReorientShapeBoundingBox=nullptr;
+ptrSimAlignShapeBB simAlignShapeBB=nullptr;
+ptrSimRelocateShapeFrame simRelocateShapeFrame=nullptr;
+
 ptrSimSaveImage simSaveImage=nullptr;
 ptrSimLoadImage simLoadImage=nullptr;
 ptrSimGetScaledImage simGetScaledImage=nullptr;
@@ -680,7 +682,8 @@ int getSimProcAddresses(LIBRARY lib)
     simAddItemToCollection=(ptrSimAddItemToCollection)(_getProcAddress(lib,"simAddItemToCollection",false));
     simDestroyCollection=(ptrSimDestroyCollection)(_getProcAddress(lib,"simDestroyCollection",false));
     simGetCollectionObjects=(ptrSimGetCollectionObjects)(_getProcAddress(lib,"simGetCollectionObjects",false));
-    simReorientShapeBoundingBox=(ptrSimReorientShapeBoundingBox)(_getProcAddress(lib,"simReorientShapeBoundingBox",false));
+    simAlignShapeBB=(ptrSimAlignShapeBB)(_getProcAddress(lib,"simAlignShapeBB",false));
+    simRelocateShapeFrame=(ptrSimRelocateShapeFrame)(_getProcAddress(lib,"simRelocateShapeFrame",false));
     simSaveImage=(ptrSimSaveImage)(_getProcAddress(lib,"simSaveImage",false));
     simLoadImage=(ptrSimLoadImage)(_getProcAddress(lib,"simLoadImage",false));
     simGetScaledImage=(ptrSimGetScaledImage)(_getProcAddress(lib,"simGetScaledImage",false));
@@ -2213,9 +2216,14 @@ int getSimProcAddresses(LIBRARY lib)
         printf("%s simGetCollectionObjects\n",couldNotFind);
         return 0;
     }
-    if (simReorientShapeBoundingBox==nullptr)
+    if (simAlignShapeBB==nullptr)
     {
-        printf("%s simReorientShapeBoundingBox\n",couldNotFind);
+        printf("%s simAlignShapeBB\n",couldNotFind);
+        return 0;
+    }
+    if (simRelocateShapeFrame==nullptr)
+    {
+        printf("%s simRelocateShapeFrame\n",couldNotFind);
         return 0;
     }
     if (simSaveImage==nullptr)
