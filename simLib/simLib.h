@@ -33,7 +33,9 @@ int getSimProcAddresses(LIBRARY lib);
 LIBRARY loadSimLibrary(const char* pathAndFilename);
 void unloadSimLibrary(LIBRARY lib);
 FARPROC _getProcAddress(LIBRARY lib,const char* funcName);
+int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg);
 
+typedef int (__cdecl *ptrSimAddLog)(const char* pluginName,int verbosityLevel,const char* logMsg);
 typedef int (__cdecl *ptrSimRunSimulator)(const char* applicationName,int options,void(*initCallBack)(),void(*loopCallBack)(),void(*deinitCallBack)());
 typedef int (__cdecl *ptrSimRunSimulatorEx)(const char* applicationName,int options,void(*initCallBack)(),void(*loopCallBack)(),void(*deinitCallBack)(),int stopDelay,const char* sceneOrModelToLoad);
 typedef char* (__cdecl *ptrSimGetSimulatorMessage)(int* messageID,int* auxiliaryData,int* returnedDataSize);
@@ -219,7 +221,6 @@ typedef int (__cdecl *ptrSimGetModuleInfo)(const char* moduleName,int infoType,c
 typedef int (__cdecl *ptrSimIsDeprecated)(const char* funcOrConst);
 typedef char* (__cdecl *ptrSimGetPersistentDataTags)(int* tagCount);
 typedef int (__cdecl *ptrSimEventNotification)(const char* event);
-typedef int (__cdecl *ptrSimAddLog)(const char* pluginName,int verbosityLevel,const char* logMsg);
 typedef int (__cdecl *ptrSimIsDynamicallyEnabled)(int objectHandle);
 typedef int (__cdecl *ptrSimInitScript)(int scriptHandle);
 typedef int (__cdecl *ptrSimModuleEntry)(int handle,const char* label,int state);
@@ -804,7 +805,6 @@ extern ptrSimEventNotification simEventNotification;
 extern ptrSimApplyTexture simApplyTexture;
 extern ptrSimSetJointDependency simSetJointDependency;
 extern ptrSimGetJointDependency simGetJointDependency;
-extern ptrSimAddLog simAddLog;
 extern ptrSimGetShapeMass simGetShapeMass;
 extern ptrSimSetShapeMass simSetShapeMass;
 extern ptrSimGetShapeInertia simGetShapeInertia;

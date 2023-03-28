@@ -9,33 +9,22 @@
 
 #ifndef SIM_LIBRARY
 
-static int _simAddLog(const char* pluginName,int verbosity,const char* msg)
+ptrSimAddLog _addLog=nullptr;
+
+int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg)
 {
-    std::string m("[");
-    if (strcmp(pluginName,"CoppeliaSimClient")!=0)
-        m+="simExt";
-    m+=pluginName;
-    if (verbosity==sim_verbosity_errors)
-        m+=":error]   ";
-    if (verbosity==sim_verbosity_warnings)
-        m+=":warning]   ";
-    if (verbosity==sim_verbosity_loadinfos)
-        m+=":loadinfo]   ";
-    if (verbosity==sim_verbosity_msgs)
-        m+=":msg]   ";
-    if (verbosity==sim_verbosity_infos)
-        m+=":info]   ";
-    if (verbosity==sim_verbosity_debug)
-        m+=":debug]   ";
-    if (verbosity==sim_verbosity_trace)
-        m+=":trace]   ";
-    if (verbosity==sim_verbosity_tracelua)
-        m+=":tracelua]   ";
-    if (verbosity==sim_verbosity_traceall)
-        m+=":traceall]   ";
-    m+=msg;
-    printf("%s\n",m.c_str());
-    return(1);
+    if (_addLog==nullptr)
+    {
+        std::string m("[");
+        if (strcmp(pluginName,"CoppeliaSimClient")!=0)
+            m+="simExt";
+        m+=pluginName;
+        m+="]   ";
+        m+=logMsg;
+        printf("%s\n",m.c_str());
+        return(1);
+    }
+    return(_addLog(pluginName,verbosityLevel,logMsg));
 }
 
 ptrSimRunSimulator simRunSimulator=nullptr;
@@ -373,7 +362,6 @@ ptrSimEventNotification simEventNotification=nullptr;
 ptrSimApplyTexture simApplyTexture=nullptr;
 ptrSimSetJointDependency simSetJointDependency=nullptr;
 ptrSimGetJointDependency simGetJointDependency=nullptr;
-ptrSimAddLog simAddLog=_simAddLog;
 ptrSimGetShapeMass simGetShapeMass=nullptr;
 ptrSimSetShapeMass simSetShapeMass=nullptr;
 ptrSimGetShapeInertia simGetShapeInertia=nullptr;
@@ -546,6 +534,7 @@ int getSimProcAddresses(LIBRARY lib)
     if (getSimProcAddressesOld(lib)==0)
         return(0);
 
+    _addLog=(ptrSimAddLog)(_getProcAddress(lib,"simAddLog",false));
     simRunSimulator=(ptrSimRunSimulator)(_getProcAddress(lib,"simRunSimulator",false));
     simRunSimulatorEx=(ptrSimRunSimulatorEx)(_getProcAddress(lib,"simRunSimulatorEx",false));
     simGetSimulatorMessage=(ptrSimGetSimulatorMessage)(_getProcAddress(lib,"simGetSimulatorMessage",false));
@@ -744,7 +733,6 @@ int getSimProcAddresses(LIBRARY lib)
     simIsDeprecated=(ptrSimIsDeprecated)(_getProcAddress(lib,"simIsDeprecated",false));
     simGetPersistentDataTags=(ptrSimGetPersistentDataTags)(_getProcAddress(lib,"simGetPersistentDataTags",false));
     simEventNotification=(ptrSimEventNotification)(_getProcAddress(lib,"simEventNotification",false));
-    simAddLog=(ptrSimAddLog)(_getProcAddress(lib,"simAddLog",false));
     simIsDynamicallyEnabled=(ptrSimIsDynamicallyEnabled)(_getProcAddress(lib,"simIsDynamicallyEnabled",false));
     simInitScript=(ptrSimInitScript)(_getProcAddress(lib,"simInitScript",false));
     simModuleEntry=(ptrSimModuleEntry)(_getProcAddress(lib,"simModuleEntry",false));
