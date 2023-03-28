@@ -1,4 +1,4 @@
-#include "MyMath.h"
+#include "mathFuncs.h"
 #include "3Vector.h"
 #include "3X3Matrix.h"
 #include "4X4Matrix.h"
@@ -49,7 +49,7 @@ simReal C3Vector::getAngle(const C3Vector& v) const
 { // Return value is in radian!!
     C3Vector a(getNormalized());
     C3Vector b(v.getNormalized());
-    return(CMath::robustAcos(a*b));
+    return(robustAcos(a*b));
 }
 
 

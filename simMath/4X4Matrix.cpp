@@ -1,5 +1,5 @@
 #include "4X4Matrix.h"
-#include "MMatrix.h"
+#include "mXnMatrix.h"
 
 C4X4Matrix::C4X4Matrix()
 {

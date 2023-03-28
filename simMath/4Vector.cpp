@@ -1,5 +1,5 @@
 #include "4Vector.h"
-#include "MyMath.h"
+#include "mathFuncs.h"
 
 const C4Vector C4Vector::identityRotation(1.0,0.0,0.0,0.0);
 
@@ -102,7 +102,7 @@ void C4Vector::setVectorMapping(const C3Vector& startV,const C3Vector& endV)
     if (cosAngle>1.0)
         setIdentity();
     else
-        setAngleAndAxis(CMath::robustAcos(cosAngle),cross);
+        setAngleAndAxis(robustAcos(cosAngle),cross);
 }
 
 C3Vector C4Vector::getAngleAndAxis(simReal& angle) const
@@ -115,7 +115,7 @@ C3Vector C4Vector::getAngleAndAxis(simReal& angle) const
     simReal cosA=d(0)/l; // Quaternion needs to be normalized
     if (cosA>1.0) // Just make sure..
         cosA=1.0;
-    angle=CMath::robustAcos(cosA)*2.0;
+    angle=robustAcos(cosA)*2.0;
     if (angle>0.000001)
     {
         simReal sinA=sqrt(1.0-cosA*cosA);
@@ -152,7 +152,7 @@ C3Vector C4Vector::getEulerAngles() const
 simReal C4Vector::getAngleBetweenQuaternions(const C4Vector& q) const
 {
     simReal angle=fabs(data[0]*q(0)+data[1]*q(1)+data[2]*q(2)+data[3]*q(3));
-    return(CMath::robustAcos(angle)*2.0);
+    return(robustAcos(angle)*2.0);
 }
 
 void C4Vector::buildInterpolation(const C4Vector& fromThis,const C4Vector& toThat,simReal t)

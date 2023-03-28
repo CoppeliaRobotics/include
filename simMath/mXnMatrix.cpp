@@ -1,4 +1,4 @@
-#include "MMatrix.h"
+#include "mXnMatrix.h"
 #include "mathDefines.h"
 
 CMatrix::CMatrix()

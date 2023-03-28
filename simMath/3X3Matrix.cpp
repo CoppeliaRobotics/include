@@ -1,6 +1,6 @@
 #include "3X3Matrix.h"
 #include "4Vector.h"
-#include "MyMath.h"
+#include "mathFuncs.h"
 
 C3X3Matrix::C3X3Matrix()
 {
@@ -66,7 +66,7 @@ C3Vector C3X3Matrix::getEulerAngles() const
     if (m02<-1.0)
         m02=-1.0;  // Just in case
     
-    retV(1)=CMath::robustAsin(m02);
+    retV(1)=robustAsin(m02);
     if (m02<0.0)
         m02=-m02;
     if (m02<simReal(0.999995))
