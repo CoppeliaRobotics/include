@@ -180,6 +180,23 @@ void C3X3Matrix::buildZRotation(simReal angle)
     axis[2](2)=1.0;
 }
 
+void C3X3Matrix::normalize()
+{ // The Z axis is the reference
+    if (axis[2].normalize()==0.0)
+    {
+        axis[0]=C3Vector::unitXVector;
+        axis[1]=C3Vector::unitYVector;
+        axis[2]=C3Vector::unitZVector;
+    }
+    else
+    {
+        axis[1]=axis[2]^axis[0];
+        if (axis[1].normalize()==0.0)
+            axis[1]=axis[2]^C3Vector(SIM_RAND_FLOAT,SIM_RAND_FLOAT,SIM_RAND_FLOAT).getNormalized();
+        axis[0]=(axis[1]^axis[2]).getNormalized();
+    }
+}
+
 C3Vector C3X3Matrix::getNormalVector() const
 { // returns the normal vector to the plane described by axis[0],axis[1],axis[2]
     C3Vector v0(axis[0]-axis[1]);

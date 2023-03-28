@@ -22,6 +22,7 @@ public:
     void buildXRotation(simReal angle);
     void buildYRotation(simReal angle);
     void buildZRotation(simReal angle);
+    void normalize();
     C3Vector getNormalVector() const;
 
     void clear();
