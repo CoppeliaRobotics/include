@@ -32,7 +32,7 @@ function sim{plugin.name}.__addTypeCheck()
         f.write(f"""
     wrapFunc('{cmd.name}',function(origFunc)
         return function(...)
-            local {paramList}{paramList and '=' or ''}checkargsEx(
+            {paramsList and 'local ' or ''}{paramList}{paramList and '=' or ''}checkargsEx(
                 {{level=1}},
                 {{
 """)
