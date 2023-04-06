@@ -11,7 +11,7 @@ bool isFloatArrayOk(const simReal* arr,int cnt)
     for (int i=0;i<cnt;i++)
     {
         simReal v=arr[i];
-        if ( (SIM_IS_NAN(v))||(fabs(v)==std::numeric_limits<simReal>::infinity()) )
+        if ( (SIM_IS_NAN(v)) )//||(fabs(v)==std::numeric_limits<simReal>::infinity()) )
         {
             retVal=false;
             break;
