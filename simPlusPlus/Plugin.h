@@ -27,6 +27,8 @@
 #define _stricmp strcasecmp
 #endif /* __linux || __APPLE__ */
 
+#include <simLib/simExp.h> // for SIM_DLLEXPORT
+
 namespace sim
 {
     extern std::string pluginName;

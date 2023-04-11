@@ -14,13 +14,6 @@
 
 #include <simLib/simLib.h>
 
-#ifdef _WIN32
-	#define SIM_DLLEXPORT extern "C" __declspec(dllexport)
-#endif /* _WIN32 */
-#if defined (__linux) || defined (__APPLE__)
-	#define SIM_DLLEXPORT extern "C"
-#endif /* __linux || __APPLE__ */
-
 namespace sim
 {
     namespace util
