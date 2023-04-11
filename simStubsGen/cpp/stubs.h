@@ -4,6 +4,7 @@
 #ifndef STUBS_H__INCLUDED
 #define STUBS_H__INCLUDED
 
+#include <simLib/simExp.h>
 #include <simPlusPlus/Lib.h>
 #include <string>
 #include <vector>
