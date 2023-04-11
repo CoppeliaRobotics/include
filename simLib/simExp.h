@@ -1,15 +1,9 @@
-#if !defined(SIMEXP_INCLUDED_)
-#define SIMEXP_INCLUDED_
+#pragma once
 
-#ifdef WIN_SIM
-    #define SIM_DLLEXPORT extern "C" __declspec(dllexport)
+#if defined(WIN_SIM)
+#define SIM_DLLEXPORT extern "C" __declspec(dllexport)
+#elif defined(MAC_SIM) || defined(LIN_SIM)
+#define SIM_DLLEXPORT extern "C" __attribute__((visibility("default")))
+#else
+#error Define one of WIN_SIM, MAC_SIM or LIN_SIM
 #endif
-#ifdef MAC_SIM
-    #define SIM_DLLEXPORT extern "C" __attribute__((visibility("default")))
-#endif
-#ifdef LIN_SIM
-    #define SIM_DLLEXPORT extern "C" __attribute__((visibility("default")))
-#endif
-
-
-#endif // !defined(SIMEXP_INCLUDED_)
