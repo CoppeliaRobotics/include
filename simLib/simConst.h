@@ -4,8 +4,8 @@
 #define SIM_PROGRAM_VERSION_NB 40501
 #define SIM_PROGRAM_VERSION "4.5.1"
 
-#define SIM_PROGRAM_REVISION_NB 3
-#define SIM_PROGRAM_REVISION "(rev. 3)"
+#define SIM_PROGRAM_REVISION_NB 4
+#define SIM_PROGRAM_REVISION "(rev. 4)"
 
 #define SIM_PROGRAM_FULL_VERSION_NB ((SIM_PROGRAM_VERSION_NB) * 100 + (SIM_PROGRAM_REVISION_NB))
 
@@ -1361,7 +1361,7 @@ enum { /* Object int/double/string parameters */
     sim_shapefloatparam_init_ang_velocity_y= 3021,
     sim_shapefloatparam_init_velocity_g= 3022, /* DEPRECATED */
     sim_shapefloatparam_init_ang_velocity_z= 3022,
-    sim_shapestringparam_color_name= 3023,
+    sim_shapestringparam_color_name= 3023, /* DEPRECATED */
     sim_shapeintparam_edge_visibility= 3024,
     sim_shapefloatparam_shading_angle= 3025,
     sim_shapefloatparam_edge_angle= 3026,
@@ -1370,6 +1370,7 @@ enum { /* Object int/double/string parameters */
     sim_shapeintparam_sleepmodestart= 3029,
     sim_shapeintparam_kinematic= 3030,
     sim_shapeintparam_respondablesuspendcnt= 3031,
+    sim_shapestringparam_colorname= 3032,
 
     /* proximity sensors */
     sim_proxintparam_ray_invisibility= 4000,
