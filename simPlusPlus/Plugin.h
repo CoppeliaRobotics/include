@@ -104,7 +104,6 @@ namespace sim
         virtual void onSceneLoaded();
         virtual void onModelLoaded();
         virtual void onGuiPass();
-        virtual void onMainScriptAboutToBeCalled(int &out);
         virtual void onRMLPos();
         virtual void onRMLVel();
         virtual void onRMLStep();

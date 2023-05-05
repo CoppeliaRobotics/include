@@ -427,16 +427,6 @@ namespace sim
                 onGuiPass();
             }
             break;
-        case sim_message_eventcallback_mainscriptabouttobecalled:
-            /*
-            Called just before the main script is called. If a plugin intercepts this
-            message and writes a value different from -1 into replyData[0], the main script
-            will not be called.
-            */
-            {
-                onMainScriptAboutToBeCalled(replyData[0]);
-            }
-            break;
         case sim_message_eventcallback_rmlpos:
             /*
             the command simRMLPos was called. The appropriate plugin should handle the call
