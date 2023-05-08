@@ -197,7 +197,7 @@ enum { /* Check the documentation instead of comments below!! */
         sim_message_eventcallback_undoperformed,    /* the undo button was hit and a previous state restored */
         sim_message_eventcallback_abouttoredo,      /* the redo button was hit and a future state is about to be restored  */
         sim_message_eventcallback_redoperformed,    /* the redo button was hit and a future state restored  */
-        sim_message_eventcallback_scripticondblclick, /* scipt icon was double clicked.  (aux[0]=object handle associated with script, set replyData[0] to 1 if script should not be opened)  */
+        sim_message_eventcallback_scripticondblclick, /* deprecated */
         sim_message_eventcallback_simulationabouttostart,
         sim_message_eventcallback_simulationended,
 
@@ -206,7 +206,7 @@ enum { /* Check the documentation instead of comments below!! */
         sim_message_eventcallback_modulehandleinsensingpart, /* deprecated */
 
         sim_message_eventcallback_renderingpass, /* deprecated */
-        sim_message_eventcallback_bannerclicked, /* called when a banner was clicked (aux[0]=banner ID) */
+        sim_message_eventcallback_bannerclicked, /* deprecated */
         sim_message_eventcallback_menuitemselected, /* auxiliaryData[0] indicates the handle of the item, auxiliaryData[1] indicates the state of the item */
         sim_message_eventcallback_refreshdialogs, /* aux[0]=refresh degree (0=light, 1=medium, 2=full) */
         sim_message_eventcallback_sceneloaded,
@@ -215,7 +215,7 @@ enum { /* Check the documentation instead of comments below!! */
 
 
         sim_message_eventcallback_guipass,
-        sim_message_eventcallback_mainscriptabouttobecalled,
+        sim_message_eventcallback_mainscriptabouttobecalled, /* deprecated */
 
         sim_message_eventcallback_rmlposition, /* deprecated */
         sim_message_eventcallback_rmlvelocity, /* deprecated */
@@ -223,7 +223,7 @@ enum { /* Check the documentation instead of comments below!! */
         sim_message_eventcallback_reserved18,
         sim_message_eventcallback_reserved19,
         sim_message_eventcallback_pathplanningplugin, /* deprecated */
-        sim_message_eventcallback_colladaplugin, /* to interact with the collada plugin */
+        sim_message_eventcallback_colladaplugin, /* deprecated */
 
         sim_message_eventcallback_opengl, /* deprecated */
         sim_message_eventcallback_openglframe, /* deprecated */
@@ -239,7 +239,7 @@ enum { /* Check the documentation instead of comments below!! */
         sim_message_eventcallback_rmlremove, /* deprecated */
         sim_message_eventcallback_rmlinfo, /* deprecated */
 
-        sim_message_eventcallback_beforerendering, /* called just before the scene is rendered. From the main SIM thread! */
+        sim_message_eventcallback_beforerendering, /* deprecated */
 
         sim_message_eventcallback_extrenderer_start,
         sim_message_eventcallback_extrenderer_light,
@@ -259,12 +259,12 @@ enum { /* Check the documentation instead of comments below!! */
         sim_message_eventcallback_reserved16,
         sim_message_eventcallback_reserved17,
 
-        sim_message_eventcallback_extrenderer_triangles,
+        sim_message_eventcallback_extrenderer_triangles, /* deprecated */
         sim_message_eventcallback_simulationabouttoend,
         sim_message_eventcallback_instanceabouttoswitch,
 
-        sim_message_eventcallback_lastinstancepass,
-        sim_message_eventcallback_uipass,             /* Called from the UI thread, just after sim_message_eventcallback_instancepass was called from the SIM thread */
+        sim_message_eventcallback_lastinstancepass, /* deprecated */
+        sim_message_eventcallback_uipass, /* deprecated */
         sim_message_eventcallback_scriptstatedestroyed,
         sim_message_eventcallback_scriptdestroyed,
 
