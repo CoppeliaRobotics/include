@@ -553,6 +553,7 @@ void checkRuntimeVersion()
         sim::addLog(sim_verbosity_warnings, "has been built for %s", sim::versionString(SIM_PROGRAM_FULL_VERSION_NB));
 }
 
+// old:
 bool registerScriptStuff()
 {
     try
@@ -601,6 +602,48 @@ bool registerScriptStuff()
         catch(std::exception &ex)
         {
             throw sim::exception("Initialization failed (registerScriptStuff): %s", ex.what());
+        }
+    }
+    catch(sim::exception& ex)
+    {
+        sim::addLog(sim_verbosity_errors, ex.what());
+        return false;
+    }
+    return true;
+}
+
+// new:
+bool registerScriptItems()
+{
+    try
+    {
+        checkRuntimeVersion();
+
+        auto dbg = sim::getNamedBoolParam("simStubsGen.debug");
+        if(dbg && *dbg)
+            sim::enableStackDebug();
+
+        try
+        {
+            // register varables from enums:
+#py for enum in plugin.enums:
+            sim::registerScriptVariable("`enum.name`", "{}", 0);
+#py for item in enum.items:
+            sim::registerScriptVariable("`enum.name`.`item.name`", boost::lexical_cast<std::string>(sim_`plugin.name.lower()`_`enum.item_prefix``item.name`), 0);
+#py endfor
+#py endfor
+            // register commands:
+#py for cmd in plugin.commands:
+            sim::registerScriptCallbackFunction("`cmd.name`", "`escape(cmd.calltip)``escape(cmd.documentation)`", `cmd.c_name`_callback);
+#py endfor
+
+#py if pycpp.params['have_lua_calltips'] == 'True':
+#include "lua_calltips.cpp"
+#py endif
+        }
+        catch(std::exception &ex)
+        {
+            throw sim::exception("Initialization failed (registerScriptItems): %s", ex.what());
         }
     }
     catch(sim::exception& ex)
