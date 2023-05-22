@@ -760,10 +760,6 @@ namespace sim
     {
     }
 
-    void Plugin::onMainScriptAboutToBeCalled(int &out)
-    {
-    }
-
     void Plugin::onRMLPos()
     {
     }
