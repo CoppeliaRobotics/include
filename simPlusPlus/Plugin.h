@@ -65,9 +65,20 @@ namespace sim
         void setVerbosity(int i);
         int getVerbosity();
         void init();
+
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onStart();
         virtual void onEnd();
-        virtual void * onMessage(int message, int *auxData, void *customData, int *replyData) final;
+        virtual void * onMessage(int message, int *auxiliaryData, void *customData, int *replyData) final;
+#else // SIM_PLUGIN_OLD_ENTRYPOINTS
+        virtual void onInit();
+        virtual void onCleanup();
+        virtual void * onMsg(int message, int *auxiliaryData, void *customData, int *replyData) final;
+        virtual void onUIInit();
+        virtual void onUICleanup();
+        virtual void onUIMsg(int msgId);
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
+
         virtual LIBRARY loadSimLibrary();
 
         virtual void onInstancePass(const InstancePassFlags &flags, bool first);
@@ -124,6 +135,7 @@ namespace sim
     };
 }
 
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
 #define SIM_PLUGIN(pluginName_, pluginVersion_, className_) \
 namespace sim { \
 LIBRARY lib; \
@@ -188,5 +200,113 @@ SIM_DLLEXPORT void * simMessage(int message, int *auxiliaryData, void *customDat
     } \
     return 0L; \
 }
+#else // SIM_PLUGIN_OLD_ENTRYPOINTS
+#define SIM_PLUGIN(pluginName_, pluginVersion_, className_) \
+namespace sim { \
+LIBRARY lib; \
+::className_ *plugin; \
+std::string pluginName; \
+std::string pluginNameAndVersion; \
+int pluginVersion; \
+} \
+SIM_DLLEXPORT unsigned char simInit(void *reservedPointer, int reservedInt) \
+{ \
+    try \
+    { \
+        sim::pluginName = pluginName_; \
+        sim::pluginVersion = pluginVersion_; \
+        sim::pluginNameAndVersion = pluginName_; \
+        if(pluginVersion_ > 0) \
+        { \
+            sim::pluginNameAndVersion += "-"; \
+            sim::pluginNameAndVersion += std::to_string(pluginVersion_); \
+        } \
+        sim::plugin = new className_; \
+        sim::plugin->setName(pluginName_); \
+        sim::lib = sim::plugin->loadSimLibrary(); \
+        sim::plugin->onInit(); \
+        return std::max(1, sim::pluginVersion); \
+    } \
+    catch(std::exception &ex) \
+    { \
+        sim::addLog(sim_verbosity_errors, ex.what()); \
+        return 0; \
+    } \
+} \
+SIM_DLLEXPORT void simCleanup() \
+{ \
+    try \
+    { \
+        if(sim::plugin) \
+        { \
+            sim::plugin->onCleanup(); \
+            delete sim::plugin; \
+            sim::plugin = nullptr; \
+        } \
+    } \
+    catch(std::exception &ex) \
+    { \
+        sim::addLog(sim_verbosity_errors, ex.what()); \
+    } \
+    unloadSimLibrary(sim::lib); \
+} \
+SIM_DLLEXPORT void * simMsg(int message, int *auxiliaryData, void *customData, int *replyData) \
+{ \
+    try \
+    { \
+        if(sim::plugin) \
+        { \
+            return sim::plugin->onMsg(message, auxiliaryData, customData, replyData); \
+        } \
+    } \
+    catch(std::exception &ex) \
+    { \
+        sim::addLog(sim_verbosity_errors, ex.what()); \
+    } \
+    return 0L; \
+} \
+SIM_DLLEXPORT void simInit_ui() \
+{ \
+    try \
+    { \
+        if(sim::plugin) \
+        { \
+            return sim::plugin->onUIInit(); \
+        } \
+    } \
+    catch(std::exception &ex) \
+    { \
+        sim::addLog(sim_verbosity_errors, ex.what()); \
+    } \
+} \
+SIM_DLLEXPORT void simCleanup_ui() \
+{ \
+    try \
+    { \
+        if(sim::plugin) \
+        { \
+            return sim::plugin->onUICleanup(); \
+        } \
+    } \
+    catch(std::exception &ex) \
+    { \
+        sim::addLog(sim_verbosity_errors, ex.what()); \
+    } \
+} \
+SIM_DLLEXPORT void simMsg_ui(int msgId) \
+{ \
+    try \
+    { \
+        if(sim::plugin) \
+        { \
+            return sim::plugin->onUIMsg(msgId); \
+        } \
+    } \
+    catch(std::exception &ex) \
+    { \
+        sim::addLog(sim_verbosity_errors, ex.what()); \
+    } \
+}
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
 #endif // SIMPLUSPLUS_PLUGIN_H_INCLUDED

@@ -553,7 +553,7 @@ void checkRuntimeVersion()
         sim::addLog(sim_verbosity_warnings, "has been built for %s", sim::versionString(SIM_PROGRAM_FULL_VERSION_NB));
 }
 
-// old:
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
 bool registerScriptStuff()
 {
     try
@@ -611,9 +611,8 @@ bool registerScriptStuff()
     }
     return true;
 }
-
-// new:
-bool registerScriptItems()
+#else // SIM_PLUGIN_OLD_ENTRYPOINTS
+bool registerScriptStuff()
 {
     try
     {
@@ -653,6 +652,7 @@ bool registerScriptItems()
     }
     return true;
 }
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
 #py for enum in plugin.enums:
 const char* `enum.name.lower()`_string(`enum.name` x)

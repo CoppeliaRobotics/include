@@ -42,15 +42,27 @@ namespace sim
         return sim::getModuleInfoInt(sim_moduleinfo_verbosity);
     }
 
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onStart()
+#else // SIM_PLUGIN_OLD_ENTRYPOINTS
+    void Plugin::onInit()
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
     {
     }
 
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onEnd()
+#else // SIM_PLUGIN_OLD_ENTRYPOINTS
+    void Plugin::onCleanup()
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
     {
     }
 
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
     void * Plugin::onMessage(int message, int *auxiliaryData, void *customData, int *replyData)
+#else // SIM_PLUGIN_OLD_ENTRYPOINTS
+    void * Plugin::onMsg(int message, int *auxiliaryData, void *customData, int *replyData)
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
     {
         int errorModeSaved = sim::getInt32Param(sim_intparam_error_report_mode);
         sim::setInt32Param(sim_intparam_error_report_mode, sim_api_errormessage_ignore);
@@ -586,6 +598,20 @@ namespace sim
         sim::setInt32Param(sim_intparam_error_report_mode, errorModeSaved);
         return retVal;
     }
+
+#ifndef SIM_PLUGIN_OLD_ENTRYPOINTS
+    void Plugin::onUIInit()
+    {
+    }
+
+    void Plugin::onUICleanup()
+    {
+    }
+
+    void Plugin::onUIMsg(int msgId)
+    {
+    }
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     LIBRARY Plugin::loadSimLibrary()
     {
