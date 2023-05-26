@@ -81,13 +81,19 @@ namespace sim
 
         virtual LIBRARY loadSimLibrary();
 
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onInstancePass(const InstancePassFlags &flags, bool first);
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onInstancePass(const InstancePassFlags &flags);
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onFirstInstancePass(const InstancePassFlags &flags);
         virtual void onLastInstancePass();
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onInstanceSwitch(int sceneID);
         virtual void onInstanceAboutToSwitch(int sceneID);
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onMenuItemSelected(int itemHandle, int itemState);
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onBroadcast(int header, int messageID);
         virtual void onSceneSave();
         virtual void onModelSave();
@@ -95,42 +101,58 @@ namespace sim
         virtual void onModuleHandle(char *name);
         virtual void onModuleHandleInSensingPart(char *name);
         virtual void onModuleClose(char *name);
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onRenderingPass();
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onBeforeRendering();
         virtual void onImageFilterEnumReset();
         virtual void onImageFilterEnumerate(int &headerID, int &filterID, std::string &name);
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onImageFilterAdjustParams(int headerID, int filterID, int bufferSize, void *buffer, int &editedBufferSize, void *&editedBuffer);
         virtual std::vector<float> onImageFilterProcess(int headerID, int filterID, int resX, int resY, int visionSensorHandle, float *inputImage, float *depthImage, float *workImage, float *bufferImage1, float *bufferImage2, float *outputImage, void *filterParamBuffer, int &triggerDetectionn);
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onAboutToUndo();
         virtual void onUndo();
         virtual void onAboutToRedo();
         virtual void onRedo();
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onScriptIconDblClick(int objectHandle, int &dontOpenEditor);
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onSimulationAboutToStart();
         virtual void onSimulationAboutToEnd();
         virtual void onSimulationEnded();
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onKeyPress(int key, int mods);
         virtual void onBannerClicked(int bannerID);
         virtual void onRefreshDialogs(int refreshDegree);
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onSceneLoaded();
         virtual void onModelLoaded();
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onGuiPass();
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onRMLPos();
         virtual void onRMLVel();
         virtual void onRMLStep();
         virtual void onRMLRemove();
         virtual void onPathPlanningPlugin();
         virtual void onColladaPlugin();
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onOpenGL(int programIndex, int renderingAttributes, int cameraHandle, int viewIndex);
         virtual void onOpenGLFrame(int sizeX, int sizeY, int &out);
         virtual void onOpenGLCameraView(int sizeX, int sizeY, int viewIndex, int &out);
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onProxSensorSelectDown(int objectID, float *clickedPoint, float *normalVector);
         virtual void onProxSensorSelectUp(int objectID, float *clickedPoint, float *normalVector);
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onPickSelectDown(int objectID);
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onScriptStateDestroyed(int scriptID);
 
     private:
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         bool firstInstancePass = true;
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         std::string name_;
     };
 }

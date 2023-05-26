@@ -96,14 +96,21 @@ namespace sim
                 flags.scriptCreated         = (auxiliaryData[0] & (1 << 13)) > 0;
                 flags.scriptErased          = (auxiliaryData[0] & (1 << 14)) > 0;
 
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
                 onInstancePass(flags, firstInstancePass); // for backward compatibility
 
                 if(firstInstancePass) onFirstInstancePass(flags);
                 else onInstancePass(flags);
+#else
+                onInstancePass(flags);
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
                 firstInstancePass = false;
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
             }
             break;
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_lastinstancepass:
             /*
             called on the last client application loop pass (the instancepass message is not sent)
@@ -112,6 +119,7 @@ namespace sim
                 onLastInstancePass();
             }
             break;
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_instanceswitch:
             /*
             scene was switched (react to this message in a similar way as you would react to
@@ -135,6 +143,7 @@ namespace sim
                 onInstanceAboutToSwitch(auxiliaryData[1]);
             }
             break;
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_menuitemselected:
             /*
             (called from the UI thread)
@@ -145,6 +154,7 @@ namespace sim
                 onMenuItemSelected(auxiliaryData[0], auxiliaryData[1]);
             }
             break;
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_broadcast:
             /*
             called when simBroadcastMessage is called
@@ -212,6 +222,7 @@ namespace sim
                 onModuleClose((char *)customData);
             }
             break;
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_renderingpass:
             /*
             (called from the UI thread)
@@ -221,6 +232,7 @@ namespace sim
                 onRenderingPass();
             }
             break;
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_beforerendering:
             /*
             called just before the scene is rendered, but still from the main simulation
@@ -260,6 +272,7 @@ namespace sim
                 }
             }
             break;
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_imagefilter_adjustparams:
             /*
             (called from the UI thread)
@@ -316,6 +329,7 @@ namespace sim
                 }
             }
             break;
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_abouttoundo:
             /*
             the undo button was hit and a previous state is about to be restored
@@ -348,6 +362,7 @@ namespace sim
                 onRedo();
             }
             break;
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_scripticondblclick:
             /*
             (called from the UI thread)
@@ -361,6 +376,7 @@ namespace sim
                 onScriptIconDblClick(auxiliaryData[0], replyData[0]);
             }
             break;
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_simulationabouttostart:
             /*
             simulation will start
@@ -385,6 +401,7 @@ namespace sim
                 onSimulationEnded();
             }
             break;
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_keypress:
             /*
             (called from the UI thread)
@@ -414,6 +431,7 @@ namespace sim
                 onRefreshDialogs(auxiliaryData[0]);
             }
             break;
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_sceneloaded:
             /*
             called after a scene was loaded
@@ -430,6 +448,7 @@ namespace sim
                 onModelLoaded();
             }
             break;
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_guipass:
             /*
             (called from the UI thread)
@@ -439,6 +458,7 @@ namespace sim
                 onGuiPass();
             }
             break;
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_rmlpos:
             /*
             the command simRMLPos was called. The appropriate plugin should handle the call
@@ -489,6 +509,7 @@ namespace sim
                 onColladaPlugin();
             }
             break;
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_opengl:
             /*
             (called from the UI thread)
@@ -542,6 +563,7 @@ namespace sim
                 onOpenGLCameraView(auxiliaryData[0], auxiliaryData[1], auxiliaryData[2], auxiliaryData[3]);
             }
             break;
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_proxsensorselectdown:
             /*
             a "geometric" click select (mouse down) was registered. Not generated if the
@@ -573,6 +595,7 @@ namespace sim
                 onProxSensorSelectUp(auxiliaryData[0], f, f+3);
             }
             break;
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_pickselectdown:
             /*
             (called from the UI thread)
@@ -587,6 +610,7 @@ namespace sim
                 onPickSelectDown(auxiliaryData[0]);
             }
             break;
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_scriptstatedestroyed:
             {
                 onScriptStateDestroyed(auxiliaryData[0]);
@@ -649,14 +673,17 @@ namespace sim
         return lib;
     }
 
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onInstancePass(const InstancePassFlags &flags, bool first)
     {
     }
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     void Plugin::onInstancePass(const InstancePassFlags &flags)
     {
     }
 
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onFirstInstancePass(const InstancePassFlags &flags)
     {
     }
@@ -664,6 +691,7 @@ namespace sim
     void Plugin::onLastInstancePass()
     {
     }
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     void Plugin::onInstanceSwitch(int sceneID)
     {
@@ -673,9 +701,11 @@ namespace sim
     {
     }
 
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onMenuItemSelected(int itemHandle, int itemState)
     {
     }
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     void Plugin::onBroadcast(int header, int messageID)
     {
@@ -705,9 +735,11 @@ namespace sim
     {
     }
 
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onRenderingPass()
     {
     }
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     void Plugin::onBeforeRendering()
     {
@@ -721,6 +753,7 @@ namespace sim
     {
     }
 
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onImageFilterAdjustParams(int headerID, int filterID, int bufferSize, void *buffer, int &editedBufferSize, void *&editedBuffer)
     {
     }
@@ -729,6 +762,7 @@ namespace sim
     {
         return std::vector<float>();
     }
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     void Plugin::onAboutToUndo()
     {
@@ -746,9 +780,11 @@ namespace sim
     {
     }
 
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onScriptIconDblClick(int objectHandle, int &dontOpenEditor)
     {
     }
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     void Plugin::onSimulationAboutToStart()
     {
@@ -762,6 +798,7 @@ namespace sim
     {
     }
 
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onKeyPress(int key, int mods)
     {
     }
@@ -773,6 +810,7 @@ namespace sim
     void Plugin::onRefreshDialogs(int refreshDegree)
     {
     }
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     void Plugin::onSceneLoaded()
     {
@@ -782,9 +820,11 @@ namespace sim
     {
     }
 
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onGuiPass()
     {
     }
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     void Plugin::onRMLPos()
     {
@@ -810,6 +850,7 @@ namespace sim
     {
     }
 
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onOpenGL(int programIndex, int renderingAttributes, int cameraHandle, int viewIndex)
     {
     }
@@ -821,6 +862,7 @@ namespace sim
     void Plugin::onOpenGLCameraView(int sizeX, int sizeY, int viewIndex, int &out)
     {
     }
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     void Plugin::onProxSensorSelectDown(int objectID, float *clickedPoint, float *normalVector)
     {
@@ -830,9 +872,11 @@ namespace sim
     {
     }
 
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onPickSelectDown(int objectID)
     {
     }
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     void Plugin::onScriptStateDestroyed(int scriptID)
     {
