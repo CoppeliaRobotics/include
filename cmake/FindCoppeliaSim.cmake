@@ -196,7 +196,7 @@ set(COPPELIASIM_LUA_DIR ${COPPELIASIM_RESOURCES_DIR}/lua)
 include_directories(${COPPELIASIM_INCLUDE_DIR})
 
 function(COPPELIASIM_GENERATE_STUBS GENERATED_OUTPUT_DIR)
-    cmake_parse_arguments(COPPELIASIM_GENERATE_STUBS "" "XML_FILE;LUA_FILE" "" ${ARGN})
+    cmake_parse_arguments(COPPELIASIM_GENERATE_STUBS "OLD_STYLE" "XML_FILE;LUA_FILE" "" ${ARGN})
     if(NOT CoppeliaSim_FIND_QUIETLY)
         message(STATUS "Adding simStubsGen command...")
     endif()
@@ -207,9 +207,13 @@ function(COPPELIASIM_GENERATE_STUBS GENERATED_OUTPUT_DIR)
     if(NOT CoppeliaSim_FIND_QUIETLY)
         message(STATUS "Reading plugin metadata...")
     endif()
+    if(COPPELIASIM_GENERATE_STUBS_OLD_STYLE)
+        set(OLD_STYLE_OPT --old-style)
+    endif()
     execute_process(
         COMMAND ${Python3_EXECUTABLE}
             ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate.py
+            ${OLD_STYLE_OPT}
             --xml-file ${COPPELIASIM_GENERATE_STUBS_XML_FILE}
             --gen-cmake-meta
             ${GENERATED_OUTPUT_DIR}

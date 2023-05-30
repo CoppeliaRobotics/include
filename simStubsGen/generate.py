@@ -23,6 +23,7 @@ parser.add_argument("--gen-api-index", help='generate api index mapping for Code
 parser.add_argument("--gen-cmake-meta", help='generate cmake metadata', action='store_true')
 parser.add_argument("--gen-all", help='generate everything', action='store_true')
 parser.add_argument("--verbose", help='print commands being executed', action='store_true')
+parser.add_argument("--old-style", help='old style (for plugins with simStart/simEnd entrypoints)', action='store_true')
 args = parser.parse_args()
 
 if args is False:
@@ -74,6 +75,11 @@ if args.gen_reference_xml:
     args.gen_lua_xml = True
 if args.gen_lua_typechecker:
     args.gen_lua_xml = True
+
+if args.old_style:
+    old_style_opt = ['--old-style']
+else:
+    old_style_opt = []
 
 if args.lua_file:
     lua_require = os.path.splitext(os.path.basename(args.lua_file))[0]
@@ -134,7 +140,7 @@ if args.gen_lua_typechecker:
         args.gen_lua_typechecker = False
     else:
         lua_require += '-typecheck'
-        runtool('generate_lua_typechecker', args.lua_file, output('lua.xml'), output(f'{lua_require}.lua'))
+        runtool('generate_lua_typechecker', *old_style_opt, args.lua_file, output('lua.xml'), output(f'{lua_require}.lua'))
 
 if args.gen_api_index:
     runtool('generate_api_index', input_xml, output('index.json'))
