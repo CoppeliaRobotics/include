@@ -515,9 +515,22 @@ bool checkCollision(int entity1Handle, int entity2Handle)
 
 // int simAdjustView(int viewHandleOrIndex, int associatedViewableObjectHandle, int options, const char *viewLabel);
 
+void setLastError(const std::string &msg)
+{
+    if(simSetLastError(nullptr, msg.c_str()) == -1)
+        throw api_error("simSetLastError");
+}
+
 void setLastError(const std::string &func, const std::string &msg)
 {
-    if(simSetLastError(func.c_str(), msg.c_str()) == -1)
+    if(simSetLastError(
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
+                func.c_str(),
+#else // SIM_PLUGIN_OLD_ENTRYPOINTS
+                nullptr,
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
+                msg.c_str()
+            ) == -1)
         throw api_error("simSetLastError");
 }
 
