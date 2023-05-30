@@ -94,7 +94,7 @@ typedef int (__cdecl *ptrSimStopSimulation)();
 typedef int (__cdecl *ptrSimPauseSimulation)();
 typedef char* (__cdecl *ptrSimGetModuleName)(int index,unsigned char* moduleVersion);
 typedef int (__cdecl *ptrSimAdjustView)(int viewHandleOrIndex,int associatedViewableObjectHandle,int options,const char* viewLabel);
-typedef int (__cdecl *ptrSimSetLastError)(const char* funcName,const char* errorMessage);
+typedef int (__cdecl *ptrSimSetLastError)(const char* setToNullptr,const char* errorMessage);
 typedef int (__cdecl *ptrSimResetGraph)(int graphHandle);
 typedef int (__cdecl *ptrSimDestroyGraphCurve)(int graphHandle,int curveId);
 typedef int (__cdecl *ptrSimDuplicateGraphCurveToStatic)(int graphHandle,int curveId,const char* curveName);
