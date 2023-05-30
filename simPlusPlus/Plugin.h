@@ -286,7 +286,9 @@ SIM_DLLEXPORT void * simMsg(int message, int *auxiliaryData, void *customData, i
         sim::addLog(sim_verbosity_errors, ex.what()); \
     } \
     return 0L; \
-} \
+}
+#define SIM_UI_PLUGIN(pluginName_, pluginVersion_, className_) \
+SIM_PLUGIN(pluginName_, pluginVersion_, className_); \
 SIM_DLLEXPORT void simInit_ui() \
 { \
     try \
