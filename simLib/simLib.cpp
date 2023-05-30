@@ -16,9 +16,14 @@ int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg)
     if (_addLog==nullptr)
     {
         std::string m("[");
-        if (strcmp(pluginName,"CoppeliaSimClient")!=0)
-            m+="simExt";
-        m+=pluginName;
+        if (pluginName!=nullptr)
+        {
+            if (strcmp(pluginName,"CoppeliaSimClient")!=0)
+                m+="simExt";
+            m+=pluginName;
+        }
+        else
+            m+="unknown plugin";
         m+="]   ";
         m+=logMsg;
         printf("%s\n",m.c_str());
