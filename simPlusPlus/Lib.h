@@ -521,7 +521,14 @@ namespace sim
     template<typename... Arguments>
     void addLog(int verbosity, const std::string &fmt, Arguments&&... args)
     {
-        addLog(pluginNameAndVersion, verbosity, util::sprintf(fmt, std::forward<Arguments>(args)...));
+        addLog(
+#ifndef SIM_PLUGIN_OLD_ENTRYPOINTS
+            std::string("sim") +
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
+            pluginNameAndVersion,
+            verbosity,
+            util::sprintf(fmt, std::forward<Arguments>(args)...)
+        );
     }
 
     bool isDynamicallyEnabled(int objectHandle);
