@@ -66,7 +66,9 @@ namespace sim
     {
         int errorModeSaved = sim::getInt32Param(sim_intparam_error_report_mode);
         sim::setInt32Param(sim_intparam_error_report_mode, sim_api_errormessage_ignore);
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         void *retVal = NULL;
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
         switch(message)
         {
@@ -719,11 +721,11 @@ namespace sim
     void Plugin::onMenuItemSelected(int itemHandle, int itemState)
     {
     }
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     void Plugin::onBroadcast(int header, int messageID)
     {
     }
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     void Plugin::onSceneSave()
     {
@@ -733,6 +735,7 @@ namespace sim
     {
     }
 
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onModuleOpen(char *name)
     {
     }
@@ -749,11 +752,9 @@ namespace sim
     {
     }
 
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onRenderingPass()
     {
     }
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     void Plugin::onBeforeRendering()
     {
@@ -767,7 +768,6 @@ namespace sim
     {
     }
 
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onImageFilterAdjustParams(int headerID, int filterID, int bufferSize, void *buffer, int &editedBufferSize, void *&editedBuffer)
     {
     }
@@ -838,7 +838,6 @@ namespace sim
     void Plugin::onGuiPass()
     {
     }
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     void Plugin::onRMLPos()
     {
@@ -864,7 +863,6 @@ namespace sim
     {
     }
 
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onOpenGL(int programIndex, int renderingAttributes, int cameraHandle, int viewIndex)
     {
     }
@@ -876,7 +874,6 @@ namespace sim
     void Plugin::onOpenGLCameraView(int sizeX, int sizeY, int viewIndex, int &out)
     {
     }
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     void Plugin::onProxSensorSelectDown(int objectID, float *clickedPoint, float *normalVector)
     {
@@ -886,7 +883,6 @@ namespace sim
     {
     }
 
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onPickSelectDown(int objectID)
     {
     }
@@ -896,11 +892,11 @@ namespace sim
     {
     }
 
-    void onUIPass()
+    void Plugin::onUIPass()
     {
     }
 
-    void onUIMenuItemSelected(int itemHandle, int itemState)
+    void Plugin::onUIMenuItemSelected(int itemHandle, int itemState)
     {
     }
 }

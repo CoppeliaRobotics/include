@@ -73,7 +73,7 @@ namespace sim
 #else // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onInit();
         virtual void onCleanup();
-        virtual void * onMsg(int message, int *auxiliaryData, void *customData) final;
+        virtual void onMsg(int message, int *auxiliaryData, void *customData) final;
         virtual void onUIInit();
         virtual void onUICleanup();
         virtual void onUIMsg(int message, int *auxiliaryData, void *customData);
@@ -269,7 +269,7 @@ SIM_DLLEXPORT void simCleanup() \
     } \
     unloadSimLibrary(sim::lib); \
 } \
-SIM_DLLEXPORT void * simMsg(int message, int *auxiliaryData, void *customData) \
+SIM_DLLEXPORT void simMsg(int message, int *auxiliaryData, void *customData) \
 { \
     try \
     { \
@@ -282,7 +282,6 @@ SIM_DLLEXPORT void * simMsg(int message, int *auxiliaryData, void *customData) \
     { \
         sim::addLog(sim_verbosity_errors, ex.what()); \
     } \
-    return 0L; \
 }
 #define SIM_UI_PLUGIN(pluginName_, pluginVersion_, className_) \
 SIM_PLUGIN(pluginName_, pluginVersion_, className_); \
