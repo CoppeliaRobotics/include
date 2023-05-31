@@ -143,6 +143,9 @@ namespace sim
 #endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onScriptStateDestroyed(int scriptID);
 
+        virtual void onUIPass();
+        virtual void onUIMenuItemSelected(int itemHandle, int itemState);
+
     private:
 #ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         bool firstInstancePass = true;

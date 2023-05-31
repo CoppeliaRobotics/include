@@ -630,6 +630,24 @@ namespace sim
 
     void Plugin::onUIMsg(int message, int *auxiliaryData, void *customData)
     {
+        switch(message)
+        {
+        case 0 /*sim_message_eventcallback_uipass*/:
+            {
+                onUIPass();
+            }
+            break;
+        case sim_message_eventcallback_menuitemselected:
+            /*
+            (called from the UI thread)
+            auxiliaryData[0]=handle of the item
+            auxiliaryData[1]=state of the item
+            */
+            {
+                onUIMenuItemSelected(auxiliaryData[0], auxiliaryData[1]);
+            }
+            break;
+        }
     }
 #endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
@@ -875,6 +893,14 @@ namespace sim
 #endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     void Plugin::onScriptStateDestroyed(int scriptID)
+    {
+    }
+
+    void onUIPass()
+    {
+    }
+
+    void onUIMenuItemSelected(int itemHandle, int itemState)
     {
     }
 }
