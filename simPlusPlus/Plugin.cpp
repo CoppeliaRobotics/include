@@ -61,7 +61,7 @@ namespace sim
 #ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
     void * Plugin::onMessage(int message, int *auxiliaryData, void *customData, int *replyData)
 #else // SIM_PLUGIN_OLD_ENTRYPOINTS
-    void * Plugin::onMsg(int message, int *auxiliaryData, void *customData, int *replyData)
+    void Plugin::onMsg(int message, int *auxiliaryData, void *customData)
 #endif // SIM_PLUGIN_OLD_ENTRYPOINTS
     {
         int errorModeSaved = sim::getInt32Param(sim_intparam_error_report_mode);
@@ -154,7 +154,6 @@ namespace sim
                 onMenuItemSelected(auxiliaryData[0], auxiliaryData[1]);
             }
             break;
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_broadcast:
             /*
             called when simBroadcastMessage is called
@@ -166,6 +165,7 @@ namespace sim
                 onBroadcast(auxiliaryData[0], auxiliaryData[1]);
             }
             break;
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_scenesave:
             /*
             about to save a scene
@@ -182,6 +182,7 @@ namespace sim
                 onModelSave();
             }
             break;
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_moduleopen:
             /*
             called when simOpenModule in Lua is called
@@ -222,7 +223,6 @@ namespace sim
                 onModuleClose((char *)customData);
             }
             break;
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_renderingpass:
             /*
             (called from the UI thread)
@@ -232,7 +232,6 @@ namespace sim
                 onRenderingPass();
             }
             break;
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_beforerendering:
             /*
             called just before the scene is rendered, but still from the main simulation
@@ -272,7 +271,6 @@ namespace sim
                 }
             }
             break;
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_imagefilter_adjustparams:
             /*
             (called from the UI thread)
@@ -458,7 +456,6 @@ namespace sim
                 onGuiPass();
             }
             break;
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_rmlpos:
             /*
             the command simRMLPos was called. The appropriate plugin should handle the call
@@ -509,7 +506,6 @@ namespace sim
                 onColladaPlugin();
             }
             break;
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_opengl:
             /*
             (called from the UI thread)
@@ -563,7 +559,6 @@ namespace sim
                 onOpenGLCameraView(auxiliaryData[0], auxiliaryData[1], auxiliaryData[2], auxiliaryData[3]);
             }
             break;
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_proxsensorselectdown:
             /*
             a "geometric" click select (mouse down) was registered. Not generated if the
@@ -595,7 +590,6 @@ namespace sim
                 onProxSensorSelectUp(auxiliaryData[0], f, f+3);
             }
             break;
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_pickselectdown:
             /*
             (called from the UI thread)
@@ -620,7 +614,9 @@ namespace sim
 
         // Keep following unchanged:
         sim::setInt32Param(sim_intparam_error_report_mode, errorModeSaved);
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         return retVal;
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
     }
 
 #ifndef SIM_PLUGIN_OLD_ENTRYPOINTS
@@ -632,7 +628,7 @@ namespace sim
     {
     }
 
-    void Plugin::onUIMsg(int msgId)
+    void Plugin::onUIMsg(int message, int *auxiliaryData, void *customData)
     {
     }
 #endif // SIM_PLUGIN_OLD_ENTRYPOINTS

@@ -73,10 +73,10 @@ namespace sim
 #else // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onInit();
         virtual void onCleanup();
-        virtual void * onMsg(int message, int *auxiliaryData, void *customData, int *replyData) final;
+        virtual void * onMsg(int message, int *auxiliaryData, void *customData) final;
         virtual void onUIInit();
         virtual void onUICleanup();
-        virtual void onUIMsg(int msgId);
+        virtual void onUIMsg(int message, int *auxiliaryData, void *customData);
 #endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
         virtual LIBRARY loadSimLibrary();
@@ -93,21 +93,19 @@ namespace sim
         virtual void onInstanceAboutToSwitch(int sceneID);
 #ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onMenuItemSelected(int itemHandle, int itemState);
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onBroadcast(int header, int messageID);
+#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onSceneSave();
         virtual void onModelSave();
+#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onModuleOpen(char *name);
         virtual void onModuleHandle(char *name);
         virtual void onModuleHandleInSensingPart(char *name);
         virtual void onModuleClose(char *name);
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onRenderingPass();
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onBeforeRendering();
         virtual void onImageFilterEnumReset();
         virtual void onImageFilterEnumerate(int &headerID, int &filterID, std::string &name);
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onImageFilterAdjustParams(int headerID, int filterID, int bufferSize, void *buffer, int &editedBufferSize, void *&editedBuffer);
         virtual std::vector<float> onImageFilterProcess(int headerID, int filterID, int resX, int resY, int visionSensorHandle, float *inputImage, float *depthImage, float *workImage, float *bufferImage1, float *bufferImage2, float *outputImage, void *filterParamBuffer, int &triggerDetectionn);
 #endif // SIM_PLUGIN_OLD_ENTRYPOINTS
@@ -130,21 +128,17 @@ namespace sim
         virtual void onModelLoaded();
 #ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onGuiPass();
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onRMLPos();
         virtual void onRMLVel();
         virtual void onRMLStep();
         virtual void onRMLRemove();
         virtual void onPathPlanningPlugin();
         virtual void onColladaPlugin();
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onOpenGL(int programIndex, int renderingAttributes, int cameraHandle, int viewIndex);
         virtual void onOpenGLFrame(int sizeX, int sizeY, int &out);
         virtual void onOpenGLCameraView(int sizeX, int sizeY, int viewIndex, int &out);
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onProxSensorSelectDown(int objectID, float *clickedPoint, float *normalVector);
         virtual void onProxSensorSelectUp(int objectID, float *clickedPoint, float *normalVector);
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onPickSelectDown(int objectID);
 #endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onScriptStateDestroyed(int scriptID);
@@ -272,13 +266,13 @@ SIM_DLLEXPORT void simCleanup() \
     } \
     unloadSimLibrary(sim::lib); \
 } \
-SIM_DLLEXPORT void * simMsg(int message, int *auxiliaryData, void *customData, int *replyData) \
+SIM_DLLEXPORT void * simMsg(int message, int *auxiliaryData, void *customData) \
 { \
     try \
     { \
         if(sim::plugin) \
         { \
-            return sim::plugin->onMsg(message, auxiliaryData, customData, replyData); \
+            return sim::plugin->onMsg(message, auxiliaryData, customData); \
         } \
     } \
     catch(std::exception &ex) \
@@ -317,13 +311,13 @@ SIM_DLLEXPORT void simCleanup_ui() \
         sim::addLog(sim_verbosity_errors, ex.what()); \
     } \
 } \
-SIM_DLLEXPORT void simMsg_ui(int msgId) \
+SIM_DLLEXPORT void simMsg_ui(int message, int *auxiliaryData, void *customData) \
 { \
     try \
     { \
         if(sim::plugin) \
         { \
-            return sim::plugin->onUIMsg(msgId); \
+            return sim::plugin->onUIMsg(message, auxiliaryData, customData); \
         } \
     } \
     catch(std::exception &ex) \
