@@ -33,9 +33,9 @@ int getSimProcAddresses(LIBRARY lib);
 LIBRARY loadSimLibrary(const char* pathAndFilename);
 void unloadSimLibrary(LIBRARY lib);
 FARPROC _getProcAddress(LIBRARY lib,const char* funcName);
-int simAddLog(const char* setToNull,int verbosityLevel,const char* logMsg);
+int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg);
 
-typedef int (__cdecl *ptrSimAddLog)(const char* setToNull,int verbosityLevel,const char* logMsg);
+typedef int (__cdecl *ptrSimAddLog)(const char* pluginName,int verbosityLevel,const char* logMsg);
 typedef int (__cdecl *ptrSimRunSimulator)(const char* applicationName,int options,void(*initCallBack)(),void(*loopCallBack)(),void(*deinitCallBack)());
 typedef int (__cdecl *ptrSimRunSimulatorEx)(const char* applicationName,int options,void(*initCallBack)(),void(*loopCallBack)(),void(*deinitCallBack)(),int stopDelay,const char* sceneOrModelToLoad);
 typedef char* (__cdecl *ptrSimGetSimulatorMessage)(int* messageID,int* auxiliaryData,int* returnedDataSize);

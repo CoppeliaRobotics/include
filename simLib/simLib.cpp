@@ -11,16 +11,16 @@
 
 ptrSimAddLog _addLog=nullptr;
 
-int simAddLog(const char* setToNull,int verbosityLevel,const char* logMsg)
+int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg)
 {
     if (_addLog==nullptr)
     {
         std::string m("[");
-        if (setToNull!=nullptr)
+        if (pluginName!=nullptr)
         {
-            if (strcmp(setToNull,"CoppeliaSimClient")!=0)
+            if (strcmp(pluginName,"CoppeliaSimClient")!=0)
                 m+="simExt";
-            m+=setToNull;
+            m+=pluginName;
         }
         else
             m+="unknown plugin";
@@ -29,7 +29,7 @@ int simAddLog(const char* setToNull,int verbosityLevel,const char* logMsg)
         printf("%s\n",m.c_str());
         return(1);
     }
-    return(_addLog(setToNull,verbosityLevel,logMsg));
+    return(_addLog(pluginName,verbosityLevel,logMsg));
 }
 
 ptrSimRunSimulator simRunSimulator=nullptr;
