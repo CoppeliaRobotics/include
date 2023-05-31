@@ -11,16 +11,16 @@
 
 ptrSimAddLog _addLog=nullptr;
 
-int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg)
+int simAddLog(const char* setToNull,int verbosityLevel,const char* logMsg)
 {
     if (_addLog==nullptr)
     {
         std::string m("[");
-        if (pluginName!=nullptr)
+        if (setToNull!=nullptr)
         {
-            if (strcmp(pluginName,"CoppeliaSimClient")!=0)
+            if (strcmp(setToNull,"CoppeliaSimClient")!=0)
                 m+="simExt";
-            m+=pluginName;
+            m+=setToNull;
         }
         else
             m+="unknown plugin";
@@ -29,7 +29,7 @@ int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg)
         printf("%s\n",m.c_str());
         return(1);
     }
-    return(_addLog(pluginName,verbosityLevel,logMsg));
+    return(_addLog(setToNull,verbosityLevel,logMsg));
 }
 
 ptrSimRunSimulator simRunSimulator=nullptr;
@@ -361,7 +361,6 @@ ptrSimGetApiFunc simGetApiFunc=nullptr;
 ptrSimGetApiInfo simGetApiInfo=nullptr;
 ptrSimSetModuleInfo simSetModuleInfo=nullptr;
 ptrSimGetModuleInfo simGetModuleInfo=nullptr;
-ptrSimIsDeprecated simIsDeprecated=nullptr;
 ptrSimGetPersistentDataTags simGetPersistentDataTags=nullptr;
 ptrSimEventNotification simEventNotification=nullptr;
 ptrSimApplyTexture simApplyTexture=nullptr;
@@ -735,7 +734,6 @@ int getSimProcAddresses(LIBRARY lib)
     simGetApiInfo=(ptrSimGetApiInfo)(_getProcAddress(lib,"simGetApiInfo",false));
     simSetModuleInfo=(ptrSimSetModuleInfo)(_getProcAddress(lib,"simSetModuleInfo",false));
     simGetModuleInfo=(ptrSimGetModuleInfo)(_getProcAddress(lib,"simGetModuleInfo",false));
-    simIsDeprecated=(ptrSimIsDeprecated)(_getProcAddress(lib,"simIsDeprecated",false));
     simGetPersistentDataTags=(ptrSimGetPersistentDataTags)(_getProcAddress(lib,"simGetPersistentDataTags",false));
     simEventNotification=(ptrSimEventNotification)(_getProcAddress(lib,"simEventNotification",false));
     simIsDynamicallyEnabled=(ptrSimIsDynamicallyEnabled)(_getProcAddress(lib,"simIsDynamicallyEnabled",false));
@@ -2609,11 +2607,6 @@ int getSimProcAddresses(LIBRARY lib)
     if (simGetModuleInfo==nullptr)
     {
         printf("%s simGetModuleInfo\n",couldNotFind);
-        return 0;
-    }
-    if (simIsDeprecated==nullptr)
-    {
-        printf("%s simIsDeprecated\n",couldNotFind);
         return 0;
     }
     if (simGetPersistentDataTags==nullptr)

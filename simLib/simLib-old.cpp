@@ -17,6 +17,7 @@ ptrSimGetJointMatrix simGetJointMatrix=nullptr;
 ptrSimSetSphericalJointMatrix simSetSphericalJointMatrix=nullptr;
 ptr_simGetGeomProxyFromShape _simGetGeomProxyFromShape=nullptr;
 ptrSimReorientShapeBoundingBox simReorientShapeBoundingBox=nullptr;
+ptrSimIsDeprecated simIsDeprecated=nullptr;
 
 #ifdef SIM_INTERFACE_OLD
 #include "simLib-old2.cpp"
@@ -48,6 +49,7 @@ int getSimProcAddressesOld(LIBRARY lib)
     simSetSphericalJointMatrix=(ptrSimSetSphericalJointMatrix)(_getProcAddress(lib,"simSetSphericalJointMatrix",true));
     _simGetGeomProxyFromShape=(ptr_simGetGeomProxyFromShape)(_getProcAddress(lib,"_simGetGeomProxyFromShape",false));
     simReorientShapeBoundingBox=(ptrSimReorientShapeBoundingBox)(_getProcAddress(lib,"simReorientShapeBoundingBox",false));
+    simIsDeprecated=(ptrSimIsDeprecated)(_getProcAddress(lib,"simIsDeprecated",false));
 
     char *ps=std::getenv("COPPELIASIMPLUGIN_IGNORE_MISSING_SYMBOLS");
     if (ps!=nullptr)
@@ -148,6 +150,11 @@ int getSimProcAddressesOld(LIBRARY lib)
     if (simReorientShapeBoundingBox==nullptr)
     {
         printf("%s simReorientShapeBoundingBox\n",couldNotFind);
+        return 0;
+    }
+    if (simIsDeprecated==nullptr)
+    {
+        printf("%s simIsDeprecated\n",couldNotFind);
         return 0;
     }
     return 1;
