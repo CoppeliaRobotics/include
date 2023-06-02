@@ -144,7 +144,7 @@ if args.gen_lua_typechecker:
         args.gen_lua_typechecker = False
     else:
         lua_require += '-typecheck'
-        runtool('generate_lua_typechecker', *old_style_opt, args.lua_file, output('lua.xml'), output(f'{lua_require}.lua'))
+        runtool('generate_lua_typechecker', *old_style_opt, args.lua_file, output('lua.xml'), output(f'typecheck.lua'))
 
 if args.gen_api_index:
     runtool('generate_api_index', input_xml, output('index.json'))
