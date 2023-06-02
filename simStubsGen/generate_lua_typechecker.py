@@ -31,7 +31,7 @@ function sim{plugin.name}.__addTypeCheck()
     end
 """)
     else:
-        f.write(f"""local function addTypeChecks(obj)
+        f.write(f"""return function(obj)
     local function wrapFunc(funcName,wrapperGenerator)
         obj[funcName]=wrapperGenerator(obj[funcName])
     end
@@ -81,8 +81,4 @@ function sim{plugin.name}.__addTypeCheck()
 sim.registerScriptFuncHook('sysCall_init','sim{plugin.name}.__addTypeCheck',true)
 
 return sim{plugin.name}
-""")
-    else:
-        f.write(f"""
-return addTypeChecks
 """)
