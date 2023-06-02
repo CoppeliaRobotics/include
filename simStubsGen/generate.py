@@ -20,6 +20,7 @@ parser.add_argument("--gen-reference-html", help='generate HTML documentation (f
 parser.add_argument("--gen-lua-calltips", help='generate C++ code for Lua calltips', action='store_true')
 parser.add_argument("--gen-lua-typechecker", help='generate Lua code for type-checking', action='store_true')
 parser.add_argument("--gen-api-index", help='generate api index mapping for CodeEditor plugin', action='store_true')
+parser.add_argument("--gen-ce", help='generate code-editor files', action='store_true')
 parser.add_argument("--gen-cmake-meta", help='generate cmake metadata', action='store_true')
 parser.add_argument("--gen-all", help='generate everything', action='store_true')
 parser.add_argument("--verbose", help='print commands being executed', action='store_true')
@@ -66,6 +67,7 @@ if args.gen_all:
     args.gen_lua_calltips = True
     args.gen_lua_typechecker = True
     args.gen_api_index = True
+    args.gen_ce = True
 if args.gen_api_index:
     args.gen_reference_xml = True
 if args.gen_lua_calltips:
@@ -74,6 +76,8 @@ if args.gen_reference_xml:
     input_xml = output('reference.xml')
     args.gen_lua_xml = True
 if args.gen_lua_typechecker:
+    args.gen_lua_xml = True
+if args.gen_ce:
     args.gen_lua_xml = True
 
 if args.old_style:
@@ -144,6 +148,9 @@ if args.gen_lua_typechecker:
 
 if args.gen_api_index:
     runtool('generate_api_index', input_xml, output('index.json'))
+
+if args.gen_ce:
+    runtool('generate_ce', input_xml, output('ce.lua'))
 
 if args.gen_stubs:
     tool = [

@@ -229,6 +229,11 @@ function(COPPELIASIM_GENERATE_STUBS GENERATED_OUTPUT_DIR)
         endif()
         message(STATUS "Plugin: ${PLUGIN_INFO_STR}")
     endif()
+    if(PLUGIN_VERSION GREATER 0)
+        set(PLUGIN_NAME_AND_VERSION ${PLUGIN_NAME}-${PLUGIN_VERSION})
+    else()
+        set(PLUGIN_NAME_AND_VERSION ${PLUGIN_NAME})
+    endif()
     set(OUTPUT_FILES
         ${GENERATED_OUTPUT_DIR}/stubs.cpp
         ${GENERATED_OUTPUT_DIR}/stubs.h
@@ -248,10 +253,12 @@ function(COPPELIASIM_GENERATE_STUBS GENERATED_OUTPUT_DIR)
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/__init__.py
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate.py
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_api_index.py
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_ce.py
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_cmake_metadata.py
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_lua_calltips.py
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_lua_typechecker.py
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_lua_xml.py
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/merge_xml.py
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/parse.py
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/model/__init__.py
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/model/command.py
@@ -285,15 +292,13 @@ function(COPPELIASIM_GENERATE_STUBS GENERATED_OUTPUT_DIR)
         install(FILES ${COPPELIASIM_GENERATE_STUBS_LUA_FILE} RENAME ${LUA_FILE_NAME} DESTINATION ${COPPELIASIM_LUA_DIR})
     endif()
     add_custom_command(OUTPUT ${OUTPUT_FILES} COMMAND ${COMMAND_ARGS} DEPENDS ${DEPENDENCIES})
-    if(PLUGIN_VERSION GREATER 0)
-        set(REFERENCE_FILE_NAME sim${PLUGIN_NAME}-${PLUGIN_VERSION}.htm)
-        set(INDEX_FILE_NAME sim${PLUGIN_NAME}-${PLUGIN_VERSION}.json)
-    else()
-        set(REFERENCE_FILE_NAME sim${PLUGIN_NAME}.htm)
-        set(INDEX_FILE_NAME sim${PLUGIN_NAME}.json)
-    endif()
+    set(REFERENCE_FILE_NAME sim${PLUGIN_NAME_AND_VERSION}.htm)
+    set(INDEX_FILE_NAME sim${PLUGIN_NAME_AND_VERSION}.json)
     install(FILES ${GENERATED_OUTPUT_DIR}/reference.html RENAME ${REFERENCE_FILE_NAME} DESTINATION ${COPPELIASIM_HELPFILES_DIR}/en)
     install(FILES ${GENERATED_OUTPUT_DIR}/index.json RENAME ${INDEX_FILE_NAME} DESTINATION ${COPPELIASIM_HELPFILES_DIR}/index)
+    if(NOT COPPELIASIM_GENERATE_STUBS_OLD_STYLE)
+        install(FILES ${GENERATED_OUTPUT_DIR}/ce.lua RENAME sim${PLUGIN_NAME_AND_VERSION}-ce.lua DESTINATION ${COPPELIASIM_LUA_DIR})
+    endif()
     set_property(SOURCE ${GENERATED_OUTPUT_DIR}/stubs.cpp PROPERTY SKIP_AUTOGEN ON)
     set_property(SOURCE ${GENERATED_OUTPUT_DIR}/stubs.h PROPERTY SKIP_AUTOGEN ON)
     include_directories("${GENERATED_OUTPUT_DIR}")
