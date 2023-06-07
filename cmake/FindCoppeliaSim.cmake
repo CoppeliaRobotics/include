@@ -255,7 +255,6 @@ function(COPPELIASIM_GENERATE_STUBS GENERATED_OUTPUT_DIR)
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_api_index.py
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_ce.py
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_cmake_metadata.py
-        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_lua_calltips.py
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_lua_typechecker.py
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_lua_xml.py
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/merge_xml.py
@@ -276,7 +275,6 @@ function(COPPELIASIM_GENERATE_STUBS GENERATED_OUTPUT_DIR)
         ${COPPELIASIM_GENERATE_STUBS_XML_FILE}
     )
     if(NOT "${COPPELIASIM_GENERATE_STUBS_LUA_FILE}" STREQUAL "")
-        list(APPEND OUTPUT_FILES ${GENERATED_OUTPUT_DIR}/lua_calltips.cpp)
         list(APPEND COMMAND_ARGS --lua-file ${COPPELIASIM_GENERATE_STUBS_LUA_FILE})
         list(APPEND DEPENDENCIES ${COPPELIASIM_GENERATE_STUBS_LUA_FILE})
         get_filename_component(LUA_FILE_NAME_WLE ${COPPELIASIM_GENERATE_STUBS_LUA_FILE} NAME_WLE)
