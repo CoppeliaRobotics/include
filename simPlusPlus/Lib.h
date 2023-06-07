@@ -522,10 +522,7 @@ namespace sim
     void addLog(int verbosity, const std::string &fmt, Arguments&&... args)
     {
         addLog(
-#ifndef SIM_PLUGIN_OLD_ENTRYPOINTS
-            std::string("sim") +
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
-            pluginNameAndVersion,
+            std::string("sim") + pluginNameAndVersion,
             verbosity,
             util::sprintf(fmt, std::forward<Arguments>(args)...)
         );

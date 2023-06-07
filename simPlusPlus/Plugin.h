@@ -66,160 +66,39 @@ namespace sim
         int getVerbosity();
         void init();
 
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-        virtual void onStart();
-        virtual void onEnd();
-        virtual void * onMessage(int message, int *auxiliaryData, void *customData, int *replyData) final;
-#else // SIM_PLUGIN_OLD_ENTRYPOINTS
+        virtual LIBRARY loadSimLibrary();
+
         virtual void onInit();
         virtual void onCleanup();
         virtual void onMsg(int message, int *auxiliaryData, void *customData) final;
         virtual void onUIInit();
         virtual void onUICleanup();
         virtual void onUIMsg(int message, int *auxiliaryData, void *customData);
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
-        virtual LIBRARY loadSimLibrary();
-
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-        virtual void onInstancePass(const InstancePassFlags &flags, bool first);
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onInstancePass(const InstancePassFlags &flags);
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-        virtual void onFirstInstancePass(const InstancePassFlags &flags);
-        virtual void onLastInstancePass();
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onInstanceSwitch(int sceneID);
         virtual void onInstanceAboutToSwitch(int sceneID);
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-        virtual void onMenuItemSelected(int itemHandle, int itemState);
-        virtual void onBroadcast(int header, int messageID);
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onSceneSave();
         virtual void onModelSave();
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-        virtual void onModuleOpen(char *name);
-        virtual void onModuleHandle(char *name);
-        virtual void onModuleHandleInSensingPart(char *name);
-        virtual void onModuleClose(char *name);
-        virtual void onRenderingPass();
-        virtual void onBeforeRendering();
-        virtual void onImageFilterEnumReset();
-        virtual void onImageFilterEnumerate(int &headerID, int &filterID, std::string &name);
-        virtual void onImageFilterAdjustParams(int headerID, int filterID, int bufferSize, void *buffer, int &editedBufferSize, void *&editedBuffer);
-        virtual std::vector<float> onImageFilterProcess(int headerID, int filterID, int resX, int resY, int visionSensorHandle, float *inputImage, float *depthImage, float *workImage, float *bufferImage1, float *bufferImage2, float *outputImage, void *filterParamBuffer, int &triggerDetectionn);
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onAboutToUndo();
         virtual void onUndo();
         virtual void onAboutToRedo();
         virtual void onRedo();
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-        virtual void onScriptIconDblClick(int objectHandle, int &dontOpenEditor);
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onSimulationAboutToStart();
         virtual void onSimulationAboutToEnd();
         virtual void onSimulationEnded();
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-        virtual void onKeyPress(int key, int mods);
-        virtual void onBannerClicked(int bannerID);
-        virtual void onRefreshDialogs(int refreshDegree);
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onSceneLoaded();
         virtual void onModelLoaded();
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-        virtual void onGuiPass();
-        virtual void onRMLPos();
-        virtual void onRMLVel();
-        virtual void onRMLStep();
-        virtual void onRMLRemove();
-        virtual void onPathPlanningPlugin();
-        virtual void onColladaPlugin();
-        virtual void onOpenGL(int programIndex, int renderingAttributes, int cameraHandle, int viewIndex);
-        virtual void onOpenGLFrame(int sizeX, int sizeY, int &out);
-        virtual void onOpenGLCameraView(int sizeX, int sizeY, int viewIndex, int &out);
-        virtual void onProxSensorSelectDown(int objectID, float *clickedPoint, float *normalVector);
-        virtual void onProxSensorSelectUp(int objectID, float *clickedPoint, float *normalVector);
-        virtual void onPickSelectDown(int objectID);
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         virtual void onScriptStateDestroyed(int scriptID);
 
         virtual void onUIPass();
         virtual void onUIMenuItemSelected(int itemHandle, int itemState);
 
     private:
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-        bool firstInstancePass = true;
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         std::string name_;
     };
 }
 
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-#define SIM_PLUGIN(pluginName_, pluginVersion_, className_) \
-namespace sim { \
-LIBRARY lib; \
-::className_ *plugin; \
-std::string pluginName; \
-std::string pluginNameAndVersion; \
-int pluginVersion; \
-} \
-SIM_DLLEXPORT unsigned char simStart(void *reservedPointer, int reservedInt) \
-{ \
-    try \
-    { \
-        sim::pluginName = pluginName_; \
-        sim::pluginVersion = pluginVersion_; \
-        sim::pluginNameAndVersion = pluginName_; \
-        if(pluginVersion_ > 0) \
-        { \
-            sim::pluginNameAndVersion += "-"; \
-            sim::pluginNameAndVersion += std::to_string(pluginVersion_); \
-        } \
-        sim::plugin = new className_; \
-        sim::plugin->setName(pluginName_); \
-        sim::lib = sim::plugin->loadSimLibrary(); \
-        sim::plugin->onStart(); \
-        return std::max(1, sim::pluginVersion); \
-    } \
-    catch(std::exception &ex) \
-    { \
-        sim::addLog(sim_verbosity_errors, ex.what()); \
-        return 0; \
-    } \
-} \
-SIM_DLLEXPORT void simEnd() \
-{ \
-    try \
-    { \
-        if(sim::plugin) \
-        { \
-            sim::plugin->onEnd(); \
-            delete sim::plugin; \
-            sim::plugin = nullptr; \
-        } \
-    } \
-    catch(std::exception &ex) \
-    { \
-        sim::addLog(sim_verbosity_errors, ex.what()); \
-    } \
-    unloadSimLibrary(sim::lib); \
-} \
-SIM_DLLEXPORT void * simMessage(int message, int *auxiliaryData, void *customData, int *replyData) \
-{ \
-    try \
-    { \
-        if(sim::plugin) \
-        { \
-            return sim::plugin->onMessage(message, auxiliaryData, customData, replyData); \
-        } \
-    } \
-    catch(std::exception &ex) \
-    { \
-        sim::addLog(sim_verbosity_errors, ex.what()); \
-    } \
-    return 0L; \
-}
-#else // SIM_PLUGIN_OLD_ENTRYPOINTS
 #define SIM_PLUGIN(pluginName_, pluginVersion_, className_) \
 namespace sim { \
 LIBRARY lib; \
@@ -327,6 +206,5 @@ SIM_DLLEXPORT void simMsg_ui(int message, int *auxiliaryData, void *customData) 
         sim::addLog(sim_verbosity_errors, ex.what()); \
     } \
 }
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
 #endif // SIMPLUSPLUS_PLUGIN_H_INCLUDED

@@ -193,8 +193,7 @@ void writeToStack(const std::string &value, int stack, const WriteOptions &wropt
 void writeToStack(const `struct.name` &value, int stack, const WriteOptions &wropt = {});
 #py endfor
 
-bool registerScriptStuff(); // old
-bool registerScriptItems(); // new
+bool registerScriptStuff();
 
 #py for enum in plugin.enums:
 enum `enum.name`

@@ -553,65 +553,6 @@ void checkRuntimeVersion()
         sim::addLog(sim_verbosity_warnings, "has been built for %s", sim::versionString(SIM_PROGRAM_FULL_VERSION_NB));
 }
 
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-bool registerScriptStuff()
-{
-    try
-    {
-        checkRuntimeVersion();
-
-        auto dbg = sim::getNamedBoolParam("simStubsGen.debug");
-        if(dbg && *dbg)
-            sim::enableStackDebug();
-
-        try
-        {
-#py plugin_var = f'sim{plugin.name}'
-#py lua_require = pycpp.params.get('lua_require')
-#py #
-#py if plugin.version > 0:
-#py plugin_var += f'_{plugin.version}'
-#py if lua_require:
-#py lua_require += f'-{plugin.version}'
-#py endif
-#py endif
-#py #
-#py if lua_require:
-            sim::registerScriptVariable("`plugin_var`", "require('`lua_require`')", 0);
-#py else:
-            sim::registerScriptVariable("`plugin_var`", "{}", 0);
-#py endif
-            sim::registerScriptVariable("_`plugin.name`_latest_version", "math.max(_`plugin.name`_latest_version or 0, `plugin.version`)", 0);
-
-            // register varables from enums:
-#py for enum in plugin.enums:
-            sim::registerScriptVariable("`plugin_var`.`enum.name`", "{}", 0);
-#py for item in enum.items:
-            sim::registerScriptVariable("`plugin_var`.`enum.name`.`item.name`", boost::lexical_cast<std::string>(sim_`plugin.name.lower()`_`enum.item_prefix``item.name`), 0);
-#py endfor
-#py endfor
-            // register commands:
-#py for cmd in plugin.commands:
-            sim::registerScriptCallbackFunction("`plugin_var`.`cmd.name`@`plugin.name`", "`escape(cmd.calltip)``escape(cmd.documentation)`", `cmd.c_name`_callback);
-#py endfor
-
-#py if pycpp.params['have_lua_calltips'] == 'True':
-#include "lua_calltips.cpp"
-#py endif
-        }
-        catch(std::exception &ex)
-        {
-            throw sim::exception("Initialization failed (registerScriptStuff): %s", ex.what());
-        }
-    }
-    catch(sim::exception& ex)
-    {
-        sim::addLog(sim_verbosity_errors, ex.what());
-        return false;
-    }
-    return true;
-}
-#else // SIM_PLUGIN_OLD_ENTRYPOINTS
 bool registerScriptStuff()
 {
     try
@@ -648,7 +589,6 @@ bool registerScriptStuff()
     }
     return true;
 }
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
 #py for enum in plugin.enums:
 const char* `enum.name.lower()`_string(`enum.name` x)

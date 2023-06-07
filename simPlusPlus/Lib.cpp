@@ -523,14 +523,7 @@ void setLastError(const std::string &msg)
 
 void setLastError(const std::string &func, const std::string &msg)
 {
-    if(simSetLastError(
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-                func.c_str(),
-#else // SIM_PLUGIN_OLD_ENTRYPOINTS
-                nullptr,
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
-                msg.c_str()
-            ) == -1)
+    if(simSetLastError(nullptr, msg.c_str()) == -1)
         throw api_error("simSetLastError");
 }
 

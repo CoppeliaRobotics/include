@@ -42,33 +42,18 @@ namespace sim
         return sim::getModuleInfoInt(sim_moduleinfo_verbosity);
     }
 
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-    void Plugin::onStart()
-#else // SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onInit()
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
     {
     }
 
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-    void Plugin::onEnd()
-#else // SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onCleanup()
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
     {
     }
 
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-    void * Plugin::onMessage(int message, int *auxiliaryData, void *customData, int *replyData)
-#else // SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onMsg(int message, int *auxiliaryData, void *customData)
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
     {
         int errorModeSaved = sim::getInt32Param(sim_intparam_error_report_mode);
         sim::setInt32Param(sim_intparam_error_report_mode, sim_api_errormessage_ignore);
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-        void *retVal = NULL;
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
         switch(message)
         {
@@ -98,30 +83,9 @@ namespace sim
                 flags.scriptCreated         = (auxiliaryData[0] & (1 << 13)) > 0;
                 flags.scriptErased          = (auxiliaryData[0] & (1 << 14)) > 0;
 
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-                onInstancePass(flags, firstInstancePass); // for backward compatibility
-
-                if(firstInstancePass) onFirstInstancePass(flags);
-                else onInstancePass(flags);
-#else
                 onInstancePass(flags);
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
-
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-                firstInstancePass = false;
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
             }
             break;
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-        case sim_message_eventcallback_lastinstancepass:
-            /*
-            called on the last client application loop pass (the instancepass message is not sent)
-            */
-            {
-                onLastInstancePass();
-            }
-            break;
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_instanceswitch:
             /*
             scene was switched (react to this message in a similar way as you would react to
@@ -145,29 +109,6 @@ namespace sim
                 onInstanceAboutToSwitch(auxiliaryData[1]);
             }
             break;
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-        case sim_message_eventcallback_menuitemselected:
-            /*
-            (called from the UI thread)
-            auxiliaryData[0]=handle of the item
-            auxiliaryData[1]=state of the item
-            */
-            {
-                onMenuItemSelected(auxiliaryData[0], auxiliaryData[1]);
-            }
-            break;
-        case sim_message_eventcallback_broadcast:
-            /*
-            called when simBroadcastMessage is called
-
-            auxiliaryData[0]=header (e.g. a large, random identifier, or your CoppeliaSim serial number)
-            auxiliaryData[1]=message ID
-            */
-            {
-                onBroadcast(auxiliaryData[0], auxiliaryData[1]);
-            }
-            break;
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_scenesave:
             /*
             about to save a scene
@@ -184,152 +125,6 @@ namespace sim
                 onModelSave();
             }
             break;
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-        case sim_message_eventcallback_moduleopen:
-            /*
-            called when simOpenModule in Lua is called
-            customData=name of the plugin to execute the command, or NULL if all should
-                        execute the command
-            */
-            {
-                onModuleOpen((char *)customData);
-            }
-            break;
-        case sim_message_eventcallback_modulehandle:
-            /*
-            called when simHandleModule in Lua is called with second argument false
-            customData=name of the plugin to execute the command, or NULL if all should
-                    execute the command
-            */
-            {
-                onModuleHandle((char *)customData);
-            }
-            break;
-        case sim_message_eventcallback_modulehandleinsensingpart:
-            /*
-            called when simHandleModule in Lua is called with second arg. true
-            customData=name of the plugin to execute the command, or NULL if all should
-                    execute the command
-            */
-            {
-                onModuleHandleInSensingPart((char *)customData);
-            }
-            break;
-        case sim_message_eventcallback_moduleclose:
-            /*
-            called when simCloseModule in Lua is called
-            customData=name of the plugin to execute the command, or NULL if all should
-                    execute the command
-            */
-            {
-                onModuleClose((char *)customData);
-            }
-            break;
-        case sim_message_eventcallback_renderingpass:
-            /*
-            (called from the UI thread)
-            called just before the scene is rendered. Enable via simEnableEventCallback.
-            */
-            {
-                onRenderingPass();
-            }
-            break;
-        case sim_message_eventcallback_beforerendering:
-            /*
-            called just before the scene is rendered, but still from the main simulation
-                    thread. Only called when in non-threaded rendering mode.
-            */
-            {
-                onBeforeRendering();
-            }
-            break;
-        case sim_message_eventcallback_imagefilter_enumreset:
-            /*
-            "reset enumeration" message for filter plugins
-            */
-            {
-                onImageFilterEnumReset();
-            }
-            break;
-        case sim_message_eventcallback_imagefilter_enumerate:
-            /*
-            "enumerate" message for filter plugins
-
-            replyData[0]=header ID
-            replyData[1]=filterID. A positive ID (including 0) represents a filter whose
-                    parameters can be edited. A filter with a negative ID cannot be edited.
-
-            Return the filter's name as the callback return value (allocate the buffer with
-            the simCreateBuffer function)
-            */
-            {
-                std::string name;
-                onImageFilterEnumerate(replyData[0], replyData[1], name);
-                if(name.length())
-                {
-                    char *ret = (char*)simCreateBuffer((int)name.length() + 1);
-                    std::strncpy(ret, name.c_str(), name.length());
-                    retVal = ret;
-                }
-            }
-            break;
-        case sim_message_eventcallback_imagefilter_adjustparams:
-            /*
-            (called from the UI thread)
-            "edit filter parameters" message for filter plugins
-
-            auxiliaryData[0]=header ID
-            auxiliaryData[1]=filter ID
-            auxiliaryData[2]=size in bytes of the filter parameter buffer to be edited
-            customData=filter parameter buffer. Can be NULL (is NULL when filter parameters
-                    were never edited)
-            replyData[0]=size in bytes of the edited filter parameter buffer returned as the
-                    callback return buffer. That buffer has to be allocated with the
-                    simCreateBuffer command and is automatically released by CoppeliaSim upon
-                    callback return.
-            */
-            {
-                onImageFilterAdjustParams(auxiliaryData[0], auxiliaryData[1], auxiliaryData[2], customData, replyData[0], retVal);
-            }
-            break;
-        case sim_message_eventcallback_imagefilter_process:
-            /*
-            (called from the UI thread)
-            "do image processing" message for filter plugins
-
-            auxiliaryData[0]=header ID
-            auxiliaryData[1]=filter ID
-            auxiliaryData[2]=resolution X
-            auxiliaryData[3]=resolution Y
-            auxiliaryData[4]=vision sensor handle (available from CoppeliaSim 3.1.0 only)
-            customData[0]=input image (size: x*y*3 floats)
-            customData[1]=input depth image (size: x*y floats)
-            customData[2]=work image (size: x*y*3 floats)
-            customData[3]=buffer image 1 (size: x*y*3 floats)
-            customData[4]=buffer image 2 (size: x*y*3 floats)
-            customData[5]=output image (size: x*y*3 floats)
-            customData[6]=filter parameter buffer (size: custom), can be NULL (is NULL when
-                        filter parameters were never edited)
-            replyData[0]=1 if the sensor should trigger a detection, 0 otherwise
-            replyData[1]=number of float values returned, representing auxiliary information
-                        (that can be retrieved with simHandleVisionSensor). The auxiliary
-                        information can represent a vector, a direction, any result from an
-                        image processing algorithm. Allocate the return float buffer with
-                        simCreateBuffer
-            */
-            {
-                float **b = (float**)customData;
-                std::vector<float> r = onImageFilterProcess(auxiliaryData[0], auxiliaryData[1], auxiliaryData[2], auxiliaryData[3], auxiliaryData[4], b[0], b[1], b[2], b[3], b[4], b[5], (void*)b[6], replyData[0]);
-                if(r.size())
-                {
-                    float *ret2 = (float*)simCreateBuffer(sizeof(float) * (int)r.size());
-                    for(size_t i = 0; i < r.size(); i++) ret2[i] = r[i];
-                    replyData[1] = (int)r.size();
-                    retVal = ret2;
-                }
-            }
-            break;
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_abouttoundo:
             /*
             the undo button was hit and a previous state is about to be restored
@@ -362,21 +157,6 @@ namespace sim
                 onRedo();
             }
             break;
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-        case sim_message_eventcallback_scripticondblclick:
-            /*
-            (called from the UI thread)
-            a script icon in the hierarchy view was double-clicked
-
-            auxiliaryData[0]=object handle of the object associated with the script
-            replyData[0]: set to 1 if you do not want the double-click action to open the
-                        script editor
-            */
-            {
-                onScriptIconDblClick(auxiliaryData[0], replyData[0]);
-            }
-            break;
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_simulationabouttostart:
             /*
             simulation will start
@@ -401,37 +181,6 @@ namespace sim
                 onSimulationEnded();
             }
             break;
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-        case sim_message_eventcallback_keypress:
-            /*
-            (called from the UI thread)
-            auxiliaryData[0]=key, auxiliaryData[1]=ctrl and shift key state
-            */
-            {
-                onKeyPress(auxiliaryData[0], auxiliaryData[1]);
-            }
-            break;
-        case sim_message_eventcallback_bannerclicked:
-            /*
-            (called from the UI thread)
-            called when a banner was clicked (auxiliaryData[0]=banner ID)
-            */
-            {
-                onBannerClicked(auxiliaryData[0]);
-            }
-            break;
-        case sim_message_eventcallback_refreshdialogs:
-            /*
-            (called from the UI thread)
-            called just before disloags are refreshed in CoppeliaSim.
-
-            auxiliaryData[0]=refresh degree (0=light, 1=medium, 2=full)
-            */
-            {
-                onRefreshDialogs(auxiliaryData[0]);
-            }
-            break;
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_sceneloaded:
             /*
             called after a scene was loaded
@@ -448,165 +197,6 @@ namespace sim
                 onModelLoaded();
             }
             break;
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-        case sim_message_eventcallback_guipass:
-            /*
-            (called from the UI thread)
-            Called on a regular basis from the GUI thread.
-            */
-            {
-                onGuiPass();
-            }
-            break;
-        case sim_message_eventcallback_rmlpos:
-            /*
-            the command simRMLPos was called. The appropriate plugin should handle the call
-            */
-            {
-                onRMLPos();
-            }
-            break;
-        case sim_message_eventcallback_rmlvel:
-            /*
-            the command simRMLVel was called. The appropriate plugin should handle the call
-            */
-            {
-                onRMLVel();
-            }
-            break;
-        case sim_message_eventcallback_rmlstep:
-            /*
-            the command simRMLStep was called. The appropriate plugin should handle the call
-            */
-            {
-                onRMLStep();
-            }
-            break;
-        case sim_message_eventcallback_rmlremove:
-            /*
-            the command simRMLRemove was called. The appropriate plugin should handle the call
-            */
-            {
-                onRMLRemove();
-            }
-            break;
-        case sim_message_eventcallback_pathplanningplugin:
-            /*
-            a path planning function was called. The appropriate plugin (i.e. 'PathPlanning')
-            should handle the call
-            */
-            {
-                onPathPlanningPlugin();
-            }
-            break;
-        case sim_message_eventcallback_colladaplugin:
-            /*
-            a collada plugin function was called. The appropriate plugin (i.e. 'Collada')
-            should handle the call
-            */
-            {
-                onColladaPlugin();
-            }
-            break;
-        case sim_message_eventcallback_opengl:
-            /*
-            (called from the UI thread)
-            (Enable via simEnableEventCallback)
-            the user can perform openGl calls from the plugin, in order to draw custom
-            graphics into the CoppeliaSim scene. This has a different functionality from the
-            simAddDrawingObject API function. Following data is sent to the plugins:
-
-            auxiliaryData[0]=index of the program location where the call occured
-                        (e.g. 0=before first CoppeliaSim rendering, 5=after last CoppeliaSim rendering).
-                        Refer to the source code for details.
-            auxiliaryData[1]=current rendering attributes
-            auxiliaryData[2]=handle of the camera
-            auxiliaryData[3]=index of the view, or -1 if view is unassociated
-            */
-            {
-                onOpenGL(auxiliaryData[0], auxiliaryData[1], auxiliaryData[2], auxiliaryData[3]);
-            }
-            break;
-        case sim_message_eventcallback_openglframe:
-            /*
-            (called from the UI thread)
-            (Enable via simEnableEventCallback)
-            a callback with the full rendered opengl frame data (that can be modified, then returned):
-
-            customData (unsigned char*): RGB data of the image.
-            auxiliaryData[0]=picture size X
-            auxiliaryData[1]=picture size Y
-            auxiliaryData[2]=0
-            auxiliaryData[3]=0. If you want CoppeliaSim to take into account any modification
-                        on the buffer, write 1 in here.
-            */
-            {
-                onOpenGLFrame(auxiliaryData[0], auxiliaryData[1], auxiliaryData[3]);
-            }
-            break;
-        case sim_message_eventcallback_openglcameraview:
-            /*
-            (called from the UI thread)
-            (Enable via simEnableEventCallback)
-            a callback with the rendered opengl camera view (that can be modified, then returned):
-
-            customData (unsigned char*): RGB data of the image.
-            auxiliaryData[0]=picture size X
-            auxiliaryData[1]=picture size Y
-            auxiliaryData[2]=view index
-            auxiliaryData[3]=0. If you want CoppeliaSim to take into account any modification
-                        on the buffer, write 1 in here.
-            */
-            {
-                onOpenGLCameraView(auxiliaryData[0], auxiliaryData[1], auxiliaryData[2], auxiliaryData[3]);
-            }
-            break;
-        case sim_message_eventcallback_proxsensorselectdown:
-            /*
-            a "geometric" click select (mouse down) was registered. Not generated if the
-            ctrl or shift key is down. A geometric click is generated in a non-delayed manner.
-            See also sim_message_eventcallback_pickselectdown hereafter. Enable with
-            sim_intparam_prox_sensor_select_down.
-
-            auxiliaryData[0]=objectID
-            customData[0]-customData[2]=coordinates of clicked point
-            customData[3]-customData[5]=normal vector of clicked surface
-            */
-            {
-                float *f = (float*)customData;
-                onProxSensorSelectDown(auxiliaryData[0], f, f+3);
-            }
-            break;
-        case sim_message_eventcallback_proxsensorselectup:
-            /*
-            a "geometric" click select (mouse up) was registered. Not generated if the ctrl
-            or shift key is down. A geometric click is generated in a non-delayed manner.
-            Enable with sim_intparam_prox_sensor_select_up.
-
-            auxiliaryData[0]=objectID
-            customData[0]-customData[2]=coordinates of clicked point
-            customData[3]-customData[5]=normal vector of clicked surface
-            */
-            {
-                float *f = (float*)customData;
-                onProxSensorSelectUp(auxiliaryData[0], f, f+3);
-            }
-            break;
-        case sim_message_eventcallback_pickselectdown:
-            /*
-            (called from the UI thread)
-            a "pick" click select (mouse down) was registered. Not generated if the ctrl or
-            shift key is down. A pick click is generated in a delayed manner. See also
-            sim_message_eventcallback_proxsensorselectdown here above.
-
-            auxiliaryData[0]=objectID or base object ID (if part of a model and select model
-                        base instead is checked)
-            */
-            {
-                onPickSelectDown(auxiliaryData[0]);
-            }
-            break;
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
         case sim_message_eventcallback_scriptstatedestroyed:
             {
                 onScriptStateDestroyed(auxiliaryData[0]);
@@ -616,12 +206,8 @@ namespace sim
 
         // Keep following unchanged:
         sim::setInt32Param(sim_intparam_error_report_mode, errorModeSaved);
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-        return retVal;
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
     }
 
-#ifndef SIM_PLUGIN_OLD_ENTRYPOINTS
     void Plugin::onUIInit()
     {
     }
@@ -651,7 +237,6 @@ namespace sim
             break;
         }
     }
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     LIBRARY Plugin::loadSimLibrary()
     {
@@ -689,25 +274,9 @@ namespace sim
         return lib;
     }
 
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-    void Plugin::onInstancePass(const InstancePassFlags &flags, bool first)
-    {
-    }
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
-
     void Plugin::onInstancePass(const InstancePassFlags &flags)
     {
     }
-
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-    void Plugin::onFirstInstancePass(const InstancePassFlags &flags)
-    {
-    }
-
-    void Plugin::onLastInstancePass()
-    {
-    }
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     void Plugin::onInstanceSwitch(int sceneID)
     {
@@ -717,16 +286,6 @@ namespace sim
     {
     }
 
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-    void Plugin::onMenuItemSelected(int itemHandle, int itemState)
-    {
-    }
-
-    void Plugin::onBroadcast(int header, int messageID)
-    {
-    }
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
-
     void Plugin::onSceneSave()
     {
     }
@@ -734,49 +293,6 @@ namespace sim
     void Plugin::onModelSave()
     {
     }
-
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-    void Plugin::onModuleOpen(char *name)
-    {
-    }
-
-    void Plugin::onModuleHandle(char *name)
-    {
-    }
-
-    void Plugin::onModuleHandleInSensingPart(char *name)
-    {
-    }
-
-    void Plugin::onModuleClose(char *name)
-    {
-    }
-
-    void Plugin::onRenderingPass()
-    {
-    }
-
-    void Plugin::onBeforeRendering()
-    {
-    }
-
-    void Plugin::onImageFilterEnumReset()
-    {
-    }
-
-    void Plugin::onImageFilterEnumerate(int &headerID, int &filterID, std::string &name)
-    {
-    }
-
-    void Plugin::onImageFilterAdjustParams(int headerID, int filterID, int bufferSize, void *buffer, int &editedBufferSize, void *&editedBuffer)
-    {
-    }
-
-    std::vector<float> Plugin::onImageFilterProcess(int headerID, int filterID, int resX, int resY, int visionSensorHandle, float *inputImage, float *depthImage, float *workImage, float *bufferImage1, float *bufferImage2, float *outputImage, void *filterParamBuffer, int &triggerDetectionn)
-    {
-        return std::vector<float>();
-    }
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     void Plugin::onAboutToUndo()
     {
@@ -794,12 +310,6 @@ namespace sim
     {
     }
 
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-    void Plugin::onScriptIconDblClick(int objectHandle, int &dontOpenEditor)
-    {
-    }
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
-
     void Plugin::onSimulationAboutToStart()
     {
     }
@@ -812,20 +322,6 @@ namespace sim
     {
     }
 
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-    void Plugin::onKeyPress(int key, int mods)
-    {
-    }
-
-    void Plugin::onBannerClicked(int bannerID)
-    {
-    }
-
-    void Plugin::onRefreshDialogs(int refreshDegree)
-    {
-    }
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
-
     void Plugin::onSceneLoaded()
     {
     }
@@ -833,60 +329,6 @@ namespace sim
     void Plugin::onModelLoaded()
     {
     }
-
-#ifdef SIM_PLUGIN_OLD_ENTRYPOINTS
-    void Plugin::onGuiPass()
-    {
-    }
-
-    void Plugin::onRMLPos()
-    {
-    }
-
-    void Plugin::onRMLVel()
-    {
-    }
-
-    void Plugin::onRMLStep()
-    {
-    }
-
-    void Plugin::onRMLRemove()
-    {
-    }
-
-    void Plugin::onPathPlanningPlugin()
-    {
-    }
-
-    void Plugin::onColladaPlugin()
-    {
-    }
-
-    void Plugin::onOpenGL(int programIndex, int renderingAttributes, int cameraHandle, int viewIndex)
-    {
-    }
-
-    void Plugin::onOpenGLFrame(int sizeX, int sizeY, int &out)
-    {
-    }
-
-    void Plugin::onOpenGLCameraView(int sizeX, int sizeY, int viewIndex, int &out)
-    {
-    }
-
-    void Plugin::onProxSensorSelectDown(int objectID, float *clickedPoint, float *normalVector)
-    {
-    }
-
-    void Plugin::onProxSensorSelectUp(int objectID, float *clickedPoint, float *normalVector)
-    {
-    }
-
-    void Plugin::onPickSelectDown(int objectID)
-    {
-    }
-#endif // SIM_PLUGIN_OLD_ENTRYPOINTS
 
     void Plugin::onScriptStateDestroyed(int scriptID)
     {
