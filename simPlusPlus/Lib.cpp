@@ -521,12 +521,6 @@ void setLastError(const std::string &msg)
         throw api_error("simSetLastError");
 }
 
-void setLastError(const std::string &func, const std::string &msg)
-{
-    if(simSetLastError(nullptr, msg.c_str()) == -1)
-        throw api_error("simSetLastError");
-}
-
 // int simResetGraph(int graphHandle);
 
 // int simDestroyGraphCurve(int graphHandle, int curveId);

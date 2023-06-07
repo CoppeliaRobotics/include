@@ -235,7 +235,6 @@ namespace sim
     // adjustView
 
     void setLastError(const std::string &msg);
-    void setLastError(const std::string &func, const std::string &msg);
 
     // resetGraph
 

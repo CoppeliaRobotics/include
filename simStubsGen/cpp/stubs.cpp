@@ -684,7 +684,7 @@ void `cmd.c_name`_callback(SScriptCallBack *p)
     }
     catch(std::exception &ex)
     {
-        sim::setLastError(cmd, ex.what());
+        sim::setLastError(ex.what());
     }
 
     try
@@ -718,7 +718,7 @@ void `cmd.c_name`_callback(SScriptCallBack *p)
     }
     catch(std::exception &ex)
     {
-        sim::setLastError(cmd, ex.what());
+        sim::setLastError(ex.what());
         // clear stack
         try { sim::popStackItem(p->stackID, 0); } catch(...) {}
     }
@@ -806,7 +806,7 @@ bool `fn.c_name`(int scriptId, const char *func, `fn.c_in_name` *in_args, `fn.c_
     {
         if(stackID != -1)
             try { sim::releaseStack(stackID); } catch(...) {}
-        sim::setLastError(func, ex.what());
+        sim::setLastError(ex.what());
         return false;
     }
 
