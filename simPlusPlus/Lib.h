@@ -70,17 +70,8 @@ namespace sim
         std::string func;
         std::string error;
 
-        api_error(const std::string &func_)
-            : api_error(func_, "error")
-        {
-        }
-
-        api_error(const std::string &func_, const std::string &error_)
-            : func(func_),
-              error(error_),
-              exception("%s: %s", func_, error_)
-        {
-        }
+        api_error(const std::string &func_);
+        api_error(const std::string &func_, const std::string &error_);
 
         ~api_error() throw()
         {

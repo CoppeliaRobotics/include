@@ -8,6 +8,18 @@ namespace sim
 
 static bool debugStackEnabled = false;
 
+api_error::api_error(const std::string &func_)
+    : api_error(func_, "")
+{
+}
+
+api_error::api_error(const std::string &func_, const std::string &error_)
+    : func(func_),
+      error((error_.empty() ? "" : (error_ + std::string(": "))) + getLastError()),
+      exception("%s: %s", func_, error_)
+{
+}
+
 void enableStackDebug()
 {
     debugStackEnabled = true;
