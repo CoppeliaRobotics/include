@@ -569,7 +569,7 @@ bool registerScriptStuff()
 #py for enum in plugin.enums:
             sim::registerScriptVariable("`enum.name`", "{}", 0);
 #py for item in enum.items:
-            sim::registerScriptVariable("`enum.name`.`item.name`", boost::lexical_cast<std::string>(sim_`plugin.name.lower()`_`enum.item_prefix``item.name`), 0);
+            sim::registerScriptVariable("`enum.name`.`item.name`", boost::lexical_cast<std::string>(`plugin.name.lower()`_`enum.item_prefix``item.name`), 0);
 #py endfor
 #py endfor
             // register commands:
@@ -596,7 +596,7 @@ const char* `enum.name.lower()`_string(`enum.name` x)
     switch(x)
     {
 #py for item in enum.items:
-        case sim_`plugin.name.lower()`_`enum.item_prefix``item.name`: return "sim_`plugin.name.lower()`_`enum.item_prefix``item.name`";
+        case `plugin.name.lower()`_`enum.item_prefix``item.name`: return "`plugin.name.lower()`_`enum.item_prefix``item.name`";
 #py endfor
         default: return "???";
     }
@@ -627,7 +627,7 @@ void `cmd.c_name`_callback(SScriptCallBack *p)
     addStubsDebugLog("`cmd.c_name`_callback: reading input arguments...");
     addStubsDebugStackDump(p->stackID);
 
-    const char *cmd = "sim`plugin.name`.`cmd.name`";
+    const char *cmd = "`plugin.name`.`cmd.name`";
 
     `cmd.c_in_name` in_args;
     if(p)
@@ -680,7 +680,7 @@ void `cmd.c_name`_callback(SScriptCallBack *p)
 #py endif
 
         addStubsDebugLog("`cmd.c_name`_callback: calling callback (`cmd.c_name`)");
-        sim`plugin.name`_`cmd.c_name`(&in_args, &out_args);
+        `plugin.name`_`cmd.c_name`(&in_args, &out_args);
     }
     catch(std::exception &ex)
     {

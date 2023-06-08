@@ -97,7 +97,7 @@ namespace sim
     };
 }
 
-#define SIM_PLUGIN(pluginName_, pluginVersion_, className_) \
+#define SIM_PLUGIN(className_) \
 namespace sim { \
 ::className_ *plugin; \
 sim::PluginInfo *pluginInfo; \
@@ -107,16 +107,16 @@ SIM_DLLEXPORT unsigned char simInit(void *reservedPointer, int reservedInt) \
     try \
     { \
         sim::pluginInfo = new sim::PluginInfo; \
-        sim::pluginInfo->name = pluginName_; \
-        sim::pluginInfo->version = pluginVersion_; \
-        sim::pluginInfo->nameAndVersion = pluginName_; \
-        if(pluginVersion_ > 0) \
+        sim::pluginInfo->name = PLUGIN_NAME; \
+        sim::pluginInfo->version = PLUGIN_VERSION; \
+        sim::pluginInfo->nameAndVersion = sim::pluginInfo->name; \
+        if(sim::pluginInfo->version > 0) \
         { \
             sim::pluginInfo->nameAndVersion += "-"; \
-            sim::pluginInfo->nameAndVersion += std::to_string(pluginVersion_); \
+            sim::pluginInfo->nameAndVersion += std::to_string(sim::pluginInfo->version); \
         } \
         sim::plugin = new className_; \
-        sim::plugin->setName(pluginName_); \
+        sim::plugin->setName(sim::pluginInfo->name); \
         sim::pluginInfo->lib = sim::plugin->loadSimLibrary(); \
         sim::plugin->onInit(); \
         return std::max(1, sim::pluginInfo->version); \
@@ -160,8 +160,8 @@ SIM_DLLEXPORT void simMsg(int message, int *auxiliaryData, void *customData) \
         sim::addLog(sim_verbosity_errors, ex.what()); \
     } \
 }
-#define SIM_UI_PLUGIN(pluginName_, pluginVersion_, className_) \
-SIM_PLUGIN(pluginName_, pluginVersion_, className_); \
+#define SIM_UI_PLUGIN(className_) \
+SIM_PLUGIN(className_); \
 SIM_DLLEXPORT void simInit_ui() \
 { \
     try \

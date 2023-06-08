@@ -15,7 +15,7 @@ plugin = parse(args.xml_file)
 
 mapping = {}
 
-pluginKey = f'sim{plugin.name}'
+pluginKey = f'{plugin.name}'
 if plugin.version > 1:
     pluginKey += f'-{plugin.version}'
 
@@ -26,7 +26,7 @@ with open(args.out_file, 'wt') as f:
         f.write(f'{cmd.calltip}\n')
     for enum in plugin.enums:
         for item in enum.items:
-            f.write(f'sim{plugin.name}.{enum.name}.{item.name}\n')
+            f.write(f'{plugin.name}.{enum.name}.{item.name}\n')
     f.write(f"""]]
 
 registerCodeEditorInfos("{pluginKey}",codeEditorInfos)

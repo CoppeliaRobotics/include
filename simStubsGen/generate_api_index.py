@@ -16,11 +16,11 @@ plugin = parse(args.xml_file)
 mapping = {}
 
 if plugin.version > 1:
-    pluginKey = f'sim{plugin.name}_{plugin.version}'
-    htmFile = f'sim{plugin.name}-{plugin.version}.htm'
+    pluginKey = f'{plugin.name}_{plugin.version}'
+    htmFile = f'{plugin.name}-{plugin.version}.htm'
 else:
-    pluginKey = f'sim{plugin.name}'
-    htmFile = f'sim{plugin.name}.htm'
+    pluginKey = f'{plugin.name}'
+    htmFile = f'{plugin.name}.htm'
 
 for cmd in plugin.commands:
     mapping[f'{cmd.name}'] = f'{htmFile}#{cmd.name}'
