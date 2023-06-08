@@ -540,7 +540,7 @@ void checkRuntimeVersion()
     int simVer = sim::programVersion();
 
     // version required by simStubsGen:
-    int minVer = 4010000; // 4.1.0rev0
+    int minVer = 4050107; // 4.5.1rev7
     if(simVer < minVer)
         throw sim::exception("requires at least %s (simStubsGen)", sim::versionString(minVer));
 
