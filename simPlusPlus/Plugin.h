@@ -31,9 +31,7 @@
 
 namespace sim
 {
-    extern std::string pluginName;
-    extern int pluginVersion;
-    extern std::string pluginNameAndVersion;
+    extern sim::PluginInfo *pluginInfo;
 
     struct InstancePassFlags
     {
@@ -101,29 +99,27 @@ namespace sim
 
 #define SIM_PLUGIN(pluginName_, pluginVersion_, className_) \
 namespace sim { \
-LIBRARY lib; \
 ::className_ *plugin; \
-std::string pluginName; \
-std::string pluginNameAndVersion; \
-int pluginVersion; \
+sim::PluginInfo *pluginInfo; \
 } \
 SIM_DLLEXPORT unsigned char simInit(void *reservedPointer, int reservedInt) \
 { \
     try \
     { \
-        sim::pluginName = pluginName_; \
-        sim::pluginVersion = pluginVersion_; \
-        sim::pluginNameAndVersion = pluginName_; \
+        sim::pluginInfo = new sim::PluginInfo; \
+        sim::pluginInfo->name = pluginName_; \
+        sim::pluginInfo->version = pluginVersion_; \
+        sim::pluginInfo->nameAndVersion = pluginName_; \
         if(pluginVersion_ > 0) \
         { \
-            sim::pluginNameAndVersion += "-"; \
-            sim::pluginNameAndVersion += std::to_string(pluginVersion_); \
+            sim::pluginInfo->nameAndVersion += "-"; \
+            sim::pluginInfo->nameAndVersion += std::to_string(pluginVersion_); \
         } \
         sim::plugin = new className_; \
         sim::plugin->setName(pluginName_); \
-        sim::lib = sim::plugin->loadSimLibrary(); \
+        sim::pluginInfo->lib = sim::plugin->loadSimLibrary(); \
         sim::plugin->onInit(); \
-        return std::max(1, sim::pluginVersion); \
+        return std::max(1, sim::pluginInfo->version); \
     } \
     catch(std::exception &ex) \
     { \
@@ -146,7 +142,9 @@ SIM_DLLEXPORT void simCleanup() \
     { \
         sim::addLog(sim_verbosity_errors, ex.what()); \
     } \
-    unloadSimLibrary(sim::lib); \
+    unloadSimLibrary(sim::pluginInfo->lib); \
+    delete sim::pluginInfo; \
+    sim::pluginInfo = nullptr; \
 } \
 SIM_DLLEXPORT void simMsg(int message, int *auxiliaryData, void *customData) \
 { \

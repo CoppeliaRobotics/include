@@ -16,6 +16,14 @@
 
 namespace sim
 {
+    struct PluginInfo
+    {
+        LIBRARY lib;
+        std::string name;
+        std::string nameAndVersion;
+        int version;
+    };
+
     namespace util
     {
         static std::string sprintf(boost::format &fmt)
@@ -78,7 +86,7 @@ namespace sim
         }
     };
 
-    extern std::string pluginNameAndVersion;
+    extern PluginInfo *pluginInfo;
 
 
     void enableStackDebug();
@@ -512,7 +520,7 @@ namespace sim
     void addLog(int verbosity, const std::string &fmt, Arguments&&... args)
     {
         addLog(
-            std::string("sim") + pluginNameAndVersion,
+            std::string("sim") + pluginInfo->nameAndVersion,
             verbosity,
             util::sprintf(fmt, std::forward<Arguments>(args)...)
         );

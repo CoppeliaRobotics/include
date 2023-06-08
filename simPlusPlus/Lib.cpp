@@ -1429,12 +1429,12 @@ void setModuleInfo(const std::string &moduleName, int infoType, int intInfo)
 
 void setModuleInfo(int infoType, const std::string &stringInfo)
 {
-    setModuleInfo(pluginName, infoType, stringInfo);
+    setModuleInfo(pluginInfo->name, infoType, stringInfo);
 }
 
 void setModuleInfo(int infoType, int intInfo)
 {
-    setModuleInfo(pluginName, infoType, intInfo);
+    setModuleInfo(pluginInfo->name, infoType, intInfo);
 }
 
 void getModuleInfo(const std::string &moduleName, int infoType, std::string &stringInfo)
@@ -1475,12 +1475,12 @@ int getModuleInfoInt(const std::string &moduleName, int infoType)
 
 void getModuleInfo(int infoType, std::string &stringInfo)
 {
-    getModuleInfo(pluginName, infoType, stringInfo);
+    getModuleInfo(pluginInfo->name, infoType, stringInfo);
 }
 
 void getModuleInfo(int infoType, int &intInfo)
 {
-    getModuleInfo(pluginName, infoType, intInfo);
+    getModuleInfo(pluginInfo->name, infoType, intInfo);
 }
 
 std::string getModuleInfoStr(int infoType)
