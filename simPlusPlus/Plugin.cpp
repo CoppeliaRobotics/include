@@ -19,27 +19,27 @@ namespace sim
 
     void Plugin::setExtVersion(const std::string &s)
     {
-        sim::setModuleInfo(sim_moduleinfo_extversionstr, s);
+        sim::setPluginInfo(sim_moduleinfo_extversionstr, s);
     }
 
     void Plugin::setExtVersion(int i)
     {
-        sim::setModuleInfo(sim_moduleinfo_extversionint, i);
+        sim::setPluginInfo(sim_moduleinfo_extversionint, i);
     }
 
     void Plugin::setBuildDate(const std::string &s)
     {
-        sim::setModuleInfo(sim_moduleinfo_builddatestr, s);
+        sim::setPluginInfo(sim_moduleinfo_builddatestr, s);
     }
 
     void Plugin::setVerbosity(int i)
     {
-        sim::setModuleInfo(sim_moduleinfo_verbosity, i);
+        sim::setPluginInfo(sim_moduleinfo_verbosity, i);
     }
 
     int Plugin::getVerbosity()
     {
-        return sim::getModuleInfoInt(sim_moduleinfo_verbosity);
+        return sim::getPluginInfoInt(sim_moduleinfo_verbosity);
     }
 
     void Plugin::onInit()

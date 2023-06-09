@@ -1415,34 +1415,34 @@ std::string getApiInfo(int scriptHandleOrType, const std::string &apiWord)
     return "";
 }
 
-void setModuleInfo(const std::string &moduleName, int infoType, const std::string &stringInfo)
+void setPluginInfo(const std::string &moduleName, int infoType, const std::string &stringInfo)
 {
-    if(simSetModuleInfo(moduleName.c_str(), infoType, stringInfo.c_str(), 0) == -1)
-        throw api_error("simSetModuleInfo");
+    if(simSetPluginInfo(moduleName.c_str(), infoType, stringInfo.c_str(), 0) == -1)
+        throw api_error("simSetPluginInfo");
 }
 
-void setModuleInfo(const std::string &moduleName, int infoType, int intInfo)
+void setPluginInfo(const std::string &moduleName, int infoType, int intInfo)
 {
-    if(simSetModuleInfo(moduleName.c_str(), infoType, nullptr, intInfo) == -1)
-        throw api_error("simSetModuleInfo");
+    if(simSetPluginInfo(moduleName.c_str(), infoType, nullptr, intInfo) == -1)
+        throw api_error("simSetPluginInfo");
 }
 
-void setModuleInfo(int infoType, const std::string &stringInfo)
+void setPluginInfo(int infoType, const std::string &stringInfo)
 {
-    setModuleInfo(pluginInfo->name, infoType, stringInfo);
+    setPluginInfo(pluginInfo->name, infoType, stringInfo);
 }
 
-void setModuleInfo(int infoType, int intInfo)
+void setPluginInfo(int infoType, int intInfo)
 {
-    setModuleInfo(pluginInfo->name, infoType, intInfo);
+    setPluginInfo(pluginInfo->name, infoType, intInfo);
 }
 
-void getModuleInfo(const std::string &moduleName, int infoType, std::string &stringInfo)
+void getPluginInfo(const std::string &moduleName, int infoType, std::string &stringInfo)
 {
     int intInfo = 0;
     char *s = nullptr;
-    if(simGetModuleInfo(moduleName.c_str(), infoType, &s, &intInfo) == -1)
-        throw api_error("simGetModuleInfo");
+    if(simGetPluginInfo(moduleName.c_str(), infoType, &s, &intInfo) == -1)
+        throw api_error("simGetPluginInfo");
     if(s)
     {
         stringInfo = std::string(s);
@@ -1450,50 +1450,50 @@ void getModuleInfo(const std::string &moduleName, int infoType, std::string &str
     }
 }
 
-void getModuleInfo(const std::string &moduleName, int infoType, int &intInfo)
+void getPluginInfo(const std::string &moduleName, int infoType, int &intInfo)
 {
     char *s = nullptr;
-    if(simGetModuleInfo(moduleName.c_str(), infoType, &s, &intInfo) == -1)
-        throw api_error("simGetModuleInfo");
+    if(simGetPluginInfo(moduleName.c_str(), infoType, &s, &intInfo) == -1)
+        throw api_error("simGetPluginInfo");
     if(s)
         releaseBuffer(s);
 }
 
-std::string getModuleInfoStr(const std::string &moduleName, int infoType)
+std::string getPluginInfoStr(const std::string &moduleName, int infoType)
 {
     std::string s;
-    getModuleInfo(moduleName, infoType, s);
+    getPluginInfo(moduleName, infoType, s);
     return s;
 }
 
-int getModuleInfoInt(const std::string &moduleName, int infoType)
+int getPluginInfoInt(const std::string &moduleName, int infoType)
 {
     int i;
-    getModuleInfo(moduleName, infoType, i);
+    getPluginInfo(moduleName, infoType, i);
     return i;
 }
 
-void getModuleInfo(int infoType, std::string &stringInfo)
+void getPluginInfo(int infoType, std::string &stringInfo)
 {
-    getModuleInfo(pluginInfo->name, infoType, stringInfo);
+    getPluginInfo(pluginInfo->name, infoType, stringInfo);
 }
 
-void getModuleInfo(int infoType, int &intInfo)
+void getPluginInfo(int infoType, int &intInfo)
 {
-    getModuleInfo(pluginInfo->name, infoType, intInfo);
+    getPluginInfo(pluginInfo->name, infoType, intInfo);
 }
 
-std::string getModuleInfoStr(int infoType)
+std::string getPluginInfoStr(int infoType)
 {
     std::string s;
-    getModuleInfo(infoType, s);
+    getPluginInfo(infoType, s);
     return s;
 }
 
-int getModuleInfoInt(int infoType)
+int getPluginInfoInt(int infoType)
 {
     int i;
-    getModuleInfo(infoType, i);
+    getPluginInfo(infoType, i);
     return i;
 }
 

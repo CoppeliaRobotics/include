@@ -229,7 +229,7 @@ namespace sim
 
     // pauseSimulation
 
-    // getModuleName
+    // getPluginName
 
     // adjustView
 
@@ -495,19 +495,19 @@ namespace sim
 
     std::string getApiInfo(int scriptHandleOrType, const std::string &apiWord);
 
-    void setModuleInfo(const std::string &moduleName, int infoType, const std::string &stringInfo);
-    void setModuleInfo(const std::string &moduleName, int infoType, int intInfo);
-    void setModuleInfo(int infoType, const std::string &stringInfo);
-    void setModuleInfo(int infoType, int intInfo);
+    void setPluginInfo(const std::string &moduleName, int infoType, const std::string &stringInfo);
+    void setPluginInfo(const std::string &moduleName, int infoType, int intInfo);
+    void setPluginInfo(int infoType, const std::string &stringInfo);
+    void setPluginInfo(int infoType, int intInfo);
 
-    void getModuleInfo(const std::string &moduleName, int infoType, std::string &stringInfo);
-    void getModuleInfo(const std::string &moduleName, int infoType, int &intInfo);
-    std::string getModuleInfoStr(const std::string &moduleName, int infoType);
-    int getModuleInfoInt(const std::string &moduleName, int infoType);
-    void getModuleInfo(int infoType, std::string &stringInfo);
-    void getModuleInfo(int infoType, int &intInfo);
-    std::string getModuleInfoStr(int infoType);
-    int getModuleInfoInt(int infoType);
+    void getPluginInfo(const std::string &moduleName, int infoType, std::string &stringInfo);
+    void getPluginInfo(const std::string &moduleName, int infoType, int &intInfo);
+    std::string getPluginInfoStr(const std::string &moduleName, int infoType);
+    int getPluginInfoInt(const std::string &moduleName, int infoType);
+    void getPluginInfo(int infoType, std::string &stringInfo);
+    void getPluginInfo(int infoType, int &intInfo);
+    std::string getPluginInfoStr(int infoType);
+    int getPluginInfoInt(int infoType);
 
     bool isDeprecated(const std::string &funcOrConst);
 
