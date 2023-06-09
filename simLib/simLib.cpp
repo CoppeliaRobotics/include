@@ -37,8 +37,6 @@ ptrSimRunSimulatorEx simRunSimulatorEx=nullptr;
 ptrSimGetSimulatorMessage simGetSimulatorMessage=nullptr;
 ptrSimGetMainWindow simGetMainWindow=nullptr;
 ptrSimGetLastError simGetLastError=nullptr;
-ptrSimLoadModule simLoadModule=nullptr;
-ptrSimUnloadModule simUnloadModule=nullptr;
 ptrSimSetBoolParam simSetBoolParam=nullptr;
 ptrSimGetBoolParam simGetBoolParam=nullptr;
 ptrSimSetInt32Param simSetInt32Param=nullptr;
@@ -134,7 +132,6 @@ ptrSimAdvanceSimulationByOneStep simAdvanceSimulationByOneStep=nullptr;
 ptrSimStartSimulation simStartSimulation=nullptr;
 ptrSimStopSimulation simStopSimulation=nullptr;
 ptrSimPauseSimulation simPauseSimulation=nullptr;
-ptrSimGetModuleName simGetModuleName=nullptr;
 ptrSimFloatingViewAdd simFloatingViewAdd=nullptr;
 ptrSimFloatingViewRemove simFloatingViewRemove=nullptr;
 ptrSimAdjustView simAdjustView=nullptr;
@@ -359,8 +356,9 @@ ptrSimGetShapeViz simGetShapeViz=nullptr;
 ptrSimExecuteScriptString simExecuteScriptString=nullptr;
 ptrSimGetApiFunc simGetApiFunc=nullptr;
 ptrSimGetApiInfo simGetApiInfo=nullptr;
-ptrSimSetModuleInfo simSetModuleInfo=nullptr;
-ptrSimGetModuleInfo simGetModuleInfo=nullptr;
+ptrSimGetPluginName simGetPluginName=nullptr;
+ptrSimSetPluginInfo simSetPluginInfo=nullptr;
+ptrSimGetPluginInfo simGetPluginInfo=nullptr;
 ptrSimGetPersistentDataTags simGetPersistentDataTags=nullptr;
 ptrSimEventNotification simEventNotification=nullptr;
 ptrSimApplyTexture simApplyTexture=nullptr;
@@ -544,8 +542,6 @@ int getSimProcAddresses(LIBRARY lib)
     simGetSimulatorMessage=(ptrSimGetSimulatorMessage)(_getProcAddress(lib,"simGetSimulatorMessage",false));
     simGetMainWindow=(ptrSimGetMainWindow)(_getProcAddress(lib,"simGetMainWindow",false));
     simGetLastError=(ptrSimGetLastError)(_getProcAddress(lib,"simGetLastError",false));
-    simLoadModule=(ptrSimLoadModule)(_getProcAddress(lib,"simLoadModule",false));
-    simUnloadModule=(ptrSimUnloadModule)(_getProcAddress(lib,"simUnloadModule",false));
     simSetBoolParam=(ptrSimSetBoolParam)(_getProcAddress(lib,"simSetBoolParam",false));
     simGetBoolParam=(ptrSimGetBoolParam)(_getProcAddress(lib,"simGetBoolParam",false));
     simSetInt32Param=(ptrSimSetInt32Param)(_getProcAddress(lib,"simSetInt32Param",false));
@@ -597,7 +593,6 @@ int getSimProcAddresses(LIBRARY lib)
     simStartSimulation=(ptrSimStartSimulation)(_getProcAddress(lib,"simStartSimulation",false));
     simStopSimulation=(ptrSimStopSimulation)(_getProcAddress(lib,"simStopSimulation",false));
     simPauseSimulation=(ptrSimPauseSimulation)(_getProcAddress(lib,"simPauseSimulation",false));
-    simGetModuleName=(ptrSimGetModuleName)(_getProcAddress(lib,"simGetModuleName",false));
     simAdjustView=(ptrSimAdjustView)(_getProcAddress(lib,"simAdjustView",false));
     simSetLastError=(ptrSimSetLastError)(_getProcAddress(lib,"simSetLastError",false));
     simResetGraph=(ptrSimResetGraph)(_getProcAddress(lib,"simResetGraph",false));
@@ -732,8 +727,9 @@ int getSimProcAddresses(LIBRARY lib)
     simExecuteScriptString=(ptrSimExecuteScriptString)(_getProcAddress(lib,"simExecuteScriptString",false));
     simGetApiFunc=(ptrSimGetApiFunc)(_getProcAddress(lib,"simGetApiFunc",false));
     simGetApiInfo=(ptrSimGetApiInfo)(_getProcAddress(lib,"simGetApiInfo",false));
-    simSetModuleInfo=(ptrSimSetModuleInfo)(_getProcAddress(lib,"simSetModuleInfo",false));
-    simGetModuleInfo=(ptrSimGetModuleInfo)(_getProcAddress(lib,"simGetModuleInfo",false));
+    simGetPluginName=(ptrSimGetPluginName)(_getProcAddress(lib,"simGetPluginName",false));
+    simSetPluginInfo=(ptrSimSetPluginInfo)(_getProcAddress(lib,"simSetPluginInfo",false));
+    simGetPluginInfo=(ptrSimGetPluginInfo)(_getProcAddress(lib,"simGetPluginInfo",false));
     simGetPersistentDataTags=(ptrSimGetPersistentDataTags)(_getProcAddress(lib,"simGetPersistentDataTags",false));
     simEventNotification=(ptrSimEventNotification)(_getProcAddress(lib,"simEventNotification",false));
     simIsDynamicallyEnabled=(ptrSimIsDynamicallyEnabled)(_getProcAddress(lib,"simIsDynamicallyEnabled",false));
@@ -992,16 +988,6 @@ int getSimProcAddresses(LIBRARY lib)
     if (simGetLastError==nullptr)
     {
         printf("%s simGetLastError\n",couldNotFind);
-        return 0;
-    }
-    if (simLoadModule==nullptr)
-    {
-        printf("%s simLoadModule\n",couldNotFind);
-        return 0;
-    }
-    if (simUnloadModule==nullptr)
-    {
-        printf("%s simUnloadModule\n",couldNotFind);
         return 0;
     }
     if (simSetBoolParam==nullptr)
@@ -1477,11 +1463,6 @@ int getSimProcAddresses(LIBRARY lib)
     if (simPauseSimulation==nullptr)
     {
         printf("%s simPauseSimulation\n",couldNotFind);
-        return 0;
-    }
-    if (simGetModuleName==nullptr)
-    {
-        printf("%s simGetModuleName\n",couldNotFind);
         return 0;
     }
     if (simFloatingViewAdd==nullptr)
@@ -2599,14 +2580,19 @@ int getSimProcAddresses(LIBRARY lib)
         printf("%s simGetApiInfo\n",couldNotFind);
         return 0;
     }
-    if (simSetModuleInfo==nullptr)
+    if (simGetPluginName==nullptr)
     {
-        printf("%s simSetModuleInfo\n",couldNotFind);
+        printf("%s simGetPluginName\n",couldNotFind);
         return 0;
     }
-    if (simGetModuleInfo==nullptr)
+    if (simSetPluginInfo==nullptr)
     {
-        printf("%s simGetModuleInfo\n",couldNotFind);
+        printf("%s simSetPluginInfo\n",couldNotFind);
+        return 0;
+    }
+    if (simGetPluginInfo==nullptr)
+    {
+        printf("%s simGetPluginInfo\n",couldNotFind);
         return 0;
     }
     if (simGetPersistentDataTags==nullptr)

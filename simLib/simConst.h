@@ -983,7 +983,15 @@ enum { /* verbosity */
     sim_verbosity_onlyterminal=0x10000,
 };
 
-enum { /* module info */
+enum { /* plugin info */
+    sim_plugininfo_extversionstr=0,
+    sim_plugininfo_builddatestr,
+    sim_plugininfo_extversionint,
+    sim_plugininfo_verbosity,
+    sim_plugininfo_statusbarverbosity,
+};
+
+enum { /* deprecated */
     sim_moduleinfo_extversionstr=0,
     sim_moduleinfo_builddatestr,
     sim_moduleinfo_extversionint,

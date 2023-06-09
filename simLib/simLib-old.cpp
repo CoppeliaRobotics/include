@@ -18,6 +18,11 @@ ptrSimSetSphericalJointMatrix simSetSphericalJointMatrix=nullptr;
 ptr_simGetGeomProxyFromShape _simGetGeomProxyFromShape=nullptr;
 ptrSimReorientShapeBoundingBox simReorientShapeBoundingBox=nullptr;
 ptrSimIsDeprecated simIsDeprecated=nullptr;
+ptrSimLoadModule simLoadModule=nullptr;
+ptrSimUnloadModule simUnloadModule=nullptr;
+ptrSimGetModuleName simGetModuleName=nullptr;
+ptrSimSetModuleInfo simSetModuleInfo=nullptr;
+ptrSimGetModuleInfo simGetModuleInfo=nullptr;
 
 #ifdef SIM_INTERFACE_OLD
 #include "simLib-old2.cpp"
@@ -50,6 +55,11 @@ int getSimProcAddressesOld(LIBRARY lib)
     _simGetGeomProxyFromShape=(ptr_simGetGeomProxyFromShape)(_getProcAddress(lib,"_simGetGeomProxyFromShape",false));
     simReorientShapeBoundingBox=(ptrSimReorientShapeBoundingBox)(_getProcAddress(lib,"simReorientShapeBoundingBox",false));
     simIsDeprecated=(ptrSimIsDeprecated)(_getProcAddress(lib,"simIsDeprecated",false));
+    simLoadModule=(ptrSimLoadModule)(_getProcAddress(lib,"simLoadModule",false));
+    simUnloadModule=(ptrSimUnloadModule)(_getProcAddress(lib,"simUnloadModule",false));
+    simGetModuleName=(ptrSimGetModuleName)(_getProcAddress(lib,"simGetModuleName",false));
+    simSetModuleInfo=(ptrSimSetModuleInfo)(_getProcAddress(lib,"simSetModuleInfo",false));
+    simGetModuleInfo=(ptrSimGetModuleInfo)(_getProcAddress(lib,"simGetModuleInfo",false));
 
     char *ps=std::getenv("COPPELIASIMPLUGIN_IGNORE_MISSING_SYMBOLS");
     if (ps!=nullptr)
@@ -155,6 +165,31 @@ int getSimProcAddressesOld(LIBRARY lib)
     if (simIsDeprecated==nullptr)
     {
         printf("%s simIsDeprecated\n",couldNotFind);
+        return 0;
+    }
+    if (simLoadModule==nullptr)
+    {
+        printf("%s simLoadModule\n",couldNotFind);
+        return 0;
+    }
+    if (simUnloadModule==nullptr)
+    {
+        printf("%s simUnloadModule\n",couldNotFind);
+        return 0;
+    }
+    if (simGetModuleName==nullptr)
+    {
+        printf("%s simGetModuleName\n",couldNotFind);
+        return 0;
+    }
+    if (simSetModuleInfo==nullptr)
+    {
+        printf("%s simSetModuleInfo\n",couldNotFind);
+        return 0;
+    }
+    if (simGetModuleInfo==nullptr)
+    {
+        printf("%s simGetModuleInfo\n",couldNotFind);
         return 0;
     }
     return 1;

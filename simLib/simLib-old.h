@@ -18,6 +18,11 @@ typedef int (__cdecl *ptrSimSetSphericalJointMatrix)(int objectHandle,const SIMD
 typedef const void* (__cdecl *ptr_simGetGeomProxyFromShape)(const void* shape);
 typedef int (__cdecl *ptrSimReorientShapeBoundingBox)(int shapeHandle,int relativeToHandle,int reservedSetToZero);
 typedef int (__cdecl *ptrSimIsDeprecated)(const char* funcOrConst);
+typedef int (__cdecl *ptrSimLoadModule)(const char* filenameAndPath,const char* pluginName);
+typedef int (__cdecl *ptrSimUnloadModule)(int pluginhandle);
+typedef int (__cdecl *ptrSimSetModuleInfo)(const char* moduleName,int infoType,const char* stringInfo,int intInfo);
+typedef int (__cdecl *ptrSimGetModuleInfo)(const char* moduleName,int infoType,char** stringInfo,int* intInfo);
+typedef char* (__cdecl *ptrSimGetModuleName)(int index,unsigned char* moduleVersion);
 
 extern ptrSimAddModuleMenuEntry simAddModuleMenuEntry;
 extern ptrSimSetModuleMenuItemState simSetModuleMenuItemState;
@@ -39,6 +44,11 @@ extern ptrSimSetSphericalJointMatrix simSetSphericalJointMatrix;
 extern ptr_simGetGeomProxyFromShape _simGetGeomProxyFromShape;
 extern ptrSimReorientShapeBoundingBox simReorientShapeBoundingBox;
 extern ptrSimIsDeprecated simIsDeprecated;
+extern ptrSimLoadModule simLoadModule;
+extern ptrSimUnloadModule simUnloadModule;
+extern ptrSimGetModuleName simGetModuleName;
+extern ptrSimSetModuleInfo simSetModuleInfo;
+extern ptrSimGetModuleInfo simGetModuleInfo;
 
 #ifdef SIM_INTERFACE_OLD
 #include "simLib-old2.h"
