@@ -55,5 +55,7 @@ return function(obj)
             return table.unpack(_rets)
         end
     end)
-end
+""")
+
+    f.write(f"""end
 """)
