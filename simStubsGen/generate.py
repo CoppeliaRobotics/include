@@ -75,11 +75,6 @@ if args.gen_lua_typechecker:
 if args.gen_ce:
     args.gen_lua_xml = True
 
-if args.lua_file:
-    lua_require = os.path.splitext(os.path.basename(args.lua_file))[0]
-else:
-    lua_require = ''
-
 if args.verbose:
     print(' '.join(['"%s"' % arg if ' ' in arg else arg for arg in sys.argv]))
 
@@ -126,7 +121,6 @@ if args.gen_lua_typechecker:
         print('no lua file defined. skipping gen_lua_typechecker')
         args.gen_lua_typechecker = False
     else:
-        lua_require += '-typecheck'
         runtool('generate_lua_typechecker', args.lua_file, output('lua.xml'), output(f'typecheck.lua'))
 
 if args.gen_api_index:
@@ -141,10 +135,6 @@ if args.gen_stubs:
         '-p', 'xml_file=' + args.xml_file,
         '-P', self_dir
     ]
-    if lua_require:
-        tool.extend([
-            '-p', f'lua_require={lua_require}',
-        ])
     for fn in ('stubs.cpp', 'stubs.h', 'plugin.h', 'stubsPlusPlus.cpp'):
         runtool(*tool, '-i', rel('cpp/' + fn), '-o', output(fn))
 
