@@ -1497,12 +1497,6 @@ int getPluginInfoInt(int infoType)
     return i;
 }
 
-bool isDeprecated(const std::string &funcOrConst)
-{
-    int ret = simIsDeprecated(funcOrConst.c_str());
-    return ret > 0;
-}
-
 std::vector<std::string> getPersistentDataTags()
 {
     std::vector<std::string> ret;

@@ -509,8 +509,6 @@ namespace sim
     std::string getPluginInfoStr(int infoType);
     int getPluginInfoInt(int infoType);
 
-    bool isDeprecated(const std::string &funcOrConst);
-
     std::vector<std::string> getPersistentDataTags();
 
     int eventNotification(const std::string &event);
