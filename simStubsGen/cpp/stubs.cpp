@@ -574,7 +574,7 @@ bool registerScriptStuff()
 #py endfor
             // register commands:
 #py for cmd in plugin.commands:
-            sim::registerScriptCallbackFunction("`cmd.name`", nullptr, `cmd.c_name`_callback);
+            sim::registerScriptCallbackFunction("`cmd.name`", `cmd.c_name`_callback);
 #py endfor
         }
         catch(std::exception &ex)

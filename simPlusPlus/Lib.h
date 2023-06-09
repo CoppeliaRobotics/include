@@ -250,6 +250,7 @@ namespace sim
     // getPage
 
     int registerScriptCallbackFunction(const std::string &funcNameAtPluginName, const std::string &callTips, void (*callBack)(struct SScriptCallBack *cb));
+    int registerScriptCallbackFunction(const std::string &funcNameAtPluginName, void (*callBack)(struct SScriptCallBack *cb));
 
     int registerScriptVariable(const std::string &varName, const char *varValue, int stackID);
     int registerScriptVariable(const std::string &varName, const std::string &varValue, int stackID);

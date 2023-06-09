@@ -559,6 +559,18 @@ int registerScriptCallbackFunction(const std::string &funcNameAtPluginName, cons
     return ret;
 }
 
+int registerScriptCallbackFunction(const std::string &funcNameAtPluginName, void (*callBack)(struct SScriptCallBack *cb))
+{
+    int ret = simRegisterScriptCallbackFunction(funcNameAtPluginName.c_str(), nullptr, callBack);
+    if(ret == 0)
+    {
+        addLog(sim_verbosity_warnings, "replaced function '%s'", funcNameAtPluginName);
+    }
+    if(ret == -1)
+        throw api_error("simRegisterScriptCallbackFunction");
+    return ret;
+}
+
 int registerScriptVariable(const std::string &varName, const char *varValue, int stackID)
 {
     int ret = simRegisterScriptVariable(varName.c_str(), varValue, stackID);
