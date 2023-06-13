@@ -13,9 +13,18 @@ api_error::api_error(const std::string &func_)
 {
 }
 
+static std::string getLastError_noexcept()
+{
+    char *ret = simGetLastError();
+    if(!ret) return "unknown error";
+    std::string s(ret);
+    releaseBuffer(ret);
+    return s;
+}
+
 api_error::api_error(const std::string &func_, const std::string &error_)
     : func(func_),
-      error((error_.empty() ? "" : (error_ + std::string(": "))) + getLastError()),
+      error((error_.empty() ? "" : (error_ + std::string(": "))) + getLastError_noexcept()),
       exception("%s: %s", func_, error_)
 {
 }
