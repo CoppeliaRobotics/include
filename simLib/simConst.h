@@ -590,10 +590,10 @@ enum { /* special handle flags: */
     sim_handleflag_togglevisibility     =0x00400000,
     sim_handleflag_extended             =0x00400000,
     sim_handleflag_greyscale            =0x00400000,
-    sim_handleflag_codedstring          =0x00400000,
+    sim_handleflag_codedstring          =0x00400000, /* all, except double */
     sim_handleflag_wxyzquat             =0x01000000,
     sim_handleflag_reljointbaseframe    =0x00400000,
-    sim_handleflag_setmultiple          =0x00400000,
+    sim_handleflag_setmultiple          =0x00400000, /* deprecated */
     sim_handleflag_addmultiple          =0x01000000,
     sim_handleflag_abscoords            =0x00800000,
     sim_handleflag_depthbuffer          =0x00800000,
