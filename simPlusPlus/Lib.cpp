@@ -1193,16 +1193,15 @@ void moveStackItemToTop(int stackHandle, int cIndex)
     addStackDebugDump(stackHandle);
 }
 
-int isStackValueNull(int stackHandle)
+int getStackItemType(int stackHandle, int cIndex)
 {
-    int ret = simIsStackValueNull(stackHandle);
+    int ret = simGetStackItemType(stackHandle, cIndex);
     if(ret == -1)
-        throw api_error("simIsStackValueNull");
+        throw api_error("simGetStackItemType");
 
-    addStackDebugLog("simIsStackValueNull -> %d", ret);
+    addStackDebugLog("simGetStackItemType -> %d", ret);
 
-    return ret;
-}
+    return ret;}
 
 int getStackBoolValue(int stackHandle, bool *boolValue)
 {

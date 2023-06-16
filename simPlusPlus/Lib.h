@@ -444,7 +444,7 @@ namespace sim
 
     void moveStackItemToTop(int stackHandle, int cIndex);
 
-    int isStackValueNull(int stackHandle);
+    int getStackItemType(int stackHandle, int cIndex);
 
     int getStackBoolValue(int stackHandle, bool *boolValue);
 
