@@ -1063,7 +1063,15 @@ void pushInt32OntoStack(int stackHandle, int value)
     addStackDebugDump(stackHandle);
 }
 
-// int simPushInt64OntoStack(int stackHandle, long long int value);
+void pushInt64OntoStack(int stackHandle, long long int value)
+{
+    addStackDebugLog("simPushInt64OntoStack %ld", value);
+
+    if(simPushInt64OntoStack(stackHandle, value) == -1)
+        throw api_error("simPushInt64OntoStack");
+
+    addStackDebugDump(stackHandle);
+}
 
 void pushStringOntoStack(int stackHandle, const char *value, int stringSize)
 {
@@ -1115,7 +1123,20 @@ void pushInt32TableOntoStack(int stackHandle, const std::vector<int> &values)
     pushInt32TableOntoStack(stackHandle, values.data(), values.size());
 }
 
-// int simPushInt64TableOntoStack(int stackHandle, const long long int *values, int valueCnt);
+void pushInt64TableOntoStack(int stackHandle, const long long int *values, int valueCnt)
+{
+    addStackDebugLog("simPushInt64TableOntoStack <%d values>", valueCnt);
+
+    if(simPushInt64TableOntoStack(stackHandle, values, valueCnt) == -1)
+        throw api_error("simPushInt64TableOntoStack");
+
+    addStackDebugDump(stackHandle);
+}
+
+void pushInt64TableOntoStack(int stackHandle, const std::vector<long long int> &values)
+{
+    pushInt64TableOntoStack(stackHandle, values.data(), values.size());
+}
 
 void pushTableOntoStack(int stackHandle)
 {
@@ -1221,7 +1242,24 @@ int getStackInt32Value(int stackHandle, int *numberValue)
     return ret;
 }
 
-// int simGetStackInt64Value(int stackHandle, long long int *numberValue);
+int getStackInt64Value(int stackHandle, long long int *numberValue)
+{
+    int ret = simGetStackInt64Value(stackHandle, numberValue);
+    if(ret == -1)
+        throw api_error("simGetStackInt64Value");
+
+#ifndef NDEBUG
+    if(debugStackEnabled)
+    {
+        if(ret)
+            addStackDebugLog("simGetStackInt64Value -> %d", *numberValue);
+        else
+            addStackDebugLog("simGetStackInt64Value -> not an int");
+    }
+#endif
+
+    return ret;
+}
 
 char * getStackStringValue(int stackHandle, int *stringSize)
 {
@@ -1339,7 +1377,23 @@ int getStackInt32Table(int stackHandle, std::vector<int> *v)
     return getStackInt32Table(stackHandle, v->data(), count);
 }
 
-// int simGetStackInt64Table(int stackHandle, long long int *array, int count);
+int getStackInt64Table(int stackHandle, long long int *array, int count)
+{
+    int ret = simGetStackInt64Table(stackHandle, array, count);
+
+    addStackDebugLog("simGetStackInt64Table count = %d -> %d", count, ret);
+
+    if(ret == -1)
+        throw api_error("simGetStackInt64Table");
+    return ret;
+}
+
+int getStackInt64Table(int stackHandle, std::vector<long long int> *v)
+{
+    int count = getStackTableInfo(stackHandle, 0);
+    v->resize(count);
+    return getStackInt64Table(stackHandle, v->data(), count);
+}
 
 void unfoldStackTable(int stackHandle)
 {

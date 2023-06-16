@@ -420,7 +420,7 @@ namespace sim
 
     void pushInt32OntoStack(int stackHandle, int value);
 
-    // pushInt64OntoStack
+    void pushInt64OntoStack(int stackHandle, long long int value);
 
     void pushStringOntoStack(int stackHandle, const char *value, int stringSize);
     void pushStringOntoStack(int stackHandle, const std::string &value);
@@ -431,7 +431,8 @@ namespace sim
     void pushInt32TableOntoStack(int stackHandle, const int *values, int valueCnt);
     void pushInt32TableOntoStack(int stackHandle, const std::vector<int> &values);
 
-    // pushInt64TableOntoStack
+    void pushInt64TableOntoStack(int stackHandle, const long long int *values, int valueCnt);
+    void pushInt64TableOntoStack(int stackHandle, const std::vector<long long int> &values);
 
     void pushTableOntoStack(int stackHandle);
 
@@ -449,7 +450,7 @@ namespace sim
 
     int getStackInt32Value(int stackHandle, int *numberValue);
 
-    // getStackInt64Value
+    int getStackInt64Value(int stackHandle, long long int *numberValue);
 
     char * getStackStringValue(int stackHandle, int *stringSize);
     int getStackStringValue(int stackHandle, std::string *stringValue);
@@ -462,7 +463,7 @@ namespace sim
     int getStackInt32Table(int stackHandle, int *array, int count);
     int getStackInt32Table(int stackHandle, std::vector<int> *v);
 
-    // getStackInt64Table
+    int getStackInt64Table(int stackHandle, long long int *array, int count);
 
     void unfoldStackTable(int stackHandle);
 
