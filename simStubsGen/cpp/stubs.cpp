@@ -168,7 +168,7 @@ void readFromStack(int stack, std::string *value, const ReadOptions &rdopt)
 template<typename T>
 void readFromStack(int stack, boost::optional<T> *value, const ReadOptions &rdopt = {})
 {
-    if(sim::getStackItemType(stack, 0) == sim_stackitem_null)
+    if(sim::getStackItemType(stack, -1) == sim_stackitem_null)
     {
         *value = boost::none;
         sim::popStackItem(stack, 1);
