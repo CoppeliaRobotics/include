@@ -23,6 +23,7 @@ ptrSimUnloadModule simUnloadModule=nullptr;
 ptrSimGetModuleName simGetModuleName=nullptr;
 ptrSimSetModuleInfo simSetModuleInfo=nullptr;
 ptrSimGetModuleInfo simGetModuleInfo=nullptr;
+ptrSimIsStackValueNull simIsStackValueNull=nullptr;
 
 #ifdef SIM_INTERFACE_OLD
 #include "simLib-old2.cpp"
@@ -60,6 +61,7 @@ int getSimProcAddressesOld(LIBRARY lib)
     simGetModuleName=(ptrSimGetModuleName)(_getProcAddress(lib,"simGetModuleName",false));
     simSetModuleInfo=(ptrSimSetModuleInfo)(_getProcAddress(lib,"simSetModuleInfo",false));
     simGetModuleInfo=(ptrSimGetModuleInfo)(_getProcAddress(lib,"simGetModuleInfo",false));
+    simIsStackValueNull=(ptrSimIsStackValueNull)(_getProcAddress(lib,"simIsStackValueNull",false));
 
     char *ps=std::getenv("COPPELIASIMPLUGIN_IGNORE_MISSING_SYMBOLS");
     if (ps!=nullptr)
@@ -190,6 +192,11 @@ int getSimProcAddressesOld(LIBRARY lib)
     if (simGetModuleInfo==nullptr)
     {
         printf("%s simGetModuleInfo\n",couldNotFind);
+        return 0;
+    }
+    if (simIsStackValueNull==nullptr)
+    {
+        printf("%s simIsStackValueNull\n",couldNotFind);
         return 0;
     }
     return 1;

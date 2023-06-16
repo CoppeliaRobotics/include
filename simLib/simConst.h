@@ -1453,6 +1453,19 @@ enum { /* Object int/double/string parameters */
     sim_mplanintparam_clear_nodes_old= 25002
 };
 
+enum { /* stack item types */
+    sim_stackitem_null=0,
+    sim_stackitem_double,
+    sim_stackitem_bool,
+    sim_stackitem_string,
+    sim_stackitem_table,
+    sim_stackitem_func,
+    sim_stackitem_userdat,
+    sim_stackitem_thread,
+    sim_stackitem_lightuserdat,
+    sim_stackitem_integer
+};
+
 enum { /* stack table info */
     sim_stack_table_circular_ref=-4,
     sim_stack_table_not_table=-3,

@@ -310,7 +310,7 @@ ptrSimInsertDataIntoStackTable simInsertDataIntoStackTable=nullptr;
 ptrSimGetStackSize simGetStackSize=nullptr;
 ptrSimPopStackItem simPopStackItem=nullptr;
 ptrSimMoveStackItemToTop simMoveStackItemToTop=nullptr;
-ptrSimIsStackValueNull simIsStackValueNull=nullptr;
+ptrSimGetStackItemType simGetStackItemType=nullptr;
 ptrSimGetStackBoolValue simGetStackBoolValue=nullptr;
 ptrSimGetStackInt32Value simGetStackInt32Value=nullptr;
 ptrSimGetStackInt64Value simGetStackInt64Value=nullptr;
@@ -698,7 +698,7 @@ int getSimProcAddresses(LIBRARY lib)
     simGetStackSize=(ptrSimGetStackSize)(_getProcAddress(lib,"simGetStackSize",false));
     simPopStackItem=(ptrSimPopStackItem)(_getProcAddress(lib,"simPopStackItem",false));
     simMoveStackItemToTop=(ptrSimMoveStackItemToTop)(_getProcAddress(lib,"simMoveStackItemToTop",false));
-    simIsStackValueNull=(ptrSimIsStackValueNull)(_getProcAddress(lib,"simIsStackValueNull",false));
+    simGetStackItemType=(ptrSimGetStackItemType)(_getProcAddress(lib,"simGetStackItemType",false));
     simGetStackBoolValue=(ptrSimGetStackBoolValue)(_getProcAddress(lib,"simGetStackBoolValue",false));
     simGetStackInt32Value=(ptrSimGetStackInt32Value)(_getProcAddress(lib,"simGetStackInt32Value",false));
     simGetStackInt64Value=(ptrSimGetStackInt64Value)(_getProcAddress(lib,"simGetStackInt64Value",false));
@@ -2350,9 +2350,9 @@ int getSimProcAddresses(LIBRARY lib)
         printf("%s simMoveStackItemToTop\n",couldNotFind);
         return 0;
     }
-    if (simIsStackValueNull==nullptr)
+    if (simGetStackItemType==nullptr)
     {
-        printf("%s simIsStackValueNull\n",couldNotFind);
+        printf("%s simGetStackItemType\n",couldNotFind);
         return 0;
     }
     if (simGetStackBoolValue==nullptr)

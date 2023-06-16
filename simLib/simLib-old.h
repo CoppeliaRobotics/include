@@ -23,6 +23,7 @@ typedef int (__cdecl *ptrSimUnloadModule)(int pluginhandle);
 typedef int (__cdecl *ptrSimSetModuleInfo)(const char* moduleName,int infoType,const char* stringInfo,int intInfo);
 typedef int (__cdecl *ptrSimGetModuleInfo)(const char* moduleName,int infoType,char** stringInfo,int* intInfo);
 typedef char* (__cdecl *ptrSimGetModuleName)(int index,unsigned char* moduleVersion);
+typedef int (__cdecl *ptrSimIsStackValueNull)(int stackHandle);
 
 extern ptrSimAddModuleMenuEntry simAddModuleMenuEntry;
 extern ptrSimSetModuleMenuItemState simSetModuleMenuItemState;
@@ -49,6 +50,7 @@ extern ptrSimUnloadModule simUnloadModule;
 extern ptrSimGetModuleName simGetModuleName;
 extern ptrSimSetModuleInfo simSetModuleInfo;
 extern ptrSimGetModuleInfo simGetModuleInfo;
+extern ptrSimIsStackValueNull simIsStackValueNull;
 
 #ifdef SIM_INTERFACE_OLD
 #include "simLib-old2.h"
