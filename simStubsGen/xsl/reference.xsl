@@ -94,7 +94,6 @@
     <!-- template routines: -->
 
     <xsl:template name="symbolPrefix">
-        <xsl:text>sim</xsl:text>
         <xsl:value-of select="/plugin/@name"/>
         <xsl:text>.</xsl:text>
     </xsl:template>
