@@ -670,25 +670,26 @@ enum { /* drawing objects: */
     sim_drawing_cubepts,         /* 7 values per point (3 for cube position, 4 for orientation as quaternion) (cube size in meters) */
 
     /* following can be or-combined: */
-    sim_drawing_itemcolors              =0x000020, /* +3 values per item (each item has its own ambient color (r,g,b values)). Mutually exclusive with sim_drawing_vertexcolors */
-    sim_drawing_vertexcolors            =0x000040, /* +3 values per vertex (each vertex has its own ambient color (r,g,b values). Only for sim_drawing_lines (+6) and for sim_drawing_triangles(+9)). Mutually exclusive with sim_drawing_itemcolors */
-    sim_drawing_itemsizes               =0x000080, /* +1 value per item (each item has its own size). Not for sim_drawing_triangles */
-    sim_drawing_backfaceculling         =0x000100, /* back faces are not displayed for all items */
-    sim_drawing_wireframe               =0x000200, /* all items displayed in wireframe */
     sim_drawing_painttag                =0x000400, /* all items are tagged as paint (for additinal processing at a later stage) */
-    sim_drawing_followparentvisibility  =0x000800, /* if the object is associated with a scene object, then it follows that visibility, otherwise it is always visible */
     sim_drawing_cyclic                  =0x001000, /* if the max item count was reached, then the first items are overwritten. */
-    sim_drawing_50percenttransparency   =0x002000, /* the drawing object will be 50% transparent */
-    sim_drawing_25percenttransparency   =0x004000, /* the drawing object will be 25% transparent */
-    sim_drawing_12percenttransparency   =0x008000, /* the drawing object will be 12.5% transparent */
-    sim_drawing_emissioncolor           =0x010000, /* When used in combination with sim_drawing_itemcolors or sim_drawing_vertexcolors, then the specified colors will be for the emissive component */
-    sim_drawing_facingcamera            =0x020000, /* Only for trianglepoints, quadpoints, discpoints and cubepoints. If specified, the normal verctor is calculated to face the camera (each item data requires 3 values less) */
     sim_drawing_overlay                 =0x040000, /* When specified, objects are always drawn on top of "regular objects" */
-    sim_drawing_itemtransparency        =0x080000,  /* +1 value per item (each item has its own transparency value (0-1)). Not compatible with sim_drawing_vertexcolors */
-    sim_drawing_persistent              =0x100000,  /* object is not automatically removed when created via a simulation script */
-    sim_drawing_auxchannelcolor1        =0x200000,  /* when specifying the emission color component in the simAddDrawingObject function, 6 values should be specified instead of 3: 3 for the emission component, and 3 for the aux channel component */
-    sim_drawing_auxchannelcolor2        =0x400000,  /* When used in combination with sim_drawing_itemcolors or sim_drawing_vertexcolors, then the specified colors will be for the aux channel component */
     sim_drawing_local                   =0x800000,  /* coordinates are specified locally to the attached object */
+
+    sim_drawing_backfaceculling         =0x000100, /* deprecated back faces are not displayed for all items */
+    sim_drawing_itemcolors              =0x000020, /* deprecated +3 values per item (each item has its own ambient color (r,g,b values)). Mutually exclusive with sim_drawing_vertexcolors */
+    sim_drawing_vertexcolors            =0x000040, /* deprecated +3 values per vertex (each vertex has its own ambient color (r,g,b values). Only for sim_drawing_lines (+6) and for sim_drawing_triangles(+9)). Mutually exclusive with sim_drawing_itemcolors */
+    sim_drawing_itemsizes               =0x000080, /* deprecated +1 value per item (each item has its own size). Not for sim_drawing_triangles */
+    sim_drawing_wireframe               =0x000200, /* deprecated all items displayed in wireframe */
+    sim_drawing_followparentvisibility  =0x000800, /* deprecated if the object is associated with a scene object, then it follows that visibility, otherwise it is always visible */
+    sim_drawing_50percenttransparency   =0x002000, /* deprecated the drawing object will be 50% transparent */
+    sim_drawing_25percenttransparency   =0x004000, /* deprecated the drawing object will be 25% transparent */
+    sim_drawing_12percenttransparency   =0x008000, /* deprecated the drawing object will be 12.5% transparent */
+    sim_drawing_emissioncolor           =0x010000, /* deprecated When used in combination with sim_drawing_itemcolors or sim_drawing_vertexcolors, then the specified colors will be for the emissive component */
+    sim_drawing_facingcamera            =0x020000, /* deprecated Only for trianglepoints, quadpoints, discpoints and cubepoints. If specified, the normal verctor is calculated to face the camera (each item data requires 3 values less) */
+    sim_drawing_itemtransparency        =0x080000,  /* deprecated +1 value per item (each item has its own transparency value (0-1)). Not compatible with sim_drawing_vertexcolors */
+    sim_drawing_persistent              =0x100000,  /* deprecated object is not automatically removed when created via a simulation script */
+    sim_drawing_auxchannelcolor1        =0x200000,  /* deprecated when specifying the emission color component in the simAddDrawingObject function, 6 values should be specified instead of 3: 3 for the emission component, and 3 for the aux channel component */
+    sim_drawing_auxchannelcolor2        =0x400000,  /* deprecated When used in combination with sim_drawing_itemcolors or sim_drawing_vertexcolors, then the specified colors will be for the aux channel component */
 };
 
 enum { /* banner values: */
