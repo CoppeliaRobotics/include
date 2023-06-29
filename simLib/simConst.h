@@ -4,8 +4,8 @@
 #define SIM_PROGRAM_VERSION_NB 40501
 #define SIM_PROGRAM_VERSION "4.5.1"
 
-#define SIM_PROGRAM_REVISION_NB 10
-#define SIM_PROGRAM_REVISION "(rev. 10)"
+#define SIM_PROGRAM_REVISION_NB 11
+#define SIM_PROGRAM_REVISION "(rev. 11)"
 
 #define SIM_PROGRAM_FULL_VERSION_NB ((SIM_PROGRAM_VERSION_NB) * 100 + (SIM_PROGRAM_REVISION_NB))
 
@@ -1418,7 +1418,7 @@ enum { /* Object int/double/string parameters */
     sim_camerafloatparam_far_clipping= 9009,
     sim_cameraintparam_perspective_operation= 9010,
     sim_cameraintparam_trackedobject= 9011,
-    sim_cameraintparam_remotecameramode= 9012,
+    sim_cameraintparam_remotecameramode= 9012, /* deprecated */
     sim_camerafarrayparam_viewfrustum= 9013,
 
     /* dummies */
