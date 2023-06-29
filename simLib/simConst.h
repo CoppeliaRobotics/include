@@ -275,6 +275,7 @@ enum { /* Check the documentation instead of comments below!! */
         sim_message_eventcallback_simulationcleanup,
 
         sim_message_eventcallback_moduleentry, /* auxiliaryData[0] indicates the handle of the item, auxiliaryData[1] indicates the state of the item */
+        sim_message_eventcallback_events, /* auxPointer is a const unsigned char* to CBOR data, reflecting (all) the changes that happened in CoppeliaSim. auxData[0] indicates the number of events */
 
         sim_message_simulation_start_resume_request=0x1000,
         sim_message_simulation_pause_request,
