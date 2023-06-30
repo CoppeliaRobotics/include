@@ -88,6 +88,7 @@ namespace sim
         virtual void onSceneLoaded();
         virtual void onModelLoaded();
         virtual void onScriptStateDestroyed(int scriptID);
+        virtual void onEvents(void *data);
 
         virtual void onUIPass();
         virtual void onUIMenuItemSelected(int itemHandle, int itemState);

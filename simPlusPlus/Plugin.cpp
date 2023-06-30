@@ -202,6 +202,11 @@ namespace sim
                 onScriptStateDestroyed(auxiliaryData[0]);
             }
             break;
+        case sim_message_eventcallback_events:
+            {
+                onEvents(customData);
+            }
+            break;
         }
 
         // Keep following unchanged:
@@ -331,6 +336,10 @@ namespace sim
     }
 
     void Plugin::onScriptStateDestroyed(int scriptID)
+    {
+    }
+
+    void Plugin::onEvents(void *data)
     {
     }
 
