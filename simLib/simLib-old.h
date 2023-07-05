@@ -1,3 +1,13 @@
+typedef int (__cdecl *ptrSimRunSimulator)(const char* applicationName,int options,void(*setToNull1)(),void(*setToNull2)(),void(*setToNull3)());
+typedef int (__cdecl *ptrSimRunSimulatorEx)(const char* applicationName,int options,void(*setToNull1)(),void(*setToNull2)(),void(*setToNull3)(),int stopDelay,const char* sceneOrModelToLoad);
+typedef int (__cdecl *ptrSimExtLaunchUIThread)(const char* applicationName,int options,const char* sceneOrModelOrUiToLoad,const char* applicationDir_);
+typedef int (__cdecl *ptrSimExtCanInitSimThread)();
+typedef int (__cdecl *ptrSimExtSimThreadInit)();
+typedef int (__cdecl *ptrSimExtSimThreadDestroy)();
+typedef int (__cdecl *ptrSimExtPostExitRequest)();
+typedef int (__cdecl *ptrSimExtGetExitRequest)();
+typedef int (__cdecl *ptrSimExtStep)(bool stepIfRunning);
+typedef int (__cdecl *ptrSimExtCallScriptFunction)(int scriptHandleOrType, const char* functionNameAtScriptName,const int* inIntData, int inIntCnt,const SIMDOUBLE* inFloatData, int inFloatCnt,const char** inStringData, int inStringCnt,const char* inBufferData, int inBufferCnt,int** outIntData, int* outIntCnt,SIMDOUBLE** outFloatData, int* outFloatCnt,char*** outStringData, int* outStringCnt,char** outBufferData, int* outBufferSize);
 typedef int (__cdecl *ptrSimAddModuleMenuEntry)(const char* entryLabel,int itemCount,int* itemHandles);
 typedef int (__cdecl *ptrSimSetModuleMenuItemState)(int itemHandle,int state,const char* label);
 typedef int (__cdecl *ptrSimAddPointCloud)(int pageMask,int layerMask,int objectHandle,int options,SIMDOUBLE pointSize,int ptCnt,const SIMDOUBLE* pointCoordinates,const char* defaultColors,const char* pointColors,const SIMDOUBLE* pointNormals);
@@ -25,6 +35,16 @@ typedef int (__cdecl *ptrSimGetModuleInfo)(const char* moduleName,int infoType,c
 typedef char* (__cdecl *ptrSimGetModuleName)(int index,unsigned char* moduleVersion);
 typedef int (__cdecl *ptrSimIsStackValueNull)(int stackHandle);
 
+extern ptrSimRunSimulator simRunSimulator;
+extern ptrSimRunSimulatorEx simRunSimulatorEx;
+extern ptrSimExtLaunchUIThread simExtLaunchUIThread;
+extern ptrSimExtCanInitSimThread simExtCanInitSimThread;
+extern ptrSimExtSimThreadInit simExtSimThreadInit;
+extern ptrSimExtSimThreadDestroy simExtSimThreadDestroy;
+extern ptrSimExtPostExitRequest simExtPostExitRequest;
+extern ptrSimExtGetExitRequest simExtGetExitRequest;
+extern ptrSimExtStep simExtStep;
+extern ptrSimExtCallScriptFunction simExtCallScriptFunction;
 extern ptrSimAddModuleMenuEntry simAddModuleMenuEntry;
 extern ptrSimSetModuleMenuItemState simSetModuleMenuItemState;
 extern ptrSimAddPointCloud simAddPointCloud;

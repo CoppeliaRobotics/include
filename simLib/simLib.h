@@ -35,9 +35,16 @@ void unloadSimLibrary(LIBRARY lib);
 FARPROC _getProcAddress(LIBRARY lib,const char* funcName);
 int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg);
 
+
+typedef int (__cdecl *ptrSimRunGui)(const char* applicationName,int options,int stopDelay,const char* sceneOrModelToLoad,const char* appDir);
+typedef int (__cdecl *ptrSimCanInitSimThread)();
+typedef int (__cdecl *ptrSimInitSimThread)();
+typedef int (__cdecl *ptrSimCleanupSimThread)();
+typedef int (__cdecl *ptrSimPostExitRequest)();
+typedef int (__cdecl *ptrSimGetExitRequest)();
+typedef int (__cdecl *ptrSimLoop)(int options);
+typedef int (__cdecl *ptrSimTest)(int mode,void* ptr1,void* ptr2,void* ptr3);
 typedef int (__cdecl *ptrSimAddLog)(const char* pluginName,int verbosityLevel,const char* logMsg);
-typedef int (__cdecl *ptrSimRunSimulator)(const char* applicationName,int options,void(*setToNull1)(),void(*setToNull2)(),void(*setToNull3)());
-typedef int (__cdecl *ptrSimRunSimulatorEx)(const char* applicationName,int options,void(*setToNull1)(),void(*setToNull2)(),void(*setToNull3)(),int stopDelay,const char* sceneOrModelToLoad);
 typedef char* (__cdecl *ptrSimGetSimulatorMessage)(int* messageID,int* auxiliaryData,int* returnedDataSize);
 typedef void* (__cdecl *ptrSimGetMainWindow)(int type);
 typedef char* (__cdecl *ptrSimGetLastError)();
@@ -238,14 +245,6 @@ typedef int (__cdecl *ptrSimPushDoubleOntoStack)(int stackHandle,double value);
 typedef int (__cdecl *ptrSimPushDoubleTableOntoStack)(int stackHandle,const double* values,int valueCnt);
 typedef int (__cdecl *ptrSimGetStackDoubleValue)(int stackHandle,double* numberValue);
 typedef int (__cdecl *ptrSimGetStackDoubleTable)(int stackHandle,double* array,int count);
-/* Following courtesy of Stephen James: */
-typedef int (__cdecl *ptrSimExtLaunchUIThread)(const char* applicationName,int options,const char* sceneOrModelOrUiToLoad,const char* applicationDir_);
-typedef int (__cdecl *ptrSimExtCanInitSimThread)();
-typedef int (__cdecl *ptrSimExtSimThreadInit)();
-typedef int (__cdecl *ptrSimExtSimThreadDestroy)();
-typedef int (__cdecl *ptrSimExtPostExitRequest)();
-typedef int (__cdecl *ptrSimExtGetExitRequest)();
-typedef int (__cdecl *ptrSimExtStep)(bool stepIfRunning);
 /* non-documented functions, mainly for the dynamics plugins: */
 typedef void (__cdecl *ptr_simSetDynamicSimulationIconCode)(void* object,int code);
 typedef void (__cdecl *ptr_simSetDynamicObjectFlagForVisualization)(void* object,int flag);
@@ -429,7 +428,6 @@ typedef int (__cdecl *ptrSimGetShapeInertia)(int shapeHandle,SIMDOUBLE* inertiaM
 typedef int (__cdecl *ptrSimSetShapeInertia)(int shapeHandle,const SIMDOUBLE* inertiaMatrix,const SIMDOUBLE* transformationMatrix);
 typedef int (__cdecl *ptrSimGenerateShapeFromPath)(const SIMDOUBLE* path,int pathSize,const SIMDOUBLE* section,int sectionSize,int options,const SIMDOUBLE* upVector,SIMDOUBLE reserved);
 typedef SIMDOUBLE (__cdecl *ptrSimGetClosestPosOnPath)(const SIMDOUBLE* path,int pathSize,const SIMDOUBLE* pathLengths,const SIMDOUBLE* absPt);
-typedef int (__cdecl *ptrSimExtCallScriptFunction)(int scriptHandleOrType, const char* functionNameAtScriptName,const int* inIntData, int inIntCnt,const SIMDOUBLE* inFloatData, int inFloatCnt,const char** inStringData, int inStringCnt,const char* inBufferData, int inBufferCnt,int** outIntData, int* outIntCnt,SIMDOUBLE** outFloatData, int* outFloatCnt,char*** outStringData, int* outStringCnt,char** outBufferData, int* outBufferSize);
 typedef void (__cdecl *ptr_simGetObjectLocalTransformation)(const void* object,SIMDOUBLE* pos,SIMDOUBLE* quat,bool excludeFirstJointTransformation);
 typedef void (__cdecl *ptr_simSetObjectLocalTransformation)(void* object,const SIMDOUBLE* pos,const SIMDOUBLE* quat,SIMDOUBLE simTime);
 typedef void (__cdecl *ptr_simDynReportObjectCumulativeTransformation)(void* object,const SIMDOUBLE* pos,const SIMDOUBLE* quat,SIMDOUBLE simTime);
@@ -468,8 +466,14 @@ typedef SIMDOUBLE (__cdecl *ptr_simGetPureHollowScaling)(const void* geometric);
 typedef void (__cdecl *ptr_simDynCallback)(const int* intData,const SIMDOUBLE* floatData);
 
 
-extern ptrSimRunSimulator simRunSimulator;
-extern ptrSimRunSimulatorEx simRunSimulatorEx;
+extern ptrSimRunGui simRunGui;
+extern ptrSimCanInitSimThread simCanInitSimThread;
+extern ptrSimInitSimThread simInitSimThread;
+extern ptrSimCleanupSimThread simCleanupSimThread;
+extern ptrSimPostExitRequest simPostExitRequest;
+extern ptrSimGetExitRequest simGetExitRequest;
+extern ptrSimLoop simLoop;
+extern ptrSimTest simTest;
 extern ptrSimGetSimulatorMessage simGetSimulatorMessage;
 extern ptrSimGetMainWindow simGetMainWindow;
 extern ptrSimGetLastError simGetLastError;
@@ -809,18 +813,6 @@ extern ptrSimGetClosestPosOnPath simGetClosestPosOnPath;
 extern ptrSimInitScript simInitScript;
 extern ptrSimModuleEntry simModuleEntry;
 extern ptrSimCheckExecAuthorization simCheckExecAuthorization;
-
-
-/* Following courtesy of Stephen James: */
-extern ptrSimExtLaunchUIThread simExtLaunchUIThread;
-extern ptrSimExtCanInitSimThread simExtCanInitSimThread;
-extern ptrSimExtSimThreadInit simExtSimThreadInit;
-extern ptrSimExtSimThreadDestroy simExtSimThreadDestroy;
-extern ptrSimExtPostExitRequest simExtPostExitRequest;
-extern ptrSimExtGetExitRequest simExtGetExitRequest;
-extern ptrSimExtStep simExtStep;
-extern ptrSimExtCallScriptFunction simExtCallScriptFunction;
-
 extern ptr_simSetDynamicSimulationIconCode _simSetDynamicSimulationIconCode;
 extern ptr_simSetDynamicObjectFlagForVisualization _simSetDynamicObjectFlagForVisualization;
 extern ptr_simGetObjectListSize _simGetObjectListSize;

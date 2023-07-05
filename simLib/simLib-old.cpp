@@ -1,6 +1,16 @@
+ptrSimRunSimulator simRunSimulator=nullptr;
+ptrSimRunSimulatorEx simRunSimulatorEx=nullptr;
 ptr_simGetJointOdeParameters _simGetJointOdeParameters=nullptr;
 ptr_simGetJointBulletParameters _simGetJointBulletParameters=nullptr;
 ptr_simGetOdeMaxContactFrictionCFMandERP _simGetOdeMaxContactFrictionCFMandERP=nullptr;
+ptrSimExtLaunchUIThread simExtLaunchUIThread=nullptr;
+ptrSimExtCanInitSimThread simExtCanInitSimThread=nullptr;
+ptrSimExtSimThreadInit simExtSimThreadInit=nullptr;
+ptrSimExtSimThreadDestroy simExtSimThreadDestroy=nullptr;
+ptrSimExtPostExitRequest simExtPostExitRequest=nullptr;
+ptrSimExtGetExitRequest simExtGetExitRequest=nullptr;
+ptrSimExtStep simExtStep=nullptr;
+ptrSimExtCallScriptFunction simExtCallScriptFunction=nullptr;
 ptr_simGetBulletCollisionMargin _simGetBulletCollisionMargin=nullptr;
 ptr_simGetBulletStickyContact _simGetBulletStickyContact=nullptr;
 ptr_simGetBulletRestitution _simGetBulletRestitution=nullptr;
@@ -36,6 +46,16 @@ int getSimProcAddressesOld(LIBRARY lib)
         return(0);
 #endif
 
+    simRunSimulator=(ptrSimRunSimulator)(_getProcAddress(lib,"simRunSimulator",false));
+    simRunSimulatorEx=(ptrSimRunSimulatorEx)(_getProcAddress(lib,"simRunSimulatorEx",false));
+    simExtLaunchUIThread=(ptrSimExtLaunchUIThread)(_getProcAddress(lib,"simExtLaunchUIThread",false));
+    simExtCanInitSimThread=(ptrSimExtCanInitSimThread)(_getProcAddress(lib,"simExtCanInitSimThread",false));
+    simExtSimThreadInit=(ptrSimExtSimThreadInit)(_getProcAddress(lib,"simExtSimThreadInit",false));
+    simExtSimThreadDestroy=(ptrSimExtSimThreadDestroy)(_getProcAddress(lib,"simExtSimThreadDestroy",false));
+    simExtPostExitRequest=(ptrSimExtPostExitRequest)(_getProcAddress(lib,"simExtPostExitRequest",false));
+    simExtGetExitRequest=(ptrSimExtGetExitRequest)(_getProcAddress(lib,"simExtGetExitRequest",false));
+    simExtStep=(ptrSimExtStep)(_getProcAddress(lib,"simExtStep",false));
+    simExtCallScriptFunction=(ptrSimExtCallScriptFunction)(_getProcAddress(lib,"simExtCallScriptFunction",true));
     _simGetBulletStickyContact=(ptr_simGetBulletStickyContact)(_getProcAddress(lib,"_simGetBulletStickyContact",false));
     simCallScriptFunction=(ptrSimCallScriptFunction)(_getProcAddress(lib,"simCallScriptFunction",false));
     simAddModuleMenuEntry=(ptrSimAddModuleMenuEntry)(_getProcAddress(lib,"simAddModuleMenuEntry",false));
@@ -69,6 +89,56 @@ int getSimProcAddressesOld(LIBRARY lib)
 
     char couldNotFind[]="Could not find function";
 
+    if (simRunSimulator==nullptr)
+    {
+        printf("%s simRunSimulator\n",couldNotFind);
+        return 0;
+    }
+    if (simRunSimulatorEx==nullptr)
+    {
+        printf("%s simRunSimulatorEx\n",couldNotFind);
+        return 0;
+    }
+    if (simExtCallScriptFunction==nullptr)
+    {
+        printf("%s simExtCallScriptFunction\n",couldNotFind);
+        return 0;
+    }
+    if (simExtLaunchUIThread==nullptr)
+    {
+        printf("%s simExtLaunchUIThread\n",couldNotFind);
+        return 0;
+    }
+    if (simExtCanInitSimThread==nullptr)
+    {
+        printf("%s simExtCanInitSimThread\n",couldNotFind);
+        return 0;
+    }
+    if (simExtSimThreadInit==nullptr)
+    {
+        printf("%s simExtSimThreadInit\n",couldNotFind);
+        return 0;
+    }
+    if (simExtSimThreadDestroy==nullptr)
+    {
+        printf("%s simExtSimThreadDestroy\n",couldNotFind);
+        return 0;
+    }
+    if (simExtPostExitRequest==nullptr)
+    {
+        printf("%s simExtPostExitRequest\n",couldNotFind);
+        return 0;
+    }
+    if (simExtGetExitRequest==nullptr)
+    {
+        printf("%s simExtGetExitRequest\n",couldNotFind);
+        return 0;
+    }
+    if (simExtStep==nullptr)
+    {
+        printf("%s simExtStep\n",couldNotFind);
+        return 0;
+    }
     if (_simGetJointOdeParameters==nullptr)
     {
         printf("%s _simGetJointOdeParameters\n",couldNotFind);

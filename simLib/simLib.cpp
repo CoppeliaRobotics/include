@@ -32,8 +32,14 @@ int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg)
     return(_addLog(pluginName,verbosityLevel,logMsg));
 }
 
-ptrSimRunSimulator simRunSimulator=nullptr;
-ptrSimRunSimulatorEx simRunSimulatorEx=nullptr;
+ptrSimRunGui simRunGui=nullptr;
+ptrSimCanInitSimThread simCanInitSimThread=nullptr;
+ptrSimInitSimThread simInitSimThread=nullptr;
+ptrSimCleanupSimThread simCleanupSimThread=nullptr;
+ptrSimPostExitRequest simPostExitRequest=nullptr;
+ptrSimGetExitRequest simGetExitRequest=nullptr;
+ptrSimLoop simLoop=nullptr;
+ptrSimTest simTest=nullptr;
 ptrSimGetSimulatorMessage simGetSimulatorMessage=nullptr;
 ptrSimGetMainWindow simGetMainWindow=nullptr;
 ptrSimGetLastError simGetLastError=nullptr;
@@ -374,17 +380,6 @@ ptrSimGetClosestPosOnPath simGetClosestPosOnPath=nullptr;
 ptrSimInitScript simInitScript=nullptr;
 ptrSimModuleEntry simModuleEntry=nullptr;
 ptrSimCheckExecAuthorization simCheckExecAuthorization=nullptr;
-ptrSimExtCallScriptFunction simExtCallScriptFunction=nullptr;
-
-// Following courtesy of Stephen James:
-ptrSimExtLaunchUIThread simExtLaunchUIThread=nullptr;
-ptrSimExtCanInitSimThread simExtCanInitSimThread=nullptr;
-ptrSimExtSimThreadInit simExtSimThreadInit=nullptr;
-ptrSimExtSimThreadDestroy simExtSimThreadDestroy=nullptr;
-ptrSimExtPostExitRequest simExtPostExitRequest=nullptr;
-ptrSimExtGetExitRequest simExtGetExitRequest=nullptr;
-ptrSimExtStep simExtStep=nullptr;
-
 ptr_simSetDynamicSimulationIconCode _simSetDynamicSimulationIconCode=nullptr;
 ptr_simSetDynamicObjectFlagForVisualization _simSetDynamicObjectFlagForVisualization=nullptr;
 ptr_simGetObjectListSize _simGetObjectListSize=nullptr;
@@ -536,9 +531,15 @@ int getSimProcAddresses(LIBRARY lib)
     if (getSimProcAddressesOld(lib)==0)
         return(0);
 
+    simRunGui=(ptrSimRunGui)(_getProcAddress(lib,"simRunGui",false));
+    simCanInitSimThread=(ptrSimCanInitSimThread)(_getProcAddress(lib,"simCanInitSimThread",false));
+    simInitSimThread=(ptrSimInitSimThread)(_getProcAddress(lib,"simInitSimThread",false));
+    simCleanupSimThread=(ptrSimCleanupSimThread)(_getProcAddress(lib,"simCleanupSimThread",false));
+    simPostExitRequest=(ptrSimPostExitRequest)(_getProcAddress(lib,"simPostExitRequest",false));
+    simGetExitRequest=(ptrSimGetExitRequest)(_getProcAddress(lib,"simGetExitRequest",false));
+    simLoop=(ptrSimLoop)(_getProcAddress(lib,"simLoop",false));
     _addLog=(ptrSimAddLog)(_getProcAddress(lib,"simAddLog",false));
-    simRunSimulator=(ptrSimRunSimulator)(_getProcAddress(lib,"simRunSimulator",false));
-    simRunSimulatorEx=(ptrSimRunSimulatorEx)(_getProcAddress(lib,"simRunSimulatorEx",false));
+    simTest=(ptrSimTest)(_getProcAddress(lib,"simTest",false));
     simGetSimulatorMessage=(ptrSimGetSimulatorMessage)(_getProcAddress(lib,"simGetSimulatorMessage",false));
     simGetMainWindow=(ptrSimGetMainWindow)(_getProcAddress(lib,"simGetMainWindow",false));
     simGetLastError=(ptrSimGetLastError)(_getProcAddress(lib,"simGetLastError",false));
@@ -736,13 +737,6 @@ int getSimProcAddresses(LIBRARY lib)
     simInitScript=(ptrSimInitScript)(_getProcAddress(lib,"simInitScript",false));
     simModuleEntry=(ptrSimModuleEntry)(_getProcAddress(lib,"simModuleEntry",false));
     simCheckExecAuthorization=(ptrSimCheckExecAuthorization)(_getProcAddress(lib,"simCheckExecAuthorization",false));
-    simExtLaunchUIThread=(ptrSimExtLaunchUIThread)(_getProcAddress(lib,"simExtLaunchUIThread",false));
-    simExtCanInitSimThread=(ptrSimExtCanInitSimThread)(_getProcAddress(lib,"simExtCanInitSimThread",false));
-    simExtSimThreadInit=(ptrSimExtSimThreadInit)(_getProcAddress(lib,"simExtSimThreadInit",false));
-    simExtSimThreadDestroy=(ptrSimExtSimThreadDestroy)(_getProcAddress(lib,"simExtSimThreadDestroy",false));
-    simExtPostExitRequest=(ptrSimExtPostExitRequest)(_getProcAddress(lib,"simExtPostExitRequest",false));
-    simExtGetExitRequest=(ptrSimExtGetExitRequest)(_getProcAddress(lib,"simExtGetExitRequest",false));
-    simExtStep=(ptrSimExtStep)(_getProcAddress(lib,"simExtStep",false));
     _simSetDynamicSimulationIconCode=(ptr_simSetDynamicSimulationIconCode)(_getProcAddress(lib,"_simSetDynamicSimulationIconCode",false));
     _simSetDynamicObjectFlagForVisualization=(ptr_simSetDynamicObjectFlagForVisualization)(_getProcAddress(lib,"_simSetDynamicObjectFlagForVisualization",false));
     _simGetObjectListSize=(ptr_simGetObjectListSize)(_getProcAddress(lib,"_simGetObjectListSize",false));
@@ -922,7 +916,6 @@ int getSimProcAddresses(LIBRARY lib)
     simSetShapeInertia=(ptrSimSetShapeInertia)(_getProcAddress(lib,"simSetShapeInertia",true));
     simGenerateShapeFromPath=(ptrSimGenerateShapeFromPath)(_getProcAddress(lib,"simGenerateShapeFromPath",true));
     simGetClosestPosOnPath=(ptrSimGetClosestPosOnPath)(_getProcAddress(lib,"simGetClosestPosOnPath",true));
-    simExtCallScriptFunction=(ptrSimExtCallScriptFunction)(_getProcAddress(lib,"simExtCallScriptFunction",true));
     _simGetObjectLocalTransformation=(ptr_simGetObjectLocalTransformation)(_getProcAddress(lib,"_simGetObjectLocalTransformation",true));
     _simSetObjectLocalTransformation=(ptr_simSetObjectLocalTransformation)(_getProcAddress(lib,"_simSetObjectLocalTransformation",true));
     _simDynReportObjectCumulativeTransformation=(ptr_simDynReportObjectCumulativeTransformation)(_getProcAddress(lib,"_simDynReportObjectCumulativeTransformation",true));
@@ -965,14 +958,44 @@ int getSimProcAddresses(LIBRARY lib)
         return(1);
 
     char couldNotFind[]="Could not find function";
-    if (simRunSimulator==nullptr)
+    if (simRunGui==nullptr)
     {
-        printf("%s simRunSimulator\n",couldNotFind);
+        printf("%s simRunGui\n",couldNotFind);
         return 0;
     }
-    if (simRunSimulatorEx==nullptr)
+    if (simCanInitSimThread==nullptr)
     {
-        printf("%s simRunSimulatorEx\n",couldNotFind);
+        printf("%s simCanInitSimThread\n",couldNotFind);
+        return 0;
+    }
+    if (simInitSimThread==nullptr)
+    {
+        printf("%s simInitSimThread\n",couldNotFind);
+        return 0;
+    }
+    if (simCleanupSimThread==nullptr)
+    {
+        printf("%s simCleanupSimThread\n",couldNotFind);
+        return 0;
+    }
+    if (simPostExitRequest==nullptr)
+    {
+        printf("%s simPostExitRequest\n",couldNotFind);
+        return 0;
+    }
+    if (simGetExitRequest==nullptr)
+    {
+        printf("%s simGetExitRequest\n",couldNotFind);
+        return 0;
+    }
+    if (simLoop==nullptr)
+    {
+        printf("%s simLoop\n",couldNotFind);
+        return 0;
+    }
+    if (simTest==nullptr)
+    {
+        printf("%s simTest\n",couldNotFind);
         return 0;
     }
     if (simGetSimulatorMessage==nullptr)
@@ -2668,46 +2691,6 @@ int getSimProcAddresses(LIBRARY lib)
     if (simCheckExecAuthorization==nullptr)
     {
         printf("%s simCheckExecAuthorization\n",couldNotFind);
-        return 0;
-    }
-    if (simExtCallScriptFunction==nullptr)
-    {
-        printf("%s simExtCallScriptFunction\n",couldNotFind);
-        return 0;
-    }
-    if (simExtLaunchUIThread==nullptr)
-    {
-        printf("%s simExtLaunchUIThread\n",couldNotFind);
-        return 0;
-    }
-    if (simExtCanInitSimThread==nullptr)
-    {
-        printf("%s simExtCanInitSimThread\n",couldNotFind);
-        return 0;
-    }
-    if (simExtSimThreadInit==nullptr)
-    {
-        printf("%s simExtSimThreadInit\n",couldNotFind);
-        return 0;
-    }
-    if (simExtSimThreadDestroy==nullptr)
-    {
-        printf("%s simExtSimThreadDestroy\n",couldNotFind);
-        return 0;
-    }
-    if (simExtPostExitRequest==nullptr)
-    {
-        printf("%s simExtPostExitRequest\n",couldNotFind);
-        return 0;
-    }
-    if (simExtGetExitRequest==nullptr)
-    {
-        printf("%s simExtGetExitRequest\n",couldNotFind);
-        return 0;
-    }
-    if (simExtStep==nullptr)
-    {
-        printf("%s simExtStep\n",couldNotFind);
         return 0;
     }
     if (_simSetDynamicSimulationIconCode==nullptr)
