@@ -266,7 +266,7 @@ Comments should start at the very beginning of a line, and are in the form:
 --@ret <type-specification> <parameter-name> [description]
 ```
 
-where `<type-specification>` can be a string with the type (`int`, `float`, `bool`, `string`, `table`, `table.int`, `table.string`, etc...) or an extended type specification in the form `{key1=value1,key2=value2}` where the key names are the same as the XML attributes of `<param>` (described [above](#parameter-specification)) where the `-` character is replaced by `_`.
+where `<type-specification>` can be a string with the type (`int`, `float`, `bool`, `string`, `table`, `table.int`, `table.string`, etc...) or an extended type specification in the form `{key1=value1,key2=value2}` where the key names are the same as the XML attributes of `<param>` (described [above](#parameter-specification)) whose `-` character is replaced by `_`.
 
 **Categories:**
 
