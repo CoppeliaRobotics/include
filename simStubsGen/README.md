@@ -5,7 +5,13 @@ It reads an XML file containing a description of the callbacks, script
 functions, and enums, and it produces documentation, C++ source and header files,
 and other stuff:
 
-![overview diagram](doc/overview.png)
+```mermaid
+  graph LR;
+  IN["Callbacks specification (XML)"]-->F[simStubsGen];
+  F-->OUT1[HTML API documentation];
+  F-->OUT2[C++ stubs for Lua callbacks];
+  F-->OUT3[More...];
+```
 
 Additionally, it can parse special comments in the lua files to generate
 similar documentation for pure Lua functions. See [below](#lua-comments).
