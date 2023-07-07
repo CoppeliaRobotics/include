@@ -938,8 +938,6 @@ enum { /* UI properties: */
     sim_gui_browser                     =0x00400,
     sim_gui_all                         =0x0ffff,
     sim_gui_headless                    =0x10000,
-    sim_autostart                       =0x20000,
-    sim_autoquit                        =0x40000
 };
 
 enum { /* Joint modes: */

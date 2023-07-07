@@ -33,9 +33,8 @@ int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg)
 }
 
 ptrSimRunGui simRunGui=nullptr;
-ptrSimCanInitSimThread simCanInitSimThread=nullptr;
-ptrSimInitSimThread simInitSimThread=nullptr;
-ptrSimCleanupSimThread simCleanupSimThread=nullptr;
+ptrSimInit simInit=nullptr;
+ptrSimCleanup simCleanup=nullptr;
 ptrSimPostExitRequest simPostExitRequest=nullptr;
 ptrSimGetExitRequest simGetExitRequest=nullptr;
 ptrSimLoop simLoop=nullptr;
@@ -502,6 +501,7 @@ void unloadSimLibrary(LIBRARY lib)
             }
         #endif
     #endif // QT_FRAMEWORK
+    _addLog=nullptr;
 }
 
 FARPROC _getProcAddress(LIBRARY lib,const char* funcName,bool hasSingleAndDoublePrecisionFunc)
@@ -532,9 +532,8 @@ int getSimProcAddresses(LIBRARY lib)
         return(0);
 
     simRunGui=(ptrSimRunGui)(_getProcAddress(lib,"simRunGui",false));
-    simCanInitSimThread=(ptrSimCanInitSimThread)(_getProcAddress(lib,"simCanInitSimThread",false));
-    simInitSimThread=(ptrSimInitSimThread)(_getProcAddress(lib,"simInitSimThread",false));
-    simCleanupSimThread=(ptrSimCleanupSimThread)(_getProcAddress(lib,"simCleanupSimThread",false));
+    simInit=(ptrSimInit)(_getProcAddress(lib,"simInit",false));
+    simCleanup=(ptrSimCleanup)(_getProcAddress(lib,"simCleanup",false));
     simPostExitRequest=(ptrSimPostExitRequest)(_getProcAddress(lib,"simPostExitRequest",false));
     simGetExitRequest=(ptrSimGetExitRequest)(_getProcAddress(lib,"simGetExitRequest",false));
     simLoop=(ptrSimLoop)(_getProcAddress(lib,"simLoop",false));
@@ -963,19 +962,14 @@ int getSimProcAddresses(LIBRARY lib)
         printf("%s simRunGui\n",couldNotFind);
         return 0;
     }
-    if (simCanInitSimThread==nullptr)
+    if (simInit==nullptr)
     {
-        printf("%s simCanInitSimThread\n",couldNotFind);
+        printf("%s simInit\n",couldNotFind);
         return 0;
     }
-    if (simInitSimThread==nullptr)
+    if (simCleanup==nullptr)
     {
-        printf("%s simInitSimThread\n",couldNotFind);
-        return 0;
-    }
-    if (simCleanupSimThread==nullptr)
-    {
-        printf("%s simCleanupSimThread\n",couldNotFind);
+        printf("%s simCleanup\n",couldNotFind);
         return 0;
     }
     if (simPostExitRequest==nullptr)

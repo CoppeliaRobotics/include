@@ -36,13 +36,12 @@ FARPROC _getProcAddress(LIBRARY lib,const char* funcName);
 int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg);
 
 
-typedef int (__cdecl *ptrSimRunGui)(const char* applicationName,int options,int stopDelay,const char* sceneOrModelToLoad,const char* appDir);
-typedef int (__cdecl *ptrSimCanInitSimThread)();
-typedef int (__cdecl *ptrSimInitSimThread)();
-typedef int (__cdecl *ptrSimCleanupSimThread)();
+typedef void (__cdecl *ptrSimRunGui)(int options);
+typedef int (__cdecl *ptrSimInit)(const char* appDir,int options);
+typedef int (__cdecl *ptrSimCleanup)();
 typedef int (__cdecl *ptrSimPostExitRequest)();
 typedef int (__cdecl *ptrSimGetExitRequest)();
-typedef int (__cdecl *ptrSimLoop)(int options);
+typedef int (__cdecl *ptrSimLoop)(void(*callback)(),int options);
 typedef int (__cdecl *ptrSimTest)(int mode,void* ptr1,void* ptr2,void* ptr3);
 typedef int (__cdecl *ptrSimAddLog)(const char* pluginName,int verbosityLevel,const char* logMsg);
 typedef char* (__cdecl *ptrSimGetSimulatorMessage)(int* messageID,int* auxiliaryData,int* returnedDataSize);
@@ -467,9 +466,8 @@ typedef void (__cdecl *ptr_simDynCallback)(const int* intData,const SIMDOUBLE* f
 
 
 extern ptrSimRunGui simRunGui;
-extern ptrSimCanInitSimThread simCanInitSimThread;
-extern ptrSimInitSimThread simInitSimThread;
-extern ptrSimCleanupSimThread simCleanupSimThread;
+extern ptrSimInit simInit;
+extern ptrSimCleanup simCleanup;
 extern ptrSimPostExitRequest simPostExitRequest;
 extern ptrSimGetExitRequest simGetExitRequest;
 extern ptrSimLoop simLoop;
