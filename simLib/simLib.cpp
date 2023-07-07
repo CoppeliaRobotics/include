@@ -33,8 +33,8 @@ int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg)
 }
 
 ptrSimRunGui simRunGui=nullptr;
-ptrSimInit simInit=nullptr;
-ptrSimCleanup simCleanup=nullptr;
+ptrSimInitialize simInitialize=nullptr;
+ptrSimDeinitialize simDeinitialize=nullptr;
 ptrSimPostExitRequest simPostExitRequest=nullptr;
 ptrSimGetExitRequest simGetExitRequest=nullptr;
 ptrSimLoop simLoop=nullptr;
@@ -532,8 +532,8 @@ int getSimProcAddresses(LIBRARY lib)
         return(0);
 
     simRunGui=(ptrSimRunGui)(_getProcAddress(lib,"simRunGui",false));
-    simInit=(ptrSimInit)(_getProcAddress(lib,"simInit",false));
-    simCleanup=(ptrSimCleanup)(_getProcAddress(lib,"simCleanup",false));
+    simInitialize=(ptrSimInitialize)(_getProcAddress(lib,"simInitialize",false));
+    simDeinitialize=(ptrSimDeinitialize)(_getProcAddress(lib,"simDeinitialize",false));
     simPostExitRequest=(ptrSimPostExitRequest)(_getProcAddress(lib,"simPostExitRequest",false));
     simGetExitRequest=(ptrSimGetExitRequest)(_getProcAddress(lib,"simGetExitRequest",false));
     simLoop=(ptrSimLoop)(_getProcAddress(lib,"simLoop",false));
@@ -962,14 +962,14 @@ int getSimProcAddresses(LIBRARY lib)
         printf("%s simRunGui\n",couldNotFind);
         return 0;
     }
-    if (simInit==nullptr)
+    if (simInitialize==nullptr)
     {
-        printf("%s simInit\n",couldNotFind);
+        printf("%s simInitialize\n",couldNotFind);
         return 0;
     }
-    if (simCleanup==nullptr)
+    if (simDeinitialize==nullptr)
     {
-        printf("%s simCleanup\n",couldNotFind);
+        printf("%s simDeinitialize\n",couldNotFind);
         return 0;
     }
     if (simPostExitRequest==nullptr)

@@ -37,8 +37,8 @@ int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg);
 
 
 typedef void (__cdecl *ptrSimRunGui)(int options);
-typedef int (__cdecl *ptrSimInit)(const char* appDir,int options);
-typedef int (__cdecl *ptrSimCleanup)();
+typedef int (__cdecl *ptrSimInitialize)(const char* appDir,int options);
+typedef int (__cdecl *ptrSimDeinitialize)();
 typedef int (__cdecl *ptrSimPostExitRequest)();
 typedef int (__cdecl *ptrSimGetExitRequest)();
 typedef int (__cdecl *ptrSimLoop)(void(*callback)(),int options);
@@ -466,8 +466,8 @@ typedef void (__cdecl *ptr_simDynCallback)(const int* intData,const SIMDOUBLE* f
 
 
 extern ptrSimRunGui simRunGui;
-extern ptrSimInit simInit;
-extern ptrSimCleanup simCleanup;
+extern ptrSimInitialize simInitialize;
+extern ptrSimDeinitialize simDeinitialize;
 extern ptrSimPostExitRequest simPostExitRequest;
 extern ptrSimGetExitRequest simGetExitRequest;
 extern ptrSimLoop simLoop;
