@@ -50,38 +50,38 @@ namespace sim
     {
     }
 
-    void Plugin::onMsg(int message, int *auxiliaryData, void *customData)
+    void Plugin::onMsg(SSimMsg *msg)
     {
         int errorModeSaved = sim::getInt32Param(sim_intparam_error_report_mode);
         sim::setInt32Param(sim_intparam_error_report_mode, sim_api_errormessage_ignore);
 
-        switch(message)
+        switch(msg->msgId)
         {
         case sim_message_eventcallback_instancepass:
             /*
             Called once every main client application loop pass.
-            auxiliaryData[0] contains event flags of events that happened since last time.
+            msg->auxData[0] contains event flags of events that happened since last time.
             If you react to some of below event flags, make sure you do not react to their
             equivalent event callback message (e.g. sim_message_eventcallback_sceneloaded is
             similar to below's bit3 set)
             */
             {
                 InstancePassFlags flags;
-                flags.objectsErased         = (auxiliaryData[0] & (1 <<  0)) > 0;
-                flags.objectsCreated        = (auxiliaryData[0] & (1 <<  1)) > 0;
-                flags.modelLoaded           = (auxiliaryData[0] & (1 <<  2)) > 0;
-                flags.sceneLoaded           = (auxiliaryData[0] & (1 <<  3)) > 0;
-                flags.undoCalled            = (auxiliaryData[0] & (1 <<  4)) > 0;
-                flags.redoCalled            = (auxiliaryData[0] & (1 <<  5)) > 0;
-                flags.sceneSwitched         = (auxiliaryData[0] & (1 <<  6)) > 0;
-                flags.editModeActive        = (auxiliaryData[0] & (1 <<  7)) > 0;
-                flags.objectsScaled         = (auxiliaryData[0] & (1 <<  8)) > 0;
-                flags.selectionStateChanged = (auxiliaryData[0] & (1 <<  9)) > 0;
-                flags.keyPressed            = (auxiliaryData[0] & (1 << 10)) > 0;
-                flags.simulationStarted     = (auxiliaryData[0] & (1 << 11)) > 0;
-                flags.simulationEnded       = (auxiliaryData[0] & (1 << 12)) > 0;
-                flags.scriptCreated         = (auxiliaryData[0] & (1 << 13)) > 0;
-                flags.scriptErased          = (auxiliaryData[0] & (1 << 14)) > 0;
+                flags.objectsErased         = (msg->auxData[0] & (1 <<  0)) > 0;
+                flags.objectsCreated        = (msg->auxData[0] & (1 <<  1)) > 0;
+                flags.modelLoaded           = (msg->auxData[0] & (1 <<  2)) > 0;
+                flags.sceneLoaded           = (msg->auxData[0] & (1 <<  3)) > 0;
+                flags.undoCalled            = (msg->auxData[0] & (1 <<  4)) > 0;
+                flags.redoCalled            = (msg->auxData[0] & (1 <<  5)) > 0;
+                flags.sceneSwitched         = (msg->auxData[0] & (1 <<  6)) > 0;
+                flags.editModeActive        = (msg->auxData[0] & (1 <<  7)) > 0;
+                flags.objectsScaled         = (msg->auxData[0] & (1 <<  8)) > 0;
+                flags.selectionStateChanged = (msg->auxData[0] & (1 <<  9)) > 0;
+                flags.keyPressed            = (msg->auxData[0] & (1 << 10)) > 0;
+                flags.simulationStarted     = (msg->auxData[0] & (1 << 11)) > 0;
+                flags.simulationEnded       = (msg->auxData[0] & (1 << 12)) > 0;
+                flags.scriptCreated         = (msg->auxData[0] & (1 << 13)) > 0;
+                flags.scriptErased          = (msg->auxData[0] & (1 << 14)) > 0;
 
                 onInstancePass(flags);
             }
@@ -91,22 +91,22 @@ namespace sim
             scene was switched (react to this message in a similar way as you would react to
             a full scene content change)
 
-            auxiliaryData[0]: do not use
-            auxiliaryData[1]=current scene unique ID
+            msg->auxData[0]: do not use
+            msg->auxData[1]=current scene unique ID
             */
             {
-                onInstanceSwitch(auxiliaryData[1]);
+                onInstanceSwitch(msg->auxData[1]);
             }
             break;
         case sim_message_eventcallback_instanceabouttoswitch:
             /*
             we are about to switch to a different scene
 
-            auxiliaryData[0]: do not use
-            auxiliaryData[1]=next scene unique ID
+            msg->auxData[0]: do not use
+            msg->auxData[1]=next scene unique ID
             */
             {
-                onInstanceAboutToSwitch(auxiliaryData[1]);
+                onInstanceAboutToSwitch(msg->auxData[1]);
             }
             break;
         case sim_message_eventcallback_scenesave:
@@ -199,12 +199,12 @@ namespace sim
             break;
         case sim_message_eventcallback_scriptstatedestroyed:
             {
-                onScriptStateDestroyed(auxiliaryData[0]);
+                onScriptStateDestroyed(msg->auxData[0]);
             }
             break;
         case sim_message_eventcallback_events:
             {
-                onEvents(customData);
+                onEvents(msg->auxPointer);
             }
             break;
         }
@@ -221,9 +221,9 @@ namespace sim
     {
     }
 
-    void Plugin::onUIMsg(int message, int *auxiliaryData, void *customData)
+    void Plugin::onUIMsg(SSimMsg_ui *msg)
     {
-        switch(message)
+        switch(msg->msgId)
         {
         case 0 /*sim_message_eventcallback_uipass*/:
             {
@@ -233,17 +233,17 @@ namespace sim
         case sim_message_eventcallback_menuitemselected:
             /*
             (called from the UI thread)
-            auxiliaryData[0]=handle of the item
-            auxiliaryData[1]=state of the item
+            msg->auxData[0]=handle of the item
+            msg->auxData[1]=state of the item
             */
             {
-                onUIMenuItemSelected(auxiliaryData[0], auxiliaryData[1]);
+                onUIMenuItemSelected(msg->auxData[0], msg->auxData[1]);
             }
             break;
         }
     }
 
-    LIBRARY Plugin::loadSimLibrary()
+    LIBRARY Plugin::loadSimLibrary(const char *coppeliaSimLibPath)
     {
         LIBRARY lib = NULL;
         char curDirAndFile[1024];
@@ -266,7 +266,7 @@ namespace sim
 #elif defined (__APPLE__)
         temp += "/libcoppeliaSim.dylib";
 #endif
-        lib = ::loadSimLibrary(temp.c_str());
+        lib = ::loadSimLibrary(coppeliaSimLibPath);
         if(lib == NULL)
         {
             throw std::runtime_error("could not find or correctly load the CoppeliaSim library");

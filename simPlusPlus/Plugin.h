@@ -28,6 +28,7 @@
 #endif /* __linux || __APPLE__ */
 
 #include <simLib/simExp.h> // for SIM_DLLEXPORT
+#include <simLib/simTypes.h> // for SIM_DLLEXPORT
 
 namespace sim
 {
@@ -64,14 +65,14 @@ namespace sim
         int getVerbosity();
         void init();
 
-        virtual LIBRARY loadSimLibrary();
+        virtual LIBRARY loadSimLibrary(const char *coppeliaSimLibPath);
 
         virtual void onInit();
         virtual void onCleanup();
-        virtual void onMsg(int message, int *auxiliaryData, void *customData) final;
+        virtual void onMsg(SSimMsg *msg) final;
         virtual void onUIInit();
         virtual void onUICleanup();
-        virtual void onUIMsg(int message, int *auxiliaryData, void *customData);
+        virtual void onUIMsg(SSimMsg_ui *msg) final;
 
         virtual void onInstancePass(const InstancePassFlags &flags);
         virtual void onInstanceSwitch(int sceneID);
@@ -103,7 +104,7 @@ namespace sim { \
 ::className_ *plugin; \
 sim::PluginInfo *pluginInfo; \
 } \
-SIM_DLLEXPORT unsigned char simInit(void *reservedPointer, int reservedInt) \
+SIM_DLLEXPORT int simInit(SSimInit *initInfo) \
 { \
     try \
     { \
@@ -118,7 +119,7 @@ SIM_DLLEXPORT unsigned char simInit(void *reservedPointer, int reservedInt) \
         } \
         sim::plugin = new className_; \
         sim::plugin->setName(sim::pluginInfo->name); \
-        sim::pluginInfo->lib = sim::plugin->loadSimLibrary(); \
+        sim::pluginInfo->lib = sim::plugin->loadSimLibrary(initInfo->coppeliaSimLibPath); \
         sim::plugin->onInit(); \
         return std::max(1, sim::pluginInfo->version); \
     } \
@@ -147,13 +148,13 @@ SIM_DLLEXPORT void simCleanup() \
     delete sim::pluginInfo; \
     sim::pluginInfo = nullptr; \
 } \
-SIM_DLLEXPORT void simMsg(int message, int *auxiliaryData, void *customData) \
+SIM_DLLEXPORT void simMsg(SSimMsg *msg) \
 { \
     try \
     { \
         if(sim::plugin) \
         { \
-            return sim::plugin->onMsg(message, auxiliaryData, customData); \
+            return sim::plugin->onMsg(msg); \
         } \
     } \
     catch(std::exception &ex) \
@@ -191,13 +192,13 @@ SIM_DLLEXPORT void simCleanup_ui() \
         sim::addLog(sim_verbosity_errors, ex.what()); \
     } \
 } \
-SIM_DLLEXPORT void simMsg_ui(int message, int *auxiliaryData, void *customData) \
+SIM_DLLEXPORT void simMsg_ui(SSimMsg_ui *msg) \
 { \
     try \
     { \
         if(sim::plugin) \
         { \
-            return sim::plugin->onUIMsg(message, auxiliaryData, customData); \
+            return sim::plugin->onUIMsg(msg); \
         } \
     } \
     catch(std::exception &ex) \
