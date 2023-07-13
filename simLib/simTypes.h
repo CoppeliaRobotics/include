@@ -1,6 +1,26 @@
 #if !defined(SIMTYPES_INCLUDED_)
 #define SIMTYPES_INCLUDED_
 
+struct SSimInit
+{
+    const char* pluginName;
+    const char* coppeliaSimLibPath;
+};
+
+struct SSimMsg
+{
+    int msgId;
+    int* auxData;
+    void* auxPointer;
+};
+
+struct SSimMsg_ui
+{
+    int msgId;
+    int* auxData;
+    void* auxPointer;
+};
+
 struct SScriptCallBack
 {
     int objectID;
@@ -71,12 +91,6 @@ struct SLuaCallBack
     int scriptID;
     double* inputDouble;
     double* outputDouble;
-};
-
-struct SSyncRt
-{
-    unsigned char objTypes[3];
-    int objHandles[3];
 };
 
 #endif // !defined(SIMTYPES_INCLUDED_)
