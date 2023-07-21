@@ -5,6 +5,10 @@
 #include <cstring>
 #include <iostream>
 
+#ifdef HAVE_JSONCONS
+#include <jsoncons_ext/cbor/cbor.hpp>
+#endif // HAVE_JSONCONS
+
 namespace sim
 {
     void Plugin::setName(const std::string &name)
@@ -341,7 +345,101 @@ namespace sim
 
     void Plugin::onEvents(void *data, size_t size)
     {
+#ifdef HAVE_JSONCONS
+        auto u8data = reinterpret_cast<const uint8_t*>(data);
+        jsoncons::json msg = jsoncons::cbor::decode_cbor<jsoncons::json>(u8data, u8data + size);
+        for(size_t i = 0; i < msg.size(); i++)
+            onEvent(msg[i]);
+#endif // HAVE_JSONCONS
     }
+
+#ifdef HAVE_JSONCONS
+    void Plugin::onEvent(const jsoncons::json &event)
+    {
+        EventInfo info;
+        info.event = event["event"].as<std::string>();
+        info.seq = event["seq"].as<long>();
+        info.uid = event["uid"].as<long>();
+        info.handle = event["handle"].as<int>();
+        onEvent(info, event["data"]);
+    }
+
+    void Plugin::onEvent(const EventInfo &info, const jsoncons::json &data)
+    {
+        if(info.event == "objectAdded")
+            onObjectAdded(info, data);
+        else if(info.event == "objectChanged")
+            onObjectChanged(info, data);
+        else if(info.event == "objectRemoved")
+            onObjectRemoved(info, data);
+        else if(info.event == "drawingObjectAdded")
+            onDrawingObjectAdded(info, data);
+        else if(info.event == "drawingObjectChanged")
+            onDrawingObjectChanged(info, data);
+        else if(info.event == "drawingObjectRemoved")
+            onDrawingObjectRemoved(info, data);
+        else if(info.event == "environmentChanged")
+            onEnvironmentChanged(info, data);
+        else if(info.event == "appSettingsChanged")
+            onAppSettingsChanged(info, data);
+        else if(info.event == "simulationChanged")
+            onSimulationChanged(info, data);
+        else if(info.event == "appSession")
+            onAppSession(info, data);
+        else if(info.event == "genesisBegin")
+            onGenesisBegin(info, data);
+        else if(info.event == "genesisEnd")
+            onGenesisEnd(info, data);
+    }
+
+    void Plugin::onObjectAdded(const EventInfo &info, const jsoncons::json &data)
+    {
+    }
+
+    void Plugin::onObjectChanged(const EventInfo &info, const jsoncons::json &data)
+    {
+    }
+
+    void Plugin::onObjectRemoved(const EventInfo &info, const jsoncons::json &data)
+    {
+    }
+
+    void Plugin::onDrawingObjectAdded(const EventInfo &info, const jsoncons::json &data)
+    {
+    }
+
+    void Plugin::onDrawingObjectChanged(const EventInfo &info, const jsoncons::json &data)
+    {
+    }
+
+    void Plugin::onDrawingObjectRemoved(const EventInfo &info, const jsoncons::json &data)
+    {
+    }
+
+    void Plugin::onEnvironmentChanged(const EventInfo &info, const jsoncons::json &data)
+    {
+    }
+
+    void Plugin::onAppSettingsChanged(const EventInfo &info, const jsoncons::json &data)
+    {
+    }
+
+    void Plugin::onSimulationChanged(const EventInfo &info, const jsoncons::json &data)
+    {
+    }
+
+    void Plugin::onAppSession(const EventInfo &info, const jsoncons::json &data)
+    {
+    }
+
+    void Plugin::onGenesisBegin(const EventInfo &info, const jsoncons::json &data)
+    {
+    }
+
+    void Plugin::onGenesisEnd(const EventInfo &info, const jsoncons::json &data)
+    {
+    }
+#endif // HAVE_JSONCONS
 
     void Plugin::onUIPass()
     {

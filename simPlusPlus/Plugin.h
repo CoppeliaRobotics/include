@@ -30,6 +30,10 @@
 #include <simLib/simExp.h> // for SIM_DLLEXPORT
 #include <simLib/simTypes.h> // for SIM_DLLEXPORT
 
+#ifdef HAVE_JSONCONS
+#include <jsoncons/json.hpp>
+#endif // HAVE_JSONCONS
+
 namespace sim
 {
     extern sim::PluginInfo *pluginInfo;
@@ -51,6 +55,14 @@ namespace sim
         bool simulationEnded;
         bool scriptCreated;
         bool scriptErased;
+    };
+
+    struct EventInfo
+    {
+        std::string event;
+        long seq;
+        long uid;
+        int handle;
     };
 
     class Plugin
@@ -90,6 +102,22 @@ namespace sim
         virtual void onModelLoaded();
         virtual void onScriptStateDestroyed(int scriptID);
         virtual void onEvents(void *data, size_t size);
+#ifdef HAVE_JSONCONS
+        virtual void onEvent(const jsoncons::json &event);
+        virtual void onEvent(const EventInfo &info, const jsoncons::json &data);
+        virtual void onObjectAdded(const EventInfo &info, const jsoncons::json &data);
+        virtual void onObjectChanged(const EventInfo &info, const jsoncons::json &data);
+        virtual void onObjectRemoved(const EventInfo &info, const jsoncons::json &data);
+        virtual void onDrawingObjectAdded(const EventInfo &info, const jsoncons::json &data);
+        virtual void onDrawingObjectChanged(const EventInfo &info, const jsoncons::json &data);
+        virtual void onDrawingObjectRemoved(const EventInfo &info, const jsoncons::json &data);
+        virtual void onEnvironmentChanged(const EventInfo &info, const jsoncons::json &data);
+        virtual void onAppSettingsChanged(const EventInfo &info, const jsoncons::json &data);
+        virtual void onSimulationChanged(const EventInfo &info, const jsoncons::json &data);
+        virtual void onAppSession(const EventInfo &info, const jsoncons::json &data);
+        virtual void onGenesisBegin(const EventInfo &info, const jsoncons::json &data);
+        virtual void onGenesisEnd(const EventInfo &info, const jsoncons::json &data);
+#endif // HAVE_JSONCONS
 
         virtual void onUIPass();
         virtual void onUIMenuItemSelected(int itemHandle, int itemState);
