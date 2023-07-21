@@ -746,7 +746,7 @@ enum { /* Boolean parameters: */
     sim_boolparam_vision_sensor_handling_enabled, /* deprecated */
     sim_boolparam_mill_handling_enabled, /* deprecated */
     sim_boolparam_browser_visible,
-    sim_boolparam_scene_and_model_load_messages,
+    sim_boolparam_scene_and_model_load_messages, /* deprecated */
     sim_reserved0,
     sim_boolparam_shape_textures_are_visible,
     sim_boolparam_display_enabled,

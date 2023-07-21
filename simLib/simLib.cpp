@@ -42,6 +42,7 @@ ptrSimTest simTest=nullptr;
 ptrSimGetSimulatorMessage simGetSimulatorMessage=nullptr;
 ptrSimGetMainWindow simGetMainWindow=nullptr;
 ptrSimGetLastError simGetLastError=nullptr;
+ptrSimGetLastInfo simGetLastInfo=nullptr;
 ptrSimSetBoolParam simSetBoolParam=nullptr;
 ptrSimGetBoolParam simGetBoolParam=nullptr;
 ptrSimSetInt32Param simSetInt32Param=nullptr;
@@ -542,6 +543,7 @@ int getSimProcAddresses(LIBRARY lib)
     simGetSimulatorMessage=(ptrSimGetSimulatorMessage)(_getProcAddress(lib,"simGetSimulatorMessage",false));
     simGetMainWindow=(ptrSimGetMainWindow)(_getProcAddress(lib,"simGetMainWindow",false));
     simGetLastError=(ptrSimGetLastError)(_getProcAddress(lib,"simGetLastError",false));
+    simGetLastInfo=(ptrSimGetLastInfo)(_getProcAddress(lib,"simGetLastInfo",false));
     simSetBoolParam=(ptrSimSetBoolParam)(_getProcAddress(lib,"simSetBoolParam",false));
     simGetBoolParam=(ptrSimGetBoolParam)(_getProcAddress(lib,"simGetBoolParam",false));
     simSetInt32Param=(ptrSimSetInt32Param)(_getProcAddress(lib,"simSetInt32Param",false));
@@ -1005,6 +1007,11 @@ int getSimProcAddresses(LIBRARY lib)
     if (simGetLastError==nullptr)
     {
         printf("%s simGetLastError\n",couldNotFind);
+        return 0;
+    }
+    if (simGetLastInfo==nullptr)
+    {
+        printf("%s simGetLastInfo\n",couldNotFind);
         return 0;
     }
     if (simSetBoolParam==nullptr)

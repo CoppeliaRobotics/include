@@ -47,6 +47,7 @@ typedef int (__cdecl *ptrSimAddLog)(const char* pluginName,int verbosityLevel,co
 typedef char* (__cdecl *ptrSimGetSimulatorMessage)(int* messageID,int* auxiliaryData,int* returnedDataSize);
 typedef void* (__cdecl *ptrSimGetMainWindow)(int type);
 typedef char* (__cdecl *ptrSimGetLastError)();
+typedef char* (__cdecl *ptrSimGetLastInfo)();
 typedef int (__cdecl *ptrSimSetBoolParam)(int Param,bool boolState);
 typedef int (__cdecl *ptrSimGetBoolParam)(int Param);
 typedef int (__cdecl *ptrSimSetInt32Param)(int Param,int intState);
@@ -475,6 +476,7 @@ extern ptrSimTest simTest;
 extern ptrSimGetSimulatorMessage simGetSimulatorMessage;
 extern ptrSimGetMainWindow simGetMainWindow;
 extern ptrSimGetLastError simGetLastError;
+extern ptrSimGetLastInfo simGetLastInfo;
 extern ptrSimSetBoolParam simSetBoolParam;
 extern ptrSimGetBoolParam simGetBoolParam;
 extern ptrSimSetInt32Param simSetInt32Param;
