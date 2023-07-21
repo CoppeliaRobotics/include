@@ -204,7 +204,7 @@ namespace sim
             break;
         case sim_message_eventcallback_events:
             {
-                onEvents(msg->auxPointer);
+                onEvents(msg->auxPointer, msg->auxData[1]);
             }
             break;
         }
@@ -339,7 +339,7 @@ namespace sim
     {
     }
 
-    void Plugin::onEvents(void *data)
+    void Plugin::onEvents(void *data, size_t size)
     {
     }
 
