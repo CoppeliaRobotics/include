@@ -2058,7 +2058,9 @@ enum { /* Vision sensors render modes */
     sim_rendermode_extrenderer,
     sim_rendermode_extrendererwindowed,
     sim_rendermode_opengl3,
-    sim_rendermode_opengl3windowed
+    sim_rendermode_opengl3windowed,
+    sim_rendermode_oglimg,
+    sim_rendermode_codedimg,
 };
 
 /* -------------------- deprecated legacy remote API ----------------------------- */
