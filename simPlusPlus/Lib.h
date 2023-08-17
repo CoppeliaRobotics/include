@@ -1,15 +1,15 @@
 #ifndef SIMPLUSPLUS_LIB_H_INCLUDED
 #define SIMPLUSPLUS_LIB_H_INCLUDED
 
-#if __cplusplus <= 199711L
-    #error simPlusPlus needs at least a C++11 compliant compiler
+#if __cplusplus < 201703L
+    #error simPlusPlus needs at least a C++17 compliant compiler
 #endif
 
+#include <optional>
 #include <string>
 #include <vector>
 #include <array>
 #include <stdexcept>
-#include <boost/optional.hpp>
 #include <boost/format.hpp>
 
 #include <simLib/simLib.h>
@@ -133,10 +133,10 @@ namespace sim
     void setNamedFloatParam(const std::string &parameter, double value);
     void setNamedInt32Param(const std::string &parameter, int value);
 
-    boost::optional<std::string> getNamedStringParam(const std::string &parameter);
-    boost::optional<bool> getNamedBoolParam(const std::string &parameter);
-    boost::optional<double> getNamedFloatParam(const std::string &parameter);
-    boost::optional<int> getNamedInt32Param(const std::string &parameter);
+    std::optional<std::string> getNamedStringParam(const std::string &parameter);
+    std::optional<bool> getNamedBoolParam(const std::string &parameter);
+    std::optional<double> getNamedFloatParam(const std::string &parameter);
+    std::optional<int> getNamedInt32Param(const std::string &parameter);
 
     int getObject(const char *objectPath, int index, int proxy, int options);
     int getObject(const std::string &objectPath, int index, int proxy, int options);
@@ -148,7 +148,7 @@ namespace sim
     int getObjectFromUid(long long int uid, int options);
     int getObjectFromUid(long long int uid, bool noError);
 
-    int getScriptHandleEx(int scriptType, int objHandle, boost::optional<std::string> scriptName = {});
+    int getScriptHandleEx(int scriptType, int objHandle, std::optional<std::string> scriptName = {});
 
     void removeObjects(const std::vector<int> &objectHandles);
 
@@ -365,7 +365,7 @@ namespace sim
     void writeCustomDataBlock(int objectHandle, const std::string &tagName, const std::string &data);
 
     char * readCustomDataBlock(int objectHandle, const char *tagName, int *dataSize);
-    boost::optional<std::string> readCustomDataBlock(int objectHandle, const std::string &tagName);
+    std::optional<std::string> readCustomDataBlock(int objectHandle, const std::string &tagName);
 
     char * readCustomDataBlockTags(int objectHandle, int *tagCount);
     std::vector<std::string> readCustomDataBlockTags(int objectHandle);
@@ -390,7 +390,7 @@ namespace sim
     int setScriptInt32Param(int scriptHandle, int parameterID, int parameter);
 
     std::string getScriptStringParam(int scriptHandle, int parameterID);
-    boost::optional<std::string> getScriptStringParamOpt(int scriptHandle, int parameterID);
+    std::optional<std::string> getScriptStringParamOpt(int scriptHandle, int parameterID);
 
     int setScriptStringParam(int scriptHandle, int parameterID, const std::string &parameter);
 
@@ -515,7 +515,7 @@ namespace sim
 
     int eventNotification(const std::string &event);
 
-    void addLog(boost::optional<std::string> pluginName, int verbosityLevel, boost::optional<std::string> logMsg);
+    void addLog(std::optional<std::string> pluginName, int verbosityLevel, std::optional<std::string> logMsg);
     template<typename... Arguments>
     void addLog(int verbosity, const std::string &fmt, Arguments&&... args)
     {
@@ -835,13 +835,13 @@ namespace sim
     void setObjectColor(int objectHandle, int index, int colorComponent, const float *rgbData);
     void setObjectColor(int objectHandle, int index, int colorComponent, const std::array<float, 3> &rgbData);
 
-    boost::optional<std::array<float, 3>> getObjectColor(int objectHandle, int index, int colorComponent);
+    std::optional<std::array<float, 3>> getObjectColor(int objectHandle, int index, int colorComponent);
 
     void setShapeColor(int shapeHandle, const char *colorName, int colorComponent, const float *rgbData);
-    void setShapeColor(int shapeHandle, boost::optional<std::string> colorName, int colorComponent, const std::array<float, 3> &rgbData);
+    void setShapeColor(int shapeHandle, std::optional<std::string> colorName, int colorComponent, const std::array<float, 3> &rgbData);
 
-    boost::optional<std::array<float, 3>> getShapeColor(int shapeHandle, boost::optional<std::string> colorName, int colorComponent);
-    boost::optional<std::array<float, 3>> getShapeColor(int shapeHandle, int colorComponent);
+    std::optional<std::array<float, 3>> getShapeColor(int shapeHandle, std::optional<std::string> colorName, int colorComponent);
+    std::optional<std::array<float, 3>> getShapeColor(int shapeHandle, int colorComponent);
 
     // getContactInfo
 
@@ -864,10 +864,10 @@ namespace sim
     int createHeightfieldShape(int options, double shadingAngle, int xPointCount, int yPointCount, double xSize, const std::vector<double> &heights);
 
     void getShapeMesh(int shapeHandle, double **vertices, int *verticesSize, int **indices, int *indicesSize, double **normals = nullptr);
-    void getShapeMesh(int shapeHandle, std::vector<double> vertices, std::vector<int> indices, boost::optional<std::vector<double>> normals = {});
+    void getShapeMesh(int shapeHandle, std::vector<double> vertices, std::vector<int> indices, std::optional<std::vector<double>> normals = {});
 
     int createJoint(int jointType, int jointMode, int options, const double *sizes);
-    int createJoint(int jointType, int jointMode, int options = 0, boost::optional<std::array<double, 2>> sizes = {});
+    int createJoint(int jointType, int jointMode, int options = 0, std::optional<std::array<double, 2>> sizes = {});
 
     int createDummy(double size = 0.01);
 
@@ -939,7 +939,7 @@ namespace sim
 
     // intersectPointsWithPointCloud
 
-    int insertObjectIntoPointCloud(int pointCloudHandle, int objectHandle, int options, double gridSize, boost::optional<std::array<unsigned char, 3>> color = {}, boost::optional<float> duplicateTolerance = {});
+    int insertObjectIntoPointCloud(int pointCloudHandle, int objectHandle, int options, double gridSize, std::optional<std::array<unsigned char, 3>> color = {}, std::optional<float> duplicateTolerance = {});
 
     // subtractObjectFromPointCloud
 

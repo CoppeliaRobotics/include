@@ -38,14 +38,14 @@ class Param(object):
         return self.default is not None
 
     def ctype(self):
-        if self.nullable: return 'boost::optional< %s >' % self.ctype_base
+        if self.nullable: return 'std::optional< %s >' % self.ctype_base
         else: return self.ctype_base
 
     def htype(self):
         return self.dtype
 
     def cdefault(self):
-        if self.nullable and self.default == 'nil': return 'boost::none'
+        if self.nullable and self.default == 'nil': return 'std::nullopt'
         return self.default
 
     def hdefault(self):

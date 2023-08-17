@@ -211,7 +211,7 @@ void setNamedInt32Param(const std::string &parameter, int value)
     setNamedStringParam(parameter, std::to_string(value));
 }
 
-boost::optional<std::string> getNamedStringParam(const std::string &parameter)
+std::optional<std::string> getNamedStringParam(const std::string &parameter)
 {
     char *ret;
     int len;
@@ -222,7 +222,7 @@ boost::optional<std::string> getNamedStringParam(const std::string &parameter)
     return s;
 }
 
-boost::optional<bool> getNamedBoolParam(const std::string &parameter)
+std::optional<bool> getNamedBoolParam(const std::string &parameter)
 {
     auto v = getNamedStringParam(parameter);
     if(!v) return {};
@@ -236,14 +236,14 @@ boost::optional<bool> getNamedBoolParam(const std::string &parameter)
     throw api_error("simGetNamedBoolParam");
 }
 
-boost::optional<double> getNamedFloatParam(const std::string &parameter)
+std::optional<double> getNamedFloatParam(const std::string &parameter)
 {
     auto v = getNamedStringParam(parameter);
     if(!v) return {};
     return std::stod(*v);
 }
 
-boost::optional<int> getNamedInt32Param(const std::string &parameter)
+std::optional<int> getNamedInt32Param(const std::string &parameter)
 {
     auto v = getNamedStringParam(parameter);
     if(!v) return {};
@@ -298,7 +298,7 @@ int getObjectFromUid(long long int uid, bool noError)
     return getObjectFromUid(uid, options);
 }
 
-int getScriptHandleEx(int scriptType, int objHandle, boost::optional<std::string> scriptName)
+int getScriptHandleEx(int scriptType, int objHandle, std::optional<std::string> scriptName)
 {
     return simGetScriptHandleEx(scriptType, objHandle, scriptName ? scriptName->c_str() : nullptr);
 }
@@ -842,7 +842,7 @@ char * readCustomDataBlock(int objectHandle, const char *tagName, int *dataSize)
     return simReadCustomDataBlock(objectHandle, tagName, dataSize);
 }
 
-boost::optional<std::string> readCustomDataBlock(int objectHandle, const std::string &tagName)
+std::optional<std::string> readCustomDataBlock(int objectHandle, const std::string &tagName)
 {
     int size = 0;
     char *buf = readCustomDataBlock(objectHandle, tagName.c_str(), &size);
@@ -946,7 +946,7 @@ std::string getScriptStringParam(int scriptHandle, int parameterID)
     return s;
 }
 
-boost::optional<std::string> getScriptStringParamOpt(int scriptHandle, int parameterID)
+std::optional<std::string> getScriptStringParamOpt(int scriptHandle, int parameterID)
 {
     int parameterLength = 0;
     char *buf = simGetScriptStringParam(scriptHandle, parameterID, &parameterLength);
@@ -1589,7 +1589,7 @@ int eventNotification(const std::string &event)
     return simEventNotification(event.c_str());
 }
 
-void addLog(boost::optional<std::string> pluginName, int verbosityLevel, boost::optional<std::string> logMsg)
+void addLog(std::optional<std::string> pluginName, int verbosityLevel, std::optional<std::string> logMsg)
 {
     if(simAddLog(pluginName ? pluginName->c_str() : nullptr, verbosityLevel, logMsg ? logMsg->c_str() : nullptr) == -1)
         throw api_error("simAddLog");
@@ -2362,7 +2362,7 @@ void setObjectColor(int objectHandle, int index, int colorComponent, const std::
     setObjectColor(objectHandle, index, colorComponent, rgbData.data());
 }
 
-boost::optional<std::array<float, 3>> getObjectColor(int objectHandle, int index, int colorComponent)
+std::optional<std::array<float, 3>> getObjectColor(int objectHandle, int index, int colorComponent)
 {
     std::array<float, 3> rgbData;
     int ret = simGetObjectColor(objectHandle, index, colorComponent, rgbData.data());
@@ -2380,12 +2380,12 @@ void setShapeColor(int shapeHandle, const char *colorName, int colorComponent, c
         throw api_error("simSetShapeColor");
 }
 
-void setShapeColor(int shapeHandle, boost::optional<std::string> colorName, int colorComponent, const std::array<float, 3> &rgbData)
+void setShapeColor(int shapeHandle, std::optional<std::string> colorName, int colorComponent, const std::array<float, 3> &rgbData)
 {
     setShapeColor(shapeHandle, colorName ? colorName->c_str() : nullptr, colorComponent, rgbData.data());
 }
 
-boost::optional<std::array<float, 3>> getShapeColor(int shapeHandle, boost::optional<std::string> colorName, int colorComponent)
+std::optional<std::array<float, 3>> getShapeColor(int shapeHandle, std::optional<std::string> colorName, int colorComponent)
 {
     std::array<float, 3> rgbData;
     int ret = simGetShapeColor(shapeHandle, colorName ? colorName->c_str() : 0, colorComponent, rgbData.data());
@@ -2396,7 +2396,7 @@ boost::optional<std::array<float, 3>> getShapeColor(int shapeHandle, boost::opti
     return rgbData;
 }
 
-boost::optional<std::array<float, 3>> getShapeColor(int shapeHandle, int colorComponent)
+std::optional<std::array<float, 3>> getShapeColor(int shapeHandle, int colorComponent)
 {
     return getShapeColor(shapeHandle, {}, colorComponent);
 }
@@ -2467,7 +2467,7 @@ void getShapeMesh(int shapeHandle, double **vertices, int *verticesSize, int **i
         throw api_error("simGetShapeMesh");
 }
 
-void getShapeMesh(int shapeHandle, std::vector<double> vertices, std::vector<int> indices, boost::optional<std::vector<double>> normals)
+void getShapeMesh(int shapeHandle, std::vector<double> vertices, std::vector<int> indices, std::optional<std::vector<double>> normals)
 {
     double *verticesBuf;
     int verticesSize = 0;
@@ -2492,7 +2492,7 @@ int createJoint(int jointType, int jointMode, int options, const double *sizes)
     return handle;
 }
 
-int createJoint(int jointType, int jointMode, int options, boost::optional<std::array<double, 2>> sizes)
+int createJoint(int jointType, int jointMode, int options, std::optional<std::array<double, 2>> sizes)
 {
     return createJoint(jointType, jointMode, options, sizes ? sizes->data() : nullptr);
 }
@@ -2710,7 +2710,7 @@ int createPointCloud(double maxVoxelSize, int maxPtCntPerVoxel, int options, dou
 
 // int simIntersectPointsWithPointCloud(int pointCloudHandle, int options, const double *pts, int ptCnt, double tolerance, void *reserved);
 
-int insertObjectIntoPointCloud(int pointCloudHandle, int objectHandle, int options, double gridSize, boost::optional<std::array<unsigned char, 3>> color, boost::optional<float> duplicateTolerance)
+int insertObjectIntoPointCloud(int pointCloudHandle, int objectHandle, int options, double gridSize, std::optional<std::array<unsigned char, 3>> color, std::optional<float> duplicateTolerance)
 {
     std::array<unsigned char, 3> color_;
     unsigned char *colorPtr = nullptr;

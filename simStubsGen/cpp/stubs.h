@@ -11,7 +11,6 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/assign/list_of.hpp>
 #include <boost/format.hpp>
-#include <boost/optional.hpp>
 
 class FuncTracer
 {

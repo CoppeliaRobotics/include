@@ -4,6 +4,7 @@
 #include "stubs.h"
 #include <simPlusPlus/Lib.h>
 
+#include <optional>
 #include <cstring>
 #include <string>
 #include <vector>
@@ -166,11 +167,11 @@ void readFromStack(int stack, std::string *value, const ReadOptions &rdopt)
 }
 
 template<typename T>
-void readFromStack(int stack, boost::optional<T> *value, const ReadOptions &rdopt = {})
+void readFromStack(int stack, std::optional<T> *value, const ReadOptions &rdopt = {})
 {
     if(sim::getStackItemType(stack, -1) == sim_stackitem_null)
     {
-        *value = boost::none;
+        *value = std::nullopt;
         sim::popStackItem(stack, 1);
     }
     else
@@ -425,7 +426,7 @@ void writeToStack(const std::string &value, int stack, const WriteOptions &wropt
 }
 
 template<typename T>
-void writeToStack(const boost::optional<T> &value, int stack, const WriteOptions &wropt = {})
+void writeToStack(const std::optional<T> &value, int stack, const WriteOptions &wropt = {})
 {
     if(!value)
     {
