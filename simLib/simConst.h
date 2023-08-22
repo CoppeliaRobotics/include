@@ -790,6 +790,7 @@ enum { /* Boolean parameters: */
     sim_boolparam_show_w_receivers,
     sim_boolparam_xr_jobfunc,
     sim_boolparam_rayvalid,
+    sim_boolparam_qglwidget,
 };
 
 enum { /* Integer parameters: */
