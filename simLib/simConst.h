@@ -937,6 +937,7 @@ enum { /* UI properties: */
     sim_gui_scriptsimulationparameters  =0x00100,
     sim_gui_dialogs                     =0x00200,
     sim_gui_browser                     =0x00400,
+    sim_gui_splash                      =0x00800,
     sim_gui_all                         =0x0ffff,
     sim_gui_headless                    =0x10000,
 };
