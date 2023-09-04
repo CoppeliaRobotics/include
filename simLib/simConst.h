@@ -215,7 +215,7 @@ enum { /* Check the documentation instead of comments below!! */
 
 
         sim_message_eventcallback_guipass,
-        sim_message_eventcallback_mainscriptabouttobecalled, /* deprecated */
+        sim_message_eventcallback_mainscriptabouttobecalled,
 
         sim_message_eventcallback_rmlposition, /* deprecated */
         sim_message_eventcallback_rmlvelocity, /* deprecated */
@@ -2053,14 +2053,14 @@ enum { /* Default dynamic materials */
 
 enum { /* Vision sensors render modes */
     sim_rendermode_opengl=0,
-    sim_rendermode_auxchannels,
+    sim_rendermode_auxchannels, /* deprecated */
     sim_rendermode_colorcoded,
     sim_rendermode_povray,
     sim_rendermode_reserved,
     sim_rendermode_extrenderer,
-    sim_rendermode_extrendererwindowed,
+    sim_rendermode_extrendererwindowed, /* deprecated */
     sim_rendermode_opengl3,
-    sim_rendermode_opengl3windowed,
+    sim_rendermode_opengl3windowed, /* deprecated */
     sim_rendermode_oglimg,
     sim_rendermode_codedimg,
 };
