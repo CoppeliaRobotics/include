@@ -103,6 +103,11 @@ class ParamString(Param):
         super(ParamString, self).__init__(node)
         self.ctype_base = 'std::string'
 
+class ParamBuffer(Param):
+    def __init__(self, node):
+        super(ParamBuffer, self).__init__(node)
+        self.ctype_base = 'std::string'
+
 class ParamBool(Param):
     def __init__(self, node):
         super(ParamBool, self).__init__(node)
@@ -169,6 +174,7 @@ Param.register_type('long', ParamLong)
 Param.register_type('float', ParamFloat)
 Param.register_type('double', ParamDouble)
 Param.register_type('string', ParamString)
+Param.register_type('buffer', ParamBuffer)
 Param.register_type('bool', ParamBool)
 Param.register_type('table', ParamTable)
 Param.register_type('grid', ParamGrid)
