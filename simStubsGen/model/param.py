@@ -80,6 +80,7 @@ class ParamInt(Param):
 class ParamLong(Param):
     def __init__(self, node):
         super(ParamLong, self).__init__(node)
+        self.ctype_base = 'long long'
 
     def htype(self):
         return 'int'

@@ -110,17 +110,17 @@ void readFromStack(int stack, int *value, const ReadOptions &rdopt)
     }
 }
 
-void readFromStack(int stack, long *value, const ReadOptions &rdopt)
+void readFromStack(int stack, long long *value, const ReadOptions &rdopt)
 {
-    int v;
-    if(sim::getStackInt32Value(stack, &v) == 1)
+    long long v;
+    if(sim::getStackInt64Value(stack, &v) == 1)
     {
         *value = v;
         sim::popStackItem(stack, 1);
     }
     else
     {
-        throw sim::exception("expected int");
+        throw sim::exception("expected int64");
     }
 }
 
@@ -403,11 +403,9 @@ void writeToStack(const int &value, int stack, const WriteOptions &wropt)
     sim::pushInt32OntoStack(stack, value);
 }
 
-void writeToStack(const long &value, int stack, const WriteOptions &wropt)
+void writeToStack(const long long &value, int stack, const WriteOptions &wropt)
 {
-    if(value < std::numeric_limits<int>::max() || value > std::numeric_limits<int>::max())
-        throw std::runtime_error("stack doesn't support (yet) int64 values");
-    sim::pushInt32OntoStack(stack, static_cast<int>(value));
+    sim::pushInt64OntoStack(stack, value);
 }
 
 void writeToStack(const float &value, int stack, const WriteOptions &wropt)

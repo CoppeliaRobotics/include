@@ -175,7 +175,7 @@ struct `struct.name`
 #py endfor
 void readFromStack(int stack, bool *value, const ReadOptions &rdopt = {});
 void readFromStack(int stack, int *value, const ReadOptions &rdopt = {});
-void readFromStack(int stack, long *value, const ReadOptions &rdopt = {});
+void readFromStack(int stack, long long *value, const ReadOptions &rdopt = {});
 void readFromStack(int stack, float *value, const ReadOptions &rdopt = {});
 void readFromStack(int stack, double *value, const ReadOptions &rdopt = {});
 void readFromStack(int stack, std::string *value, const ReadOptions &rdopt = {});
@@ -184,7 +184,7 @@ void readFromStack(int stack, `struct.name` *value, const ReadOptions &rdopt = {
 #py endfor
 void writeToStack(const bool &value, int stack, const WriteOptions &wropt = {});
 void writeToStack(const int &value, int stack, const WriteOptions &wropt = {});
-void writeToStack(const long &value, int stack, const WriteOptions &wropt = {});
+void writeToStack(const long long &value, int stack, const WriteOptions &wropt = {});
 void writeToStack(const float &value, int stack, const WriteOptions &wropt = {});
 void writeToStack(const double &value, int stack, const WriteOptions &wropt = {});
 void writeToStack(const std::string &value, int stack, const WriteOptions &wropt = {});
