@@ -428,14 +428,16 @@ td.section { margin: 0; padding: 0; }
                                                 <br/>
                                             </td>
                                         </tr>
-                                        <tr class="apiTableTr">
-                                            <td class="apiTableLeftDescr">
-                                                See also
-                                            </td>
-                                            <td class="apiTableRightDescr">
-                                                <xsl:call-template name="renderRelated"/>
-                                            </td>
-                                        </tr>
+                                        <xsl:if test="see-also/*[name()='command-ref' or name()='enum-ref' or name()='struct-ref' or name()='script-function-ref'] or categories/category">
+                                            <tr class="apiTableTr">
+                                                <td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+                                                <td class="apiTableRightDescr">
+                                                    <xsl:call-template name="renderRelated"/>
+                                                </td>
+                                            </tr>
+                                        </xsl:if>
                                     </table>
                                     <br/>
                                 </xsl:for-each>
