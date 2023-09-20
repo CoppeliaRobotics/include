@@ -275,8 +275,11 @@
                             <xsl:text>, default: </xsl:text>
                             <xsl:value-of select="@default"/>
                         </xsl:if>
-                        <xsl:text>): </xsl:text>
-                        <xsl:apply-templates select="description/node()"/>
+                        <xsl:text>)</xsl:text>
+                        <xsl:if test="description">
+                            <xsl:text>: </xsl:text>
+                            <xsl:apply-templates select="description/node()"/>
+                        </xsl:if>
                     </div>
                 </xsl:for-each>
             </xsl:when>
