@@ -34,6 +34,13 @@ typedef int (__cdecl *ptrSimSetModuleInfo)(const char* moduleName,int infoType,c
 typedef int (__cdecl *ptrSimGetModuleInfo)(const char* moduleName,int infoType,char** stringInfo,int* intInfo);
 typedef char* (__cdecl *ptrSimGetModuleName)(int index,unsigned char* moduleVersion);
 typedef int (__cdecl *ptrSimIsStackValueNull)(int stackHandle);
+typedef int (__cdecl *ptrSimIsRealTimeSimulationStepNeeded)();
+typedef int (__cdecl *ptrSimAdjustRealTimeTimer)(int instanceIndex,SIMDOUBLE deltaTime);
+typedef int (__cdecl *ptrSimSetSimulationPassesPerRenderingPass)(int p);
+typedef int (__cdecl *ptrSimGetSimulationPassesPerRenderingPass)();
+typedef int (__cdecl *ptrSimAdvanceSimulationByOneStep)();
+typedef int (__cdecl *ptrSimHandleMainScript)();
+
 
 extern ptrSimRunSimulator simRunSimulator;
 extern ptrSimRunSimulatorEx simRunSimulatorEx;
@@ -71,6 +78,12 @@ extern ptrSimGetModuleName simGetModuleName;
 extern ptrSimSetModuleInfo simSetModuleInfo;
 extern ptrSimGetModuleInfo simGetModuleInfo;
 extern ptrSimIsStackValueNull simIsStackValueNull;
+extern ptrSimIsRealTimeSimulationStepNeeded simIsRealTimeSimulationStepNeeded;
+extern ptrSimAdjustRealTimeTimer simAdjustRealTimeTimer;
+extern ptrSimSetSimulationPassesPerRenderingPass simSetSimulationPassesPerRenderingPass;
+extern ptrSimGetSimulationPassesPerRenderingPass simGetSimulationPassesPerRenderingPass;
+extern ptrSimAdvanceSimulationByOneStep simAdvanceSimulationByOneStep;
+extern ptrSimHandleMainScript simHandleMainScript;
 
 #ifdef SIM_INTERFACE_OLD
 #include "simLib-old2.h"

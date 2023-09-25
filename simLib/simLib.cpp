@@ -114,7 +114,6 @@ ptrSimHandleProximitySensor simHandleProximitySensor=nullptr;
 ptrSimReadProximitySensor simReadProximitySensor=nullptr;
 ptrSimHandleDynamics simHandleDynamics=nullptr;
 ptrSimAssociateScriptWithObject simAssociateScriptWithObject=nullptr;
-ptrSimHandleMainScript simHandleMainScript=nullptr;
 ptrSimResetScript simResetScript=nullptr;
 ptrSimAddScript simAddScript=nullptr;
 ptrSimRemoveScript simRemoveScript=nullptr;
@@ -131,10 +130,6 @@ ptrSimCheckDistance simCheckDistance=nullptr;
 ptrSimSetSimulationTimeStep simSetSimulationTimeStep=nullptr;
 ptrSimGetSimulationTimeStep simGetSimulationTimeStep=nullptr;
 ptrSimGetRealTimeSimulation simGetRealTimeSimulation=nullptr;
-ptrSimIsRealTimeSimulationStepNeeded simIsRealTimeSimulationStepNeeded=nullptr;
-ptrSimAdjustRealTimeTimer simAdjustRealTimeTimer=nullptr;
-ptrSimGetSimulationPassesPerRenderingPass simGetSimulationPassesPerRenderingPass=nullptr;
-ptrSimAdvanceSimulationByOneStep simAdvanceSimulationByOneStep=nullptr;
 ptrSimStartSimulation simStartSimulation=nullptr;
 ptrSimStopSimulation simStopSimulation=nullptr;
 ptrSimPauseSimulation simPauseSimulation=nullptr;
@@ -236,7 +231,6 @@ ptrSimGetScriptInt32Param simGetScriptInt32Param=nullptr;
 ptrSimSetScriptInt32Param simSetScriptInt32Param=nullptr;
 ptrSimGetScriptStringParam simGetScriptStringParam=nullptr;
 ptrSimSetScriptStringParam simSetScriptStringParam=nullptr;
-ptrSimSetSimulationPassesPerRenderingPass simSetSimulationPassesPerRenderingPass=nullptr;
 ptrSimGetRotationAxis simGetRotationAxis=nullptr;
 ptrSimRotateAroundAxis simRotateAroundAxis=nullptr;
 ptrSimGetJointForce simGetJointForce=nullptr;
@@ -579,7 +573,6 @@ int getSimProcAddresses(LIBRARY lib)
     simGetObjectSel=(ptrSimGetObjectSel)(_getProcAddress(lib,"simGetObjectSel",false));
     simSetObjectSel=(ptrSimSetObjectSel)(_getProcAddress(lib,"simSetObjectSel",false));
     simAssociateScriptWithObject=(ptrSimAssociateScriptWithObject)(_getProcAddress(lib,"simAssociateScriptWithObject",false));
-    simHandleMainScript=(ptrSimHandleMainScript)(_getProcAddress(lib,"simHandleMainScript",false));
     simResetScript=(ptrSimResetScript)(_getProcAddress(lib,"simResetScript",false));
     simAddScript=(ptrSimAddScript)(_getProcAddress(lib,"simAddScript",false));
     simRemoveScript=(ptrSimRemoveScript)(_getProcAddress(lib,"simRemoveScript",false));
@@ -589,9 +582,6 @@ int getSimProcAddresses(LIBRARY lib)
     simReleaseBuffer=(ptrSimReleaseBuffer)(_getProcAddress(lib,"simReleaseBuffer",false));
     simCheckCollision=(ptrSimCheckCollision)(_getProcAddress(lib,"simCheckCollision",false));
     simGetRealTimeSimulation=(ptrSimGetRealTimeSimulation)(_getProcAddress(lib,"simGetRealTimeSimulation",false));
-    simIsRealTimeSimulationStepNeeded=(ptrSimIsRealTimeSimulationStepNeeded)(_getProcAddress(lib,"simIsRealTimeSimulationStepNeeded",false));
-    simGetSimulationPassesPerRenderingPass=(ptrSimGetSimulationPassesPerRenderingPass)(_getProcAddress(lib,"simGetSimulationPassesPerRenderingPass",false));
-    simAdvanceSimulationByOneStep=(ptrSimAdvanceSimulationByOneStep)(_getProcAddress(lib,"simAdvanceSimulationByOneStep",false));
     simStartSimulation=(ptrSimStartSimulation)(_getProcAddress(lib,"simStartSimulation",false));
     simStopSimulation=(ptrSimStopSimulation)(_getProcAddress(lib,"simStopSimulation",false));
     simPauseSimulation=(ptrSimPauseSimulation)(_getProcAddress(lib,"simPauseSimulation",false));
@@ -647,7 +637,6 @@ int getSimProcAddresses(LIBRARY lib)
     simSetScriptInt32Param=(ptrSimSetScriptInt32Param)(_getProcAddress(lib,"simSetScriptInt32Param",false));
     simGetScriptStringParam=(ptrSimGetScriptStringParam)(_getProcAddress(lib,"simGetScriptStringParam",false));
     simSetScriptStringParam=(ptrSimSetScriptStringParam)(_getProcAddress(lib,"simSetScriptStringParam",false));
-    simSetSimulationPassesPerRenderingPass=(ptrSimSetSimulationPassesPerRenderingPass)(_getProcAddress(lib,"simSetSimulationPassesPerRenderingPass",false));
     simPersistentDataWrite=(ptrSimPersistentDataWrite)(_getProcAddress(lib,"simPersistentDataWrite",false));
     simPersistentDataRead=(ptrSimPersistentDataRead)(_getProcAddress(lib,"simPersistentDataRead",false));
     simIsHandle=(ptrSimIsHandle)(_getProcAddress(lib,"simIsHandle",false));
@@ -835,7 +824,6 @@ int getSimProcAddresses(LIBRARY lib)
     simCheckDistance=(ptrSimCheckDistance)(_getProcAddress(lib,"simCheckDistance",true));
     simSetSimulationTimeStep=(ptrSimSetSimulationTimeStep)(_getProcAddress(lib,"simSetSimulationTimeStep",true));
     simGetSimulationTimeStep=(ptrSimGetSimulationTimeStep)(_getProcAddress(lib,"simGetSimulationTimeStep",true));
-    simAdjustRealTimeTimer=(ptrSimAdjustRealTimeTimer)(_getProcAddress(lib,"simAdjustRealTimeTimer",true));
     simFloatingViewAdd=(ptrSimFloatingViewAdd)(_getProcAddress(lib,"simFloatingViewAdd",true));
     simHandleGraph=(ptrSimHandleGraph)(_getProcAddress(lib,"simHandleGraph",true));
     simSetGraphStreamTransformation=(ptrSimSetGraphStreamTransformation)(_getProcAddress(lib,"simSetGraphStreamTransformation",true));
@@ -1369,11 +1357,6 @@ int getSimProcAddresses(LIBRARY lib)
         printf("%s simAssociateScriptWithObject\n",couldNotFind);
         return 0;
     }
-    if (simHandleMainScript==nullptr)
-    {
-        printf("%s simHandleMainScript\n",couldNotFind);
-        return 0;
-    }
     if (simResetScript==nullptr)
     {
         printf("%s simResetScript\n",couldNotFind);
@@ -1452,26 +1435,6 @@ int getSimProcAddresses(LIBRARY lib)
     if (simGetRealTimeSimulation==nullptr)
     {
         printf("%s simGetRealTimeSimulation\n",couldNotFind);
-        return 0;
-    }
-    if (simIsRealTimeSimulationStepNeeded==nullptr)
-    {
-        printf("%s simIsRealTimeSimulationStepNeeded\n",couldNotFind);
-        return 0;
-    }
-    if (simAdjustRealTimeTimer==nullptr)
-    {
-        printf("%s simAdjustRealTimeTimer\n",couldNotFind);
-        return 0;
-    }
-    if (simGetSimulationPassesPerRenderingPass==nullptr)
-    {
-        printf("%s simGetSimulationPassesPerRenderingPass\n",couldNotFind);
-        return 0;
-    }
-    if (simAdvanceSimulationByOneStep==nullptr)
-    {
-        printf("%s simAdvanceSimulationByOneStep\n",couldNotFind);
         return 0;
     }
     if (simStartSimulation==nullptr)
@@ -1977,11 +1940,6 @@ int getSimProcAddresses(LIBRARY lib)
     if (simSetScriptStringParam==nullptr)
     {
         printf("%s simSetScriptStringParam\n",couldNotFind);
-        return 0;
-    }
-    if (simSetSimulationPassesPerRenderingPass==nullptr)
-    {
-        printf("%s simSetSimulationPassesPerRenderingPass\n",couldNotFind);
         return 0;
     }
     if (simGetRotationAxis==nullptr)

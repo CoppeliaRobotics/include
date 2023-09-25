@@ -34,6 +34,12 @@ ptrSimGetModuleName simGetModuleName=nullptr;
 ptrSimSetModuleInfo simSetModuleInfo=nullptr;
 ptrSimGetModuleInfo simGetModuleInfo=nullptr;
 ptrSimIsStackValueNull simIsStackValueNull=nullptr;
+ptrSimIsRealTimeSimulationStepNeeded simIsRealTimeSimulationStepNeeded=nullptr;
+ptrSimAdjustRealTimeTimer simAdjustRealTimeTimer=nullptr;
+ptrSimSetSimulationPassesPerRenderingPass simSetSimulationPassesPerRenderingPass=nullptr;
+ptrSimGetSimulationPassesPerRenderingPass simGetSimulationPassesPerRenderingPass=nullptr;
+ptrSimAdvanceSimulationByOneStep simAdvanceSimulationByOneStep=nullptr;
+ptrSimHandleMainScript simHandleMainScript=nullptr;
 
 #ifdef SIM_INTERFACE_OLD
 #include "simLib-old2.cpp"
@@ -82,6 +88,12 @@ int getSimProcAddressesOld(LIBRARY lib)
     simSetModuleInfo=(ptrSimSetModuleInfo)(_getProcAddress(lib,"simSetModuleInfo",false));
     simGetModuleInfo=(ptrSimGetModuleInfo)(_getProcAddress(lib,"simGetModuleInfo",false));
     simIsStackValueNull=(ptrSimIsStackValueNull)(_getProcAddress(lib,"simIsStackValueNull",false));
+    simIsRealTimeSimulationStepNeeded=(ptrSimIsRealTimeSimulationStepNeeded)(_getProcAddress(lib,"simIsRealTimeSimulationStepNeeded",false));
+    simAdjustRealTimeTimer=(ptrSimAdjustRealTimeTimer)(_getProcAddress(lib,"simAdjustRealTimeTimer",true));
+    simSetSimulationPassesPerRenderingPass=(ptrSimSetSimulationPassesPerRenderingPass)(_getProcAddress(lib,"simSetSimulationPassesPerRenderingPass",false));
+    simGetSimulationPassesPerRenderingPass=(ptrSimGetSimulationPassesPerRenderingPass)(_getProcAddress(lib,"simGetSimulationPassesPerRenderingPass",false));
+    simAdvanceSimulationByOneStep=(ptrSimAdvanceSimulationByOneStep)(_getProcAddress(lib,"simAdvanceSimulationByOneStep",false));
+    simHandleMainScript=(ptrSimHandleMainScript)(_getProcAddress(lib,"simHandleMainScript",false));
 
     char *ps=std::getenv("COPPELIASIMPLUGIN_IGNORE_MISSING_SYMBOLS");
     if (ps!=nullptr)
@@ -267,6 +279,36 @@ int getSimProcAddressesOld(LIBRARY lib)
     if (simIsStackValueNull==nullptr)
     {
         printf("%s simIsStackValueNull\n",couldNotFind);
+        return 0;
+    }
+    if (simIsRealTimeSimulationStepNeeded==nullptr)
+    {
+        printf("%s simIsRealTimeSimulationStepNeeded\n",couldNotFind);
+        return 0;
+    }
+    if (simAdjustRealTimeTimer==nullptr)
+    {
+        printf("%s simAdjustRealTimeTimer\n",couldNotFind);
+        return 0;
+    }
+    if (simGetSimulationPassesPerRenderingPass==nullptr)
+    {
+        printf("%s simGetSimulationPassesPerRenderingPass\n",couldNotFind);
+        return 0;
+    }
+    if (simSetSimulationPassesPerRenderingPass==nullptr)
+    {
+        printf("%s simSetSimulationPassesPerRenderingPass\n",couldNotFind);
+        return 0;
+    }
+    if (simAdvanceSimulationByOneStep==nullptr)
+    {
+        printf("%s simAdvanceSimulationByOneStep\n",couldNotFind);
+        return 0;
+    }
+    if (simHandleMainScript==nullptr)
+    {
+        printf("%s simHandleMainScript\n",couldNotFind);
         return 0;
     }
     return 1;

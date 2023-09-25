@@ -419,7 +419,7 @@ enum { /* Simulation status */
     sim_simulation_advancing_lastbeforestop     =sim_simulation_advancing|0x06      /* Last simulation pass (1x) */
 };
 
-enum { /* Script execution result (first return value) */
+enum { /* deprecated */
     sim_script_no_error                 =0,
     sim_script_main_script_nonexistent  =1,
     sim_script_main_script_not_called   =2,
@@ -473,7 +473,7 @@ enum { /* System callbacks */
     sim_syscb_beforedelete, /* called just before objects are deleted (in an object delete or cut operation). Arg1 is a map with 'objectHandles' and 'allObjects' keys */
     sim_syscb_afterdelete, /* called just after objects were deleted. Arg1 is a map with 'objectHandles' keys */
     sim_syscb_aftercreate, /* called just after objects were created/pasted/loaded. Not called for the created objects. Arg1 is a map with 'objectHandles' array */
-    sim_syscb_threadmain, /* the main section of a threaded child script */
+    sim_syscb_threadmain, /* deprecated. Use sim_syscb_thread instead */
     sim_syscb_dyncallback, /* deprecated. Use sim_syscb_dyn instead */
     sim_syscb_beforemainscript, /* called just before calling the main script. Can be used to step a simulation */
     sim_syscb_vision, /* called just after a vision sensor image was acquired, for processing */
@@ -489,6 +489,7 @@ enum { /* System callbacks */
     sim_syscb_dyn, /* called by the physics engine twice per dyn. simulation pass */
     sim_syscb_contact, /* called by the physics engine when two respondable shapes are contacting */
     sim_syscb_joint, /* called with dyn. joints in custom ctrl mode, and kin. joints with sim.setJointTargetPosition & similar commands */
+    sim_syscb_thread, /* the main section of a threaded script */
     sim_syscb_endoflist
 };
 
