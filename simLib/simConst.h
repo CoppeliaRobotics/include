@@ -902,7 +902,7 @@ enum { /* String parameters: */
     sim_stringparam_tempscenedir, /* can only be read */
     sim_stringparam_datadir, /* can only be read */
     sim_stringparam_importexportdir,
-    sim_stringparam_addonpath, /* can only be read */
+    sim_stringparam_addonpath, /* can only be read. Path + name of the calling add-on */
     sim_stringparam_scenedefaultdir, /* can only be read */
     sim_stringparam_modeldefaultdir, /* can only be read */
     sim_stringparam_defaultpython, /* can only be read. See also pythonWrapper.python named string parameter */
@@ -914,6 +914,7 @@ enum { /* String parameters: */
     sim_stringparam_systemdir, /* can only be read */
     sim_stringparam_resourcesdir, /* can only be read */
     sim_stringparam_legacymachinetag, /* can only be read */
+    sim_stringparam_addondir, /* can only be read. Path of all add-ons */
 };
 
 enum { /* Array parameters: */
