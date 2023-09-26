@@ -490,6 +490,7 @@ enum { /* System callbacks */
     sim_syscb_contact, /* called by the physics engine when two respondable shapes are contacting */
     sim_syscb_joint, /* called with dyn. joints in custom ctrl mode, and kin. joints with sim.setJointTargetPosition & similar commands */
     sim_syscb_thread, /* the main section of a threaded script */
+    sim_syscb_selchange, /* called when selection changed */
     sim_syscb_endoflist
 };
 
@@ -1278,6 +1279,7 @@ enum { /* Object int/double/string parameters */
     sim_objstringparam_unique_id= 35,
     sim_objintparam_visible= 36,
     sim_objintparam_unique_id= 37,
+    sim_objintparam_hierarchycolor= 38,
 
     sim_objparam_end= 999,
 
