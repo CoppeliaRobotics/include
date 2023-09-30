@@ -500,7 +500,8 @@ enum { /* Script int params */
     sim_scriptintparam_type,
     sim_scriptintparam_handle,
     sim_scriptintparam_enabled,
-    sim_scriptintparam_objecthandle
+    sim_scriptintparam_objecthandle,
+    sim_scriptintparam_lang /* 0 lua, 1 python
 };
 
 enum { /* Script string params */
