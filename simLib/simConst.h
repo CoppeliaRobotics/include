@@ -511,6 +511,12 @@ enum { /* Script string params */
     sim_scriptstringparam_nameext
 };
 
+enum { /* code lang (scripts) */
+    sim_lang_undefined=-1,
+    sim_lang_lua=0,
+    sim_lang_python
+};
+
 enum { /* deprecated */
     sim_customizationscriptattribute_activeduringsimulation=0, /* deprecated */
     sim_scriptattribute_executionorder, /* integer attribute, see sim_scriptexecorder_normal, etc. */
