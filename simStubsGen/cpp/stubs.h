@@ -6,6 +6,7 @@
 
 #include <simLib/simExp.h>
 #include <simPlusPlus/Lib.h>
+#include <simStubsGen/cpp/common.h>
 #include <string>
 #include <vector>
 #include <boost/algorithm/string.hpp>
@@ -59,108 +60,6 @@ void simThread();
     }
 #endif // QT_COMPIL
 
-template<typename T>
-struct Grid
-{
-    std::vector<int> dims;
-    std::vector<T> data;
-};
-
-struct ReadOptions
-{
-    std::vector<size_t> minSize;
-    std::vector<size_t> maxSize;
-
-    ReadOptions& setBounds(size_t dim, size_t minSize_, size_t maxSize_)
-    {
-        while(minSize.size() <= dim) minSize.push_back(0);
-        while(maxSize.size() <= dim) maxSize.push_back(std::numeric_limits<size_t>::max());
-        minSize[dim] = minSize_;
-        maxSize[dim] = maxSize_;
-        return *this;
-    }
-
-    ReadOptions& setBounds(size_t dim, const std::string &s)
-    {
-        if(s == "*") return setBounds(dim, 0, -1);
-        auto n = s.find("..");
-        if(n == std::string::npos)
-        {
-            int f = std::stoi(s);
-            return setBounds(dim, f, f);
-        }
-        else
-        {
-            std::string smin = s.substr(0, n);
-            std::string smax = s.substr(n + 2);
-            int min = std::stoi(smin);
-            int max = smax == "*" ? -1 : std::stoi(smax);
-            return setBounds(dim, min, max);
-        }
-    }
-
-    ReadOptions& setBounds(const std::string &s)
-    {
-        if(s != "")
-        {
-            std::vector<std::string> ss;
-            boost::split(ss, s, boost::is_any_of(", "));
-            for(size_t dim = 0; dim < ss.size(); dim++)
-                setBounds(dim, ss.at(dim));
-        }
-        return *this;
-    }
-
-    void validateTableSize(size_t sz) const
-    {
-        if(minSize.empty() || maxSize.empty()) return;
-        if(minSize[0] == maxSize[0])
-        {
-            if(sz != minSize[0])
-                throw sim::exception("must have exactly %d elements", minSize[0]);
-        }
-        else
-        {
-            if(sz < minSize[0])
-                throw sim::exception("must have at least %d elements", minSize[0]);
-            if(sz > maxSize[0])
-                throw sim::exception("must have at most %d elements", maxSize[0]);
-        }
-    }
-
-    void validateSize(size_t dim, size_t sz) const
-    {
-        if(dim >= minSize.size() || dim >= maxSize.size()) return;
-        if(minSize[dim] == maxSize[dim])
-        {
-            if(sz != minSize[dim])
-                throw sim::exception("dimension %d must have exactly %d elements", dim + 1, minSize[dim]);
-        }
-        else
-        {
-            if(sz < minSize[dim])
-                throw sim::exception("dimension %d must have at least %d elements", dim + 1, minSize[dim]);
-            if(sz > maxSize[dim])
-                throw sim::exception("dimension %d must have at most %d elements", dim + 1, maxSize[dim]);
-        }
-    }
-
-    template<typename T>
-    void validateSize(const std::vector<T> &szs) const
-    {
-        size_t n = std::min(minSize.size(), maxSize.size());
-        if(n && szs.size() != n)
-            throw sim::exception("incorrect dimension count: %d (should be %d)", szs.size(), n);
-        for(size_t dim = 0; dim < n; dim++)
-            validateSize(dim, szs.at(dim));
-    }
-};
-
-struct WriteOptions
-{
-    void *dummy{nullptr};
-};
-
 #py for struct in plugin.structs:
 struct `struct.name`
 {
@@ -172,23 +71,7 @@ struct `struct.name`
     `struct.name`(`', '.join(f'const {f.ctype()} &{f.name}_' for f in struct.fields)`) : `', '.join(f'{f.name}({f.name}_)' for f in struct.fields)` {}
 };
 
-#py endfor
-void readFromStack(int stack, bool *value, const ReadOptions &rdopt = {});
-void readFromStack(int stack, int *value, const ReadOptions &rdopt = {});
-void readFromStack(int stack, long long *value, const ReadOptions &rdopt = {});
-void readFromStack(int stack, float *value, const ReadOptions &rdopt = {});
-void readFromStack(int stack, double *value, const ReadOptions &rdopt = {});
-void readFromStack(int stack, std::string *value, const ReadOptions &rdopt = {});
-#py for struct in plugin.structs:
 void readFromStack(int stack, `struct.name` *value, const ReadOptions &rdopt = {});
-#py endfor
-void writeToStack(const bool &value, int stack, const WriteOptions &wropt = {});
-void writeToStack(const int &value, int stack, const WriteOptions &wropt = {});
-void writeToStack(const long long &value, int stack, const WriteOptions &wropt = {});
-void writeToStack(const float &value, int stack, const WriteOptions &wropt = {});
-void writeToStack(const double &value, int stack, const WriteOptions &wropt = {});
-void writeToStack(const std::string &value, int stack, const WriteOptions &wropt = {});
-#py for struct in plugin.structs:
 void writeToStack(const `struct.name` &value, int stack, const WriteOptions &wropt = {});
 #py endfor
 
