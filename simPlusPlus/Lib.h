@@ -404,7 +404,7 @@ namespace sim
     unsigned char * getScaledImage(const unsigned char *imageIn, const int *resolutionIn, int *resolutionOut, int options);
     unsigned char * getScaledImage(const unsigned char *imageIn, std::array<int, 2> resolutionIn, int *resolutionOut, int options);
 
-    void callScriptFunctionEx(int scriptHandleOrType, const std::string &functionNameAtScriptName, int stackID);
+    void callScriptFunctionEx(int scriptHandle, const std::string &functionName, int stackID);
 
     // getExtensionString
 

@@ -994,9 +994,9 @@ unsigned char * getScaledImage(const unsigned char *imageIn, std::array<int, 2> 
     return getScaledImage(imageIn, resolutionIn.data(), resolutionOut, options);
 }
 
-void callScriptFunctionEx(int scriptHandleOrType, const std::string &functionNameAtScriptName, int stackId)
+void callScriptFunctionEx(int scriptHandle, const std::string &functionName, int stackId)
 {
-    if(simCallScriptFunctionEx(scriptHandleOrType, functionNameAtScriptName.c_str(), stackId) == -1)
+    if(simCallScriptFunctionEx(scriptHandle, functionName.c_str(), stackId) == -1)
         throw api_error("simCallScriptFunctionEx");
 }
 
