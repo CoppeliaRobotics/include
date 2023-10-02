@@ -491,7 +491,7 @@ namespace sim
 
     // getReferencedHandles
 
-    void executeScriptString(int scriptHandleOrType, const std::string &stringAtScriptName, int stackID);
+    void executeScriptString(int scriptHandle, const std::string &code, int stackID);
 
     std::vector<std::string> getApiFunc(int scriptHandleOrType, const std::string &apiWord);
 

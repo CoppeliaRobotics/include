@@ -1459,9 +1459,9 @@ void setEngineBoolParam(int paramId, int objectHandle, const void *object, bool 
 
 // int simGetReferencedHandles(int objectHandle, int **referencedHandles, int **reserved1, int **reserved2);
 
-void executeScriptString(int scriptHandleOrType, const std::string &stringAtScriptName, int stackID)
+void executeScriptString(int scriptHandle, const std::string &code, int stackID)
 {
-    if(simExecuteScriptString(scriptHandleOrType, stringAtScriptName.c_str(), stackID) == -1)
+    if(simExecuteScriptString(scriptHandle, code.c_str(), stackID) == -1)
         throw api_error("simExecuteScriptString");
 }
 
