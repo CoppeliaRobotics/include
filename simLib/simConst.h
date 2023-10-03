@@ -922,6 +922,7 @@ enum { /* String parameters: */
     sim_stringparam_resourcesdir, /* can only be read */
     sim_stringparam_legacymachinetag, /* can only be read */
     sim_stringparam_addondir, /* can only be read. Path of all add-ons */
+    sim_stringparam_sandboxlang,
 };
 
 enum { /* Array parameters: */
