@@ -801,6 +801,8 @@ enum { /* Boolean parameters: */
     sim_boolparam_xr_jobfunc,
     sim_boolparam_rayvalid,
     sim_boolparam_qglwidget,
+    sim_boolparam_execunsafe,
+    sim_boolparam_execunsafeext,
 };
 
 enum { /* Integer parameters: */
