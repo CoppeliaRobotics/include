@@ -121,7 +121,7 @@ if args.gen_lua_typechecker:
         print('no lua file defined. skipping gen_lua_typechecker')
         args.gen_lua_typechecker = False
     else:
-        runtool('generate_lua_typechecker', args.lua_file, output('lua.xml'), output(f'typecheck.lua'))
+        runtool('generate_lua_typechecker', args.xml_file, args.lua_file, output('lua.xml'), output(f'typecheck.lua'))
 
 if args.gen_api_index:
     runtool('generate_api_index', input_xml, output('index.json'))
