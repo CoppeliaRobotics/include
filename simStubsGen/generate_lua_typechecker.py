@@ -23,40 +23,37 @@ with open(args.out_file, 'wt') as f:
 require 'checkargs'
 
 return function(obj)
-    local function wrapFunc(funcName,wrapperGenerator)
-        obj[funcName]=wrapperGenerator(obj[funcName])
-    end
 """)
 
     for cmd in lua_plugin.commands:
-        paramList = ','.join(p.name for p in cmd.all_params)
-        f.write(f"""
-    wrapFunc('{cmd.name}',function(origFunc)
+        paramList = ', '.join(p.name for p in cmd.all_params)
+        f.write(f"""    obj['{cmd.name}'] = wrap(obj['{cmd.name}'], function(origFunc)
         return function(...)
-            {paramList and 'local ' or ''}{paramList}{paramList and '=' or ''}checkargsEx(
+            {paramList and 'local ' or ''}{paramList}{paramList and ' = ' or ''}checkargsEx(
                 {{level=1}},
                 {{
 """)
         for p in cmd.all_params:
-            f.write(f"""                    {{type='{p.dtype}'""")
+            f.write(f"""                    {{type = '{p.dtype}'""")
             if isinstance(p,ParamTable):
                 if p.itype:
-                    f.write(f""",item_type='{p.itype}'""")
+                    f.write(f""", item_type = '{p.itype}'""")
                 if p.size:
-                    f.write(f""",size='{p.size}'""")
+                    f.write(f""", size = '{p.size}'""")
             if p.nullable:
-                f.write(f""",nullable=true""")
+                f.write(f""", nullable = true""")
             if p.default:
-                f.write(f""",default={p.default}""")
+                f.write(f""", default = {p.default}""")
             f.write(f"""}},
 """)
         f.write(f"""                }},
                 ...
             )
-            local _rets={{origFunc({paramList})}}
+            local _rets = {{origFunc({paramList})}}
             return table.unpack(_rets)
         end
     end)
+
 """)
 
 
@@ -76,11 +73,11 @@ return function(obj)
         if cmd.optional_params:
             paramList.append('...')
             rparamList.append('...')
-        paramList = ','.join(paramList)
-        rparamList = ','.join(rparamList)
+        paramList = ', '.join(paramList)
+        rparamList = ', '.join(rparamList)
 
         f.write(f"""
-    wrapFunc('{cmd.name}',function(origFunc)
+    obj['{cmd.name}'] = wrap(obj['{cmd.name}'], function(origFunc)
         return function({paramList})
             return origFunc({rparamList})
         end
