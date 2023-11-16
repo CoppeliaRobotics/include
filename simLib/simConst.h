@@ -336,6 +336,7 @@ enum { /* Scene object properties. Combine with the | operator */
     sim_objectproperty_cannotdelete             =0x2000,
     sim_objectproperty_cannotdeleteduringsim    =0x4000,
     sim_objectproperty_hierarchyhiddenmodelchild=0x8000, /* deprecated */
+    sim_objectproperty_hiddenforsimulation      =0x10000,
 };
 
 enum { /* DEPRECATED, check below */
@@ -1316,6 +1317,8 @@ enum { /* Object int/double/string parameters */
     sim_visionintparam_render_mode= 1017,
     sim_visionintparam_perspective_operation= 1018,
     sim_visionfarrayparam_viewfrustum= 1019,
+    sim_visionintparam_rgbignored= 1020,
+    sim_visionintparam_depthignored= 1020,
 
     /* joints */
     sim_jointintparam_motor_enabled= 2000, /* deprecated */
