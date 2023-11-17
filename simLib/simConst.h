@@ -1144,8 +1144,6 @@ enum { /* dummy types */
     sim_dummylink_dyntendon=sim_dummytype_dyntendon,  /* deprecated */
     sim_dummytype_default,
     sim_dummytype_assembly,
-    sim_dummytype_parentassembly,
-    sim_dummytype_childassembly,
 };
 
 enum { /* texture map modes (serialized) */
@@ -1453,6 +1451,7 @@ enum { /* Object int/double/string parameters */
     sim_dummyintparam_follow_path= 10001,
     sim_dummyfloatparam_follow_path_offset= 10002,
     sim_dummyfloatparam_size= 10003,
+    sim_dummystringparam_assemblytag= 10004,
 
     /* graphs */
     sim_graphintparam_needs_refresh= 10500,
