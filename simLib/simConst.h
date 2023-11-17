@@ -1448,7 +1448,8 @@ enum { /* Object int/double/string parameters */
     sim_camerafarrayparam_viewfrustum= 9013,
 
     /* dummies */
-    sim_dummyintparam_link_type= 10000,
+    sim_dummyintparam_dummytype= 10000,
+    sim_dummyintparam_link_type= sim_dummyintparam_dummytype, /* deprecated */
     sim_dummyintparam_follow_path= 10001,
     sim_dummyfloatparam_follow_path_offset= 10002,
     sim_dummyfloatparam_size= 10003,
