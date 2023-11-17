@@ -1130,16 +1130,22 @@ enum { /* primitive shapes */
     sim_primitiveshape_capsule=8,
 };
 
-enum { /* dummy-dummy link types */
-    sim_dummylink_dynloopclosure=0,
-    sim_dummy_linktype_dynamics_loop_closure=sim_dummylink_dynloopclosure,
+enum { /* dummy types */
+    sim_dummytype_dynloopclosure=0,
+    sim_dummylink_dynloopclosure=sim_dummytype_dynloopclosure,  /* deprecated */
+    sim_dummy_linktype_dynamics_loop_closure=sim_dummylink_dynloopclosure,  /* deprecated */
     sim_dummy_linktype_dynamics_force_constraint, /* deprecated */
     sim_dummy_linktype_gcs_loop_closure, /* deprecated */
     sim_dummy_linktype_gcs_tip, /* deprecated */
     sim_dummy_linktype_gcs_target, /* deprecated */
     sim_dummy_linktype_ik_tip_target, /* deprecated */
-    sim_dummy_linktype_reserved,
-    sim_dummylink_dyntendon,
+    sim_dummy_linktype_reserved,  /* deprecated */
+    sim_dummytype_dyntendon,
+    sim_dummylink_dyntendon=sim_dummytype_dyntendon,  /* deprecated */
+    sim_dummytype_default,
+    sim_dummytype_assembly,
+    sim_dummytype_parentassembly,
+    sim_dummytype_childassembly,
 };
 
 enum { /* texture map modes (serialized) */
