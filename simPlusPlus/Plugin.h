@@ -101,6 +101,14 @@ namespace sim
         virtual void onSceneLoaded();
         virtual void onModelLoaded();
         virtual void onScriptStateDestroyed(int scriptID);
+        virtual void onSimulationBeforeInit();
+        virtual void onSimulationAfterInit();
+        virtual void onSimulationBeforeActuation();
+        virtual void onSimulationAfterActuation();
+        virtual void onSimulationBeforeSensing();
+        virtual void onSimulationAfterSensing();
+        virtual void onSimulationBeforeCleanup();
+        virtual void onSimulationAfterCleanup();
         virtual void onEvents(void *data, size_t size);
 #ifdef HAVE_JSONCONS
         virtual void onEvent(const jsoncons::json &event);

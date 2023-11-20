@@ -206,6 +206,42 @@ namespace sim
                 onScriptStateDestroyed(msg->auxData[0]);
             }
             break;
+        case sim_message_eventcallback_simulationinit:
+            /*
+            called before/after the main script's init. auxData[0]=0:before, auxData[0]=1:after
+            */
+            {
+                if(msg->auxData[0] == 0) onSimulationBeforeInit();
+                if(msg->auxData[0] == 1) onSimulationAfterInit();
+            }
+            break;
+        case sim_message_eventcallback_simulationactuation:
+            /*
+            called before/after the main script's actuation. auxData[0]=0:before, auxData[0]=1:after
+            */
+            {
+                if(msg->auxData[0] == 0) onSimulationBeforeActuation();
+                if(msg->auxData[0] == 1) onSimulationAfterActuation();
+            }
+            break;
+        case sim_message_eventcallback_simulationsensing:
+            /*
+            called before/after the main script's sensing. auxData[0]=0:before, auxData[0]=1:after
+            */
+            {
+                if(msg->auxData[0] == 0) onSimulationBeforeSensing();
+                if(msg->auxData[0] == 1) onSimulationAfterSensing();
+            }
+            break;
+        case sim_message_eventcallback_simulationcleanup:
+            /*
+            called before/after the main script's cleanup. auxData[0]=0:before, auxData[0]=1:after
+            */
+            {
+                if(msg->auxData[0] == 0) onSimulationBeforeCleanup();
+                if(msg->auxData[0] == 1) onSimulationAfterCleanup();
+            }
+            break;
         case sim_message_eventcallback_events:
             {
                 onEvents(msg->auxPointer, msg->auxData[1]);
@@ -319,6 +355,38 @@ namespace sim
     }
 
     void Plugin::onScriptStateDestroyed(int scriptID)
+    {
+    }
+
+    void Plugin::onSimulationBeforeInit()
+    {
+    }
+
+    void Plugin::onSimulationAfterInit()
+    {
+    }
+
+    void Plugin::onSimulationBeforeActuation()
+    {
+    }
+
+    void Plugin::onSimulationAfterActuation()
+    {
+    }
+
+    void Plugin::onSimulationBeforeSensing()
+    {
+    }
+
+    void Plugin::onSimulationAfterSensing()
+    {
+    }
+
+    void Plugin::onSimulationBeforeCleanup()
+    {
+    }
+
+    void Plugin::onSimulationAfterCleanup()
     {
     }
 
