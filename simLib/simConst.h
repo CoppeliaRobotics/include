@@ -492,6 +492,7 @@ enum { /* System callbacks */
     sim_syscb_joint, /* called with dyn. joints in custom ctrl mode, and kin. joints with sim.setJointTargetPosition & similar commands */
     sim_syscb_thread, /* the main section of a threaded script */
     sim_syscb_selchange, /* called when selection changed */
+    sim_syscb_data, /* called when a custom data block changed */
     sim_syscb_endoflist
 };
 
