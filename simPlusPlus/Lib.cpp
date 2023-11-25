@@ -580,7 +580,7 @@ int registerScriptCallbackFunction(const std::string &funcNameAtPluginName, void
     return ret;
 }
 
-int registerScriptVariable(const std::string &varName, const char *varValue, int stackID)
+int registerScriptVariableRaw(const std::string &varName, const char *varValue, int stackID)
 {
     int ret = simRegisterScriptVariable(varName.c_str(), varValue, stackID);
     if(ret == 0)
@@ -592,9 +592,27 @@ int registerScriptVariable(const std::string &varName, const char *varValue, int
     return ret;
 }
 
+int registerScriptVariableRaw(const std::string &varName, const std::string &varValue, int stackID)
+{
+    return registerScriptVariableRaw(varName, varValue.c_str(), stackID);
+}
+
+int registerScriptVariable(const std::string &varName, const char *varValue, int stackID)
+{
+    return registerScriptVariable(varName, std::string(varValue), stackID);
+}
+
 int registerScriptVariable(const std::string &varName, const std::string &varValue, int stackID)
 {
-    return registerScriptVariable(varName, varValue.c_str(), stackID);
+    std::string s = varValue;
+    std::string::size_type pos = 0;
+    while((pos = s.find('\"', pos)) != std::string::npos)
+    {
+        s.replace(pos, 1, "\\\"");
+        pos += 2;
+    }
+    s = "\"" + s + "\"";
+    return registerScriptVariableRaw(varName, s, stackID);
 }
 
 // int simRegisterScriptFuncHook(int scriptHandle, const char *funcToHook, const char *userFunction, bool executeBefore, int options);

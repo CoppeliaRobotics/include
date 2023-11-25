@@ -252,12 +252,14 @@ namespace sim
     int registerScriptCallbackFunction(const std::string &funcNameAtPluginName, const std::string &callTips, void (*callBack)(struct SScriptCallBack *cb));
     int registerScriptCallbackFunction(const std::string &funcNameAtPluginName, void (*callBack)(struct SScriptCallBack *cb));
 
+    int registerScriptVariableRaw(const std::string &varName, const char *varValue, int stackID);
+    int registerScriptVariableRaw(const std::string &varName, const std::string &varValue, int stackID);
     int registerScriptVariable(const std::string &varName, const char *varValue, int stackID);
     int registerScriptVariable(const std::string &varName, const std::string &varValue, int stackID);
     template<typename T>
     int registerScriptVariable(const std::string &varName, const T &varValue, int stackID)
     {
-        return registerScriptVariable(varName, std::to_string(varValue), stackID);
+        return registerScriptVariableRaw(varName, std::to_string(varValue), stackID);
     }
 
     // registerScriptFuncHook
