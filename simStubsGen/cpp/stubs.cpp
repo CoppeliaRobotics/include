@@ -221,9 +221,9 @@ bool registerScriptStuff()
         {
             // register varables from enums:
 #py for enum in plugin.enums:
-            sim::registerScriptVariable("`enum.name`", "{}", 0);
+            sim::registerScriptVariableRaw("`enum.name`", "{}", 0);
 #py for item in enum.items:
-            sim::registerScriptVariable("`enum.name`.`item.name`", boost::lexical_cast<std::string>(`plugin.name.lower()`_`enum.item_prefix``item.name`), 0);
+            sim::registerScriptVariable("`enum.name`.`item.name`", `plugin.name.lower()`_`enum.item_prefix``item.name`, 0);
 #py endfor
 #py endfor
             // register commands:
