@@ -221,7 +221,9 @@ bool registerScriptStuff()
         {
             // register varables from enums:
 #py for enum in plugin.enums:
+#if SIM_PROGRAM_FULL_VERSION_NB < 4060010
             sim::registerScriptVariableRaw("`enum.name`", "{}", 0);
+#endif
 #py for item in enum.items:
             sim::registerScriptVariable("`enum.name`.`item.name`", `plugin.name.lower()`_`enum.item_prefix``item.name`, 0);
 #py endfor
