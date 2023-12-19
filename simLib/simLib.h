@@ -36,6 +36,7 @@ FARPROC _getProcAddress(LIBRARY lib,const char* funcName);
 int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg);
 
 
+typedef void (__cdecl *ptrSimRegCallback)(int index, void* cb);
 typedef void (__cdecl *ptrSimRunGui)(int options);
 typedef int (__cdecl *ptrSimInitialize)(const char* appDir,int options);
 typedef int (__cdecl *ptrSimDeinitialize)();
@@ -460,6 +461,7 @@ typedef SIMDOUBLE (__cdecl *ptr_simGetPureHollowScaling)(const void* geometric);
 typedef void (__cdecl *ptr_simDynCallback)(const int* intData,const SIMDOUBLE* floatData);
 
 
+extern ptrSimRegCallback simRegCallback;
 extern ptrSimRunGui simRunGui;
 extern ptrSimInitialize simInitialize;
 extern ptrSimDeinitialize simDeinitialize;

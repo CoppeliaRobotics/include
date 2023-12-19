@@ -32,6 +32,7 @@ int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg)
     return(_addLog(pluginName,verbosityLevel,logMsg));
 }
 
+ptrSimRegCallback simRegCallback=nullptr;
 ptrSimRunGui simRunGui=nullptr;
 ptrSimInitialize simInitialize=nullptr;
 ptrSimDeinitialize simDeinitialize=nullptr;
@@ -526,6 +527,7 @@ int getSimProcAddresses(LIBRARY lib)
     if (getSimProcAddressesOld(lib)==0)
         return(0);
 
+    simRegCallback=(ptrSimRegCallback)(_getProcAddress(lib,"simRegCallback",false));
     simRunGui=(ptrSimRunGui)(_getProcAddress(lib,"simRunGui",false));
     simInitialize=(ptrSimInitialize)(_getProcAddress(lib,"simInitialize",false));
     simDeinitialize=(ptrSimDeinitialize)(_getProcAddress(lib,"simDeinitialize",false));
