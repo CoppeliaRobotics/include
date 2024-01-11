@@ -335,18 +335,12 @@ void setObjectAlias(int objectHandle, const std::string &alias, int options)
 
 int getObjectParent(int objectHandle)
 {
-    int ret;
-    if((ret = simGetObjectParent(objectHandle)) == -1)
-        throw api_error("simGetObjectParent");
-    return ret;
+    return simGetObjectParent(objectHandle);
 }
 
 int getObjectChild(int objectHandle, int index)
 {
-    int ret;
-    if((ret = simGetObjectChild(objectHandle, index)) == -1)
-        throw api_error("simGetObjectChild");
-    return ret;
+    return simGetObjectChild(objectHandle, index);
 }
 
 std::vector<int> getObjectChildren(int objectHandle)
