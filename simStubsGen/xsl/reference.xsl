@@ -324,7 +324,7 @@
             <head>
                 <meta http-equiv="Content-Language" content="en-us"/>
                 <title><xsl:value-of select="/plugin/@name"/> Plugin API reference</title>
-                <link rel="stylesheet" type="text/css" href="../../helpFiles/style.css"/>
+                <link rel="stylesheet" type="text/css" href="../style.css"/>
                 <script type="text/javascript">
 //<![CDATA[
 function getParameterByName(name, url = window.location.href)
