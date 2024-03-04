@@ -1324,7 +1324,7 @@ enum { /* Object int/double/string parameters */
     sim_visionintparam_perspective_operation= 1018,
     sim_visionfarrayparam_viewfrustum= 1019,
     sim_visionintparam_rgbignored= 1020,
-    sim_visionintparam_depthignored= 1020,
+    sim_visionintparam_depthignored= 1021,
 
     /* joints */
     sim_jointintparam_motor_enabled= 2000, /* deprecated */
