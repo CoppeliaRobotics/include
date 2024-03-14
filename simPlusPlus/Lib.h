@@ -181,8 +181,8 @@ namespace sim
     void saveScene(const char *filename);
     void saveScene(const std::string &filename);
 
-    void loadModel(const char *filename);
-    void loadModel(const std::string &filename);
+    int loadModel(const char *filename);
+    int loadModel(const std::string &filename);
 
     void saveModel(int baseOfModelHandle, const char *filename);
     void saveModel(int baseOfModelHandle, const std::string &filename);

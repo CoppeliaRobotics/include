@@ -414,13 +414,15 @@ void saveScene(const std::string &filename)
     return saveScene(filename.c_str());
 }
 
-void loadModel(const char *filename)
+int loadModel(const char *filename)
 {
-    if(simLoadModel(filename) == -1)
+    int ret = simLoadModel(filename);
+    if(ret == -1)
         throw api_error("simLoadModel");
+    return ret;
 }
 
-void loadModel(const std::string &filename)
+int loadModel(const std::string &filename)
 {
     return loadModel(filename.c_str());
 }
