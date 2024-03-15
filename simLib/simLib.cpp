@@ -300,7 +300,9 @@ ptrSimPushInt32OntoStack simPushInt32OntoStack=nullptr;
 ptrSimPushInt64OntoStack simPushInt64OntoStack=nullptr;
 ptrSimPushFloatOntoStack simPushFloatOntoStack=nullptr;
 ptrSimPushDoubleOntoStack simPushDoubleOntoStack=nullptr;
+ptrSimPushTextOntoStack simPushTextOntoStack=nullptr;
 ptrSimPushStringOntoStack simPushStringOntoStack=nullptr;
+ptrSimPushBufferOntoStack simPushBufferOntoStack=nullptr;
 ptrSimPushUInt8TableOntoStack simPushUInt8TableOntoStack=nullptr;
 ptrSimPushInt32TableOntoStack simPushInt32TableOntoStack=nullptr;
 ptrSimPushInt64TableOntoStack simPushInt64TableOntoStack=nullptr;
@@ -312,6 +314,7 @@ ptrSimGetStackSize simGetStackSize=nullptr;
 ptrSimPopStackItem simPopStackItem=nullptr;
 ptrSimMoveStackItemToTop simMoveStackItemToTop=nullptr;
 ptrSimGetStackItemType simGetStackItemType=nullptr;
+ptrSimGetStackStringType simGetStackStringType=nullptr;
 ptrSimGetStackBoolValue simGetStackBoolValue=nullptr;
 ptrSimGetStackInt32Value simGetStackInt32Value=nullptr;
 ptrSimGetStackInt64Value simGetStackInt64Value=nullptr;
@@ -680,7 +683,9 @@ int getSimProcAddresses(LIBRARY lib)
     simPushInt64OntoStack=(ptrSimPushInt64OntoStack)(_getProcAddress(lib,"simPushInt64OntoStack",false));
     simPushFloatOntoStack=(ptrSimPushFloatOntoStack)(_getProcAddress(lib,"simPushFloatOntoStack",false));
     simPushDoubleOntoStack=(ptrSimPushDoubleOntoStack)(_getProcAddress(lib,"simPushDoubleOntoStack",false));
+    simPushTextOntoStack=(ptrSimPushTextOntoStack)(_getProcAddress(lib,"simPushTextOntoStack",false));
     simPushStringOntoStack=(ptrSimPushStringOntoStack)(_getProcAddress(lib,"simPushStringOntoStack",false));
+    simPushBufferOntoStack=(ptrSimPushBufferOntoStack)(_getProcAddress(lib,"simPushBufferOntoStack",false));
     simPushUInt8TableOntoStack=(ptrSimPushUInt8TableOntoStack)(_getProcAddress(lib,"simPushUInt8TableOntoStack",false));
     simPushInt32TableOntoStack=(ptrSimPushInt32TableOntoStack)(_getProcAddress(lib,"simPushInt32TableOntoStack",false));
     simPushInt64TableOntoStack=(ptrSimPushInt64TableOntoStack)(_getProcAddress(lib,"simPushInt64TableOntoStack",false));
@@ -692,6 +697,7 @@ int getSimProcAddresses(LIBRARY lib)
     simPopStackItem=(ptrSimPopStackItem)(_getProcAddress(lib,"simPopStackItem",false));
     simMoveStackItemToTop=(ptrSimMoveStackItemToTop)(_getProcAddress(lib,"simMoveStackItemToTop",false));
     simGetStackItemType=(ptrSimGetStackItemType)(_getProcAddress(lib,"simGetStackItemType",false));
+    simGetStackStringType=(ptrSimGetStackStringType)(_getProcAddress(lib,"simGetStackStringType",false));
     simGetStackBoolValue=(ptrSimGetStackBoolValue)(_getProcAddress(lib,"simGetStackBoolValue",false));
     simGetStackInt32Value=(ptrSimGetStackInt32Value)(_getProcAddress(lib,"simGetStackInt32Value",false));
     simGetStackInt64Value=(ptrSimGetStackInt64Value)(_getProcAddress(lib,"simGetStackInt64Value",false));
@@ -2279,9 +2285,19 @@ int getSimProcAddresses(LIBRARY lib)
         printf("%s simPushDoubleOntoStack\n",couldNotFind);
         return 0;
     }
+    if (simPushTextOntoStack==nullptr)
+    {
+        printf("%s simPushTextOntoStack\n",couldNotFind);
+        return 0;
+    }
     if (simPushStringOntoStack==nullptr)
     {
         printf("%s simPushStringOntoStack\n",couldNotFind);
+        return 0;
+    }
+    if (simPushBufferOntoStack==nullptr)
+    {
+        printf("%s simPushBufferOntoStack\n",couldNotFind);
         return 0;
     }
     if (simPushUInt8TableOntoStack==nullptr)
@@ -2337,6 +2353,11 @@ int getSimProcAddresses(LIBRARY lib)
     if (simGetStackItemType==nullptr)
     {
         printf("%s simGetStackItemType\n",couldNotFind);
+        return 0;
+    }
+    if (simGetStackStringType==nullptr)
+    {
+        printf("%s simGetStackStringType\n",couldNotFind);
         return 0;
     }
     if (simGetStackBoolValue==nullptr)

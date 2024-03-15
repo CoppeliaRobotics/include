@@ -4,8 +4,8 @@
 #define SIM_PROGRAM_VERSION_NB 40600
 #define SIM_PROGRAM_VERSION "4.6.0"
 
-#define SIM_PROGRAM_REVISION_NB 18
-#define SIM_PROGRAM_REVISION "(rev. 18)"
+#define SIM_PROGRAM_REVISION_NB 19
+#define SIM_PROGRAM_REVISION "(rev. 19)"
 
 #define SIM_PROGRAM_FULL_VERSION_NB ((SIM_PROGRAM_VERSION_NB) * 100 + (SIM_PROGRAM_REVISION_NB))
 
@@ -1481,6 +1481,12 @@ enum { /* Object int/double/string parameters */
     sim_mplanintparam_nodes_computed_old= 25000,
     sim_mplanintparam_prepare_nodes_old= 25001,
     sim_mplanintparam_clear_nodes_old= 25002
+};
+
+enum { /* string types */
+    sim_string_text=0,
+    sim_string_binary,
+    sim_string_buffer
 };
 
 enum { /* stack item types */
