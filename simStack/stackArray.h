@@ -33,6 +33,7 @@ public:
     bool setIntArray(const int* d,size_t l);
 
     bool isNumberArray();
+    bool isIntArray();
     size_t getSize();
 
     bool isNull(size_t index);
@@ -62,6 +63,7 @@ public:
 protected:
     std::vector<CStackObject*> _objectValues;
     std::vector<double> _doubleValues;
-    std::vector<int> _intValues;
+    std::vector<int> _tmpIntValues;
     bool _circularRef;
+    bool _intArray;
 };

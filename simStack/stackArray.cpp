@@ -10,6 +10,7 @@ CStackArray::CStackArray()
 {
     _objectType=STACK_ARRAY;
     _circularRef=false;
+    _intArray=false;
 }
 
 CStackArray::~CStackArray()
@@ -43,8 +44,16 @@ void CStackArray::buildOntoStack(int stackId)
     simPopStackItem(stackId,0);
     if (_doubleValues.size()>0)
     {
-       for (size_t i=0;i<_doubleValues.size();i++)
-           simPushDoubleOntoStack(stackId,_doubleValues[i]);
+        if (_intArray)
+        {
+            for (size_t i=0;i<_doubleValues.size();i++)
+                simPushInt64OntoStack(stackId,(long long int)_doubleValues[i]);
+        }
+        else
+        {
+            for (size_t i=0;i<_doubleValues.size();i++)
+                simPushDoubleOntoStack(stackId,_doubleValues[i]);
+        }
     }
     else if (_objectValues.size()>0)
     {
@@ -55,7 +64,7 @@ void CStackArray::buildOntoStack(int stackId)
 
 bool CStackArray::buildFromStack(int stackId)
 {
-    if (_objectValues.size()+_doubleValues.size()+_intValues.size()==0)
+    if (_objectValues.size()+_doubleValues.size()==0)
     {
         int s=simGetStackSize(stackId);
         // Check first if we have only numbers:
@@ -104,7 +113,7 @@ bool CStackArray::isCircularRef()
 
 void CStackArray::appendTopStackItem(int stackId)
 { // this also clears the item from the stack
-    if (_doubleValues.size()+_intValues.size()==0)
+    if (_doubleValues.size()==0)
         _objectValues.push_back(CStackObject::buildItemFromTopStackPosition(stackId));
 }
 
@@ -192,13 +201,11 @@ const double* CStackArray::getDoublePointer()
 
 const int* CStackArray::getIntPointer()
 {
-    if (_intValues.size()==0)
-    {
-        for (size_t i=0;i<_doubleValues.size();i++)
-            _intValues.push_back(int(_doubleValues[i]));
-    }
-    if (_intValues.size()>0)
-        return(&_intValues[0]);
+    _tmpIntValues.clear();
+    for (size_t i=0;i<_doubleValues.size();i++)
+        _tmpIntValues.push_back(int(_doubleValues[i]));
+    if (_tmpIntValues.size()>0)
+        return(&_tmpIntValues[0]);
     return(NULL);
 }
 
@@ -231,6 +238,11 @@ bool CStackArray::isNumberArray()
     return(_objectValues.size()==0);
 }
 
+bool CStackArray::isIntArray()
+{
+    return(_intArray);
+}
+
 size_t CStackArray::getSize()
 {
     if (_objectValues.size()>0)
@@ -250,17 +262,15 @@ const std::vector<double>* CStackArray::getDoubles()
 
 const std::vector<int>* CStackArray::getInts()
 {
-    if (_intValues.size()==0)
-    {
-        for (size_t i=0;i<_doubleValues.size();i++)
-            _intValues.push_back(int(_doubleValues[i]));
-    }
-    return(&_intValues);
+    _tmpIntValues.clear();
+    for (size_t i=0;i<_doubleValues.size();i++)
+        _tmpIntValues.push_back(int(_doubleValues[i]));
+    return(&_tmpIntValues);
 }
 
 bool CStackArray::pushNull()
 {
-    if (_doubleValues.size()+_intValues.size()==0)
+    if (_doubleValues.size()==0)
     {
         _objectValues.push_back(new CStackNull());
         return(true);
@@ -270,7 +280,7 @@ bool CStackArray::pushNull()
 
 bool CStackArray::pushBool(bool d)
 {
-    if (_doubleValues.size()+_intValues.size()==0)
+    if (_doubleValues.size()==0)
     {
         _objectValues.push_back(new CStackBool(d));
         return(true);
@@ -280,7 +290,7 @@ bool CStackArray::pushBool(bool d)
 
 bool CStackArray::pushFloat(float d)
 {
-    if (_doubleValues.size()+_intValues.size()==0)
+    if (_doubleValues.size()==0)
     {
         _objectValues.push_back(new CStackNumber(double(d)));
         return(true);
@@ -290,7 +300,7 @@ bool CStackArray::pushFloat(float d)
 
 bool CStackArray::pushDouble(double d)
 {
-    if (_doubleValues.size()+_intValues.size()==0)
+    if (_doubleValues.size()==0)
     {
         _objectValues.push_back(new CStackNumber(d));
         return(true);
@@ -300,7 +310,7 @@ bool CStackArray::pushDouble(double d)
 
 bool CStackArray::pushInt(int d)
 {
-    if (_doubleValues.size()+_intValues.size()==0)
+    if (_doubleValues.size()==0)
     {
         _objectValues.push_back(new CStackNumber((double)d));
         return(true);
@@ -310,7 +320,7 @@ bool CStackArray::pushInt(int d)
 
 bool CStackArray::pushString(const std::string& d)
 {
-    if (_doubleValues.size()+_intValues.size()==0)
+    if (_doubleValues.size()==0)
     {
         _objectValues.push_back(new CStackString(d.c_str(),int(d.length())));
         return(true);
@@ -320,7 +330,7 @@ bool CStackArray::pushString(const std::string& d)
 
 bool CStackArray::pushString(const char* d,size_t bufferLength)
 {
-    if (_doubleValues.size()+_intValues.size()==0)
+    if (_doubleValues.size()==0)
     {
         _objectValues.push_back(new CStackString(d,int(bufferLength)));
         return(true);
@@ -330,7 +340,7 @@ bool CStackArray::pushString(const char* d,size_t bufferLength)
 
 bool CStackArray::pushArray(CStackArray* arr)
 {
-    if (_doubleValues.size()+_intValues.size()==0)
+    if (_doubleValues.size()==0)
     {
         _objectValues.push_back(arr);
         return(true);
@@ -340,7 +350,7 @@ bool CStackArray::pushArray(CStackArray* arr)
 
 bool CStackArray::pushMap(CStackMap* map)
 {
-    if (_doubleValues.size()+_intValues.size()==0)
+    if (_doubleValues.size()==0)
     {
         _objectValues.push_back(map);
         return(true);
@@ -350,7 +360,7 @@ bool CStackArray::pushMap(CStackMap* map)
 
 bool CStackArray::setDoubleArray(const double* d,size_t l)
 {
-    if (_doubleValues.size()+_intValues.size()+_objectValues.size()==0)
+    if (_doubleValues.size()+_objectValues.size()==0)
     {
         for (size_t i=0;i<l;i++)
             _doubleValues.push_back(d[i]);
@@ -361,10 +371,11 @@ bool CStackArray::setDoubleArray(const double* d,size_t l)
 
 bool CStackArray::setIntArray(const int* d,size_t l)
 {
-    if (_doubleValues.size()+_intValues.size()+_objectValues.size()==0)
+    if (_doubleValues.size()+_objectValues.size()==0)
     {
         for (size_t i=0;i<l;i++)
             _doubleValues.push_back((double)d[i]);
+        _intArray = true;
         return(true);
     }
     return(false);
@@ -374,10 +385,11 @@ bool CStackArray::setIntArray(const int* d,size_t l)
 CStackObject* CStackArray::copyYourself()
 {
     CStackArray* retVal=new CStackArray();
-    retVal->_intValues.assign(_intValues.begin(),_intValues.end());
     retVal->_doubleValues.assign(_doubleValues.begin(),_doubleValues.end());
     for (size_t i=0;i<_objectValues.size();i++)
         retVal->_objectValues.push_back(_objectValues[i]->copyYourself());
+    retVal->_circularRef=_circularRef;
+    retVal->_intArray=_intArray;
     return(retVal);
 }
 
