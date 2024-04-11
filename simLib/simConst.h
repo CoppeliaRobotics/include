@@ -1467,6 +1467,9 @@ enum { /* Object int/double/string parameters */
     sim_mirrorfloatparam_reflectance= 12002,
     sim_mirrorintparam_enable= 12003,
 
+    /* oc trees */
+    sim_octreefloatparam_voxelsize= 13000,
+
     /* path planning */
     sim_pplanfloatparam_x_min= 20000,
     sim_pplanfloatparam_x_range= 20001,
@@ -1480,7 +1483,7 @@ enum { /* Object int/double/string parameters */
     /* motion planning */
     sim_mplanintparam_nodes_computed_old= 25000,
     sim_mplanintparam_prepare_nodes_old= 25001,
-    sim_mplanintparam_clear_nodes_old= 25002
+    sim_mplanintparam_clear_nodes_old= 25002,
 };
 
 enum { /* string types */
