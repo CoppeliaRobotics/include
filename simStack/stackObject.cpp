@@ -31,7 +31,12 @@ void CStackObject::buildItemOntoStack(int stackId,CStackObject* obj)
     else if (obj->getObjectType()==STACK_BOOL)
         simPushBoolOntoStack(stackId,((CStackBool*)obj)->getValue()); // Bool
     else if (obj->getObjectType()==STACK_NUMBER)
-        simPushDoubleOntoStack(stackId,((CStackNumber*)obj)->getValue()); // number
+    {
+        if (((CStackNumber*)obj)->isInt())
+            simPushInt64OntoStack(stackId,((CStackNumber*)obj)->getLongValue()); // int
+        else
+            simPushDoubleOntoStack(stackId,((CStackNumber*)obj)->getValue()); // number
+    }
     else if (obj->getObjectType()==STACK_STRING)
     { // string
         std::string str(((CStackString*)obj)->getValue());

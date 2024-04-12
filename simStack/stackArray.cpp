@@ -312,7 +312,7 @@ bool CStackArray::pushInt(int d)
 {
     if (_doubleValues.size()==0)
     {
-        _objectValues.push_back(new CStackNumber((double)d));
+        _objectValues.push_back(new CStackNumber(d));
         return(true);
     }
     return(false);

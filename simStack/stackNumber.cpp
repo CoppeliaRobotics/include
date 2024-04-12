@@ -5,6 +5,14 @@ CStackNumber::CStackNumber(double n)
 {
     _objectType=STACK_NUMBER;
     _value=n;
+    _isInt = false;
+}
+
+CStackNumber::CStackNumber(int n)
+{
+    _objectType=STACK_NUMBER;
+    _value=(double)n;
+    _isInt = true;
 }
 
 CStackNumber::~CStackNumber()
@@ -18,39 +26,47 @@ std::string CStackNumber::toString() const
     return(ss.str());
 }
 
-float CStackNumber::getFloatValue()
+float CStackNumber::getFloatValue() const
 {
     return((float)_value);
 }
 
-int CStackNumber::getIntValue()
+int CStackNumber::getIntValue() const
 {
     return((int)_value);
 }
 
-long CStackNumber::getLongValue()
+long CStackNumber::getLongValue() const
 {
     return((long)_value);
 }
 
-double CStackNumber::getValue()
+double CStackNumber::getValue() const
 {
     return(_value);
+}
+
+bool CStackNumber::isInt() const
+{
+    return _isInt;
 }
 
 void CStackNumber::setFloatValue(float n)
 {
     _value=(double)n;
+    _isInt = false;
 }
 
 void CStackNumber::setIntValue(int n)
 {
     _value=(int)n;
+    _isInt = true;
 }
 
 void CStackNumber::setLongValue(long n)
 {
     _value=(long)n;
+    _isInt = true;
 }
 
 void CStackNumber::setValue(double n)
