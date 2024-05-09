@@ -217,6 +217,7 @@ ptrSimCreateHeightfieldShape simCreateHeightfieldShape=nullptr;
 ptrSimGetShapeMesh simGetShapeMesh=nullptr;
 ptrSimCreateJoint simCreateJoint=nullptr;
 ptrSimCreateDummy simCreateDummy=nullptr;
+ptrSimCreateScript simCreateScript=nullptr;
 ptrSimCreateProximitySensor simCreateProximitySensor=nullptr;
 ptrSimCreateForceSensor simCreateForceSensor=nullptr;
 ptrSimCreateVisionSensor simCreateVisionSensor=nullptr;
@@ -868,6 +869,7 @@ int getSimProcAddresses(LIBRARY lib)
     simGetShapeMesh=(ptrSimGetShapeMesh)(_getProcAddress(lib,"simGetShapeMesh",true));
     simCreateJoint=(ptrSimCreateJoint)(_getProcAddress(lib,"simCreateJoint",true));
     simCreateDummy=(ptrSimCreateDummy)(_getProcAddress(lib,"simCreateDummy",true));
+    simCreateScript=(ptrSimCreateScript)(_getProcAddress(lib,"simCreateScript",true));
     simCreateProximitySensor=(ptrSimCreateProximitySensor)(_getProcAddress(lib,"simCreateProximitySensor",true));
     simCreateForceSensor=(ptrSimCreateForceSensor)(_getProcAddress(lib,"simCreateForceSensor",true));
     simCreateVisionSensor=(ptrSimCreateVisionSensor)(_getProcAddress(lib,"simCreateVisionSensor",true));
@@ -1873,6 +1875,11 @@ int getSimProcAddresses(LIBRARY lib)
     if (simCreateDummy==nullptr)
     {
         printf("%s simCreateDummy\n",couldNotFind);
+        return 0;
+    }
+    if (simCreateScript==nullptr)
+    {
+        printf("%s simCreateScript\n",couldNotFind);
         return 0;
     }
     if (simCreateProximitySensor==nullptr)

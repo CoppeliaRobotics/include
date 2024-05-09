@@ -28,6 +28,7 @@ enum {
         sim_object_mirror_type,             /* deprecated */
         sim_object_octree_type,
         sim_object_pointcloud_type,
+        sim_object_script_type,
         sim_object_type_end=sim_object_path_type+100
 };
 
