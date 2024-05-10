@@ -869,7 +869,7 @@ int getSimProcAddresses(LIBRARY lib)
     simGetShapeMesh=(ptrSimGetShapeMesh)(_getProcAddress(lib,"simGetShapeMesh",true));
     simCreateJoint=(ptrSimCreateJoint)(_getProcAddress(lib,"simCreateJoint",true));
     simCreateDummy=(ptrSimCreateDummy)(_getProcAddress(lib,"simCreateDummy",true));
-    simCreateScript=(ptrSimCreateScript)(_getProcAddress(lib,"simCreateScript",true));
+    simCreateScript=(ptrSimCreateScript)(_getProcAddress(lib,"simCreateScript",false));
     simCreateProximitySensor=(ptrSimCreateProximitySensor)(_getProcAddress(lib,"simCreateProximitySensor",true));
     simCreateForceSensor=(ptrSimCreateForceSensor)(_getProcAddress(lib,"simCreateForceSensor",true));
     simCreateVisionSensor=(ptrSimCreateVisionSensor)(_getProcAddress(lib,"simCreateVisionSensor",true));
