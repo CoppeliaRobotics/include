@@ -945,7 +945,8 @@ namespace sim
 
     // subtractObjectFromPointCloud
 
-    // checkOctreePointOccupancy
+    bool checkOctreePointOccupancy(int octreeHandle, int options, const double *pts, int ptCnt, unsigned int *tag = nullptr, unsigned long long int *location = nullptr);
+    bool checkOctreePointOccupancy(int octreeHandle, int options, const std::vector<double> &pts, unsigned int *tag = nullptr, unsigned long long int *location = nullptr);
 
     // applyTexture
 

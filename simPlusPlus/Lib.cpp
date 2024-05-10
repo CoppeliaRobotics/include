@@ -2751,7 +2751,18 @@ int insertObjectIntoPointCloud(int pointCloudHandle, int objectHandle, int optio
 
 // int simSubtractObjectFromPointCloud(int pointCloudHandle, int objectHandle, int options, double tolerance, void *reserved);
 
-// int simCheckOctreePointOccupancy(int octreeHandle, int options, const double *points, int ptCnt, unsigned int *tag, unsigned long long int *location, void *reserved);
+bool checkOctreePointOccupancy(int octreeHandle, int options, const double *points, int ptCnt, unsigned int *tag, unsigned long long int *location)
+{
+    int ret = simCheckOctreePointOccupancy(octreeHandle, options, points, ptCnt, tag, location, nullptr);
+    if(ret == -1)
+        throw api_error("simCheckOctreePointOccupancy");
+    return ret > 0;
+}
+
+bool checkOctreePointOccupancy(int octreeHandle, int options, const std::vector<double> &pts, unsigned int *tag, unsigned long long int *location)
+{
+    return checkOctreePointOccupancy(octreeHandle, options, pts.data(), pts.size(), tag, location);
+}
 
 // int simApplyTexture(int shapeHandle, const double *textureCoordinates, int textCoordSize, const unsigned char *texture, const int *textureResolution, int options);
 
