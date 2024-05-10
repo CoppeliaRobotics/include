@@ -266,8 +266,10 @@ enum { /* Check the documentation instead of comments below!! */
 
         sim_message_eventcallback_lastinstancepass, /* deprecated */
         sim_message_eventcallback_uipass, /* deprecated */
-        sim_message_eventcallback_scriptstatedestroyed,
-        sim_message_eventcallback_scriptdestroyed,
+        sim_message_eventcallback_scriptstateabouttobedestroyed,
+        sim_message_eventcallback_scriptstatedestroyed = sim_message_eventcallback_scriptstateabouttobedestroyed,
+        sim_message_eventcallback_scriptabouttobedestroyed,
+        sim_message_eventcallback_scriptdestroyed = sim_message_eventcallback_scriptabouttobedestroyed,
 
         /* Following called before/after the main script's corresponding sections. auxData[0]=0:before, auxData[0]=1:after */
         sim_message_eventcallback_simulationinit,
