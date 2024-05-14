@@ -148,7 +148,7 @@ namespace sim
     int getObjectFromUid(long long int uid, int options);
     int getObjectFromUid(long long int uid, bool noError);
 
-    int getScriptHandleEx(int scriptType, int objHandle, std::optional<std::string> scriptName = {});
+    int getScriptHandleEx(int scriptType, int objHandle = -1, std::optional<std::string> scriptName = {});
 
     void removeObjects(const std::vector<int> &objectHandles);
 
