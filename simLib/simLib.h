@@ -383,6 +383,8 @@ typedef int (__cdecl *ptrSimGetShapeMesh)(int shapeHandle,SIMDOUBLE** vertices,i
 typedef int (__cdecl *ptrSimCreateJoint)(int jointType,int jointMode,int options,const SIMDOUBLE* sizes,const SIMDOUBLE* reservedA,const SIMDOUBLE* reservedB);
 typedef int (__cdecl *ptrSimCreateDummy)(SIMDOUBLE size,const float* reserved);
 typedef int (__cdecl *ptrSimCreateScript)(int scriptType,const char* scriptText, int options);
+typedef int (__cdecl *ptrSimGetObjectHierarchyOrder)(int objectHandle, int* totalSiblings);
+typedef int (__cdecl *ptrSimSetObjectHierarchyOrder)(int objectHandle, int order);
 typedef int (__cdecl *ptrSimCreateForceSensor)(int options,const int* intParams,const SIMDOUBLE* floatParams,const SIMDOUBLE* reserved);
 typedef int (__cdecl *ptrSimCreateVisionSensor)(int options,const int* intParams,const SIMDOUBLE* floatParams,const SIMDOUBLE* reserved);
 typedef int (__cdecl *ptrSimCreateProximitySensor)(int sensorType,int subType,int options,const int* intParams,const SIMDOUBLE* floatParams,const SIMDOUBLE* reserved);
@@ -651,6 +653,8 @@ extern ptrSimGetShapeMesh simGetShapeMesh;
 extern ptrSimCreateJoint simCreateJoint;
 extern ptrSimCreateDummy simCreateDummy;
 extern ptrSimCreateScript simCreateScript;
+extern ptrSimGetObjectHierarchyOrder simGetObjectHierarchyOrder;
+extern ptrSimSetObjectHierarchyOrder simSetObjectHierarchyOrder;
 extern ptrSimCreateForceSensor simCreateForceSensor;
 extern ptrSimCreateVisionSensor simCreateVisionSensor;
 extern ptrSimCreateProximitySensor simCreateProximitySensor;
