@@ -201,9 +201,14 @@ namespace sim
                 onModelLoaded();
             }
             break;
-        case sim_message_eventcallback_scriptstatedestroyed:
+        case sim_message_eventcallback_scriptstateabouttobedestroyed:
             {
-                onScriptStateDestroyed(msg->auxData[0]);
+                onScriptStateAboutToBeDestroyed(msg->auxData[0]);
+            }
+            break;
+        case sim_message_eventcallback_scriptabouttobedestroyed:
+            {
+                onScriptAboutToBeDestroyed(msg->auxData[0], msg->auxData[1]);
             }
             break;
         case sim_message_eventcallback_simulationinit:
@@ -354,7 +359,11 @@ namespace sim
     {
     }
 
-    void Plugin::onScriptStateDestroyed(int scriptID)
+    void Plugin::onScriptStateAboutToBeDestroyed(int scriptHandle)
+    {
+    }
+
+    void Plugin::onScriptAboutToBeDestroyed(int scriptHandle, int scriptUid)
     {
     }
 
