@@ -203,7 +203,7 @@ namespace sim
             break;
         case sim_message_eventcallback_scriptstateabouttobedestroyed:
             {
-                onScriptStateAboutToBeDestroyed(msg->auxData[0]);
+                onScriptStateAboutToBeDestroyed(msg->auxData[0], msg->auxData[1]);
             }
             break;
         case sim_message_eventcallback_scriptabouttobedestroyed:
@@ -359,7 +359,7 @@ namespace sim
     {
     }
 
-    void Plugin::onScriptStateAboutToBeDestroyed(int scriptHandle)
+    void Plugin::onScriptStateAboutToBeDestroyed(int scriptHandle, int scriptUid)
     {
     }
 
