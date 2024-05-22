@@ -1005,6 +1005,7 @@ enum { /* verbosity */
     sim_verbosity_default=sim_verbosity_loadinfos,
     sim_verbosity_undecorated=0x0f000,
     sim_verbosity_onlyterminal=0x10000,
+    sim_verbosity_once=0x20000,
 };
 
 enum { /* plugin info */
