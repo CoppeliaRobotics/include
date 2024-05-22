@@ -214,8 +214,8 @@ typedef int (__cdecl *ptrSimSubtractObjectFromOctree)(int octreeHandle,int objec
 typedef char* (__cdecl *ptrSimOpenTextEditor)(const char* initText,const char* xml,int* various);
 typedef char* (__cdecl *ptrSimPackTable)(int stackHandle,int* bufferSize);
 typedef int (__cdecl *ptrSimUnpackTable)(int stackHandle,const char* buffer,int bufferSize);
-typedef int (__cdecl *ptrSimSetReferencedHandles)(int objectHandle,int count,const int* referencedHandles,const int* reserved1,const int* reserved2);
-typedef int (__cdecl *ptrSimGetReferencedHandles)(int objectHandle,int** referencedHandles,int** reserved1,int** reserved2);
+typedef int (__cdecl *ptrSimSetReferencedHandles)(int objectHandle,int count,const int* referencedHandles,const char* tag,const int* reserved2);
+typedef int (__cdecl *ptrSimGetReferencedHandles)(int objectHandle,int** referencedHandles,const char* tag,int** reserved2);
 typedef int (__cdecl *ptrSimExecuteScriptString)(int scriptHandle,const char* stringToExecute,int stackHandle);
 typedef char* (__cdecl *ptrSimGetApiFunc)(int scriptHandle,const char* apiWord);
 typedef char* (__cdecl *ptrSimGetApiInfo)(int scriptHandle,const char* apiWord);

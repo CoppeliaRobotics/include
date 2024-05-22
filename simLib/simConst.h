@@ -810,6 +810,7 @@ enum { /* Boolean parameters: */
     sim_boolparam_execunsafe,
     sim_boolparam_execunsafeext,
     sim_boolparam_cansave,
+    sim_boolparam_usingscriptobjects,
 };
 
 enum { /* Integer parameters: */
