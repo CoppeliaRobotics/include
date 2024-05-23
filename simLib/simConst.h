@@ -865,6 +865,7 @@ enum { /* Integer parameters: */
     sim_intparam_objectcreationcounter,
     sim_intparam_objectdestructioncounter,
     sim_intparam_hierarchychangecounter,
+    sim_intparam_notifydeprecated,
 };
 
 enum { /* uint64 parameters: */
