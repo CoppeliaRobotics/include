@@ -382,7 +382,7 @@ typedef int (__cdecl *ptrSimCreateHeightfieldShape)(int options,SIMDOUBLE shadin
 typedef int (__cdecl *ptrSimGetShapeMesh)(int shapeHandle,SIMDOUBLE** vertices,int* verticesSize,int** indices,int* indicesSize,SIMDOUBLE** normals);
 typedef int (__cdecl *ptrSimCreateJoint)(int jointType,int jointMode,int options,const SIMDOUBLE* sizes,const SIMDOUBLE* reservedA,const SIMDOUBLE* reservedB);
 typedef int (__cdecl *ptrSimCreateDummy)(SIMDOUBLE size,const float* reserved);
-typedef int (__cdecl *ptrSimCreateScript)(int scriptType,const char* scriptText, int options);
+typedef int (__cdecl *ptrSimCreateScript)(int scriptType,const char* scriptText, int options, const char* lang);
 typedef int (__cdecl *ptrSimGetObjectHierarchyOrder)(int objectHandle, int* totalSiblings);
 typedef int (__cdecl *ptrSimSetObjectHierarchyOrder)(int objectHandle, int order);
 typedef int (__cdecl *ptrSimCreateForceSensor)(int options,const int* intParams,const SIMDOUBLE* floatParams,const SIMDOUBLE* reserved);

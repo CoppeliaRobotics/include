@@ -514,7 +514,8 @@ enum { /* Script string params */
     sim_scriptstringparam_description=0,
     sim_scriptstringparam_name,
     sim_scriptstringparam_text,
-    sim_scriptstringparam_nameext
+    sim_scriptstringparam_nameext,
+    sim_scriptstringparam_lang,
 };
 
 enum { /* code lang (scripts) */
