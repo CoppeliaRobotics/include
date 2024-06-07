@@ -1,13 +1,30 @@
 #if !defined(SIMCONST_INCLUDED_)
 #define SIMCONST_INCLUDED_
 
-#define SIM_PROGRAM_VERSION_NB 40600
-#define SIM_PROGRAM_VERSION "4.6.0"
+#define TOSTRING0(x) #x
+#define TOSTRING(x) TOSTRING0(x)
 
-#define SIM_PROGRAM_REVISION_NB 19
-#define SIM_PROGRAM_REVISION "(rev. 19)"
+#define SIM_VERSION_MAJOR 4
+#define SIM_VERSION_MINOR 6
+#define SIM_VERSION_PATCH 0
+#define SIM_VERSION_REVNB 19
 
+// for checking version:
+#define SIM_VERSION_CHECK(major, minor, patch, rev) ((((major) * 10000) + ((minor) * 100) + (patch)) * 100 + (rev))
+#define SIM_VERSION SIM_VERSION_CHECK(SIM_VERSION_MAJOR, SIM_VERSION_MINOR, SIM_VERSION_PATCH, SIM_VERSION_REVNB)
+#define SIM_VERSION_STR TOSTRING(SIM_VERSION_MAJOR) "." TOSTRING(SIM_VERSION_MINOR) "." TOSTRING(SIM_VERSION_PATCH) " (rev. " TOSTRING(SIM_VERSION_REVNB) ")"
+// e.g.: #if SIM_VERSION >= SIM_VERSION_CHECK(4, 6, 0, 2) ...
+
+// derive the old macros for backwards compatibility:
+#define SIM_PROGRAM_REVISION_NB SIM_VERSION_REVNB
+#define SIM_PROGRAM_VERSION_NB (((SIM_VERSION_MAJOR) * 10000) + ((SIM_VERSION_MINOR) * 100) + (SIM_VERSION_PATCH))
 #define SIM_PROGRAM_FULL_VERSION_NB ((SIM_PROGRAM_VERSION_NB) * 100 + (SIM_PROGRAM_REVISION_NB))
+#define SIM_PROGRAM_VERSION TOSTRING(SIM_VERSION_MAJOR) "." TOSTRING(SIM_VERSION_MINOR) "." TOSTRING(SIM_VERSION_PATCH)
+#define SIM_PROGRAM_REVISION "(rev. " TOSTRING(SIM_VERSION_REVNB) ")"
+
+#ifndef SIM_DISABLE_DEPRECATED_BEFORE
+#define SIM_DISABLE_DEPRECATED_BEFORE 0
+#endif
 
 /* Scene object types. Values are serialized */
 enum {
@@ -432,20 +449,30 @@ enum { /* deprecated */
     sim_script_call_error               =16
 };
 
+
 enum { /* Script types (serialized!) */
-    sim_scripttype_mainscript=0,
-    sim_scripttype_childscript,
-    sim_scripttype_addonscript,
-    sim_scripttype_addonfunction, /* deprecated */
-    sim_scripttype_jointctrlcallback_old, /* deprecated */
-    sim_scripttype_contactcallback_old, /* deprecated */
-    sim_scripttype_customizationscript,
-    sim_scripttype_generalcallback_old, /* deprecated */
-    sim_scripttype_sandboxscript, /* special */
+    sim_scripttype_main = 0,
+    sim_scripttype_simulation = 1,
+    sim_scripttype_addon = 2,
+    sim_scripttype_customization = 6,
+    sim_scripttype_sandbox = 8,
+    sim_scripttype_passive = 9,
+};
+
+enum { /* deprecated */
+    sim_scripttype_mainscript = sim_scripttype_main,
+    sim_scripttype_childscript = sim_scripttype_simulation,
+    sim_scripttype_addonscript = sim_scripttype_addon,
+    sim_scripttype_addonfunction = 3,
+    sim_scripttype_jointctrlcallback_old = 4,
+    sim_scripttype_contactcallback_old = 5,
+    sim_scripttype_customizationscript = sim_scripttype_customization,
+    sim_scripttype_generalcallback_old = 7,
+    sim_scripttype_sandboxscript = sim_scripttype_sandbox,
 #if COPPELIASIM_ENABLE_DEPRECATED_SINCE >= 20201014
-    sim_scripttype_threaded=0x00f0 /* deprecated, do not use */
+    sim_scripttype_threaded = 0x00f0
 #else
-    sim_scripttype_threaded_old=0x00f0 /* deprecated, do not use */
+    sim_scripttype_threaded_old = 0x00f0
 #endif
 };
 

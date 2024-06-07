@@ -29,7 +29,7 @@ function sysCall_init()
             initCode[luaFile]=luaCode
         elseif meta.mode=='child' then
             simTest.logInfo('added child script for '..luaFile)
-            simTest.createDummyWithScript('simTest_'..luaFile:gsub('%.lua$',''),luaCode,sim.scripttype_childscript+(threaded and sim.scripttype_threaded or 0))
+            simTest.createDummyWithScript('simTest_'..luaFile:gsub('%.lua$',''),luaCode,sim.scripttype_simulation+(threaded and sim.scripttype_threaded or 0))
             haveChildScripts=true
         elseif meta.mode=='customization' then
             simTest.logInfo('added customization script for '..luaFile)
