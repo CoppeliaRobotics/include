@@ -526,25 +526,6 @@ enum { /* System callbacks */
     sim_syscb_endoflist
 };
 
-enum { /* Script int params */
-    sim_scriptintparam_execorder=0,
-    sim_scriptintparam_execcount,
-    sim_scriptintparam_type,
-    sim_scriptintparam_handle,
-    sim_scriptintparam_enabled,
-    sim_scriptintparam_objecthandle,
-    sim_scriptintparam_lang, /* 0 lua, 1 python */
-    sim_scriptintparam_autorestartonerror
-};
-
-enum { /* Script string params */
-    sim_scriptstringparam_description=0,
-    sim_scriptstringparam_name,
-    sim_scriptstringparam_text,
-    sim_scriptstringparam_nameext,
-    sim_scriptstringparam_lang,
-};
-
 enum { /* code lang (scripts) */
     sim_lang_undefined=-1,
     sim_lang_lua=0,
@@ -1488,6 +1469,21 @@ enum { /* Object int/double/string parameters */
     sim_dummyfloatparam_follow_path_offset= 10002,
     sim_dummyfloatparam_size= 10003,
     sim_dummystringparam_assemblytag= 10004,
+
+    /* scripts */
+    sim_scriptintparam_execorder= 10100,
+    sim_scriptintparam_execcount= 10101,
+    sim_scriptintparam_type= 10102,
+    sim_scriptintparam_handle= 10103, /* deprecated */
+    sim_scriptintparam_enabled= 10104,
+    sim_scriptintparam_objecthandle= 10105, /* deprecated */
+    sim_scriptintparam_lang= 10106, /* deprecated */
+    sim_scriptintparam_autorestartonerror= 10107,
+    sim_scriptstringparam_description= 10108,
+    sim_scriptstringparam_name= 10109,
+    sim_scriptstringparam_text= 10110,
+    sim_scriptstringparam_nameext= 10111,
+    sim_scriptstringparam_lang= 10112,
 
     /* graphs */
     sim_graphintparam_needs_refresh= 10500,
