@@ -40,6 +40,13 @@ ptrSimSetSimulationPassesPerRenderingPass simSetSimulationPassesPerRenderingPass
 ptrSimGetSimulationPassesPerRenderingPass simGetSimulationPassesPerRenderingPass=nullptr;
 ptrSimAdvanceSimulationByOneStep simAdvanceSimulationByOneStep=nullptr;
 ptrSimHandleMainScript simHandleMainScript=nullptr;
+ptrSimGetScriptInt32Param simGetScriptInt32Param=nullptr;
+ptrSimSetScriptInt32Param simSetScriptInt32Param=nullptr;
+ptrSimGetScriptStringParam simGetScriptStringParam=nullptr;
+ptrSimSetScriptStringParam simSetScriptStringParam=nullptr;
+ptrSimAddScript simAddScript=nullptr;
+ptrSimRemoveScript simRemoveScript=nullptr;
+ptrSimAssociateScriptWithObject simAssociateScriptWithObject=nullptr;
 
 #ifdef SIM_INTERFACE_OLD
 #include "simLib-old2.cpp"
@@ -94,6 +101,13 @@ int getSimProcAddressesOld(LIBRARY lib)
     simGetSimulationPassesPerRenderingPass=(ptrSimGetSimulationPassesPerRenderingPass)(_getProcAddress(lib,"simGetSimulationPassesPerRenderingPass",false));
     simAdvanceSimulationByOneStep=(ptrSimAdvanceSimulationByOneStep)(_getProcAddress(lib,"simAdvanceSimulationByOneStep",false));
     simHandleMainScript=(ptrSimHandleMainScript)(_getProcAddress(lib,"simHandleMainScript",false));
+    simGetScriptInt32Param=(ptrSimGetScriptInt32Param)(_getProcAddress(lib,"simGetScriptInt32Param",false));
+    simSetScriptInt32Param=(ptrSimSetScriptInt32Param)(_getProcAddress(lib,"simSetScriptInt32Param",false));
+    simGetScriptStringParam=(ptrSimGetScriptStringParam)(_getProcAddress(lib,"simGetScriptStringParam",false));
+    simSetScriptStringParam=(ptrSimSetScriptStringParam)(_getProcAddress(lib,"simSetScriptStringParam",false));
+    simAddScript=(ptrSimAddScript)(_getProcAddress(lib,"simAddScript",false));
+    simRemoveScript=(ptrSimRemoveScript)(_getProcAddress(lib,"simRemoveScript",false));
+    simAssociateScriptWithObject=(ptrSimAssociateScriptWithObject)(_getProcAddress(lib,"simAssociateScriptWithObject",false));
 
     char *ps=std::getenv("COPPELIASIMPLUGIN_IGNORE_MISSING_SYMBOLS");
     if (ps!=nullptr)
@@ -309,6 +323,41 @@ int getSimProcAddressesOld(LIBRARY lib)
     if (simHandleMainScript==nullptr)
     {
         printf("%s simHandleMainScript\n",couldNotFind);
+        return 0;
+    }
+    if (simGetScriptInt32Param==nullptr)
+    {
+        printf("%s simGetScriptInt32Param\n",couldNotFind);
+        return 0;
+    }
+    if (simSetScriptInt32Param==nullptr)
+    {
+        printf("%s simSetScriptInt32Param\n",couldNotFind);
+        return 0;
+    }
+    if (simGetScriptStringParam==nullptr)
+    {
+        printf("%s simGetScriptStringParam\n",couldNotFind);
+        return 0;
+    }
+    if (simSetScriptStringParam==nullptr)
+    {
+        printf("%s simSetScriptStringParam\n",couldNotFind);
+        return 0;
+    }
+    if (simAddScript==nullptr)
+    {
+        printf("%s simAddScript\n",couldNotFind);
+        return 0;
+    }
+    if (simRemoveScript==nullptr)
+    {
+        printf("%s simRemoveScript\n",couldNotFind);
+        return 0;
+    }
+    if (simAssociateScriptWithObject==nullptr)
+    {
+        printf("%s simAssociateScriptWithObject\n",couldNotFind);
         return 0;
     }
     return 1;

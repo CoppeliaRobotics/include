@@ -28,7 +28,7 @@ function sysCall_init()
         if meta.mode=='init' then
             initCode[luaFile]=luaCode
         elseif meta.mode=='child' then
-            simTest.logInfo('added child script for '..luaFile)
+            simTest.logInfo('added simulation script for '..luaFile)
             simTest.createDummyWithScript('simTest_'..luaFile:gsub('%.lua$',''),luaCode,sim.scripttype_simulation+(threaded and sim.scripttype_threaded or 0))
             haveChildScripts=true
         elseif meta.mode=='customization' then
@@ -57,7 +57,7 @@ function sysCall_init()
             simTest.logInfo('auto-starting the simulation...')
             sim.startSimulation()
         else
-            simTest.logInfo('quitting because there are no child/customization scripts to run')
+            simTest.logInfo('quitting because there are no simulation/customization scripts to run')
             sim.quitSimulator(true)
         end
     end

@@ -40,6 +40,13 @@ typedef int (__cdecl *ptrSimSetSimulationPassesPerRenderingPass)(int p);
 typedef int (__cdecl *ptrSimGetSimulationPassesPerRenderingPass)();
 typedef int (__cdecl *ptrSimAdvanceSimulationByOneStep)();
 typedef int (__cdecl *ptrSimHandleMainScript)();
+typedef int (__cdecl *ptrSimGetScriptInt32Param)(int scriptHandle,int parameterID,int* parameter);
+typedef int (__cdecl *ptrSimSetScriptInt32Param)(int scriptHandle,int parameterID,int parameter);
+typedef char* (__cdecl *ptrSimGetScriptStringParam)(int scriptHandle,int parameterID,int* parameterLength);
+typedef int (__cdecl *ptrSimSetScriptStringParam)(int scriptHandle,int parameterID,const char* parameter,int parameterLength);
+typedef int (__cdecl *ptrSimAddScript)(int scriptProperty);
+typedef int (__cdecl *ptrSimRemoveScript)(int scriptHandle);
+typedef int (__cdecl *ptrSimAssociateScriptWithObject)(int scriptHandle,int associatedObjectHandle);
 
 
 extern ptrSimRunSimulator simRunSimulator;
@@ -84,6 +91,13 @@ extern ptrSimSetSimulationPassesPerRenderingPass simSetSimulationPassesPerRender
 extern ptrSimGetSimulationPassesPerRenderingPass simGetSimulationPassesPerRenderingPass;
 extern ptrSimAdvanceSimulationByOneStep simAdvanceSimulationByOneStep;
 extern ptrSimHandleMainScript simHandleMainScript;
+extern ptrSimGetScriptInt32Param simGetScriptInt32Param;
+extern ptrSimSetScriptInt32Param simSetScriptInt32Param;
+extern ptrSimGetScriptStringParam simGetScriptStringParam;
+extern ptrSimSetScriptStringParam simSetScriptStringParam;
+extern ptrSimAddScript simAddScript;
+extern ptrSimRemoveScript simRemoveScript;
+extern ptrSimAssociateScriptWithObject simAssociateScriptWithObject;
 
 #ifdef SIM_INTERFACE_OLD
 #include "simLib-old2.h"

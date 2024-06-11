@@ -114,10 +114,7 @@ ptrSimSetObjectSel simSetObjectSel=nullptr;
 ptrSimHandleProximitySensor simHandleProximitySensor=nullptr;
 ptrSimReadProximitySensor simReadProximitySensor=nullptr;
 ptrSimHandleDynamics simHandleDynamics=nullptr;
-ptrSimAssociateScriptWithObject simAssociateScriptWithObject=nullptr;
 ptrSimResetScript simResetScript=nullptr;
-ptrSimAddScript simAddScript=nullptr;
-ptrSimRemoveScript simRemoveScript=nullptr;
 ptrSimRefreshDialogs simRefreshDialogs=nullptr;
 ptrSimResetProximitySensor simResetProximitySensor=nullptr;
 ptrSimCheckProximitySensor simCheckProximitySensor=nullptr;
@@ -231,10 +228,6 @@ ptrSimGetObjectFloatArrayParam simGetObjectFloatArrayParam=nullptr;
 ptrSimSetObjectFloatArrayParam simSetObjectFloatArrayParam=nullptr;
 ptrSimGetObjectStringParam simGetObjectStringParam=nullptr;
 ptrSimSetObjectStringParam simSetObjectStringParam=nullptr;
-ptrSimGetScriptInt32Param simGetScriptInt32Param=nullptr;
-ptrSimSetScriptInt32Param simSetScriptInt32Param=nullptr;
-ptrSimGetScriptStringParam simGetScriptStringParam=nullptr;
-ptrSimSetScriptStringParam simSetScriptStringParam=nullptr;
 ptrSimGetRotationAxis simGetRotationAxis=nullptr;
 ptrSimRotateAroundAxis simRotateAroundAxis=nullptr;
 ptrSimGetJointForce simGetJointForce=nullptr;
@@ -578,10 +571,7 @@ int getSimProcAddresses(LIBRARY lib)
     simDoesFileExist=(ptrSimDoesFileExist)(_getProcAddress(lib,"simDoesFileExist",false));
     simGetObjectSel=(ptrSimGetObjectSel)(_getProcAddress(lib,"simGetObjectSel",false));
     simSetObjectSel=(ptrSimSetObjectSel)(_getProcAddress(lib,"simSetObjectSel",false));
-    simAssociateScriptWithObject=(ptrSimAssociateScriptWithObject)(_getProcAddress(lib,"simAssociateScriptWithObject",false));
     simResetScript=(ptrSimResetScript)(_getProcAddress(lib,"simResetScript",false));
-    simAddScript=(ptrSimAddScript)(_getProcAddress(lib,"simAddScript",false));
-    simRemoveScript=(ptrSimRemoveScript)(_getProcAddress(lib,"simRemoveScript",false));
     simRefreshDialogs=(ptrSimRefreshDialogs)(_getProcAddress(lib,"simRefreshDialogs",false));
     simResetProximitySensor=(ptrSimResetProximitySensor)(_getProcAddress(lib,"simResetProximitySensor",false));
     simCreateBuffer=(ptrSimCreateBuffer)(_getProcAddress(lib,"simCreateBuffer",false));
@@ -639,10 +629,6 @@ int getSimProcAddresses(LIBRARY lib)
     simSetObjectInt32Param=(ptrSimSetObjectInt32Param)(_getProcAddress(lib,"simSetObjectInt32Param",false));
     simGetObjectStringParam=(ptrSimGetObjectStringParam)(_getProcAddress(lib,"simGetObjectStringParam",false));
     simSetObjectStringParam=(ptrSimSetObjectStringParam)(_getProcAddress(lib,"simSetObjectStringParam",false));
-    simGetScriptInt32Param=(ptrSimGetScriptInt32Param)(_getProcAddress(lib,"simGetScriptInt32Param",false));
-    simSetScriptInt32Param=(ptrSimSetScriptInt32Param)(_getProcAddress(lib,"simSetScriptInt32Param",false));
-    simGetScriptStringParam=(ptrSimGetScriptStringParam)(_getProcAddress(lib,"simGetScriptStringParam",false));
-    simSetScriptStringParam=(ptrSimSetScriptStringParam)(_getProcAddress(lib,"simSetScriptStringParam",false));
     simPersistentDataWrite=(ptrSimPersistentDataWrite)(_getProcAddress(lib,"simPersistentDataWrite",false));
     simPersistentDataRead=(ptrSimPersistentDataRead)(_getProcAddress(lib,"simPersistentDataRead",false));
     simIsHandle=(ptrSimIsHandle)(_getProcAddress(lib,"simIsHandle",false));
@@ -1367,24 +1353,9 @@ int getSimProcAddresses(LIBRARY lib)
         printf("%s simHandleDynamics\n",couldNotFind);
         return 0;
     }
-    if (simAssociateScriptWithObject==nullptr)
-    {
-        printf("%s simAssociateScriptWithObject\n",couldNotFind);
-        return 0;
-    }
     if (simResetScript==nullptr)
     {
         printf("%s simResetScript\n",couldNotFind);
-        return 0;
-    }
-    if (simAddScript==nullptr)
-    {
-        printf("%s simAddScript\n",couldNotFind);
-        return 0;
-    }
-    if (simRemoveScript==nullptr)
-    {
-        printf("%s simRemoveScript\n",couldNotFind);
         return 0;
     }
     if (simRefreshDialogs==nullptr)
@@ -1950,26 +1921,6 @@ int getSimProcAddresses(LIBRARY lib)
     if (simSetObjectStringParam==nullptr)
     {
         printf("%s simSetObjectStringParam\n",couldNotFind);
-        return 0;
-    }
-    if (simGetScriptInt32Param==nullptr)
-    {
-        printf("%s simGetScriptInt32Param\n",couldNotFind);
-        return 0;
-    }
-    if (simSetScriptInt32Param==nullptr)
-    {
-        printf("%s simSetScriptInt32Param\n",couldNotFind);
-        return 0;
-    }
-    if (simGetScriptStringParam==nullptr)
-    {
-        printf("%s simGetScriptStringParam\n",couldNotFind);
-        return 0;
-    }
-    if (simSetScriptStringParam==nullptr)
-    {
-        printf("%s simSetScriptStringParam\n",couldNotFind);
         return 0;
     }
     if (simGetRotationAxis==nullptr)
