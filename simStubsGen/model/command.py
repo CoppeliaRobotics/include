@@ -63,8 +63,8 @@ class Command(object):
 
         self.help_in_args_v = ['%s %s' % (p.htype(), p.name) + ('=%s' % p.hdefault() if p.default is not None else '') for p in help_in_args]
         self.help_out_args_v = ['%s %s' % (p.htype(), p.name) for p in help_out_args]
-        self.help_in_args_text = ','.join(self.help_in_args_v)
-        self.help_out_args_text = ','.join(self.help_out_args_v) + ('=' if help_out_args else '')
+        self.help_in_args_text = ', '.join(self.help_in_args_v)
+        self.help_out_args_text = ', '.join(self.help_out_args_v) + (' = ' if help_out_args else '')
         self.calltip = f'{self.help_out_args_text}{self.plugin.name}.{self.name}({self.help_in_args_text})'
         self.documentation = ''
         if self.description.strip():
