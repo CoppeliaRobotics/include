@@ -148,7 +148,7 @@
             <xsl:value-of select="@name"/>
             <xsl:if test="not(position() = last())">, </xsl:if>
         </xsl:for-each>
-        <xsl:if test="$cmd/return/param">=</xsl:if>
+        <xsl:if test="$cmd/return/param"> = </xsl:if>
     </xsl:template>
 
     <xsl:template name="renderLuaCmdSynopsis">
@@ -198,7 +198,7 @@
             <xsl:value-of select="@name"/>
             <xsl:if test="not(position() = last())">, </xsl:if>
         </xsl:for-each>
-        <xsl:if test="$cmd/return/param">=</xsl:if>
+        <xsl:if test="$cmd/return/param"> = </xsl:if>
     </xsl:template>
 
     <xsl:template name="renderPythonCmdSynopsis">
