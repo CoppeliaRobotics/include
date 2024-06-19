@@ -234,8 +234,6 @@ ptrSimGetJointForce simGetJointForce=nullptr;
 ptrSimGetJointTargetForce simGetJointTargetForce=nullptr;
 ptrSimSetJointTargetForce simSetJointTargetForce=nullptr;
 ptrSimCameraFitToView simCameraFitToView=nullptr;
-ptrSimPersistentDataWrite simPersistentDataWrite=nullptr;
-ptrSimPersistentDataRead simPersistentDataRead=nullptr;
 ptrSimIsHandle simIsHandle=nullptr;
 ptrSimHandleVisionSensor simHandleVisionSensor=nullptr;
 ptrSimReadVisionSensor simReadVisionSensor=nullptr;
@@ -359,7 +357,6 @@ ptrSimGetApiInfo simGetApiInfo=nullptr;
 ptrSimGetPluginName simGetPluginName=nullptr;
 ptrSimSetPluginInfo simSetPluginInfo=nullptr;
 ptrSimGetPluginInfo simGetPluginInfo=nullptr;
-ptrSimGetPersistentDataTags simGetPersistentDataTags=nullptr;
 ptrSimEventNotification simEventNotification=nullptr;
 ptrSimApplyTexture simApplyTexture=nullptr;
 ptrSimSetJointDependency simSetJointDependency=nullptr;
@@ -629,8 +626,6 @@ int getSimProcAddresses(LIBRARY lib)
     simSetObjectInt32Param=(ptrSimSetObjectInt32Param)(_getProcAddress(lib,"simSetObjectInt32Param",false));
     simGetObjectStringParam=(ptrSimGetObjectStringParam)(_getProcAddress(lib,"simGetObjectStringParam",false));
     simSetObjectStringParam=(ptrSimSetObjectStringParam)(_getProcAddress(lib,"simSetObjectStringParam",false));
-    simPersistentDataWrite=(ptrSimPersistentDataWrite)(_getProcAddress(lib,"simPersistentDataWrite",false));
-    simPersistentDataRead=(ptrSimPersistentDataRead)(_getProcAddress(lib,"simPersistentDataRead",false));
     simIsHandle=(ptrSimIsHandle)(_getProcAddress(lib,"simIsHandle",false));
     simResetVisionSensor=(ptrSimResetVisionSensor)(_getProcAddress(lib,"simResetVisionSensor",false));
     simSetVisionSensorImg=(ptrSimSetVisionSensorImg)(_getProcAddress(lib,"simSetVisionSensorImg",false));
@@ -716,7 +711,6 @@ int getSimProcAddresses(LIBRARY lib)
     simGetPluginName=(ptrSimGetPluginName)(_getProcAddress(lib,"simGetPluginName",false));
     simSetPluginInfo=(ptrSimSetPluginInfo)(_getProcAddress(lib,"simSetPluginInfo",false));
     simGetPluginInfo=(ptrSimGetPluginInfo)(_getProcAddress(lib,"simGetPluginInfo",false));
-    simGetPersistentDataTags=(ptrSimGetPersistentDataTags)(_getProcAddress(lib,"simGetPersistentDataTags",false));
     simEventNotification=(ptrSimEventNotification)(_getProcAddress(lib,"simEventNotification",false));
     simIsDynamicallyEnabled=(ptrSimIsDynamicallyEnabled)(_getProcAddress(lib,"simIsDynamicallyEnabled",false));
     simInitScript=(ptrSimInitScript)(_getProcAddress(lib,"simInitScript",false));
@@ -1953,16 +1947,6 @@ int getSimProcAddresses(LIBRARY lib)
         printf("%s simCameraFitToView\n",couldNotFind);
         return 0;
     }
-    if (simPersistentDataWrite==nullptr)
-    {
-        printf("%s simPersistentDataWrite\n",couldNotFind);
-        return 0;
-    }
-    if (simPersistentDataRead==nullptr)
-    {
-        printf("%s simPersistentDataRead\n",couldNotFind);
-        return 0;
-    }
     if (simIsHandle==nullptr)
     {
         printf("%s simIsHandle\n",couldNotFind);
@@ -2571,11 +2555,6 @@ int getSimProcAddresses(LIBRARY lib)
     if (simGetPluginInfo==nullptr)
     {
         printf("%s simGetPluginInfo\n",couldNotFind);
-        return 0;
-    }
-    if (simGetPersistentDataTags==nullptr)
-    {
-        printf("%s simGetPersistentDataTags\n",couldNotFind);
         return 0;
     }
     if (simEventNotification==nullptr)

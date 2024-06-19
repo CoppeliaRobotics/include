@@ -47,6 +47,9 @@ typedef int (__cdecl *ptrSimSetScriptStringParam)(int scriptHandle,int parameter
 typedef int (__cdecl *ptrSimAddScript)(int scriptProperty);
 typedef int (__cdecl *ptrSimRemoveScript)(int scriptHandle);
 typedef int (__cdecl *ptrSimAssociateScriptWithObject)(int scriptHandle,int associatedObjectHandle);
+typedef int (__cdecl *ptrSimPersistentDataWrite)(const char* dataName,const char* dataValue,int dataLength,int options);
+typedef char* (__cdecl *ptrSimPersistentDataRead)(const char* dataName,int* dataLength);
+typedef char* (__cdecl *ptrSimGetPersistentDataTags)(int* tagCount);
 
 
 extern ptrSimRunSimulator simRunSimulator;
@@ -98,6 +101,9 @@ extern ptrSimSetScriptStringParam simSetScriptStringParam;
 extern ptrSimAddScript simAddScript;
 extern ptrSimRemoveScript simRemoveScript;
 extern ptrSimAssociateScriptWithObject simAssociateScriptWithObject;
+extern ptrSimPersistentDataWrite simPersistentDataWrite;
+extern ptrSimPersistentDataRead simPersistentDataRead;
+extern ptrSimGetPersistentDataTags simGetPersistentDataTags;
 
 #ifdef SIM_INTERFACE_OLD
 #include "simLib-old2.h"

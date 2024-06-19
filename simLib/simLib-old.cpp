@@ -47,6 +47,9 @@ ptrSimSetScriptStringParam simSetScriptStringParam=nullptr;
 ptrSimAddScript simAddScript=nullptr;
 ptrSimRemoveScript simRemoveScript=nullptr;
 ptrSimAssociateScriptWithObject simAssociateScriptWithObject=nullptr;
+ptrSimPersistentDataWrite simPersistentDataWrite=nullptr;
+ptrSimPersistentDataRead simPersistentDataRead=nullptr;
+ptrSimGetPersistentDataTags simGetPersistentDataTags=nullptr;
 
 #ifdef SIM_INTERFACE_OLD
 #include "simLib-old2.cpp"
@@ -108,6 +111,9 @@ int getSimProcAddressesOld(LIBRARY lib)
     simAddScript=(ptrSimAddScript)(_getProcAddress(lib,"simAddScript",false));
     simRemoveScript=(ptrSimRemoveScript)(_getProcAddress(lib,"simRemoveScript",false));
     simAssociateScriptWithObject=(ptrSimAssociateScriptWithObject)(_getProcAddress(lib,"simAssociateScriptWithObject",false));
+    simPersistentDataWrite=(ptrSimPersistentDataWrite)(_getProcAddress(lib,"simPersistentDataWrite",false));
+    simPersistentDataRead=(ptrSimPersistentDataRead)(_getProcAddress(lib,"simPersistentDataRead",false));
+    simGetPersistentDataTags=(ptrSimGetPersistentDataTags)(_getProcAddress(lib,"simGetPersistentDataTags",false));
 
     char *ps=std::getenv("COPPELIASIMPLUGIN_IGNORE_MISSING_SYMBOLS");
     if (ps!=nullptr)
@@ -358,6 +364,21 @@ int getSimProcAddressesOld(LIBRARY lib)
     if (simAssociateScriptWithObject==nullptr)
     {
         printf("%s simAssociateScriptWithObject\n",couldNotFind);
+        return 0;
+    }
+    if (simPersistentDataWrite==nullptr)
+    {
+        printf("%s simPersistentDataWrite\n",couldNotFind);
+        return 0;
+    }
+    if (simPersistentDataRead==nullptr)
+    {
+        printf("%s simPersistentDataRead\n",couldNotFind);
+        return 0;
+    }
+    if (simGetPersistentDataTags==nullptr)
+    {
+        printf("%s simGetPersistentDataTags\n",couldNotFind);
         return 0;
     }
     return 1;

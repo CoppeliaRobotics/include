@@ -7,7 +7,7 @@
 #define SIM_VERSION_MAJOR 4
 #define SIM_VERSION_MINOR 7
 #define SIM_VERSION_PATCH 0
-#define SIM_VERSION_REVNB 0
+#define SIM_VERSION_REVNB 1
 
 // for checking version:
 #define SIM_VERSION_CHECK(major, minor, patch, rev) ((((major) * 10000) + ((minor) * 100) + (patch)) * 100 + (rev))
@@ -608,7 +608,8 @@ enum { /* special argument of some functions: */
     sim_handle_parent                   =-11,
     sim_handle_scene                    =-12,
     sim_handle_app                      =-13,
-    sim_handle_inverse                  =-14
+    sim_handle_inverse                  =-14,
+    sim_handle_appstorage               =-15,
 };
 
 enum { /* special handle flags: */
@@ -875,6 +876,8 @@ enum { /* Integer parameters: */
     sim_intparam_objectdestructioncounter,
     sim_intparam_hierarchychangecounter,
     sim_intparam_notifydeprecated,
+    sim_intparam_processid,
+    sim_intparam_processcnt,
 };
 
 enum { /* uint64 parameters: */
