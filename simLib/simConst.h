@@ -7,7 +7,7 @@
 #define SIM_VERSION_MAJOR 4
 #define SIM_VERSION_MINOR 7
 #define SIM_VERSION_PATCH 0
-#define SIM_VERSION_REVNB 1
+#define SIM_VERSION_REVNB 2
 
 // for checking version:
 #define SIM_VERSION_CHECK(major, minor, patch, rev) ((((major) * 10000) + ((minor) * 100) + (patch)) * 100 + (rev))
