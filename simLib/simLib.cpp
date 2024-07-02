@@ -32,6 +32,29 @@ int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg)
     return(_addLog(pluginName,verbosityLevel,logMsg));
 }
 
+ptrSimSetBoolProperty simSetBoolProperty = nullptr;
+ptrSimGetBoolProperty simGetBoolProperty = nullptr;
+ptrSimSetInt32Property simSetInt32Property = nullptr;
+ptrSimGetInt32Property simGetInt32Property = nullptr;
+ptrSimSetFloatProperty simSetFloatProperty = nullptr;
+ptrSimGetFloatProperty simGetFloatProperty = nullptr;
+ptrSimSetStringProperty simSetStringProperty = nullptr;
+ptrSimGetStringProperty simGetStringProperty = nullptr;
+ptrSimSetBufferProperty simSetBufferProperty = nullptr;
+ptrSimGetBufferProperty simGetBufferProperty = nullptr;
+ptrSimSetVector3Property simSetVector3Property = nullptr;
+ptrSimGetVector3Property simGetVector3Property = nullptr;
+ptrSimSetQuaternionProperty simSetQuaternionProperty = nullptr;
+ptrSimGetQuaternionProperty simGetQuaternionProperty = nullptr;
+ptrSimSetPoseProperty simSetPoseProperty = nullptr;
+ptrSimGetPoseProperty simGetPoseProperty = nullptr;
+ptrSimSetMatrixProperty simSetMatrixProperty = nullptr;
+ptrSimGetMatrixProperty simGetMatrixProperty = nullptr;
+ptrSimSetColorProperty simSetColorProperty = nullptr;
+ptrSimGetColorProperty simGetColorProperty = nullptr;
+ptrSimSetVectorProperty simSetVectorProperty = nullptr;
+ptrSimGetVectorProperty simGetVectorProperty = nullptr;
+
 ptrSimRegCallback simRegCallback=nullptr;
 ptrSimRunGui simRunGui=nullptr;
 ptrSimInitialize simInitialize=nullptr;
@@ -523,6 +546,29 @@ int getSimProcAddresses(LIBRARY lib)
     if (getSimProcAddressesOld(lib)==0)
         return(0);
 
+    simSetBoolProperty = (ptrSimSetBoolProperty)(_getProcAddress(lib, "simSetBoolProperty", false));
+    simGetBoolProperty = (ptrSimGetBoolProperty)(_getProcAddress(lib, "simGetBoolProperty", false));
+    simSetInt32Property = (ptrSimSetInt32Property)(_getProcAddress(lib, "simSetInt32Property", false));
+    simGetInt32Property = (ptrSimGetInt32Property)(_getProcAddress(lib, "simGetInt32Property", false));
+    simSetFloatProperty = (ptrSimSetFloatProperty)(_getProcAddress(lib, "simSetFloatProperty", false));
+    simGetFloatProperty = (ptrSimGetFloatProperty)(_getProcAddress(lib, "simGetFloatProperty", false));
+    simSetStringProperty = (ptrSimSetStringProperty)(_getProcAddress(lib, "simSetStringProperty", false));
+    simGetStringProperty = (ptrSimGetStringProperty)(_getProcAddress(lib, "simGetStringProperty", false));
+    simSetBufferProperty = (ptrSimSetBufferProperty)(_getProcAddress(lib, "simSetBufferProperty", false));
+    simGetBufferProperty = (ptrSimGetBufferProperty)(_getProcAddress(lib, "simGetBufferProperty", false));
+    simSetVector3Property = (ptrSimSetVector3Property)(_getProcAddress(lib, "simSetVector3Property", false));
+    simGetVector3Property = (ptrSimGetVector3Property)(_getProcAddress(lib, "simGetVector3Property", false));
+    simSetQuaternionProperty = (ptrSimSetQuaternionProperty)(_getProcAddress(lib, "simSetQuaternionProperty", false));
+    simGetQuaternionProperty = (ptrSimGetQuaternionProperty)(_getProcAddress(lib, "simGetQuaternionProperty", false));
+    simSetPoseProperty = (ptrSimSetPoseProperty)(_getProcAddress(lib, "simSetPoseProperty", false));
+    simGetPoseProperty = (ptrSimGetPoseProperty)(_getProcAddress(lib, "simGetPoseProperty", false));
+    simSetMatrixProperty = (ptrSimSetMatrixProperty)(_getProcAddress(lib, "simSetMatrixProperty", false));
+    simGetMatrixProperty = (ptrSimGetMatrixProperty)(_getProcAddress(lib, "simGetMatrixProperty", false));
+    simSetColorProperty = (ptrSimSetColorProperty)(_getProcAddress(lib, "simSetColorProperty", false));
+    simGetColorProperty = (ptrSimGetColorProperty)(_getProcAddress(lib, "simGetColorProperty", false));
+    simSetVectorProperty = (ptrSimSetVectorProperty)(_getProcAddress(lib, "simSetVectorProperty", false));
+    simGetVectorProperty = (ptrSimGetVectorProperty)(_getProcAddress(lib, "simGetVectorProperty", false));
+
     simRegCallback=(ptrSimRegCallback)(_getProcAddress(lib,"simRegCallback",false));
     simRunGui=(ptrSimRunGui)(_getProcAddress(lib,"simRunGui",false));
     simInitialize=(ptrSimInitialize)(_getProcAddress(lib,"simInitialize",false));
@@ -942,6 +988,121 @@ int getSimProcAddresses(LIBRARY lib)
         return(1);
 
     char couldNotFind[]="Could not find function";
+    if (simSetBoolProperty == nullptr)
+    {
+        printf("%s simSetBoolProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simGetBoolProperty == nullptr)
+    {
+        printf("%s simGetBoolProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simSetInt32Property == nullptr)
+    {
+        printf("%s simSetInt32Property\n", couldNotFind);
+        return 0;
+    }
+    if (simGetInt32Property == nullptr)
+    {
+        printf("%s simGetInt32Property\n", couldNotFind);
+        return 0;
+    }
+    if (simSetFloatProperty == nullptr)
+    {
+        printf("%s simSetFloatProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simGetFloatProperty == nullptr)
+    {
+        printf("%s simGetFloatProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simSetStringProperty == nullptr)
+    {
+        printf("%s simSetStringProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simGetStringProperty == nullptr)
+    {
+        printf("%s simGetStringProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simSetBufferProperty == nullptr)
+    {
+        printf("%s simSetBufferProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simGetBufferProperty == nullptr)
+    {
+        printf("%s simGetBufferProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simSetVector3Property == nullptr)
+    {
+        printf("%s simSetVector3Property\n", couldNotFind);
+        return 0;
+    }
+    if (simGetVector3Property == nullptr)
+    {
+        printf("%s simGetVector3Property\n", couldNotFind);
+        return 0;
+    }
+    if (simSetQuaternionProperty == nullptr)
+    {
+        printf("%s simSetQuaternionProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simGetQuaternionProperty == nullptr)
+    {
+        printf("%s simGetQuaternionProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simSetPoseProperty == nullptr)
+    {
+        printf("%s simSetPoseProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simGetPoseProperty == nullptr)
+    {
+        printf("%s simGetPoseProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simSetMatrixProperty == nullptr)
+    {
+        printf("%s simSetMatrixProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simGetMatrixProperty == nullptr)
+    {
+        printf("%s simGetMatrixProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simSetColorProperty == nullptr)
+    {
+        printf("%s simSetColorProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simGetColorProperty == nullptr)
+    {
+        printf("%s simGetColorProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simSetVectorProperty == nullptr)
+    {
+        printf("%s simSetVectorProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simGetVectorProperty == nullptr)
+    {
+        printf("%s simGetVectorProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simRegCallback==nullptr)
+    {
+        printf("%s simRegCallback\n",couldNotFind);
+        return 0;
+    }
     if (simRunGui==nullptr)
     {
         printf("%s simRunGui\n",couldNotFind);

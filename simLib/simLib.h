@@ -36,6 +36,29 @@ FARPROC _getProcAddress(LIBRARY lib,const char* funcName);
 int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg);
 
 
+typedef int (__cdecl *ptrSimSetBoolProperty)(int target, const char* pName, int pState);
+typedef int (__cdecl *ptrSimGetBoolProperty)(int target, const char* pName, int* pState);
+typedef int (__cdecl *ptrSimSetInt32Property)(int target, const char* pName, int pState);
+typedef int (__cdecl *ptrSimGetInt32Property)(int target, const char* pName, int* pState);
+typedef int (__cdecl *ptrSimSetFloatProperty)(int target, const char* pName, double pState);
+typedef int (__cdecl *ptrSimGetFloatProperty)(int target, const char* pName, double* pState);
+typedef int (__cdecl *ptrSimSetStringProperty)(int target, const char* pName, const char* pState);
+typedef char* (__cdecl *ptrSimGetStringProperty)(int target, const char* pName);
+typedef int (__cdecl *ptrSimSetBufferProperty)(int target, const char* pName, const char* buffer, int bufferL);
+typedef char* (__cdecl *ptrSimGetBufferProperty)(int target, const char* pName, int* bufferL);
+typedef int (__cdecl *ptrSimSetVector3Property)(int target, const char* pName, const double* pState);
+typedef int (__cdecl *ptrSimGetVector3Property)(int target, const char* pName, double* pState);
+typedef int (__cdecl *ptrSimSetQuaternionProperty)(int target, const char* pName, const double* pState);
+typedef int (__cdecl *ptrSimGetQuaternionProperty)(int target, const char* pName, double* pState);
+typedef int (__cdecl *ptrSimSetPoseProperty)(int target, const char* pName, const double* pState);
+typedef int (__cdecl *ptrSimGetPoseProperty)(int target, const char* pName, double* pState);
+typedef int (__cdecl *ptrSimSetMatrixProperty)(int target, const char* pName, const double* pState);
+typedef int (__cdecl *ptrSimGetMatrixProperty)(int target, const char* pName, double* pState);
+typedef int (__cdecl *ptrSimSetColorProperty)(int target, const char* pName, const float* pState);
+typedef int (__cdecl *ptrSimGetColorProperty)(int target, const char* pName, float* pState);
+typedef int (__cdecl *ptrSimSetVectorProperty)(int target, const char* pName, const double* v, int vL);
+typedef double* (__cdecl *ptrSimGetVectorProperty)(int target, const char* pName, int* vL);
+
 typedef void (__cdecl *ptrSimRegCallback)(int index, void* cb);
 typedef void (__cdecl *ptrSimRunGui)(int options);
 typedef int (__cdecl *ptrSimInitialize)(const char* appDir,int options);
@@ -456,6 +479,29 @@ typedef int (__cdecl *ptr_simHandleCustomContact)(int objHandle1,int objHandle2,
 typedef SIMDOUBLE (__cdecl *ptr_simGetPureHollowScaling)(const void* geometric);
 typedef void (__cdecl *ptr_simDynCallback)(const int* intData,const SIMDOUBLE* floatData);
 
+
+extern ptrSimSetBoolProperty simSetBoolProperty;
+extern ptrSimGetBoolProperty simGetBoolProperty;
+extern ptrSimSetInt32Property simSetInt32Property;
+extern ptrSimGetInt32Property simGetInt32Property;
+extern ptrSimSetFloatProperty simSetFloatProperty;
+extern ptrSimGetFloatProperty simGetFloatProperty;
+extern ptrSimSetStringProperty simSetStringProperty;
+extern ptrSimGetStringProperty simGetStringProperty;
+extern ptrSimSetBufferProperty simSetBufferProperty;
+extern ptrSimGetBufferProperty simGetBufferProperty;
+extern ptrSimSetVector3Property simSetVector3Property;
+extern ptrSimGetVector3Property simGetVector3Property;
+extern ptrSimSetQuaternionProperty simSetQuaternionProperty;
+extern ptrSimGetQuaternionProperty simGetQuaternionProperty;
+extern ptrSimSetPoseProperty simSetPoseProperty;
+extern ptrSimGetPoseProperty simGetPoseProperty;
+extern ptrSimSetMatrixProperty simSetMatrixProperty;
+extern ptrSimGetMatrixProperty simGetMatrixProperty;
+extern ptrSimSetColorProperty simSetColorProperty;
+extern ptrSimGetColorProperty simGetColorProperty;
+extern ptrSimSetVectorProperty simSetVectorProperty;
+extern ptrSimGetVectorProperty simGetVectorProperty;
 
 extern ptrSimRegCallback simRegCallback;
 extern ptrSimRunGui simRunGui;
