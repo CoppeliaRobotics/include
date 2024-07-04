@@ -1545,6 +1545,22 @@ enum { /* stack table info */
     sim_stack_table_empty=0
 };
 
+enum { /* properties type */
+    sim_propertytype_bool=0,
+    sim_propertytype_int32,
+    sim_propertytype_float,
+    sim_propertytype_string,
+    sim_propertytype_buffer,
+    sim_propertytype_vector3,
+    sim_propertytype_quaternion,
+    sim_propertytype_pose,
+    sim_propertytype_matrix3x3,
+    sim_propertytype_matrix4x4,
+    sim_propertytype_color,
+    sim_propertytype_vector,
+    sim_propertytype_table,
+};
+
 enum { /* Physics engines params */
     /* Bullet */
     sim_bullet_global_float_start=0,

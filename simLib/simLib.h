@@ -61,9 +61,8 @@ typedef int (__cdecl *ptrSimGetColorProperty)(int target, const char* pName, flo
 typedef int (__cdecl *ptrSimSetVectorProperty)(int target, const char* pName, const double* v, int vL);
 typedef double* (__cdecl *ptrSimGetVectorProperty)(int target, const char* pName, int* vL);
 typedef int (__cdecl *ptrSimRemoveProperty)(int target, const char* pName);
-typedef char* (__cdecl *ptrSimGetProperty)(int target, int index);
-typedef int (__cdecl *ptrSimGetPropertyInfo)(int target, const char* pName, int* flags);
-typedef int (__cdecl *ptrSimHasProperty)(int target, const char* pName);
+typedef char* (__cdecl *ptrSimGetPropertyName)(int target, int index);
+typedef int (__cdecl *ptrSimGetPropertyInfo)(int target, const char* pName, int* flags, int* size);
 
 typedef void (__cdecl *ptrSimRegCallback)(int index, void* cb);
 typedef void (__cdecl *ptrSimRunGui)(int options);
@@ -511,9 +510,8 @@ extern ptrSimGetColorProperty simGetColorProperty;
 extern ptrSimSetVectorProperty simSetVectorProperty;
 extern ptrSimGetVectorProperty simGetVectorProperty;
 extern ptrSimRemoveProperty simRemoveProperty;
-extern ptrSimGetProperty simGetProperty;
+extern ptrSimGetPropertyName simGetPropertyName;
 extern ptrSimGetPropertyInfo simGetPropertyInfo;
-extern ptrSimHasProperty simHasProperty;
 
 extern ptrSimRegCallback simRegCallback;
 extern ptrSimRunGui simRunGui;

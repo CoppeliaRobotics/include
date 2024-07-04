@@ -57,9 +57,8 @@ ptrSimGetColorProperty simGetColorProperty = nullptr;
 ptrSimSetVectorProperty simSetVectorProperty = nullptr;
 ptrSimGetVectorProperty simGetVectorProperty = nullptr;
 ptrSimRemoveProperty simRemoveProperty = nullptr;
-ptrSimGetProperty simGetProperty = nullptr;
+ptrSimGetPropertyName simGetPropertyName = nullptr;
 ptrSimGetPropertyInfo simGetPropertyInfo = nullptr;
-ptrSimHasProperty simHasProperty = nullptr;
 
 ptrSimRegCallback simRegCallback=nullptr;
 ptrSimRunGui simRunGui=nullptr;
@@ -577,9 +576,8 @@ int getSimProcAddresses(LIBRARY lib)
     simSetVectorProperty = (ptrSimSetVectorProperty)(_getProcAddress(lib, "simSetVectorProperty", false));
     simGetVectorProperty = (ptrSimGetVectorProperty)(_getProcAddress(lib, "simGetVectorProperty", false));
     simRemoveProperty = (ptrSimRemoveProperty)(_getProcAddress(lib, "simRemoveProperty", false));
-    simGetProperty = (ptrSimGetProperty)(_getProcAddress(lib, "simGetProperty", false));
+    simGetPropertyName = (ptrSimGetPropertyName)(_getProcAddress(lib, "simGetPropertyName", false));
     simGetPropertyInfo = (ptrSimGetPropertyInfo)(_getProcAddress(lib, "simGetPropertyInfo", false));
-    simHasProperty = (ptrSimHasProperty)(_getProcAddress(lib, "simHasProperty", false));
 
     simRegCallback=(ptrSimRegCallback)(_getProcAddress(lib,"simRegCallback",false));
     simRunGui=(ptrSimRunGui)(_getProcAddress(lib,"simRunGui",false));
@@ -1125,19 +1123,14 @@ int getSimProcAddresses(LIBRARY lib)
         printf("%s simRemoveProperty\n", couldNotFind);
         return 0;
     }
-    if (simGetProperty == nullptr)
+    if (simGetPropertyName == nullptr)
     {
-        printf("%s simGetProperty\n", couldNotFind);
+        printf("%s simGetPropertyName\n", couldNotFind);
         return 0;
     }
     if (simGetPropertyInfo == nullptr)
     {
         printf("%s simGetPropertyInfo\n", couldNotFind);
-        return 0;
-    }
-    if (simHasProperty == nullptr)
-    {
-        printf("%s simHasProperty\n", couldNotFind);
         return 0;
     }
     if (simRegCallback==nullptr)
