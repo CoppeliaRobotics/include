@@ -34,8 +34,8 @@ int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg)
 
 ptrSimSetBoolProperty simSetBoolProperty = nullptr;
 ptrSimGetBoolProperty simGetBoolProperty = nullptr;
-ptrSimSetInt32Property simSetInt32Property = nullptr;
-ptrSimGetInt32Property simGetInt32Property = nullptr;
+ptrSimSetIntProperty simSetIntProperty = nullptr;
+ptrSimGetIntProperty simGetIntProperty = nullptr;
 ptrSimSetFloatProperty simSetFloatProperty = nullptr;
 ptrSimGetFloatProperty simGetFloatProperty = nullptr;
 ptrSimSetStringProperty simSetStringProperty = nullptr;
@@ -56,6 +56,8 @@ ptrSimSetColorProperty simSetColorProperty = nullptr;
 ptrSimGetColorProperty simGetColorProperty = nullptr;
 ptrSimSetVectorProperty simSetVectorProperty = nullptr;
 ptrSimGetVectorProperty simGetVectorProperty = nullptr;
+ptrSimSetIntVectorProperty simSetIntVectorProperty = nullptr;
+ptrSimGetIntVectorProperty simGetIntVectorProperty = nullptr;
 ptrSimRemoveProperty simRemoveProperty = nullptr;
 ptrSimGetPropertyName simGetPropertyName = nullptr;
 ptrSimGetPropertyInfo simGetPropertyInfo = nullptr;
@@ -553,8 +555,8 @@ int getSimProcAddresses(LIBRARY lib)
 
     simSetBoolProperty = (ptrSimSetBoolProperty)(_getProcAddress(lib, "simSetBoolProperty", false));
     simGetBoolProperty = (ptrSimGetBoolProperty)(_getProcAddress(lib, "simGetBoolProperty", false));
-    simSetInt32Property = (ptrSimSetInt32Property)(_getProcAddress(lib, "simSetInt32Property", false));
-    simGetInt32Property = (ptrSimGetInt32Property)(_getProcAddress(lib, "simGetInt32Property", false));
+    simSetIntProperty = (ptrSimSetIntProperty)(_getProcAddress(lib, "simSetIntProperty", false));
+    simGetIntProperty = (ptrSimGetIntProperty)(_getProcAddress(lib, "simGetIntProperty", false));
     simSetFloatProperty = (ptrSimSetFloatProperty)(_getProcAddress(lib, "simSetFloatProperty", false));
     simGetFloatProperty = (ptrSimGetFloatProperty)(_getProcAddress(lib, "simGetFloatProperty", false));
     simSetStringProperty = (ptrSimSetStringProperty)(_getProcAddress(lib, "simSetStringProperty", false));
@@ -575,6 +577,8 @@ int getSimProcAddresses(LIBRARY lib)
     simGetColorProperty = (ptrSimGetColorProperty)(_getProcAddress(lib, "simGetColorProperty", false));
     simSetVectorProperty = (ptrSimSetVectorProperty)(_getProcAddress(lib, "simSetVectorProperty", false));
     simGetVectorProperty = (ptrSimGetVectorProperty)(_getProcAddress(lib, "simGetVectorProperty", false));
+    simSetIntVectorProperty = (ptrSimSetIntVectorProperty)(_getProcAddress(lib, "simSetIntVectorProperty", false));
+    simGetIntVectorProperty = (ptrSimGetIntVectorProperty)(_getProcAddress(lib, "simGetIntVectorProperty", false));
     simRemoveProperty = (ptrSimRemoveProperty)(_getProcAddress(lib, "simRemoveProperty", false));
     simGetPropertyName = (ptrSimGetPropertyName)(_getProcAddress(lib, "simGetPropertyName", false));
     simGetPropertyInfo = (ptrSimGetPropertyInfo)(_getProcAddress(lib, "simGetPropertyInfo", false));
@@ -1008,14 +1012,14 @@ int getSimProcAddresses(LIBRARY lib)
         printf("%s simGetBoolProperty\n", couldNotFind);
         return 0;
     }
-    if (simSetInt32Property == nullptr)
+    if (simSetIntProperty == nullptr)
     {
-        printf("%s simSetInt32Property\n", couldNotFind);
+        printf("%s simSetIntProperty\n", couldNotFind);
         return 0;
     }
-    if (simGetInt32Property == nullptr)
+    if (simGetIntProperty == nullptr)
     {
-        printf("%s simGetInt32Property\n", couldNotFind);
+        printf("%s simGetIntProperty\n", couldNotFind);
         return 0;
     }
     if (simSetFloatProperty == nullptr)
@@ -1116,6 +1120,16 @@ int getSimProcAddresses(LIBRARY lib)
     if (simGetVectorProperty == nullptr)
     {
         printf("%s simGetVectorProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simSetIntVectorProperty == nullptr)
+    {
+        printf("%s simSetIntVectorProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simGetIntVectorProperty == nullptr)
+    {
+        printf("%s simGetIntVectorProperty\n", couldNotFind);
         return 0;
     }
     if (simRemoveProperty == nullptr)

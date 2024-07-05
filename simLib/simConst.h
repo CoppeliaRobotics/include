@@ -1547,7 +1547,7 @@ enum { /* stack table info */
 
 enum { /* properties type */
     sim_propertytype_bool=0,
-    sim_propertytype_int32,
+    sim_propertytype_int,
     sim_propertytype_float,
     sim_propertytype_string,
     sim_propertytype_buffer,
@@ -1559,6 +1559,7 @@ enum { /* properties type */
     sim_propertytype_color,
     sim_propertytype_vector,
     sim_propertytype_table,
+    sim_propertytype_intvector,
 };
 
 enum { /* Physics engines params */
