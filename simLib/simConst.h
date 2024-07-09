@@ -9,7 +9,9 @@
 #define SIM_VERSION_PATCH 0
 #define SIM_VERSION_REVNB 5
 
+#ifndef SIM_EVENT_PROTOCOL_VERSION
 #define SIM_EVENT_PROTOCOL_VERSION 2
+#endif // SIM_EVENT_PROTOCOL_VERSION
 
 
 // for checking version:
