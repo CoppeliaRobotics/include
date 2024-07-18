@@ -1099,8 +1099,8 @@ namespace sim
     bool getPropertyName(int target, int index, std::string &pname);
     bool getPropertyName(int target, int index, std::string &pname, SOptions &opts);
 
-    void getPropertyInfo(int target, const std::string &pname, int &flags, int &size);
-    void getPropertyInfo(int target, const std::string &pname, int &flags, int &size, SOptions &opts);
+    int getPropertyInfo(int target, const std::string &pname, int &flags, int &size);
+    int getPropertyInfo(int target, const std::string &pname, int &flags, int &size, SOptions &opts);
 
 } // namespace sim
 
