@@ -100,8 +100,8 @@ struct SProperty {
 };
 
 struct SOptions {
-    int structSize;
-    int objectType;
+    int structSize; /* init. to sizeof(SOption) */
+    int objectType; /* -1 is default */
 };
 
 #endif // !defined(SIMTYPES_INCLUDED_)
