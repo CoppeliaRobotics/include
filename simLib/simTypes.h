@@ -1,6 +1,12 @@
 #if !defined(SIMTYPES_INCLUDED_)
 #define SIMTYPES_INCLUDED_
 
+#ifdef __cplusplus
+#include <cstring>
+#else
+#include <string.h>
+#endif
+
 struct SSimInit
 {
     const char* pluginName;
@@ -99,9 +105,21 @@ struct SProperty {
     int flags;
 };
 
+#define SOptions_init(s) do { \
+    memset((s), 0, sizeof(SOptions)); \
+    (s)->structSize = sizeof(SOptions); \
+    (s)->objectType = -1; \
+} while(0)
+
 struct SOptions {
-    int structSize; /* init. to sizeof(SOption) */
-    int objectType; /* -1 is default */
+    int structSize; /* init. to sizeof(SOptions) */
+    int objectType; /* default: -1 */
+
+#ifdef __cplusplus
+    SOptions() { SOptions_init(this); }
+    // "fluent" API:
+    SOptions& setObjectType(int t) { objectType = t; return *this; }
+#endif // __cplusplus
 };
 
 #endif // !defined(SIMTYPES_INCLUDED_)

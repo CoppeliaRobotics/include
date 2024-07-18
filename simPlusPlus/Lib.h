@@ -1042,6 +1042,66 @@ namespace sim
 
     // dynCallback
 
+    void setBoolProperty(int target, const std::string &pname, bool value);
+
+    bool getBoolProperty(int target, const std::string &pname);
+
+    void setIntProperty(int target, const std::string &pname, int value);
+
+    int getIntProperty(int target, const std::string &pname);
+
+    void setFloatProperty(int target, const std::string &pname, double value);
+
+    double getFloatProperty(int target, const std::string &pname);
+
+    void setStringProperty(int target, const std::string &pname, const std::string &value);
+
+    std::string getStringProperty(int target, const std::string &pname);
+
+    void setBufferProperty(int target, const std::string &pname, const std::string &value);
+
+    std::string getBufferProperty(int target, const std::string &pname);
+
+    void setVector3Property(int target, const std::string &pname, std::array<double, 3> value);
+
+    std::array<double, 3> getVector3Property(int target, const std::string &pname);
+
+    void setQuaternionProperty(int target, const std::string &pname, std::array<double, 4> value);
+
+    std::array<double, 4> getQuaternionProperty(int target, const std::string &pname);
+
+    void setPoseProperty(int target, const std::string &pname, std::array<double, 7> value);
+
+    std::array<double, 7> getPoseProperty(int target, const std::string &pname);
+
+    void setMatrix3x3Property(int target, const std::string &pname, std::array<double, 9> value);
+
+    std::array<double, 9> getMatrix3x3Property(int target, const std::string &pname);
+
+    void setMatrix4x4Property(int target, const std::string &pname, std::array<double, 16> value);
+
+    std::array<double, 16> getMatrix4x4Property(int target, const std::string &pname);
+
+    void setColorProperty(int target, const std::string &pname, std::array<float, 3> value);
+
+    std::array<float, 3> getColorProperty(int target, const std::string &pname);
+
+    void setVectorProperty(int target, const std::string &pname, const std::vector<double> &value);
+
+    std::vector<double> getVectorProperty(int target, const std::string &pname);
+
+    void setIntVectorProperty(int target, const std::string &pname, const std::vector<int> &value);
+
+    std::vector<int> getIntVectorProperty(int target, const std::string &pname);
+
+    void removeProperty(int target, const std::string &pname);
+
+    bool getPropertyName(int target, int index, std::string &pname);
+    bool getPropertyName(int target, int index, std::string &pname, SOptions &opts);
+
+    void getPropertyInfo(int target, const std::string &pname, int &flags, int &size);
+    void getPropertyInfo(int target, const std::string &pname, int &flags, int &size, SOptions &opts);
+
 } // namespace sim
 
 #endif // SIMPLUSPLUS_LIB_H_INCLUDED

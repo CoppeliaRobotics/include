@@ -2887,4 +2887,254 @@ void setShapeInertia(int shapeHandle, std::array<double, 9> inertiaMatrix, std::
 
 // void simDynCallback(const int *intData, const double *floatData);
 
+void setBoolProperty(int target, const std::string &pname, bool value)
+{
+    int ret = simSetBoolProperty(target, pname.c_str(), value);
+    if(ret == -1)
+        throw api_error("simSetBoolProperty");
+}
+
+bool getBoolProperty(int target, const std::string &pname)
+{
+    int value = 0;
+    int ret = simGetBoolProperty(target, pname.c_str(), &value);
+    if(ret == -1)
+        throw api_error("simGetBoolProperty");
+    return value > 0;
+}
+
+void setIntProperty(int target, const std::string &pname, int value)
+{
+    int ret = simSetIntProperty(target, pname.c_str(), value);
+    if(ret == -1)
+        throw api_error("simSetIntProperty");
+}
+
+int getIntProperty(int target, const std::string &pname)
+{
+    int value = 0;
+    int ret = simGetIntProperty(target, pname.c_str(), &value);
+    if(ret == -1)
+        throw api_error("simGetIntProperty");
+    return value;
+}
+
+void setFloatProperty(int target, const std::string &pname, double value)
+{
+    int ret = simSetFloatProperty(target, pname.c_str(), value);
+    if(ret == -1)
+        throw api_error("simSetFloatProperty");
+}
+
+double getFloatProperty(int target, const std::string &pname)
+{
+    double value = 0;
+    int ret = simGetFloatProperty(target, pname.c_str(), &value);
+    if(ret == -1)
+        throw api_error("simGetFloatProperty");
+    return value;
+}
+
+void setStringProperty(int target, const std::string &pname, const std::string &value)
+{
+    int ret = simSetStringProperty(target, pname.c_str(), value.c_str());
+    if(ret == -1)
+        throw api_error("simSetStringProperty");
+}
+
+std::string getStringProperty(int target, const std::string &pname)
+{
+    char *value = simGetStringProperty(target, pname.c_str());
+    if(!value)
+        throw api_error("simGetStringProperty");
+    std::string s(value);
+    sim::releaseBuffer(value);
+    return s;
+}
+
+void setBufferProperty(int target, const std::string &pname, const std::string &value)
+{
+    int ret = simSetBufferProperty(target, pname.c_str(), value.c_str(), value.size());
+    if(ret == -1)
+        throw api_error("simSetBufferProperty");
+}
+
+std::string getBufferProperty(int target, const std::string &pname)
+{
+    int len = 0;
+    char *value = simGetBufferProperty(target, pname.c_str(), &len);
+    if(!value)
+        throw api_error("simGetBufferProperty");
+    std::string s(value, len);
+    sim::releaseBuffer(value);
+    return s;
+}
+
+void setVector3Property(int target, const std::string &pname, std::array<double, 3> value)
+{
+    int ret = simSetVector3Property(target, pname.c_str(), value.data());
+    if(ret == -1)
+        throw api_error("simSetVector3Property");
+}
+
+std::array<double, 3> getVector3Property(int target, const std::string &pname)
+{
+    std::array<double, 3> value;
+    int ret = simGetVector3Property(target, pname.c_str(), value.data());
+    if(ret == -1)
+        throw api_error("simGetVector3Property");
+    return value;
+}
+
+void setQuaternionProperty(int target, const std::string &pname, std::array<double, 4> value)
+{
+    int ret = simSetQuaternionProperty(target, pname.c_str(), value.data());
+    if(ret == -1)
+        throw api_error("simSetQuaternionProperty");
+}
+
+std::array<double, 4> getQuaternionProperty(int target, const std::string &pname)
+{
+    std::array<double, 4> value;
+    int ret = simGetQuaternionProperty(target, pname.c_str(), value.data());
+    if(ret == -1)
+        throw api_error("simGetQuaternionProperty");
+    return value;
+}
+
+void setPoseProperty(int target, const std::string &pname, std::array<double, 7> value)
+{
+    int ret = simSetPoseProperty(target, pname.c_str(), value.data());
+    if(ret == -1)
+        throw api_error("simSetPoseProperty");
+}
+
+std::array<double, 7> getPoseProperty(int target, const std::string &pname)
+{
+    std::array<double, 7> value;
+    int ret = simGetPoseProperty(target, pname.c_str(), value.data());
+    if(ret == -1)
+        throw api_error("simGetPoseProperty");
+    return value;
+}
+
+void setMatrix3x3Property(int target, const std::string &pname, std::array<double, 9> value)
+{
+    int ret = simSetMatrix3x3Property(target, pname.c_str(), value.data());
+    if(ret == -1)
+        throw api_error("simSetMatrix3x3Property");
+}
+
+std::array<double, 9> getMatrix3x3Property(int target, const std::string &pname)
+{
+    std::array<double, 9> value;
+    int ret = simGetMatrix3x3Property(target, pname.c_str(), value.data());
+    if(ret == -1)
+        throw api_error("simGetMatrix3x3Property");
+    return value;
+}
+
+void setMatrix4x4Property(int target, const std::string &pname, std::array<double, 16> value)
+{
+    int ret = simSetMatrix4x4Property(target, pname.c_str(), value.data());
+    if(ret == -1)
+        throw api_error("simSetMatrix4x4Property");
+}
+
+std::array<double, 16> getMatrix4x4Property(int target, const std::string &pname)
+{
+    std::array<double, 16> value;
+    int ret = simGetMatrix4x4Property(target, pname.c_str(), value.data());
+    if(ret == -1)
+        throw api_error("simGetMatrix4x4Property");
+    return value;
+}
+
+void setColorProperty(int target, const std::string &pname, std::array<float, 3> value)
+{
+    int ret = simSetColorProperty(target, pname.c_str(), value.data());
+    if(ret == -1)
+        throw api_error("simSetColorProperty");
+}
+
+std::array<float, 3> getColorProperty(int target, const std::string &pname)
+{
+    std::array<float, 3> value;
+    int ret = simGetColorProperty(target, pname.c_str(), value.data());
+    if(ret == -1)
+        throw api_error("simGetColorProperty");
+    return value;
+}
+
+void setVectorProperty(int target, const std::string &pname, const std::vector<double> &value)
+{
+    int ret = simSetVectorProperty(target, pname.c_str(), value.data(), value.size());
+    if(ret == -1)
+        throw api_error("simSetVectorProperty");
+}
+
+std::vector<double> getVectorProperty(int target, const std::string &pname)
+{
+    int len = 0;
+    double *value = simGetVectorProperty(target, pname.c_str(), &len);
+    if(!value)
+        throw api_error("simGetVectorProperty");
+    std::vector<double> v(value, value + len);
+    sim::releaseBuffer(value);
+    return v;
+}
+
+void setIntVectorProperty(int target, const std::string &pname, const std::vector<int> &value)
+{
+    int ret = simSetIntVectorProperty(target, pname.c_str(), value.data(), value.size());
+    if(ret == -1)
+        throw api_error("simSetIntVectorProperty");
+}
+
+std::vector<int> getIntVectorProperty(int target, const std::string &pname)
+{
+    int len = 0;
+    int *value = simGetIntVectorProperty(target, pname.c_str(), &len);
+    if(!value)
+        throw api_error("simGetIntVectorProperty");
+    std::vector<int> v(value, value + len);
+    sim::releaseBuffer(value);
+    return v;
+}
+
+void removeProperty(int target, const std::string &pname)
+{
+    int ret = simRemoveProperty(target, pname.c_str());
+    if(ret == -1)
+        throw api_error("simRemoveProperty");
+}
+
+bool getPropertyName(int target, int index, std::string &pname)
+{
+    SOptions opts;
+    return getPropertyName(target, index, pname, opts);
+}
+
+bool getPropertyName(int target, int index, std::string &pname, SOptions &opts)
+{
+    char* ret = simGetPropertyName(target, index, &opts);
+    if(!ret) return false;
+    pname = std::string(ret);
+    sim::releaseBuffer(ret);
+    return true;
+}
+
+void getPropertyInfo(int target, const std::string &pname, int &flags, int &size)
+{
+    SOptions opts;
+    return getPropertyInfo(target, pname, flags, size, opts);
+}
+
+void getPropertyInfo(int target, const std::string &pname, int &flags, int &size, SOptions &opts)
+{
+    int ret = simGetPropertyInfo(target, pname.c_str(), &flags, &size, &opts);
+    if(ret == -1)
+        throw api_error("simGetPropertyInfo");
+}
+
 } // namespace sim
