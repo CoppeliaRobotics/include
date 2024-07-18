@@ -10,7 +10,7 @@
 #define SIM_VERSION_REVNB 5
 
 #ifndef SIM_EVENT_PROTOCOL_VERSION
-#define SIM_EVENT_PROTOCOL_VERSION 2
+#define SIM_EVENT_PROTOCOL_VERSION 3
 #endif // SIM_EVENT_PROTOCOL_VERSION
 
 
@@ -33,95 +33,46 @@
 
 /* Scene object types. Values are serialized */
 enum {
-        sim_object_shape_type=0,
-        sim_object_joint_type,
-        sim_object_graph_type,
-        sim_object_camera_type,
-        sim_object_dummy_type,
-        sim_object_proximitysensor_type,
-        sim_object_reserved1,
-        sim_object_reserved2,
-        sim_object_path_type,               /* deprecated */
-        sim_object_visionsensor_type,
-        sim_object_reserved3,
-        sim_object_mill_type,               /* deprecated */
-        sim_object_forcesensor_type,
-        sim_object_light_type,
-        sim_object_mirror_type,             /* deprecated */
-        sim_object_octree_type,
-        sim_object_pointcloud_type,
-        sim_object_script_type,
-        sim_object_type_end=sim_object_path_type+100
+        sim_sceneobject_shape =0,
+        sim_sceneobject_joint = 1,
+        sim_sceneobject_graph = 2,
+        sim_sceneobject_camera = 3,
+        sim_sceneobject_dummy = 4,
+        sim_sceneobject_proximitysensor = 5,
+        sim_sceneobject_path = 8,               /* deprecated */
+        sim_sceneobject_visionsensor = 9,
+        sim_sceneobject_mill = 11,               /* deprecated */
+        sim_sceneobject_forcesensor = 12,
+        sim_sceneobject_light = 13,
+        sim_sceneobject_mirror = 14,             /* deprecated */
+        sim_sceneobject_octree = 15,
+        sim_sceneobject_pointcloud = 16,
+        sim_sceneobject_script = 17,
 };
 
 /* General object types. Values are serialized */
 enum {
-    sim_appobj_object_type=109,
-    sim_appobj_collision_type, /* deprecated */
-    sim_appobj_distance_type, /* deprecated */
-    sim_appobj_simulation_type,
-    sim_appobj_ik_type, /* deprecated */
-    sim_appobj_constraintsolver_type_old, /* deprecated */
-    sim_appobj_collection_type,
-    sim_appobj_ui_type, /* deprecated */
-    sim_appobj_script_type,
-    sim_appobj_pathplanning_type, /* deprecated */
-    sim_appobj_RESERVED_type,
-    sim_appobj_texture_type,
-    sim_appobj_motionplanning_type_old /* deprecated */
-};
-
-/* Ik calculation methods. DEPRECATED */
-enum {
-        sim_ik_pseudo_inverse_method=0, /* with a tiny little bit of hard-coded damping */
-        sim_ik_damped_least_squares_method,
-        sim_ik_jacobian_transpose_method,
-        sim_ik_undamped_pseudo_inverse_method
-};
-
-/* Ik constraints. DEPRECATED */
-enum {
-        sim_ik_x_constraint=1,
-        sim_ik_y_constraint=2,
-        sim_ik_z_constraint=4,
-        sim_ik_alpha_beta_constraint=8,
-        sim_ik_gamma_constraint=16,
-        sim_ik_avoidance_constraint_old=64 /* not supported anymore */
-};
-
-/* Ik calculation results. DEPRECATED */
-enum {
-    sim_ikresult_not_performed=0,
-    sim_ikresult_success,
-    sim_ikresult_fail
+    sim_objecttype_sceneobject = 109,
+    sim_objecttype_collection = 115,
+    sim_objecttype_texture = 120,
+    sim_objecttype_mesh = 122,
 };
 
 /* Scene object sub-types. Values are serialized */
 enum {
-        /* Light sub-types: */
-        sim_light_omnidirectional_subtype=1,
-        sim_light_spot_subtype,
-        sim_light_directional_subtype,
-        /* Joint sub-types: */
-        sim_joint_revolute_subtype=10,
-        sim_joint_prismatic_subtype,
-        sim_joint_spherical_subtype,
-        /* Shape sub-types: */
-        sim_shape_simpleshape_subtype=20,
-        sim_shape_multishape_subtype,
-        /* Proximity sensor sub-types: */
-        sim_proximitysensor_pyramid_subtype=30,
-        sim_proximitysensor_cylinder_subtype,
-        sim_proximitysensor_disc_subtype,
-        sim_proximitysensor_cone_subtype,
-        sim_proximitysensor_ray_subtype,
-        /* Mill sub-types: */
-        sim_mill_pyramid_subtype=40,
-        sim_mill_cylinder_subtype,
-        sim_mill_disc_subtype,
-        sim_mill_cone_subtype,
-        /* No sub-type: */
-        sim_object_no_subtype=200
+        sim_light_omnidirectional = 1,
+        sim_light_spot = 2,
+        sim_light_directional = 3,
+        sim_joint_revolute = 10,
+        sim_joint_prismatic = 11,
+        sim_joint_spherical = 12,
+        sim_shape_simple = 20,
+        sim_shape_compound = 21,
+        sim_proximitysensor_pyramid = 30,
+        sim_proximitysensor_cylinder = 31,
+        sim_proximitysensor_disc = 32,
+        sim_proximitysensor_cone = 33,
+        sim_proximitysensor_ray = 34,
 };
 
 enum { /* Scene object main properties (serialized): */
@@ -146,7 +97,7 @@ enum { /* Model properties (serialized): */
         sim_modelproperty_not_measurable                =0x0002,
         sim_modelproperty_not_renderable                =0x0004, /* deprecated */
         sim_modelproperty_not_detectable                =0x0008,
-        sim_modelproperty_not_cuttable_old              =0x0010,
+        sim_modelproperty_not_cuttable_old              =0x0010, /* deprecated */
         sim_modelproperty_not_dynamic                   =0x0020,
         sim_modelproperty_not_respondable               =0x0040, /* cannot be selected if sim_modelproperty_not_dynamic is not selected */
         sim_modelproperty_not_reset                     =0x0080, /* Model is not reset at simulation end. This flag is cleared at simulation end */
@@ -2058,48 +2009,6 @@ enum {
     sim_dynamicsimicon_objectisnotdynamicallyenabled
 };
 
-enum { /* Filter component types. Not used anymore (use vision callback functions instead) */
-    sim_filtercomponent_originalimage_deprecated=1,
-    sim_filtercomponent_originaldepth_deprecated,
-    sim_filtercomponent_uniformimage_deprecated,
-    sim_filtercomponent_tooutput_deprecated,
-    sim_filtercomponent_tobuffer1_deprecated,
-    sim_filtercomponent_tobuffer2_deprecated,
-    sim_filtercomponent_frombuffer1_deprecated,
-    sim_filtercomponent_frombuffer2_deprecated,
-    sim_filtercomponent_swapbuffers_deprecated,
-    sim_filtercomponent_addbuffer1_deprecated,
-    sim_filtercomponent_subtractbuffer1_deprecated,
-    sim_filtercomponent_multiplywithbuffer1_deprecated,
-    sim_filtercomponent_horizontalflip_deprecated,
-    sim_filtercomponent_verticalflip_deprecated,
-    sim_filtercomponent_rotate_deprecated,
-    sim_filtercomponent_shift_deprecated,
-    sim_filtercomponent_resize_deprecated,
-    sim_filtercomponent_3x3filter_deprecated,
-    sim_filtercomponent_5x5filter_deprecated,
-    sim_filtercomponent_sharpen_deprecated,
-    sim_filtercomponent_edge_deprecated,
-    sim_filtercomponent_rectangularcut_deprecated,
-    sim_filtercomponent_circularcut_deprecated,
-    sim_filtercomponent_normalize_deprecated,
-    sim_filtercomponent_intensityscale_deprecated,
-    sim_filtercomponent_keeporremovecolors_deprecated,
-    sim_filtercomponent_scaleandoffsetcolors_deprecated,
-    sim_filtercomponent_binary_deprecated,
-    sim_filtercomponent_swapwithbuffer1_deprecated,
-    sim_filtercomponent_addtobuffer1_deprecated,
-    sim_filtercomponent_subtractfrombuffer1_deprecated,
-    sim_filtercomponent_correlationwithbuffer1_deprecated,
-    sim_filtercomponent_colorsegmentation_deprecated,
-    sim_filtercomponent_blobextraction_deprecated,
-    sim_filtercomponent_imagetocoord_deprecated,
-    sim_filtercomponent_pixelchange_deprecated,
-    sim_filtercomponent_velodyne_deprecated,
-    sim_filtercomponent_todepthoutput_deprecated,
-    sim_filtercomponent_customized_deprecated=1000
-};
-
 enum { /* Buffer types */
     sim_buffer_uint8=0,
     sim_buffer_int8,
@@ -2156,7 +2065,126 @@ enum { /* Vision sensors render modes */
     sim_rendermode_codedimg,
 };
 
-/* -------------------- deprecated legacy remote API ----------------------------- */
+/* -------------------- deprecated start ----------------------------- */
+
+enum {
+        sim_object_shape_type = sim_sceneobject_shape,
+        sim_object_joint_type = sim_sceneobject_joint,
+        sim_object_graph_type = sim_sceneobject_graph,
+        sim_object_camera_type = sim_sceneobject_camera,
+        sim_object_dummy_type = sim_sceneobject_dummy,
+        sim_object_proximitysensor_type = sim_sceneobject_proximitysensor,
+        sim_object_path_type = sim_sceneobject_path,
+        sim_object_visionsensor_type = sim_sceneobject_visionsensor,
+        sim_object_mill_type = sim_sceneobject_mill,
+        sim_object_forcesensor_type = sim_sceneobject_forcesensor,
+        sim_object_light_type = sim_sceneobject_light,
+        sim_object_mirror_type = sim_sceneobject_mirror,
+        sim_object_octree_type = sim_sceneobject_octree,
+        sim_object_pointcloud_type = sim_sceneobject_pointcloud,
+        sim_object_script_type = sim_sceneobject_script,
+};
+
+enum {
+    sim_appobj_object_type = sim_objecttype_sceneobject,
+    sim_appobj_collision_type = 110,
+    sim_appobj_distance_type = 111,
+    sim_appobj_simulation_type = 112,
+    sim_appobj_ik_type = 113,
+    sim_appobj_constraintsolver_type_old = 114,
+    sim_appobj_collection_type = sim_objecttype_collection,
+    sim_appobj_ui_type = 116,
+    sim_appobj_script_type = 117,
+    sim_appobj_pathplanning_type = 118,
+    sim_appobj_texture_type = sim_objecttype_texture,
+    sim_appobj_motionplanning_type_old = 121
+};
+
+enum {
+        sim_light_omnidirectional_subtype = sim_light_omnidirectional,
+        sim_light_spot_subtype = sim_light_spot,
+        sim_light_directional_subtype = sim_light_directional,
+        sim_joint_revolute_subtype = sim_joint_revolute,
+        sim_joint_prismatic_subtype = sim_joint_prismatic,
+        sim_joint_spherical_subtype = sim_joint_spherical,
+        sim_shape_simpleshape_subtype = sim_shape_simple,
+        sim_shape_multishape_subtype = sim_shape_compound,
+        sim_proximitysensor_pyramid_subtype = sim_proximitysensor_pyramid,
+        sim_proximitysensor_cylinder_subtype = sim_proximitysensor_cylinder,
+        sim_proximitysensor_disc_subtype = sim_proximitysensor_disc,
+        sim_proximitysensor_cone_subtype = sim_proximitysensor_cone,
+        sim_proximitysensor_ray_subtype = sim_proximitysensor_ray,
+        sim_mill_pyramid_subtype = 40,
+        sim_mill_cylinder_subtype = 41,
+        sim_mill_disc_subtype = 42,
+        sim_mill_cone_subtype = 43,
+        sim_object_no_subtype = 200
+};
+
+enum {
+        sim_ik_pseudo_inverse_method=0,
+        sim_ik_damped_least_squares_method,
+        sim_ik_jacobian_transpose_method,
+        sim_ik_undamped_pseudo_inverse_method
+};
+
+enum {
+        sim_ik_x_constraint=1,
+        sim_ik_y_constraint=2,
+        sim_ik_z_constraint=4,
+        sim_ik_alpha_beta_constraint=8,
+        sim_ik_gamma_constraint=16,
+        sim_ik_avoidance_constraint_old=64
+};
+
+enum {
+    sim_ikresult_not_performed=0,
+    sim_ikresult_success,
+    sim_ikresult_fail
+};
+
+enum { /* Filter component types. Not used anymore (use vision callback functions instead) */
+    sim_filtercomponent_originalimage_deprecated=1,
+    sim_filtercomponent_originaldepth_deprecated,
+    sim_filtercomponent_uniformimage_deprecated,
+    sim_filtercomponent_tooutput_deprecated,
+    sim_filtercomponent_tobuffer1_deprecated,
+    sim_filtercomponent_tobuffer2_deprecated,
+    sim_filtercomponent_frombuffer1_deprecated,
+    sim_filtercomponent_frombuffer2_deprecated,
+    sim_filtercomponent_swapbuffers_deprecated,
+    sim_filtercomponent_addbuffer1_deprecated,
+    sim_filtercomponent_subtractbuffer1_deprecated,
+    sim_filtercomponent_multiplywithbuffer1_deprecated,
+    sim_filtercomponent_horizontalflip_deprecated,
+    sim_filtercomponent_verticalflip_deprecated,
+    sim_filtercomponent_rotate_deprecated,
+    sim_filtercomponent_shift_deprecated,
+    sim_filtercomponent_resize_deprecated,
+    sim_filtercomponent_3x3filter_deprecated,
+    sim_filtercomponent_5x5filter_deprecated,
+    sim_filtercomponent_sharpen_deprecated,
+    sim_filtercomponent_edge_deprecated,
+    sim_filtercomponent_rectangularcut_deprecated,
+    sim_filtercomponent_circularcut_deprecated,
+    sim_filtercomponent_normalize_deprecated,
+    sim_filtercomponent_intensityscale_deprecated,
+    sim_filtercomponent_keeporremovecolors_deprecated,
+    sim_filtercomponent_scaleandoffsetcolors_deprecated,
+    sim_filtercomponent_binary_deprecated,
+    sim_filtercomponent_swapwithbuffer1_deprecated,
+    sim_filtercomponent_addtobuffer1_deprecated,
+    sim_filtercomponent_subtractfrombuffer1_deprecated,
+    sim_filtercomponent_correlationwithbuffer1_deprecated,
+    sim_filtercomponent_colorsegmentation_deprecated,
+    sim_filtercomponent_blobextraction_deprecated,
+    sim_filtercomponent_imagetocoord_deprecated,
+    sim_filtercomponent_pixelchange_deprecated,
+    sim_filtercomponent_velodyne_deprecated,
+    sim_filtercomponent_todepthoutput_deprecated,
+    sim_filtercomponent_customized_deprecated=1000
+};
+
 #define SIMX_VERSION 11
 #define SIMX_HEADER_SIZE 18
 #define simx_headeroffset_crc 0             /* 1 simxUShort. Generated by the client or server. The CRC for the message */
@@ -2412,6 +2440,6 @@ enum {  simros_strmcmdnull_start                =0,
         simros_strmcmd_send_data_to_script_function,
         simros_strmcmdreserved_start            =0x005000,
 };
-/* -------------------- deprecated legacy remote API ----------------------------- */
+/* -------------------- deprecated end ----------------------------- */
 
 #endif /* !defined(SIMCONST_INCLUDED_) */

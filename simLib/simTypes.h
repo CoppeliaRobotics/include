@@ -93,10 +93,15 @@ struct SLuaCallBack
     double* outputDouble;
 };
 
-struct CProperty {
+struct SProperty {
     const char* name;
     int type;
     int flags;
+};
+
+struct SOptions {
+    int structSize;
+    int objectType;
 };
 
 #endif // !defined(SIMTYPES_INCLUDED_)
