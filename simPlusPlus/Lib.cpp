@@ -3124,15 +3124,18 @@ bool getPropertyName(int target, int index, std::string &pname, SOptions &opts)
     return true;
 }
 
-int getPropertyInfo(int target, const std::string &pname, int &flags, int &size)
+bool getPropertyInfo(int target, const std::string &pname, SPropertyInfo &info)
 {
     SOptions opts;
-    return getPropertyInfo(target, pname, flags, size, opts);
+    return getPropertyInfo(target, pname, info, opts);
 }
 
-int getPropertyInfo(int target, const std::string &pname, int &flags, int &size, SOptions &opts)
+bool getPropertyInfo(int target, const std::string &pname, SPropertyInfo &info, SOptions &opts)
 {
-    return simGetPropertyInfo(target, pname.c_str(), &flags, &size, &opts);
+    int ret = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
+    if(ret == -1)
+        throw api_error("simGetPropertyInfo");
+    return ret > 0;
 }
 
 } // namespace sim
