@@ -64,7 +64,7 @@ typedef int (__cdecl *ptrSimSetIntVectorProperty)(int target, const char* pName,
 typedef int* (__cdecl *ptrSimGetIntVectorProperty)(int target, const char* pName, int* vL);
 typedef int (__cdecl *ptrSimRemoveProperty)(int target, const char* pName);
 typedef char* (__cdecl *ptrSimGetPropertyName)(int target, int index, SOptions* options);
-typedef int (__cdecl *ptrSimGetPropertyInfo)(int target, const char* pName, int* flags, int* size, SOptions* options);
+typedef int (__cdecl *ptrSimGetPropertyInfo)(int target, const char* pName, SPropertyInfo* infos, SOptions* options);
 
 typedef void (__cdecl *ptrSimRegCallback)(int index, void* cb);
 typedef void (__cdecl *ptrSimRunGui)(int options);

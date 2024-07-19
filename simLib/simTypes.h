@@ -13,6 +13,7 @@ struct SSimInit
     const char* coppeliaSimLibPath;
 };
 
+
 struct SSimMsg
 {
     int msgId;
@@ -20,12 +21,14 @@ struct SSimMsg
     void* auxPointer;
 };
 
+
 struct SSimMsg_ui
 {
     int msgId;
     int* auxData;
     void* auxPointer;
 };
+
 
 struct SScriptCallBack
 {
@@ -37,6 +40,7 @@ struct SScriptCallBack
     char* source;
     int line;
 };
+
 
 struct SShapeVizInfo
 {
@@ -57,6 +61,7 @@ struct SShapeVizInfo
     int options;
 };
 
+
 struct SShapeVizInfof
 {
     float* vertices;
@@ -75,6 +80,7 @@ struct SShapeVizInfof
     float transparency;
     int options;
 };
+
 
 struct SLuaCallBack
 {
@@ -99,11 +105,30 @@ struct SLuaCallBack
     double* outputDouble;
 };
 
+
 struct SProperty {
     const char* name;
     int type;
     int flags;
 };
+
+
+#define SPropertyInfo_init(s) do { \
+    memset((s), 0, sizeof(SPropertyInfo)); \
+    (s)->structSize = sizeof(SPropertyInfo); \
+    (s)->type = -1; \
+} while(0)
+
+struct SPropertyInfo {
+    int structSize; /* init. to sizeof(SPropertyInfo) */
+    int type; /* default: -1, no such property */
+    int flags;
+    int dataSize;
+#ifdef __cplusplus
+    SPropertyInfo() { SPropertyInfo_init(this); }
+#endif // __cplusplus
+};
+
 
 #define SOptions_init(s) do { \
     memset((s), 0, sizeof(SOptions)); \
@@ -114,7 +139,6 @@ struct SProperty {
 struct SOptions {
     int structSize; /* init. to sizeof(SOptions) */
     int objectType; /* default: -1 */
-
 #ifdef __cplusplus
     SOptions() { SOptions_init(this); }
     // "fluent" API:
