@@ -3111,16 +3111,41 @@ void removeProperty(int target, const std::string &pname)
 
 bool getPropertyName(int target, int index, std::string &pname)
 {
-    SOptions opts;
-    return getPropertyName(target, index, pname, opts);
+    return getPropertyName(target, index, pname, pname);
 }
 
 bool getPropertyName(int target, int index, std::string &pname, SOptions &opts)
 {
+    return getPropertyName(target, index, pname, pname, opts);
+}
+
+bool getPropertyName(int target, int index, std::string &pname, std::string &pclass)
+{
+    SOptions opts;
+    return getPropertyName(target, index, pname, pclass, opts);
+}
+
+bool getPropertyName(int target, int index, std::string &pname, std::string &pclass, SOptions &opts)
+{
     char* ret = simGetPropertyName(target, index, &opts);
     if(!ret) return false;
-    pname = std::string(ret);
+    std::string nameAndClass = std::string(ret);
     sim::releaseBuffer(ret);
+
+    size_t pos = nameAndClass.find(',');
+    if(pos != std::string::npos)
+    {
+        pname = nameAndClass.substr(0, pos);
+        if(&pname != &pclass)
+            pclass = nameAndClass.substr(pos + 1);
+    }
+    else
+    {
+        pname = nameAndClass;
+        if(&pname != &pclass)
+            pclass = "";
+    }
+
     return true;
 }
 

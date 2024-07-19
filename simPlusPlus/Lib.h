@@ -1098,6 +1098,8 @@ namespace sim
 
     bool getPropertyName(int target, int index, std::string &pname);
     bool getPropertyName(int target, int index, std::string &pname, SOptions &opts);
+    bool getPropertyName(int target, int index, std::string &pname, std::string &pclass);
+    bool getPropertyName(int target, int index, std::string &pname, std::string &pclass, SOptions &opts);
 
     bool getPropertyInfo(int target, const std::string &pname, SPropertyInfo &info);
     bool getPropertyInfo(int target, const std::string &pname, SPropertyInfo &info, SOptions &opts);
