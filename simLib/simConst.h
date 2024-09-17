@@ -13,6 +13,7 @@
 #define SIM_EVENT_PROTOCOL_VERSION 3
 #endif // SIM_EVENT_PROTOCOL_VERSION
 
+#define LARGE_PROPERTY_SIZE 200
 
 // for checking version:
 #define SIM_VERSION_CHECK(major, minor, patch, rev) ((((major) * 10000) + ((minor) * 100) + (patch)) * 100 + (rev))
@@ -1155,8 +1156,8 @@ enum { /* deprecated */
 
 enum { /* color components */
     sim_colorcomponent_ambient=0,
-    sim_colorcomponent_ambient_diffuse=0,
-    sim_colorcomponent_diffuse,
+    sim_colorcomponent_ambient_diffuse=0, /* objects only */
+    sim_colorcomponent_diffuse, /* lights only */
     sim_colorcomponent_specular,
     sim_colorcomponent_emission,
     sim_colorcomponent_transparency,
@@ -1501,7 +1502,7 @@ enum { /* stack table info */
     sim_stack_table_empty=0
 };
 
-enum { /* properties type */
+enum { /* property type */
     sim_propertytype_bool=0,
     sim_propertytype_int,
     sim_propertytype_float,
@@ -1516,6 +1517,13 @@ enum { /* properties type */
     sim_propertytype_vector,
     sim_propertytype_table,
     sim_propertytype_intvector,
+};
+
+enum { /* properties info */
+    sim_propertyinfo_notwritable = 0x001,
+    sim_propertyinfo_notreadable = 0x002,
+    sim_propertyinfo_removable   = 0x004,
+    sim_propertyinfo_largedata   = 0x100,
 };
 
 enum { /* Physics engines params */

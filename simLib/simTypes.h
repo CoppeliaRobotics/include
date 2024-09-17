@@ -123,7 +123,6 @@ struct SPropertyInfo {
     int structSize; /* init. to sizeof(SPropertyInfo) */
     int type; /* default: -1, no such property */
     int flags;
-    int dataSize;
 #ifdef __cplusplus
     SPropertyInfo() { SPropertyInfo_init(this); }
 #endif // __cplusplus
