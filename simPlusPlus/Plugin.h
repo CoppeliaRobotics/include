@@ -100,8 +100,8 @@ namespace sim
         virtual void onSimulationEnded();
         virtual void onSceneLoaded();
         virtual void onModelLoaded();
-        virtual void onScriptStateAboutToBeDestroyed(int scriptHandle, int scriptUid);
-        virtual void onScriptAboutToBeDestroyed(int scriptHandle, int scriptUid);
+        virtual void onScriptStateAboutToBeDestroyed(int scriptHandle, long long scriptUid);
+        virtual void onScriptAboutToBeDestroyed(int scriptHandle, long long scriptUid);
         virtual void onSimulationBeforeInit();
         virtual void onSimulationAfterInit();
         virtual void onSimulationBeforeActuation();

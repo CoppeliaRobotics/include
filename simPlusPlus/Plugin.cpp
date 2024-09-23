@@ -203,12 +203,16 @@ namespace sim
             break;
         case sim_message_eventcallback_scriptstateabouttobedestroyed:
             {
-                onScriptStateAboutToBeDestroyed(msg->auxData[0], msg->auxData[1]);
+                int scriptHandle = msg->auxData[0];
+                long long scriptUid = (static_cast<long long>(msg->auxData[2]) << 32) | (static_cast<unsigned int>(msg->auxData[1]));
+                onScriptStateAboutToBeDestroyed(scriptHandle, scriptUid);
             }
             break;
         case sim_message_eventcallback_scriptabouttobedestroyed:
             {
-                onScriptAboutToBeDestroyed(msg->auxData[0], msg->auxData[1]);
+                int scriptHandle = msg->auxData[0];
+                long long scriptUid = (static_cast<long long>(msg->auxData[2]) << 32) | (static_cast<unsigned int>(msg->auxData[1]));
+                onScriptAboutToBeDestroyed(scriptHandle, scriptUid);
             }
             break;
         case sim_message_eventcallback_simulationinit:
