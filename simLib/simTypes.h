@@ -110,6 +110,8 @@ struct SProperty {
     const char* name;
     int type;
     int flags;
+    char* shortInfoTxt;
+    char* infoTxt;
 };
 
 
@@ -117,12 +119,17 @@ struct SProperty {
     memset((s), 0, sizeof(SPropertyInfo)); \
     (s)->structSize = sizeof(SPropertyInfo); \
     (s)->type = -1; \
+    (s)->flags = 0; \
+    (s)->shortInfoTxt = nullptr; \
+    (s)->infoTxt = nullptr; \
 } while(0)
 
 struct SPropertyInfo {
     int structSize; /* init. to sizeof(SPropertyInfo) */
     int type; /* default: -1, no such property */
     int flags;
+    char* shortInfoTxt;
+    char* infoTxt;
 #ifdef __cplusplus
     SPropertyInfo() { SPropertyInfo_init(this); }
 #endif // __cplusplus
