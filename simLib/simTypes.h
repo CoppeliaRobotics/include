@@ -136,19 +136,21 @@ struct SPropertyInfo {
 };
 
 
-#define SOptions_init(s) do { \
-    memset((s), 0, sizeof(SOptions)); \
-    (s)->structSize = sizeof(SOptions); \
+#define SPropertyOptions_init(s) do { \
+    memset((s), 0, sizeof(SPropertyOptions)); \
+    (s)->structSize = sizeof(SPropertyOptions); \
     (s)->objectType = -1; \
+    (s)->shortInfoTxt = false; \
 } while(0)
 
-struct SOptions {
-    int structSize; /* init. to sizeof(SOptions) */
+struct SPropertyOptions {
+    int structSize; /* init. to sizeof(SPropertyOptions) */
     int objectType; /* default: -1 */
+    bool shortInfoTxt; /* default: -1 */
 #ifdef __cplusplus
-    SOptions() { SOptions_init(this); }
+    SPropertyOptions() { SPropertyOptions_init(this); }
     // "fluent" API:
-    SOptions& setObjectType(int t) { objectType = t; return *this; }
+    SPropertyOptions& setObjectType(int t) { objectType = t; return *this; }
 #endif // __cplusplus
 };
 
