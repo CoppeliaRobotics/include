@@ -460,6 +460,20 @@ C3X3Matrix& C3X3Matrix::operator= (const C3X3Matrix& m)
     return(*this);
 }
 
+bool C3X3Matrix::operator!= (const C3X3Matrix& m)
+{
+    for (size_t i = 0; i < 3; i++)
+    {
+        for (size_t j = 0; j < 3; j++)
+        {
+            if (axis[j](i) != m(i,j))
+                return true;
+        }
+    }
+    return false;
+}
+
+
 void C3X3Matrix::setAxes(const C3Vector& xAxis,const C3Vector& yAxis,const C3Vector& zAxis)
 {
     axis[0]=xAxis;

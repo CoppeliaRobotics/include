@@ -42,6 +42,10 @@ ptrSimSetStringProperty simSetStringProperty = nullptr;
 ptrSimGetStringProperty simGetStringProperty = nullptr;
 ptrSimSetBufferProperty simSetBufferProperty = nullptr;
 ptrSimGetBufferProperty simGetBufferProperty = nullptr;
+ptrSimSetIntVector2Property simSetIntVector2Property = nullptr;
+ptrSimGetIntVector2Property simGetIntVector2Property = nullptr;
+ptrSimSetVector2Property simSetVector2Property = nullptr;
+ptrSimGetVector2Property simGetVector2Property = nullptr;
 ptrSimSetVector3Property simSetVector3Property = nullptr;
 ptrSimGetVector3Property simGetVector3Property = nullptr;
 ptrSimSetQuaternionProperty simSetQuaternionProperty = nullptr;
@@ -563,6 +567,10 @@ int getSimProcAddresses(LIBRARY lib)
     simGetStringProperty = (ptrSimGetStringProperty)(_getProcAddress(lib, "simGetStringProperty", false));
     simSetBufferProperty = (ptrSimSetBufferProperty)(_getProcAddress(lib, "simSetBufferProperty", false));
     simGetBufferProperty = (ptrSimGetBufferProperty)(_getProcAddress(lib, "simGetBufferProperty", false));
+    simSetIntVector2Property = (ptrSimSetIntVector2Property)(_getProcAddress(lib, "simSetIntVector2Property", false));
+    simGetIntVector2Property = (ptrSimGetIntVector2Property)(_getProcAddress(lib, "simGetIntVector2Property", false));
+    simSetVector2Property = (ptrSimSetVector2Property)(_getProcAddress(lib, "simSetVector2Property", false));
+    simGetVector2Property = (ptrSimGetVector2Property)(_getProcAddress(lib, "simGetVector2Property", false));
     simSetVector3Property = (ptrSimSetVector3Property)(_getProcAddress(lib, "simSetVector3Property", false));
     simGetVector3Property = (ptrSimGetVector3Property)(_getProcAddress(lib, "simGetVector3Property", false));
     simSetQuaternionProperty = (ptrSimSetQuaternionProperty)(_getProcAddress(lib, "simSetQuaternionProperty", false));
@@ -1050,6 +1058,16 @@ int getSimProcAddresses(LIBRARY lib)
     if (simGetBufferProperty == nullptr)
     {
         printf("%s simGetBufferProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simSetIntVector2Property == nullptr)
+    {
+        printf("%s simSetIntVector2Property\n", couldNotFind);
+        return 0;
+    }
+    if (simSetVector2Property == nullptr)
+    {
+        printf("%s simSetVector2Property\n", couldNotFind);
         return 0;
     }
     if (simSetVector3Property == nullptr)

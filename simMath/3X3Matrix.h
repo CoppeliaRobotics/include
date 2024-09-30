@@ -44,6 +44,7 @@ public:
     void operator-= (const C3X3Matrix& m);
 
     C3X3Matrix& operator= (const C3X3Matrix& m);
+    bool operator!= (const C3X3Matrix& m);
     C3X3Matrix operator* (const C3X3Matrix& m) const;
     C3Vector operator* (const C3Vector& v) const;
     C3X3Matrix operator* (simReal f) const;

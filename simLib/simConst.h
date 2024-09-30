@@ -1517,6 +1517,8 @@ enum { /* property type */
     sim_propertytype_vector,
     sim_propertytype_table,
     sim_propertytype_intvector,
+    sim_propertytype_vector2,
+    sim_propertytype_intvector2,
 };
 
 enum { /* properties info */
