@@ -110,8 +110,8 @@ struct SProperty {
     const char* name;
     int type;
     int flags;
-    char* shortInfoTxt;
-    char* infoTxt;
+    const char* shortInfoTxt;
+    const char* infoTxt;
 };
 
 
