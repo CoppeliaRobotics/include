@@ -1094,11 +1094,11 @@ namespace sim
     void setFloatArray3Property(int target, const std::string &pname, const std::array<double, 3> &value);
 
     std::array<double, 3> getFloatArray3Property(int target, const std::string &pname);
+#endif
 
     void setIntArray2Property(int target, const std::string &pname, const std::array<int, 2> &value);
 
     std::array<int, 2> getIntArray2Property(int target, const std::string &pname);
-#endif
 
     void removeProperty(int target, const std::string &pname);
 

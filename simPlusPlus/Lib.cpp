@@ -3080,7 +3080,7 @@ void setFloatArray2Property(int target, const std::string &pname, const std::arr
 
 std::array<double, 2> getFloatArray2Property(int target, const std::string &pname)
 {
-    std::vector<double, 2> v(value, value + len);
+    std::array<double, 2> v;
     int ret = simGetFloatArray2Property(target, pname.c_str(), v.data());
     if(ret == -1)
         throw api_error("simGetFloatArray2Property");
@@ -3096,12 +3096,13 @@ void setFloatArray3Property(int target, const std::string &pname, const std::arr
 
 std::array<double, 3> getFloatArray3Property(int target, const std::string &pname)
 {
-    std::vector<double, 3> v(value, value + len);
+    std::array<double, 3> v;
     int ret = simGetFloatArray3Property(target, pname.c_str(), v.data());
     if(ret == -1)
         throw api_error("simGetFloatArray3Property");
     return v;
 }
+#endif
 
 void setIntArray2Property(int target, const std::string &pname, const std::array<int, 2> &value)
 {
@@ -3112,13 +3113,12 @@ void setIntArray2Property(int target, const std::string &pname, const std::array
 
 std::array<int, 2> getIntArray2Property(int target, const std::string &pname)
 {
-    std::vector<int, 2> v(value, value + len);
+    std::array<int, 2> v;
     int ret = simGetIntArray2Property(target, pname.c_str(), v.data());
     if(ret == -1)
         throw api_error("simGetIntArray2Property");
     return v;
 }
-#endif
 
 void removeProperty(int target, const std::string &pname)
 {
