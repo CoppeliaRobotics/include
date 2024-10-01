@@ -63,8 +63,8 @@ typedef double* (__cdecl *ptrSimGetFloatArrayProperty)(long long int target, con
 typedef int (__cdecl *ptrSimSetIntArrayProperty)(long long int target, const char* pName, const int* v, int vL);
 typedef int* (__cdecl *ptrSimGetIntArrayProperty)(long long int target, const char* pName, int* vL);
 typedef int (__cdecl *ptrSimRemoveProperty)(long long int target, const char* pName);
-typedef char* (__cdecl *ptrSimGetPropertyName)(long long int target, int index, SOptions* options);
-typedef int (__cdecl *ptrSimGetPropertyInfo)(long long int target, const char* pName, SPropertyInfo* infos, SOptions* options);
+typedef char* (__cdecl *ptrSimGetPropertyName)(long long int target, int index, SPropertyOptions* options);
+typedef int (__cdecl *ptrSimGetPropertyInfo)(long long int target, const char* pName, SPropertyInfo* infos, SPropertyOptions* options);
 
 typedef void (__cdecl *ptrSimRegCallback)(int index, void* cb);
 typedef void (__cdecl *ptrSimRunGui)(int options);
