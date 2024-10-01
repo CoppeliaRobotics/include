@@ -363,11 +363,11 @@ namespace sim
     {
     }
 
-    void Plugin::onScriptStateAboutToBeDestroyed(int scriptHandle, int scriptUid)
+    void Plugin::onScriptStateAboutToBeDestroyed(int scriptHandle, long long scriptUid)
     {
     }
 
-    void Plugin::onScriptAboutToBeDestroyed(int scriptHandle, int scriptUid)
+    void Plugin::onScriptAboutToBeDestroyed(int scriptHandle, long long scriptUid)
     {
     }
 
