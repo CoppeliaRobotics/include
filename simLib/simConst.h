@@ -1511,14 +1511,14 @@ enum { /* property type */
     sim_propertytype_vector3,
     sim_propertytype_quaternion,
     sim_propertytype_pose,
-    sim_propertytype_matrix3x3,
-    sim_propertytype_matrix4x4,
+    sim_propertytype_matrix3x3, /* not used */
+    sim_propertytype_matrix4x4, /* not used */
     sim_propertytype_color,
-    sim_propertytype_vector,
+    sim_propertytype_floatarray,
     sim_propertytype_table,
-    sim_propertytype_intvector,
+    sim_propertytype_intarray,
     sim_propertytype_vector2,
-    sim_propertytype_intvector2,
+    sim_propertytype_intarray2,
 };
 
 enum { /* properties info */

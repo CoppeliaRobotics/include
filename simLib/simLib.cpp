@@ -42,8 +42,8 @@ ptrSimSetStringProperty simSetStringProperty = nullptr;
 ptrSimGetStringProperty simGetStringProperty = nullptr;
 ptrSimSetBufferProperty simSetBufferProperty = nullptr;
 ptrSimGetBufferProperty simGetBufferProperty = nullptr;
-ptrSimSetIntVector2Property simSetIntVector2Property = nullptr;
-ptrSimGetIntVector2Property simGetIntVector2Property = nullptr;
+ptrSimSetIntArray2Property simSetIntArray2Property = nullptr;
+ptrSimGetIntArray2Property simGetIntArray2Property = nullptr;
 ptrSimSetVector2Property simSetVector2Property = nullptr;
 ptrSimGetVector2Property simGetVector2Property = nullptr;
 ptrSimSetVector3Property simSetVector3Property = nullptr;
@@ -52,16 +52,12 @@ ptrSimSetQuaternionProperty simSetQuaternionProperty = nullptr;
 ptrSimGetQuaternionProperty simGetQuaternionProperty = nullptr;
 ptrSimSetPoseProperty simSetPoseProperty = nullptr;
 ptrSimGetPoseProperty simGetPoseProperty = nullptr;
-ptrSimSetMatrix3x3Property simSetMatrix3x3Property = nullptr;
-ptrSimGetMatrix3x3Property simGetMatrix3x3Property = nullptr;
-ptrSimSetMatrix4x4Property simSetMatrix4x4Property = nullptr;
-ptrSimGetMatrix4x4Property simGetMatrix4x4Property = nullptr;
 ptrSimSetColorProperty simSetColorProperty = nullptr;
 ptrSimGetColorProperty simGetColorProperty = nullptr;
-ptrSimSetVectorProperty simSetVectorProperty = nullptr;
-ptrSimGetVectorProperty simGetVectorProperty = nullptr;
-ptrSimSetIntVectorProperty simSetIntVectorProperty = nullptr;
-ptrSimGetIntVectorProperty simGetIntVectorProperty = nullptr;
+ptrSimSetFloatArrayProperty simSetFloatArrayProperty = nullptr;
+ptrSimGetFloatArrayProperty simGetFloatArrayProperty = nullptr;
+ptrSimSetIntArrayProperty simSetIntArrayProperty = nullptr;
+ptrSimGetIntArrayProperty simGetIntArrayProperty = nullptr;
 ptrSimRemoveProperty simRemoveProperty = nullptr;
 ptrSimGetPropertyName simGetPropertyName = nullptr;
 ptrSimGetPropertyInfo simGetPropertyInfo = nullptr;
@@ -567,8 +563,8 @@ int getSimProcAddresses(LIBRARY lib)
     simGetStringProperty = (ptrSimGetStringProperty)(_getProcAddress(lib, "simGetStringProperty", false));
     simSetBufferProperty = (ptrSimSetBufferProperty)(_getProcAddress(lib, "simSetBufferProperty", false));
     simGetBufferProperty = (ptrSimGetBufferProperty)(_getProcAddress(lib, "simGetBufferProperty", false));
-    simSetIntVector2Property = (ptrSimSetIntVector2Property)(_getProcAddress(lib, "simSetIntVector2Property", false));
-    simGetIntVector2Property = (ptrSimGetIntVector2Property)(_getProcAddress(lib, "simGetIntVector2Property", false));
+    simSetIntArray2Property = (ptrSimSetIntArray2Property)(_getProcAddress(lib, "simSetIntArray2Property", false));
+    simGetIntArray2Property = (ptrSimGetIntArray2Property)(_getProcAddress(lib, "simGetIntArray2Property", false));
     simSetVector2Property = (ptrSimSetVector2Property)(_getProcAddress(lib, "simSetVector2Property", false));
     simGetVector2Property = (ptrSimGetVector2Property)(_getProcAddress(lib, "simGetVector2Property", false));
     simSetVector3Property = (ptrSimSetVector3Property)(_getProcAddress(lib, "simSetVector3Property", false));
@@ -577,16 +573,12 @@ int getSimProcAddresses(LIBRARY lib)
     simGetQuaternionProperty = (ptrSimGetQuaternionProperty)(_getProcAddress(lib, "simGetQuaternionProperty", false));
     simSetPoseProperty = (ptrSimSetPoseProperty)(_getProcAddress(lib, "simSetPoseProperty", false));
     simGetPoseProperty = (ptrSimGetPoseProperty)(_getProcAddress(lib, "simGetPoseProperty", false));
-    simSetMatrix3x3Property = (ptrSimSetMatrix3x3Property)(_getProcAddress(lib, "simSetMatrix3x3Property", false));
-    simGetMatrix3x3Property = (ptrSimGetMatrix3x3Property)(_getProcAddress(lib, "simGetMatrix3x3Property", false));
-    simSetMatrix4x4Property = (ptrSimSetMatrix4x4Property)(_getProcAddress(lib, "simSetMatrix4x4Property", false));
-    simGetMatrix4x4Property = (ptrSimGetMatrix4x4Property)(_getProcAddress(lib, "simGetMatrix4x4Property", false));
     simSetColorProperty = (ptrSimSetColorProperty)(_getProcAddress(lib, "simSetColorProperty", false));
     simGetColorProperty = (ptrSimGetColorProperty)(_getProcAddress(lib, "simGetColorProperty", false));
-    simSetVectorProperty = (ptrSimSetVectorProperty)(_getProcAddress(lib, "simSetVectorProperty", false));
-    simGetVectorProperty = (ptrSimGetVectorProperty)(_getProcAddress(lib, "simGetVectorProperty", false));
-    simSetIntVectorProperty = (ptrSimSetIntVectorProperty)(_getProcAddress(lib, "simSetIntVectorProperty", false));
-    simGetIntVectorProperty = (ptrSimGetIntVectorProperty)(_getProcAddress(lib, "simGetIntVectorProperty", false));
+    simSetFloatArrayProperty = (ptrSimSetFloatArrayProperty)(_getProcAddress(lib, "simSetFloatArrayProperty", false));
+    simGetFloatArrayProperty = (ptrSimGetFloatArrayProperty)(_getProcAddress(lib, "simGetFloatArrayProperty", false));
+    simSetIntArrayProperty = (ptrSimSetIntArrayProperty)(_getProcAddress(lib, "simSetIntArrayProperty", false));
+    simGetIntArrayProperty = (ptrSimGetIntArrayProperty)(_getProcAddress(lib, "simGetIntArrayProperty", false));
     simRemoveProperty = (ptrSimRemoveProperty)(_getProcAddress(lib, "simRemoveProperty", false));
     simGetPropertyName = (ptrSimGetPropertyName)(_getProcAddress(lib, "simGetPropertyName", false));
     simGetPropertyInfo = (ptrSimGetPropertyInfo)(_getProcAddress(lib, "simGetPropertyInfo", false));
@@ -1060,14 +1052,24 @@ int getSimProcAddresses(LIBRARY lib)
         printf("%s simGetBufferProperty\n", couldNotFind);
         return 0;
     }
-    if (simSetIntVector2Property == nullptr)
+    if (simSetIntArray2Property == nullptr)
     {
-        printf("%s simSetIntVector2Property\n", couldNotFind);
+        printf("%s simSetIntArray2Property\n", couldNotFind);
+        return 0;
+    }
+    if (simGetIntArray2Property == nullptr)
+    {
+        printf("%s simGetIntArray2Property\n", couldNotFind);
         return 0;
     }
     if (simSetVector2Property == nullptr)
     {
         printf("%s simSetVector2Property\n", couldNotFind);
+        return 0;
+    }
+    if (simGetVector2Property == nullptr)
+    {
+        printf("%s simGetVector2Property\n", couldNotFind);
         return 0;
     }
     if (simSetVector3Property == nullptr)
@@ -1100,26 +1102,6 @@ int getSimProcAddresses(LIBRARY lib)
         printf("%s simGetPoseProperty\n", couldNotFind);
         return 0;
     }
-    if (simSetMatrix3x3Property == nullptr)
-    {
-        printf("%s simSetMatrix3x3Property\n", couldNotFind);
-        return 0;
-    }
-    if (simGetMatrix3x3Property == nullptr)
-    {
-        printf("%s simGetMatrix3x3Property\n", couldNotFind);
-        return 0;
-    }
-    if (simSetMatrix4x4Property == nullptr)
-    {
-        printf("%s simSetMatrix4x4Property\n", couldNotFind);
-        return 0;
-    }
-    if (simGetMatrix4x4Property == nullptr)
-    {
-        printf("%s simGetMatrix4x4Property\n", couldNotFind);
-        return 0;
-    }
     if (simSetColorProperty == nullptr)
     {
         printf("%s simSetColorProperty\n", couldNotFind);
@@ -1130,24 +1112,24 @@ int getSimProcAddresses(LIBRARY lib)
         printf("%s simGetColorProperty\n", couldNotFind);
         return 0;
     }
-    if (simSetVectorProperty == nullptr)
+    if (simSetFloatArrayProperty == nullptr)
     {
-        printf("%s simSetVectorProperty\n", couldNotFind);
+        printf("%s simSetFloatArrayProperty\n", couldNotFind);
         return 0;
     }
-    if (simGetVectorProperty == nullptr)
+    if (simGetFloatArrayProperty == nullptr)
     {
-        printf("%s simGetVectorProperty\n", couldNotFind);
+        printf("%s simGetFloatArrayProperty\n", couldNotFind);
         return 0;
     }
-    if (simSetIntVectorProperty == nullptr)
+    if (simSetIntArrayProperty == nullptr)
     {
-        printf("%s simSetIntVectorProperty\n", couldNotFind);
+        printf("%s simSetIntArrayProperty\n", couldNotFind);
         return 0;
     }
-    if (simGetIntVectorProperty == nullptr)
+    if (simGetIntArrayProperty == nullptr)
     {
-        printf("%s simGetIntVectorProperty\n", couldNotFind);
+        printf("%s simGetIntArrayProperty\n", couldNotFind);
         return 0;
     }
     if (simRemoveProperty == nullptr)
