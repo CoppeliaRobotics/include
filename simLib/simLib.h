@@ -40,6 +40,8 @@ typedef int (__cdecl *ptrSimSetBoolProperty)(long long int target, const char* p
 typedef int (__cdecl *ptrSimGetBoolProperty)(long long int target, const char* pName, int* pState);
 typedef int (__cdecl *ptrSimSetIntProperty)(long long int target, const char* pName, int pState);
 typedef int (__cdecl *ptrSimGetIntProperty)(long long int target, const char* pName, int* pState);
+typedef int (__cdecl *ptrSimSetLongProperty)(long long int target, const char* pName, long long int pState);
+typedef int (__cdecl *ptrSimGetLongProperty)(long long int target, const char* pName, long long int* pState);
 typedef int (__cdecl *ptrSimSetFloatProperty)(long long int target, const char* pName, double pState);
 typedef int (__cdecl *ptrSimGetFloatProperty)(long long int target, const char* pName, double* pState);
 typedef int (__cdecl *ptrSimSetStringProperty)(long long int target, const char* pName, const char* pState);
@@ -491,6 +493,8 @@ extern ptrSimSetBoolProperty simSetBoolProperty;
 extern ptrSimGetBoolProperty simGetBoolProperty;
 extern ptrSimSetIntProperty simSetIntProperty;
 extern ptrSimGetIntProperty simGetIntProperty;
+extern ptrSimSetLongProperty simSetLongProperty;
+extern ptrSimGetLongProperty simGetLongProperty;
 extern ptrSimSetFloatProperty simSetFloatProperty;
 extern ptrSimGetFloatProperty simGetFloatProperty;
 extern ptrSimSetStringProperty simSetStringProperty;

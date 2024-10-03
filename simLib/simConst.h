@@ -533,6 +533,7 @@ enum { /* property type */
     sim_propertytype_intarray,
     sim_propertytype_vector2,
     sim_propertytype_intarray2,
+    sim_propertytype_long,
 };
 
 enum { /* properties info */

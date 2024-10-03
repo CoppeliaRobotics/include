@@ -36,6 +36,8 @@ ptrSimSetBoolProperty simSetBoolProperty = nullptr;
 ptrSimGetBoolProperty simGetBoolProperty = nullptr;
 ptrSimSetIntProperty simSetIntProperty = nullptr;
 ptrSimGetIntProperty simGetIntProperty = nullptr;
+ptrSimSetLongProperty simSetLongProperty = nullptr;
+ptrSimGetLongProperty simGetLongProperty = nullptr;
 ptrSimSetFloatProperty simSetFloatProperty = nullptr;
 ptrSimGetFloatProperty simGetFloatProperty = nullptr;
 ptrSimSetStringProperty simSetStringProperty = nullptr;
@@ -557,6 +559,8 @@ int getSimProcAddresses(LIBRARY lib)
     simGetBoolProperty = (ptrSimGetBoolProperty)(_getProcAddress(lib, "simGetBoolProperty", false));
     simSetIntProperty = (ptrSimSetIntProperty)(_getProcAddress(lib, "simSetIntProperty", false));
     simGetIntProperty = (ptrSimGetIntProperty)(_getProcAddress(lib, "simGetIntProperty", false));
+    simSetLongProperty = (ptrSimSetLongProperty)(_getProcAddress(lib, "simSetLongProperty", false));
+    simGetLongProperty = (ptrSimGetLongProperty)(_getProcAddress(lib, "simGetLongProperty", false));
     simSetFloatProperty = (ptrSimSetFloatProperty)(_getProcAddress(lib, "simSetFloatProperty", false));
     simGetFloatProperty = (ptrSimGetFloatProperty)(_getProcAddress(lib, "simGetFloatProperty", false));
     simSetStringProperty = (ptrSimSetStringProperty)(_getProcAddress(lib, "simSetStringProperty", false));
@@ -1020,6 +1024,16 @@ int getSimProcAddresses(LIBRARY lib)
     if (simGetIntProperty == nullptr)
     {
         printf("%s simGetIntProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simSetLongProperty == nullptr)
+    {
+        printf("%s simSetLongProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simGetLongProperty == nullptr)
+    {
+        printf("%s simGetLongProperty\n", couldNotFind);
         return 0;
     }
     if (simSetFloatProperty == nullptr)
