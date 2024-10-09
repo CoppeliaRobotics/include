@@ -141,12 +141,14 @@ struct SPropertyInfo {
     (s)->structSize = sizeof(SPropertyOptions); \
     (s)->objectType = -1; \
     (s)->shortInfoTxt = false; \
+    (s)->prefix = nullptr; \
 } while(0)
 
 struct SPropertyOptions {
     int structSize; /* init. to sizeof(SPropertyOptions) */
     int objectType; /* default: -1 */
     bool shortInfoTxt; /* default: -1 */
+    const char* prefix; /* default: null */
 #ifdef __cplusplus
     SPropertyOptions() { SPropertyOptions_init(this); }
     // "fluent" API:
