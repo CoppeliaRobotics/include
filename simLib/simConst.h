@@ -74,38 +74,6 @@ enum {
         sim_proximitysensor_ray = 34,
 };
 
-enum { /* Scene object main properties (serialized, see also deprecated values below): */
-        sim_objectspecialproperty_collidable            = 0x0001,
-        sim_objectspecialproperty_measurable            = 0x0002,
-        sim_objectspecialproperty_detectable            = 0x01f0,
-};
-
-enum { /* Model properties (serialized, see also deprecated values below): */
-        sim_modelproperty_not_collidable                = 0x0001,
-        sim_modelproperty_not_measurable                = 0x0002,
-        sim_modelproperty_not_detectable                = 0x0008,
-        sim_modelproperty_not_dynamic                   = 0x0020,
-        sim_modelproperty_not_respondable               = 0x0040, /* cannot be selected if sim_modelproperty_not_dynamic is not selected */
-        sim_modelproperty_not_reset                     = 0x0080, /* Model is not reset at simulation end. This flag is cleared at simulation end */
-        sim_modelproperty_not_visible                   = 0x0100, /* Whole model is invisible, independent of local visibility settings */
-        sim_modelproperty_scripts_inactive              = 0x0200, /* All scripts in the model will not be executed */
-        sim_modelproperty_not_showasinsidemodel         = 0x0400, /* Whole model is invisible to any model bounding box */
-        sim_modelproperty_not_model                     = 0xf000  /* object is not a model. 0x1000 was intended, 0xf000 kept for backward compatibility */
-};
-
-enum { /* Scene object properties. Combine with the | operator */
-    sim_objectproperty_ignoreviewfitting        =0x0001,
-    sim_objectproperty_collapsed                =0x0010,
-    sim_objectproperty_selectable               =0x0020,
-    sim_objectproperty_selectmodelbaseinstead   =0x0080,
-    sim_objectproperty_dontshowasinsidemodel    =0x0100,
-    sim_objectproperty_selectinvisible          =0x0800,
-    sim_objectproperty_depthinvisible           =0x1000,
-    sim_objectproperty_cannotdelete             =0x2000,
-    sim_objectproperty_cannotdeleteduringsim    =0x4000,
-    sim_objectproperty_hiddenforsimulation      =0x10000,
-};
-
 enum { /* type of arguments (input and output) for custom script commands */
     sim_script_arg_null=0,
     sim_script_arg_bool,
@@ -204,21 +172,25 @@ enum { /* Script execution order, is serialized */
 };
 
 enum { /* special argument of some functions: */
-    sim_handle_world                    =-1,
-    sim_handle_all                      =-2,
-    sim_handle_all_except_explicit      =-3,
-    sim_handle_self                     =-4,
-    sim_handle_main_script              =-5,
-    sim_handle_tree                     =-6,
-    sim_handle_chain                    =-7,
-    sim_handle_single                   =-8,
-    sim_handle_default                  =-9,
-    sim_handle_all_except_self          =-10,
-    sim_handle_parent                   =-11,
-    sim_handle_scene                    =-12,
-    sim_handle_app                      =-13,
-    sim_handle_inverse                  =-14,
-    sim_handle_appstorage               =-15,
+    sim_handle_world                    = -1,
+    sim_handle_all                      = -2,
+    sim_handle_all_except_explicit      = -3,
+    sim_handle_self                     = -4,
+    sim_handle_mainscript               = -5,
+    sim_handle_main_script              = sim_handle_mainscript, /* deprecated */
+    sim_handle_tree                     = -6,
+    sim_handle_chain                    = -7,
+    sim_handle_single                   = -8,
+    sim_handle_default                  = -9,
+    sim_handle_all_except_self          = -10,
+    sim_handle_parent                   = -11,
+    sim_handle_scene                    = -12,
+    sim_handle_app                      = -13,
+    sim_handle_inverse                  = -14,
+    sim_handle_appstorage               = -15,
+    sim_handle_sceneobject              = -16,
+    sim_handle_sandbox                  = -17,
+    sim_handle_mesh                     = -18,
 };
 
 enum { /* special handle flags: */
