@@ -50,6 +50,48 @@ ptrSimAssociateScriptWithObject simAssociateScriptWithObject=nullptr;
 ptrSimPersistentDataWrite simPersistentDataWrite=nullptr;
 ptrSimPersistentDataRead simPersistentDataRead=nullptr;
 ptrSimGetPersistentDataTags simGetPersistentDataTags=nullptr;
+ptrSimSetBoolParam simSetBoolParam=nullptr;
+ptrSimGetBoolParam simGetBoolParam=nullptr;
+ptrSimSetInt32Param simSetInt32Param=nullptr;
+ptrSimGetInt32Param simGetInt32Param=nullptr;
+ptrSimGetUInt64Param simGetUInt64Param=nullptr;
+ptrSimSetFloatParam simSetFloatParam=nullptr;
+ptrSimGetFloatParam simGetFloatParam=nullptr;
+ptrSimSetStringParam simSetStringParam=nullptr;
+ptrSimGetStringParam simGetStringParam=nullptr;
+ptrSimSetArrayParam simSetArrayParam=nullptr;
+ptrSimGetArrayParam simGetArrayParam=nullptr;
+ptrSimSetNamedStringParam simSetNamedStringParam=nullptr;
+ptrSimGetNamedStringParam simGetNamedStringParam=nullptr;
+ptrSimSetInt32Signal simSetInt32Signal=nullptr;
+ptrSimGetInt32Signal simGetInt32Signal=nullptr;
+ptrSimClearInt32Signal simClearInt32Signal=nullptr;
+ptrSimSetFloatSignal simSetFloatSignal=nullptr;
+ptrSimGetFloatSignal simGetFloatSignal=nullptr;
+ptrSimClearFloatSignal simClearFloatSignal=nullptr;
+ptrSimSetStringSignal simSetStringSignal=nullptr;
+ptrSimGetStringSignal simGetStringSignal=nullptr;
+ptrSimClearStringSignal simClearStringSignal=nullptr;
+ptrSimGetSignalName simGetSignalName=nullptr;
+ptrSimSetLightParameters simSetLightParameters=nullptr;
+ptrSimGetLightParameters simGetLightParameters=nullptr;
+ptrSimGetObjectInt32Param simGetObjectInt32Param=nullptr;
+ptrSimSetObjectInt32Param simSetObjectInt32Param=nullptr;
+ptrSimGetObjectFloatParam simGetObjectFloatParam=nullptr;
+ptrSimSetObjectFloatParam simSetObjectFloatParam=nullptr;
+ptrSimGetObjectFloatArrayParam simGetObjectFloatArrayParam=nullptr;
+ptrSimSetObjectFloatArrayParam simSetObjectFloatArrayParam=nullptr;
+ptrSimGetObjectStringParam simGetObjectStringParam=nullptr;
+ptrSimSetObjectStringParam simSetObjectStringParam=nullptr;
+ptrSimWriteCustomDataBlock simWriteCustomDataBlock=nullptr;
+ptrSimReadCustomDataBlock simReadCustomDataBlock=nullptr;
+ptrSimReadCustomDataBlockTags simReadCustomDataBlockTags=nullptr;
+ptrSimGetEngineFloatParam simGetEngineFloatParam=nullptr;
+ptrSimGetEngineInt32Param simGetEngineInt32Param=nullptr;
+ptrSimGetEngineBoolParam simGetEngineBoolParam=nullptr;
+ptrSimSetEngineFloatParam simSetEngineFloatParam=nullptr;
+ptrSimSetEngineInt32Param simSetEngineInt32Param=nullptr;
+ptrSimSetEngineBoolParam simSetEngineBoolParam=nullptr;
 
 #ifdef SIM_INTERFACE_OLD
 #include "simLib-old2.cpp"
@@ -114,6 +156,48 @@ int getSimProcAddressesOld(LIBRARY lib)
     simPersistentDataWrite=(ptrSimPersistentDataWrite)(_getProcAddress(lib,"simPersistentDataWrite",false));
     simPersistentDataRead=(ptrSimPersistentDataRead)(_getProcAddress(lib,"simPersistentDataRead",false));
     simGetPersistentDataTags=(ptrSimGetPersistentDataTags)(_getProcAddress(lib,"simGetPersistentDataTags",false));
+    simSetBoolParam=(ptrSimSetBoolParam)(_getProcAddress(lib,"simSetBoolParam",false));
+    simGetBoolParam=(ptrSimGetBoolParam)(_getProcAddress(lib,"simGetBoolParam",false));
+    simSetInt32Param=(ptrSimSetInt32Param)(_getProcAddress(lib,"simSetInt32Param",false));
+    simGetInt32Param=(ptrSimGetInt32Param)(_getProcAddress(lib,"simGetInt32Param",false));
+    simGetUInt64Param=(ptrSimGetUInt64Param)(_getProcAddress(lib,"simGetUInt64Param",false));
+    simSetStringParam=(ptrSimSetStringParam)(_getProcAddress(lib,"simSetStringParam",false));
+    simGetStringParam=(ptrSimGetStringParam)(_getProcAddress(lib,"simGetStringParam",false));
+    simSetNamedStringParam=(ptrSimSetNamedStringParam)(_getProcAddress(lib,"simSetNamedStringParam",false));
+    simGetNamedStringParam=(ptrSimGetNamedStringParam)(_getProcAddress(lib,"simGetNamedStringParam",false));
+    simSetInt32Signal=(ptrSimSetInt32Signal)(_getProcAddress(lib,"simSetInt32Signal",false));
+    simGetInt32Signal=(ptrSimGetInt32Signal)(_getProcAddress(lib,"simGetInt32Signal",false));
+    simClearInt32Signal=(ptrSimClearInt32Signal)(_getProcAddress(lib,"simClearInt32Signal",false));
+    simClearFloatSignal=(ptrSimClearFloatSignal)(_getProcAddress(lib,"simClearFloatSignal",false));
+    simSetStringSignal=(ptrSimSetStringSignal)(_getProcAddress(lib,"simSetStringSignal",false));
+    simGetStringSignal=(ptrSimGetStringSignal)(_getProcAddress(lib,"simGetStringSignal",false));
+    simClearStringSignal=(ptrSimClearStringSignal)(_getProcAddress(lib,"simClearStringSignal",false));
+    simGetSignalName=(ptrSimGetSignalName)(_getProcAddress(lib,"simGetSignalName",false));
+    simGetObjectInt32Param=(ptrSimGetObjectInt32Param)(_getProcAddress(lib,"simGetObjectInt32Param",false));
+    simSetObjectInt32Param=(ptrSimSetObjectInt32Param)(_getProcAddress(lib,"simSetObjectInt32Param",false));
+    simGetObjectStringParam=(ptrSimGetObjectStringParam)(_getProcAddress(lib,"simGetObjectStringParam",false));
+    simSetObjectStringParam=(ptrSimSetObjectStringParam)(_getProcAddress(lib,"simSetObjectStringParam",false));
+    simWriteCustomDataBlock=(ptrSimWriteCustomDataBlock)(_getProcAddress(lib,"simWriteCustomDataBlock",false));
+    simReadCustomDataBlock=(ptrSimReadCustomDataBlock)(_getProcAddress(lib,"simReadCustomDataBlock",false));
+    simReadCustomDataBlockTags=(ptrSimReadCustomDataBlockTags)(_getProcAddress(lib,"simReadCustomDataBlockTags",false));
+    simGetEngineInt32Param=(ptrSimGetEngineInt32Param)(_getProcAddress(lib,"simGetEngineInt32Param",false));
+    simGetEngineBoolParam=(ptrSimGetEngineBoolParam)(_getProcAddress(lib,"simGetEngineBoolParam",false));
+    simSetEngineInt32Param=(ptrSimSetEngineInt32Param)(_getProcAddress(lib,"simSetEngineInt32Param",false));
+    simSetEngineBoolParam=(ptrSimSetEngineBoolParam)(_getProcAddress(lib,"simSetEngineBoolParam",false));
+    simSetLightParameters=(ptrSimSetLightParameters)(_getProcAddress(lib,"simSetLightParameters",false));
+    simSetArrayParam=(ptrSimSetArrayParam)(_getProcAddress(lib,"simSetArrayParam",true));
+    simGetArrayParam=(ptrSimGetArrayParam)(_getProcAddress(lib,"simGetArrayParam",true));
+    simSetFloatSignal=(ptrSimSetFloatSignal)(_getProcAddress(lib,"simSetFloatSignal",true));
+    simGetFloatSignal=(ptrSimGetFloatSignal)(_getProcAddress(lib,"simGetFloatSignal",true));
+    simSetFloatParam=(ptrSimSetFloatParam)(_getProcAddress(lib,"simSetFloatParam",true));
+    simGetFloatParam=(ptrSimGetFloatParam)(_getProcAddress(lib,"simGetFloatParam",true));
+    simGetObjectFloatParam=(ptrSimGetObjectFloatParam)(_getProcAddress(lib,"simGetObjectFloatParam",true));
+    simSetObjectFloatParam=(ptrSimSetObjectFloatParam)(_getProcAddress(lib,"simSetObjectFloatParam",true));
+    simGetObjectFloatArrayParam=(ptrSimGetObjectFloatArrayParam)(_getProcAddress(lib,"simGetObjectFloatArrayParam",true));
+    simSetObjectFloatArrayParam=(ptrSimSetObjectFloatArrayParam)(_getProcAddress(lib,"simSetObjectFloatArrayParam",true));
+    simGetEngineFloatParam=(ptrSimGetEngineFloatParam)(_getProcAddress(lib,"simGetEngineFloatParam",true));
+    simSetEngineFloatParam=(ptrSimSetEngineFloatParam)(_getProcAddress(lib,"simSetEngineFloatParam",true));
+    simGetLightParameters=(ptrSimGetLightParameters)(_getProcAddress(lib,"simGetLightParameters",true));
 
     char *ps=std::getenv("COPPELIASIMPLUGIN_IGNORE_MISSING_SYMBOLS");
     if (ps!=nullptr)
@@ -379,6 +463,216 @@ int getSimProcAddressesOld(LIBRARY lib)
     if (simGetPersistentDataTags==nullptr)
     {
         printf("%s simGetPersistentDataTags\n",couldNotFind);
+        return 0;
+    }
+    if (simSetBoolParam==nullptr)
+    {
+        printf("%s simSetBoolParam\n",couldNotFind);
+        return 0;
+    }
+    if (simGetBoolParam==nullptr)
+    {
+        printf("%s simGetBoolParam\n",couldNotFind);
+        return 0;
+    }
+    if (simSetInt32Param==nullptr)
+    {
+        printf("%s simSetInt32Param\n",couldNotFind);
+        return 0;
+    }
+    if (simGetInt32Param==nullptr)
+    {
+        printf("%s simGetInt32Param\n",couldNotFind);
+        return 0;
+    }
+    if (simGetUInt64Param==nullptr)
+    {
+        printf("%s simGetUInt64Param\n",couldNotFind);
+        return 0;
+    }
+    if (simSetFloatParam==nullptr)
+    {
+        printf("%s simSetFloatParam\n",couldNotFind);
+        return 0;
+    }
+    if (simGetFloatParam==nullptr)
+    {
+        printf("%s simGetFloatParam\n",couldNotFind);
+        return 0;
+    }
+    if (simSetStringParam==nullptr)
+    {
+        printf("%s simSetStringParam\n",couldNotFind);
+        return 0;
+    }
+    if (simGetStringParam==nullptr)
+    {
+        printf("%s simGetStringParam\n",couldNotFind);
+        return 0;
+    }
+    if (simSetArrayParam==nullptr)
+    {
+        printf("%s simSetArrayParam\n",couldNotFind);
+        return 0;
+    }
+    if (simGetArrayParam==nullptr)
+    {
+        printf("%s simGetArrayParam\n",couldNotFind);
+        return 0;
+    }
+    if (simSetNamedStringParam==nullptr)
+    {
+        printf("%s simSetNamedStringParam\n",couldNotFind);
+        return 0;
+    }
+    if (simGetNamedStringParam==nullptr)
+    {
+        printf("%s simGetNamedStringParam\n",couldNotFind);
+        return 0;
+    }
+    if (simSetInt32Signal==nullptr)
+    {
+        printf("%s simSetInt32Signal\n",couldNotFind);
+        return 0;
+    }
+    if (simGetInt32Signal==nullptr)
+    {
+        printf("%s simGetInt32Signal\n",couldNotFind);
+        return 0;
+    }
+    if (simClearInt32Signal==nullptr)
+    {
+        printf("%s simClearInt32Signal\n",couldNotFind);
+        return 0;
+    }
+    if (simSetFloatSignal==nullptr)
+    {
+        printf("%s simSetFloatSignal\n",couldNotFind);
+        return 0;
+    }
+    if (simGetFloatSignal==nullptr)
+    {
+        printf("%s simGetFloatSignal\n",couldNotFind);
+        return 0;
+    }
+    if (simClearFloatSignal==nullptr)
+    {
+        printf("%s simClearFloatSignal\n",couldNotFind);
+        return 0;
+    }
+    if (simSetStringSignal==nullptr)
+    {
+        printf("%s simSetStringSignal\n",couldNotFind);
+        return 0;
+    }
+    if (simGetStringSignal==nullptr)
+    {
+        printf("%s simGetStringSignal\n",couldNotFind);
+        return 0;
+    }
+    if (simClearStringSignal==nullptr)
+    {
+        printf("%s simClearStringSignal\n",couldNotFind);
+        return 0;
+    }
+    if (simGetSignalName==nullptr)
+    {
+        printf("%s simGetSignalName\n",couldNotFind);
+        return 0;
+    }
+    if (simSetLightParameters==nullptr)
+    {
+        printf("%s simSetLightParameters\n",couldNotFind);
+        return 0;
+    }
+    if (simGetLightParameters==nullptr)
+    {
+        printf("%s simGetLightParameters\n",couldNotFind);
+        return 0;
+    }
+    if (simGetObjectInt32Param==nullptr)
+    {
+        printf("%s simGetObjectInt32Param\n",couldNotFind);
+        return 0;
+    }
+    if (simSetObjectInt32Param==nullptr)
+    {
+        printf("%s simSetObjectInt32Param\n",couldNotFind);
+        return 0;
+    }
+    if (simGetObjectFloatParam==nullptr)
+    {
+        printf("%s simGetObjectFloatParam\n",couldNotFind);
+        return 0;
+    }
+    if (simSetObjectFloatParam==nullptr)
+    {
+        printf("%s simSetObjectFloatParam\n",couldNotFind);
+        return 0;
+    }
+    if (simGetObjectFloatArrayParam==nullptr)
+    {
+        printf("%s simGetObjectFloatArrayParam\n",couldNotFind);
+        return 0;
+    }
+    if (simSetObjectFloatArrayParam==nullptr)
+    {
+        printf("%s simSetObjectFloatArrayParam\n",couldNotFind);
+        return 0;
+    }
+    if (simGetObjectStringParam==nullptr)
+    {
+        printf("%s simGetObjectStringParam\n",couldNotFind);
+        return 0;
+    }
+    if (simSetObjectStringParam==nullptr)
+    {
+        printf("%s simSetObjectStringParam\n",couldNotFind);
+        return 0;
+    }
+    if (simWriteCustomDataBlock==nullptr)
+    {
+        printf("%s simWriteCustomDataBlock\n",couldNotFind);
+        return 0;
+    }
+    if (simReadCustomDataBlock==nullptr)
+    {
+        printf("%s simReadCustomDataBlock\n",couldNotFind);
+        return 0;
+    }
+    if (simReadCustomDataBlockTags==nullptr)
+    {
+        printf("%s simReadCustomDataBlockTags\n",couldNotFind);
+        return 0;
+    }
+    if (simGetEngineFloatParam==nullptr)
+    {
+        printf("%s simGetEngineFloatParam\n",couldNotFind);
+        return 0;
+    }
+    if (simGetEngineInt32Param==nullptr)
+    {
+        printf("%s simGetEngineInt32Param\n",couldNotFind);
+        return 0;
+    }
+    if (simGetEngineBoolParam==nullptr)
+    {
+        printf("%s simGetEngineBoolParam\n",couldNotFind);
+        return 0;
+    }
+    if (simSetEngineFloatParam==nullptr)
+    {
+        printf("%s simSetEngineFloatParam\n",couldNotFind);
+        return 0;
+    }
+    if (simSetEngineInt32Param==nullptr)
+    {
+        printf("%s simSetEngineInt32Param\n",couldNotFind);
+        return 0;
+    }
+    if (simSetEngineBoolParam==nullptr)
+    {
+        printf("%s simSetEngineBoolParam\n",couldNotFind);
         return 0;
     }
     return 1;
