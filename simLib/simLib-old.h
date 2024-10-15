@@ -92,7 +92,12 @@ typedef SIMDOUBLE (__cdecl *ptrSimGetEngineFloatParam)(int paramId,int objectHan
 typedef int (__cdecl *ptrSimSetEngineFloatParam)(int paramId,int objectHandle,const void* object,SIMDOUBLE val);
 typedef int (__cdecl *ptrSimSetLightParameters)(int objectHandle,int state,const float* setToNULL,const float* diffusePart,const float* specularPart);
 typedef int (__cdecl *ptrSimGetLightParameters)(int objectHandle,SIMDOUBLE* setToNULL,SIMDOUBLE* diffusePart,SIMDOUBLE* specularPart);
-
+typedef int (__cdecl *ptrSimSetModelProperty)(int objectHandle,int modelProperty);
+typedef int (__cdecl *ptrSimGetModelProperty)(int objectHandle);
+typedef int (__cdecl *ptrSimSetObjectProperty)(int objectHandle,int prop);
+typedef int (__cdecl *ptrSimGetObjectProperty)(int objectHandle);
+typedef int (__cdecl *ptrSimSetObjectSpecialProperty)(int objectHandle,int prop);
+typedef int (__cdecl *ptrSimGetObjectSpecialProperty)(int objectHandle);
 
 extern ptrSimRunSimulator simRunSimulator;
 extern ptrSimRunSimulatorEx simRunSimulatorEx;
@@ -188,6 +193,12 @@ extern ptrSimGetEngineBoolParam simGetEngineBoolParam;
 extern ptrSimSetEngineFloatParam simSetEngineFloatParam;
 extern ptrSimSetEngineInt32Param simSetEngineInt32Param;
 extern ptrSimSetEngineBoolParam simSetEngineBoolParam;
+extern ptrSimSetObjectProperty simSetObjectProperty;
+extern ptrSimGetObjectProperty simGetObjectProperty;
+extern ptrSimSetObjectSpecialProperty simSetObjectSpecialProperty;
+extern ptrSimGetObjectSpecialProperty simGetObjectSpecialProperty;
+extern ptrSimSetModelProperty simSetModelProperty;
+extern ptrSimGetModelProperty simGetModelProperty;
 
 #ifdef SIM_INTERFACE_OLD
 #include "simLib-old2.h"

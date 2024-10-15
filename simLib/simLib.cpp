@@ -178,10 +178,6 @@ ptrSimRemoveDrawingObject simRemoveDrawingObject=nullptr;
 ptrSimAddDrawingObjectItem simAddDrawingObjectItem=nullptr;
 ptrSimGetObjectSizeFactor simGetObjectSizeFactor=nullptr;
 ptrSimAnnounceSceneContentChange simAnnounceSceneContentChange=nullptr;
-ptrSimSetObjectProperty simSetObjectProperty=nullptr;
-ptrSimGetObjectProperty simGetObjectProperty=nullptr;
-ptrSimSetObjectSpecialProperty simSetObjectSpecialProperty=nullptr;
-ptrSimGetObjectSpecialProperty simGetObjectSpecialProperty=nullptr;
 ptrSimReadForceSensor simReadForceSensor=nullptr;
 ptrSimGetVelocity simGetVelocity=nullptr;
 ptrSimGetObjectVelocity simGetObjectVelocity=nullptr;
@@ -192,8 +188,6 @@ ptrSimSetExplicitHandling simSetExplicitHandling=nullptr;
 ptrSimGetExplicitHandling simGetExplicitHandling=nullptr;
 ptrSimGetLinkDummy simGetLinkDummy=nullptr;
 ptrSimSetLinkDummy simSetLinkDummy=nullptr;
-ptrSimSetModelProperty simSetModelProperty=nullptr;
-ptrSimGetModelProperty simGetModelProperty=nullptr;
 ptrSimSetObjectColor simSetObjectColor=nullptr;
 ptrSimGetObjectColor simGetObjectColor=nullptr;
 ptrSimSetShapeColor simSetShapeColor=nullptr;
@@ -606,16 +600,10 @@ int getSimProcAddresses(LIBRARY lib)
     simCopyPasteObjects=(ptrSimCopyPasteObjects)(_getProcAddress(lib,"simCopyPasteObjects",false));
     simRemoveDrawingObject=(ptrSimRemoveDrawingObject)(_getProcAddress(lib,"simRemoveDrawingObject",false));
     simAnnounceSceneContentChange=(ptrSimAnnounceSceneContentChange)(_getProcAddress(lib,"simAnnounceSceneContentChange",false));
-    simSetObjectProperty=(ptrSimSetObjectProperty)(_getProcAddress(lib,"simSetObjectProperty",false));
-    simGetObjectProperty=(ptrSimGetObjectProperty)(_getProcAddress(lib,"simGetObjectProperty",false));
-    simSetObjectSpecialProperty=(ptrSimSetObjectSpecialProperty)(_getProcAddress(lib,"simSetObjectSpecialProperty",false));
-    simGetObjectSpecialProperty=(ptrSimGetObjectSpecialProperty)(_getProcAddress(lib,"simGetObjectSpecialProperty",false));
     simSetExplicitHandling=(ptrSimSetExplicitHandling)(_getProcAddress(lib,"simSetExplicitHandling",false));
     simGetExplicitHandling=(ptrSimGetExplicitHandling)(_getProcAddress(lib,"simGetExplicitHandling",false));
     simGetLinkDummy=(ptrSimGetLinkDummy)(_getProcAddress(lib,"simGetLinkDummy",false));
     simSetLinkDummy=(ptrSimSetLinkDummy)(_getProcAddress(lib,"simSetLinkDummy",false));
-    simSetModelProperty=(ptrSimSetModelProperty)(_getProcAddress(lib,"simSetModelProperty",false));
-    simGetModelProperty=(ptrSimGetModelProperty)(_getProcAddress(lib,"simGetModelProperty",false));
     simResetDynamicObject=(ptrSimResetDynamicObject)(_getProcAddress(lib,"simResetDynamicObject",false));
     simSetJointMode=(ptrSimSetJointMode)(_getProcAddress(lib,"simSetJointMode",false));
     simGetJointMode=(ptrSimGetJointMode)(_getProcAddress(lib,"simGetJointMode",false));
@@ -1646,26 +1634,6 @@ int getSimProcAddresses(LIBRARY lib)
         printf("%s simAnnounceSceneContentChange\n",couldNotFind);
         return 0;
     }
-    if (simSetObjectProperty==nullptr)
-    {
-        printf("%s simSetObjectProperty\n",couldNotFind);
-        return 0;
-    }
-    if (simGetObjectProperty==nullptr)
-    {
-        printf("%s simGetObjectProperty\n",couldNotFind);
-        return 0;
-    }
-    if (simSetObjectSpecialProperty==nullptr)
-    {
-        printf("%s simSetObjectSpecialProperty\n",couldNotFind);
-        return 0;
-    }
-    if (simGetObjectSpecialProperty==nullptr)
-    {
-        printf("%s simGetObjectSpecialProperty\n",couldNotFind);
-        return 0;
-    }
     if (simReadForceSensor==nullptr)
     {
         printf("%s simReadForceSensor\n",couldNotFind);
@@ -1714,16 +1682,6 @@ int getSimProcAddresses(LIBRARY lib)
     if (simSetLinkDummy==nullptr)
     {
         printf("%s simSetLinkDummy\n",couldNotFind);
-        return 0;
-    }
-    if (simSetModelProperty==nullptr)
-    {
-        printf("%s simSetModelProperty\n",couldNotFind);
-        return 0;
-    }
-    if (simGetModelProperty==nullptr)
-    {
-        printf("%s simGetModelProperty\n",couldNotFind);
         return 0;
     }
     if (simSetObjectColor==nullptr)

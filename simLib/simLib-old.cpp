@@ -92,6 +92,12 @@ ptrSimGetEngineBoolParam simGetEngineBoolParam=nullptr;
 ptrSimSetEngineFloatParam simSetEngineFloatParam=nullptr;
 ptrSimSetEngineInt32Param simSetEngineInt32Param=nullptr;
 ptrSimSetEngineBoolParam simSetEngineBoolParam=nullptr;
+ptrSimSetObjectProperty simSetObjectProperty=nullptr;
+ptrSimGetObjectProperty simGetObjectProperty=nullptr;
+ptrSimSetObjectSpecialProperty simSetObjectSpecialProperty=nullptr;
+ptrSimGetObjectSpecialProperty simGetObjectSpecialProperty=nullptr;
+ptrSimSetModelProperty simSetModelProperty=nullptr;
+ptrSimGetModelProperty simGetModelProperty=nullptr;
 
 #ifdef SIM_INTERFACE_OLD
 #include "simLib-old2.cpp"
@@ -198,6 +204,12 @@ int getSimProcAddressesOld(LIBRARY lib)
     simGetEngineFloatParam=(ptrSimGetEngineFloatParam)(_getProcAddress(lib,"simGetEngineFloatParam",true));
     simSetEngineFloatParam=(ptrSimSetEngineFloatParam)(_getProcAddress(lib,"simSetEngineFloatParam",true));
     simGetLightParameters=(ptrSimGetLightParameters)(_getProcAddress(lib,"simGetLightParameters",true));
+    simSetObjectProperty=(ptrSimSetObjectProperty)(_getProcAddress(lib,"simSetObjectProperty",false));
+    simGetObjectProperty=(ptrSimGetObjectProperty)(_getProcAddress(lib,"simGetObjectProperty",false));
+    simSetObjectSpecialProperty=(ptrSimSetObjectSpecialProperty)(_getProcAddress(lib,"simSetObjectSpecialProperty",false));
+    simGetObjectSpecialProperty=(ptrSimGetObjectSpecialProperty)(_getProcAddress(lib,"simGetObjectSpecialProperty",false));
+    simSetModelProperty=(ptrSimSetModelProperty)(_getProcAddress(lib,"simSetModelProperty",false));
+    simGetModelProperty=(ptrSimGetModelProperty)(_getProcAddress(lib,"simGetModelProperty",false));
 
     char *ps=std::getenv("COPPELIASIMPLUGIN_IGNORE_MISSING_SYMBOLS");
     if (ps!=nullptr)
@@ -673,6 +685,36 @@ int getSimProcAddressesOld(LIBRARY lib)
     if (simSetEngineBoolParam==nullptr)
     {
         printf("%s simSetEngineBoolParam\n",couldNotFind);
+        return 0;
+    }
+    if (simSetObjectProperty==nullptr)
+    {
+        printf("%s simSetObjectProperty\n",couldNotFind);
+        return 0;
+    }
+    if (simGetObjectProperty==nullptr)
+    {
+        printf("%s simGetObjectProperty\n",couldNotFind);
+        return 0;
+    }
+    if (simSetObjectSpecialProperty==nullptr)
+    {
+        printf("%s simSetObjectSpecialProperty\n",couldNotFind);
+        return 0;
+    }
+    if (simGetObjectSpecialProperty==nullptr)
+    {
+        printf("%s simGetObjectSpecialProperty\n",couldNotFind);
+        return 0;
+    }
+    if (simSetModelProperty==nullptr)
+    {
+        printf("%s simSetModelProperty\n",couldNotFind);
+        return 0;
+    }
+    if (simGetModelProperty==nullptr)
+    {
+        printf("%s simGetModelProperty\n",couldNotFind);
         return 0;
     }
     return 1;
