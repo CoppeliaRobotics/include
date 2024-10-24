@@ -905,7 +905,7 @@ std::vector<int> getObjects(int objectType)
     int i = 0, handle = -1;
     while(1)
     {
-        handle = simGetObjects(i++, sim_handle_all);
+        handle = simGetObjects(i++, objectType);
         if(handle == -1) break;
         ret.push_back(handle);
     }
