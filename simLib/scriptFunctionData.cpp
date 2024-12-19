@@ -95,18 +95,18 @@ bool CScriptFunctionData::_readData(int stack,const int* expectedArguments,int r
         }
         if (!done)
         {
-            int tableSize=simGetStackTableInfo(stack,0);
+            int tableSize = simGetStackTableInfo(stack,0); // Lua strings can also identify as tables with this function, starting with CoppeliaSim V4.9
             bool expectingATable=(((expectedArguments[1+i*2+0]|SIM_SCRIPT_ARG_NULL_ALLOWED)-SIM_SCRIPT_ARG_NULL_ALLOWED)&sim_script_arg_table)!=0;
-            if ( (tableSize>=0)!=expectingATable )
-            {
-                std::ostringstream str;
-                str << argumentText2 << i+1 << " is not correct.";
-                simSetLastError(functionName,str.str().c_str());
-                return(false);
-            }
             int expectingType=(((expectedArguments[1+i*2+0]|SIM_SCRIPT_ARG_NULL_ALLOWED)-SIM_SCRIPT_ARG_NULL_ALLOWED)|sim_script_arg_table)-sim_script_arg_table;
             if (expectingATable)
-            { // we have a table
+            { // we expect a table...
+                if (tableSize<0)
+                { // ...but we do not have a table
+                    std::ostringstream str;
+                    str << argumentText2 << i+1 << " is not correct.";
+                    simSetLastError(functionName,str.str().c_str());
+                    return(false);
+                }
                 int infoType=0;
                 if (expectingType==sim_script_arg_null)
                     infoType=1;
@@ -225,9 +225,60 @@ bool CScriptFunctionData::_readData(int stack,const int* expectedArguments,int r
                 }
             }
             else
-            { // we do not have a table
+            { // we do not expect a table
                 int t=expectingType;
                 bool failedMsgAndLeave=false;
+                if ((t==sim_script_arg_string) || (t==sim_script_arg_charbuff))
+                { // Lua strings can also identify as a table with the simGetStackTableInfo function starting with CoppeliaSim V4.9!
+                    if (t==sim_script_arg_string)
+                    {
+                        int l;
+                        char* str=simGetStackStringValue(stack,&l);
+                        if (str!=nullptr)
+                        {
+                            std::string str2(str);
+                            simReleaseBuffer(str);
+                            CScriptFunctionDataItem dat(str2); // treat it as a char string, not buffer
+                            inOutData.push_back(dat);
+                        }
+                        else
+                            failedMsgAndLeave=true;
+                    }
+                    else
+                    {
+                        int l;
+                        char* str=simGetStackStringValue(stack,&l);
+                        if (str!=nullptr)
+                        {
+                            if ( (l<expectedArguments[1+i*2+1])&&(expectedArguments[1+i*2+1]!=0) )
+                            {
+                                simReleaseBuffer(str);
+                                std::ostringstream str;
+                                str << argumentText2 << i+1 << " is not correct (wrong buffer size).";
+                                simSetLastError(functionName,str.str().c_str());
+                                return(false);
+                            }
+                            else
+                            {
+                                CScriptFunctionDataItem dat(str,l);
+                                inOutData.push_back(dat);
+                                simReleaseBuffer(str);
+                            }
+                        }
+                        else
+                            failedMsgAndLeave=true;
+                    }
+                }
+                else
+                {
+                    if (tableSize>=0)
+                    { // we do not expect a table, but have a table!
+                        std::ostringstream str;
+                        str << argumentText2 << i+1 << " is not correct.";
+                        simSetLastError(functionName,str.str().c_str());
+                        return(false);
+                    }
+                }
                 if (t==sim_script_arg_null)
                 {
                     if (simIsStackValueNull(stack)>0)
@@ -278,44 +329,6 @@ bool CScriptFunctionData::_readData(int stack,const int* expectedArguments,int r
                     {
                         CScriptFunctionDataItem dat(val);
                         inOutData.push_back(dat);
-                    }
-                    else
-                        failedMsgAndLeave=true;
-                }
-                if (t==sim_script_arg_string)
-                {
-                    int l;
-                    char* str=simGetStackStringValue(stack,&l);
-                    if (str!=nullptr)
-                    {
-                        std::string str2(str);
-                        simReleaseBuffer(str);
-                        CScriptFunctionDataItem dat(str2); // treat it as a char string, not buffer
-                        inOutData.push_back(dat);
-                    }
-                    else
-                        failedMsgAndLeave=true;
-                }
-                if (t==sim_script_arg_charbuff)
-                {
-                    int l;
-                    char* str=simGetStackStringValue(stack,&l);
-                    if (str!=nullptr)
-                    {
-                        if ( (l<expectedArguments[1+i*2+1])&&(expectedArguments[1+i*2+1]!=0) )
-                        {
-                            simReleaseBuffer(str);
-                            std::ostringstream str;
-                            str << argumentText2 << i+1 << " is not correct (wrong buffer size).";
-                            simSetLastError(functionName,str.str().c_str());
-                            return(false);
-                        }
-                        else
-                        {
-                            CScriptFunctionDataItem dat(str,l);
-                            inOutData.push_back(dat);
-                            simReleaseBuffer(str);
-                        }
                     }
                     else
                         failedMsgAndLeave=true;
