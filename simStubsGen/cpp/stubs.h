@@ -4,6 +4,9 @@
 #ifndef STUBS_H__INCLUDED
 #define STUBS_H__INCLUDED
 
+#py if plugin.needs_eigen():
+#define SIM_STUBS_GEN_EIGEN
+#py endif
 #include <simLib/simExp.h>
 #include <simPlusPlus/Lib.h>
 #include <simStubsGen/cpp/common.h>

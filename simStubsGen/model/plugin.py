@@ -14,3 +14,11 @@ class Plugin(object):
         self.commands = [Command(self, n) for n in node.findall('command')]
         self.script_functions = [ScriptFunction(self, n) for n in node.findall('script-function')]
 
+    def needs_eigen(self):
+        for k, items in (('c', self.commands), ('f', self.script_functions), ('s', self.structs)):
+            for item in items:
+                for p in (item.fields if k == 's' else (item.params + item.returns)):
+                    if p.ctype_base.startswith('Eigen::'):
+                        return True
+        return False
+

@@ -10,6 +10,11 @@
 #include <boost/format.hpp>
 #include <simPlusPlus/Lib.h>
 
+#ifdef SIM_STUBS_GEN_EIGEN
+#include <Eigen/Dense>
+#include <Eigen/Geometry>
+#endif // SIM_STUBS_GEN_EIGEN
+
 template<typename T>
 struct Grid
 {
@@ -356,6 +361,28 @@ static void readFromStack(int stack, Grid<T> *grid, const ReadOptions &rdopt = {
     }
 }
 
+#ifdef SIM_STUBS_GEN_EIGEN
+
+static void readFromStack(int stack, Eigen::Vector3d *vec, const ReadOptions &rdopt = {})
+{
+    std::vector<double> v;
+    ReadOptions rdopt1;
+    rdopt1.minSize = rdopt1.maxSize = {3};
+    readFromStack(stack, &v, sim::getStackDoubleTable, rdopt1);
+    (*vec) << v[0], v[1], v[2];
+}
+
+static void readFromStack(int stack, Eigen::Quaterniond *q, const ReadOptions &rdopt = {})
+{
+    std::vector<double> v;
+    ReadOptions rdopt1;
+    rdopt1.minSize = rdopt1.maxSize = {4};
+    readFromStack(stack, &v, sim::getStackDoubleTable, rdopt1);
+    q->coeffs() << v[0], v[1], v[2], v[3];
+}
+
+#endif // SIM_STUBS_GEN_EIGEN
+
 static void writeToStack(const bool &value, int stack, const WriteOptions &wropt = {})
 {
     sim::pushBoolOntoStack(stack, value);
@@ -460,3 +487,19 @@ static void writeToStack(const Grid<T> &grid, int stack, const WriteOptions &wro
         throw sim::exception("writeToStack(Grid): %s", ex.what());
     }
 }
+
+#ifdef SIM_STUBS_GEN_EIGEN
+
+static void writeToStack(const Eigen::Vector3d &vec, int stack, const WriteOptions &wropt = {})
+{
+    std::vector<double> v {vec.x(), vec.y(), vec.z()};
+    writeToStack(v, stack, wropt);
+}
+
+static void writeToStack(const Eigen::Quaterniond &q, int stack, const WriteOptions &wropt = {})
+{
+    std::vector<double> v {q.x(), q.y(), q.z(), q.w()};
+    writeToStack(v, stack, wropt);
+}
+
+#endif // SIM_STUBS_GEN_EIGEN

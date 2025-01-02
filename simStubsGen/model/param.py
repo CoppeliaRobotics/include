@@ -174,6 +174,16 @@ class ParamGrid(Param):
             raise ValueError(f'Attribute "item-type" must be one of: {", ".join(valid_itypes)}')
         self.ctype_base = 'Grid< %s >' % self.itype
 
+class ParamVector3(Param):
+    def __init__(self, node):
+        super(ParamVector3, self).__init__(node)
+        self.ctype_base = 'Eigen::Vector3d'
+
+class ParamQuaternion(Param):
+    def __init__(self, node):
+        super(ParamQuaternion, self).__init__(node)
+        self.ctype_base = 'Eigen::Quaterniond'
+
 Param.register_type('any', Param)
 Param.register_type('int', ParamInt)
 Param.register_type('long', ParamLong)
@@ -185,3 +195,5 @@ Param.register_type('func', ParamFunc)
 Param.register_type('bool', ParamBool)
 Param.register_type('table', ParamTable)
 Param.register_type('grid', ParamGrid)
+Param.register_type('vector3d', ParamVector3)
+Param.register_type('quaternion', ParamQuaternion)
