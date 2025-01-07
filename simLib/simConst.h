@@ -345,7 +345,7 @@ enum { /* physics engine */
     sim_physics_vortex,
     sim_physics_newton,
     sim_physics_mujoco,
-    sim_physics_physx
+    sim_physics_drake
 };
 
 enum { /* primitive shapes */
