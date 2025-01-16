@@ -46,6 +46,8 @@ typedef int (__cdecl *ptrSimSetFloatProperty)(long long int target, const char* 
 typedef int (__cdecl *ptrSimGetFloatProperty)(long long int target, const char* pName, double* pState);
 typedef int (__cdecl *ptrSimSetStringProperty)(long long int target, const char* pName, const char* pState);
 typedef char* (__cdecl *ptrSimGetStringProperty)(long long int target, const char* pName);
+typedef int (__cdecl *ptrSimSetTableProperty)(long long int target, const char* pName, const char* buffer, int bufferL);
+typedef char* (__cdecl *ptrSimGetTableProperty)(long long int target, const char* pName, int* bufferL);
 typedef int (__cdecl *ptrSimSetBufferProperty)(long long int target, const char* pName, const char* buffer, int bufferL);
 typedef char* (__cdecl *ptrSimGetBufferProperty)(long long int target, const char* pName, int* bufferL);
 typedef int (__cdecl *ptrSimSetIntArray2Property)(long long int target, const char* pName, const int* pState);
@@ -451,6 +453,8 @@ extern ptrSimSetFloatProperty simSetFloatProperty;
 extern ptrSimGetFloatProperty simGetFloatProperty;
 extern ptrSimSetStringProperty simSetStringProperty;
 extern ptrSimGetStringProperty simGetStringProperty;
+extern ptrSimSetTableProperty simSetTableProperty;
+extern ptrSimGetTableProperty simGetTableProperty;
 extern ptrSimSetBufferProperty simSetBufferProperty;
 extern ptrSimGetBufferProperty simGetBufferProperty;
 extern ptrSimSetIntArray2Property simSetIntArray2Property;

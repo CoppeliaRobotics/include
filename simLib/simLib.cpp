@@ -42,6 +42,8 @@ ptrSimSetFloatProperty simSetFloatProperty = nullptr;
 ptrSimGetFloatProperty simGetFloatProperty = nullptr;
 ptrSimSetStringProperty simSetStringProperty = nullptr;
 ptrSimGetStringProperty simGetStringProperty = nullptr;
+ptrSimSetTableProperty simSetTableProperty = nullptr;
+ptrSimGetTableProperty simGetTableProperty = nullptr;
 ptrSimSetBufferProperty simSetBufferProperty = nullptr;
 ptrSimGetBufferProperty simGetBufferProperty = nullptr;
 ptrSimSetIntArray2Property simSetIntArray2Property = nullptr;
@@ -517,6 +519,8 @@ int getSimProcAddresses(LIBRARY lib)
     simGetFloatProperty = (ptrSimGetFloatProperty)(_getProcAddress(lib, "simGetFloatProperty", false));
     simSetStringProperty = (ptrSimSetStringProperty)(_getProcAddress(lib, "simSetStringProperty", false));
     simGetStringProperty = (ptrSimGetStringProperty)(_getProcAddress(lib, "simGetStringProperty", false));
+    simSetTableProperty = (ptrSimSetTableProperty)(_getProcAddress(lib, "simSetTableProperty", false));
+    simGetTableProperty = (ptrSimGetTableProperty)(_getProcAddress(lib, "simGetTableProperty", false));
     simSetBufferProperty = (ptrSimSetBufferProperty)(_getProcAddress(lib, "simSetBufferProperty", false));
     simGetBufferProperty = (ptrSimGetBufferProperty)(_getProcAddress(lib, "simGetBufferProperty", false));
     simSetIntArray2Property = (ptrSimSetIntArray2Property)(_getProcAddress(lib, "simSetIntArray2Property", false));
@@ -957,6 +961,16 @@ int getSimProcAddresses(LIBRARY lib)
     if (simGetStringProperty == nullptr)
     {
         printf("%s simGetStringProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simSetTableProperty == nullptr)
+    {
+        printf("%s simSetTableProperty\n", couldNotFind);
+        return 0;
+    }
+    if (simGetTableProperty == nullptr)
+    {
+        printf("%s simGetTableProperty\n", couldNotFind);
         return 0;
     }
     if (simSetBufferProperty == nullptr)
