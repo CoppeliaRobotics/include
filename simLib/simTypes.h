@@ -7,6 +7,18 @@
 #include <string.h>
 #endif
 
+struct S_UID
+{
+    int objectType; // e.g. sim_objecttype_sceneobject, etc.
+    UID uid;
+};
+
+struct S_OID
+{
+    int objectType; // e.g. sim_objecttype_sceneobject, etc.
+    int oldHandle;
+};
+
 struct SSimInit
 {
     const char* pluginName;

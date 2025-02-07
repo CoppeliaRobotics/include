@@ -7,7 +7,7 @@
 #define SIM_VERSION_MAJOR 4
 #define SIM_VERSION_MINOR 9
 #define SIM_VERSION_PATCH 0
-#define SIM_VERSION_REVNB 4
+#define SIM_VERSION_REVNB 6
 
 #ifndef SIM_EVENT_PROTOCOL_VERSION
 #define SIM_EVENT_PROTOCOL_VERSION 3
@@ -53,8 +53,10 @@ enum {
 enum {
     sim_objecttype_sceneobject = 109,
     sim_objecttype_collection = 115,
+    sim_objecttype_script = 117,
     sim_objecttype_texture = 120,
     sim_objecttype_mesh = 122,
+    sim_objecttype_interfacestack = 123,
 };
 
 /* Scene object sub-types. Values are serialized (see also deprecated values below) */
@@ -193,7 +195,29 @@ enum { /* special argument of some functions: */
     sim_handle_mesh                     = -18,
 };
 
-enum { /* special handle flags: */
+enum { /* special handle flags (use only below 4 bits, i.e. 0x3c00000): */
+#if defined(USE_LONG_LONG_HANDLES) || defined(SIM_UNIFIED_HANDLES)
+    sim_handleflag_assembly             =0x0040000000000000,
+    sim_handleflag_togglevisibility     =0x0040000000000000,
+    sim_handleflag_extended             =0x0040000000000000,
+    sim_handleflag_greyscale            =0x0040000000000000,
+    sim_handleflag_codedstring          =0x0040000000000000, /* all, except double */
+    sim_handleflag_wxyzquat             =0x0100000000000000,
+    sim_handleflag_reljointbaseframe    =0x0040000000000000,
+    sim_handleflag_addmultiple          =0x0100000000000000,
+    sim_handleflag_abscoords            =0x0080000000000000,
+    sim_handleflag_depthbuffer          =0x0080000000000000,
+    sim_handleflag_depthbuffermeters    =0x0080000000000000,
+    sim_handleflag_keeporiginal         =0x0040000000000000,
+    sim_handleflag_camera               =0x0040000000000000,
+    sim_handleflag_axis                 =0x0040000000000000,
+    sim_handleflag_resetforce           =0x0040000000000000,
+    sim_handleflag_resettorque          =0x0080000000000000,
+    sim_handleflag_resetforcetorque     =sim_handleflag_resetforce|sim_handleflag_resettorque,
+    sim_handleflag_model                =0x0080000000000000,
+    sim_handleflag_rawvalue             =0x0100000000000000,
+    sim_handleflag_silenterror          =0x0200000000000000,
+#else
     sim_handleflag_assembly             =0x00400000,
     sim_handleflag_togglevisibility     =0x00400000,
     sim_handleflag_extended             =0x00400000,
@@ -213,7 +237,8 @@ enum { /* special handle flags: */
     sim_handleflag_resetforcetorque     =sim_handleflag_resetforce|sim_handleflag_resettorque,
     sim_handleflag_model                =0x00800000,
     sim_handleflag_rawvalue             =0x01000000,
-    sim_handleflag_silenterror          =0x02000000
+    sim_handleflag_silenterror          =0x02000000,
+#endif
 };
 
 enum { /* distance calculation methods: (serialized) */
