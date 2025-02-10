@@ -16,6 +16,8 @@
 
 namespace sim
 {
+    using handle_t = int;
+
     struct PluginInfo
     {
         LIBRARY lib;
@@ -108,11 +110,6 @@ namespace sim
 
     std::string getLastError();
 
-    int loadModule(const char *filenameAndPath, const char *pluginName);
-    int loadModule(const std::string &filenameAndPath, const std::string &pluginName);
-
-    int unloadModule(int pluginhandle);
-
     void setBoolParam(int parameter, bool value);
 
     bool getBoolParam(int parameter);
@@ -138,36 +135,36 @@ namespace sim
     std::optional<double> getNamedFloatParam(const std::string &parameter);
     std::optional<int> getNamedInt32Param(const std::string &parameter);
 
-    int getObject(const char *objectPath, int index, int proxy, int options);
-    int getObject(const std::string &objectPath, int index, int proxy, int options);
-    int getObject(const std::string &objectPath, int index, int proxy, bool noError);
-    int getObject(const std::string &objectPath, int index = -1, int proxy = -1);
+    handle_t getObject(const char *objectPath, int index, handle_t proxy, int options);
+    handle_t getObject(const std::string &objectPath, int index, handle_t proxy, int options);
+    handle_t getObject(const std::string &objectPath, int index, handle_t proxy, bool noError);
+    handle_t getObject(const std::string &objectPath, int index = -1, handle_t proxy = -1);
 
-    long long int getObjectUid(int objectHandle);
+    long long int getObjectUid(handle_t objectHandle);
 
-    int getObjectFromUid(long long int uid, int options);
-    int getObjectFromUid(long long int uid, bool noError);
+    handle_t getObjectFromUid(long long int uid, int options);
+    handle_t getObjectFromUid(long long int uid, bool noError);
 
-    int getScriptHandleEx(int scriptType, int objHandle = -1, std::optional<std::string> scriptName = {});
+    handle_t getScriptHandleEx(int scriptType, handle_t objHandle = -1, std::optional<std::string> scriptName = {});
 
-    void removeObjects(const std::vector<int> &objectHandles);
+    void removeObjects(const std::vector<handle_t> &objectHandles);
 
-    int removeModel(int objectHandle);
+    int removeModel(handle_t objectHandle);
 
-    std::string getObjectAlias(int objectHandle, int options);
+    std::string getObjectAlias(handle_t objectHandle, int options);
 
-    void setObjectAlias(int objectHandle, const std::string &alias, int options = 0);
+    void setObjectAlias(handle_t objectHandle, const std::string &alias, int options = 0);
 
-    int getObjectParent(int objectHandle);
+    handle_t getObjectParent(handle_t objectHandle);
 
-    int getObjectChild(int objectHandle, int index);
-    std::vector<int> getObjectChildren(int objectHandle);
+    handle_t getObjectChild(handle_t objectHandle, int index);
+    std::vector<handle_t> getObjectChildren(handle_t objectHandle);
 
-    void setObjectParent(int objectHandle, int parentObjectHandle, bool keepInPlace);
+    void setObjectParent(handle_t objectHandle, handle_t parentObjectHandle, bool keepInPlace);
 
-    int getObjectType(int objectHandle);
+    int getObjectType(handle_t objectHandle);
 
-    int getJointType(int objectHandle);
+    int getJointType(handle_t objectHandle);
 
     // reservedCommand
 
@@ -181,19 +178,19 @@ namespace sim
     void saveScene(const char *filename);
     void saveScene(const std::string &filename);
 
-    int loadModel(const char *filename);
-    int loadModel(const std::string &filename);
+    handle_t loadModel(const char *filename);
+    handle_t loadModel(const std::string &filename);
 
-    void saveModel(int baseOfModelHandle, const char *filename);
-    void saveModel(int baseOfModelHandle, const std::string &filename);
+    void saveModel(handle_t baseOfModelHandle, const char *filename);
+    void saveModel(handle_t baseOfModelHandle, const std::string &filename);
 
     bool doesFileExist(const char *filename);
     bool doesFileExist(const std::string &filename);
 
-    std::vector<int> getObjectSel();
+    std::vector<handle_t> getObjectSel();
 
-    int setObjectSel(const int *handles, int count);
-    int setObjectSel(const std::vector<int> &handles);
+    int setObjectSel(const handle_t *handles, int count);
+    int setObjectSel(const std::vector<handle_t> &handles);
 
     // associateScriptWithObject
 
@@ -213,7 +210,7 @@ namespace sim
 
     void releaseBuffer(const void *buffer);
 
-    bool checkCollision(int entity1Handle, int entity2Handle);
+    bool checkCollision(handle_t entity1Handle, handle_t entity2Handle);
 
     // getRealTimeSimulation
 
@@ -264,8 +261,8 @@ namespace sim
 
     // registerScriptFuncHook
 
-    void copyPasteObjects(std::vector<int> &shapeHandles, int options);
-    std::vector<int> copyPasteObjects(const std::vector<int> &shapeHandles, int options);
+    void copyPasteObjects(std::vector<handle_t> &shapeHandles, int options);
+    std::vector<handle_t> copyPasteObjects(const std::vector<handle_t> &shapeHandles, int options);
 
     // removeDrawingObject
 
@@ -287,9 +284,9 @@ namespace sim
 
     // getSignalName
 
-    void setObjectProperty(int objectHandle, int prop);
+    void setObjectProperty(handle_t objectHandle, int prop);
 
-    int getObjectProperty(int objectHandle);
+    int getObjectProperty(handle_t objectHandle);
 
     // setObjectSpecialProperty
 
@@ -299,19 +296,19 @@ namespace sim
 
     // getExplicitHandling
 
-    int getLinkDummy(int dummyHandle);
+    handle_t getLinkDummy(handle_t dummyHandle);
 
-    void setLinkDummy(int dummyHandle, int linkedDummyHandle);
+    void setLinkDummy(handle_t dummyHandle, handle_t linkedDummyHandle);
 
-    void setModelProperty(int objectHandle, int modelProperty);
+    void setModelProperty(handle_t objectHandle, int modelProperty);
 
-    int getModelProperty(int objectHandle);
+    int getModelProperty(handle_t objectHandle);
 
-    void resetDynamicObject(int objectHandle);
+    void resetDynamicObject(handle_t objectHandle);
 
-    void setJointMode(int jointHandle, int jointMode);
+    void setJointMode(handle_t jointHandle, int jointMode);
 
-    int getJointMode(int jointHandle);
+    int getJointMode(handle_t jointHandle);
 
     // serialOpen
 
@@ -329,13 +326,13 @@ namespace sim
 
     // auxiliaryConsolePrint
 
-    int getObjectInt32Param(int objectHandle, int parameterID);
+    int getObjectInt32Param(handle_t objectHandle, int parameterID);
 
-    void setObjectInt32Param(int objectHandle, int parameterID, int parameter);
+    void setObjectInt32Param(handle_t objectHandle, int parameterID, int parameter);
 
-    std::string getObjectStringParam(int objectHandle, int parameterID);
+    std::string getObjectStringParam(handle_t objectHandle, int parameterID);
 
-    void setObjectStringParam(int objectHandle, int parameterID, const std::string &parameter);
+    void setObjectStringParam(handle_t objectHandle, int parameterID, const std::string &parameter);
 
     // setSimulationPassesPerRenderingPass
 
@@ -343,39 +340,39 @@ namespace sim
 
     std::string persistentDataRead(const std::string &dataName);
 
-    bool isHandle(int generalObjectHandle, int generalObjectType);
+    bool isHandle(handle_t generalObjectHandle, int generalObjectType);
 
     // resetVisionSensor
 
-    void setVisionSensorImg(int sensorHandle, const unsigned char *img, int options = 0, std::array<int, 2> pos = {0, 0}, std::array<int, 2> size = {0, 0});
+    void setVisionSensorImg(handle_t sensorHandle, const unsigned char *img, int options = 0, std::array<int, 2> pos = {0, 0}, std::array<int, 2> size = {0, 0});
 
     // ruckigRemove
 
-    int groupShapes(const std::vector<int> &shapeHandles, bool merge = false);
+    handle_t groupShapes(const std::vector<handle_t> &shapeHandles, bool merge = false);
 
-    std::vector<int> ungroupShape(int shapeHandle);
+    std::vector<handle_t> ungroupShape(handle_t shapeHandle);
 
     void quitSimulator();
 
-    void setShapeMaterial(int shapeHandle, int materialIdOrShapeHandle);
+    void setShapeMaterial(handle_t shapeHandle, handle_t materialIdOrShapeHandle);
 
     // getTextureId
 
     // readTexture
 
-    void writeCustomDataBlock(int objectHandle, const char *tagName, const char *data, int dataSize);
-    void writeCustomDataBlock(int objectHandle, const std::string &tagName, const std::string &data);
+    void writeCustomDataBlock(handle_t objectHandle, const char *tagName, const char *data, int dataSize);
+    void writeCustomDataBlock(handle_t objectHandle, const std::string &tagName, const std::string &data);
 
-    char * readCustomDataBlock(int objectHandle, const char *tagName, int *dataSize);
-    std::optional<std::string> readCustomDataBlock(int objectHandle, const std::string &tagName);
+    char * readCustomDataBlock(handle_t objectHandle, const char *tagName, int *dataSize);
+    std::optional<std::string> readCustomDataBlock(handle_t objectHandle, const std::string &tagName);
 
-    char * readCustomDataBlockTags(int objectHandle, int *tagCount);
-    std::vector<std::string> readCustomDataBlockTags(int objectHandle);
+    char * readCustomDataBlockTags(handle_t objectHandle, int *tagCount);
+    std::vector<std::string> readCustomDataBlockTags(handle_t objectHandle);
 
-    int getObjects(int index, int objectType);
-    std::vector<int> getObjects(int objectType);
+    handle_t getObjects(int index, int objectType);
+    std::vector<handle_t> getObjects(int objectType);
 
-    std::vector<int> getObjectsInTree(int treeBaseHandle, int objectType, int options = 0);
+    std::vector<handle_t> getObjectsInTree(handle_t treeBaseHandle, int objectType, int options = 0);
 
     // getShapeTextureId
 
@@ -387,14 +384,14 @@ namespace sim
 
     // getCollectionObjects
 
-    int getScriptInt32Param(int scriptHandle, int parameterID);
+    int getScriptInt32Param(handle_t scriptHandle, int parameterID);
 
-    int setScriptInt32Param(int scriptHandle, int parameterID, int parameter);
+    int setScriptInt32Param(handle_t scriptHandle, int parameterID, int parameter);
 
-    std::string getScriptStringParam(int scriptHandle, int parameterID);
-    std::optional<std::string> getScriptStringParamOpt(int scriptHandle, int parameterID);
+    std::string getScriptStringParam(handle_t scriptHandle, int parameterID);
+    std::optional<std::string> getScriptStringParamOpt(handle_t scriptHandle, int parameterID);
 
-    int setScriptStringParam(int scriptHandle, int parameterID, const std::string &parameter);
+    int setScriptStringParam(handle_t scriptHandle, int parameterID, const std::string &parameter);
 
     // reorientShapeBoundingBox
 
@@ -410,74 +407,74 @@ namespace sim
 
     // getExtensionString
 
-    int createStack();
+    handle_t createStack();
 
-    void releaseStack(int stackHandle);
+    void releaseStack(handle_t stackHandle);
 
-    int copyStack(int stackHandle);
+    handle_t copyStack(handle_t stackHandle);
 
-    void pushNullOntoStack(int stackHandle);
+    void pushNullOntoStack(handle_t stackHandle);
 
-    void pushBoolOntoStack(int stackHandle, bool value);
+    void pushBoolOntoStack(handle_t stackHandle, bool value);
 
-    void pushInt32OntoStack(int stackHandle, int value);
+    void pushInt32OntoStack(handle_t stackHandle, int value);
 
-    void pushInt64OntoStack(int stackHandle, long long int value);
+    void pushInt64OntoStack(handle_t stackHandle, long long int value);
 
-    void pushStringOntoStack(int stackHandle, const char *value, int stringSize);
-    void pushStringOntoStack(int stackHandle, const std::string &value);
+    void pushStringOntoStack(handle_t stackHandle, const char *value, int stringSize);
+    void pushStringOntoStack(handle_t stackHandle, const std::string &value);
 
-    void pushUInt8TableOntoStack(int stackHandle, const unsigned char *values, int valueCnt);
-    void pushUInt8TableOntoStack(int stackHandle, const std::vector<unsigned char> &values);
+    void pushUInt8TableOntoStack(handle_t stackHandle, const unsigned char *values, int valueCnt);
+    void pushUInt8TableOntoStack(handle_t stackHandle, const std::vector<unsigned char> &values);
 
-    void pushInt32TableOntoStack(int stackHandle, const int *values, int valueCnt);
-    void pushInt32TableOntoStack(int stackHandle, const std::vector<int> &values);
+    void pushInt32TableOntoStack(handle_t stackHandle, const int *values, int valueCnt);
+    void pushInt32TableOntoStack(handle_t stackHandle, const std::vector<int> &values);
 
-    void pushInt64TableOntoStack(int stackHandle, const long long int *values, int valueCnt);
-    void pushInt64TableOntoStack(int stackHandle, const std::vector<long long int> &values);
+    void pushInt64TableOntoStack(handle_t stackHandle, const long long int *values, int valueCnt);
+    void pushInt64TableOntoStack(handle_t stackHandle, const std::vector<long long int> &values);
 
-    void pushTableOntoStack(int stackHandle);
+    void pushTableOntoStack(handle_t stackHandle);
 
-    void insertDataIntoStackTable(int stackHandle);
+    void insertDataIntoStackTable(handle_t stackHandle);
 
-    int getStackSize(int stackHandle);
+    int getStackSize(handle_t stackHandle);
 
-    int popStackItem(int stackHandle, int count);
+    int popStackItem(handle_t stackHandle, int count);
 
-    void moveStackItemToTop(int stackHandle, int cIndex);
+    void moveStackItemToTop(handle_t stackHandle, int cIndex);
 
-    int getStackItemType(int stackHandle, int cIndex);
+    int getStackItemType(handle_t stackHandle, int cIndex);
 
-    int getStackBoolValue(int stackHandle, bool *boolValue);
+    int getStackBoolValue(handle_t stackHandle, bool *boolValue);
 
-    int getStackInt32Value(int stackHandle, int *numberValue);
+    int getStackInt32Value(handle_t stackHandle, int *numberValue);
 
-    int getStackInt64Value(int stackHandle, long long int *numberValue);
+    int getStackInt64Value(handle_t stackHandle, long long int *numberValue);
 
-    char * getStackStringValue(int stackHandle, int *stringSize);
-    int getStackStringValue(int stackHandle, std::string *stringValue);
+    char * getStackStringValue(handle_t stackHandle, int *stringSize);
+    int getStackStringValue(handle_t stackHandle, std::string *stringValue);
 
-    int getStackTableInfo(int stackHandle, int infoType);
+    int getStackTableInfo(handle_t stackHandle, int infoType);
 
-    int getStackUInt8Table(int stackHandle, unsigned char *array, int count);
-    int getStackUInt8Table(int stackHandle, std::vector<unsigned char> *v);
+    int getStackUInt8Table(handle_t stackHandle, unsigned char *array, int count);
+    int getStackUInt8Table(handle_t stackHandle, std::vector<unsigned char> *v);
 
-    int getStackInt32Table(int stackHandle, int *array, int count);
-    int getStackInt32Table(int stackHandle, std::vector<int> *v);
+    int getStackInt32Table(handle_t stackHandle, int *array, int count);
+    int getStackInt32Table(handle_t stackHandle, std::vector<int> *v);
 
-    int getStackInt64Table(int stackHandle, long long int *array, int count);
+    int getStackInt64Table(handle_t stackHandle, long long int *array, int count);
 
-    void unfoldStackTable(int stackHandle);
+    void unfoldStackTable(handle_t stackHandle);
 
-    void debugStack(int stackHandle, int index = -1);
+    void debugStack(handle_t stackHandle, int index = -1);
 
-    int getEngineInt32Param(int paramId, int objectHandle, const void *object);
+    int getEngineInt32Param(int paramId, handle_t objectHandle, const void *object);
 
-    bool getEngineBoolParam(int paramId, int objectHandle, const void *object);
+    bool getEngineBoolParam(int paramId, handle_t objectHandle, const void *object);
 
-    void setEngineInt32Param(int paramId, int objectHandle, const void *object, int val);
+    void setEngineInt32Param(int paramId, handle_t objectHandle, const void *object, int val);
 
-    void setEngineBoolParam(int paramId, int objectHandle, const void *object, bool val);
+    void setEngineBoolParam(int paramId, handle_t objectHandle, const void *object, bool val);
 
     // insertObjectIntoOctree
 
@@ -493,11 +490,11 @@ namespace sim
 
     // getReferencedHandles
 
-    void executeScriptString(int scriptHandle, const std::string &code, int stackID);
+    void executeScriptString(handle_t scriptHandle, const std::string &code, int stackID);
 
-    std::vector<std::string> getApiFunc(int scriptHandleOrType, const std::string &apiWord);
+    std::vector<std::string> getApiFunc(handle_t scriptHandle, const std::string &apiWord);
 
-    std::string getApiInfo(int scriptHandleOrType, const std::string &apiWord);
+    std::string getApiInfo(handle_t scriptHandle, const std::string &apiWord);
 
     void setPluginInfo(const std::string &moduleName, int infoType, const std::string &stringInfo);
     void setPluginInfo(const std::string &moduleName, int infoType, int intInfo);
@@ -524,9 +521,9 @@ namespace sim
         addLog(pluginInfo->nameAndVersion, verbosity, util::sprintf(fmt, std::forward<Arguments>(args)...));
     }
 
-    bool isDynamicallyEnabled(int objectHandle);
+    bool isDynamicallyEnabled(handle_t objectHandle);
 
-    bool initScript(int scriptHandle);
+    bool initScript(handle_t scriptHandle);
 
     int moduleEntry(int handle, const char *label, int state);
     int moduleEntry(int handle, const std::string &label, int state);
@@ -536,15 +533,15 @@ namespace sim
     bool checkExecAuthorization(const char *what, const char *args);
     bool checkExecAuthorization(const std::string &what, const std::string &args);
 
-    void pushFloatOntoStack(int stackHandle, float value);
+    void pushFloatOntoStack(handle_t stackHandle, float value);
 
-    void pushFloatTableOntoStack(int stackHandle, const float *values, int valueCnt);
-    void pushFloatTableOntoStack(int stackHandle, const std::vector<float> &values);
+    void pushFloatTableOntoStack(handle_t stackHandle, const float *values, int valueCnt);
+    void pushFloatTableOntoStack(handle_t stackHandle, const std::vector<float> &values);
 
-    int getStackFloatValue(int stackHandle, float *numberValue);
+    int getStackFloatValue(handle_t stackHandle, float *numberValue);
 
-    int getStackFloatTable(int stackHandle, float *array, int count);
-    int getStackFloatTable(int stackHandle, std::vector<float> *v);
+    int getStackFloatTable(handle_t stackHandle, float *array, int count);
+    int getStackFloatTable(handle_t stackHandle, std::vector<float> *v);
 
     // getVisionSensorDepth
 
@@ -558,15 +555,15 @@ namespace sim
 
     // ruckigStep
 
-    void pushDoubleOntoStack(int stackHandle, double value);
+    void pushDoubleOntoStack(handle_t stackHandle, double value);
 
-    void pushDoubleTableOntoStack(int stackHandle, const double *values, int valueCnt);
-    void pushDoubleTableOntoStack(int stackHandle, const std::vector<double> &values);
+    void pushDoubleTableOntoStack(handle_t stackHandle, const double *values, int valueCnt);
+    void pushDoubleTableOntoStack(handle_t stackHandle, const std::vector<double> &values);
 
-    int getStackDoubleValue(int stackHandle, double *numberValue);
+    int getStackDoubleValue(handle_t stackHandle, double *numberValue);
 
-    int getStackDoubleTable(int stackHandle, double *array, int count);
-    int getStackDoubleTable(int stackHandle, std::vector<double> *v);
+    int getStackDoubleTable(handle_t stackHandle, double *array, int count);
+    int getStackDoubleTable(handle_t stackHandle, std::vector<double> *v);
 
     // extLaunchUIThread
 
@@ -658,7 +655,7 @@ namespace sim
 
     // floatingViewRemove
 
-    int getShapeViz(int shapeHandle, int index, struct SShapeVizInfo *info);
+    int getShapeViz(handle_t shapeHandle, int index, struct SShapeVizInfo *info);
 
     void setArrayParam(int parameter, std::array<double, 3> value);
 
@@ -672,72 +669,72 @@ namespace sim
 
     double getFloatParam(int parameter);
 
-    double getObjectFloatParam(int objectHandle, int parameterID);
+    double getObjectFloatParam(handle_t objectHandle, int parameterID);
 
-    void setObjectFloatParam(int objectHandle, int parameterID, double parameter);
+    void setObjectFloatParam(handle_t objectHandle, int parameterID, double parameter);
 
     // getObjectFloatArrayParam
 
     // setObjectFloatArrayParam
 
-    double getEngineFloatParam(int paramId, int objectHandle, const void *object);
+    double getEngineFloatParam(int paramId, handle_t objectHandle, const void *object);
 
-    void setEngineFloatParam(int paramId, int objectHandle, const void *object, double val);
+    void setEngineFloatParam(int paramId, handle_t objectHandle, const void *object, double val);
 
     void transformImage(unsigned char *image, const int *resolution, int options);
     void transformImage(unsigned char *image, std::array<int, 2> resolution, int options);
 
     // getOctreeVoxels
 
-    std::vector<double> getPointCloudPoints(int pointCloudHandle);
+    std::vector<double> getPointCloudPoints(handle_t pointCloudHandle);
 
-    void getObjectMatrix(int objectHandle, int relativeToObjectHandle, double *matrix);
-    std::array<double, 12> getObjectMatrix(int objectHandle, int relativeToObjectHandle);
+    void getObjectMatrix(handle_t objectHandle, handle_t relativeToObjectHandle, double *matrix);
+    std::array<double, 12> getObjectMatrix(handle_t objectHandle, handle_t relativeToObjectHandle);
 
-    void setObjectMatrix(int objectHandle, int relativeToObjectHandle, const double *matrix);
-    void setObjectMatrix(int objectHandle, int relativeToObjectHandle, const std::array<double, 12> &matrix);
+    void setObjectMatrix(handle_t objectHandle, handle_t relativeToObjectHandle, const double *matrix);
+    void setObjectMatrix(handle_t objectHandle, handle_t relativeToObjectHandle, const std::array<double, 12> &matrix);
 
-    void getObjectPose(int objectHandle, int relativeToObjectHandle, double *pose);
-    std::array<double, 7> getObjectPose(int objectHandle, int relativeToObjectHandle);
+    void getObjectPose(handle_t objectHandle, handle_t relativeToObjectHandle, double *pose);
+    std::array<double, 7> getObjectPose(handle_t objectHandle, handle_t relativeToObjectHandle);
 
-    void setObjectPose(int objectHandle, int relativeToObjectHandle, const double *pose);
-    void setObjectPose(int objectHandle, int relativeToObjectHandle, std::array<double, 7> pose);
+    void setObjectPose(handle_t objectHandle, handle_t relativeToObjectHandle, const double *pose);
+    void setObjectPose(handle_t objectHandle, handle_t relativeToObjectHandle, std::array<double, 7> pose);
 
-    void getObjectPosition(int objectHandle, int relativeToObjectHandle, double *position);
-    std::array<double, 3> getObjectPosition(int objectHandle, int relativeToObjectHandle);
+    void getObjectPosition(handle_t objectHandle, handle_t relativeToObjectHandle, double *position);
+    std::array<double, 3> getObjectPosition(handle_t objectHandle, handle_t relativeToObjectHandle);
 
-    void setObjectPosition(int objectHandle, int relativeToObjectHandle, const double *position);
-    void setObjectPosition(int objectHandle, int relativeToObjectHandle, const std::array<double, 3> &position);
+    void setObjectPosition(handle_t objectHandle, handle_t relativeToObjectHandle, const double *position);
+    void setObjectPosition(handle_t objectHandle, handle_t relativeToObjectHandle, const std::array<double, 3> &position);
 
-    void getObjectOrientation(int objectHandle, int relativeToObjectHandle, double *eulerAngles);
-    std::array<double, 3> getObjectOrientation(int objectHandle, int relativeToObjectHandle);
+    void getObjectOrientation(handle_t objectHandle, handle_t relativeToObjectHandle, double *eulerAngles);
+    std::array<double, 3> getObjectOrientation(handle_t objectHandle, handle_t relativeToObjectHandle);
 
-    void setObjectOrientation(int objectHandle, int relativeToObjectHandle, const double *eulerAngles);
-    void setObjectOrientation(int objectHandle, int relativeToObjectHandle, const std::array<double, 3> &eulerAngles);
+    void setObjectOrientation(handle_t objectHandle, handle_t relativeToObjectHandle, const double *eulerAngles);
+    void setObjectOrientation(handle_t objectHandle, handle_t relativeToObjectHandle, const std::array<double, 3> &eulerAngles);
 
-    double getJointPosition(int objectHandle);
+    double getJointPosition(handle_t objectHandle);
 
-    void setJointPosition(int objectHandle, double position);
+    void setJointPosition(handle_t objectHandle, double position);
 
-    void setJointTargetPosition(int objectHandle, double targetPosition);
+    void setJointTargetPosition(handle_t objectHandle, double targetPosition);
 
-    double getJointTargetPosition(int objectHandle);
+    double getJointTargetPosition(handle_t objectHandle);
 
-    double getJointTargetForce(int jointHandle);
+    double getJointTargetForce(handle_t jointHandle);
 
-    void setJointTargetForce(int objectHandle, double forceOrTorque, bool signedValue);
+    void setJointTargetForce(handle_t objectHandle, double forceOrTorque, bool signedValue);
 
-    void getObjectChildPose(int objectHandle, double *pose);
-    std::array<double, 7> getObjectChildPose(int objectHandle);
+    void getObjectChildPose(handle_t objectHandle, double *pose);
+    std::array<double, 7> getObjectChildPose(handle_t objectHandle);
 
-    void setObjectChildPose(int objectHandle, const double *pose);
-    void setObjectChildPose(int objectHandle, std::array<double, 7> pose);
+    void setObjectChildPose(handle_t objectHandle, const double *pose);
+    void setObjectChildPose(handle_t objectHandle, std::array<double, 7> pose);
 
-    void getJointInterval(int objectHandle, bool *cyclic, double *interval);
-    std::array<double, 2> getJointInterval(int objectHandle, bool *cyclic);
+    void getJointInterval(handle_t objectHandle, bool *cyclic, double *interval);
+    std::array<double, 2> getJointInterval(handle_t objectHandle, bool *cyclic);
 
-    void setJointInterval(int objectHandle, bool cyclic, const double *interval);
-    void setJointInterval(int objectHandle, bool cyclic, std::array<double, 2> interval);
+    void setJointInterval(handle_t objectHandle, bool cyclic, const double *interval);
+    void setJointInterval(handle_t objectHandle, bool cyclic, std::array<double, 2> interval);
 
     // buildIdentityMatrix
 
@@ -820,13 +817,13 @@ namespace sim
 
     // setLightParameters
 
-    int getLightParameters(int objectHandle);
-    int getLightParameters(int objectHandle, std::array<double, 3> &diffuse);
-    int getLightParameters(int objectHandle, std::array<double, 3> &diffuse, std::array<double, 3> &specular);
+    int getLightParameters(handle_t objectHandle);
+    int getLightParameters(handle_t objectHandle, std::array<double, 3> &diffuse);
+    int getLightParameters(handle_t objectHandle, std::array<double, 3> &diffuse, std::array<double, 3> &specular);
 
     // getVelocity
 
-    std::pair<std::array<double, 3>, std::array<double, 3>> getObjectVelocity(int objectHandle);
+    std::pair<std::array<double, 3>, std::array<double, 3>> getObjectVelocity(handle_t objectHandle);
 
     // getJointVelocity
 
@@ -834,53 +831,53 @@ namespace sim
 
     // addForce
 
-    void setObjectColor(int objectHandle, int index, int colorComponent, const float *rgbData);
-    void setObjectColor(int objectHandle, int index, int colorComponent, const std::array<float, 3> &rgbData);
+    void setObjectColor(handle_t objectHandle, int index, int colorComponent, const float *rgbData);
+    void setObjectColor(handle_t objectHandle, int index, int colorComponent, const std::array<float, 3> &rgbData);
 
-    std::optional<std::array<float, 3>> getObjectColor(int objectHandle, int index, int colorComponent);
+    std::optional<std::array<float, 3>> getObjectColor(handle_t objectHandle, int index, int colorComponent);
 
-    void setShapeColor(int shapeHandle, const char *colorName, int colorComponent, const float *rgbData);
-    void setShapeColor(int shapeHandle, std::optional<std::string> colorName, int colorComponent, const std::array<float, 3> &rgbData);
+    void setShapeColor(handle_t shapeHandle, const char *colorName, int colorComponent, const float *rgbData);
+    void setShapeColor(handle_t shapeHandle, std::optional<std::string> colorName, int colorComponent, const std::array<float, 3> &rgbData);
 
-    std::optional<std::array<float, 3>> getShapeColor(int shapeHandle, std::optional<std::string> colorName, int colorComponent);
-    std::optional<std::array<float, 3>> getShapeColor(int shapeHandle, int colorComponent);
+    std::optional<std::array<float, 3>> getShapeColor(handle_t shapeHandle, std::optional<std::string> colorName, int colorComponent);
+    std::optional<std::array<float, 3>> getShapeColor(handle_t shapeHandle, int colorComponent);
 
     // getContactInfo
 
     // auxiliaryConsoleOpen
 
-    int importShape(const char *pathAndFilename, int options, double scalingFactor);
-    int importShape(const std::string &pathAndFilename, int options, double scalingFactor);
+    handle_t importShape(const char *pathAndFilename, int options, double scalingFactor);
+    handle_t importShape(const std::string &pathAndFilename, int options, double scalingFactor);
 
     // importMesh
 
     // exportMesh
 
-    int createMeshShape(int options, double shadingAngle, const double *vertices, int verticesSize, const int *indices, int indicesSize);
-    int createMeshShape(int options, double shadingAngle, const std::vector<double> &vertices, const std::vector<int> &indices);
+    handle_t createMeshShape(int options, double shadingAngle, const double *vertices, int verticesSize, const int *indices, int indicesSize);
+    handle_t createMeshShape(int options, double shadingAngle, const std::vector<double> &vertices, const std::vector<int> &indices);
 
-    int createPrimitiveShape(int primitiveType, const double *sizes, int options);
-    int createPrimitiveShape(int primitiveType, std::array<double, 3> sizes, int options);
+    handle_t createPrimitiveShape(int primitiveType, const double *sizes, int options);
+    handle_t createPrimitiveShape(int primitiveType, std::array<double, 3> sizes, int options);
 
-    int createHeightfieldShape(int options, double shadingAngle, int xPointCount, int yPointCount, double xSize, const double *heights);
-    int createHeightfieldShape(int options, double shadingAngle, int xPointCount, int yPointCount, double xSize, const std::vector<double> &heights);
+    handle_t createHeightfieldShape(int options, double shadingAngle, int xPointCount, int yPointCount, double xSize, const double *heights);
+    handle_t createHeightfieldShape(int options, double shadingAngle, int xPointCount, int yPointCount, double xSize, const std::vector<double> &heights);
 
-    void getShapeMesh(int shapeHandle, double **vertices, int *verticesSize, int **indices, int *indicesSize, double **normals = nullptr);
-    void getShapeMesh(int shapeHandle, std::vector<double> vertices, std::vector<int> indices, std::optional<std::vector<double>> normals = {});
+    void getShapeMesh(handle_t shapeHandle, double **vertices, int *verticesSize, int **indices, int *indicesSize, double **normals = nullptr);
+    void getShapeMesh(handle_t shapeHandle, std::vector<double> vertices, std::vector<int> indices, std::optional<std::vector<double>> normals = {});
 
-    int createJoint(int jointType, int jointMode, int options, const double *sizes);
-    int createJoint(int jointType, int jointMode, int options = 0, std::optional<std::array<double, 2>> sizes = {});
+    handle_t createJoint(int jointType, int jointMode, int options, const double *sizes);
+    handle_t createJoint(int jointType, int jointMode, int options = 0, std::optional<std::array<double, 2>> sizes = {});
 
-    int createDummy(double size = 0.01);
+    handle_t createDummy(double size = 0.01);
 
-    int createForceSensor(int options, const int *intParams, const double *floatParams);
-    int createForceSensor(int options, int type, int valueCount, int thresholdCount, double size, double forceThreshold, double torqueThreshold);
+    handle_t createForceSensor(int options, const int *intParams, const double *floatParams);
+    handle_t createForceSensor(int options, int type, int valueCount, int thresholdCount, double size, double forceThreshold, double torqueThreshold);
 
-    int createVisionSensor(int options, const int *intParams, const double *floatParams);
-    int createVisionSensor(int options, std::array<int, 2> resolution, double clipNear, double clipFar, double viewAngleOrOrthoSize, double xSize, std::array<float, 3> nullPixelColor);
+    handle_t createVisionSensor(int options, const int *intParams, const double *floatParams);
+    handle_t createVisionSensor(int options, std::array<int, 2> resolution, double clipNear, double clipFar, double viewAngleOrOrthoSize, double xSize, std::array<float, 3> nullPixelColor);
 
-    int createProximitySensor(int sensorType, int options, const int *intParams, const double *floatParams);
-    int createProximitySensor(int sensorType, int options, int faceCount, int faceCountFar, int subdivisions, int subdivisionsFar, int randDetSampleCountPerReading, int randDetIndividualRayDetCntForTrig, double offset, double range, std::array<double, 2> size, std::array<double, 2> sizeFar, double insideGap, double radius, double radiusFar, double angle, double thresholdAngle, double smallestDetDist, double sensPointSize);
+    handle_t createProximitySensor(int sensorType, int options, const int *intParams, const double *floatParams);
+    handle_t createProximitySensor(int sensorType, int options, int faceCount, int faceCountFar, int subdivisions, int subdivisionsFar, int randDetSampleCountPerReading, int randDetIndividualRayDetCntForTrig, double offset, double range, std::array<double, 2> size, std::array<double, 2> sizeFar, double insideGap, double radius, double radiusFar, double angle, double thresholdAngle, double smallestDetDist, double sensPointSize);
 
     std::pair<std::array<double, 3>, double> getRotationAxis(std::array<double, 12> matrixStart, std::array<double, 12> matrixGoal);
     std::pair<std::array<double, 3>, double> getRotationAxis(std::array<double, 7> matrixStart, std::array<double, 7> matrixGoal);
@@ -897,13 +894,13 @@ namespace sim
 
     // checkVisionSensor
 
-    unsigned char * getVisionSensorImg(int sensorHandle, int options, double rgbaCutOff, std::array<int, 2> pos = {0, 0}, std::array<int, 2> size = {0, 0}, std::array<int, 2> *resolution = nullptr);
+    unsigned char * getVisionSensorImg(handle_t sensorHandle, int options, double rgbaCutOff, std::array<int, 2> pos = {0, 0}, std::array<int, 2> size = {0, 0}, std::array<int, 2> *resolution = nullptr);
 
-    std::array<int, 2> getVisionSensorRes(int visionSensorHandle);
+    std::array<int, 2> getVisionSensorRes(handle_t visionSensorHandle);
 
-    std::array<double, 4> getObjectQuaternion(int objectHandle, int relativeToObjectHandle);
+    std::array<double, 4> getObjectQuaternion(handle_t objectHandle, handle_t relativeToObjectHandle);
 
-    void setObjectQuaternion(int objectHandle, int relativeToObjectHandle, const std::array<double, 4> &quaternion);
+    void setObjectQuaternion(handle_t objectHandle, handle_t relativeToObjectHandle, const std::array<double, 4> &quaternion);
 
     // convexDecompose
 
@@ -925,7 +922,7 @@ namespace sim
 
     // createOctree
 
-    int createPointCloud(double maxVoxelSize, int maxPtCntPerVoxel, int options, double pointSize);
+    handle_t createPointCloud(double maxVoxelSize, int maxPtCntPerVoxel, int options, double pointSize);
 
     // setPointCloudOptions
 
@@ -941,12 +938,12 @@ namespace sim
 
     // intersectPointsWithPointCloud
 
-    int insertObjectIntoPointCloud(int pointCloudHandle, int objectHandle, int options, double gridSize, std::optional<std::array<unsigned char, 3>> color = {}, std::optional<float> duplicateTolerance = {});
+    int insertObjectIntoPointCloud(handle_t pointCloudHandle, handle_t objectHandle, int options, double gridSize, std::optional<std::array<unsigned char, 3>> color = {}, std::optional<float> duplicateTolerance = {});
 
     // subtractObjectFromPointCloud
 
-    bool checkOctreePointOccupancy(int octreeHandle, int options, const double *pts, int ptCnt, unsigned int *tag = nullptr, unsigned long long int *location = nullptr);
-    bool checkOctreePointOccupancy(int octreeHandle, int options, const std::vector<double> &pts, unsigned int *tag = nullptr, unsigned long long int *location = nullptr);
+    bool checkOctreePointOccupancy(handle_t octreeHandle, int options, const double *pts, int ptCnt, unsigned int *tag = nullptr, unsigned long long int *location = nullptr);
+    bool checkOctreePointOccupancy(handle_t octreeHandle, int options, const std::vector<double> &pts, unsigned int *tag = nullptr, unsigned long long int *location = nullptr);
 
     // applyTexture
 
@@ -954,15 +951,15 @@ namespace sim
 
     // getJointDependency
 
-    double getShapeMass(int shapeHandle);
+    double getShapeMass(handle_t shapeHandle);
 
-    void setShapeMass(int shapeHandle, double mass);
+    void setShapeMass(handle_t shapeHandle, double mass);
 
-    void getShapeInertia(int shapeHandle, double *inertiaMatrix, double *transformationMatrix);
-    std::pair<std::array<double, 9>, std::array<double, 12>> getShapeInertia(int shapeHandle);
+    void getShapeInertia(handle_t shapeHandle, double *inertiaMatrix, double *transformationMatrix);
+    std::pair<std::array<double, 9>, std::array<double, 12>> getShapeInertia(handle_t shapeHandle);
 
-    void setShapeInertia(int shapeHandle, const double *inertiaMatrix, const double *transformationMatrix);
-    void setShapeInertia(int shapeHandle, std::array<double, 9> inertiaMatrix, std::array<double, 12> transformationMatrix);
+    void setShapeInertia(handle_t shapeHandle, const double *inertiaMatrix, const double *transformationMatrix);
+    void setShapeInertia(handle_t shapeHandle, std::array<double, 9> inertiaMatrix, std::array<double, 12> transformationMatrix);
 
     // generateShapeFromPath
 
@@ -1042,73 +1039,73 @@ namespace sim
 
     // dynCallback
 
-    void setBoolProperty(int target, const std::string &pname, bool value);
+    void setBoolProperty(handle_t target, const std::string &pname, bool value);
 
-    bool getBoolProperty(int target, const std::string &pname);
+    bool getBoolProperty(handle_t target, const std::string &pname);
 
-    void setIntProperty(int target, const std::string &pname, int value);
+    void setIntProperty(handle_t target, const std::string &pname, int value);
 
-    int getIntProperty(int target, const std::string &pname);
+    int getIntProperty(handle_t target, const std::string &pname);
 
-    void setFloatProperty(int target, const std::string &pname, double value);
+    void setFloatProperty(handle_t target, const std::string &pname, double value);
 
-    double getFloatProperty(int target, const std::string &pname);
+    double getFloatProperty(handle_t target, const std::string &pname);
 
-    void setStringProperty(int target, const std::string &pname, const std::string &value);
+    void setStringProperty(handle_t target, const std::string &pname, const std::string &value);
 
-    std::string getStringProperty(int target, const std::string &pname);
+    std::string getStringProperty(handle_t target, const std::string &pname);
 
-    void setBufferProperty(int target, const std::string &pname, const std::string &value);
+    void setBufferProperty(handle_t target, const std::string &pname, const std::string &value);
 
-    std::string getBufferProperty(int target, const std::string &pname);
+    std::string getBufferProperty(handle_t target, const std::string &pname);
 
-    void setVector3Property(int target, const std::string &pname, std::array<double, 3> value);
+    void setVector3Property(handle_t target, const std::string &pname, std::array<double, 3> value);
 
-    std::array<double, 3> getVector3Property(int target, const std::string &pname);
+    std::array<double, 3> getVector3Property(handle_t target, const std::string &pname);
 
-    void setQuaternionProperty(int target, const std::string &pname, std::array<double, 4> value);
+    void setQuaternionProperty(handle_t target, const std::string &pname, std::array<double, 4> value);
 
-    std::array<double, 4> getQuaternionProperty(int target, const std::string &pname);
+    std::array<double, 4> getQuaternionProperty(handle_t target, const std::string &pname);
 
-    void setPoseProperty(int target, const std::string &pname, std::array<double, 7> value);
+    void setPoseProperty(handle_t target, const std::string &pname, std::array<double, 7> value);
 
-    std::array<double, 7> getPoseProperty(int target, const std::string &pname);
+    std::array<double, 7> getPoseProperty(handle_t target, const std::string &pname);
 
-    void setColorProperty(int target, const std::string &pname, std::array<float, 3> value);
+    void setColorProperty(handle_t target, const std::string &pname, std::array<float, 3> value);
 
-    std::array<float, 3> getColorProperty(int target, const std::string &pname);
+    std::array<float, 3> getColorProperty(handle_t target, const std::string &pname);
 
-    void setFloatArrayProperty(int target, const std::string &pname, const std::vector<double> &value);
+    void setFloatArrayProperty(handle_t target, const std::string &pname, const std::vector<double> &value);
 
-    std::vector<double> getFloatArrayProperty(int target, const std::string &pname);
+    std::vector<double> getFloatArrayProperty(handle_t target, const std::string &pname);
 
-    void setIntArrayProperty(int target, const std::string &pname, const std::vector<int> &value);
+    void setIntArrayProperty(handle_t target, const std::string &pname, const std::vector<int> &value);
 
-    std::vector<int> getIntArrayProperty(int target, const std::string &pname);
+    std::vector<int> getIntArrayProperty(handle_t target, const std::string &pname);
 
 #if 0
-    void setFloatArray2Property(int target, const std::string &pname, const std::array<double, 2> &value);
+    void setFloatArray2Property(handle_t target, const std::string &pname, const std::array<double, 2> &value);
 
-    std::array<double, 2> getFloatArray2Property(int target, const std::string &pname);
+    std::array<double, 2> getFloatArray2Property(handle_t target, const std::string &pname);
 
-    void setFloatArray3Property(int target, const std::string &pname, const std::array<double, 3> &value);
+    void setFloatArray3Property(handle_t target, const std::string &pname, const std::array<double, 3> &value);
 
-    std::array<double, 3> getFloatArray3Property(int target, const std::string &pname);
+    std::array<double, 3> getFloatArray3Property(handle_t target, const std::string &pname);
 #endif
 
-    void setIntArray2Property(int target, const std::string &pname, const std::array<int, 2> &value);
+    void setIntArray2Property(handle_t target, const std::string &pname, const std::array<int, 2> &value);
 
-    std::array<int, 2> getIntArray2Property(int target, const std::string &pname);
+    std::array<int, 2> getIntArray2Property(handle_t target, const std::string &pname);
 
-    void removeProperty(int target, const std::string &pname);
+    void removeProperty(handle_t target, const std::string &pname);
 
-    bool getPropertyName(int target, int index, std::string &pname);
-    bool getPropertyName(int target, int index, std::string &pname, SPropertyOptions &opts);
-    bool getPropertyName(int target, int index, std::string &pname, std::string &pclass);
-    bool getPropertyName(int target, int index, std::string &pname, std::string &pclass, SPropertyOptions &opts);
+    bool getPropertyName(handle_t target, int index, std::string &pname);
+    bool getPropertyName(handle_t target, int index, std::string &pname, SPropertyOptions &opts);
+    bool getPropertyName(handle_t target, int index, std::string &pname, std::string &pclass);
+    bool getPropertyName(handle_t target, int index, std::string &pname, std::string &pclass, SPropertyOptions &opts);
 
-    bool getPropertyInfo(int target, const std::string &pname, SPropertyInfo &info);
-    bool getPropertyInfo(int target, const std::string &pname, SPropertyInfo &info, SPropertyOptions &opts);
+    bool getPropertyInfo(handle_t target, const std::string &pname, SPropertyInfo &info);
+    bool getPropertyInfo(handle_t target, const std::string &pname, SPropertyInfo &info, SPropertyOptions &opts);
 
 } // namespace sim
 

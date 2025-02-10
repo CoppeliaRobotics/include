@@ -56,7 +56,7 @@ void addStackDebugLog(const std::string &fmt, Arguments&&... args)
     }
 }
 
-static void addStackDebugDump(int stackHandle)
+static void addStackDebugDump(handle_t stackHandle)
 {
     if(debugStackEnabled)
         debugStack(stackHandle);
@@ -106,30 +106,6 @@ std::string getLastError()
     std::string s(ret);
     releaseBuffer(ret);
     return s;
-}
-
-int loadModule(const char *filenameAndPath, const char *pluginName)
-{
-    int handle = simLoadModule(filenameAndPath, pluginName);
-    if(handle >= 0)
-        return handle;
-    if(handle == -1)
-        throw api_error("simLoadModule", "plugin could not initialize");
-    if(handle == -2)
-        throw api_error("simLoadModule", "plugin is missing entry points");
-    if(handle == -3)
-        throw api_error("simLoadModule", "plugin could not be loaded");
-    throw api_error("simLoadModule", "unknown error");
-}
-
-int loadModule(const std::string &filenameAndPath, const std::string &pluginName)
-{
-    return loadModule(filenameAndPath.c_str(), pluginName.c_str());
-}
-
-int unloadModule(int pluginhandle)
-{
-    return simUnloadModule(pluginhandle);
 }
 
 void setBoolParam(int parameter, bool value)
@@ -250,32 +226,32 @@ std::optional<int> getNamedInt32Param(const std::string &parameter)
     return std::stoi(*v);
 }
 
-int getObject(const char *objectPath, int index, int proxy, int options)
+handle_t getObject(const char *objectPath, int index, handle_t proxy, int options)
 {
-    int handle = simGetObject(objectPath, index, proxy, options);
+    handle_t handle = simGetObject(objectPath, index, proxy, options);
     if(handle == -1)
         throw api_error("simGetObject");
     return handle;
 }
 
-int getObject(const std::string &objectPath, int index, int proxy, int options)
+handle_t getObject(const std::string &objectPath, int index, handle_t proxy, int options)
 {
     return getObject(objectPath.c_str(), index, proxy, options);
 }
 
-int getObject(const std::string &objectPath, int index, int proxy, bool noError)
+handle_t getObject(const std::string &objectPath, int index, handle_t proxy, bool noError)
 {
     int options = 0;
     if(noError) options |= 1;
     return getObject(objectPath, index, proxy, options);
 }
 
-int getObject(const std::string &objectPath, int index, int proxy)
+handle_t getObject(const std::string &objectPath, int index, handle_t proxy)
 {
     return getObject(objectPath, index, proxy, 0);
 }
 
-long long int getObjectUid(int objectHandle)
+long long int getObjectUid(handle_t objectHandle)
 {
     long long int ret = simGetObjectUid(objectHandle);
     if(ret == -1)
@@ -283,33 +259,33 @@ long long int getObjectUid(int objectHandle)
     return ret;
 }
 
-int getObjectFromUid(long long int uid, int options)
+handle_t getObjectFromUid(long long int uid, int options)
 {
-    int handle = simGetObjectFromUid(uid, options);
+    handle_t handle = simGetObjectFromUid(uid, options);
     if(handle == -1)
         throw api_error("simGetObjectFromUid");
     return handle;
 }
 
-int getObjectFromUid(long long int uid, bool noError)
+handle_t getObjectFromUid(long long int uid, bool noError)
 {
     int options = 0;
     if(noError) options |= 1;
     return getObjectFromUid(uid, options);
 }
 
-int getScriptHandleEx(int scriptType, int objHandle, std::optional<std::string> scriptName)
+handle_t getScriptHandleEx(int scriptType, handle_t objHandle, std::optional<std::string> scriptName)
 {
     return simGetScriptHandleEx(scriptType, objHandle, scriptName ? scriptName->c_str() : nullptr);
 }
 
-void removeObjects(const std::vector<int> &objectHandles)
+void removeObjects(const std::vector<handle_t> &objectHandles)
 {
     if(simRemoveObjects(objectHandles.data(), objectHandles.size()) == -1)
         throw api_error("simRemoveObjects");
 }
 
-int removeModel(int objectHandle)
+int removeModel(handle_t objectHandle)
 {
     int n = simRemoveModel(objectHandle);
     if(n == -1)
@@ -317,7 +293,7 @@ int removeModel(int objectHandle)
     return n;
 }
 
-std::string getObjectAlias(int objectHandle, int options)
+std::string getObjectAlias(handle_t objectHandle, int options)
 {
     char *ret;
     if((ret = simGetObjectAlias(objectHandle, options)) == NULL)
@@ -327,26 +303,27 @@ std::string getObjectAlias(int objectHandle, int options)
     return s;
 }
 
-void setObjectAlias(int objectHandle, const std::string &alias, int options)
+void setObjectAlias(handle_t objectHandle, const std::string &alias, int options)
 {
     if(simSetObjectAlias(objectHandle, alias.c_str(), options) == -1)
         throw api_error("simSetObjectAlias");
 }
 
-int getObjectParent(int objectHandle)
+handle_t getObjectParent(handle_t objectHandle)
 {
     return simGetObjectParent(objectHandle);
 }
 
-int getObjectChild(int objectHandle, int index)
+handle_t getObjectChild(handle_t objectHandle, int index)
 {
     return simGetObjectChild(objectHandle, index);
 }
 
-std::vector<int> getObjectChildren(int objectHandle)
+std::vector<handle_t> getObjectChildren(handle_t objectHandle)
 {
-    std::vector<int> ret;
-    for(int index = 0, childHandle; ; index++)
+    std::vector<handle_t> ret;
+    handle_t childHandle;
+    for(int index = 0; ; index++)
     {
         if((childHandle = simGetObjectChild(objectHandle, index)) == -1) break;
         ret.push_back(childHandle);
@@ -354,13 +331,13 @@ std::vector<int> getObjectChildren(int objectHandle)
     return ret;
 }
 
-void setObjectParent(int objectHandle, int parentObjectHandle, bool keepInPlace)
+void setObjectParent(handle_t objectHandle, handle_t parentObjectHandle, bool keepInPlace)
 {
     if(simSetObjectParent(objectHandle, parentObjectHandle, keepInPlace) == -1)
         throw api_error("simSetObjectParent");
 }
 
-int getObjectType(int objectHandle)
+int getObjectType(handle_t objectHandle)
 {
     int ret;
     if((ret = simGetObjectType(objectHandle)) == -1)
@@ -368,7 +345,7 @@ int getObjectType(int objectHandle)
     return ret;
 }
 
-int getJointType(int objectHandle)
+int getJointType(handle_t objectHandle)
 {
     int type = simGetJointType(objectHandle);
     if(type == -1)
@@ -414,26 +391,26 @@ void saveScene(const std::string &filename)
     return saveScene(filename.c_str());
 }
 
-int loadModel(const char *filename)
+handle_t loadModel(const char *filename)
 {
-    int ret = simLoadModel(filename);
+    handle_t ret = simLoadModel(filename);
     if(ret == -1)
         throw api_error("simLoadModel");
     return ret;
 }
 
-int loadModel(const std::string &filename)
+handle_t loadModel(const std::string &filename)
 {
     return loadModel(filename.c_str());
 }
 
-void saveModel(int baseOfModelHandle, const char *filename)
+void saveModel(handle_t baseOfModelHandle, const char *filename)
 {
     if(simSaveModel(baseOfModelHandle, filename) == -1)
         throw api_error("simSaveModel");
 }
 
-void saveModel(int baseOfModelHandle, const std::string &filename)
+void saveModel(handle_t baseOfModelHandle, const std::string &filename)
 {
     return saveModel(baseOfModelHandle, filename.c_str());
 }
@@ -451,13 +428,13 @@ bool doesFileExist(const std::string &filename)
     return doesFileExist(filename.c_str());
 }
 
-std::vector<int> getObjectSel()
+std::vector<handle_t> getObjectSel()
 {
-    int *buf;
+    handle_t *buf;
     int count;
     if((buf = simGetObjectSel(&count)) == NULL)
         throw api_error("simGetObjectSel");
-    std::vector<int> handles;
+    std::vector<handle_t> handles;
     handles.resize(count);
     for(size_t i = 0; i < count; i++)
         handles[i] = buf[i];
@@ -465,7 +442,7 @@ std::vector<int> getObjectSel()
     return handles;
 }
 
-int setObjectSel(const int *handles, int cnt)
+int setObjectSel(const handle_t *handles, int cnt)
 {
     int ret = simSetObjectSel(handles, cnt);
     if(ret == -1)
@@ -473,24 +450,24 @@ int setObjectSel(const int *handles, int cnt)
     return ret;
 }
 
-int setObjectSel(const std::vector<int> &handles)
+int setObjectSel(const std::vector<handle_t> &handles)
 {
     return setObjectSel(handles.data(), handles.size());
 }
 
-// int simAssociateScriptWithObject(int scriptHandle, int associatedObjectHandle);
+// int simAssociateScriptWithObject(handle_t scriptHandle, handle_t associatedObjectHandle);
 
 // int simHandleMainScript();
 
-// int simResetScript(int scriptHandle);
+// int simResetScript(handle_t scriptHandle);
 
 // int simAddScript(int scriptProperty);
 
-// int simRemoveScript(int scriptHandle);
+// int simRemoveScript(handle_t scriptHandle);
 
 // int simRefreshDialogs(int refreshDegree);
 
-// int simResetProximitySensor(int sensorHandle);
+// int simResetProximitySensor(handle_t sensorHandle);
 
 void * createBuffer(int size)
 {
@@ -506,7 +483,7 @@ void releaseBuffer(const void *buffer)
         throw api_error("simReleaseBuffer");
 }
 
-bool checkCollision(int entity1Handle, int entity2Handle)
+bool checkCollision(handle_t entity1Handle, handle_t entity2Handle)
 {
     int ret = simCheckCollision(entity1Handle, entity2Handle);
     if(ret == -1)
@@ -530,7 +507,7 @@ bool checkCollision(int entity1Handle, int entity2Handle)
 
 // char *simGetModuleName(int index, unsigned char *moduleVersion);
 
-// int simAdjustView(int viewHandleOrIndex, int associatedViewableObjectHandle, int options, const char *viewLabel);
+// int simAdjustView(int viewHandleOrIndex, handle_t associatedViewableObjectHandle, int options, const char *viewLabel);
 
 void setLastError(const std::string &msg)
 {
@@ -538,11 +515,11 @@ void setLastError(const std::string &msg)
         throw api_error("simSetLastError");
 }
 
-// int simResetGraph(int graphHandle);
+// int simResetGraph(handle_t graphHandle);
 
-// int simDestroyGraphCurve(int graphHandle, int curveId);
+// int simDestroyGraphCurve(handle_t graphHandle, int curveId);
 
-// int simDuplicateGraphCurveToStatic(int graphHandle, int curveId, const char *curveName);
+// int simDuplicateGraphCurveToStatic(handle_t graphHandle, int curveId, const char *curveName);
 
 // int simSetNavigationMode(int navigationMode);
 
@@ -611,22 +588,22 @@ int registerScriptVariable(const std::string &varName, const std::string &varVal
     return registerScriptVariableRaw(varName, s, stackID);
 }
 
-// int simRegisterScriptFuncHook(int scriptHandle, const char *funcToHook, const char *userFunction, bool executeBefore, int options);
+// int simRegisterScriptFuncHook(handle_t scriptHandle, const char *funcToHook, const char *userFunction, bool executeBefore, int options);
 
-void copyPasteObjects(std::vector<int> &shapeHandles, int options)
+void copyPasteObjects(std::vector<handle_t> &shapeHandles, int options)
 {
     if(simCopyPasteObjects(shapeHandles.data(), shapeHandles.size(), options) == -1)
         throw api_error("simCopyPasteObjects");
 }
 
-std::vector<int> copyPasteObjects(const std::vector<int> &shapeHandles, int options)
+std::vector<handle_t> copyPasteObjects(const std::vector<handle_t> &shapeHandles, int options)
 {
-    std::vector<int> ret(shapeHandles);
+    std::vector<handle_t> ret(shapeHandles);
     copyPasteObjects(ret, options);
     return ret;
 }
 
-// int simRemoveDrawingObject(int objectHandle);
+// int simRemoveDrawingObject(handle_t objectHandle);
 
 int announceSceneContentChange()
 {
@@ -652,13 +629,13 @@ int announceSceneContentChange()
 
 // char *simGetSignalName(int signalIndex, int signalType);
 
-void setObjectProperty(int objectHandle, int prop)
+void setObjectProperty(handle_t objectHandle, int prop)
 {
     if(simSetObjectProperty(objectHandle, prop) == -1)
         throw api_error("simSetObjectProperty");
 }
 
-int getObjectProperty(int objectHandle)
+int getObjectProperty(handle_t objectHandle)
 {
     int ret = simGetObjectProperty(objectHandle);
     if(ret == -1)
@@ -666,32 +643,32 @@ int getObjectProperty(int objectHandle)
     return ret;
 }
 
-// int simSetObjectSpecialProperty(int objectHandle, int prop);
+// int simSetObjectSpecialProperty(handle_t objectHandle, int prop);
 
-// int simGetObjectSpecialProperty(int objectHandle);
+// int simGetObjectSpecialProperty(handle_t objectHandle);
 
-// int simSetExplicitHandling(int objectHandle, int explicitFlags);
+// int simSetExplicitHandling(handle_t objectHandle, int explicitFlags);
 
-// int simGetExplicitHandling(int objectHandle);
+// int simGetExplicitHandling(handle_t objectHandle);
 
-int getLinkDummy(int dummyHandle)
+handle_t getLinkDummy(handle_t dummyHandle)
 {
     return simGetLinkDummy(dummyHandle);
 }
 
-void setLinkDummy(int dummyHandle, int linkedDummyHandle)
+void setLinkDummy(handle_t dummyHandle, handle_t linkedDummyHandle)
 {
     if(simSetLinkDummy(dummyHandle, linkedDummyHandle) == -1)
         throw api_error("simSetLinkDummy");
 }
 
-void setModelProperty(int objectHandle, int modelProperty)
+void setModelProperty(handle_t objectHandle, int modelProperty)
 {
     if(simSetModelProperty(objectHandle, modelProperty) == -1)
         throw api_error("simSetModelProperty");
 }
 
-int getModelProperty(int objectHandle)
+int getModelProperty(handle_t objectHandle)
 {
     int ret = simGetModelProperty(objectHandle);
     if(ret == -1)
@@ -699,19 +676,19 @@ int getModelProperty(int objectHandle)
     return ret;
 }
 
-void resetDynamicObject(int objectHandle)
+void resetDynamicObject(handle_t objectHandle)
 {
     if(simResetDynamicObject(objectHandle) == -1)
         throw api_error("simResetDynamicObject");
 }
 
-void setJointMode(int jointHandle, int jointMode)
+void setJointMode(handle_t jointHandle, int jointMode)
 {
     if(simSetJointMode(jointHandle, jointMode, 0) == -1)
         throw api_error("simSetJointMode");
 }
 
-int getJointMode(int jointHandle)
+int getJointMode(handle_t jointHandle)
 {
     int ret = simGetJointMode(jointHandle, nullptr);
     if(ret == -1)
@@ -721,21 +698,21 @@ int getJointMode(int jointHandle)
 
 // int simSerialOpen(const char *portString, int baudRate, void *reserved1, void *reserved2);
 
-// int simSerialClose(int portHandle);
+// int simSerialClose(handle_t portHandle);
 
-// int simSerialSend(int portHandle, const char *data, int dataLength);
+// int simSerialSend(handle_t portHandle, const char *data, int dataLength);
 
-// int simSerialRead(int portHandle, char *buffer, int dataLengthToRead);
+// int simSerialRead(handle_t portHandle, char *buffer, int dataLengthToRead);
 
-// int simSerialCheck(int portHandle);
+// int simSerialCheck(handle_t portHandle);
 
-// int simAuxiliaryConsoleClose(int consoleHandle);
+// int simAuxiliaryConsoleClose(handle_t consoleHandle);
 
-// int simAuxiliaryConsoleShow(int consoleHandle, bool showState);
+// int simAuxiliaryConsoleShow(handle_t consoleHandle, bool showState);
 
-// int simAuxiliaryConsolePrint(int consoleHandle, const char *text);
+// int simAuxiliaryConsolePrint(handle_t consoleHandle, const char *text);
 
-int getObjectInt32Param(int objectHandle, int parameterID)
+int getObjectInt32Param(handle_t objectHandle, int parameterID)
 {
     int ret;
     if(simGetObjectInt32Param(objectHandle, parameterID, &ret) == -1)
@@ -743,13 +720,13 @@ int getObjectInt32Param(int objectHandle, int parameterID)
     return ret;
 }
 
-void setObjectInt32Param(int objectHandle, int parameterID, int parameter)
+void setObjectInt32Param(handle_t objectHandle, int parameterID, int parameter)
 {
     if(simSetObjectInt32Param(objectHandle, parameterID, parameter) == -1)
         throw api_error("simSetObjectInt32Param");
 }
 
-std::string getObjectStringParam(int objectHandle, int parameterID)
+std::string getObjectStringParam(handle_t objectHandle, int parameterID)
 {
     char *ret;
     int len;
@@ -760,7 +737,7 @@ std::string getObjectStringParam(int objectHandle, int parameterID)
     return s;
 }
 
-void setObjectStringParam(int objectHandle, int parameterID, const std::string &parameter)
+void setObjectStringParam(handle_t objectHandle, int parameterID, const std::string &parameter)
 {
     // XXX: fix const ptrs in the regular API
     if(simSetObjectStringParam(objectHandle, parameterID, const_cast<char*>(parameter.data()), parameter.size()) == -1)
@@ -786,7 +763,7 @@ std::string persistentDataRead(const std::string &dataName)
     return ret;
 }
 
-bool isHandle(int generalObjectHandle, int generalObjectType)
+bool isHandle(handle_t generalObjectHandle, int generalObjectType)
 {
     int ret = simIsHandle(generalObjectHandle, generalObjectType);
     if(ret == -1)
@@ -794,31 +771,31 @@ bool isHandle(int generalObjectHandle, int generalObjectType)
     return ret > 0;
 }
 
-// int simResetVisionSensor(int visionSensorHandle);
+// int simResetVisionSensor(handle_t visionSensorHandle);
 
-void setVisionSensorImg(int sensorHandle, const unsigned char *img, int options, std::array<int, 2> pos, std::array<int, 2> size)
+void setVisionSensorImg(handle_t sensorHandle, const unsigned char *img, int options, std::array<int, 2> pos, std::array<int, 2> size)
 {
     if(simSetVisionSensorImg(sensorHandle, img, options, pos.data(), size.data()) == -1)
         throw api_error("simSetVisionSensorImg");
 }
 
-// int simRuckigRemove(int objHandle);
+// int simRuckigRemove(handle_t objHandle);
 
-int groupShapes(const std::vector<int> &shapeHandles, bool merge)
+handle_t groupShapes(const std::vector<handle_t> &shapeHandles, bool merge)
 {
-    int groupedHandle = simGroupShapes(shapeHandles.data(), shapeHandles.size() * (merge ? -1 : 1));
+    handle_t groupedHandle = simGroupShapes(shapeHandles.data(), shapeHandles.size() * (merge ? -1 : 1));
     if(groupedHandle == -1)
         throw api_error("simGroupShapes");
     return groupedHandle;
 }
 
-std::vector<int> ungroupShape(int shapeHandle)
+std::vector<handle_t> ungroupShape(handle_t shapeHandle)
 {
     int shapeCount = 0;
-    int *shapeHandles = simUngroupShape(shapeHandle, &shapeCount);
+    handle_t *shapeHandles = simUngroupShape(shapeHandle, &shapeCount);
     if(shapeHandles == nullptr)
         throw api_error("simUngroupShape");
-    std::vector<int> ret(shapeCount, -1);
+    std::vector<handle_t> ret(shapeCount, -1);
     for(size_t i = 0; i < shapeCount; i++)
         ret[i] = shapeHandles[i];
     releaseBuffer(shapeHandles);
@@ -830,7 +807,7 @@ void quitSimulator()
     simQuitSimulator(true);
 }
 
-void setShapeMaterial(int shapeHandle, int materialIdOrShapeHandle)
+void setShapeMaterial(handle_t shapeHandle, handle_t materialIdOrShapeHandle)
 {
     if(simSetShapeMaterial(shapeHandle, materialIdOrShapeHandle) == -1)
         throw api_error("simSetShapeMaterial");
@@ -840,23 +817,23 @@ void setShapeMaterial(int shapeHandle, int materialIdOrShapeHandle)
 
 // unsigned char *simReadTexture(int textureId, int options, int posX, int posY, int sizeX, int sizeY);
 
-void writeCustomDataBlock(int objectHandle, const char *tagName, const char *data, int dataSize)
+void writeCustomDataBlock(handle_t objectHandle, const char *tagName, const char *data, int dataSize)
 {
     if(simWriteCustomDataBlock(objectHandle, tagName, data, dataSize) == -1)
         throw api_error("simWriteCustomDataBlock");
 }
 
-void writeCustomDataBlock(int objectHandle, const std::string &tagName, const std::string &data)
+void writeCustomDataBlock(handle_t objectHandle, const std::string &tagName, const std::string &data)
 {
     return writeCustomDataBlock(objectHandle, tagName.c_str(), data.c_str(), data.length());
 }
 
-char * readCustomDataBlock(int objectHandle, const char *tagName, int *dataSize)
+char * readCustomDataBlock(handle_t objectHandle, const char *tagName, int *dataSize)
 {
     return simReadCustomDataBlock(objectHandle, tagName, dataSize);
 }
 
-std::optional<std::string> readCustomDataBlock(int objectHandle, const std::string &tagName)
+std::optional<std::string> readCustomDataBlock(handle_t objectHandle, const std::string &tagName)
 {
     int size = 0;
     char *buf = readCustomDataBlock(objectHandle, tagName.c_str(), &size);
@@ -866,12 +843,12 @@ std::optional<std::string> readCustomDataBlock(int objectHandle, const std::stri
     return s;
 }
 
-char * readCustomDataBlockTags(int objectHandle, int *tagCount)
+char * readCustomDataBlockTags(handle_t objectHandle, int *tagCount)
 {
     return simReadCustomDataBlockTags(objectHandle, tagCount);
 }
 
-std::vector<std::string> readCustomDataBlockTags(int objectHandle)
+std::vector<std::string> readCustomDataBlockTags(handle_t objectHandle)
 {
     std::vector<std::string> ret;
     int count = 0;
@@ -891,7 +868,7 @@ std::vector<std::string> readCustomDataBlockTags(int objectHandle)
     return ret;
 }
 
-int getObjects(int index, int objectType)
+handle_t getObjects(int index, int objectType)
 {
     int ret;
     if((ret = simGetObjects(index, objectType)) == -1)
@@ -899,10 +876,11 @@ int getObjects(int index, int objectType)
     return ret;
 }
 
-std::vector<int> getObjects(int objectType)
+std::vector<handle_t> getObjects(int objectType)
 {
-    std::vector<int> ret;
-    int i = 0, handle = -1;
+    std::vector<handle_t> ret;
+    int i = 0;
+    handle_t handle = -1;
     while(1)
     {
         handle = simGetObjects(i++, objectType);
@@ -912,28 +890,28 @@ std::vector<int> getObjects(int objectType)
     return ret;
 }
 
-std::vector<int> getObjectsInTree(int treeBaseHandle, int objectType, int options)
+std::vector<handle_t> getObjectsInTree(handle_t treeBaseHandle, int objectType, int options)
 {
-    int *ret;
+    handle_t *ret;
     int count;
     if((ret = simGetObjectsInTree(treeBaseHandle, objectType, options, &count)) == NULL)
         throw api_error("simGetObjectsInTree");
-    std::vector<int> v;
+    std::vector<handle_t> v;
     for(size_t i = 0; i < count; i++) v.push_back(ret[i]);
     return v;
 }
 
-// int simGetShapeTextureId(int shapeHandle);
+// int simGetShapeTextureId(handle_t shapeHandle);
 
 // int simCreateCollectionEx(int options);
 
-// int simAddItemToCollection(int collectionHandle, int what, int objectHandle, int options);
+// int simAddItemToCollection(handle_t collectionHandle, int what, handle_t objectHandle, int options);
 
-// int simDestroyCollection(int collectionHandle);
+// int simDestroyCollection(handle_t collectionHandle);
 
-// int *simGetCollectionObjects(int collectionHandle, int *objectCount);
+// int *simGetCollectionObjects(handle_t collectionHandle, int *objectCount);
 
-int getScriptInt32Param(int scriptHandle, int parameterID)
+int getScriptInt32Param(handle_t scriptHandle, int parameterID)
 {
     int param;
     if(simGetScriptInt32Param(scriptHandle, parameterID, &param) == -1)
@@ -941,7 +919,7 @@ int getScriptInt32Param(int scriptHandle, int parameterID)
     return param;
 }
 
-int setScriptInt32Param(int scriptHandle, int parameterID, int parameter)
+int setScriptInt32Param(handle_t scriptHandle, int parameterID, int parameter)
 {
     int ret = simSetScriptInt32Param(scriptHandle, parameterID, parameter);
     if(ret == -1)
@@ -949,7 +927,7 @@ int setScriptInt32Param(int scriptHandle, int parameterID, int parameter)
     return ret;
 }
 
-std::string getScriptStringParam(int scriptHandle, int parameterID)
+std::string getScriptStringParam(handle_t scriptHandle, int parameterID)
 {
     int parameterLength = 0;
     char *buf = simGetScriptStringParam(scriptHandle, parameterID, &parameterLength);
@@ -960,7 +938,7 @@ std::string getScriptStringParam(int scriptHandle, int parameterID)
     return s;
 }
 
-std::optional<std::string> getScriptStringParamOpt(int scriptHandle, int parameterID)
+std::optional<std::string> getScriptStringParamOpt(handle_t scriptHandle, int parameterID)
 {
     int parameterLength = 0;
     char *buf = simGetScriptStringParam(scriptHandle, parameterID, &parameterLength);
@@ -970,7 +948,7 @@ std::optional<std::string> getScriptStringParamOpt(int scriptHandle, int paramet
     return s;
 }
 
-int setScriptStringParam(int scriptHandle, int parameterID, const std::string &parameter)
+int setScriptStringParam(handle_t scriptHandle, int parameterID, const std::string &parameter)
 {
     int ret = simSetScriptStringParam(scriptHandle, parameterID, parameter.c_str(), parameter.length());
     if(ret == -1)
@@ -978,7 +956,7 @@ int setScriptStringParam(int scriptHandle, int parameterID, const std::string &p
     return ret;
 }
 
-// int simReorientShapeBoundingBox(int shapeHandle, int relativeToHandle, int reservedSetToZero);
+// int simReorientShapeBoundingBox(handle_t shapeHandle, handle_t relativeToHandle, int reservedSetToZero);
 
 // int simSaveImage(const unsigned char *image, const int *resolution, int options, const char *filename, int quality, void *reserved);
 
@@ -1008,19 +986,19 @@ unsigned char * getScaledImage(const unsigned char *imageIn, std::array<int, 2> 
     return getScaledImage(imageIn, resolutionIn.data(), resolutionOut, options);
 }
 
-void callScriptFunctionEx(int scriptHandle, const std::string &functionName, int stackId)
+void callScriptFunctionEx(handle_t scriptHandle, const std::string &functionName, int stackId)
 {
     if(simCallScriptFunctionEx(scriptHandle, functionName.c_str(), stackId) == -1)
         throw api_error("simCallScriptFunctionEx");
 }
 
-// char *simGetExtensionString(int objectHandle, int index, const char *key);
+// char *simGetExtensionString(handle_t objectHandle, int index, const char *key);
 
-int createStack()
+handle_t createStack()
 {
     addStackDebugLog("simCreateStack");
 
-    int ret = simCreateStack();
+    handle_t ret = simCreateStack();
     if(ret == -1)
         throw api_error("simCreateStack");
 
@@ -1029,7 +1007,7 @@ int createStack()
     return ret;
 }
 
-void releaseStack(int stackHandle)
+void releaseStack(handle_t stackHandle)
 {
     addStackDebugLog("simReleaseStack");
 
@@ -1037,17 +1015,17 @@ void releaseStack(int stackHandle)
         throw api_error("simReleaseStack");
 }
 
-int copyStack(int stackHandle)
+handle_t copyStack(handle_t stackHandle)
 {
     addStackDebugLog("simCopyStack");
 
-    int ret = simCopyStack(stackHandle);
+    handle_t ret = simCopyStack(stackHandle);
     if(ret == -1)
         throw api_error("simCopyStack");
     return ret;
 }
 
-void pushNullOntoStack(int stackHandle)
+void pushNullOntoStack(handle_t stackHandle)
 {
     addStackDebugLog("simPushNullOntoStack");
 
@@ -1057,7 +1035,7 @@ void pushNullOntoStack(int stackHandle)
     addStackDebugDump(stackHandle);
 }
 
-void pushBoolOntoStack(int stackHandle, bool value)
+void pushBoolOntoStack(handle_t stackHandle, bool value)
 {
     addStackDebugLog("simPushBoolOntoStack %d", value);
 
@@ -1067,7 +1045,7 @@ void pushBoolOntoStack(int stackHandle, bool value)
     addStackDebugDump(stackHandle);
 }
 
-void pushInt32OntoStack(int stackHandle, int value)
+void pushInt32OntoStack(handle_t stackHandle, int value)
 {
     addStackDebugLog("simPushInt32OntoStack %d", value);
 
@@ -1077,7 +1055,7 @@ void pushInt32OntoStack(int stackHandle, int value)
     addStackDebugDump(stackHandle);
 }
 
-void pushInt64OntoStack(int stackHandle, long long int value)
+void pushInt64OntoStack(handle_t stackHandle, long long int value)
 {
     addStackDebugLog("simPushInt64OntoStack %ld", value);
 
@@ -1087,7 +1065,7 @@ void pushInt64OntoStack(int stackHandle, long long int value)
     addStackDebugDump(stackHandle);
 }
 
-void pushStringOntoStack(int stackHandle, const char *value, int stringSize)
+void pushStringOntoStack(handle_t stackHandle, const char *value, int stringSize)
 {
     addStackDebugLog("simPushStringOntoStack \"%s\" [%d]", value, stringSize);
 
@@ -1097,7 +1075,7 @@ void pushStringOntoStack(int stackHandle, const char *value, int stringSize)
     addStackDebugDump(stackHandle);
 }
 
-void pushStringOntoStack(int stackHandle, const std::string &value)
+void pushStringOntoStack(handle_t stackHandle, const std::string &value)
 {
     addStackDebugLog("simPushStringOntoStack \"%s\" [%d]", value.c_str(), value.size());
 
@@ -1107,7 +1085,7 @@ void pushStringOntoStack(int stackHandle, const std::string &value)
     addStackDebugDump(stackHandle);
 }
 
-void pushUInt8TableOntoStack(int stackHandle, const unsigned char *values, int valueCnt)
+void pushUInt8TableOntoStack(handle_t stackHandle, const unsigned char *values, int valueCnt)
 {
     addStackDebugLog("simPushUInt8TableOntoStack <%d values>", valueCnt);
 
@@ -1117,12 +1095,12 @@ void pushUInt8TableOntoStack(int stackHandle, const unsigned char *values, int v
     addStackDebugDump(stackHandle);
 }
 
-void pushUInt8TableOntoStack(int stackHandle, const std::vector<unsigned char> &values)
+void pushUInt8TableOntoStack(handle_t stackHandle, const std::vector<unsigned char> &values)
 {
     pushUInt8TableOntoStack(stackHandle, values.data(), values.size());
 }
 
-void pushInt32TableOntoStack(int stackHandle, const int *values, int valueCnt)
+void pushInt32TableOntoStack(handle_t stackHandle, const int *values, int valueCnt)
 {
     addStackDebugLog("simPushInt32TableOntoStack <%d values>", valueCnt);
 
@@ -1132,12 +1110,12 @@ void pushInt32TableOntoStack(int stackHandle, const int *values, int valueCnt)
     addStackDebugDump(stackHandle);
 }
 
-void pushInt32TableOntoStack(int stackHandle, const std::vector<int> &values)
+void pushInt32TableOntoStack(handle_t stackHandle, const std::vector<int> &values)
 {
     pushInt32TableOntoStack(stackHandle, values.data(), values.size());
 }
 
-void pushInt64TableOntoStack(int stackHandle, const long long int *values, int valueCnt)
+void pushInt64TableOntoStack(handle_t stackHandle, const long long int *values, int valueCnt)
 {
     addStackDebugLog("simPushInt64TableOntoStack <%d values>", valueCnt);
 
@@ -1147,12 +1125,12 @@ void pushInt64TableOntoStack(int stackHandle, const long long int *values, int v
     addStackDebugDump(stackHandle);
 }
 
-void pushInt64TableOntoStack(int stackHandle, const std::vector<long long int> &values)
+void pushInt64TableOntoStack(handle_t stackHandle, const std::vector<long long int> &values)
 {
     pushInt64TableOntoStack(stackHandle, values.data(), values.size());
 }
 
-void pushTableOntoStack(int stackHandle)
+void pushTableOntoStack(handle_t stackHandle)
 {
     addStackDebugLog("simPushTableOntoStack");
 
@@ -1162,7 +1140,7 @@ void pushTableOntoStack(int stackHandle)
     addStackDebugDump(stackHandle);
 }
 
-void insertDataIntoStackTable(int stackHandle)
+void insertDataIntoStackTable(handle_t stackHandle)
 {
     addStackDebugLog("simInsertDataIntoStackTable");
 
@@ -1172,7 +1150,7 @@ void insertDataIntoStackTable(int stackHandle)
     addStackDebugDump(stackHandle);
 }
 
-int getStackSize(int stackHandle)
+int getStackSize(handle_t stackHandle)
 {
     int ret = simGetStackSize(stackHandle);
 
@@ -1183,7 +1161,7 @@ int getStackSize(int stackHandle)
     return ret;
 }
 
-int popStackItem(int stackHandle, int count)
+int popStackItem(handle_t stackHandle, int count)
 {
     int ret = simPopStackItem(stackHandle, count);
 
@@ -1197,7 +1175,7 @@ int popStackItem(int stackHandle, int count)
     return ret;
 }
 
-void moveStackItemToTop(int stackHandle, int cIndex)
+void moveStackItemToTop(handle_t stackHandle, int cIndex)
 {
     addStackDebugLog("simMoveStackItemToTop %d", cIndex);
 
@@ -1207,7 +1185,7 @@ void moveStackItemToTop(int stackHandle, int cIndex)
     addStackDebugDump(stackHandle);
 }
 
-int getStackItemType(int stackHandle, int cIndex)
+int getStackItemType(handle_t stackHandle, int cIndex)
 {
     int ret = simGetStackItemType(stackHandle, cIndex);
     if(ret == -1)
@@ -1217,7 +1195,7 @@ int getStackItemType(int stackHandle, int cIndex)
 
     return ret;}
 
-int getStackBoolValue(int stackHandle, bool *boolValue)
+int getStackBoolValue(handle_t stackHandle, bool *boolValue)
 {
     int ret = simGetStackBoolValue(stackHandle, boolValue);
     if(ret == -1)
@@ -1236,7 +1214,7 @@ int getStackBoolValue(int stackHandle, bool *boolValue)
     return ret;
 }
 
-int getStackInt32Value(int stackHandle, int *numberValue)
+int getStackInt32Value(handle_t stackHandle, int *numberValue)
 {
     int ret = simGetStackInt32Value(stackHandle, numberValue);
     if(ret == -1)
@@ -1255,7 +1233,7 @@ int getStackInt32Value(int stackHandle, int *numberValue)
     return ret;
 }
 
-int getStackInt64Value(int stackHandle, long long int *numberValue)
+int getStackInt64Value(handle_t stackHandle, long long int *numberValue)
 {
     int ret = simGetStackInt64Value(stackHandle, numberValue);
     if(ret == -1)
@@ -1274,7 +1252,7 @@ int getStackInt64Value(int stackHandle, long long int *numberValue)
     return ret;
 }
 
-char * getStackStringValue(int stackHandle, int *stringSize)
+char * getStackStringValue(handle_t stackHandle, int *stringSize)
 {
     char *ret = simGetStackStringValue(stackHandle, stringSize);
 
@@ -1296,7 +1274,7 @@ char * getStackStringValue(int stackHandle, int *stringSize)
     return ret;
 }
 
-int getStackStringValue(int stackHandle, std::string *stringValue)
+int getStackStringValue(handle_t stackHandle, std::string *stringValue)
 {
     int stringSize = -1;
     char *ret = getStackStringValue(stackHandle, &stringSize);
@@ -1312,7 +1290,7 @@ int getStackStringValue(int stackHandle, std::string *stringValue)
     }
 }
 
-int getStackTableInfo(int stackHandle, int infoType)
+int getStackTableInfo(handle_t stackHandle, int infoType)
 {
     int ret = simGetStackTableInfo(stackHandle, infoType);
 
@@ -1353,7 +1331,7 @@ int getStackTableInfo(int stackHandle, int infoType)
     return ret;
 }
 
-int getStackUInt8Table(int stackHandle, unsigned char *array, int count)
+int getStackUInt8Table(handle_t stackHandle, unsigned char *array, int count)
 {
     int ret = simGetStackUInt8Table(stackHandle, array, count);
 
@@ -1364,7 +1342,7 @@ int getStackUInt8Table(int stackHandle, unsigned char *array, int count)
     return ret;
 }
 
-int getStackUInt8Table(int stackHandle, std::vector<unsigned char> *v)
+int getStackUInt8Table(handle_t stackHandle, std::vector<unsigned char> *v)
 {
     int count = getStackTableInfo(stackHandle, 0);
     v->resize(count);
@@ -1372,7 +1350,7 @@ int getStackUInt8Table(int stackHandle, std::vector<unsigned char> *v)
 }
 
 
-int getStackInt32Table(int stackHandle, int *array, int count)
+int getStackInt32Table(handle_t stackHandle, int *array, int count)
 {
     int ret = simGetStackInt32Table(stackHandle, array, count);
 
@@ -1383,14 +1361,14 @@ int getStackInt32Table(int stackHandle, int *array, int count)
     return ret;
 }
 
-int getStackInt32Table(int stackHandle, std::vector<int> *v)
+int getStackInt32Table(handle_t stackHandle, std::vector<int> *v)
 {
     int count = getStackTableInfo(stackHandle, 0);
     v->resize(count);
     return getStackInt32Table(stackHandle, v->data(), count);
 }
 
-int getStackInt64Table(int stackHandle, long long int *array, int count)
+int getStackInt64Table(handle_t stackHandle, long long int *array, int count)
 {
     int ret = simGetStackInt64Table(stackHandle, array, count);
 
@@ -1401,14 +1379,14 @@ int getStackInt64Table(int stackHandle, long long int *array, int count)
     return ret;
 }
 
-int getStackInt64Table(int stackHandle, std::vector<long long int> *v)
+int getStackInt64Table(handle_t stackHandle, std::vector<long long int> *v)
 {
     int count = getStackTableInfo(stackHandle, 0);
     v->resize(count);
     return getStackInt64Table(stackHandle, v->data(), count);
 }
 
-void unfoldStackTable(int stackHandle)
+void unfoldStackTable(handle_t stackHandle)
 {
     addStackDebugLog("simUnfoldStackTable");
 
@@ -1423,13 +1401,13 @@ void unfoldStackTable(int stackHandle)
 #endif // NDEBUG
 }
 
-void debugStack(int stackHandle, int index)
+void debugStack(handle_t stackHandle, int index)
 {
     if(simDebugStack(stackHandle, index) == -1)
         throw api_error("simDebugStack");
 }
 
-int getEngineInt32Param(int paramId, int objectHandle, const void *object)
+int getEngineInt32Param(int paramId, handle_t objectHandle, const void *object)
 {
     bool ok = false;
     int ret = simGetEngineInt32Param(paramId, objectHandle, object, &ok);
@@ -1438,7 +1416,7 @@ int getEngineInt32Param(int paramId, int objectHandle, const void *object)
     return ret;
 }
 
-bool getEngineBoolParam(int paramId, int objectHandle, const void *object)
+bool getEngineBoolParam(int paramId, handle_t objectHandle, const void *object)
 {
     bool ok = false;
     bool ret = simGetEngineBoolParam(paramId, objectHandle, object, &ok);
@@ -1447,42 +1425,42 @@ bool getEngineBoolParam(int paramId, int objectHandle, const void *object)
     return ret;
 }
 
-void setEngineInt32Param(int paramId, int objectHandle, const void *object, int val)
+void setEngineInt32Param(int paramId, handle_t objectHandle, const void *object, int val)
 {
     if(simSetEngineInt32Param(paramId, objectHandle, object, val) != 1)
         throw api_error("simSetEngineInt32Param");
 }
 
-void setEngineBoolParam(int paramId, int objectHandle, const void *object, bool val)
+void setEngineBoolParam(int paramId, handle_t objectHandle, const void *object, bool val)
 {
     if(simSetEngineBoolParam(paramId, objectHandle, object, val) != 1)
         throw api_error("simSetEngineBoolParam");
 }
 
-// int simInsertObjectIntoOctree(int octreeHandle, int objectHandle, int options, const unsigned char *color, unsigned int tag, void *reserved);
+// int simInsertObjectIntoOctree(handle_t octreeHandle, handle_t objectHandle, int options, const unsigned char *color, unsigned int tag, void *reserved);
 
-// int simSubtractObjectFromOctree(int octreeHandle, int objectHandle, int options, void *reserved);
+// int simSubtractObjectFromOctree(handle_t octreeHandle, handle_t objectHandle, int options, void *reserved);
 
 // char *simOpenTextEditor(const char *initText, const char *xml, int *various);
 
-// char *simPackTable(int stackHandle, int *bufferSize);
+// char *simPackTable(handle_t stackHandle, int *bufferSize);
 
-// int simUnpackTable(int stackHandle, const char *buffer, int bufferSize);
+// int simUnpackTable(handle_t stackHandle, const char *buffer, int bufferSize);
 
-// int simSetReferencedHandles(int objectHandle, int count, const int *referencedHandles, const int *reserved1, const int *reserved2);
+// int simSetReferencedHandles(handle_t objectHandle, int count, const int *referencedHandles, const int *reserved1, const int *reserved2);
 
-// int simGetReferencedHandles(int objectHandle, int **referencedHandles, int **reserved1, int **reserved2);
+// int simGetReferencedHandles(handle_t objectHandle, int **referencedHandles, int **reserved1, int **reserved2);
 
-void executeScriptString(int scriptHandle, const std::string &code, int stackID)
+void executeScriptString(handle_t scriptHandle, const std::string &code, int stackID)
 {
     if(simExecuteScriptString(scriptHandle, code.c_str(), stackID) == -1)
         throw api_error("simExecuteScriptString");
 }
 
-std::vector<std::string> getApiFunc(int scriptHandleOrType, const std::string &apiWord)
+std::vector<std::string> getApiFunc(handle_t scriptHandle, const std::string &apiWord)
 {
     std::vector<std::string> ret;
-    char *buf = simGetApiFunc(scriptHandleOrType, apiWord.c_str());
+    char *buf = simGetApiFunc(scriptHandle, apiWord.c_str());
     if(buf)
     {
         boost::split(ret, buf, boost::is_any_of(" "));
@@ -1491,9 +1469,9 @@ std::vector<std::string> getApiFunc(int scriptHandleOrType, const std::string &a
     return ret;
 }
 
-std::string getApiInfo(int scriptHandleOrType, const std::string &apiWord)
+std::string getApiInfo(handle_t scriptHandle, const std::string &apiWord)
 {
-    char *buf = simGetApiInfo(scriptHandleOrType, apiWord.c_str());
+    char *buf = simGetApiInfo(scriptHandle, apiWord.c_str());
     if(buf)
     {
         std::string s(buf);
@@ -1609,7 +1587,7 @@ void addLog(std::optional<std::string> pluginName, int verbosityLevel, std::opti
         throw api_error("simAddLog");
 }
 
-bool isDynamicallyEnabled(int objectHandle)
+bool isDynamicallyEnabled(handle_t objectHandle)
 {
     int ret = simIsDynamicallyEnabled(objectHandle);
     if(ret == -1)
@@ -1617,7 +1595,7 @@ bool isDynamicallyEnabled(int objectHandle)
     return ret > 0;
 }
 
-bool initScript(int scriptHandle)
+bool initScript(handle_t scriptHandle)
 {
     int ret = simInitScript(scriptHandle);
     if(ret == -1)
@@ -1625,15 +1603,15 @@ bool initScript(int scriptHandle)
     return ret > 0;
 }
 
-int moduleEntry(int handle, const char *label, int state)
+int moduleEntry(handle_t handle, const char *label, int state)
 {
-    int retHandle = simModuleEntry(handle, label, state);
+    handle_t retHandle = simModuleEntry(handle, label, state);
     if(retHandle == -1)
         throw api_error("simModuleEntry");
     return retHandle;
 }
 
-int moduleEntry(int handle, const std::string &label, int state)
+int moduleEntry(handle_t handle, const std::string &label, int state)
 {
     return moduleEntry(handle, label.c_str(), state);
 }
@@ -1643,9 +1621,9 @@ int moduleEntry(const std::string &label, int state)
     return moduleEntry(-1, label, state);
 }
 
-int moduleEntry(int handle, int state)
+int moduleEntry(handle_t handle, int state)
 {
-    int retHandle = simModuleEntry(handle, nullptr, state);
+    handle_t retHandle = simModuleEntry(handle, nullptr, state);
     if(retHandle == -1)
         throw api_error("simModuleEntry");
     return retHandle;
@@ -1664,7 +1642,7 @@ bool checkExecAuthorization(const std::string &what, const std::string &args)
     return checkExecAuthorization(what.c_str(), args.c_str());
 }
 
-void pushFloatOntoStack(int stackHandle, float value)
+void pushFloatOntoStack(handle_t stackHandle, float value)
 {
     addStackDebugLog("simPushFloatOntoStack %f", value);
 
@@ -1674,7 +1652,7 @@ void pushFloatOntoStack(int stackHandle, float value)
     addStackDebugDump(stackHandle);
 }
 
-void pushFloatTableOntoStack(int stackHandle, const float *values, int valueCnt)
+void pushFloatTableOntoStack(handle_t stackHandle, const float *values, int valueCnt)
 {
     addStackDebugLog("simPushFloatTableOntoStack <%d values>", valueCnt);
 
@@ -1684,12 +1662,12 @@ void pushFloatTableOntoStack(int stackHandle, const float *values, int valueCnt)
     addStackDebugDump(stackHandle);
 }
 
-void pushFloatTableOntoStack(int stackHandle, const std::vector<float> &values)
+void pushFloatTableOntoStack(handle_t stackHandle, const std::vector<float> &values)
 {
     pushFloatTableOntoStack(stackHandle, values.data(), values.size());
 }
 
-int getStackFloatValue(int stackHandle, float *numberValue)
+int getStackFloatValue(handle_t stackHandle, float *numberValue)
 {
     int ret = simGetStackFloatValue(stackHandle, numberValue);
     if(ret == -1)
@@ -1708,7 +1686,7 @@ int getStackFloatValue(int stackHandle, float *numberValue)
     return ret;
 }
 
-int getStackFloatTable(int stackHandle, float *array, int count)
+int getStackFloatTable(handle_t stackHandle, float *array, int count)
 {
     int ret = simGetStackFloatTable(stackHandle, array, count);
 
@@ -1719,26 +1697,26 @@ int getStackFloatTable(int stackHandle, float *array, int count)
     return ret;
 }
 
-int getStackFloatTable(int stackHandle, std::vector<float> *v)
+int getStackFloatTable(handle_t stackHandle, std::vector<float> *v)
 {
     int count = getStackTableInfo(stackHandle, 0);
     v->resize(count);
     return getStackFloatTable(stackHandle, v->data(), count);
 }
 
-// float *simGetVisionSensorDepth(int sensorHandle, int options, const int *pos, const int *size, int *resolution);
+// float *simGetVisionSensorDepth(handle_t sensorHandle, int options, const int *pos, const int *size, int *resolution);
 
-// int simSetVisionSensorDepth(int sensorHandle, int options, const float *depth);
+// int simSetVisionSensorDepth(handle_t sensorHandle, int options, const float *depth);
 
-// float *simCheckVisionSensorEx(int visionSensorHandle, int entityHandle, bool returnImage);
+// float *simCheckVisionSensorEx(handle_t visionSensorHandle, handle_t entityHandle, bool returnImage);
 
 // int simRuckigPos(int dofs, double baseCycleTime, int flags, const double *currentPos, const double *currentVel, const double *currentAccel, const double *maxVel, const double *maxAccel, const double *maxJerk, const bool *selection, const double *targetPos, const double *targetVel, double *reserved1, int *reserved2);
 
 // int simRuckigVel(int dofs, double baseCycleTime, int flags, const double *currentPos, const double *currentVel, const double *currentAccel, const double *maxAccel, const double *maxJerk, const bool *selection, const double *targetVel, double *reserved1, int *reserved2);
 
-// int simRuckigStep(int objHandle, double cycleTime, double *newPos, double *newVel, double *newAccel, double *syncTime, double *reserved1, int *reserved2);
+// int simRuckigStep(handle_t objHandle, double cycleTime, double *newPos, double *newVel, double *newAccel, double *syncTime, double *reserved1, int *reserved2);
 
-void pushDoubleOntoStack(int stackHandle, double value)
+void pushDoubleOntoStack(handle_t stackHandle, double value)
 {
     addStackDebugLog("simPushDoubleOntoStack %g", value);
 
@@ -1748,7 +1726,7 @@ void pushDoubleOntoStack(int stackHandle, double value)
     addStackDebugDump(stackHandle);
 }
 
-void pushDoubleTableOntoStack(int stackHandle, const double *values, int valueCnt)
+void pushDoubleTableOntoStack(handle_t stackHandle, const double *values, int valueCnt)
 {
     addStackDebugLog("simPushDoubleTableOntoStack <%d values>", valueCnt);
 
@@ -1758,12 +1736,12 @@ void pushDoubleTableOntoStack(int stackHandle, const double *values, int valueCn
     addStackDebugDump(stackHandle);
 }
 
-void pushDoubleTableOntoStack(int stackHandle, const std::vector<double> &values)
+void pushDoubleTableOntoStack(handle_t stackHandle, const std::vector<double> &values)
 {
     pushDoubleTableOntoStack(stackHandle, values.data(), values.size());
 }
 
-int getStackDoubleValue(int stackHandle, double *numberValue)
+int getStackDoubleValue(handle_t stackHandle, double *numberValue)
 {
     int ret = simGetStackDoubleValue(stackHandle, numberValue);
     if(ret == -1)
@@ -1782,7 +1760,7 @@ int getStackDoubleValue(int stackHandle, double *numberValue)
     return ret;
 }
 
-int getStackDoubleTable(int stackHandle, double *array, int count)
+int getStackDoubleTable(handle_t stackHandle, double *array, int count)
 {
     int ret = simGetStackDoubleTable(stackHandle, array, count);
 
@@ -1793,7 +1771,7 @@ int getStackDoubleTable(int stackHandle, double *array, int count)
     return ret;
 }
 
-int getStackDoubleTable(int stackHandle, std::vector<double> *v)
+int getStackDoubleTable(handle_t stackHandle, std::vector<double> *v)
 {
     int count = getStackTableInfo(stackHandle, 0);
     v->resize(count);
@@ -1888,9 +1866,9 @@ int getStackDoubleTable(int stackHandle, std::vector<double> *v)
 
 // int _simGetJointDynCtrlMode(const void *joint);
 
-// int simFloatingViewRemove(int floatingViewHandle);
+// int simFloatingViewRemove(handle_t floatingViewHandle);
 
-int getShapeViz(int shapeHandle, int index, struct SShapeVizInfo *info)
+int getShapeViz(handle_t shapeHandle, int index, struct SShapeVizInfo *info)
 {
     int ret = simGetShapeViz(shapeHandle, index, info);
     if(ret == -1)
@@ -1930,7 +1908,7 @@ double getFloatParam(int parameter)
     return ret;
 }
 
-double getObjectFloatParam(int objectHandle, int parameterID)
+double getObjectFloatParam(handle_t objectHandle, int parameterID)
 {
     double ret;
     if(simGetObjectFloatParam(objectHandle, parameterID, &ret) == -1)
@@ -1938,17 +1916,17 @@ double getObjectFloatParam(int objectHandle, int parameterID)
     return ret;
 }
 
-void setObjectFloatParam(int objectHandle, int parameterID, double parameter)
+void setObjectFloatParam(handle_t objectHandle, int parameterID, double parameter)
 {
     if(simSetObjectFloatParam(objectHandle, parameterID, parameter) == -1)
         throw api_error("simSetObjectFloatParam");
 }
 
-// double *simGetObjectFloatArrayParam(int objectHandle, int parameterID, int *size);
+// double *simGetObjectFloatArrayParam(handle_t objectHandle, int parameterID, int *size);
 
-// int simSetObjectFloatArrayParam(int objectHandle, int parameterID, const double *params, int size);
+// int simSetObjectFloatArrayParam(handle_t objectHandle, int parameterID, const double *params, int size);
 
-double getEngineFloatParam(int paramId, int objectHandle, const void *object)
+double getEngineFloatParam(int paramId, handle_t objectHandle, const void *object)
 {
     bool ok = false;
     double ret = simGetEngineFloatParam(paramId, objectHandle, object, &ok);
@@ -1957,7 +1935,7 @@ double getEngineFloatParam(int paramId, int objectHandle, const void *object)
     return ret;
 }
 
-void setEngineFloatParam(int paramId, int objectHandle, const void *object, double val)
+void setEngineFloatParam(int paramId, handle_t objectHandle, const void *object, double val)
 {
     if(simSetEngineFloatParam(paramId, objectHandle, object, val) != 1)
         throw api_error("simSetEngineFloatParam");
@@ -1974,9 +1952,9 @@ void transformImage(unsigned char *image, std::array<int, 2> resolution, int opt
     transformImage(image, resolution.data(), options);
 }
 
-// const double *simGetOctreeVoxels(int octreeHandle, int *ptCnt, void *reserved);
+// const double *simGetOctreeVoxels(handle_t octreeHandle, int *ptCnt, void *reserved);
 
-std::vector<double> getPointCloudPoints(int pointCloudHandle)
+std::vector<double> getPointCloudPoints(handle_t pointCloudHandle)
 {
     int count = 0;
     const double *buf = simGetPointCloudPoints(pointCloudHandle, &count, 0);
@@ -1990,103 +1968,103 @@ std::vector<double> getPointCloudPoints(int pointCloudHandle)
     return ret;
 }
 
-void getObjectMatrix(int objectHandle, int relativeToObjectHandle, double *matrix)
+void getObjectMatrix(handle_t objectHandle, handle_t relativeToObjectHandle, double *matrix)
 {
     if(simGetObjectMatrix(objectHandle, relativeToObjectHandle, matrix) == -1)
         throw api_error("simGetObjectMatrix");
 }
 
-std::array<double, 12> getObjectMatrix(int objectHandle, int relativeToObjectHandle)
+std::array<double, 12> getObjectMatrix(handle_t objectHandle, handle_t relativeToObjectHandle)
 {
     std::array<double, 12> ret;
     getObjectMatrix(objectHandle, relativeToObjectHandle, ret.data());
     return ret;
 }
 
-void setObjectMatrix(int objectHandle, int relativeToObjectHandle, const double *matrix)
+void setObjectMatrix(handle_t objectHandle, handle_t relativeToObjectHandle, const double *matrix)
 {
     if(simSetObjectMatrix(objectHandle, relativeToObjectHandle, matrix) == -1)
         throw api_error("simSetObjectMatrix");
 }
 
-void setObjectMatrix(int objectHandle, int relativeToObjectHandle, const std::array<double, 12> &matrix)
+void setObjectMatrix(handle_t objectHandle, handle_t relativeToObjectHandle, const std::array<double, 12> &matrix)
 {
     setObjectMatrix(objectHandle, relativeToObjectHandle, matrix.data());
 }
 
-void getObjectPose(int objectHandle, int relativeToObjectHandle, double *pose)
+void getObjectPose(handle_t objectHandle, handle_t relativeToObjectHandle, double *pose)
 {
     if(simGetObjectPose(objectHandle, relativeToObjectHandle, pose) == -1)
         throw api_error("simGetObjectPose");
 }
 
-std::array<double, 7> getObjectPose(int objectHandle, int relativeToObjectHandle)
+std::array<double, 7> getObjectPose(handle_t objectHandle, handle_t relativeToObjectHandle)
 {
     std::array<double, 7> ret;
     getObjectPose(objectHandle, relativeToObjectHandle, ret.data());
     return ret;
 }
 
-void setObjectPose(int objectHandle, int relativeToObjectHandle, const double *pose)
+void setObjectPose(handle_t objectHandle, handle_t relativeToObjectHandle, const double *pose)
 {
     if(simSetObjectPose(objectHandle, relativeToObjectHandle, pose) == -1)
         throw api_error("simSetObjectPose");
 }
 
-void setObjectPose(int objectHandle, int relativeToObjectHandle, std::array<double, 7> pose)
+void setObjectPose(handle_t objectHandle, handle_t relativeToObjectHandle, std::array<double, 7> pose)
 {
     setObjectPose(objectHandle, relativeToObjectHandle, pose.data());
 }
 
-void getObjectPosition(int objectHandle, int relativeToObjectHandle, double *position)
+void getObjectPosition(handle_t objectHandle, handle_t relativeToObjectHandle, double *position)
 {
     if(simGetObjectPosition(objectHandle, relativeToObjectHandle, position) == -1)
         throw api_error("simGetObjectPosition");
 }
 
-std::array<double, 3> getObjectPosition(int objectHandle, int relativeToObjectHandle)
+std::array<double, 3> getObjectPosition(handle_t objectHandle, handle_t relativeToObjectHandle)
 {
     std::array<double, 3> ret;
     getObjectPosition(objectHandle, relativeToObjectHandle, ret.data());
     return ret;
 }
 
-void setObjectPosition(int objectHandle, int relativeToObjectHandle, const double *position)
+void setObjectPosition(handle_t objectHandle, handle_t relativeToObjectHandle, const double *position)
 {
     if(simSetObjectPosition(objectHandle, relativeToObjectHandle, position) == -1)
         throw api_error("simSetObjectPosition");
 }
 
-void setObjectPosition(int objectHandle, int relativeToObjectHandle, const std::array<double, 3> &position)
+void setObjectPosition(handle_t objectHandle, handle_t relativeToObjectHandle, const std::array<double, 3> &position)
 {
     setObjectPosition(objectHandle, relativeToObjectHandle, position.data());
 }
 
-void getObjectOrientation(int objectHandle, int relativeToObjectHandle, double *eulerAngles)
+void getObjectOrientation(handle_t objectHandle, handle_t relativeToObjectHandle, double *eulerAngles)
 {
     if(simGetObjectOrientation(objectHandle, relativeToObjectHandle, eulerAngles) == -1)
         throw api_error("simGetObjectOrientation");
 }
 
-std::array<double, 3> getObjectOrientation(int objectHandle, int relativeToObjectHandle)
+std::array<double, 3> getObjectOrientation(handle_t objectHandle, handle_t relativeToObjectHandle)
 {
     std::array<double, 3> ret;
     getObjectOrientation(objectHandle, relativeToObjectHandle, ret.data());
     return ret;
 }
 
-void setObjectOrientation(int objectHandle, int relativeToObjectHandle, const double *eulerAngles)
+void setObjectOrientation(handle_t objectHandle, handle_t relativeToObjectHandle, const double *eulerAngles)
 {
     if(simSetObjectOrientation(objectHandle, relativeToObjectHandle, eulerAngles) == -1)
         throw api_error("simSetObjectOrientation");
 }
 
-void setObjectOrientation(int objectHandle, int relativeToObjectHandle, const std::array<double, 3> &eulerAngles)
+void setObjectOrientation(handle_t objectHandle, handle_t relativeToObjectHandle, const std::array<double, 3> &eulerAngles)
 {
     setObjectOrientation(objectHandle, relativeToObjectHandle, eulerAngles.data());
 }
 
-double getJointPosition(int objectHandle)
+double getJointPosition(handle_t objectHandle)
 {
     double position;
     if(simGetJointPosition(objectHandle, &position) == -1)
@@ -2094,19 +2072,19 @@ double getJointPosition(int objectHandle)
     return position;
 }
 
-void setJointPosition(int objectHandle, double position)
+void setJointPosition(handle_t objectHandle, double position)
 {
     if(simSetJointPosition(objectHandle, position) == -1)
         throw api_error("simGetJointPosition");
 }
 
-void setJointTargetPosition(int objectHandle, double targetPosition)
+void setJointTargetPosition(handle_t objectHandle, double targetPosition)
 {
     if(simSetJointTargetPosition(objectHandle, targetPosition) == -1)
         throw api_error("simSetJointTargetPosition");
 }
 
-double getJointTargetPosition(int objectHandle)
+double getJointTargetPosition(handle_t objectHandle)
 {
     double targetPosition;
     if(simGetJointTargetPosition(objectHandle, &targetPosition) == -1)
@@ -2114,7 +2092,7 @@ double getJointTargetPosition(int objectHandle)
     return targetPosition;
 }
 
-double getJointTargetForce(int jointHandle)
+double getJointTargetForce(handle_t jointHandle)
 {
     double forceOrTorque;
     if(simGetJointTargetForce(jointHandle, &forceOrTorque) == -1)
@@ -2122,56 +2100,56 @@ double getJointTargetForce(int jointHandle)
     return forceOrTorque;
 }
 
-void setJointTargetForce(int objectHandle, double forceOrTorque, bool signedValue)
+void setJointTargetForce(handle_t objectHandle, double forceOrTorque, bool signedValue)
 {
     if(simSetJointTargetForce(objectHandle, forceOrTorque, signedValue) == -1)
         throw api_error("simSetJointTargetForce");
 }
 
-void getObjectChildPose(int objectHandle, double *pose)
+void getObjectChildPose(handle_t objectHandle, double *pose)
 {
     if(simGetObjectChildPose(objectHandle, pose) == -1)
         throw api_error("simGetObjectChildPose");
 }
 
-std::array<double, 7> getObjectChildPose(int objectHandle)
+std::array<double, 7> getObjectChildPose(handle_t objectHandle)
 {
     std::array<double, 7> pose;
     getObjectChildPose(objectHandle, pose.data());
     return pose;
 }
 
-void setObjectChildPose(int objectHandle, const double *pose)
+void setObjectChildPose(handle_t objectHandle, const double *pose)
 {
     if(simSetObjectChildPose(objectHandle, pose) == -1)
         throw api_error("simSetObjectChildPose");
 }
 
-void setObjectChildPose(int objectHandle, std::array<double, 7> pose)
+void setObjectChildPose(handle_t objectHandle, std::array<double, 7> pose)
 {
     setObjectChildPose(objectHandle, pose.data());
 }
 
-void getJointInterval(int objectHandle, bool *cyclic, double *interval)
+void getJointInterval(handle_t objectHandle, bool *cyclic, double *interval)
 {
     if(simGetJointInterval(objectHandle, cyclic, interval) == -1)
         throw api_error("simGetJointInterval");
 }
 
-std::array<double, 2> getJointInterval(int objectHandle, bool *cyclic)
+std::array<double, 2> getJointInterval(handle_t objectHandle, bool *cyclic)
 {
     std::array<double, 2> interval;
     getJointInterval(objectHandle, cyclic, interval.data());
     return interval;
 }
 
-void setJointInterval(int objectHandle, bool cyclic, const double *interval)
+void setJointInterval(handle_t objectHandle, bool cyclic, const double *interval)
 {
     if(simSetJointInterval(objectHandle, cyclic, interval) == -1)
         throw api_error("simSetJointInterval");
 }
 
-void setJointInterval(int objectHandle, bool cyclic, std::array<double, 2> interval)
+void setJointInterval(handle_t objectHandle, bool cyclic, std::array<double, 2> interval)
 {
     setJointInterval(objectHandle, cyclic, interval.data());
 }
@@ -2268,21 +2246,21 @@ double getSystemTime()
     return simGetSystemTime();
 }
 
-// int simHandleProximitySensor(int sensorHandle, double *detectedPoint, int *detectedObjectHandle, double *normalVector);
+// int simHandleProximitySensor(handle_t sensorHandle, double *detectedPoint, int *detectedObjectHandle, double *normalVector);
 
-// int simReadProximitySensor(int sensorHandle, double *detectedPoint, int *detectedObjectHandle, double *normalVector);
+// int simReadProximitySensor(handle_t sensorHandle, double *detectedPoint, int *detectedObjectHandle, double *normalVector);
 
 // int simHandleDynamics(double deltaTime);
 
-// int simCheckProximitySensor(int sensorHandle, int entityHandle, double *detectedPoint);
+// int simCheckProximitySensor(handle_t sensorHandle, handle_t entityHandle, double *detectedPoint);
 
-// int simCheckProximitySensorEx(int sensorHandle, int entityHandle, int detectionMode, double detectionThreshold, double maxAngle, double *detectedPoint, int *detectedObjectHandle, double *normalVector);
+// int simCheckProximitySensorEx(handle_t sensorHandle, handle_t entityHandle, int detectionMode, double detectionThreshold, double maxAngle, double *detectedPoint, int *detectedObjectHandle, double *normalVector);
 
-// int simCheckProximitySensorEx2(int sensorHandle, double *vertexPointer, int itemType, int itemCount, int detectionMode, double detectionThreshold, double maxAngle, double *detectedPoint, double *normalVector);
+// int simCheckProximitySensorEx2(handle_t sensorHandle, double *vertexPointer, int itemType, int itemCount, int detectionMode, double detectionThreshold, double maxAngle, double *detectedPoint, double *normalVector);
 
-// int simCheckCollisionEx(int entity1Handle, int entity2Handle, double **intersectionSegments);
+// int simCheckCollisionEx(handle_t entity1Handle, handle_t entity2Handle, double **intersectionSegments);
 
-// int simCheckDistance(int entity1Handle, int entity2Handle, double threshold, double *distanceData);
+// int simCheckDistance(handle_t entity1Handle, handle_t entity2Handle, double threshold, double *distanceData);
 
 // int simSetSimulationTimeStep(double timeStep);
 
@@ -2298,33 +2276,33 @@ double getSimulationTimeStep()
 
 // int simFloatingViewAdd(double posX, double posY, double sizeX, double sizeY, int options);
 
-// int simHandleGraph(int graphHandle, double simulationTime);
+// int simHandleGraph(handle_t graphHandle, double simulationTime);
 
-// int simSetGraphStreamTransformation(int graphHandle, int streamId, int trType, double mult, double off, int movingAvgPeriod);
+// int simSetGraphStreamTransformation(handle_t graphHandle, int streamId, int trType, double mult, double off, int movingAvgPeriod);
 
-// int simAddGraphCurve(int graphHandle, const char *curveName, int dim, const int *streamIds, const double *defaultValues, const char *unitStr, int options, const float *color, int curveWidth);
+// int simAddGraphCurve(handle_t graphHandle, const char *curveName, int dim, const int *streamIds, const double *defaultValues, const char *unitStr, int options, const float *color, int curveWidth);
 
-// int simSetGraphStreamValue(int graphHandle, int streamId, double value);
+// int simSetGraphStreamValue(handle_t graphHandle, int streamId, double value);
 
-// int simSetJointTargetVelocity(int objectHandle, double targetVelocity);
+// int simSetJointTargetVelocity(handle_t objectHandle, double targetVelocity);
 
-// int simGetJointTargetVelocity(int objectHandle, double *targetVelocity);
+// int simGetJointTargetVelocity(handle_t objectHandle, double *targetVelocity);
 
 // int simScaleObjects(const int *objectHandles, int objectCount, double scalingFactor, bool scalePositionsToo);
 
-// int simAddDrawingObject(int objectType, double size, double duplicateTolerance, int parentObjectHandle, int maxItemCount, const float *color, const float *setToNULL, const float *setToNULL2, const float *setToNULL3);
+// int simAddDrawingObject(int objectType, double size, double duplicateTolerance, handle_t parentObjectHandle, int maxItemCount, const float *color, const float *setToNULL, const float *setToNULL2, const float *setToNULL3);
 
-// int simAddGraphStream(int graphHandle, const char *streamName, const char *unitStr, int options, const float *color, double cyclicRange);
+// int simAddGraphStream(handle_t graphHandle, const char *streamName, const char *unitStr, int options, const float *color, double cyclicRange);
 
-// int simAddDrawingObjectItem(int objectHandle, const double *itemData);
+// int simAddDrawingObjectItem(handle_t objectHandle, const double *itemData);
 
-// double simGetObjectSizeFactor(int objectHandle);
+// double simGetObjectSizeFactor(handle_t objectHandle);
 
-// int simReadForceSensor(int objectHandle, double *forceVector, double *torqueVector);
+// int simReadForceSensor(handle_t objectHandle, double *forceVector, double *torqueVector);
 
-// int simSetLightParameters(int objectHandle, int state, const float *setToNULL, const float *diffusePart, const float *specularPart);
+// int simSetLightParameters(handle_t objectHandle, int state, const float *setToNULL, const float *diffusePart, const float *specularPart);
 
-int getLightParameters(int objectHandle)
+int getLightParameters(handle_t objectHandle)
 {
     int ret = simGetLightParameters(objectHandle, nullptr, nullptr, nullptr);
     if(ret == -1)
@@ -2332,7 +2310,7 @@ int getLightParameters(int objectHandle)
     return ret;
 }
 
-int getLightParameters(int objectHandle, std::array<double, 3> &diffuse)
+int getLightParameters(handle_t objectHandle, std::array<double, 3> &diffuse)
 {
     int ret = simGetLightParameters(objectHandle, nullptr, diffuse.data(), nullptr);
     if(ret == -1)
@@ -2340,7 +2318,7 @@ int getLightParameters(int objectHandle, std::array<double, 3> &diffuse)
     return ret;
 }
 
-int getLightParameters(int objectHandle, std::array<double, 3> &diffuse, std::array<double, 3> &specular)
+int getLightParameters(handle_t objectHandle, std::array<double, 3> &diffuse, std::array<double, 3> &specular)
 {
     int ret = simGetLightParameters(objectHandle, nullptr, diffuse.data(), specular.data());
     if(ret == -1)
@@ -2348,9 +2326,9 @@ int getLightParameters(int objectHandle, std::array<double, 3> &diffuse, std::ar
     return ret;
 }
 
-// int simGetVelocity(int shapeHandle, double *linearVelocity, double *angularVelocity);
+// int simGetVelocity(handle_t shapeHandle, double *linearVelocity, double *angularVelocity);
 
-std::pair<std::array<double, 3>, std::array<double, 3>> getObjectVelocity(int objectHandle)
+std::pair<std::array<double, 3>, std::array<double, 3>> getObjectVelocity(handle_t objectHandle)
 {
     std::array<double, 3> lin, ang;
     if(simGetObjectVelocity(objectHandle, lin.data(), ang.data()) == -1)
@@ -2358,25 +2336,25 @@ std::pair<std::array<double, 3>, std::array<double, 3>> getObjectVelocity(int ob
     return std::make_pair(lin, ang);
 }
 
-// int simGetJointVelocity(int jointHandle, double *velocity);
+// int simGetJointVelocity(handle_t jointHandle, double *velocity);
 
-// int simAddForceAndTorque(int shapeHandle, const double *force, const double *torque);
+// int simAddForceAndTorque(handle_t shapeHandle, const double *force, const double *torque);
 
-// int simAddForce(int shapeHandle, const double *position, const double *force);
+// int simAddForce(handle_t shapeHandle, const double *position, const double *force);
 
-void setObjectColor(int objectHandle, int index, int colorComponent, const float *rgbData)
+void setObjectColor(handle_t objectHandle, int index, int colorComponent, const float *rgbData)
 {
     int ret = simSetObjectColor(objectHandle, index, colorComponent, rgbData);
     if(ret == -1)
         throw api_error("simSetObjectColor");
 }
 
-void setObjectColor(int objectHandle, int index, int colorComponent, const std::array<float, 3> &rgbData)
+void setObjectColor(handle_t objectHandle, int index, int colorComponent, const std::array<float, 3> &rgbData)
 {
     setObjectColor(objectHandle, index, colorComponent, rgbData.data());
 }
 
-std::optional<std::array<float, 3>> getObjectColor(int objectHandle, int index, int colorComponent)
+std::optional<std::array<float, 3>> getObjectColor(handle_t objectHandle, int index, int colorComponent)
 {
     std::array<float, 3> rgbData;
     int ret = simGetObjectColor(objectHandle, index, colorComponent, rgbData.data());
@@ -2387,19 +2365,19 @@ std::optional<std::array<float, 3>> getObjectColor(int objectHandle, int index, 
     return rgbData;
 }
 
-void setShapeColor(int shapeHandle, const char *colorName, int colorComponent, const float *rgbData)
+void setShapeColor(handle_t shapeHandle, const char *colorName, int colorComponent, const float *rgbData)
 {
     int ret = simSetShapeColor(shapeHandle, colorName, colorComponent, rgbData);
     if(ret == -1)
         throw api_error("simSetShapeColor");
 }
 
-void setShapeColor(int shapeHandle, std::optional<std::string> colorName, int colorComponent, const std::array<float, 3> &rgbData)
+void setShapeColor(handle_t shapeHandle, std::optional<std::string> colorName, int colorComponent, const std::array<float, 3> &rgbData)
 {
     setShapeColor(shapeHandle, colorName ? colorName->c_str() : nullptr, colorComponent, rgbData.data());
 }
 
-std::optional<std::array<float, 3>> getShapeColor(int shapeHandle, std::optional<std::string> colorName, int colorComponent)
+std::optional<std::array<float, 3>> getShapeColor(handle_t shapeHandle, std::optional<std::string> colorName, int colorComponent)
 {
     std::array<float, 3> rgbData;
     int ret = simGetShapeColor(shapeHandle, colorName ? colorName->c_str() : 0, colorComponent, rgbData.data());
@@ -2410,24 +2388,24 @@ std::optional<std::array<float, 3>> getShapeColor(int shapeHandle, std::optional
     return rgbData;
 }
 
-std::optional<std::array<float, 3>> getShapeColor(int shapeHandle, int colorComponent)
+std::optional<std::array<float, 3>> getShapeColor(handle_t shapeHandle, int colorComponent)
 {
     return getShapeColor(shapeHandle, {}, colorComponent);
 }
 
-// int simGetContactInfo(int dynamicPass, int objectHandle, int index, int *objectHandles, double *contactInfo);
+// int simGetContactInfo(int dynamicPass, handle_t objectHandle, int index, int *objectHandles, double *contactInfo);
 
 // int simAuxiliaryConsoleOpen(const char *title, int maxLines, int mode, const int *position, const int *size, const float *textColor, const float *backgroundColor);
 
-int importShape(const char *pathAndFilename, int options, double scalingFactor)
+handle_t importShape(const char *pathAndFilename, int options, double scalingFactor)
 {
-    int handle = simImportShape(0, pathAndFilename, options, 0, scalingFactor);
+    handle_t handle = simImportShape(0, pathAndFilename, options, 0, scalingFactor);
     if(handle == -1)
         throw api_error("simImportShape");
     return handle;
 }
 
-int importShape(const std::string &pathAndFilename, int options, double scalingFactor)
+handle_t importShape(const std::string &pathAndFilename, int options, double scalingFactor)
 {
     return importShape(pathAndFilename.c_str(), options, scalingFactor);
 }
@@ -2436,52 +2414,52 @@ int importShape(const std::string &pathAndFilename, int options, double scalingF
 
 // int simExportMesh(int fileformat, const char *pathAndFilename, int options, double scalingFactor, int elementCount, const double **vertices, const int *verticesSizes, const int **indices, const int *indicesSizes, double **reserved, const char **names);
 
-int createMeshShape(int options, double shadingAngle, const double *vertices, int verticesSize, const int *indices, int indicesSize)
+handle_t createMeshShape(int options, double shadingAngle, const double *vertices, int verticesSize, const int *indices, int indicesSize)
 {
-    int handle = simCreateMeshShape(options, shadingAngle, vertices, verticesSize, indices, indicesSize, nullptr);
+    handle_t handle = simCreateMeshShape(options, shadingAngle, vertices, verticesSize, indices, indicesSize, nullptr);
     if(handle == -1)
         throw api_error("simCreateMeshShape");
     return handle;
 }
 
-int createMeshShape(int options, double shadingAngle, const std::vector<double> &vertices, const std::vector<int> &indices)
+handle_t createMeshShape(int options, double shadingAngle, const std::vector<double> &vertices, const std::vector<int> &indices)
 {
     return createMeshShape(options, shadingAngle, vertices.data(), vertices.size(), indices.data(), indices.size());
 }
 
-int createPrimitiveShape(int primitiveType, const double *sizes, int options)
+handle_t createPrimitiveShape(int primitiveType, const double *sizes, int options)
 {
-    int handle = simCreatePrimitiveShape(primitiveType, sizes, options);
+    handle_t handle = simCreatePrimitiveShape(primitiveType, sizes, options);
     if(handle == -1)
         throw api_error("simCreatePrimitiveShape");
     return handle;
 }
 
-int createPrimitiveShape(int primitiveType, std::array<double, 3> sizes, int options)
+handle_t createPrimitiveShape(int primitiveType, std::array<double, 3> sizes, int options)
 {
     return createPrimitiveShape(primitiveType, sizes.data(), options);
 }
 
-int createHeightfieldShape(int options, double shadingAngle, int xPointCount, int yPointCount, double xSize, const double *heights)
+handle_t createHeightfieldShape(int options, double shadingAngle, int xPointCount, int yPointCount, double xSize, const double *heights)
 {
-    int handle = simCreateHeightfieldShape(options, shadingAngle, xPointCount, yPointCount, xSize, heights);
+    handle_t handle = simCreateHeightfieldShape(options, shadingAngle, xPointCount, yPointCount, xSize, heights);
     if(handle == -1)
         throw api_error("simCreateHeightfieldShape");
     return handle;
 }
 
-int createHeightfieldShape(int options, double shadingAngle, int xPointCount, int yPointCount, double xSize, const std::vector<double> &heights)
+handle_t createHeightfieldShape(int options, double shadingAngle, int xPointCount, int yPointCount, double xSize, const std::vector<double> &heights)
 {
     return createHeightfieldShape(options, shadingAngle, xPointCount, yPointCount, xSize, heights.data());
 }
 
-void getShapeMesh(int shapeHandle, double **vertices, int *verticesSize, int **indices, int *indicesSize, double **normals)
+void getShapeMesh(handle_t shapeHandle, double **vertices, int *verticesSize, int **indices, int *indicesSize, double **normals)
 {
     if(simGetShapeMesh(shapeHandle, vertices, verticesSize, indices, indicesSize, normals) == -1)
         throw api_error("simGetShapeMesh");
 }
 
-void getShapeMesh(int shapeHandle, std::vector<double> vertices, std::vector<int> indices, std::optional<std::vector<double>> normals)
+void getShapeMesh(handle_t shapeHandle, std::vector<double> vertices, std::vector<int> indices, std::optional<std::vector<double>> normals)
 {
     double *verticesBuf;
     int verticesSize = 0;
@@ -2498,36 +2476,36 @@ void getShapeMesh(int shapeHandle, std::vector<double> vertices, std::vector<int
     releaseBuffer(normalsBuf);
 }
 
-int createJoint(int jointType, int jointMode, int options, const double *sizes)
+handle_t createJoint(int jointType, int jointMode, int options, const double *sizes)
 {
-    int handle = simCreateJoint(jointType, jointMode, options, sizes, nullptr, nullptr);
+    handle_t handle = simCreateJoint(jointType, jointMode, options, sizes, nullptr, nullptr);
     if(handle == -1)
         throw api_error("simCreateJoint");
     return handle;
 }
 
-int createJoint(int jointType, int jointMode, int options, std::optional<std::array<double, 2>> sizes)
+handle_t createJoint(int jointType, int jointMode, int options, std::optional<std::array<double, 2>> sizes)
 {
     return createJoint(jointType, jointMode, options, sizes ? sizes->data() : nullptr);
 }
 
-int createDummy(double size)
+handle_t createDummy(double size)
 {
-    int handle = simCreateDummy(size, nullptr);
+    handle_t handle = simCreateDummy(size, nullptr);
     if(handle == -1)
         throw api_error("simCreateDummy");
     return handle;
 }
 
-int createForceSensor(int options, const int *intParams, const double *floatParams)
+handle_t createForceSensor(int options, const int *intParams, const double *floatParams)
 {
-    int handle = simCreateForceSensor(options, intParams, floatParams, nullptr);
+    handle_t handle = simCreateForceSensor(options, intParams, floatParams, nullptr);
     if(handle == -1)
         throw api_error("simCreateForceSensor");
     return handle;
 }
 
-int createForceSensor(int options, int type, int valueCount, int thresholdCount, double size, double forceThreshold, double torqueThreshold)
+handle_t createForceSensor(int options, int type, int valueCount, int thresholdCount, double size, double forceThreshold, double torqueThreshold)
 {
     int intParams[] = {
         type,
@@ -2546,15 +2524,15 @@ int createForceSensor(int options, int type, int valueCount, int thresholdCount,
     return createForceSensor(options, &intParams[0], &floatParams[0]);
 }
 
-int createVisionSensor(int options, const int *intParams, const double *floatParams)
+handle_t createVisionSensor(int options, const int *intParams, const double *floatParams)
 {
-    int handle = simCreateVisionSensor(options, intParams, floatParams, nullptr);
+    handle_t handle = simCreateVisionSensor(options, intParams, floatParams, nullptr);
     if(handle == -1)
         throw api_error("simCreateVisionSensor");
     return handle;
 }
 
-int createVisionSensor(int options, std::array<int, 2> resolution, double clipNear, double clipFar, double viewAngleOrOrthoSize, double xSize, std::array<float, 3> nullPixelColor)
+handle_t createVisionSensor(int options, std::array<int, 2> resolution, double clipNear, double clipFar, double viewAngleOrOrthoSize, double xSize, std::array<float, 3> nullPixelColor)
 {
     int intParams[] = {
         resolution[0],
@@ -2578,15 +2556,15 @@ int createVisionSensor(int options, std::array<int, 2> resolution, double clipNe
     return createVisionSensor(options, &intParams[0], &floatParams[0]);
 }
 
-int createProximitySensor(int sensorType, int options, const int *intParams, const double *floatParams)
+handle_t createProximitySensor(int sensorType, int options, const int *intParams, const double *floatParams)
 {
-    int handle = simCreateProximitySensor(sensorType, 16, options, intParams, floatParams, nullptr);
+    handle_t handle = simCreateProximitySensor(sensorType, 16, options, intParams, floatParams, nullptr);
     if(handle == -1)
         throw api_error("simCreateProximitySensor");
     return handle;
 }
 
-int createProximitySensor(int sensorType, int options, int faceCount, int faceCountFar, int subdivisions, int subdivisionsFar, int randDetSampleCountPerReading, int randDetIndividualRayDetCntForTrig, double offset, double range, std::array<double, 2> size, std::array<double, 2> sizeFar, double insideGap, double radius, double radiusFar, double angle, double thresholdAngle, double smallestDetDist, double sensPointSize)
+handle_t createProximitySensor(int sensorType, int options, int faceCount, int faceCountFar, int subdivisions, int subdivisionsFar, int randDetSampleCountPerReading, int randDetIndividualRayDetCntForTrig, double offset, double range, std::array<double, 2> size, std::array<double, 2> sizeFar, double insideGap, double radius, double radiusFar, double angle, double thresholdAngle, double smallestDetDist, double sensPointSize)
 {
     int intParams[] = {
         faceCount,
@@ -2638,17 +2616,17 @@ std::pair<std::array<double, 3>, double> getRotationAxis(std::array<double, 7> m
 
 // int simRotateAroundAxis(const double *matrixIn, const double *axis, const double *axisPos, double angle, double *matrixOut);
 
-// int simGetJointForce(int jointHandle, double *forceOrTorque);
+// int simGetJointForce(handle_t jointHandle, double *forceOrTorque);
 
 // int simCameraFitToView(int viewHandleOrIndex, int objectCount, const int *objectHandles, int options, double scaling);
 
-// int simHandleVisionSensor(int visionSensorHandle, double **auxValues, int **auxValuesCount);
+// int simHandleVisionSensor(handle_t visionSensorHandle, double **auxValues, int **auxValuesCount);
 
-// int simReadVisionSensor(int visionSensorHandle, double **auxValues, int **auxValuesCount);
+// int simReadVisionSensor(handle_t visionSensorHandle, double **auxValues, int **auxValuesCount);
 
-// int simCheckVisionSensor(int visionSensorHandle, int entityHandle, double **auxValues, int **auxValuesCount);
+// int simCheckVisionSensor(handle_t visionSensorHandle, handle_t entityHandle, double **auxValues, int **auxValuesCount);
 
-unsigned char * getVisionSensorImg(int sensorHandle, int options, double rgbaCutOff, std::array<int, 2> pos, std::array<int, 2> size, std::array<int, 2> *resolution)
+unsigned char * getVisionSensorImg(handle_t sensorHandle, int options, double rgbaCutOff, std::array<int, 2> pos, std::array<int, 2> size, std::array<int, 2> *resolution)
 {
     unsigned char *buf = simGetVisionSensorImg(sensorHandle, options, rgbaCutOff, pos.data(), size.data(), resolution ? resolution->data() : nullptr);
     if(!buf)
@@ -2656,7 +2634,7 @@ unsigned char * getVisionSensorImg(int sensorHandle, int options, double rgbaCut
     return buf;
 }
 
-std::array<int, 2> getVisionSensorRes(int visionSensorHandle)
+std::array<int, 2> getVisionSensorRes(handle_t visionSensorHandle)
 {
     std::array<int, 2> ret;
     if(simGetVisionSensorRes(visionSensorHandle, ret.data()) == -1)
@@ -2664,7 +2642,7 @@ std::array<int, 2> getVisionSensorRes(int visionSensorHandle)
     return ret;
 }
 
-std::array<double, 4> getObjectQuaternion(int objectHandle, int relativeToObjectHandle)
+std::array<double, 4> getObjectQuaternion(handle_t objectHandle, handle_t relativeToObjectHandle)
 {
     std::array<double, 4> ret;
     if(simGetObjectQuaternion(objectHandle, relativeToObjectHandle, ret.data()) == -1)
@@ -2672,13 +2650,13 @@ std::array<double, 4> getObjectQuaternion(int objectHandle, int relativeToObject
     return ret;
 }
 
-void setObjectQuaternion(int objectHandle, int relativeToObjectHandle, const std::array<double, 4> &quaternion)
+void setObjectQuaternion(handle_t objectHandle, handle_t relativeToObjectHandle, const std::array<double, 4> &quaternion)
 {
     if(simSetObjectQuaternion(objectHandle, relativeToObjectHandle, quaternion.data()) == -1)
         throw api_error("simSetObjectQuaternion");
 }
 
-// int simConvexDecompose(int shapeHandle, int options, const int *intParams, const double *floatParams);
+// int simConvexDecompose(handle_t shapeHandle, int options, const int *intParams, const double *floatParams);
 
 void writeTexture(int textureId, int options, const char *data, int posX, int posY, int sizeX, int sizeY, double interpol)
 {
@@ -2688,43 +2666,43 @@ void writeTexture(int textureId, int options, const char *data, int posX, int po
 
 // int simCreateTexture(const char *fileName, int options, const double *planeSizes, const double *scalingUV, const double *xy_g, int fixedResolution, int *textureId, int *resolution, const void *reserved);
 
-// int simGetShapeGeomInfo(int shapeHandle, int *intData, double *floatData, void *reserved);
+// int simGetShapeGeomInfo(handle_t shapeHandle, int *intData, double *floatData, void *reserved);
 
-// int simScaleObject(int objectHandle, double xScale, double yScale, double zScale, int options);
+// int simScaleObject(handle_t objectHandle, double xScale, double yScale, double zScale, int options);
 
-// int simSetShapeTexture(int shapeHandle, int textureId, int mappingMode, int options, const double *uvScaling, const double *position, const double *orientation);
+// int simSetShapeTexture(handle_t shapeHandle, int textureId, int mappingMode, int options, const double *uvScaling, const double *position, const double *orientation);
 
 // int simGetQHull(const double *inVertices, int inVerticesL, double **verticesOut, int *verticesOutL, int **indicesOut, int *indicesOutL, int reserved1, const double *reserved2);
 
 // int simGetDecimatedMesh(const double *inVertices, int inVerticesL, const int *inIndices, int inIndicesL, double **verticesOut, int *verticesOutL, int **indicesOut, int *indicesOutL, double decimationPercent, int reserved1, const double *reserved2);
 
-// int simComputeMassAndInertia(int shapeHandle, double density);
+// int simComputeMassAndInertia(handle_t shapeHandle, double density);
 
 // int simCreateOctree(double voxelSize, int options, double pointSize, void *reserved);
 
-int createPointCloud(double maxVoxelSize, int maxPtCntPerVoxel, int options, double pointSize)
+handle_t createPointCloud(double maxVoxelSize, int maxPtCntPerVoxel, int options, double pointSize)
 {
-    int ret = simCreatePointCloud(maxVoxelSize, maxPtCntPerVoxel, options, pointSize, nullptr);
+    handle_t ret = simCreatePointCloud(maxVoxelSize, maxPtCntPerVoxel, options, pointSize, nullptr);
     if(ret == -1)
         throw api_error("simCreatePointCloud");
     return ret;
 }
 
-// int simSetPointCloudOptions(int pointCloudHandle, double maxVoxelSize, int maxPtCntPerVoxel, int options, double pointSize, void *reserved);
+// int simSetPointCloudOptions(handle_t pointCloudHandle, double maxVoxelSize, int maxPtCntPerVoxel, int options, double pointSize, void *reserved);
 
-// int simGetPointCloudOptions(int pointCloudHandle, double *maxVoxelSize, int *maxPtCntPerVoxel, int *options, double *pointSize, void *reserved);
+// int simGetPointCloudOptions(handle_t pointCloudHandle, double *maxVoxelSize, int *maxPtCntPerVoxel, int *options, double *pointSize, void *reserved);
 
-// int simInsertVoxelsIntoOctree(int octreeHandle, int options, const double *pts, int ptCnt, const unsigned char *color, const unsigned int *tag, void *reserved);
+// int simInsertVoxelsIntoOctree(handle_t octreeHandle, int options, const double *pts, int ptCnt, const unsigned char *color, const unsigned int *tag, void *reserved);
 
-// int simRemoveVoxelsFromOctree(int octreeHandle, int options, const double *pts, int ptCnt, void *reserved);
+// int simRemoveVoxelsFromOctree(handle_t octreeHandle, int options, const double *pts, int ptCnt, void *reserved);
 
-// int simInsertPointsIntoPointCloud(int pointCloudHandle, int options, const double *pts, int ptCnt, const unsigned char *color, void *optionalValues);
+// int simInsertPointsIntoPointCloud(handle_t pointCloudHandle, int options, const double *pts, int ptCnt, const unsigned char *color, void *optionalValues);
 
-// int simRemovePointsFromPointCloud(int pointCloudHandle, int options, const double *pts, int ptCnt, double tolerance, void *reserved);
+// int simRemovePointsFromPointCloud(handle_t pointCloudHandle, int options, const double *pts, int ptCnt, double tolerance, void *reserved);
 
-// int simIntersectPointsWithPointCloud(int pointCloudHandle, int options, const double *pts, int ptCnt, double tolerance, void *reserved);
+// int simIntersectPointsWithPointCloud(handle_t pointCloudHandle, int options, const double *pts, int ptCnt, double tolerance, void *reserved);
 
-int insertObjectIntoPointCloud(int pointCloudHandle, int objectHandle, int options, double gridSize, std::optional<std::array<unsigned char, 3>> color, std::optional<float> duplicateTolerance)
+int insertObjectIntoPointCloud(handle_t pointCloudHandle, handle_t objectHandle, int options, double gridSize, std::optional<std::array<unsigned char, 3>> color, std::optional<float> duplicateTolerance)
 {
     std::array<unsigned char, 3> color_;
     unsigned char *colorPtr = nullptr;
@@ -2749,9 +2727,9 @@ int insertObjectIntoPointCloud(int pointCloudHandle, int objectHandle, int optio
     return ret;
 }
 
-// int simSubtractObjectFromPointCloud(int pointCloudHandle, int objectHandle, int options, double tolerance, void *reserved);
+// int simSubtractObjectFromPointCloud(handle_t pointCloudHandle, handle_t objectHandle, int options, double tolerance, void *reserved);
 
-bool checkOctreePointOccupancy(int octreeHandle, int options, const double *points, int ptCnt, unsigned int *tag, unsigned long long int *location)
+bool checkOctreePointOccupancy(handle_t octreeHandle, int options, const double *points, int ptCnt, unsigned int *tag, unsigned long long int *location)
 {
     int ret = simCheckOctreePointOccupancy(octreeHandle, options, points, ptCnt, tag, location, nullptr);
     if(ret == -1)
@@ -2759,18 +2737,18 @@ bool checkOctreePointOccupancy(int octreeHandle, int options, const double *poin
     return ret > 0;
 }
 
-bool checkOctreePointOccupancy(int octreeHandle, int options, const std::vector<double> &pts, unsigned int *tag, unsigned long long int *location)
+bool checkOctreePointOccupancy(handle_t octreeHandle, int options, const std::vector<double> &pts, unsigned int *tag, unsigned long long int *location)
 {
     return checkOctreePointOccupancy(octreeHandle, options, pts.data(), pts.size(), tag, location);
 }
 
-// int simApplyTexture(int shapeHandle, const double *textureCoordinates, int textCoordSize, const unsigned char *texture, const int *textureResolution, int options);
+// int simApplyTexture(handle_t shapeHandle, const double *textureCoordinates, int textCoordSize, const unsigned char *texture, const int *textureResolution, int options);
 
-// int simSetJointDependency(int jointHandle, int masterJointHandle, double offset, double multCoeff);
+// int simSetJointDependency(handle_t jointHandle, handle_t masterJointHandle, double offset, double multCoeff);
 
-// int simGetJointDependency(int jointHandle, int *masterJointHandle, double *offset, double *multCoeff);
+// int simGetJointDependency(handle_t jointHandle, int *masterJointHandle, double *offset, double *multCoeff);
 
-double getShapeMass(int shapeHandle)
+double getShapeMass(handle_t shapeHandle)
 {
     double mass = 0.0;
     if(simGetShapeMass(shapeHandle, &mass) == -1)
@@ -2778,19 +2756,19 @@ double getShapeMass(int shapeHandle)
     return mass;
 }
 
-void setShapeMass(int shapeHandle, double mass)
+void setShapeMass(handle_t shapeHandle, double mass)
 {
     if(simSetShapeMass(shapeHandle, mass) == -1)
         throw api_error("simSetShapeMass");
 }
 
-void getShapeInertia(int shapeHandle, double *inertiaMatrix, double *transformationMatrix)
+void getShapeInertia(handle_t shapeHandle, double *inertiaMatrix, double *transformationMatrix)
 {
     if(simGetShapeInertia(shapeHandle, inertiaMatrix, transformationMatrix) == -1)
         throw api_error("simGetShapeInertia");
 }
 
-std::pair<std::array<double, 9>, std::array<double, 12>> getShapeInertia(int shapeHandle)
+std::pair<std::array<double, 9>, std::array<double, 12>> getShapeInertia(handle_t shapeHandle)
 {
     std::array<double, 9> inertiaMatrix;
     std::array<double, 12> transformationMatrix;
@@ -2798,13 +2776,13 @@ std::pair<std::array<double, 9>, std::array<double, 12>> getShapeInertia(int sha
     return std::make_pair(inertiaMatrix, transformationMatrix);
 }
 
-void setShapeInertia(int shapeHandle, const double *inertiaMatrix, const double *transformationMatrix)
+void setShapeInertia(handle_t shapeHandle, const double *inertiaMatrix, const double *transformationMatrix)
 {
     if(simSetShapeInertia(shapeHandle, inertiaMatrix, transformationMatrix) == -1)
         throw api_error("simSetShapeInertia");
 }
 
-void setShapeInertia(int shapeHandle, std::array<double, 9> inertiaMatrix, std::array<double, 12> transformationMatrix)
+void setShapeInertia(handle_t shapeHandle, std::array<double, 9> inertiaMatrix, std::array<double, 12> transformationMatrix)
 {
     return setShapeInertia(shapeHandle, inertiaMatrix.data(), transformationMatrix.data());
 }
@@ -2887,14 +2865,14 @@ void setShapeInertia(int shapeHandle, std::array<double, 9> inertiaMatrix, std::
 
 // void simDynCallback(const int *intData, const double *floatData);
 
-void setBoolProperty(int target, const std::string &pname, bool value)
+void setBoolProperty(handle_t target, const std::string &pname, bool value)
 {
     int ret = simSetBoolProperty(target, pname.c_str(), value);
     if(ret == -1)
         throw api_error("simSetBoolProperty");
 }
 
-bool getBoolProperty(int target, const std::string &pname)
+bool getBoolProperty(handle_t target, const std::string &pname)
 {
     int value = 0;
     int ret = simGetBoolProperty(target, pname.c_str(), &value);
@@ -2903,14 +2881,14 @@ bool getBoolProperty(int target, const std::string &pname)
     return value > 0;
 }
 
-void setIntProperty(int target, const std::string &pname, int value)
+void setIntProperty(handle_t target, const std::string &pname, int value)
 {
     int ret = simSetIntProperty(target, pname.c_str(), value);
     if(ret == -1)
         throw api_error("simSetIntProperty");
 }
 
-int getIntProperty(int target, const std::string &pname)
+int getIntProperty(handle_t target, const std::string &pname)
 {
     int value = 0;
     int ret = simGetIntProperty(target, pname.c_str(), &value);
@@ -2919,14 +2897,14 @@ int getIntProperty(int target, const std::string &pname)
     return value;
 }
 
-void setFloatProperty(int target, const std::string &pname, double value)
+void setFloatProperty(handle_t target, const std::string &pname, double value)
 {
     int ret = simSetFloatProperty(target, pname.c_str(), value);
     if(ret == -1)
         throw api_error("simSetFloatProperty");
 }
 
-double getFloatProperty(int target, const std::string &pname)
+double getFloatProperty(handle_t target, const std::string &pname)
 {
     double value = 0;
     int ret = simGetFloatProperty(target, pname.c_str(), &value);
@@ -2935,14 +2913,14 @@ double getFloatProperty(int target, const std::string &pname)
     return value;
 }
 
-void setStringProperty(int target, const std::string &pname, const std::string &value)
+void setStringProperty(handle_t target, const std::string &pname, const std::string &value)
 {
     int ret = simSetStringProperty(target, pname.c_str(), value.c_str());
     if(ret == -1)
         throw api_error("simSetStringProperty");
 }
 
-std::string getStringProperty(int target, const std::string &pname)
+std::string getStringProperty(handle_t target, const std::string &pname)
 {
     char *value = simGetStringProperty(target, pname.c_str());
     if(!value)
@@ -2952,14 +2930,14 @@ std::string getStringProperty(int target, const std::string &pname)
     return s;
 }
 
-void setBufferProperty(int target, const std::string &pname, const std::string &value)
+void setBufferProperty(handle_t target, const std::string &pname, const std::string &value)
 {
     int ret = simSetBufferProperty(target, pname.c_str(), value.c_str(), value.size());
     if(ret == -1)
         throw api_error("simSetBufferProperty");
 }
 
-std::string getBufferProperty(int target, const std::string &pname)
+std::string getBufferProperty(handle_t target, const std::string &pname)
 {
     int len = 0;
     char *value = simGetBufferProperty(target, pname.c_str(), &len);
@@ -2970,14 +2948,14 @@ std::string getBufferProperty(int target, const std::string &pname)
     return s;
 }
 
-void setVector3Property(int target, const std::string &pname, std::array<double, 3> value)
+void setVector3Property(handle_t target, const std::string &pname, std::array<double, 3> value)
 {
     int ret = simSetVector3Property(target, pname.c_str(), value.data());
     if(ret == -1)
         throw api_error("simSetVector3Property");
 }
 
-std::array<double, 3> getVector3Property(int target, const std::string &pname)
+std::array<double, 3> getVector3Property(handle_t target, const std::string &pname)
 {
     std::array<double, 3> value;
     int ret = simGetVector3Property(target, pname.c_str(), value.data());
@@ -2986,14 +2964,14 @@ std::array<double, 3> getVector3Property(int target, const std::string &pname)
     return value;
 }
 
-void setQuaternionProperty(int target, const std::string &pname, std::array<double, 4> value)
+void setQuaternionProperty(handle_t target, const std::string &pname, std::array<double, 4> value)
 {
     int ret = simSetQuaternionProperty(target, pname.c_str(), value.data());
     if(ret == -1)
         throw api_error("simSetQuaternionProperty");
 }
 
-std::array<double, 4> getQuaternionProperty(int target, const std::string &pname)
+std::array<double, 4> getQuaternionProperty(handle_t target, const std::string &pname)
 {
     std::array<double, 4> value;
     int ret = simGetQuaternionProperty(target, pname.c_str(), value.data());
@@ -3002,14 +2980,14 @@ std::array<double, 4> getQuaternionProperty(int target, const std::string &pname
     return value;
 }
 
-void setPoseProperty(int target, const std::string &pname, std::array<double, 7> value)
+void setPoseProperty(handle_t target, const std::string &pname, std::array<double, 7> value)
 {
     int ret = simSetPoseProperty(target, pname.c_str(), value.data());
     if(ret == -1)
         throw api_error("simSetPoseProperty");
 }
 
-std::array<double, 7> getPoseProperty(int target, const std::string &pname)
+std::array<double, 7> getPoseProperty(handle_t target, const std::string &pname)
 {
     std::array<double, 7> value;
     int ret = simGetPoseProperty(target, pname.c_str(), value.data());
@@ -3018,14 +2996,14 @@ std::array<double, 7> getPoseProperty(int target, const std::string &pname)
     return value;
 }
 
-void setColorProperty(int target, const std::string &pname, std::array<float, 3> value)
+void setColorProperty(handle_t target, const std::string &pname, std::array<float, 3> value)
 {
     int ret = simSetColorProperty(target, pname.c_str(), value.data());
     if(ret == -1)
         throw api_error("simSetColorProperty");
 }
 
-std::array<float, 3> getColorProperty(int target, const std::string &pname)
+std::array<float, 3> getColorProperty(handle_t target, const std::string &pname)
 {
     std::array<float, 3> value;
     int ret = simGetColorProperty(target, pname.c_str(), value.data());
@@ -3034,14 +3012,14 @@ std::array<float, 3> getColorProperty(int target, const std::string &pname)
     return value;
 }
 
-void setFloatArrayProperty(int target, const std::string &pname, const std::vector<double> &value)
+void setFloatArrayProperty(handle_t target, const std::string &pname, const std::vector<double> &value)
 {
     int ret = simSetFloatArrayProperty(target, pname.c_str(), value.data(), value.size());
     if(ret == -1)
         throw api_error("simSetFloatArrayProperty");
 }
 
-std::vector<double> getFloatArrayProperty(int target, const std::string &pname)
+std::vector<double> getFloatArrayProperty(handle_t target, const std::string &pname)
 {
     int len = 0;
     double *value = simGetFloatArrayProperty(target, pname.c_str(), &len);
@@ -3052,14 +3030,14 @@ std::vector<double> getFloatArrayProperty(int target, const std::string &pname)
     return v;
 }
 
-void setIntArrayProperty(int target, const std::string &pname, const std::vector<int> &value)
+void setIntArrayProperty(handle_t target, const std::string &pname, const std::vector<int> &value)
 {
     int ret = simSetIntArrayProperty(target, pname.c_str(), value.data(), value.size());
     if(ret == -1)
         throw api_error("simSetIntArrayProperty");
 }
 
-std::vector<int> getIntArrayProperty(int target, const std::string &pname)
+std::vector<int> getIntArrayProperty(handle_t target, const std::string &pname)
 {
     int len = 0;
     int *value = simGetIntArrayProperty(target, pname.c_str(), &len);
@@ -3071,14 +3049,14 @@ std::vector<int> getIntArrayProperty(int target, const std::string &pname)
 }
 
 #if 0
-void setFloatArray2Property(int target, const std::string &pname, const std::array<double, 2> &value)
+void setFloatArray2Property(handle_t target, const std::string &pname, const std::array<double, 2> &value)
 {
     int ret = simSetFloatArray2Property(target, pname.c_str(), value.data());
     if(ret == -1)
         throw api_error("simSetFloatArray2Property");
 }
 
-std::array<double, 2> getFloatArray2Property(int target, const std::string &pname)
+std::array<double, 2> getFloatArray2Property(handle_t target, const std::string &pname)
 {
     std::array<double, 2> v;
     int ret = simGetFloatArray2Property(target, pname.c_str(), v.data());
@@ -3087,14 +3065,14 @@ std::array<double, 2> getFloatArray2Property(int target, const std::string &pnam
     return v;
 }
 
-void setFloatArray3Property(int target, const std::string &pname, const std::array<double, 3> &value)
+void setFloatArray3Property(handle_t target, const std::string &pname, const std::array<double, 3> &value)
 {
     int ret = simSetFloatArray3Property(target, pname.c_str(), value.data());
     if(ret == -1)
         throw api_error("simSetFloatArray3Property");
 }
 
-std::array<double, 3> getFloatArray3Property(int target, const std::string &pname)
+std::array<double, 3> getFloatArray3Property(handle_t target, const std::string &pname)
 {
     std::array<double, 3> v;
     int ret = simGetFloatArray3Property(target, pname.c_str(), v.data());
@@ -3104,14 +3082,14 @@ std::array<double, 3> getFloatArray3Property(int target, const std::string &pnam
 }
 #endif
 
-void setIntArray2Property(int target, const std::string &pname, const std::array<int, 2> &value)
+void setIntArray2Property(handle_t target, const std::string &pname, const std::array<int, 2> &value)
 {
     int ret = simSetIntArray2Property(target, pname.c_str(), value.data());
     if(ret == -1)
         throw api_error("simSetIntArray2Property");
 }
 
-std::array<int, 2> getIntArray2Property(int target, const std::string &pname)
+std::array<int, 2> getIntArray2Property(handle_t target, const std::string &pname)
 {
     std::array<int, 2> v;
     int ret = simGetIntArray2Property(target, pname.c_str(), v.data());
@@ -3120,30 +3098,30 @@ std::array<int, 2> getIntArray2Property(int target, const std::string &pname)
     return v;
 }
 
-void removeProperty(int target, const std::string &pname)
+void removeProperty(handle_t target, const std::string &pname)
 {
     int ret = simRemoveProperty(target, pname.c_str());
     if(ret == -1)
         throw api_error("simRemoveProperty");
 }
 
-bool getPropertyName(int target, int index, std::string &pname)
+bool getPropertyName(handle_t target, int index, std::string &pname)
 {
     return getPropertyName(target, index, pname, pname);
 }
 
-bool getPropertyName(int target, int index, std::string &pname, SPropertyOptions &opts)
+bool getPropertyName(handle_t target, int index, std::string &pname, SPropertyOptions &opts)
 {
     return getPropertyName(target, index, pname, pname, opts);
 }
 
-bool getPropertyName(int target, int index, std::string &pname, std::string &pclass)
+bool getPropertyName(handle_t target, int index, std::string &pname, std::string &pclass)
 {
     SPropertyOptions opts;
     return getPropertyName(target, index, pname, pclass, opts);
 }
 
-bool getPropertyName(int target, int index, std::string &pname, std::string &pclass, SPropertyOptions &opts)
+bool getPropertyName(handle_t target, int index, std::string &pname, std::string &pclass, SPropertyOptions &opts)
 {
     char* ret = simGetPropertyName(target, index, &opts);
     if(!ret) return false;
@@ -3167,13 +3145,13 @@ bool getPropertyName(int target, int index, std::string &pname, std::string &pcl
     return true;
 }
 
-bool getPropertyInfo(int target, const std::string &pname, SPropertyInfo &info)
+bool getPropertyInfo(handle_t target, const std::string &pname, SPropertyInfo &info)
 {
     SPropertyOptions opts;
     return getPropertyInfo(target, pname, info, opts);
 }
 
-bool getPropertyInfo(int target, const std::string &pname, SPropertyInfo &info, SPropertyOptions &opts)
+bool getPropertyInfo(handle_t target, const std::string &pname, SPropertyInfo &info, SPropertyOptions &opts)
 {
     int ret = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
     if(ret == -1)
