@@ -378,7 +378,7 @@ static void readFromStack(int stack, Eigen::Quaterniond *q, const ReadOptions &r
     ReadOptions rdopt1;
     rdopt1.minSize = rdopt1.maxSize = {4};
     readFromStack(stack, &v, sim::getStackDoubleTable, rdopt1);
-    q->coeffs() << v[0], v[1], v[2], v[3];
+    *q = Eigen::Quaterniond(v[3], v[0], v[1], v[2]);
 }
 
 #endif // SIM_STUBS_GEN_EIGEN
