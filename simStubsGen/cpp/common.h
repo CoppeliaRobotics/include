@@ -378,6 +378,7 @@ static void readFromStack(int stack, Eigen::Quaterniond *q, const ReadOptions &r
     ReadOptions rdopt1;
     rdopt1.minSize = rdopt1.maxSize = {4};
     readFromStack(stack, &v, sim::getStackDoubleTable, rdopt1);
+    // note about quaternion order: Eigen=WXYZ, CoppeliaSim=XYZW
     *q = Eigen::Quaterniond(v[3], v[0], v[1], v[2]);
 }
 
@@ -498,6 +499,7 @@ static void writeToStack(const Eigen::Vector3d &vec, int stack, const WriteOptio
 
 static void writeToStack(const Eigen::Quaterniond &q, int stack, const WriteOptions &wropt = {})
 {
+    // note about quaternion order: Eigen=WXYZ, CoppeliaSim=XYZW
     std::vector<double> v {q.x(), q.y(), q.z(), q.w()};
     writeToStack(v, stack, wropt);
 }
