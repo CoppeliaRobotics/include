@@ -7,6 +7,14 @@
 #include <string.h>
 #endif
 
+#ifndef UID
+#if defined(SIM_UNIFIED_HANDLES)
+#define UID long long int
+#else
+#define UID int
+#endif
+#endif
+
 struct S_UID
 {
     int objectType; // e.g. sim_objecttype_sceneobject, etc.
