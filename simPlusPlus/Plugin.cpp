@@ -97,9 +97,10 @@ namespace sim
 
             msg->auxData[0]: do not use
             msg->auxData[1]=current scene unique ID
+            msg->auxData[2]=old scene unique ID
             */
             {
-                onInstanceSwitch(msg->auxData[1]);
+                onInstanceSwitch(msg->auxData[1], msg->auxData[2]);
             }
             break;
         case sim_message_eventcallback_instanceabouttoswitch:
@@ -108,9 +109,10 @@ namespace sim
 
             msg->auxData[0]: do not use
             msg->auxData[1]=next scene unique ID
+            msg->auxData[2]=old scene unique ID
             */
             {
-                onInstanceAboutToSwitch(msg->auxData[1]);
+                onInstanceAboutToSwitch(msg->auxData[1], msg->auxData[2]);
             }
             break;
         case sim_message_eventcallback_scenesave:
@@ -311,11 +313,11 @@ namespace sim
     {
     }
 
-    void Plugin::onInstanceSwitch(int sceneID)
+    void Plugin::onInstanceSwitch(int sceneID, int oldSceneID)
     {
     }
 
-    void Plugin::onInstanceAboutToSwitch(int sceneID)
+    void Plugin::onInstanceAboutToSwitch(int sceneID, int oldSceneID)
     {
     }
 

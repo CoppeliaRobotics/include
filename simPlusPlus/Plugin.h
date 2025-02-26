@@ -87,8 +87,8 @@ namespace sim
         virtual void onUIMsg(SSimMsg_ui *msg) final;
 
         virtual void onInstancePass(const InstancePassFlags &flags);
-        virtual void onInstanceSwitch(int sceneID);
-        virtual void onInstanceAboutToSwitch(int sceneID);
+        virtual void onInstanceSwitch(int sceneID, int oldSceneID);
+        virtual void onInstanceAboutToSwitch(int sceneID, int oldSceneID);
         virtual void onSceneSave();
         virtual void onModelSave();
         virtual void onAboutToUndo();
