@@ -25,9 +25,11 @@ def output():
     if fun:
         if args.verbose:
             print('.')
-        f, fdesc = fun
+        f, tagopts, fdesc = fun
         cmd = ET.SubElement(root, 'command')
         cmd.attrib['name'] = f
+        for k, v in tagopts.items():
+            cmd.attrib[k.replace('_', '-')] = str(v).lower() if isinstance(v, bool) else str(v)
         if fdesc:
             d = ET.SubElement(cmd, 'description')
             d.text = fdesc
@@ -60,22 +62,102 @@ def error(msg):
     sys.exit(2)
 
 
+def parse_lua_table(lua_str):
+    """Parses a subset of Lua table literals into Python dictionaries."""
+
+    lua_str = lua_str.strip()
+
+    if not lua_str.startswith("{") or not lua_str.endswith("}"):
+        raise ValueError("Invalid Lua table format")
+
+    def parse_table(s, index=0):
+        """Recursive function to parse Lua tables."""
+        result = {}
+        key = None
+        value = None
+        i = index + 1  # Skip the opening '{'
+
+        while i < len(s):
+            char = s[i]
+
+            if char in " \t\r\n":
+                i += 1  # Skip whitespace
+                continue
+
+            if char == "}":
+                if key is not None and value is not None:
+                    result[key] = value  # Store last key-value pair
+                return result, i + 1  # Skip closing '}'
+
+            if char == "{":
+                value, i = parse_table(s, i)
+                if key is not None:
+                    result[key] = value
+                    key, value = None, None
+                continue
+
+            match = re.match(r"([a-zA-Z_]\w*)\s*=", s[i:])
+            if match:  # Found a key
+                key = match.group(1)
+                i += match.end()
+                continue
+
+            match = re.match(r"-?\d+(\.\d+)?", s[i:])
+            if match:  # Found a number
+                value = float(match.group()) if "." in match.group() else int(match.group())
+                i += match.end()
+                if key is not None:
+                    result[key] = value
+                    key, value = None, None
+                continue
+
+            if s.startswith("true", i):
+                value = True
+                i += 4
+                if key is not None:
+                    result[key] = value
+                    key, value = None, None
+                continue
+
+            if s.startswith("false", i):
+                value = False
+                i += 5
+                if key is not None:
+                    result[key] = value
+                    key, value = None, None
+                continue
+
+            if char == ",":
+                i += 1  # Skip comma
+                continue
+
+            raise ValueError(f"Unexpected character at index {i}: '{char}'")
+
+        raise ValueError("Unexpected end of input")
+
+    parsed_table, _ = parse_table(lua_str)
+    return parsed_table
+
+
 root = ET.Element('plugin')
 root.attrib['name'] = plugin.name
 if plugin.version:
     root.attrib['version'] = str(plugin.version)
 
+
 with open(args.lua_file, 'r') as f:
     for lineno, line in enumerate(f):
         lineno += 1
-        if m := re.match(r'\s*--\s*@(\w+)\b\s*(.*?)\s*$', line):
-            tag, line = m.groups()
+        if m := re.match(r'\s*--\s*@((\w+)\b\s*(\{[^\s]*\})?)\s*(.*?)\s*$', line):
+            _, tag, tagopts, line = m.groups()
+            tagopts = parse_lua_table(tagopts) if tagopts else {}
+
             if tag in ('func', 'fun'):
                 if m := re.match(r'(\S+)\s*(.*?)\s*$', line):
                     name, description = m.groups()
-                    fun = (name, description)
+                    fun = (name, tagopts, description)
                     if args.verbose:
-                        print(f'fun={name}, {description}')
+                        print(f'fun={name}{tagopts}, {description}')
                 else:
                     error('bad arguments: must be: @func <funcName> [description]')
             elif tag in ('arg', 'ret'):
