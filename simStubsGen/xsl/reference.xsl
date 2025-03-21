@@ -423,16 +423,18 @@ td.section { margin: 0; padding: 0; }
                                                 </xsl:for-each>
                                             </td>
                                         </tr>
-                                        <tr class="apiTableTr">
-                                            <td class="apiTableLeftPSyn">Python synopsis</td>
-                                            <td class="apiTableRightPSyn">
-                                                <xsl:call-template name="renderPythonCmdSynopsis">
-                                                    <xsl:with-param name="cmd" select="."/>
-                                                    <xsl:with-param name="nameTemplate" select="renderCmdName"/>
-                                                </xsl:call-template>
-                                                <br/>
-                                            </td>
-                                        </tr>
+                                        <xsl:if test="not(@lua-only='true')">
+                                            <tr class="apiTableTr">
+                                                <td class="apiTableLeftPSyn">Python synopsis</td>
+                                                <td class="apiTableRightPSyn">
+                                                    <xsl:call-template name="renderPythonCmdSynopsis">
+                                                        <xsl:with-param name="cmd" select="."/>
+                                                        <xsl:with-param name="nameTemplate" select="renderCmdName"/>
+                                                    </xsl:call-template>
+                                                    <br/>
+                                                </td>
+                                            </tr>
+                                        </xsl:if>
                                         <xsl:if test="see-also/*[name()='command-ref' or name()='enum-ref' or name()='struct-ref' or name()='script-function-ref'] or categories/category">
                                             <tr class="apiTableTr">
                                                 <td class="apiTableLeftDescr">
