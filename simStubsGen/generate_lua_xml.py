@@ -42,16 +42,17 @@ def output():
         for (src, parent) in ((ins, pars), (outs, rets)):
             for (typeSpec, name, description) in src:
                 p = ET.SubElement(parent, 'param')
-                p.attrib['name'] = name
-                p.attrib['type'] = typeSpec['type']
+                p.attrib['name'] = str(name)
+                p.attrib['type'] = str(typeSpec['type'])
                 if 'item_type' in typeSpec:
-                    p.attrib['item-type'] = typeSpec['item_type']
+                    p.attrib['item-type'] = str(typeSpec['item_type'])
                 if 'size' in typeSpec:
                     p.attrib['size'] = str(typeSpec["size"])
                 if 'nullable' in typeSpec:
                     p.attrib['nullable'] = str(typeSpec["nullable"]).lower()
                 if 'default' in typeSpec:
-                    p.attrib['default'] = typeSpec["default"]
+                    v = typeSpec["default"]
+                    p.attrib['default'] = str(v).lower() if isinstance(v, bool) else str(v)
                 if description:
                     d = ET.SubElement(p, 'description')
                     d.text = description
@@ -68,7 +69,7 @@ def parse_lua_table(lua_str):
     lua_str = lua_str.strip()
 
     if not lua_str.startswith("{") or not lua_str.endswith("}"):
-        raise ValueError("Invalid Lua table format")
+        raise ValueError("Invalid Lua table format: " + lua_str)
 
     def parse_table(s, index=0):
         """Recursive function to parse Lua tables."""
@@ -127,6 +128,24 @@ def parse_lua_table(lua_str):
                     key, value = None, None
                 continue
 
+            if s.startswith('"', i):
+                i2 = s.index('"', i + 1)  # Fix index
+                value = s[i + 1:i2]
+                i = i2 + 1
+                if key is not None:
+                    result[key] = value
+                    key, value = None, None
+                continue
+
+            if s.startswith("'", i):
+                i2 = s.index("'", i + 1)  # Fix index
+                value = s[i + 1:i2]
+                i = i2 + 1
+                if key is not None:
+                    result[key] = value
+                    key, value = None, None
+                continue
+
             if char == ",":
                 i += 1  # Skip comma
                 continue
@@ -148,61 +167,60 @@ if plugin.version:
 with open(args.lua_file, 'r') as f:
     for lineno, line in enumerate(f):
         lineno += 1
-        if m := re.match(r'\s*--\s*@((\w+)\b\s*(\{[^\s]*\})?)\s*(.*?)\s*$', line):
-            _, tag, tagopts, line = m.groups()
-            tagopts = parse_lua_table(tagopts) if tagopts else {}
+        try:
+            if m := re.match(r'\s*--\s*@((\w+)\b\s*(\{[^\s]*\})?)\s*(.*?)\s*$', line):
+                _, tag, tagopts, line = m.groups()
+                tagopts = parse_lua_table(tagopts) if tagopts else {}
 
-            if tag in ('func', 'fun'):
-                if m := re.match(r'(\S+)\s*(.*?)\s*$', line):
-                    name, description = m.groups()
-                    fun = (name, tagopts, description)
-                    if args.verbose:
-                        print(f'fun={name}{tagopts}, {description}')
-                else:
-                    error('bad arguments: must be: @func <funcName> [description]')
-            elif tag in ('arg', 'ret'):
-                if m := re.match(r'(\w+)\s+(\w+)\s*(.*?)$', line):
-                    dtype, name, description = m.groups()
-                    typeSpec = {'type': dtype}
-                elif m := re.match(r'table\.(\w+)\s+(\w+)\s*(.*?)$', line):
-                    itype, name, description = m.groups()
-                    typeSpec = {'type': 'table', 'item_type': itype}
-                elif m := re.match(r'\{([^\s]*)\}\s+(\w+)\s*(.*?)$', line):
-                    spec, name, description = m.groups()
-                    typeSpec = {}
-                    for s in spec.split(','):
-                        s = s.strip()
-                        k, v = s.split('=')
-                        if k in ('type', 'item_type', 'default', 'size'):
-                            typeSpec[k] = v
-                        elif k in ('nullable',):
-                            try:
-                                typeSpec[k] = {'true': True, 'false': False}[v]
-                            except KeyError:
-                                error(f'bad value for {k}: must be true or false')
+                if tag in ('func', 'fun'):
+                    if m := re.match(r'(\S+)\s*(.*?)\s*$', line):
+                        name, description = m.groups()
+                        fun = (name, tagopts, description)
+                        if args.verbose:
+                            print(f'fun={name}{tagopts}, {description}')
+                    else:
+                        error('bad arguments: must be: @func <funcName> [description]')
+                elif tag in ('arg', 'ret'):
+                    if tagopts:
+                        # was in the form @arg {typespec...} name [descr]
+                        if m := re.match(r'(\w+)\s*(.*?)$', line):
+                            name, description = m.groups()
+                            typeSpec = tagopts
                         else:
-                            error(f'bad key in typeSpec: {k}')
+                            error(f'bad arguments: must be: @{tag} <typeSpec> <name> [description]')
+                    else:
+                        # was in the form @arg simpletype name [descr]
+                        if m := re.match(r'(\w+)\s+(\w+)\s*(.*?)$', line):
+                            dtype, name, description = m.groups()
+                            typeSpec = {'type': dtype}
+                        elif m := re.match(r'table\.(\w+)\s+(\w+)\s*(.*?)$', line):
+                            itype, name, description = m.groups()
+                            typeSpec = {'type': 'table', 'item_type': itype}
+                        else:
+                            error(f'bad arguments: must be: @{tag} <typeSpec> <name> [description]')
+                    if not all(k in ('type', 'item_type', 'default', 'size', 'nullable') for k in typeSpec):
+                        error(f'bad key in typeSpec: {", ".join(typeSpec.keys())}')
+                    if tag == 'arg':
+                        ins.append((typeSpec, name, description))
+                        if args.verbose:
+                            print(f'arg={typeSpec}, {name}, {description}')
+                    elif tag == 'ret':
+                        outs.append((typeSpec, name, description))
+                        if args.verbose:
+                            print(f'ret={typeSpec}, {name}, {description}')
+                elif tag == 'cats':
+                    cats = [x.strip() for x in line.split(',')]
+                    if args.verbose:
+                        print(f'cats={cats}')
                 else:
-                    error(f'bad arguments: must be: @{tag} <typeSpec> <name> [description]')
-                if tag == 'arg':
-                    ins.append((typeSpec, name, description))
-                    if args.verbose:
-                        print(f'arg={typeSpec}, {name}, {description}')
-                elif tag == 'ret':
-                    outs.append((typeSpec, name, description))
-                    if args.verbose:
-                        print(f'ret={typeSpec}, {name}, {description}')
-            elif tag == 'cats':
-                cats = [x.strip() for x in line.split(',')]
-                if args.verbose:
-                    print(f'cats={cats}')
+                    error(f'unknown tag: @{tag}')
             else:
-                error(f'unknown tag: @{tag}')
-        else:
-            output()
-            fun = None
-            ins, outs = [], []
-            cats = []
+                output()
+                fun = None
+                ins, outs = [], []
+                cats = []
+        except Exception as e:
+            raise Exception(f'error at {args.lua_file}:{lineno}: {e!s}')
     output()
 
 tree = ET.ElementTree(root)
