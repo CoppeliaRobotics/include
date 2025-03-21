@@ -250,7 +250,7 @@ As plugins can provide additional functions via lua files, special comments can 
 Comments should start at the very beginning of a line, and are in the form:
 
 ```lua
---@key value...
+--@tag {tag-options} args...
 ```
 
 **Function name and description:** (must be the first line of a block)
@@ -296,7 +296,7 @@ Another example, using extended type specification:
 --@arg int taskHandle the handle of the task
 --@arg table.float path the path, as returned by simOMPL.getPath
 --@arg float lineSize size of the line (in pixels)
---@arg {type=table,item_type=float,size=3} color color of the lines
+--@arg {type='table',item_type='float',size=3} color color of the lines
 --@arg int extraAttributes extra attributes to pass to sim.addDrawingObject
 --@ret table.int dwos a table of handles of new drawing objects
 --@cats path, drawing

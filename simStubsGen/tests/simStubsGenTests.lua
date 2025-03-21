@@ -1,8 +1,8 @@
 local simStubsGenTests={}
 
 --@fun testLuaNullable
---@arg {type=int,nullable=true} a
---@arg {type=string} b
+--@arg {type='int',nullable=true} a
+--@arg {type='string'} b
 function simStubsGenTests.testLuaNullable(a,b)
     if a==nil then
         print('a is nil')
@@ -14,8 +14,8 @@ function simStubsGenTests.testLuaNullable(a,b)
 end
 
 --@fun testLuaDefault
---@arg {type=int} a
---@arg {type=string,default="x"} b
+--@arg {type='int'} a
+--@arg {type='string',default='"x"'} b
 --@ret string r
 function simStubsGenTests.testLuaDefault(a,b)
     return b
