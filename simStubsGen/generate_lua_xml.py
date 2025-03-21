@@ -71,7 +71,7 @@ with open(args.lua_file, 'r') as f:
         if m := re.match(r'\s*--\s*@(\w+)\b\s*(.*?)\s*$', line):
             tag, line = m.groups()
             if tag in ('func', 'fun'):
-                if m := re.match(r'(\w+)\s*(.*?)\s*$', line):
+                if m := re.match(r'(\S+)\s*(.*?)\s*$', line):
                     name, description = m.groups()
                     fun = (name, description)
                     if args.verbose:
