@@ -9,6 +9,12 @@
         </xsd:restriction>
     </xsd:simpleType>
 
+    <xsd:simpleType name="identifierExt">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[a-zA-Z_][a-zA-Z0-9_]*(:[a-zA-Z_][a-zA-Z0-9_]*)?" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
     <xsd:simpleType name="sizeconstraints">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="(\d+\.\.)?(\*|\d+)(,(\d+\.\.)?(\*|\d+))*" />
@@ -113,7 +119,10 @@
                             <xsd:element name="params" type="funcParamsSpec" minOccurs="0" />
                             <xsd:element name="return" type="funcParamsSpec" minOccurs="0" />
                         </xsd:sequence>
-                        <xsd:attribute name="name" type="identifier" use="required" />
+                        <xsd:attribute name="name" type="identifierExt" use="required" />
+                        <xsd:attribute name="skip-documentation" type="xsd:boolean" />
+                        <xsd:attribute name="deprecated" type="xsd:boolean" />
+                        <xsd:attribute name="lua-only" type="xsd:boolean" />
                         <xsd:attribute name="c-name" type="identifier" />
                         <xsd:attribute name="c-in-name" type="identifier" />
                         <xsd:attribute name="c-out-name" type="identifier" />
@@ -136,6 +145,8 @@
                             </xsd:element>
                         </xsd:sequence>
                         <xsd:attribute name="name" type="identifier" use="required" />
+                        <xsd:attribute name="skip-documentation" type="xsd:boolean" />
+                        <xsd:attribute name="deprecated" type="xsd:boolean" />
                         <xsd:attribute name="item-prefix" type="xsd:string" />
                         <xsd:attribute name="base" type="xsd:integer" />
                     </xsd:complexType>
@@ -149,6 +160,8 @@
                             <xsd:element name="param" type="paramSpec" maxOccurs="unbounded" />
                         </xsd:sequence>
                         <xsd:attribute name="name" type="identifier" use="required" />
+                        <xsd:attribute name="skip-documentation" type="xsd:boolean" />
+                        <xsd:attribute name="deprecated" type="xsd:boolean" />
                     </xsd:complexType>
                 </xsd:element>
                 <xsd:element name="script-function">
@@ -161,6 +174,8 @@
                             <xsd:element name="return" type="funcParamsSpec" minOccurs="0" />
                         </xsd:sequence>
                         <xsd:attribute name="name" type="identifier" use="required" />
+                        <xsd:attribute name="skip-documentation" type="xsd:boolean" />
+                        <xsd:attribute name="deprecated" type="xsd:boolean" />
                         <xsd:attribute name="c-name" type="identifier" />
                         <xsd:attribute name="c-in-name" type="identifier" />
                         <xsd:attribute name="c-out-name" type="identifier" />
