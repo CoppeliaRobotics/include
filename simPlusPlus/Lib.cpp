@@ -3159,4 +3159,56 @@ bool getPropertyInfo(handle_t target, const std::string &pname, SPropertyInfo &i
     return ret > 0;
 }
 
+#ifdef HAVE_JSONCONS
+void pushObjectOntoStack(handle_t stackHandle, const jsoncons::json &obj)
+{
+    sim::pushTableOntoStack(stackHandle);
+
+    for(const auto& kv : obj.object_range())
+    {
+        const std::string& key = kv.key();
+        const auto& val = kv.value();
+
+        sim::pushStringOntoStack(stackHandle, key);
+        sim::pushValueOntoStack(stackHandle, val);
+        sim::insertDataIntoStackTable(stackHandle);
+    }
+}
+
+void pushArrayOntoStack(handle_t stackHandle, const jsoncons::json& arr)
+{
+    sim::pushTableOntoStack(stackHandle);
+
+    size_t index = 1;
+    for(const auto& item : arr.array_range())
+    {
+        sim::pushInt32OntoStack(stackHandle, index++);
+        sim::pushValueOntoStack(stackHandle, item);
+        sim::insertDataIntoStackTable(stackHandle);
+    }
+}
+
+void pushValueOntoStack(handle_t stackHandle, const jsoncons::json& value)
+{
+    if(value.is_object())
+        sim::pushObjectOntoStack(stackHandle, value);
+    else if(value.is_array())
+        sim::pushArrayOntoStack(stackHandle, value);
+    else if(value.is_string())
+        sim::pushStringOntoStack(stackHandle, value.as<std::string>());
+    else if(value.is_bool())
+        sim::pushBoolOntoStack(stackHandle, value.as<bool>());
+    else if(value.is_int64())
+        sim::pushInt64OntoStack(stackHandle, value.as<int64_t>());
+    else if(value.is_uint64())
+        sim::pushInt64OntoStack(stackHandle, static_cast<int64_t>(value.as<uint64_t>()));
+    else if(value.is_double())
+        sim::pushDoubleOntoStack(stackHandle, value.as<double>());
+    else if(value.is_null())
+        sim::pushNullOntoStack(stackHandle);
+    else
+        throw std::runtime_error("unexpected value type found in event data");
+}
+#endif
+
 } // namespace sim

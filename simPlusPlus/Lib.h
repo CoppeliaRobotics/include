@@ -14,6 +14,10 @@
 
 #include <simLib/simLib.h>
 
+#ifdef HAVE_JSONCONS
+#include <jsoncons/json.hpp>
+#endif // HAVE_JSONCONS
+
 namespace sim
 {
     using handle_t = int;
@@ -1107,6 +1111,13 @@ namespace sim
     bool getPropertyInfo(handle_t target, const std::string &pname, SPropertyInfo &info);
     bool getPropertyInfo(handle_t target, const std::string &pname, SPropertyInfo &info, SPropertyOptions &opts);
 
+#ifdef HAVE_JSONCONS
+    void pushObjectOntoStack(handle_t stackHandle, const jsoncons::json &obj);
+
+    void pushArrayOntoStack(handle_t stackHandle, const jsoncons::json& arr);
+
+    void pushValueOntoStack(handle_t stackHandle, const jsoncons::json& value);
+#endif
 } // namespace sim
 
 #endif // SIMPLUSPLUS_LIB_H_INCLUDED
