@@ -421,8 +421,8 @@ namespace sim
         EventInfo info;
         info.event = event["event"].as<std::string>();
         info.seq = event["seq"].as<long>();
-        info.uid = event["uid"].as<long>();
-        info.handle = event["handle"].as<int>();
+        info.uid = event.contains("uid") ? event["uid"].as<long>() : -1;
+        info.handle = event.contains("handle") ? event["handle"].as<int>() : -1;
         onEvent(info, event["data"]);
     }
 
