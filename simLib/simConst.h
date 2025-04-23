@@ -535,10 +535,11 @@ enum { /* property type */
 };
 
 enum { /* properties info */
-    sim_propertyinfo_notwritable = 0x001,
-    sim_propertyinfo_notreadable = 0x002,
-    sim_propertyinfo_removable   = 0x004,
-    sim_propertyinfo_largedata   = 0x100,
+    sim_propertyinfo_notwritable        = 0x001,
+    sim_propertyinfo_notreadable        = 0x002,
+    sim_propertyinfo_removable          = 0x004,
+    sim_propertyinfo_modelhashexclude   = 0x008,
+    sim_propertyinfo_largedata          = 0x100,
 };
 
 enum { /* Vortex friction models */
