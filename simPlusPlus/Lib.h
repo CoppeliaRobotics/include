@@ -1117,6 +1117,8 @@ namespace sim
     void pushArrayOntoStack(handle_t stackHandle, const jsoncons::json& arr);
 
     void pushValueOntoStack(handle_t stackHandle, const jsoncons::json& value);
+
+    int getStackValue(handle_t stackHandle, jsoncons::json *value);
 #endif
 } // namespace sim
 
