@@ -3207,7 +3207,92 @@ void pushValueOntoStack(handle_t stackHandle, const jsoncons::json& value)
     else if(value.is_null())
         sim::pushNullOntoStack(stackHandle);
     else
-        throw std::runtime_error("unexpected value type found in event data");
+        throw std::runtime_error("unexpected value type");
+}
+
+int getStackValue(handle_t stackHandle, jsoncons::json *value)
+{
+    int ret = -1;
+    int t = sim::getStackItemType(stackHandle, -1);
+    double doubleValue;
+    bool boolValue;
+    std::string stringValue;
+    long long intValue;
+    int info, oldSize, size, i, n;
+    oldSize = sim::getStackSize(stackHandle);
+    switch(t)
+    {
+    case sim_stackitem_null:
+        *value = jsoncons::json::null();
+        sim::popStackItem(stackHandle, 1);
+        break;
+    case sim_stackitem_double:
+        ret = sim::getStackDoubleValue(stackHandle, &doubleValue);
+        *value = jsoncons::json(doubleValue);
+        sim::popStackItem(stackHandle, 1);
+        break;
+    case sim_stackitem_bool:
+        ret = sim::getStackBoolValue(stackHandle, &boolValue);
+        *value = jsoncons::json(boolValue);
+        sim::popStackItem(stackHandle, 1);
+        break;
+    case sim_stackitem_string:
+        ret = sim::getStackStringValue(stackHandle, &stringValue);
+        *value = jsoncons::json(stringValue);
+        sim::popStackItem(stackHandle, 1);
+        break;
+    case sim_stackitem_integer:
+        ret = sim::getStackInt64Value(stackHandle, &intValue);
+        *value = jsoncons::json(intValue);
+        sim::popStackItem(stackHandle, 1);
+        break;
+    case sim_stackitem_table:
+        info = sim::getStackTableInfo(stackHandle, 0);
+        if(info == sim_stack_table_empty)
+        {
+            *value = jsoncons::json::array();
+            sim::popStackItem(stackHandle, 1);
+            break;
+        }
+        sim::unfoldStackTable(stackHandle);
+        size = sim::getStackSize(stackHandle);
+        n = (size - oldSize + 1) / 2;
+        if(info == sim_stack_table_map)
+        {
+            *value = jsoncons::json::object();
+            for(i = 0; i < n; i++)
+            {
+                sim::moveStackItemToTop(stackHandle, oldSize - 1);
+                jsoncons::json key;
+                sim::getStackValue(stackHandle, &key);
+                if(!key.is_string())
+                    throw std::runtime_error("invalid table key type");
+                sim::moveStackItemToTop(stackHandle, oldSize - 1);
+                jsoncons::json value_i;
+                sim::getStackValue(stackHandle, &value_i);
+                (*value)[key.as<std::string>()] = value_i;
+            }
+            ret = 1;
+        }
+        else if(info > 0)
+        {
+            *value = jsoncons::json::array();
+            for(i = 0; i < n; i++)
+            {
+                sim::moveStackItemToTop(stackHandle, oldSize - 1);
+                jsoncons::json key;
+                sim::getStackValue(stackHandle, &key);
+                sim::moveStackItemToTop(stackHandle, oldSize - 1);
+                jsoncons::json value_i;
+                sim::getStackValue(stackHandle, &value_i);
+                value->push_back(value_i);
+            }
+            ret = 1;
+        }
+        else throw std::runtime_error("unexpected table type");
+        break;
+    }
+    return ret;
 }
 #endif
 
