@@ -110,6 +110,14 @@ namespace sim
             return it->second;
         }
 
+        T get(const std::string &handle, T defaultValue) const
+        {
+            auto it = handleToObject_.find(handle);
+            if(it == handleToObject_.end())
+                return defaultValue;
+            return it->second;
+        }
+
         std::set<T> find(int scriptID) const
         {
             int sceneID = getSceneID(scriptID);
