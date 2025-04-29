@@ -1085,6 +1085,46 @@ void pushStringOntoStack(handle_t stackHandle, const std::string &value)
     addStackDebugDump(stackHandle);
 }
 
+void pushTextOntoStack(handle_t stackHandle, const char *value)
+{
+    addStackDebugLog("simPushTextOntoStack \"%s\"", value);
+
+    if(simPushTextOntoStack(stackHandle, value) == -1)
+        throw api_error("simPushTextOntoStack");
+
+    addStackDebugDump(stackHandle);
+}
+
+void pushTextOntoStack(handle_t stackHandle, const std::string &value)
+{
+    pushTextOntoStack(stackHandle, value.c_str());
+}
+
+void pushBufferOntoStack(handle_t stackHandle, const char *value, int bufferSize)
+{
+    addStackDebugLog("simPushBufferOntoStack [%d bytes]", bufferSize);
+
+    if(simPushBufferOntoStack(stackHandle, value, bufferSize) == -1)
+        throw api_error("simPushBufferOntoStack");
+
+    addStackDebugDump(stackHandle);
+}
+
+void pushBufferOntoStack(handle_t stackHandle, const uint8_t *value, int bufferSize)
+{
+    pushBufferOntoStack(stackHandle, reinterpret_cast<const char*>(value), bufferSize);
+}
+
+void pushBufferOntoStack(handle_t stackHandle, const std::string &value)
+{
+    pushBufferOntoStack(stackHandle, value.data(), value.size());
+}
+
+void pushBufferOntoStack(handle_t stackHandle, const std::vector<uint8_t> &value)
+{
+    pushBufferOntoStack(stackHandle, value.data(), value.size());
+}
+
 void pushUInt8TableOntoStack(handle_t stackHandle, const unsigned char *values, int valueCnt)
 {
     addStackDebugLog("simPushUInt8TableOntoStack <%d values>", valueCnt);
@@ -1288,6 +1328,16 @@ int getStackStringValue(handle_t stackHandle, std::string *stringValue)
     {
         return 0;
     }
+}
+
+int getStackStringType(handle_t stackHandle, int cIndex)
+{
+    int ret = simGetStackStringType(stackHandle, cIndex);
+
+    if(ret == -1)
+        throw api_error("simGetStackStringType");
+
+    return ret;
 }
 
 int getStackTableInfo(handle_t stackHandle, int infoType)
@@ -3195,7 +3245,9 @@ void pushValueOntoStack(handle_t stackHandle, const jsoncons::json& value)
     else if(value.is_array())
         sim::pushArrayOntoStack(stackHandle, value);
     else if(value.is_string())
-        sim::pushStringOntoStack(stackHandle, value.as<std::string>());
+        sim::pushTextOntoStack(stackHandle, value.as<std::string>());
+    else if(value.is_byte_string())
+        sim::pushBufferOntoStack(stackHandle, value.as<std::vector<uint8_t>>());
     else if(value.is_bool())
         sim::pushBoolOntoStack(stackHandle, value.as<bool>());
     else if(value.is_int64())

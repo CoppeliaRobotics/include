@@ -427,6 +427,12 @@ namespace sim
 
     void pushStringOntoStack(handle_t stackHandle, const char *value, int stringSize);
     void pushStringOntoStack(handle_t stackHandle, const std::string &value);
+    void pushTextOntoStack(handle_t stackHandle, const char *value);
+    void pushTextOntoStack(handle_t stackHandle, const std::string &value);
+    void pushBufferOntoStack(handle_t stackHandle, const char *value, int bufferSize);
+    void pushBufferOntoStack(handle_t stackHandle, const uint8_t *value, int bufferSize);
+    void pushBufferOntoStack(handle_t stackHandle, const std::string &value);
+    void pushBufferOntoStack(handle_t stackHandle, const std::vector<uint8_t> &value);
 
     void pushUInt8TableOntoStack(handle_t stackHandle, const unsigned char *values, int valueCnt);
     void pushUInt8TableOntoStack(handle_t stackHandle, const std::vector<unsigned char> &values);
@@ -457,6 +463,8 @@ namespace sim
 
     char * getStackStringValue(handle_t stackHandle, int *stringSize);
     int getStackStringValue(handle_t stackHandle, std::string *stringValue);
+
+    int getStackStringType(handle_t stackHandle, int cIndex);
 
     int getStackTableInfo(handle_t stackHandle, int infoType);
 
