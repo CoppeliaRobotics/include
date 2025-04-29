@@ -3207,7 +3207,7 @@ void pushValueOntoStack(handle_t stackHandle, const jsoncons::json& value)
     else if(value.is_null())
         sim::pushNullOntoStack(stackHandle);
     else
-        throw std::runtime_error("unexpected value type");
+        throw std::runtime_error("sim::pushValueOntoStack: unexpected value type: " + std::to_string(static_cast<uint8_t>(value.type())));
 }
 
 int getStackValue(handle_t stackHandle, jsoncons::json *value)
@@ -3266,7 +3266,7 @@ int getStackValue(handle_t stackHandle, jsoncons::json *value)
                 jsoncons::json key;
                 sim::getStackValue(stackHandle, &key);
                 if(!key.is_string())
-                    throw std::runtime_error("invalid table key type");
+                    throw std::runtime_error("sim::getStackValue: invalid table key type: " + std::to_string(static_cast<uint8_t>(key.type())));
                 sim::moveStackItemToTop(stackHandle, oldSize - 1);
                 jsoncons::json value_i;
                 sim::getStackValue(stackHandle, &value_i);
@@ -3289,7 +3289,7 @@ int getStackValue(handle_t stackHandle, jsoncons::json *value)
             }
             ret = 1;
         }
-        else throw std::runtime_error("unexpected table type");
+        else throw std::runtime_error("sim::getStackValue: unexpected table type: " + std::to_string(info));
         break;
     }
     return ret;
