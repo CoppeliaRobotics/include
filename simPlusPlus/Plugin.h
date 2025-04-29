@@ -136,6 +136,8 @@ namespace sim
     };
 }
 
+std::ostream& operator<<(std::ostream &os, const sim::EventInfo &obj);
+
 #define SIM_PLUGIN(className_) \
 namespace sim { \
 ::className_ *plugin; \

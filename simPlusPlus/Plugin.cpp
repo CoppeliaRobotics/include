@@ -511,3 +511,9 @@ namespace sim
     {
     }
 }
+
+std::ostream& operator<<(std::ostream &os, const sim::EventInfo &info)
+{
+    os << "sim::EventInfo(event=" << info.event << ", seq=" << info.seq << ", uid=" << info.uid << ", handle=" << info.handle << ")";
+    return os;
+}
