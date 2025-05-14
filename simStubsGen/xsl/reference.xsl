@@ -345,6 +345,7 @@ function getParameterByName(name, url = window.location.href)
                 </script>
                 <style type="text/css">
 td.section { margin: 0; padding: 0; }
+table { margin-left: 3em; margin-right: 3em; }
                 </style>
             </head>
             <body>
