@@ -362,6 +362,7 @@ td.section { margin: 0; padding: 0; }
                                     <p class="infoBox">
                                         <xsl:apply-templates select="/plugin/description/node()"/>
                                     </p>
+                                    <xsl:comment>###PLUGIN_DOC###</xsl:comment>
                                 </xsl:if>
                             </td>
                         </tr>

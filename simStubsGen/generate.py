@@ -85,6 +85,32 @@ except OSError as exc:
     if exc.errno == errno.EEXIST and os.path.isdir(args.output_dir):
         pass
 
+plugin_doc = ''
+for rel_path in ('../README.md', './README.md'):
+    if os.path.isfile(p := os.path.join(os.path.dirname(args.xml_file), rel_path)):
+        def find_doc_block(lines):
+            inside = False
+            collected = []
+            for line in lines:
+                if '[//]: # (plugin_doc_begin)' in line:
+                    inside = True
+                    continue
+                if '[//]: # (plugin_doc_end)' in line:
+                    break
+                if inside:
+                    collected.append(line.rstrip())
+            return collected
+        with open(p, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+        doc_lines = find_doc_block(lines)
+        if doc_lines:
+            import markdown
+            plugin_doc = markdown.markdown(
+                '\n'.join(doc_lines),
+                extensions=['fenced_code', 'tables', 'nl2br'],
+                output_format='html5',
+            )
+
 plugin = parse(args.xml_file)
 
 if args.gen_cmake_meta:
@@ -115,6 +141,12 @@ if args.gen_reference_html:
         xsltproc_out = xsltproc_out.replace('\\', '/')
         xsltproc_xsl = xsltproc_xsl.replace('\\', '/')
     runprogram('xsltproc', '-o', xsltproc_out, xsltproc_xsl, xsltproc_in)
+    if plugin_doc:
+        with open(xsltproc_out, "r", encoding="utf-8") as f:
+            content = f.read()
+        content = content.replace("<!--###PLUGIN_DOC###-->", plugin_doc)
+        with open(xsltproc_out, "w", encoding="utf-8") as f:
+            f.write(content)
 
 if args.gen_lua_typechecker:
     if not args.lua_file:
