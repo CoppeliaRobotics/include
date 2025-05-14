@@ -104,6 +104,7 @@ for rel_path in ('../README.md', './README.md'):
             lines = f.readlines()
         doc_lines = find_doc_block(lines)
         if doc_lines:
+            print(f'found plugin_doc block in {p}')
             import markdown
             plugin_doc = markdown.markdown(
                 '\n'.join(doc_lines),
@@ -144,9 +145,14 @@ if args.gen_reference_html:
     if plugin_doc:
         with open(xsltproc_out, "r", encoding="utf-8") as f:
             content = f.read()
-        content = content.replace("<!--###PLUGIN_DOC###-->", plugin_doc)
-        with open(xsltproc_out, "w", encoding="utf-8") as f:
-            f.write(content)
+        marker = '<!--###PLUGIN_DOC###-->'
+        if marker in content:
+            print(f"adding plugin_doc block to {output('reference.html')}...")
+            content = content.replace(marker, plugin_doc)
+            with open(xsltproc_out, "w", encoding="utf-8") as f:
+                f.write(content)
+        else:
+            print(f"warning: no {marker} marker in {output('reference.html')}")
 
 if args.gen_lua_typechecker:
     if not args.lua_file:
