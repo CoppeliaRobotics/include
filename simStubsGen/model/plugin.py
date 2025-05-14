@@ -4,7 +4,7 @@ from .enum import Enum
 from .struct import Struct
 
 class Plugin(object):
-    def __init__(self, node):
+    def __init__(self, node, xml_file):
         if node.tag != 'plugin':
             raise ValueError('expected <plugin>, got <%s>' % node.tag)
         self.name = node.attrib['name']

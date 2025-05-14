@@ -13,7 +13,7 @@ def parse(xml_file):
         print(f'warning: missing python package "xmlschema"; input file {os.path.basename(xml_file)} will not be validated.', file=sys.stderr)
     tree = ET.parse(xml_file)
     root = tree.getroot()
-    return model.Plugin(root)
+    return model.Plugin(root, xml_file)
 
 def escape(s, method='C'):
     if isinstance(s, str) and method == 'C':
