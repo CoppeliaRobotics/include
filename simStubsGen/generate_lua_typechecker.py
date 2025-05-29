@@ -44,7 +44,10 @@ return function(obj)
             if p.nullable:
                 f.write(f""", nullable = true""")
             if p.default:
-                f.write(f""", default = {p.default}""")
+                if p.default == 'nil':
+                    f.write(f""", default_nil = true""")
+                else:
+                    f.write(f""", default = {p.default}""")
             f.write(f"""}},
 """)
         f.write(f"""                }},

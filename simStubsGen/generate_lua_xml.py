@@ -53,6 +53,8 @@ def output():
                 if 'default' in typeSpec:
                     v = typeSpec["default"]
                     p.attrib['default'] = str(v).lower() if isinstance(v, bool) else str(v)
+                if 'default_nil' in typeSpec:
+                    p.attrib['default'] = 'nil'
                 if description:
                     d = ET.SubElement(p, 'description')
                     d.text = description
@@ -198,7 +200,7 @@ with open(args.lua_file, 'r') as f:
                             typeSpec = {'type': 'table', 'item_type': itype}
                         else:
                             error(f'bad arguments: must be: @{tag} <typeSpec> <name> [description]')
-                    if not all(k in ('type', 'item_type', 'default', 'size', 'nullable') for k in typeSpec):
+                    if not all(k in ('type', 'item_type', 'default', 'default_nil', 'size', 'nullable') for k in typeSpec):
                         error(f'bad key in typeSpec: {", ".join(typeSpec.keys())}')
                     if tag == 'arg':
                         ins.append((typeSpec, name, description))
