@@ -47,7 +47,10 @@ return function(obj)
                 if p.default == 'nil':
                     f.write(f""", default_nil = true""")
                 elif p.dtype == 'string':
-                    f.write(f""", default = '{p.default.replace('\'', '\\\'')}'""")
+                    #f.write(f""", default = '{p.default.replace('\'', '\\\'')}'""")
+                    # workaround for Python < 3.12:
+                    escaped = p.default.replace("'", "\\'")
+                    f.write(f""", default = '{escaped}'""")
                 else:
                     f.write(f""", default = {p.default}""")
             f.write(f"""}},
