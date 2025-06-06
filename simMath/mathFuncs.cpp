@@ -5,6 +5,21 @@ bool isNumberOk(simReal v)
     return ( (!SIM_IS_NAN(v))&&(fabs(v)!=std::numeric_limits<simReal>::infinity()) );
 }
 
+bool isNanOrInf(simReal v)
+{
+    return std::isnan(v) || (fabs(v) == std::numeric_limits<simReal>::infinity());
+}
+
+bool isNanOrInf(const simReal* arr, size_t cnt)
+{
+    for (size_t i = 0; i < cnt; i++)
+    {
+        if (std::isnan(arr[i]) || (fabs(arr[i]) == std::numeric_limits<simReal>::infinity()))
+            return true;
+    }
+    return false;
+}
+
 bool isFloatArrayOk(const simReal* arr,int cnt)
 {
     bool retVal=true;
