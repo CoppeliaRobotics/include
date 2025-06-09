@@ -5,6 +5,7 @@
     #error simPlusPlus needs at least a C++17 compliant compiler
 #endif
 
+#include <cstdint>
 #include <optional>
 #include <string>
 #include <vector>
@@ -126,7 +127,8 @@ namespace sim
     [[deprecated("Use properties functions instead")]]
     int getInt32Param(int parameter);
 
-    unsigned long long int getUInt64Param(int parameter);
+    [[deprecated("Use properties functions instead")]]
+    uint64_t getUInt64Param(int parameter);
 
     [[deprecated("Use properties functions instead")]]
     void setStringParam(int parameter, char *value);
@@ -160,10 +162,10 @@ namespace sim
     handle_t getObject(const std::string &objectPath, int index = -1, handle_t proxy = -1);
 
     [[deprecated("Use properties functions instead")]]
-    long long int getObjectUid(handle_t objectHandle);
+    int64_t getObjectUid(handle_t objectHandle);
 
-    handle_t getObjectFromUid(long long int uid, int options);
-    handle_t getObjectFromUid(long long int uid, bool noError);
+    handle_t getObjectFromUid(int64_t uid, int options);
+    handle_t getObjectFromUid(int64_t uid, bool noError);
 
     handle_t getScriptHandleEx(int scriptType, handle_t objHandle = -1, std::optional<std::string> scriptName = {});
 
@@ -483,7 +485,7 @@ namespace sim
 
     void pushInt32OntoStack(handle_t stackHandle, int value);
 
-    void pushInt64OntoStack(handle_t stackHandle, long long int value);
+    void pushInt64OntoStack(handle_t stackHandle, int64_t value);
 
     void pushStringOntoStack(handle_t stackHandle, const char *value, int stringSize);
     void pushStringOntoStack(handle_t stackHandle, const std::string &value);
@@ -500,8 +502,8 @@ namespace sim
     void pushInt32TableOntoStack(handle_t stackHandle, const int *values, int valueCnt);
     void pushInt32TableOntoStack(handle_t stackHandle, const std::vector<int> &values);
 
-    void pushInt64TableOntoStack(handle_t stackHandle, const long long int *values, int valueCnt);
-    void pushInt64TableOntoStack(handle_t stackHandle, const std::vector<long long int> &values);
+    void pushInt64TableOntoStack(handle_t stackHandle, const int64_t *values, int valueCnt);
+    void pushInt64TableOntoStack(handle_t stackHandle, const std::vector<int64_t> &values);
 
     void pushTableOntoStack(handle_t stackHandle);
 
@@ -519,7 +521,7 @@ namespace sim
 
     int getStackInt32Value(handle_t stackHandle, int *numberValue);
 
-    int getStackInt64Value(handle_t stackHandle, long long int *numberValue);
+    int getStackInt64Value(handle_t stackHandle, int64_t *numberValue);
 
     char * getStackStringValue(handle_t stackHandle, int *stringSize);
     int getStackStringValue(handle_t stackHandle, std::string *stringValue);
@@ -534,7 +536,7 @@ namespace sim
     int getStackInt32Table(handle_t stackHandle, int *array, int count);
     int getStackInt32Table(handle_t stackHandle, std::vector<int> *v);
 
-    int getStackInt64Table(handle_t stackHandle, long long int *array, int count);
+    int getStackInt64Table(handle_t stackHandle, int64_t *array, int count);
 
     void unfoldStackTable(handle_t stackHandle);
 
@@ -1123,6 +1125,10 @@ namespace sim
     void setIntProperty(handle_t target, const std::string &pname, int value);
 
     int getIntProperty(handle_t target, const std::string &pname);
+
+    void setLongProperty(handle_t target, const std::string &pname, int64_t value);
+
+    int64_t getLongProperty(handle_t target, const std::string &pname);
 
     void setFloatProperty(handle_t target, const std::string &pname, double value);
 

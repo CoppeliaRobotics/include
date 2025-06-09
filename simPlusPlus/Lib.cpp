@@ -136,9 +136,9 @@ int getInt32Param(int parameter)
     return ret;
 }
 
-unsigned long long int getUInt64Param(int parameter)
+uint64_t getUInt64Param(int parameter)
 {
-    unsigned long long int ret;
+    uint64_t ret;
     if(simGetUInt64Param(parameter, &ret) == -1)
         throw api_error("simGetUInt64Param");
     return ret;
@@ -251,15 +251,15 @@ handle_t getObject(const std::string &objectPath, int index, handle_t proxy)
     return getObject(objectPath, index, proxy, 0);
 }
 
-long long int getObjectUid(handle_t objectHandle)
+int64_t getObjectUid(handle_t objectHandle)
 {
-    long long int ret = simGetObjectUid(objectHandle);
+    int64_t ret = simGetObjectUid(objectHandle);
     if(ret == -1)
         throw api_error("simGetObjectUid");
     return ret;
 }
 
-handle_t getObjectFromUid(long long int uid, int options)
+handle_t getObjectFromUid(int64_t uid, int options)
 {
     handle_t handle = simGetObjectFromUid(uid, options);
     if(handle == -1)
@@ -267,7 +267,7 @@ handle_t getObjectFromUid(long long int uid, int options)
     return handle;
 }
 
-handle_t getObjectFromUid(long long int uid, bool noError)
+handle_t getObjectFromUid(int64_t uid, bool noError)
 {
     int options = 0;
     if(noError) options |= 1;
@@ -1055,7 +1055,7 @@ void pushInt32OntoStack(handle_t stackHandle, int value)
     addStackDebugDump(stackHandle);
 }
 
-void pushInt64OntoStack(handle_t stackHandle, long long int value)
+void pushInt64OntoStack(handle_t stackHandle, int64_t value)
 {
     addStackDebugLog("simPushInt64OntoStack %ld", value);
 
@@ -1155,7 +1155,7 @@ void pushInt32TableOntoStack(handle_t stackHandle, const std::vector<int> &value
     pushInt32TableOntoStack(stackHandle, values.data(), values.size());
 }
 
-void pushInt64TableOntoStack(handle_t stackHandle, const long long int *values, int valueCnt)
+void pushInt64TableOntoStack(handle_t stackHandle, const int64_t *values, int valueCnt)
 {
     addStackDebugLog("simPushInt64TableOntoStack <%d values>", valueCnt);
 
@@ -1165,7 +1165,7 @@ void pushInt64TableOntoStack(handle_t stackHandle, const long long int *values, 
     addStackDebugDump(stackHandle);
 }
 
-void pushInt64TableOntoStack(handle_t stackHandle, const std::vector<long long int> &values)
+void pushInt64TableOntoStack(handle_t stackHandle, const std::vector<int64_t> &values)
 {
     pushInt64TableOntoStack(stackHandle, values.data(), values.size());
 }
@@ -1273,7 +1273,7 @@ int getStackInt32Value(handle_t stackHandle, int *numberValue)
     return ret;
 }
 
-int getStackInt64Value(handle_t stackHandle, long long int *numberValue)
+int getStackInt64Value(handle_t stackHandle, int64_t *numberValue)
 {
     int ret = simGetStackInt64Value(stackHandle, numberValue);
     if(ret == -1)
@@ -1418,7 +1418,7 @@ int getStackInt32Table(handle_t stackHandle, std::vector<int> *v)
     return getStackInt32Table(stackHandle, v->data(), count);
 }
 
-int getStackInt64Table(handle_t stackHandle, long long int *array, int count)
+int getStackInt64Table(handle_t stackHandle, int64_t *array, int count)
 {
     int ret = simGetStackInt64Table(stackHandle, array, count);
 
@@ -1429,7 +1429,7 @@ int getStackInt64Table(handle_t stackHandle, long long int *array, int count)
     return ret;
 }
 
-int getStackInt64Table(handle_t stackHandle, std::vector<long long int> *v)
+int getStackInt64Table(handle_t stackHandle, std::vector<int64_t> *v)
 {
     int count = getStackTableInfo(stackHandle, 0);
     v->resize(count);
