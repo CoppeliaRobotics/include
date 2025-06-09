@@ -30,7 +30,7 @@ return function(obj)
         paramList = ', '.join(p.name for p in cmd.all_params)
         f.write(f"""    obj['{cmd.name}'] = wrap(obj['{cmd.name}'], function(origFunc)
         return function(...)
-            {paramList and 'local ' or ''}{paramList}{paramList and ' = ' or ''}checkargsEx(
+            {paramList and 'local ' or ''}{paramList}{paramList and ' = ' or ''}checkargs.checkargsEx(
                 {{level=1}},
                 {{
 """)
