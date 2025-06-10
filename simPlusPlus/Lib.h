@@ -84,9 +84,11 @@ namespace sim
     {
         std::string func;
         std::string error;
+        std::string lastErrInfo;
 
         api_error(const std::string &func_);
         api_error(const std::string &func_, const std::string &error_);
+        api_error(const std::string &func_, const std::string &error_, const std::string &lastErrInfo_);
 
         ~api_error() throw()
         {
