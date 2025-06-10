@@ -1011,64 +1011,79 @@ namespace sim
     void setBoolProperty(handle_t target, const std::string &pname, bool value);
 
     bool getBoolProperty(handle_t target, const std::string &pname);
+    std::optional<bool> getBoolProperty(handle_t target, const std::string &pname, std::optional<bool> defaultValue);
 
     void setIntProperty(handle_t target, const std::string &pname, int value);
 
     int getIntProperty(handle_t target, const std::string &pname);
+    std::optional<int> getIntProperty(handle_t target, const std::string &pname, std::optional<int> defaultValue);
 
     void setLongProperty(handle_t target, const std::string &pname, int64_t value);
 
     int64_t getLongProperty(handle_t target, const std::string &pname);
+    std::optional<int64_t> getLongProperty(handle_t target, const std::string &pname, std::optional<int64_t> defaultValue);
 
     void setFloatProperty(handle_t target, const std::string &pname, double value);
 
     double getFloatProperty(handle_t target, const std::string &pname);
+    std::optional<double> getFloatProperty(handle_t target, const std::string &pname, std::optional<double> defaultValue);
 
     void setStringProperty(handle_t target, const std::string &pname, const std::string &value);
 
     std::string getStringProperty(handle_t target, const std::string &pname);
+    std::optional<std::string> getStringProperty(handle_t target, const std::string &pname, std::optional<std::string> defaultValue);
 
     void setBufferProperty(handle_t target, const std::string &pname, const std::string &value);
 
     std::string getBufferProperty(handle_t target, const std::string &pname);
+    std::optional<std::string> getBufferProperty(handle_t target, const std::string &pname, std::optional<std::string> defaultValue);
 
     void setVector3Property(handle_t target, const std::string &pname, std::array<double, 3> value);
 
     std::array<double, 3> getVector3Property(handle_t target, const std::string &pname);
+    std::optional<std::array<double, 3>> getVector3Property(handle_t target, const std::string &pname, std::optional<std::array<double, 3>> defaultValue);
 
     void setQuaternionProperty(handle_t target, const std::string &pname, std::array<double, 4> value);
 
     std::array<double, 4> getQuaternionProperty(handle_t target, const std::string &pname);
+    std::optional<std::array<double, 4>> getQuaternionProperty(handle_t target, const std::string &pname, std::optional<std::array<double, 4>> defaultValue);
 
     void setPoseProperty(handle_t target, const std::string &pname, std::array<double, 7> value);
 
     std::array<double, 7> getPoseProperty(handle_t target, const std::string &pname);
+    std::optional<std::array<double, 7>> getPoseProperty(handle_t target, const std::string &pname, std::optional<std::array<double, 7>> defaultValue);
 
     void setColorProperty(handle_t target, const std::string &pname, std::array<float, 3> value);
 
     std::array<float, 3> getColorProperty(handle_t target, const std::string &pname);
+    std::optional<std::array<float, 3>> getColorProperty(handle_t target, const std::string &pname, std::optional<std::array<float, 3>> defaultValue);
 
     void setFloatArrayProperty(handle_t target, const std::string &pname, const std::vector<double> &value);
 
     std::vector<double> getFloatArrayProperty(handle_t target, const std::string &pname);
+    std::optional<std::vector<double>> getFloatArrayProperty(handle_t target, const std::string &pname, std::optional<std::vector<double>> defaultValue);
 
     void setIntArrayProperty(handle_t target, const std::string &pname, const std::vector<int> &value);
 
     std::vector<int> getIntArrayProperty(handle_t target, const std::string &pname);
+    std::optional<std::vector<int>> getIntArrayProperty(handle_t target, const std::string &pname, std::optional<std::vector<int>> defaultValue);
 
 #if 0
     void setFloatArray2Property(handle_t target, const std::string &pname, const std::array<double, 2> &value);
 
     std::array<double, 2> getFloatArray2Property(handle_t target, const std::string &pname);
+    std::optional<std::array<double, 2>> getFloatArray2Property(handle_t target, const std::string &pname, std::optional<std::array<double, 2>> defaultValue);
 
     void setFloatArray3Property(handle_t target, const std::string &pname, const std::array<double, 3> &value);
 
     std::array<double, 3> getFloatArray3Property(handle_t target, const std::string &pname);
+    std::optional<std::array<double, 3>> getFloatArray3Property(handle_t target, const std::string &pname, std::optional<std::array<double, 3>> defaultValue);
 #endif
 
     void setIntArray2Property(handle_t target, const std::string &pname, const std::array<int, 2> &value);
 
     std::array<int, 2> getIntArray2Property(handle_t target, const std::string &pname);
+    std::optional<std::array<int, 2>> getIntArray2Property(handle_t target, const std::string &pname, std::optional<std::array<int, 2>> defaultValue);
 
     void removeProperty(handle_t target, const std::string &pname);
 
