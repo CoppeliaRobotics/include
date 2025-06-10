@@ -23,9 +23,12 @@ static std::string getLastError_noexcept()
 }
 
 api_error::api_error(const std::string &func_, const std::string &error_)
-    : func(func_),
-      error((error_.empty() ? "" : (error_ + std::string(": "))) + getLastError_noexcept()),
-      exception("%s: %s", func_, error_)
+    : exception("%s: %s",
+        func_,
+        (error_.empty() ? "" : (error_ + std::string(": "))) + getLastError_noexcept()
+      )
+    , func(func_)
+    , error(error_)
 {
 }
 
