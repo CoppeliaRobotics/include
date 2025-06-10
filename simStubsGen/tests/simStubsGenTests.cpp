@@ -49,7 +49,7 @@ public:
         setExtVersion("simStubsGen tests");
 
 #if 0
-        auto v = sim::getNamedStringParam("simStubsGenTests.verbosity");
+        auto v = sim::getStringProperty(sim_handle_app, "namedParam.simStubsGenTests.verbosity");
         if(v)
             sim::setModuleInfo(sim_moduleinfo_verbosity, v ? verbosityFromString(*v) : sim_verbosity_infos);
 #endif
@@ -58,7 +58,7 @@ public:
     void onFirstInstancePass(const sim::InstancePassFlags &flags)
     {
 #if 1
-        auto v = sim::getNamedStringParam("simStubsGenTests.verbosity");
+        auto v = sim::getStringProperty(sim_handle_app, "namedParam.simStubsGenTests.verbosity");
         if(v)
             sim::setModuleInfo(sim_moduleinfo_verbosity, v ? verbosityFromString(*v) : sim_verbosity_infos);
 #endif

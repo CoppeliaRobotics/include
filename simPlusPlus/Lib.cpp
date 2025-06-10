@@ -69,10 +69,7 @@ static void addStackDebugDump(handle_t stackHandle)
 
 int programVersion()
 {
-    int simVer = sim::getInt32Param(sim_intparam_program_version);
-    int simRev = sim::getInt32Param(sim_intparam_program_revision);
-    simVer = simVer * 100 + simRev;
-    return simVer;
+    return sim::getIntProperty(sim_handle_app, "productVersionNb");
 }
 
 std::string versionString(int v)

@@ -56,9 +56,6 @@ namespace sim
 
     void Plugin::onMsg(SSimMsg *msg)
     {
-        int errorModeSaved = sim::getInt32Param(sim_intparam_error_report_mode);
-        sim::setInt32Param(sim_intparam_error_report_mode, sim_api_errormessage_ignore);
-
         switch(msg->msgId)
         {
         case sim_message_eventcallback_instancepass:
@@ -259,9 +256,6 @@ namespace sim
             }
             break;
         }
-
-        // Keep following unchanged:
-        sim::setInt32Param(sim_intparam_error_report_mode, errorModeSaved);
     }
 
     void Plugin::onUIInit()
