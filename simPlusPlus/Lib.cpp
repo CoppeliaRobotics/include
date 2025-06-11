@@ -39,6 +39,11 @@ api_error::api_error(const std::string &func_, const std::string &error_, const 
 {
 }
 
+property_error::property_error(const std::string &func_, const std::string &pname_)
+    : api_error(func_, "property " + pname_)
+{
+}
+
 void enableStackDebug()
 {
     debugStackEnabled = true;
@@ -2926,7 +2931,7 @@ void setBoolProperty(handle_t target, const std::string &pname, bool value)
 {
     int ret = simSetBoolProperty(target, pname.c_str(), value);
     if(ret == -1)
-        throw api_error("simSetBoolProperty");
+        throw property_error("simSetBoolProperty", pname);
 }
 
 bool getBoolProperty(handle_t target, const std::string &pname)
@@ -2934,7 +2939,7 @@ bool getBoolProperty(handle_t target, const std::string &pname)
     int value = 0;
     int ret = simGetBoolProperty(target, pname.c_str(), &value);
     if(ret == -1)
-        throw api_error("simGetBoolProperty");
+        throw property_error("simGetBoolProperty", pname);
     return value > 0;
 }
 
@@ -2951,7 +2956,7 @@ void setIntProperty(handle_t target, const std::string &pname, int value)
 {
     int ret = simSetIntProperty(target, pname.c_str(), value);
     if(ret == -1)
-        throw api_error("simSetIntProperty");
+        throw property_error("simSetIntProperty", pname);
 }
 
 int getIntProperty(handle_t target, const std::string &pname)
@@ -2959,7 +2964,7 @@ int getIntProperty(handle_t target, const std::string &pname)
     int value = 0;
     int ret = simGetIntProperty(target, pname.c_str(), &value);
     if(ret == -1)
-        throw api_error("simGetIntProperty");
+        throw property_error("simGetIntProperty", pname);
     return value;
 }
 
@@ -2976,7 +2981,7 @@ void setLongProperty(handle_t target, const std::string &pname, int64_t value)
 {
     int64_t ret = simSetLongProperty(target, pname.c_str(), value);
     if(ret == -1)
-        throw api_error("simSetLongProperty");
+        throw property_error("simSetLongProperty", pname);
 }
 
 int64_t getLongProperty(handle_t target, const std::string &pname)
@@ -2984,7 +2989,7 @@ int64_t getLongProperty(handle_t target, const std::string &pname)
     int64_t value = 0;
     int64_t ret = simGetLongProperty(target, pname.c_str(), &value);
     if(ret == -1)
-        throw api_error("simGetLongProperty");
+        throw property_error("simGetLongProperty", pname);
     return value;
 }
 
@@ -3001,7 +3006,7 @@ void setFloatProperty(handle_t target, const std::string &pname, double value)
 {
     int ret = simSetFloatProperty(target, pname.c_str(), value);
     if(ret == -1)
-        throw api_error("simSetFloatProperty");
+        throw property_error("simSetFloatProperty", pname);
 }
 
 double getFloatProperty(handle_t target, const std::string &pname)
@@ -3009,7 +3014,7 @@ double getFloatProperty(handle_t target, const std::string &pname)
     double value = 0;
     int ret = simGetFloatProperty(target, pname.c_str(), &value);
     if(ret == -1)
-        throw api_error("simGetFloatProperty");
+        throw property_error("simGetFloatProperty", pname);
     return value;
 }
 
@@ -3026,14 +3031,14 @@ void setStringProperty(handle_t target, const std::string &pname, const std::str
 {
     int ret = simSetStringProperty(target, pname.c_str(), value.c_str());
     if(ret == -1)
-        throw api_error("simSetStringProperty");
+        throw property_error("simSetStringProperty", pname);
 }
 
 std::string getStringProperty(handle_t target, const std::string &pname)
 {
     char *value = simGetStringProperty(target, pname.c_str());
     if(!value)
-        throw api_error("simGetStringProperty");
+        throw property_error("simGetStringProperty", pname);
     std::string s(value);
     sim::releaseBuffer(value);
     return s;
@@ -3053,7 +3058,7 @@ void setBufferProperty(handle_t target, const std::string &pname, const std::str
 {
     int ret = simSetBufferProperty(target, pname.c_str(), value.c_str(), value.size());
     if(ret == -1)
-        throw api_error("simSetBufferProperty");
+        throw property_error("simSetBufferProperty", pname);
 }
 
 std::string getBufferProperty(handle_t target, const std::string &pname)
@@ -3061,7 +3066,7 @@ std::string getBufferProperty(handle_t target, const std::string &pname)
     int len = 0;
     char *value = simGetBufferProperty(target, pname.c_str(), &len);
     if(!value)
-        throw api_error("simGetBufferProperty");
+        throw property_error("simGetBufferProperty", pname);
     std::string s(value, len);
     sim::releaseBuffer(value);
     return s;
@@ -3082,7 +3087,7 @@ void setVector3Property(handle_t target, const std::string &pname, std::array<do
 {
     int ret = simSetVector3Property(target, pname.c_str(), value.data());
     if(ret == -1)
-        throw api_error("simSetVector3Property");
+        throw property_error("simSetVector3Property", pname);
 }
 
 std::array<double, 3> getVector3Property(handle_t target, const std::string &pname)
@@ -3090,7 +3095,7 @@ std::array<double, 3> getVector3Property(handle_t target, const std::string &pna
     std::array<double, 3> value;
     int ret = simGetVector3Property(target, pname.c_str(), value.data());
     if(ret == -1)
-        throw api_error("simGetVector3Property");
+        throw property_error("simGetVector3Property", pname);
     return value;
 }
 
@@ -3107,7 +3112,7 @@ void setQuaternionProperty(handle_t target, const std::string &pname, std::array
 {
     int ret = simSetQuaternionProperty(target, pname.c_str(), value.data());
     if(ret == -1)
-        throw api_error("simSetQuaternionProperty");
+        throw property_error("simSetQuaternionProperty", pname);
 }
 
 std::array<double, 4> getQuaternionProperty(handle_t target, const std::string &pname)
@@ -3115,7 +3120,7 @@ std::array<double, 4> getQuaternionProperty(handle_t target, const std::string &
     std::array<double, 4> value;
     int ret = simGetQuaternionProperty(target, pname.c_str(), value.data());
     if(ret == -1)
-        throw api_error("simGetQuaternionProperty");
+        throw property_error("simGetQuaternionProperty", pname);
     return value;
 }
 
@@ -3132,7 +3137,7 @@ void setPoseProperty(handle_t target, const std::string &pname, std::array<doubl
 {
     int ret = simSetPoseProperty(target, pname.c_str(), value.data());
     if(ret == -1)
-        throw api_error("simSetPoseProperty");
+        throw property_error("simSetPoseProperty", pname);
 }
 
 std::array<double, 7> getPoseProperty(handle_t target, const std::string &pname)
@@ -3140,7 +3145,7 @@ std::array<double, 7> getPoseProperty(handle_t target, const std::string &pname)
     std::array<double, 7> value;
     int ret = simGetPoseProperty(target, pname.c_str(), value.data());
     if(ret == -1)
-        throw api_error("simGetPoseProperty");
+        throw property_error("simGetPoseProperty", pname);
     return value;
 }
 
@@ -3157,7 +3162,7 @@ void setColorProperty(handle_t target, const std::string &pname, std::array<floa
 {
     int ret = simSetColorProperty(target, pname.c_str(), value.data());
     if(ret == -1)
-        throw api_error("simSetColorProperty");
+        throw property_error("simSetColorProperty", pname);
 }
 
 std::array<float, 3> getColorProperty(handle_t target, const std::string &pname)
@@ -3165,7 +3170,7 @@ std::array<float, 3> getColorProperty(handle_t target, const std::string &pname)
     std::array<float, 3> value;
     int ret = simGetColorProperty(target, pname.c_str(), value.data());
     if(ret == -1)
-        throw api_error("simGetColorProperty");
+        throw property_error("simGetColorProperty", pname);
     return value;
 }
 
@@ -3182,7 +3187,7 @@ void setFloatArrayProperty(handle_t target, const std::string &pname, const std:
 {
     int ret = simSetFloatArrayProperty(target, pname.c_str(), value.data(), value.size());
     if(ret == -1)
-        throw api_error("simSetFloatArrayProperty");
+        throw property_error("simSetFloatArrayProperty", pname);
 }
 
 std::vector<double> getFloatArrayProperty(handle_t target, const std::string &pname)
@@ -3190,7 +3195,7 @@ std::vector<double> getFloatArrayProperty(handle_t target, const std::string &pn
     int len = 0;
     double *value = simGetFloatArrayProperty(target, pname.c_str(), &len);
     if(!value)
-        throw api_error("simGetFloatArrayProperty");
+        throw property_error("simGetFloatArrayProperty", pname);
     std::vector<double> v(value, value + len);
     sim::releaseBuffer(value);
     return v;
@@ -3211,7 +3216,7 @@ void setIntArrayProperty(handle_t target, const std::string &pname, const std::v
 {
     int ret = simSetIntArrayProperty(target, pname.c_str(), value.data(), value.size());
     if(ret == -1)
-        throw api_error("simSetIntArrayProperty");
+        throw property_error("simSetIntArrayProperty", pname);
 }
 
 std::vector<int> getIntArrayProperty(handle_t target, const std::string &pname)
@@ -3219,7 +3224,7 @@ std::vector<int> getIntArrayProperty(handle_t target, const std::string &pname)
     int len = 0;
     int *value = simGetIntArrayProperty(target, pname.c_str(), &len);
     if(!value)
-        throw api_error("simGetIntArrayProperty");
+        throw property_error("simGetIntArrayProperty", pname);
     std::vector<int> v(value, value + len);
     sim::releaseBuffer(value);
     return v;
@@ -3241,7 +3246,7 @@ void setFloatArray2Property(handle_t target, const std::string &pname, const std
 {
     int ret = simSetFloatArray2Property(target, pname.c_str(), value.data());
     if(ret == -1)
-        throw api_error("simSetFloatArray2Property");
+        throw property_error("simSetFloatArray2Property", pname);
 }
 
 std::array<double, 2> getFloatArray2Property(handle_t target, const std::string &pname)
@@ -3249,7 +3254,7 @@ std::array<double, 2> getFloatArray2Property(handle_t target, const std::string 
     std::array<double, 2> v;
     int ret = simGetFloatArray2Property(target, pname.c_str(), v.data());
     if(ret == -1)
-        throw api_error("simGetFloatArray2Property");
+        throw property_error("simGetFloatArray2Property", pname);
     return v;
 }
 
@@ -3266,7 +3271,7 @@ void setFloatArray3Property(handle_t target, const std::string &pname, const std
 {
     int ret = simSetFloatArray3Property(target, pname.c_str(), value.data());
     if(ret == -1)
-        throw api_error("simSetFloatArray3Property");
+        throw property_error("simSetFloatArray3Property", pname);
 }
 
 std::array<double, 3> getFloatArray3Property(handle_t target, const std::string &pname)
@@ -3274,7 +3279,7 @@ std::array<double, 3> getFloatArray3Property(handle_t target, const std::string 
     std::array<double, 3> v;
     int ret = simGetFloatArray3Property(target, pname.c_str(), v.data());
     if(ret == -1)
-        throw api_error("simGetFloatArray3Property");
+        throw property_error("simGetFloatArray3Property", pname);
     return v;
 }
 
@@ -3292,7 +3297,7 @@ void setIntArray2Property(handle_t target, const std::string &pname, const std::
 {
     int ret = simSetIntArray2Property(target, pname.c_str(), value.data());
     if(ret == -1)
-        throw api_error("simSetIntArray2Property");
+        throw property_error("simSetIntArray2Property", pname);
 }
 
 std::array<int, 2> getIntArray2Property(handle_t target, const std::string &pname)
@@ -3300,7 +3305,7 @@ std::array<int, 2> getIntArray2Property(handle_t target, const std::string &pnam
     std::array<int, 2> v;
     int ret = simGetIntArray2Property(target, pname.c_str(), v.data());
     if(ret == -1)
-        throw api_error("simGetIntArray2Property");
+        throw property_error("simGetIntArray2Property", pname);
     return v;
 }
 
@@ -3317,7 +3322,7 @@ void removeProperty(handle_t target, const std::string &pname)
 {
     int ret = simRemoveProperty(target, pname.c_str());
     if(ret == -1)
-        throw api_error("simRemoveProperty");
+        throw property_error("simRemoveProperty", pname);
 }
 
 bool getPropertyName(handle_t target, int index, std::string &pname)
@@ -3370,7 +3375,7 @@ bool getPropertyInfo(handle_t target, const std::string &pname, SPropertyInfo &i
 {
     int ret = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
     if(ret == -1)
-        throw api_error("simGetPropertyInfo");
+        throw property_error("simGetPropertyInfo", pname);
     return ret > 0;
 }
 

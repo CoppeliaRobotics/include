@@ -95,6 +95,13 @@ namespace sim
         }
     };
 
+    struct property_error : public api_error
+    {
+        std::string pname;
+
+        property_error(const std::string &func_, const std::string &pname_);
+    };
+
     extern PluginInfo *pluginInfo;
 
 
