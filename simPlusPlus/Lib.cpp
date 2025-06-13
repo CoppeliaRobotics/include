@@ -2948,7 +2948,10 @@ std::optional<bool> getBoolProperty(handle_t target, const std::string &pname, s
     int value = 0;
     int ret = simGetBoolProperty(target, pname.c_str(), &value);
     if(ret == -1)
+    {
+        getLastError(); // clear last error
         return defaultValue;
+    }
     return value > 0;
 }
 
@@ -2973,7 +2976,10 @@ std::optional<int> getIntProperty(handle_t target, const std::string &pname, std
     int value = 0;
     int ret = simGetIntProperty(target, pname.c_str(), &value);
     if(ret == -1)
+    {
+        getLastError(); // clear last error
         return defaultValue;
+    }
     return value;
 }
 
@@ -2998,7 +3004,10 @@ std::optional<int64_t> getLongProperty(handle_t target, const std::string &pname
     int64_t value = 0;
     int ret = simGetLongProperty(target, pname.c_str(), &value);
     if(ret == -1)
+    {
+        getLastError(); // clear last error
         return defaultValue;
+    }
     return value;
 }
 
@@ -3023,7 +3032,10 @@ std::optional<double> getFloatProperty(handle_t target, const std::string &pname
     double value = 0;
     int ret = simGetFloatProperty(target, pname.c_str(), &value);
     if(ret == -1)
+    {
+        getLastError(); // clear last error
         return defaultValue;
+    }
     return value;
 }
 
@@ -3048,7 +3060,10 @@ std::optional<std::string> getStringProperty(handle_t target, const std::string 
 {
     char *value = simGetStringProperty(target, pname.c_str());
     if(!value)
+    {
+        getLastError(); // clear last error
         return defaultValue;
+    }
     std::string s(value);
     sim::releaseBuffer(value);
     return s;
@@ -3077,7 +3092,10 @@ std::optional<std::string> getBufferProperty(handle_t target, const std::string 
     int len = 0;
     char *value = simGetBufferProperty(target, pname.c_str(), &len);
     if(!value)
+    {
+        getLastError(); // clear last error
         return defaultValue;
+    }
     std::string s(value, len);
     sim::releaseBuffer(value);
     return s;
@@ -3104,7 +3122,10 @@ std::optional<std::array<double, 3>> getVector3Property(handle_t target, const s
     std::array<double, 3> value;
     int ret = simGetVector3Property(target, pname.c_str(), value.data());
     if(ret == -1)
+    {
+        getLastError(); // clear last error
         return defaultValue;
+    }
     return value;
 }
 
@@ -3129,7 +3150,10 @@ std::optional<std::array<double, 4>> getQuaternionProperty(handle_t target, cons
     std::array<double, 4> value;
     int ret = simGetQuaternionProperty(target, pname.c_str(), value.data());
     if(ret == -1)
+    {
+        getLastError(); // clear last error
         return defaultValue;
+    }
     return value;
 }
 
@@ -3154,7 +3178,10 @@ std::optional<std::array<double, 7>> getPoseProperty(handle_t target, const std:
     std::array<double, 7> value;
     int ret = simGetPoseProperty(target, pname.c_str(), value.data());
     if(ret == -1)
+    {
+        getLastError(); // clear last error
         return defaultValue;
+    }
     return value;
 }
 
@@ -3179,7 +3206,10 @@ std::optional<std::array<float, 3>> getColorProperty(handle_t target, const std:
     std::array<float, 3> value;
     int ret = simGetColorProperty(target, pname.c_str(), value.data());
     if(ret == -1)
+    {
+        getLastError(); // clear last error
         return defaultValue;
+    }
     return value;
 }
 
@@ -3206,7 +3236,10 @@ std::optional<std::vector<double>> getFloatArrayProperty(handle_t target, const 
     int len = 0;
     double *value = simGetFloatArrayProperty(target, pname.c_str(), &len);
     if(!value)
+    {
+        getLastError(); // clear last error
         return defaultValue;
+    }
     std::vector<double> v(value, value + len);
     sim::releaseBuffer(value);
     return v;
@@ -3235,7 +3268,10 @@ std::optional<std::vector<int>> getIntArrayProperty(handle_t target, const std::
     int len = 0;
     int *value = simGetIntArrayProperty(target, pname.c_str(), &len);
     if(!value)
+    {
+        getLastError(); // clear last error
         return defaultValue;
+    }
     std::vector<int> v(value, value + len);
     sim::releaseBuffer(value);
     return v;
@@ -3263,7 +3299,10 @@ std::optional<std::array<double, 2>> getFloatArray2Property(handle_t target, con
     std::array<double, 2> v;
     int ret = simGetFloatArray2Property(target, pname.c_str(), v.data());
     if(ret == -1)
+    {
+        getLastError(); // clear last error
         return defaultValue;
+    }
     return v;
 }
 
@@ -3288,7 +3327,10 @@ std::optional<std::array<double, 3>> getFloatArray3Property(handle_t target, con
     std::array<double, 3> v;
     int ret = simGetFloatArray3Property(target, pname.c_str(), v.data());
     if(ret == -1)
+    {
+        getLastError(); // clear last error
         return defaultValue;
+    }
     return v;
 }
 #endif
@@ -3314,7 +3356,10 @@ std::optional<std::array<int, 2>> getIntArray2Property(handle_t target, const st
     std::array<int, 2> v;
     int ret = simGetIntArray2Property(target, pname.c_str(), v.data());
     if(ret == -1)
+    {
+        getLastError(); // clear last error
         return defaultValue;
+    }
     return v;
 }
 
