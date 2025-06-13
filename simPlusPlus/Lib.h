@@ -182,8 +182,10 @@ namespace sim
     void setObjectAlias(handle_t objectHandle, const std::string &alias, int options = 0);
 
     handle_t getObjectParent(handle_t objectHandle);
+    std::optional<handle_t> getObjectParent(handle_t objectHandle, const std::optional<handle_t> &defaultValue, bool throwOnError = false);
 
     handle_t getObjectChild(handle_t objectHandle, int index);
+    std::optional<handle_t> getObjectChild(handle_t objectHandle, int index, const std::optional<handle_t> &defaultValue, bool throwOnError = false);
     std::vector<handle_t> getObjectChildren(handle_t objectHandle);
 
     void setObjectParent(handle_t objectHandle, handle_t parentObjectHandle, bool keepInPlace);

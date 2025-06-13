@@ -22,6 +22,16 @@ static std::string getLastError_noexcept()
     return s;
 }
 
+static void ignored_api_error(const std::string &func)
+{
+    addLog(sim_verbosity_warnings, "%s: uncaught error: %s", func, getLastError());
+}
+
+static void ignored_property_api_error(const std::string &func, const std::string &pname)
+{
+    addLog(sim_verbosity_warnings, "%s: %s: uncaught error: %s", func, pname, getLastError());
+}
+
 api_error::api_error(const std::string &func_, const std::string &error_)
     : api_error(func_, error_, getLastError_noexcept())
 {
@@ -288,7 +298,10 @@ handle_t getObjectFromUid(int64_t uid, bool noError)
 
 handle_t getScriptHandleEx(int scriptType, handle_t objHandle, std::optional<std::string> scriptName)
 {
-    return simGetScriptHandleEx(scriptType, objHandle, scriptName ? scriptName->c_str() : nullptr);
+    handle_t ret = simGetScriptHandleEx(scriptType, objHandle, scriptName ? scriptName->c_str() : nullptr);
+    if(ret == -1)
+        throw api_error("simGetScriptHandleEx");
+    return ret;
 }
 
 void removeObjects(const std::vector<handle_t> &objectHandles)
@@ -323,12 +336,46 @@ void setObjectAlias(handle_t objectHandle, const std::string &alias, int options
 
 handle_t getObjectParent(handle_t objectHandle)
 {
-    return simGetObjectParent(objectHandle);
+    handle_t ret = simGetObjectParent(objectHandle);
+    if(ret == -1)
+        ignored_api_error("simGetObjectParent");
+    return ret;
+}
+
+std::optional<handle_t> getObjectParent(handle_t objectHandle, const std::optional<handle_t> &defaultValue, bool throwOnError)
+{
+    handle_t ret = simGetObjectParent(objectHandle);
+    if(ret == -1)
+    {
+        if(throwOnError)
+            throw api_error("simGetObjectParent");
+
+        ignored_api_error("simGetObjectParent");
+        return defaultValue;
+    }
+    return ret;
 }
 
 handle_t getObjectChild(handle_t objectHandle, int index)
 {
-    return simGetObjectChild(objectHandle, index);
+    handle_t ret = simGetObjectChild(objectHandle, index);
+    if(ret == -1)
+        ignored_api_error("simGetObjectChild");
+    return ret;
+}
+
+std::optional<handle_t> getObjectChild(handle_t objectHandle, int index, const std::optional<handle_t> &defaultValue, bool throwOnError)
+{
+    handle_t ret = simGetObjectChild(objectHandle, index);
+    if(ret == -1)
+    {
+        if(throwOnError)
+            throw api_error("simGetObjectChild");
+
+        ignored_api_error("simGetObjectChild");
+        return defaultValue;
+    }
+    return ret;
 }
 
 std::vector<handle_t> getObjectChildren(handle_t objectHandle)
@@ -2949,7 +2996,7 @@ std::optional<bool> getBoolProperty(handle_t target, const std::string &pname, s
     int ret = simGetBoolProperty(target, pname.c_str(), &value);
     if(ret == -1)
     {
-        getLastError(); // clear last error
+        ignored_property_api_error("simGetBoolProperty", pname);
         return defaultValue;
     }
     return value > 0;
@@ -2977,7 +3024,7 @@ std::optional<int> getIntProperty(handle_t target, const std::string &pname, std
     int ret = simGetIntProperty(target, pname.c_str(), &value);
     if(ret == -1)
     {
-        getLastError(); // clear last error
+        ignored_property_api_error("simGetIntProperty", pname);
         return defaultValue;
     }
     return value;
@@ -3005,7 +3052,7 @@ std::optional<int64_t> getLongProperty(handle_t target, const std::string &pname
     int ret = simGetLongProperty(target, pname.c_str(), &value);
     if(ret == -1)
     {
-        getLastError(); // clear last error
+        ignored_property_api_error("simGetLongProperty", pname);
         return defaultValue;
     }
     return value;
@@ -3033,7 +3080,7 @@ std::optional<double> getFloatProperty(handle_t target, const std::string &pname
     int ret = simGetFloatProperty(target, pname.c_str(), &value);
     if(ret == -1)
     {
-        getLastError(); // clear last error
+        ignored_property_api_error("simGetFloatProperty", pname);
         return defaultValue;
     }
     return value;
@@ -3061,7 +3108,7 @@ std::optional<std::string> getStringProperty(handle_t target, const std::string 
     char *value = simGetStringProperty(target, pname.c_str());
     if(!value)
     {
-        getLastError(); // clear last error
+        ignored_property_api_error("simGetStringProperty", pname);
         return defaultValue;
     }
     std::string s(value);
@@ -3093,7 +3140,7 @@ std::optional<std::string> getBufferProperty(handle_t target, const std::string 
     char *value = simGetBufferProperty(target, pname.c_str(), &len);
     if(!value)
     {
-        getLastError(); // clear last error
+        ignored_property_api_error("simGetBufferProperty", pname);
         return defaultValue;
     }
     std::string s(value, len);
@@ -3123,7 +3170,7 @@ std::optional<std::array<double, 3>> getVector3Property(handle_t target, const s
     int ret = simGetVector3Property(target, pname.c_str(), value.data());
     if(ret == -1)
     {
-        getLastError(); // clear last error
+        ignored_property_api_error("simGetVector3Property", pname);
         return defaultValue;
     }
     return value;
@@ -3151,7 +3198,7 @@ std::optional<std::array<double, 4>> getQuaternionProperty(handle_t target, cons
     int ret = simGetQuaternionProperty(target, pname.c_str(), value.data());
     if(ret == -1)
     {
-        getLastError(); // clear last error
+        ignored_property_api_error("simGetQuaternionProperty", pname);
         return defaultValue;
     }
     return value;
@@ -3179,7 +3226,7 @@ std::optional<std::array<double, 7>> getPoseProperty(handle_t target, const std:
     int ret = simGetPoseProperty(target, pname.c_str(), value.data());
     if(ret == -1)
     {
-        getLastError(); // clear last error
+        ignored_property_api_error("simGetPoseProperty", pname);
         return defaultValue;
     }
     return value;
@@ -3207,7 +3254,7 @@ std::optional<std::array<float, 3>> getColorProperty(handle_t target, const std:
     int ret = simGetColorProperty(target, pname.c_str(), value.data());
     if(ret == -1)
     {
-        getLastError(); // clear last error
+        ignored_property_api_error("simGetColorProperty", pname);
         return defaultValue;
     }
     return value;
@@ -3237,7 +3284,7 @@ std::optional<std::vector<double>> getFloatArrayProperty(handle_t target, const 
     double *value = simGetFloatArrayProperty(target, pname.c_str(), &len);
     if(!value)
     {
-        getLastError(); // clear last error
+        ignored_property_api_error("simGetFloatArrayProperty", pname);
         return defaultValue;
     }
     std::vector<double> v(value, value + len);
@@ -3269,7 +3316,7 @@ std::optional<std::vector<int>> getIntArrayProperty(handle_t target, const std::
     int *value = simGetIntArrayProperty(target, pname.c_str(), &len);
     if(!value)
     {
-        getLastError(); // clear last error
+        ignored_property_api_error("simGetIntArrayProperty", pname);
         return defaultValue;
     }
     std::vector<int> v(value, value + len);
@@ -3300,7 +3347,7 @@ std::optional<std::array<double, 2>> getFloatArray2Property(handle_t target, con
     int ret = simGetFloatArray2Property(target, pname.c_str(), v.data());
     if(ret == -1)
     {
-        getLastError(); // clear last error
+        ignored_property_api_error("simGetFloatArray2Property", pname);
         return defaultValue;
     }
     return v;
@@ -3328,7 +3375,7 @@ std::optional<std::array<double, 3>> getFloatArray3Property(handle_t target, con
     int ret = simGetFloatArray3Property(target, pname.c_str(), v.data());
     if(ret == -1)
     {
-        getLastError(); // clear last error
+        ignored_property_api_error("simGetFloatArray3Property", pname);
         return defaultValue;
     }
     return v;
@@ -3357,7 +3404,7 @@ std::optional<std::array<int, 2>> getIntArray2Property(handle_t target, const st
     int ret = simGetIntArray2Property(target, pname.c_str(), v.data());
     if(ret == -1)
     {
-        getLastError(); // clear last error
+        ignored_property_api_error("simGetIntArray2Property", pname);
         return defaultValue;
     }
     return v;
