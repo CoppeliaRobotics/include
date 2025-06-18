@@ -2991,17 +2991,13 @@ std::optional<bool> getBoolProperty(handle_t target, const std::string &pname, s
     int ret = simGetBoolProperty(target, pname.c_str(), &value);
     if(ret == -1)
     {
-        try
-        {
-            if(!hasProperty(target, pname))
-                return defaultValue;
-            else
-                throw std::runtime_error("inconsistent results from API");
-        }
-        catch(const std::exception &e)
-        {
+        SPropertyInfo info;
+        SPropertyOptions opts;
+        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
+        if(ret1 == 0)
+            return defaultValue;
+        else
             throw property_error("simGetBoolProperty", pname);
-        }
     }
     return value > 0;
 }
@@ -3028,17 +3024,13 @@ std::optional<int> getIntProperty(handle_t target, const std::string &pname, std
     int ret = simGetIntProperty(target, pname.c_str(), &value);
     if(ret == -1)
     {
-        try
-        {
-            if(!hasProperty(target, pname))
-                return defaultValue;
-            else
-                throw std::runtime_error("inconsistent results from API");
-        }
-        catch(const std::exception &e)
-        {
+        SPropertyInfo info;
+        SPropertyOptions opts;
+        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
+        if(ret1 == 0)
+            return defaultValue;
+        else
             throw property_error("simGetIntProperty", pname);
-        }
     }
     return value;
 }
@@ -3065,17 +3057,13 @@ std::optional<int64_t> getLongProperty(handle_t target, const std::string &pname
     int ret = simGetLongProperty(target, pname.c_str(), &value);
     if(ret == -1)
     {
-        try
-        {
-            if(!hasProperty(target, pname))
-                return defaultValue;
-            else
-                throw std::runtime_error("inconsistent results from API");
-        }
-        catch(const std::exception &e)
-        {
+        SPropertyInfo info;
+        SPropertyOptions opts;
+        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
+        if(ret1 == 0)
+            return defaultValue;
+        else
             throw property_error("simGetLongProperty", pname);
-        }
     }
     return value;
 }
@@ -3102,17 +3090,13 @@ std::optional<double> getFloatProperty(handle_t target, const std::string &pname
     int ret = simGetFloatProperty(target, pname.c_str(), &value);
     if(ret == -1)
     {
-        try
-        {
-            if(!hasProperty(target, pname))
-                return defaultValue;
-            else
-                throw std::runtime_error("inconsistent results from API");
-        }
-        catch(const std::exception &e)
-        {
+        SPropertyInfo info;
+        SPropertyOptions opts;
+        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
+        if(ret1 == 0)
+            return defaultValue;
+        else
             throw property_error("simGetFloatProperty", pname);
-        }
     }
     return value;
 }
@@ -3139,17 +3123,13 @@ std::optional<std::string> getStringProperty(handle_t target, const std::string 
     char *value = simGetStringProperty(target, pname.c_str());
     if(!value)
     {
-        try
-        {
-            if(!hasProperty(target, pname))
-                return defaultValue;
-            else
-                throw std::runtime_error("inconsistent results from API");
-        }
-        catch(const std::exception &e)
-        {
+        SPropertyInfo info;
+        SPropertyOptions opts;
+        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
+        if(ret1 == 0)
+            return defaultValue;
+        else
             throw property_error("simGetStringProperty", pname);
-        }
     }
     std::string s(value);
     sim::releaseBuffer(value);
@@ -3180,17 +3160,13 @@ std::optional<std::string> getBufferProperty(handle_t target, const std::string 
     char *value = simGetBufferProperty(target, pname.c_str(), &len);
     if(!value)
     {
-        try
-        {
-            if(!hasProperty(target, pname))
-                return defaultValue;
-            else
-                throw std::runtime_error("inconsistent results from API");
-        }
-        catch(const std::exception &e)
-        {
+        SPropertyInfo info;
+        SPropertyOptions opts;
+        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
+        if(ret1 == 0)
+            return defaultValue;
+        else
             throw property_error("simGetBufferProperty", pname);
-        }
     }
     std::string s(value, len);
     sim::releaseBuffer(value);
@@ -3219,17 +3195,13 @@ std::optional<std::array<double, 3>> getVector3Property(handle_t target, const s
     int ret = simGetVector3Property(target, pname.c_str(), value.data());
     if(ret == -1)
     {
-        try
-        {
-            if(!hasProperty(target, pname))
-                return defaultValue;
-            else
-                throw std::runtime_error("inconsistent results from API");
-        }
-        catch(const std::exception &e)
-        {
+        SPropertyInfo info;
+        SPropertyOptions opts;
+        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
+        if(ret1 == 0)
+            return defaultValue;
+        else
             throw property_error("simGetVector3Property", pname);
-        }
     }
     return value;
 }
@@ -3256,17 +3228,13 @@ std::optional<std::array<double, 4>> getQuaternionProperty(handle_t target, cons
     int ret = simGetQuaternionProperty(target, pname.c_str(), value.data());
     if(ret == -1)
     {
-        try
-        {
-            if(!hasProperty(target, pname))
-                return defaultValue;
-            else
-                throw std::runtime_error("inconsistent results from API");
-        }
-        catch(const std::exception &e)
-        {
+        SPropertyInfo info;
+        SPropertyOptions opts;
+        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
+        if(ret1 == 0)
+            return defaultValue;
+        else
             throw property_error("simGetQuaternionProperty", pname);
-        }
     }
     return value;
 }
@@ -3293,17 +3261,13 @@ std::optional<std::array<double, 7>> getPoseProperty(handle_t target, const std:
     int ret = simGetPoseProperty(target, pname.c_str(), value.data());
     if(ret == -1)
     {
-        try
-        {
-            if(!hasProperty(target, pname))
-                return defaultValue;
-            else
-                throw std::runtime_error("inconsistent results from API");
-        }
-        catch(const std::exception &e)
-        {
+        SPropertyInfo info;
+        SPropertyOptions opts;
+        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
+        if(ret1 == 0)
+            return defaultValue;
+        else
             throw property_error("simGetPoseProperty", pname);
-        }
     }
     return value;
 }
@@ -3330,17 +3294,13 @@ std::optional<std::array<float, 3>> getColorProperty(handle_t target, const std:
     int ret = simGetColorProperty(target, pname.c_str(), value.data());
     if(ret == -1)
     {
-        try
-        {
-            if(!hasProperty(target, pname))
-                return defaultValue;
-            else
-                throw std::runtime_error("inconsistent results from API");
-        }
-        catch(const std::exception &e)
-        {
+        SPropertyInfo info;
+        SPropertyOptions opts;
+        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
+        if(ret1 == 0)
+            return defaultValue;
+        else
             throw property_error("simGetColorProperty", pname);
-        }
     }
     return value;
 }
@@ -3369,17 +3329,13 @@ std::optional<std::vector<double>> getFloatArrayProperty(handle_t target, const 
     double *value = simGetFloatArrayProperty(target, pname.c_str(), &len);
     if(!value)
     {
-        try
-        {
-            if(!hasProperty(target, pname))
-                return defaultValue;
-            else
-                throw std::runtime_error("inconsistent results from API");
-        }
-        catch(const std::exception &e)
-        {
+        SPropertyInfo info;
+        SPropertyOptions opts;
+        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
+        if(ret1 == 0)
+            return defaultValue;
+        else
             throw property_error("simGetFloatArrayProperty", pname);
-        }
     }
     std::vector<double> v(value, value + len);
     sim::releaseBuffer(value);
@@ -3410,17 +3366,13 @@ std::optional<std::vector<int>> getIntArrayProperty(handle_t target, const std::
     int *value = simGetIntArrayProperty(target, pname.c_str(), &len);
     if(!value)
     {
-        try
-        {
-            if(!hasProperty(target, pname))
-                return defaultValue;
-            else
-                throw std::runtime_error("inconsistent results from API");
-        }
-        catch(const std::exception &e)
-        {
+        SPropertyInfo info;
+        SPropertyOptions opts;
+        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
+        if(ret1 == 0)
+            return defaultValue;
+        else
             throw property_error("simGetIntArrayProperty", pname);
-        }
     }
     std::vector<int> v(value, value + len);
     sim::releaseBuffer(value);
@@ -3450,17 +3402,13 @@ std::optional<std::array<double, 2>> getFloatArray2Property(handle_t target, con
     int ret = simGetFloatArray2Property(target, pname.c_str(), v.data());
     if(ret == -1)
     {
-        try
-        {
-            if(!hasProperty(target, pname))
-                return defaultValue;
-            else
-                throw std::runtime_error("inconsistent results from API");
-        }
-        catch(const std::exception &e)
-        {
+        SPropertyInfo info;
+        SPropertyOptions opts;
+        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
+        if(ret1 == 0)
+            return defaultValue;
+        else
             throw property_error("simGetFloatArray2Property", pname);
-        }
     }
     return v;
 }
@@ -3487,17 +3435,13 @@ std::optional<std::array<double, 3>> getFloatArray3Property(handle_t target, con
     int ret = simGetFloatArray3Property(target, pname.c_str(), v.data());
     if(ret == -1)
     {
-        try
-        {
-            if(!hasProperty(target, pname))
-                return defaultValue;
-            else
-                throw std::runtime_error("inconsistent results from API");
-        }
-        catch(const std::exception &e)
-        {
+        SPropertyInfo info;
+        SPropertyOptions opts;
+        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
+        if(ret1 == 0)
+            return defaultValue;
+        else
             throw property_error("simGetFloatArray3Property", pname);
-        }
     }
     return v;
 }
@@ -3525,17 +3469,13 @@ std::optional<std::array<int, 2>> getIntArray2Property(handle_t target, const st
     int ret = simGetIntArray2Property(target, pname.c_str(), v.data());
     if(ret == -1)
     {
-        try
-        {
-            if(!hasProperty(target, pname))
-                return defaultValue;
-            else
-                throw std::runtime_error("inconsistent results from API");
-        }
-        catch(const std::exception &e)
-        {
+        SPropertyInfo info;
+        SPropertyOptions opts;
+        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
+        if(ret1 == 0)
+            return defaultValue;
+        else
             throw property_error("simGetIntArray2Property", pname);
-        }
     }
     return v;
 }
@@ -3599,13 +3539,6 @@ bool getPropertyInfo(handle_t target, const std::string &pname, SPropertyInfo &i
     if(ret == -1)
         throw property_error("simGetPropertyInfo", pname);
     return ret > 0;
-}
-
-bool hasProperty(handle_t target, const std::string &pname)
-{
-    SPropertyInfo info;
-    getPropertyInfo(target, pname, info);
-    return info.type != -1;
 }
 
 #ifdef HAVE_JSONCONS
