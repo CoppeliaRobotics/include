@@ -100,6 +100,7 @@ namespace sim
         std::string pname;
 
         property_error(const std::string &func_, const std::string &pname_);
+        property_error(const std::string &func_, const std::string &pname_, const std::string &lastErrInfo_);
     };
 
     extern PluginInfo *pluginInfo;
