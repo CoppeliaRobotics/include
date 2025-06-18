@@ -2974,6 +2974,19 @@ void setShapeInertia(handle_t shapeHandle, std::array<double, 9> inertiaMatrix, 
 
 // void simDynCallback(const int *intData, const double *floatData);
 
+template<typename T>
+static inline std::optional<T> defaultValueIfPropertyNotExistsOrThrow(const std::string &apiFunc, handle_t target, const std::string &pname, std::optional<T> defaultValue)
+{
+    std::string lastErr = getLastError_noexcept();
+    SPropertyInfo info;
+    SPropertyOptions opts;
+    int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
+    if(ret1 == 0)
+        return defaultValue;
+    else
+        throw property_error(apiFunc, pname, lastErr);
+}
+
 void setBoolProperty(handle_t target, const std::string &pname, bool value)
 {
     int ret = simSetBoolProperty(target, pname.c_str(), value);
@@ -2995,16 +3008,7 @@ std::optional<bool> getBoolProperty(handle_t target, const std::string &pname, s
     int value = 0;
     int ret = simGetBoolProperty(target, pname.c_str(), &value);
     if(ret == -1)
-    {
-        std::string lastErr = getLastError_noexcept();
-        SPropertyInfo info;
-        SPropertyOptions opts;
-        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
-        if(ret1 == 0)
-            return defaultValue;
-        else
-            throw property_error("simGetBoolProperty", pname, lastErr);
-    }
+        return defaultValueIfPropertyNotExistsOrThrow("simGetBoolProperty", target, pname, defaultValue);
     return value > 0;
 }
 
@@ -3029,16 +3033,7 @@ std::optional<int> getIntProperty(handle_t target, const std::string &pname, std
     int value = 0;
     int ret = simGetIntProperty(target, pname.c_str(), &value);
     if(ret == -1)
-    {
-        std::string lastErr = getLastError_noexcept();
-        SPropertyInfo info;
-        SPropertyOptions opts;
-        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
-        if(ret1 == 0)
-            return defaultValue;
-        else
-            throw property_error("simGetIntProperty", pname, lastErr);
-    }
+        return defaultValueIfPropertyNotExistsOrThrow("simGetIntProperty", target, pname, defaultValue);
     return value;
 }
 
@@ -3063,16 +3058,7 @@ std::optional<int64_t> getLongProperty(handle_t target, const std::string &pname
     int64_t value = 0;
     int ret = simGetLongProperty(target, pname.c_str(), &value);
     if(ret == -1)
-    {
-        std::string lastErr = getLastError_noexcept();
-        SPropertyInfo info;
-        SPropertyOptions opts;
-        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
-        if(ret1 == 0)
-            return defaultValue;
-        else
-            throw property_error("simGetLongProperty", pname, lastErr);
-    }
+        return defaultValueIfPropertyNotExistsOrThrow("simGetLongProperty", target, pname, defaultValue);
     return value;
 }
 
@@ -3097,16 +3083,7 @@ std::optional<double> getFloatProperty(handle_t target, const std::string &pname
     double value = 0;
     int ret = simGetFloatProperty(target, pname.c_str(), &value);
     if(ret == -1)
-    {
-        std::string lastErr = getLastError_noexcept();
-        SPropertyInfo info;
-        SPropertyOptions opts;
-        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
-        if(ret1 == 0)
-            return defaultValue;
-        else
-            throw property_error("simGetFloatProperty", pname, lastErr);
-    }
+        return defaultValueIfPropertyNotExistsOrThrow("simGetFloatProperty", target, pname, defaultValue);
     return value;
 }
 
@@ -3131,16 +3108,7 @@ std::optional<std::string> getStringProperty(handle_t target, const std::string 
 {
     char *value = simGetStringProperty(target, pname.c_str());
     if(!value)
-    {
-        std::string lastErr = getLastError_noexcept();
-        SPropertyInfo info;
-        SPropertyOptions opts;
-        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
-        if(ret1 == 0)
-            return defaultValue;
-        else
-            throw property_error("simGetStringProperty", pname, lastErr);
-    }
+        return defaultValueIfPropertyNotExistsOrThrow("simGetStringProperty", target, pname, defaultValue);
     std::string s(value);
     sim::releaseBuffer(value);
     return s;
@@ -3169,16 +3137,7 @@ std::optional<std::string> getBufferProperty(handle_t target, const std::string 
     int len = 0;
     char *value = simGetBufferProperty(target, pname.c_str(), &len);
     if(!value)
-    {
-        std::string lastErr = getLastError_noexcept();
-        SPropertyInfo info;
-        SPropertyOptions opts;
-        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
-        if(ret1 == 0)
-            return defaultValue;
-        else
-            throw property_error("simGetBufferProperty", pname, lastErr);
-    }
+        return defaultValueIfPropertyNotExistsOrThrow("simGetBufferProperty", target, pname, defaultValue);
     std::string s(value, len);
     sim::releaseBuffer(value);
     return s;
@@ -3205,16 +3164,7 @@ std::optional<std::array<double, 3>> getVector3Property(handle_t target, const s
     std::array<double, 3> value;
     int ret = simGetVector3Property(target, pname.c_str(), value.data());
     if(ret == -1)
-    {
-        std::string lastErr = getLastError_noexcept();
-        SPropertyInfo info;
-        SPropertyOptions opts;
-        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
-        if(ret1 == 0)
-            return defaultValue;
-        else
-            throw property_error("simGetVector3Property", pname, lastErr);
-    }
+        return defaultValueIfPropertyNotExistsOrThrow("simGetVector3Property", target, pname, defaultValue);
     return value;
 }
 
@@ -3239,16 +3189,7 @@ std::optional<std::array<double, 4>> getQuaternionProperty(handle_t target, cons
     std::array<double, 4> value;
     int ret = simGetQuaternionProperty(target, pname.c_str(), value.data());
     if(ret == -1)
-    {
-        std::string lastErr = getLastError_noexcept();
-        SPropertyInfo info;
-        SPropertyOptions opts;
-        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
-        if(ret1 == 0)
-            return defaultValue;
-        else
-            throw property_error("simGetQuaternionProperty", pname, lastErr);
-    }
+        return defaultValueIfPropertyNotExistsOrThrow("simGetQuaternionProperty", target, pname, defaultValue);
     return value;
 }
 
@@ -3273,16 +3214,7 @@ std::optional<std::array<double, 7>> getPoseProperty(handle_t target, const std:
     std::array<double, 7> value;
     int ret = simGetPoseProperty(target, pname.c_str(), value.data());
     if(ret == -1)
-    {
-        std::string lastErr = getLastError_noexcept();
-        SPropertyInfo info;
-        SPropertyOptions opts;
-        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
-        if(ret1 == 0)
-            return defaultValue;
-        else
-            throw property_error("simGetPoseProperty", pname, lastErr);
-    }
+        return defaultValueIfPropertyNotExistsOrThrow("simGetPoseProperty", target, pname, defaultValue);
     return value;
 }
 
@@ -3307,16 +3239,7 @@ std::optional<std::array<float, 3>> getColorProperty(handle_t target, const std:
     std::array<float, 3> value;
     int ret = simGetColorProperty(target, pname.c_str(), value.data());
     if(ret == -1)
-    {
-        std::string lastErr = getLastError_noexcept();
-        SPropertyInfo info;
-        SPropertyOptions opts;
-        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
-        if(ret1 == 0)
-            return defaultValue;
-        else
-            throw property_error("simGetColorProperty", pname, lastErr);
-    }
+        return defaultValueIfPropertyNotExistsOrThrow("simGetColorProperty", target, pname, defaultValue);
     return value;
 }
 
@@ -3343,16 +3266,7 @@ std::optional<std::vector<double>> getFloatArrayProperty(handle_t target, const 
     int len = 0;
     double *value = simGetFloatArrayProperty(target, pname.c_str(), &len);
     if(!value)
-    {
-        std::string lastErr = getLastError_noexcept();
-        SPropertyInfo info;
-        SPropertyOptions opts;
-        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
-        if(ret1 == 0)
-            return defaultValue;
-        else
-            throw property_error("simGetFloatArrayProperty", pname, lastErr);
-    }
+        return defaultValueIfPropertyNotExistsOrThrow("simGetFloatArrayProperty", target, pname, defaultValue);
     std::vector<double> v(value, value + len);
     sim::releaseBuffer(value);
     return v;
@@ -3381,16 +3295,7 @@ std::optional<std::vector<int>> getIntArrayProperty(handle_t target, const std::
     int len = 0;
     int *value = simGetIntArrayProperty(target, pname.c_str(), &len);
     if(!value)
-    {
-        std::string lastErr = getLastError_noexcept();
-        SPropertyInfo info;
-        SPropertyOptions opts;
-        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
-        if(ret1 == 0)
-            return defaultValue;
-        else
-            throw property_error("simGetIntArrayProperty", pname, lastErr);
-    }
+        return defaultValueIfPropertyNotExistsOrThrow("simGetIntArrayProperty", target, pname, defaultValue);
     std::vector<int> v(value, value + len);
     sim::releaseBuffer(value);
     return v;
@@ -3418,16 +3323,7 @@ std::optional<std::array<double, 2>> getFloatArray2Property(handle_t target, con
     std::array<double, 2> v;
     int ret = simGetFloatArray2Property(target, pname.c_str(), v.data());
     if(ret == -1)
-    {
-        std::string lastErr = getLastError_noexcept();
-        SPropertyInfo info;
-        SPropertyOptions opts;
-        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
-        if(ret1 == 0)
-            return defaultValue;
-        else
-            throw property_error("simGetFloatArray2Property", pname, lastErr);
-    }
+        return defaultValueIfPropertyNotExistsOrThrow("simGetFloatArray2Property", target, pname, defaultValue);
     return v;
 }
 
@@ -3452,16 +3348,7 @@ std::optional<std::array<double, 3>> getFloatArray3Property(handle_t target, con
     std::array<double, 3> v;
     int ret = simGetFloatArray3Property(target, pname.c_str(), v.data());
     if(ret == -1)
-    {
-        std::string lastErr = getLastError_noexcept();
-        SPropertyInfo info;
-        SPropertyOptions opts;
-        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
-        if(ret1 == 0)
-            return defaultValue;
-        else
-            throw property_error("simGetFloatArray3Property", pname, lastErr);
-    }
+        return defaultValueIfPropertyNotExistsOrThrow("simGetFloatArray3Property", target, pname, defaultValue);
     return v;
 }
 #endif
@@ -3487,16 +3374,7 @@ std::optional<std::array<int, 2>> getIntArray2Property(handle_t target, const st
     std::array<int, 2> v;
     int ret = simGetIntArray2Property(target, pname.c_str(), v.data());
     if(ret == -1)
-    {
-        std::string lastErr = getLastError_noexcept();
-        SPropertyInfo info;
-        SPropertyOptions opts;
-        int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
-        if(ret1 == 0)
-            return defaultValue;
-        else
-            throw property_error("simGetIntArray2Property", pname, lastErr);
-    }
+        return defaultValueIfPropertyNotExistsOrThrow("simGetIntArray2Property", target, pname, defaultValue);
     return v;
 }
 
