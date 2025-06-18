@@ -1106,6 +1106,8 @@ namespace sim
     bool getPropertyInfo(handle_t target, const std::string &pname, SPropertyInfo &info);
     bool getPropertyInfo(handle_t target, const std::string &pname, SPropertyInfo &info, SPropertyOptions &opts);
 
+    bool hasProperty(handle_t target, const std::string &pname);
+
 #ifdef HAVE_JSONCONS
     void pushObjectOntoStack(handle_t stackHandle, const jsoncons::json &obj);
 
