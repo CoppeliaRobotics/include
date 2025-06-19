@@ -39,7 +39,7 @@ void addStubsDebugLog(const std::string &fmt, Arguments&&... args)
     }
 }
 
-static void addStubsDebugStackDump(int stackHandle)
+static void addStubsDebugStackDump(sim::handle_t stackHandle)
 {
     if(sim::isStackDebugEnabled())
         sim::debugStack(stackHandle);

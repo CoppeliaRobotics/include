@@ -117,13 +117,13 @@ struct WriteOptions
     void *dummy{nullptr};
 };
 
-static void readFromStack(int stack, bool *value, const ReadOptions &rdopt = {})
+static void readFromStack(sim::handle_t stackHandle, bool *value, const ReadOptions &rdopt = {})
 {
     bool v;
-    if(sim::getStackBoolValue(stack, &v) == 1)
+    if(sim::getStackBoolValue(stackHandle, &v) == 1)
     {
         *value = v;
-        sim::popStackItem(stack, 1);
+        sim::popStackItem(stackHandle, 1);
     }
     else
     {
@@ -131,13 +131,13 @@ static void readFromStack(int stack, bool *value, const ReadOptions &rdopt = {})
     }
 }
 
-static void readFromStack(int stack, int *value, const ReadOptions &rdopt = {})
+static void readFromStack(sim::handle_t stackHandle, int *value, const ReadOptions &rdopt = {})
 {
     int v;
-    if(sim::getStackInt32Value(stack, &v) == 1)
+    if(sim::getStackInt32Value(stackHandle, &v) == 1)
     {
         *value = v;
-        sim::popStackItem(stack, 1);
+        sim::popStackItem(stackHandle, 1);
     }
     else
     {
@@ -145,13 +145,13 @@ static void readFromStack(int stack, int *value, const ReadOptions &rdopt = {})
     }
 }
 
-static void readFromStack(int stack, long long *value, const ReadOptions &rdopt = {})
+static void readFromStack(sim::handle_t stackHandle, long long *value, const ReadOptions &rdopt = {})
 {
     long long v;
-    if(sim::getStackInt64Value(stack, &v) == 1)
+    if(sim::getStackInt64Value(stackHandle, &v) == 1)
     {
         *value = v;
-        sim::popStackItem(stack, 1);
+        sim::popStackItem(stackHandle, 1);
     }
     else
     {
@@ -159,13 +159,13 @@ static void readFromStack(int stack, long long *value, const ReadOptions &rdopt 
     }
 }
 
-static void readFromStack(int stack, float *value, const ReadOptions &rdopt = {})
+static void readFromStack(sim::handle_t stackHandle, float *value, const ReadOptions &rdopt = {})
 {
     float v;
-    if(sim::getStackFloatValue(stack, &v) == 1)
+    if(sim::getStackFloatValue(stackHandle, &v) == 1)
     {
         *value = v;
-        sim::popStackItem(stack, 1);
+        sim::popStackItem(stackHandle, 1);
     }
     else
     {
@@ -173,13 +173,13 @@ static void readFromStack(int stack, float *value, const ReadOptions &rdopt = {}
     }
 }
 
-static void readFromStack(int stack, double *value, const ReadOptions &rdopt = {})
+static void readFromStack(sim::handle_t stackHandle, double *value, const ReadOptions &rdopt = {})
 {
     double v;
-    if(sim::getStackDoubleValue(stack, &v) == 1)
+    if(sim::getStackDoubleValue(stackHandle, &v) == 1)
     {
         *value = v;
-        sim::popStackItem(stack, 1);
+        sim::popStackItem(stackHandle, 1);
     }
     else
     {
@@ -187,13 +187,13 @@ static void readFromStack(int stack, double *value, const ReadOptions &rdopt = {
     }
 }
 
-static void readFromStack(int stack, std::string *value, const ReadOptions &rdopt = {})
+static void readFromStack(sim::handle_t stackHandle, std::string *value, const ReadOptions &rdopt = {})
 {
     std::string v;
-    if(sim::getStackStringValue(stack, &v) == 1)
+    if(sim::getStackStringValue(stackHandle, &v) == 1)
     {
         *value = v;
-        sim::popStackItem(stack, 1);
+        sim::popStackItem(stackHandle, 1);
     }
     else
     {
@@ -202,33 +202,33 @@ static void readFromStack(int stack, std::string *value, const ReadOptions &rdop
 }
 
 template<typename T>
-static void readFromStack(int stack, std::optional<T> *value, const ReadOptions &rdopt = {})
+static void readFromStack(sim::handle_t stackHandle, std::optional<T> *value, const ReadOptions &rdopt = {})
 {
-    if(sim::getStackItemType(stack, -1) == sim_stackitem_null)
+    if(sim::getStackItemType(stackHandle, -1) == sim_stackitem_null)
     {
         *value = std::nullopt;
-        sim::popStackItem(stack, 1);
+        sim::popStackItem(stackHandle, 1);
     }
     else
     {
         T v;
-        readFromStack(stack, &v, rdopt); // will call sim::popStackItem() by itself
+        readFromStack(stackHandle, &v, rdopt); // will call sim::popStackItem() by itself
         *value = v;
     }
 }
 
 template<typename T>
-static void readFromStack(int stack, std::vector<T> *vec, const ReadOptions &rdopt = {})
+static void readFromStack(sim::handle_t stackHandle, std::vector<T> *vec, const ReadOptions &rdopt = {})
 {
-    int sz = sim::getStackTableInfo(stack, 0);
+    int sz = sim::getStackTableInfo(stackHandle, 0);
     if(sz < 0)
-        throw sim::exception("expected array (simGetStackTableInfo(stack, 0) returned %d)", sz);
+        throw sim::exception("expected array (simGetStackTableInfo(stackHandle, 0) returned %d)", sz);
 
     rdopt.validateTableSize(sz);
 
-    int oldsz = sim::getStackSize(stack);
-    sim::unfoldStackTable(stack);
-    int sz1 = (sim::getStackSize(stack) - oldsz + 1) / 2;
+    int oldsz = sim::getStackSize(stackHandle);
+    sim::unfoldStackTable(stackHandle);
+    int sz1 = (sim::getStackSize(stackHandle) - oldsz + 1) / 2;
     if(sz != sz1)
         throw std::runtime_error("simUnfoldStackTable unpacked more elements than simGetStackTableInfo reported");
 
@@ -236,97 +236,97 @@ static void readFromStack(int stack, std::vector<T> *vec, const ReadOptions &rdo
 
     for(int i = 0; i < sz; i++)
     {
-        sim::moveStackItemToTop(stack, oldsz - 1);
+        sim::moveStackItemToTop(stackHandle, oldsz - 1);
         int j;
-        readFromStack(stack, &j);
-        sim::moveStackItemToTop(stack, oldsz - 1);
+        readFromStack(stackHandle, &j);
+        sim::moveStackItemToTop(stackHandle, oldsz - 1);
         if constexpr(std::is_same<T, bool>::value)
         {
             T v;
-            readFromStack(stack, &v);
+            readFromStack(stackHandle, &v);
             (*vec)[i] = v;
         }
         else
         {
-            readFromStack(stack, &vec->at(i));
+            readFromStack(stackHandle, &vec->at(i));
         }
     }
 }
 
 template<typename T>
-static void readFromStack(int stack, std::vector<T> *vec, int (*f)(int, std::vector<T>*), const ReadOptions &rdopt = {})
+static void readFromStack(sim::handle_t stackHandle, std::vector<T> *vec, int (*f)(sim::handle_t, std::vector<T>*), const ReadOptions &rdopt = {})
 {
-    int sz = sim::getStackTableInfo(stack, 0);
+    int sz = sim::getStackTableInfo(stackHandle, 0);
     if(sz < 0)
-        throw sim::exception("expected array (simGetStackTableInfo(stack, 0) returned %d)", sz);
+        throw sim::exception("expected array (simGetStackTableInfo(stackHandle, 0) returned %d)", sz);
 
     rdopt.validateTableSize(sz);
 
-    int chk = sim::getStackTableInfo(stack, 2);
+    int chk = sim::getStackTableInfo(stackHandle, 2);
     if(chk != 1)
-        throw sim::exception("table contains non-numbers (simGetStackTableInfo(stack, 2) returned %d)", chk);
+        throw sim::exception("table contains non-numbers (simGetStackTableInfo(stackHandle, 2) returned %d)", chk);
 
     vec->resize(sz);
 
-    int ret = f(stack, vec);
+    int ret = f(stackHandle, vec);
     if(ret != 1)
         throw sim::exception("readFunc error %d", ret);
 
-    sim::popStackItem(stack, 1);
+    sim::popStackItem(stackHandle, 1);
 }
 
 template<>
-void readFromStack(int stack, std::vector<float> *vec, const ReadOptions &rdopt)
+void readFromStack(sim::handle_t stackHandle, std::vector<float> *vec, const ReadOptions &rdopt)
 {
-    readFromStack(stack, vec, sim::getStackFloatTable, rdopt);
+    readFromStack(stackHandle, vec, sim::getStackFloatTable, rdopt);
 }
 
 template<>
-void readFromStack(int stack, std::vector<double> *vec, const ReadOptions &rdopt)
+void readFromStack(sim::handle_t stackHandle, std::vector<double> *vec, const ReadOptions &rdopt)
 {
-    readFromStack(stack, vec, sim::getStackDoubleTable, rdopt);
+    readFromStack(stackHandle, vec, sim::getStackDoubleTable, rdopt);
 }
 
 template<>
-void readFromStack(int stack, std::vector<int> *vec, const ReadOptions &rdopt)
+void readFromStack(sim::handle_t stackHandle, std::vector<int> *vec, const ReadOptions &rdopt)
 {
-    readFromStack(stack, vec, sim::getStackInt32Table, rdopt);
+    readFromStack(stackHandle, vec, sim::getStackInt32Table, rdopt);
 }
 
 template<typename T>
-static void readFromStack(int stack, Grid<T> *grid, const ReadOptions &rdopt = {})
+static void readFromStack(sim::handle_t stackHandle, Grid<T> *grid, const ReadOptions &rdopt = {})
 {
     try
     {
-        int info = sim::getStackTableInfo(stack, 0);
+        int info = sim::getStackTableInfo(stackHandle, 0);
         if(info != sim_stack_table_map && info != sim_stack_table_empty)
         {
             throw sim::exception("expected a map");
         }
 
-        int oldsz = sim::getStackSize(stack);
-        sim::unfoldStackTable(stack);
-        int numItems = (sim::getStackSize(stack) - oldsz + 1) / 2;
+        int oldsz = sim::getStackSize(stackHandle);
+        sim::unfoldStackTable(stackHandle);
+        int numItems = (sim::getStackSize(stackHandle) - oldsz + 1) / 2;
 
         std::set<std::string> requiredFields{"dims", "data"};
 
         while(numItems >= 1)
         {
-            sim::moveStackItemToTop(stack, oldsz - 1); // move key to top
+            sim::moveStackItemToTop(stackHandle, oldsz - 1); // move key to top
             std::string key;
-            readFromStack(stack, &key);
+            readFromStack(stackHandle, &key);
 
-            sim::moveStackItemToTop(stack, oldsz - 1); // move value to top
+            sim::moveStackItemToTop(stackHandle, oldsz - 1); // move value to top
             try
             {
                 if(0) {}
                 else if(key == "dims")
                 {
-                    readFromStack(stack, &grid->dims, ReadOptions().setBounds(0, 1, -1));
+                    readFromStack(stackHandle, &grid->dims, ReadOptions().setBounds(0, 1, -1));
                 }
                 else if(key == "data")
                 {
-                    readFromStack(stack, &grid->data, ReadOptions());
+                    readFromStack(stackHandle, &grid->data, ReadOptions());
                 }
                 else
                 {
@@ -339,7 +339,7 @@ static void readFromStack(int stack, Grid<T> *grid, const ReadOptions &rdopt = {
             }
 
             requiredFields.erase(key);
-            numItems = (sim::getStackSize(stack) - oldsz + 1) / 2;
+            numItems = (sim::getStackSize(stackHandle) - oldsz + 1) / 2;
         }
 
         for(const auto &field : requiredFields)
@@ -363,110 +363,110 @@ static void readFromStack(int stack, Grid<T> *grid, const ReadOptions &rdopt = {
 
 #ifdef SIM_STUBS_GEN_EIGEN
 
-static void readFromStack(int stack, Eigen::Vector3d *vec, const ReadOptions &rdopt = {})
+static void readFromStack(sim::handle_t stackHandle, Eigen::Vector3d *vec, const ReadOptions &rdopt = {})
 {
     std::vector<double> v;
     ReadOptions rdopt1;
     rdopt1.minSize = rdopt1.maxSize = {3};
-    readFromStack(stack, &v, sim::getStackDoubleTable, rdopt1);
+    readFromStack(stackHandle, &v, sim::getStackDoubleTable, rdopt1);
     (*vec) << v[0], v[1], v[2];
 }
 
-static void readFromStack(int stack, Eigen::Quaterniond *q, const ReadOptions &rdopt = {})
+static void readFromStack(sim::handle_t stackHandle, Eigen::Quaterniond *q, const ReadOptions &rdopt = {})
 {
     std::vector<double> v;
     ReadOptions rdopt1;
     rdopt1.minSize = rdopt1.maxSize = {4};
-    readFromStack(stack, &v, sim::getStackDoubleTable, rdopt1);
+    readFromStack(stackHandle, &v, sim::getStackDoubleTable, rdopt1);
     // note about quaternion order: Eigen=WXYZ, CoppeliaSim=XYZW
     *q = Eigen::Quaterniond(v[3], v[0], v[1], v[2]);
 }
 
 #endif // SIM_STUBS_GEN_EIGEN
 
-static void writeToStack(const bool &value, int stack, const WriteOptions &wropt = {})
+static void writeToStack(const bool &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
-    sim::pushBoolOntoStack(stack, value);
+    sim::pushBoolOntoStack(stackHandle, value);
 }
 
-static void writeToStack(const int &value, int stack, const WriteOptions &wropt = {})
+static void writeToStack(const int &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
-    sim::pushInt32OntoStack(stack, value);
+    sim::pushInt32OntoStack(stackHandle, value);
 }
 
-static void writeToStack(const long long &value, int stack, const WriteOptions &wropt = {})
+static void writeToStack(const long long &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
-    sim::pushInt64OntoStack(stack, value);
+    sim::pushInt64OntoStack(stackHandle, value);
 }
 
-static void writeToStack(const float &value, int stack, const WriteOptions &wropt = {})
+static void writeToStack(const float &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
-    sim::pushFloatOntoStack(stack, value);
+    sim::pushFloatOntoStack(stackHandle, value);
 }
 
-static void writeToStack(const double &value, int stack, const WriteOptions &wropt = {})
+static void writeToStack(const double &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
-    sim::pushDoubleOntoStack(stack, value);
+    sim::pushDoubleOntoStack(stackHandle, value);
 }
 
-static void writeToStack(const std::string &value, int stack, const WriteOptions &wropt = {})
+static void writeToStack(const std::string &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
-    sim::pushStringOntoStack(stack, value);
+    sim::pushStringOntoStack(stackHandle, value);
 }
 
 template<typename T>
-static void writeToStack(const std::optional<T> &value, int stack, const WriteOptions &wropt = {})
+static void writeToStack(const std::optional<T> &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     if(!value)
     {
-        sim::pushNullOntoStack(stack);
+        sim::pushNullOntoStack(stackHandle);
         return;
     }
 
-    writeToStack(*value, stack, wropt);
+    writeToStack(*value, stackHandle, wropt);
 }
 
 template<typename T>
-static void writeToStack(const std::vector<T> &vec, int stack, const WriteOptions &wropt = {})
+static void writeToStack(const std::vector<T> &vec, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
-    sim::pushTableOntoStack(stack);
+    sim::pushTableOntoStack(stackHandle);
     for(size_t i = 0; i < vec.size(); i++)
     {
-        writeToStack(int(i + 1), stack);
-        writeToStack(vec.at(i), stack);
-        sim::insertDataIntoStackTable(stack);
+        writeToStack(int(i + 1), stackHandle);
+        writeToStack(vec.at(i), stackHandle);
+        sim::insertDataIntoStackTable(stackHandle);
     }
 }
 
 template<>
-void writeToStack(const std::vector<float> &vec, int stack, const WriteOptions &wropt)
+void writeToStack(const std::vector<float> &vec, sim::handle_t stackHandle, const WriteOptions &wropt)
 {
-    sim::pushFloatTableOntoStack(stack, vec);
+    sim::pushFloatTableOntoStack(stackHandle, vec);
 }
 
 template<>
-void writeToStack(const std::vector<double> &vec, int stack, const WriteOptions &wropt)
+void writeToStack(const std::vector<double> &vec, sim::handle_t stackHandle, const WriteOptions &wropt)
 {
-    sim::pushDoubleTableOntoStack(stack, vec);
+    sim::pushDoubleTableOntoStack(stackHandle, vec);
 }
 
 template<>
-void writeToStack(const std::vector<int> &vec, int stack, const WriteOptions &wropt)
+void writeToStack(const std::vector<int> &vec, sim::handle_t stackHandle, const WriteOptions &wropt)
 {
-    sim::pushInt32TableOntoStack(stack, vec);
+    sim::pushInt32TableOntoStack(stackHandle, vec);
 }
 
 template<typename T>
-static void writeToStack(const Grid<T> &grid, int stack, const WriteOptions &wropt = {})
+static void writeToStack(const Grid<T> &grid, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     try
     {
-        sim::pushTableOntoStack(stack);
+        sim::pushTableOntoStack(stackHandle);
         try
         {
-            writeToStack(std::string{"dims"}, stack);
-            writeToStack(grid.dims, stack);
-            sim::insertDataIntoStackTable(stack);
+            writeToStack(std::string{"dims"}, stackHandle);
+            writeToStack(grid.dims, stackHandle);
+            sim::insertDataIntoStackTable(stackHandle);
         }
         catch(std::exception &ex)
         {
@@ -474,9 +474,9 @@ static void writeToStack(const Grid<T> &grid, int stack, const WriteOptions &wro
         }
         try
         {
-            writeToStack(std::string{"data"}, stack);
-            writeToStack(grid.data, stack);
-            sim::insertDataIntoStackTable(stack);
+            writeToStack(std::string{"data"}, stackHandle);
+            writeToStack(grid.data, stackHandle);
+            sim::insertDataIntoStackTable(stackHandle);
         }
         catch(std::exception &ex)
         {
@@ -491,17 +491,17 @@ static void writeToStack(const Grid<T> &grid, int stack, const WriteOptions &wro
 
 #ifdef SIM_STUBS_GEN_EIGEN
 
-static void writeToStack(const Eigen::Vector3d &vec, int stack, const WriteOptions &wropt = {})
+static void writeToStack(const Eigen::Vector3d &vec, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     std::vector<double> v {vec.x(), vec.y(), vec.z()};
-    writeToStack(v, stack, wropt);
+    writeToStack(v, stackHandle, wropt);
 }
 
-static void writeToStack(const Eigen::Quaterniond &q, int stack, const WriteOptions &wropt = {})
+static void writeToStack(const Eigen::Quaterniond &q, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     // note about quaternion order: Eigen=WXYZ, CoppeliaSim=XYZW
     std::vector<double> v {q.x(), q.y(), q.z(), q.w()};
-    writeToStack(v, stack, wropt);
+    writeToStack(v, stackHandle, wropt);
 }
 
 #endif // SIM_STUBS_GEN_EIGEN
