@@ -504,9 +504,6 @@ FARPROC _getProcAddress(LIBRARY lib,const char* funcName,bool hasSingleAndDouble
 
 int getSimProcAddresses(LIBRARY lib)
 {
-    if (getSimProcAddressesOld(lib)==0)
-        return(0);
-
     simSetBoolProperty = (ptrSimSetBoolProperty)(_getProcAddress(lib, "simSetBoolProperty", false));
     simGetBoolProperty = (ptrSimGetBoolProperty)(_getProcAddress(lib, "simGetBoolProperty", false));
     simSetIntProperty = (ptrSimSetIntProperty)(_getProcAddress(lib, "simSetIntProperty", false));
