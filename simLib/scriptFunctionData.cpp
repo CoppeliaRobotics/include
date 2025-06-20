@@ -72,7 +72,7 @@ bool CScriptFunctionData::_readData(int stack,const int* expectedArguments,int r
             break;
         bool done=false;
         simMoveStackItemToTop(stack,0);
-        if (simIsStackValueNull(stack)==1)
+        if (simGetStackItemType(stack, -1)==sim_stackitem_null)
         {
             // is nil explicitely allowed?
             if (expectedArguments[1+i*2+0]&SIM_SCRIPT_ARG_NULL_ALLOWED)
@@ -281,7 +281,7 @@ bool CScriptFunctionData::_readData(int stack,const int* expectedArguments,int r
                 }
                 if (t==sim_script_arg_null)
                 {
-                    if (simIsStackValueNull(stack)>0)
+                    if (simGetStackItemType(stack, -1)==sim_stackitem_null)
                     {
                         CScriptFunctionDataItem dat;
                         inOutData.push_back(dat);
