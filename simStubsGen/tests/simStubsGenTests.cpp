@@ -51,7 +51,7 @@ public:
 #if 0
         auto v = sim::getStringProperty(sim_handle_app, "namedParam.simStubsGenTests.verbosity");
         if(v)
-            sim::setModuleInfo(sim_moduleinfo_verbosity, v ? verbosityFromString(*v) : sim_verbosity_infos);
+            sim::setPluginInfo(sim_plugininfo_verbosity, v ? verbosityFromString(*v) : sim_verbosity_infos);
 #endif
     }
 
@@ -60,7 +60,7 @@ public:
 #if 1
         auto v = sim::getStringProperty(sim_handle_app, "namedParam.simStubsGenTests.verbosity");
         if(v)
-            sim::setModuleInfo(sim_moduleinfo_verbosity, v ? verbosityFromString(*v) : sim_verbosity_infos);
+            sim::setPluginInfo(sim_plugininfo_verbosity, v ? verbosityFromString(*v) : sim_verbosity_infos);
 #endif
     }
 
