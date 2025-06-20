@@ -1167,11 +1167,6 @@ enum { /* deprecated */
     sim_scripttype_customizationscript = sim_scripttype_customization,
     sim_scripttype_generalcallback_old = 7,
     sim_scripttype_sandboxscript = sim_scripttype_sandbox,
-#if COPPELIASIM_ENABLE_DEPRECATED_SINCE >= 20201014
-    sim_scripttype_threaded = 0x00f0
-#else
-    sim_scripttype_threaded_old = 0x00f0
-#endif
 };
 
 enum { /* deprecated */
@@ -1200,17 +1195,6 @@ enum { /* Deprecated */
     sim_scriptdebug_allcalls=3,
     sim_scriptdebug_vars=4,
     sim_scriptdebug_callsandvars=5
-};
-
-enum { /* Deprecated */
-    sim_scriptthreadresume_launch           =-2,
-    sim_scriptthreadresume_allnotyetresumed =-1,
-    sim_scriptthreadresume_default          =0,
-    sim_scriptthreadresume_actuation_first  =1,
-    sim_scriptthreadresume_actuation_last   =2,
-    sim_scriptthreadresume_sensing_first    =3,
-    sim_scriptthreadresume_sensing_last     =4,
-    sim_scriptthreadresume_custom           =5
 };
 
 enum { /* Deprecated */
