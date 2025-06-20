@@ -68,7 +68,7 @@ typedef int (__cdecl *ptrSimGetColorProperty)(long long int target, const char* 
 typedef int (__cdecl *ptrSimSetFloatArrayProperty)(long long int target, const char* pName, const double* v, int vL);
 typedef int (__cdecl *ptrSimGetFloatArrayProperty)(long long int target, const char* pName, double** v, int* vL);
 typedef int (__cdecl *ptrSimSetIntArrayProperty)(long long int target, const char* pName, const int* v, int vL);
-typedef int (__cdecl *ptrSimGetIntArrayProperty)(long long int target, const char* pName, int* v, int* vL);
+typedef int (__cdecl *ptrSimGetIntArrayProperty)(long long int target, const char* pName, int** v, int* vL);
 typedef int (__cdecl *ptrSimRemoveProperty)(long long int target, const char* pName);
 typedef char* (__cdecl *ptrSimGetPropertyName)(long long int target, int index, SPropertyOptions* options);
 typedef int (__cdecl *ptrSimGetPropertyInfo)(long long int target, const char* pName, SPropertyInfo* infos, SPropertyOptions* options);
