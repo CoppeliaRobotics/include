@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.16.3)
 include(CMakeParseArguments)
 
+if(POLICY CMP0177)
+    cmake_policy(SET CMP0177 NEW) # normalize DESTINATION paths
+endif()
+
 if(CMAKE_CXX_STANDARD)
     if(CMAKE_CXX_STANDARD LESS 17)
         message(FATAL_ERROR "Set CMAKE_CXX_STANDARD to 17 or greater (or remove it)")
