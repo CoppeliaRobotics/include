@@ -1167,6 +1167,8 @@ enum { /* deprecated */
     sim_scripttype_customizationscript = sim_scripttype_customization,
     sim_scripttype_generalcallback_old = 7,
     sim_scripttype_sandboxscript = sim_scripttype_sandbox,
+    sim_scripttype_threaded = 0,
+    sim_scripttype_threaded_old = 0,
 };
 
 enum { /* deprecated */
