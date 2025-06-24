@@ -8,7 +8,6 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/assign/list_of.hpp>
 #include <boost/format.hpp>
-#include <simPlusPlus/Lib.h>
 
 #ifdef SIM_STUBS_GEN_EIGEN
 #include <Eigen/Dense>

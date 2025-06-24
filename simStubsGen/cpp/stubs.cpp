@@ -1,7 +1,6 @@
 #py from parse import parse, escape
 #py import model
 #py plugin = parse(pycpp.params['xml_file'])
-#include "stubs.h"
 #include <simPlusPlus/Lib.h>
 #include <simStubsGen/cpp/common.h>
 
@@ -14,6 +13,8 @@
 #include <sstream>
 #include <iostream>
 #include <boost/lexical_cast.hpp>
+
+#include "stubs.h"
 
 FuncTracer::FuncTracer(const std::string &f, int l)
     : f_(f),

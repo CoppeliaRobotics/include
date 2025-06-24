@@ -8,7 +8,7 @@
 #define SIM_STUBS_GEN_EIGEN
 #py endif
 #include <simLib/simExp.h>
-#include <simPlusPlus/Lib.h>
+#include <simLib/simTypes.h>
 #include <simStubsGen/cpp/common.h>
 #include <string>
 #include <vector>

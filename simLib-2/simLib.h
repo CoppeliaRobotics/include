@@ -3,6 +3,8 @@
 #if !defined(SIMLIB2_INCLUDED_)
 #define SIMLIB2_INCLUDED_
 
+#warning simLib-2
+
 #include "simConst.h"
 #include "simTypes.h"
 
