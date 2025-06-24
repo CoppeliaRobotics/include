@@ -431,7 +431,7 @@ SIM_API_SYMBOL(ptr_simGetPureHollowScaling) SIM_API_SYMBOL(_simGetPureHollowScal
 SIM_API_SYMBOL(ptr_simGetJointDynCtrlMode) SIM_API_SYMBOL(_simGetJointDynCtrlMode) = nullptr;
 SIM_API_SYMBOL(ptr_simDynCallback) SIM_API_SYMBOL(_simDynCallback) = nullptr;
 
-LIBRARY loadSimLibrary(const char* pathAndFilename)
+LIBRARY SIM_API_SYMBOL(loadSimLibrary)(const char* pathAndFilename)
 {
     #ifdef QT_FRAMEWORK
         QLibrary* lib=new QLibrary(pathAndFilename);
@@ -458,7 +458,7 @@ LIBRARY loadSimLibrary(const char* pathAndFilename)
     #endif // QT_FRAMEWORK
 }
 
-void unloadSimLibrary(LIBRARY lib)
+void SIM_API_SYMBOL(unloadSimLibrary)(LIBRARY lib)
 {
     #ifdef QT_FRAMEWORK
         if (lib!=0)
@@ -483,7 +483,7 @@ void unloadSimLibrary(LIBRARY lib)
     SIM_API_SYMBOL(_addLog)=nullptr;
 }
 
-FARPROC _getProcAddress(LIBRARY lib,const char* funcName,bool hasSingleAndDoublePrecisionFunc, bool longHandles = false)
+static FARPROC _getProcAddress(LIBRARY lib,const char* funcName,bool hasSingleAndDoublePrecisionFunc, bool longHandles = false)
 {
     FARPROC retVal=nullptr;
     std::string fn(funcName);
@@ -507,7 +507,7 @@ FARPROC _getProcAddress(LIBRARY lib,const char* funcName,bool hasSingleAndDouble
 
 #include "simLib-old.cpp"
 
-int getSimProcAddresses(LIBRARY lib)
+int SIM_API_SYMBOL(getSimProcAddresses)(LIBRARY lib)
 {
     if (getSimProcAddressesOld(lib)==0)
         return(0);

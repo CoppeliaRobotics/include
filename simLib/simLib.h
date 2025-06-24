@@ -49,10 +49,9 @@
     #define SIM_API_SYMBOL(x) x
 #endif // SIM_LIB_PREFIX
 
-int getSimProcAddresses(LIBRARY lib);
-LIBRARY loadSimLibrary(const char* pathAndFilename);
-void unloadSimLibrary(LIBRARY lib);
-FARPROC _getProcAddress(LIBRARY lib,const char* funcName);
+int SIM_API_SYMBOL(getSimProcAddresses)(LIBRARY lib);
+LIBRARY SIM_API_SYMBOL(loadSimLibrary)(const char* pathAndFilename);
+void SIM_API_SYMBOL(unloadSimLibrary)(LIBRARY lib);
 
 int SIM_API_SYMBOL(simAddLog)(const char* pluginName,int verbosityLevel,const char* logMsg);
 
@@ -864,6 +863,10 @@ extern SIM_API_SYMBOL(ptr_simDynCallback) SIM_API_SYMBOL(_simDynCallback);
 #include "simLib-old.h"
 
 #ifdef SIM_LIB_PREFIX
+    inline int getSimProcAddresses(LIBRARY lib) { return SIM_API_SYMBOL(getSimProcAddresses)(lib); }
+    inline LIBRARY loadSimLibrary(const char* pathAndFilename) { return SIM_API_SYMBOL(loadSimLibrary)(pathAndFilename); }
+    inline void unloadSimLibrary(LIBRARY lib) { SIM_API_SYMBOL(unloadSimLibrary)(lib); }
+
     inline int simSetBoolProperty(long long int target, const char* pName, int pState) { return SIM_API_SYMBOL(simSetBoolProperty)(target,pName,pState); }
     inline int simGetBoolProperty(long long int target, const char* pName, int* pState) { return SIM_API_SYMBOL(simGetBoolProperty)(target,pName,pState); }
     inline int simSetIntProperty(long long int target, const char* pName, int pState) { return SIM_API_SYMBOL(simSetIntProperty)(target,pName,pState); }
