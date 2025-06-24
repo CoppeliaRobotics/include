@@ -1,7 +1,7 @@
 // Use this header to dynamically load and bind coppeliaSim.dll and its functions (call loadSimLibrary and unloadSimLibrary)
 
-#if !defined(SIMLIB_INCLUDED_)
-#define SIMLIB_INCLUDED_
+#if !defined(SIMLIB2_INCLUDED_)
+#define SIMLIB2_INCLUDED_
 
 #include "simConst.h"
 #include "simTypes.h"
@@ -1259,4 +1259,4 @@ extern SIM_API_SYMBOL(ptr_simDynCallback) SIM_API_SYMBOL(_simDynCallback);
     static inline void _simDynCallback(const int* intData,const double* floatData) { return SIM_API_SYMBOL(_simDynCallback)(intData,floatData); }
 #endif // SIM_LIB_PREFIX
 
-#endif
+#endif // SIMLIB2_INCLUDED_
