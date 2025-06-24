@@ -33,7 +33,9 @@
 #endif // QT_FRAMEWORK
 
 #ifdef SIM_LIB_PREFIX
-    #define SIM_API_SYMBOL(x) SIM_LIB_PREFIX ## x
+    #define SIM_API_SYMBOL_CONCAT2(a, b) a ## b
+    #define SIM_API_SYMBOL_CONCAT(a, b) SIM_API_SYMBOL_CONCAT2(a, b)
+    #define SIM_API_SYMBOL(x) SIM_API_SYMBOL_CONCAT(SIM_LIB_PREFIX, x)
 
     static int simSetBoolProperty(long long int target, const char* pName, int pState) { return SIM_API_SYMBOL(simSetBoolProperty)(target,pName,pState); }
     static int simGetBoolProperty(long long int target, const char* pName, int* pState) { return SIM_API_SYMBOL(simGetBoolProperty)(target,pName,pState); }
