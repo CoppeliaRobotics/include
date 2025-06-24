@@ -6,7 +6,7 @@
 #include <set>
 #include <sstream>
 
-#include <simPlusPlus/Lib.h>
+#include <simPlusPlus-2/Lib.h>
 
 namespace sim
 {
