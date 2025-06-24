@@ -5,6 +5,7 @@
 #include "stackString.h"
 #include "stackMap.h"
 #include <sstream>
+#include <simLib/simLib.h>
 
 CStackArray::CStackArray()
 {

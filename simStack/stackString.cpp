@@ -1,5 +1,6 @@
 #include "stackString.h"
 #include <sstream>
+#include <simLib/simLib.h>
 
 CStackString::CStackString(const char* str,int l)
 {

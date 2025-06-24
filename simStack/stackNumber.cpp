@@ -1,5 +1,6 @@
 #include "stackNumber.h"
 #include <sstream>
+#include <simLib/simLib.h>
 
 CStackNumber::CStackNumber(double n)
 {

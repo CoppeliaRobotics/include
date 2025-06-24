@@ -1,5 +1,6 @@
 #include "stackBool.h"
 #include <sstream>
+#include <simLib/simLib.h>
 
 CStackBool::CStackBool(bool theValue)
 {
