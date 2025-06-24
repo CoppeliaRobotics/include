@@ -13,7 +13,7 @@
 #include <stdexcept>
 #include <boost/format.hpp>
 
-#include <simLib/simLib.h>
+#include <simLib-2/simLib.h>
 
 #ifdef HAVE_JSONCONS
 #include <jsoncons/json.hpp>
@@ -120,47 +120,6 @@ namespace sim
     void * getMainWindow(int type);
 
     std::string getLastError();
-
-    [[deprecated("Use properties functions instead")]]
-    void setBoolParam(int parameter, bool value);
-
-    [[deprecated("Use properties functions instead")]]
-    bool getBoolParam(int parameter);
-
-    [[deprecated("Use properties functions instead")]]
-    void setInt32Param(int parameter, int value);
-
-    [[deprecated("Use properties functions instead")]]
-    int getInt32Param(int parameter);
-
-    [[deprecated("Use properties functions instead")]]
-    uint64_t getUInt64Param(int parameter);
-
-    [[deprecated("Use properties functions instead")]]
-    void setStringParam(int parameter, char *value);
-    [[deprecated("Use properties functions instead")]]
-    void setStringParam(int parameter, const std::string &value);
-
-    [[deprecated("Use properties functions instead")]]
-    std::string getStringParam(int parameter);
-
-    [[deprecated("Use properties functions instead")]]
-    void setNamedStringParam(const std::string &parameter, const std::string &value);
-    [[deprecated("Use properties functions instead")]]
-    void setNamedBoolParam(const std::string &parameter, bool value);
-    [[deprecated("Use properties functions instead")]]
-    void setNamedFloatParam(const std::string &parameter, double value);
-    [[deprecated("Use properties functions instead")]]
-    void setNamedInt32Param(const std::string &parameter, int value);
-
-    [[deprecated("Use properties functions instead")]]
-    std::optional<std::string> getNamedStringParam(const std::string &parameter);
-    [[deprecated("Use properties functions instead")]]
-    std::optional<bool> getNamedBoolParam(const std::string &parameter);
-    [[deprecated("Use properties functions instead")]]
-    std::optional<double> getNamedFloatParam(const std::string &parameter);
-    [[deprecated("Use properties functions instead")]]
-    std::optional<int> getNamedInt32Param(const std::string &parameter);
 
     handle_t getObject(const char *objectPath, int index, handle_t proxy, int options);
     handle_t getObject(const std::string &objectPath, int index, handle_t proxy, int options);
@@ -283,42 +242,6 @@ namespace sim
 
     int announceSceneContentChange();
 
-    // [[deprecated("Use properties functions instead")]]
-    // setInt32Signal
-
-    // [[deprecated("Use properties functions instead")]]
-    // getInt32Signal
-
-    // [[deprecated("Use properties functions instead")]]
-    // clearInt32Signal
-
-    // [[deprecated("Use properties functions instead")]]
-    // clearFloatSignal
-
-    // [[deprecated("Use properties functions instead")]]
-    // setStringSignal
-
-    // [[deprecated("Use properties functions instead")]]
-    // getStringSignal
-
-    // [[deprecated("Use properties functions instead")]]
-    // clearStringSignal
-
-    // [[deprecated("Use properties functions instead")]]
-    // getSignalName
-
-    [[deprecated("Use properties functions instead")]]
-    void setObjectProperty(handle_t objectHandle, int prop);
-
-    [[deprecated("Use properties functions instead")]]
-    int getObjectProperty(handle_t objectHandle);
-
-    // [[deprecated("Use properties functions instead")]]
-    // setObjectSpecialProperty
-
-    // [[deprecated("Use properties functions instead")]]
-    // getObjectSpecialProperty
-
     // setExplicitHandling
 
     // getExplicitHandling
@@ -326,12 +249,6 @@ namespace sim
     handle_t getLinkDummy(handle_t dummyHandle);
 
     void setLinkDummy(handle_t dummyHandle, handle_t linkedDummyHandle);
-
-    [[deprecated("Use properties functions instead")]]
-    void setModelProperty(handle_t objectHandle, int modelProperty);
-
-    [[deprecated("Use properties functions instead")]]
-    int getModelProperty(handle_t objectHandle);
 
     void resetDynamicObject(handle_t objectHandle);
 
@@ -355,25 +272,7 @@ namespace sim
 
     // auxiliaryConsolePrint
 
-    [[deprecated("Use properties functions instead")]]
-    int getObjectInt32Param(handle_t objectHandle, int parameterID);
-
-    [[deprecated("Use properties functions instead")]]
-    void setObjectInt32Param(handle_t objectHandle, int parameterID, int parameter);
-
-    [[deprecated("Use properties functions instead")]]
-    std::string getObjectStringParam(handle_t objectHandle, int parameterID);
-
-    [[deprecated("Use properties functions instead")]]
-    void setObjectStringParam(handle_t objectHandle, int parameterID, const std::string &parameter);
-
     // setSimulationPassesPerRenderingPass
-
-    [[deprecated("Use properties functions instead")]]
-    void persistentDataWrite(const std::string &dataName, const std::string &dataValue, int options = 0);
-
-    [[deprecated("Use properties functions instead")]]
-    std::string persistentDataRead(const std::string &dataName);
 
     bool isHandle(handle_t generalObjectHandle, int generalObjectType);
 
@@ -395,21 +294,6 @@ namespace sim
 
     // readTexture
 
-    [[deprecated("Use properties functions instead")]]
-    void writeCustomDataBlock(handle_t objectHandle, const char *tagName, const char *data, int dataSize);
-    [[deprecated("Use properties functions instead")]]
-    void writeCustomDataBlock(handle_t objectHandle, const std::string &tagName, const std::string &data);
-
-    [[deprecated("Use properties functions instead")]]
-    char * readCustomDataBlock(handle_t objectHandle, const char *tagName, int *dataSize);
-    [[deprecated("Use properties functions instead")]]
-    std::optional<std::string> readCustomDataBlock(handle_t objectHandle, const std::string &tagName);
-
-    [[deprecated("Use properties functions instead")]]
-    char * readCustomDataBlockTags(handle_t objectHandle, int *tagCount);
-    [[deprecated("Use properties functions instead")]]
-    std::vector<std::string> readCustomDataBlockTags(handle_t objectHandle);
-
     handle_t getObjects(int index, int objectType);
     std::vector<handle_t> getObjects(int objectType);
 
@@ -424,20 +308,6 @@ namespace sim
     // destroyCollection
 
     // getCollectionObjects
-
-    [[deprecated("Use properties functions instead")]]
-    int getScriptInt32Param(handle_t scriptHandle, int parameterID);
-
-    [[deprecated("Use properties functions instead")]]
-    int setScriptInt32Param(handle_t scriptHandle, int parameterID, int parameter);
-
-    [[deprecated("Use properties functions instead")]]
-    std::string getScriptStringParam(handle_t scriptHandle, int parameterID);
-    [[deprecated("Use properties functions instead")]]
-    std::optional<std::string> getScriptStringParamOpt(handle_t scriptHandle, int parameterID);
-
-    [[deprecated("Use properties functions instead")]]
-    int setScriptStringParam(handle_t scriptHandle, int parameterID, const std::string &parameter);
 
     // saveImage
 
@@ -519,18 +389,6 @@ namespace sim
     void unfoldStackTable(handle_t stackHandle);
 
     void debugStack(handle_t stackHandle, int index = -1);
-
-    [[deprecated("Use properties functions instead")]]
-    int getEngineInt32Param(int paramId, handle_t objectHandle, const void *object);
-
-    [[deprecated("Use properties functions instead")]]
-    bool getEngineBoolParam(int paramId, handle_t objectHandle, const void *object);
-
-    [[deprecated("Use properties functions instead")]]
-    void setEngineInt32Param(int paramId, handle_t objectHandle, const void *object, int val);
-
-    [[deprecated("Use properties functions instead")]]
-    void setEngineBoolParam(int paramId, handle_t objectHandle, const void *object, bool val);
 
     // insertObjectIntoOctree
 
@@ -625,42 +483,6 @@ namespace sim
     // floatingViewRemove
 
     int getShapeViz(handle_t shapeHandle, int index, struct SShapeVizInfo *info);
-
-    [[deprecated("Use properties functions instead")]]
-    void setArrayParam(int parameter, std::array<double, 3> value);
-
-    [[deprecated("Use properties functions instead")]]
-    std::array<double, 3> getArrayParam(int parameter);
-
-    // [[deprecated("Use properties functions instead")]]
-    // setFloatSignal
-
-    // [[deprecated("Use properties functions instead")]]
-    // getFloatSignal
-
-    [[deprecated("Use properties functions instead")]]
-    void setFloatParam(int parameter, double value);
-
-    [[deprecated("Use properties functions instead")]]
-    double getFloatParam(int parameter);
-
-    [[deprecated("Use properties functions instead")]]
-    double getObjectFloatParam(handle_t objectHandle, int parameterID);
-
-    [[deprecated("Use properties functions instead")]]
-    void setObjectFloatParam(handle_t objectHandle, int parameterID, double parameter);
-
-    // [[deprecated("Use properties functions instead")]]
-    // getObjectFloatArrayParam
-
-    // [[deprecated("Use properties functions instead")]]
-    // setObjectFloatArrayParam
-
-    [[deprecated("Use properties functions instead")]]
-    double getEngineFloatParam(int paramId, handle_t objectHandle, const void *object);
-
-    [[deprecated("Use properties functions instead")]]
-    void setEngineFloatParam(int paramId, handle_t objectHandle, const void *object, double val);
 
     void transformImage(unsigned char *image, const int *resolution, int options);
     void transformImage(unsigned char *image, std::array<int, 2> resolution, int options);
@@ -793,16 +615,6 @@ namespace sim
     // getObjectSizeFactor
 
     // readForceSensor
-
-    // [[deprecated("Use properties functions instead")]]
-    // setLightParameters
-
-    [[deprecated("Use properties functions instead")]]
-    int getLightParameters(handle_t objectHandle);
-    [[deprecated("Use properties functions instead")]]
-    int getLightParameters(handle_t objectHandle, std::array<double, 3> &diffuse);
-    [[deprecated("Use properties functions instead")]]
-    int getLightParameters(handle_t objectHandle, std::array<double, 3> &diffuse, std::array<double, 3> &specular);
 
     // getVelocity
 

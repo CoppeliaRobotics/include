@@ -130,124 +130,6 @@ std::string getLastError()
     return s;
 }
 
-void setBoolParam(int parameter, bool value)
-{
-    if(simSetBoolParam(parameter, value) == -1)
-        throw api_error("simSetBoolParameter");
-}
-
-bool getBoolParam(int parameter)
-{
-    int ret;
-    if((ret = simGetBoolParam(parameter)) == -1)
-        throw api_error("simGetBoolParam");
-    return ret > 0;
-}
-
-void setInt32Param(int parameter, int value)
-{
-    if(simSetInt32Param(parameter, value) == -1)
-        throw api_error("simSetInt32Param");
-}
-
-int getInt32Param(int parameter)
-{
-    int ret;
-    if(simGetInt32Param(parameter, &ret) == -1)
-        throw api_error("simGetInt32Param");
-    return ret;
-}
-
-uint64_t getUInt64Param(int parameter)
-{
-    uint64_t ret;
-    if(simGetUInt64Param(parameter, &ret) == -1)
-        throw api_error("simGetUInt64Param");
-    return ret;
-}
-
-void setStringParam(int parameter, char *value)
-{
-    if(simSetStringParam(parameter, value) == -1)
-        throw api_error("simSetStringParam");
-}
-
-void setStringParam(int parameter, const std::string &value)
-{
-    if(simSetStringParam(parameter, value.c_str()) == -1)
-        throw api_error("simSetStringParam");
-}
-
-std::string getStringParam(int parameter)
-{
-    char *ret;
-    if((ret = simGetStringParam(parameter)) == nullptr)
-        throw api_error("simGetStringParam");
-    std::string s(ret);
-    releaseBuffer(ret);
-    return s;
-}
-
-void setNamedStringParam(const std::string &parameter, const std::string &value)
-{
-    if(simSetNamedStringParam(parameter.c_str(), value.c_str(), value.size()) == -1)
-        throw api_error("simSetNamedStringParam");
-}
-
-void setNamedBoolParam(const std::string &parameter, bool value)
-{
-    setNamedStringParam(parameter, value ? "true" : "false");
-}
-
-void setNamedFloatParam(const std::string &parameter, double value)
-{
-    setNamedStringParam(parameter, std::to_string(value));
-}
-
-void setNamedInt32Param(const std::string &parameter, int value)
-{
-    setNamedStringParam(parameter, std::to_string(value));
-}
-
-std::optional<std::string> getNamedStringParam(const std::string &parameter)
-{
-    char *ret;
-    int len;
-    if((ret = simGetNamedStringParam(parameter.c_str(), &len)) == NULL)
-        return {};
-    std::string s(ret, len);
-    releaseBuffer(ret);
-    return s;
-}
-
-std::optional<bool> getNamedBoolParam(const std::string &parameter)
-{
-    auto v = getNamedStringParam(parameter);
-    if(!v) return {};
-    auto s = *v;
-    if(s == "true") return true;
-    if(s == "false") return false;
-    if(s == "on") return true;
-    if(s == "off") return false;
-    if(s == "1") return true;
-    if(s == "0") return false;
-    throw api_error("simGetNamedBoolParam");
-}
-
-std::optional<double> getNamedFloatParam(const std::string &parameter)
-{
-    auto v = getNamedStringParam(parameter);
-    if(!v) return {};
-    return std::stod(*v);
-}
-
-std::optional<int> getNamedInt32Param(const std::string &parameter)
-{
-    auto v = getNamedStringParam(parameter);
-    if(!v) return {};
-    return std::stoi(*v);
-}
-
 handle_t getObject(const char *objectPath, int index, handle_t proxy, int options)
 {
     handle_t handle = simGetObject(objectPath, index, proxy, options);
@@ -672,40 +554,6 @@ int announceSceneContentChange()
     return ret;
 }
 
-// int simSetInt32Signal(const char *signalName, int signalValue);
-
-// int simGetInt32Signal(const char *signalName, int *signalValue);
-
-// int simClearInt32Signal(const char *signalName);
-
-// int simClearFloatSignal(const char *signalName);
-
-// int simSetStringSignal(const char *signalName, const char *signalValue, int stringLength);
-
-// char *simGetStringSignal(const char *signalName, int *stringLength);
-
-// int simClearStringSignal(const char *signalName);
-
-// char *simGetSignalName(int signalIndex, int signalType);
-
-void setObjectProperty(handle_t objectHandle, int prop)
-{
-    if(simSetObjectProperty(objectHandle, prop) == -1)
-        throw api_error("simSetObjectProperty");
-}
-
-int getObjectProperty(handle_t objectHandle)
-{
-    int ret = simGetObjectProperty(objectHandle);
-    if(ret == -1)
-        throw api_error("simGetObjectProperty");
-    return ret;
-}
-
-// int simSetObjectSpecialProperty(handle_t objectHandle, int prop);
-
-// int simGetObjectSpecialProperty(handle_t objectHandle);
-
 // int simSetExplicitHandling(handle_t objectHandle, int explicitFlags);
 
 // int simGetExplicitHandling(handle_t objectHandle);
@@ -719,20 +567,6 @@ void setLinkDummy(handle_t dummyHandle, handle_t linkedDummyHandle)
 {
     if(simSetLinkDummy(dummyHandle, linkedDummyHandle) == -1)
         throw api_error("simSetLinkDummy");
-}
-
-void setModelProperty(handle_t objectHandle, int modelProperty)
-{
-    if(simSetModelProperty(objectHandle, modelProperty) == -1)
-        throw api_error("simSetModelProperty");
-}
-
-int getModelProperty(handle_t objectHandle)
-{
-    int ret = simGetModelProperty(objectHandle);
-    if(ret == -1)
-        throw api_error("simGetModelProperty");
-    return ret;
 }
 
 void resetDynamicObject(handle_t objectHandle)
@@ -771,56 +605,7 @@ int getJointMode(handle_t jointHandle)
 
 // int simAuxiliaryConsolePrint(handle_t consoleHandle, const char *text);
 
-int getObjectInt32Param(handle_t objectHandle, int parameterID)
-{
-    int ret;
-    if(simGetObjectInt32Param(objectHandle, parameterID, &ret) == -1)
-        throw api_error("simGetObjectInt32Param");
-    return ret;
-}
-
-void setObjectInt32Param(handle_t objectHandle, int parameterID, int parameter)
-{
-    if(simSetObjectInt32Param(objectHandle, parameterID, parameter) == -1)
-        throw api_error("simSetObjectInt32Param");
-}
-
-std::string getObjectStringParam(handle_t objectHandle, int parameterID)
-{
-    char *ret;
-    int len;
-    if((ret = simGetObjectStringParam(objectHandle, parameterID, &len)) == NULL)
-        throw api_error("simGetObjectStringParam");
-    std::string s(ret, len);
-    releaseBuffer(ret);
-    return s;
-}
-
-void setObjectStringParam(handle_t objectHandle, int parameterID, const std::string &parameter)
-{
-    // XXX: fix const ptrs in the regular API
-    if(simSetObjectStringParam(objectHandle, parameterID, const_cast<char*>(parameter.data()), parameter.size()) == -1)
-        throw api_error("simSetObjectStringParam");
-}
-
 // int simSetSimulationPassesPerRenderingPass(int p);
-
-void persistentDataWrite(const std::string &dataName, const std::string &dataValue, int options)
-{
-    if(simPersistentDataWrite(dataName.c_str(), dataValue.c_str(), dataValue.length(), options) == -1)
-        throw api_error("simPersistentDataWrite");
-}
-
-std::string persistentDataRead(const std::string &dataName)
-{
-    int length = 0;
-    char *buf = simPersistentDataRead(dataName.c_str(), &length);
-    if(!buf)
-        throw api_error("simPersistentDataRead");
-    std::string ret(buf, length);
-    releaseBuffer(buf);
-    return ret;
-}
 
 bool isHandle(handle_t generalObjectHandle, int generalObjectType)
 {
@@ -876,57 +661,6 @@ void setShapeMaterial(handle_t shapeHandle, handle_t materialIdOrShapeHandle)
 
 // unsigned char *simReadTexture(int textureId, int options, int posX, int posY, int sizeX, int sizeY);
 
-void writeCustomDataBlock(handle_t objectHandle, const char *tagName, const char *data, int dataSize)
-{
-    if(simWriteCustomDataBlock(objectHandle, tagName, data, dataSize) == -1)
-        throw api_error("simWriteCustomDataBlock");
-}
-
-void writeCustomDataBlock(handle_t objectHandle, const std::string &tagName, const std::string &data)
-{
-    return writeCustomDataBlock(objectHandle, tagName.c_str(), data.c_str(), data.length());
-}
-
-char * readCustomDataBlock(handle_t objectHandle, const char *tagName, int *dataSize)
-{
-    return simReadCustomDataBlock(objectHandle, tagName, dataSize);
-}
-
-std::optional<std::string> readCustomDataBlock(handle_t objectHandle, const std::string &tagName)
-{
-    int size = 0;
-    char *buf = readCustomDataBlock(objectHandle, tagName.c_str(), &size);
-    if(!buf) return {};
-    std::string s(buf, size);
-    releaseBuffer(buf);
-    return s;
-}
-
-char * readCustomDataBlockTags(handle_t objectHandle, int *tagCount)
-{
-    return simReadCustomDataBlockTags(objectHandle, tagCount);
-}
-
-std::vector<std::string> readCustomDataBlockTags(handle_t objectHandle)
-{
-    std::vector<std::string> ret;
-    int count = 0;
-    char *buf = readCustomDataBlockTags(objectHandle, &count);
-    if(buf)
-    {
-        int len = 0;
-        char *tmp = buf;
-        for(int i = 0; i < count; i++)
-        {
-            while(*tmp) {tmp++; len++;}
-        }
-        std::string s(buf, len);
-        boost::split(ret, s, boost::is_any_of("\0"));
-        releaseBuffer(buf);
-    }
-    return ret;
-}
-
 handle_t getObjects(int index, int objectType)
 {
     int ret;
@@ -969,51 +703,6 @@ std::vector<handle_t> getObjectsInTree(handle_t treeBaseHandle, int objectType, 
 // int simDestroyCollection(handle_t collectionHandle);
 
 // int *simGetCollectionObjects(handle_t collectionHandle, int *objectCount);
-
-int getScriptInt32Param(handle_t scriptHandle, int parameterID)
-{
-    int param;
-    if(simGetScriptInt32Param(scriptHandle, parameterID, &param) == -1)
-        throw api_error("simGetScriptInt32Param");
-    return param;
-}
-
-int setScriptInt32Param(handle_t scriptHandle, int parameterID, int parameter)
-{
-    int ret = simSetScriptInt32Param(scriptHandle, parameterID, parameter);
-    if(ret == -1)
-        throw api_error("simSetScriptInt32Param");
-    return ret;
-}
-
-std::string getScriptStringParam(handle_t scriptHandle, int parameterID)
-{
-    int parameterLength = 0;
-    char *buf = simGetScriptStringParam(scriptHandle, parameterID, &parameterLength);
-    if(!buf)
-        throw api_error("simGetScriptStringParam");
-    std::string s(buf, parameterLength);
-    releaseBuffer(buf);
-    return s;
-}
-
-std::optional<std::string> getScriptStringParamOpt(handle_t scriptHandle, int parameterID)
-{
-    int parameterLength = 0;
-    char *buf = simGetScriptStringParam(scriptHandle, parameterID, &parameterLength);
-    if(!buf) return {};
-    std::string s(buf, parameterLength);
-    releaseBuffer(buf);
-    return s;
-}
-
-int setScriptStringParam(handle_t scriptHandle, int parameterID, const std::string &parameter)
-{
-    int ret = simSetScriptStringParam(scriptHandle, parameterID, parameter.c_str(), parameter.length());
-    if(ret == -1)
-        throw api_error("simSetScriptStringParam");
-    return ret;
-}
 
 // int simReorientShapeBoundingBox(handle_t shapeHandle, handle_t relativeToHandle, int reservedSetToZero);
 
@@ -1516,36 +1205,6 @@ void debugStack(handle_t stackHandle, int index)
         throw api_error("simDebugStack");
 }
 
-int getEngineInt32Param(int paramId, handle_t objectHandle, const void *object)
-{
-    bool ok = false;
-    int ret = simGetEngineInt32Param(paramId, objectHandle, object, &ok);
-    if(!ok)
-        throw api_error("simGetEngineInt32Param");
-    return ret;
-}
-
-bool getEngineBoolParam(int paramId, handle_t objectHandle, const void *object)
-{
-    bool ok = false;
-    bool ret = simGetEngineBoolParam(paramId, objectHandle, object, &ok);
-    if(!ok)
-        throw api_error("simGetEngineBoolParam");
-    return ret;
-}
-
-void setEngineInt32Param(int paramId, handle_t objectHandle, const void *object, int val)
-{
-    if(simSetEngineInt32Param(paramId, objectHandle, object, val) != 1)
-        throw api_error("simSetEngineInt32Param");
-}
-
-void setEngineBoolParam(int paramId, handle_t objectHandle, const void *object, bool val)
-{
-    if(simSetEngineBoolParam(paramId, objectHandle, object, val) != 1)
-        throw api_error("simSetEngineBoolParam");
-}
-
 // int simInsertObjectIntoOctree(handle_t octreeHandle, handle_t objectHandle, int options, const unsigned char *color, unsigned int tag, void *reserved);
 
 // int simSubtractObjectFromOctree(handle_t octreeHandle, handle_t objectHandle, int options, void *reserved);
@@ -1670,19 +1329,6 @@ int getPluginInfoInt(int infoType)
     int i;
     getPluginInfo(infoType, i);
     return i;
-}
-
-std::vector<std::string> getPersistentDataTags()
-{
-    std::vector<std::string> ret;
-    int count = 0;
-    char *buf = simGetPersistentDataTags(&count);
-    if(buf)
-    {
-        boost::split(ret, buf, boost::is_any_of("\0"));
-        releaseBuffer(buf);
-    }
-    return ret;
 }
 
 int eventNotification(const std::string &event)
@@ -1983,71 +1629,6 @@ int getShapeViz(handle_t shapeHandle, int index, struct SShapeVizInfo *info)
     if(ret == -1)
         throw api_error("simGetShapeViz");
     return ret;
-}
-
-void setArrayParam(int parameter, std::array<double, 3> value)
-{
-    if(simSetArrayParam(parameter, value.data()) == -1)
-        throw api_error("simSetArrayParam");
-}
-
-std::array<double, 3> getArrayParam(int parameter)
-{
-    std::array<double, 3> ret;
-    if(simGetArrayParam(parameter, ret.data()) == -1)
-        throw api_error("simGetArrayParam");
-    return ret;
-}
-
-// int simSetFloatSignal(const char *signalName, double signalValue);
-
-// int simGetFloatSignal(const char *signalName, double *signalValue);
-
-void setFloatParam(int parameter, double value)
-{
-    if(simSetFloatParam(parameter, value) == -1)
-        throw api_error("simSetFloatParam");
-}
-
-double getFloatParam(int parameter)
-{
-    double ret;
-    if(simGetFloatParam(parameter, &ret) == -1)
-        throw api_error("simGetFloatParam");
-    return ret;
-}
-
-double getObjectFloatParam(handle_t objectHandle, int parameterID)
-{
-    double ret;
-    if(simGetObjectFloatParam(objectHandle, parameterID, &ret) == -1)
-        throw api_error("simGetObjectFloatParam");
-    return ret;
-}
-
-void setObjectFloatParam(handle_t objectHandle, int parameterID, double parameter)
-{
-    if(simSetObjectFloatParam(objectHandle, parameterID, parameter) == -1)
-        throw api_error("simSetObjectFloatParam");
-}
-
-// double *simGetObjectFloatArrayParam(handle_t objectHandle, int parameterID, int *size);
-
-// int simSetObjectFloatArrayParam(handle_t objectHandle, int parameterID, const double *params, int size);
-
-double getEngineFloatParam(int paramId, handle_t objectHandle, const void *object)
-{
-    bool ok = false;
-    double ret = simGetEngineFloatParam(paramId, objectHandle, object, &ok);
-    if(!ok)
-        throw api_error("simGetEngineFloatParam");
-    return ret;
-}
-
-void setEngineFloatParam(int paramId, handle_t objectHandle, const void *object, double val)
-{
-    if(simSetEngineFloatParam(paramId, objectHandle, object, val) != 1)
-        throw api_error("simSetEngineFloatParam");
 }
 
 void transformImage(unsigned char *image, const int *resolution, int options)
@@ -2408,32 +1989,6 @@ double getSimulationTimeStep()
 // double simGetObjectSizeFactor(handle_t objectHandle);
 
 // int simReadForceSensor(handle_t objectHandle, double *forceVector, double *torqueVector);
-
-// int simSetLightParameters(handle_t objectHandle, int state, const float *setToNULL, const float *diffusePart, const float *specularPart);
-
-int getLightParameters(handle_t objectHandle)
-{
-    int ret = simGetLightParameters(objectHandle, nullptr, nullptr, nullptr);
-    if(ret == -1)
-        throw api_error("simGetLightParameters");
-    return ret;
-}
-
-int getLightParameters(handle_t objectHandle, std::array<double, 3> &diffuse)
-{
-    int ret = simGetLightParameters(objectHandle, nullptr, diffuse.data(), nullptr);
-    if(ret == -1)
-        throw api_error("simGetLightParameters");
-    return ret;
-}
-
-int getLightParameters(handle_t objectHandle, std::array<double, 3> &diffuse, std::array<double, 3> &specular)
-{
-    int ret = simGetLightParameters(objectHandle, nullptr, diffuse.data(), specular.data());
-    if(ret == -1)
-        throw api_error("simGetLightParameters");
-    return ret;
-}
 
 // int simGetVelocity(handle_t shapeHandle, double *linearVelocity, double *angularVelocity);
 
@@ -3096,8 +2651,9 @@ void setStringProperty(handle_t target, const std::string &pname, const std::str
 
 std::string getStringProperty(handle_t target, const std::string &pname)
 {
-    char *value = simGetStringProperty(target, pname.c_str());
-    if(!value)
+    char *value = nullptr;
+    int ret = simGetStringProperty(target, pname.c_str(), &value);
+    if(ret < 1)
         throw property_error("simGetStringProperty", pname);
     std::string s(value);
     sim::releaseBuffer(value);
@@ -3106,8 +2662,9 @@ std::string getStringProperty(handle_t target, const std::string &pname)
 
 std::optional<std::string> getStringProperty(handle_t target, const std::string &pname, std::optional<std::string> defaultValue)
 {
-    char *value = simGetStringProperty(target, pname.c_str());
-    if(!value)
+    char *value = nullptr;
+    int ret = simGetStringProperty(target, pname.c_str(), &value);
+    if(ret < 1)
         return defaultValueIfPropertyNotExistsOrThrow("simGetStringProperty", target, pname, defaultValue);
     std::string s(value);
     sim::releaseBuffer(value);
@@ -3123,9 +2680,10 @@ void setBufferProperty(handle_t target, const std::string &pname, const std::str
 
 std::string getBufferProperty(handle_t target, const std::string &pname)
 {
+    char *value = nullptr;
     int len = 0;
-    char *value = simGetBufferProperty(target, pname.c_str(), &len);
-    if(!value)
+    int ret = simGetBufferProperty(target, pname.c_str(), &value, &len);
+    if(ret < 1)
         throw property_error("simGetBufferProperty", pname);
     std::string s(value, len);
     sim::releaseBuffer(value);
@@ -3134,9 +2692,10 @@ std::string getBufferProperty(handle_t target, const std::string &pname)
 
 std::optional<std::string> getBufferProperty(handle_t target, const std::string &pname, std::optional<std::string> defaultValue)
 {
+    char *value = nullptr;
     int len = 0;
-    char *value = simGetBufferProperty(target, pname.c_str(), &len);
-    if(!value)
+    int ret = simGetBufferProperty(target, pname.c_str(), &value, &len);
+    if(ret < 1)
         return defaultValueIfPropertyNotExistsOrThrow("simGetBufferProperty", target, pname, defaultValue);
     std::string s(value, len);
     sim::releaseBuffer(value);
@@ -3252,9 +2811,10 @@ void setFloatArrayProperty(handle_t target, const std::string &pname, const std:
 
 std::vector<double> getFloatArrayProperty(handle_t target, const std::string &pname)
 {
+    double *value = nullptr;
     int len = 0;
-    double *value = simGetFloatArrayProperty(target, pname.c_str(), &len);
-    if(!value)
+    int ret = simGetFloatArrayProperty(target, pname.c_str(), &value, &len);
+    if(ret < 1)
         throw property_error("simGetFloatArrayProperty", pname);
     std::vector<double> v(value, value + len);
     sim::releaseBuffer(value);
@@ -3263,9 +2823,10 @@ std::vector<double> getFloatArrayProperty(handle_t target, const std::string &pn
 
 std::optional<std::vector<double>> getFloatArrayProperty(handle_t target, const std::string &pname, std::optional<std::vector<double>> defaultValue)
 {
+    double *value = nullptr;
     int len = 0;
-    double *value = simGetFloatArrayProperty(target, pname.c_str(), &len);
-    if(!value)
+    int ret = simGetFloatArrayProperty(target, pname.c_str(), &value, &len);
+    if(ret < 1)
         return defaultValueIfPropertyNotExistsOrThrow("simGetFloatArrayProperty", target, pname, defaultValue);
     std::vector<double> v(value, value + len);
     sim::releaseBuffer(value);
@@ -3281,9 +2842,10 @@ void setIntArrayProperty(handle_t target, const std::string &pname, const std::v
 
 std::vector<int> getIntArrayProperty(handle_t target, const std::string &pname)
 {
+    int *value = nullptr;
     int len = 0;
-    int *value = simGetIntArrayProperty(target, pname.c_str(), &len);
-    if(!value)
+    int ret = simGetIntArrayProperty(target, pname.c_str(), &value, &len);
+    if(ret < 1)
         throw property_error("simGetIntArrayProperty", pname);
     std::vector<int> v(value, value + len);
     sim::releaseBuffer(value);
@@ -3292,9 +2854,10 @@ std::vector<int> getIntArrayProperty(handle_t target, const std::string &pname)
 
 std::optional<std::vector<int>> getIntArrayProperty(handle_t target, const std::string &pname, std::optional<std::vector<int>> defaultValue)
 {
+    int *value = nullptr;
     int len = 0;
-    int *value = simGetIntArrayProperty(target, pname.c_str(), &len);
-    if(!value)
+    int ret = simGetIntArrayProperty(target, pname.c_str(), &value, &len);
+    if(ret < 1)
         return defaultValueIfPropertyNotExistsOrThrow("simGetIntArrayProperty", target, pname, defaultValue);
     std::vector<int> v(value, value + len);
     sim::releaseBuffer(value);
