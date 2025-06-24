@@ -9,11 +9,11 @@
 
 #ifndef SIM_LIBRARY
 
-ptrSimAddLog _addLog=nullptr;
+SIM_API_SYMBOL(ptrSimAddLog) SIM_API_SYMBOL(_addLog) = nullptr;
 
-int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg)
+int SIM_API_SYMBOL(simAddLog)(const char* pluginName,int verbosityLevel,const char* logMsg)
 {
-    if (_addLog== nullptr)
+    if (SIM_API_SYMBOL(_addLog) == nullptr)
     {
         std::string m("[");
         if (pluginName!=nullptr)
@@ -29,8 +29,9 @@ int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg)
         printf("%s\n",m.c_str());
         return(1);
     }
-    return(_addLog(pluginName,verbosityLevel,logMsg));
+    return(SIM_API_SYMBOL(_addLog)(pluginName,verbosityLevel,logMsg));
 }
+
 SIM_API_SYMBOL(ptrSimGetStringProperty) SIM_API_SYMBOL(simGetStringProperty) = nullptr;
 SIM_API_SYMBOL(ptrSimGetTableProperty) SIM_API_SYMBOL(simGetTableProperty) = nullptr;
 SIM_API_SYMBOL(ptrSimGetBufferProperty) SIM_API_SYMBOL(simGetBufferProperty) = nullptr;
@@ -479,7 +480,7 @@ void unloadSimLibrary(LIBRARY lib)
             }
         #endif
     #endif // QT_FRAMEWORK
-    _addLog=nullptr;
+    SIM_API_SYMBOL(_addLog)=nullptr;
 }
 
 FARPROC _getProcAddress(LIBRARY lib,const char* funcName,bool hasSingleAndDoublePrecisionFunc, bool longHandles = false)
