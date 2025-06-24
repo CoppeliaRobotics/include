@@ -863,410 +863,410 @@ extern SIM_API_SYMBOL(ptr_simDynCallback) SIM_API_SYMBOL(_simDynCallback);
 #include "simLib-old.h"
 
 #ifdef SIM_LIB_PREFIX
-    inline int getSimProcAddresses(LIBRARY lib) { return SIM_API_SYMBOL(getSimProcAddresses)(lib); }
-    inline LIBRARY loadSimLibrary(const char* pathAndFilename) { return SIM_API_SYMBOL(loadSimLibrary)(pathAndFilename); }
-    inline void unloadSimLibrary(LIBRARY lib) { SIM_API_SYMBOL(unloadSimLibrary)(lib); }
+    static inline int getSimProcAddresses(LIBRARY lib) { return SIM_API_SYMBOL(getSimProcAddresses)(lib); }
+    static inline LIBRARY loadSimLibrary(const char* pathAndFilename) { return SIM_API_SYMBOL(loadSimLibrary)(pathAndFilename); }
+    static inline void unloadSimLibrary(LIBRARY lib) { SIM_API_SYMBOL(unloadSimLibrary)(lib); }
 
-    inline int simSetBoolProperty(long long int target, const char* pName, int pState) { return SIM_API_SYMBOL(simSetBoolProperty)(target,pName,pState); }
-    inline int simGetBoolProperty(long long int target, const char* pName, int* pState) { return SIM_API_SYMBOL(simGetBoolProperty)(target,pName,pState); }
-    inline int simSetIntProperty(long long int target, const char* pName, int pState) { return SIM_API_SYMBOL(simSetIntProperty)(target,pName,pState); }
-    inline int simGetIntProperty(long long int target, const char* pName, int* pState) { return SIM_API_SYMBOL(simGetIntProperty)(target,pName,pState); }
-    inline int simSetLongProperty(long long int target, const char* pName, long long int pState) { return SIM_API_SYMBOL(simSetLongProperty)(target,pName,pState); }
-    inline int simGetLongProperty(long long int target, const char* pName, long long int* pState) { return SIM_API_SYMBOL(simGetLongProperty)(target,pName,pState); }
-    inline int simSetFloatProperty(long long int target, const char* pName, double pState) { return SIM_API_SYMBOL(simSetFloatProperty)(target,pName,pState); }
-    inline int simGetFloatProperty(long long int target, const char* pName, double* pState) { return SIM_API_SYMBOL(simGetFloatProperty)(target,pName,pState); }
-    inline int simSetStringProperty(long long int target, const char* pName, const char* pState) { return SIM_API_SYMBOL(simSetStringProperty)(target,pName,pState); }
-    inline char* simGetStringProperty(long long int target, const char* pName) { return SIM_API_SYMBOL(simGetStringProperty)(target,pName); }
-    inline int simSetTableProperty(long long int target, const char* pName, const char* buffer, int bufferL) { return SIM_API_SYMBOL(simSetTableProperty)(target,pName,buffer,bufferL); }
-    inline char* simGetTableProperty(long long int target, const char* pName, int* bufferL) { return SIM_API_SYMBOL(simGetTableProperty)(target,pName,bufferL); }
-    inline int simSetBufferProperty(long long int target, const char* pName, const char* buffer, int bufferL) { return SIM_API_SYMBOL(simSetBufferProperty)(target,pName,buffer,bufferL); }
-    inline char* simGetBufferProperty(long long int target, const char* pName, int* bufferL) { return SIM_API_SYMBOL(simGetBufferProperty)(target,pName,bufferL); }
-    inline int simSetIntArray2Property(long long int target, const char* pName, const int* pState) { return SIM_API_SYMBOL(simSetIntArray2Property)(target,pName,pState); }
-    inline int simGetIntArray2Property(long long int target, const char* pName, int* pState) { return SIM_API_SYMBOL(simGetIntArray2Property)(target,pName,pState); }
-    inline int simSetVector2Property(long long int target, const char* pName, const double* pState) { return SIM_API_SYMBOL(simSetVector2Property)(target,pName,pState); }
-    inline int simGetVector2Property(long long int target, const char* pName, double* pState) { return SIM_API_SYMBOL(simGetVector2Property)(target,pName,pState); }
-    inline int simSetVector3Property(long long int target, const char* pName, const double* pState) { return SIM_API_SYMBOL(simSetVector3Property)(target,pName,pState); }
-    inline int simGetVector3Property(long long int target, const char* pName, double* pState) { return SIM_API_SYMBOL(simGetVector3Property)(target,pName,pState); }
-    inline int simSetQuaternionProperty(long long int target, const char* pName, const double* pState) { return SIM_API_SYMBOL(simSetQuaternionProperty)(target,pName,pState); }
-    inline int simGetQuaternionProperty(long long int target, const char* pName, double* pState) { return SIM_API_SYMBOL(simGetQuaternionProperty)(target,pName,pState); }
-    inline int simSetPoseProperty(long long int target, const char* pName, const double* pState) { return SIM_API_SYMBOL(simSetPoseProperty)(target,pName,pState); }
-    inline int simGetPoseProperty(long long int target, const char* pName, double* pState) { return SIM_API_SYMBOL(simGetPoseProperty)(target,pName,pState); }
-    inline int simSetColorProperty(long long int target, const char* pName, const float* pState) { return SIM_API_SYMBOL(simSetColorProperty)(target,pName,pState); }
-    inline int simGetColorProperty(long long int target, const char* pName, float* pState) { return SIM_API_SYMBOL(simGetColorProperty)(target,pName,pState); }
-    inline int simSetFloatArrayProperty(long long int target, const char* pName, const double* v, int vL) { return SIM_API_SYMBOL(simSetFloatArrayProperty)(target,pName,v,vL); }
-    inline double* simGetFloatArrayProperty(long long int target, const char* pName, int* vL) { return SIM_API_SYMBOL(simGetFloatArrayProperty)(target,pName,vL); }
-    inline int simSetIntArrayProperty(long long int target, const char* pName, const int* v, int vL) { return SIM_API_SYMBOL(simSetIntArrayProperty)(target,pName,v,vL); }
-    inline int* simGetIntArrayProperty(long long int target, const char* pName, int* vL) { return SIM_API_SYMBOL(simGetIntArrayProperty)(target,pName,vL); }
-    inline int simRemoveProperty(long long int target, const char* pName) { return SIM_API_SYMBOL(simRemoveProperty)(target,pName); }
-    inline char* simGetPropertyName(long long int target, int index, SPropertyOptions* options) { return SIM_API_SYMBOL(simGetPropertyName)(target,index,options); }
-    inline int simGetPropertyInfo(long long int target, const char* pName, SPropertyInfo* infos, SPropertyOptions* options) { return SIM_API_SYMBOL(simGetPropertyInfo)(target,pName,infos,options); }
-    inline void simRegCallback(int index, void* cb) { return SIM_API_SYMBOL(simRegCallback)(index,cb); }
-    inline void simRunGui(int options) { return SIM_API_SYMBOL(simRunGui)(options); }
-    inline int simInitialize(const char* appDir,int options) { return SIM_API_SYMBOL(simInitialize)(appDir,options); }
-    inline int simDeinitialize() { return SIM_API_SYMBOL(simDeinitialize)(); }
-    inline int simPostExitRequest() { return SIM_API_SYMBOL(simPostExitRequest)(); }
-    inline int simGetExitRequest() { return SIM_API_SYMBOL(simGetExitRequest)(); }
-    inline int simLoop(void(*callback)(),int options) { return SIM_API_SYMBOL(simLoop)(callback,options); }
-    inline int simTest(int mode,void* ptr1,void* ptr2,void* ptr3) { return SIM_API_SYMBOL(simTest)(mode,ptr1,ptr2,ptr3); }
-    inline int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg) { return SIM_API_SYMBOL(simAddLog)(pluginName,verbosityLevel,logMsg); }
-    inline char* simGetSimulatorMessage(int* messageID,int* auxiliaryData,int* returnedDataSize) { return SIM_API_SYMBOL(simGetSimulatorMessage)(messageID,auxiliaryData,returnedDataSize); }
-    inline void* simGetMainWindow(int type) { return SIM_API_SYMBOL(simGetMainWindow)(type); }
-    inline char* simGetLastError() { return SIM_API_SYMBOL(simGetLastError)(); }
-    inline char* simGetLastInfo() { return SIM_API_SYMBOL(simGetLastInfo)(); }
-    inline SIMHANDLE simGetObject(const char* objectPath,int index,SIMHANDLE proxy,int options) { return SIM_API_SYMBOL(simGetObject)(objectPath,index,proxy,options); }
-    inline long long int simGetObjectUid(SIMHANDLE objectHandle) { return SIM_API_SYMBOL(simGetObjectUid)(objectHandle); }
-    inline SIMHANDLE simGetObjectFromUid(long long int uid,int options) { return SIM_API_SYMBOL(simGetObjectFromUid)(uid,options); }
-    inline SIMHANDLE simGetScriptHandleEx(int scriptType,SIMHANDLE objHandle,const char* scriptName) { return SIM_API_SYMBOL(simGetScriptHandleEx)(scriptType,objHandle,scriptName); }
-    inline int simRemoveObjects(const SIMHANDLE* objectHandles,int count) { return SIM_API_SYMBOL(simRemoveObjects)(objectHandles,count); }
-    inline int simRemoveModel(SIMHANDLE objectHandle) { return SIM_API_SYMBOL(simRemoveModel)(objectHandle); }
-    inline char* simGetObjectAlias(SIMHANDLE objectHandle,int options) { return SIM_API_SYMBOL(simGetObjectAlias)(objectHandle,options); }
-    inline int simSetObjectAlias(SIMHANDLE objectHandle,const char* objectAlias,int options) { return SIM_API_SYMBOL(simSetObjectAlias)(objectHandle,objectAlias,options); }
-    inline SIMHANDLE simGetObjectParent(SIMHANDLE objectHandle) { return SIM_API_SYMBOL(simGetObjectParent)(objectHandle); }
-    inline SIMHANDLE simGetObjectChild(SIMHANDLE objectHandle,int index) { return SIM_API_SYMBOL(simGetObjectChild)(objectHandle,index); }
-    inline int simSetObjectParent(SIMHANDLE objectHandle,SIMHANDLE parentObjectHandle,bool keepInPlace) { return SIM_API_SYMBOL(simSetObjectParent)(objectHandle,parentObjectHandle,keepInPlace); }
-    inline int simGetObjectType(SIMHANDLE objectHandle) { return SIM_API_SYMBOL(simGetObjectType)(objectHandle); }
-    inline int simGetJointType(SIMHANDLE objectHandle) { return SIM_API_SYMBOL(simGetJointType)(objectHandle); }
-    inline int simReservedCommand(int v,int w) { return SIM_API_SYMBOL(simReservedCommand)(v,w); }
-    inline int simGetSimulationState() { return SIM_API_SYMBOL(simGetSimulationState)(); }
-    inline int simLoadScene(const char* filename) { return SIM_API_SYMBOL(simLoadScene)(filename); }
-    inline int simCloseScene() { return SIM_API_SYMBOL(simCloseScene)(); }
-    inline int simSaveScene(const char* filename) { return SIM_API_SYMBOL(simSaveScene)(filename); }
-    inline SIMHANDLE simLoadModel(const char* filename) { return SIM_API_SYMBOL(simLoadModel)(filename); }
-    inline int simSaveModel(SIMHANDLE baseOfModelHandle,const char* filename) { return SIM_API_SYMBOL(simSaveModel)(baseOfModelHandle,filename); }
-    inline int simDoesFileExist(const char* filename) { return SIM_API_SYMBOL(simDoesFileExist)(filename); }
-    inline SIMHANDLE* simGetObjectSel(int* cnt) { return SIM_API_SYMBOL(simGetObjectSel)(cnt); }
-    inline int simSetObjectSel(const SIMHANDLE* handles,int cnt) { return SIM_API_SYMBOL(simSetObjectSel)(handles,cnt); }
-    inline int simResetScript(SIMHANDLE scriptHandle) { return SIM_API_SYMBOL(simResetScript)(scriptHandle); }
-    inline int simRefreshDialogs(int refreshDegree) { return SIM_API_SYMBOL(simRefreshDialogs)(refreshDegree); }
-    inline int simResetProximitySensor(SIMHANDLE sensorHandle) { return SIM_API_SYMBOL(simResetProximitySensor)(sensorHandle); }
-    inline void* simCreateBuffer(int size) { return SIM_API_SYMBOL(simCreateBuffer)(size); }
-    inline int simReleaseBuffer(const void* buffer) { return SIM_API_SYMBOL(simReleaseBuffer)(buffer); }
-    inline int simCheckCollision(SIMHANDLE entity1Handle,SIMHANDLE entity2Handle) { return SIM_API_SYMBOL(simCheckCollision)(entity1Handle,entity2Handle); }
-    inline int simGetRealTimeSimulation() { return SIM_API_SYMBOL(simGetRealTimeSimulation)(); }
-    inline int simStartSimulation() { return SIM_API_SYMBOL(simStartSimulation)(); }
-    inline int simStopSimulation() { return SIM_API_SYMBOL(simStopSimulation)(); }
-    inline int simPauseSimulation() { return SIM_API_SYMBOL(simPauseSimulation)(); }
-    inline int simAdjustView(int viewHandleOrIndex,SIMHANDLE associatedViewableObjectHandle,int options,const char* viewLabel) { return SIM_API_SYMBOL(simAdjustView)(viewHandleOrIndex,associatedViewableObjectHandle,options,viewLabel); }
-    inline int simSetLastError(const char* setToNullptr,const char* errorMessage) { return SIM_API_SYMBOL(simSetLastError)(setToNullptr,errorMessage); }
-    inline int simResetGraph(SIMHANDLE graphHandle) { return SIM_API_SYMBOL(simResetGraph)(graphHandle); }
-    inline int simDestroyGraphCurve(SIMHANDLE graphHandle,SIMHANDLE curveId) { return SIM_API_SYMBOL(simDestroyGraphCurve)(graphHandle,curveId); }
-    inline int simDuplicateGraphCurveToStatic(SIMHANDLE graphHandle,SIMHANDLE curveId,const char* curveName) { return SIM_API_SYMBOL(simDuplicateGraphCurveToStatic)(graphHandle,curveId,curveName); }
-    inline int simSetNavigationMode(int navigationMode) { return SIM_API_SYMBOL(simSetNavigationMode)(navigationMode); }
-    inline int simGetNavigationMode() { return SIM_API_SYMBOL(simGetNavigationMode)(); }
-    inline int simSetPage(int index) { return SIM_API_SYMBOL(simSetPage)(index); }
-    inline int simGetPage() { return SIM_API_SYMBOL(simGetPage)(); }
-    inline int simRegisterScriptCallbackFunction(const char* func,const char* reserved_setToNull,void(*callBack)(struct SScriptCallBack* cb)) { return SIM_API_SYMBOL(simRegisterScriptCallbackFunction)(func,reserved_setToNull,callBack); }
-    inline int simRegisterScriptVariable(const char* var,const char* value,SIMHANDLE stackHandle) { return SIM_API_SYMBOL(simRegisterScriptVariable)(var,value,stackHandle); }
-    inline int simRegisterScriptFuncHook(SIMHANDLE scriptHandle,const char* funcToHook,const char* userFunction,bool executeBefore,int options) { return SIM_API_SYMBOL(simRegisterScriptFuncHook)(scriptHandle,funcToHook,userFunction,executeBefore,options); }
-    inline int simCopyPasteObjects(SIMHANDLE* objectHandles,int objectCount,int options) { return SIM_API_SYMBOL(simCopyPasteObjects)(objectHandles,objectCount,options); }
-    inline int simRemoveDrawingObject(SIMHANDLE objectHandle) { return SIM_API_SYMBOL(simRemoveDrawingObject)(objectHandle); }
-    inline int simAnnounceSceneContentChange() { return SIM_API_SYMBOL(simAnnounceSceneContentChange)(); }
-    inline int simSetExplicitHandling(SIMHANDLE objectHandle,int explicitFlags) { return SIM_API_SYMBOL(simSetExplicitHandling)(objectHandle,explicitFlags); }
-    inline int simGetExplicitHandling(SIMHANDLE objectHandle) { return SIM_API_SYMBOL(simGetExplicitHandling)(objectHandle); }
-    inline SIMHANDLE simGetLinkDummy(SIMHANDLE dummyHandle) { return SIM_API_SYMBOL(simGetLinkDummy)(dummyHandle); }
-    inline int simSetLinkDummy(SIMHANDLE dummyHandle,SIMHANDLE linkedDummyHandle) { return SIM_API_SYMBOL(simSetLinkDummy)(dummyHandle,linkedDummyHandle); }
-    inline int simResetDynamicObject(SIMHANDLE objectHandle) { return SIM_API_SYMBOL(simResetDynamicObject)(objectHandle); }
-    inline int simSetJointMode(SIMHANDLE jointHandle,int jointMode,int options) { return SIM_API_SYMBOL(simSetJointMode)(jointHandle,jointMode,options); }
-    inline int simGetJointMode(SIMHANDLE jointHandle,int* options) { return SIM_API_SYMBOL(simGetJointMode)(jointHandle,options); }
-    inline int simSerialOpen(const char* portString,int baudRate,void* reserved1,void* reserved2) { return SIM_API_SYMBOL(simSerialOpen)(portString,baudRate,reserved1,reserved2); }
-    inline int simSerialClose(int portHandle) { return SIM_API_SYMBOL(simSerialClose)(portHandle); }
-    inline int simSerialSend(int portHandle,const char* data,int dataLength) { return SIM_API_SYMBOL(simSerialSend)(portHandle,data,dataLength); }
-    inline int simSerialRead(int portHandle,char* buffer,int dataLengthToRead) { return SIM_API_SYMBOL(simSerialRead)(portHandle,buffer,dataLengthToRead); }
-    inline int simSerialCheck(int portHandle) { return SIM_API_SYMBOL(simSerialCheck)(portHandle); }
-    inline int simAuxiliaryConsoleClose(int consoleHandle) { return SIM_API_SYMBOL(simAuxiliaryConsoleClose)(consoleHandle); }
-    inline int simAuxiliaryConsoleShow(int consoleHandle,bool showState) { return SIM_API_SYMBOL(simAuxiliaryConsoleShow)(consoleHandle,showState); }
-    inline int simAuxiliaryConsolePrint(int consoleHandle,const char* text) { return SIM_API_SYMBOL(simAuxiliaryConsolePrint)(consoleHandle,text); }
-    inline int simIsHandle(SIMHANDLE generalObjectHandle,int generalObjectType) { return SIM_API_SYMBOL(simIsHandle)(generalObjectHandle,generalObjectType); }
-    inline int simResetVisionSensor(SIMHANDLE visionSensorHandle) { return SIM_API_SYMBOL(simResetVisionSensor)(visionSensorHandle); }
-    inline int simSetVisionSensorImg(SIMHANDLE sensorHandle,const unsigned char* img,int options,const int* pos,const int* size) { return SIM_API_SYMBOL(simSetVisionSensorImg)(sensorHandle,img,options,pos,size); }
-    inline int simRuckigRemove(int objHandle) { return SIM_API_SYMBOL(simRuckigRemove)(objHandle); }
-    inline SIMHANDLE simGroupShapes(const SIMHANDLE* shapeHandles,int shapeCount) { return SIM_API_SYMBOL(simGroupShapes)(shapeHandles,shapeCount); }
-    inline SIMHANDLE* simUngroupShape(SIMHANDLE shapeHandle,int* shapeCount) { return SIM_API_SYMBOL(simUngroupShape)(shapeHandle,shapeCount); }
-    inline void simQuitSimulator(bool ignoredArgument) { return SIM_API_SYMBOL(simQuitSimulator)(ignoredArgument); }
-    inline int simSetShapeMaterial(SIMHANDLE shapeHandle,SIMHANDLE materialIdOrShapeHandle) { return SIM_API_SYMBOL(simSetShapeMaterial)(shapeHandle,materialIdOrShapeHandle); }
-    inline SIMHANDLE simGetTextureId(const char* textureName,int* resolution) { return SIM_API_SYMBOL(simGetTextureId)(textureName,resolution); }
-    inline unsigned char* simReadTexture(SIMHANDLE textureId,int options,int posX,int posY,int sizeX,int sizeY) { return SIM_API_SYMBOL(simReadTexture)(textureId,options,posX,posY,sizeX,sizeY); }
-    inline SIMHANDLE simGetObjects(int index,int objectType) { return SIM_API_SYMBOL(simGetObjects)(index,objectType); }
-    inline SIMHANDLE* simGetObjectsInTree(SIMHANDLE treeBaseHandle,int objectType,int options,int* objectCount) { return SIM_API_SYMBOL(simGetObjectsInTree)(treeBaseHandle,objectType,options,objectCount); }
-    inline SIMHANDLE simGetShapeTextureId(SIMHANDLE shapeHandle) { return SIM_API_SYMBOL(simGetShapeTextureId)(shapeHandle); }
-    inline SIMHANDLE simCreateCollectionEx(int options) { return SIM_API_SYMBOL(simCreateCollectionEx)(options); }
-    inline int simAddItemToCollection(SIMHANDLE collectionHandle,int what,SIMHANDLE objectHandle,int options) { return SIM_API_SYMBOL(simAddItemToCollection)(collectionHandle,what,objectHandle,options); }
-    inline int simDestroyCollection(SIMHANDLE collectionHandle) { return SIM_API_SYMBOL(simDestroyCollection)(collectionHandle); }
-    inline SIMHANDLE* simGetCollectionObjects(SIMHANDLE collectionHandle,int* objectCount) { return SIM_API_SYMBOL(simGetCollectionObjects)(collectionHandle,objectCount); }
-    inline int simAlignShapeBB(SIMHANDLE shapeHandle,const double* pose) { return SIM_API_SYMBOL(simAlignShapeBB)(shapeHandle,pose); }
-    inline int simRelocateShapeFrame(SIMHANDLE shapeHandle,const double* pose) { return SIM_API_SYMBOL(simRelocateShapeFrame)(shapeHandle,pose); }
-    inline int simSaveImage(const unsigned char* image,const int* resolution,int options,const char* filename,int quality,void* reserved) { return SIM_API_SYMBOL(simSaveImage)(image,resolution,options,filename,quality,reserved); }
-    inline unsigned char* simLoadImage(int* resolution,int options,const char* filename,void* reserved) { return SIM_API_SYMBOL(simLoadImage)(resolution,options,filename,reserved); }
-    inline unsigned char* simGetScaledImage(const unsigned char* imageIn,const int* resolutionIn,int* resolutionOut,int options,void* reserved) { return SIM_API_SYMBOL(simGetScaledImage)(imageIn,resolutionIn,resolutionOut,options,reserved); }
-    inline int simCallScriptFunctionEx(SIMHANDLE scriptHandleOrType,const char* functionNameAtScriptName,SIMHANDLE stackId) { return SIM_API_SYMBOL(simCallScriptFunctionEx)(scriptHandleOrType,functionNameAtScriptName,stackId); }
-    inline char* simGetExtensionString(SIMHANDLE objectHandle,int index,const char* key) { return SIM_API_SYMBOL(simGetExtensionString)(objectHandle,index,key); }
-    inline SIMHANDLE simCreateStack() { return SIM_API_SYMBOL(simCreateStack)(); }
-    inline int simReleaseStack(SIMHANDLE stackHandle) { return SIM_API_SYMBOL(simReleaseStack)(stackHandle); }
-    inline SIMHANDLE simCopyStack(SIMHANDLE stackHandle) { return SIM_API_SYMBOL(simCopyStack)(stackHandle); }
-    inline int simPushNullOntoStack(SIMHANDLE stackHandle) { return SIM_API_SYMBOL(simPushNullOntoStack)(stackHandle); }
-    inline int simPushBoolOntoStack(SIMHANDLE stackHandle,bool value) { return SIM_API_SYMBOL(simPushBoolOntoStack)(stackHandle,value); }
-    inline int simPushInt32OntoStack(SIMHANDLE stackHandle,int value) { return SIM_API_SYMBOL(simPushInt32OntoStack)(stackHandle,value); }
-    inline int simPushInt64OntoStack(SIMHANDLE stackHandle,long long int value) { return SIM_API_SYMBOL(simPushInt64OntoStack)(stackHandle,value); }
-    inline int simPushTextOntoStack(SIMHANDLE stackHandle,const char* value) { return SIM_API_SYMBOL(simPushTextOntoStack)(stackHandle,value); }
-    inline int simPushStringOntoStack(SIMHANDLE stackHandle,const char* value,int stringSize) { return SIM_API_SYMBOL(simPushStringOntoStack)(stackHandle,value,stringSize); }
-    inline int simPushBufferOntoStack(SIMHANDLE stackHandle,const char* value,int stringSize) { return SIM_API_SYMBOL(simPushBufferOntoStack)(stackHandle,value,stringSize); }
-    inline int simPushUInt8TableOntoStack(SIMHANDLE stackHandle,const unsigned char* values,int valueCnt) { return SIM_API_SYMBOL(simPushUInt8TableOntoStack)(stackHandle,values,valueCnt); }
-    inline int simPushInt32TableOntoStack(SIMHANDLE stackHandle,const int* values,int valueCnt) { return SIM_API_SYMBOL(simPushInt32TableOntoStack)(stackHandle,values,valueCnt); }
-    inline int simPushInt64TableOntoStack(SIMHANDLE stackHandle,const long long int* values,int valueCnt) { return SIM_API_SYMBOL(simPushInt64TableOntoStack)(stackHandle,values,valueCnt); }
-    inline int simPushTableOntoStack(SIMHANDLE stackHandle) { return SIM_API_SYMBOL(simPushTableOntoStack)(stackHandle); }
-    inline int simInsertDataIntoStackTable(SIMHANDLE stackHandle) { return SIM_API_SYMBOL(simInsertDataIntoStackTable)(stackHandle); }
-    inline int simGetStackSize(SIMHANDLE stackHandle) { return SIM_API_SYMBOL(simGetStackSize)(stackHandle); }
-    inline int simPopStackItem(SIMHANDLE stackHandle,int count) { return SIM_API_SYMBOL(simPopStackItem)(stackHandle,count); }
-    inline int simMoveStackItemToTop(SIMHANDLE stackHandle,int cIndex) { return SIM_API_SYMBOL(simMoveStackItemToTop)(stackHandle,cIndex); }
-    inline int simGetStackItemType(SIMHANDLE stackHandle,int cIndex) { return SIM_API_SYMBOL(simGetStackItemType)(stackHandle,cIndex); }
-    inline int simGetStackStringType(SIMHANDLE stackHandle,int cIndex) { return SIM_API_SYMBOL(simGetStackStringType)(stackHandle,cIndex); }
-    inline int simGetStackBoolValue(SIMHANDLE stackHandle,bool* boolValue) { return SIM_API_SYMBOL(simGetStackBoolValue)(stackHandle,boolValue); }
-    inline int simGetStackInt32Value(SIMHANDLE stackHandle,int* numberValue) { return SIM_API_SYMBOL(simGetStackInt32Value)(stackHandle,numberValue); }
-    inline int simGetStackInt64Value(SIMHANDLE stackHandle,long long int* numberValue) { return SIM_API_SYMBOL(simGetStackInt64Value)(stackHandle,numberValue); }
-    inline char* simGetStackStringValue(SIMHANDLE stackHandle,int* stringSize) { return SIM_API_SYMBOL(simGetStackStringValue)(stackHandle,stringSize); }
-    inline int simGetStackTableInfo(SIMHANDLE stackHandle,int infoType) { return SIM_API_SYMBOL(simGetStackTableInfo)(stackHandle,infoType); }
-    inline int simGetStackUInt8Table(SIMHANDLE stackHandle,unsigned char* array,int count) { return SIM_API_SYMBOL(simGetStackUInt8Table)(stackHandle,array,count); }
-    inline int simGetStackInt32Table(SIMHANDLE stackHandle,int* array,int count) { return SIM_API_SYMBOL(simGetStackInt32Table)(stackHandle,array,count); }
-    inline int simGetStackInt64Table(SIMHANDLE stackHandle,long long int* array,int count) { return SIM_API_SYMBOL(simGetStackInt64Table)(stackHandle,array,count); }
-    inline int simUnfoldStackTable(SIMHANDLE stackHandle) { return SIM_API_SYMBOL(simUnfoldStackTable)(stackHandle); }
-    inline int simDebugStack(SIMHANDLE stackHandle,int cIndex) { return SIM_API_SYMBOL(simDebugStack)(stackHandle,cIndex); }
-    inline int simInsertObjectIntoOctree(SIMHANDLE octreeHandle,SIMHANDLE objectHandle,int options,const unsigned char* color,unsigned int tag,void* reserved) { return SIM_API_SYMBOL(simInsertObjectIntoOctree)(octreeHandle,objectHandle,options,color,tag,reserved); }
-    inline int simSubtractObjectFromOctree(SIMHANDLE octreeHandle,SIMHANDLE objectHandle,int options,void* reserved) { return SIM_API_SYMBOL(simSubtractObjectFromOctree)(octreeHandle,objectHandle,options,reserved); }
-    inline char* simOpenTextEditor(const char* initText,const char* xml,int* various) { return SIM_API_SYMBOL(simOpenTextEditor)(initText,xml,various); }
-    inline char* simPackTable(SIMHANDLE stackHandle,int* bufferSize) { return SIM_API_SYMBOL(simPackTable)(stackHandle,bufferSize); }
-    inline int simUnpackTable(SIMHANDLE stackHandle,const char* buffer,int bufferSize) { return SIM_API_SYMBOL(simUnpackTable)(stackHandle,buffer,bufferSize); }
-    inline int simSetReferencedHandles(SIMHANDLE objectHandle,int count,const SIMHANDLE* referencedHandles,const char* tag,const int* reserved2) { return SIM_API_SYMBOL(simSetReferencedHandles)(objectHandle,count,referencedHandles,tag,reserved2); }
-    inline int simGetReferencedHandles(SIMHANDLE objectHandle,SIMHANDLE** referencedHandles,const char* tag,SIMHANDLE** reserved2) { return SIM_API_SYMBOL(simGetReferencedHandles)(objectHandle,referencedHandles,tag,reserved2); }
-    inline int simExecuteScriptString(SIMHANDLE scriptHandle,const char* stringToExecute,SIMHANDLE stackHandle) { return SIM_API_SYMBOL(simExecuteScriptString)(scriptHandle,stringToExecute,stackHandle); }
-    inline char* simGetApiFunc(SIMHANDLE scriptHandle,const char* apiWord) { return SIM_API_SYMBOL(simGetApiFunc)(scriptHandle,apiWord); }
-    inline char* simGetApiInfo(SIMHANDLE scriptHandle,const char* apiWord) { return SIM_API_SYMBOL(simGetApiInfo)(scriptHandle,apiWord); }
-    inline int simSetPluginInfo(const char* pluginName,int infoType,const char* stringInfo,int intInfo) { return SIM_API_SYMBOL(simSetPluginInfo)(pluginName,infoType,stringInfo,intInfo); }
-    inline int simGetPluginInfo(const char* pluginName,int infoType,char** stringInfo,int* intInfo) { return SIM_API_SYMBOL(simGetPluginInfo)(pluginName,infoType,stringInfo,intInfo); }
-    inline char* simGetPluginName(int index) { return SIM_API_SYMBOL(simGetPluginName)(index); }
-    inline int simEventNotification(const char* event) { return SIM_API_SYMBOL(simEventNotification)(event); }
-    inline int simIsDynamicallyEnabled(SIMHANDLE objectHandle) { return SIM_API_SYMBOL(simIsDynamicallyEnabled)(objectHandle); }
-    inline int simInitScript(SIMHANDLE scriptHandle) { return SIM_API_SYMBOL(simInitScript)(scriptHandle); }
-    inline int simModuleEntry(int handle,const char* label,int state) { return SIM_API_SYMBOL(simModuleEntry)(handle,label,state); }
-    inline int simCheckExecAuthorization(const char* what,const char* args) { return SIM_API_SYMBOL(simCheckExecAuthorization)(what,args); }
-    inline int simPushFloatOntoStack(SIMHANDLE stackHandle,float value) { return SIM_API_SYMBOL(simPushFloatOntoStack)(stackHandle,value); }
-    inline int simPushFloatTableOntoStack(SIMHANDLE stackHandle,const float* values,int valueCnt) { return SIM_API_SYMBOL(simPushFloatTableOntoStack)(stackHandle,values,valueCnt); }
-    inline int simGetStackFloatValue(SIMHANDLE stackHandle,float* numberValue) { return SIM_API_SYMBOL(simGetStackFloatValue)(stackHandle,numberValue); }
-    inline int simGetStackFloatTable(SIMHANDLE stackHandle,float* array,int count) { return SIM_API_SYMBOL(simGetStackFloatTable)(stackHandle,array,count); }
-    inline float* simGetVisionSensorDepth(SIMHANDLE sensorHandle,int options,const int* pos,const int* size,int* resolution) { return SIM_API_SYMBOL(simGetVisionSensorDepth)(sensorHandle,options,pos,size,resolution); }
-    inline int _simSetVisionSensorDepth(SIMHANDLE sensorHandle,int options,const float* depth) { return SIM_API_SYMBOL(_simSetVisionSensorDepth)(sensorHandle,options,depth); }
-    inline float* simCheckVisionSensorEx(SIMHANDLE visionSensorHandle,SIMHANDLE entityHandle,bool returnImage) { return SIM_API_SYMBOL(simCheckVisionSensorEx)(visionSensorHandle,entityHandle,returnImage); }
-    inline int simRuckigPos(int dofs,double baseCycleTime,int flags,const double* currentPos,const double* currentVel,const double* currentAccel,const double* maxVel,const double* maxAccel,const double* maxJerk,const bool* selection,const double* targetPos,const double* targetVel,double* reserved1,int* reserved2) { return SIM_API_SYMBOL(simRuckigPos)(dofs,baseCycleTime,flags,currentPos,currentVel,currentAccel,maxVel,maxAccel,maxJerk,selection,targetPos,targetVel,reserved1,reserved2); }
-    inline int simRuckigVel(int dofs,double baseCycleTime,int flags,const double* currentPos,const double* currentVel,const double* currentAccel,const double* maxAccel,const double* maxJerk,const bool* selection,const double* targetVel,double* reserved1,int* reserved2) { return SIM_API_SYMBOL(simRuckigVel)(dofs,baseCycleTime,flags,currentPos,currentVel,currentAccel,maxAccel,maxJerk,selection,targetVel,reserved1,reserved2); }
-    inline int simRuckigStep(int objHandle,double cycleTime,double* newPos,double* newVel,double* newAccel,double* syncTime,double* reserved1,int* reserved2) { return SIM_API_SYMBOL(simRuckigStep)(objHandle,cycleTime,newPos,newVel,newAccel,syncTime,reserved1,reserved2); }
-    inline int simPushDoubleOntoStack(SIMHANDLE stackHandle,double value) { return SIM_API_SYMBOL(simPushDoubleOntoStack)(stackHandle,value); }
-    inline int simPushDoubleTableOntoStack(SIMHANDLE stackHandle,const double* values,int valueCnt) { return SIM_API_SYMBOL(simPushDoubleTableOntoStack)(stackHandle,values,valueCnt); }
-    inline int simGetStackDoubleValue(SIMHANDLE stackHandle,double* numberValue) { return SIM_API_SYMBOL(simGetStackDoubleValue)(stackHandle,numberValue); }
-    inline int simGetStackDoubleTable(SIMHANDLE stackHandle,double* array,int count) { return SIM_API_SYMBOL(simGetStackDoubleTable)(stackHandle,array,count); }
-    inline void _simSetDynamicSimulationIconCode(void* object,int code) { return SIM_API_SYMBOL(_simSetDynamicSimulationIconCode)(object,code); }
-    inline void _simSetDynamicObjectFlagForVisualization(void* object,int flag) { return SIM_API_SYMBOL(_simSetDynamicObjectFlagForVisualization)(object,flag); }
-    inline int _simGetObjectListSize(int objType) { return SIM_API_SYMBOL(_simGetObjectListSize)(objType); }
-    inline const void* _simGetObjectFromIndex(int objType,int index) { return SIM_API_SYMBOL(_simGetObjectFromIndex)(objType,index); }
-    inline SIMHANDLE _simGetObjectID(const void* object) { return SIM_API_SYMBOL(_simGetObjectID)(object); }
-    inline int _simGetObjectType(const void* object) { return SIM_API_SYMBOL(_simGetObjectType)(object); }
-    inline const void** _simGetObjectChildren(const void* object,int* count) { return SIM_API_SYMBOL(_simGetObjectChildren)(object,count); }
-    inline const void* _simGetParentObject(const void* object) { return SIM_API_SYMBOL(_simGetParentObject)(object); }
-    inline const void* _simGetObject(SIMHANDLE objID) { return SIM_API_SYMBOL(_simGetObject)(objID); }
-    inline const void* _simGetIkGroupObject(int ikGroupID) { return SIM_API_SYMBOL(_simGetIkGroupObject)(ikGroupID); }
-    inline int _simMpHandleIkGroupObject(const void* ikGroup) { return SIM_API_SYMBOL(_simMpHandleIkGroupObject)(ikGroup); }
-    inline bool _simIsShapeDynamicallyStatic(const void* shape) { return SIM_API_SYMBOL(_simIsShapeDynamicallyStatic)(shape); }
-    inline int _simGetTreeDynamicProperty(const void* object) { return SIM_API_SYMBOL(_simGetTreeDynamicProperty)(object); }
-    inline int _simGetDummyLinkType(const void* dummy,SIMHANDLE* linkedDummyID) { return SIM_API_SYMBOL(_simGetDummyLinkType)(dummy,linkedDummyID); }
-    inline int _simGetJointMode(const void* joint) { return SIM_API_SYMBOL(_simGetJointMode)(joint); }
-    inline bool _simIsJointInHybridOperation(const void* joint) { return SIM_API_SYMBOL(_simIsJointInHybridOperation)(joint); }
-    inline void _simDisableDynamicTreeForManipulation(const void* object,bool disableFlag) { return SIM_API_SYMBOL(_simDisableDynamicTreeForManipulation)(object,disableFlag); }
-    inline bool _simIsShapeDynamicallyRespondable(const void* shape) { return SIM_API_SYMBOL(_simIsShapeDynamicallyRespondable)(shape); }
-    inline int _simGetDynamicCollisionMask(const void* shape) { return SIM_API_SYMBOL(_simGetDynamicCollisionMask)(shape); }
-    inline const void* _simGetLastParentForLocalGlobalCollidable(const void* shape) { return SIM_API_SYMBOL(_simGetLastParentForLocalGlobalCollidable)(shape); }
-    inline bool _simGetStartSleeping(const void* shape) { return SIM_API_SYMBOL(_simGetStartSleeping)(shape); }
-    inline bool _simGetWasPutToSleepOnce(const void* shape) { return SIM_API_SYMBOL(_simGetWasPutToSleepOnce)(shape); }
-    inline bool _simGetDynamicsFullRefreshFlag(const void* object) { return SIM_API_SYMBOL(_simGetDynamicsFullRefreshFlag)(object); }
-    inline void _simSetDynamicsFullRefreshFlag(const void* object,bool flag) { return SIM_API_SYMBOL(_simSetDynamicsFullRefreshFlag)(object,flag); }
-    inline void _simClearAdditionalForceAndTorque(const void* shape) { return SIM_API_SYMBOL(_simClearAdditionalForceAndTorque)(shape); }
-    inline int _simGetJointType(const void* joint) { return SIM_API_SYMBOL(_simGetJointType)(joint); }
-    inline const void* _simGetGeomWrapFromGeomProxy(const void* geomData) { return SIM_API_SYMBOL(_simGetGeomWrapFromGeomProxy)(geomData); }
-    inline int _simGetPurePrimitiveType(const void* geomInfo) { return SIM_API_SYMBOL(_simGetPurePrimitiveType)(geomInfo); }
-    inline bool _simIsGeomWrapGeometric(const void* geomInfo) { return SIM_API_SYMBOL(_simIsGeomWrapGeometric)(geomInfo); }
-    inline bool _simIsGeomWrapConvex(const void* geomInfo) { return SIM_API_SYMBOL(_simIsGeomWrapConvex)(geomInfo); }
-    inline int _simGetGeometricCount(const void* geomInfo) { return SIM_API_SYMBOL(_simGetGeometricCount)(geomInfo); }
-    inline void _simGetAllGeometrics(const void* geomInfo,void** allGeometrics) { return SIM_API_SYMBOL(_simGetAllGeometrics)(geomInfo,allGeometrics); }
-    inline void _simMakeDynamicAnnouncement(int announceType) { return SIM_API_SYMBOL(_simMakeDynamicAnnouncement)(announceType); }
-    inline int _simGetTimeDiffInMs(int previousTime) { return SIM_API_SYMBOL(_simGetTimeDiffInMs)(previousTime); }
-    inline bool _simDoEntitiesCollide(SIMHANDLE entity1ID,SIMHANDLE entity2ID,SIMHANDLE* cacheBuffer,bool overrideCollidableFlagIfShape1,bool overrideCollidableFlagIfShape2,bool pathPlanningRoutineCalling) { return SIM_API_SYMBOL(_simDoEntitiesCollide)(entity1ID,entity2ID,cacheBuffer,overrideCollidableFlagIfShape1,overrideCollidableFlagIfShape2,pathPlanningRoutineCalling); }
-    inline int _simGetJointDynCtrlMode(const void* joint) { return SIM_API_SYMBOL(_simGetJointDynCtrlMode)(joint); }
-    inline int simFloatingViewRemove(int floatingViewHandle) { return SIM_API_SYMBOL(simFloatingViewRemove)(floatingViewHandle); }
+    static inline int simSetBoolProperty(long long int target, const char* pName, int pState) { return SIM_API_SYMBOL(simSetBoolProperty)(target,pName,pState); }
+    static inline int simGetBoolProperty(long long int target, const char* pName, int* pState) { return SIM_API_SYMBOL(simGetBoolProperty)(target,pName,pState); }
+    static inline int simSetIntProperty(long long int target, const char* pName, int pState) { return SIM_API_SYMBOL(simSetIntProperty)(target,pName,pState); }
+    static inline int simGetIntProperty(long long int target, const char* pName, int* pState) { return SIM_API_SYMBOL(simGetIntProperty)(target,pName,pState); }
+    static inline int simSetLongProperty(long long int target, const char* pName, long long int pState) { return SIM_API_SYMBOL(simSetLongProperty)(target,pName,pState); }
+    static inline int simGetLongProperty(long long int target, const char* pName, long long int* pState) { return SIM_API_SYMBOL(simGetLongProperty)(target,pName,pState); }
+    static inline int simSetFloatProperty(long long int target, const char* pName, double pState) { return SIM_API_SYMBOL(simSetFloatProperty)(target,pName,pState); }
+    static inline int simGetFloatProperty(long long int target, const char* pName, double* pState) { return SIM_API_SYMBOL(simGetFloatProperty)(target,pName,pState); }
+    static inline int simSetStringProperty(long long int target, const char* pName, const char* pState) { return SIM_API_SYMBOL(simSetStringProperty)(target,pName,pState); }
+    static inline char* simGetStringProperty(long long int target, const char* pName) { return SIM_API_SYMBOL(simGetStringProperty)(target,pName); }
+    static inline int simSetTableProperty(long long int target, const char* pName, const char* buffer, int bufferL) { return SIM_API_SYMBOL(simSetTableProperty)(target,pName,buffer,bufferL); }
+    static inline char* simGetTableProperty(long long int target, const char* pName, int* bufferL) { return SIM_API_SYMBOL(simGetTableProperty)(target,pName,bufferL); }
+    static inline int simSetBufferProperty(long long int target, const char* pName, const char* buffer, int bufferL) { return SIM_API_SYMBOL(simSetBufferProperty)(target,pName,buffer,bufferL); }
+    static inline char* simGetBufferProperty(long long int target, const char* pName, int* bufferL) { return SIM_API_SYMBOL(simGetBufferProperty)(target,pName,bufferL); }
+    static inline int simSetIntArray2Property(long long int target, const char* pName, const int* pState) { return SIM_API_SYMBOL(simSetIntArray2Property)(target,pName,pState); }
+    static inline int simGetIntArray2Property(long long int target, const char* pName, int* pState) { return SIM_API_SYMBOL(simGetIntArray2Property)(target,pName,pState); }
+    static inline int simSetVector2Property(long long int target, const char* pName, const double* pState) { return SIM_API_SYMBOL(simSetVector2Property)(target,pName,pState); }
+    static inline int simGetVector2Property(long long int target, const char* pName, double* pState) { return SIM_API_SYMBOL(simGetVector2Property)(target,pName,pState); }
+    static inline int simSetVector3Property(long long int target, const char* pName, const double* pState) { return SIM_API_SYMBOL(simSetVector3Property)(target,pName,pState); }
+    static inline int simGetVector3Property(long long int target, const char* pName, double* pState) { return SIM_API_SYMBOL(simGetVector3Property)(target,pName,pState); }
+    static inline int simSetQuaternionProperty(long long int target, const char* pName, const double* pState) { return SIM_API_SYMBOL(simSetQuaternionProperty)(target,pName,pState); }
+    static inline int simGetQuaternionProperty(long long int target, const char* pName, double* pState) { return SIM_API_SYMBOL(simGetQuaternionProperty)(target,pName,pState); }
+    static inline int simSetPoseProperty(long long int target, const char* pName, const double* pState) { return SIM_API_SYMBOL(simSetPoseProperty)(target,pName,pState); }
+    static inline int simGetPoseProperty(long long int target, const char* pName, double* pState) { return SIM_API_SYMBOL(simGetPoseProperty)(target,pName,pState); }
+    static inline int simSetColorProperty(long long int target, const char* pName, const float* pState) { return SIM_API_SYMBOL(simSetColorProperty)(target,pName,pState); }
+    static inline int simGetColorProperty(long long int target, const char* pName, float* pState) { return SIM_API_SYMBOL(simGetColorProperty)(target,pName,pState); }
+    static inline int simSetFloatArrayProperty(long long int target, const char* pName, const double* v, int vL) { return SIM_API_SYMBOL(simSetFloatArrayProperty)(target,pName,v,vL); }
+    static inline double* simGetFloatArrayProperty(long long int target, const char* pName, int* vL) { return SIM_API_SYMBOL(simGetFloatArrayProperty)(target,pName,vL); }
+    static inline int simSetIntArrayProperty(long long int target, const char* pName, const int* v, int vL) { return SIM_API_SYMBOL(simSetIntArrayProperty)(target,pName,v,vL); }
+    static inline int* simGetIntArrayProperty(long long int target, const char* pName, int* vL) { return SIM_API_SYMBOL(simGetIntArrayProperty)(target,pName,vL); }
+    static inline int simRemoveProperty(long long int target, const char* pName) { return SIM_API_SYMBOL(simRemoveProperty)(target,pName); }
+    static inline char* simGetPropertyName(long long int target, int index, SPropertyOptions* options) { return SIM_API_SYMBOL(simGetPropertyName)(target,index,options); }
+    static inline int simGetPropertyInfo(long long int target, const char* pName, SPropertyInfo* infos, SPropertyOptions* options) { return SIM_API_SYMBOL(simGetPropertyInfo)(target,pName,infos,options); }
+    static inline void simRegCallback(int index, void* cb) { return SIM_API_SYMBOL(simRegCallback)(index,cb); }
+    static inline void simRunGui(int options) { return SIM_API_SYMBOL(simRunGui)(options); }
+    static inline int simInitialize(const char* appDir,int options) { return SIM_API_SYMBOL(simInitialize)(appDir,options); }
+    static inline int simDeinitialize() { return SIM_API_SYMBOL(simDeinitialize)(); }
+    static inline int simPostExitRequest() { return SIM_API_SYMBOL(simPostExitRequest)(); }
+    static inline int simGetExitRequest() { return SIM_API_SYMBOL(simGetExitRequest)(); }
+    static inline int simLoop(void(*callback)(),int options) { return SIM_API_SYMBOL(simLoop)(callback,options); }
+    static inline int simTest(int mode,void* ptr1,void* ptr2,void* ptr3) { return SIM_API_SYMBOL(simTest)(mode,ptr1,ptr2,ptr3); }
+    static inline int simAddLog(const char* pluginName,int verbosityLevel,const char* logMsg) { return SIM_API_SYMBOL(simAddLog)(pluginName,verbosityLevel,logMsg); }
+    static inline char* simGetSimulatorMessage(int* messageID,int* auxiliaryData,int* returnedDataSize) { return SIM_API_SYMBOL(simGetSimulatorMessage)(messageID,auxiliaryData,returnedDataSize); }
+    static inline void* simGetMainWindow(int type) { return SIM_API_SYMBOL(simGetMainWindow)(type); }
+    static inline char* simGetLastError() { return SIM_API_SYMBOL(simGetLastError)(); }
+    static inline char* simGetLastInfo() { return SIM_API_SYMBOL(simGetLastInfo)(); }
+    static inline SIMHANDLE simGetObject(const char* objectPath,int index,SIMHANDLE proxy,int options) { return SIM_API_SYMBOL(simGetObject)(objectPath,index,proxy,options); }
+    static inline long long int simGetObjectUid(SIMHANDLE objectHandle) { return SIM_API_SYMBOL(simGetObjectUid)(objectHandle); }
+    static inline SIMHANDLE simGetObjectFromUid(long long int uid,int options) { return SIM_API_SYMBOL(simGetObjectFromUid)(uid,options); }
+    static inline SIMHANDLE simGetScriptHandleEx(int scriptType,SIMHANDLE objHandle,const char* scriptName) { return SIM_API_SYMBOL(simGetScriptHandleEx)(scriptType,objHandle,scriptName); }
+    static inline int simRemoveObjects(const SIMHANDLE* objectHandles,int count) { return SIM_API_SYMBOL(simRemoveObjects)(objectHandles,count); }
+    static inline int simRemoveModel(SIMHANDLE objectHandle) { return SIM_API_SYMBOL(simRemoveModel)(objectHandle); }
+    static inline char* simGetObjectAlias(SIMHANDLE objectHandle,int options) { return SIM_API_SYMBOL(simGetObjectAlias)(objectHandle,options); }
+    static inline int simSetObjectAlias(SIMHANDLE objectHandle,const char* objectAlias,int options) { return SIM_API_SYMBOL(simSetObjectAlias)(objectHandle,objectAlias,options); }
+    static inline SIMHANDLE simGetObjectParent(SIMHANDLE objectHandle) { return SIM_API_SYMBOL(simGetObjectParent)(objectHandle); }
+    static inline SIMHANDLE simGetObjectChild(SIMHANDLE objectHandle,int index) { return SIM_API_SYMBOL(simGetObjectChild)(objectHandle,index); }
+    static inline int simSetObjectParent(SIMHANDLE objectHandle,SIMHANDLE parentObjectHandle,bool keepInPlace) { return SIM_API_SYMBOL(simSetObjectParent)(objectHandle,parentObjectHandle,keepInPlace); }
+    static inline int simGetObjectType(SIMHANDLE objectHandle) { return SIM_API_SYMBOL(simGetObjectType)(objectHandle); }
+    static inline int simGetJointType(SIMHANDLE objectHandle) { return SIM_API_SYMBOL(simGetJointType)(objectHandle); }
+    static inline int simReservedCommand(int v,int w) { return SIM_API_SYMBOL(simReservedCommand)(v,w); }
+    static inline int simGetSimulationState() { return SIM_API_SYMBOL(simGetSimulationState)(); }
+    static inline int simLoadScene(const char* filename) { return SIM_API_SYMBOL(simLoadScene)(filename); }
+    static inline int simCloseScene() { return SIM_API_SYMBOL(simCloseScene)(); }
+    static inline int simSaveScene(const char* filename) { return SIM_API_SYMBOL(simSaveScene)(filename); }
+    static inline SIMHANDLE simLoadModel(const char* filename) { return SIM_API_SYMBOL(simLoadModel)(filename); }
+    static inline int simSaveModel(SIMHANDLE baseOfModelHandle,const char* filename) { return SIM_API_SYMBOL(simSaveModel)(baseOfModelHandle,filename); }
+    static inline int simDoesFileExist(const char* filename) { return SIM_API_SYMBOL(simDoesFileExist)(filename); }
+    static inline SIMHANDLE* simGetObjectSel(int* cnt) { return SIM_API_SYMBOL(simGetObjectSel)(cnt); }
+    static inline int simSetObjectSel(const SIMHANDLE* handles,int cnt) { return SIM_API_SYMBOL(simSetObjectSel)(handles,cnt); }
+    static inline int simResetScript(SIMHANDLE scriptHandle) { return SIM_API_SYMBOL(simResetScript)(scriptHandle); }
+    static inline int simRefreshDialogs(int refreshDegree) { return SIM_API_SYMBOL(simRefreshDialogs)(refreshDegree); }
+    static inline int simResetProximitySensor(SIMHANDLE sensorHandle) { return SIM_API_SYMBOL(simResetProximitySensor)(sensorHandle); }
+    static inline void* simCreateBuffer(int size) { return SIM_API_SYMBOL(simCreateBuffer)(size); }
+    static inline int simReleaseBuffer(const void* buffer) { return SIM_API_SYMBOL(simReleaseBuffer)(buffer); }
+    static inline int simCheckCollision(SIMHANDLE entity1Handle,SIMHANDLE entity2Handle) { return SIM_API_SYMBOL(simCheckCollision)(entity1Handle,entity2Handle); }
+    static inline int simGetRealTimeSimulation() { return SIM_API_SYMBOL(simGetRealTimeSimulation)(); }
+    static inline int simStartSimulation() { return SIM_API_SYMBOL(simStartSimulation)(); }
+    static inline int simStopSimulation() { return SIM_API_SYMBOL(simStopSimulation)(); }
+    static inline int simPauseSimulation() { return SIM_API_SYMBOL(simPauseSimulation)(); }
+    static inline int simAdjustView(int viewHandleOrIndex,SIMHANDLE associatedViewableObjectHandle,int options,const char* viewLabel) { return SIM_API_SYMBOL(simAdjustView)(viewHandleOrIndex,associatedViewableObjectHandle,options,viewLabel); }
+    static inline int simSetLastError(const char* setToNullptr,const char* errorMessage) { return SIM_API_SYMBOL(simSetLastError)(setToNullptr,errorMessage); }
+    static inline int simResetGraph(SIMHANDLE graphHandle) { return SIM_API_SYMBOL(simResetGraph)(graphHandle); }
+    static inline int simDestroyGraphCurve(SIMHANDLE graphHandle,SIMHANDLE curveId) { return SIM_API_SYMBOL(simDestroyGraphCurve)(graphHandle,curveId); }
+    static inline int simDuplicateGraphCurveToStatic(SIMHANDLE graphHandle,SIMHANDLE curveId,const char* curveName) { return SIM_API_SYMBOL(simDuplicateGraphCurveToStatic)(graphHandle,curveId,curveName); }
+    static inline int simSetNavigationMode(int navigationMode) { return SIM_API_SYMBOL(simSetNavigationMode)(navigationMode); }
+    static inline int simGetNavigationMode() { return SIM_API_SYMBOL(simGetNavigationMode)(); }
+    static inline int simSetPage(int index) { return SIM_API_SYMBOL(simSetPage)(index); }
+    static inline int simGetPage() { return SIM_API_SYMBOL(simGetPage)(); }
+    static inline int simRegisterScriptCallbackFunction(const char* func,const char* reserved_setToNull,void(*callBack)(struct SScriptCallBack* cb)) { return SIM_API_SYMBOL(simRegisterScriptCallbackFunction)(func,reserved_setToNull,callBack); }
+    static inline int simRegisterScriptVariable(const char* var,const char* value,SIMHANDLE stackHandle) { return SIM_API_SYMBOL(simRegisterScriptVariable)(var,value,stackHandle); }
+    static inline int simRegisterScriptFuncHook(SIMHANDLE scriptHandle,const char* funcToHook,const char* userFunction,bool executeBefore,int options) { return SIM_API_SYMBOL(simRegisterScriptFuncHook)(scriptHandle,funcToHook,userFunction,executeBefore,options); }
+    static inline int simCopyPasteObjects(SIMHANDLE* objectHandles,int objectCount,int options) { return SIM_API_SYMBOL(simCopyPasteObjects)(objectHandles,objectCount,options); }
+    static inline int simRemoveDrawingObject(SIMHANDLE objectHandle) { return SIM_API_SYMBOL(simRemoveDrawingObject)(objectHandle); }
+    static inline int simAnnounceSceneContentChange() { return SIM_API_SYMBOL(simAnnounceSceneContentChange)(); }
+    static inline int simSetExplicitHandling(SIMHANDLE objectHandle,int explicitFlags) { return SIM_API_SYMBOL(simSetExplicitHandling)(objectHandle,explicitFlags); }
+    static inline int simGetExplicitHandling(SIMHANDLE objectHandle) { return SIM_API_SYMBOL(simGetExplicitHandling)(objectHandle); }
+    static inline SIMHANDLE simGetLinkDummy(SIMHANDLE dummyHandle) { return SIM_API_SYMBOL(simGetLinkDummy)(dummyHandle); }
+    static inline int simSetLinkDummy(SIMHANDLE dummyHandle,SIMHANDLE linkedDummyHandle) { return SIM_API_SYMBOL(simSetLinkDummy)(dummyHandle,linkedDummyHandle); }
+    static inline int simResetDynamicObject(SIMHANDLE objectHandle) { return SIM_API_SYMBOL(simResetDynamicObject)(objectHandle); }
+    static inline int simSetJointMode(SIMHANDLE jointHandle,int jointMode,int options) { return SIM_API_SYMBOL(simSetJointMode)(jointHandle,jointMode,options); }
+    static inline int simGetJointMode(SIMHANDLE jointHandle,int* options) { return SIM_API_SYMBOL(simGetJointMode)(jointHandle,options); }
+    static inline int simSerialOpen(const char* portString,int baudRate,void* reserved1,void* reserved2) { return SIM_API_SYMBOL(simSerialOpen)(portString,baudRate,reserved1,reserved2); }
+    static inline int simSerialClose(int portHandle) { return SIM_API_SYMBOL(simSerialClose)(portHandle); }
+    static inline int simSerialSend(int portHandle,const char* data,int dataLength) { return SIM_API_SYMBOL(simSerialSend)(portHandle,data,dataLength); }
+    static inline int simSerialRead(int portHandle,char* buffer,int dataLengthToRead) { return SIM_API_SYMBOL(simSerialRead)(portHandle,buffer,dataLengthToRead); }
+    static inline int simSerialCheck(int portHandle) { return SIM_API_SYMBOL(simSerialCheck)(portHandle); }
+    static inline int simAuxiliaryConsoleClose(int consoleHandle) { return SIM_API_SYMBOL(simAuxiliaryConsoleClose)(consoleHandle); }
+    static inline int simAuxiliaryConsoleShow(int consoleHandle,bool showState) { return SIM_API_SYMBOL(simAuxiliaryConsoleShow)(consoleHandle,showState); }
+    static inline int simAuxiliaryConsolePrint(int consoleHandle,const char* text) { return SIM_API_SYMBOL(simAuxiliaryConsolePrint)(consoleHandle,text); }
+    static inline int simIsHandle(SIMHANDLE generalObjectHandle,int generalObjectType) { return SIM_API_SYMBOL(simIsHandle)(generalObjectHandle,generalObjectType); }
+    static inline int simResetVisionSensor(SIMHANDLE visionSensorHandle) { return SIM_API_SYMBOL(simResetVisionSensor)(visionSensorHandle); }
+    static inline int simSetVisionSensorImg(SIMHANDLE sensorHandle,const unsigned char* img,int options,const int* pos,const int* size) { return SIM_API_SYMBOL(simSetVisionSensorImg)(sensorHandle,img,options,pos,size); }
+    static inline int simRuckigRemove(int objHandle) { return SIM_API_SYMBOL(simRuckigRemove)(objHandle); }
+    static inline SIMHANDLE simGroupShapes(const SIMHANDLE* shapeHandles,int shapeCount) { return SIM_API_SYMBOL(simGroupShapes)(shapeHandles,shapeCount); }
+    static inline SIMHANDLE* simUngroupShape(SIMHANDLE shapeHandle,int* shapeCount) { return SIM_API_SYMBOL(simUngroupShape)(shapeHandle,shapeCount); }
+    static inline void simQuitSimulator(bool ignoredArgument) { return SIM_API_SYMBOL(simQuitSimulator)(ignoredArgument); }
+    static inline int simSetShapeMaterial(SIMHANDLE shapeHandle,SIMHANDLE materialIdOrShapeHandle) { return SIM_API_SYMBOL(simSetShapeMaterial)(shapeHandle,materialIdOrShapeHandle); }
+    static inline SIMHANDLE simGetTextureId(const char* textureName,int* resolution) { return SIM_API_SYMBOL(simGetTextureId)(textureName,resolution); }
+    static inline unsigned char* simReadTexture(SIMHANDLE textureId,int options,int posX,int posY,int sizeX,int sizeY) { return SIM_API_SYMBOL(simReadTexture)(textureId,options,posX,posY,sizeX,sizeY); }
+    static inline SIMHANDLE simGetObjects(int index,int objectType) { return SIM_API_SYMBOL(simGetObjects)(index,objectType); }
+    static inline SIMHANDLE* simGetObjectsInTree(SIMHANDLE treeBaseHandle,int objectType,int options,int* objectCount) { return SIM_API_SYMBOL(simGetObjectsInTree)(treeBaseHandle,objectType,options,objectCount); }
+    static inline SIMHANDLE simGetShapeTextureId(SIMHANDLE shapeHandle) { return SIM_API_SYMBOL(simGetShapeTextureId)(shapeHandle); }
+    static inline SIMHANDLE simCreateCollectionEx(int options) { return SIM_API_SYMBOL(simCreateCollectionEx)(options); }
+    static inline int simAddItemToCollection(SIMHANDLE collectionHandle,int what,SIMHANDLE objectHandle,int options) { return SIM_API_SYMBOL(simAddItemToCollection)(collectionHandle,what,objectHandle,options); }
+    static inline int simDestroyCollection(SIMHANDLE collectionHandle) { return SIM_API_SYMBOL(simDestroyCollection)(collectionHandle); }
+    static inline SIMHANDLE* simGetCollectionObjects(SIMHANDLE collectionHandle,int* objectCount) { return SIM_API_SYMBOL(simGetCollectionObjects)(collectionHandle,objectCount); }
+    static inline int simAlignShapeBB(SIMHANDLE shapeHandle,const double* pose) { return SIM_API_SYMBOL(simAlignShapeBB)(shapeHandle,pose); }
+    static inline int simRelocateShapeFrame(SIMHANDLE shapeHandle,const double* pose) { return SIM_API_SYMBOL(simRelocateShapeFrame)(shapeHandle,pose); }
+    static inline int simSaveImage(const unsigned char* image,const int* resolution,int options,const char* filename,int quality,void* reserved) { return SIM_API_SYMBOL(simSaveImage)(image,resolution,options,filename,quality,reserved); }
+    static inline unsigned char* simLoadImage(int* resolution,int options,const char* filename,void* reserved) { return SIM_API_SYMBOL(simLoadImage)(resolution,options,filename,reserved); }
+    static inline unsigned char* simGetScaledImage(const unsigned char* imageIn,const int* resolutionIn,int* resolutionOut,int options,void* reserved) { return SIM_API_SYMBOL(simGetScaledImage)(imageIn,resolutionIn,resolutionOut,options,reserved); }
+    static inline int simCallScriptFunctionEx(SIMHANDLE scriptHandleOrType,const char* functionNameAtScriptName,SIMHANDLE stackId) { return SIM_API_SYMBOL(simCallScriptFunctionEx)(scriptHandleOrType,functionNameAtScriptName,stackId); }
+    static inline char* simGetExtensionString(SIMHANDLE objectHandle,int index,const char* key) { return SIM_API_SYMBOL(simGetExtensionString)(objectHandle,index,key); }
+    static inline SIMHANDLE simCreateStack() { return SIM_API_SYMBOL(simCreateStack)(); }
+    static inline int simReleaseStack(SIMHANDLE stackHandle) { return SIM_API_SYMBOL(simReleaseStack)(stackHandle); }
+    static inline SIMHANDLE simCopyStack(SIMHANDLE stackHandle) { return SIM_API_SYMBOL(simCopyStack)(stackHandle); }
+    static inline int simPushNullOntoStack(SIMHANDLE stackHandle) { return SIM_API_SYMBOL(simPushNullOntoStack)(stackHandle); }
+    static inline int simPushBoolOntoStack(SIMHANDLE stackHandle,bool value) { return SIM_API_SYMBOL(simPushBoolOntoStack)(stackHandle,value); }
+    static inline int simPushInt32OntoStack(SIMHANDLE stackHandle,int value) { return SIM_API_SYMBOL(simPushInt32OntoStack)(stackHandle,value); }
+    static inline int simPushInt64OntoStack(SIMHANDLE stackHandle,long long int value) { return SIM_API_SYMBOL(simPushInt64OntoStack)(stackHandle,value); }
+    static inline int simPushTextOntoStack(SIMHANDLE stackHandle,const char* value) { return SIM_API_SYMBOL(simPushTextOntoStack)(stackHandle,value); }
+    static inline int simPushStringOntoStack(SIMHANDLE stackHandle,const char* value,int stringSize) { return SIM_API_SYMBOL(simPushStringOntoStack)(stackHandle,value,stringSize); }
+    static inline int simPushBufferOntoStack(SIMHANDLE stackHandle,const char* value,int stringSize) { return SIM_API_SYMBOL(simPushBufferOntoStack)(stackHandle,value,stringSize); }
+    static inline int simPushUInt8TableOntoStack(SIMHANDLE stackHandle,const unsigned char* values,int valueCnt) { return SIM_API_SYMBOL(simPushUInt8TableOntoStack)(stackHandle,values,valueCnt); }
+    static inline int simPushInt32TableOntoStack(SIMHANDLE stackHandle,const int* values,int valueCnt) { return SIM_API_SYMBOL(simPushInt32TableOntoStack)(stackHandle,values,valueCnt); }
+    static inline int simPushInt64TableOntoStack(SIMHANDLE stackHandle,const long long int* values,int valueCnt) { return SIM_API_SYMBOL(simPushInt64TableOntoStack)(stackHandle,values,valueCnt); }
+    static inline int simPushTableOntoStack(SIMHANDLE stackHandle) { return SIM_API_SYMBOL(simPushTableOntoStack)(stackHandle); }
+    static inline int simInsertDataIntoStackTable(SIMHANDLE stackHandle) { return SIM_API_SYMBOL(simInsertDataIntoStackTable)(stackHandle); }
+    static inline int simGetStackSize(SIMHANDLE stackHandle) { return SIM_API_SYMBOL(simGetStackSize)(stackHandle); }
+    static inline int simPopStackItem(SIMHANDLE stackHandle,int count) { return SIM_API_SYMBOL(simPopStackItem)(stackHandle,count); }
+    static inline int simMoveStackItemToTop(SIMHANDLE stackHandle,int cIndex) { return SIM_API_SYMBOL(simMoveStackItemToTop)(stackHandle,cIndex); }
+    static inline int simGetStackItemType(SIMHANDLE stackHandle,int cIndex) { return SIM_API_SYMBOL(simGetStackItemType)(stackHandle,cIndex); }
+    static inline int simGetStackStringType(SIMHANDLE stackHandle,int cIndex) { return SIM_API_SYMBOL(simGetStackStringType)(stackHandle,cIndex); }
+    static inline int simGetStackBoolValue(SIMHANDLE stackHandle,bool* boolValue) { return SIM_API_SYMBOL(simGetStackBoolValue)(stackHandle,boolValue); }
+    static inline int simGetStackInt32Value(SIMHANDLE stackHandle,int* numberValue) { return SIM_API_SYMBOL(simGetStackInt32Value)(stackHandle,numberValue); }
+    static inline int simGetStackInt64Value(SIMHANDLE stackHandle,long long int* numberValue) { return SIM_API_SYMBOL(simGetStackInt64Value)(stackHandle,numberValue); }
+    static inline char* simGetStackStringValue(SIMHANDLE stackHandle,int* stringSize) { return SIM_API_SYMBOL(simGetStackStringValue)(stackHandle,stringSize); }
+    static inline int simGetStackTableInfo(SIMHANDLE stackHandle,int infoType) { return SIM_API_SYMBOL(simGetStackTableInfo)(stackHandle,infoType); }
+    static inline int simGetStackUInt8Table(SIMHANDLE stackHandle,unsigned char* array,int count) { return SIM_API_SYMBOL(simGetStackUInt8Table)(stackHandle,array,count); }
+    static inline int simGetStackInt32Table(SIMHANDLE stackHandle,int* array,int count) { return SIM_API_SYMBOL(simGetStackInt32Table)(stackHandle,array,count); }
+    static inline int simGetStackInt64Table(SIMHANDLE stackHandle,long long int* array,int count) { return SIM_API_SYMBOL(simGetStackInt64Table)(stackHandle,array,count); }
+    static inline int simUnfoldStackTable(SIMHANDLE stackHandle) { return SIM_API_SYMBOL(simUnfoldStackTable)(stackHandle); }
+    static inline int simDebugStack(SIMHANDLE stackHandle,int cIndex) { return SIM_API_SYMBOL(simDebugStack)(stackHandle,cIndex); }
+    static inline int simInsertObjectIntoOctree(SIMHANDLE octreeHandle,SIMHANDLE objectHandle,int options,const unsigned char* color,unsigned int tag,void* reserved) { return SIM_API_SYMBOL(simInsertObjectIntoOctree)(octreeHandle,objectHandle,options,color,tag,reserved); }
+    static inline int simSubtractObjectFromOctree(SIMHANDLE octreeHandle,SIMHANDLE objectHandle,int options,void* reserved) { return SIM_API_SYMBOL(simSubtractObjectFromOctree)(octreeHandle,objectHandle,options,reserved); }
+    static inline char* simOpenTextEditor(const char* initText,const char* xml,int* various) { return SIM_API_SYMBOL(simOpenTextEditor)(initText,xml,various); }
+    static inline char* simPackTable(SIMHANDLE stackHandle,int* bufferSize) { return SIM_API_SYMBOL(simPackTable)(stackHandle,bufferSize); }
+    static inline int simUnpackTable(SIMHANDLE stackHandle,const char* buffer,int bufferSize) { return SIM_API_SYMBOL(simUnpackTable)(stackHandle,buffer,bufferSize); }
+    static inline int simSetReferencedHandles(SIMHANDLE objectHandle,int count,const SIMHANDLE* referencedHandles,const char* tag,const int* reserved2) { return SIM_API_SYMBOL(simSetReferencedHandles)(objectHandle,count,referencedHandles,tag,reserved2); }
+    static inline int simGetReferencedHandles(SIMHANDLE objectHandle,SIMHANDLE** referencedHandles,const char* tag,SIMHANDLE** reserved2) { return SIM_API_SYMBOL(simGetReferencedHandles)(objectHandle,referencedHandles,tag,reserved2); }
+    static inline int simExecuteScriptString(SIMHANDLE scriptHandle,const char* stringToExecute,SIMHANDLE stackHandle) { return SIM_API_SYMBOL(simExecuteScriptString)(scriptHandle,stringToExecute,stackHandle); }
+    static inline char* simGetApiFunc(SIMHANDLE scriptHandle,const char* apiWord) { return SIM_API_SYMBOL(simGetApiFunc)(scriptHandle,apiWord); }
+    static inline char* simGetApiInfo(SIMHANDLE scriptHandle,const char* apiWord) { return SIM_API_SYMBOL(simGetApiInfo)(scriptHandle,apiWord); }
+    static inline int simSetPluginInfo(const char* pluginName,int infoType,const char* stringInfo,int intInfo) { return SIM_API_SYMBOL(simSetPluginInfo)(pluginName,infoType,stringInfo,intInfo); }
+    static inline int simGetPluginInfo(const char* pluginName,int infoType,char** stringInfo,int* intInfo) { return SIM_API_SYMBOL(simGetPluginInfo)(pluginName,infoType,stringInfo,intInfo); }
+    static inline char* simGetPluginName(int index) { return SIM_API_SYMBOL(simGetPluginName)(index); }
+    static inline int simEventNotification(const char* event) { return SIM_API_SYMBOL(simEventNotification)(event); }
+    static inline int simIsDynamicallyEnabled(SIMHANDLE objectHandle) { return SIM_API_SYMBOL(simIsDynamicallyEnabled)(objectHandle); }
+    static inline int simInitScript(SIMHANDLE scriptHandle) { return SIM_API_SYMBOL(simInitScript)(scriptHandle); }
+    static inline int simModuleEntry(int handle,const char* label,int state) { return SIM_API_SYMBOL(simModuleEntry)(handle,label,state); }
+    static inline int simCheckExecAuthorization(const char* what,const char* args) { return SIM_API_SYMBOL(simCheckExecAuthorization)(what,args); }
+    static inline int simPushFloatOntoStack(SIMHANDLE stackHandle,float value) { return SIM_API_SYMBOL(simPushFloatOntoStack)(stackHandle,value); }
+    static inline int simPushFloatTableOntoStack(SIMHANDLE stackHandle,const float* values,int valueCnt) { return SIM_API_SYMBOL(simPushFloatTableOntoStack)(stackHandle,values,valueCnt); }
+    static inline int simGetStackFloatValue(SIMHANDLE stackHandle,float* numberValue) { return SIM_API_SYMBOL(simGetStackFloatValue)(stackHandle,numberValue); }
+    static inline int simGetStackFloatTable(SIMHANDLE stackHandle,float* array,int count) { return SIM_API_SYMBOL(simGetStackFloatTable)(stackHandle,array,count); }
+    static inline float* simGetVisionSensorDepth(SIMHANDLE sensorHandle,int options,const int* pos,const int* size,int* resolution) { return SIM_API_SYMBOL(simGetVisionSensorDepth)(sensorHandle,options,pos,size,resolution); }
+    static inline int _simSetVisionSensorDepth(SIMHANDLE sensorHandle,int options,const float* depth) { return SIM_API_SYMBOL(_simSetVisionSensorDepth)(sensorHandle,options,depth); }
+    static inline float* simCheckVisionSensorEx(SIMHANDLE visionSensorHandle,SIMHANDLE entityHandle,bool returnImage) { return SIM_API_SYMBOL(simCheckVisionSensorEx)(visionSensorHandle,entityHandle,returnImage); }
+    static inline int simRuckigPos(int dofs,double baseCycleTime,int flags,const double* currentPos,const double* currentVel,const double* currentAccel,const double* maxVel,const double* maxAccel,const double* maxJerk,const bool* selection,const double* targetPos,const double* targetVel,double* reserved1,int* reserved2) { return SIM_API_SYMBOL(simRuckigPos)(dofs,baseCycleTime,flags,currentPos,currentVel,currentAccel,maxVel,maxAccel,maxJerk,selection,targetPos,targetVel,reserved1,reserved2); }
+    static inline int simRuckigVel(int dofs,double baseCycleTime,int flags,const double* currentPos,const double* currentVel,const double* currentAccel,const double* maxAccel,const double* maxJerk,const bool* selection,const double* targetVel,double* reserved1,int* reserved2) { return SIM_API_SYMBOL(simRuckigVel)(dofs,baseCycleTime,flags,currentPos,currentVel,currentAccel,maxAccel,maxJerk,selection,targetVel,reserved1,reserved2); }
+    static inline int simRuckigStep(int objHandle,double cycleTime,double* newPos,double* newVel,double* newAccel,double* syncTime,double* reserved1,int* reserved2) { return SIM_API_SYMBOL(simRuckigStep)(objHandle,cycleTime,newPos,newVel,newAccel,syncTime,reserved1,reserved2); }
+    static inline int simPushDoubleOntoStack(SIMHANDLE stackHandle,double value) { return SIM_API_SYMBOL(simPushDoubleOntoStack)(stackHandle,value); }
+    static inline int simPushDoubleTableOntoStack(SIMHANDLE stackHandle,const double* values,int valueCnt) { return SIM_API_SYMBOL(simPushDoubleTableOntoStack)(stackHandle,values,valueCnt); }
+    static inline int simGetStackDoubleValue(SIMHANDLE stackHandle,double* numberValue) { return SIM_API_SYMBOL(simGetStackDoubleValue)(stackHandle,numberValue); }
+    static inline int simGetStackDoubleTable(SIMHANDLE stackHandle,double* array,int count) { return SIM_API_SYMBOL(simGetStackDoubleTable)(stackHandle,array,count); }
+    static inline void _simSetDynamicSimulationIconCode(void* object,int code) { return SIM_API_SYMBOL(_simSetDynamicSimulationIconCode)(object,code); }
+    static inline void _simSetDynamicObjectFlagForVisualization(void* object,int flag) { return SIM_API_SYMBOL(_simSetDynamicObjectFlagForVisualization)(object,flag); }
+    static inline int _simGetObjectListSize(int objType) { return SIM_API_SYMBOL(_simGetObjectListSize)(objType); }
+    static inline const void* _simGetObjectFromIndex(int objType,int index) { return SIM_API_SYMBOL(_simGetObjectFromIndex)(objType,index); }
+    static inline SIMHANDLE _simGetObjectID(const void* object) { return SIM_API_SYMBOL(_simGetObjectID)(object); }
+    static inline int _simGetObjectType(const void* object) { return SIM_API_SYMBOL(_simGetObjectType)(object); }
+    static inline const void** _simGetObjectChildren(const void* object,int* count) { return SIM_API_SYMBOL(_simGetObjectChildren)(object,count); }
+    static inline const void* _simGetParentObject(const void* object) { return SIM_API_SYMBOL(_simGetParentObject)(object); }
+    static inline const void* _simGetObject(SIMHANDLE objID) { return SIM_API_SYMBOL(_simGetObject)(objID); }
+    static inline const void* _simGetIkGroupObject(int ikGroupID) { return SIM_API_SYMBOL(_simGetIkGroupObject)(ikGroupID); }
+    static inline int _simMpHandleIkGroupObject(const void* ikGroup) { return SIM_API_SYMBOL(_simMpHandleIkGroupObject)(ikGroup); }
+    static inline bool _simIsShapeDynamicallyStatic(const void* shape) { return SIM_API_SYMBOL(_simIsShapeDynamicallyStatic)(shape); }
+    static inline int _simGetTreeDynamicProperty(const void* object) { return SIM_API_SYMBOL(_simGetTreeDynamicProperty)(object); }
+    static inline int _simGetDummyLinkType(const void* dummy,SIMHANDLE* linkedDummyID) { return SIM_API_SYMBOL(_simGetDummyLinkType)(dummy,linkedDummyID); }
+    static inline int _simGetJointMode(const void* joint) { return SIM_API_SYMBOL(_simGetJointMode)(joint); }
+    static inline bool _simIsJointInHybridOperation(const void* joint) { return SIM_API_SYMBOL(_simIsJointInHybridOperation)(joint); }
+    static inline void _simDisableDynamicTreeForManipulation(const void* object,bool disableFlag) { return SIM_API_SYMBOL(_simDisableDynamicTreeForManipulation)(object,disableFlag); }
+    static inline bool _simIsShapeDynamicallyRespondable(const void* shape) { return SIM_API_SYMBOL(_simIsShapeDynamicallyRespondable)(shape); }
+    static inline int _simGetDynamicCollisionMask(const void* shape) { return SIM_API_SYMBOL(_simGetDynamicCollisionMask)(shape); }
+    static inline const void* _simGetLastParentForLocalGlobalCollidable(const void* shape) { return SIM_API_SYMBOL(_simGetLastParentForLocalGlobalCollidable)(shape); }
+    static inline bool _simGetStartSleeping(const void* shape) { return SIM_API_SYMBOL(_simGetStartSleeping)(shape); }
+    static inline bool _simGetWasPutToSleepOnce(const void* shape) { return SIM_API_SYMBOL(_simGetWasPutToSleepOnce)(shape); }
+    static inline bool _simGetDynamicsFullRefreshFlag(const void* object) { return SIM_API_SYMBOL(_simGetDynamicsFullRefreshFlag)(object); }
+    static inline void _simSetDynamicsFullRefreshFlag(const void* object,bool flag) { return SIM_API_SYMBOL(_simSetDynamicsFullRefreshFlag)(object,flag); }
+    static inline void _simClearAdditionalForceAndTorque(const void* shape) { return SIM_API_SYMBOL(_simClearAdditionalForceAndTorque)(shape); }
+    static inline int _simGetJointType(const void* joint) { return SIM_API_SYMBOL(_simGetJointType)(joint); }
+    static inline const void* _simGetGeomWrapFromGeomProxy(const void* geomData) { return SIM_API_SYMBOL(_simGetGeomWrapFromGeomProxy)(geomData); }
+    static inline int _simGetPurePrimitiveType(const void* geomInfo) { return SIM_API_SYMBOL(_simGetPurePrimitiveType)(geomInfo); }
+    static inline bool _simIsGeomWrapGeometric(const void* geomInfo) { return SIM_API_SYMBOL(_simIsGeomWrapGeometric)(geomInfo); }
+    static inline bool _simIsGeomWrapConvex(const void* geomInfo) { return SIM_API_SYMBOL(_simIsGeomWrapConvex)(geomInfo); }
+    static inline int _simGetGeometricCount(const void* geomInfo) { return SIM_API_SYMBOL(_simGetGeometricCount)(geomInfo); }
+    static inline void _simGetAllGeometrics(const void* geomInfo,void** allGeometrics) { return SIM_API_SYMBOL(_simGetAllGeometrics)(geomInfo,allGeometrics); }
+    static inline void _simMakeDynamicAnnouncement(int announceType) { return SIM_API_SYMBOL(_simMakeDynamicAnnouncement)(announceType); }
+    static inline int _simGetTimeDiffInMs(int previousTime) { return SIM_API_SYMBOL(_simGetTimeDiffInMs)(previousTime); }
+    static inline bool _simDoEntitiesCollide(SIMHANDLE entity1ID,SIMHANDLE entity2ID,SIMHANDLE* cacheBuffer,bool overrideCollidableFlagIfShape1,bool overrideCollidableFlagIfShape2,bool pathPlanningRoutineCalling) { return SIM_API_SYMBOL(_simDoEntitiesCollide)(entity1ID,entity2ID,cacheBuffer,overrideCollidableFlagIfShape1,overrideCollidableFlagIfShape2,pathPlanningRoutineCalling); }
+    static inline int _simGetJointDynCtrlMode(const void* joint) { return SIM_API_SYMBOL(_simGetJointDynCtrlMode)(joint); }
+    static inline int simFloatingViewRemove(int floatingViewHandle) { return SIM_API_SYMBOL(simFloatingViewRemove)(floatingViewHandle); }
     #ifdef interfaceIsSinglePrecision
         static int simGetShapeViz(SIMHANDLE shapeHandle,int index,struct SShapeVizInfof* info) { return SIM_API_SYMBOL(simGetShapeViz)(shapeHandle,index,info); }
     #else
         static int simGetShapeViz(SIMHANDLE shapeHandle,int index,struct SShapeVizInfo* info) { return SIM_API_SYMBOL(simGetShapeViz)(shapeHandle,index,info); }
     #endif
-    inline int simTransformImage(unsigned char* image,const int* resolution,int options,const SIMDOUBLE* floatParams,const int* intParams,void* reserved) { return SIM_API_SYMBOL(simTransformImage)(image,resolution,options,floatParams,intParams,reserved); }
-    inline const SIMDOUBLE* simGetOctreeVoxels(SIMHANDLE octreeHandle,int* ptCnt,void* reserved) { return SIM_API_SYMBOL(simGetOctreeVoxels)(octreeHandle,ptCnt,reserved); }
-    inline const SIMDOUBLE* simGetPointCloudPoints(SIMHANDLE pointCloudHandle,int* ptCnt,void* reserved) { return SIM_API_SYMBOL(simGetPointCloudPoints)(pointCloudHandle,ptCnt,reserved); }
-    inline int simGetObjectMatrix(SIMHANDLE objectHandle,SIMHANDLE relativeToObjectHandle,SIMDOUBLE* matrix) { return SIM_API_SYMBOL(simGetObjectMatrix)(objectHandle,relativeToObjectHandle,matrix); }
-    inline int simSetObjectMatrix(SIMHANDLE objectHandle,SIMHANDLE relativeToObjectHandle,const SIMDOUBLE* matrix) { return SIM_API_SYMBOL(simSetObjectMatrix)(objectHandle,relativeToObjectHandle,matrix); }
-    inline int simGetObjectPose(SIMHANDLE objectHandle,SIMHANDLE relativeToObjectHandle,SIMDOUBLE* pose) { return SIM_API_SYMBOL(simGetObjectPose)(objectHandle,relativeToObjectHandle,pose); }
-    inline int simSetObjectPose(SIMHANDLE objectHandle,SIMHANDLE relativeToObjectHandle,const SIMDOUBLE* pose) { return SIM_API_SYMBOL(simSetObjectPose)(objectHandle,relativeToObjectHandle,pose); }
-    inline int simGetObjectPosition(SIMHANDLE objectHandle,SIMHANDLE relativeToObjectHandle,SIMDOUBLE* position) { return SIM_API_SYMBOL(simGetObjectPosition)(objectHandle,relativeToObjectHandle,position); }
-    inline int simSetObjectPosition(SIMHANDLE objectHandle,SIMHANDLE relativeToObjectHandle,const SIMDOUBLE* position) { return SIM_API_SYMBOL(simSetObjectPosition)(objectHandle,relativeToObjectHandle,position); }
-    inline int simGetObjectOrientation(SIMHANDLE objectHandle,SIMHANDLE relativeToObjectHandle,SIMDOUBLE* eulerAngles) { return SIM_API_SYMBOL(simGetObjectOrientation)(objectHandle,relativeToObjectHandle,eulerAngles); }
-    inline int simSetObjectOrientation(SIMHANDLE objectHandle,SIMHANDLE relativeToObjectHandle,const SIMDOUBLE* eulerAngles) { return SIM_API_SYMBOL(simSetObjectOrientation)(objectHandle,relativeToObjectHandle,eulerAngles); }
-    inline int simGetJointPosition(SIMHANDLE objectHandle,SIMDOUBLE* position) { return SIM_API_SYMBOL(simGetJointPosition)(objectHandle,position); }
-    inline int simSetJointPosition(SIMHANDLE objectHandle,SIMDOUBLE position) { return SIM_API_SYMBOL(simSetJointPosition)(objectHandle,position); }
-    inline int simSetJointTargetPosition(SIMHANDLE objectHandle,SIMDOUBLE targetPosition) { return SIM_API_SYMBOL(simSetJointTargetPosition)(objectHandle,targetPosition); }
-    inline int simGetJointTargetPosition(SIMHANDLE objectHandle,SIMDOUBLE* targetPosition) { return SIM_API_SYMBOL(simGetJointTargetPosition)(objectHandle,targetPosition); }
-    inline int simGetJointTargetForce(SIMHANDLE jointHandle,SIMDOUBLE* forceOrTorque) { return SIM_API_SYMBOL(simGetJointTargetForce)(jointHandle,forceOrTorque); }
-    inline int simSetJointTargetForce(SIMHANDLE objectHandle,SIMDOUBLE forceOrTorque,bool signedValue) { return SIM_API_SYMBOL(simSetJointTargetForce)(objectHandle,forceOrTorque,signedValue); }
-    inline int simGetObjectChildPose(SIMHANDLE objectHandle,SIMDOUBLE* pose) { return SIM_API_SYMBOL(simGetObjectChildPose)(objectHandle,pose); }
-    inline int simSetObjectChildPose(SIMHANDLE objectHandle,const SIMDOUBLE* pose) { return SIM_API_SYMBOL(simSetObjectChildPose)(objectHandle,pose); }
-    inline int simGetJointInterval(SIMHANDLE objectHandle,bool* cyclic,SIMDOUBLE* interval) { return SIM_API_SYMBOL(simGetJointInterval)(objectHandle,cyclic,interval); }
-    inline int simSetJointInterval(SIMHANDLE objectHandle,bool cyclic,const SIMDOUBLE* interval) { return SIM_API_SYMBOL(simSetJointInterval)(objectHandle,cyclic,interval); }
-    inline int simBuildIdentityMatrix(SIMDOUBLE* matrix) { return SIM_API_SYMBOL(simBuildIdentityMatrix)(matrix); }
-    inline int simBuildMatrix(const SIMDOUBLE* position,const SIMDOUBLE* eulerAngles,SIMDOUBLE* matrix) { return SIM_API_SYMBOL(simBuildMatrix)(position,eulerAngles,matrix); }
-    inline int simBuildPose(const SIMDOUBLE* position,const SIMDOUBLE* eulerAngles,SIMDOUBLE* pose) { return SIM_API_SYMBOL(simBuildPose)(position,eulerAngles,pose); }
-    inline int simGetEulerAnglesFromMatrix(const SIMDOUBLE* matrix,SIMDOUBLE* eulerAngles) { return SIM_API_SYMBOL(simGetEulerAnglesFromMatrix)(matrix,eulerAngles); }
-    inline int simInvertMatrix(SIMDOUBLE* matrix) { return SIM_API_SYMBOL(simInvertMatrix)(matrix); }
-    inline int simMultiplyMatrices(const SIMDOUBLE* matrixIn1,const SIMDOUBLE* matrixIn2,SIMDOUBLE* matrixOut) { return SIM_API_SYMBOL(simMultiplyMatrices)(matrixIn1,matrixIn2,matrixOut); }
-    inline int simMultiplyPoses(const SIMDOUBLE* poseIn1,const SIMDOUBLE* poseIn2,SIMDOUBLE* poseOut) { return SIM_API_SYMBOL(simMultiplyPoses)(poseIn1,poseIn2,poseOut); }
-    inline int simInvertPose(SIMDOUBLE* pose) { return SIM_API_SYMBOL(simInvertPose)(pose); }
-    inline int simInterpolatePoses(const SIMDOUBLE* poseIn1,const SIMDOUBLE* poseIn2,SIMDOUBLE interpolFactor,SIMDOUBLE* poseOut) { return SIM_API_SYMBOL(simInterpolatePoses)(poseIn1,poseIn2,interpolFactor,poseOut); }
-    inline int simPoseToMatrix(const SIMDOUBLE* poseIn,SIMDOUBLE* matrixOut) { return SIM_API_SYMBOL(simPoseToMatrix)(poseIn,matrixOut); }
-    inline int simMatrixToPose(const SIMDOUBLE* matrixIn,SIMDOUBLE* poseOut) { return SIM_API_SYMBOL(simMatrixToPose)(matrixIn,poseOut); }
-    inline int simInterpolateMatrices(const SIMDOUBLE* matrixIn1,const SIMDOUBLE* matrixIn2,SIMDOUBLE interpolFactor,SIMDOUBLE* matrixOut) { return SIM_API_SYMBOL(simInterpolateMatrices)(matrixIn1,matrixIn2,interpolFactor,matrixOut); }
-    inline int simTransformVector(const SIMDOUBLE* matrix,SIMDOUBLE* vect) { return SIM_API_SYMBOL(simTransformVector)(matrix,vect); }
-    inline SIMDOUBLE simGetSimulationTime() { return SIM_API_SYMBOL(simGetSimulationTime)(); }
-    inline SIMDOUBLE simGetSystemTime() { return SIM_API_SYMBOL(simGetSystemTime)(); }
-    inline int simHandleProximitySensor(SIMHANDLE sensorHandle,SIMDOUBLE* detectedPoint,SIMHANDLE* detectedObjectHandle,SIMDOUBLE* normalVector) { return SIM_API_SYMBOL(simHandleProximitySensor)(sensorHandle,detectedPoint,detectedObjectHandle,normalVector); }
-    inline int simReadProximitySensor(SIMHANDLE sensorHandle,SIMDOUBLE* detectedPoint,SIMHANDLE* detectedObjectHandle,SIMDOUBLE* normalVector) { return SIM_API_SYMBOL(simReadProximitySensor)(sensorHandle,detectedPoint,detectedObjectHandle,normalVector); }
-    inline int simHandleDynamics(SIMDOUBLE deltaTime) { return SIM_API_SYMBOL(simHandleDynamics)(deltaTime); }
-    inline int simCheckProximitySensor(SIMHANDLE sensorHandle,SIMHANDLE entityHandle,SIMDOUBLE* detectedPoint) { return SIM_API_SYMBOL(simCheckProximitySensor)(sensorHandle,entityHandle,detectedPoint); }
-    inline int simCheckProximitySensorEx(SIMHANDLE sensorHandle,SIMHANDLE entityHandle,int detectionMode,SIMDOUBLE detectionThreshold,SIMDOUBLE maxAngle,SIMDOUBLE* detectedPoint,SIMHANDLE* detectedObjectHandle,SIMDOUBLE* normalVector) { return SIM_API_SYMBOL(simCheckProximitySensorEx)(sensorHandle,entityHandle,detectionMode,detectionThreshold,maxAngle,detectedPoint,detectedObjectHandle,normalVector); }
-    inline int simCheckProximitySensorEx2(SIMHANDLE sensorHandle,SIMDOUBLE* vertexPointer,int itemType,int itemCount,int detectionMode,SIMDOUBLE detectionThreshold,SIMDOUBLE maxAngle,SIMDOUBLE* detectedPoint,SIMDOUBLE* normalVector) { return SIM_API_SYMBOL(simCheckProximitySensorEx2)(sensorHandle,vertexPointer,itemType,itemCount,detectionMode,detectionThreshold,maxAngle,detectedPoint,normalVector); }
-    inline int simCheckCollisionEx(SIMHANDLE entity1Handle,SIMHANDLE entity2Handle,SIMDOUBLE** intersectionSegments) { return SIM_API_SYMBOL(simCheckCollisionEx)(entity1Handle,entity2Handle,intersectionSegments); }
-    inline int simCheckDistance(SIMHANDLE entity1Handle,SIMHANDLE entity2Handle,SIMDOUBLE threshold,SIMDOUBLE* distanceData) { return SIM_API_SYMBOL(simCheckDistance)(entity1Handle,entity2Handle,threshold,distanceData); }
-    inline int simSetSimulationTimeStep(SIMDOUBLE timeStep) { return SIM_API_SYMBOL(simSetSimulationTimeStep)(timeStep); }
-    inline SIMDOUBLE simGetSimulationTimeStep() { return SIM_API_SYMBOL(simGetSimulationTimeStep)(); }
-    inline int simFloatingViewAdd(SIMDOUBLE posX,SIMDOUBLE posY,SIMDOUBLE sizeX,SIMDOUBLE sizeY,int options) { return SIM_API_SYMBOL(simFloatingViewAdd)(posX,posY,sizeX,sizeY,options); }
-    inline int simHandleGraph(SIMHANDLE graphHandle,SIMDOUBLE simulationTime) { return SIM_API_SYMBOL(simHandleGraph)(graphHandle,simulationTime); }
-    inline int simSetGraphStreamTransformation(SIMHANDLE graphHandle,int streamId,int trType,SIMDOUBLE mult,SIMDOUBLE off,int movingAvgPeriod) { return SIM_API_SYMBOL(simSetGraphStreamTransformation)(graphHandle,streamId,trType,mult,off,movingAvgPeriod); }
-    inline int simAddGraphCurve(SIMHANDLE graphHandle,const char* curveName,int dim,const int* streamIds,const SIMDOUBLE* defaultValues,const char* unitStr,int options,const float* color,int curveWidth) { return SIM_API_SYMBOL(simAddGraphCurve)(graphHandle,curveName,dim,streamIds,defaultValues,unitStr,options,color,curveWidth); }
-    inline int simSetGraphStreamValue(SIMHANDLE graphHandle,int streamId,SIMDOUBLE value) { return SIM_API_SYMBOL(simSetGraphStreamValue)(graphHandle,streamId,value); }
-    inline int simSetJointTargetVelocity(SIMHANDLE objectHandle,SIMDOUBLE targetVelocity) { return SIM_API_SYMBOL(simSetJointTargetVelocity)(objectHandle,targetVelocity); }
-    inline int simGetJointTargetVelocity(SIMHANDLE objectHandle,SIMDOUBLE* targetVelocity) { return SIM_API_SYMBOL(simGetJointTargetVelocity)(objectHandle,targetVelocity); }
-    inline int simScaleObjects(const SIMHANDLE* objectHandles,int objectCount,SIMDOUBLE scalingFactor,bool scalePositionsToo) { return SIM_API_SYMBOL(simScaleObjects)(objectHandles,objectCount,scalingFactor,scalePositionsToo); }
-    inline SIMHANDLE simAddDrawingObject(int objectType,SIMDOUBLE size,SIMDOUBLE duplicateTolerance,SIMHANDLE parentObjectHandle,int maxItemCount,const float* color,const float* setToNULL,const float* setToNULL2,const float* setToNULL3) { return SIM_API_SYMBOL(simAddDrawingObject)(objectType,size,duplicateTolerance,parentObjectHandle,maxItemCount,color,setToNULL,setToNULL2,setToNULL3); }
-    inline int simAddGraphStream(SIMHANDLE graphHandle,const char* streamName,const char* unitStr,int options,const float* color,SIMDOUBLE cyclicRange) { return SIM_API_SYMBOL(simAddGraphStream)(graphHandle,streamName,unitStr,options,color,cyclicRange); }
-    inline int simAddDrawingObjectItem(SIMHANDLE objectHandle,const SIMDOUBLE* itemData) { return SIM_API_SYMBOL(simAddDrawingObjectItem)(objectHandle,itemData); }
-    inline SIMDOUBLE simGetObjectSizeFactor(SIMHANDLE objectHandle) { return SIM_API_SYMBOL(simGetObjectSizeFactor)(objectHandle); }
-    inline int simReadForceSensor(SIMHANDLE objectHandle,SIMDOUBLE* forceVector,SIMDOUBLE* torqueVector) { return SIM_API_SYMBOL(simReadForceSensor)(objectHandle,forceVector,torqueVector); }
-    inline int simGetVelocity(SIMHANDLE shapeHandle,SIMDOUBLE* linearVelocity,SIMDOUBLE* angularVelocity) { return SIM_API_SYMBOL(simGetVelocity)(shapeHandle,linearVelocity,angularVelocity); }
-    inline int simGetObjectVelocity(SIMHANDLE objectHandle,SIMDOUBLE* linearVelocity,SIMDOUBLE* angularVelocity) { return SIM_API_SYMBOL(simGetObjectVelocity)(objectHandle,linearVelocity,angularVelocity); }
-    inline int simGetJointVelocity(SIMHANDLE jointHandle,SIMDOUBLE* velocity) { return SIM_API_SYMBOL(simGetJointVelocity)(jointHandle,velocity); }
-    inline int simAddForceAndTorque(SIMHANDLE shapeHandle,const SIMDOUBLE* force,const SIMDOUBLE* torque) { return SIM_API_SYMBOL(simAddForceAndTorque)(shapeHandle,force,torque); }
-    inline int simAddForce(SIMHANDLE shapeHandle,const SIMDOUBLE* position,const SIMDOUBLE* force) { return SIM_API_SYMBOL(simAddForce)(shapeHandle,position,force); }
-    inline int simSetObjectColor(SIMHANDLE objectHandle,int index,int colorComponent,const float* rgbData) { return SIM_API_SYMBOL(simSetObjectColor)(objectHandle,index,colorComponent,rgbData); }
-    inline int simGetObjectColor(SIMHANDLE objectHandle,int index,int colorComponent,float* rgbData) { return SIM_API_SYMBOL(simGetObjectColor)(objectHandle,index,colorComponent,rgbData); }
-    inline int simSetShapeColor(SIMHANDLE shapeHandle,const char* colorName,int colorComponent,const float* rgbData) { return SIM_API_SYMBOL(simSetShapeColor)(shapeHandle,colorName,colorComponent,rgbData); }
-    inline int simGetShapeColor(SIMHANDLE shapeHandle,const char* colorName,int colorComponent,float* rgbData) { return SIM_API_SYMBOL(simGetShapeColor)(shapeHandle,colorName,colorComponent,rgbData); }
-    inline int simGetContactInfo(int dynamicPass,SIMHANDLE objectHandle,int index,SIMHANDLE* objectHandles,SIMDOUBLE* contactInfo) { return SIM_API_SYMBOL(simGetContactInfo)(dynamicPass,objectHandle,index,objectHandles,contactInfo); }
-    inline int simAuxiliaryConsoleOpen(const char* title,int maxLines,int mode,const int* position,const int* size,const float* textColor,const float* backgroundColor) { return SIM_API_SYMBOL(simAuxiliaryConsoleOpen)(title,maxLines,mode,position,size,textColor,backgroundColor); }
-    inline SIMHANDLE simImportShape(int fileformat,const char* pathAndFilename,int options,SIMDOUBLE identicalVerticeTolerance,SIMDOUBLE scalingFactor) { return SIM_API_SYMBOL(simImportShape)(fileformat,pathAndFilename,options,identicalVerticeTolerance,scalingFactor); }
-    inline int simImportMesh(int fileformat,const char* pathAndFilename,int options,SIMDOUBLE identicalVerticeTolerance,SIMDOUBLE scalingFactor,SIMDOUBLE*** vertices,int** verticesSizes,int*** indices,int** indicesSizes,SIMDOUBLE*** reserved,char*** names) { return SIM_API_SYMBOL(simImportMesh)(fileformat,pathAndFilename,options,identicalVerticeTolerance,scalingFactor,vertices,verticesSizes,indices,indicesSizes,reserved,names); }
-    inline int simExportMesh(int fileformat,const char* pathAndFilename,int options,SIMDOUBLE scalingFactor,int elementCount,const SIMDOUBLE** vertices,const int* verticesSizes,const int** indices,const int* indicesSizes,SIMDOUBLE** reserved,const char** names) { return SIM_API_SYMBOL(simExportMesh)(fileformat,pathAndFilename,options,scalingFactor,elementCount,vertices,verticesSizes,indices,indicesSizes,reserved,names); }
-    inline SIMHANDLE simCreateShape(int options,double shadingAngle,const double* vertices,int verticesSize,const int* indices,int indicesSize,const double* normals,const float* textCoords,const unsigned char* texture,const int* textureResolution) { return SIM_API_SYMBOL(simCreateShape)(options,shadingAngle,vertices,verticesSize,indices,indicesSize,normals,textCoords,texture,textureResolution); }
-    inline SIMHANDLE simCreateMeshShape(int options,SIMDOUBLE shadingAngle,const SIMDOUBLE* vertices,int verticesSize,const int* indices,int indicesSize,SIMDOUBLE* reserved) { return SIM_API_SYMBOL(simCreateMeshShape)(options,shadingAngle,vertices,verticesSize,indices,indicesSize,reserved); }
-    inline SIMHANDLE simCreatePrimitiveShape(int primitiveType,const SIMDOUBLE* sizes,int options) { return SIM_API_SYMBOL(simCreatePrimitiveShape)(primitiveType,sizes,options); }
-    inline SIMHANDLE simCreateHeightfieldShape(int options,SIMDOUBLE shadingAngle,int xPointCount,int yPointCount,SIMDOUBLE xSize,const SIMDOUBLE* heights) { return SIM_API_SYMBOL(simCreateHeightfieldShape)(options,shadingAngle,xPointCount,yPointCount,xSize,heights); }
-    inline int simGetShapeMesh(SIMHANDLE shapeHandle,SIMDOUBLE** vertices,int* verticesSize,int** indices,int* indicesSize,SIMDOUBLE** normals) { return SIM_API_SYMBOL(simGetShapeMesh)(shapeHandle,vertices,verticesSize,indices,indicesSize,normals); }
-    inline SIMHANDLE simCreateJoint(int jointType,int jointMode,int options,const SIMDOUBLE* sizes,const SIMDOUBLE* reservedA,const SIMDOUBLE* reservedB) { return SIM_API_SYMBOL(simCreateJoint)(jointType,jointMode,options,sizes,reservedA,reservedB); }
-    inline SIMHANDLE simCreateDummy(SIMDOUBLE size,const float* reserved) { return SIM_API_SYMBOL(simCreateDummy)(size,reserved); }
-    inline SIMHANDLE simCreateScript(int scriptType,const char* scriptText, int options, const char* lang) { return SIM_API_SYMBOL(simCreateScript)(scriptType,scriptText,options,lang); }
-    inline int simGetObjectHierarchyOrder(SIMHANDLE objectHandle, int* totalSiblings) { return SIM_API_SYMBOL(simGetObjectHierarchyOrder)(objectHandle,totalSiblings); }
-    inline int simSetObjectHierarchyOrder(SIMHANDLE objectHandle, int order) { return SIM_API_SYMBOL(simSetObjectHierarchyOrder)(objectHandle,order); }
-    inline SIMHANDLE simCreateForceSensor(int options,const int* intParams,const SIMDOUBLE* floatParams,const SIMDOUBLE* reserved) { return SIM_API_SYMBOL(simCreateForceSensor)(options,intParams,floatParams,reserved); }
-    inline SIMHANDLE simCreateVisionSensor(int options,const int* intParams,const SIMDOUBLE* floatParams,const SIMDOUBLE* reserved) { return SIM_API_SYMBOL(simCreateVisionSensor)(options,intParams,floatParams,reserved); }
-    inline SIMHANDLE simCreateProximitySensor(int sensorType,int subType,int options,const int* intParams,const SIMDOUBLE* floatParams,const SIMDOUBLE* reserved) { return SIM_API_SYMBOL(simCreateProximitySensor)(sensorType,subType,options,intParams,floatParams,reserved); }
-    inline int simGetRotationAxis(const SIMDOUBLE* matrixStart,const SIMDOUBLE* matrixGoal,SIMDOUBLE* axis,SIMDOUBLE* angle) { return SIM_API_SYMBOL(simGetRotationAxis)(matrixStart,matrixGoal,axis,angle); }
-    inline int simRotateAroundAxis(const SIMDOUBLE* matrixIn,const SIMDOUBLE* axis,const SIMDOUBLE* axisPos,SIMDOUBLE angle,SIMDOUBLE* matrixOut) { return SIM_API_SYMBOL(simRotateAroundAxis)(matrixIn,axis,axisPos,angle,matrixOut); }
-    inline int simGetJointForce(SIMHANDLE jointHandle,SIMDOUBLE* forceOrTorque) { return SIM_API_SYMBOL(simGetJointForce)(jointHandle,forceOrTorque); }
-    inline int simCameraFitToView(SIMHANDLE viewHandleOrIndex,int objectCount,const SIMHANDLE* objectHandles,int options,SIMDOUBLE scaling) { return SIM_API_SYMBOL(simCameraFitToView)(viewHandleOrIndex,objectCount,objectHandles,options,scaling); }
-    inline int simHandleVisionSensor(SIMHANDLE visionSensorHandle,SIMDOUBLE** auxValues,int** auxValuesCount) { return SIM_API_SYMBOL(simHandleVisionSensor)(visionSensorHandle,auxValues,auxValuesCount); }
-    inline int simReadVisionSensor(SIMHANDLE visionSensorHandle,SIMDOUBLE** auxValues,int** auxValuesCount) { return SIM_API_SYMBOL(simReadVisionSensor)(visionSensorHandle,auxValues,auxValuesCount); }
-    inline int simCheckVisionSensor(SIMHANDLE visionSensorHandle,SIMHANDLE entityHandle,SIMDOUBLE** auxValues,int** auxValuesCount) { return SIM_API_SYMBOL(simCheckVisionSensor)(visionSensorHandle,entityHandle,auxValues,auxValuesCount); }
-    inline unsigned char* simGetVisionSensorImg(SIMHANDLE sensorHandle,int options,SIMDOUBLE rgbaCutOff,const int* pos,const int* size,int* resolution) { return SIM_API_SYMBOL(simGetVisionSensorImg)(sensorHandle,options,rgbaCutOff,pos,size,resolution); }
-    inline int simGetVisionSensorRes(SIMHANDLE visionSensorHandle,int* resolution) { return SIM_API_SYMBOL(simGetVisionSensorRes)(visionSensorHandle,resolution); }
-    inline int simGetObjectQuaternion(SIMHANDLE objectHandle,SIMHANDLE relativeToObjectHandle,SIMDOUBLE* quaternion) { return SIM_API_SYMBOL(simGetObjectQuaternion)(objectHandle,relativeToObjectHandle,quaternion); }
-    inline int simSetObjectQuaternion(SIMHANDLE objectHandle,SIMHANDLE relativeToObjectHandle,const SIMDOUBLE* quaternion) { return SIM_API_SYMBOL(simSetObjectQuaternion)(objectHandle,relativeToObjectHandle,quaternion); }
-    inline SIMHANDLE simConvexDecompose(SIMHANDLE shapeHandle,int options,const int* intParams,const SIMDOUBLE* floatParams) { return SIM_API_SYMBOL(simConvexDecompose)(shapeHandle,options,intParams,floatParams); }
-    inline int simWriteTexture(SIMHANDLE textureId,int options,const char* data,int posX,int posY,int sizeX,int sizeY,SIMDOUBLE interpol) { return SIM_API_SYMBOL(simWriteTexture)(textureId,options,data,posX,posY,sizeX,sizeY,interpol); }
-    inline SIMHANDLE simCreateTexture(const char* fileName,int options,const SIMDOUBLE* planeSizes,const SIMDOUBLE* scalingUV,const SIMDOUBLE* xy_g,int fixedResolution,int* textureId,int* resolution,const void* reserved) { return SIM_API_SYMBOL(simCreateTexture)(fileName,options,planeSizes,scalingUV,xy_g,fixedResolution,textureId,resolution,reserved); }
-    inline int simGetShapeGeomInfo(SIMHANDLE shapeHandle,int* intData,SIMDOUBLE* floatData,void* reserved) { return SIM_API_SYMBOL(simGetShapeGeomInfo)(shapeHandle,intData,floatData,reserved); }
-    inline int simScaleObject(SIMHANDLE objectHandle,SIMDOUBLE xScale,SIMDOUBLE yScale,SIMDOUBLE zScale,int options) { return SIM_API_SYMBOL(simScaleObject)(objectHandle,xScale,yScale,zScale,options); }
-    inline int simSetShapeTexture(SIMHANDLE shapeHandle,SIMHANDLE textureId,int mappingMode,int options,const SIMDOUBLE* uvScaling,const SIMDOUBLE* position,const SIMDOUBLE* orientation) { return SIM_API_SYMBOL(simSetShapeTexture)(shapeHandle,textureId,mappingMode,options,uvScaling,position,orientation); }
-    inline int simGetQHull(const SIMDOUBLE* inVertices,int inVerticesL,SIMDOUBLE** verticesOut,int* verticesOutL,int** indicesOut,int* indicesOutL,int reserved1,const SIMDOUBLE* reserved2) { return SIM_API_SYMBOL(simGetQHull)(inVertices,inVerticesL,verticesOut,verticesOutL,indicesOut,indicesOutL,reserved1,reserved2); }
-    inline int simGetDecimatedMesh(const SIMDOUBLE* inVertices,int inVerticesL,const int* inIndices,int inIndicesL,SIMDOUBLE** verticesOut,int* verticesOutL,int** indicesOut,int* indicesOutL,SIMDOUBLE decimationPercent,int reserved1,const SIMDOUBLE* reserved2) { return SIM_API_SYMBOL(simGetDecimatedMesh)(inVertices,inVerticesL,inIndices,inIndicesL,verticesOut,verticesOutL,indicesOut,indicesOutL,decimationPercent,reserved1,reserved2); }
-    inline int simComputeMassAndInertia(SIMHANDLE shapeHandle,SIMDOUBLE density) { return SIM_API_SYMBOL(simComputeMassAndInertia)(shapeHandle,density); }
-    inline SIMHANDLE simCreateOctree(SIMDOUBLE voxelSize,int options,SIMDOUBLE pointSize,void* reserved) { return SIM_API_SYMBOL(simCreateOctree)(voxelSize,options,pointSize,reserved); }
-    inline SIMHANDLE simCreatePointCloud(SIMDOUBLE maxVoxelSize,int maxPtCntPerVoxel,int options,SIMDOUBLE pointSize,void* reserved) { return SIM_API_SYMBOL(simCreatePointCloud)(maxVoxelSize,maxPtCntPerVoxel,options,pointSize,reserved); }
-    inline int simSetPointCloudOptions(SIMHANDLE pointCloudHandle,SIMDOUBLE maxVoxelSize,int maxPtCntPerVoxel,int options,SIMDOUBLE pointSize,void* reserved) { return SIM_API_SYMBOL(simSetPointCloudOptions)(pointCloudHandle,maxVoxelSize,maxPtCntPerVoxel,options,pointSize,reserved); }
-    inline int simGetPointCloudOptions(SIMHANDLE pointCloudHandle,SIMDOUBLE* maxVoxelSize,int* maxPtCntPerVoxel,int* options,SIMDOUBLE* pointSize,void* reserved) { return SIM_API_SYMBOL(simGetPointCloudOptions)(pointCloudHandle,maxVoxelSize,maxPtCntPerVoxel,options,pointSize,reserved); }
-    inline int simInsertVoxelsIntoOctree(SIMHANDLE octreeHandle,int options,const SIMDOUBLE* pts,int ptCnt,const unsigned char* color,const unsigned int* tag,void* reserved) { return SIM_API_SYMBOL(simInsertVoxelsIntoOctree)(octreeHandle,options,pts,ptCnt,color,tag,reserved); }
-    inline int simRemoveVoxelsFromOctree(SIMHANDLE octreeHandle,int options,const SIMDOUBLE* pts,int ptCnt,void* reserved) { return SIM_API_SYMBOL(simRemoveVoxelsFromOctree)(octreeHandle,options,pts,ptCnt,reserved); }
-    inline int simInsertPointsIntoPointCloud(SIMHANDLE pointCloudHandle,int options,const SIMDOUBLE* pts,int ptCnt,const unsigned char* color,void* optionalValues) { return SIM_API_SYMBOL(simInsertPointsIntoPointCloud)(pointCloudHandle,options,pts,ptCnt,color,optionalValues); }
-    inline int simRemovePointsFromPointCloud(SIMHANDLE pointCloudHandle,int options,const SIMDOUBLE* pts,int ptCnt,SIMDOUBLE tolerance,void* reserved) { return SIM_API_SYMBOL(simRemovePointsFromPointCloud)(pointCloudHandle,options,pts,ptCnt,tolerance,reserved); }
-    inline int simIntersectPointsWithPointCloud(SIMHANDLE pointCloudHandle,int options,const SIMDOUBLE* pts,int ptCnt,SIMDOUBLE tolerance,void* reserved) { return SIM_API_SYMBOL(simIntersectPointsWithPointCloud)(pointCloudHandle,options,pts,ptCnt,tolerance,reserved); }
-    inline int simInsertObjectIntoPointCloud(SIMHANDLE pointCloudHandle,SIMHANDLE objectHandle,int options,SIMDOUBLE gridSize,const unsigned char* color,void* optionalValues) { return SIM_API_SYMBOL(simInsertObjectIntoPointCloud)(pointCloudHandle,objectHandle,options,gridSize,color,optionalValues); }
-    inline int simSubtractObjectFromPointCloud(SIMHANDLE pointCloudHandle,SIMHANDLE objectHandle,int options,SIMDOUBLE tolerance,void* reserved) { return SIM_API_SYMBOL(simSubtractObjectFromPointCloud)(pointCloudHandle,objectHandle,options,tolerance,reserved); }
-    inline int simCheckOctreePointOccupancy(SIMHANDLE octreeHandle,int options,const SIMDOUBLE* points,int ptCnt,unsigned int* tag,unsigned long long int* location,void* reserved) { return SIM_API_SYMBOL(simCheckOctreePointOccupancy)(octreeHandle,options,points,ptCnt,tag,location,reserved); }
-    inline int simApplyTexture(SIMHANDLE shapeHandle,const SIMDOUBLE* textureCoordinates,int textCoordSize,const unsigned char* texture,const int* textureResolution,int options) { return SIM_API_SYMBOL(simApplyTexture)(shapeHandle,textureCoordinates,textCoordSize,texture,textureResolution,options); }
-    inline int simSetJointDependency(SIMHANDLE jointHandle,SIMHANDLE masterJointHandle,SIMDOUBLE offset,SIMDOUBLE multCoeff) { return SIM_API_SYMBOL(simSetJointDependency)(jointHandle,masterJointHandle,offset,multCoeff); }
-    inline int simGetJointDependency(SIMHANDLE jointHandle,SIMHANDLE* masterJointHandle,SIMDOUBLE* offset,SIMDOUBLE* multCoeff) { return SIM_API_SYMBOL(simGetJointDependency)(jointHandle,masterJointHandle,offset,multCoeff); }
-    inline int simGetShapeMass(SIMHANDLE shapeHandle,SIMDOUBLE* mass) { return SIM_API_SYMBOL(simGetShapeMass)(shapeHandle,mass); }
-    inline int simSetShapeMass(SIMHANDLE shapeHandle,SIMDOUBLE mass) { return SIM_API_SYMBOL(simSetShapeMass)(shapeHandle,mass); }
-    inline int simGetShapeInertia(SIMHANDLE shapeHandle,SIMDOUBLE* inertiaMatrix,SIMDOUBLE* transformationMatrix) { return SIM_API_SYMBOL(simGetShapeInertia)(shapeHandle,inertiaMatrix,transformationMatrix); }
-    inline int simSetShapeInertia(SIMHANDLE shapeHandle,const SIMDOUBLE* inertiaMatrix,const SIMDOUBLE* transformationMatrix) { return SIM_API_SYMBOL(simSetShapeInertia)(shapeHandle,inertiaMatrix,transformationMatrix); }
-    inline SIMHANDLE simGenerateShapeFromPath(const SIMDOUBLE* path,int pathSize,const SIMDOUBLE* section,int sectionSize,int options,const SIMDOUBLE* upVector,SIMDOUBLE reserved) { return SIM_API_SYMBOL(simGenerateShapeFromPath)(path,pathSize,section,sectionSize,options,upVector,reserved); }
-    inline SIMDOUBLE simGetClosestPosOnPath(const SIMDOUBLE* path,int pathSize,const SIMDOUBLE* pathLengths,const SIMDOUBLE* absPt) { return SIM_API_SYMBOL(simGetClosestPosOnPath)(path,pathSize,pathLengths,absPt); }
-    inline void _simGetObjectLocalTransformation(const void* object,SIMDOUBLE* pos,SIMDOUBLE* quat,bool excludeFirstJointTransformation) { return SIM_API_SYMBOL(_simGetObjectLocalTransformation)(object,pos,quat,excludeFirstJointTransformation); }
-    inline void _simSetObjectLocalTransformation(void* object,const SIMDOUBLE* pos,const SIMDOUBLE* quat,SIMDOUBLE simTime) { return SIM_API_SYMBOL(_simSetObjectLocalTransformation)(object,pos,quat,simTime); }
-    inline void _simDynReportObjectCumulativeTransformation(void* object,const SIMDOUBLE* pos,const SIMDOUBLE* quat,SIMDOUBLE simTime) { return SIM_API_SYMBOL(_simDynReportObjectCumulativeTransformation)(object,pos,quat,simTime); }
-    inline void _simSetObjectCumulativeTransformation(void* object,const SIMDOUBLE* pos,const SIMDOUBLE* quat,bool keepChildrenInPlace) { return SIM_API_SYMBOL(_simSetObjectCumulativeTransformation)(object,pos,quat,keepChildrenInPlace); }
-    inline void _simGetObjectCumulativeTransformation(const void* object,SIMDOUBLE* pos,SIMDOUBLE* quat,bool excludeFirstJointTransformation) { return SIM_API_SYMBOL(_simGetObjectCumulativeTransformation)(object,pos,quat,excludeFirstJointTransformation); }
-    inline void _simSetJointVelocity(const void* joint,SIMDOUBLE vel) { return SIM_API_SYMBOL(_simSetJointVelocity)(joint,vel); }
-    inline void _simSetJointPosition(const void* joint,SIMDOUBLE pos) { return SIM_API_SYMBOL(_simSetJointPosition)(joint,pos); }
-    inline SIMDOUBLE _simGetJointPosition(const void* joint) { return SIM_API_SYMBOL(_simGetJointPosition)(joint); }
-    inline void _simSetDynamicMotorPositionControlTargetPosition(const void* joint,SIMDOUBLE pos) { return SIM_API_SYMBOL(_simSetDynamicMotorPositionControlTargetPosition)(joint,pos); }
-    inline void _simGetInitialDynamicVelocity(const void* shape,SIMDOUBLE* vel) { return SIM_API_SYMBOL(_simGetInitialDynamicVelocity)(shape,vel); }
-    inline void _simSetInitialDynamicVelocity(void* shape,const SIMDOUBLE* vel) { return SIM_API_SYMBOL(_simSetInitialDynamicVelocity)(shape,vel); }
-    inline void _simGetInitialDynamicAngVelocity(const void* shape,SIMDOUBLE* angularVel) { return SIM_API_SYMBOL(_simGetInitialDynamicAngVelocity)(shape,angularVel); }
-    inline void _simSetInitialDynamicAngVelocity(void* shape,const SIMDOUBLE* angularVel) { return SIM_API_SYMBOL(_simSetInitialDynamicAngVelocity)(shape,angularVel); }
-    inline void _simSetShapeDynamicVelocity(void* shape,const SIMDOUBLE* linear,const SIMDOUBLE* angular,SIMDOUBLE simTime) { return SIM_API_SYMBOL(_simSetShapeDynamicVelocity)(shape,linear,angular,simTime); }
-    inline void _simGetAdditionalForceAndTorque(const void* shape,SIMDOUBLE* force,SIMDOUBLE* torque) { return SIM_API_SYMBOL(_simGetAdditionalForceAndTorque)(shape,force,torque); }
-    inline bool _simGetJointPositionInterval(const void* joint,SIMDOUBLE* minValue,SIMDOUBLE* rangeValue) { return SIM_API_SYMBOL(_simGetJointPositionInterval)(joint,minValue,rangeValue); }
-    inline SIMDOUBLE _simGetDynamicMotorTargetPosition(const void* joint) { return SIM_API_SYMBOL(_simGetDynamicMotorTargetPosition)(joint); }
-    inline SIMDOUBLE _simGetDynamicMotorTargetVelocity(const void* joint) { return SIM_API_SYMBOL(_simGetDynamicMotorTargetVelocity)(joint); }
-    inline SIMDOUBLE _simGetDynamicMotorMaxForce(const void* joint) { return SIM_API_SYMBOL(_simGetDynamicMotorMaxForce)(joint); }
-    inline SIMDOUBLE _simGetDynamicMotorUpperLimitVelocity(const void* joint) { return SIM_API_SYMBOL(_simGetDynamicMotorUpperLimitVelocity)(joint); }
-    inline void _simSetDynamicMotorReflectedPositionFromDynamicEngine(void* joint,SIMDOUBLE pos,SIMDOUBLE simTime) { return SIM_API_SYMBOL(_simSetDynamicMotorReflectedPositionFromDynamicEngine)(joint,pos,simTime); }
-    inline void _simSetJointSphericalTransformation(void* joint,const SIMDOUBLE* quat,SIMDOUBLE simTime) { return SIM_API_SYMBOL(_simSetJointSphericalTransformation)(joint,quat,simTime); }
-    inline void _simAddForceSensorCumulativeForcesAndTorques(void* forceSensor,const SIMDOUBLE* force,const SIMDOUBLE* torque,int totalPassesCount,SIMDOUBLE simTime) { return SIM_API_SYMBOL(_simAddForceSensorCumulativeForcesAndTorques)(forceSensor,force,torque,totalPassesCount,simTime); }
-    inline void _simAddJointCumulativeForcesOrTorques(void* joint,SIMDOUBLE forceOrTorque,int totalPassesCount,SIMDOUBLE simTime) { return SIM_API_SYMBOL(_simAddJointCumulativeForcesOrTorques)(joint,forceOrTorque,totalPassesCount,simTime); }
-    inline SIMDOUBLE _simGetMass(const void* geomInfo) { return SIM_API_SYMBOL(_simGetMass)(geomInfo); }
-    inline SIMDOUBLE _simGetLocalInertiaInfo(const void* object,SIMDOUBLE* pos,SIMDOUBLE* quat,SIMDOUBLE* diagI) { return SIM_API_SYMBOL(_simGetLocalInertiaInfo)(object,pos,quat,diagI); }
-    inline void _simGetPurePrimitiveSizes(const void* geometric,SIMDOUBLE* sizes) { return SIM_API_SYMBOL(_simGetPurePrimitiveSizes)(geometric,sizes); }
-    inline void _simGetVerticesLocalFrame(const void* shape,const void* geometric,SIMDOUBLE* pos,SIMDOUBLE* quat) { return SIM_API_SYMBOL(_simGetVerticesLocalFrame)(shape,geometric,pos,quat); }
-    inline const SIMDOUBLE* _simGetHeightfieldData(const void* geometric,int* xCount,int* yCount,SIMDOUBLE* minHeight,SIMDOUBLE* maxHeight) { return SIM_API_SYMBOL(_simGetHeightfieldData)(geometric,xCount,yCount,minHeight,maxHeight); }
-    inline void _simGetCumulativeMeshes(const void* shape,const void* geomInfo,SIMDOUBLE** vertices,int* verticesSize,int** indices,int* indicesSize) { return SIM_API_SYMBOL(_simGetCumulativeMeshes)(shape,geomInfo,vertices,verticesSize,indices,indicesSize); }
-    inline void _simGetGravity(SIMDOUBLE* gravity) { return SIM_API_SYMBOL(_simGetGravity)(gravity); }
-    inline bool _simGetDistanceBetweenEntitiesIfSmaller(SIMHANDLE entity1ID,SIMHANDLE entity2ID,SIMDOUBLE* distance,SIMDOUBLE* ray,int* cacheBuffer,bool overrideMeasurableFlagIfNonCollection1,bool overrideMeasurableFlagIfNonCollection2,bool pathPlanningRoutineCalling) { return SIM_API_SYMBOL(_simGetDistanceBetweenEntitiesIfSmaller)(entity1ID,entity2ID,distance,ray,cacheBuffer,overrideMeasurableFlagIfNonCollection1,overrideMeasurableFlagIfNonCollection2,pathPlanningRoutineCalling); }
-    inline int _simHandleJointControl(const void* joint,int auxV,const int* inputValuesInt,const SIMDOUBLE* inputValuesFloat,SIMDOUBLE* outputValues) { return SIM_API_SYMBOL(_simHandleJointControl)(joint,auxV,inputValuesInt,inputValuesFloat,outputValues); }
-    inline int _simHandleCustomContact(SIMHANDLE objHandle1,SIMHANDLE objHandle2,int engine,int* dataInt,SIMDOUBLE* dataFloat) { return SIM_API_SYMBOL(_simHandleCustomContact)(objHandle1,objHandle2,engine,dataInt,dataFloat); }
-    inline SIMDOUBLE _simGetPureHollowScaling(const void* geometric) { return SIM_API_SYMBOL(_simGetPureHollowScaling)(geometric); }
-    inline void _simDynCallback(const int* intData,const SIMDOUBLE* floatData) { return SIM_API_SYMBOL(_simDynCallback)(intData,floatData); }
+    static inline int simTransformImage(unsigned char* image,const int* resolution,int options,const SIMDOUBLE* floatParams,const int* intParams,void* reserved) { return SIM_API_SYMBOL(simTransformImage)(image,resolution,options,floatParams,intParams,reserved); }
+    static inline const SIMDOUBLE* simGetOctreeVoxels(SIMHANDLE octreeHandle,int* ptCnt,void* reserved) { return SIM_API_SYMBOL(simGetOctreeVoxels)(octreeHandle,ptCnt,reserved); }
+    static inline const SIMDOUBLE* simGetPointCloudPoints(SIMHANDLE pointCloudHandle,int* ptCnt,void* reserved) { return SIM_API_SYMBOL(simGetPointCloudPoints)(pointCloudHandle,ptCnt,reserved); }
+    static inline int simGetObjectMatrix(SIMHANDLE objectHandle,SIMHANDLE relativeToObjectHandle,SIMDOUBLE* matrix) { return SIM_API_SYMBOL(simGetObjectMatrix)(objectHandle,relativeToObjectHandle,matrix); }
+    static inline int simSetObjectMatrix(SIMHANDLE objectHandle,SIMHANDLE relativeToObjectHandle,const SIMDOUBLE* matrix) { return SIM_API_SYMBOL(simSetObjectMatrix)(objectHandle,relativeToObjectHandle,matrix); }
+    static inline int simGetObjectPose(SIMHANDLE objectHandle,SIMHANDLE relativeToObjectHandle,SIMDOUBLE* pose) { return SIM_API_SYMBOL(simGetObjectPose)(objectHandle,relativeToObjectHandle,pose); }
+    static inline int simSetObjectPose(SIMHANDLE objectHandle,SIMHANDLE relativeToObjectHandle,const SIMDOUBLE* pose) { return SIM_API_SYMBOL(simSetObjectPose)(objectHandle,relativeToObjectHandle,pose); }
+    static inline int simGetObjectPosition(SIMHANDLE objectHandle,SIMHANDLE relativeToObjectHandle,SIMDOUBLE* position) { return SIM_API_SYMBOL(simGetObjectPosition)(objectHandle,relativeToObjectHandle,position); }
+    static inline int simSetObjectPosition(SIMHANDLE objectHandle,SIMHANDLE relativeToObjectHandle,const SIMDOUBLE* position) { return SIM_API_SYMBOL(simSetObjectPosition)(objectHandle,relativeToObjectHandle,position); }
+    static inline int simGetObjectOrientation(SIMHANDLE objectHandle,SIMHANDLE relativeToObjectHandle,SIMDOUBLE* eulerAngles) { return SIM_API_SYMBOL(simGetObjectOrientation)(objectHandle,relativeToObjectHandle,eulerAngles); }
+    static inline int simSetObjectOrientation(SIMHANDLE objectHandle,SIMHANDLE relativeToObjectHandle,const SIMDOUBLE* eulerAngles) { return SIM_API_SYMBOL(simSetObjectOrientation)(objectHandle,relativeToObjectHandle,eulerAngles); }
+    static inline int simGetJointPosition(SIMHANDLE objectHandle,SIMDOUBLE* position) { return SIM_API_SYMBOL(simGetJointPosition)(objectHandle,position); }
+    static inline int simSetJointPosition(SIMHANDLE objectHandle,SIMDOUBLE position) { return SIM_API_SYMBOL(simSetJointPosition)(objectHandle,position); }
+    static inline int simSetJointTargetPosition(SIMHANDLE objectHandle,SIMDOUBLE targetPosition) { return SIM_API_SYMBOL(simSetJointTargetPosition)(objectHandle,targetPosition); }
+    static inline int simGetJointTargetPosition(SIMHANDLE objectHandle,SIMDOUBLE* targetPosition) { return SIM_API_SYMBOL(simGetJointTargetPosition)(objectHandle,targetPosition); }
+    static inline int simGetJointTargetForce(SIMHANDLE jointHandle,SIMDOUBLE* forceOrTorque) { return SIM_API_SYMBOL(simGetJointTargetForce)(jointHandle,forceOrTorque); }
+    static inline int simSetJointTargetForce(SIMHANDLE objectHandle,SIMDOUBLE forceOrTorque,bool signedValue) { return SIM_API_SYMBOL(simSetJointTargetForce)(objectHandle,forceOrTorque,signedValue); }
+    static inline int simGetObjectChildPose(SIMHANDLE objectHandle,SIMDOUBLE* pose) { return SIM_API_SYMBOL(simGetObjectChildPose)(objectHandle,pose); }
+    static inline int simSetObjectChildPose(SIMHANDLE objectHandle,const SIMDOUBLE* pose) { return SIM_API_SYMBOL(simSetObjectChildPose)(objectHandle,pose); }
+    static inline int simGetJointInterval(SIMHANDLE objectHandle,bool* cyclic,SIMDOUBLE* interval) { return SIM_API_SYMBOL(simGetJointInterval)(objectHandle,cyclic,interval); }
+    static inline int simSetJointInterval(SIMHANDLE objectHandle,bool cyclic,const SIMDOUBLE* interval) { return SIM_API_SYMBOL(simSetJointInterval)(objectHandle,cyclic,interval); }
+    static inline int simBuildIdentityMatrix(SIMDOUBLE* matrix) { return SIM_API_SYMBOL(simBuildIdentityMatrix)(matrix); }
+    static inline int simBuildMatrix(const SIMDOUBLE* position,const SIMDOUBLE* eulerAngles,SIMDOUBLE* matrix) { return SIM_API_SYMBOL(simBuildMatrix)(position,eulerAngles,matrix); }
+    static inline int simBuildPose(const SIMDOUBLE* position,const SIMDOUBLE* eulerAngles,SIMDOUBLE* pose) { return SIM_API_SYMBOL(simBuildPose)(position,eulerAngles,pose); }
+    static inline int simGetEulerAnglesFromMatrix(const SIMDOUBLE* matrix,SIMDOUBLE* eulerAngles) { return SIM_API_SYMBOL(simGetEulerAnglesFromMatrix)(matrix,eulerAngles); }
+    static inline int simInvertMatrix(SIMDOUBLE* matrix) { return SIM_API_SYMBOL(simInvertMatrix)(matrix); }
+    static inline int simMultiplyMatrices(const SIMDOUBLE* matrixIn1,const SIMDOUBLE* matrixIn2,SIMDOUBLE* matrixOut) { return SIM_API_SYMBOL(simMultiplyMatrices)(matrixIn1,matrixIn2,matrixOut); }
+    static inline int simMultiplyPoses(const SIMDOUBLE* poseIn1,const SIMDOUBLE* poseIn2,SIMDOUBLE* poseOut) { return SIM_API_SYMBOL(simMultiplyPoses)(poseIn1,poseIn2,poseOut); }
+    static inline int simInvertPose(SIMDOUBLE* pose) { return SIM_API_SYMBOL(simInvertPose)(pose); }
+    static inline int simInterpolatePoses(const SIMDOUBLE* poseIn1,const SIMDOUBLE* poseIn2,SIMDOUBLE interpolFactor,SIMDOUBLE* poseOut) { return SIM_API_SYMBOL(simInterpolatePoses)(poseIn1,poseIn2,interpolFactor,poseOut); }
+    static inline int simPoseToMatrix(const SIMDOUBLE* poseIn,SIMDOUBLE* matrixOut) { return SIM_API_SYMBOL(simPoseToMatrix)(poseIn,matrixOut); }
+    static inline int simMatrixToPose(const SIMDOUBLE* matrixIn,SIMDOUBLE* poseOut) { return SIM_API_SYMBOL(simMatrixToPose)(matrixIn,poseOut); }
+    static inline int simInterpolateMatrices(const SIMDOUBLE* matrixIn1,const SIMDOUBLE* matrixIn2,SIMDOUBLE interpolFactor,SIMDOUBLE* matrixOut) { return SIM_API_SYMBOL(simInterpolateMatrices)(matrixIn1,matrixIn2,interpolFactor,matrixOut); }
+    static inline int simTransformVector(const SIMDOUBLE* matrix,SIMDOUBLE* vect) { return SIM_API_SYMBOL(simTransformVector)(matrix,vect); }
+    static inline SIMDOUBLE simGetSimulationTime() { return SIM_API_SYMBOL(simGetSimulationTime)(); }
+    static inline SIMDOUBLE simGetSystemTime() { return SIM_API_SYMBOL(simGetSystemTime)(); }
+    static inline int simHandleProximitySensor(SIMHANDLE sensorHandle,SIMDOUBLE* detectedPoint,SIMHANDLE* detectedObjectHandle,SIMDOUBLE* normalVector) { return SIM_API_SYMBOL(simHandleProximitySensor)(sensorHandle,detectedPoint,detectedObjectHandle,normalVector); }
+    static inline int simReadProximitySensor(SIMHANDLE sensorHandle,SIMDOUBLE* detectedPoint,SIMHANDLE* detectedObjectHandle,SIMDOUBLE* normalVector) { return SIM_API_SYMBOL(simReadProximitySensor)(sensorHandle,detectedPoint,detectedObjectHandle,normalVector); }
+    static inline int simHandleDynamics(SIMDOUBLE deltaTime) { return SIM_API_SYMBOL(simHandleDynamics)(deltaTime); }
+    static inline int simCheckProximitySensor(SIMHANDLE sensorHandle,SIMHANDLE entityHandle,SIMDOUBLE* detectedPoint) { return SIM_API_SYMBOL(simCheckProximitySensor)(sensorHandle,entityHandle,detectedPoint); }
+    static inline int simCheckProximitySensorEx(SIMHANDLE sensorHandle,SIMHANDLE entityHandle,int detectionMode,SIMDOUBLE detectionThreshold,SIMDOUBLE maxAngle,SIMDOUBLE* detectedPoint,SIMHANDLE* detectedObjectHandle,SIMDOUBLE* normalVector) { return SIM_API_SYMBOL(simCheckProximitySensorEx)(sensorHandle,entityHandle,detectionMode,detectionThreshold,maxAngle,detectedPoint,detectedObjectHandle,normalVector); }
+    static inline int simCheckProximitySensorEx2(SIMHANDLE sensorHandle,SIMDOUBLE* vertexPointer,int itemType,int itemCount,int detectionMode,SIMDOUBLE detectionThreshold,SIMDOUBLE maxAngle,SIMDOUBLE* detectedPoint,SIMDOUBLE* normalVector) { return SIM_API_SYMBOL(simCheckProximitySensorEx2)(sensorHandle,vertexPointer,itemType,itemCount,detectionMode,detectionThreshold,maxAngle,detectedPoint,normalVector); }
+    static inline int simCheckCollisionEx(SIMHANDLE entity1Handle,SIMHANDLE entity2Handle,SIMDOUBLE** intersectionSegments) { return SIM_API_SYMBOL(simCheckCollisionEx)(entity1Handle,entity2Handle,intersectionSegments); }
+    static inline int simCheckDistance(SIMHANDLE entity1Handle,SIMHANDLE entity2Handle,SIMDOUBLE threshold,SIMDOUBLE* distanceData) { return SIM_API_SYMBOL(simCheckDistance)(entity1Handle,entity2Handle,threshold,distanceData); }
+    static inline int simSetSimulationTimeStep(SIMDOUBLE timeStep) { return SIM_API_SYMBOL(simSetSimulationTimeStep)(timeStep); }
+    static inline SIMDOUBLE simGetSimulationTimeStep() { return SIM_API_SYMBOL(simGetSimulationTimeStep)(); }
+    static inline int simFloatingViewAdd(SIMDOUBLE posX,SIMDOUBLE posY,SIMDOUBLE sizeX,SIMDOUBLE sizeY,int options) { return SIM_API_SYMBOL(simFloatingViewAdd)(posX,posY,sizeX,sizeY,options); }
+    static inline int simHandleGraph(SIMHANDLE graphHandle,SIMDOUBLE simulationTime) { return SIM_API_SYMBOL(simHandleGraph)(graphHandle,simulationTime); }
+    static inline int simSetGraphStreamTransformation(SIMHANDLE graphHandle,int streamId,int trType,SIMDOUBLE mult,SIMDOUBLE off,int movingAvgPeriod) { return SIM_API_SYMBOL(simSetGraphStreamTransformation)(graphHandle,streamId,trType,mult,off,movingAvgPeriod); }
+    static inline int simAddGraphCurve(SIMHANDLE graphHandle,const char* curveName,int dim,const int* streamIds,const SIMDOUBLE* defaultValues,const char* unitStr,int options,const float* color,int curveWidth) { return SIM_API_SYMBOL(simAddGraphCurve)(graphHandle,curveName,dim,streamIds,defaultValues,unitStr,options,color,curveWidth); }
+    static inline int simSetGraphStreamValue(SIMHANDLE graphHandle,int streamId,SIMDOUBLE value) { return SIM_API_SYMBOL(simSetGraphStreamValue)(graphHandle,streamId,value); }
+    static inline int simSetJointTargetVelocity(SIMHANDLE objectHandle,SIMDOUBLE targetVelocity) { return SIM_API_SYMBOL(simSetJointTargetVelocity)(objectHandle,targetVelocity); }
+    static inline int simGetJointTargetVelocity(SIMHANDLE objectHandle,SIMDOUBLE* targetVelocity) { return SIM_API_SYMBOL(simGetJointTargetVelocity)(objectHandle,targetVelocity); }
+    static inline int simScaleObjects(const SIMHANDLE* objectHandles,int objectCount,SIMDOUBLE scalingFactor,bool scalePositionsToo) { return SIM_API_SYMBOL(simScaleObjects)(objectHandles,objectCount,scalingFactor,scalePositionsToo); }
+    static inline SIMHANDLE simAddDrawingObject(int objectType,SIMDOUBLE size,SIMDOUBLE duplicateTolerance,SIMHANDLE parentObjectHandle,int maxItemCount,const float* color,const float* setToNULL,const float* setToNULL2,const float* setToNULL3) { return SIM_API_SYMBOL(simAddDrawingObject)(objectType,size,duplicateTolerance,parentObjectHandle,maxItemCount,color,setToNULL,setToNULL2,setToNULL3); }
+    static inline int simAddGraphStream(SIMHANDLE graphHandle,const char* streamName,const char* unitStr,int options,const float* color,SIMDOUBLE cyclicRange) { return SIM_API_SYMBOL(simAddGraphStream)(graphHandle,streamName,unitStr,options,color,cyclicRange); }
+    static inline int simAddDrawingObjectItem(SIMHANDLE objectHandle,const SIMDOUBLE* itemData) { return SIM_API_SYMBOL(simAddDrawingObjectItem)(objectHandle,itemData); }
+    static inline SIMDOUBLE simGetObjectSizeFactor(SIMHANDLE objectHandle) { return SIM_API_SYMBOL(simGetObjectSizeFactor)(objectHandle); }
+    static inline int simReadForceSensor(SIMHANDLE objectHandle,SIMDOUBLE* forceVector,SIMDOUBLE* torqueVector) { return SIM_API_SYMBOL(simReadForceSensor)(objectHandle,forceVector,torqueVector); }
+    static inline int simGetVelocity(SIMHANDLE shapeHandle,SIMDOUBLE* linearVelocity,SIMDOUBLE* angularVelocity) { return SIM_API_SYMBOL(simGetVelocity)(shapeHandle,linearVelocity,angularVelocity); }
+    static inline int simGetObjectVelocity(SIMHANDLE objectHandle,SIMDOUBLE* linearVelocity,SIMDOUBLE* angularVelocity) { return SIM_API_SYMBOL(simGetObjectVelocity)(objectHandle,linearVelocity,angularVelocity); }
+    static inline int simGetJointVelocity(SIMHANDLE jointHandle,SIMDOUBLE* velocity) { return SIM_API_SYMBOL(simGetJointVelocity)(jointHandle,velocity); }
+    static inline int simAddForceAndTorque(SIMHANDLE shapeHandle,const SIMDOUBLE* force,const SIMDOUBLE* torque) { return SIM_API_SYMBOL(simAddForceAndTorque)(shapeHandle,force,torque); }
+    static inline int simAddForce(SIMHANDLE shapeHandle,const SIMDOUBLE* position,const SIMDOUBLE* force) { return SIM_API_SYMBOL(simAddForce)(shapeHandle,position,force); }
+    static inline int simSetObjectColor(SIMHANDLE objectHandle,int index,int colorComponent,const float* rgbData) { return SIM_API_SYMBOL(simSetObjectColor)(objectHandle,index,colorComponent,rgbData); }
+    static inline int simGetObjectColor(SIMHANDLE objectHandle,int index,int colorComponent,float* rgbData) { return SIM_API_SYMBOL(simGetObjectColor)(objectHandle,index,colorComponent,rgbData); }
+    static inline int simSetShapeColor(SIMHANDLE shapeHandle,const char* colorName,int colorComponent,const float* rgbData) { return SIM_API_SYMBOL(simSetShapeColor)(shapeHandle,colorName,colorComponent,rgbData); }
+    static inline int simGetShapeColor(SIMHANDLE shapeHandle,const char* colorName,int colorComponent,float* rgbData) { return SIM_API_SYMBOL(simGetShapeColor)(shapeHandle,colorName,colorComponent,rgbData); }
+    static inline int simGetContactInfo(int dynamicPass,SIMHANDLE objectHandle,int index,SIMHANDLE* objectHandles,SIMDOUBLE* contactInfo) { return SIM_API_SYMBOL(simGetContactInfo)(dynamicPass,objectHandle,index,objectHandles,contactInfo); }
+    static inline int simAuxiliaryConsoleOpen(const char* title,int maxLines,int mode,const int* position,const int* size,const float* textColor,const float* backgroundColor) { return SIM_API_SYMBOL(simAuxiliaryConsoleOpen)(title,maxLines,mode,position,size,textColor,backgroundColor); }
+    static inline SIMHANDLE simImportShape(int fileformat,const char* pathAndFilename,int options,SIMDOUBLE identicalVerticeTolerance,SIMDOUBLE scalingFactor) { return SIM_API_SYMBOL(simImportShape)(fileformat,pathAndFilename,options,identicalVerticeTolerance,scalingFactor); }
+    static inline int simImportMesh(int fileformat,const char* pathAndFilename,int options,SIMDOUBLE identicalVerticeTolerance,SIMDOUBLE scalingFactor,SIMDOUBLE*** vertices,int** verticesSizes,int*** indices,int** indicesSizes,SIMDOUBLE*** reserved,char*** names) { return SIM_API_SYMBOL(simImportMesh)(fileformat,pathAndFilename,options,identicalVerticeTolerance,scalingFactor,vertices,verticesSizes,indices,indicesSizes,reserved,names); }
+    static inline int simExportMesh(int fileformat,const char* pathAndFilename,int options,SIMDOUBLE scalingFactor,int elementCount,const SIMDOUBLE** vertices,const int* verticesSizes,const int** indices,const int* indicesSizes,SIMDOUBLE** reserved,const char** names) { return SIM_API_SYMBOL(simExportMesh)(fileformat,pathAndFilename,options,scalingFactor,elementCount,vertices,verticesSizes,indices,indicesSizes,reserved,names); }
+    static inline SIMHANDLE simCreateShape(int options,double shadingAngle,const double* vertices,int verticesSize,const int* indices,int indicesSize,const double* normals,const float* textCoords,const unsigned char* texture,const int* textureResolution) { return SIM_API_SYMBOL(simCreateShape)(options,shadingAngle,vertices,verticesSize,indices,indicesSize,normals,textCoords,texture,textureResolution); }
+    static inline SIMHANDLE simCreateMeshShape(int options,SIMDOUBLE shadingAngle,const SIMDOUBLE* vertices,int verticesSize,const int* indices,int indicesSize,SIMDOUBLE* reserved) { return SIM_API_SYMBOL(simCreateMeshShape)(options,shadingAngle,vertices,verticesSize,indices,indicesSize,reserved); }
+    static inline SIMHANDLE simCreatePrimitiveShape(int primitiveType,const SIMDOUBLE* sizes,int options) { return SIM_API_SYMBOL(simCreatePrimitiveShape)(primitiveType,sizes,options); }
+    static inline SIMHANDLE simCreateHeightfieldShape(int options,SIMDOUBLE shadingAngle,int xPointCount,int yPointCount,SIMDOUBLE xSize,const SIMDOUBLE* heights) { return SIM_API_SYMBOL(simCreateHeightfieldShape)(options,shadingAngle,xPointCount,yPointCount,xSize,heights); }
+    static inline int simGetShapeMesh(SIMHANDLE shapeHandle,SIMDOUBLE** vertices,int* verticesSize,int** indices,int* indicesSize,SIMDOUBLE** normals) { return SIM_API_SYMBOL(simGetShapeMesh)(shapeHandle,vertices,verticesSize,indices,indicesSize,normals); }
+    static inline SIMHANDLE simCreateJoint(int jointType,int jointMode,int options,const SIMDOUBLE* sizes,const SIMDOUBLE* reservedA,const SIMDOUBLE* reservedB) { return SIM_API_SYMBOL(simCreateJoint)(jointType,jointMode,options,sizes,reservedA,reservedB); }
+    static inline SIMHANDLE simCreateDummy(SIMDOUBLE size,const float* reserved) { return SIM_API_SYMBOL(simCreateDummy)(size,reserved); }
+    static inline SIMHANDLE simCreateScript(int scriptType,const char* scriptText, int options, const char* lang) { return SIM_API_SYMBOL(simCreateScript)(scriptType,scriptText,options,lang); }
+    static inline int simGetObjectHierarchyOrder(SIMHANDLE objectHandle, int* totalSiblings) { return SIM_API_SYMBOL(simGetObjectHierarchyOrder)(objectHandle,totalSiblings); }
+    static inline int simSetObjectHierarchyOrder(SIMHANDLE objectHandle, int order) { return SIM_API_SYMBOL(simSetObjectHierarchyOrder)(objectHandle,order); }
+    static inline SIMHANDLE simCreateForceSensor(int options,const int* intParams,const SIMDOUBLE* floatParams,const SIMDOUBLE* reserved) { return SIM_API_SYMBOL(simCreateForceSensor)(options,intParams,floatParams,reserved); }
+    static inline SIMHANDLE simCreateVisionSensor(int options,const int* intParams,const SIMDOUBLE* floatParams,const SIMDOUBLE* reserved) { return SIM_API_SYMBOL(simCreateVisionSensor)(options,intParams,floatParams,reserved); }
+    static inline SIMHANDLE simCreateProximitySensor(int sensorType,int subType,int options,const int* intParams,const SIMDOUBLE* floatParams,const SIMDOUBLE* reserved) { return SIM_API_SYMBOL(simCreateProximitySensor)(sensorType,subType,options,intParams,floatParams,reserved); }
+    static inline int simGetRotationAxis(const SIMDOUBLE* matrixStart,const SIMDOUBLE* matrixGoal,SIMDOUBLE* axis,SIMDOUBLE* angle) { return SIM_API_SYMBOL(simGetRotationAxis)(matrixStart,matrixGoal,axis,angle); }
+    static inline int simRotateAroundAxis(const SIMDOUBLE* matrixIn,const SIMDOUBLE* axis,const SIMDOUBLE* axisPos,SIMDOUBLE angle,SIMDOUBLE* matrixOut) { return SIM_API_SYMBOL(simRotateAroundAxis)(matrixIn,axis,axisPos,angle,matrixOut); }
+    static inline int simGetJointForce(SIMHANDLE jointHandle,SIMDOUBLE* forceOrTorque) { return SIM_API_SYMBOL(simGetJointForce)(jointHandle,forceOrTorque); }
+    static inline int simCameraFitToView(SIMHANDLE viewHandleOrIndex,int objectCount,const SIMHANDLE* objectHandles,int options,SIMDOUBLE scaling) { return SIM_API_SYMBOL(simCameraFitToView)(viewHandleOrIndex,objectCount,objectHandles,options,scaling); }
+    static inline int simHandleVisionSensor(SIMHANDLE visionSensorHandle,SIMDOUBLE** auxValues,int** auxValuesCount) { return SIM_API_SYMBOL(simHandleVisionSensor)(visionSensorHandle,auxValues,auxValuesCount); }
+    static inline int simReadVisionSensor(SIMHANDLE visionSensorHandle,SIMDOUBLE** auxValues,int** auxValuesCount) { return SIM_API_SYMBOL(simReadVisionSensor)(visionSensorHandle,auxValues,auxValuesCount); }
+    static inline int simCheckVisionSensor(SIMHANDLE visionSensorHandle,SIMHANDLE entityHandle,SIMDOUBLE** auxValues,int** auxValuesCount) { return SIM_API_SYMBOL(simCheckVisionSensor)(visionSensorHandle,entityHandle,auxValues,auxValuesCount); }
+    static inline unsigned char* simGetVisionSensorImg(SIMHANDLE sensorHandle,int options,SIMDOUBLE rgbaCutOff,const int* pos,const int* size,int* resolution) { return SIM_API_SYMBOL(simGetVisionSensorImg)(sensorHandle,options,rgbaCutOff,pos,size,resolution); }
+    static inline int simGetVisionSensorRes(SIMHANDLE visionSensorHandle,int* resolution) { return SIM_API_SYMBOL(simGetVisionSensorRes)(visionSensorHandle,resolution); }
+    static inline int simGetObjectQuaternion(SIMHANDLE objectHandle,SIMHANDLE relativeToObjectHandle,SIMDOUBLE* quaternion) { return SIM_API_SYMBOL(simGetObjectQuaternion)(objectHandle,relativeToObjectHandle,quaternion); }
+    static inline int simSetObjectQuaternion(SIMHANDLE objectHandle,SIMHANDLE relativeToObjectHandle,const SIMDOUBLE* quaternion) { return SIM_API_SYMBOL(simSetObjectQuaternion)(objectHandle,relativeToObjectHandle,quaternion); }
+    static inline SIMHANDLE simConvexDecompose(SIMHANDLE shapeHandle,int options,const int* intParams,const SIMDOUBLE* floatParams) { return SIM_API_SYMBOL(simConvexDecompose)(shapeHandle,options,intParams,floatParams); }
+    static inline int simWriteTexture(SIMHANDLE textureId,int options,const char* data,int posX,int posY,int sizeX,int sizeY,SIMDOUBLE interpol) { return SIM_API_SYMBOL(simWriteTexture)(textureId,options,data,posX,posY,sizeX,sizeY,interpol); }
+    static inline SIMHANDLE simCreateTexture(const char* fileName,int options,const SIMDOUBLE* planeSizes,const SIMDOUBLE* scalingUV,const SIMDOUBLE* xy_g,int fixedResolution,int* textureId,int* resolution,const void* reserved) { return SIM_API_SYMBOL(simCreateTexture)(fileName,options,planeSizes,scalingUV,xy_g,fixedResolution,textureId,resolution,reserved); }
+    static inline int simGetShapeGeomInfo(SIMHANDLE shapeHandle,int* intData,SIMDOUBLE* floatData,void* reserved) { return SIM_API_SYMBOL(simGetShapeGeomInfo)(shapeHandle,intData,floatData,reserved); }
+    static inline int simScaleObject(SIMHANDLE objectHandle,SIMDOUBLE xScale,SIMDOUBLE yScale,SIMDOUBLE zScale,int options) { return SIM_API_SYMBOL(simScaleObject)(objectHandle,xScale,yScale,zScale,options); }
+    static inline int simSetShapeTexture(SIMHANDLE shapeHandle,SIMHANDLE textureId,int mappingMode,int options,const SIMDOUBLE* uvScaling,const SIMDOUBLE* position,const SIMDOUBLE* orientation) { return SIM_API_SYMBOL(simSetShapeTexture)(shapeHandle,textureId,mappingMode,options,uvScaling,position,orientation); }
+    static inline int simGetQHull(const SIMDOUBLE* inVertices,int inVerticesL,SIMDOUBLE** verticesOut,int* verticesOutL,int** indicesOut,int* indicesOutL,int reserved1,const SIMDOUBLE* reserved2) { return SIM_API_SYMBOL(simGetQHull)(inVertices,inVerticesL,verticesOut,verticesOutL,indicesOut,indicesOutL,reserved1,reserved2); }
+    static inline int simGetDecimatedMesh(const SIMDOUBLE* inVertices,int inVerticesL,const int* inIndices,int inIndicesL,SIMDOUBLE** verticesOut,int* verticesOutL,int** indicesOut,int* indicesOutL,SIMDOUBLE decimationPercent,int reserved1,const SIMDOUBLE* reserved2) { return SIM_API_SYMBOL(simGetDecimatedMesh)(inVertices,inVerticesL,inIndices,inIndicesL,verticesOut,verticesOutL,indicesOut,indicesOutL,decimationPercent,reserved1,reserved2); }
+    static inline int simComputeMassAndInertia(SIMHANDLE shapeHandle,SIMDOUBLE density) { return SIM_API_SYMBOL(simComputeMassAndInertia)(shapeHandle,density); }
+    static inline SIMHANDLE simCreateOctree(SIMDOUBLE voxelSize,int options,SIMDOUBLE pointSize,void* reserved) { return SIM_API_SYMBOL(simCreateOctree)(voxelSize,options,pointSize,reserved); }
+    static inline SIMHANDLE simCreatePointCloud(SIMDOUBLE maxVoxelSize,int maxPtCntPerVoxel,int options,SIMDOUBLE pointSize,void* reserved) { return SIM_API_SYMBOL(simCreatePointCloud)(maxVoxelSize,maxPtCntPerVoxel,options,pointSize,reserved); }
+    static inline int simSetPointCloudOptions(SIMHANDLE pointCloudHandle,SIMDOUBLE maxVoxelSize,int maxPtCntPerVoxel,int options,SIMDOUBLE pointSize,void* reserved) { return SIM_API_SYMBOL(simSetPointCloudOptions)(pointCloudHandle,maxVoxelSize,maxPtCntPerVoxel,options,pointSize,reserved); }
+    static inline int simGetPointCloudOptions(SIMHANDLE pointCloudHandle,SIMDOUBLE* maxVoxelSize,int* maxPtCntPerVoxel,int* options,SIMDOUBLE* pointSize,void* reserved) { return SIM_API_SYMBOL(simGetPointCloudOptions)(pointCloudHandle,maxVoxelSize,maxPtCntPerVoxel,options,pointSize,reserved); }
+    static inline int simInsertVoxelsIntoOctree(SIMHANDLE octreeHandle,int options,const SIMDOUBLE* pts,int ptCnt,const unsigned char* color,const unsigned int* tag,void* reserved) { return SIM_API_SYMBOL(simInsertVoxelsIntoOctree)(octreeHandle,options,pts,ptCnt,color,tag,reserved); }
+    static inline int simRemoveVoxelsFromOctree(SIMHANDLE octreeHandle,int options,const SIMDOUBLE* pts,int ptCnt,void* reserved) { return SIM_API_SYMBOL(simRemoveVoxelsFromOctree)(octreeHandle,options,pts,ptCnt,reserved); }
+    static inline int simInsertPointsIntoPointCloud(SIMHANDLE pointCloudHandle,int options,const SIMDOUBLE* pts,int ptCnt,const unsigned char* color,void* optionalValues) { return SIM_API_SYMBOL(simInsertPointsIntoPointCloud)(pointCloudHandle,options,pts,ptCnt,color,optionalValues); }
+    static inline int simRemovePointsFromPointCloud(SIMHANDLE pointCloudHandle,int options,const SIMDOUBLE* pts,int ptCnt,SIMDOUBLE tolerance,void* reserved) { return SIM_API_SYMBOL(simRemovePointsFromPointCloud)(pointCloudHandle,options,pts,ptCnt,tolerance,reserved); }
+    static inline int simIntersectPointsWithPointCloud(SIMHANDLE pointCloudHandle,int options,const SIMDOUBLE* pts,int ptCnt,SIMDOUBLE tolerance,void* reserved) { return SIM_API_SYMBOL(simIntersectPointsWithPointCloud)(pointCloudHandle,options,pts,ptCnt,tolerance,reserved); }
+    static inline int simInsertObjectIntoPointCloud(SIMHANDLE pointCloudHandle,SIMHANDLE objectHandle,int options,SIMDOUBLE gridSize,const unsigned char* color,void* optionalValues) { return SIM_API_SYMBOL(simInsertObjectIntoPointCloud)(pointCloudHandle,objectHandle,options,gridSize,color,optionalValues); }
+    static inline int simSubtractObjectFromPointCloud(SIMHANDLE pointCloudHandle,SIMHANDLE objectHandle,int options,SIMDOUBLE tolerance,void* reserved) { return SIM_API_SYMBOL(simSubtractObjectFromPointCloud)(pointCloudHandle,objectHandle,options,tolerance,reserved); }
+    static inline int simCheckOctreePointOccupancy(SIMHANDLE octreeHandle,int options,const SIMDOUBLE* points,int ptCnt,unsigned int* tag,unsigned long long int* location,void* reserved) { return SIM_API_SYMBOL(simCheckOctreePointOccupancy)(octreeHandle,options,points,ptCnt,tag,location,reserved); }
+    static inline int simApplyTexture(SIMHANDLE shapeHandle,const SIMDOUBLE* textureCoordinates,int textCoordSize,const unsigned char* texture,const int* textureResolution,int options) { return SIM_API_SYMBOL(simApplyTexture)(shapeHandle,textureCoordinates,textCoordSize,texture,textureResolution,options); }
+    static inline int simSetJointDependency(SIMHANDLE jointHandle,SIMHANDLE masterJointHandle,SIMDOUBLE offset,SIMDOUBLE multCoeff) { return SIM_API_SYMBOL(simSetJointDependency)(jointHandle,masterJointHandle,offset,multCoeff); }
+    static inline int simGetJointDependency(SIMHANDLE jointHandle,SIMHANDLE* masterJointHandle,SIMDOUBLE* offset,SIMDOUBLE* multCoeff) { return SIM_API_SYMBOL(simGetJointDependency)(jointHandle,masterJointHandle,offset,multCoeff); }
+    static inline int simGetShapeMass(SIMHANDLE shapeHandle,SIMDOUBLE* mass) { return SIM_API_SYMBOL(simGetShapeMass)(shapeHandle,mass); }
+    static inline int simSetShapeMass(SIMHANDLE shapeHandle,SIMDOUBLE mass) { return SIM_API_SYMBOL(simSetShapeMass)(shapeHandle,mass); }
+    static inline int simGetShapeInertia(SIMHANDLE shapeHandle,SIMDOUBLE* inertiaMatrix,SIMDOUBLE* transformationMatrix) { return SIM_API_SYMBOL(simGetShapeInertia)(shapeHandle,inertiaMatrix,transformationMatrix); }
+    static inline int simSetShapeInertia(SIMHANDLE shapeHandle,const SIMDOUBLE* inertiaMatrix,const SIMDOUBLE* transformationMatrix) { return SIM_API_SYMBOL(simSetShapeInertia)(shapeHandle,inertiaMatrix,transformationMatrix); }
+    static inline SIMHANDLE simGenerateShapeFromPath(const SIMDOUBLE* path,int pathSize,const SIMDOUBLE* section,int sectionSize,int options,const SIMDOUBLE* upVector,SIMDOUBLE reserved) { return SIM_API_SYMBOL(simGenerateShapeFromPath)(path,pathSize,section,sectionSize,options,upVector,reserved); }
+    static inline SIMDOUBLE simGetClosestPosOnPath(const SIMDOUBLE* path,int pathSize,const SIMDOUBLE* pathLengths,const SIMDOUBLE* absPt) { return SIM_API_SYMBOL(simGetClosestPosOnPath)(path,pathSize,pathLengths,absPt); }
+    static inline void _simGetObjectLocalTransformation(const void* object,SIMDOUBLE* pos,SIMDOUBLE* quat,bool excludeFirstJointTransformation) { return SIM_API_SYMBOL(_simGetObjectLocalTransformation)(object,pos,quat,excludeFirstJointTransformation); }
+    static inline void _simSetObjectLocalTransformation(void* object,const SIMDOUBLE* pos,const SIMDOUBLE* quat,SIMDOUBLE simTime) { return SIM_API_SYMBOL(_simSetObjectLocalTransformation)(object,pos,quat,simTime); }
+    static inline void _simDynReportObjectCumulativeTransformation(void* object,const SIMDOUBLE* pos,const SIMDOUBLE* quat,SIMDOUBLE simTime) { return SIM_API_SYMBOL(_simDynReportObjectCumulativeTransformation)(object,pos,quat,simTime); }
+    static inline void _simSetObjectCumulativeTransformation(void* object,const SIMDOUBLE* pos,const SIMDOUBLE* quat,bool keepChildrenInPlace) { return SIM_API_SYMBOL(_simSetObjectCumulativeTransformation)(object,pos,quat,keepChildrenInPlace); }
+    static inline void _simGetObjectCumulativeTransformation(const void* object,SIMDOUBLE* pos,SIMDOUBLE* quat,bool excludeFirstJointTransformation) { return SIM_API_SYMBOL(_simGetObjectCumulativeTransformation)(object,pos,quat,excludeFirstJointTransformation); }
+    static inline void _simSetJointVelocity(const void* joint,SIMDOUBLE vel) { return SIM_API_SYMBOL(_simSetJointVelocity)(joint,vel); }
+    static inline void _simSetJointPosition(const void* joint,SIMDOUBLE pos) { return SIM_API_SYMBOL(_simSetJointPosition)(joint,pos); }
+    static inline SIMDOUBLE _simGetJointPosition(const void* joint) { return SIM_API_SYMBOL(_simGetJointPosition)(joint); }
+    static inline void _simSetDynamicMotorPositionControlTargetPosition(const void* joint,SIMDOUBLE pos) { return SIM_API_SYMBOL(_simSetDynamicMotorPositionControlTargetPosition)(joint,pos); }
+    static inline void _simGetInitialDynamicVelocity(const void* shape,SIMDOUBLE* vel) { return SIM_API_SYMBOL(_simGetInitialDynamicVelocity)(shape,vel); }
+    static inline void _simSetInitialDynamicVelocity(void* shape,const SIMDOUBLE* vel) { return SIM_API_SYMBOL(_simSetInitialDynamicVelocity)(shape,vel); }
+    static inline void _simGetInitialDynamicAngVelocity(const void* shape,SIMDOUBLE* angularVel) { return SIM_API_SYMBOL(_simGetInitialDynamicAngVelocity)(shape,angularVel); }
+    static inline void _simSetInitialDynamicAngVelocity(void* shape,const SIMDOUBLE* angularVel) { return SIM_API_SYMBOL(_simSetInitialDynamicAngVelocity)(shape,angularVel); }
+    static inline void _simSetShapeDynamicVelocity(void* shape,const SIMDOUBLE* linear,const SIMDOUBLE* angular,SIMDOUBLE simTime) { return SIM_API_SYMBOL(_simSetShapeDynamicVelocity)(shape,linear,angular,simTime); }
+    static inline void _simGetAdditionalForceAndTorque(const void* shape,SIMDOUBLE* force,SIMDOUBLE* torque) { return SIM_API_SYMBOL(_simGetAdditionalForceAndTorque)(shape,force,torque); }
+    static inline bool _simGetJointPositionInterval(const void* joint,SIMDOUBLE* minValue,SIMDOUBLE* rangeValue) { return SIM_API_SYMBOL(_simGetJointPositionInterval)(joint,minValue,rangeValue); }
+    static inline SIMDOUBLE _simGetDynamicMotorTargetPosition(const void* joint) { return SIM_API_SYMBOL(_simGetDynamicMotorTargetPosition)(joint); }
+    static inline SIMDOUBLE _simGetDynamicMotorTargetVelocity(const void* joint) { return SIM_API_SYMBOL(_simGetDynamicMotorTargetVelocity)(joint); }
+    static inline SIMDOUBLE _simGetDynamicMotorMaxForce(const void* joint) { return SIM_API_SYMBOL(_simGetDynamicMotorMaxForce)(joint); }
+    static inline SIMDOUBLE _simGetDynamicMotorUpperLimitVelocity(const void* joint) { return SIM_API_SYMBOL(_simGetDynamicMotorUpperLimitVelocity)(joint); }
+    static inline void _simSetDynamicMotorReflectedPositionFromDynamicEngine(void* joint,SIMDOUBLE pos,SIMDOUBLE simTime) { return SIM_API_SYMBOL(_simSetDynamicMotorReflectedPositionFromDynamicEngine)(joint,pos,simTime); }
+    static inline void _simSetJointSphericalTransformation(void* joint,const SIMDOUBLE* quat,SIMDOUBLE simTime) { return SIM_API_SYMBOL(_simSetJointSphericalTransformation)(joint,quat,simTime); }
+    static inline void _simAddForceSensorCumulativeForcesAndTorques(void* forceSensor,const SIMDOUBLE* force,const SIMDOUBLE* torque,int totalPassesCount,SIMDOUBLE simTime) { return SIM_API_SYMBOL(_simAddForceSensorCumulativeForcesAndTorques)(forceSensor,force,torque,totalPassesCount,simTime); }
+    static inline void _simAddJointCumulativeForcesOrTorques(void* joint,SIMDOUBLE forceOrTorque,int totalPassesCount,SIMDOUBLE simTime) { return SIM_API_SYMBOL(_simAddJointCumulativeForcesOrTorques)(joint,forceOrTorque,totalPassesCount,simTime); }
+    static inline SIMDOUBLE _simGetMass(const void* geomInfo) { return SIM_API_SYMBOL(_simGetMass)(geomInfo); }
+    static inline SIMDOUBLE _simGetLocalInertiaInfo(const void* object,SIMDOUBLE* pos,SIMDOUBLE* quat,SIMDOUBLE* diagI) { return SIM_API_SYMBOL(_simGetLocalInertiaInfo)(object,pos,quat,diagI); }
+    static inline void _simGetPurePrimitiveSizes(const void* geometric,SIMDOUBLE* sizes) { return SIM_API_SYMBOL(_simGetPurePrimitiveSizes)(geometric,sizes); }
+    static inline void _simGetVerticesLocalFrame(const void* shape,const void* geometric,SIMDOUBLE* pos,SIMDOUBLE* quat) { return SIM_API_SYMBOL(_simGetVerticesLocalFrame)(shape,geometric,pos,quat); }
+    static inline const SIMDOUBLE* _simGetHeightfieldData(const void* geometric,int* xCount,int* yCount,SIMDOUBLE* minHeight,SIMDOUBLE* maxHeight) { return SIM_API_SYMBOL(_simGetHeightfieldData)(geometric,xCount,yCount,minHeight,maxHeight); }
+    static inline void _simGetCumulativeMeshes(const void* shape,const void* geomInfo,SIMDOUBLE** vertices,int* verticesSize,int** indices,int* indicesSize) { return SIM_API_SYMBOL(_simGetCumulativeMeshes)(shape,geomInfo,vertices,verticesSize,indices,indicesSize); }
+    static inline void _simGetGravity(SIMDOUBLE* gravity) { return SIM_API_SYMBOL(_simGetGravity)(gravity); }
+    static inline bool _simGetDistanceBetweenEntitiesIfSmaller(SIMHANDLE entity1ID,SIMHANDLE entity2ID,SIMDOUBLE* distance,SIMDOUBLE* ray,int* cacheBuffer,bool overrideMeasurableFlagIfNonCollection1,bool overrideMeasurableFlagIfNonCollection2,bool pathPlanningRoutineCalling) { return SIM_API_SYMBOL(_simGetDistanceBetweenEntitiesIfSmaller)(entity1ID,entity2ID,distance,ray,cacheBuffer,overrideMeasurableFlagIfNonCollection1,overrideMeasurableFlagIfNonCollection2,pathPlanningRoutineCalling); }
+    static inline int _simHandleJointControl(const void* joint,int auxV,const int* inputValuesInt,const SIMDOUBLE* inputValuesFloat,SIMDOUBLE* outputValues) { return SIM_API_SYMBOL(_simHandleJointControl)(joint,auxV,inputValuesInt,inputValuesFloat,outputValues); }
+    static inline int _simHandleCustomContact(SIMHANDLE objHandle1,SIMHANDLE objHandle2,int engine,int* dataInt,SIMDOUBLE* dataFloat) { return SIM_API_SYMBOL(_simHandleCustomContact)(objHandle1,objHandle2,engine,dataInt,dataFloat); }
+    static inline SIMDOUBLE _simGetPureHollowScaling(const void* geometric) { return SIM_API_SYMBOL(_simGetPureHollowScaling)(geometric); }
+    static inline void _simDynCallback(const int* intData,const SIMDOUBLE* floatData) { return SIM_API_SYMBOL(_simDynCallback)(intData,floatData); }
 #endif // SIM_LIB_PREFIX
 
 #endif
