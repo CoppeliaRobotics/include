@@ -22,6 +22,7 @@
 namespace sim
 {
     using handle_t = int;
+    using long_t = long long int;
 
     struct PluginInfo
     {
@@ -126,10 +127,10 @@ namespace sim
     handle_t getObject(const std::string &objectPath, int index, handle_t proxy, bool noError);
     handle_t getObject(const std::string &objectPath, int index = -1, handle_t proxy = -1);
 
-    int64_t getObjectUid(handle_t objectHandle);
+    long_t getObjectUid(handle_t objectHandle);
 
-    handle_t getObjectFromUid(int64_t uid, int options);
-    handle_t getObjectFromUid(int64_t uid, bool noError);
+    handle_t getObjectFromUid(long_t uid, int options);
+    handle_t getObjectFromUid(long_t uid, bool noError);
 
     handle_t getScriptHandleEx(int scriptType, handle_t objHandle = -1, std::optional<std::string> scriptName = {});
 
@@ -333,7 +334,7 @@ namespace sim
 
     void pushInt32OntoStack(handle_t stackHandle, int value);
 
-    void pushInt64OntoStack(handle_t stackHandle, int64_t value);
+    void pushInt64OntoStack(handle_t stackHandle, long_t value);
 
     void pushStringOntoStack(handle_t stackHandle, const char *value, int stringSize);
     void pushStringOntoStack(handle_t stackHandle, const std::string &value);
@@ -350,8 +351,8 @@ namespace sim
     void pushInt32TableOntoStack(handle_t stackHandle, const int *values, int valueCnt);
     void pushInt32TableOntoStack(handle_t stackHandle, const std::vector<int> &values);
 
-    void pushInt64TableOntoStack(handle_t stackHandle, const int64_t *values, int valueCnt);
-    void pushInt64TableOntoStack(handle_t stackHandle, const std::vector<int64_t> &values);
+    void pushInt64TableOntoStack(handle_t stackHandle, const long_t *values, int valueCnt);
+    void pushInt64TableOntoStack(handle_t stackHandle, const std::vector<long_t> &values);
 
     void pushTableOntoStack(handle_t stackHandle);
 
@@ -369,7 +370,7 @@ namespace sim
 
     int getStackInt32Value(handle_t stackHandle, int *numberValue);
 
-    int getStackInt64Value(handle_t stackHandle, int64_t *numberValue);
+    int getStackInt64Value(handle_t stackHandle, long_t *numberValue);
 
     char * getStackStringValue(handle_t stackHandle, int *stringSize);
     int getStackStringValue(handle_t stackHandle, std::string *stringValue);
@@ -384,7 +385,7 @@ namespace sim
     int getStackInt32Table(handle_t stackHandle, int *array, int count);
     int getStackInt32Table(handle_t stackHandle, std::vector<int> *v);
 
-    int getStackInt64Table(handle_t stackHandle, int64_t *array, int count);
+    int getStackInt64Table(handle_t stackHandle, long_t *array, int count);
 
     void unfoldStackTable(handle_t stackHandle);
 
@@ -842,10 +843,10 @@ namespace sim
     int getIntProperty(handle_t target, const std::string &pname);
     std::optional<int> getIntProperty(handle_t target, const std::string &pname, std::optional<int> defaultValue);
 
-    void setLongProperty(handle_t target, const std::string &pname, int64_t value);
+    void setLongProperty(handle_t target, const std::string &pname, long_t value);
 
-    int64_t getLongProperty(handle_t target, const std::string &pname);
-    std::optional<int64_t> getLongProperty(handle_t target, const std::string &pname, std::optional<int64_t> defaultValue);
+    long_t getLongProperty(handle_t target, const std::string &pname);
+    std::optional<long_t> getLongProperty(handle_t target, const std::string &pname, std::optional<long_t> defaultValue);
 
     void setFloatProperty(handle_t target, const std::string &pname, double value);
 

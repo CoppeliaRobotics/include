@@ -145,9 +145,9 @@ static void readFromStack(sim::handle_t stackHandle, int *value, const ReadOptio
     }
 }
 
-static void readFromStack(sim::handle_t stackHandle, int64_t *value, const ReadOptions &rdopt = {})
+static void readFromStack(sim::handle_t stackHandle, sim::long_t *value, const ReadOptions &rdopt = {})
 {
-    int64_t v;
+    sim::long_t v;
     if(sim::getStackInt64Value(stackHandle, &v) == 1)
     {
         *value = v;
@@ -394,7 +394,7 @@ static void writeToStack(const int &value, sim::handle_t stackHandle, const Writ
     sim::pushInt32OntoStack(stackHandle, value);
 }
 
-static void writeToStack(const int64_t &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+static void writeToStack(const sim::long_t &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     sim::pushInt64OntoStack(stackHandle, value);
 }

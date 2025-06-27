@@ -273,15 +273,15 @@ handle_t getObject(const std::string &objectPath, int index, handle_t proxy)
     return getObject(objectPath, index, proxy, 0);
 }
 
-int64_t getObjectUid(handle_t objectHandle)
+long_t getObjectUid(handle_t objectHandle)
 {
-    int64_t ret = simGetObjectUid(objectHandle);
+    long_t ret = simGetObjectUid(objectHandle);
     if(ret == -1)
         throw api_error("simGetObjectUid");
     return ret;
 }
 
-handle_t getObjectFromUid(int64_t uid, int options)
+handle_t getObjectFromUid(long_t uid, int options)
 {
     handle_t handle = simGetObjectFromUid(uid, options);
     if(handle == -1)
@@ -289,7 +289,7 @@ handle_t getObjectFromUid(int64_t uid, int options)
     return handle;
 }
 
-handle_t getObjectFromUid(int64_t uid, bool noError)
+handle_t getObjectFromUid(long_t uid, bool noError)
 {
     int options = 0;
     if(noError) options |= 1;
@@ -1114,7 +1114,7 @@ void pushInt32OntoStack(handle_t stackHandle, int value)
     addStackDebugDump(stackHandle);
 }
 
-void pushInt64OntoStack(handle_t stackHandle, int64_t value)
+void pushInt64OntoStack(handle_t stackHandle, long_t value)
 {
     addStackDebugLog("simPushInt64OntoStack %ld", value);
 
@@ -1214,7 +1214,7 @@ void pushInt32TableOntoStack(handle_t stackHandle, const std::vector<int> &value
     pushInt32TableOntoStack(stackHandle, values.data(), values.size());
 }
 
-void pushInt64TableOntoStack(handle_t stackHandle, const int64_t *values, int valueCnt)
+void pushInt64TableOntoStack(handle_t stackHandle, const long_t *values, int valueCnt)
 {
     addStackDebugLog("simPushInt64TableOntoStack <%d values>", valueCnt);
 
@@ -1224,7 +1224,7 @@ void pushInt64TableOntoStack(handle_t stackHandle, const int64_t *values, int va
     addStackDebugDump(stackHandle);
 }
 
-void pushInt64TableOntoStack(handle_t stackHandle, const std::vector<int64_t> &values)
+void pushInt64TableOntoStack(handle_t stackHandle, const std::vector<long_t> &values)
 {
     pushInt64TableOntoStack(stackHandle, values.data(), values.size());
 }
@@ -1332,7 +1332,7 @@ int getStackInt32Value(handle_t stackHandle, int *numberValue)
     return ret;
 }
 
-int getStackInt64Value(handle_t stackHandle, int64_t *numberValue)
+int getStackInt64Value(handle_t stackHandle, long_t *numberValue)
 {
     int ret = simGetStackInt64Value(stackHandle, numberValue);
     if(ret == -1)
@@ -1477,7 +1477,7 @@ int getStackInt32Table(handle_t stackHandle, std::vector<int> *v)
     return getStackInt32Table(stackHandle, v->data(), count);
 }
 
-int getStackInt64Table(handle_t stackHandle, int64_t *array, int count)
+int getStackInt64Table(handle_t stackHandle, long_t *array, int count)
 {
     int ret = simGetStackInt64Table(stackHandle, array, count);
 
@@ -1488,7 +1488,7 @@ int getStackInt64Table(handle_t stackHandle, int64_t *array, int count)
     return ret;
 }
 
-int getStackInt64Table(handle_t stackHandle, std::vector<int64_t> *v)
+int getStackInt64Table(handle_t stackHandle, std::vector<long_t> *v)
 {
     int count = getStackTableInfo(stackHandle, 0);
     v->resize(count);
@@ -3037,25 +3037,25 @@ std::optional<int> getIntProperty(handle_t target, const std::string &pname, std
     return value;
 }
 
-void setLongProperty(handle_t target, const std::string &pname, int64_t value)
+void setLongProperty(handle_t target, const std::string &pname, long_t value)
 {
     int ret = simSetLongProperty(target, pname.c_str(), value);
     if(ret < 1)
         throw property_error("simSetLongProperty", pname);
 }
 
-int64_t getLongProperty(handle_t target, const std::string &pname)
+long_t getLongProperty(handle_t target, const std::string &pname)
 {
-    int64_t value = 0;
+    long_t value = 0;
     int ret = simGetLongProperty(target, pname.c_str(), &value);
     if(ret < 1)
         throw property_error("simGetLongProperty", pname);
     return value;
 }
 
-std::optional<int64_t> getLongProperty(handle_t target, const std::string &pname, std::optional<int64_t> defaultValue)
+std::optional<long_t> getLongProperty(handle_t target, const std::string &pname, std::optional<long_t> defaultValue)
 {
-    int64_t value = 0;
+    long_t value = 0;
     int ret = simGetLongProperty(target, pname.c_str(), &value);
     if(ret < 1)
         return defaultValueIfPropertyNotExistsOrThrow("simGetLongProperty", target, pname, defaultValue);
@@ -3481,9 +3481,9 @@ void pushValueOntoStack(handle_t stackHandle, const jsoncons::json& value)
     else if(value.is_bool())
         sim::pushBoolOntoStack(stackHandle, value.as<bool>());
     else if(value.is_int64())
-        sim::pushInt64OntoStack(stackHandle, value.as<int64_t>());
+        sim::pushInt64OntoStack(stackHandle, value.as<long_t>());
     else if(value.is_uint64())
-        sim::pushInt64OntoStack(stackHandle, static_cast<int64_t>(value.as<uint64_t>()));
+        sim::pushInt64OntoStack(stackHandle, static_cast<long_t>(value.as<uint64_t>()));
     else if(value.is_double())
         sim::pushDoubleOntoStack(stackHandle, value.as<double>());
     else if(value.is_null())
