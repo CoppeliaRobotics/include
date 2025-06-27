@@ -3,7 +3,11 @@
 #if !defined(SIMLIB1_INCLUDED_)
 #define SIMLIB1_INCLUDED_
 
-#warning simLib-1
+#ifdef _MSC_VER
+    #pragma message("simLib-1")
+#else
+    #warning simLib-1
+#endif
 
 #include "simConst.h"
 #include "simTypes.h"
