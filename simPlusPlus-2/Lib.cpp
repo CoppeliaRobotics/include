@@ -2594,7 +2594,7 @@ std::optional<int> getIntProperty(handle_t target, const std::string &pname, std
 
 void setLongProperty(handle_t target, const std::string &pname, int64_t value)
 {
-    int64_t ret = simSetLongProperty(target, pname.c_str(), value);
+    int ret = simSetLongProperty(target, pname.c_str(), value);
     if(ret < 1)
         throw property_error("simSetLongProperty", pname);
 }
@@ -2602,7 +2602,7 @@ void setLongProperty(handle_t target, const std::string &pname, int64_t value)
 int64_t getLongProperty(handle_t target, const std::string &pname)
 {
     int64_t value = 0;
-    int64_t ret = simGetLongProperty(target, pname.c_str(), &value);
+    int ret = simGetLongProperty(target, pname.c_str(), &value);
     if(ret < 1)
         throw property_error("simGetLongProperty", pname);
     return value;
