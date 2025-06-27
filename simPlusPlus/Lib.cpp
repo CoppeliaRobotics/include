@@ -3483,7 +3483,7 @@ void pushValueOntoStack(handle_t stackHandle, const jsoncons::json& value)
     else if(value.is_int64())
         sim::pushInt64OntoStack(stackHandle, value.as<long_t>());
     else if(value.is_uint64())
-        sim::pushInt64OntoStack(stackHandle, static_cast<long_t>(value.as<uint64_t>()));
+        sim::pushInt64OntoStack(stackHandle, static_cast<long_t>(value.as<::uint64_t>()));
     else if(value.is_double())
         sim::pushDoubleOntoStack(stackHandle, value.as<double>());
     else if(value.is_null())

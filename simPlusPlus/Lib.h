@@ -23,6 +23,7 @@ namespace sim
 {
     using handle_t = int;
     using long_t = long long int;
+    using uint64_t = unsigned long long int;
 
     struct PluginInfo
     {
