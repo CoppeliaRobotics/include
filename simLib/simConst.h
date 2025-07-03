@@ -96,8 +96,8 @@ enum { /* Simulation status */
     sim_simulation_advancing_firstafterstop     =sim_simulation_advancing|0x00,     /* First simulation pass (1x) */
     sim_simulation_advancing_running            =sim_simulation_advancing|0x01,     /* Normal simulation pass (>=1x) */
     /* reserved                                 =sim_simulation_advancing|0x02, */
-    sim_simulation_advancing_lastbeforepause    =sim_simulation_advancing|0x03,     /* Last simulation pass before pause (1x) */
-    sim_simulation_advancing_firstafterpause    =sim_simulation_advancing|0x04,     /* First simulation pass after pause (1x) */
+    sim_simulation_advancing_lastbeforepause    =sim_simulation_advancing|0x03,     /* Not used anymore */
+    sim_simulation_advancing_firstafterpause    =sim_simulation_advancing|0x04,     /* Not used anymore */
     sim_simulation_advancing_abouttostop        =sim_simulation_advancing|0x05,     /* "Trying to stop" simulation pass (>=1x) */
     sim_simulation_advancing_lastbeforestop     =sim_simulation_advancing|0x06      /* Last simulation pass (1x) */
 };
