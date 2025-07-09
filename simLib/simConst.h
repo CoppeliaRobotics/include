@@ -504,7 +504,8 @@ enum { /* stack item types */
     sim_stackitem_userdat,
     sim_stackitem_thread,
     sim_stackitem_lightuserdat,
-    sim_stackitem_integer
+    sim_stackitem_integer,
+    sim_stackitem_matrix
 };
 
 enum { /* stack table info */
@@ -523,8 +524,8 @@ enum { /* property type */
     sim_propertytype_vector3,
     sim_propertytype_quaternion,
     sim_propertytype_pose,
-    sim_propertytype_matrix3x3, /* not used */
-    sim_propertytype_matrix4x4, /* not used */
+    sim_propertytype_matrix3x3,
+    sim_propertytype_matrix4x4,
     sim_propertytype_color,
     sim_propertytype_floatarray,
     sim_propertytype_table,
@@ -532,6 +533,10 @@ enum { /* property type */
     sim_propertytype_vector2,
     sim_propertytype_intarray2,
     sim_propertytype_long,
+    sim_propertytype_null,
+    sim_propertytype_matrix,
+    sim_propertytype_array,
+    sim_propertytype_map,
 };
 
 enum { /* properties info */
