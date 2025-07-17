@@ -6,7 +6,6 @@ from model import ParamTable
 
 parser = argparse.ArgumentParser(description='Generate Lua typechecker.')
 parser.add_argument('xml_file', type=str, default=None, help='the callbacks.xml file')
-parser.add_argument('lua_file', type=str, default=None, help='the input lua file')
 parser.add_argument('lua_xml', type=str, default=None, help='the (lua) XML file')
 parser.add_argument('out_file', type=str, default=None, help='the output lua file')
 args = parser.parse_args()

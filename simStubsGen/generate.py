@@ -12,7 +12,7 @@ import model
 parser = argparse.ArgumentParser(description='Generate various things for CoppeliaSim plugin.')
 parser.add_argument('output_dir', type=str, default=None, help='the output directory')
 parser.add_argument('--xml-file', type=str, default='callbacks.xml', help='the XML file with the callback definitions')
-parser.add_argument('--lua-file', type=str, default=None, help='an optional LUA file containing docstrings')
+parser.add_argument('--lua-file', action='append', type=str, default=None, help='an optional LUA file containing docstrings (can appear multiple times)')
 parser.add_argument("--gen-stubs", help='generate C++ stubs', action='store_true')
 parser.add_argument("--gen-lua-xml", help='generate XML translation of Lua docstrings', action='store_true')
 parser.add_argument("--gen-reference-xml", help='generate merged XML (from callbacks.xml and lua.xml)', action='store_true')
@@ -114,19 +114,26 @@ for rel_path in ('../README.md', './README.md'):
 
 plugin = parse(args.xml_file)
 
+lua_files = args.lua_file or []
+
 if args.gen_cmake_meta:
     runtool('generate_cmake_metadata', args.xml_file, output('meta.cmake'))
     sys.exit(0)
 
 if args.gen_lua_xml:
-    if not args.lua_file:
+    if not lua_files:
         print('no lua file defined. skipping generate_lua_xml')
         args.gen_lua_xml = False
     else:
-        runtool('generate_lua_xml', args.xml_file, args.lua_file, output('lua.xml'))
+        cmdargs = ['generate_lua_xml']
+        cmdargs.extend(['--xml-file', args.xml_file])
+        for lua_file in lua_files:
+            cmdargs.extend(['--lua-file', lua_file])
+        cmdargs.extend(['--xml-output-file', output('lua.xml')])
+        runtool(*cmdargs)
 
 if args.gen_reference_xml:
-    if not args.lua_file:
+    if not lua_files:
         input_xml = args.xml_file
         print('no lua file defined. skipping gen_reference_xml')
     else:
@@ -155,11 +162,11 @@ if args.gen_reference_html:
             print(f"warning: no {marker} marker in {output('reference.html')}")
 
 if args.gen_lua_typechecker:
-    if not args.lua_file:
+    if not lua_files:
         print('no lua file defined. skipping gen_lua_typechecker')
         args.gen_lua_typechecker = False
     else:
-        runtool('generate_lua_typechecker', args.xml_file, args.lua_file, output('lua.xml'), output(f'typecheck.lua'))
+        runtool('generate_lua_typechecker', args.xml_file, output('lua.xml'), output(f'typecheck.lua'))
 
 if args.gen_api_index:
     runtool('generate_api_index', input_xml, output('index.json'))
