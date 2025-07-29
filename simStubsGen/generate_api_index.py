@@ -17,10 +17,10 @@ mapping = {}
 
 if plugin.version > 1:
     pluginKey = f'{plugin.name}_{plugin.version}'
-    htmFile = f'{plugin.name}-{plugin.version}.htm'
+    htmFile = f'{plugin.name}-{plugin.version}/{plugin.name}.htm'
 else:
     pluginKey = f'{plugin.name}'
-    htmFile = f'{plugin.name}.htm'
+    htmFile = f'{plugin.name}/{plugin.name}.htm'
 
 for cmd in plugin.commands:
     mapping[f'{cmd.name}'] = f'{htmFile}#{cmd.name}'
