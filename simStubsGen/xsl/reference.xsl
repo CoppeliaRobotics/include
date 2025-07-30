@@ -329,7 +329,7 @@
             <head>
                 <meta http-equiv="Content-Language" content="en-us"/>
                 <title><xsl:value-of select="/plugin/@name"/> Plugin API reference</title>
-                <link rel="stylesheet" type="text/css" href="../style.css"/>
+                <link rel="stylesheet" type="text/css" href="../../style.css"/>
                 <script type="text/javascript">
 //<![CDATA[
 function getParameterByName(name, url = window.location.href)
@@ -613,17 +613,17 @@ document.getElementById('scriptFunctions').style.display = view == null ? 'table
 //]]>
                 </script>
 
-                <link rel="stylesheet" href="../js/hljs/11.8.0/styles/default.min.css" />
-                <script src="../js/hljs/11.8.0/highlight.min.js"></script>
-                <script src="../js/hljs/11.8.0/languages/cmake.min.js"></script>
-                <script src="../js/hljs/11.8.0/languages/cpp.min.js"></script>
-                <script src="../js/hljs/11.8.0/languages/java.min.js"></script>
-                <script src="../js/hljs/11.8.0/languages/javascript.min.js"></script>
-                <script src="../js/hljs/11.8.0/languages/lua.min.js"></script>
-                <script src="../js/hljs/11.8.0/languages/matlab.min.js"></script>
-                <script src="../js/hljs/11.8.0/languages/python.min.js"></script>
-                <script src="../js/hljs/11.8.0/languages/rust.min.js"></script>
-                <script src="../js/hljs/11.8.0/languages/xml.min.js"></script>
+                <link rel="stylesheet" href="../../js/hljs/11.8.0/styles/default.min.css" />
+                <script src="../../js/hljs/11.8.0/highlight.min.js"></script>
+                <script src="../../js/hljs/11.8.0/languages/cmake.min.js"></script>
+                <script src="../../js/hljs/11.8.0/languages/cpp.min.js"></script>
+                <script src="../../js/hljs/11.8.0/languages/java.min.js"></script>
+                <script src="../../js/hljs/11.8.0/languages/javascript.min.js"></script>
+                <script src="../../js/hljs/11.8.0/languages/lua.min.js"></script>
+                <script src="../../js/hljs/11.8.0/languages/matlab.min.js"></script>
+                <script src="../../js/hljs/11.8.0/languages/python.min.js"></script>
+                <script src="../../js/hljs/11.8.0/languages/rust.min.js"></script>
+                <script src="../../js/hljs/11.8.0/languages/xml.min.js"></script>
                 <script>document.querySelectorAll('code.hljs').forEach(el => {hljs.highlightElement(el);})</script>
             </body>
         </html>
