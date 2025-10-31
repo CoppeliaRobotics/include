@@ -36,6 +36,8 @@ SIM_API_SYMBOL(ptrSimSetBoolProperty) SIM_API_SYMBOL(simSetBoolProperty) = nullp
 SIM_API_SYMBOL(ptrSimGetBoolProperty) SIM_API_SYMBOL(simGetBoolProperty) = nullptr;
 SIM_API_SYMBOL(ptrSimSetIntProperty) SIM_API_SYMBOL(simSetIntProperty) = nullptr;
 SIM_API_SYMBOL(ptrSimGetIntProperty) SIM_API_SYMBOL(simGetIntProperty) = nullptr;
+SIM_API_SYMBOL(ptrSimSetHandleProperty) SIM_API_SYMBOL(simSetHandleProperty) = nullptr;
+SIM_API_SYMBOL(ptrSimGetHandleProperty) SIM_API_SYMBOL(simGetHandleProperty) = nullptr;
 SIM_API_SYMBOL(ptrSimSetLongProperty) SIM_API_SYMBOL(simSetLongProperty) = nullptr;
 SIM_API_SYMBOL(ptrSimGetLongProperty) SIM_API_SYMBOL(simGetLongProperty) = nullptr;
 SIM_API_SYMBOL(ptrSimSetFloatProperty) SIM_API_SYMBOL(simSetFloatProperty) = nullptr;
@@ -62,6 +64,8 @@ SIM_API_SYMBOL(ptrSimSetFloatArrayProperty) SIM_API_SYMBOL(simSetFloatArrayPrope
 SIM_API_SYMBOL(ptrSimGetFloatArrayProperty) SIM_API_SYMBOL(simGetFloatArrayProperty) = nullptr;
 SIM_API_SYMBOL(ptrSimSetIntArrayProperty) SIM_API_SYMBOL(simSetIntArrayProperty) = nullptr;
 SIM_API_SYMBOL(ptrSimGetIntArrayProperty) SIM_API_SYMBOL(simGetIntArrayProperty) = nullptr;
+SIM_API_SYMBOL(ptrSimSetHandleArrayProperty) SIM_API_SYMBOL(simSetHandleArrayProperty) = nullptr;
+SIM_API_SYMBOL(ptrSimGetHandleArrayProperty) SIM_API_SYMBOL(simGetHandleArrayProperty) = nullptr;
 SIM_API_SYMBOL(ptrSimRemoveProperty) SIM_API_SYMBOL(simRemoveProperty) = nullptr;
 SIM_API_SYMBOL(ptrSimGetPropertyName) SIM_API_SYMBOL(simGetPropertyName) = nullptr;
 SIM_API_SYMBOL(ptrSimGetPropertyInfo) SIM_API_SYMBOL(simGetPropertyInfo) = nullptr;
@@ -510,6 +514,8 @@ int SIM_API_SYMBOL(getSimProcAddresses)(LIBRARY lib)
     SIM_API_SYMBOL(simGetBoolProperty) = (SIM_API_SYMBOL(ptrSimGetBoolProperty))(_getProcAddress(lib, "simGetBoolProperty", false));
     SIM_API_SYMBOL(simSetIntProperty) = (SIM_API_SYMBOL(ptrSimSetIntProperty))(_getProcAddress(lib, "simSetIntProperty", false));
     SIM_API_SYMBOL(simGetIntProperty) = (SIM_API_SYMBOL(ptrSimGetIntProperty))(_getProcAddress(lib, "simGetIntProperty", false));
+    SIM_API_SYMBOL(simSetHandleProperty) = (SIM_API_SYMBOL(ptrSimSetHandleProperty))(_getProcAddress(lib, "simSetHandleProperty", false));
+    SIM_API_SYMBOL(simGetHandleProperty) = (SIM_API_SYMBOL(ptrSimGetHandleProperty))(_getProcAddress(lib, "simGetHandleProperty", false));
     SIM_API_SYMBOL(simSetLongProperty) = (SIM_API_SYMBOL(ptrSimSetLongProperty))(_getProcAddress(lib, "simSetLongProperty", false));
     SIM_API_SYMBOL(simGetLongProperty) = (SIM_API_SYMBOL(ptrSimGetLongProperty))(_getProcAddress(lib, "simGetLongProperty", false));
     SIM_API_SYMBOL(simSetFloatProperty) = (SIM_API_SYMBOL(ptrSimSetFloatProperty))(_getProcAddress(lib, "simSetFloatProperty", false));
@@ -536,6 +542,8 @@ int SIM_API_SYMBOL(getSimProcAddresses)(LIBRARY lib)
     SIM_API_SYMBOL(simGetFloatArrayProperty) = (SIM_API_SYMBOL(ptrSimGetFloatArrayProperty))(_getProcAddress(lib, "simGetFloatArrayProperty2", false));
     SIM_API_SYMBOL(simSetIntArrayProperty) = (SIM_API_SYMBOL(ptrSimSetIntArrayProperty))(_getProcAddress(lib, "simSetIntArrayProperty", false));
     SIM_API_SYMBOL(simGetIntArrayProperty) = (SIM_API_SYMBOL(ptrSimGetIntArrayProperty))(_getProcAddress(lib, "simGetIntArrayProperty2", false));
+    SIM_API_SYMBOL(simSetHandleArrayProperty) = (SIM_API_SYMBOL(ptrSimSetHandleArrayProperty))(_getProcAddress(lib, "simSetHandleArrayProperty", false));
+    SIM_API_SYMBOL(simGetHandleArrayProperty) = (SIM_API_SYMBOL(ptrSimGetHandleArrayProperty))(_getProcAddress(lib, "simGetHandleArrayProperty2", false));
     SIM_API_SYMBOL(simRemoveProperty) = (SIM_API_SYMBOL(ptrSimRemoveProperty))(_getProcAddress(lib, "simRemoveProperty", false));
     SIM_API_SYMBOL(simGetPropertyName) = (SIM_API_SYMBOL(ptrSimGetPropertyName))(_getProcAddress(lib, "simGetPropertyName", false));
     SIM_API_SYMBOL(simGetPropertyInfo) = (SIM_API_SYMBOL(ptrSimGetPropertyInfo))(_getProcAddress(lib, "simGetPropertyInfo", false));
@@ -933,6 +941,16 @@ int SIM_API_SYMBOL(getSimProcAddresses)(LIBRARY lib)
         printf("%s simGetIntProperty\n", couldNotFind);
         return 0;
     }
+    if (SIM_API_SYMBOL(simSetHandleProperty) == nullptr)
+    {
+        printf("%s simSetHandleProperty\n", couldNotFind);
+        return 0;
+    }
+    if (SIM_API_SYMBOL(simGetHandleProperty) == nullptr)
+    {
+        printf("%s simGetHandleProperty\n", couldNotFind);
+        return 0;
+    }
     if (SIM_API_SYMBOL(simSetLongProperty) == nullptr)
     {
         printf("%s simSetLongProperty\n", couldNotFind);
@@ -1061,6 +1079,16 @@ int SIM_API_SYMBOL(getSimProcAddresses)(LIBRARY lib)
     if (SIM_API_SYMBOL(simGetIntArrayProperty) == nullptr)
     {
         printf("%s simGetIntArrayProperty\n", couldNotFind);
+        return 0;
+    }
+    if (SIM_API_SYMBOL(simSetHandleArrayProperty) == nullptr)
+    {
+        printf("%s simSetHandleArrayProperty\n", couldNotFind);
+        return 0;
+    }
+    if (SIM_API_SYMBOL(simGetHandleArrayProperty) == nullptr)
+    {
+        printf("%s simGetHandleArrayProperty\n", couldNotFind);
         return 0;
     }
     if (SIM_API_SYMBOL(simRemoveProperty) == nullptr)

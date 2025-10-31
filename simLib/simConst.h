@@ -537,6 +537,8 @@ enum { /* property type */
     sim_propertytype_matrix,
     sim_propertytype_array,
     sim_propertytype_map,
+    sim_propertytype_handle,
+    sim_propertytype_handlearray,
 };
 
 enum { /* properties info */
