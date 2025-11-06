@@ -57,6 +57,7 @@ enum {
     sim_objecttype_texture = 120,
     sim_objecttype_mesh = 122,
     sim_objecttype_interfacestack = 123,
+    sim_objecttype_drawingobject = 124,
 };
 
 /* Scene object sub-types. Values are serialized (see also deprecated values below) */
@@ -239,6 +240,9 @@ enum { /* special handle flags (use only below 4 bits, i.e. 0x3c00000): */
     sim_handleflag_model                =0x00800000,
     sim_handleflag_rawvalue             =0x01000000,
     sim_handleflag_silenterror          =0x02000000,
+
+    sim_handleflag_handlemask           =0x003fffff,
+    sim_handleflag_flagmask             =0x0fc00000,
 #endif
 };
 
