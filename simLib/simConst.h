@@ -551,6 +551,7 @@ enum { /* properties info */
     sim_propertyinfo_removable          = 0x004,
     sim_propertyinfo_modelhashexclude   = 0x008,
     sim_propertyinfo_deprecated         = 0x010,
+    sim_propertyinfo_silent             = 0x020,
     sim_propertyinfo_largedata          = 0x100,
 };
 
