@@ -57,44 +57,15 @@ else()
     return()
 endif()
 
-if(NOT DEFINED COPPELIASIM_SIMLIB_VERSIONS)
-    set(COPPELIASIM_SIMLIB_VERSIONS 1;2)
-endif()
-
-set(COPPELIASIM_SIMLIB_MODULES)
-foreach(COPPELIASIM_SIMLIB_VERSION IN LISTS COPPELIASIM_SIMLIB_VERSIONS)
-    set(COPPELIASIM_SIMLIB_MODULE "simLib")
-    if(COPPELIASIM_SIMLIB_VERSION GREATER 1)
-        set(COPPELIASIM_SIMLIB_MODULE "simLib-${COPPELIASIM_SIMLIB_VERSION}")
-    endif()
-    list(APPEND COPPELIASIM_EXPORTED_SOURCES "${COPPELIASIM_INCLUDE_DIR}/${COPPELIASIM_SIMLIB_MODULE}/simLib.cpp")
-    set(COPPELIASIM_SIMLIB_MODULES "${COPPELIASIM_SIMLIB_MODULES} ${COPPELIASIM_SIMLIB_MODULE}")
-endforeach()
-message(STATUS "CoppeliaSim: using modules${COPPELIASIM_SIMLIB_MODULES}")
-
-foreach(DIR IN LISTS COPPELIASIM_CHECK_MODULE_DIRS)
-    if(NOT IS_DIRECTORY "${DIR}")
-        coppeliasim_find_error("Directory ${DIR} does not exist.")
-        return()
-    endif()
-endforeach()
-
-# check required version:
-
-if(DEFINED CoppeliaSim_FIND_VERSION)
-    set(COPPELIASIM_VERSION_CHECK_SIMLIB_MODULE simLib)
-    list(GET COPPELIASIM_SIMLIB_VERSIONS 0 COPPELIASIM_SIMLIB_FIRST_VERSION)
-    if(COPPELIASIM_SIMLIB_FIRST_VERSION GREATER 1)
-        set(COPPELIASIM_VERSION_CHECK_SIMLIB_MODULE "simLib-${COPPELIASIM_SIMLIB_FIRST_VERSION}")
-    endif()
+function(check_simLib_version simLib_dir version)
     if(NOT CoppeliaSim_FIND_QUIETLY)
-        message(STATUS "Checking CoppeliaSim header version (using ${COPPELIASIM_VERSION_CHECK_SIMLIB_MODULE})...")
+        message(STATUS "Checking CoppeliaSim header version (using ${simLib_dir})...")
     endif()
     set(COPPELIASIM_VERSION_CHECK_SRC "${CMAKE_BINARY_DIR}/sim_version_check.cpp")
     set(COPPELIASIM_VERSION_CHECK_BIN "${CMAKE_BINARY_DIR}/sim_version_check")
     file(WRITE ${COPPELIASIM_VERSION_CHECK_SRC} "
 #include <iostream>
-#include <${COPPELIASIM_VERSION_CHECK_SIMLIB_MODULE}/simConst.h>
+#include <${simLib_dir}/simConst.h>
 int main() {
     char sep = ';';
     std::cout
@@ -105,7 +76,7 @@ int main() {
         << 0 << std::endl;
 }
 ")
-try_run(COPPELIASIM_VERSION_RUN_RESULT COPPELIASIM_VERSION_COMPILE_RESULT ${COPPELIASIM_VERSION_CHECK_BIN} ${COPPELIASIM_VERSION_CHECK_SRC} CMAKE_FLAGS -DINCLUDE_DIRECTORIES=${COPPELIASIM_INCLUDE_DIR} RUN_OUTPUT_VARIABLE COPPELIASIM_VERSION_CHECK_OUTPUT COMPILE_OUTPUT_VARIABLE COPPELIASIM_VERSION_CHECK_COMPILE_OUTPUT)
+    try_run(COPPELIASIM_VERSION_RUN_RESULT COPPELIASIM_VERSION_COMPILE_RESULT ${COPPELIASIM_VERSION_CHECK_BIN} ${COPPELIASIM_VERSION_CHECK_SRC} CMAKE_FLAGS -DINCLUDE_DIRECTORIES=${COPPELIASIM_INCLUDE_DIR} RUN_OUTPUT_VARIABLE COPPELIASIM_VERSION_CHECK_OUTPUT COMPILE_OUTPUT_VARIABLE COPPELIASIM_VERSION_CHECK_COMPILE_OUTPUT)
     if(${COPPELIASIM_VERSION_COMPILE_RESULT})
         if(${COPPELIASIM_VERSION_RUN_RESULT} EQUAL 0)
             list(GET COPPELIASIM_VERSION_CHECK_OUTPUT 0 COPPELIASIM_VERSION_MAJOR)
@@ -121,8 +92,8 @@ try_run(COPPELIASIM_VERSION_RUN_RESULT COPPELIASIM_VERSION_COMPILE_RESULT ${COPP
             endif()
             math(EXPR CoppeliaSim_FIND_VERSION_NB "1000000 * ${CoppeliaSim_FIND_VERSION_MAJOR} + 10000 * ${CoppeliaSim_FIND_VERSION_MINOR} + 100 * ${CoppeliaSim_FIND_VERSION_PATCH} + ${CoppeliaSim_FIND_VERSION_TWEAK}")
             add_compile_definitions(SIM_REQUIRED_PROGRAM_VERSION_NB=${CoppeliaSim_FIND_VERSION_NB})
-            if(${COPPELIASIM_VERSION} VERSION_LESS ${CoppeliaSim_FIND_VERSION})
-                coppeliasim_find_error("Found CoppeliaSim version ${COPPELIASIM_VERSION} but ${CoppeliaSim_FIND_VERSION} required.")
+            if(${COPPELIASIM_VERSION} VERSION_LESS ${version})
+                coppeliasim_find_error("Found CoppeliaSim version ${COPPELIASIM_VERSION} but ${version} required.")
                 return()
             endif()
         else()
@@ -134,7 +105,114 @@ try_run(COPPELIASIM_VERSION_RUN_RESULT COPPELIASIM_VERSION_COMPILE_RESULT ${COPP
         coppeliasim_find_error("Failed to compile CoppeliaSim version check program")
         return()
     endif()
+endfunction()
+
+#if(NOT CoppeliaSim_FIND_COMPONENTS)
+#    set(CoppeliaSim_FIND_COMPONENTS simLib)
+#endif()
+foreach(comp IN LISTS CoppeliaSim_FIND_COMPONENTS)
+    if(comp STREQUAL "simLib")
+        message(WARNING "Component name 'simLib' is deprecated. Please use 'simLib-1'.")
+        set(comp "simLib-1")
+    elseif(comp STREQUAL "simLib-scriptFunctionData")
+        message(WARNING "Component name 'simLib-scriptFunctionData' is deprecated. Please use 'simLib-scriptFunctionData-1'.")
+        set(comp "simLib-scriptFunctionData-1")
+    elseif(comp STREQUAL "simLib-socket")
+        message(WARNING "Component name 'simLib-socket' is deprecated. Please use 'simLib-socket-1'.")
+        set(comp "simLib-socket-1")
+    elseif(comp STREQUAL "simMath")
+        message(WARNING "Component name 'simMath' is deprecated. Please use 'simMath-1'.")
+        set(comp "simMath-1")
+    elseif(comp STREQUAL "simStack")
+        message(WARNING "Component name 'simStack' is deprecated. Please use 'simStack-1'.")
+        set(comp "simStack-1")
+    elseif(comp STREQUAL "simPlusPlus")
+        message(WARNING "Component name 'simPlusPlus' is deprecated. Please use 'simPlusPlus-1'.")
+        set(comp "simPlusPlus-1")
+    endif()
+    if(comp STREQUAL "none")
+        # dummy component
+    elseif(comp STREQUAL "simLib-1")
+        list(APPEND COPPELIASIM_EXPORTED_SOURCES "${COPPELIASIM_INCLUDE_DIR}/simLib/simLib.cpp")
+        if(DEFINED CoppeliaSim_FIND_VERSION)
+            check_simLib_version("simLib" ${CoppeliaSim_FIND_VERSION})
+        endif()
+        set(CoppeliaSim_simLib-1_FOUND TRUE)
+    elseif(comp STREQUAL "simLib-2")
+        list(APPEND COPPELIASIM_EXPORTED_SOURCES "${COPPELIASIM_INCLUDE_DIR}/simLib-2/simLib.cpp")
+        if(DEFINED CoppeliaSim_FIND_VERSION)
+            check_simLib_version("simLib-2" ${CoppeliaSim_FIND_VERSION})
+        endif()
+        set(CoppeliaSim_simLib-2_FOUND TRUE)
+    elseif(comp STREQUAL "simLib-scriptFunctionData-1")
+        list(APPEND COPPELIASIM_EXPORTED_SOURCES
+            ${COPPELIASIM_INCLUDE_DIR}/simLib/scriptFunctionData.cpp
+            ${COPPELIASIM_INCLUDE_DIR}/simLib/scriptFunctionDataItem.cpp
+        )
+        set(CoppeliaSim_simLib-scriptFunctionData-1_FOUND TRUE)
+    elseif(comp STREQUAL "simLib-scriptFunctionData-2")
+        list(APPEND COPPELIASIM_EXPORTED_SOURCES
+            ${COPPELIASIM_INCLUDE_DIR}/simLib-2/scriptFunctionData.cpp
+            ${COPPELIASIM_INCLUDE_DIR}/simLib-2/scriptFunctionDataItem.cpp
+        )
+        set(CoppeliaSim_simLib-scriptFunctionData-1_FOUND TRUE)
+    elseif(comp STREQUAL "simLib-socket-1")
+        list(APPEND COPPELIASIM_EXPORTED_SOURCES
+            ${COPPELIASIM_INCLUDE_DIR}/simLib/socketInConnection.cpp
+            ${COPPELIASIM_INCLUDE_DIR}/simLib/socketOutConnection.cpp
+        )
+        set(CoppeliaSim_simLib-socket-1_FOUND TRUE)
+    elseif(comp STREQUAL "simLib-socket-2")
+        list(APPEND COPPELIASIM_EXPORTED_SOURCES
+            ${COPPELIASIM_INCLUDE_DIR}/simLib-2/socketInConnection.cpp
+            ${COPPELIASIM_INCLUDE_DIR}/simLib-2/socketOutConnection.cpp
+        )
+        set(CoppeliaSim_simLib-socket-2_FOUND TRUE)
+    elseif(comp STREQUAL "simMath-1")
+        list(APPEND COPPELIASIM_EXPORTED_SOURCES
+            ${COPPELIASIM_INCLUDE_DIR}/simMath/mathFuncs.cpp
+            ${COPPELIASIM_INCLUDE_DIR}/simMath/3Vector.cpp
+            ${COPPELIASIM_INCLUDE_DIR}/simMath/4Vector.cpp
+            ${COPPELIASIM_INCLUDE_DIR}/simMath/7Vector.cpp
+            ${COPPELIASIM_INCLUDE_DIR}/simMath/3X3Matrix.cpp
+            ${COPPELIASIM_INCLUDE_DIR}/simMath/4X4Matrix.cpp
+            ${COPPELIASIM_INCLUDE_DIR}/simMath/mXnMatrix.cpp
+        )
+        set(CoppeliaSim_simMath-1_FOUND TRUE)
+    elseif(comp STREQUAL "simStack-1")
+        list(APPEND COPPELIASIM_EXPORTED_SOURCES
+            ${COPPELIASIM_INCLUDE_DIR}/simStack/stackArray.cpp
+            ${COPPELIASIM_INCLUDE_DIR}/simStack/stackBool.cpp
+            ${COPPELIASIM_INCLUDE_DIR}/simStack/stackMap.cpp
+            ${COPPELIASIM_INCLUDE_DIR}/simStack/stackNull.cpp
+            ${COPPELIASIM_INCLUDE_DIR}/simStack/stackNumber.cpp
+            ${COPPELIASIM_INCLUDE_DIR}/simStack/stackObject.cpp
+            ${COPPELIASIM_INCLUDE_DIR}/simStack/stackString.cpp
+        )
+        set(CoppeliaSim_simLib-scriptFunctionData-1_FOUND TRUE)
+    elseif(comp STREQUAL "simPlusPlus-1")
+        list(APPEND COPPELIASIM_EXPORTED_SOURCES "${COPPELIASIM_INCLUDE_DIR}/simPlusPlus/Lib.cpp")
+        list(APPEND COPPELIASIM_EXPORTED_SOURCES "${COPPELIASIM_INCLUDE_DIR}/simPlusPlus/Plugin.cpp")
+        set(CoppeliaSim_simPlusPlus-1_FOUND TRUE)
+    elseif(comp STREQUAL "simPlusPlus-2")
+        list(APPEND COPPELIASIM_EXPORTED_SOURCES "${COPPELIASIM_INCLUDE_DIR}/simPlusPlus-2/Lib.cpp")
+        list(APPEND COPPELIASIM_EXPORTED_SOURCES "${COPPELIASIM_INCLUDE_DIR}/simPlusPlus-2/Plugin.cpp")
+        set(CoppeliaSim_simPlusPlus-2_FOUND TRUE)
+    else()
+        message(FATAL_ERROR "Unknown CoppeliaSim component: ${comp}")
+    endif()
+endforeach()
+
+if(DEFINED COPPELIASIM_SIMLIB_VERSIONS)
+    message(FATAL_ERROR "Setting COPPELIASIM_SIMLIB_VERSIONS is not supported anymore. Please use COMPONENTS argument of find_package(), e.g. find_package(CoppeliaSim COMPONENTS simLib-2)")
 endif()
+
+foreach(DIR IN LISTS COPPELIASIM_CHECK_MODULE_DIRS)
+    if(NOT IS_DIRECTORY "${DIR}")
+        coppeliasim_find_error("Directory ${DIR} does not exist.")
+        return()
+    endif()
+endforeach()
 
 if(WIN32)
     add_compile_definitions(WIN_SIM)
@@ -324,11 +402,7 @@ function(COPPELIASIM_GENERATE_STUBS GENERATED_OUTPUT_DIR)
     set_property(SOURCE ${GENERATED_OUTPUT_DIR}/stubs.cpp PROPERTY SKIP_AUTOGEN ON)
     set_property(SOURCE ${GENERATED_OUTPUT_DIR}/stubs.h PROPERTY SKIP_AUTOGEN ON)
     include_directories("${GENERATED_OUTPUT_DIR}")
-    list(APPEND COPPELIASIM_EXPORTED_SOURCES
-        "${GENERATED_OUTPUT_DIR}/stubs.cpp"
-        "${COPPELIASIM_INCLUDE_DIR}/simPlusPlus/Lib.cpp"
-        "${COPPELIASIM_INCLUDE_DIR}/simPlusPlus/Plugin.cpp"
-    )
+    list(APPEND COPPELIASIM_EXPORTED_SOURCES "${GENERATED_OUTPUT_DIR}/stubs.cpp")
     set(COPPELIASIM_EXPORTED_SOURCES "${COPPELIASIM_EXPORTED_SOURCES}" PARENT_SCOPE)
 endfunction(COPPELIASIM_GENERATE_STUBS)
 
@@ -340,13 +414,6 @@ function(COPPELIASIM_ADD_PLUGIN PLUGIN_TARGET_NAME)
         set(PLUGIN_TARGET_NAME_V "${PLUGIN_TARGET_NAME}-${PLUGIN_VERSION}")
     else()
         set(PLUGIN_TARGET_NAME_V "${PLUGIN_TARGET_NAME}")
-    endif()
-    if(NOT COPPELIASIM_ADD_PLUGIN_LEGACY)
-        list(APPEND COPPELIASIM_EXPORTED_SOURCES
-            "${COPPELIASIM_INCLUDE_DIR}/simPlusPlus/Lib.cpp"
-            "${COPPELIASIM_INCLUDE_DIR}/simPlusPlus/Plugin.cpp"
-        )
-        set(COPPELIASIM_EXPORTED_SOURCES "${COPPELIASIM_EXPORTED_SOURCES}" PARENT_SCOPE)
     endif()
     add_library(${PLUGIN_TARGET_NAME_V} SHARED ${COPPELIASIM_EXPORTED_SOURCES} ${COPPELIASIM_ADD_PLUGIN_SOURCES})
     target_compile_definitions(${PLUGIN_TARGET_NAME_V} PRIVATE UID=int)
