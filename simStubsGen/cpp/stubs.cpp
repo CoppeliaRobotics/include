@@ -1,7 +1,19 @@
 #py from parse import parse, escape
 #py import model
 #py plugin = parse(pycpp.params['xml_file'])
+
+#ifndef SIM_STUBS_GEN_USE_SIM_LIB_VERSION
+#define SIM_STUBS_GEN_USE_SIM_LIB_VERSION 1
+#endif // SIM_STUBS_GEN_USE_SIM_LIB_VERSION
+
+#if SIM_STUBS_GEN_USE_SIM_LIB_VERSION == 1
 #include <simPlusPlus/Lib.h>
+#elif SIM_STUBS_GEN_USE_SIM_LIB_VERSION == 2
+#include <simPlusPlus-2/Lib.h>
+#else
+#error "The requested version of simLib is not supported by simStubsGen"
+#endif // SIM_STUBS_GEN_USE_SIM_LIB_VERSION
+
 #include <simStubsGen/cpp/common.h>
 
 #include <optional>

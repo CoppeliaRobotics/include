@@ -7,8 +7,21 @@
 #py if plugin.needs_eigen():
 #define SIM_STUBS_GEN_EIGEN
 #py endif
+
+#ifndef SIM_STUBS_GEN_USE_SIM_LIB_VERSION
+#define SIM_STUBS_GEN_USE_SIM_LIB_VERSION 1
+#endif // SIM_STUBS_GEN_USE_SIM_LIB_VERSION
+
+#if SIM_STUBS_GEN_USE_SIM_LIB_VERSION == 1
 #include <simLib/simExp.h>
 #include <simLib/simTypes.h>
+#elif SIM_STUBS_GEN_USE_SIM_LIB_VERSION == 2
+#include <simLib-2/simExp.h>
+#include <simLib-2/simTypes.h>
+#else
+#error "The requested version of simLib is not supported by simStubsGen"
+#endif // SIM_STUBS_GEN_USE_SIM_LIB_VERSION
+
 #include <simStubsGen/cpp/common.h>
 #include <string>
 #include <vector>
