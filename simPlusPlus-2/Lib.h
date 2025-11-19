@@ -22,6 +22,7 @@
 namespace sim
 {
     using handle_t = int;
+    using handleproperty_t = long long int; // needed until the regularApi switches to long handles
     using long_t = long long int;
 
     struct PluginInfo
@@ -848,6 +849,11 @@ namespace sim
     long_t getLongProperty(handle_t target, const std::string &pname);
     std::optional<long_t> getLongProperty(handle_t target, const std::string &pname, std::optional<long_t> defaultValue);
 
+    void setHandleProperty(handle_t target, const std::string &pname, handleproperty_t value);
+
+    handleproperty_t getHandleProperty(handle_t target, const std::string &pname);
+    std::optional<handleproperty_t> getHandleProperty(handle_t target, const std::string &pname, std::optional<handleproperty_t> defaultValue);
+
     void setFloatProperty(handle_t target, const std::string &pname, double value);
 
     double getFloatProperty(handle_t target, const std::string &pname);
@@ -892,6 +898,16 @@ namespace sim
 
     std::vector<int> getIntArrayProperty(handle_t target, const std::string &pname);
     std::optional<std::vector<int>> getIntArrayProperty(handle_t target, const std::string &pname, std::optional<std::vector<int>> defaultValue);
+
+    void setHandleArrayProperty(handle_t target, const std::string &pname, const std::vector<handleproperty_t> &value);
+
+    std::vector<handleproperty_t> getHandleArrayProperty(handle_t target, const std::string &pname);
+    std::optional<std::vector<handleproperty_t>> getHandleArrayProperty(handle_t target, const std::string &pname, std::optional<std::vector<handleproperty_t>> defaultValue);
+
+    void setStringArrayProperty(handle_t target, const std::string &pname, const std::vector<std::string> &value);
+
+    std::vector<std::string> getStringArrayProperty(handle_t target, const std::string &pname);
+    std::optional<std::vector<std::string>> getStringArrayProperty(handle_t target, const std::string &pname, std::optional<std::vector<std::string>> defaultValue);
 
 #if 0
     void setFloatArray2Property(handle_t target, const std::string &pname, const std::array<double, 2> &value);

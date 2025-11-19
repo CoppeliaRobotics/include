@@ -2617,6 +2617,31 @@ std::optional<long_t> getLongProperty(handle_t target, const std::string &pname,
     return value;
 }
 
+void setHandleProperty(handle_t target, const std::string &pname, handleproperty_t value)
+{
+    int ret = simSetHandleProperty(target, pname.c_str(), value);
+    if(ret < 1)
+        throw property_error("simSetHandleProperty", pname);
+}
+
+handleproperty_t getHandleProperty(handle_t target, const std::string &pname)
+{
+    handleproperty_t value = 0;
+    int ret = simGetHandleProperty(target, pname.c_str(), &value);
+    if(ret < 1)
+        throw property_error("simGetHandleProperty", pname);
+    return value;
+}
+
+std::optional<handleproperty_t> getHandleProperty(handle_t target, const std::string &pname, std::optional<handleproperty_t> defaultValue)
+{
+    handleproperty_t value = 0;
+    int ret = simGetHandleProperty(target, pname.c_str(), &value);
+    if(ret < 1)
+        return defaultValueIfPropertyNotExistsOrThrow("simGetHandleProperty", target, pname, defaultValue);
+    return value;
+}
+
 void setFloatProperty(handle_t target, const std::string &pname, double value)
 {
     int ret = simSetFloatProperty(target, pname.c_str(), value);
@@ -2862,6 +2887,91 @@ std::optional<std::vector<int>> getIntArrayProperty(handle_t target, const std::
     std::vector<int> v(value, value + len);
     sim::releaseBuffer(value);
     return v;
+}
+
+void setHandleArrayProperty(handle_t target, const std::string &pname, const std::vector<handleproperty_t> &value)
+{
+    int ret = simSetHandleArrayProperty(target, pname.c_str(), value.data(), value.size());
+    if(ret < 1)
+        throw property_error("simSetHandleArrayProperty", pname);
+}
+
+std::vector<handleproperty_t> getHandleArrayProperty(handle_t target, const std::string &pname)
+{
+    handleproperty_t *value = nullptr;
+    int len = 0;
+    int ret = simGetHandleArrayProperty(target, pname.c_str(), &value, &len);
+    if(ret < 1)
+        throw property_error("simGetHandleArrayProperty", pname);
+    std::vector<handleproperty_t> v(value, value + len);
+    sim::releaseBuffer(value);
+    return v;
+}
+
+std::optional<std::vector<handleproperty_t>> getHandleArrayProperty(handle_t target, const std::string &pname, std::optional<std::vector<handleproperty_t>> defaultValue)
+{
+    handleproperty_t *value = nullptr;
+    int len = 0;
+    int ret = simGetHandleArrayProperty(target, pname.c_str(), &value, &len);
+    if(ret < 1)
+        return defaultValueIfPropertyNotExistsOrThrow("simGetHandleArrayProperty", target, pname, defaultValue);
+    std::vector<handleproperty_t> v(value, value + len);
+    sim::releaseBuffer(value);
+    return v;
+}
+
+void setStringArrayProperty(handle_t target, const std::string &pname, const std::vector<std::string> &value)
+{
+    size_t bufSz = 0;
+    for(const auto &s : value) bufSz += 1 + s.length();
+    char *buf = reinterpret_cast<char*>(sim::createBuffer(bufSz));
+    char* p = buf;
+    for(const auto& s : value)
+    {
+        std::memcpy(p, s.data(), s.size());
+        p += s.size();
+        *p++ = '\0';
+    }
+    int ret = simSetStringArrayProperty(target, pname.c_str(), buf, value.size());
+    sim::releaseBuffer(buf);
+    if(ret < 1)
+        throw property_error("simSetStringArrayProperty", pname);
+}
+
+std::vector<std::string> getStringArrayProperty(handle_t target, const std::string &pname)
+{
+    std::vector<std::string> value;
+    char *buf;
+    int cnt;
+    int ret = simGetStringArrayProperty(target, pname.c_str(), &buf, &cnt);
+    if(ret < 1)
+        throw property_error("simGetStringArrayProperty", pname);
+    for(int i = 0; i < cnt; i++)
+    {
+        std::string s(buf);
+        value.push_back(s);
+        buf += s.length() + 1;
+    }
+    sim::releaseBuffer(buf);
+    return value;
+}
+
+std::optional<std::vector<std::string>> getStringArrayProperty(handle_t target, const std::string &pname, std::optional<std::vector<std::string>> defaultValue)
+{
+    std::vector<std::string> value;
+    char *buf;
+    int cnt;
+    int ret = simGetStringArrayProperty(target, pname.c_str(), &buf, &cnt);
+    if(ret < 1)
+        return defaultValueIfPropertyNotExistsOrThrow("simGetStringArrayProperty", target, pname, defaultValue);
+    for(int i = 0; i < cnt; i++)
+    {
+        std::string s(buf);
+        value.push_back(s);
+        buf += s.length() + 1;
+    }
+    sim::releaseBuffer(buf);
+    return value;
 }
 
 #if 0
