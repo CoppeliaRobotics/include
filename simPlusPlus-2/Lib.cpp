@@ -1,5 +1,5 @@
-#include <simPlusPlus/Lib.h>
-#include <simPlusPlus/Plugin.h>
+#include <simPlusPlus-2/Lib.h>
+#include <simPlusPlus-2/Plugin.h>
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/split.hpp>
 
