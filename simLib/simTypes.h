@@ -162,6 +162,7 @@ struct SPropertyInfo {
     (s)->objectType = -1; \
     (s)->shortInfoTxt = false; \
     (s)->prefix = nullptr; \
+    (s)->excludeFlags = -1; \
 } while(0)
 
 struct SPropertyOptions {
@@ -169,6 +170,7 @@ struct SPropertyOptions {
     int objectType; /* default: -1 */
     bool shortInfoTxt; /* default: -1 */
     const char* prefix; /* default: null */
+    int excludeFlags; /* default: -1 */
 #ifdef __cplusplus
     SPropertyOptions() { SPropertyOptions_init(this); }
     // "fluent" API:
