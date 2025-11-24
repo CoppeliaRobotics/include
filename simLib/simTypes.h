@@ -160,7 +160,8 @@ struct SPropertyInfo {
     memset((s), 0, sizeof(SPropertyOptions)); \
     (s)->structSize = sizeof(SPropertyOptions); \
     (s)->objectType = -1; \
-    (s)->shortInfoTxt = false; \
+    (s)->shortInfoTxt = 0; \
+    (s)->bitCoded = 0; \
     (s)->prefix = nullptr; \
     (s)->excludeFlags = -1; \
 } while(0)
@@ -168,9 +169,10 @@ struct SPropertyInfo {
 struct SPropertyOptions {
     int structSize; /* init. to sizeof(SPropertyOptions) */
     int objectType; /* default: -1 */
-    bool shortInfoTxt; /* default: -1 */
+    bool shortInfoTxt; /* default: 0 */
     const char* prefix; /* default: null */
     int excludeFlags; /* default: -1 */
+    int bitCoded; /* default: 0 */
 #ifdef __cplusplus
     SPropertyOptions() { SPropertyOptions_init(this); }
     // "fluent" API:
