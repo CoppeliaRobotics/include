@@ -125,16 +125,6 @@ struct SLuaCallBack
     double* outputDouble;
 };
 
-
-struct SProperty {
-    const char* name;
-    int type;
-    int flags;
-    const char* shortInfoTxt;
-    const char* infoTxt;
-};
-
-
 #define SPropertyInfo_init(s) do { \
     memset((s), 0, sizeof(SPropertyInfo)); \
     (s)->structSize = sizeof(SPropertyInfo); \
