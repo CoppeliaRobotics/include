@@ -104,9 +104,7 @@ enum {
     // SIM_SCRIPT_ARG_NULL_ALLOWED=65536 is defined and used in CScriptFunctionData.h. This flag is reserved here.
 };
 
-enum { // Simulation status
-    sim_simulation_stopped                      =0x00,                              // Simulation is stopped
-    sim_simulation_paused                       =0x08,                              // Simulation is paused
+enum { // following deprecated
     sim_simulation_advancing                    =0x10,                              // Simulation is advancing
     // reserved sim_simulation_advancing_firstafterstop     =sim_simulation_advancing|0x00, First simulation pass (1x)
     sim_simulation_advancing_running            =sim_simulation_advancing|0x01,     // Normal simulation pass (>=1x)
@@ -115,6 +113,14 @@ enum { // Simulation status
     // reserved sim_simulation_advancing_firstafterpause    =sim_simulation_advancing|0x04, Not used anymore
     // reserved sim_simulation_advancing_abouttostop        =sim_simulation_advancing|0x05, "Trying to stop" simulation pass (>=1x)
     sim_simulation_advancing_lastbeforestop     =sim_simulation_advancing|0x06      // Last simulation pass (1x)
+};
+
+// @enum name="simulationState" label="simulation states" type="int" prefix="sim_simulation_" description=""
+enum {
+    sim_simulation_stopped                      =0x00,      // Simulation is stopped
+    sim_simulation_paused                       =0x08,      // Simulation is paused
+    sim_simulation_running                      =0x11,      // Normal simulation pass (>=1x)
+    sim_simulation_lastbeforestop               =0x16       // Last simulation pass (1x)
 };
 
 // @enum name="scriptType" label="script types" type="int" prefix="sim_scripttype_" description=""
