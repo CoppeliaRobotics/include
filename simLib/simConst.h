@@ -527,7 +527,10 @@ enum { // stack item types
     sim_stackitem_thread,
     sim_stackitem_lightuserdat,
     sim_stackitem_integer,
-    sim_stackitem_matrix
+    sim_stackitem_matrix,
+    sim_stackitem_quaternion,
+    sim_stackitem_pose,
+    sim_stackitem_handle,
 };
 
 enum { // stack table info

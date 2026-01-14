@@ -96,6 +96,7 @@ typedef int (__cdecl *SIM_API_SYMBOL(ptrSimRemoveProperty))(long long int target
 typedef char* (__cdecl *SIM_API_SYMBOL(ptrSimGetPropertyName))(long long int target, int index, SPropertyOptions* options);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetPropertyInfo))(long long int target, const char* pName, SPropertyInfo* infos, SPropertyOptions* options);
 
+typedef int (__cdecl *SIM_API_SYMBOL(ptrSimCallMethod))(long long int target, const char* name, SIMHANDLE inputStack, SIMHANDLE outputStack);
 typedef void (__cdecl *SIM_API_SYMBOL(ptrSimRegCallback))(int index, void* cb);
 typedef void (__cdecl *SIM_API_SYMBOL(ptrSimRunGui))(int options);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimInitialize))(const char* appDir,int options);
@@ -207,6 +208,8 @@ typedef int (__cdecl *SIM_API_SYMBOL(ptrSimPushTextOntoStack))(SIMHANDLE stackHa
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimPushStringOntoStack))(SIMHANDLE stackHandle,const char* value,int stringSize);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimPushBufferOntoStack))(SIMHANDLE stackHandle,const char* value,int stringSize);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimPushMatrixOntoStack))(SIMHANDLE stackHandle,const double* value,int rows,int cols);
+typedef int (__cdecl *SIM_API_SYMBOL(ptrSimPushQuaternionOntoStack))(SIMHANDLE stackHandle,const double* value);
+typedef int (__cdecl *SIM_API_SYMBOL(ptrSimPushPoseOntoStack))(SIMHANDLE stackHandle,const double* value);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimPushUInt8TableOntoStack))(SIMHANDLE stackHandle,const unsigned char* values,int valueCnt);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimPushInt32TableOntoStack))(SIMHANDLE stackHandle,const int* values,int valueCnt);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimPushInt64TableOntoStack))(SIMHANDLE stackHandle,const long long int* values,int valueCnt);
@@ -222,6 +225,8 @@ typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetStackInt32Value))(SIMHANDLE stackH
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetStackInt64Value))(SIMHANDLE stackHandle,long long int* numberValue);
 typedef char* (__cdecl *SIM_API_SYMBOL(ptrSimGetStackStringValue))(SIMHANDLE stackHandle,int* stringSize);
 typedef double* (__cdecl *SIM_API_SYMBOL(ptrSimGetStackMatrix))(SIMHANDLE stackHandle,int* rows,int* cols);
+typedef double* (__cdecl *SIM_API_SYMBOL(ptrSimGetStackQuaternion))(SIMHANDLE stackHandle);
+typedef double* (__cdecl *SIM_API_SYMBOL(ptrSimGetStackPose))(SIMHANDLE stackHandle);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetStackTableInfo))(SIMHANDLE stackHandle,int infoType);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetStackUInt8Table))(SIMHANDLE stackHandle,unsigned char* array,int count);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetStackInt32Table))(SIMHANDLE stackHandle,int* array,int count);
@@ -513,6 +518,7 @@ extern SIM_API_SYMBOL(ptrSimRemoveProperty) SIM_API_SYMBOL(simRemoveProperty);
 extern SIM_API_SYMBOL(ptrSimGetPropertyName) SIM_API_SYMBOL(simGetPropertyName);
 extern SIM_API_SYMBOL(ptrSimGetPropertyInfo) SIM_API_SYMBOL(simGetPropertyInfo);
 
+extern SIM_API_SYMBOL(ptrSimCallMethod) SIM_API_SYMBOL(simCallMethod);
 extern SIM_API_SYMBOL(ptrSimRegCallback) SIM_API_SYMBOL(simRegCallback);
 extern SIM_API_SYMBOL(ptrSimRunGui) SIM_API_SYMBOL(simRunGui);
 extern SIM_API_SYMBOL(ptrSimInitialize) SIM_API_SYMBOL(simInitialize);
@@ -736,6 +742,8 @@ extern SIM_API_SYMBOL(ptrSimPushTextOntoStack) SIM_API_SYMBOL(simPushTextOntoSta
 extern SIM_API_SYMBOL(ptrSimPushStringOntoStack) SIM_API_SYMBOL(simPushStringOntoStack);
 extern SIM_API_SYMBOL(ptrSimPushBufferOntoStack) SIM_API_SYMBOL(simPushBufferOntoStack);
 extern SIM_API_SYMBOL(ptrSimPushMatrixOntoStack) SIM_API_SYMBOL(simPushMatrixOntoStack);
+extern SIM_API_SYMBOL(ptrSimPushQuaternionOntoStack) SIM_API_SYMBOL(simPushQuaternionOntoStack);
+extern SIM_API_SYMBOL(ptrSimPushPoseOntoStack) SIM_API_SYMBOL(simPushPoseOntoStack);
 extern SIM_API_SYMBOL(ptrSimPushUInt8TableOntoStack) SIM_API_SYMBOL(simPushUInt8TableOntoStack);
 extern SIM_API_SYMBOL(ptrSimPushInt32TableOntoStack) SIM_API_SYMBOL(simPushInt32TableOntoStack);
 extern SIM_API_SYMBOL(ptrSimPushInt64TableOntoStack) SIM_API_SYMBOL(simPushInt64TableOntoStack);
@@ -755,6 +763,8 @@ extern SIM_API_SYMBOL(ptrSimGetStackFloatValue) SIM_API_SYMBOL(simGetStackFloatV
 extern SIM_API_SYMBOL(ptrSimGetStackDoubleValue) SIM_API_SYMBOL(simGetStackDoubleValue);
 extern SIM_API_SYMBOL(ptrSimGetStackStringValue) SIM_API_SYMBOL(simGetStackStringValue);
 extern SIM_API_SYMBOL(ptrSimGetStackMatrix) SIM_API_SYMBOL(simGetStackMatrix);
+extern SIM_API_SYMBOL(ptrSimGetStackQuaternion) SIM_API_SYMBOL(simGetStackQuaternion);
+extern SIM_API_SYMBOL(ptrSimGetStackPose) SIM_API_SYMBOL(simGetStackPose);
 extern SIM_API_SYMBOL(ptrSimGetStackTableInfo) SIM_API_SYMBOL(simGetStackTableInfo);
 extern SIM_API_SYMBOL(ptrSimGetStackUInt8Table) SIM_API_SYMBOL(simGetStackUInt8Table);
 extern SIM_API_SYMBOL(ptrSimGetStackInt32Table) SIM_API_SYMBOL(simGetStackInt32Table);
@@ -922,6 +932,7 @@ extern SIM_API_SYMBOL(ptr_simDynCallback) SIM_API_SYMBOL(_simDynCallback);
     static inline int simRemoveProperty(long long int target, const char* pName) { return SIM_API_SYMBOL(simRemoveProperty)(target,pName); }
     static inline char* simGetPropertyName(long long int target, int index, SPropertyOptions* options) { return SIM_API_SYMBOL(simGetPropertyName)(target,index,options); }
     static inline int simGetPropertyInfo(long long int target, const char* pName, SPropertyInfo* infos, SPropertyOptions* options) { return SIM_API_SYMBOL(simGetPropertyInfo)(target,pName,infos,options); }
+    static inline int simCallMethod(long long int target, const char* name, SIMHANDLE inputStack, SIMHANDLE outputStack) { return SIM_API_SYMBOL(simCallMEthod)(target, name, inputStack, outputStack); }
     static inline void simRegCallback(int index, void* cb) { return SIM_API_SYMBOL(simRegCallback)(index,cb); }
     static inline void simRunGui(int options) { return SIM_API_SYMBOL(simRunGui)(options); }
     static inline int simInitialize(const char* appDir,int options) { return SIM_API_SYMBOL(simInitialize)(appDir,options); }
@@ -1033,6 +1044,8 @@ extern SIM_API_SYMBOL(ptr_simDynCallback) SIM_API_SYMBOL(_simDynCallback);
     static inline int simPushStringOntoStack(SIMHANDLE stackHandle,const char* value,int stringSize) { return SIM_API_SYMBOL(simPushStringOntoStack)(stackHandle,value,stringSize); }
     static inline int simPushBufferOntoStack(SIMHANDLE stackHandle,const char* value,int stringSize) { return SIM_API_SYMBOL(simPushBufferOntoStack)(stackHandle,value,stringSize); }
     static inline int simPushMatrixOntoStack(SIMHANDLE stackHandle,const double* value,int rows,int cols) { return SIM_API_SYMBOL(simPushMatrixOntoStack)(stackHandle,value,rows,cols); }
+    static inline int simPushQuaternionOntoStack(SIMHANDLE stackHandle,const double* value) { return SIM_API_SYMBOL(simPushQuaternionOntoStack)(stackHandle,value); }
+    static inline int simPushPoseOntoStack(SIMHANDLE stackHandle,const double* value) { return SIM_API_SYMBOL(simPushPoseOntoStack)(stackHandle,value); }
     static inline int simPushUInt8TableOntoStack(SIMHANDLE stackHandle,const unsigned char* values,int valueCnt) { return SIM_API_SYMBOL(simPushUInt8TableOntoStack)(stackHandle,values,valueCnt); }
     static inline int simPushInt32TableOntoStack(SIMHANDLE stackHandle,const int* values,int valueCnt) { return SIM_API_SYMBOL(simPushInt32TableOntoStack)(stackHandle,values,valueCnt); }
     static inline int simPushInt64TableOntoStack(SIMHANDLE stackHandle,const long long int* values,int valueCnt) { return SIM_API_SYMBOL(simPushInt64TableOntoStack)(stackHandle,values,valueCnt); }
@@ -1048,6 +1061,8 @@ extern SIM_API_SYMBOL(ptr_simDynCallback) SIM_API_SYMBOL(_simDynCallback);
     static inline int simGetStackInt64Value(SIMHANDLE stackHandle,long long int* numberValue) { return SIM_API_SYMBOL(simGetStackInt64Value)(stackHandle,numberValue); }
     static inline char* simGetStackStringValue(SIMHANDLE stackHandle,int* stringSize) { return SIM_API_SYMBOL(simGetStackStringValue)(stackHandle,stringSize); }
     static inline double* simGetStackMatrix(SIMHANDLE stackHandle,int* rows,int* cols) { return SIM_API_SYMBOL(simGetStackMatrix)(stackHandle,rows,cols); }
+    static inline double* simGetStackQuaternion(SIMHANDLE stackHandle) { return SIM_API_SYMBOL(simGetStackQuaternion)(stackHandle); }
+    static inline double* simGetStackPose(SIMHANDLE stackHandle) { return SIM_API_SYMBOL(simGetStackPose)(stackHandle); }
     static inline int simGetStackTableInfo(SIMHANDLE stackHandle,int infoType) { return SIM_API_SYMBOL(simGetStackTableInfo)(stackHandle,infoType); }
     static inline int simGetStackUInt8Table(SIMHANDLE stackHandle,unsigned char* array,int count) { return SIM_API_SYMBOL(simGetStackUInt8Table)(stackHandle,array,count); }
     static inline int simGetStackInt32Table(SIMHANDLE stackHandle,int* array,int count) { return SIM_API_SYMBOL(simGetStackInt32Table)(stackHandle,array,count); }
