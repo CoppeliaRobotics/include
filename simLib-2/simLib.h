@@ -932,7 +932,7 @@ extern SIM_API_SYMBOL(ptr_simDynCallback) SIM_API_SYMBOL(_simDynCallback);
     static inline int simRemoveProperty(long long int target, const char* pName) { return SIM_API_SYMBOL(simRemoveProperty)(target,pName); }
     static inline char* simGetPropertyName(long long int target, int index, SPropertyOptions* options) { return SIM_API_SYMBOL(simGetPropertyName)(target,index,options); }
     static inline int simGetPropertyInfo(long long int target, const char* pName, SPropertyInfo* infos, SPropertyOptions* options) { return SIM_API_SYMBOL(simGetPropertyInfo)(target,pName,infos,options); }
-    static inline int simCallMethod(long long int target, const char* name, SIMHANDLE inputStack, SIMHANDLE outputStack) { return SIM_API_SYMBOL(simCallMEthod)(target, name, inputStack, outputStack); }
+    static inline int simCallMethod(long long int target, const char* name, SIMHANDLE inputStack, SIMHANDLE outputStack) { return SIM_API_SYMBOL(simCallMethod)(target, name, inputStack, outputStack); }
     static inline void simRegCallback(int index, void* cb) { return SIM_API_SYMBOL(simRegCallback)(index,cb); }
     static inline void simRunGui(int options) { return SIM_API_SYMBOL(simRunGui)(options); }
     static inline int simInitialize(const char* appDir,int options) { return SIM_API_SYMBOL(simInitialize)(appDir,options); }
