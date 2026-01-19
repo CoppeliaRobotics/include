@@ -531,6 +531,7 @@ enum { // stack item types
     sim_stackitem_quaternion,
     sim_stackitem_pose,
     sim_stackitem_handle,
+    sim_stackitem_color,
 };
 
 enum { // stack table info
