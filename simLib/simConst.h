@@ -112,6 +112,13 @@ enum {
     sim_simulation_lastbeforestop               =0x16       // Last simulation pass (1x)
 };
 
+// @enum name="parentingMode" label="assembly/parenting modes" type="int" prefix="sim_parentingmode_" description=""
+enum {
+    sim_parentingmode_keeplocalpose = 0,
+    sim_parentingmode_keepworldpose = 1,
+    sim_parentingmode_assembly = 2,
+};
+
 // @enum name="scriptType" label="script types" type="int" prefix="sim_scripttype_" description=""
 enum { // values are serialized
     sim_scripttype_main = 0,
