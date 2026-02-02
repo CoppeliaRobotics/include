@@ -312,7 +312,6 @@ enum {
     sim_markeropts_local    = 0x00001,
     sim_markeropts_cyclic   = 0x00002,
     sim_markeropts_overlay  = 0x00004,
-    sim_markeropts_fixed    = 0x00008,
 };
 
 enum { // UI properties:
