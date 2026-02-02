@@ -47,6 +47,7 @@ enum { // values are serialized
         sim_sceneobject_octree = 15, // @item label="oc tree"
         sim_sceneobject_pointcloud = 16, // @item label="point cloud"
         sim_sceneobject_script = 17,
+        sim_sceneobject_marker = 18,
 };
 
 // General object types. Values are serialized
@@ -295,6 +296,25 @@ enum { // following can be or-combined with above drawing items:
     sim_drawing_local                   =0x800000,  // coordinates are specified locally to the attached object
 };
 
+// @enum name="markerObjectType" label="marker object types" type="int" prefix="sim_markertype_" description=""
+enum {
+    sim_markertype_points = 0,
+    sim_markertype_lines,
+    sim_markertype_triangles,
+    sim_markertype_spheres = 7,
+    sim_markertype_squares = 9,
+    sim_markertype_discs,
+    sim_markertype_cubes,
+};
+
+// @enum name="markerObjectOptions" label="marker object options" type="int" prefix="sim_markeropts_" description=""
+enum {
+    sim_markeropts_local    = 0x00001,
+    sim_markeropts_cyclic   = 0x00002,
+    sim_markeropts_overlay  = 0x00004,
+    sim_markeropts_fixed    = 0x00008,
+};
+
 enum { // UI properties:
     sim_gui_menubar                     =0x00001,
     sim_gui_popups                      =0x00002,
@@ -539,6 +559,10 @@ enum { // stack item types
     sim_stackitem_pose,
     sim_stackitem_handle,
     sim_stackitem_color,
+    sim_stackitem_exvector = 1000,
+    sim_stackitem_exvector3 = 1001,
+    sim_stackitem_exany = 1002,
+    sim_stackitem_exoptional = 1024,
 };
 
 enum { // stack table info

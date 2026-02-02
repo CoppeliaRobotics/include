@@ -208,21 +208,39 @@ void C4Vector::getData(simReal wxyz[4],bool xyzwLayout/*=false*/) const
     }
 }
 
-void C4Vector::setData(const simReal wxyz[4],bool xyzwLayout/*=false*/)
+void C4Vector::setData(const float wxyz[4],bool xyzwLayout/*=false*/)
 {
     if (xyzwLayout)
     {
-        data[0]=wxyz[3];
-        data[1]=wxyz[0];
-        data[2]=wxyz[1];
-        data[3]=wxyz[2];
+        data[0]=(simReal)wxyz[3];
+        data[1]=(simReal)wxyz[0];
+        data[2]=(simReal)wxyz[1];
+        data[3]=(simReal)wxyz[2];
     }
     else
     {
-        data[0]=wxyz[0];
-        data[1]=wxyz[1];
-        data[2]=wxyz[2];
-        data[3]=wxyz[3];
+        data[0]=(simReal)wxyz[0];
+        data[1]=(simReal)wxyz[1];
+        data[2]=(simReal)wxyz[2];
+        data[3]=(simReal)wxyz[3];
+    }
+}
+
+void C4Vector::setData(const double wxyz[4],bool xyzwLayout/*=false*/)
+{
+    if (xyzwLayout)
+    {
+        data[0]=(simReal)wxyz[3];
+        data[1]=(simReal)wxyz[0];
+        data[2]=(simReal)wxyz[1];
+        data[3]=(simReal)wxyz[2];
+    }
+    else
+    {
+        data[0]=(simReal)wxyz[0];
+        data[1]=(simReal)wxyz[1];
+        data[2]=(simReal)wxyz[2];
+        data[3]=(simReal)wxyz[3];
     }
 }
 

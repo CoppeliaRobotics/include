@@ -32,7 +32,8 @@ public:
     C3X3Matrix getMatrix() const;
     C3Vector getEulerAngles() const;
     void getData(simReal wxyz[4],bool xyzwLayout=false) const;
-    void setData(const simReal wxyz[4],bool xyzwLayout=false);
+    void setData(const float wxyz[4],bool xyzwLayout=false);
+    void setData(const double wxyz[4],bool xyzwLayout=false);
     void normalize();
     void clear();
     void setIdentity();
