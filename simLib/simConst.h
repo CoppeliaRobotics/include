@@ -305,6 +305,8 @@ enum {
     sim_markertype_squares = 9,
     sim_markertype_discs,
     sim_markertype_cubes,
+    sim_markertype_cylinders,
+    sim_markertype_custom,
 };
 
 // @enum name="markerObjectOptions" label="marker object options" type="int" prefix="sim_markeropts_" description=""
