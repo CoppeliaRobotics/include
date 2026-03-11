@@ -599,6 +599,7 @@ enum { // property type
     sim_propertytype_handle,
     sim_propertytype_handlearray,
     sim_propertytype_stringarray,
+    sim_propertytype_method = 0xf0,
 };
 
 enum { // properties info
