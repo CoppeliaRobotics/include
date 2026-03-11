@@ -560,6 +560,7 @@ enum { // stack item types
     sim_stackitem_pose,
     sim_stackitem_handle,
     sim_stackitem_color,
+    sim_stackitem_handlearray,
     sim_stackitem_exvector = 1000,
     sim_stackitem_exvector3 = 1001,
     sim_stackitem_exany = 1002,
