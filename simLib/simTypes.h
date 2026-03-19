@@ -158,7 +158,7 @@ struct SPropertyInfo {
 
 struct SPropertyOptions {
     int structSize; /* init. to sizeof(SPropertyOptions) */
-    int objectType; /* default: -1 */
+    int objectType; /* default: -1 (not supported anymore since 19.03.2026) */
     bool shortInfoTxt; /* default: 0 */
     const char* prefix; /* default: null */
     int excludeFlags; /* default: -1 */
