@@ -449,7 +449,15 @@ enum { // texture map modes (serialized)
     sim_texturemap_cube
 };
 
-enum { // color components
+// @enum name="materialComponent" label="material components" type="int" prefix="sim_materialcomponent" description=""
+enum {
+    sim_materialcomponent_diffuse = 0,
+    sim_materialcomponent_lightdiffuse = 1,
+    sim_materialcomponent_specular = 2,
+    sim_materialcomponent_emission = 3
+};
+
+enum { // color components, deprecated
     sim_colorcomponent_ambient=0,
     sim_colorcomponent_ambient_diffuse=0, // objects only
     sim_colorcomponent_diffuse, // lights only
