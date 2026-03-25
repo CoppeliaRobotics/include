@@ -97,7 +97,7 @@ void simThread()
 #endif // QT_COMPIL
 
 #py for struct in plugin.structs:
-void readFromStack(int stack, `struct.name` *value, const ReadOptions &rdopt)
+void readFromStack(TypeTag_struct, int stack, `struct.name` *value, const ReadOptions &rdopt)
 {
     addStubsDebugLog("readFromStack(`struct.name`): begin reading...");
     addStubsDebugStackDump(stack);
@@ -120,7 +120,7 @@ void readFromStack(int stack, `struct.name` *value, const ReadOptions &rdopt)
         {
             sim::moveStackItemToTop(stack, oldsz - 1); // move key to top
             std::string key;
-            readFromStack(stack, &key);
+            readFromStack(TypeTag_string{}, stack, &key);
 
             sim::moveStackItemToTop(stack, oldsz - 1); // move value to top
             if(0) {}
@@ -131,9 +131,9 @@ void readFromStack(int stack, `struct.name` *value, const ReadOptions &rdopt)
                 try
                 {
 #py if isinstance(field, (model.ParamTable, model.ParamGrid)):
-                    readFromStack(stack, &(value->`field.name`), ReadOptions().setBounds("`field.size`"));
+                    readFromStack(`field.typetag()`{}, stack, &(value->`field.name`), ReadOptions().setBounds("`field.size`"));
 #py else:
-                    readFromStack(stack, &(value->`field.name`));
+                    readFromStack(`field.typetag()`{}, stack, &(value->`field.name`));
 #py endif
                 }
                 catch(std::exception &ex)
@@ -162,7 +162,7 @@ void readFromStack(int stack, `struct.name` *value, const ReadOptions &rdopt)
     addStubsDebugLog("readFromStack(`struct.name`): finished reading");
 }
 
-void writeToStack(const `struct.name` &value, int stack, const WriteOptions &wropt)
+void writeToStack(TypeTag_struct, const `struct.name` &value, int stack, const WriteOptions &wropt)
 {
     addStubsDebugLog("writeToStack(`struct.name`): begin writing...");
 
@@ -174,8 +174,8 @@ void writeToStack(const `struct.name` &value, int stack, const WriteOptions &wro
         addStubsDebugLog("writeToStack(`struct.name`): writing field \"`field.name`\" (`field.ctype()`)...");
         try
         {
-            writeToStack(std::string{"`field.name`"}, stack);
-            writeToStack(value.`field.name`, stack);
+            writeToStack(TypeTag_string{}, std::string{"`field.name`"}, stack);
+            writeToStack(`field.typetag()`{}, value.`field.name`, stack);
             sim::insertDataIntoStackTable(stack);
         }
         catch(std::exception &ex)
@@ -325,9 +325,9 @@ void `cmd.c_name`_callback(SScriptCallBack *p)
             {
                 sim::moveStackItemToTop(p->stackID, 0);
 #py if isinstance(p, (model.ParamTable, model.ParamGrid)):
-                readFromStack(p->stackID, &(in_args.`p.name`), ReadOptions().setBounds("`p.size`"));
+                readFromStack(`p.typetag()`{}, p->stackID, &(in_args.`p.name`), ReadOptions().setBounds("`p.size`"));
 #py else:
-                readFromStack(p->stackID, &(in_args.`p.name`));
+                readFromStack(`p.typetag()`{}, p->stackID, &(in_args.`p.name`));
 #py endif
             }
             catch(std::exception &ex)
@@ -374,7 +374,7 @@ void `cmd.c_name`_callback(SScriptCallBack *p)
         addStubsDebugLog("`cmd.c_name`_callback: writing output argument `i+1` \"`p.name`\" (`p.ctype()`)...");
         try
         {
-            writeToStack(out_args.`p.name`, p->stackID);
+            writeToStack(`p.typetag()`{}, out_args.`p.name`, p->stackID);
         }
         catch(std::exception &ex)
         {
@@ -431,7 +431,7 @@ bool `fn.c_name`(int scriptId, const char *func, `fn.c_in_name` *in_args, `fn.c_
         addStubsDebugLog("`fn.c_name`: writing input argument `i+1` \"`p.name`\" (`p.ctype()`)...");
         try
         {
-            writeToStack(in_args->`p.name`, stackID);
+            writeToStack(`p.typetag()`{}, in_args->`p.name`, stackID);
         }
         catch(std::exception &ex)
         {
@@ -454,9 +454,9 @@ bool `fn.c_name`(int scriptId, const char *func, `fn.c_in_name` *in_args, `fn.c_
         {
             sim::moveStackItemToTop(stackID, 0);
 #py if isinstance(p, (model.ParamTable, model.ParamGrid)):
-            readFromStack(stackID, &(out_args->`p.name`), ReadOptions().setBounds("`p.size`"));
+            readFromStack(`p.typetag()`{}, stackID, &(out_args->`p.name`), ReadOptions().setBounds("`p.size`"));
 #py else:
-            readFromStack(stackID, &(out_args->`p.name`));
+            readFromStack(`p.typetag()`{}, stackID, &(out_args->`p.name`));
 #py endif
         }
         catch(std::exception &ex)

@@ -87,8 +87,8 @@ struct `struct.name`
     `struct.name`(`', '.join(f'const {f.ctype()} &{f.name}_' for f in struct.fields)`) : `', '.join(f'{f.name}({f.name}_)' for f in struct.fields)` {}
 };
 
-void readFromStack(int stack, `struct.name` *value, const ReadOptions &rdopt = {});
-void writeToStack(const `struct.name` &value, int stack, const WriteOptions &wropt = {});
+void readFromStack(TypeTag_struct, int stack, `struct.name` *value, const ReadOptions &rdopt = {});
+void writeToStack(TypeTag_struct, const `struct.name` &value, int stack, const WriteOptions &wropt = {});
 #py endfor
 
 bool registerScriptStuff();

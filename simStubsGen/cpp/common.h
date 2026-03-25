@@ -15,6 +15,19 @@
 #include <Eigen/Geometry>
 #endif // SIM_STUBS_GEN_EIGEN
 
+struct TypeTag_bool {};
+struct TypeTag_int {};
+struct TypeTag_long {};
+struct TypeTag_float {};
+struct TypeTag_double {};
+template<typename T> struct TypeTag_table {};
+template<typename T> struct TypeTag_grid {};
+struct TypeTag_string {};
+struct TypeTag_buffer {};
+struct TypeTag_vector3 {};
+struct TypeTag_quaternion {};
+struct TypeTag_struct {};
+
 template<typename T>
 struct Grid
 {
@@ -117,7 +130,7 @@ struct WriteOptions
     void *dummy{nullptr};
 };
 
-static void readFromStack(sim::handle_t stackHandle, bool *value, const ReadOptions &rdopt = {})
+static void readFromStack(TypeTag_bool, sim::handle_t stackHandle, bool *value, const ReadOptions &rdopt = {})
 {
     bool v;
     if(sim::getStackBoolValue(stackHandle, &v) == 1)
@@ -131,7 +144,7 @@ static void readFromStack(sim::handle_t stackHandle, bool *value, const ReadOpti
     }
 }
 
-static void readFromStack(sim::handle_t stackHandle, int *value, const ReadOptions &rdopt = {})
+static void readFromStack(TypeTag_int, sim::handle_t stackHandle, int *value, const ReadOptions &rdopt = {})
 {
     int v;
     if(sim::getStackInt32Value(stackHandle, &v) == 1)
@@ -145,7 +158,7 @@ static void readFromStack(sim::handle_t stackHandle, int *value, const ReadOptio
     }
 }
 
-static void readFromStack(sim::handle_t stackHandle, sim::long_t *value, const ReadOptions &rdopt = {})
+static void readFromStack(TypeTag_long, sim::handle_t stackHandle, sim::long_t *value, const ReadOptions &rdopt = {})
 {
     sim::long_t v;
     if(sim::getStackInt64Value(stackHandle, &v) == 1)
@@ -159,7 +172,7 @@ static void readFromStack(sim::handle_t stackHandle, sim::long_t *value, const R
     }
 }
 
-static void readFromStack(sim::handle_t stackHandle, float *value, const ReadOptions &rdopt = {})
+static void readFromStack(TypeTag_float, sim::handle_t stackHandle, float *value, const ReadOptions &rdopt = {})
 {
     float v;
     if(sim::getStackFloatValue(stackHandle, &v) == 1)
@@ -173,7 +186,7 @@ static void readFromStack(sim::handle_t stackHandle, float *value, const ReadOpt
     }
 }
 
-static void readFromStack(sim::handle_t stackHandle, double *value, const ReadOptions &rdopt = {})
+static void readFromStack(TypeTag_double, sim::handle_t stackHandle, double *value, const ReadOptions &rdopt = {})
 {
     double v;
     if(sim::getStackDoubleValue(stackHandle, &v) == 1)
@@ -187,7 +200,7 @@ static void readFromStack(sim::handle_t stackHandle, double *value, const ReadOp
     }
 }
 
-static void readFromStack(sim::handle_t stackHandle, std::string *value, const ReadOptions &rdopt = {})
+static void readFromStack(TypeTag_string, sim::handle_t stackHandle, std::string *value, const ReadOptions &rdopt = {})
 {
     std::string v;
     if(sim::getStackStringValue(stackHandle, &v) == 1)
@@ -201,8 +214,22 @@ static void readFromStack(sim::handle_t stackHandle, std::string *value, const R
     }
 }
 
-template<typename T>
-static void readFromStack(sim::handle_t stackHandle, std::optional<T> *value, const ReadOptions &rdopt = {})
+static void readFromStack(TypeTag_buffer, sim::handle_t stackHandle, std::string *value, const ReadOptions &rdopt = {})
+{
+    std::string v;
+    if(sim::getStackStringValue(stackHandle, &v) == 1)
+    {
+        *value = v;
+        sim::popStackItem(stackHandle, 1);
+    }
+    else
+    {
+        throw sim::exception("expected buffer");
+    }
+}
+
+template<typename TypeTag, typename T>
+static void readFromStack(TypeTag, sim::handle_t stackHandle, std::optional<T> *value, const ReadOptions &rdopt = {})
 {
     if(sim::getStackItemType(stackHandle, -1) == sim_stackitem_null)
     {
@@ -212,13 +239,13 @@ static void readFromStack(sim::handle_t stackHandle, std::optional<T> *value, co
     else
     {
         T v;
-        readFromStack(stackHandle, &v, rdopt); // will call sim::popStackItem() by itself
+        readFromStack(TypeTag{}, stackHandle, &v, rdopt); // will call sim::popStackItem() by itself
         *value = v;
     }
 }
 
-template<typename T>
-static void readFromStack(sim::handle_t stackHandle, std::vector<T> *vec, const ReadOptions &rdopt = {})
+template<typename ItemTypeTag, typename T>
+static void readFromStack(TypeTag_table<ItemTypeTag>, sim::handle_t stackHandle, std::vector<T> *vec, const ReadOptions &rdopt = {})
 {
     int sz = sim::getStackTableInfo(stackHandle, 0);
     if(sz < 0)
@@ -238,23 +265,23 @@ static void readFromStack(sim::handle_t stackHandle, std::vector<T> *vec, const 
     {
         sim::moveStackItemToTop(stackHandle, oldsz - 1);
         int j;
-        readFromStack(stackHandle, &j);
+        readFromStack(TypeTag_int{}, stackHandle, &j);
         sim::moveStackItemToTop(stackHandle, oldsz - 1);
         if constexpr(std::is_same<T, bool>::value)
         {
             T v;
-            readFromStack(stackHandle, &v);
+            readFromStack(ItemTypeTag{}, stackHandle, &v);
             (*vec)[i] = v;
         }
         else
         {
-            readFromStack(stackHandle, &vec->at(i));
+            readFromStack(ItemTypeTag{}, stackHandle, &vec->at(i));
         }
     }
 }
 
-template<typename T>
-static void readFromStack(sim::handle_t stackHandle, std::vector<T> *vec, int (*f)(sim::handle_t, std::vector<T>*), const ReadOptions &rdopt = {})
+template<typename ItemTypeTag, typename T>
+static void readFromStack(TypeTag_table<ItemTypeTag>, sim::handle_t stackHandle, std::vector<T> *vec, int (*f)(sim::handle_t, std::vector<T>*), const ReadOptions &rdopt = {})
 {
     int sz = sim::getStackTableInfo(stackHandle, 0);
     if(sz < 0)
@@ -276,25 +303,25 @@ static void readFromStack(sim::handle_t stackHandle, std::vector<T> *vec, int (*
 }
 
 template<>
-void readFromStack(sim::handle_t stackHandle, std::vector<float> *vec, const ReadOptions &rdopt)
+void readFromStack(TypeTag_table<float> t, sim::handle_t stackHandle, std::vector<float> *vec, const ReadOptions &rdopt)
 {
-    readFromStack(stackHandle, vec, sim::getStackFloatTable, rdopt);
+    readFromStack(t, stackHandle, vec, sim::getStackFloatTable, rdopt);
 }
 
 template<>
-void readFromStack(sim::handle_t stackHandle, std::vector<double> *vec, const ReadOptions &rdopt)
+void readFromStack(TypeTag_table<double> t, sim::handle_t stackHandle, std::vector<double> *vec, const ReadOptions &rdopt)
 {
-    readFromStack(stackHandle, vec, sim::getStackDoubleTable, rdopt);
+    readFromStack(t, stackHandle, vec, sim::getStackDoubleTable, rdopt);
 }
 
 template<>
-void readFromStack(sim::handle_t stackHandle, std::vector<int> *vec, const ReadOptions &rdopt)
+void readFromStack(TypeTag_table<int> t, sim::handle_t stackHandle, std::vector<int> *vec, const ReadOptions &rdopt)
 {
-    readFromStack(stackHandle, vec, sim::getStackInt32Table, rdopt);
+    readFromStack(t, stackHandle, vec, sim::getStackInt32Table, rdopt);
 }
 
-template<typename T>
-static void readFromStack(sim::handle_t stackHandle, Grid<T> *grid, const ReadOptions &rdopt = {})
+template<typename ItemTypeTag, typename T>
+static void readFromStack(TypeTag_grid<ItemTypeTag>, sim::handle_t stackHandle, Grid<T> *grid, const ReadOptions &rdopt = {})
 {
     try
     {
@@ -314,7 +341,7 @@ static void readFromStack(sim::handle_t stackHandle, Grid<T> *grid, const ReadOp
         {
             sim::moveStackItemToTop(stackHandle, oldsz - 1); // move key to top
             std::string key;
-            readFromStack(stackHandle, &key);
+            readFromStack(TypeTag_string{}, stackHandle, &key);
 
             sim::moveStackItemToTop(stackHandle, oldsz - 1); // move value to top
             try
@@ -322,11 +349,11 @@ static void readFromStack(sim::handle_t stackHandle, Grid<T> *grid, const ReadOp
                 if(0) {}
                 else if(key == "dims")
                 {
-                    readFromStack(stackHandle, &grid->dims, ReadOptions().setBounds(0, 1, -1));
+                    readFromStack(TypeTag_table<int>{}, stackHandle, &grid->dims, ReadOptions().setBounds(0, 1, -1));
                 }
                 else if(key == "data")
                 {
-                    readFromStack(stackHandle, &grid->data, ReadOptions());
+                    readFromStack(TypeTag_table<ItemTypeTag>{}, stackHandle, &grid->data, ReadOptions());
                 }
                 else
                 {
@@ -363,59 +390,64 @@ static void readFromStack(sim::handle_t stackHandle, Grid<T> *grid, const ReadOp
 
 #ifdef SIM_STUBS_GEN_EIGEN
 
-static void readFromStack(sim::handle_t stackHandle, Eigen::Vector3d *vec, const ReadOptions &rdopt = {})
+static void readFromStack(TypeTag_vector3, sim::handle_t stackHandle, Eigen::Vector3d *vec, const ReadOptions &rdopt = {})
 {
     std::vector<double> v;
     ReadOptions rdopt1;
     rdopt1.minSize = rdopt1.maxSize = {3};
-    readFromStack(stackHandle, &v, sim::getStackDoubleTable, rdopt1);
+    readFromStack(TypeTag_table<double>{}, stackHandle, &v, sim::getStackDoubleTable, rdopt1);
     (*vec) << v[0], v[1], v[2];
 }
 
-static void readFromStack(sim::handle_t stackHandle, Eigen::Quaterniond *q, const ReadOptions &rdopt = {})
+static void readFromStack(TypeTag_quaternion, sim::handle_t stackHandle, Eigen::Quaterniond *q, const ReadOptions &rdopt = {})
 {
     std::vector<double> v;
     ReadOptions rdopt1;
     rdopt1.minSize = rdopt1.maxSize = {4};
-    readFromStack(stackHandle, &v, sim::getStackDoubleTable, rdopt1);
+    readFromStack(TypeTag_table<double>{}, stackHandle, &v, sim::getStackDoubleTable, rdopt1);
     // note about quaternion order: Eigen=WXYZ, CoppeliaSim=XYZW
     *q = Eigen::Quaterniond(v[3], v[0], v[1], v[2]);
 }
 
 #endif // SIM_STUBS_GEN_EIGEN
 
-static void writeToStack(const bool &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+static void writeToStack(TypeTag_bool, const bool &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     sim::pushBoolOntoStack(stackHandle, value);
 }
 
-static void writeToStack(const int &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+static void writeToStack(TypeTag_int, const int &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     sim::pushInt32OntoStack(stackHandle, value);
 }
 
-static void writeToStack(const sim::long_t &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+static void writeToStack(TypeTag_long, const sim::long_t &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     sim::pushInt64OntoStack(stackHandle, value);
 }
 
-static void writeToStack(const float &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+static void writeToStack(TypeTag_float, const float &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     sim::pushFloatOntoStack(stackHandle, value);
 }
 
-static void writeToStack(const double &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+static void writeToStack(TypeTag_double, const double &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     sim::pushDoubleOntoStack(stackHandle, value);
 }
 
-static void writeToStack(const std::string &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+static void writeToStack(TypeTag_string, const std::string &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     sim::pushStringOntoStack(stackHandle, value);
 }
 
-template<typename T>
-static void writeToStack(const std::optional<T> &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+static void writeToStack(TypeTag_buffer, const std::string &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    sim::pushBufferOntoStack(stackHandle, value);
+}
+
+template<typename TypeTag, typename T>
+static void writeToStack(TypeTag, const std::optional<T> &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     if(!value)
     {
@@ -423,49 +455,49 @@ static void writeToStack(const std::optional<T> &value, sim::handle_t stackHandl
         return;
     }
 
-    writeToStack(*value, stackHandle, wropt);
+    writeToStack(TypeTag{}, *value, stackHandle, wropt);
 }
 
-template<typename T>
-static void writeToStack(const std::vector<T> &vec, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+template<typename ItemTypeTag, typename T>
+static void writeToStack(TypeTag_table<ItemTypeTag>, const std::vector<T> &vec, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     sim::pushTableOntoStack(stackHandle);
     for(size_t i = 0; i < vec.size(); i++)
     {
-        writeToStack(int(i + 1), stackHandle);
-        writeToStack(vec.at(i), stackHandle);
+        writeToStack(TypeTag_int{}, int(i + 1), stackHandle);
+        writeToStack(ItemTypeTag{}, vec.at(i), stackHandle);
         sim::insertDataIntoStackTable(stackHandle);
     }
 }
 
 template<>
-void writeToStack(const std::vector<float> &vec, sim::handle_t stackHandle, const WriteOptions &wropt)
+void writeToStack(TypeTag_table<float>, const std::vector<float> &vec, sim::handle_t stackHandle, const WriteOptions &wropt)
 {
     sim::pushFloatTableOntoStack(stackHandle, vec);
 }
 
 template<>
-void writeToStack(const std::vector<double> &vec, sim::handle_t stackHandle, const WriteOptions &wropt)
+void writeToStack(TypeTag_table<double>, const std::vector<double> &vec, sim::handle_t stackHandle, const WriteOptions &wropt)
 {
     sim::pushDoubleTableOntoStack(stackHandle, vec);
 }
 
 template<>
-void writeToStack(const std::vector<int> &vec, sim::handle_t stackHandle, const WriteOptions &wropt)
+void writeToStack(TypeTag_table<int>, const std::vector<int> &vec, sim::handle_t stackHandle, const WriteOptions &wropt)
 {
     sim::pushInt32TableOntoStack(stackHandle, vec);
 }
 
-template<typename T>
-static void writeToStack(const Grid<T> &grid, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+template<typename ItemTypeTag, typename T>
+static void writeToStack(TypeTag_grid<ItemTypeTag>, const Grid<T> &grid, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     try
     {
         sim::pushTableOntoStack(stackHandle);
         try
         {
-            writeToStack(std::string{"dims"}, stackHandle);
-            writeToStack(grid.dims, stackHandle);
+            writeToStack(TypeTag_string{}, std::string{"dims"}, stackHandle);
+            writeToStack(TypeTag_table<int>{}, grid.dims, stackHandle);
             sim::insertDataIntoStackTable(stackHandle);
         }
         catch(std::exception &ex)
@@ -474,8 +506,8 @@ static void writeToStack(const Grid<T> &grid, sim::handle_t stackHandle, const W
         }
         try
         {
-            writeToStack(std::string{"data"}, stackHandle);
-            writeToStack(grid.data, stackHandle);
+            writeToStack(TypeTag_string{}, std::string{"data"}, stackHandle);
+            writeToStack(TypeTag_table<T>{}, grid.data, stackHandle);
             sim::insertDataIntoStackTable(stackHandle);
         }
         catch(std::exception &ex)
@@ -491,17 +523,17 @@ static void writeToStack(const Grid<T> &grid, sim::handle_t stackHandle, const W
 
 #ifdef SIM_STUBS_GEN_EIGEN
 
-static void writeToStack(const Eigen::Vector3d &vec, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+static void writeToStack(TypeTag_vector3, const Eigen::Vector3d &vec, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     std::vector<double> v {vec.x(), vec.y(), vec.z()};
-    writeToStack(v, stackHandle, wropt);
+    writeToStack(TypeTag_table<double>{}, v, stackHandle, wropt);
 }
 
-static void writeToStack(const Eigen::Quaterniond &q, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+static void writeToStack(TypeTag_quaternion, const Eigen::Quaterniond &q, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     // note about quaternion order: Eigen=WXYZ, CoppeliaSim=XYZW
     std::vector<double> v {q.x(), q.y(), q.z(), q.w()};
-    writeToStack(v, stackHandle, wropt);
+    writeToStack(TypeTag_table<double>{}, v, stackHandle, wropt);
 }
 
 #endif // SIM_STUBS_GEN_EIGEN

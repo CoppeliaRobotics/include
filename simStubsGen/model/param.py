@@ -31,6 +31,9 @@ class Param(object):
         self.write_in = True
         self.write_out = True
 
+    def typetag(self):
+        return 'TypeTag'
+
     def mandatory(self):
         return self.default is None
 
@@ -74,6 +77,9 @@ class ParamInt(Param):
     def __init__(self, node):
         super(ParamInt, self).__init__(node)
 
+    def typetag(self):
+        return 'TypeTag_int'
+
     def htype(self):
         return 'int'
 
@@ -82,6 +88,9 @@ class ParamLong(Param):
         super(ParamLong, self).__init__(node)
         self.ctype_base = 'long long'
 
+    def typetag(self):
+        return 'TypeTag_long'
+
     def htype(self):
         return 'int'
 
@@ -89,12 +98,18 @@ class ParamFloat(Param):
     def __init__(self, node):
         super(ParamFloat, self).__init__(node)
 
+    def typetag(self):
+        return 'TypeTag_float'
+
     def htype(self):
         return 'float'
 
 class ParamDouble(Param):
     def __init__(self, node):
         super(ParamDouble, self).__init__(node)
+
+    def typetag(self):
+        return 'TypeTag_double'
 
     def htype(self):
         return 'float'
@@ -104,19 +119,31 @@ class ParamString(Param):
         super(ParamString, self).__init__(node)
         self.ctype_base = 'std::string'
 
+    def typetag(self):
+        return 'TypeTag_string'
+
 class ParamBuffer(Param):
     def __init__(self, node):
         super(ParamBuffer, self).__init__(node)
         self.ctype_base = 'std::string'
+
+    def typetag(self):
+        return 'TypeTag_buffer'
 
 class ParamFunc(Param):
     def __init__(self, node):
         super(ParamFunc, self).__init__(node)
         self.ctype_base = 'std::string'
 
+    def typetag(self):
+        return 'TypeTag_func'
+
 class ParamBool(Param):
     def __init__(self, node):
         super(ParamBool, self).__init__(node)
+
+    def typetag(self):
+        return 'TypeTag_bool'
 
 class ParamTable(Param):
     def __init__(self, node):
@@ -144,6 +171,9 @@ class ParamTable(Param):
             self.write_in = False
             self.write_out = False
 
+    def typetag(self):
+        return f'TypeTag_table<{self.item_dummy().typetag()}>'
+
     def item_dummy(self):
         n = type('dummyNode', (object,), dict(tag='param', attrib={'name': 'dummy', 'type': self.itype}))
         return Param.factory(n)
@@ -161,6 +191,9 @@ class ParamStruct(Param):
         super(ParamStruct, self).__init__(node)
         self.structname = name
 
+    def typetag(self):
+        return 'TypeTag_struct'
+
     def htype(self):
         return 'map'
 
@@ -174,15 +207,24 @@ class ParamGrid(Param):
             raise ValueError(f'Attribute "item-type" must be one of: {", ".join(valid_itypes)}')
         self.ctype_base = 'Grid< %s >' % self.itype
 
+    def typetag(self):
+        return f'TypeTag_grid<{self.itype}>'
+
 class ParamVector3(Param):
     def __init__(self, node):
         super(ParamVector3, self).__init__(node)
         self.ctype_base = 'Eigen::Vector3d'
 
+    def typetag(self):
+        return 'TypeTag_vector3'
+
 class ParamQuaternion(Param):
     def __init__(self, node):
         super(ParamQuaternion, self).__init__(node)
         self.ctype_base = 'Eigen::Quaterniond'
+
+    def typetag(self):
+        return 'TypeTag_quaternion'
 
 Param.register_type('any', Param)
 Param.register_type('int', ParamInt)
