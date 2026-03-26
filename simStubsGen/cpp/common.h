@@ -426,6 +426,100 @@ static void readFromStack(TypeTag_quaternion, sim::handle_t stackHandle, Eigen::
 
 #endif // SIM_STUBS_GEN_EIGEN
 
+static void readFromStack(sim::handle_t stackHandle, bool *value, const ReadOptions &rdopt = {})
+{
+    readFromStack(TypeTag_bool{}, stackHandle, value, rdopt);
+}
+
+static void readFromStack(sim::handle_t stackHandle, int *value, const ReadOptions &rdopt = {})
+{
+    readFromStack(TypeTag_int{}, stackHandle, value, rdopt);
+}
+
+static void readFromStack(sim::handle_t stackHandle, sim::long_t *value, const ReadOptions &rdopt = {})
+{
+    readFromStack(TypeTag_long{}, stackHandle, value, rdopt);
+}
+
+static void readFromStack(sim::handle_t stackHandle, float *value, const ReadOptions &rdopt = {})
+{
+    readFromStack(TypeTag_float{}, stackHandle, value, rdopt);
+}
+
+static void readFromStack(sim::handle_t stackHandle, double *value, const ReadOptions &rdopt = {})
+{
+    readFromStack(TypeTag_double{}, stackHandle, value, rdopt);
+}
+
+static void readFromStack(sim::handle_t stackHandle, std::string *value, const ReadOptions &rdopt = {})
+{
+    readFromStack(TypeTag_string{}, stackHandle, value, rdopt);
+}
+
+static void readFromStack(sim::handle_t stackHandle, std::optional<int> *value, const ReadOptions &rdopt = {})
+{
+    readFromStack(TypeTag_int{}, stackHandle, value, rdopt);
+}
+
+static void readFromStack(sim::handle_t stackHandle, std::optional<sim::long_t> *value, const ReadOptions &rdopt = {})
+{
+    readFromStack(TypeTag_long{}, stackHandle, value, rdopt);
+}
+
+static void readFromStack(sim::handle_t stackHandle, std::optional<float> *value, const ReadOptions &rdopt = {})
+{
+    readFromStack(TypeTag_float{}, stackHandle, value, rdopt);
+}
+
+static void readFromStack(sim::handle_t stackHandle, std::optional<double> *value, const ReadOptions &rdopt = {})
+{
+    readFromStack(TypeTag_double{}, stackHandle, value, rdopt);
+}
+
+static void readFromStack(sim::handle_t stackHandle, std::optional<std::string> *value, const ReadOptions &rdopt = {})
+{
+    readFromStack(TypeTag_string{}, stackHandle, value, rdopt);
+}
+
+static void readFromStack(sim::handle_t stackHandle, std::vector<float> *vec, const ReadOptions &rdopt = {})
+{
+    readFromStack(TypeTag_table<TypeTag_float>{}, stackHandle, vec, rdopt);
+}
+
+static void readFromStack(sim::handle_t stackHandle, std::vector<double> *vec, const ReadOptions &rdopt = {})
+{
+    readFromStack(TypeTag_table<TypeTag_double>{}, stackHandle, vec, rdopt);
+}
+
+static void readFromStack(sim::handle_t stackHandle, std::vector<int> *vec, const ReadOptions &rdopt = {})
+{
+    readFromStack(TypeTag_table<TypeTag_int>{}, stackHandle, vec, rdopt);
+}
+
+static void readFromStack(sim::handle_t stackHandle, std::vector<std::string> *vec, const ReadOptions &rdopt = {})
+{
+    readFromStack(TypeTag_table<TypeTag_string>{}, stackHandle, vec, rdopt);
+}
+
+static void readFromStack(sim::handle_t stackHandle, Grid<double> *grid, const ReadOptions &rdopt = {})
+{
+    readFromStack(TypeTag_grid<TypeTag_double>{}, stackHandle, grid, rdopt);
+}
+
+#ifdef SIM_STUBS_GEN_EIGEN
+
+static void readFromStack(sim::handle_t stackHandle, Eigen::Vector3d *vec, const ReadOptions &rdopt = {})
+{
+    readFromStack(TypeTag_vector3{}, stackHandle, vec, rdopt);
+}
+
+static void readFromStack(sim::handle_t stackHandle, Eigen::Quaterniond *q, const ReadOptions &rdopt = {})
+{
+    readFromStack(TypeTag_quaternion{}, stackHandle, q, rdopt);
+}
+
+#endif // SIM_STUBS_GEN_EIGEN
+
 static void writeToStack(TypeTag_bool, const bool &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     sim::pushBoolOntoStack(stackHandle, value);
@@ -554,6 +648,100 @@ static void writeToStack(TypeTag_quaternion, const Eigen::Quaterniond &q, sim::h
     // note about quaternion order: Eigen=WXYZ, CoppeliaSim=XYZW
     std::vector<double> v {q.x(), q.y(), q.z(), q.w()};
     writeToStack(TypeTag_table<double>{}, v, stackHandle, wropt);
+}
+
+#endif // SIM_STUBS_GEN_EIGEN
+
+static void writeToStack(const bool &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    writeToStack(TypeTag_bool{}, value, stackHandle, wropt);
+}
+
+static void writeToStack(const int &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    writeToStack(TypeTag_int{}, value, stackHandle, wropt);
+}
+
+static void writeToStack(const sim::long_t &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    writeToStack(TypeTag_long{}, value, stackHandle, wropt);
+}
+
+static void writeToStack(const float &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    writeToStack(TypeTag_float{}, value, stackHandle, wropt);
+}
+
+static void writeToStack(const double &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    writeToStack(TypeTag_double{}, value, stackHandle, wropt);
+}
+
+static void writeToStack(const std::string &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    writeToStack(TypeTag_string{}, value, stackHandle, wropt);
+}
+
+static void writeToStack(const std::optional<int> &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    writeToStack(TypeTag_int{}, value, stackHandle, wropt);
+}
+
+static void writeToStack(const std::optional<sim::long_t> &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    writeToStack(TypeTag_long{}, value, stackHandle, wropt);
+}
+
+static void writeToStack(const std::optional<float> &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    writeToStack(TypeTag_float{}, value, stackHandle, wropt);
+}
+
+static void writeToStack(const std::optional<double> &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    writeToStack(TypeTag_double{}, value, stackHandle, wropt);
+}
+
+static void writeToStack(const std::optional<std::string> &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    writeToStack(TypeTag_string{}, value, stackHandle, wropt);
+}
+
+static void writeToStack(const std::vector<float> &vec, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    writeToStack(TypeTag_table<TypeTag_float>{}, vec, stackHandle, wropt);
+}
+
+static void writeToStack(const std::vector<double> &vec, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    writeToStack(TypeTag_table<TypeTag_double>{}, vec, stackHandle, wropt);
+}
+
+static void writeToStack(const std::vector<int> &vec, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    writeToStack(TypeTag_table<TypeTag_int>{}, vec, stackHandle, wropt);
+}
+
+static void writeToStack(const std::vector<std::string> &vec, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    writeToStack(TypeTag_table<TypeTag_string>{}, vec, stackHandle, wropt);
+}
+
+static void writeToStack(const Grid<double> &grid, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    writeToStack(TypeTag_grid<TypeTag_double>{}, grid, stackHandle, wropt);
+}
+
+#ifdef SIM_STUBS_GEN_EIGEN
+
+static void writeToStack(const Eigen::Vector3d &vec, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    writeToStack(TypeTag_vector3{}, vec, stackHandle, wropt);
+}
+
+static void writeToStack(const Eigen::Quaterniond &q, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    writeToStack(TypeTag_quaternion{}, q, stackHandle, wropt);
 }
 
 #endif // SIM_STUBS_GEN_EIGEN
