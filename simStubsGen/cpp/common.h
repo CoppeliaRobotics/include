@@ -27,6 +27,7 @@ struct TypeTag_buffer {};
 struct TypeTag_vector3 {};
 struct TypeTag_quaternion {};
 struct TypeTag_struct {};
+struct TypeTag_func {};
 
 template<typename T>
 struct Grid
@@ -225,6 +226,20 @@ static void readFromStack(TypeTag_buffer, sim::handle_t stackHandle, std::string
     else
     {
         throw sim::exception("expected buffer");
+    }
+}
+
+static void readFromStack(TypeTag_func, sim::handle_t stackHandle, std::string *value, const ReadOptions &rdopt = {})
+{
+    std::string v;
+    if(sim::getStackStringValue(stackHandle, &v) == 1)
+    {
+        *value = v;
+        sim::popStackItem(stackHandle, 1);
+    }
+    else
+    {
+        throw sim::exception("expected func");
     }
 }
 
@@ -444,6 +459,11 @@ static void writeToStack(TypeTag_string, const std::string &value, sim::handle_t
 static void writeToStack(TypeTag_buffer, const std::string &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     sim::pushBufferOntoStack(stackHandle, value);
+}
+
+static void writeToStack(TypeTag_func, const std::string &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    sim::pushStringOntoStack(stackHandle, value);
 }
 
 template<typename TypeTag, typename T>
