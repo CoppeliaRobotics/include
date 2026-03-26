@@ -1,7 +1,7 @@
 project(CoppeliaSim-include)
 cmake_minimum_required(VERSION 3.20)
 set(DESTINATION_INCLUDE_DIR ${COPPELIASIM_ROOT_DIR}/programming/include)
-foreach(X IN ITEMS cmake simLib simMath simPlusPlus simStack simStubsGen simTest)
+foreach(X IN ITEMS cmake sim simLib simMath simPlusPlus simStack simStubsGen simTest)
     install(DIRECTORY ${X} DESTINATION ${DESTINATION_INCLUDE_DIR})
 endforeach()
 install(FILES license.txt DESTINATION ${DESTINATION_INCLUDE_DIR})
