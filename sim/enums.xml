@@ -1,0 +1,159 @@
+<enums>
+    <enum name="sceneObjectType" label="scene object types" type="int" prefix="sim_sceneobject_" description="">
+        <item name="shape" value="0"/>
+        <item name="joint" value="1"/>
+        <item name="graph" value="2"/>
+        <item name="camera" value="3"/>
+        <item name="dummy" value="4"/>
+        <item name="proximitysensor" value="5" label="proximity sensor"/>
+        <item name="visionsensor" value="9" label="vision sensor"/>
+        <item name="forcesensor" value="12" label="force sensor"/>
+        <item name="light" value="13"/>
+        <item name="octree" value="15" label="oc tree"/>
+        <item name="pointcloud" value="16" label="point cloud"/>
+        <item name="script" value="17"/>
+        <item name="marker" value="18"/>
+    </enum>
+    <enum name="lightType" label="light types" type="int" prefix="sim_light_" description="">
+        <item name="omnidirectional" value="1"/>
+        <item name="spot" value="2"/>
+        <item name="directional" value="3"/>
+    </enum>
+    <enum name="jointType" label="joint types" type="int" prefix="sim_joint_" description="">
+        <item name="revolute" value="10"/>
+        <item name="prismatic" value="11"/>
+        <item name="spherical" value="12"/>
+    </enum>
+    <enum name="shapeType" label="shape types" type="int" prefix="sim_shape_" description="">
+        <item name="simple" value="20"/>
+        <item name="compound" value="21"/>
+    </enum>
+    <enum name="proximitySensorType" label="proximity sensor types" type="int" prefix="sim_proximitysensor_" description="">
+        <item name="pyramid" value="30"/>
+        <item name="cylinder" value="31"/>
+        <item name="disc" value="32"/>
+        <item name="cone" value="33"/>
+        <item name="ray" value="34"/>
+    </enum>
+    <enum name="scriptArgType" label="script argument types" type="int" prefix="sim_script_arg_" description="">
+        <item name="null" value="0"/>
+        <item name="bool" value="1"/>
+        <item name="int32" value="2"/>
+        <item name="float" value="3"/>
+        <item name="string" value="4"/>
+        <item name="invalid" value="5"/>
+        <item name="charbuff" value="6"/>
+        <item name="double" value="7"/>
+        <item name="table" value="8"/>
+    </enum>
+    <enum name="simulationState" label="simulation states" type="int" prefix="sim_simulation_" description="">
+        <item name="stopped" value="0"/>
+        <item name="paused" value="8"/>
+        <item name="running" value="17"/>
+        <item name="lastbeforestop" value="22"/>
+    </enum>
+    <enum name="parentingMode" label="assembly/parenting modes" type="int" prefix="sim_parentingmode_" description="">
+        <item name="keeplocalpose" value="0"/>
+        <item name="keepworldpose" value="1"/>
+        <item name="assembly" value="2"/>
+    </enum>
+    <enum name="scriptType" label="script types" type="int" prefix="sim_scripttype_" description="">
+        <item name="main" value="0"/>
+        <item name="simulation" value="1"/>
+        <item name="addon" value="2"/>
+        <item name="customization" value="6"/>
+        <item name="sandbox" value="8"/>
+        <item name="passive" value="9"/>
+    </enum>
+    <enum name="codeLang" label="code languages" type="int" prefix="sim_lang_" description="">
+        <item name="undefined" value="-1"/>
+        <item name="lua" value="0"/>
+        <item name="python" value="1"/>
+    </enum>
+    <enum name="scriptExecOrder" label="script execution order" type="int" prefix="sim_scriptexecorder_" description="">
+        <item name="first" value="0"/>
+        <item name="normal" value="1"/>
+        <item name="last" value="2"/>
+    </enum>
+    <enum name="drawingObjectType" label="drawing object types" type="int" prefix="sim_drawing_" description="">
+        <item name="points" value="0"/>
+        <item name="lines" value="1"/>
+        <item name="triangles" value="2"/>
+        <item name="spherepts" value="7"/>
+        <item name="linestrip" value="8"/>
+        <item name="trianglepts" value="9"/>
+        <item name="quadpts" value="10"/>
+        <item name="discpts" value="11"/>
+        <item name="cubepts" value="12"/>
+    </enum>
+    <enum name="markerObjectType" label="marker object types" type="int" prefix="sim_markertype_" description="">
+        <item name="points" value="0"/>
+        <item name="lines" value="1"/>
+        <item name="triangles" value="2"/>
+        <item name="spheres" value="7"/>
+        <item name="squares" value="9"/>
+        <item name="discs" value="10"/>
+        <item name="cubes" value="11"/>
+        <item name="cylinders" value="12"/>
+        <item name="custom" value="13"/>
+    </enum>
+    <enum name="markerObjectOptions" label="marker object options" type="int" prefix="sim_markeropts_" description="">
+        <item name="local" value="1"/>
+        <item name="cyclic" value="2"/>
+        <item name="overlay" value="4"/>
+    </enum>
+    <enum name="jointMode" label="joint modes" type="int" prefix="sim_jointmode_" description="">
+        <item name="kinematic" value="0"/>
+        <item name="dependent" value="4"/>
+        <item name="dynamic" value="5"/>
+    </enum>
+    <enum name="jointDynCtrlMode" label="joint dynamic control modes" type="int" prefix="sim_jointdynctrl_" description="">
+        <item name="free" value="0"/>
+        <item name="force" value="1"/>
+        <item name="velocity" value="4"/>
+        <item name="position" value="8"/>
+        <item name="spring" value="12"/>
+        <item name="callback" value="16"/>
+    </enum>
+    <enum name="physicsEngine" label="physics engines" type="int" prefix="sim_physics_" description="">
+        <item name="bullet" value="0"/>
+        <item name="ode" value="1"/>
+        <item name="vortex" value="2"/>
+        <item name="newton" value="3"/>
+        <item name="mujoco" value="4"/>
+        <item name="drake" value="5"/>
+    </enum>
+    <enum name="dummyType" label="dummy types" type="int" prefix="sim_dummytype_" description="">
+        <item name="dynloopclosure" value="0"/>
+        <item name="dyntendon" value="7"/>
+        <item name="default" value="8"/>
+        <item name="assembly" value="9"/>
+    </enum>
+    <enum name="materialComponent" label="material components" type="int" prefix="sim_materialcomponent" description="">
+        <item name="_diffuse" value="0"/>
+        <item name="_lightdiffuse" value="1"/>
+        <item name="_specular" value="2"/>
+        <item name="_emission" value="3"/>
+    </enum>
+    <enum name="stringType" label="string types" type="int" prefix="sim_string_" description="">
+        <item name="text" value="0"/>
+        <item name="binary" value="1"/>
+        <item name="buffer" value="2"/>
+    </enum>
+    <enum name="bufferType" label="buffer types" type="int" prefix="sim_buffer_" description="">
+        <item name="uint8" value="0"/>
+        <item name="int8" value="1"/>
+        <item name="uint16" value="2"/>
+        <item name="int16" value="3"/>
+        <item name="uint32" value="4"/>
+        <item name="int32" value="5"/>
+        <item name="float" value="6"/>
+        <item name="double" value="7"/>
+        <item name="uint8rgb" value="8"/>
+        <item name="uint8bgr" value="9"/>
+        <item name="uint8rgba" value="10"/>
+        <item name="uint8argb" value="11"/>
+        <item name="base64" value="12"/>
+        <item name="split" value="13"/>
+    </enum>
+</enums>

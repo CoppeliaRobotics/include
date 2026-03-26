@@ -1,0 +1,1513 @@
+<object-classes>
+  <object-class name="app" superclass="object">
+    <property name="addOnPath" type="string" writable="false" label="Add-on path" constant="true" />
+    <property name="addOns" type="handlearray" writable="false" handle-type="detachedScript" label="Add-ons" constant="true">
+      <description>List of add-ons</description>
+    </property>
+    <property name="appArg1" type="string" deprecated="true" label="App arg. 1" constant="true" />
+    <property name="appArg2" type="string" deprecated="true" label="App arg. 2" constant="true" />
+    <property name="appArg3" type="string" deprecated="true" label="App arg. 3" constant="true" />
+    <property name="appArg4" type="string" deprecated="true" label="App arg. 4" constant="true" />
+    <property name="appArg5" type="string" deprecated="true" label="App arg. 5" constant="true" />
+    <property name="appArg6" type="string" deprecated="true" label="App arg. 6" constant="true" />
+    <property name="appArg7" type="string" deprecated="true" label="App arg. 7" constant="true" />
+    <property name="appArg8" type="string" deprecated="true" label="App arg. 8" constant="true" />
+    <property name="appArg9" type="string" deprecated="true" label="App arg. 9" constant="true" />
+    <property name="appArgs" type="stringarray" label="App args" constant="true" />
+    <property name="appPath" type="string" writable="false" label="Application path" constant="true" />
+    <property name="auxAddOn1" type="string" label="Aux. add-on 1" constant="true">
+      <description>Auxiliary add-on 1</description>
+    </property>
+    <property name="auxAddOn2" type="string" label="Aux. add-on 2" constant="true">
+      <description>Auxiliary add-on 2</description>
+    </property>
+    <property name="browserEnabled" type="bool" label="Browser enabled" />
+    <property name="canSave" type="bool" writable="false" label="Can save" constant="true">
+      <description>Whether save operation is allowed in given state</description>
+    </property>
+    <property name="cancelScheduledExecution" type="method" readable="false" writable="false" />
+    <property name="consoleVerbosity" type="int" label="Console verbosity" />
+    <property name="consoleVerbosityStr" type="string" readable="false" silent="true" label="Console verbosity string">
+      <description>Console verbosity string, only for client app</description>
+    </property>
+    <property name="createObject" type="method" readable="false" writable="false" />
+    <property name="defaultPython" type="string" writable="false" label="Default Python" constant="true">
+      <description>Default Python interpreter</description>
+    </property>
+    <property name="defaultRotationStepSize" type="float" label="Rotation step size">
+      <description>Default rotation step size</description>
+    </property>
+    <property name="defaultTranslationStepSize" type="float" label="Translation step size">
+      <description>Default translation step size</description>
+    </property>
+    <property name="deserialize" type="method" readable="false" writable="false" />
+    <property name="dialogVerbosity" type="int" label="Dialog verbosity" />
+    <property name="dialogVerbosityStr" type="string" readable="false" silent="true" label="Dialog verbosity string">
+      <description>Dialog verbosity string, only for client app</description>
+    </property>
+    <property name="displayEnabled" type="bool" label="Display enabled" />
+    <property name="dongleID" type="string" writable="false" constant="true" />
+    <property name="dongleSerial" type="string" writable="false" constant="true" />
+    <property name="duplicateObjects" type="method" readable="false" writable="false" />
+    <property name="execUnsafe" type="bool" writable="false" label="Execute unsafe" constant="true" />
+    <property name="execUnsafeExt" type="bool" writable="false" label="Execute unsafe extended" constant="true">
+      <description>Execute unsafe for code triggered externally</description>
+    </property>
+    <property name="fastIdleLoop" type="method" readable="false" writable="false" />
+    <property name="flavor" type="int" writable="false" label="Flavor" constant="true">
+      <description>Flavor (0: lite, 1: edu, 2: pro)</description>
+    </property>
+    <property name="getObjects" type="method" readable="false" writable="false" />
+    <property name="handleAddOnScripts" type="method" readable="false" writable="false" />
+    <property name="handleSandboxScript" type="method" readable="false" writable="false" />
+    <property name="headlessMode" type="int" writable="false" label="Headless mode" constant="true">
+      <description>Headless mode (0: not headless, 1: GUI suppressed, 2: headless library)</description>
+    </property>
+    <property name="hierarchyEnabled" type="bool" label="Hierarchy enabled" />
+    <property name="idleFps" type="int" writable="false" label="Loaded plugin names" />
+    <property name="importExportPath" type="string" silent="true" label="Import/export path" />
+    <property name="legacyMachineId" type="string" writable="false" label="Legacy machine ID" constant="true" />
+    <property name="loadImage" type="method" readable="false" writable="false" />
+    <property name="loadImageFromBuffer" type="method" readable="false" writable="false" />
+    <property name="loadModel" type="method" readable="false" writable="false" />
+    <property name="loadModelFromBuffer" type="method" readable="false" writable="false" />
+    <property name="loadModelThumbnail" type="method" readable="false" writable="false" />
+    <property name="loadModelThumbnailFromBuffer" type="method" readable="false" writable="false" />
+    <property name="loadScene" type="method" readable="false" writable="false" />
+    <property name="loadSceneFromBuffer" type="method" readable="false" writable="false" />
+    <property name="logError" type="method" readable="false" writable="false" />
+    <property name="logInfo" type="method" readable="false" writable="false" />
+    <property name="logWarn" type="method" readable="false" writable="false" />
+    <property name="luaPath" type="string" writable="false" label="Lua path" constant="true" />
+    <property name="machineID0" type="string" writable="false" constant="true" />
+    <property name="machineID1" type="string" writable="false" constant="true" />
+    <property name="machineID2" type="string" writable="false" constant="true" />
+    <property name="machineID3" type="string" writable="false" constant="true" />
+    <property name="machineIDX" type="string" writable="false" constant="true" />
+    <property name="machineId" type="string" writable="false" label="Machine ID" constant="true" />
+    <property name="machineSerial" type="string" writable="false" constant="true" />
+    <property name="machineSerialND" type="string" writable="false" constant="true" />
+    <property name="modelPath" type="string" silent="true" label="Model path" />
+    <property name="mujocoPath" type="string" writable="false" label="MuJoCo path" constant="true" />
+    <property name="notifyDeprecated" type="int" writable="false" label="Notify deprecated" constant="true">
+      <description>Notify deprecated API (0: off, 1: light, 2: full)</description>
+    </property>
+    <property name="openFile" type="method" readable="false" writable="false" />
+    <property name="packDoubleTable" type="method" readable="false" writable="false" />
+    <property name="packFloatTable" type="method" readable="false" writable="false" />
+    <property name="packInt16Table" type="method" readable="false" writable="false" />
+    <property name="packInt32Table" type="method" readable="false" writable="false" />
+    <property name="packInt64Table" type="method" readable="false" writable="false" />
+    <property name="packInt8Table" type="method" readable="false" writable="false" />
+    <property name="packTable" type="method" readable="false" writable="false" />
+    <property name="packUInt16Table" type="method" readable="false" writable="false" />
+    <property name="packUInt32Table" type="method" readable="false" writable="false" />
+    <property name="packUInt8Table" type="method" readable="false" writable="false" />
+    <property name="pid" type="long" writable="false" label="PID" constant="true" />
+    <property name="platform" type="int" writable="false" label="Platform" constant="true">
+      <description>Platform (0: Windows, 1: macOS, 2: Linux)</description>
+    </property>
+    <property name="pluginNames" type="stringarray" writable="false" label="Plugins">
+      <description>List of plugins</description>
+    </property>
+    <property name="processCnt" type="int" writable="false" silent="true" label="Processes">
+      <description>Overall processes</description>
+    </property>
+    <property name="processId" type="int" writable="false" label="Process" constant="true">
+      <description>Process ID</description>
+    </property>
+    <property name="productVersion" type="string" writable="false" label="Product string" constant="true">
+      <description>Product version (string)</description>
+    </property>
+    <property name="productVersionNb" type="int" writable="false" label="Product" constant="true">
+      <description>Product version (number)</description>
+    </property>
+    <property name="protocolVersion" type="int" label="Protocol">
+      <description>Protocol version</description>
+    </property>
+    <property name="pythonPath" type="string" writable="false" label="Python path" constant="true" />
+    <property name="qtVersion" type="int" writable="false" label="Qt" constant="true">
+      <description>Qt version</description>
+    </property>
+    <property name="quit" type="method" readable="false" writable="false" />
+    <property name="randomFloat" type="float" writable="false" silent="true" label="Random number" />
+    <property name="randomQuaternion" type="quaternion" writable="false" silent="true" label="Random quaternion" />
+    <property name="randomString" type="string" writable="false" silent="true" label="Random string" />
+    <property name="removeObjects" type="method" readable="false" writable="false" />
+    <property name="resourcePath" type="string" writable="false" label="Resource path" constant="true" />
+    <property name="sandbox" type="handle" writable="false" handle-type="detachedScript" label="Sandbox" constant="true">
+      <description>Handle of the sandbox script</description>
+    </property>
+    <property name="sandboxLang" type="string" writable="false" label="Sandbox language" constant="true">
+      <description>Default sandbox language</description>
+    </property>
+    <property name="saveImage" type="method" readable="false" writable="false" />
+    <property name="saveImageToBuffer" type="method" readable="false" writable="false" />
+    <property name="saveScene" type="method" readable="false" writable="false" />
+    <property name="saveSceneToBuffer" type="method" readable="false" writable="false" />
+    <property name="scenePath" type="string" silent="true" label="Scene path" />
+    <property name="sceneTempPath" type="string" writable="false" label="Scene temporary path" constant="true" />
+    <property name="scheduleExecution" type="method" readable="false" writable="false" />
+    <property name="serialize" type="method" readable="false" writable="false" />
+    <property name="sessionId" type="string" writable="false" label="Session ID" constant="true" />
+    <property name="settingsPath" type="string" writable="false" label="Settings path" constant="true" />
+    <property name="startupCode" type="string" label="Start-up code" constant="true" />
+    <property name="statusbarVerbosity" type="int" label="Statusbar verbosity" />
+    <property name="statusbarVerbosityStr" type="string" readable="false" silent="true" label="Statusbar verbosity string">
+      <description>Statusbar verbosity string, only for client app</description>
+    </property>
+    <property name="systemLock" type="method" readable="false" writable="false" />
+    <property name="systemPath" type="string" writable="false" label="System path" constant="true" />
+    <property name="systemTime" type="float" writable="false" silent="true" label="System time" />
+    <property name="tempPath" type="string" writable="false" label="Temporary path" constant="true" />
+    <property name="throttle" type="method" readable="false" writable="false" />
+    <property name="transformImage" type="method" readable="false" writable="false" />
+    <property name="unpackDoubleTable" type="method" readable="false" writable="false" />
+    <property name="unpackFloatTable" type="method" readable="false" writable="false" />
+    <property name="unpackInt16Table" type="method" readable="false" writable="false" />
+    <property name="unpackInt32Table" type="method" readable="false" writable="false" />
+    <property name="unpackInt64Table" type="method" readable="false" writable="false" />
+    <property name="unpackInt8Table" type="method" readable="false" writable="false" />
+    <property name="unpackTable" type="method" readable="false" writable="false" />
+    <property name="unpackUInt16Table" type="method" readable="false" writable="false" />
+    <property name="unpackUInt32Table" type="method" readable="false" writable="false" />
+    <property name="unpackUInt8Table" type="method" readable="false" writable="false" />
+  </object-class>
+  <object-class name="camera" superclass="sceneObject">
+    <property name="cameraSize" type="float" label="Size">
+      <description>Camera size</description>
+    </property>
+    <property name="clippingPlanes" type="floatarray" label="Clipping planes">
+      <description>Near and far clipping planes</description>
+    </property>
+    <property name="color.diffuse" type="color" label="Diffuse color" />
+    <property name="color.emission" type="color" label="Emission color" />
+    <property name="color.specular" type="color" label="Specular color" />
+    <property name="frustumCornerFar" type="vector3" writable="false" label="Far corner of view frustum" />
+    <property name="frustumCornerNear" type="vector3" writable="false" label="Near corner of View frustum" />
+    <property name="parentAsManipulationProxy" type="bool" label="Parent as proxy">
+      <description>Use parent as manipulation proxy</description>
+    </property>
+    <property name="perspective" type="bool" writable="false" label="Perspective" constant="true">
+      <description>Perspective projection mode, otherwise orthogonal projection mode</description>
+    </property>
+    <property name="resolution" type="intarray2" label="Resolution">
+      <description>Resolution (relevant only with vision sensors)</description>
+    </property>
+    <property name="rotationEnabled" type="bool" label="Rotation enabled" />
+    <property name="showFrustum" type="bool" label="Show view frustum" />
+    <property name="trackedObjectHandle" type="int" label="Tracked object">
+      <description>Tracked scene object handle</description>
+    </property>
+    <property name="translationEnabled" type="bool" label="Translation enabled" />
+    <property name="viewAngle" type="float" label="View angle">
+      <description>View angle (in perspective projection mode)</description>
+    </property>
+    <property name="viewSize" type="float" label="View size">
+      <description>View size (in orthogonal projection mode)</description>
+    </property>
+  </object-class>
+  <object-class name="collection" superclass="object">
+    <property name="addItem" type="method" readable="false" writable="false" />
+    <property name="changeColor" type="method" readable="false" writable="false" />
+    <property name="checkCollision" type="method" readable="false" writable="false" />
+    <property name="checkDistance" type="method" readable="false" writable="false" />
+    <property name="objects" type="handlearray" writable="false" handle-type="sceneObject" label="Children handles" />
+    <property name="remove" type="method" readable="false" writable="false" />
+    <property name="removeItem" type="method" readable="false" writable="false" />
+    <property name="restoreColor" type="method" readable="false" writable="false" />
+  </object-class>
+  <object-class name="detachedScript" superclass="object">
+    <property name="addOnMenuPath" type="string" writable="false" label="Add-on menu path" constant="true">
+      <description>Menu path of add-on</description>
+    </property>
+    <property name="addOnPath" type="string" writable="false" label="Add-on path" constant="true">
+      <description>Path of add-on</description>
+    </property>
+    <property name="callFunction" type="method" readable="false" writable="false" />
+    <property name="code" type="string" label="Code">
+      <description>Script content</description>
+    </property>
+    <property name="execPriority" type="int" label="Execution priority" />
+    <property name="executeString" type="method" readable="false" writable="false" />
+    <property name="executionDepth" type="int" writable="false" silent="true" label="Execution depth" />
+    <property name="getApiFunc" type="method" readable="false" writable="false" />
+    <property name="getApiInfo" type="method" readable="false" writable="false" />
+    <property name="getFunctions" type="method" readable="false" writable="false" />
+    <property name="getObject" type="method" readable="false" writable="false" />
+    <property name="getStackTraceback" type="method" readable="false" writable="false" />
+    <property name="getStepping" type="method" readable="false" writable="false" />
+    <property name="init" type="method" readable="false" writable="false" />
+    <property name="language" type="string" writable="false" label="Language" constant="true" />
+    <property name="lock" type="method" readable="false" writable="false" />
+    <property name="registerFunctionHook" type="method" readable="false" writable="false" />
+    <property name="remove" type="method" readable="false" writable="false" />
+    <property name="removeFunctionHook" type="method" readable="false" writable="false" />
+    <property name="restartOnError" type="bool" label="Restart">
+      <description>Restart on error</description>
+    </property>
+    <property name="scriptDisabled" type="bool" label="Enabled">
+      <description>Script is enabled</description>
+    </property>
+    <property name="scriptName" type="string" writable="false" silent="true" label="Name">
+      <description>Script name</description>
+    </property>
+    <property name="scriptState" type="int" writable="false" label="State">
+      <description>Script state</description>
+    </property>
+    <property name="scriptType" type="int" writable="false" label="Type" constant="true">
+      <description>Script type</description>
+    </property>
+    <property name="setStepping" type="method" readable="false" writable="false" />
+    <property name="step" type="method" readable="false" writable="false" />
+    <property name="wait" type="method" readable="false" writable="false" />
+    <property name="waitForSignal" type="method" readable="false" writable="false" />
+    <property name="yield" type="method" readable="false" writable="false" />
+  </object-class>
+  <object-class name="drawingObject" superclass="object">
+    <property name="appendColors" type="floatarray" />
+    <property name="appendPoints" type="floatarray" />
+    <property name="appendQuaternions" type="floatarray" />
+    <property name="colors" type="floatarray" />
+    <property name="cyclic" type="bool" />
+    <property name="maxCnt" type="int" />
+    <property name="overlay" type="bool" />
+    <property name="parent" type="handle" writable="false" handle-type="sceneObject" label="Parent handle" constant="true" />
+    <property name="parentUid" type="long" />
+    <property name="points" type="floatarray" />
+    <property name="quaternions" type="floatarray" />
+    <property name="remove" type="method" readable="false" writable="false" />
+    <property name="size" type="float" />
+    <property name="type" type="string" />
+  </object-class>
+  <object-class name="dummy" superclass="sceneObject">
+    <property name="assemblyTag" type="string" label="Assembly tag" />
+    <property name="color.diffuse" type="color" label="Diffuse color" />
+    <property name="color.emission" type="color" label="Emission color" />
+    <property name="color.specular" type="color" label="Specular color" />
+    <property name="dummySize" type="float" label="Size">
+      <description>Dummy size</description>
+    </property>
+    <property name="dummyType" type="int" label="Type">
+      <description>Dummy type</description>
+    </property>
+    <property name="engineProperties" type="string" label="Engine properties">
+      <description>Engine properties as JSON text</description>
+    </property>
+    <property name="linkedDummy" type="handle" label="Linked dummy" handle-type="dummy">
+      <description>Handle of the linked dummy</description>
+    </property>
+    <property name="linkedDummyHandle" type="int" deprecated="true" />
+    <property name="mujoco.jointProxyHandle" type="int" label="Joint proxy">
+      <description>Handle of the joint proxy, MuJoCo only</description>
+    </property>
+    <property name="mujoco.limitsEnabled" type="bool" />
+    <property name="mujoco.limitsRange" type="floatarray" />
+    <property name="mujoco.limitsSolimp" type="floatarray" />
+    <property name="mujoco.limitsSolref" type="floatarray" />
+    <property name="mujoco.margin" type="float" />
+    <property name="mujoco.overlapConstrSolimp" type="floatarray" />
+    <property name="mujoco.overlapConstrSolref" type="floatarray" />
+    <property name="mujoco.overlapConstrTorquescale" type="float" />
+    <property name="mujoco.springDamping" type="float" />
+    <property name="mujoco.springLength" type="float" />
+    <property name="mujoco.springStiffness" type="float" />
+  </object-class>
+  <object-class name="forceSensor" superclass="sceneObject">
+    <property name="color.diffuse" type="color" label="Diffuse color" />
+    <property name="color.emission" type="color" label="Emission color" />
+    <property name="color.specular" type="color" label="Specular color" />
+    <property name="consecutiveViolationsToTrigger" type="int" label="Consecutive violations to trigger" />
+    <property name="filterSampleSize" type="int" label="Filter sample">
+      <description>Filter sample size</description>
+    </property>
+    <property name="filterSensorForce" type="vector3" writable="false" deprecated="true" />
+    <property name="filterSensorTorque" type="vector3" writable="false" deprecated="true" />
+    <property name="filterType" type="int" label="Filter">
+      <description>Filter type</description>
+    </property>
+    <property name="filteredSensorForce" type="vector3" writable="false" label="Filtered force">
+      <description>Filtered force vector</description>
+    </property>
+    <property name="filteredSensorTorque" type="vector3" writable="false" label="Filtered torque">
+      <description>Filtered torque vector</description>
+    </property>
+    <property name="forceThreshold" type="float" label="Force threshold" />
+    <property name="forceThresholdEnabled" type="bool" label="Force threshold enabled" />
+    <property name="intrinsicError" type="pose" writable="false" label="Intrinsic error">
+      <description>Intrinsic error, generated by some physics engines</description>
+    </property>
+    <property name="sensorForce" type="vector3" writable="false" label="Force">
+      <description>Measured force vector</description>
+    </property>
+    <property name="sensorSize" type="float" label="Size">
+      <description>Sensor size</description>
+    </property>
+    <property name="sensorTorque" type="vector3" writable="false" label="Torque">
+      <description>Measured torque vector</description>
+    </property>
+    <property name="torqueThreshold" type="float" label="Torque threshold" />
+    <property name="torqueThresholdEnabled" type="bool" label="Torque threshold enabled" />
+  </object-class>
+  <object-class name="graph" superclass="sceneObject">
+    <property name="backgroundColor" type="color" label="Background color" />
+    <property name="bufferSize" type="int" label="Buffer size" />
+    <property name="color.diffuse" type="color" label="Diffuse color" />
+    <property name="color.emission" type="color" label="Emission color" />
+    <property name="color.specular" type="color" label="Specular color" />
+    <property name="cyclic" type="bool" label="Cyclic">
+      <description>Buffer is cyclic</description>
+    </property>
+    <property name="foregroundColor" type="color" label="Foreground color" />
+    <property name="graphSize" type="float" label="Size">
+      <description>Size of the 3D graph representation</description>
+    </property>
+  </object-class>
+  <object-class name="joint" superclass="sceneObject">
+    <property name="averageJointForce" type="float" writable="false" label="Average force">
+      <description>Force applied on average (in a simulation step)</description>
+    </property>
+    <property name="bullet.normalCfm" type="float" />
+    <property name="bullet.posPid" type="floatarray" />
+    <property name="bullet.stopCfm" type="float" />
+    <property name="bullet.stopErp" type="float" />
+    <property name="calcVelocity" type="float" writable="false" label="Velocity">
+      <description>Calculated joint linear or angular velocity</description>
+    </property>
+    <property name="color.diffuse" type="color" label="Diffuse color" />
+    <property name="color.emission" type="color" label="Emission color" />
+    <property name="color.specular" type="color" label="Specular color" />
+    <property name="cyclic" type="bool" label="Cyclic">
+      <description>Cyclic revolute joint, has no limits</description>
+    </property>
+    <property name="dependencyMaster" type="handle" label="Dependency master" handle-type="joint">
+      <description>Handle of master joint (in a dependency relationship)</description>
+    </property>
+    <property name="dependencyMasterHandle" type="int" deprecated="true" label="Dependency master">
+      <description>Handle of master joint (in a dependency relationship)</description>
+    </property>
+    <property name="dependencyParams" type="floatarray" label="Dependency parameters">
+      <description>Dependency parameters (offset and coefficient)</description>
+    </property>
+    <property name="dynCtrlMode" type="int" label="Control mode" enum="jointDynCtrlMode">
+      <description>Joint control mode, when in dynamic mode</description>
+    </property>
+    <property name="dynPosMode" type="int" label="Dynamic position mode">
+      <description>Dynamic position mode (0: default, 1: Ruckig)</description>
+    </property>
+    <property name="dynVelMode" type="int" label="Dynamic velocity mode">
+      <description>Dynamic velocity mode (0: default, 1: Ruckig)</description>
+    </property>
+    <property name="enforceLimits" type="bool" label="Enforce limits">
+      <description>Enforce limits strictly</description>
+    </property>
+    <property name="engineProperties" type="string" label="Engine properties">
+      <description>Engine properties as JSON text</description>
+    </property>
+    <property name="interval" type="floatarray" label="Interval">
+      <description>Joint limits (lower and upper bounds)</description>
+    </property>
+    <property name="intrinsicError" type="pose" writable="false" label="Intrinsic error">
+      <description>Intrinsic error, generated by some physics engines</description>
+    </property>
+    <property name="intrinsicPose" type="pose" writable="false" label="Intrinsic pose">
+      <description>Intrinsic pose (includes a possible intrinsic error)</description>
+    </property>
+    <property name="jointDiameter" type="float" label="Size">
+      <description>Joint size</description>
+    </property>
+    <property name="jointForce" type="float" writable="false" label="Force">
+      <description>Force applied</description>
+    </property>
+    <property name="jointLength" type="float" label="Size">
+      <description>Joint size</description>
+    </property>
+    <property name="jointMode" type="int" label="Mode">
+      <description>Joint mode</description>
+    </property>
+    <property name="jointPosition" type="float" label="Position">
+      <description>Joint linear/angular displacement</description>
+    </property>
+    <property name="jointQuaternion" type="quaternion" label="Spherical joint quaternion" />
+    <property name="jointType" type="int" writable="false" label="Type" constant="true">
+      <description>Joint type</description>
+    </property>
+    <property name="maxVelAccelJerk" type="floatarray" label="Maximum velocity, acceleration and jerk" />
+    <property name="mujoco.armature" type="float" />
+    <property name="mujoco.dependencyPolyCoeff" type="floatarray" />
+    <property name="mujoco.frictionLoss" type="float" />
+    <property name="mujoco.frictionSolimp" type="floatarray" />
+    <property name="mujoco.frictionSolref" type="floatarray" />
+    <property name="mujoco.limitsSolimp" type="floatarray" />
+    <property name="mujoco.limitsSolref" type="floatarray" />
+    <property name="mujoco.margin" type="float" />
+    <property name="mujoco.posPid" type="floatarray" />
+    <property name="mujoco.springDamping" type="float" />
+    <property name="mujoco.springRef" type="float" />
+    <property name="mujoco.springSpringDamper" type="floatarray" />
+    <property name="mujoco.springStiffness" type="float" />
+    <property name="newton.posPid" type="floatarray" />
+    <property name="ode.bounce" type="float" />
+    <property name="ode.fudge" type="float" />
+    <property name="ode.normalCfm" type="float" />
+    <property name="ode.posPid" type="floatarray" />
+    <property name="ode.stopCfm" type="float" />
+    <property name="ode.stopErp" type="float" />
+    <property name="screwLead" type="float" label="Screw lead" />
+    <property name="springDamperParams" type="floatarray" label="Spring damper parameters" />
+    <property name="targetForce" type="float" label="Target force">
+      <description>Maximum force to exert</description>
+    </property>
+    <property name="targetPos" type="float" label="Target position">
+      <description>Position to reach by controller</description>
+    </property>
+    <property name="targetVel" type="float" label="Target velocity">
+      <description>Velocity to reach by controller</description>
+    </property>
+    <property name="vortex.axisFrictionEnabled" type="bool" />
+    <property name="vortex.axisFrictionLoss" type="float" />
+    <property name="vortex.axisFrictionMaxForce" type="float" />
+    <property name="vortex.axisFrictionProportional" type="bool" />
+    <property name="vortex.axisFrictionValue" type="float" />
+    <property name="vortex.axisLimitsLowerDamping" type="float" />
+    <property name="vortex.axisLimitsLowerMaxForce" type="float" />
+    <property name="vortex.axisLimitsLowerRestitution" type="float" />
+    <property name="vortex.axisLimitsLowerStiffness" type="float" />
+    <property name="vortex.axisLimitsUpperDamping" type="float" />
+    <property name="vortex.axisLimitsUpperMaxForce" type="float" />
+    <property name="vortex.axisLimitsUpperRestitution" type="float" />
+    <property name="vortex.axisLimitsUpperStiffness" type="float" />
+    <property name="vortex.frictionEnabledBits" type="int" />
+    <property name="vortex.frictionProportionalBits" type="int" />
+    <property name="vortex.posPid" type="floatarray" />
+    <property name="vortex.relaxationEnabledBits" type="int" />
+    <property name="vortex.xAxisOrientFrictionCoeff" type="float" />
+    <property name="vortex.xAxisOrientFrictionLoss" type="float" />
+    <property name="vortex.xAxisOrientFrictionMaxTorque" type="float" />
+    <property name="vortex.xAxisOrientRelaxationDamping" type="float" />
+    <property name="vortex.xAxisOrientRelaxationLoss" type="float" />
+    <property name="vortex.xAxisOrientRelaxationStiffness" type="float" />
+    <property name="vortex.xAxisPosFrictionCoeff" type="float" />
+    <property name="vortex.xAxisPosFrictionLoss" type="float" />
+    <property name="vortex.xAxisPosFrictionMaxForce" type="float" />
+    <property name="vortex.xAxisPosRelaxationDamping" type="float" />
+    <property name="vortex.xAxisPosRelaxationLoss" type="float" />
+    <property name="vortex.xAxisPosRelaxationStiffness" type="float" />
+    <property name="vortex.yAxisOrientFrictionCoeff" type="float" />
+    <property name="vortex.yAxisOrientFrictionLoss" type="float" />
+    <property name="vortex.yAxisOrientFrictionMaxTorque" type="float" />
+    <property name="vortex.yAxisOrientRelaxationDamping" type="float" />
+    <property name="vortex.yAxisOrientRelaxationLoss" type="float" />
+    <property name="vortex.yAxisOrientRelaxationStiffness" type="float" />
+    <property name="vortex.yAxisPosFrictionCoeff" type="float" />
+    <property name="vortex.yAxisPosFrictionLoss" type="float" />
+    <property name="vortex.yAxisPosFrictionMaxForce" type="float" />
+    <property name="vortex.yAxisPosRelaxationDamping" type="float" />
+    <property name="vortex.yAxisPosRelaxationLoss" type="float" />
+    <property name="vortex.yAxisPosRelaxationStiffness" type="float" />
+    <property name="vortex.zAxisOrientFrictionCoeff" type="float" />
+    <property name="vortex.zAxisOrientFrictionLoss" type="float" />
+    <property name="vortex.zAxisOrientFrictionMaxTorque" type="float" />
+    <property name="vortex.zAxisOrientRelaxationDamping" type="float" />
+    <property name="vortex.zAxisOrientRelaxationLoss" type="float" />
+    <property name="vortex.zAxisOrientRelaxationStiffness" type="float" />
+    <property name="vortex.zAxisPosFrictionCoeff" type="float" />
+    <property name="vortex.zAxisPosFrictionLoss" type="float" />
+    <property name="vortex.zAxisPosFrictionMaxForce" type="float" />
+    <property name="vortex.zAxisPosRelaxationDamping" type="float" />
+    <property name="vortex.zAxisPosRelaxationLoss" type="float" />
+    <property name="vortex.zAxisPosRelaxationStiffness" type="float" />
+  </object-class>
+  <object-class name="light" superclass="sceneObject">
+    <property name="attenuationFactors" type="floatarray" label="Attenuation factor" />
+    <property name="color.diffuse" type="color" label="Diffuse color" />
+    <property name="color.emission" type="color" label="Emission color" />
+    <property name="color.specular" type="color" label="Specular color" />
+    <property name="enabled" type="bool" label="Enabled" />
+    <property name="lightColor.diffuse" type="color" label="Diffuse color" />
+    <property name="lightColor.emission" type="color" label="Emission color" />
+    <property name="lightColor.specular" type="color" label="Specular color" />
+    <property name="lightSize" type="float" label="Size">
+      <description>Light size</description>
+    </property>
+    <property name="lightType" type="int" writable="false" label="Type" constant="true">
+      <description>Light type</description>
+    </property>
+    <property name="povray.castShadows" type="bool" silent="true" label="POV-Ray: cast shadows">
+      <description>Light casts shadows (with the POV-Ray renderer plugin)</description>
+    </property>
+    <property name="spotCutoffAngle" type="float" label="Cut off angle">
+      <description>Spot cut off angle</description>
+    </property>
+    <property name="spotExponent" type="int" label="Spot exponent" />
+  </object-class>
+  <object-class name="marker" superclass="sceneObject">
+    <property name="addItems" type="method" readable="false" writable="false" />
+    <property name="clearItems" type="method" readable="false" writable="false" />
+    <property name="colors" type="buffer" writable="false" label="Colors" />
+    <property name="cyclic" type="bool" writable="false" label="Cyclic" constant="true">
+      <description>Item buffer is cyclic</description>
+    </property>
+    <property name="indices" type="intarray" writable="false" label="Indices">
+      <description>Indices for custom marker</description>
+    </property>
+    <property name="itemType" type="int" writable="false" label="Type" constant="true">
+      <description>Item type</description>
+    </property>
+    <property name="local" type="bool" writable="false" label="Local" constant="true">
+      <description>Coordinates are local to the marker&apos;s reference frame</description>
+    </property>
+    <property name="normals" type="floatarray" writable="false" label="Normals">
+      <description>Normals for custom marker</description>
+    </property>
+    <property name="overlay" type="bool" writable="false" label="Overlay" constant="true">
+      <description>Items are are displayed overlaid</description>
+    </property>
+    <property name="points" type="floatarray" writable="false" label="Points" />
+    <property name="quaternions" type="floatarray" writable="false" label="Quaternions" />
+    <property name="removeItems" type="method" readable="false" writable="false" />
+    <property name="sizes" type="floatarray" writable="false" label="Sizes" />
+    <property name="vertices" type="floatarray" writable="false" label="Vertices">
+      <description>Vertices for custom marker</description>
+    </property>
+  </object-class>
+  <object-class name="mesh" superclass="object">
+    <property name="color.diffuse" type="color" label="Diffuse color" />
+    <property name="color.emission" type="color" label="Emission color" />
+    <property name="color.specular" type="color" label="Specular color" />
+    <property name="color.transparency" type="float" label="Transparency" />
+    <property name="colorName" type="string" label="Color name" />
+    <property name="convex" type="bool" writable="false" label="Convex">
+      <description>Whether mesh is convex or not</description>
+    </property>
+    <property name="culling" type="bool" label="Backface culling" />
+    <property name="indices" type="intarray" writable="false" label="Indices">
+      <description>Indices (3 values per triangle)</description>
+    </property>
+    <property name="normals" type="floatarray" writable="false" label="Normals">
+      <description>Normals (3*3 values per triangle)</description>
+    </property>
+    <property name="primitiveType" type="int" writable="false" label="Primitive type" />
+    <property name="rawTexture" type="buffer" writable="false" label="Texture" />
+    <property name="shadingAngle" type="float" label="Shading angle" />
+    <property name="shape" type="handle" writable="false" handle-type="shape" label="Shape handle" constant="true" />
+    <property name="shapeUid" type="int" writable="false" label="Shape UID" constant="true">
+      <description>Unique identifier of parent shape</description>
+    </property>
+    <property name="showEdges" type="bool" label="Visible edges" />
+    <property name="textureApplyMode" type="int" label="Texture apply mode" />
+    <property name="textureCoordinates" type="floatarray" writable="false" label="Texture coordinates" />
+    <property name="textureID" type="int" writable="false" label="Texture ID" />
+    <property name="textureInterpolate" type="bool" label="Interpolate texture" />
+    <property name="textureRepeatU" type="bool" label="Texture repeat U" />
+    <property name="textureRepeatV" type="bool" label="Texture repeat V" />
+    <property name="textureResolution" type="intarray2" writable="false" label="Texture resolution" />
+    <property name="vertices" type="floatarray" writable="false" label="Vertices" />
+  </object-class>
+  <object-class name="object">
+    <property name="getBoolProperty" type="method" readable="false" writable="false" />
+    <property name="getBufferProperty" type="method" readable="false" writable="false" />
+    <property name="getColorProperty" type="method" readable="false" writable="false" />
+    <property name="getFloatArrayProperty" type="method" readable="false" writable="false" />
+    <property name="getFloatProperty" type="method" readable="false" writable="false" />
+    <property name="getHandleArrayProperty" type="method" readable="false" writable="false" />
+    <property name="getHandleProperty" type="method" readable="false" writable="false" />
+    <property name="getIntArray2Property" type="method" readable="false" writable="false" />
+    <property name="getIntArrayProperty" type="method" readable="false" writable="false" />
+    <property name="getIntProperty" type="method" readable="false" writable="false" />
+    <property name="getLongProperty" type="method" readable="false" writable="false" />
+    <property name="getPoseProperty" type="method" readable="false" writable="false" />
+    <property name="getProperties" type="method" readable="false" writable="false" />
+    <property name="getPropertiesInfos" type="method" readable="false" writable="false" />
+    <property name="getProperty" type="method" readable="false" writable="false" />
+    <property name="getPropertyInfo" type="method" readable="false" writable="false" />
+    <property name="getPropertyName" type="method" readable="false" writable="false" />
+    <property name="getPropertyTypeString" type="method" readable="false" writable="false" />
+    <property name="getQuaternionProperty" type="method" readable="false" writable="false" />
+    <property name="getStringArrayProperty" type="method" readable="false" writable="false" />
+    <property name="getStringProperty" type="method" readable="false" writable="false" />
+    <property name="getTableProperty" type="method" readable="false" writable="false" />
+    <property name="getVector2Property" type="method" readable="false" writable="false" />
+    <property name="getVector3Property" type="method" readable="false" writable="false" />
+    <property name="handle" type="long" writable="false" label="Handle" constant="true" />
+    <property name="objectMetaInfo" type="string" writable="false" label="Object meta information" constant="true" />
+    <property name="objectType" type="string" writable="false" label="Object type" constant="true" />
+    <property name="removeProperty" type="method" readable="false" writable="false" />
+    <property name="setBoolProperty" type="method" readable="false" writable="false" />
+    <property name="setBufferProperty" type="method" readable="false" writable="false" />
+    <property name="setColorProperty" type="method" readable="false" writable="false" />
+    <property name="setFloatArrayProperty" type="method" readable="false" writable="false" />
+    <property name="setFloatProperty" type="method" readable="false" writable="false" />
+    <property name="setHandleArrayProperty" type="method" readable="false" writable="false" />
+    <property name="setHandleProperty" type="method" readable="false" writable="false" />
+    <property name="setIntArray2Property" type="method" readable="false" writable="false" />
+    <property name="setIntArrayProperty" type="method" readable="false" writable="false" />
+    <property name="setIntProperty" type="method" readable="false" writable="false" />
+    <property name="setLongProperty" type="method" readable="false" writable="false" />
+    <property name="setPoseProperty" type="method" readable="false" writable="false" />
+    <property name="setProperties" type="method" readable="false" writable="false" />
+    <property name="setProperty" type="method" readable="false" writable="false" />
+    <property name="setQuaternionProperty" type="method" readable="false" writable="false" />
+    <property name="setStringArrayProperty" type="method" readable="false" writable="false" />
+    <property name="setStringProperty" type="method" readable="false" writable="false" />
+    <property name="setTableProperty" type="method" readable="false" writable="false" />
+    <property name="setVector2Property" type="method" readable="false" writable="false" />
+    <property name="setVector3Property" type="method" readable="false" writable="false" />
+  </object-class>
+  <object-class name="ocTree" superclass="sceneObject">
+    <property name="color.diffuse" type="color" label="Diffuse color" />
+    <property name="color.emission" type="color" label="Emission color" />
+    <property name="color.specular" type="color" label="Specular color" />
+    <property name="colors" type="buffer" writable="false" label="Voxel Colors" />
+    <property name="points" type="floatarray" writable="false" label="Voxels">
+      <description>Voxel positions</description>
+    </property>
+    <property name="randomColors" type="bool" label="Random voxel colors" />
+    <property name="showPoints" type="bool" label="Show points instead of voxels" />
+    <property name="voxelSize" type="float" label="Voxel size" />
+    <property name="voxels" type="floatarray" writable="false" deprecated="true" label="Voxels">
+      <description>Voxel positions</description>
+    </property>
+  </object-class>
+  <object-class name="pointCloud" superclass="sceneObject">
+    <property name="cellSize" type="float" label="Cell size">
+      <description>Size of the oc-tree cell/voxel</description>
+    </property>
+    <property name="color.diffuse" type="color" label="Diffuse color" />
+    <property name="color.emission" type="color" label="Emission color" />
+    <property name="color.specular" type="color" label="Specular color" />
+    <property name="colors" type="buffer" writable="false" label="Colors">
+      <description>Point colors</description>
+    </property>
+    <property name="maxPointsInCell" type="int" label="Max. points in cell">
+      <description>Maximum number of points in an oc-tree cell/voxel</description>
+    </property>
+    <property name="ocTreeStruct" type="bool" label="OC-Tree structure Enabled">
+      <description>Use an oc-tree structure</description>
+    </property>
+    <property name="pointDisplayFraction" type="float" label="Display fraction">
+      <description>Fraction of points to be displayed in an oc-tree cell/voxel</description>
+    </property>
+    <property name="pointSize" type="int" label="Point size" />
+    <property name="points" type="floatarray" writable="false" label="Points">
+      <description>Point positions</description>
+    </property>
+    <property name="randomColors" type="bool" label="Random point colors" />
+  </object-class>
+  <object-class name="proximitySensor" superclass="sceneObject">
+    <property name="angleThreshold" type="float" label="Angle threshold">
+      <description>Angle threshold, 0.0 to disable</description>
+    </property>
+    <property name="backFaceDetection" type="bool" label="Back face detection" />
+    <property name="checkSensor" type="method" readable="false" writable="false" />
+    <property name="closeThreshold" type="float" label="Close threshold">
+      <description>Close threshold: if a detection occures below that threshold, it is not registered. 0.0 to disable</description>
+    </property>
+    <property name="color.diffuse" type="color" label="Diffuse color" />
+    <property name="color.emission" type="color" label="Emission color" />
+    <property name="color.specular" type="color" label="Specular color" />
+    <property name="detectedNormal" type="vector3" writable="false" label="Detected normal">
+      <description>Detected normal vector</description>
+    </property>
+    <property name="detectedObjectHandle" type="int" writable="false" label="Detected object">
+      <description>Detected scene object handle</description>
+    </property>
+    <property name="detectedPoint" type="vector3" writable="false" label="Detected point" />
+    <property name="exactMode" type="bool" label="Exact mode" />
+    <property name="explicitHandling" type="bool" label="Explicit handling" />
+    <property name="frontFaceDetection" type="bool" label="Front face detection" />
+    <property name="handleSensor" type="method" readable="false" writable="false" />
+    <property name="randomizedDetection" type="bool" writable="false" label="Randomized detection" />
+    <property name="rayColor.diffuse" type="color" label="Diffuse color" />
+    <property name="rayColor.emission" type="color" label="Emission color" />
+    <property name="rayColor.specular" type="color" label="Specular color" />
+    <property name="resetSensor" type="method" readable="false" writable="false" />
+    <property name="sensorPointSize" type="float" label="Sensor point size" />
+    <property name="sensorType" type="int" writable="false" label="Type" constant="true">
+      <description>Sensor type</description>
+    </property>
+    <property name="showVolume" type="bool" label="Show volume" />
+    <property name="volume_angle" type="floatarray" label="Angles">
+      <description>Angle and inside gap for disk- and cone-type volumes</description>
+    </property>
+    <property name="volume_closeEdges" type="floatarray" writable="false" label="Volume close edges">
+      <description>List of segments (defined by pairs of end-point coordinates) visualizing the close threshold of the volume</description>
+    </property>
+    <property name="volume_edges" type="floatarray" writable="false" label="Volume edges">
+      <description>List of segments (defined by pairs of end-point coordinates) visualizing the volume</description>
+    </property>
+    <property name="volume_faces" type="intarray" label="Faces">
+      <description>Number of faces (near and far) for cylinder-, disk- and pyramid-type volumes</description>
+    </property>
+    <property name="volume_offset" type="float" label="Offset">
+      <description>Offset of detection volume</description>
+    </property>
+    <property name="volume_radius" type="floatarray" label="Radius">
+      <description>Radius for cylinder-, disk- and cone-type volumes</description>
+    </property>
+    <property name="volume_range" type="float" label="Range">
+      <description>Range/depth of detection volume</description>
+    </property>
+    <property name="volume_subdivisions" type="intarray" label="Subdivisions">
+      <description>Number of subdivisions (near and far) for cone-type volumes</description>
+    </property>
+    <property name="volume_xSize" type="floatarray" label="X-sizes">
+      <description>X-size (near and far) for pyramid-type volumes</description>
+    </property>
+    <property name="volume_ySize" type="floatarray" label="Y-sizes">
+      <description>Y-size (near and far) for pyramid-type volumes</description>
+    </property>
+  </object-class>
+  <object-class name="scene" superclass="object">
+    <property name="acknowledgment" type="string" label="Acknowledgment">
+      <description>Scene acknowledgment</description>
+    </property>
+    <property name="ambientLight" type="color" label="Ambient light" />
+    <property name="announceChange" type="method" readable="false" writable="false" />
+    <property name="bullet.collisionMarginScaling" type="float" />
+    <property name="bullet.computeInertias" type="bool" />
+    <property name="bullet.internalScalingFull" type="bool" />
+    <property name="bullet.internalScalingValue" type="float" />
+    <property name="bullet.iterations" type="int" />
+    <property name="bullet.solver" type="int" />
+    <property name="collections" type="handlearray" writable="false" handle-type="collection" label="Collections">
+      <description>Handles of all collections</description>
+    </property>
+    <property name="createObject" type="method" readable="false" writable="false" />
+    <property name="drawingObjects" type="handlearray" writable="false" handle-type="drawingObject" label="Drawing objects">
+      <description>Handles of all drawing objects</description>
+    </property>
+    <property name="duplicateObjects" type="method" readable="false" writable="false" />
+    <property name="dynamicsEnabled" type="bool" label="Dynamics enabled" />
+    <property name="dynamicsEngine" type="intarray" label="Dynamics engine">
+      <description>Selected dynamics engine index and version</description>
+    </property>
+    <property name="dynamicsStepSize" type="float" label="Dynamics dt">
+      <description>Dynamics step size</description>
+    </property>
+    <property name="engineProperties" type="string" label="Engine properties">
+      <description>Engine properties as JSON text</description>
+    </property>
+    <property name="finalSaveRequest" type="bool" label="Final save">
+      <description>Lock scene and models after next scene save operation</description>
+    </property>
+    <property name="getAncestors" type="method" readable="false" writable="false" />
+    <property name="getDescendants" type="method" readable="false" writable="false" />
+    <property name="getObject" type="method" readable="false" writable="false" />
+    <property name="getObjectFromUid" type="method" readable="false" writable="false" />
+    <property name="getObjects" type="method" readable="false" writable="false" />
+    <property name="gravity" type="vector3" label="Gravity" />
+    <property name="groupShapes" type="method" readable="false" writable="false" />
+    <property name="handleCustomizationScripts" type="method" readable="false" writable="false" />
+    <property name="handleSimulationScripts" type="method" readable="false" writable="false" />
+    <property name="hierarchyChangeCounter" type="int" writable="false" silent="true" label="Hierarchy change counter">
+      <description>Counter of scene hierarchy changes</description>
+    </property>
+    <property name="loadModel" type="method" readable="false" writable="false" />
+    <property name="loadModelFromBuffer" type="method" readable="false" writable="false" />
+    <property name="loadModelThumbnail" type="method" readable="false" writable="false" />
+    <property name="loadModelThumbnailFromBuffer" type="method" readable="false" writable="false" />
+    <property name="loadScene" type="method" readable="false" writable="false" />
+    <property name="loadSceneFromBuffer" type="method" readable="false" writable="false" />
+    <property name="mainScript" type="handle" writable="false" handle-type="detachedScript" label="Main script" constant="true">
+      <description>Handle of the main script</description>
+    </property>
+    <property name="mergeShapes" type="method" readable="false" writable="false" />
+    <property name="mujoco.actuationEnable" type="bool" />
+    <property name="mujoco.alignfree" type="bool" />
+    <property name="mujoco.autoresetEnable" type="bool" />
+    <property name="mujoco.balanceInertias" type="bool" />
+    <property name="mujoco.boundInertia" type="float" />
+    <property name="mujoco.boundMass" type="float" />
+    <property name="mujoco.ccd_iterations" type="int" />
+    <property name="mujoco.ccd_tolerance" type="float" />
+    <property name="mujoco.computeInertias" type="bool" />
+    <property name="mujoco.cone" type="int" />
+    <property name="mujoco.contactEnable" type="bool" />
+    <property name="mujoco.contactParamsMargin" type="float" />
+    <property name="mujoco.contactParamsOverride" type="bool" />
+    <property name="mujoco.contactParamsSolimp" type="floatarray" />
+    <property name="mujoco.contactParamsSolref" type="floatarray" />
+    <property name="mujoco.density" type="float" />
+    <property name="mujoco.energyEnable" type="bool" />
+    <property name="mujoco.equalityEnable" type="bool" />
+    <property name="mujoco.eulerdampEnable" type="bool" />
+    <property name="mujoco.frictionlossEnable" type="bool" />
+    <property name="mujoco.gravityEnable" type="bool" />
+    <property name="mujoco.impratio" type="float" />
+    <property name="mujoco.integrator" type="int" />
+    <property name="mujoco.invdiscreteEnable" type="bool" />
+    <property name="mujoco.iterations" type="int" />
+    <property name="mujoco.jacobian" type="int" />
+    <property name="mujoco.kinematicBodiesInertia" type="float" />
+    <property name="mujoco.kinematicBodiesMass" type="float" />
+    <property name="mujoco.kinematicBodiesOverrideFlags" type="int" />
+    <property name="mujoco.kinematicWeldSolimp" type="floatarray" />
+    <property name="mujoco.kinematicWeldSolref" type="floatarray" />
+    <property name="mujoco.kinematicWeldTorquescale" type="float" />
+    <property name="mujoco.limitEnable" type="bool" />
+    <property name="mujoco.ls_iterations" type="int" />
+    <property name="mujoco.ls_tolerance" type="float" />
+    <property name="mujoco.mbmemory" type="int" />
+    <property name="mujoco.midphaseEnable" type="bool" />
+    <property name="mujoco.multiccd" type="bool" />
+    <property name="mujoco.multithreaded" type="bool" />
+    <property name="mujoco.nativeccdEnable" type="bool" />
+    <property name="mujoco.nconmax" type="int">
+      <description>Deprecated. See mujoco.mbmemory instead.</description>
+    </property>
+    <property name="mujoco.njmax" type="int">
+      <description>Deprecated. See mujoco.mbmemory instead.</description>
+    </property>
+    <property name="mujoco.noslip_iterations" type="int" />
+    <property name="mujoco.noslip_tolerance" type="float" />
+    <property name="mujoco.nstack" type="int">
+      <description>Deprecated. See mujoco.mbmemory instead.</description>
+    </property>
+    <property name="mujoco.passiveEnable" type="bool" />
+    <property name="mujoco.rebuildTrigger" type="int" />
+    <property name="mujoco.refsafeEnable" type="bool" />
+    <property name="mujoco.sdf_initpoints" type="int" />
+    <property name="mujoco.sdf_iterations" type="int" />
+    <property name="mujoco.sensorEnable" type="bool" />
+    <property name="mujoco.solver" type="int" />
+    <property name="mujoco.tolerance" type="float" />
+    <property name="mujoco.viscosity" type="float" />
+    <property name="mujoco.warmstartEnable" type="bool" />
+    <property name="mujoco.wind" type="vector3" />
+    <property name="newton.computeInertias" type="bool" />
+    <property name="newton.contactMergeTolerance" type="float" />
+    <property name="newton.exactSolver" type="bool" />
+    <property name="newton.highJointAccuracy" type="bool" />
+    <property name="newton.iterations" type="int" />
+    <property name="newton.multithreading" type="bool" />
+    <property name="objectCreationCounter" type="int" writable="false" silent="true" label="Object creation counter">
+      <description>Counter of created scene objects</description>
+    </property>
+    <property name="objectDestructionCounter" type="int" writable="false" silent="true" label="Object destruction counter">
+      <description>Counter of destroyed scene objects</description>
+    </property>
+    <property name="objectHandles" type="intarray" writable="false" deprecated="true" />
+    <property name="objects" type="handlearray" writable="false" handle-type="sceneObject" label="Objects">
+      <description>Handles of all scene objects</description>
+    </property>
+    <property name="ode.computeInertias" type="bool" />
+    <property name="ode.globalCfm" type="float" />
+    <property name="ode.globalErp" type="float" />
+    <property name="ode.internalScalingFull" type="bool" />
+    <property name="ode.internalScalingValue" type="float" />
+    <property name="ode.quickStepEnabled" type="bool" />
+    <property name="ode.quickStepIterations" type="int" />
+    <property name="orphanHandles" type="intarray" writable="false" deprecated="true" />
+    <property name="orphans" type="handlearray" writable="false" handle-type="sceneObject" label="Orphan objects">
+      <description>Handles of all orphan scene objects</description>
+    </property>
+    <property name="pauseSimulation" type="method" readable="false" writable="false" />
+    <property name="pauseSimulationAtError" type="bool" label="Pause simulation on script error" />
+    <property name="pauseSimulationAtTime" type="bool" label="Pause simulation at time">
+      <description>Pause simulation when simulation time exceeds a threshold</description>
+    </property>
+    <property name="realtimeModifier" type="float" label="Real-time modifier">
+      <description>Real-time multiplication factor</description>
+    </property>
+    <property name="realtimeSimulation" type="bool" label="Real-time simulation" />
+    <property name="removeNewObjectsAtEnd" type="bool" label="Remove new objects">
+      <description>Remove new scene objects at simulation end</description>
+    </property>
+    <property name="removeObjects" type="method" readable="false" writable="false" />
+    <property name="saveCalculationStructs" type="bool" label="Save calculation structures">
+      <description>Save operation also saves existing calculation structures</description>
+    </property>
+    <property name="saveScene" type="method" readable="false" writable="false" />
+    <property name="saveSceneToBuffer" type="method" readable="false" writable="false" />
+    <property name="sceneIsLocked" type="bool" writable="false" label="Scene is locked" />
+    <property name="scenePath" type="string" label="Scene path" />
+    <property name="sceneUid" type="int" writable="false" label="Scene UID" constant="true">
+      <description>Scene unique identifier</description>
+    </property>
+    <property name="sceneUidString" type="string" writable="false" label="Scene UID string" constant="true">
+      <description>Scene unique identifier string</description>
+    </property>
+    <property name="selection" type="handlearray" label="Selected objects" handle-type="sceneObject">
+      <description>Handles of selected scene objects</description>
+    </property>
+    <property name="selectionHandles" type="intarray" deprecated="true" />
+    <property name="showContactPoints" type="bool" label="Show contact points" />
+    <property name="simulationState" type="int" writable="false" enum="simulationState" label="Simulation state" />
+    <property name="simulationTime" type="float" writable="false" label="Simulation time" />
+    <property name="speedModifier" type="int" label="Speed modifier" />
+    <property name="startSimulation" type="method" readable="false" writable="false" />
+    <property name="stepCount" type="int" writable="false" label="Simulation steps">
+      <description>Counter of simulation steps</description>
+    </property>
+    <property name="stepsPerRendering" type="int" label="Steps per frame">
+      <description>Simulation steps per frame</description>
+    </property>
+    <property name="stopSimulation" type="method" readable="false" writable="false" />
+    <property name="timeStep" type="float" label="Simulation dt">
+      <description>Simulation time step</description>
+    </property>
+    <property name="timeToPause" type="float" label="Simulation pause time">
+      <description>Time at which simulation should pause</description>
+    </property>
+    <property name="visibilityLayers" type="int" label="Visibility layers">
+      <description>Currently active visibility layers</description>
+    </property>
+    <property name="vortex.autoSleep" type="bool" />
+    <property name="vortex.computeInertias" type="bool" />
+    <property name="vortex.constraintsAngularCompliance" type="float" />
+    <property name="vortex.constraintsAngularDamping" type="float" />
+    <property name="vortex.constraintsAngularKineticLoss" type="float" />
+    <property name="vortex.constraintsLinearCompliance" type="float" />
+    <property name="vortex.constraintsLinearDamping" type="float" />
+    <property name="vortex.constraintsLinearKineticLoss" type="float" />
+    <property name="vortex.contactTolerance" type="float" />
+    <property name="vortex.multithreading" type="bool" />
+  </object-class>
+  <object-class name="sceneObject" superclass="object">
+    <property name="absEulerAngles" type="vector3" silent="true" label="Euler angles">
+      <description>Scene object absolute Euler angles</description>
+    </property>
+    <property name="absPose" type="pose" silent="true" label="Pose">
+      <description>Scene object absolute pose</description>
+    </property>
+    <property name="absPosition" type="vector3" silent="true" label="Position">
+      <description>Scene object absolute position</description>
+    </property>
+    <property name="absQuaternion" type="quaternion" silent="true" label="Quaternion">
+      <description>Scene object absolute quaternion</description>
+    </property>
+    <property name="alias" type="string" deprecated="true" deprecated-by="name" label="Name">
+      <description>Scene object name</description>
+    </property>
+    <property name="bbHSize" type="vector3" writable="false" deprecated="true" label="Bounding box half sizes" />
+    <property name="bbPose" type="pose" writable="false" label="Bounding box pose">
+      <description>Bounding box local pose</description>
+    </property>
+    <property name="calcLinearVelocity" type="vector3" writable="false" label="Linear velocity">
+      <description>Calculated scene object linear velocity vector</description>
+    </property>
+    <property name="calcRotationAxis" type="vector3" writable="false" label="Rotation axis">
+      <description>Calculated scene object rotation axis</description>
+    </property>
+    <property name="calcRotationVelocity" type="float" writable="false" label="Rotation velocity">
+      <description>Calculated scene object rotation velocity</description>
+    </property>
+    <property name="cannotDelete" type="bool" label="Cannot delete">
+      <description>Scene object cannot be deleted while simulation is not running</description>
+    </property>
+    <property name="cannotDeleteInSim" type="bool" label="Cannot delete during simulation">
+      <description>Scene object cannot be deleted while simulation is running</description>
+    </property>
+    <property name="changeColor" type="method" readable="false" writable="false" />
+    <property name="checkCollision" type="method" readable="false" writable="false" />
+    <property name="checkDistance" type="method" readable="false" writable="false" />
+    <property name="childOrder" type="int" writable="false" label="Child order" />
+    <property name="children" type="handlearray" writable="false" handle-type="sceneObject" label="Children handles" />
+    <property name="collapsed" type="bool" label="Collapsed hierarchy" />
+    <property name="collectionSelfCollisionIndicator" type="int" label="Collection self collision indicator" />
+    <property name="collidable" type="bool" label="Collidable" />
+    <property name="deprecatedName" type="string" deprecated="true" label="Deprecated name" />
+    <property name="depthInvisible" type="bool" label="Depth pass invisible">
+      <description>Scene object is invisible for the depth buffer during a click operation</description>
+    </property>
+    <property name="detectable" type="bool" label="Detectable" />
+    <property name="dna" type="buffer" writable="false" label="DNA">
+      <description>Scene object DNA</description>
+    </property>
+    <property name="dynamicFlag" type="int" writable="false" label="Dynamic flag" />
+    <property name="dynamicIcon" type="int" writable="false" label="Dynamic icon" />
+    <property name="dynamicReset" type="method" readable="false" writable="false" />
+    <property name="eulerAngles" type="vector3" silent="true" label="Euler angles">
+      <description>Scene object local Euler angles</description>
+    </property>
+    <property name="getAncestors" type="method" readable="false" writable="false" />
+    <property name="getDescendants" type="method" readable="false" writable="false" />
+    <property name="getName" type="method" readable="false" writable="false" />
+    <property name="getObject" type="method" readable="false" writable="false" />
+    <property name="getPose" type="method" readable="false" writable="false" />
+    <property name="getPosition" type="method" readable="false" writable="false" />
+    <property name="getQuaternion" type="method" readable="false" writable="false" />
+    <property name="hideFromModelBB" type="bool" label="Hide from model bounding box">
+      <description>Scene object is not part of a parent model&apos;s bounding box</description>
+    </property>
+    <property name="hierarchyColor" type="int" label="Hierarchy color">
+      <description>Hierarchy color index</description>
+    </property>
+    <property name="ignoreViewFitting" type="bool" label="Ignore view fitting">
+      <description>View fitting is ignored for this scene object</description>
+    </property>
+    <property name="layer" type="int" label="Visibility layer" />
+    <property name="measurable" type="bool" label="Measurable" />
+    <property name="model.bbPos" type="vector3" writable="false" silent="true" label="Model bounding boxe position" />
+    <property name="model.bbSize" type="vector3" writable="false" silent="true" label="Model bounding boxe size" />
+    <property name="model.notCollidable" type="bool" label="Model not collidable">
+      <description>Model is not collidable</description>
+    </property>
+    <property name="model.notDetectable" type="bool" label="Model not detectable">
+      <description>Model is not detectable</description>
+    </property>
+    <property name="model.notDynamic" type="bool" label="Model not dynamic">
+      <description>Model is not dynamic, i.e. model is static</description>
+    </property>
+    <property name="model.notInParentBB" type="bool" label="Model invisible to other model&apos;s bounding boxes">
+      <description>Model is invisible to other model&apos;s bounding boxes</description>
+    </property>
+    <property name="model.notMeasurable" type="bool" label="Model not measurable">
+      <description>Model is not measurable</description>
+    </property>
+    <property name="model.notRespondable" type="bool" label="Model not respondable">
+      <description>Model is not respondable</description>
+    </property>
+    <property name="model.notVisible" type="bool" label="Model not visible">
+      <description>Model is not visible</description>
+    </property>
+    <property name="model.propertyFlags" type="int" label="Model flags">
+      <description>Model flags, redundant</description>
+    </property>
+    <property name="model.scriptsNotActive" type="bool" label="Model scripts inactive">
+      <description>Model scripts are not active</description>
+    </property>
+    <property name="modelAcknowledgment" type="string" label="Acknowledgment">
+      <description>Model acknowledgment</description>
+    </property>
+    <property name="modelBase" type="bool" label="Model base">
+      <description>Model base flag, indicates the scene object is the base of a model</description>
+    </property>
+    <property name="modelHash" type="string" writable="false" silent="true" label="Model hash" />
+    <property name="modelInvisible" type="bool" writable="false" label="Inherited model invisibility" />
+    <property name="modelNotCollidable" type="bool" deprecated="true" label="Model not collidable">
+      <description>Model is not collidable</description>
+    </property>
+    <property name="modelNotDetectable" type="bool" deprecated="true" label="Model not detectable">
+      <description>Model is not detectable</description>
+    </property>
+    <property name="modelNotDynamic" type="bool" deprecated="true" label="Model not dynamic">
+      <description>Model is not dynamic, i.e. model is static</description>
+    </property>
+    <property name="modelNotInParentBB" type="bool" deprecated="true" label="Model invisible to other model&apos;s bounding boxes">
+      <description>Model is invisible to other model&apos;s bounding boxes</description>
+    </property>
+    <property name="modelNotMeasurable" type="bool" deprecated="true" label="Model not measurable">
+      <description>Model is not measurable</description>
+    </property>
+    <property name="modelNotRespondable" type="bool" deprecated="true" label="Model not respondable">
+      <description>Model is not respondable</description>
+    </property>
+    <property name="modelNotVisible" type="bool" deprecated="true" label="Model not visible">
+      <description>Model is not visible</description>
+    </property>
+    <property name="modelPropertyFlags" type="int" deprecated="true" label="Model flags">
+      <description>Model flags, redundant</description>
+    </property>
+    <property name="modelScriptsNotActive" type="bool" deprecated="true" label="Model scripts inactive">
+      <description>Model scripts are not active</description>
+    </property>
+    <property name="mov.altRot" type="bool" label="Alternate rotation axes enabled" />
+    <property name="mov.altTransl" type="bool" label="Alternate translation axes enabled" />
+    <property name="mov.optionsFlags" type="int" label="Movement flags">
+      <description>Scene object movement flags</description>
+    </property>
+    <property name="mov.prefRotX" type="bool" label="Preferred X-axis rotation" />
+    <property name="mov.prefRotY" type="bool" label="Preferred Y-axis rotation" />
+    <property name="mov.prefRotZ" type="bool" label="Preferred Z-axis rotation" />
+    <property name="mov.prefTranslX" type="bool" label="Preferred X-translation" />
+    <property name="mov.prefTranslY" type="bool" label="Preferred Y-translation" />
+    <property name="mov.prefTranslZ" type="bool" label="Preferred Z-translation" />
+    <property name="mov.preferredAxesFlags" type="int" label="Preferred axes">
+      <description>Preferred axes flags (redundant)</description>
+    </property>
+    <property name="mov.relativity" type="intarray" label="Movement relativity">
+      <description>Movement relativity, linear and angular</description>
+    </property>
+    <property name="mov.rotInSim" type="bool" label="Rotation enabled during simulation">
+      <description>Rotation enabled when simulation is running</description>
+    </property>
+    <property name="mov.rotNoSim" type="bool" label="Rotation enabled">
+      <description>Rotation enabled when simulation is not running</description>
+    </property>
+    <property name="mov.stepSize" type="floatarray" label="Movement step sizes">
+      <description>Linear and angular step sizes</description>
+    </property>
+    <property name="mov.translInSim" type="bool" label="Translation enabled during simulation">
+      <description>Translation enabled when simulation is running</description>
+    </property>
+    <property name="mov.translNoSim" type="bool" label="Translation enabled">
+      <description>Translation enabled when simulation is not running</description>
+    </property>
+    <property name="movAltRot" type="bool" deprecated="true" label="Alternate rotation axes enabled" />
+    <property name="movAltTransl" type="bool" deprecated="true" label="Alternate translation axes enabled" />
+    <property name="movPrefRotX" type="bool" deprecated="true" label="Preferred X-axis rotation" />
+    <property name="movPrefRotY" type="bool" deprecated="true" label="Preferred Y-axis rotation" />
+    <property name="movPrefRotZ" type="bool" deprecated="true" label="Preferred Z-axis rotation" />
+    <property name="movPrefTranslX" type="bool" deprecated="true" label="Preferred X-translation" />
+    <property name="movPrefTranslY" type="bool" deprecated="true" label="Preferred Y-translation" />
+    <property name="movPrefTranslZ" type="bool" deprecated="true" label="Preferred Z-translation" />
+    <property name="movRotInSim" type="bool" deprecated="true" label="Rotation enabled during simulation">
+      <description>Rotation enabled when simulation is running</description>
+    </property>
+    <property name="movRotNoSim" type="bool" deprecated="true" label="Rotation enabled">
+      <description>Rotation enabled when simulation is not running</description>
+    </property>
+    <property name="movTranslInSim" type="bool" deprecated="true" label="Translation enabled during simulation">
+      <description>Translation enabled when simulation is running</description>
+    </property>
+    <property name="movTranslNoSim" type="bool" deprecated="true" label="Translation enabled">
+      <description>Translation enabled when simulation is not running</description>
+    </property>
+    <property name="movementOptionsFlags" type="int" deprecated="true" label="Movement flags">
+      <description>Scene object movement flags</description>
+    </property>
+    <property name="movementPreferredAxesFlags" type="int" deprecated="true" label="Preferred axes">
+      <description>Preferred axes flags (redundant)</description>
+    </property>
+    <property name="movementRelativity" type="intarray" deprecated="true" label="Movement relativity">
+      <description>Movement relativity, linear and angular</description>
+    </property>
+    <property name="movementStepSize" type="floatarray" deprecated="true" label="Movement step sizes">
+      <description>Linear and angular step sizes</description>
+    </property>
+    <property name="name" type="string" label="Name">
+      <description>Scene object name</description>
+    </property>
+    <property name="objectPropertyFlags" type="int" label="Object flags">
+      <description>Scene object flags, redundant</description>
+    </property>
+    <property name="objectUid" type="long" writable="false" label="Object UID" constant="true">
+      <description>Scene object unique identifier</description>
+    </property>
+    <property name="parent" type="handle" label="Parent" handle-type="sceneObject">
+      <description>Parent scene object handle</description>
+    </property>
+    <property name="parentHandle" type="int" deprecated="true" />
+    <property name="parentUid" type="long" writable="false" label="Parent UID">
+      <description>Parent scene object unique identifier</description>
+    </property>
+    <property name="persistentUid" type="string" writable="false" label="Persistent UID" constant="true">
+      <description>Scene object persistent unique identifier</description>
+    </property>
+    <property name="pose" type="pose" label="Pose">
+      <description>Scene object local pose</description>
+    </property>
+    <property name="position" type="vector3" label="Position">
+      <description>Scene object local position</description>
+    </property>
+    <property name="quaternion" type="quaternion" label="Quaternion">
+      <description>Scene object local quaternion</description>
+    </property>
+    <property name="remove" type="method" readable="false" writable="false" />
+    <property name="removeModel" type="method" readable="false" writable="false" />
+    <property name="restoreColor" type="method" readable="false" writable="false" />
+    <property name="saveModel" type="method" readable="false" writable="false" />
+    <property name="saveModelToBuffer" type="method" readable="false" writable="false" />
+    <property name="scale" type="method" readable="false" writable="false" />
+    <property name="scaleTree" type="method" readable="false" writable="false" />
+    <property name="selectInvisible" type="bool" label="Select invisible">
+      <description>Scene object is invisible during a selection operation</description>
+    </property>
+    <property name="selectModel" type="bool" label="Select model instead">
+      <description>Selecting the scene object instead selects the parent model</description>
+    </property>
+    <property name="selectable" type="bool" label="Selectable">
+      <description>Scene object is selectable</description>
+    </property>
+    <property name="selected" type="bool" label="Selected">
+      <description>Selection state</description>
+    </property>
+    <property name="setParent" type="method" readable="false" writable="false" />
+    <property name="setPose" type="method" readable="false" writable="false" />
+    <property name="setPosition" type="method" readable="false" writable="false" />
+    <property name="setQuaternion" type="method" readable="false" writable="false" />
+    <property name="size" type="vector3" label="Bounding box size" />
+    <property name="visible" type="bool" writable="false" silent="true" label="Visible">
+      <description>Whether the scene object is currently visible</description>
+    </property>
+    <property name="visitTree" type="method" readable="false" writable="false" />
+  </object-class>
+  <object-class name="script" superclass="sceneObject">
+    <property name="addOnMenuPath" type="string" writable="false" deprecated="true" constant="true" />
+    <property name="addOnPath" type="string" writable="false" deprecated="true" constant="true" />
+    <property name="code" type="string" silent="true" deprecated="true" />
+    <property name="color.diffuse" type="color" label="Diffuse color" />
+    <property name="color.emission" type="color" label="Emission color" />
+    <property name="color.specular" type="color" label="Specular color" />
+    <property name="detachedScript" type="handle" writable="false" handle-type="detachedScript" label="Detached script handle" constant="true" />
+    <property name="execPriority" type="int" silent="true" deprecated="true" />
+    <property name="executionDepth" type="int" writable="false" silent="true" deprecated="true" />
+    <property name="language" type="string" writable="false" deprecated="true" constant="true" />
+    <property name="resetAfterSimError" type="bool" label="Reset after simulation error" />
+    <property name="restartOnError" type="bool" silent="true" deprecated="true" />
+    <property name="scriptDisabled" type="bool" silent="true" deprecated="true" />
+    <property name="scriptName" type="string" writable="false" silent="true" deprecated="true" />
+    <property name="scriptSize" type="float" label="Size">
+      <description>Size of the object</description>
+    </property>
+    <property name="scriptState" type="int" writable="false" silent="true" deprecated="true" />
+    <property name="scriptType" type="int" writable="false" deprecated="true" constant="true" />
+  </object-class>
+  <object-class name="shape" superclass="sceneObject">
+    <property name="addForce" type="method" readable="false" writable="false" />
+    <property name="addTorque" type="method" readable="false" writable="false" />
+    <property name="alignBoundingBox" type="method" readable="false" writable="false" />
+    <property name="applyColor.diffuse" type="color" readable="false" silent="true" label="Apply diffuse color">
+      <description>Applies the diffuse color component to all contained meshes</description>
+    </property>
+    <property name="applyColor.emission" type="color" readable="false" silent="true" label="Apply emission color">
+      <description>Applies the emission color component to all contained meshes</description>
+    </property>
+    <property name="applyColor.specular" type="color" readable="false" silent="true" label="Apply specular color">
+      <description>Applies the specular color component to all contained meshes</description>
+    </property>
+    <property name="applyColor.transparency" type="float" readable="false" silent="true" label="Apply transparency">
+      <description>Applies transparency to all contained meshes</description>
+    </property>
+    <property name="applyCulling" type="bool" readable="false" silent="true" label="Apply culling">
+      <description>Enables/disables culling for all contained meshes</description>
+    </property>
+    <property name="applyShadingAngle" type="float" readable="false" silent="true" label="Apply shading">
+      <description>Applies a shading angle to all contained meshes</description>
+    </property>
+    <property name="applyShowEdges" type="bool" readable="false" silent="true" label="Apply edges">
+      <description>Enables/disables edges for all contained meshes</description>
+    </property>
+    <property name="bullet.angularDamping" type="float" />
+    <property name="bullet.autoShrinkConvexMeshes" type="bool" />
+    <property name="bullet.customCollisionMarginConvexEnabled" type="bool" />
+    <property name="bullet.customCollisionMarginConvexValue" type="float" />
+    <property name="bullet.customCollisionMarginEnabled" type="bool" />
+    <property name="bullet.customCollisionMarginValue" type="float" />
+    <property name="bullet.friction" type="float" />
+    <property name="bullet.frictionOld" type="float" />
+    <property name="bullet.linearDamping" type="float" />
+    <property name="bullet.restitution" type="float" />
+    <property name="bullet.stickyContact" type="bool" />
+    <property name="centerOfMass" type="vector3" label="Center of mass">
+      <description>Center of mass, relative to the shape&apos;s reference frame</description>
+    </property>
+    <property name="compound" type="bool" writable="false" label="Compound">
+      <description>Whether the shape is a compound</description>
+    </property>
+    <property name="compoundColors.diffuse" type="floatarray" silent="true" label="Diffuse color data">
+      <description>Diffuse color from all compound elements</description>
+    </property>
+    <property name="compoundColors.emission" type="floatarray" silent="true" label="Emission color data">
+      <description>Emission color from all compound elements</description>
+    </property>
+    <property name="compoundColors.specular" type="floatarray" silent="true" label="Specular color data">
+      <description>Specular color from all compound elements</description>
+    </property>
+    <property name="compoundColors.transparency" type="floatarray" silent="true" label="Transparency data">
+      <description>Transparency value from all compound elements</description>
+    </property>
+    <property name="compoundCullings" type="intarray" silent="true" label="Culling data">
+      <description>Backface culling state from all compound elements</description>
+    </property>
+    <property name="compoundEdges" type="intarray" silent="true" label="Edge visibility data">
+      <description>Edge visibility from all compound elements</description>
+    </property>
+    <property name="compoundShadingAngles" type="floatarray" silent="true" label="Shading angle data">
+      <description>Shading angle state from all compound elements</description>
+    </property>
+    <property name="compoundWireframe" type="intarray" silent="true" label="Wireframe data">
+      <description>Wireframe state from all compound elements</description>
+    </property>
+    <property name="computeInertia" type="method" readable="false" writable="false" />
+    <property name="convex" type="bool" writable="false" label="Convex">
+      <description>Whether the shape&apos;s components are all convex or not</description>
+    </property>
+    <property name="divide" type="method" readable="false" writable="false" />
+    <property name="dynAngularVelocity" type="vector3" writable="false" label="Rotational velocity">
+      <description>Rotational velocity, as transmitted by the physics engine</description>
+    </property>
+    <property name="dynLinearVelocity" type="vector3" writable="false" label="Linear velocity">
+      <description>Linear velocity, as transmitted by the physics engine</description>
+    </property>
+    <property name="dynamic" type="bool" label="Dynamic">
+      <description>Shape is dynamic, i.e. not static</description>
+    </property>
+    <property name="engineProperties" type="string" label="Engine properties">
+      <description>Engine properties as JSON text</description>
+    </property>
+    <property name="flipFaces" type="bool" readable="false" silent="true" label="Flip faces">
+      <description>Flips faces of all contained meshes</description>
+    </property>
+    <property name="getAppearance" type="method" readable="false" writable="false" />
+    <property name="getInertia" type="method" readable="false" writable="false" />
+    <property name="inertia" type="floatarray" label="Inertia tensor">
+      <description>Inertia tensor, relative to the shape&apos;s reference frame</description>
+    </property>
+    <property name="initAngularVelocity" type="vector3" label="Initial rotational velocity" />
+    <property name="initLinearVelocity" type="vector3" label="Initial linear velocity" />
+    <property name="kinematic" type="bool" label="Kinematic">
+      <description>Special flag mainly used for MuJoCo static shapes that move and need to transmit a friction</description>
+    </property>
+    <property name="mass" type="float" label="Mass" />
+    <property name="meshes" type="handlearray" writable="false" handle-type="mesh" label="Meshes">
+      <description>Mesh handles</description>
+    </property>
+    <property name="mujoco.adhesion" type="bool" />
+    <property name="mujoco.adhesionctrl" type="float" />
+    <property name="mujoco.adhesionctrlrange" type="floatarray" />
+    <property name="mujoco.adhesionforcelimited" type="int" />
+    <property name="mujoco.adhesionforcerange" type="floatarray" />
+    <property name="mujoco.adhesiongain" type="float" />
+    <property name="mujoco.condim" type="int" />
+    <property name="mujoco.friction" type="floatarray" />
+    <property name="mujoco.gap" type="float" />
+    <property name="mujoco.gravcomp" type="float" />
+    <property name="mujoco.margin" type="float" />
+    <property name="mujoco.priority" type="int" />
+    <property name="mujoco.solimp" type="floatarray" />
+    <property name="mujoco.solmix" type="float" />
+    <property name="mujoco.solref" type="floatarray" />
+    <property name="newton.angularDrag" type="float" />
+    <property name="newton.fastMoving" type="bool" />
+    <property name="newton.kineticFriction" type="float" />
+    <property name="newton.linearDrag" type="float" />
+    <property name="newton.restitution" type="float" />
+    <property name="newton.staticFriction" type="float" />
+    <property name="ode.angularDamping" type="float" />
+    <property name="ode.friction" type="float" />
+    <property name="ode.linearDamping" type="float" />
+    <property name="ode.maxContacts" type="int" />
+    <property name="ode.softCfm" type="float" />
+    <property name="ode.softErp" type="float" />
+    <property name="pmiQuaternion" type="quaternion" writable="false" label="Quaternion of the principal moment of inertia">
+      <description>Quaternion of the principal moment of inertia, relative to the shape&apos;s reference frame</description>
+    </property>
+    <property name="primitive" type="bool" writable="false" label="Primitive">
+      <description>Whether the shape&apos;s components are all primitives</description>
+    </property>
+    <property name="principalMomentOfInertia" type="floatarray" writable="false" label="Principal moment of inertia">
+      <description>Principal moment of inertia, relative to pmiQuaternion</description>
+    </property>
+    <property name="relocateFrame" type="method" readable="false" writable="false" />
+    <property name="respondable" type="bool" label="Respondable">
+      <description>Shape will transmit a collision force</description>
+    </property>
+    <property name="respondableMask" type="int" label="Respondable mask" />
+    <property name="setAppearance" type="method" readable="false" writable="false" />
+    <property name="setInertia" type="method" readable="false" writable="false" />
+    <property name="setToDynamicWithParent" type="bool" label="Set to dynamic if gets parent">
+      <description>Shape will be made dynamic if it receives a parent</description>
+    </property>
+    <property name="startInDynSleepMode" type="bool" label="Start in sleep mode" />
+    <property name="ungroup" type="method" readable="false" writable="false" />
+    <property name="vortex.adhesiveForce" type="float" />
+    <property name="vortex.angularNormalAxisFollowPrimaryAxis" type="bool" />
+    <property name="vortex.angularNormalAxisFrictionModel" type="int" />
+    <property name="vortex.angularNormalAxisFrictionValue" type="float" />
+    <property name="vortex.angularNormalAxisSlide" type="float" />
+    <property name="vortex.angularNormalAxisSlip" type="float" />
+    <property name="vortex.angularNormalAxisStaticFrictionScale" type="float" />
+    <property name="vortex.angularPrimaryAxisFrictionModel" type="int" />
+    <property name="vortex.angularPrimaryAxisFrictionValue" type="float" />
+    <property name="vortex.angularPrimaryAxisSlide" type="float" />
+    <property name="vortex.angularPrimaryAxisSlip" type="float" />
+    <property name="vortex.angularPrimaryAxisStaticFrictionScale" type="float" />
+    <property name="vortex.angularSecondaryAxisFollowPrimaryAxis" type="bool" />
+    <property name="vortex.angularSecondaryAxisFrictionModel" type="int" />
+    <property name="vortex.angularSecondaryAxisFrictionValue" type="float" />
+    <property name="vortex.angularSecondaryAxisSlide" type="float" />
+    <property name="vortex.angularSecondaryAxisSlip" type="float" />
+    <property name="vortex.angularSecondaryAxisStaticFrictionScale" type="float" />
+    <property name="vortex.angularVelDamping" type="float" />
+    <property name="vortex.autoAngularDampingEnabled" type="bool" />
+    <property name="vortex.autoAngularDampingTensionRatio" type="float" />
+    <property name="vortex.autoSleepThresholdAngularAccel" type="float" />
+    <property name="vortex.autoSleepThresholdAngularSpeed" type="float" />
+    <property name="vortex.autoSleepThresholdLinearAccel" type="float" />
+    <property name="vortex.autoSleepThresholdLinearSpeed" type="float" />
+    <property name="vortex.autoSleepThresholdSteps" type="int" />
+    <property name="vortex.autoSlip" type="bool" />
+    <property name="vortex.compliance" type="float" />
+    <property name="vortex.convexAsRandom" type="bool" />
+    <property name="vortex.damping" type="float" />
+    <property name="vortex.fastMoving" type="bool" />
+    <property name="vortex.linearPrimaryAxisFrictionModel" type="int" />
+    <property name="vortex.linearPrimaryAxisFrictionValue" type="float" />
+    <property name="vortex.linearPrimaryAxisSlide" type="float" />
+    <property name="vortex.linearPrimaryAxisSlip" type="float" />
+    <property name="vortex.linearPrimaryAxisStaticFrictionScale" type="float" />
+    <property name="vortex.linearPrimaryValue" type="vector3" />
+    <property name="vortex.linearSecondaryAxisFollowPrimaryAxis" type="bool" />
+    <property name="vortex.linearSecondaryAxisFrictionModel" type="int" />
+    <property name="vortex.linearSecondaryAxisFrictionValue" type="float" />
+    <property name="vortex.linearSecondaryAxisSlide" type="float" />
+    <property name="vortex.linearSecondaryAxisSlip" type="float" />
+    <property name="vortex.linearSecondaryAxisStaticFrictionScale" type="float" />
+    <property name="vortex.linearVelDamping" type="float" />
+    <property name="vortex.materialUniqueId" type="int" />
+    <property name="vortex.primitiveAsConvex" type="bool" />
+    <property name="vortex.randomAsTerrain" type="bool" />
+    <property name="vortex.restitution" type="float" />
+    <property name="vortex.restitutionThreshold" type="float" />
+    <property name="vortex.skinThickness" type="float" />
+  </object-class>
+  <object-class name="visionSensor" superclass="sceneObject">
+    <property name="backgroundColor" type="color" label="Background color" />
+    <property name="backgroundColorFromEnvironment" type="bool" label="Background color from environment" />
+    <property name="checkSensor" type="method" readable="false" writable="false" />
+    <property name="clippingPlanes" type="floatarray" label="Clipping planes">
+      <description>Near and far clipping planes</description>
+    </property>
+    <property name="color.diffuse" type="color" label="Diffuse color" />
+    <property name="color.emission" type="color" label="Emission color" />
+    <property name="color.specular" type="color" label="Specular color" />
+    <property name="depthBuffer" type="floatarray" writable="false" label="Depth buffer" />
+    <property name="emitDepthChangedEvent" type="bool" label="Emit depth change event" />
+    <property name="emitImageChangedEvent" type="bool" label="Emit image change event" />
+    <property name="explicitHandling" type="bool" label="Explicit handling" />
+    <property name="frustumCornerFar" type="vector3" writable="false" label="Far corner of view frustum" />
+    <property name="frustumCornerNear" type="vector3" writable="false" label="Near corner of View frustum" />
+    <property name="getDepth" type="method" readable="false" writable="false" />
+    <property name="getImage" type="method" readable="false" writable="false" />
+    <property name="handleSensor" type="method" readable="false" writable="false" />
+    <property name="ignoreDepthInfo" type="bool" label="Ignore Depth buffer">
+      <description>Ignore Depth buffer (faster)</description>
+    </property>
+    <property name="ignoreImageInfo" type="bool" label="Ignore RGB buffer">
+      <description>Ignore RGB buffer (faster)</description>
+    </property>
+    <property name="imageBuffer" type="buffer" label="RGB buffer" />
+    <property name="omitPacket1" type="bool" label="Packet 1 is blank">
+      <description>Omit packet 1 (faster)</description>
+    </property>
+    <property name="packedDepthBuffer" type="buffer" writable="false" silent="true" label="Packed depth buffer" />
+    <property name="packet1" type="floatarray" writable="false" label="Data packet 1" />
+    <property name="packet2" type="floatarray" writable="false" label="Data packet 2" />
+    <property name="perspective" type="bool" writable="false" label="Perspective" constant="true">
+      <description>Perspective projection mode, otherwise orthogonal projection mode</description>
+    </property>
+    <property name="povray.aperture" type="float" silent="true" label="POV-Ray: aperture">
+      <description>Aperture (with the POV-Ray renderer plugin)</description>
+    </property>
+    <property name="povray.blurDistance" type="float" silent="true" label="POV-Ray: blur distance">
+      <description>Focal blur distance (with the POV-Ray renderer plugin)</description>
+    </property>
+    <property name="povray.blurSamples" type="int" silent="true" label="POV-Ray: blur samples">
+      <description>Focal blur samples (with the POV-Ray renderer plugin)</description>
+    </property>
+    <property name="povray.focalBlur" type="bool" silent="true" label="POV-Ray: focal blur">
+      <description>Focal blur (with the POV-Ray renderer plugin)</description>
+    </property>
+    <property name="renderMode" type="int" label="Render mode" />
+    <property name="resetSensor" type="method" readable="false" writable="false" />
+    <property name="resolution" type="intarray2" label="Resolution">
+      <description>Resolution (relevant only with vision sensors)</description>
+    </property>
+    <property name="sensorSize" type="float" label="Size">
+      <description>Sensor size</description>
+    </property>
+    <property name="setImage" type="method" readable="false" writable="false" />
+    <property name="showFrustum" type="bool" label="Show view frustum" />
+    <property name="triggerState" type="bool" writable="false" label="Trigger state" />
+    <property name="useExtImage" type="bool" label="External input" />
+    <property name="viewAngle" type="float" label="View angle">
+      <description>View angle (in perspective projection mode)</description>
+    </property>
+    <property name="viewSize" type="float" label="View size">
+      <description>View size (in orthogonal projection mode)</description>
+    </property>
+  </object-class>
+</object-classes>
