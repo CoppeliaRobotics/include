@@ -78,6 +78,12 @@ typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetVector2Property))(long long int ta
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetVector2Property))(long long int target, const char* pName, double* pState);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetVector3Property))(long long int target, const char* pName, const double* pState);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetVector3Property))(long long int target, const char* pName, double* pState);
+typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetMatrixProperty))(long long int target, const char* pName, const double* pState, int r, int c);
+typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetMatrixProperty))(long long int target, const char* pName, double** pState, int* r, int* c);
+typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetMatrix3x3Property))(long long int target, const char* pName, const double* pState);
+typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetMatrix3x3Property))(long long int target, const char* pName, double* pState);
+typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetMatrix4x4Property))(long long int target, const char* pName, const double* pState);
+typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetMatrix4x4Property))(long long int target, const char* pName, double* pState);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetQuaternionProperty))(long long int target, const char* pName, const double* pState);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetQuaternionProperty))(long long int target, const char* pName, double* pState);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetPoseProperty))(long long int target, const char* pName, const double* pState);
@@ -502,6 +508,12 @@ extern SIM_API_SYMBOL(ptrSimSetVector2Property) SIM_API_SYMBOL(simSetVector2Prop
 extern SIM_API_SYMBOL(ptrSimGetVector2Property) SIM_API_SYMBOL(simGetVector2Property);
 extern SIM_API_SYMBOL(ptrSimSetVector3Property) SIM_API_SYMBOL(simSetVector3Property);
 extern SIM_API_SYMBOL(ptrSimGetVector3Property) SIM_API_SYMBOL(simGetVector3Property);
+extern SIM_API_SYMBOL(ptrSimSetMatrixProperty) SIM_API_SYMBOL(simSetMatrixProperty);
+extern SIM_API_SYMBOL(ptrSimGetMatrixProperty) SIM_API_SYMBOL(simGetMatrixProperty);
+extern SIM_API_SYMBOL(ptrSimSetMatrix3x3Property) SIM_API_SYMBOL(simSetMatrix3x3Property);
+extern SIM_API_SYMBOL(ptrSimGetMatrix3x3Property) SIM_API_SYMBOL(simGetMatrix3x3Property);
+extern SIM_API_SYMBOL(ptrSimSetMatrix4x4Property) SIM_API_SYMBOL(simSetMatrix4x4Property);
+extern SIM_API_SYMBOL(ptrSimGetMatrix4x4Property) SIM_API_SYMBOL(simGetMatrix4x4Property);
 extern SIM_API_SYMBOL(ptrSimSetQuaternionProperty) SIM_API_SYMBOL(simSetQuaternionProperty);
 extern SIM_API_SYMBOL(ptrSimGetQuaternionProperty) SIM_API_SYMBOL(simGetQuaternionProperty);
 extern SIM_API_SYMBOL(ptrSimSetPoseProperty) SIM_API_SYMBOL(simSetPoseProperty);
@@ -919,6 +931,12 @@ static inline int simSetVector2Property(long long int target, const char* pName,
 static inline int simGetVector2Property(long long int target, const char* pName, double* pState) { return SIM_API_SYMBOL(simGetVector2Property)(target,pName,pState); }
 static inline int simSetVector3Property(long long int target, const char* pName, const double* pState) { return SIM_API_SYMBOL(simSetVector3Property)(target,pName,pState); }
 static inline int simGetVector3Property(long long int target, const char* pName, double* pState) { return SIM_API_SYMBOL(simGetVector3Property)(target,pName,pState); }
+static inline int simSetMatrixProperty(long long int target, const char* pName, const double* pState, int r, int c) { return SIM_API_SYMBOL(simSetMatrixProperty)(target,pName,pState, r, c); }
+static inline int simGetMatrixProperty(long long int target, const char* pName, double** pState, int* r, int* c) { return SIM_API_SYMBOL(simGetMatrixProperty)(target,pName,pState, r, c); }
+static inline int simSetMatrix3x3Property(long long int target, const char* pName, const double* pState) { return SIM_API_SYMBOL(simSetMatrix3x3Property)(target,pName,pState); }
+static inline int simGetMatrix3x3Property(long long int target, const char* pName, double* pState) { return SIM_API_SYMBOL(simGetMatrix3x3Property)(target,pName,pState); }
+static inline int simSetMatrix4x4Property(long long int target, const char* pName, const double* pState) { return SIM_API_SYMBOL(simSetMatrix4x4Property)(target,pName,pState); }
+static inline int simGetMatrix4x4Property(long long int target, const char* pName, double* pState) { return SIM_API_SYMBOL(simGetMatrix4x4Property)(target,pName,pState); }
 static inline int simSetQuaternionProperty(long long int target, const char* pName, const double* pState) { return SIM_API_SYMBOL(simSetQuaternionProperty)(target,pName,pState); }
 static inline int simGetQuaternionProperty(long long int target, const char* pName, double* pState) { return SIM_API_SYMBOL(simGetQuaternionProperty)(target,pName,pState); }
 static inline int simSetPoseProperty(long long int target, const char* pName, const double* pState) { return SIM_API_SYMBOL(simSetPoseProperty)(target,pName,pState); }
