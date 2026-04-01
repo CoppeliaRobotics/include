@@ -195,6 +195,31 @@ enum { // values are serialized
     sim_scriptexecorder_last
 };
 
+enum { // Object handles. Some values are serialized:
+    sim_object_sceneobjectstart = 0,
+    sim_object_sceneobjectend = 999999,
+
+    sim_object_detachedscriptstart = 1010000,
+    sim_object_detachedscriptend = 1019999,
+
+    sim_object_stackstart = 1020000,
+    sim_object_stackend = 1029999,
+
+    sim_object_collectionstart = 2000000,
+    sim_object_collectionend = 2010000,
+
+    sim_object_texturestart = 2180009,
+    sim_object_textureend = 2280009,
+
+    sim_object_drawingstart = 2280010, // deprecated
+    sim_object_drawingend = 3999999, // deprecated
+
+    sim_object_customstart = 8000000,
+    sim_object_customend = 9999999,
+
+    sim_object_variousstart = 10000000
+};
+
 enum { // special argument of some functions:
     sim_handle_world                    = -1,
     sim_handle_all                      = -2,
