@@ -1,28 +1,28 @@
 <object-classes>
   <object-class name="app" superclass="object">
-    <property name="addOnPath" type="string" writable="false" label="Add-on path" constant="true" />
-    <property name="addOns" type="handlearray" writable="false" handle-type="detachedScript" label="Add-ons" constant="true">
+    <property name="addOnPath" type="string" writable="false" constant="true" label="Add-on path" />
+    <property name="addOns" type="handlearray" writable="false" constant="true" label="Add-ons" handle-type="detachedScript">
       <description>List of add-ons</description>
     </property>
-    <property name="appArg1" type="string" deprecated="true" label="App arg. 1" constant="true" />
-    <property name="appArg2" type="string" deprecated="true" label="App arg. 2" constant="true" />
-    <property name="appArg3" type="string" deprecated="true" label="App arg. 3" constant="true" />
-    <property name="appArg4" type="string" deprecated="true" label="App arg. 4" constant="true" />
-    <property name="appArg5" type="string" deprecated="true" label="App arg. 5" constant="true" />
-    <property name="appArg6" type="string" deprecated="true" label="App arg. 6" constant="true" />
-    <property name="appArg7" type="string" deprecated="true" label="App arg. 7" constant="true" />
-    <property name="appArg8" type="string" deprecated="true" label="App arg. 8" constant="true" />
-    <property name="appArg9" type="string" deprecated="true" label="App arg. 9" constant="true" />
-    <property name="appArgs" type="stringarray" label="App args" constant="true" />
-    <property name="appPath" type="string" writable="false" label="Application path" constant="true" />
-    <property name="auxAddOn1" type="string" label="Aux. add-on 1" constant="true">
+    <property name="appArg1" type="string" deprecated="true" constant="true" label="App arg. 1" />
+    <property name="appArg2" type="string" deprecated="true" constant="true" label="App arg. 2" />
+    <property name="appArg3" type="string" deprecated="true" constant="true" label="App arg. 3" />
+    <property name="appArg4" type="string" deprecated="true" constant="true" label="App arg. 4" />
+    <property name="appArg5" type="string" deprecated="true" constant="true" label="App arg. 5" />
+    <property name="appArg6" type="string" deprecated="true" constant="true" label="App arg. 6" />
+    <property name="appArg7" type="string" deprecated="true" constant="true" label="App arg. 7" />
+    <property name="appArg8" type="string" deprecated="true" constant="true" label="App arg. 8" />
+    <property name="appArg9" type="string" deprecated="true" constant="true" label="App arg. 9" />
+    <property name="appArgs" type="stringarray" constant="true" label="App args" />
+    <property name="appPath" type="string" writable="false" constant="true" label="Application path" />
+    <property name="auxAddOn1" type="string" constant="true" label="Aux. add-on 1">
       <description>Auxiliary add-on 1</description>
     </property>
-    <property name="auxAddOn2" type="string" label="Aux. add-on 2" constant="true">
+    <property name="auxAddOn2" type="string" constant="true" label="Aux. add-on 2">
       <description>Auxiliary add-on 2</description>
     </property>
     <property name="browserEnabled" type="bool" label="Browser enabled" />
-    <property name="canSave" type="bool" writable="false" label="Can save" constant="true">
+    <property name="canSave" type="bool" writable="false" constant="true" label="Can save">
       <description>Whether save operation is allowed in given state</description>
     </property>
     <property name="cancelScheduledExecution" type="method" readable="false" writable="false" />
@@ -30,8 +30,9 @@
     <property name="consoleVerbosityStr" type="string" readable="false" silent="true" label="Console verbosity string">
       <description>Console verbosity string, only for client app</description>
     </property>
+    <property name="createCustomObject" type="method" readable="false" writable="false" />
     <property name="createObject" type="method" readable="false" writable="false" />
-    <property name="defaultPython" type="string" writable="false" label="Default Python" constant="true">
+    <property name="defaultPython" type="string" writable="false" constant="true" label="Default Python">
       <description>Default Python interpreter</description>
     </property>
     <property name="defaultRotationStepSize" type="float" label="Rotation step size">
@@ -49,24 +50,25 @@
     <property name="dongleID" type="string" writable="false" constant="true" />
     <property name="dongleSerial" type="string" writable="false" constant="true" />
     <property name="duplicateObjects" type="method" readable="false" writable="false" />
-    <property name="execUnsafe" type="bool" writable="false" label="Execute unsafe" constant="true" />
-    <property name="execUnsafeExt" type="bool" writable="false" label="Execute unsafe extended" constant="true">
+    <property name="execUnsafe" type="bool" writable="false" constant="true" label="Execute unsafe" />
+    <property name="execUnsafeExt" type="bool" writable="false" constant="true" label="Execute unsafe extended">
       <description>Execute unsafe for code triggered externally</description>
     </property>
     <property name="fastIdleLoop" type="method" readable="false" writable="false" />
-    <property name="flavor" type="int" writable="false" label="Flavor" constant="true">
+    <property name="flavor" type="int" writable="false" constant="true" label="Flavor">
       <description>Flavor (0: lite, 1: edu, 2: pro)</description>
     </property>
+    <property name="getCustomObjectType" type="method" readable="false" writable="false" />
     <property name="getObjects" type="method" readable="false" writable="false" />
     <property name="handleAddOnScripts" type="method" readable="false" writable="false" />
     <property name="handleSandboxScript" type="method" readable="false" writable="false" />
-    <property name="headlessMode" type="int" writable="false" label="Headless mode" constant="true">
+    <property name="headlessMode" type="int" writable="false" constant="true" label="Headless mode">
       <description>Headless mode (0: not headless, 1: GUI suppressed, 2: headless library)</description>
     </property>
     <property name="hierarchyEnabled" type="bool" label="Hierarchy enabled" />
     <property name="idleFps" type="int" writable="false" label="Loaded plugin names" />
     <property name="importExportPath" type="string" silent="true" label="Import/export path" />
-    <property name="legacyMachineId" type="string" writable="false" label="Legacy machine ID" constant="true" />
+    <property name="legacyMachineId" type="string" writable="false" constant="true" label="Legacy machine ID" />
     <property name="loadImage" type="method" readable="false" writable="false" />
     <property name="loadImageFromBuffer" type="method" readable="false" writable="false" />
     <property name="loadModel" type="method" readable="false" writable="false" />
@@ -78,21 +80,22 @@
     <property name="logError" type="method" readable="false" writable="false" />
     <property name="logInfo" type="method" readable="false" writable="false" />
     <property name="logWarn" type="method" readable="false" writable="false" />
-    <property name="luaPath" type="string" writable="false" label="Lua path" constant="true" />
+    <property name="luaPath" type="string" writable="false" constant="true" label="Lua path" />
     <property name="machineID0" type="string" writable="false" constant="true" />
     <property name="machineID1" type="string" writable="false" constant="true" />
     <property name="machineID2" type="string" writable="false" constant="true" />
     <property name="machineID3" type="string" writable="false" constant="true" />
     <property name="machineIDX" type="string" writable="false" constant="true" />
-    <property name="machineId" type="string" writable="false" label="Machine ID" constant="true" />
+    <property name="machineId" type="string" writable="false" constant="true" label="Machine ID" />
     <property name="machineSerial" type="string" writable="false" constant="true" />
     <property name="machineSerialND" type="string" writable="false" constant="true" />
     <property name="modelPath" type="string" silent="true" label="Model path" />
-    <property name="mujocoPath" type="string" writable="false" label="MuJoCo path" constant="true" />
-    <property name="notifyDeprecated" type="int" writable="false" label="Notify deprecated" constant="true">
+    <property name="mujocoPath" type="string" writable="false" constant="true" label="MuJoCo path" />
+    <property name="notifyDeprecated" type="int" writable="false" constant="true" label="Notify deprecated">
       <description>Notify deprecated API (0: off, 1: light, 2: full)</description>
     </property>
     <property name="openFile" type="method" readable="false" writable="false" />
+    <property name="pack" type="method" readable="false" writable="false" />
     <property name="packDoubleTable" type="method" readable="false" writable="false" />
     <property name="packFloatTable" type="method" readable="false" writable="false" />
     <property name="packInt16Table" type="method" readable="false" writable="false" />
@@ -103,8 +106,8 @@
     <property name="packUInt16Table" type="method" readable="false" writable="false" />
     <property name="packUInt32Table" type="method" readable="false" writable="false" />
     <property name="packUInt8Table" type="method" readable="false" writable="false" />
-    <property name="pid" type="long" writable="false" label="PID" constant="true" />
-    <property name="platform" type="int" writable="false" label="Platform" constant="true">
+    <property name="pid" type="long" writable="false" constant="true" label="PID" />
+    <property name="platform" type="int" writable="false" constant="true" label="Platform">
       <description>Platform (0: Windows, 1: macOS, 2: Linux)</description>
     </property>
     <property name="pluginNames" type="stringarray" writable="false" label="Plugins">
@@ -113,32 +116,34 @@
     <property name="processCnt" type="int" writable="false" silent="true" label="Processes">
       <description>Overall processes</description>
     </property>
-    <property name="processId" type="int" writable="false" label="Process" constant="true">
+    <property name="processId" type="int" writable="false" constant="true" label="Process">
       <description>Process ID</description>
     </property>
-    <property name="productVersion" type="string" writable="false" label="Product string" constant="true">
+    <property name="productVersion" type="string" writable="false" constant="true" label="Product string">
       <description>Product version (string)</description>
     </property>
-    <property name="productVersionNb" type="int" writable="false" label="Product" constant="true">
+    <property name="productVersionNb" type="int" writable="false" constant="true" label="Product">
       <description>Product version (number)</description>
     </property>
     <property name="protocolVersion" type="int" label="Protocol">
       <description>Protocol version</description>
     </property>
-    <property name="pythonPath" type="string" writable="false" label="Python path" constant="true" />
-    <property name="qtVersion" type="int" writable="false" label="Qt" constant="true">
+    <property name="pythonPath" type="string" writable="false" constant="true" label="Python path" />
+    <property name="qtVersion" type="int" writable="false" constant="true" label="Qt">
       <description>Qt version</description>
     </property>
     <property name="quit" type="method" readable="false" writable="false" />
     <property name="randomFloat" type="float" writable="false" silent="true" label="Random number" />
     <property name="randomQuaternion" type="quaternion" writable="false" silent="true" label="Random quaternion" />
     <property name="randomString" type="string" writable="false" silent="true" label="Random string" />
+    <property name="registerClass" type="method" readable="false" writable="false" />
+    <property name="releaseCustomObject" type="method" readable="false" writable="false" />
     <property name="removeObjects" type="method" readable="false" writable="false" />
-    <property name="resourcePath" type="string" writable="false" label="Resource path" constant="true" />
-    <property name="sandbox" type="handle" writable="false" handle-type="detachedScript" label="Sandbox" constant="true">
+    <property name="resourcePath" type="string" writable="false" constant="true" label="Resource path" />
+    <property name="sandbox" type="handle" writable="false" constant="true" label="Sandbox" handle-type="detachedScript">
       <description>Handle of the sandbox script</description>
     </property>
-    <property name="sandboxLang" type="string" writable="false" label="Sandbox language" constant="true">
+    <property name="sandboxLang" type="string" writable="false" constant="true" label="Sandbox language">
       <description>Default sandbox language</description>
     </property>
     <property name="saveImage" type="method" readable="false" writable="false" />
@@ -146,22 +151,23 @@
     <property name="saveScene" type="method" readable="false" writable="false" />
     <property name="saveSceneToBuffer" type="method" readable="false" writable="false" />
     <property name="scenePath" type="string" silent="true" label="Scene path" />
-    <property name="sceneTempPath" type="string" writable="false" label="Scene temporary path" constant="true" />
+    <property name="sceneTempPath" type="string" writable="false" constant="true" label="Scene temporary path" />
     <property name="scheduleExecution" type="method" readable="false" writable="false" />
     <property name="serialize" type="method" readable="false" writable="false" />
-    <property name="sessionId" type="string" writable="false" label="Session ID" constant="true" />
-    <property name="settingsPath" type="string" writable="false" label="Settings path" constant="true" />
-    <property name="startupCode" type="string" label="Start-up code" constant="true" />
+    <property name="sessionId" type="string" writable="false" constant="true" label="Session ID" />
+    <property name="settingsPath" type="string" writable="false" constant="true" label="Settings path" />
+    <property name="startupCode" type="string" constant="true" label="Start-up code" />
     <property name="statusbarVerbosity" type="int" label="Statusbar verbosity" />
     <property name="statusbarVerbosityStr" type="string" readable="false" silent="true" label="Statusbar verbosity string">
       <description>Statusbar verbosity string, only for client app</description>
     </property>
     <property name="systemLock" type="method" readable="false" writable="false" />
-    <property name="systemPath" type="string" writable="false" label="System path" constant="true" />
+    <property name="systemPath" type="string" writable="false" constant="true" label="System path" />
     <property name="systemTime" type="float" writable="false" silent="true" label="System time" />
-    <property name="tempPath" type="string" writable="false" label="Temporary path" constant="true" />
+    <property name="tempPath" type="string" writable="false" constant="true" label="Temporary path" />
     <property name="throttle" type="method" readable="false" writable="false" />
     <property name="transformImage" type="method" readable="false" writable="false" />
+    <property name="unpack" type="method" readable="false" writable="false" />
     <property name="unpackDoubleTable" type="method" readable="false" writable="false" />
     <property name="unpackFloatTable" type="method" readable="false" writable="false" />
     <property name="unpackInt16Table" type="method" readable="false" writable="false" />
@@ -172,6 +178,9 @@
     <property name="unpackUInt16Table" type="method" readable="false" writable="false" />
     <property name="unpackUInt32Table" type="method" readable="false" writable="false" />
     <property name="unpackUInt8Table" type="method" readable="false" writable="false" />
+    <namespace name="customData" />
+    <namespace name="namedParam" />
+    <namespace name="signal" />
   </object-class>
   <object-class name="camera" superclass="sceneObject">
     <property name="cameraSize" type="float" label="Size">
@@ -188,7 +197,7 @@
     <property name="parentAsManipulationProxy" type="bool" label="Parent as proxy">
       <description>Use parent as manipulation proxy</description>
     </property>
-    <property name="perspective" type="bool" writable="false" label="Perspective" constant="true">
+    <property name="perspective" type="bool" writable="false" constant="true" label="Perspective">
       <description>Perspective projection mode, otherwise orthogonal projection mode</description>
     </property>
     <property name="resolution" type="intarray2" label="Resolution">
@@ -212,16 +221,16 @@
     <property name="changeColor" type="method" readable="false" writable="false" />
     <property name="checkCollision" type="method" readable="false" writable="false" />
     <property name="checkDistance" type="method" readable="false" writable="false" />
-    <property name="objects" type="handlearray" writable="false" handle-type="sceneObject" label="Children handles" />
+    <property name="objects" type="handlearray" writable="false" label="Children handles" handle-type="sceneObject" />
     <property name="remove" type="method" readable="false" writable="false" />
     <property name="removeItem" type="method" readable="false" writable="false" />
     <property name="restoreColor" type="method" readable="false" writable="false" />
   </object-class>
   <object-class name="detachedScript" superclass="object">
-    <property name="addOnMenuPath" type="string" writable="false" label="Add-on menu path" constant="true">
+    <property name="addOnMenuPath" type="string" writable="false" constant="true" label="Add-on menu path">
       <description>Menu path of add-on</description>
     </property>
-    <property name="addOnPath" type="string" writable="false" label="Add-on path" constant="true">
+    <property name="addOnPath" type="string" writable="false" constant="true" label="Add-on path">
       <description>Path of add-on</description>
     </property>
     <property name="callFunction" type="method" readable="false" writable="false" />
@@ -238,7 +247,7 @@
     <property name="getStackTraceback" type="method" readable="false" writable="false" />
     <property name="getStepping" type="method" readable="false" writable="false" />
     <property name="init" type="method" readable="false" writable="false" />
-    <property name="language" type="string" writable="false" label="Language" constant="true" />
+    <property name="language" type="string" writable="false" constant="true" label="Language" />
     <property name="lock" type="method" readable="false" writable="false" />
     <property name="registerFunctionHook" type="method" readable="false" writable="false" />
     <property name="remove" type="method" readable="false" writable="false" />
@@ -255,7 +264,7 @@
     <property name="scriptState" type="int" writable="false" label="State">
       <description>Script state</description>
     </property>
-    <property name="scriptType" type="int" writable="false" label="Type" constant="true">
+    <property name="scriptType" type="int" writable="false" constant="true" label="Type">
       <description>Script type</description>
     </property>
     <property name="setStepping" type="method" readable="false" writable="false" />
@@ -272,7 +281,7 @@
     <property name="cyclic" type="bool" />
     <property name="maxCnt" type="int" />
     <property name="overlay" type="bool" />
-    <property name="parent" type="handle" writable="false" handle-type="sceneObject" label="Parent handle" constant="true" />
+    <property name="parent" type="handle" writable="false" constant="true" label="Parent handle" handle-type="sceneObject" />
     <property name="parentUid" type="long" />
     <property name="points" type="floatarray" />
     <property name="quaternions" type="floatarray" />
@@ -321,8 +330,8 @@
     <property name="filterSampleSize" type="int" label="Filter sample">
       <description>Filter sample size</description>
     </property>
-    <property name="filterSensorForce" type="vector3" writable="false" deprecated="true" />
-    <property name="filterSensorTorque" type="vector3" writable="false" deprecated="true" />
+    <property name="filterSensorForce" type="vector3" deprecated="true" writable="false" />
+    <property name="filterSensorTorque" type="vector3" deprecated="true" writable="false" />
     <property name="filterType" type="int" label="Filter">
       <description>Filter type</description>
     </property>
@@ -429,7 +438,7 @@
       <description>Joint linear/angular displacement</description>
     </property>
     <property name="jointQuaternion" type="quaternion" label="Spherical joint quaternion" />
-    <property name="jointType" type="int" writable="false" label="Type" constant="true">
+    <property name="jointType" type="int" writable="false" constant="true" label="Type">
       <description>Joint type</description>
     </property>
     <property name="maxVelAccelJerk" type="floatarray" label="Maximum velocity, acceleration and jerk" />
@@ -530,7 +539,7 @@
     <property name="lightSize" type="float" label="Size">
       <description>Light size</description>
     </property>
-    <property name="lightType" type="int" writable="false" label="Type" constant="true">
+    <property name="lightType" type="int" writable="false" constant="true" label="Type">
       <description>Light type</description>
     </property>
     <property name="povray.castShadows" type="bool" silent="true" label="POV-Ray: cast shadows">
@@ -545,22 +554,22 @@
     <property name="addItems" type="method" readable="false" writable="false" />
     <property name="clearItems" type="method" readable="false" writable="false" />
     <property name="colors" type="buffer" writable="false" label="Colors" />
-    <property name="cyclic" type="bool" writable="false" label="Cyclic" constant="true">
+    <property name="cyclic" type="bool" writable="false" constant="true" label="Cyclic">
       <description>Item buffer is cyclic</description>
     </property>
     <property name="indices" type="intarray" writable="false" label="Indices">
       <description>Indices for custom marker</description>
     </property>
-    <property name="itemType" type="int" writable="false" label="Type" constant="true">
+    <property name="itemType" type="int" writable="false" constant="true" label="Type">
       <description>Item type</description>
     </property>
-    <property name="local" type="bool" writable="false" label="Local" constant="true">
+    <property name="local" type="bool" writable="false" constant="true" label="Local">
       <description>Coordinates are local to the marker&apos;s reference frame</description>
     </property>
     <property name="normals" type="floatarray" writable="false" label="Normals">
       <description>Normals for custom marker</description>
     </property>
-    <property name="overlay" type="bool" writable="false" label="Overlay" constant="true">
+    <property name="overlay" type="bool" writable="false" constant="true" label="Overlay">
       <description>Items are are displayed overlaid</description>
     </property>
     <property name="points" type="floatarray" writable="false" label="Points" />
@@ -590,8 +599,8 @@
     <property name="primitiveType" type="int" writable="false" label="Primitive type" />
     <property name="rawTexture" type="buffer" writable="false" label="Texture" />
     <property name="shadingAngle" type="float" label="Shading angle" />
-    <property name="shape" type="handle" writable="false" handle-type="shape" label="Shape handle" constant="true" />
-    <property name="shapeUid" type="int" writable="false" label="Shape UID" constant="true">
+    <property name="shape" type="handle" writable="false" constant="true" label="Shape handle" handle-type="shape" />
+    <property name="shapeUid" type="int" writable="false" constant="true" label="Shape UID">
       <description>Unique identifier of parent shape</description>
     </property>
     <property name="showEdges" type="bool" label="Visible edges" />
@@ -616,6 +625,9 @@
     <property name="getIntArrayProperty" type="method" readable="false" writable="false" />
     <property name="getIntProperty" type="method" readable="false" writable="false" />
     <property name="getLongProperty" type="method" readable="false" writable="false" />
+    <property name="getMatrix3x3Property" type="method" readable="false" writable="false" />
+    <property name="getMatrix4x4Property" type="method" readable="false" writable="false" />
+    <property name="getMatrixProperty" type="method" readable="false" writable="false" />
     <property name="getPoseProperty" type="method" readable="false" writable="false" />
     <property name="getProperties" type="method" readable="false" writable="false" />
     <property name="getPropertiesInfos" type="method" readable="false" writable="false" />
@@ -629,9 +641,10 @@
     <property name="getTableProperty" type="method" readable="false" writable="false" />
     <property name="getVector2Property" type="method" readable="false" writable="false" />
     <property name="getVector3Property" type="method" readable="false" writable="false" />
-    <property name="handle" type="long" writable="false" label="Handle" constant="true" />
-    <property name="objectMetaInfo" type="string" writable="false" label="Object meta information" constant="true" />
-    <property name="objectType" type="string" writable="false" label="Object type" constant="true" />
+    <property name="handle" type="long" writable="false" constant="true" label="Handle" />
+    <property name="isValid" type="method" readable="false" writable="false" />
+    <property name="objectMetaInfo" type="string" writable="false" constant="true" label="Object meta information" />
+    <property name="objectType" type="string" writable="false" constant="true" label="Object type" />
     <property name="removeProperty" type="method" readable="false" writable="false" />
     <property name="setBoolProperty" type="method" readable="false" writable="false" />
     <property name="setBufferProperty" type="method" readable="false" writable="false" />
@@ -644,6 +657,9 @@
     <property name="setIntArrayProperty" type="method" readable="false" writable="false" />
     <property name="setIntProperty" type="method" readable="false" writable="false" />
     <property name="setLongProperty" type="method" readable="false" writable="false" />
+    <property name="setMatrix3x3Property" type="method" readable="false" writable="false" />
+    <property name="setMatrix4x4Property" type="method" readable="false" writable="false" />
+    <property name="setMatrixProperty" type="method" readable="false" writable="false" />
     <property name="setPoseProperty" type="method" readable="false" writable="false" />
     <property name="setProperties" type="method" readable="false" writable="false" />
     <property name="setProperty" type="method" readable="false" writable="false" />
@@ -665,7 +681,7 @@
     <property name="randomColors" type="bool" label="Random voxel colors" />
     <property name="showPoints" type="bool" label="Show points instead of voxels" />
     <property name="voxelSize" type="float" label="Voxel size" />
-    <property name="voxels" type="floatarray" writable="false" deprecated="true" label="Voxels">
+    <property name="voxels" type="floatarray" deprecated="true" writable="false" label="Voxels">
       <description>Voxel positions</description>
     </property>
   </object-class>
@@ -723,7 +739,7 @@
     <property name="rayColor.specular" type="color" label="Specular color" />
     <property name="resetSensor" type="method" readable="false" writable="false" />
     <property name="sensorPointSize" type="float" label="Sensor point size" />
-    <property name="sensorType" type="int" writable="false" label="Type" constant="true">
+    <property name="sensorType" type="int" writable="false" constant="true" label="Type">
       <description>Sensor type</description>
     </property>
     <property name="showVolume" type="bool" label="Show volume" />
@@ -770,11 +786,11 @@
     <property name="bullet.internalScalingValue" type="float" />
     <property name="bullet.iterations" type="int" />
     <property name="bullet.solver" type="int" />
-    <property name="collections" type="handlearray" writable="false" handle-type="collection" label="Collections">
+    <property name="collections" type="handlearray" writable="false" label="Collections" handle-type="collection">
       <description>Handles of all collections</description>
     </property>
     <property name="createObject" type="method" readable="false" writable="false" />
-    <property name="drawingObjects" type="handlearray" writable="false" handle-type="drawingObject" label="Drawing objects">
+    <property name="drawingObjects" type="handlearray" writable="false" label="Drawing objects" handle-type="drawingObject">
       <description>Handles of all drawing objects</description>
     </property>
     <property name="duplicateObjects" type="method" readable="false" writable="false" />
@@ -809,7 +825,7 @@
     <property name="loadModelThumbnailFromBuffer" type="method" readable="false" writable="false" />
     <property name="loadScene" type="method" readable="false" writable="false" />
     <property name="loadSceneFromBuffer" type="method" readable="false" writable="false" />
-    <property name="mainScript" type="handle" writable="false" handle-type="detachedScript" label="Main script" constant="true">
+    <property name="mainScript" type="handle" writable="false" constant="true" label="Main script" handle-type="detachedScript">
       <description>Handle of the main script</description>
     </property>
     <property name="mergeShapes" type="method" readable="false" writable="false" />
@@ -887,8 +903,8 @@
     <property name="objectDestructionCounter" type="int" writable="false" silent="true" label="Object destruction counter">
       <description>Counter of destroyed scene objects</description>
     </property>
-    <property name="objectHandles" type="intarray" writable="false" deprecated="true" />
-    <property name="objects" type="handlearray" writable="false" handle-type="sceneObject" label="Objects">
+    <property name="objectHandles" type="intarray" deprecated="true" writable="false" />
+    <property name="objects" type="handlearray" writable="false" label="Objects" handle-type="sceneObject">
       <description>Handles of all scene objects</description>
     </property>
     <property name="ode.computeInertias" type="bool" />
@@ -898,8 +914,8 @@
     <property name="ode.internalScalingValue" type="float" />
     <property name="ode.quickStepEnabled" type="bool" />
     <property name="ode.quickStepIterations" type="int" />
-    <property name="orphanHandles" type="intarray" writable="false" deprecated="true" />
-    <property name="orphans" type="handlearray" writable="false" handle-type="sceneObject" label="Orphan objects">
+    <property name="orphanHandles" type="intarray" deprecated="true" writable="false" />
+    <property name="orphans" type="handlearray" writable="false" label="Orphan objects" handle-type="sceneObject">
       <description>Handles of all orphan scene objects</description>
     </property>
     <property name="pauseSimulation" type="method" readable="false" writable="false" />
@@ -922,10 +938,10 @@
     <property name="saveSceneToBuffer" type="method" readable="false" writable="false" />
     <property name="sceneIsLocked" type="bool" writable="false" label="Scene is locked" />
     <property name="scenePath" type="string" label="Scene path" />
-    <property name="sceneUid" type="int" writable="false" label="Scene UID" constant="true">
+    <property name="sceneUid" type="int" writable="false" constant="true" label="Scene UID">
       <description>Scene unique identifier</description>
     </property>
-    <property name="sceneUidString" type="string" writable="false" label="Scene UID string" constant="true">
+    <property name="sceneUidString" type="string" writable="false" constant="true" label="Scene UID string">
       <description>Scene unique identifier string</description>
     </property>
     <property name="selection" type="handlearray" label="Selected objects" handle-type="sceneObject">
@@ -933,7 +949,7 @@
     </property>
     <property name="selectionHandles" type="intarray" deprecated="true" />
     <property name="showContactPoints" type="bool" label="Show contact points" />
-    <property name="simulationState" type="int" writable="false" enum="simulationState" label="Simulation state" />
+    <property name="simulationState" type="int" writable="false" label="Simulation state" enum="simulationState" />
     <property name="simulationTime" type="float" writable="false" label="Simulation time" />
     <property name="speedModifier" type="int" label="Speed modifier" />
     <property name="startSimulation" type="method" readable="false" writable="false" />
@@ -963,6 +979,8 @@
     <property name="vortex.constraintsLinearKineticLoss" type="float" />
     <property name="vortex.contactTolerance" type="float" />
     <property name="vortex.multithreading" type="bool" />
+    <namespace name="customData" />
+    <namespace name="signal" />
   </object-class>
   <object-class name="sceneObject" superclass="object">
     <property name="absEulerAngles" type="vector3" silent="true" label="Euler angles">
@@ -977,10 +995,10 @@
     <property name="absQuaternion" type="quaternion" silent="true" label="Quaternion">
       <description>Scene object absolute quaternion</description>
     </property>
-    <property name="alias" type="string" deprecated="true" deprecated-by="name" label="Name">
+    <property name="alias" type="string" deprecated="true" label="Name" deprecated-by="name">
       <description>Scene object name</description>
     </property>
-    <property name="bbHSize" type="vector3" writable="false" deprecated="true" label="Bounding box half sizes" />
+    <property name="bbHSize" type="vector3" deprecated="true" writable="false" label="Bounding box half sizes" />
     <property name="bbPose" type="pose" writable="false" label="Bounding box pose">
       <description>Bounding box local pose</description>
     </property>
@@ -1003,7 +1021,7 @@
     <property name="checkCollision" type="method" readable="false" writable="false" />
     <property name="checkDistance" type="method" readable="false" writable="false" />
     <property name="childOrder" type="int" writable="false" label="Child order" />
-    <property name="children" type="handlearray" writable="false" handle-type="sceneObject" label="Children handles" />
+    <property name="children" type="handlearray" writable="false" label="Children handles" handle-type="sceneObject" />
     <property name="collapsed" type="bool" label="Collapsed hierarchy" />
     <property name="collectionSelfCollisionIndicator" type="int" label="Collection self collision indicator" />
     <property name="collidable" type="bool" label="Collidable" />
@@ -1173,7 +1191,7 @@
     <property name="objectPropertyFlags" type="int" label="Object flags">
       <description>Scene object flags, redundant</description>
     </property>
-    <property name="objectUid" type="long" writable="false" label="Object UID" constant="true">
+    <property name="objectUid" type="long" writable="false" constant="true" label="Object UID">
       <description>Scene object unique identifier</description>
     </property>
     <property name="parent" type="handle" label="Parent" handle-type="sceneObject">
@@ -1183,7 +1201,7 @@
     <property name="parentUid" type="long" writable="false" label="Parent UID">
       <description>Parent scene object unique identifier</description>
     </property>
-    <property name="persistentUid" type="string" writable="false" label="Persistent UID" constant="true">
+    <property name="persistentUid" type="string" writable="false" constant="true" label="Persistent UID">
       <description>Scene object persistent unique identifier</description>
     </property>
     <property name="pose" type="pose" label="Pose">
@@ -1223,27 +1241,31 @@
       <description>Whether the scene object is currently visible</description>
     </property>
     <property name="visitTree" type="method" readable="false" writable="false" />
+    <namespace name="customData" />
+    <namespace name="origRefs" new-property-forced-type="handlearray" />
+    <namespace name="refs" new-property-forced-type="handlearray" />
+    <namespace name="signal" />
   </object-class>
   <object-class name="script" superclass="sceneObject">
-    <property name="addOnMenuPath" type="string" writable="false" deprecated="true" constant="true" />
-    <property name="addOnPath" type="string" writable="false" deprecated="true" constant="true" />
-    <property name="code" type="string" silent="true" deprecated="true" />
+    <property name="addOnMenuPath" type="string" deprecated="true" writable="false" constant="true" />
+    <property name="addOnPath" type="string" deprecated="true" writable="false" constant="true" />
+    <property name="code" type="string" deprecated="true" silent="true" />
     <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
-    <property name="detachedScript" type="handle" writable="false" handle-type="detachedScript" label="Detached script handle" constant="true" />
-    <property name="execPriority" type="int" silent="true" deprecated="true" />
-    <property name="executionDepth" type="int" writable="false" silent="true" deprecated="true" />
-    <property name="language" type="string" writable="false" deprecated="true" constant="true" />
+    <property name="detachedScript" type="handle" writable="false" constant="true" label="Detached script handle" handle-type="detachedScript" />
+    <property name="execPriority" type="int" deprecated="true" silent="true" />
+    <property name="executionDepth" type="int" deprecated="true" writable="false" silent="true" />
+    <property name="language" type="string" deprecated="true" writable="false" constant="true" />
     <property name="resetAfterSimError" type="bool" label="Reset after simulation error" />
-    <property name="restartOnError" type="bool" silent="true" deprecated="true" />
-    <property name="scriptDisabled" type="bool" silent="true" deprecated="true" />
-    <property name="scriptName" type="string" writable="false" silent="true" deprecated="true" />
+    <property name="restartOnError" type="bool" deprecated="true" silent="true" />
+    <property name="scriptDisabled" type="bool" deprecated="true" silent="true" />
+    <property name="scriptName" type="string" deprecated="true" writable="false" silent="true" />
     <property name="scriptSize" type="float" label="Size">
       <description>Size of the object</description>
     </property>
-    <property name="scriptState" type="int" writable="false" silent="true" deprecated="true" />
-    <property name="scriptType" type="int" writable="false" deprecated="true" constant="true" />
+    <property name="scriptState" type="int" deprecated="true" writable="false" silent="true" />
+    <property name="scriptType" type="int" deprecated="true" writable="false" constant="true" />
   </object-class>
   <object-class name="shape" superclass="sceneObject">
     <property name="addForce" type="method" readable="false" writable="false" />
@@ -1342,7 +1364,7 @@
       <description>Special flag mainly used for MuJoCo static shapes that move and need to transmit a friction</description>
     </property>
     <property name="mass" type="float" label="Mass" />
-    <property name="meshes" type="handlearray" writable="false" handle-type="mesh" label="Meshes">
+    <property name="meshes" type="handlearray" writable="false" label="Meshes" handle-type="mesh">
       <description>Mesh handles</description>
     </property>
     <property name="mujoco.adhesion" type="bool" />
@@ -1476,7 +1498,7 @@
     <property name="packedDepthBuffer" type="buffer" writable="false" silent="true" label="Packed depth buffer" />
     <property name="packet1" type="floatarray" writable="false" label="Data packet 1" />
     <property name="packet2" type="floatarray" writable="false" label="Data packet 2" />
-    <property name="perspective" type="bool" writable="false" label="Perspective" constant="true">
+    <property name="perspective" type="bool" writable="false" constant="true" label="Perspective">
       <description>Perspective projection mode, otherwise orthogonal projection mode</description>
     </property>
     <property name="povray.aperture" type="float" silent="true" label="POV-Ray: aperture">
