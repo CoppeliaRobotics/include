@@ -58,7 +58,6 @@
     <property name="flavor" type="int" writable="false" constant="true" label="Flavor">
       <description>Flavor (0: lite, 1: edu, 2: pro)</description>
     </property>
-    <property name="getCustomObjectType" type="method" readable="false" writable="false" />
     <property name="getObjects" type="method" readable="false" writable="false" />
     <property name="handleAddOnScripts" type="method" readable="false" writable="false" />
     <property name="handleSandboxScript" type="method" readable="false" writable="false" />
@@ -359,6 +358,8 @@
     <property name="torqueThresholdEnabled" type="bool" label="Torque threshold enabled" />
   </object-class>
   <object-class name="graph" superclass="sceneObject">
+    <property name="addCurve" type="method" readable="false" writable="false" />
+    <property name="addSignal" type="method" readable="false" writable="false" />
     <property name="backgroundColor" type="color" label="Background color" />
     <property name="bufferSize" type="int" label="Buffer size" />
     <property name="color.diffuse" type="color" label="Diffuse color" />
@@ -371,6 +372,11 @@
     <property name="graphSize" type="float" label="Size">
       <description>Size of the 3D graph representation</description>
     </property>
+    <property name="removeTrace" type="method" readable="false" writable="false" />
+    <property name="resetGraph" type="method" readable="false" writable="false" />
+    <property name="setSignalPoint" type="method" readable="false" writable="false" />
+    <property name="snapshotTrace" type="method" readable="false" writable="false" />
+    <property name="step" type="method" readable="false" writable="false" />
   </object-class>
   <object-class name="joint" superclass="sceneObject">
     <property name="averageJointForce" type="float" writable="false" label="Average force">

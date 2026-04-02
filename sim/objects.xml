@@ -3398,7 +3398,6 @@
     <property name="flavor" type="int" writable="false" constant="true" label="Flavor">
       <description>Flavor (0: lite, 1: edu, 2: pro)</description>
     </property>
-    <property name="getCustomObjectType" type="method" readable="false" writable="false" />
     <property name="getObjects" type="method" readable="false" writable="false" />
     <property name="handleAddOnScripts" type="method" readable="false" writable="false" />
     <property name="handleSandboxScript" type="method" readable="false" writable="false" />
@@ -3518,7 +3517,10 @@
     <property name="unpackUInt16Table" type="method" readable="false" writable="false" />
     <property name="unpackUInt32Table" type="method" readable="false" writable="false" />
     <property name="unpackUInt8Table" type="method" readable="false" writable="false" />
-    </object-class>
+    <namespace name="customData" />
+    <namespace name="namedParam" />
+    <namespace name="signal" />
+  </object-class>
 
 
 
@@ -5461,7 +5463,9 @@
     <property name="vortex.constraintsLinearKineticLoss" type="float" />
     <property name="vortex.contactTolerance" type="float" />
     <property name="vortex.multithreading" type="bool" />
-    </object-class>
+    <namespace name="customData" />
+    <namespace name="signal" />
+  </object-class>
     
 
     <object-class name="sceneObject" superclass="object">
@@ -6439,7 +6443,11 @@
       <description>Whether the scene object is currently visible</description>
     </property>
     <property name="visitTree" type="method" readable="false" writable="false" />
-    </object-class>
+    <namespace name="customData" />
+    <namespace name="origRefs" new-property-forced-type="handlearray" />
+    <namespace name="refs" new-property-forced-type="handlearray" />
+    <namespace name="signal" />
+  </object-class>
 
 
 
@@ -13368,7 +13376,9 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
     </property>
     <property name="torqueThreshold" type="float" label="Torque threshold" />
     <property name="torqueThresholdEnabled" type="bool" label="Torque threshold enabled" />
-  </object-class><object-class name="graph" superclass="sceneObject"><property name="backgroundColor" type="color" label="Background color" />
+  </object-class><object-class name="graph" superclass="sceneObject"><property name="addCurve" type="method" readable="false" writable="false" />
+    <property name="addSignal" type="method" readable="false" writable="false" />
+    <property name="backgroundColor" type="color" label="Background color" />
     <property name="bufferSize" type="int" label="Buffer size" />
     <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
@@ -13380,6 +13390,11 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
     <property name="graphSize" type="float" label="Size">
       <description>Size of the 3D graph representation</description>
     </property>
+    <property name="removeTrace" type="method" readable="false" writable="false" />
+    <property name="resetGraph" type="method" readable="false" writable="false" />
+    <property name="setSignalPoint" type="method" readable="false" writable="false" />
+    <property name="snapshotTrace" type="method" readable="false" writable="false" />
+    <property name="step" type="method" readable="false" writable="false" />
   </object-class><object-class name="joint" superclass="sceneObject"><property name="averageJointForce" type="float" writable="false" label="Average force">
       <description>Force applied on average (in a simulation step)</description>
     </property>

@@ -44,12 +44,18 @@ def merge_objects_xml(properties_file, methods_file, output_file):
             for prop in props_cls.findall("property"):
                 methods_cls.append(deepcopy(prop))
 
+            for ns in props_cls.findall("namespace"):
+                methods_cls.append(deepcopy(ns))
+
         else:
             # Create new object-class with properties.xml attributes
             new_cls = ET.Element("object-class", dict(props_cls.attrib))
 
             for prop in props_cls.findall("property"):
                 new_cls.append(deepcopy(prop))
+
+            for ns in props_cls.findall("namespace"):
+                new_cls.append(deepcopy(ns))
 
             methods_root.append(new_cls)
 
