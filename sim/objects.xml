@@ -3341,7 +3341,7 @@
             </see-also>
         </method>
     <property name="addOnPath" type="string" writable="false" constant="true" label="Add-on path" />
-    <property name="addOns" type="handlearray" writable="false" constant="true" label="Add-ons" handle-type="detachedScript">
+    <property name="addOns" type="handlearray" handle-type="detachedScript" writable="false" constant="true" label="Add-ons">
       <description>List of add-ons</description>
     </property>
     <property name="appArg1" type="string" deprecated="true" constant="true" label="App arg. 1" />
@@ -3480,7 +3480,7 @@
     <property name="releaseCustomObject" type="method" readable="false" writable="false" />
     <property name="removeObjects" type="method" readable="false" writable="false" />
     <property name="resourcePath" type="string" writable="false" constant="true" label="Resource path" />
-    <property name="sandbox" type="handle" writable="false" constant="true" label="Sandbox" handle-type="detachedScript">
+    <property name="sandbox" type="handle" handle-type="detachedScript" writable="false" constant="true" label="Sandbox">
       <description>Handle of the sandbox script</description>
     </property>
     <property name="sandboxLang" type="string" writable="false" constant="true" label="Sandbox language">
@@ -4309,7 +4309,7 @@
     <property name="changeColor" type="method" readable="false" writable="false" />
     <property name="checkCollision" type="method" readable="false" writable="false" />
     <property name="checkDistance" type="method" readable="false" writable="false" />
-    <property name="objects" type="handlearray" writable="false" label="Children handles" handle-type="sceneObject" />
+    <property name="objects" type="handlearray" handle-type="sceneObject" writable="false" label="Children handles" />
     <property name="remove" type="method" readable="false" writable="false" />
     <property name="removeItem" type="method" readable="false" writable="false" />
     <property name="restoreColor" type="method" readable="false" writable="false" />
@@ -5268,11 +5268,11 @@
     <property name="bullet.internalScalingValue" type="float" />
     <property name="bullet.iterations" type="int" />
     <property name="bullet.solver" type="int" />
-    <property name="collections" type="handlearray" writable="false" label="Collections" handle-type="collection">
+    <property name="collections" type="handlearray" handle-type="collection" writable="false" label="Collections">
       <description>Handles of all collections</description>
     </property>
     <property name="createObject" type="method" readable="false" writable="false" />
-    <property name="drawingObjects" type="handlearray" writable="false" label="Drawing objects" handle-type="drawingObject">
+    <property name="drawingObjects" type="handlearray" handle-type="drawingObject" writable="false" label="Drawing objects">
       <description>Handles of all drawing objects</description>
     </property>
     <property name="duplicateObjects" type="method" readable="false" writable="false" />
@@ -5307,7 +5307,7 @@
     <property name="loadModelThumbnailFromBuffer" type="method" readable="false" writable="false" />
     <property name="loadScene" type="method" readable="false" writable="false" />
     <property name="loadSceneFromBuffer" type="method" readable="false" writable="false" />
-    <property name="mainScript" type="handle" writable="false" constant="true" label="Main script" handle-type="detachedScript">
+    <property name="mainScript" type="handle" handle-type="detachedScript" writable="false" constant="true" label="Main script">
       <description>Handle of the main script</description>
     </property>
     <property name="mergeShapes" type="method" readable="false" writable="false" />
@@ -5386,7 +5386,7 @@
       <description>Counter of destroyed scene objects</description>
     </property>
     <property name="objectHandles" type="intarray" deprecated="true" writable="false" />
-    <property name="objects" type="handlearray" writable="false" label="Objects" handle-type="sceneObject">
+    <property name="objects" type="handlearray" handle-type="sceneObject" writable="false" label="Objects">
       <description>Handles of all scene objects</description>
     </property>
     <property name="ode.computeInertias" type="bool" />
@@ -5397,7 +5397,7 @@
     <property name="ode.quickStepEnabled" type="bool" />
     <property name="ode.quickStepIterations" type="int" />
     <property name="orphanHandles" type="intarray" deprecated="true" writable="false" />
-    <property name="orphans" type="handlearray" writable="false" label="Orphan objects" handle-type="sceneObject">
+    <property name="orphans" type="handlearray" handle-type="sceneObject" writable="false" label="Orphan objects">
       <description>Handles of all orphan scene objects</description>
     </property>
     <property name="pauseSimulation" type="method" readable="false" writable="false" />
@@ -5426,12 +5426,12 @@
     <property name="sceneUidString" type="string" writable="false" constant="true" label="Scene UID string">
       <description>Scene unique identifier string</description>
     </property>
-    <property name="selection" type="handlearray" label="Selected objects" handle-type="sceneObject">
+    <property name="selection" type="handlearray" handle-type="sceneObject" label="Selected objects">
       <description>Handles of selected scene objects</description>
     </property>
     <property name="selectionHandles" type="intarray" deprecated="true" />
     <property name="showContactPoints" type="bool" label="Show contact points" />
-    <property name="simulationState" type="int" writable="false" label="Simulation state" enum="simulationState" />
+    <property name="simulationState" type="int" writable="false" enum="simulationState" label="Simulation state" />
     <property name="simulationTime" type="float" writable="false" label="Simulation time" />
     <property name="speedModifier" type="int" label="Speed modifier" />
     <property name="startSimulation" type="method" readable="false" writable="false" />
@@ -6219,7 +6219,7 @@
     <property name="checkCollision" type="method" readable="false" writable="false" />
     <property name="checkDistance" type="method" readable="false" writable="false" />
     <property name="childOrder" type="int" writable="false" label="Child order" />
-    <property name="children" type="handlearray" writable="false" label="Children handles" handle-type="sceneObject" />
+    <property name="children" type="handlearray" handle-type="sceneObject" writable="false" label="Children handles" />
     <property name="collapsed" type="bool" label="Collapsed hierarchy" />
     <property name="collectionSelfCollisionIndicator" type="int" label="Collection self collision indicator" />
     <property name="collidable" type="bool" label="Collidable" />
@@ -6392,7 +6392,7 @@
     <property name="objectUid" type="long" writable="false" constant="true" label="Object UID">
       <description>Scene object unique identifier</description>
     </property>
-    <property name="parent" type="handle" label="Parent" handle-type="sceneObject">
+    <property name="parent" type="handle" handle-type="sceneObject" label="Parent">
       <description>Parent scene object handle</description>
     </property>
     <property name="parentHandle" type="int" deprecated="true" />
@@ -6933,7 +6933,7 @@
       <description>Special flag mainly used for MuJoCo static shapes that move and need to transmit a friction</description>
     </property>
     <property name="mass" type="float" label="Mass" />
-    <property name="meshes" type="handlearray" writable="false" label="Meshes" handle-type="mesh">
+    <property name="meshes" type="handlearray" handle-type="mesh" writable="false" label="Meshes">
       <description>Mesh handles</description>
     </property>
     <property name="mujoco.adhesion" type="bool" />
@@ -13296,7 +13296,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
     <property name="cyclic" type="bool" />
     <property name="maxCnt" type="int" />
     <property name="overlay" type="bool" />
-    <property name="parent" type="handle" writable="false" constant="true" label="Parent handle" handle-type="sceneObject" />
+    <property name="parent" type="handle" handle-type="sceneObject" writable="false" constant="true" label="Parent handle" />
     <property name="parentUid" type="long" />
     <property name="points" type="floatarray" />
     <property name="quaternions" type="floatarray" />
@@ -13316,7 +13316,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
     <property name="engineProperties" type="string" label="Engine properties">
       <description>Engine properties as JSON text</description>
     </property>
-    <property name="linkedDummy" type="handle" label="Linked dummy" handle-type="dummy">
+    <property name="linkedDummy" type="handle" handle-type="dummy" label="Linked dummy">
       <description>Handle of the linked dummy</description>
     </property>
     <property name="linkedDummyHandle" type="int" deprecated="true" />
@@ -13396,7 +13396,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
     <property name="cyclic" type="bool" label="Cyclic">
       <description>Cyclic revolute joint, has no limits</description>
     </property>
-    <property name="dependencyMaster" type="handle" label="Dependency master" handle-type="joint">
+    <property name="dependencyMaster" type="handle" handle-type="joint" label="Dependency master">
       <description>Handle of master joint (in a dependency relationship)</description>
     </property>
     <property name="dependencyMasterHandle" type="int" deprecated="true" label="Dependency master">
@@ -13405,7 +13405,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
     <property name="dependencyParams" type="floatarray" label="Dependency parameters">
       <description>Dependency parameters (offset and coefficient)</description>
     </property>
-    <property name="dynCtrlMode" type="int" label="Control mode" enum="jointDynCtrlMode">
+    <property name="dynCtrlMode" type="int" enum="jointDynCtrlMode" label="Control mode">
       <description>Joint control mode, when in dynamic mode</description>
     </property>
     <property name="dynPosMode" type="int" label="Dynamic position mode">
@@ -13572,7 +13572,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
     <property name="primitiveType" type="int" writable="false" label="Primitive type" />
     <property name="rawTexture" type="buffer" writable="false" label="Texture" />
     <property name="shadingAngle" type="float" label="Shading angle" />
-    <property name="shape" type="handle" writable="false" constant="true" label="Shape handle" handle-type="shape" />
+    <property name="shape" type="handle" handle-type="shape" writable="false" constant="true" label="Shape handle" />
     <property name="shapeUid" type="int" writable="false" constant="true" label="Shape UID">
       <description>Unique identifier of parent shape</description>
     </property>
@@ -13627,7 +13627,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
     <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
-    <property name="detachedScript" type="handle" writable="false" constant="true" label="Detached script handle" handle-type="detachedScript" />
+    <property name="detachedScript" type="handle" handle-type="detachedScript" writable="false" constant="true" label="Detached script handle" />
     <property name="execPriority" type="int" deprecated="true" silent="true" />
     <property name="executionDepth" type="int" deprecated="true" writable="false" silent="true" />
     <property name="language" type="string" deprecated="true" writable="false" constant="true" />

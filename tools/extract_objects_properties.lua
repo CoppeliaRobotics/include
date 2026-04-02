@@ -196,12 +196,14 @@ function sysCall_init()
     local attrOrder = {
         'name',
         'type',
+        'handle-type',
         'deprecated',
         'readable',
         'writable',
         'removable',
         'silent',
         'constant',
+        'enum',
         'label',
     }
     local file = io.open(outputFileXML, 'w')
