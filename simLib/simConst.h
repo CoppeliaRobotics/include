@@ -647,6 +647,21 @@ enum { // properties info
     sim_propertyinfo_largedata          = 0x100,
 };
 
+// @enum name="propertyReturns" label="property return codes" type="int" prefix="sim_propertyret_" description=""
+enum {
+    sim_propertyret_invalidvalue = -9,
+    sim_propertyret_invalidname = -8,
+    sim_propertyret_corrupt = -7,
+    sim_propertyret_typemismatch = -6,
+    sim_propertyret_notremovable = -5,
+    sim_propertyret_notwritable = -4,
+    sim_propertyret_notreadable = -3,
+    sim_propertyret_unknowntarget = -2,
+    sim_propertyret_unknownproperty = -1,
+    sim_propertyret_unavailable = 0,
+    sim_propertyret_ok = 1,
+};
+
 enum { // Vortex friction models
     sim_vortex_bodyfrictionmodel_box=0,
     sim_vortex_bodyfrictionmodel_scaledbox,
