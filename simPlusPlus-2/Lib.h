@@ -100,9 +100,10 @@ namespace sim
     struct property_error : public api_error
     {
         std::string pname;
+        int code;
 
-        property_error(const std::string &func_, const std::string &pname_);
-        property_error(const std::string &func_, const std::string &pname_, const std::string &lastErrInfo_);
+        property_error(const std::string &func_, const std::string &pname_, int code_);
+        property_error(const std::string &func_, const std::string &pname_, int code_, const std::string &lastErrInfo_);
     };
 
     extern PluginInfo *pluginInfo;

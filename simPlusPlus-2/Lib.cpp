@@ -44,13 +44,17 @@ api_error::api_error(const std::string &func_, const std::string &error_, const 
 {
 }
 
-property_error::property_error(const std::string &func_, const std::string &pname_)
+property_error::property_error(const std::string &func_, const std::string &pname_, int code_)
     : api_error(func_, "property " + pname_)
+    , pname(pname_)
+    , code(code_)
 {
 }
 
-property_error::property_error(const std::string &func_, const std::string &pname_, const std::string &lastErrInfo_)
+property_error::property_error(const std::string &func_, const std::string &pname_, int code_, const std::string &lastErrInfo_)
     : api_error(func_, "property " + pname_, lastErrInfo_)
+    , pname(pname_)
+    , code(code_)
 {
 }
 
@@ -2529,32 +2533,19 @@ void setShapeInertia(handle_t shapeHandle, std::array<double, 9> inertiaMatrix, 
 
 // void simDynCallback(const int *intData, const double *floatData);
 
-template<typename T>
-static inline std::optional<T> defaultValueIfPropertyNotExistsOrThrow(const std::string &apiFunc, handle_t target, const std::string &pname, std::optional<T> defaultValue)
-{
-    std::string lastErr = getLastError_noexcept();
-    SPropertyInfo info;
-    SPropertyOptions opts;
-    int ret1 = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
-    if(ret1 == 0)
-        return defaultValue;
-    else
-        throw property_error(apiFunc, pname, lastErr);
-}
-
 void setBoolProperty(handle_t target, const std::string &pname, bool value)
 {
     int ret = simSetBoolProperty(target, pname.c_str(), value);
-    if(ret < 1)
-        throw property_error("simSetBoolProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simSetBoolProperty", pname, ret);
 }
 
 bool getBoolProperty(handle_t target, const std::string &pname)
 {
     int value = 0;
     int ret = simGetBoolProperty(target, pname.c_str(), &value);
-    if(ret < 1)
-        throw property_error("simGetBoolProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetBoolProperty", pname, ret);
     return value > 0;
 }
 
@@ -2562,24 +2553,26 @@ std::optional<bool> getBoolProperty(handle_t target, const std::string &pname, s
 {
     int value = 0;
     int ret = simGetBoolProperty(target, pname.c_str(), &value);
-    if(ret < 1)
-        return defaultValueIfPropertyNotExistsOrThrow("simGetBoolProperty", target, pname, defaultValue);
+    if(ret == sim_propertyret_unknownproperty)
+        return defaultValue;
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetBoolProperty", pname, ret);
     return value > 0;
 }
 
 void setIntProperty(handle_t target, const std::string &pname, int value)
 {
     int ret = simSetIntProperty(target, pname.c_str(), value);
-    if(ret < 1)
-        throw property_error("simSetIntProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simSetIntProperty", pname, ret);
 }
 
 int getIntProperty(handle_t target, const std::string &pname)
 {
     int value = 0;
     int ret = simGetIntProperty(target, pname.c_str(), &value);
-    if(ret < 1)
-        throw property_error("simGetIntProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetIntProperty", pname, ret);
     return value;
 }
 
@@ -2587,24 +2580,26 @@ std::optional<int> getIntProperty(handle_t target, const std::string &pname, std
 {
     int value = 0;
     int ret = simGetIntProperty(target, pname.c_str(), &value);
-    if(ret < 1)
-        return defaultValueIfPropertyNotExistsOrThrow("simGetIntProperty", target, pname, defaultValue);
+    if(ret == sim_propertyret_unknownproperty)
+        return defaultValue;
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetIntProperty", pname, ret);
     return value;
 }
 
 void setLongProperty(handle_t target, const std::string &pname, long_t value)
 {
     int ret = simSetLongProperty(target, pname.c_str(), value);
-    if(ret < 1)
-        throw property_error("simSetLongProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simSetLongProperty", pname, ret);
 }
 
 long_t getLongProperty(handle_t target, const std::string &pname)
 {
     long_t value = 0;
     int ret = simGetLongProperty(target, pname.c_str(), &value);
-    if(ret < 1)
-        throw property_error("simGetLongProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetLongProperty", pname, ret);
     return value;
 }
 
@@ -2612,24 +2607,26 @@ std::optional<long_t> getLongProperty(handle_t target, const std::string &pname,
 {
     long_t value = 0;
     int ret = simGetLongProperty(target, pname.c_str(), &value);
-    if(ret < 1)
-        return defaultValueIfPropertyNotExistsOrThrow("simGetLongProperty", target, pname, defaultValue);
+    if(ret == sim_propertyret_unknownproperty)
+        return defaultValue;
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetLongProperty", pname, ret);
     return value;
 }
 
 void setHandleProperty(handle_t target, const std::string &pname, handleproperty_t value)
 {
     int ret = simSetHandleProperty(target, pname.c_str(), value);
-    if(ret < 1)
-        throw property_error("simSetHandleProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simSetHandleProperty", pname, ret);
 }
 
 handleproperty_t getHandleProperty(handle_t target, const std::string &pname)
 {
     handleproperty_t value = 0;
     int ret = simGetHandleProperty(target, pname.c_str(), &value);
-    if(ret < 1)
-        throw property_error("simGetHandleProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetHandleProperty", pname, ret);
     return value;
 }
 
@@ -2637,24 +2634,26 @@ std::optional<handleproperty_t> getHandleProperty(handle_t target, const std::st
 {
     handleproperty_t value = 0;
     int ret = simGetHandleProperty(target, pname.c_str(), &value);
-    if(ret < 1)
-        return defaultValueIfPropertyNotExistsOrThrow("simGetHandleProperty", target, pname, defaultValue);
+    if(ret == sim_propertyret_unknownproperty)
+        return defaultValue;
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetHandleProperty", pname, ret);
     return value;
 }
 
 void setFloatProperty(handle_t target, const std::string &pname, double value)
 {
     int ret = simSetFloatProperty(target, pname.c_str(), value);
-    if(ret < 1)
-        throw property_error("simSetFloatProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simSetFloatProperty", pname, ret);
 }
 
 double getFloatProperty(handle_t target, const std::string &pname)
 {
     double value = 0;
     int ret = simGetFloatProperty(target, pname.c_str(), &value);
-    if(ret < 1)
-        throw property_error("simGetFloatProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetFloatProperty", pname, ret);
     return value;
 }
 
@@ -2662,24 +2661,26 @@ std::optional<double> getFloatProperty(handle_t target, const std::string &pname
 {
     double value = 0;
     int ret = simGetFloatProperty(target, pname.c_str(), &value);
-    if(ret < 1)
-        return defaultValueIfPropertyNotExistsOrThrow("simGetFloatProperty", target, pname, defaultValue);
+    if(ret == sim_propertyret_unknownproperty)
+        return defaultValue;
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetFloatProperty", pname, ret);
     return value;
 }
 
 void setStringProperty(handle_t target, const std::string &pname, const std::string &value)
 {
     int ret = simSetStringProperty(target, pname.c_str(), value.c_str());
-    if(ret < 1)
-        throw property_error("simSetStringProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simSetStringProperty", pname, ret);
 }
 
 std::string getStringProperty(handle_t target, const std::string &pname)
 {
     char *value = nullptr;
     int ret = simGetStringProperty(target, pname.c_str(), &value);
-    if(ret < 1)
-        throw property_error("simGetStringProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetStringProperty", pname, ret);
     std::string s(value);
     sim::releaseBuffer(value);
     return s;
@@ -2689,8 +2690,10 @@ std::optional<std::string> getStringProperty(handle_t target, const std::string 
 {
     char *value = nullptr;
     int ret = simGetStringProperty(target, pname.c_str(), &value);
-    if(ret < 1)
-        return defaultValueIfPropertyNotExistsOrThrow("simGetStringProperty", target, pname, defaultValue);
+    if(ret == sim_propertyret_unknownproperty)
+        return defaultValue;
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetStringProperty", pname, ret);
     std::string s(value);
     sim::releaseBuffer(value);
     return s;
@@ -2699,8 +2702,8 @@ std::optional<std::string> getStringProperty(handle_t target, const std::string 
 void setBufferProperty(handle_t target, const std::string &pname, const std::string &value)
 {
     int ret = simSetBufferProperty(target, pname.c_str(), value.c_str(), value.size());
-    if(ret < 1)
-        throw property_error("simSetBufferProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simSetBufferProperty", pname, ret);
 }
 
 std::string getBufferProperty(handle_t target, const std::string &pname)
@@ -2708,8 +2711,8 @@ std::string getBufferProperty(handle_t target, const std::string &pname)
     char *value = nullptr;
     int len = 0;
     int ret = simGetBufferProperty(target, pname.c_str(), &value, &len);
-    if(ret < 1)
-        throw property_error("simGetBufferProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetBufferProperty", pname, ret);
     std::string s(value, len);
     sim::releaseBuffer(value);
     return s;
@@ -2720,8 +2723,10 @@ std::optional<std::string> getBufferProperty(handle_t target, const std::string 
     char *value = nullptr;
     int len = 0;
     int ret = simGetBufferProperty(target, pname.c_str(), &value, &len);
-    if(ret < 1)
-        return defaultValueIfPropertyNotExistsOrThrow("simGetBufferProperty", target, pname, defaultValue);
+    if(ret == sim_propertyret_unknownproperty)
+        return defaultValue;
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetBufferProperty", pname, ret);
     std::string s(value, len);
     sim::releaseBuffer(value);
     return s;
@@ -2730,16 +2735,16 @@ std::optional<std::string> getBufferProperty(handle_t target, const std::string 
 void setVector3Property(handle_t target, const std::string &pname, std::array<double, 3> value)
 {
     int ret = simSetVector3Property(target, pname.c_str(), value.data());
-    if(ret < 1)
-        throw property_error("simSetVector3Property", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simSetVector3Property", pname, ret);
 }
 
 std::array<double, 3> getVector3Property(handle_t target, const std::string &pname)
 {
     std::array<double, 3> value;
     int ret = simGetVector3Property(target, pname.c_str(), value.data());
-    if(ret < 1)
-        throw property_error("simGetVector3Property", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetVector3Property", pname, ret);
     return value;
 }
 
@@ -2747,24 +2752,26 @@ std::optional<std::array<double, 3>> getVector3Property(handle_t target, const s
 {
     std::array<double, 3> value;
     int ret = simGetVector3Property(target, pname.c_str(), value.data());
-    if(ret < 1)
-        return defaultValueIfPropertyNotExistsOrThrow("simGetVector3Property", target, pname, defaultValue);
+    if(ret == sim_propertyret_unknownproperty)
+        return defaultValue;
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetVector3Property", pname, ret);
     return value;
 }
 
 void setQuaternionProperty(handle_t target, const std::string &pname, std::array<double, 4> value)
 {
     int ret = simSetQuaternionProperty(target, pname.c_str(), value.data());
-    if(ret < 1)
-        throw property_error("simSetQuaternionProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simSetQuaternionProperty", pname, ret);
 }
 
 std::array<double, 4> getQuaternionProperty(handle_t target, const std::string &pname)
 {
     std::array<double, 4> value;
     int ret = simGetQuaternionProperty(target, pname.c_str(), value.data());
-    if(ret < 1)
-        throw property_error("simGetQuaternionProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetQuaternionProperty", pname, ret);
     return value;
 }
 
@@ -2772,24 +2779,26 @@ std::optional<std::array<double, 4>> getQuaternionProperty(handle_t target, cons
 {
     std::array<double, 4> value;
     int ret = simGetQuaternionProperty(target, pname.c_str(), value.data());
-    if(ret < 1)
-        return defaultValueIfPropertyNotExistsOrThrow("simGetQuaternionProperty", target, pname, defaultValue);
+    if(ret == sim_propertyret_unknownproperty)
+        return defaultValue;
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetQuaternionProperty", pname, ret);
     return value;
 }
 
 void setPoseProperty(handle_t target, const std::string &pname, std::array<double, 7> value)
 {
     int ret = simSetPoseProperty(target, pname.c_str(), value.data());
-    if(ret < 1)
-        throw property_error("simSetPoseProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simSetPoseProperty", pname, ret);
 }
 
 std::array<double, 7> getPoseProperty(handle_t target, const std::string &pname)
 {
     std::array<double, 7> value;
     int ret = simGetPoseProperty(target, pname.c_str(), value.data());
-    if(ret < 1)
-        throw property_error("simGetPoseProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetPoseProperty", pname, ret);
     return value;
 }
 
@@ -2797,24 +2806,26 @@ std::optional<std::array<double, 7>> getPoseProperty(handle_t target, const std:
 {
     std::array<double, 7> value;
     int ret = simGetPoseProperty(target, pname.c_str(), value.data());
-    if(ret < 1)
-        return defaultValueIfPropertyNotExistsOrThrow("simGetPoseProperty", target, pname, defaultValue);
+    if(ret == sim_propertyret_unknownproperty)
+        return defaultValue;
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetPoseProperty", pname, ret);
     return value;
 }
 
 void setColorProperty(handle_t target, const std::string &pname, std::array<float, 3> value)
 {
     int ret = simSetColorProperty(target, pname.c_str(), value.data());
-    if(ret < 1)
-        throw property_error("simSetColorProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simSetColorProperty", pname, ret);
 }
 
 std::array<float, 3> getColorProperty(handle_t target, const std::string &pname)
 {
     std::array<float, 3> value;
     int ret = simGetColorProperty(target, pname.c_str(), value.data());
-    if(ret < 1)
-        throw property_error("simGetColorProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetColorProperty", pname, ret);
     return value;
 }
 
@@ -2822,16 +2833,18 @@ std::optional<std::array<float, 3>> getColorProperty(handle_t target, const std:
 {
     std::array<float, 3> value;
     int ret = simGetColorProperty(target, pname.c_str(), value.data());
-    if(ret < 1)
-        return defaultValueIfPropertyNotExistsOrThrow("simGetColorProperty", target, pname, defaultValue);
+    if(ret == sim_propertyret_unknownproperty)
+        return defaultValue;
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetColorProperty", pname, ret);
     return value;
 }
 
 void setFloatArrayProperty(handle_t target, const std::string &pname, const std::vector<double> &value)
 {
     int ret = simSetFloatArrayProperty(target, pname.c_str(), value.data(), value.size());
-    if(ret < 1)
-        throw property_error("simSetFloatArrayProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simSetFloatArrayProperty", pname, ret);
 }
 
 std::vector<double> getFloatArrayProperty(handle_t target, const std::string &pname)
@@ -2839,8 +2852,8 @@ std::vector<double> getFloatArrayProperty(handle_t target, const std::string &pn
     double *value = nullptr;
     int len = 0;
     int ret = simGetFloatArrayProperty(target, pname.c_str(), &value, &len);
-    if(ret < 1)
-        throw property_error("simGetFloatArrayProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetFloatArrayProperty", pname, ret);
     std::vector<double> v(value, value + len);
     sim::releaseBuffer(value);
     return v;
@@ -2851,8 +2864,10 @@ std::optional<std::vector<double>> getFloatArrayProperty(handle_t target, const 
     double *value = nullptr;
     int len = 0;
     int ret = simGetFloatArrayProperty(target, pname.c_str(), &value, &len);
-    if(ret < 1)
-        return defaultValueIfPropertyNotExistsOrThrow("simGetFloatArrayProperty", target, pname, defaultValue);
+    if(ret == sim_propertyret_unknownproperty)
+        return defaultValue;
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetFloatArrayProperty", pname, ret);
     std::vector<double> v(value, value + len);
     sim::releaseBuffer(value);
     return v;
@@ -2861,8 +2876,8 @@ std::optional<std::vector<double>> getFloatArrayProperty(handle_t target, const 
 void setIntArrayProperty(handle_t target, const std::string &pname, const std::vector<int> &value)
 {
     int ret = simSetIntArrayProperty(target, pname.c_str(), value.data(), value.size());
-    if(ret < 1)
-        throw property_error("simSetIntArrayProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simSetIntArrayProperty", pname, ret);
 }
 
 std::vector<int> getIntArrayProperty(handle_t target, const std::string &pname)
@@ -2870,8 +2885,8 @@ std::vector<int> getIntArrayProperty(handle_t target, const std::string &pname)
     int *value = nullptr;
     int len = 0;
     int ret = simGetIntArrayProperty(target, pname.c_str(), &value, &len);
-    if(ret < 1)
-        throw property_error("simGetIntArrayProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetIntArrayProperty", pname, ret);
     std::vector<int> v(value, value + len);
     sim::releaseBuffer(value);
     return v;
@@ -2882,8 +2897,10 @@ std::optional<std::vector<int>> getIntArrayProperty(handle_t target, const std::
     int *value = nullptr;
     int len = 0;
     int ret = simGetIntArrayProperty(target, pname.c_str(), &value, &len);
-    if(ret < 1)
-        return defaultValueIfPropertyNotExistsOrThrow("simGetIntArrayProperty", target, pname, defaultValue);
+    if(ret == sim_propertyret_unknownproperty)
+        return defaultValue;
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetIntArrayProperty", pname, ret);
     std::vector<int> v(value, value + len);
     sim::releaseBuffer(value);
     return v;
@@ -2892,8 +2909,8 @@ std::optional<std::vector<int>> getIntArrayProperty(handle_t target, const std::
 void setHandleArrayProperty(handle_t target, const std::string &pname, const std::vector<handleproperty_t> &value)
 {
     int ret = simSetHandleArrayProperty(target, pname.c_str(), value.data(), value.size());
-    if(ret < 1)
-        throw property_error("simSetHandleArrayProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simSetHandleArrayProperty", pname, ret);
 }
 
 std::vector<handleproperty_t> getHandleArrayProperty(handle_t target, const std::string &pname)
@@ -2901,8 +2918,8 @@ std::vector<handleproperty_t> getHandleArrayProperty(handle_t target, const std:
     handleproperty_t *value = nullptr;
     int len = 0;
     int ret = simGetHandleArrayProperty(target, pname.c_str(), &value, &len);
-    if(ret < 1)
-        throw property_error("simGetHandleArrayProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetHandleArrayProperty", pname, ret);
     std::vector<handleproperty_t> v(value, value + len);
     sim::releaseBuffer(value);
     return v;
@@ -2913,8 +2930,10 @@ std::optional<std::vector<handleproperty_t>> getHandleArrayProperty(handle_t tar
     handleproperty_t *value = nullptr;
     int len = 0;
     int ret = simGetHandleArrayProperty(target, pname.c_str(), &value, &len);
-    if(ret < 1)
-        return defaultValueIfPropertyNotExistsOrThrow("simGetHandleArrayProperty", target, pname, defaultValue);
+    if(ret == sim_propertyret_unknownproperty)
+        return defaultValue;
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetHandleArrayProperty", pname, ret);
     std::vector<handleproperty_t> v(value, value + len);
     sim::releaseBuffer(value);
     return v;
@@ -2934,8 +2953,8 @@ void setStringArrayProperty(handle_t target, const std::string &pname, const std
     }
     int ret = simSetStringArrayProperty(target, pname.c_str(), buf, value.size());
     sim::releaseBuffer(buf);
-    if(ret < 1)
-        throw property_error("simSetStringArrayProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simSetStringArrayProperty", pname, ret);
 }
 
 std::vector<std::string> getStringArrayProperty(handle_t target, const std::string &pname)
@@ -2944,8 +2963,8 @@ std::vector<std::string> getStringArrayProperty(handle_t target, const std::stri
     char *buf;
     int cnt;
     int ret = simGetStringArrayProperty(target, pname.c_str(), &buf, &cnt);
-    if(ret < 1)
-        throw property_error("simGetStringArrayProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetStringArrayProperty", pname, ret);
     for(int i = 0; i < cnt; i++)
     {
         std::string s(buf);
@@ -2962,8 +2981,10 @@ std::optional<std::vector<std::string>> getStringArrayProperty(handle_t target, 
     char *buf;
     int cnt;
     int ret = simGetStringArrayProperty(target, pname.c_str(), &buf, &cnt);
-    if(ret < 1)
-        return defaultValueIfPropertyNotExistsOrThrow("simGetStringArrayProperty", target, pname, defaultValue);
+    if(ret == sim_propertyret_unknownproperty)
+        return defaultValue;
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetStringArrayProperty", pname, ret);
     for(int i = 0; i < cnt; i++)
     {
         std::string s(buf);
@@ -2978,16 +2999,16 @@ std::optional<std::vector<std::string>> getStringArrayProperty(handle_t target, 
 void setFloatArray2Property(handle_t target, const std::string &pname, const std::array<double, 2> &value)
 {
     int ret = simSetFloatArray2Property(target, pname.c_str(), value.data());
-    if(ret < 1)
-        throw property_error("simSetFloatArray2Property", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simSetFloatArray2Property", pname, ret);
 }
 
 std::array<double, 2> getFloatArray2Property(handle_t target, const std::string &pname)
 {
     std::array<double, 2> v;
     int ret = simGetFloatArray2Property(target, pname.c_str(), v.data());
-    if(ret < 1)
-        throw property_error("simGetFloatArray2Property", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetFloatArray2Property", pname, ret);
     return v;
 }
 
@@ -2995,24 +3016,26 @@ std::optional<std::array<double, 2>> getFloatArray2Property(handle_t target, con
 {
     std::array<double, 2> v;
     int ret = simGetFloatArray2Property(target, pname.c_str(), v.data());
-    if(ret < 1)
-        return defaultValueIfPropertyNotExistsOrThrow("simGetFloatArray2Property", target, pname, defaultValue);
+    if(ret == sim_propertyret_unknownproperty)
+        return defaultValue;
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetFloatArray2Property", pname, ret);
     return v;
 }
 
 void setFloatArray3Property(handle_t target, const std::string &pname, const std::array<double, 3> &value)
 {
     int ret = simSetFloatArray3Property(target, pname.c_str(), value.data());
-    if(ret < 1)
-        throw property_error("simSetFloatArray3Property", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simSetFloatArray3Property", pname, ret);
 }
 
 std::array<double, 3> getFloatArray3Property(handle_t target, const std::string &pname)
 {
     std::array<double, 3> v;
     int ret = simGetFloatArray3Property(target, pname.c_str(), v.data());
-    if(ret < 1)
-        throw property_error("simGetFloatArray3Property", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetFloatArray3Property", pname, ret);
     return v;
 }
 
@@ -3020,8 +3043,10 @@ std::optional<std::array<double, 3>> getFloatArray3Property(handle_t target, con
 {
     std::array<double, 3> v;
     int ret = simGetFloatArray3Property(target, pname.c_str(), v.data());
-    if(ret < 1)
-        return defaultValueIfPropertyNotExistsOrThrow("simGetFloatArray3Property", target, pname, defaultValue);
+    if(ret == sim_propertyret_unknownproperty)
+        return defaultValue;
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetFloatArray3Property", pname, ret);
     return v;
 }
 #endif
@@ -3029,16 +3054,16 @@ std::optional<std::array<double, 3>> getFloatArray3Property(handle_t target, con
 void setIntArray2Property(handle_t target, const std::string &pname, const std::array<int, 2> &value)
 {
     int ret = simSetIntArray2Property(target, pname.c_str(), value.data());
-    if(ret < 1)
-        throw property_error("simSetIntArray2Property", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simSetIntArray2Property", pname, ret);
 }
 
 std::array<int, 2> getIntArray2Property(handle_t target, const std::string &pname)
 {
     std::array<int, 2> v;
     int ret = simGetIntArray2Property(target, pname.c_str(), v.data());
-    if(ret < 1)
-        throw property_error("simGetIntArray2Property", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetIntArray2Property", pname, ret);
     return v;
 }
 
@@ -3046,16 +3071,18 @@ std::optional<std::array<int, 2>> getIntArray2Property(handle_t target, const st
 {
     std::array<int, 2> v;
     int ret = simGetIntArray2Property(target, pname.c_str(), v.data());
-    if(ret < 1)
-        return defaultValueIfPropertyNotExistsOrThrow("simGetIntArray2Property", target, pname, defaultValue);
+    if(ret == sim_propertyret_unknownproperty)
+        return defaultValue;
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetIntArray2Property", pname, ret);
     return v;
 }
 
 void removeProperty(handle_t target, const std::string &pname)
 {
     int ret = simRemoveProperty(target, pname.c_str());
-    if(ret < 1)
-        throw property_error("simRemoveProperty", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simRemoveProperty", pname, ret);
 }
 
 bool getPropertyName(handle_t target, int index, std::string &pname)
@@ -3107,8 +3134,8 @@ bool getPropertyInfo(handle_t target, const std::string &pname, SPropertyInfo &i
 bool getPropertyInfo(handle_t target, const std::string &pname, SPropertyInfo &info, SPropertyOptions &opts)
 {
     int ret = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
-    if(ret == -1)
-        throw property_error("simGetPropertyInfo", pname);
+    if(ret != sim_propertyret_ok)
+        throw property_error("simGetPropertyInfo", pname, ret);
     return ret > 0;
 }
 
