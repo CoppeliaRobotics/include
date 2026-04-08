@@ -6932,8 +6932,11 @@
     </property>
     <property name="getAppearance" type="method" readable="false" writable="false" />
     <property name="getInertia" type="method" readable="false" writable="false" />
-    <property name="inertia" type="floatarray" label="Inertia tensor">
+    <property name="inertia" type="floatarray" deprecated="true" label="Inertia tensor">
       <description>Inertia tensor, relative to the shape's reference frame</description>
+    </property>
+    <property name="inertiaMatrix" type="matrix3x3" label="Inertia matrix">
+      <description>Inertia matrix, relative to the shape's reference frame</description>
     </property>
     <property name="initAngularVelocity" type="vector3" label="Initial rotational velocity" />
     <property name="initLinearVelocity" type="vector3" label="Initial linear velocity" />

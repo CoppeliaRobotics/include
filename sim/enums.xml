@@ -140,6 +140,19 @@
         <item name="binary" value="1"/>
         <item name="buffer" value="2"/>
     </enum>
+    <enum name="propertyReturns" label="property return codes" type="int" prefix="sim_propertyret_" description="">
+        <item name="invalidvalue" value="-9"/>
+        <item name="invalidname" value="-8"/>
+        <item name="corrupt" value="-7"/>
+        <item name="typemismatch" value="-6"/>
+        <item name="notremovable" value="-5"/>
+        <item name="notwritable" value="-4"/>
+        <item name="notreadable" value="-3"/>
+        <item name="unknowntarget" value="-2"/>
+        <item name="unknownproperty" value="-1"/>
+        <item name="unavailable" value="0"/>
+        <item name="ok" value="1"/>
+    </enum>
     <enum name="bufferType" label="buffer types" type="int" prefix="sim_buffer_" description="">
         <item name="uint8" value="0"/>
         <item name="int8" value="1"/>
