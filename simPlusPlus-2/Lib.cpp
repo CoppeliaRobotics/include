@@ -3134,9 +3134,11 @@ bool getPropertyInfo(handle_t target, const std::string &pname, SPropertyInfo &i
 bool getPropertyInfo(handle_t target, const std::string &pname, SPropertyInfo &info, SPropertyOptions &opts)
 {
     int ret = simGetPropertyInfo(target, pname.c_str(), &info, &opts);
+    if(ret == sim_propertyret_unknownproperty)
+        return false;
     if(ret != sim_propertyret_ok)
         throw property_error("simGetPropertyInfo", pname, ret);
-    return ret > 0;
+    return true;
 }
 
 #ifdef HAVE_JSONCONS
