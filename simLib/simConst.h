@@ -609,7 +609,8 @@ enum { // stack table info
 };
 
 enum { // property type
-    sim_propertytype_bool=0,
+    sim_propertytype_start = 0,
+    sim_propertytype_bool = 0,
     sim_propertytype_int,
     sim_propertytype_float,
     sim_propertytype_string,

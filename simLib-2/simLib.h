@@ -101,6 +101,7 @@ typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetStringArrayProperty))(long long in
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimRemoveProperty))(long long int target, const char* pName);
 typedef char* (__cdecl *SIM_API_SYMBOL(ptrSimGetPropertyName))(long long int target, int index, SPropertyOptions* options);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetPropertyInfo))(long long int target, const char* pName, SPropertyInfo* infos, SPropertyOptions* options);
+typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetPropertyInfo))(long long int target, const char* pName, const SPropertyInfo* infos);
 
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimCallMethod))(long long int target, const char* name, SIMHANDLE inputStack, SIMHANDLE outputStack);
 typedef void (__cdecl *SIM_API_SYMBOL(ptrSimRegCallback))(int index, void* cb);
@@ -531,6 +532,7 @@ extern SIM_API_SYMBOL(ptrSimGetStringArrayProperty) SIM_API_SYMBOL(simGetStringA
 extern SIM_API_SYMBOL(ptrSimRemoveProperty) SIM_API_SYMBOL(simRemoveProperty);
 extern SIM_API_SYMBOL(ptrSimGetPropertyName) SIM_API_SYMBOL(simGetPropertyName);
 extern SIM_API_SYMBOL(ptrSimGetPropertyInfo) SIM_API_SYMBOL(simGetPropertyInfo);
+extern SIM_API_SYMBOL(ptrSimSetPropertyInfo) SIM_API_SYMBOL(simSetPropertyInfo);
 
 extern SIM_API_SYMBOL(ptrSimCallMethod) SIM_API_SYMBOL(simCallMethod);
 extern SIM_API_SYMBOL(ptrSimRegCallback) SIM_API_SYMBOL(simRegCallback);
@@ -954,6 +956,7 @@ static inline int simGetStringArrayProperty(long long int target, const char* pN
 static inline int simRemoveProperty(long long int target, const char* pName) { return SIM_API_SYMBOL(simRemoveProperty)(target,pName); }
 static inline char* simGetPropertyName(long long int target, int index, SPropertyOptions* options) { return SIM_API_SYMBOL(simGetPropertyName)(target,index,options); }
 static inline int simGetPropertyInfo(long long int target, const char* pName, SPropertyInfo* infos, SPropertyOptions* options) { return SIM_API_SYMBOL(simGetPropertyInfo)(target,pName,infos,options); }
+static inline int simSetPropertyInfo(long long int target, const char* pName, const SPropertyInfo* infos) { return SIM_API_SYMBOL(simSetPropertyInfo)(target,pName,infos); }
 static inline int simCallMethod(long long int target, const char* name, SIMHANDLE inputStack, SIMHANDLE outputStack) { return SIM_API_SYMBOL(simCallMethod)(target, name, inputStack, outputStack); }
 static inline void simRegCallback(int index, void* cb) { return SIM_API_SYMBOL(simRegCallback)(index,cb); }
 static inline void simRunGui(int options) { return SIM_API_SYMBOL(simRunGui)(options); }
