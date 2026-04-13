@@ -123,6 +123,7 @@ namespace sim
     void * getMainWindow(int type);
 
     std::string getLastError();
+    void clearLastError();
 
     handle_t getObject(const char *objectPath, int index, handle_t proxy, int options);
     handle_t getObject(const std::string &objectPath, int index, handle_t proxy, int options);
