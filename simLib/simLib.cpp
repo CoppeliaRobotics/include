@@ -547,7 +547,7 @@ int SIM_API_SYMBOL(getSimProcAddresses)(LIBRARY lib)
     SIM_API_SYMBOL(simSetIntArrayProperty) = (SIM_API_SYMBOL(ptrSimSetIntArrayProperty))(_getProcAddress(lib, "simSetIntArrayProperty", false));
     SIM_API_SYMBOL(simRemoveProperty) = (SIM_API_SYMBOL(ptrSimRemoveProperty))(_getProcAddress(lib, "simRemoveProperty", false));
     SIM_API_SYMBOL(simGetPropertyName) = (SIM_API_SYMBOL(ptrSimGetPropertyName))(_getProcAddress(lib, "simGetPropertyName", false));
-    SIM_API_SYMBOL(simGetPropertyInfo) = (SIM_API_SYMBOL(ptrSimGetPropertyInfo))(_getProcAddress(lib, "simGetPropertyInfo", false));
+    SIM_API_SYMBOL(simGetPropertyInfo) = (SIM_API_SYMBOL(ptrSimGetPropertyInfo))(_getProcAddress(lib, "simGetPropertyInfo_lib1", false));
 
     SIM_API_SYMBOL(simRegCallback) = (SIM_API_SYMBOL(ptrSimRegCallback))(_getProcAddress(lib,"simRegCallback",false));
     SIM_API_SYMBOL(simRunGui) = (SIM_API_SYMBOL(ptrSimRunGui))(_getProcAddress(lib,"simRunGui",false));
