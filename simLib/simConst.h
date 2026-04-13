@@ -214,8 +214,12 @@ enum { // Object handles. Some values are serialized:
     sim_object_drawingstart = 2280010, // deprecated
     sim_object_drawingend = 3999999, // deprecated
 
-    sim_object_customstart = 8000000,
-    sim_object_customend = 9999999,
+    sim_object_customstart = 7000000,
+    sim_object_customappstart = sim_object_customstart,
+    sim_object_customappend = 7999999,
+    sim_object_customscenestart = sim_object_customappend + 1,
+    sim_object_customsceneend = 9999999,
+    sim_object_customend = sim_object_customsceneend,
 
     sim_object_variousstart = 10000000
 };
@@ -618,9 +622,7 @@ enum { // property type
     sim_propertytype_vector3,
     sim_propertytype_quaternion,
     sim_propertytype_pose,
-    sim_propertytype_matrix3x3,
-    sim_propertytype_matrix4x4,
-    sim_propertytype_color,
+    sim_propertytype_color = 10,
     sim_propertytype_floatarray,
     sim_propertytype_table,
     sim_propertytype_intarray,

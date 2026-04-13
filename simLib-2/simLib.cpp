@@ -56,10 +56,6 @@ SIM_API_SYMBOL(ptrSimSetVector3Property) SIM_API_SYMBOL(simSetVector3Property) =
 SIM_API_SYMBOL(ptrSimGetVector3Property) SIM_API_SYMBOL(simGetVector3Property) = nullptr;
 SIM_API_SYMBOL(ptrSimSetMatrixProperty) SIM_API_SYMBOL(simSetMatrixProperty) = nullptr;
 SIM_API_SYMBOL(ptrSimGetMatrixProperty) SIM_API_SYMBOL(simGetMatrixProperty) = nullptr;
-SIM_API_SYMBOL(ptrSimSetMatrix3x3Property) SIM_API_SYMBOL(simSetMatrix3x3Property) = nullptr;
-SIM_API_SYMBOL(ptrSimGetMatrix3x3Property) SIM_API_SYMBOL(simGetMatrix3x3Property) = nullptr;
-SIM_API_SYMBOL(ptrSimSetMatrix4x4Property) SIM_API_SYMBOL(simSetMatrix4x4Property) = nullptr;
-SIM_API_SYMBOL(ptrSimGetMatrix4x4Property) SIM_API_SYMBOL(simGetMatrix4x4Property) = nullptr;
 SIM_API_SYMBOL(ptrSimSetQuaternionProperty) SIM_API_SYMBOL(simSetQuaternionProperty) = nullptr;
 SIM_API_SYMBOL(ptrSimGetQuaternionProperty) SIM_API_SYMBOL(simGetQuaternionProperty) = nullptr;
 SIM_API_SYMBOL(ptrSimSetPoseProperty) SIM_API_SYMBOL(simSetPoseProperty) = nullptr;
@@ -550,10 +546,6 @@ int SIM_API_SYMBOL(getSimProcAddresses)(LIBRARY lib)
     SIM_API_SYMBOL(simGetVector3Property) = (SIM_API_SYMBOL(ptrSimGetVector3Property))(_getProcAddress(lib, "simGetVector3Property", false));
     SIM_API_SYMBOL(simSetMatrixProperty) = (SIM_API_SYMBOL(ptrSimSetMatrixProperty))(_getProcAddress(lib, "simSetMatrixProperty", false));
     SIM_API_SYMBOL(simGetMatrixProperty) = (SIM_API_SYMBOL(ptrSimGetMatrixProperty))(_getProcAddress(lib, "simGetMatrixProperty", false));
-    SIM_API_SYMBOL(simSetMatrix3x3Property) = (SIM_API_SYMBOL(ptrSimSetMatrix3x3Property))(_getProcAddress(lib, "simSetMatrix3x3Property", false));
-    SIM_API_SYMBOL(simGetMatrix3x3Property) = (SIM_API_SYMBOL(ptrSimGetMatrix3x3Property))(_getProcAddress(lib, "simGetMatrix3x3Property", false));
-    SIM_API_SYMBOL(simSetMatrix4x4Property) = (SIM_API_SYMBOL(ptrSimSetMatrix4x4Property))(_getProcAddress(lib, "simSetMatrix4x4Property", false));
-    SIM_API_SYMBOL(simGetMatrix4x4Property) = (SIM_API_SYMBOL(ptrSimGetMatrix4x4Property))(_getProcAddress(lib, "simGetMatrix4x4Property", false));
     SIM_API_SYMBOL(simSetQuaternionProperty) = (SIM_API_SYMBOL(ptrSimSetQuaternionProperty))(_getProcAddress(lib, "simSetQuaternionProperty", false));
     SIM_API_SYMBOL(simGetQuaternionProperty) = (SIM_API_SYMBOL(ptrSimGetQuaternionProperty))(_getProcAddress(lib, "simGetQuaternionProperty", false));
     SIM_API_SYMBOL(simSetPoseProperty) = (SIM_API_SYMBOL(ptrSimSetPoseProperty))(_getProcAddress(lib, "simSetPoseProperty", false));
@@ -1071,16 +1063,6 @@ int SIM_API_SYMBOL(getSimProcAddresses)(LIBRARY lib)
     if (SIM_API_SYMBOL(simGetMatrixProperty) == nullptr)
     {
         printf("%s simGetMatrixProperty\n", couldNotFind);
-        return 0;
-    }
-    if (SIM_API_SYMBOL(simSetMatrix3x3Property) == nullptr)
-    {
-        printf("%s simSetMatrix3x3Property\n", couldNotFind);
-        return 0;
-    }
-    if (SIM_API_SYMBOL(simGetMatrix3x3Property) == nullptr)
-    {
-        printf("%s simGetMatrix3x3Property\n", couldNotFind);
         return 0;
     }
     if (SIM_API_SYMBOL(simSetQuaternionProperty) == nullptr)
