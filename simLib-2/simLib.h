@@ -94,6 +94,8 @@ typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetHandleArrayProperty))(long long in
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetHandleArrayProperty))(long long int target, const char* pName, long long int** v, int* vL);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetStringArrayProperty))(long long int target, const char* pName, const char* v, int cnt);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetStringArrayProperty))(long long int target, const char* pName, char** v, int* cnt);
+typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetMethodProperty))(long long int target, const char* pName, const void* v);
+typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetMethodProperty))(long long int target, const char* pName, void** v);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimRemoveProperty))(long long int target, const char* pName);
 typedef char* (__cdecl *SIM_API_SYMBOL(ptrSimGetPropertyName))(long long int target, int index, SPropertyOptions* options);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetPropertyInfo))(long long int target, const char* pName, SPropertyInfo* infos, SPropertyOptions* options);
@@ -521,6 +523,8 @@ extern SIM_API_SYMBOL(ptrSimSetHandleArrayProperty) SIM_API_SYMBOL(simSetHandleA
 extern SIM_API_SYMBOL(ptrSimGetHandleArrayProperty) SIM_API_SYMBOL(simGetHandleArrayProperty);
 extern SIM_API_SYMBOL(ptrSimSetStringArrayProperty) SIM_API_SYMBOL(simSetStringArrayProperty);
 extern SIM_API_SYMBOL(ptrSimGetStringArrayProperty) SIM_API_SYMBOL(simGetStringArrayProperty);
+extern SIM_API_SYMBOL(ptrSimSetMethodProperty) SIM_API_SYMBOL(simSetMethodProperty);
+extern SIM_API_SYMBOL(ptrSimGetMethodProperty) SIM_API_SYMBOL(simGetMethodProperty);
 extern SIM_API_SYMBOL(ptrSimRemoveProperty) SIM_API_SYMBOL(simRemoveProperty);
 extern SIM_API_SYMBOL(ptrSimGetPropertyName) SIM_API_SYMBOL(simGetPropertyName);
 extern SIM_API_SYMBOL(ptrSimGetPropertyInfo) SIM_API_SYMBOL(simGetPropertyInfo);
@@ -941,6 +945,8 @@ static inline int simSetHandleArrayProperty(long long int target, const char* pN
 static inline int simGetHandleArrayProperty(long long int target, const char* pName, long long int** v, int* vL) { return SIM_API_SYMBOL(simGetHandleArrayProperty)(target,pName,v,vL); }
 static inline int simSetStringArrayProperty(long long int target, const char* pName, const char* v, int cnt) { return SIM_API_SYMBOL(simSetStringArrayProperty)(target,pName,v,cnt); }
 static inline int simGetStringArrayProperty(long long int target, const char* pName, char** v, int* cnt) { return SIM_API_SYMBOL(simGetStringArrayProperty)(target,pName,v,cnt); }
+static inline int simSetMethodProperty(long long int target, const char* pName, const void* v) { return SIM_API_SYMBOL(simSetMethodProperty)(target,pName,v); }
+static inline int simGetMethodProperty(long long int target, const char* pName, void** v) { return SIM_API_SYMBOL(simGetMethodProperty)(target,pName,v); }
 static inline int simRemoveProperty(long long int target, const char* pName) { return SIM_API_SYMBOL(simRemoveProperty)(target,pName); }
 static inline char* simGetPropertyName(long long int target, int index, SPropertyOptions* options) { return SIM_API_SYMBOL(simGetPropertyName)(target,index,options); }
 static inline int simGetPropertyInfo(long long int target, const char* pName, SPropertyInfo* infos, SPropertyOptions* options) { return SIM_API_SYMBOL(simGetPropertyInfo)(target,pName,infos,options); }
