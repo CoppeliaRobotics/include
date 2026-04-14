@@ -94,6 +94,17 @@ class ParamLong(Param):
     def htype(self):
         return 'int'
 
+class ParamHandle(Param):
+    def __init__(self, node):
+        super(ParamHandle, self).__init__(node)
+        self.ctype_base = 'sim::handleproperty_t'
+
+    def typetag(self):
+        return 'TypeTag_handle'
+
+    def htype(self):
+        return 'handle'
+
 class ParamFloat(Param):
     def __init__(self, node):
         super(ParamFloat, self).__init__(node)
@@ -229,6 +240,7 @@ class ParamQuaternion(Param):
 Param.register_type('any', Param)
 Param.register_type('int', ParamInt)
 Param.register_type('long', ParamLong)
+Param.register_type('handle', ParamHandle)
 Param.register_type('float', ParamFloat)
 Param.register_type('double', ParamDouble)
 Param.register_type('string', ParamString)

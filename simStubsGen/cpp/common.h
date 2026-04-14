@@ -18,6 +18,7 @@
 struct TypeTag_bool {};
 struct TypeTag_int {};
 struct TypeTag_long {};
+struct TypeTag_handle {};
 struct TypeTag_float {};
 struct TypeTag_double {};
 template<typename T> struct TypeTag_table {};
@@ -170,6 +171,20 @@ static void readFromStack(TypeTag_long, sim::handle_t stackHandle, sim::long_t *
     else
     {
         throw sim::exception("expected int64");
+    }
+}
+
+static void readFromStack(TypeTag_handle, sim::handle_t stackHandle, sim::handleproperty_t *value, const ReadOptions &rdopt = {})
+{
+    sim::handleproperty_t v;
+    if(sim::getStackInt64Value(stackHandle, &v) == 1)
+    {
+        *value = v;
+        sim::popStackItem(stackHandle, 1);
+    }
+    else
+    {
+        throw sim::exception("expected handle");
     }
 }
 
@@ -441,6 +456,13 @@ static void readFromStack(sim::handle_t stackHandle, sim::long_t *value, const R
     readFromStack(TypeTag_long{}, stackHandle, value, rdopt);
 }
 
+/* sim::handleproperty_t == sim::long_t
+static void readFromStack(sim::handle_t stackHandle, sim::handleproperty_t *value, const ReadOptions &rdopt = {})
+{
+    readFromStack(TypeTag_handle{}, stackHandle, value, rdopt);
+}
+*/
+
 static void readFromStack(sim::handle_t stackHandle, float *value, const ReadOptions &rdopt = {})
 {
     readFromStack(TypeTag_float{}, stackHandle, value, rdopt);
@@ -465,6 +487,13 @@ static void readFromStack(sim::handle_t stackHandle, std::optional<sim::long_t> 
 {
     readFromStack(TypeTag_long{}, stackHandle, value, rdopt);
 }
+
+/* sim::handleproperty_t == sim::long_t
+static void readFromStack(sim::handle_t stackHandle, std::optional<sim::handleproperty_t> *value, const ReadOptions &rdopt = {})
+{
+    readFromStack(TypeTag_handle{}, stackHandle, value, rdopt);
+}
+*/
 
 static void readFromStack(sim::handle_t stackHandle, std::optional<float> *value, const ReadOptions &rdopt = {})
 {
@@ -531,6 +560,11 @@ static void writeToStack(TypeTag_int, const int &value, sim::handle_t stackHandl
 }
 
 static void writeToStack(TypeTag_long, const sim::long_t &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    sim::pushInt64OntoStack(stackHandle, value);
+}
+
+static void writeToStack(TypeTag_handle, const sim::handleproperty_t &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     sim::pushInt64OntoStack(stackHandle, value);
 }
@@ -667,6 +701,13 @@ static void writeToStack(const sim::long_t &value, sim::handle_t stackHandle, co
     writeToStack(TypeTag_long{}, value, stackHandle, wropt);
 }
 
+/* sim::handleproperty_t == sim::long_t
+static void writeToStack(const sim::handleproperty_t &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    writeToStack(TypeTag_handle{}, value, stackHandle, wropt);
+}
+*/
+
 static void writeToStack(const float &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     writeToStack(TypeTag_float{}, value, stackHandle, wropt);
@@ -691,6 +732,13 @@ static void writeToStack(const std::optional<sim::long_t> &value, sim::handle_t 
 {
     writeToStack(TypeTag_long{}, value, stackHandle, wropt);
 }
+
+/* sim::handleproperty_t == sim::long_t
+static void writeToStack(const std::optional<sim::handleproperty_t> &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
+{
+    writeToStack(TypeTag_handle{}, value, stackHandle, wropt);
+}
+*/
 
 static void writeToStack(const std::optional<float> &value, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
