@@ -22,6 +22,7 @@
 namespace sim
 {
     using handle_t = int;
+    using handleproperty_t = long long int; // needed until the regularApi switches to long handles
     using long_t = long long int;
     using uint64_t = unsigned long long int;
 
