@@ -1,6 +1,77 @@
 <?xml version='1.0' encoding='utf-8'?>
 <object-classes>
+    <object-class name="console" superclass="custom">
+        <method name="remove" func="sim.callMethod" lang="python,lua">
+            <description>
+                Removes the console
+            </description>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="app:createObject" />
+            </see-also>
+        </method>
+
+
+
+        <method name="print" func="sim.callMethod" lang="python,lua">
+            <description>
+                Prints to the console
+            </description>
+            <params>
+                <param name="text" type="string">
+                    <description>text to append</description>
+                </param>
+                <param name="textColor" type="color" default="nil">
+                    <description>text color</description>
+                </param>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="console:clear" />
+            </see-also>
+        </method>
+
+
+
+        <method name="clear" func="sim.callMethod" lang="python,lua">
+            <description>
+                Clears the console
+            </description>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="console:print" />
+            </see-also>
+        </method>
+    </object-class>
+
+    
+
     <object-class name="object">
+        <method name="isValid" func="sim.callMethod" lang="python,lua">
+            <description>
+                Checks whether the object is a valid object
+            </description>
+            <params>
+            </params>
+            <returns>
+                <param name="validityState" type="bool">
+                    <description>
+                        the validity state
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="other" />
+            </categories>
+            <see-also>
+            </see-also>
+        </method>
+
+        
+
         <method name="getBoolProperty" func="sim.callMethod" lang="python,lua">
             <description>
                 Fetches a boolean property
@@ -1433,6 +1504,86 @@
     
     
     <object-class name="app" superclass="object">
+        <method name="createCustomObject" func="sim.callMethod" lang="python,lua">
+            <description>
+                Creates a custom object handle 
+            </description>
+            <params>
+                <param name="type" type="string">
+                    <description>
+                        The object type
+                    </description>
+                </param>
+                <param name="metaInfo" type="string">
+                    <description>
+                        The object meta information
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="handle" type="int">
+                    <description>
+                        The custom object handle
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="customization" />
+                <category name="creation" />
+            </categories>
+            <see-also>
+                <function-ref name="app:releaseCustomObject" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="releaseCustomObject" func="sim.callMethod" lang="python,lua">
+            <description>
+                Releases a custom object handle 
+            </description>
+            <params>
+                <param name="handle" type="int">
+                    <description>
+                        The custom object handle
+                    </description>
+                </param>
+            </params>
+            <returns>
+            </returns>
+            <categories>
+                <category name="customization" />
+                <category name="creation" />
+            </categories>
+            <see-also>
+                <function-ref name="app:createCustomObject" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="openFile" func="sim.callMethod" lang="python,lua">
+            <description>
+                Opens a file in a subprocess, via cmd (Windows), open (macOS), or xdg-open (Linux) 
+            </description>
+            <params>
+                <param name="file" type="string">
+                    <description>
+                        File to open
+                    </description>
+                </param>
+            </params>
+            <returns>
+            </returns>
+            <categories>
+                <category name="other" />
+            </categories>
+            <see-also>
+            </see-also>
+        </method>
+
+        
+
         <method name="fastIdleLoop" func="sim.callMethod" lang="python,lua">
             <description>
                 Speeds the idle loop up, for better reactivity when idle, i.e. not simulating 
@@ -2127,14 +2278,14 @@
 
         
 
-        <method name="packTable" func="sim.callMethod" lang="python,lua">
+        <method name="pack" func="sim.callMethod" lang="python,lua">
             <description>
-                Packs a table via CoppeliaSim format. Functions and other non-serializable items are packed as string or None/nil values
+                Packs data via CoppeliaSim format. Functions and other non-serializable items are packed as string or None/nil values
             </description>
             <params>
                 <param name="data" type="any">
                     <description>
-                        array or map. Any other argument results in an empty buffer
+                        data to be packed
                     </description>
                 </param>
             </params>
@@ -2149,16 +2300,16 @@
                 <category name="packing" />
             </categories>
             <see-also>
-                <function-ref name="app:unpackTable" />
+                <function-ref name="app:unpack" />
                 <function-ref name="app:serialize" />
             </see-also>
         </method>
         
         
         
-        <method name="unpackTable" func="sim.callMethod" lang="python,lua">
+        <method name="unpack" func="sim.callMethod" lang="python,lua">
             <description>
-                Unpacks a buffer into a table via CoppeliaSim format
+                Unpacks a buffer via CoppeliaSim format
             </description>
             <params>
                 <param name="packedData" type="buffer">
@@ -2170,7 +2321,7 @@
             <returns>
                 <param name="data" type="any">
                     <description>
-                        array or map
+                        unpacked data
                     </description>
                 </param>
             </returns>
@@ -2178,7 +2329,7 @@
                 <category name="packing" />
             </categories>
             <see-also>
-                <function-ref name="app:packTable" />
+                <function-ref name="app:pack" />
             </see-also>
         </method>
 
@@ -2207,7 +2358,7 @@
             </categories>
             <see-also>
                 <function-ref name="app:deserialize" />
-                <function-ref name="app:packTable" />
+                <function-ref name="app:pack" />
             </see-also>
         </method>
         
@@ -2379,6 +2530,7 @@
                 <ul>
                     <li><a href="#collection">collection</a></li>
                     <li><a href="#detachedScript">detached script</a></li>
+                    <li><a href="#console">console</a></li>
                     <li><a href="#dummy">dummy</a></li>
                     <li><a href="#joint">joint</a></li>
                     <li><a href="#camera">camera</a></li>
@@ -2412,6 +2564,21 @@
                                     <li>scriptType (int): the <a href="#scriptType">script type</a>. As of now only sim.scripttype_addon is supported</li>
                                     <li>lang (string): the script language ("lua" or "python")</li>
                                     <li>code (string): the script content</li>
+                                </ul>
+                            </li>
+                            <li id="console"><a href="../dataVisualizationAndOutput.htm#console">console</a> fields:
+                                <ul>
+                                    <li>objectType (string): "console"</li>
+                                    <li>title (string): console title</li>
+                                    <li>size (int[2]): console size</li>
+                                    <li>position (int[2]): console position</li>
+                                    <li>closeable (bool): whether there is a close button or not</li>
+                                    <li>resizable (bool): whether the console can be resized</li>
+                                    <li>hiddenInSimulation (bool): whether the console is hidden during simulation</li>
+                                    <li>fontSize (int): the size of the font</li>
+                                    <li>color (color): text default color</li>
+                                    <li>background (color): background color</li>
+                                    <li>style (string): style information, e.g. "font-family: 'Courier New', 'Consolas', 'Liberation Mono', 'DejaVu Sans Mono'; font-size: 10; background-color: #000000; color: #ffffff;"</li>
                                 </ul>
                             </li>
                             <li id="dummy"><a href="../dummies.htm">dummy</a> fields:
@@ -2544,6 +2711,13 @@
                                             <li>heights (matrix): the heights</li>
                                             <li>cellSize (float): the length/width of a cell</li>
                                             <li>rawMesh (bool): whether the shape is registered as a random mesh (i.e. not a height field)</li>
+                                        </ul>
+                                    </li>
+                                    <li>string (map/dict): holds parameters for the creation of a shape representing a text string:
+                                        <ul>
+                                            <li>text (string): the text</li>
+                                            <li>height (float): the text height</li>
+                                            <li>center (bool): whether the text is centered or not</li>
                                         </ul>
                                     </li>
                                     <li>mesh (map/dict): holds parameters for the creation of a mesh:
@@ -2694,6 +2868,7 @@
             <categories>
                 <category name="collection" />
                 <category name="detachedScript" />
+                <category name="console" />
                 <category name="dummy" />
                 <category name="marker" />
                 <category name="joint" />
@@ -2713,6 +2888,7 @@
                 <function-ref name="sceneObject:remove" />
                 <function-ref name="collection:remove" />
                 <function-ref name="detachedScript:remove" />
+                <function-ref name="console:remove" />
                 <function-ref name="app:removeObjects" />
             </see-also>
         </method>
@@ -2994,11 +3170,13 @@
                 <category name="sceneObject" />
                 <category name="collection" />
                 <category name="detachedScript" />
+                <category name="console" />
             </categories>
             <see-also>
                 <function-ref name="sceneObject:remove" />
                 <function-ref name="collection:remove" />
                 <function-ref name="detachedScript:remove" />
+                <function-ref name="console:remove" />
                 <function-ref name="sceneObject:removeModel" />
                 <function-ref name="app:createObject" />
             </see-also>
@@ -4505,11 +4683,13 @@
                 <category name="sceneObject" />
                 <category name="collection" />
                 <category name="detachedScript" />
+                <category name="console" />
             </categories>
             <see-also>
                 <function-ref name="sceneObject:remove" />
                 <function-ref name="collection:remove" />
                 <function-ref name="detachedScript:remove" />
+                <function-ref name="console:remove" />
                 <function-ref name="sceneObject:removeModel" />
                 <function-ref name="scene:createObject" />
             </see-also>
@@ -4634,6 +4814,7 @@
                 <ul>
                     <li><a href="#collection">collection</a></li>
                     <li><a href="#detachedScript">detached script</a></li>
+                    <li><a href="#console">console</a></li>
                     <li><a href="#dummy">dummy</a></li>
                     <li><a href="#joint">joint</a></li>
                     <li><a href="#camera">camera</a></li>
@@ -4667,6 +4848,21 @@
                                     <li>scriptType (int): the <a href="#scriptType">script type</a>. As of now only sim.scripttype_addon is supported</li>
                                     <li>lang (string): the script language ("lua" or "python")</li>
                                     <li>code (string): the script content</li>
+                                </ul>
+                            </li>
+                            <li id="console"><a href="../dataVisualizationAndOutput.htm#console">console</a> fields:
+                                <ul>
+                                    <li>objectType (string): "console"</li>
+                                    <li>title (string): console title</li>
+                                    <li>size (int[2]): console size</li>
+                                    <li>position (int[2]): console position</li>
+                                    <li>closeable (bool): whether there is a close button or not</li>
+                                    <li>resizable (bool): whether the console can be resized</li>
+                                    <li>hiddenInSimulation (bool): whether the console is hidden during simulation</li>
+                                    <li>fontSize (int): the size of the font</li>
+                                    <li>color (color): text default color</li>
+                                    <li>background (color): background color</li>
+                                    <li>style (string): style information, e.g. "font-family: 'Courier New', 'Consolas', 'Liberation Mono', 'DejaVu Sans Mono'; font-size: 10; background-color: #000000; color: #ffffff;"</li>
                                 </ul>
                             </li>
                             <li id="dummy"><a href="../dummies.htm">dummy</a> fields:
@@ -4799,6 +4995,13 @@
                                             <li>heights (matrix): the heights</li>
                                             <li>cellSize (float): the length/width of a cell</li>
                                             <li>rawMesh (bool): whether the shape is registered as a random mesh (i.e. not a height field)</li>
+                                        </ul>
+                                    </li>
+                                    <li>string (map/dict): holds parameters for the creation of a shape representing a text string:
+                                        <ul>
+                                            <li>text (string): the text</li>
+                                            <li>height (float): the text height</li>
+                                            <li>center (bool): whether the text is centered or not</li>
                                         </ul>
                                     </li>
                                     <li>mesh (map/dict): holds parameters for the creation of a mesh:
@@ -4949,6 +5152,7 @@
             <categories>
                 <category name="collection" />
                 <category name="detachedScript" />
+                <category name="console" />
                 <category name="dummy" />
                 <category name="marker" />
                 <category name="joint" />
@@ -4968,6 +5172,7 @@
                 <function-ref name="sceneObject:remove" />
                 <function-ref name="collection:remove" />
                 <function-ref name="detachedScript:remove" />
+                <function-ref name="console:remove" />
                 <function-ref name="app:removeObjects" />
             </see-also>
         </method>
@@ -6395,137 +6600,223 @@
 
     
 
-    <method name="addGraphCurve" func="sim.addGraphCurve" lang="python,lua">
-        <description>
-            Adds or updates a graph curve. A graph curve is persistent, but can be removed with
-            <a href="simDestroyGraphCurve.htm"> sim.destroyGraphCurve </a>
-        </description>
-        <params>
-            <param name="graphHandle" type="handle">
-                <description>
-                    handle of the graph
-                </description>
-            </param>
-            <param name="curveName" type="string">
-                <description>
-                    name of the curve
-                </description>
-            </param>
-            <param name="dim" type="int">
-                <description>
-                    dimension of the curve. Valid values are 2 or 3
-                </description>
-            </param>
-            <param name="streamIds" type="int[]">
-                <description>
-                    array of 2 or 3 graph streams (x/y curves require 2 stream IDs, xyz curves require 3 stream IDs). Indicate -1 for a missing stream, in which case a default value will be used instead
-                </description>
-            </param>
-            <param name="defaultValues" type="float[]">
-                <description>
-                    array of 2 or 3 default values
-                </description>
-            </param>
-            <param name="unitStr" type="string">
-                <description>
-                    string describing the unit of the curve. Can be None/nil
-                </description>
-            </param>
-            <param name="options" type="int" default="0">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li> bit0 is not used. </li>
-                        <li> If bit1 is set (2), the label is not visible </li>
-                        <li> If bit2 is set (4), the points are not linked </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="color" type="float[3]" default="{0, 1, 0}">
-                <description>
-                    bit0 is not used.
-                </description>
-            </param>
-            <param name="curveWidth" type="int" default="2">
-                <description>
-                    If bit1 is set (2), the label is not visible
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="curveId" type="int">
-                <description>
-                    id of the created/updated curve
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="graph" />
+    <object-class name="graph" superclass="sceneObject">
+        <method name="addSignal" func="sim.callMethod" lang="python,lua">
+            <description>
+                Adds or updates a graph signal
+            </description>
+            <params>
+                <param name="color" type="color" default="{1.0, 0.0, 0.0}">
+                    <description>
+                        signal color
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>name (string): signal name</li>
+                            <li>unit (string): signal unit</li>
+                            <li>hideSignal (bool): hides the signal</li>
+                            <li>hideLabel (bool): hides the label</li>
+                            <li>drawLine (bool): draws a line</li>
+                            <li>cyclicRange (float): can be used with cyclic values (e.g. angles) for correct data interpretation during stream data transformation</li>
+                            <li>transformation (map): signal transformation options:
+                               <ul>
+                                    <li>type (string): transformation type: "raw", "derivative", "integral" or "cumulative"</li>
+                                    <li>scale (float): scaling</li>
+                                    <li>offset (float): offset</li>
+                                    <li>smoothing (int): the moving average period. Set to 1 for no moving average</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="signalId" type="int">
+                    <description>
+                        id of the created/updated signal
+                    </description>
+                </param>
+            </returns>
+            <categories>
             </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#graphs" label=" functions related to graphs " />
-        </see-also>
-    </method>
+            <see-also>
+                <function-ref name="graph:removeTrace" />
+                <function-ref name="graph:addCurve" />
+            </see-also>
+        </method>
 
-    
+        
 
-    <method name="addGraphStream" func="sim.addGraphStream" lang="python,lua">
-        <description>
-            Adds or updates a graph stream. A graph stream is persistent, but can be removed
-            with 
-            <a href="simDestroyGraphCurve.htm"> sim.destroyGraphCurve </a>
-        </description>
-        <params>
-            <param name="graphHandle" type="handle">
-                <description>
-                    handle of the graph
-                </description>
-            </param>
-            <param name="streamName" type="string">
-                <description>
-                    name of the stream
-                </description>
-            </param>
-            <param name="unitStr" type="string" default="''">
-                <description>
-                    string describing the unit of the stream. Can be None/nil
-                </description>
-            </param>
-            <param name="options" type="int" default="0">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li> if bit0 is set (1), the stream is not visible </li>
-                        <li> if bit1 is set (2), the label is not visible </li>
-                        <li> if bit2 is set (4), the points are not linked </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="color" type="float[3]" default="{1, 0, 0}">
-                <description>
-                    if bit0 is set (1), the stream is not visible
-                </description>
-            </param>
-            <param name="cyclicRange" type="float" default="0">
-                <description>
-                    if bit1 is set (2), the label is not visible
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="streamId" type="int">
-                <description>
-                    id of the created/updated stream
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="graph" />
+        <method name="addCurve" func="sim.callMethod" lang="python,lua">
+            <description>
+                Adds or updates a graph curve
+            </description>
+            <params>
+                <param name="signals" type="int[2]">
+                    <description>
+                        signal ids. -1 for a missing signal, in which case the default value is used
+                    </description>
+                </param>
+                <param name="color" type="color" default="{0.0, 1.0, 0.0}">
+                    <description>
+                        curve color
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>name (string): curve name</li>
+                            <li>unit (string): curve unit</li>
+                            <li>default (float[2]): default signal values</li>
+                            <li>width (int): curve width</li>
+                            <li>hideLabel (bool): hides the label</li>
+                            <li>drawLine (bool): draws a line</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="curveId" type="int">
+                    <description>
+                        id of the created/updated curve
+                    </description>
+                </param>
+            </returns>
+            <categories>
             </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#graphs" label=" functions related to graphs " />
-        </see-also>
-    </method>
+            <see-also>
+                <function-ref name="graph:removeTrace" />
+                <function-ref name="graph:addSignal" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="reset" func="sim.callMethod" lang="python,lua">
+            <description>
+                Resets the graph, i.e. clears all its signals
+            </description>
+            <params>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="graph:removeTrace" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="removeTrace" func="sim.callMethod" lang="python,lua">
+            <description>
+                Removes a signal or curve
+            </description>
+            <params>
+                <param name="curveId" type="int">
+                    <description>
+                        id of the signal or curve, -1 to remove all signals/curves
+                    </description>
+                </param>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="graph:reset" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="setSignalPoint" func="sim.callMethod" lang="python,lua">
+            <description>
+                Sets the next signal value to be recorded
+            </description>
+            <params>
+                <param name="signalId" type="int">
+                    <description>
+                        id of the signal
+                    </description>
+                </param>
+                <param name="point" type="float">
+                    <description>
+                        value to set. When omitting to set a value for a corresponding graph:step() call, then the data point will be missing
+                    </description>
+                </param>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="graph:step" />
+                <function-ref name="graph:reset" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="step" func="sim.callMethod" lang="python,lua">
+            <description>
+                Records another value for each signal, given that such value was provided via graph:setSignalPoint()
+            </description>
+            <params>
+                <param name="time" type="float">
+                    <description>
+                        time where next value will be recorded at, usually the simulation time
+                    </description>
+                </param>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="graph:setSignalPoint" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="snapshotTrace" func="sim.callMethod" lang="python,lua">
+            <description>
+                Duplicates a graph trace, and freezes it
+            </description>
+            <params>
+                <param name="traceId" type="int">
+                    <description>
+                        trace id
+                    </description>
+                </param>
+                <param name="color" type="color" default="{1.0, 1.0, 1.0}">
+                    <description>
+                        trace color
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>name (string): trace name</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="staticTraceId" type="int">
+                    <description>
+                        static trace id
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+            </see-also>
+        </method>
+
+        
+
+    </object-class>
 
     
 
@@ -6704,7 +6995,7 @@
             </param>
         </params>
         <categories>
-        <category name="messaging" /><category name="auxConsole" />
+        <category name="messaging" /><category name="console" />
             </categories>
         <see-also>
             <function-ref name="sim.auxiliaryConsoleOpen" />
@@ -6770,7 +7061,7 @@
             </param>
         </returns>
         <categories>
-        <category name="messaging" /><category name="auxConsole" />
+        <category name="messaging" /><category name="console" />
             </categories>
         <see-also>
             <function-ref name="sim.auxiliaryConsolePrint" />
@@ -6804,7 +7095,7 @@
             </param>
         </params>
         <categories>
-        <category name="auxConsole" />
+        <category name="console" />
             </categories>
         <see-also>
             <function-ref name="sim.auxiliaryConsoleOpen" />
@@ -7547,70 +7838,6 @@
             </categories>
         <see-also>
             <link href="../apiFunctions.htm#collections" label=" functions related to collections " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="destroyGraphCurve" func="sim.destroyGraphCurve" lang="python,lua">
-        <description>
-            Destroys a graph stream or curve
-        </description>
-        <params>
-            <param name="graphHandle" type="handle">
-                <description>
-                    handle of the graph
-                </description>
-            </param>
-            <param name="curveId" type="int">
-                <description>
-                    id of the stream or curve, -1 to remove all streams/curves
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="graph" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#graphs" label=" functions related to graphs " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="duplicateGraphCurveToStatic" func="sim.duplicateGraphCurveToStatic" lang="python,lua">
-        <description>
-            Duplicates a graph stream or curve, and freezes it
-        </description>
-        <params>
-            <param name="graphHandle" type="handle">
-                <description>
-                    handle of the graph
-                </description>
-            </param>
-            <param name="curveId" type="int">
-                <description>
-                    id of the stream or curve
-                </description>
-            </param>
-            <param name="staticCurveName" type="string">
-                <description>
-                    name of the new static stream/curve
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="staticCurveId" type="int">
-                <description>
-                    id of the created static stream or curve
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="graph" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#graphs" label=" functions related to graphs " />
         </see-also>
     </method>
 
@@ -8965,75 +9192,6 @@ end</code>
 
     
 
-    <method name="getReferencedHandles" func="sim.getReferencedHandles" lang="python,lua">
-        <description>
-            Retrieves a list of custom handles, linking a given scene object to other scene objects
-        </description>
-        <params>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of the scene object that stores the list of handles. Can be optionally combined with 
-                    <em>
-                        sim.handleflag_keeporiginal
-                    </em>
-                    , in which case the handles that link to originals are retrieved.
-                </description>
-            </param>
-            <param name="tag" type="string" default="''">
-                <description>
-                    a tag: only handles stored within that tag are retrieved. defaults to an empty tag
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="referencedHandles" type="int[]">
-                <description>
-                    an array with scene object handles
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="main" /><category name="sceneObject" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.setReferencedHandles" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getReferencedHandlesTags" func="sim.getReferencedHandlesTags" lang="python,lua">
-        <description>
-            Retrieves a list of all referenced handles tags
-        </description>
-        <params>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of the scene object that stores the list of handles. Can be optionally combined with 
-                    <em>
-                        sim.handleflag_keeporiginal
-                    </em>
-                    , in which case the handles that link to originals are retrieved.
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="tags" type="string[]">
-                <description>
-                    an array with found tags
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="main" /><category name="sceneObject" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getReferencedHandles" />
-        </see-also>
-    </method>
-
-    
-
     <method name="getScript" func="sim.getScript" lang="python,lua">
         <description>
             Retrieves the handle of a script. For script objects, use sim.getObject instead
@@ -9570,34 +9728,6 @@ end</code>
             </categories>
         <see-also>
             <link href="../apiFunctions.htm#threads" label=" thread related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="handleGraph" func="sim.handleGraph" lang="python,lua">
-        <description>
-            Handles a graph object (i.e. records another value for each curve, given that such value was provided
-            via 
-            <a href="simSetGraphStreamValue.htm"> sim.setGraphStreamValue </a>
-        </description>
-        <params>
-            <param name="graphHandle" type="int">
-                <description>
-                    handle of the graph object.
-                </description>
-            </param>
-            <param name="time" type="float">
-                <description>
-                    time where next value will be recorded at, usually the simulation time
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="graph" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#graphs" label=" functions related to graphs " />
         </see-also>
     </method>
 
@@ -10746,27 +10876,6 @@ end</code>
 
     
 
-    <method name="resetGraph" func="sim.resetGraph" lang="python,lua">
-        <description>
-            Resets a graph object (i.e. clears all its data streams)
-        </description>
-        <params>
-            <param name="graphHandle" type="int">
-                <description>
-                    handle of the graph object
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="graph" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#graphs" label=" functions related to graphs " />
-        </see-also>
-    </method>
-
-    
-
     <method name="ruckigPos" func="sim.ruckigPos" lang="python,lua">
         <description>
             Executes a call to the 
@@ -11008,39 +11117,6 @@ end</code>
             </categories>
         <see-also>
             <link href="../apiFunctions.htm#threads" label=" thread related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setGraphStreamValue" func="sim.setGraphStreamValue" lang="python,lua">
-        <description>
-            Sets the next value to be recorded for a graph stream
-        </description>
-        <params>
-            <param name="graphHandle" type="int">
-                <description>
-                    handle of the graph object
-                </description>
-            </param>
-            <param name="streamId" type="int">
-                <description>
-                    id of the stream
-                </description>
-            </param>
-            <param name="value" type="float">
-                <description>
-                    value to set. Omitting to set a value for a corresponding 
-                    <a href="simHandleGraph.htm"> sim.handleGraph </a>
-                    call, then the data point will be missing.
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="graph" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#graphs" label=" functions related to graphs " />
         </see-also>
     </method>
 
@@ -11780,7 +11856,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
             </param>
         </params>
         <categories>
-        <category name="messaging" /><category name="auxConsole" />
+        <category name="messaging" /><category name="console" />
             </categories>
         <see-also>
             <function-ref name="sim.auxiliaryConsoleOpen" />
@@ -11984,59 +12060,6 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
             </categories>
         <see-also>
             <function-ref name="sim.getJointTargetVelocity" />
-        </see-also>
-    </method>
-
-
-
-    <method name="setReferencedHandles" func="sim.setReferencedHandles" lang="python,lua">
-        <description>
-            Attaches a list of custom handles to a given scene object. Those custom handles are handles of other scene objects, that are linked to the given scene object (for whatever purpose). The advantage of storing references to other objects with this function is that CoppeliaSim will take care of correctly adjusting the references if needed: For instance, imagine
-            <em>objectA</em>
-            storing the handle of
-            <em>objectB</em>
-            via this function. If
-            <em>objectB</em>
-            is deleted, then the stored handle becomes -1. If
-            <em>objectA</em>
-            and
-            <em>objectB</em>
-            are duplicated at the same time, then the duplicate of
-            <em>objectA</em>
-            stores the handle of the duplicate of
-            <em>objectB</em>
-            . Optionally, if
-            <em>sim.handleflag_keeporiginal</em>
-            is specified, then linking to original objects is guaranteed, e.g. in above example, after a duplication of
-            <em>objectA</em>
-            , the duplicate of
-            <em>objectA</em>
-            will store the handle of the original
-            <em>objectB</em>
-            (if
-            <em>objectB</em>
-            still exists)
-        </description>
-        <params>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of the scene object that will store the list of handles. Can be optionally combined with
-                    <em>sim.handleflag_keeporiginal</em>
-                    , in which case the handles that link to originals are retrieved
-                </description>
-            </param>
-            <param name="referencedHandles" type="int[]">
-                <description>list of scene object handles.</description>
-            </param>
-            <param name="tag" type="string" default="''">
-                <description>a tag: handles will be stored under this tag. Defaults to an empty tag</description>
-            </param>
-        </params>
-        <categories>
-        <category name="main" /><category name="sceneObject" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getReferencedHandles" />
         </see-also>
     </method>
 

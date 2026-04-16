@@ -1076,7 +1076,7 @@
         </returns>
         <categories>
                 <category name="messaging" />
-                <category name="auxConsole" />
+                <category name="console" />
         </categories>
         <see-also>
             <function-ref name="simAuxiliaryConsoleOpen" />
@@ -1098,7 +1098,7 @@
         </params>
         <categories>
                 <category name="messaging" />
-                <category name="auxConsole" />
+                <category name="console" />
         </categories>
         <see-also>
             <function-ref name="sim.auxiliaryConsoleOpen" />
@@ -1165,7 +1165,7 @@
         </returns>
         <categories>
                 <category name="messaging" />
-                <category name="auxConsole" />
+                <category name="console" />
         </categories>
         <see-also>
             <function-ref name="simAuxiliaryConsolePrint" />
@@ -1234,7 +1234,7 @@
         </returns>
         <categories>
                 <category name="messaging" />
-                <category name="auxConsole" />
+                <category name="console" />
         </categories>
         <see-also>
             <function-ref name="sim.auxiliaryConsolePrint" />
@@ -1271,7 +1271,7 @@
         </returns>
         <categories>
                 <category name="messaging" />
-                <category name="auxConsole" />
+                <category name="console" />
         </categories>
         <see-also>
             <function-ref name="simAuxiliaryConsoleOpen" />
@@ -1310,7 +1310,7 @@
             </param>
         </returns>
         <categories>
-            <category name="auxConsole" />
+            <category name="console" />
         </categories>
         <see-also>
             <function-ref name="simAuxiliaryConsoleOpen" />
@@ -1343,7 +1343,7 @@
             </param>
         </params>
         <categories>
-            <category name="auxConsole" />
+            <category name="console" />
         </categories>
         <see-also>
             <function-ref name="sim.auxiliaryConsoleOpen" />
@@ -23544,7 +23544,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
         </params>
         <categories>
                 <category name="messaging" />
-                <category name="auxConsole" />
+                <category name="console" />
         </categories>
         <see-also>
             <function-ref name="sim.auxiliaryConsoleOpen" />
