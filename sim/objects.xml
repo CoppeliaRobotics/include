@@ -1439,9 +1439,8 @@
     <property name="getIntArrayProperty" type="method" readable="false" writable="false" />
     <property name="getIntProperty" type="method" readable="false" writable="false" />
     <property name="getLongProperty" type="method" readable="false" writable="false" />
-    <property name="getMatrix3x3Property" type="method" readable="false" writable="false" />
-    <property name="getMatrix4x4Property" type="method" readable="false" writable="false" />
     <property name="getMatrixProperty" type="method" readable="false" writable="false" />
+    <property name="getMethodProperty" type="method" readable="false" writable="false" />
     <property name="getPoseProperty" type="method" readable="false" writable="false" />
     <property name="getProperties" type="method" readable="false" writable="false" />
     <property name="getPropertiesInfos" type="method" readable="false" writable="false" />
@@ -1471,9 +1470,8 @@
     <property name="setIntArrayProperty" type="method" readable="false" writable="false" />
     <property name="setIntProperty" type="method" readable="false" writable="false" />
     <property name="setLongProperty" type="method" readable="false" writable="false" />
-    <property name="setMatrix3x3Property" type="method" readable="false" writable="false" />
-    <property name="setMatrix4x4Property" type="method" readable="false" writable="false" />
     <property name="setMatrixProperty" type="method" readable="false" writable="false" />
+    <property name="setMethodProperty" type="method" readable="false" writable="false" />
     <property name="setPoseProperty" type="method" readable="false" writable="false" />
     <property name="setProperties" type="method" readable="false" writable="false" />
     <property name="setProperty" type="method" readable="false" writable="false" />
@@ -3372,6 +3370,12 @@
     </property>
     <property name="createCustomObject" type="method" readable="false" writable="false" />
     <property name="createObject" type="method" readable="false" writable="false" />
+    <property name="customClasses" type="stringarray" writable="false" label="Custom classes">
+      <description>List of app custom classes</description>
+    </property>
+    <property name="customObjects" type="handlearray" handle-type="customObject" writable="false" label="Custom objects">
+      <description>List of app custom objects</description>
+    </property>
     <property name="defaultPython" type="string" writable="false" constant="true" label="Default Python">
       <description>Default Python interpreter</description>
     </property>
@@ -3475,8 +3479,7 @@
     <property name="randomFloat" type="float" writable="false" silent="true" label="Random number" />
     <property name="randomQuaternion" type="quaternion" writable="false" silent="true" label="Random quaternion" />
     <property name="randomString" type="string" writable="false" silent="true" label="Random string" />
-    <property name="registerClass" type="method" readable="false" writable="false" />
-    <property name="releaseCustomObject" type="method" readable="false" writable="false" />
+    <property name="removeCustomObject" type="method" readable="false" writable="false" />
     <property name="removeObjects" type="method" readable="false" writable="false" />
     <property name="resourcePath" type="string" writable="false" constant="true" label="Resource path" />
     <property name="sandbox" type="handle" handle-type="detachedScript" writable="false" constant="true" label="Sandbox">
@@ -4051,7 +4054,6 @@
     <property name="setStepping" type="method" readable="false" writable="false" />
     <property name="step" type="method" readable="false" writable="false" />
     <property name="wait" type="method" readable="false" writable="false" />
-    <property name="waitForSignal" type="method" readable="false" writable="false" />
     <property name="yield" type="method" readable="false" writable="false" />
   </object-class>
 
@@ -5273,7 +5275,14 @@
     <property name="collections" type="handlearray" handle-type="collection" writable="false" label="Collections">
       <description>Handles of all collections</description>
     </property>
+    <property name="createCustomObject" type="method" readable="false" writable="false" />
     <property name="createObject" type="method" readable="false" writable="false" />
+    <property name="customClasses" type="stringarray" writable="false" label="Custom classes">
+      <description>List of scene custom classes</description>
+    </property>
+    <property name="customObjects" type="handlearray" handle-type="customObject" writable="false" label="Custom objects">
+      <description>List of scene custom objects</description>
+    </property>
     <property name="drawingObjects" type="handlearray" handle-type="drawingObject" writable="false" label="Drawing objects">
       <description>Handles of all drawing objects</description>
     </property>
@@ -5411,6 +5420,7 @@
       <description>Real-time multiplication factor</description>
     </property>
     <property name="realtimeSimulation" type="bool" label="Real-time simulation" />
+    <property name="removeCustomObject" type="method" readable="false" writable="false" />
     <property name="removeNewObjectsAtEnd" type="bool" label="Remove new objects">
       <description>Remove new scene objects at simulation end</description>
     </property>
@@ -6935,7 +6945,7 @@
     <property name="inertia" type="floatarray" deprecated="true" label="Inertia tensor">
       <description>Inertia tensor, relative to the shape's reference frame</description>
     </property>
-    <property name="inertiaMatrix" type="matrix3x3" label="Inertia matrix">
+    <property name="inertiaMatrix" type="matrix" label="Inertia matrix">
       <description>Inertia matrix, relative to the shape's reference frame</description>
     </property>
     <property name="initAngularVelocity" type="vector3" label="Initial rotational velocity" />
@@ -13603,6 +13613,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
     <property name="textureRepeatV" type="bool" label="Texture repeat V" />
     <property name="textureResolution" type="intarray2" writable="false" label="Texture resolution" />
     <property name="vertices" type="floatarray" writable="false" label="Vertices" />
+    <property name="wireframe" type="bool" label="Wireframe" />
   </object-class><object-class name="ocTree" superclass="sceneObject"><property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
