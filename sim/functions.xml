@@ -21103,44 +21103,6 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     
 
-    <function name="sim.getBoolProperty" lang="python,lua">
-        <description>
-            Fetches a boolean property
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>
-                    property name
-                </description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>
-                    an optional map. Set options.noError to true for silent errors
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="propertyState" type="bool">
-                <description>
-                    property value
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
     <function name="simSetIntProperty" lang="c">
         <description>
             Sets an int32 property
@@ -21204,44 +21166,6 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
             <param name="return" type="int">
                 <description>
                     1 in case of success
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
-    <function name="sim.getIntProperty" lang="python,lua">
-        <description>
-            Fetches an int32 property
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>
-                    property name
-                </description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>
-                    an optional map. Set options.noError to true for silent errors
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="propertyState" type="int">
-                <description>
-                    property value
                 </description>
             </param>
         </returns>
@@ -21322,7 +21246,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
             </param>
         </returns>
         <categories>
-            <category name="other" />
+            <category name="property" />
         </categories>
         <see-also>
             <link href="../properties.htm" label=" properties " />
@@ -21369,44 +21293,6 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     
 
-    <function name="sim.getLongProperty" lang="python,lua">
-        <description>
-            Fetches an int64 property
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>
-                    property name
-                </description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>
-                    an optional map. Set options.noError to true for silent errors
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="propertyState" type="int">
-                <description>
-                    property value
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
     <function name="simGetHandleProperty" lang="c">
         <description>
             Fetches a handle property
@@ -21436,45 +21322,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
             </param>
         </returns>
         <categories>
-            <category name="other" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
-    <function name="sim.getHandleProperty" lang="python,lua">
-        <description>
-            Fetches a handle property
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>
-                    property name
-                </description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>
-                    an optional map. Set options.noError to true for silent errors
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="propertyState" type="handle">
-                <description>
-                    property value
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="other" />
+            <category name="property" />
         </categories>
         <see-also>
             <link href="../properties.htm" label=" properties " />
@@ -21485,7 +21333,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     <function name="simSetFloatProperty" lang="c">
         <description>
-            Sets a float property (double)
+            Sets a float property
         </description>
         <params>
             <param name="target" type="long long">
@@ -21523,7 +21371,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     <function name="simGetFloatProperty" lang="c">
         <description>
-            Fetches a float property (double)
+            Fetches a float property
         </description>
         <params>
             <param name="target" type="long long">
@@ -21546,44 +21394,6 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
             <param name="return" type="int">
                 <description>
                     1 in case of success
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
-    <function name="sim.getFloatProperty" lang="python,lua">
-        <description>
-            Fetches a float property (double)
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>
-                    property name
-                </description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>
-                    an optional map. Set options.noError to true for silent errors
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="propertyState" type="float">
-                <description>
-                    property value
                 </description>
             </param>
         </returns>
@@ -21661,44 +21471,6 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
             <param name="return" type="int">
                 <description>
                     1 in case of success
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
-    <function name="sim.getStringProperty" lang="python,lua">
-        <description>
-            Fetches a string property (text)
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>
-                    property name
-                </description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>
-                    an optional map. Set options.noError to true for silent errors
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="propertyState" type="string">
-                <description>
-                    property value
                 </description>
             </param>
         </returns>
@@ -21801,45 +21573,6 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     
 
-    <function name="sim.getBufferProperty" lang="python,lua">
-        <description>
-            Fetches a buffer property
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>
-                    property name
-                </description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>
-                    an optional map. Set options.noError to true for silent errors
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="propertyState" type="buffer">
-                <description>
-                    property value
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-            <link href="../apiFunctions.htm#packing" label=" packing/unpacking related functions " />
-        </see-also>
-    </function>
-
-    
-
     <function name="simSetIntArray2Property" lang="c">
         <description>
             Sets an int[2] property
@@ -21916,47 +21649,9 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     
 
-    <function name="sim.getIntArray2Property" lang="python,lua">
-        <description>
-            Fetches an int[2] property
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>
-                    property name
-                </description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>
-                    an optional map. Set options.noError to true for silent errors
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="propertyState" type="int[2]">
-                <description>
-                    property value
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
     <function name="simSetVector2Property" lang="c">
         <description>
-            Sets a vector2 property (double[2])
+            Sets a vector2 property
         </description>
         <params>
             <param name="target" type="long long">
@@ -21994,7 +21689,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     <function name="simGetVector2Property" lang="c">
         <description>
-            Fetches a vector2 property (double[2])
+            Fetches a vector2 property
         </description>
         <params>
             <param name="target" type="long long">
@@ -22030,47 +21725,9 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     
 
-    <function name="sim.getVector2Property" lang="python,lua">
-        <description>
-            Fetches a vector2 property (double[2])
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>
-                    property name
-                </description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>
-                    an optional map. Set options.noError to true for silent errors
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="propertyState" type="float[2]">
-                <description>
-                    property value
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
     <function name="simSetVector3Property" lang="c">
         <description>
-            Sets a vector3 property (double[3])
+            Sets a vector3 property
         </description>
         <params>
             <param name="target" type="long long">
@@ -22108,7 +21765,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     <function name="simGetVector3Property" lang="c">
         <description>
-            Fetches a vector3 property (double[3])
+            Fetches a vector3 property
         </description>
         <params>
             <param name="target" type="long long">
@@ -22144,47 +21801,9 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     
 
-    <function name="sim.getVector3Property" lang="python,lua">
-        <description>
-            Fetches a vector3 property (double[3])
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>
-                    property name
-                </description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>
-                    an optional map. Set options.noError to true for silent errors
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="propertyState" type="float[3]">
-                <description>
-                    property value
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
     <function name="simSetQuaternionProperty" lang="c">
         <description>
-            Sets a quaternion property (double[4]: qx, qy, qz, qw)
+            Sets a quaternion property ([qx, qy, qz, qw])
         </description>
         <params>
             <param name="target" type="long long">
@@ -22222,7 +21841,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     <function name="simGetQuaternionProperty" lang="c">
         <description>
-            Fetches a quaternion property (double[4]: qx, qy, qz, qw)
+            Fetches a quaternion property ([qx, qy, qz, qw])
         </description>
         <params>
             <param name="target" type="long long">
@@ -22258,47 +21877,9 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     
 
-    <function name="sim.getQuaternionProperty" lang="python,lua">
-        <description>
-            Fetches a quaternion property (double[4]: qx, qy, qz, qw)
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>
-                    property name
-                </description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>
-                    an optional map. Set options.noError to true for silent errors
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="propertyState" type="quaternion">
-                <description>
-                    property value
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
     <function name="simSetPoseProperty" lang="c">
         <description>
-            Sets a pose property (double[7]: x, y, z, qx, qy, qz, qw)
+            Sets a pose property ([x, y, z, qx, qy, qz, qw])
         </description>
         <params>
             <param name="target" type="long long">
@@ -22336,7 +21917,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     <function name="simGetPoseProperty" lang="c">
         <description>
-            Fetches a pose property (double[7]: x, y, z, qx, qy, qz, qw)
+            Fetches a pose property ([x, y, z, qx, qy, qz, qw])
         </description>
         <params>
             <param name="target" type="long long">
@@ -22372,47 +21953,9 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     
 
-    <function name="sim.getPoseProperty" lang="python,lua">
-        <description>
-            Fetches a pose property (double[7]: x, y, z, qx, qy, qz, qw)
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>
-                    property name
-                </description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>
-                    an optional map. Set options.noError to true for silent errors
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="propertyState" type="pose">
-                <description>
-                    property value
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
     <function name="simSetColorProperty" lang="c">
         <description>
-            Sets a color property (float[3])
+            Sets a color property
         </description>
         <params>
             <param name="target" type="long long">
@@ -22450,7 +21993,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     <function name="simGetColorProperty" lang="c">
         <description>
-            Fetches a color property (float[3])
+            Fetches a color property
         </description>
         <params>
             <param name="target" type="long long">
@@ -22486,47 +22029,9 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     
 
-    <function name="sim.getColorProperty" lang="python,lua">
-        <description>
-            Fetches a color property (float[3])
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>
-                    property name
-                </description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>
-                    an optional map. Set options.noError to true for silent errors
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="propertyState" type="float[3]">
-                <description>
-                    property value
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
     <function name="simSetFloatArrayProperty" lang="c">
         <description>
-            Sets a float array property (double[])
+            Sets a float array property
         </description>
         <params>
             <param name="target" type="long long">
@@ -22569,7 +22074,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     <function name="simGetFloatArrayProperty" lang="c">
         <description>
-            Fetches a float array property (double[])
+            Fetches a float array property
         </description>
         <params>
             <param name="target" type="long long">
@@ -22611,47 +22116,9 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     
 
-    <function name="sim.getFloatArrayProperty" lang="python,lua">
-        <description>
-            Fetches a float array property (double[])
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>
-                    property name
-                </description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>
-                    an optional map. Set options.noError to true for silent errors
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="propertyState" type="float[]">
-                <description>
-                    property value
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
     <function name="simSetIntArrayProperty" lang="c">
         <description>
-            Sets an int array property (int[])
+            Sets an int array property
         </description>
         <params>
             <param name="target" type="long long">
@@ -22694,7 +22161,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     <function name="simSetStringArrayProperty" lang="c">
         <description>
-            Sets a string array property
+            Sets a text array property
         </description>
         <params>
             <param name="target" type="long long">
@@ -22726,7 +22193,45 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
             </param>
         </returns>
         <categories>
-            <category name="other" />
+            <category name="property" />
+        </categories>
+        <see-also>
+            <link href="../properties.htm" label=" properties " />
+        </see-also>
+    </function>
+
+    
+
+    <function name="simSetMethodProperty" lang="c">
+        <description>
+            Sets a method property (i.e. a C function pointer)
+        </description>
+        <params>
+            <param name="target" type="long long">
+                <description>
+                    target item
+                </description>
+            </param>
+            <param name="propertyName" type="const char*">
+                <description>
+                    property name
+                </description>
+            </param>
+            <param name="method" type="const void*">
+                <description>
+                    function pointer
+                </description>
+            </param>
+        </params>
+        <returns>
+            <param name="return" type="int">
+                <description>
+                    1 in case of success
+                </description>
+            </param>
+        </returns>
+        <categories>
+            <category name="property" />
         </categories>
         <see-also>
             <link href="../properties.htm" label=" properties " />
@@ -22737,7 +22242,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     <function name="simSetHandleArrayProperty" lang="c">
         <description>
-            Sets a handle array property (int[])
+            Sets a handle array property
         </description>
         <params>
             <param name="target" type="long long">
@@ -22769,7 +22274,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
             </param>
         </returns>
         <categories>
-            <category name="other" />
+            <category name="property" />
         </categories>
         <see-also>
             <link href="../properties.htm" label=" properties " />
@@ -22780,7 +22285,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     <function name="simGetIntArrayProperty" lang="c">
         <description>
-            Fetches an int array property (int[])
+            Fetches an int array property
         </description>
         <params>
             <param name="target" type="long long">
@@ -22822,47 +22327,9 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     
 
-    <function name="sim.getIntArrayProperty" lang="python,lua">
-        <description>
-            Fetches an int array property (int[])
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>
-                    property name
-                </description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>
-                    an optional map. Set options.noError to true for silent errors
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="propertyState" type="int[]">
-                <description>
-                    property value
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
     <function name="simGetStringArrayProperty" lang="c">
         <description>
-            Fetches a string array property (int[])
+            Fetches a text array property
         </description>
         <params>
             <param name="target" type="long long">
@@ -22895,7 +22362,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
             </param>
         </returns>
         <categories>
-            <category name="other" />
+            <category name="property" />
         </categories>
         <see-also>
             <link href="../properties.htm" label=" properties " />
@@ -22904,36 +22371,36 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     
 
-    <function name="sim.getStringArrayProperty" lang="python,lua">
+    <function name="simGetMethodProperty" lang="c">
         <description>
-            Fetches a string array property (int[])
+            Fetches a method property (i.e. a C function pointer)
         </description>
         <params>
-            <param name="target" type="handle">
+            <param name="target" type="long long">
                 <description>
                     target item
                 </description>
             </param>
-            <param name="propertyName" type="string">
+            <param name="propertyName" type="const char*">
                 <description>
                     property name
                 </description>
             </param>
-            <param name="options" type="map" default="{}">
+            <param name="method" type="void**">
                 <description>
-                    an optional map. Set options.noError to true for silent errors
+                    pointer to a function pointer
                 </description>
             </param>
         </params>
         <returns>
-            <param name="propertyState" type="string[]">
+            <param name="return" type="int">
                 <description>
-                    property value
+                    1 in case of success
                 </description>
             </param>
         </returns>
         <categories>
-            <category name="other" />
+            <category name="property" />
         </categories>
         <see-also>
             <link href="../properties.htm" label=" properties " />
@@ -22944,7 +22411,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     <function name="simGetHandleArrayProperty" lang="c">
         <description>
-            Fetches a handle array property (int[])
+            Fetches a handle array property
         </description>
         <params>
             <param name="target" type="long long">
@@ -22977,45 +22444,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
             </param>
         </returns>
         <categories>
-            <category name="other" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
-    <function name="sim.getHandleArrayProperty" lang="python,lua">
-        <description>
-            Fetches a handle array property (int[])
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>
-                    property name
-                </description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>
-                    an optional map. Set options.noError to true for silent errors
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="propertyState" type="handle[]">
-                <description>
-                    property value
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="other" />
+            <category name="property" />
         </categories>
         <see-also>
             <link href="../properties.htm" label=" properties " />
@@ -23101,49 +22530,6 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     
 
-    <function name="sim.getPropertyName" lang="python,lua">
-        <description>
-            Fetches the name of a property, based on an index
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="index" type="int">
-                <description>
-                    property index
-                </description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>
-                    an optional map. Set options.prefix to perform an initial filtering based on a prefix
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="propertyName" type="string">
-                <description>
-                    property name
-                </description>
-            </param>
-            <param name="objectType" type="string">
-                <description>
-                    object type the property is related to
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
     <function name="simGetPropertyInfo" lang="c">
         <description>
             Fetches information about a specific property
@@ -23185,43 +22571,33 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
         </see-also>
     </function>
 
-    
 
-    <function name="sim.getPropertyInfo" lang="python,lua">
+
+    <function name="simSetPropertyInfo" lang="c">
         <description>
-            Fetches information about a specific property
+            Sets information about a specific property
         </description>
         <params>
-            <param name="target" type="handle">
+            <param name="target" type="long long">
                 <description>
                     target item
                 </description>
             </param>
-            <param name="propertyName" type="string">
+            <param name="propertyName" type="const char*">
                 <description>
                     property name
                 </description>
             </param>
-            <param name="options" type="map" default="{}">
+            <param name="infos" type="SPropertyInfo*">
                 <description>
-                    an optional map. Set options.shortInfoTxt to true to fetch a short version of the description text
+                    information about the property (flags and description)
                 </description>
             </param>
         </params>
         <returns>
-            <param name="type" type="int">
+            <param name="return" type="int">
                 <description>
-                    <a href="../apiConstants.htm#propertyTypes"> property type </a>
-                </description>
-            </param>
-            <param name="flags" type="int">
-                <description>
-                    <a href="../apiConstants.htm#propertyFlags"> property flags </a>
-                </description>
-            </param>
-            <param name="description" type="string">
-                <description>
-                    property description
+                    1 in case of success
                 </description>
             </param>
         </returns>
@@ -23232,1521 +22608,4 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
             <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
-
-    
-
-    <function name="sim.getProperties" lang="python,lua">
-        <description>
-            Convenience function to fetches all properties of a specific target item
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>
-                    an optional map. Set options.skipLarge = true to skip large data
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="properties" type="map">
-                <description>
-                    properties
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
-    <function name="sim.setProperties" lang="python,lua">
-        <description>
-            Convenience function to set several properties at once
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="properties" type="map">
-                <description>
-                    a map where keys are propertyNames and values are propertyStates
-                </description>
-            </param>
-        </params>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
-    <function name="sim.getPropertiesInfos" lang="python,lua">
-        <description>
-            Convenience function to fetches all properties infos of a specific target item
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>
-                    an optional map
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="propertiesInfo" type="map">
-                <description>
-                    properties infos
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
-    <function name="sim.getProperty" lang="python,lua">
-        <description>
-            Convenience functon to fetch a property
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>
-                    property name
-                </description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>
-                    an optional map. Set options.noError to true for silent errors
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="propertyState" type="any">
-                <description>
-                    property value
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
-    <function name="sim.setEventFilters" lang="python,lua">
-        <description>
-            Specifies filters for the sysCall_event callback. Operates on a per script basis
-        </description>
-        <params>
-            <param name="filters" type="map">
-                <description>
-                    filters, e.g.:
-                    <br />
-                    filters = {[objectHandle] = {'pose', 'jointPosition', 'layer'}, [sim.handle_scene] = {'engineProperties'}}
-                    <br />
-                    filters = {[object1Handle] = {}, [object2Handle] = {'pose'}}
-                    <br />
-                    filters = {[sim.handle_sceneobject] = {'pose'}}
-                </description>
-            </param>
-        </params>
-        <categories>
-            <category name="scriptRelated" />
-        </categories>
-        <see-also>
-            <link href="../callbackFunctions.htm" label=" callback functions " />
-        </see-also>
-    </function>
-    
-    
-
-    <function name="sim.addForceAndTorque" lang="python,lua">
-        <description>
-            Adds a force and/or torque to a shape object that is dynamically enabled. Forces are applied at the center of mass. Added forces and torques are cumulative, and are reset to zero after
-            <a href="simHandleDynamics.htm">sim.handleDynamics</a>
-            was called (or by using the following flags: sim.handleflag_resetforce and/or sim.handleflag_resettorque)
-        </description>
-        <params>
-            <param name="shapeHandle" type="handle">
-                <description>
-                    handle of a dynamically enabled shape. Can be combined with sim.handleflag_resetforce and/or sim.handleflag_resettorque in order to clear
-                    the accumulated force or torque.
-                </description>
-            </param>
-            <param name="force" type="vector3" default="{0.0, 0.0, 0.0}">
-                <description>array of 3 values that represent the force (in absolute coordinates) to add. Can be None/nil</description>
-            </param>
-            <param name="torque" type="vector3" default="{0.0, 0.0, 0.0}">
-                <description>array of 3 values that represent the torque (in absolute coordinates) to add. Can be None/nil</description>
-            </param>
-        </params>
-        <categories>
-                <category name="dynamics" />
-                <category name="shape" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.addForce" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.addToCollection" lang="python,lua">
-        <description>
-            Adds an item to a
-            <a href="../collections.htm">collection</a>
-        </description>
-        <params>
-            <param name="collectionHandle" type="handle">
-                <description>handle of a collection.</description>
-            </param>
-            <param name="objectHandle" type="handle">
-                <description>handle of an object</description>
-            </param>
-            <param name="what" type="int" default="sim.handle_single">
-                <description>
-                    type of object (or group of objects) to add. Following are allowed values:
-                    <ul>
-                        <li>
-                            <em>sim.handle_single</em>
-                            (for a single object)
-                        </li>
-                        <li>
-                            <em>sim.handle_all</em>
-                            (for all objects in the scene)
-                        </li>
-                        <li>
-                            <em>sim.handle_tree</em>
-                            (for a tree of objects)
-                        </li>
-                        <li>
-                            <em>sim.handle_chain</em>
-                            (for a chain of objects (i.e. an inverted tree)).
-                        </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="options" type="int" default="0">
-                <description>
-                    <em>sim.handle_single</em>
-                    (for a single object)
-                </description>
-            </param>
-        </params>
-        <categories>
-            <category name="collection" />
-        </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#collections" label="functions related to collections" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.removeFromCollection" lang="python,lua">
-        <description>
-            Removes an item from a
-            <a href="../collections.htm">collection</a>
-        </description>
-        <params>
-            <param name="collectionHandle" type="handle">
-                <description>handle of a collection.</description>
-            </param>
-            <param name="objectHandle" type="handle">
-                <description>handle of an object</description>
-            </param>
-            <param name="what" type="int" default="sim.handle_single">
-                <description>
-                    type of object (or group of objects) to remove. Following are allowed values:
-                    <ul>
-                        <li>
-                            <em>sim.handle_single</em>
-                            (for a single object)
-                        </li>
-                        <li>
-                            <em>sim.handle_all</em>
-                            (for all objects in the scene)
-                        </li>
-                        <li>
-                            <em>sim.handle_tree</em>
-                            (for a tree of objects)
-                        </li>
-                        <li>
-                            <em>sim.handle_chain</em>
-                            (for a chain of objects (i.e. an inverted tree)).
-                        </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="options" type="int" default="0">
-                <description>
-                    <em>sim.handle_single</em>
-                    (for a single object)
-                </description>
-            </param>
-        </params>
-        <categories>
-            <category name="collection" />
-        </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#collections" label="functions related to collections" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.auxiliaryConsolePrint" lang="python,lua">
-        <description>
-            Prints to an auxiliary console window
-        </description>
-        <params>
-            <param name="consoleHandle" type="handle">
-                <description>
-                    handle of the console window, previously returned by the
-                    <a href="simAuxiliaryConsoleOpen.htm">sim.auxiliaryConsoleOpen</a>
-                </description>
-            </param>
-            <param name="text" type="string" default="&quot;&quot;">
-                <description>text to append, or an empty string to clear the console window</description>
-            </param>
-        </params>
-        <categories>
-                <category name="messaging" />
-                <category name="console" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.auxiliaryConsoleOpen" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.broadcastMsg" lang="python,lua">
-        <description>
-            Broadcasts a message to all scripts, except for the emitting script. Messages are received synchronously via the sysCall_msg
-            <a href="../callbackFunctions.htm">callback function</a>
-        </description>
-        <params>
-            <param name="message" type="map">
-                <description>
-                    message to broadcast. Best is to use following skeleton message: message = {'id': 'msgIdentifyingString', 'data': [...]}
-                </description>
-            </param>
-            <param name="options" type="int" default="0">
-                <description>not used, keep at 0</description>
-            </param>
-        </params>
-        <categories>
-            <category name="messaging" />
-        </categories>
-    </function>
-
-
-
-    <function name="sim.initScript" lang="lua">
-        <description>
-            Initializes/reinitializes a script. Operates in an asynchronous way when called upon the calling script
-        </description>
-        <params>
-            <param name="scriptHandle" type="handle" default="sim.handle_self">
-                <description>handle of the script to initialize/reinitialize</description>
-            </param>
-        </params>
-        <categories>
-            <category name="scriptRelated" />
-        </categories>
-    </function>
-
-
-
-    <function name="sim.launchExecutable" lang="python,lua">
-        <description>
-            Launches an executable. Similar to os.execute or io.popen, but is system independent
-        </description>
-        <params>
-            <param name="filename" type="string">
-                <description>
-                    file name of the executable. If the filename starts with '@', then it will be considered as a system command, otherwise the current
-                    directory might be automatically prepended to the filename if it makes sense.
-                </description>
-            </param>
-            <param name="parameters" type="string" default="''">
-                <description>optional input arguments</description>
-            </param>
-            <param name="showStatus" type="int" default="1">
-                <description>0 to hide the application's window, 1 to show it. Works only with Windows OS.</description>
-            </param>
-        </params>
-        <categories>
-            <category name="file" />
-        </categories>
-    </function>
-
-
-
-    <function name="sim.pushUserEvent" lang="python,lua">
-        <description>
-            Pushes a user-triggered event. Messages are received asynchronously via the sysCall_event
-            <a href="../callbackFunctions.htm">callback function</a>
-            and via the plugin
-            <a href="../apiConstants.htm#simulatorMessages">sim_message_eventcallback_events</a>
-            message call
-        </description>
-        <params>
-            <param name="event" type="string">
-                <description>event name</description>
-            </param>
-            <param name="handle" type="int">
-                <description>optional handle associated with the event. Can be -1</description>
-            </param>
-            <param name="eventData" type="table">
-                <description>optional unique id associated with the event. Can be -1</description>
-            </param>
-            <param name="options" type="int" default="0">
-                <description>event data</description>
-            </param>
-        </params>
-        <categories>
-            <category name="messaging" />
-        </categories>
-    </function>
-
-
-
-    <function name="sim.removeObjects" lang="python,lua">
-        <description>
-            Removes one or several objects from the scene
-        </description>
-        <params>
-            <param name="objectHandles" type="int[]">
-                <description>handles of the objects to remove</description>
-            </param>
-            <param name="delayedRemoval" type="bool" default="false">
-                <description>whether the removal should be delayed (e.g. when a script destroys itself). Defaults to false</description>
-            </param>
-        </params>
-        <categories>
-            <category name="sceneObject" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.removeModel" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.saveImage" lang="python,lua">
-        <description>
-            Saves an image to file
-        </description>
-        <params>
-            <param name="image" type="buffer">
-                <description>image (in rgb, rgba or greyscale format)</description>
-            </param>
-            <param name="resolution" type="int[2]">
-                <description>x/y resolution of the provided image.</description>
-            </param>
-            <param name="filename" type="string">
-                <description>name of the file to write. The file extension indicates the format</description>
-            </param>
-            <param name="options" type="int" default="0">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li>bit0 - bit1: format of the provided image (0=rgb, 1=rgba, 2=greyscale)</li>
-                    </ul>
-                </description>
-            </param>
-            <param name="quality" type="int" default="-1">
-                <description>bit0 - bit1: format of the provided image (0=rgb, 1=rgba, 2=greyscale)</description>
-            </param>
-        </params>
-        <categories>
-                <category name="texture" />
-                <category name="importExport" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.loadImage" />
-            <function-ref name="sim.saveImageToBuffer" />
-            <function-ref name="sim.getScaledImage" />
-            <function-ref name="sim.getVisionSensorImg" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.scaleObject" lang="python,lua">
-        <description>
-            Scales specified objects in a non-isometric fashion, if possible. Only non-compound shapes can be non-isometrically scaled. Some primitive shapes
-            can have some constraints between their axes
-        </description>
-        <params>
-            <param name="objectHandle" type="int">
-                <description>handle of the object to scale</description>
-            </param>
-            <param name="xScale" type="float">
-                <description>scaling factors along the object's x, y and z-axis</description>
-            </param>
-            <param name="yScale" type="float">
-                <description>keep at 0</description>
-            </param>
-            <param name="zScale" type="float">
-                <description />
-            </param>
-            <param name="options" type="int" default="0">
-                <description />
-            </param>
-        </params>
-        <categories>
-            <category name="sceneObject" />
-        </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#size" label="size and scaling functions" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setGraphStreamTransformation" lang="python,lua">
-        <description>
-            Applies a transformation to a graph stream
-        </description>
-        <params>
-            <param name="graphHandle" type="int">
-                <description>handle of the graph</description>
-            </param>
-            <param name="streamId" type="int">
-                <description>id of the stream</description>
-            </param>
-            <param name="trType" type="int">
-                <description>
-                    <a href="../apiConstants.htm#streamTransformations">stream transformation</a>
-                </description>
-            </param>
-            <param name="mult" type="float" default="1.0">
-                <description>multiplication factor</description>
-            </param>
-            <param name="off" type="float" default="0.0">
-                <description>an offset</description>
-            </param>
-            <param name="movingAvgPeriod" type="int" default="1">
-                <description>moving average period. Set to 1 for no moving average</description>
-            </param>
-        </params>
-        <categories>
-            <category name="graph" />
-        </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#graphs" label="functions related to graphs" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setJointTargetForce" lang="python,lua">
-        <description>
-            Sets the force or torque that a joint can exert
-        </description>
-        <params>
-            <param name="objectHandle" type="handle">
-                <description>handle of the joint object</description>
-            </param>
-            <param name="forceOrTorque" type="float">
-                <description>maximum force or torque the joint can exert</description>
-            </param>
-            <param name="signedValue" type="bool" default="true">
-                <description>if true, the sign of the force/torque indicates the desired movement direction</description>
-            </param>
-        </params>
-        <categories>
-                <category name="dynamics" />
-                <category name="joint" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.getJointTargetForce" />
-            <function-ref name="sim.getJointForce" />
-            <function-ref name="sim.setJointTargetVelocity" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setJointTargetPosition" lang="python,lua">
-        <description>
-            Sets the target linear/angular position of a joint. When in kinematic mode, the joint moves according to a motion profile that respects maximum
-            velocity, acceleration and jerk values. In dynamic and position/custom control mode, the controller is instructed about the desired position
-        </description>
-        <params>
-            <param name="objectHandle" type="handle">
-                <description>handle of the joint object</description>
-            </param>
-            <param name="targetPosition" type="float">
-                <description>target position of the joint</description>
-            </param>
-            <param name="motionParams" type="float[]" default="{}">
-                <description>
-                    when in kinematic mode: the maximum allowed velocity, acceleration and jerk. When in dynamics mode with position control and motion profile enabled, the maximum allowed velocity, acceleration and jerk. Can be None/nil for default values. See also the
-                    <a href="../propertiesReference.htm#maxVelAccelJerk">maxVelAccelJerk</a>
-                    property
-                </description>
-            </param>
-        </params>
-        <categories>
-                <category name="dynamics" />
-                <category name="joint" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.getJointTargetPosition" />
-            <function-ref name="sim.setJointPosition" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setJointTargetVelocity" lang="python,lua">
-        <description>
-            Sets the target linear/angular velocity of a non-spherical joint. When in kinematic mode, the joint moves according to a motion profile that
-            respects maximum acceleration and jerk values. In dynamic and velocity control mode, the controller is instructed about the desired velocity
-        </description>
-        <params>
-            <param name="objectHandle" type="handle">
-                <description>handle of the joint object</description>
-            </param>
-            <param name="targetVelocity" type="float">
-                <description>target velocity of the joint</description>
-            </param>
-            <param name="motionParams" type="float[]" default="{}">
-                <description>
-                    when the joint is in kinematic mode: the maximum allowed acceleration and jerk. When in dynamic mode with motion profile control enabled: the maximum allowed acceleration and jerk. Can be None/nil for default values. See also the
-                    <a href="../propertiesReference.htm#maxVelAccelJerk">maxVelAccelJerk</a>
-                    property
-                </description>
-            </param>
-        </params>
-        <categories>
-                <category name="dynamics" />
-                <category name="joint" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.getJointTargetVelocity" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setObjectParent" lang="python,lua">
-        <description>
-            Sets an object's parent object. Dynamically simulated objects, together with their hierarchy tree, are dynamically reset (this however does not
-            apply to static shapes)
-        </description>
-        <params>
-            <param name="objectHandle" type="handle">
-                <description>
-                    handle of the object that will become child of the parent object. Can be or-combined with
-                    <a href="../apiConstants.htm#specialHandleFlags">sim.handleflag_assembly</a>
-                    if an assembly operation is desired instead (in that case, can't be -1, and should be set to false)
-                </description>
-            </param>
-            <param name="parentObjectHandle" type="handle">
-                <description>
-                    handle of the object that will become parent, or -1 if the object should become parentless. In an assembly operation, the assembly dummy on
-                    the parent object should be specified instead
-                </description>
-            </param>
-            <param name="keepInPlace" type="bool" default="true">
-                <description>indicates whether the object's absolute pose should stay same</description>
-            </param>
-        </params>
-        <categories>
-            <category name="sceneObject" />
-        </categories>
-        <see-also>
-            <link href="../assembly.htm" label="assembly operation" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setObjectPose" lang="python,lua">
-        <description>
-            Sets the pose of an object. Dynamically simulated objects, together with their hierarchy tree, are dynamically reset (this however does not apply to
-            static shapes)
-        </description>
-        <params>
-            <param name="objectHandle" type="handle">
-                <description>
-                    handle of the object. Combine with sim.handleflag_wxyzquat to provide the quaternion as [qw qx qy qz] order instead of [qx qy qz qw] order.
-                    Can also be combined with sim.handleflag_reljointbaseframe
-                </description>
-            </param>
-            <param name="p" type="pose">
-                <description>the pose: [x, y, z, qx, qy, qz, qw])</description>
-            </param>
-            <param name="relativeToObjectHandle" type="handle" default="sim.handle_world">
-                <description>
-                    indicates relative to which reference frame the pose is specified. Specify sim.handle_world to set the absolute pose, sim.handle_inverse to
-                    set the inverse of the absolute pose, sim.handle_parent to set the pose relative to the object's parent, or an object handle relative to
-                    whose reference frame the pose is specified. If this handle is the handle of a joint, then the pose is applied relative to the joint's
-                    moving frame (unless is combined with sim.handleflag_reljointbaseframe, in which case the pose is applied relative to the joint's base
-                    frame)
-                </description>
-            </param>
-        </params>
-        <categories>
-                <category name="sceneObject" />
-                <category name="transformation" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.getObjectPose" />
-            <link href="../positionOrientationTransformation.htm" label="positions and orientations" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setObjectPosition" lang="python,lua">
-        <description>
-            Sets the position (x, y and z-coordinates) of an object. Dynamically simulated objects, together with their hierarchy tree, are dynamically reset
-            (this however does not apply to static shapes)
-        </description>
-        <params>
-            <param name="objectHandle" type="handle">
-                <description>handle of the object. Can be combined with sim.handleflag_reljointbaseframe</description>
-            </param>
-            <param name="pos" type="vector3">
-                <description>the object position</description>
-            </param>
-            <param name="relativeToObjectHandle" type="handle" default="sim.handle_world">
-                <description>
-                    indicates relative to which reference frame the position is specified. Specify sim.handle_world to set the absolute position,
-                    sim.handle_parent to set the position relative to the object's parent, or an object handle relative to whose reference frame the position is
-                    specified. If this handle is the handle of a joint, then the position is applied relative to the joint's moving frame (unless is combined
-                    with sim.handleflag_reljointbaseframe, in which case the position is applied relative to the joint's base frame)
-                </description>
-            </param>
-        </params>
-        <categories>
-                <category name="sceneObject" />
-                <category name="transformation" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.getObjectPosition" />
-            <link href="../positionOrientationTransformation.htm" label="positions and orientations" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setObjectQuaternion" lang="python,lua">
-        <description>
-            Sets the quaternion of an object. Dynamically simulated objects, together with their hierarchy tree, are dynamically reset (this however does not
-            apply to static shapes)
-        </description>
-        <params>
-            <param name="objectHandle" type="handle">
-                <description>
-                    handle of the object. Combine with sim.handleflag_wxyzquat to provide the quaternion as [qw qx qy qz] order instead of [qx qy qz qw] order.
-                    Can also be combined with sim.handleflag_reljointbaseframe
-                </description>
-            </param>
-            <param name="quat" type="quaternion">
-                <description>the quaternion: [qx, qy, qz, qw]</description>
-            </param>
-            <param name="relativeToObjectHandle" type="handle" default="sim.handle_world">
-                <description>
-                    indicates relative to which reference frame the orientation is specified. Specify sim.handle_world to set the absolute orientation,
-                    sim.handle_parent to set the orientation relative to the object's parent, or an object handle relative to whose reference frame the
-                    orientation is specified. If this handle is the handle of a joint, then the quaternion is applied relative to the joint's moving frame
-                    (unless is combined with sim.handleflag_reljointbaseframe, in which case the quaternion is applied relative to the joint's base frame)
-                </description>
-            </param>
-        </params>
-        <categories>
-                <category name="sceneObject" />
-                <category name="transformation" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.getObjectQuaternion" />
-            <link href="../positionOrientationTransformation.htm" label="positions and orientations" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setReferencedHandles" lang="python,lua">
-        <description>
-            Attaches a list of custom handles to a given scene object. Those custom handles are handles of other scene objects, that are linked to the given scene object (for whatever purpose). The advantage of storing references to other objects with this function is that CoppeliaSim will take care of correctly adjusting the references if needed: For instance, imagine
-            <em>objectA</em>
-            storing the handle of
-            <em>objectB</em>
-            via this function. If
-            <em>objectB</em>
-            is deleted, then the stored handle becomes -1. If
-            <em>objectA</em>
-            and
-            <em>objectB</em>
-            are duplicated at the same time, then the duplicate of
-            <em>objectA</em>
-            stores the handle of the duplicate of
-            <em>objectB</em>
-            . Optionally, if
-            <em>sim.handleflag_keeporiginal</em>
-            is specified, then linking to original objects is guaranteed, e.g. in above example, after a duplication of
-            <em>objectA</em>
-            , the duplicate of
-            <em>objectA</em>
-            will store the handle of the original
-            <em>objectB</em>
-            (if
-            <em>objectB</em>
-            still exists)
-        </description>
-        <params>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of the scene object that will store the list of handles. Can be optionally combined with
-                    <em>sim.handleflag_keeporiginal</em>
-                    , in which case the handles that link to originals are retrieved
-                </description>
-            </param>
-            <param name="referencedHandles" type="int[]">
-                <description>list of scene object handles.</description>
-            </param>
-            <param name="tag" type="string" default="''">
-                <description>a tag: handles will be stored under this tag. Defaults to an empty tag</description>
-            </param>
-        </params>
-        <categories>
-                <category name="main" />
-                <category name="sceneObject" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.getReferencedHandles" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setShapeTexture" lang="python,lua">
-        <description>
-            Applies/removes a texture to/from a shape
-        </description>
-        <params>
-            <param name="shapeHandle" type="int">
-                <description>handle of the shape.</description>
-            </param>
-            <param name="textureId" type="int">
-                <description>
-                    ID of the texture or -1 to remove any existing texture. See also
-                    <a href="simGetTextureId.htm">sim.getTextureId</a>
-                    ,
-                    <a href="simGetShapeTextureId.htm">sim.getShapeTextureId</a>
-                    and
-                    <a href="simCreateTexture.htm">sim.createTexture</a>
-                </description>
-            </param>
-            <param name="mappingMode" type="int">
-                <description>
-                    <a href="../apiConstants.htm#textureMappingModes">texture mapping mode</a>
-                    .
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li>bit0: if set (1), then adjacent texture pixels are not interpolated.</li>
-                        <li>bit1: if set (2), then the texture is applied as a decal (its appearance won't be influenced by light conditions).</li>
-                        <li>bit2: if set (4), then the texture will be repeated along the U direction.</li>
-                        <li>bit3: if set (8), then the texture will be repeated along the V direction.</li>
-                    </ul>
-                </description>
-            </param>
-            <param name="uvScaling" type="float[2]">
-                <description>bit0: if set (1), then adjacent texture pixels are not interpolated.</description>
-            </param>
-            <param name="position" type="float[3]" default="nil">
-                <description>bit1: if set (2), then the texture is applied as a decal (its appearance won't be influenced by light conditions).</description>
-            </param>
-            <param name="orientation" type="float[3]" default="nil">
-                <description>bit2: if set (4), then the texture will be repeated along the U direction.</description>
-            </param>
-        </params>
-        <categories>
-                <category name="shape" />
-                <category name="texture" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.getTextureId" />
-            <function-ref name="sim.getShapeTextureId" />
-            <function-ref name="sim.createTexture" />
-            <function-ref name="simApplyTexture" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setVisionSensorImg" lang="python,lua">
-        <description>
-            Writes the image of a vision sensor (and applies any image processing via the
-            <a href="../visionCallbackFunctions.htm">vision callback functions</a>
-            ). Make sure the vision sensor is flagged as
-            <strong>external input</strong>
-        </description>
-        <params>
-            <param name="sensorHandle" type="int">
-                <description>handle of the vision sensor object</description>
-            </param>
-            <param name="image" type="buffer">
-                <description>buffer containing the image</description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    options, bit-coded:
-                    <ul>
-                        <li>bit0 set (1): the provided image is a greyscale image (1 byte per pixel), otherwise an RGB image (3 bytes per pixel)</li>
-                        <li>bit1 set (2): the provided image has one additional byte per pixel, as alpha channel (RGBA or greyscale+A)</li>
-                    </ul>
-                </description>
-            </param>
-            <param name="pos" type="int[2]" default="{0, 0}">
-                <description>bit0 set (1): the provided image is a greyscale image (1 byte per pixel), otherwise an RGB image (3 bytes per pixel)</description>
-            </param>
-            <param name="size" type="int[2]" default="{0, 0}">
-                <description>bit1 set (2): the provided image has one additional byte per pixel, as alpha channel (RGBA or greyscale+A)</description>
-            </param>
-        </params>
-        <categories>
-            <category name="visionSensor" />
-        </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#visionSensor" label="vision sensor related API functions" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.writeTexture" lang="python,lua">
-        <description>
-            Overwrites a specific texture (or a portion of it) with RGB data
-        </description>
-        <params>
-            <param name="textureId" type="int">
-                <description>
-                    ID of the texture. See also
-                    <a href="simGetTextureId.htm">sim.getTextureId</a>
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li>
-                            <strong>bit0</strong>
-                            reserved. Do not set
-                        </li>
-                        <li>
-                            <strong>bit1</strong>
-                            reserved. Do not set
-                        </li>
-                        <li>
-                            <strong>bit2</strong>
-                            set (4)=only an elliptical/circular portion of the texture data will be written
-                        </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="textureData" type="buffer">
-                <description>reserved. Do not set</description>
-            </param>
-            <param name="posX" type="int" default="0">
-                <description>reserved. Do not set</description>
-            </param>
-            <param name="posY" type="int" default="0">
-                <description>set (4)=only an elliptical/circular portion of the texture data will be written</description>
-            </param>
-            <param name="sizeX" type="int" default="0">
-                <description>RGB data to write onto the texture. Each pixel is represented with 3 bytes (0-255)</description>
-            </param>
-            <param name="sizeY" type="int" default="0">
-                <description>x/y position where to copy the RGB data. Set to 0/0 to overwrite the full texture</description>
-            </param>
-            <param name="interpolation" type="float" default="0">
-                <description>x/y size of the RGB data. Set to 0/0 to overwrite the full texture</description>
-            </param>
-        </params>
-        <categories>
-            <category name="texture" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.getTextureId" />
-            <function-ref name="sim.readTexture" />
-            <function-ref name="sim.createTexture" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setBoolProperty" lang="python,lua">
-        <description>
-            Sets a boolean property
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>target item</description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>property name</description>
-            </param>
-            <param name="propertyState" type="bool">
-                <description>property value</description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>an optional map. Set options.noError to true for silent errors</description>
-            </param>
-        </params>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label="properties" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setIntProperty" lang="python,lua">
-        <description>
-            Sets an int32 property
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>target item</description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>property name</description>
-            </param>
-            <param name="propertyState" type="int">
-                <description>property value</description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>an optional map. Set options.noError to true for silent errors</description>
-            </param>
-        </params>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label="properties" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setLongProperty" lang="python,lua">
-        <description>
-            Sets an int64 property
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>target item</description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>property name</description>
-            </param>
-            <param name="propertyState" type="int">
-                <description>property value</description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>an optional map. Set options.noError to true for silent errors</description>
-            </param>
-        </params>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label="properties" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setHandleProperty" lang="python,lua">
-        <description>
-            Sets a handle property
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>target item</description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>property name</description>
-            </param>
-            <param name="propertyState" type="handle">
-                <description>property value</description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>an optional map. Set options.noError to true for silent errors</description>
-            </param>
-        </params>
-        <categories>
-            <category name="other" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label="properties" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setFloatProperty" lang="python,lua">
-        <description>
-            Sets a float property (double)
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>target item</description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>property name</description>
-            </param>
-            <param name="propertyState" type="float">
-                <description>property value</description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>an optional map. Set options.noError to true for silent errors</description>
-            </param>
-        </params>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label="properties" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setStringProperty" lang="python,lua">
-        <description>
-            Sets a string property (text)
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>target item</description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>property name</description>
-            </param>
-            <param name="propertyState" type="string">
-                <description>property value</description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>an optional map. Set options.noError to true for silent errors</description>
-            </param>
-        </params>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label="properties" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setBufferProperty" lang="python,lua">
-        <description>
-            Sets a buffer property
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>target item</description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>property name</description>
-            </param>
-            <param name="propertyState" type="buffer">
-                <description>property value</description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>an optional map. Set options.noError to true for silent errors</description>
-            </param>
-        </params>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label="properties" />
-            <link href="../apiFunctions.htm#packing" label="packing/unpacking related functions" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setIntArray2Property" lang="python,lua">
-        <description>
-            Sets an int[2] property
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>target item</description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>property name</description>
-            </param>
-            <param name="propertyState" type="int[2]">
-                <description>property value</description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>an optional map. Set options.noError to true for silent errors</description>
-            </param>
-        </params>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label="properties" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setVector2Property" lang="python,lua">
-        <description>
-            Sets a vector2 property (double[2])
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>target item</description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>property name</description>
-            </param>
-            <param name="propertyState" type="float[2]">
-                <description>property value</description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>an optional map. Set options.noError to true for silent errors</description>
-            </param>
-        </params>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label="properties" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setVector3Property" lang="python,lua">
-        <description>
-            Sets a vector3 property (double[3])
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>target item</description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>property name</description>
-            </param>
-            <param name="propertyState" type="float[3]">
-                <description>property value</description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>an optional map. Set options.noError to true for silent errors</description>
-            </param>
-        </params>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label="properties" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setQuaternionProperty" lang="python,lua">
-        <description>
-            Sets a quaternion property (double[4]: qx, qy, qz, qw)
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>target item</description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>property name</description>
-            </param>
-            <param name="propertyState" type="quaternion">
-                <description>property value</description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>an optional map. Set options.noError to true for silent errors</description>
-            </param>
-        </params>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label="properties" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setPoseProperty" lang="python,lua">
-        <description>
-            Sets a pose property (double[7]: x, y, z, qx, qy, qz, qw)
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>target item</description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>property name</description>
-            </param>
-            <param name="propertyState" type="pose">
-                <description>property value</description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>an optional map. Set options.noError to true for silent errors</description>
-            </param>
-        </params>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label="properties" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setColorProperty" lang="python,lua">
-        <description>
-            Sets a color property (float[3])
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>target item</description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>property name</description>
-            </param>
-            <param name="propertyState" type="float[3]">
-                <description>property value</description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>an optional map. Set options.noError to true for silent errors</description>
-            </param>
-        </params>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label="properties" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setFloatArrayProperty" lang="python,lua">
-        <description>
-            Sets a float array property (double[])
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>target item</description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>property name</description>
-            </param>
-            <param name="propertyState" type="float[]">
-                <description>property value</description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>an optional map. Set options.noError to true for silent errors</description>
-            </param>
-        </params>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label="properties" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setIntArrayProperty" lang="python,lua">
-        <description>
-            Sets an int array property (int[])
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>target item</description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>property name</description>
-            </param>
-            <param name="propertyState" type="int[]">
-                <description>property value</description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>an optional map. Set options.noError to true for silent errors</description>
-            </param>
-        </params>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label="properties" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setStringArrayProperty" lang="python,lua">
-        <description>
-            Sets a string array property
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>target item</description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>property name</description>
-            </param>
-            <param name="propertyState" type="string[]">
-                <description>property value</description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>an optional map. Set options.noError to true for silent errors</description>
-            </param>
-        </params>
-        <categories>
-            <category name="other" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label="properties" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setHandleArrayProperty" lang="python,lua">
-        <description>
-            Sets a handle array property (int[])
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>target item</description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>property name</description>
-            </param>
-            <param name="propertyState" type="handle[]">
-                <description>property value</description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>an optional map. Set options.noError to true for silent errors</description>
-            </param>
-        </params>
-        <categories>
-            <category name="other" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label="properties" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.removeProperty" lang="python,lua">
-        <description>
-            Removes a removable property
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>target item</description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>property name</description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>an optional map. Set options.noError to true for silent errors</description>
-            </param>
-        </params>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label="properties" />
-        </see-also>
-    </function>
-
-
-
-    <function name="sim.setProperty" lang="python,lua">
-        <description>
-            Convenience function to set a property
-        </description>
-        <params>
-            <param name="target" type="handle">
-                <description>target item</description>
-            </param>
-            <param name="propertyName" type="string">
-                <description>property name</description>
-            </param>
-            <param name="propertyState" type="any">
-                <description>property value</description>
-            </param>
-            <param name="options" type="map" default="{}">
-                <description>an optional map. Set options.type to force a specific type; set options.noError to true for silent errors</description>
-            </param>
-        </params>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label="properties" />
-        </see-also>
-    </function>
-
-
-   
 </functions>

@@ -101,7 +101,7 @@ typedef char* (__cdecl *SIM_API_SYMBOL(ptrSimGetPropertyName))(long long int tar
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetPropertyInfo))(long long int target, const char* pName, SPropertyInfo* infos, SPropertyOptions* options);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetPropertyInfo))(long long int target, const char* pName, const SPropertyInfo* infos);
 
-typedef int (__cdecl *SIM_API_SYMBOL(ptrSimCallMethod))(long long int target, const char* name, SIMHANDLE inputStack, SIMHANDLE outputStack);
+typedef int (__cdecl *SIM_API_SYMBOL(ptrSimCallMethod))(long long int target, const char* name, SIMHANDLE inputStack, SIMHANDLE outputStack, SIMHANDLE detachedScript);
 typedef void (__cdecl *SIM_API_SYMBOL(ptrSimRegCallback))(int index, void* cb);
 typedef void (__cdecl *SIM_API_SYMBOL(ptrSimRunGui))(int options);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimInitialize))(const char* appDir,int options);
@@ -951,7 +951,7 @@ static inline int simRemoveProperty(long long int target, const char* pName) { r
 static inline char* simGetPropertyName(long long int target, int index, SPropertyOptions* options) { return SIM_API_SYMBOL(simGetPropertyName)(target,index,options); }
 static inline int simGetPropertyInfo(long long int target, const char* pName, SPropertyInfo* infos, SPropertyOptions* options) { return SIM_API_SYMBOL(simGetPropertyInfo)(target,pName,infos,options); }
 static inline int simSetPropertyInfo(long long int target, const char* pName, const SPropertyInfo* infos) { return SIM_API_SYMBOL(simSetPropertyInfo)(target,pName,infos); }
-static inline int simCallMethod(long long int target, const char* name, SIMHANDLE inputStack, SIMHANDLE outputStack) { return SIM_API_SYMBOL(simCallMethod)(target, name, inputStack, outputStack); }
+static inline int simCallMethod(long long int target, const char* name, SIMHANDLE inputStack, SIMHANDLE outputStack, SIMHANDLE detachedScript) { return SIM_API_SYMBOL(simCallMethod)(target, name, inputStack, outputStack, detachedScript); }
 static inline void simRegCallback(int index, void* cb) { return SIM_API_SYMBOL(simRegCallback)(index,cb); }
 static inline void simRunGui(int options) { return SIM_API_SYMBOL(simRunGui)(options); }
 static inline int simInitialize(const char* appDir,int options) { return SIM_API_SYMBOL(simInitialize)(appDir,options); }

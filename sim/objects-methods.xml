@@ -303,7 +303,7 @@
                 </param>
             </returns>
             <categories>
-                <category name="other" />
+                <category name="property" />
             </categories>
             <see-also>
                 <function-ref name="object:setHandleProperty" />
@@ -334,7 +334,7 @@
                 </param>
             </params>
             <categories>
-                <category name="other" />
+                <category name="property" />
             </categories>
             <see-also>
                 <function-ref name="object:getHandleProperty" />
@@ -346,7 +346,7 @@
 
         <method name="getFloatProperty" func="sim.callMethod" lang="python,lua">
             <description>
-                Fetches a float property (double)
+                Fetches a float property
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -383,7 +383,7 @@
 
         <method name="setFloatProperty" func="sim.callMethod" lang="python,lua">
             <description>
-                Sets a float property (double)
+                Sets a float property
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -620,7 +620,7 @@
 
         <method name="getVector2Property" func="sim.callMethod" lang="python,lua">
             <description>
-                Fetches a vector2 property (double[2])
+                Fetches a vector2 property
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -657,7 +657,7 @@
 
         <method name="setVector2Property" func="sim.callMethod" lang="python,lua">
             <description>
-                Sets a vector2 property (double[2])
+                Sets a vector2 property
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -688,7 +688,7 @@
 
         <method name="getVector3Property" func="sim.callMethod" lang="python,lua">
             <description>
-                Fetches a vector3 property (double[3])
+                Fetches a vector3 property
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -725,7 +725,7 @@
 
         <method name="setVector3Property" func="sim.callMethod" lang="python,lua">
             <description>
-                Sets a vector3 property (double[3])
+                Sets a vector3 property
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -756,7 +756,7 @@
 
         <method name="getQuaternionProperty" func="sim.callMethod" lang="python,lua">
             <description>
-                Fetches a quaternion property (double[4]: qx, qy, qz, qw)
+                Fetches a quaternion property ([qx, qy, qz, qw])
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -793,7 +793,7 @@
 
         <method name="setQuaternionProperty" func="sim.callMethod" lang="python,lua">
             <description>
-                Sets a quaternion property (double[4]: qx, qy, qz, qw)
+                Sets a quaternion property ([qx, qy, qz, qw])
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -824,7 +824,7 @@
 
         <method name="getPoseProperty" func="sim.callMethod" lang="python,lua">
             <description>
-                Fetches a pose property (double[7]: x, y, z, qx, qy, qz, qw)
+                Fetches a pose property ([x, y, z, qx, qy, qz, qw])
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -861,7 +861,7 @@
 
         <method name="setPoseProperty" func="sim.callMethod" lang="python,lua">
             <description>
-                Sets a pose property (double[7]: x, y, z, qx, qy, qz, qw)
+                Sets a pose property ([x, y, z, qx, qy, qz, qw])
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -892,7 +892,7 @@
 
         <method name="getColorProperty" func="sim.callMethod" lang="python,lua">
             <description>
-                Fetches a color property (float[3])
+                Fetches a color property
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -929,7 +929,7 @@
 
         <method name="setColorProperty" func="sim.callMethod" lang="python,lua">
             <description>
-                Sets a color property (float[3])
+                Sets a color property
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -960,7 +960,7 @@
 
         <method name="getFloatArrayProperty" func="sim.callMethod" lang="python,lua">
             <description>
-                Fetches a float array property (double[])
+                Fetches a float array property
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -997,7 +997,7 @@
 
         <method name="setFloatArrayProperty" func="sim.callMethod" lang="python,lua">
             <description>
-                Sets a float array property (double[])
+                Sets a float array property
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -1028,7 +1028,7 @@
 
         <method name="getIntArrayProperty" func="sim.callMethod" lang="python,lua">
             <description>
-                Fetches an int array property (int[])
+                Fetches an int array property
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -1065,7 +1065,7 @@
 
         <method name="setIntArrayProperty" func="sim.callMethod" lang="python,lua">
             <description>
-                Sets an int array property (int[])
+                Sets an int array property
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -1096,7 +1096,7 @@
 
         <method name="getStringArrayProperty" func="sim.callMethod" lang="python,lua">
             <description>
-                Fetches a string array property (int[])
+                Fetches a text array property
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -1121,7 +1121,7 @@
                 </param>
             </returns>
             <categories>
-                <category name="other" />
+                <category name="property" />
             </categories>
             <see-also>
                 <function-ref name="object:setStringArrayProperty" />
@@ -1133,7 +1133,7 @@
 
         <method name="setStringArrayProperty" func="sim.callMethod" lang="python,lua">
             <description>
-                Sets a string array property
+                Sets a text array property
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -1152,7 +1152,7 @@
                 </param>
             </params>
             <categories>
-                <category name="other" />
+                <category name="property" />
             </categories>
             <see-also>
                 <function-ref name="object:getStringArrayProperty" />
@@ -1164,7 +1164,7 @@
 
         <method name="getHandleArrayProperty" func="sim.callMethod" lang="python,lua">
             <description>
-                Fetches a handle array property (int[])
+                Fetches a handle array property
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -1189,7 +1189,7 @@
                 </param>
             </returns>
             <categories>
-                <category name="other" />
+                <category name="property" />
             </categories>
             <see-also>
                 <function-ref name="object:setHandleArrayProperty" />
@@ -1201,7 +1201,7 @@
 
         <method name="setHandleArrayProperty" func="sim.callMethod" lang="python,lua">
             <description>
-                Sets a handle array property (int[])
+                Sets a handle array property
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -1220,10 +1220,78 @@
                 </param>
             </params>
             <categories>
-                <category name="other" />
+                <category name="property" />
             </categories>
             <see-also>
                 <function-ref name="object:getHandleArrayProperty" />
+                <link href="../properties.htm" label="properties" />
+            </see-also>
+        </method>
+
+
+
+        <method name="getMethodProperty" func="sim.callMethod" lang="python,lua">
+            <description>
+                Fetches a method property (i.e. a Lua function)
+            </description>
+            <params>
+                <param name="propertyName" type="string">
+                    <description>
+                        property name
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>noError (bool): generates silent errors</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="propertyState" type="func">
+                    <description>
+                        property value
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="property" />
+            </categories>
+            <see-also>
+                <function-ref name="object:setMethodProperty" />
+                <link href="../properties.htm" label=" properties " />
+            </see-also>
+        </method>
+
+        
+
+        <method name="setMethodProperty" func="sim.callMethod" lang="python,lua">
+            <description>
+                Sets a method property (i.e. a Lua function)
+            </description>
+            <params>
+                <param name="propertyName" type="string">
+                    <description>property name</description>
+                </param>
+                <param name="propertyState" type="func">
+                    <description>property value (i.e. a Lua function). The function cannot use global variables, upvalues or closures, etc., i.e. it needs to be 'pure' in functional programming terms</description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>noError (bool): generates silent errors</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="property" />
+            </categories>
+            <see-also>
+                <function-ref name="object:getMethodProperty" />
                 <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
@@ -1435,8 +1503,43 @@
                 <category name="property" />
             </categories>
             <see-also>
+                <function-ref name="object:setPropertyInfo" />
                 <function-ref name="object:getPropertiesInfos" />
                 <function-ref name="object:getPropertyName" />
+                <link href="../properties.htm" label=" properties " />
+            </see-also>
+        </method>
+
+        
+
+        <method name="setPropertyInfo" func="sim.callMethod" lang="python,lua">
+            <description>
+                Sets information about a specific property
+            </description>
+            <params>
+                <param name="propertyName" type="string">
+                    <description>
+                        property name
+                    </description>
+                </param>
+                <param name="flags" type="int">
+                    <description>
+                        <a href="../apiConstants.htm#propertyFlags"> property flags </a>
+                    </description>
+                </param>
+                <param name="description" type="string">
+                    <description>
+                        property description
+                    </description>
+                </param>
+            </params>
+            <returns>
+            </returns>
+            <categories>
+                <category name="property" />
+            </categories>
+            <see-also>
+                <function-ref name="object:getPropertyInfo" />
                 <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
@@ -1514,9 +1617,14 @@
                         The object type
                     </description>
                 </param>
-                <param name="metaInfo" type="string">
+                <param name="options" type="map" default="{}">
                     <description>
-                        The object meta information
+                        optional map:
+                        <ul>
+                            <li>volatile (bool): the created object is not serialized (classes are never serialized)</li>
+                            <li>scriptPersistent (bool): the created object or class survives the script that created it</li>
+                            <li>classMetaInfo (string): when set, then a class is created instead of an object. Call setBoolProperty('_configDone_', true) to finalize the class definition</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -1532,13 +1640,13 @@
                 <category name="creation" />
             </categories>
             <see-also>
-                <function-ref name="app:releaseCustomObject" />
+                <function-ref name="app:removeCustomObject" />
             </see-also>
         </method>
 
         
 
-        <method name="releaseCustomObject" func="sim.callMethod" lang="python,lua">
+        <method name="removeCustomObject" func="sim.callMethod" lang="python,lua">
             <description>
                 Releases a custom object handle 
             </description>
@@ -1546,6 +1654,15 @@
                 <param name="handle" type="int">
                     <description>
                         The custom object handle
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>class (string): when set, handle is ignored and the specified class is removed</li>
+                            <li>noError (bool): generates a silent error if the object/class is not found</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -3490,35 +3607,6 @@
                 <category name="blocking" />
             </categories>
             <see-also>
-                <function-ref name="detachedScript:waitForSignal" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="waitForSignal" func="sim.callMethod" lang="python,lua">
-            <description>
-                Waits until a signal is set
-            </description>
-            <params>
-                <param name="signalName" type="string">
-                    <description>
-                        The signal name
-                    </description>
-                </param>
-                <param name="object" type="handle" default="sim.app">
-                    <description>
-                        The location of the signal
-                    </description>
-                </param>
-            </params>
-            <returns>
-            </returns>
-            <categories>
-                <category name="blocking" />
-            </categories>
-            <see-also>
-                <function-ref name="detachedScript:wait" />
             </see-also>
         </method>
 
