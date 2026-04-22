@@ -48,6 +48,7 @@ enum { // values are serialized
         sim_sceneobject_pointcloud = 16, // @item label="point cloud"
         sim_sceneobject_script = 17,
         sim_sceneobject_marker = 18,
+        sim_sceneobject_customsceneobject = 19, // @item label="custom scene object"
 };
 
 // General object types. Values are serialized
@@ -215,7 +216,8 @@ enum { // Object handles. Some values are serialized:
     sim_object_drawingend = 3999999, // deprecated
 
     sim_object_customstart = 7000000,
-    sim_object_customappstart = sim_object_customstart,
+    sim_object_customclassstart = sim_object_customstart,
+    sim_object_customappstart = sim_object_customclassstart + 1000,
     sim_object_customappend = 7999999,
     sim_object_customscenestart = sim_object_customappend + 1,
     sim_object_customsceneend = 9999999,
@@ -647,6 +649,7 @@ enum { // properties info
     sim_propertyinfo_silent             = 0x020, // no event generated for that property
     sim_propertyinfo_constant           = 0x040, // no event generated for that property
     sim_propertyinfo_largedata          = 0x100,
+    sim_propertyinfo_retmethodsonly     = 0x200, // internal use
 };
 
 // @enum name="propertyReturns" label="property return codes" type="int" prefix="sim_propertyret_" description=""
