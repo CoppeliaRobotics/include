@@ -200,6 +200,9 @@ enum { // Object handles. Some values are serialized:
     sim_object_sceneobjectstart = 0,
     sim_object_sceneobjectend = 999999,
 
+    sim_object_sceneobjectclassstart = 1000000,
+    sim_object_sceneobjectclassend = 1001000,
+
     sim_object_detachedscriptstart = 1010000,
     sim_object_detachedscriptend = 1019999,
 
