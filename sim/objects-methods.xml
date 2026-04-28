@@ -5,6 +5,17 @@
             <description>
                 Removes the console
             </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>noError (bool): errors are suppressed</li>
+                            <li>delayed (bool): removal is delayed</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
             <categories>
             </categories>
             <see-also>
@@ -1607,31 +1618,29 @@
     
     
     <object-class name="app" superclass="object">
-        <method name="createCustomObject" func="sim.callMethod" lang="python,lua">
+        <method name="createCustomObjectClass" func="sim.callMethod" lang="python,lua">
             <description>
-                Creates a custom object handle 
+                Creates a class or template of a custom object
             </description>
             <params>
-                <param name="type" type="string">
+                <param name="className" type="string">
                     <description>
-                        The object type
+                        the name of the class
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
                     <description>
                         optional map:
                         <ul>
-                            <li>volatile (bool): the created object is not serialized (classes are never serialized)</li>
-                            <li>scriptPersistent (bool): the created object or class survives the script that created it</li>
-                            <li>classMetaInfo (string): when set, then a class is created instead of an object. Call setBoolProperty('_configDone_', true) to finalize the class definition</li>
+                            <li>metaInfo (string): object meta information</li>
                         </ul>
                     </description>
                 </param>
             </params>
             <returns>
-                <param name="handle" type="int">
+                <param name="object" type="handle">
                     <description>
-                        The custom object handle
+                        The created custom object class
                     </description>
                 </param>
             </returns>
@@ -1640,40 +1649,8 @@
                 <category name="creation" />
             </categories>
             <see-also>
-                <function-ref name="app:removeCustomObject" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="removeCustomObject" func="sim.callMethod" lang="python,lua">
-            <description>
-                Releases a custom object handle 
-            </description>
-            <params>
-                <param name="handle" type="int">
-                    <description>
-                        The custom object handle
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        optional map:
-                        <ul>
-                            <li>class (string): when set, handle is ignored and the specified class is removed</li>
-                            <li>noError (bool): generates a silent error if the object/class is not found</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-            </returns>
-            <categories>
-                <category name="customization" />
-                <category name="creation" />
-            </categories>
-            <see-also>
-                <function-ref name="app:createCustomObject" />
+                <function-ref name="customObject:makeObject" />
+                <function-ref name="customObject:remove" />
             </see-also>
         </method>
 
@@ -2653,6 +2630,7 @@
                     <li><a href="#camera">camera</a></li>
                     <li><a href="#light">light</a></li>
                     <li><a href="#marker">marker</a></li>
+                    <li><a href="#customSceneObject">custom scene object</a></li>
                     <li><a href="#shape">shape</a></li>
                     <li><a href="#script">script</a></li>
                     <li><a href="#forceSensor">force sensor</a></li>
@@ -2748,6 +2726,15 @@
                                     <li>mesh.vertices (matrix): vertices for a mesh item type (sim.markertype_custom). Vertices are arranged in a 3 * n matrix</li> 
                                     <li>mesh.indices (table): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li> 
                                     <li>mesh.normals (matrix): normals for a mesh item type (sim.markertype_custom). Normals are arranged in a 3 * n matrix. One normal for each vertex</li>
+                                </ul>
+                            </li>
+                            <li id="customSceneObject"><a href="../customSceneObjects.htm">custom scene object</a> fields:
+                                <ul>
+                                    <li>objectType (string): "customSceneObject"</li>
+                                    <li>objectSize (float): size of the custom scene object</li>
+                                    <li>color.diffuse (color): diffuse color</li>
+                                    <li>color.specular (color): specular color</li>
+                                    <li>color.emission (color): emission color</li>
                                 </ul>
                             </li>
                             <li id="joint"><a href="../joints.htm">joint</a> fields:
@@ -2988,6 +2975,7 @@
                 <category name="console" />
                 <category name="dummy" />
                 <category name="marker" />
+                <category name="customSceneObject" />
                 <category name="joint" />
                 <category name="shape" />
                 <category name="script" />
@@ -3279,8 +3267,14 @@
                 <param name="objects" type="handle[]">
                     <description>objects to remove</description>
                 </param>
-                <param name="delayedRemoval" type="bool" default="false">
-                    <description>whether the removal of scene objects should be delayed (e.g. when a script destroys itself)</description>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>noError (bool): errors are suppressed</li>
+                            <li>delayed (bool): removal is delayed</li>
+                        </ul>
+                    </description>
                 </param>
             </params>
             <categories>
@@ -3837,6 +3831,17 @@
             <description>
                 Removes the detached script. Currently only add-ons can be removed
             </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>noError (bool): errors are suppressed</li>
+                            <li>delayed (bool): removal is delayed</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
             <categories>
                 <category name="detachedScript" />
             </categories>
@@ -4110,6 +4115,17 @@
             <description>
                 Removes the collection
             </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>noError (bool): errors are suppressed</li>
+                            <li>delayed (bool): removal is delayed</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
             <categories>
                 <category name="collection" />
             </categories>
@@ -4763,8 +4779,14 @@
                 <param name="objects" type="handle[]">
                     <description>objects to remove</description>
                 </param>
-                <param name="delayedRemoval" type="bool" default="false">
-                    <description>whether the removal of scene objects should be delayed (e.g. when a script destroys itself)</description>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>noError (bool): errors are suppressed</li>
+                            <li>delayed (bool): removal is delayed</li>
+                        </ul>
+                    </description>
                 </param>
             </params>
             <categories>
@@ -4908,6 +4930,7 @@
                     <li><a href="#camera">camera</a></li>
                     <li><a href="#light">light</a></li>
                     <li><a href="#marker">marker</a></li>
+                    <li><a href="#customSceneObject">custom scene object</a></li>
                     <li><a href="#shape">shape</a></li>
                     <li><a href="#script">script</a></li>
                     <li><a href="#forceSensor">force sensor</a></li>
@@ -5003,6 +5026,15 @@
                                     <li>mesh.vertices (matrix): vertices for a mesh item type (sim.markertype_custom). Vertices are arranged in a 3 * n matrix</li> 
                                     <li>mesh.indices (table): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li> 
                                     <li>mesh.normals (matrix): normals for a mesh item type (sim.markertype_custom). Normals are arranged in a 3 * n matrix. One normal for each vertex</li>
+                                </ul>
+                            </li>
+                            <li id="customSceneObject"><a href="../customSceneObjects.htm">custom scene object</a> fields:
+                                <ul>
+                                    <li>objectType (string): "customSceneObject"</li>
+                                    <li>objectSize (float): size of the custom scene object</li>
+                                    <li>color.diffuse (color): diffuse color</li>
+                                    <li>color.specular (color): specular color</li>
+                                    <li>color.emission (color): emission color</li>
                                 </ul>
                             </li>
                             <li id="joint"><a href="../joints.htm">joint</a> fields:
@@ -5243,6 +5275,7 @@
                 <category name="console" />
                 <category name="dummy" />
                 <category name="marker" />
+                <category name="customSceneObject" />
                 <category name="joint" />
                 <category name="shape" />
                 <category name="script" />
@@ -5267,7 +5300,122 @@
     </object-class>
     
 
+    <object-class name="customObject" superclass="object">
+        <method name="makeObject" func="sim.callMethod" lang="python,lua">
+            <description>
+                Instanciates a custom object from a class or template
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>appScope (bool): whether the custom object lives in sim.app, or in sim.scene</li>
+                            <li>scriptPersistent (bool): whether the object survives the script that created it</li>
+                            <li>volatile (bool): whether the object is serialized</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="object" type="handle">
+                    <description>
+                        The created custom object
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="customization" />
+            </categories>
+            <see-also>
+                <function-ref name="app:createCustomObjectClass" />
+                <function-ref name="customObject:remove" />
+                <function-ref name="sceneObject:makeObject" />
+            </see-also>
+        </method>
+
+
+
+        <method name="remove" func="sim.callMethod" lang="python,lua">
+            <info>similar method present in several classes</info>
+            <description>
+                Removes the custom scene object
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>noError (bool): errors are suppressed</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="app:removeObjects" />
+                <function-ref name="scene:removeObjects" />
+            </see-also>
+        </method>
+    </object-class>
+
+
+
     <object-class name="sceneObject" superclass="object">
+        <method name="makeObject" func="sim.callMethod" lang="python,lua">
+            <description>
+                Instanciates a customized scene object from a class or template
+            </description>
+            <params>
+            </params>
+            <returns>
+                <param name="object" type="handle">
+                    <description>
+                        The created customized scene object
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="customization" />
+            </categories>
+            <see-also>
+                <function-ref name="sceneObject:makeClass" />
+                <function-ref name="customObject:makeObject" />
+            </see-also>
+        </method>
+
+
+
+        <method name="makeClass" func="sim.callMethod" lang="python,lua">
+            <description>
+                Creates a class or template from this object
+            </description>
+            <params>
+                <param name="className" type="string">
+                    <description>
+                        The name of the class 
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="class" type="handle">
+                    <description>
+                        The created class
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="customization" />
+            </categories>
+            <see-also>
+                <function-ref name="sceneObjectClass:remove" />
+                <function-ref name="sceneObjectClass:makeObject" />
+            </see-also>
+        </method>
+
+        
+
         <method name="changeColor" func="sim.callMethod" lang="python,lua">
             <info>same method present in collection and sceneObject</info>
             <description>
@@ -5391,17 +5539,22 @@
         
 
         <method name="remove" func="sim.callMethod" lang="python,lua">
-            <info>same method present in several classes</info>
+            <info>similar method present in several classes</info>
             <description>
                 Removes the object from the scene
             </description>
             <params>
-                <param name="delayedRemoval" type="bool" default="false">
-                    <description>whether the removal is delayed (e.g. when a script destroys itself)</description>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>noError (bool): errors are suppressed</li>
+                            <li>delayed (bool): removal is delayed</li>
+                        </ul>
+                    </description>
                 </param>
             </params>
             <categories>
-                <category name="sceneObject" />
             </categories>
             <see-also>
                 <function-ref name="scene:removeObjects" />
@@ -5415,9 +5568,13 @@
                 Removes the model from the scene
             </description>
             <params>
-                <param name="delayedRemoval" type="bool" default="false">
+                <param name="options" type="map" default="{}">
                     <description>
-                        whether the removal should be delayed (e.g. when a script destroys itself)
+                        optional map:
+                        <ul>
+                            <li>noError (bool): errors are suppressed</li>
+                            <li>delayed (bool): removal is delayed</li>
+                        </ul>
                     </description>
                 </param>
             </params>
