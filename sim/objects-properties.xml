@@ -30,13 +30,16 @@
     <property name="consoleVerbosityStr" type="string" readable="false" silent="true" label="Console verbosity string">
       <description>Console verbosity string, only for client app</description>
     </property>
-    <property name="createCustomObject" type="method" readable="false" writable="false" />
+    <property name="createCustomObjectClass" type="method" readable="false" writable="false" />
     <property name="createObject" type="method" readable="false" writable="false" />
-    <property name="customClasses" type="stringarray" writable="false" label="Custom classes">
+    <property name="customClasses" type="handlearray" handle-type="customObject" writable="false" label="Custom classes">
       <description>List of app custom classes</description>
     </property>
     <property name="customObjects" type="handlearray" handle-type="customObject" writable="false" label="Custom objects">
       <description>List of app custom objects</description>
+    </property>
+    <property name="customSceneObjectClasses" type="handlearray" handle-type="sceneObject" writable="false" label="Custom scene object classes">
+      <description>List of app custom scene object classes</description>
     </property>
     <property name="defaultPython" type="string" writable="false" constant="true" label="Default Python">
       <description>Default Python interpreter</description>
@@ -141,7 +144,6 @@
     <property name="randomFloat" type="float" writable="false" silent="true" label="Random number" />
     <property name="randomQuaternion" type="quaternion" writable="false" silent="true" label="Random quaternion" />
     <property name="randomString" type="string" writable="false" silent="true" label="Random string" />
-    <property name="removeCustomObject" type="method" readable="false" writable="false" />
     <property name="removeObjects" type="method" readable="false" writable="false" />
     <property name="resourcePath" type="string" writable="false" constant="true" label="Resource path" />
     <property name="sandbox" type="handle" handle-type="detachedScript" writable="false" constant="true" label="Sandbox">
@@ -798,11 +800,7 @@
     <property name="collections" type="handlearray" handle-type="collection" writable="false" label="Collections">
       <description>Handles of all collections</description>
     </property>
-    <property name="createCustomObject" type="method" readable="false" writable="false" />
     <property name="createObject" type="method" readable="false" writable="false" />
-    <property name="customClasses" type="stringarray" writable="false" label="Custom classes">
-      <description>List of scene custom classes</description>
-    </property>
     <property name="customObjects" type="handlearray" handle-type="customObject" writable="false" label="Custom objects">
       <description>List of scene custom objects</description>
     </property>
@@ -943,7 +941,6 @@
       <description>Real-time multiplication factor</description>
     </property>
     <property name="realtimeSimulation" type="bool" label="Real-time simulation" />
-    <property name="removeCustomObject" type="method" readable="false" writable="false" />
     <property name="removeNewObjectsAtEnd" type="bool" label="Remove new objects">
       <description>Remove new scene objects at simulation end</description>
     </property>
@@ -1073,6 +1070,8 @@
       <description>View fitting is ignored for this scene object</description>
     </property>
     <property name="layer" type="int" label="Visibility layer" />
+    <property name="makeClass" type="method" readable="false" writable="false" />
+    <property name="makeObject" type="method" readable="false" writable="false" />
     <property name="measurable" type="bool" label="Measurable" />
     <property name="model.bbPos" type="vector3" writable="false" silent="true" label="Model bounding boxe position" />
     <property name="model.bbSize" type="vector3" writable="false" silent="true" label="Model bounding boxe size" />
