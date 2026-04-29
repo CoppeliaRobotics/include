@@ -1,3 +1,8 @@
+local function log(...)
+    local lfsx = require 'lfsx'
+    print('[' .. lfsx.basename(sim.self.addOnPath) .. '] ' .. string.format(...))
+end
+
 function sysCall_init()
     sim = require 'sim-2'
     json = require 'dkjson'
@@ -10,6 +15,13 @@ function sysCall_init()
     typemap = table.invert(table.filter(sim, {matchKeyPrefix = 'propertytype_', stripKeyPrefix = true}))
 
     addOnDir = lfsx.dirname(sim.self.addOnPath)
+    log('addOnDir = %s', addOnDir)
+
+    local shapePath = lfsx.pathjoin(addOnDir, 'shape.simmodel.xml')
+    log('shapePath = %s', shapePath)
+    local shape = sim.scene:loadModel(shapePath)
+    log('shape = %s', shape)
+    log('shape.meshes = %s', shape.meshes)
 
     allHandles = {
         sim.app,

@@ -79,8 +79,6 @@
     <property name="legacyMachineId" type="string" writable="false" constant="true" label="Legacy machine ID" />
     <property name="loadImage" type="method" readable="false" writable="false" />
     <property name="loadImageFromBuffer" type="method" readable="false" writable="false" />
-    <property name="loadModel" type="method" readable="false" writable="false" />
-    <property name="loadModelFromBuffer" type="method" readable="false" writable="false" />
     <property name="loadModelThumbnail" type="method" readable="false" writable="false" />
     <property name="loadModelThumbnailFromBuffer" type="method" readable="false" writable="false" />
     <property name="loadScene" type="method" readable="false" writable="false" />
@@ -154,8 +152,6 @@
     </property>
     <property name="saveImage" type="method" readable="false" writable="false" />
     <property name="saveImageToBuffer" type="method" readable="false" writable="false" />
-    <property name="saveScene" type="method" readable="false" writable="false" />
-    <property name="saveSceneToBuffer" type="method" readable="false" writable="false" />
     <property name="scenePath" type="string" silent="true" label="Scene path" />
     <property name="sceneTempPath" type="string" writable="false" constant="true" label="Scene temporary path" />
     <property name="scheduleExecution" type="method" readable="false" writable="false" />
@@ -243,6 +239,9 @@
     <property name="code" type="string" label="Code">
       <description>Script content</description>
     </property>
+    <property name="disabled" type="bool" label="Disabled">
+      <description>Distabled state</description>
+    </property>
     <property name="execPriority" type="int" label="Execution priority" />
     <property name="executeString" type="method" readable="false" writable="false" />
     <property name="executionDepth" type="int" writable="false" silent="true" label="Execution depth" />
@@ -261,20 +260,20 @@
     <property name="restartOnError" type="bool" label="Restart">
       <description>Restart on error</description>
     </property>
-    <property name="scriptDisabled" type="bool" label="Enabled">
-      <description>Script is enabled</description>
-    </property>
+    <property name="scriptDisabled" type="bool" deprecated="true" />
     <property name="scriptName" type="string" writable="false" silent="true" label="Name">
       <description>Script name</description>
     </property>
-    <property name="scriptState" type="int" writable="false" label="State">
+    <property name="scriptState" type="int" deprecated="true" writable="false" />
+    <property name="scriptType" type="int" deprecated="true" writable="false" constant="true" />
+    <property name="setStepping" type="method" readable="false" writable="false" />
+    <property name="state" type="int" writable="false" label="State">
       <description>Script state</description>
     </property>
-    <property name="scriptType" type="int" writable="false" constant="true" label="Type">
+    <property name="step" type="method" readable="false" writable="false" />
+    <property name="type" type="int" writable="false" constant="true" label="Type">
       <description>Script type</description>
     </property>
-    <property name="setStepping" type="method" readable="false" writable="false" />
-    <property name="step" type="method" readable="false" writable="false" />
     <property name="wait" type="method" readable="false" writable="false" />
     <property name="yield" type="method" readable="false" writable="false" />
   </object-class>
@@ -754,36 +753,46 @@
       <description>Sensor type</description>
     </property>
     <property name="showVolume" type="bool" label="Show volume" />
-    <property name="volume_angle" type="floatarray" label="Angles">
+    <property name="volume.angle" type="floatarray" label="Angles">
       <description>Angle and inside gap for disk- and cone-type volumes</description>
     </property>
-    <property name="volume_closeEdges" type="floatarray" writable="false" label="Volume close edges">
+    <property name="volume.closeEdges" type="floatarray" writable="false" label="Volume close edges">
       <description>List of segments (defined by pairs of end-point coordinates) visualizing the close threshold of the volume</description>
     </property>
-    <property name="volume_edges" type="floatarray" writable="false" label="Volume edges">
+    <property name="volume.edges" type="floatarray" writable="false" label="Volume edges">
       <description>List of segments (defined by pairs of end-point coordinates) visualizing the volume</description>
     </property>
-    <property name="volume_faces" type="intarray" label="Faces">
+    <property name="volume.faces" type="intarray" label="Faces">
       <description>Number of faces (near and far) for cylinder-, disk- and pyramid-type volumes</description>
     </property>
-    <property name="volume_offset" type="float" label="Offset">
+    <property name="volume.offset" type="float" label="Offset">
       <description>Offset of detection volume</description>
     </property>
-    <property name="volume_radius" type="floatarray" label="Radius">
+    <property name="volume.radius" type="floatarray" label="Radius">
       <description>Radius for cylinder-, disk- and cone-type volumes</description>
     </property>
-    <property name="volume_range" type="float" label="Range">
+    <property name="volume.range" type="float" label="Range">
       <description>Range/depth of detection volume</description>
     </property>
-    <property name="volume_subdivisions" type="intarray" label="Subdivisions">
+    <property name="volume.subdivisions" type="intarray" label="Subdivisions">
       <description>Number of subdivisions (near and far) for cone-type volumes</description>
     </property>
-    <property name="volume_xSize" type="floatarray" label="X-sizes">
+    <property name="volume.xSize" type="floatarray" label="X-sizes">
       <description>X-size (near and far) for pyramid-type volumes</description>
     </property>
-    <property name="volume_ySize" type="floatarray" label="Y-sizes">
+    <property name="volume.ySize" type="floatarray" label="Y-sizes">
       <description>Y-size (near and far) for pyramid-type volumes</description>
     </property>
+    <property name="volume_angle" type="floatarray" deprecated="true" />
+    <property name="volume_closeEdges" type="floatarray" deprecated="true" writable="false" />
+    <property name="volume_edges" type="floatarray" deprecated="true" writable="false" />
+    <property name="volume_faces" type="intarray" deprecated="true" />
+    <property name="volume_offset" type="float" deprecated="true" />
+    <property name="volume_radius" type="floatarray" deprecated="true" />
+    <property name="volume_range" type="float" deprecated="true" />
+    <property name="volume_subdivisions" type="intarray" deprecated="true" />
+    <property name="volume_xSize" type="floatarray" deprecated="true" />
+    <property name="volume_ySize" type="floatarray" deprecated="true" />
   </object-class>
   <object-class name="scene" superclass="object">
     <property name="acknowledgment" type="string" label="Acknowledgment">
@@ -821,7 +830,6 @@
     <property name="finalSaveRequest" type="bool" label="Final save">
       <description>Lock scene and models after next scene save operation</description>
     </property>
-    <property name="getAncestors" type="method" readable="false" writable="false" />
     <property name="getDescendants" type="method" readable="false" writable="false" />
     <property name="getObject" type="method" readable="false" writable="false" />
     <property name="getObjectFromUid" type="method" readable="false" writable="false" />
@@ -835,10 +843,7 @@
     </property>
     <property name="loadModel" type="method" readable="false" writable="false" />
     <property name="loadModelFromBuffer" type="method" readable="false" writable="false" />
-    <property name="loadModelThumbnail" type="method" readable="false" writable="false" />
-    <property name="loadModelThumbnailFromBuffer" type="method" readable="false" writable="false" />
-    <property name="loadScene" type="method" readable="false" writable="false" />
-    <property name="loadSceneFromBuffer" type="method" readable="false" writable="false" />
+    <property name="locked" type="bool" writable="false" label="Scene is locked" />
     <property name="mainScript" type="handle" handle-type="detachedScript" writable="false" constant="true" label="Main script">
       <description>Handle of the main script</description>
     </property>
@@ -932,6 +937,7 @@
     <property name="orphans" type="handlearray" handle-type="sceneObject" writable="false" label="Orphan objects">
       <description>Handles of all orphan scene objects</description>
     </property>
+    <property name="path" type="string" label="Scene path" />
     <property name="pauseSimulation" type="method" readable="false" writable="false" />
     <property name="pauseSimulationAtError" type="bool" label="Pause simulation on script error" />
     <property name="pauseSimulationAtTime" type="bool" label="Pause simulation at time">
@@ -941,23 +947,20 @@
       <description>Real-time multiplication factor</description>
     </property>
     <property name="realtimeSimulation" type="bool" label="Real-time simulation" />
+    <property name="remove" type="method" readable="false" writable="false" />
     <property name="removeNewObjectsAtEnd" type="bool" label="Remove new objects">
       <description>Remove new scene objects at simulation end</description>
     </property>
     <property name="removeObjects" type="method" readable="false" writable="false" />
+    <property name="save" type="method" readable="false" writable="false" />
     <property name="saveCalculationStructs" type="bool" label="Save calculation structures">
       <description>Save operation also saves existing calculation structures</description>
     </property>
-    <property name="saveScene" type="method" readable="false" writable="false" />
-    <property name="saveSceneToBuffer" type="method" readable="false" writable="false" />
-    <property name="sceneIsLocked" type="bool" writable="false" label="Scene is locked" />
-    <property name="scenePath" type="string" label="Scene path" />
-    <property name="sceneUid" type="int" writable="false" constant="true" label="Scene UID">
-      <description>Scene unique identifier</description>
-    </property>
-    <property name="sceneUidString" type="string" writable="false" constant="true" label="Scene UID string">
-      <description>Scene unique identifier string</description>
-    </property>
+    <property name="saveToBuffer" type="method" readable="false" writable="false" />
+    <property name="sceneIsLocked" type="bool" deprecated="true" writable="false" />
+    <property name="scenePath" type="string" deprecated="true" />
+    <property name="sceneUid" type="int" deprecated="true" writable="false" constant="true" />
+    <property name="sceneUidString" type="string" deprecated="true" writable="false" constant="true" />
     <property name="selection" type="handlearray" handle-type="sceneObject" label="Selected objects">
       <description>Handles of selected scene objects</description>
     </property>
@@ -979,6 +982,12 @@
     </property>
     <property name="timeToPause" type="float" label="Simulation pause time">
       <description>Time at which simulation should pause</description>
+    </property>
+    <property name="uid" type="int" writable="false" constant="true" label="Scene UID">
+      <description>Scene unique identifier</description>
+    </property>
+    <property name="uidString" type="string" writable="false" constant="true" label="Scene UID string">
+      <description>Scene unique identifier string</description>
     </property>
     <property name="visibilityLayers" type="int" label="Visibility layers">
       <description>Currently active visibility layers</description>
