@@ -55,11 +55,15 @@ enum { // values are serialized
 enum {
     sim_objecttype_sceneobject = 109,
     sim_objecttype_collection = 115,
-    sim_objecttype_script = 117,
+    sim_objecttype_detachedscript = 117,
+    sim_objecttype_script = sim_objecttype_detachedscript,
     sim_objecttype_texture = 120,
     sim_objecttype_mesh = 122,
     sim_objecttype_interfacestack = 123,
     sim_objecttype_drawingobject = 124,
+    sim_objecttype_customobject = 125,
+    sim_objecttype_app = 126,
+    sim_objecttype_scene = 127,
 };
 
 

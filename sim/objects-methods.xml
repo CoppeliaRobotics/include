@@ -3000,54 +3000,6 @@
         
         
 
-        <method name="saveScene" func="sim.callMethod" lang="python,lua">
-            <info>same method present in both app and scene</info>
-            <description>
-                Saves a scene to file. Any existing file with same name will be overwritten
-            </description>
-            <params>
-                <param name="filename" type="string">
-                    <description>
-                        scene filename. The filename extension is required
-                    </description>
-                </param>
-            </params>
-            <categories>
-            <category name="file" />
-                </categories>
-            <see-also>
-                <function-ref name="app:loadScene" />
-                <function-ref name="app:saveSceneToBuffer" />
-                <function-ref name="app:closeScene" />
-                <function-ref name="sceneObject:saveModel" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="saveSceneToBuffer" func="sim.callMethod" lang="python,lua">
-            <info>same method present in both app and scene</info>
-            <description>
-                Serializes a scene to a buffer
-            </description>
-            <returns>
-                <param name="serializedScene" type="buffer">
-                    <description>
-                        a buffer representing the serialized scene
-                    </description>
-                </param>
-            </returns>
-            <categories>
-            <category name="file" />
-                </categories>
-            <see-also>
-                <function-ref name="app:saveScene" />
-                <function-ref name="app:loadSceneFromBuffer" />
-            </see-also>
-        </method>
-
-    
-
         <method name="loadScene" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
             <description>
@@ -3070,9 +3022,9 @@
                 </categories>
             <see-also>
                 <function-ref name="app:loadSceneFromBuffer" />
-                <function-ref name="app:saveScene" />
-                <function-ref name="app:loadModel" />
-                <function-ref name="app:closeScene" />
+                <function-ref name="scene:save" />
+                <function-ref name="scene:loadModel" />
+                <function-ref name="scene:remove" />
             </see-also>
         </method>
 
@@ -3105,39 +3057,6 @@
 
         
 
-        <method name="loadModel" func="sim.callMethod" lang="python,lua">
-            <info>same method present in both app and scene</info>
-            <description>
-                Loads a previously saved model, and selects it
-            </description>
-            <params>
-                <param name="filename" type="string">
-                    <description>
-                        model filename. The filename extension is required (ttm, or simmodel.xml)
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="object" type="handle">
-                    <description>
-                        the model base scene object
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="file" />
-                <category name="model" />
-            </categories>
-            <see-also>
-                <function-ref name="app:loadModelFromBuffer" />
-                <function-ref name="app:loadModelThumbnail" />
-                <function-ref name="app:loadModelThumbnailFromBuffer" />
-                <function-ref name="app:loadScene" />
-            </see-also>
-        </method>
-
-        
-
         <method name="loadModelThumbnail" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
             <description>
@@ -3162,7 +3081,7 @@
                 <category name="model" />
             </categories>
             <see-also>
-                <function-ref name="app:loadModel" />
+                <function-ref name="scene:loadModel" />
             </see-also>
         </method>
 
@@ -3192,37 +3111,7 @@
                 <category name="model" />
             </categories>
             <see-also>
-                <function-ref name="app:loadModel" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="loadModelFromBuffer" func="sim.callMethod" lang="python,lua">
-            <info>same method present in both app and scene</info>
-            <description>
-                Loads a model from buffer, and selects it
-            </description>
-            <params>
-                <param name="buffer" type="buffer">
-                    <description>
-                        a buffer containing the model
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="object" type="handle">
-                    <description>
-                        the model base scene object
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="file" />
-                <category name="model" />
-            </categories>
-            <see-also>
-                <function-ref name="app:loadModel" />
+                <function-ref name="scene:loadModel" />
             </see-also>
         </method>
 
@@ -4314,6 +4203,39 @@
     
     
     <object-class name="scene" superclass="object">
+        <method name="getDescendants" func="sim.callMethod" lang="python,lua">
+            <description>
+                Retrieves scene objects up to a specific depth
+            </description>
+            <params>
+                <param name="objectTypes" type="string[]" default="{'sceneObject'}">
+                    <description>
+                        the desired scene object types
+                    </description>
+                </param>
+                <param name="depth" type="int" default="9999">
+                    <description>
+                        the retrieval depth
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="descendants" type="handle[]">
+                    <description>
+                        the retrieved descendant scene objects, ordered in a depth-first manner
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="sceneObject:getAncestors" />
+                <function-ref name="sceneObject:getDescendants" />
+            </see-also>
+        </method>
+
+        
+
         <method name="groupShapes" func="sim.callMethod" lang="python,lua">
             <description>
                 Groups several shapes, and returns a compound shape 
@@ -4513,10 +4435,10 @@
 
         
 
-        <method name="saveScene" func="sim.callMethod" lang="python,lua">
-            <info>same method present in both app and scene</info>
+        <method name="save" func="sim.callMethod" lang="python,lua">
+            <info>similar method present in both app and scene</info>
             <description>
-                Saves a scene to file. Any existing file with same name will be overwritten
+                Saves the scene to file. Any existing file with same name will be overwritten
             </description>
             <params>
                 <param name="filename" type="string">
@@ -4526,22 +4448,22 @@
                 </param>
             </params>
             <categories>
-            <category name="file" />
-                </categories>
+                <category name="file" />
+            </categories>
             <see-also>
-                <function-ref name="scene:loadScene" />
-                <function-ref name="scene:saveSceneToBuffer" />
-                <function-ref name="scene:closeScene" />
+                <function-ref name="app:loadScene" />
+                <function-ref name="scene:saveToBuffer" />
+                <function-ref name="scene:remove" />
                 <function-ref name="sceneObject:saveModel" />
             </see-also>
         </method>
 
         
 
-        <method name="saveSceneToBuffer" func="sim.callMethod" lang="python,lua">
-            <info>same method present in both app and scene</info>
+        <method name="saveToBuffer" func="sim.callMethod" lang="python,lua">
+            <info>similar method present in both app and scene</info>
             <description>
-                Serializes a scene to a buffer
+                Serializes the scene to a buffer
             </description>
             <returns>
                 <param name="serializedScene" type="buffer">
@@ -4551,68 +4473,27 @@
                 </param>
             </returns>
             <categories>
-            <category name="file" />
-                </categories>
+                <category name="file" />
+            </categories>
             <see-also>
-                <function-ref name="scene:saveScene" />
-                <function-ref name="scene:loadSceneFromBuffer" />
+                <function-ref name="scene:save" />
+                <function-ref name="app:loadSceneFromBuffer" />
             </see-also>
         </method>
 
     
 
-        <method name="loadScene" func="sim.callMethod" lang="python,lua">
-            <info>same method present in both app and scene</info>
+        <method name="remove" func="sim.callMethod" lang="python,lua">
+            <info>similar method present in many classes</info>
             <description>
-                Loads a scene from file
+                Closes the scene, and switches to another open scene. If there is no other open scene,
+                a new scene is created
             </description>
-            <params>
-                <param name="filename" type="string">
-                    <description>
-                        scene filename, including extension. An empty string loads the default scene
-                    </description>
-                </param>
-                <param name="keepScene" type="bool" default="false">
-                    <description>
-                        whether the current scene should be kept or discarded
-                    </description>
-                </param>
-            </params>
             <categories>
-            <category name="file" />
-                </categories>
+                <category name="file" />
+            </categories>
             <see-also>
-                <function-ref name="scene:loadSceneFromBuffer" />
-                <function-ref name="scene:saveScene" />
-                <function-ref name="scene:loadModel" />
-                <function-ref name="scene:closeScene" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="loadSceneFromBuffer" func="sim.callMethod" lang="python,lua">
-            <info>same method present in both app and scene</info>
-            <description>
-                Loads a scene from buffer
-            </description>
-            <params>
-                <param name="serializedScene" type="buffer">
-                    <description>
-                        the buffer of the serialized scene
-                    </description>
-                </param>
-                 <param name="keepScene" type="bool" default="false">
-                    <description>
-                        whether the current scene should be kept or discarded
-                    </description>
-                </param>
-           </params>
-            <categories>
-            <category name="file" />
-                </categories>
-            <see-also>
-                <function-ref name="scene:loadScene" />
+                <function-ref name="app:loadScene" />
             </see-also>
         </method>
 
@@ -4621,7 +4502,7 @@
         <method name="loadModel" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
             <description>
-                Loads a previously saved model, and selects it
+                Loads a previously saved model
             </description>
             <params>
                 <param name="filename" type="string">
@@ -4643,69 +4524,9 @@
             </categories>
             <see-also>
                 <function-ref name="scene:loadModelFromBuffer" />
-                <function-ref name="scene:loadModelThumbnail" />
-                <function-ref name="scene:loadModelThumbnailFromBuffer" />
-                <function-ref name="scene:loadScene" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="loadModelThumbnail" func="sim.callMethod" lang="python,lua">
-            <info>same method present in both app and scene</info>
-            <description>
-                Loads a model thumbnail
-            </description>
-            <params>
-                <param name="filename" type="string">
-                    <description>
-                        model filename. The filename extension is required (ttm, or simmodel.xml)
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="rgbaImage" type="buffer">
-                    <description>
-                        the model thumbnail image (128 x 128 x 4, rgba)
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="file" />
-                <category name="model" />
-            </categories>
-            <see-also>
-                <function-ref name="scene:loadModel" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="loadModelThumbnailFromBuffer" func="sim.callMethod" lang="python,lua">
-            <info>same method present in both app and scene</info>
-            <description>
-                Loads a model thumbnail from a buffer
-            </description>
-            <params>
-                <param name="buffer" type="buffer">
-                    <description>
-                        buffer containing the model
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="rgbaImage" type="buffer">
-                    <description>
-                        the model thumbnail image (128 x 128 x 4, rgba)
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="file" />
-                <category name="model" />
-            </categories>
-            <see-also>
-                <function-ref name="scene:loadModel" />
+                <function-ref name="app:loadModelThumbnail" />
+                <function-ref name="app:loadModelThumbnailFromBuffer" />
+                <function-ref name="app:loadScene" />
             </see-also>
         </method>
 
@@ -4714,7 +4535,7 @@
         <method name="loadModelFromBuffer" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
             <description>
-                Loads a model from buffer, and selects it
+                Loads a model from buffer
             </description>
             <params>
                 <param name="buffer" type="buffer">
@@ -5591,8 +5412,7 @@
 
         <method name="saveModel" func="sim.callMethod" lang="python,lua">
             <description>
-                Saves a model (an object marked as "Object is model base" and all other
-                objects in its hierarchy tree). Any existing file with same name will be overwritten
+                Saves this model. Any existing file with same name will be overwritten
             </description>
             <params>
                 <param name="filename" type="string">
@@ -5608,7 +5428,7 @@
             <see-also>
                 <function-ref name="scene:loadModel" />
                 <function-ref name="sceneObject:saveModelToBuffer" />
-                <function-ref name="scene:saveScene" />
+                <function-ref name="scene:save" />
             </see-also>
         </method>
 
@@ -5616,7 +5436,7 @@
 
         <method name="saveModelToBuffer" func="sim.callMethod" lang="python,lua">
             <description>
-                Serializes a model to a buffer
+                Serializes this model to a buffer
             </description>
             <returns>
                 <param name="modelData" type="buffer">
@@ -5663,7 +5483,7 @@
             </categories>
             <see-also>
                 <function-ref name="sceneObject:getAncestors" />
-                <function-ref name="sceneObject:getDescendants" />
+                <function-ref name="scene:getDescendants" />
             </see-also>
         </method>
 
@@ -5703,7 +5523,7 @@
 
         <method name="visitTree" func="sim.callMethod" lang="python,lua">
             <description>
-                Executes a function on all objects of a scene object tree, in a depth-first manner
+                Executes a function on all objects of this object tree, in a depth-first manner
             </description>
             <params>
                 <param name="visitorFunction" type="func">
@@ -7454,32 +7274,6 @@
             </categories>
         <see-also>
             <link href="../apiFunctions.htm#octree" label=" OC tree related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="closeScene" func="sim.closeScene" lang="python,lua">
-        <description>
-            Closes current scene, and switches to another open scene. If there is no other open scene,
-            a new scene is then created. Can only be called from an 
-            <a href="../addOns.htm"> add-on </a>
-            ,
-            or from the sanbox script, when called from within CoppeliaSim
-        </description>
-        <returns>
-            <param name="result" type="int">
-                <description>
-                    the current scene index.
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="file" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.loadScene" />
-            <function-ref name="sim.saveScene" />
         </see-also>
     </method>
 
