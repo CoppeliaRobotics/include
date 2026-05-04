@@ -4387,54 +4387,6 @@
 
         
 
-        <method name="startSimulation" func="sim.callMethod" lang="python,lua">
-            <description>
-                Requests a start of a simulation (or a resume of a paused simulation). Operation executes asynchronously
-            </description>
-            <categories>
-                <category name="simulation" />
-            </categories>
-            <see-also>
-                <function-ref name="sim.scene:pauseSimulation" />
-                <function-ref name="sim.scene:stopSimulation" />
-                <link href="../simulation.htm" label=" simulation state diagram " />
-            </see-also>
-        </method>
-
-        
-
-        <method name="stopSimulation" func="sim.callMethod" lang="python,lua">
-            <description>
-                Requests a simulation stop. Operation executes asynchronously
-            </description>
-            <categories>
-                <category name="simulation" />
-            </categories>
-            <see-also>
-                <function-ref name="sim.scene:startSimulation" />
-                <function-ref name="sim.scene:pauseSimulation" />
-                <link href="../simulation.htm" label=" simulation state diagram " />
-            </see-also>
-        </method>
-
-
-
-        <method name="pauseSimulation" func="sim.callMethod" lang="python,lua">
-            <description>
-                Requests a simulation pause. Operation executes asynchronously
-            </description>
-            <categories>
-                <category name="simulation" />
-            </categories>
-            <see-also>
-                <function-ref name="sim.scene:startSimulation" />
-                <function-ref name="sim.scene:stopSimulation" />
-                <link href="../simulation.htm" label=" simulation state diagram " />
-            </see-also>
-        </method>
-
-        
-
         <method name="save" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both app and scene</info>
             <description>
@@ -5121,6 +5073,56 @@
     </object-class>
     
 
+    <object-class name="simulation" superclass="scene">
+        <method name="start" func="sim.callMethod" lang="python,lua">
+            <description>
+                Requests a start of a simulation (or a resume of a paused simulation). Operation executes asynchronously
+            </description>
+            <categories>
+                <category name="simulation" />
+            </categories>
+            <see-also>
+                <function-ref name="sim.scene.simulation:pause" />
+                <function-ref name="sim.scene.simulation:stop" />
+                <link href="../simulation.htm" label=" simulation state diagram " />
+            </see-also>
+        </method>
+
+        
+
+        <method name="stop" func="sim.callMethod" lang="python,lua">
+            <description>
+                Requests a simulation stop. Operation executes asynchronously
+            </description>
+            <categories>
+                <category name="simulation" />
+            </categories>
+            <see-also>
+                <function-ref name="sim.scene.simulation:start" />
+                <function-ref name="sim.scene.simulation:pause" />
+                <link href="../simulation.htm" label=" simulation state diagram " />
+            </see-also>
+        </method>
+
+
+
+        <method name="pause" func="sim.callMethod" lang="python,lua">
+            <description>
+                Requests a simulation pause. Operation executes asynchronously
+            </description>
+            <categories>
+                <category name="simulation" />
+            </categories>
+            <see-also>
+                <function-ref name="sim.scene.simulation:start" />
+                <function-ref name="sim.scene.simulation:stop" />
+                <link href="../simulation.htm" label=" simulation state diagram " />
+            </see-also>
+        </method>
+    </object-class>
+    
+    
+    
     <object-class name="customObject" superclass="object">
         <method name="makeObject" func="sim.callMethod" lang="python,lua">
             <description>
