@@ -169,7 +169,7 @@ namespace sim
                     || scriptType == sim_scripttype_simulation
                     || scriptType == sim_scripttype_customization
             )
-                return sim::getIntProperty(sim_handle_scene, "sceneUid");
+                return sim::getIntProperty(sim_handle_scene, "uid");
             else
                 return -1;
         }
