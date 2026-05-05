@@ -5348,9 +5348,12 @@
                 simulated chain needs to be modified during simulation (e.g. joint or shape attachement position/orientation changed)
             </description>
             <params>
-                <param name="objectTree" type="bool" default="false">
+                <param name="options" type="map" default="{}">
                     <description>
-                        set to true, in order to reset the object, together with its hierarchy tree
+                        optional map:
+                        <ul>
+                            <li>tree (bool): set to true, in order to reset the object, together with its hierarchy tree </li>
+                        </ul>
                     </description>
                 </param>
             </params>

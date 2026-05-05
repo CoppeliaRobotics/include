@@ -135,6 +135,17 @@ enum { // values are serialized
     sim_scripttype_passive = 9,
 };
 
+// @enum name="scriptState" label="script states" type="int" prefix="sim_scriptstate_" description=""
+enum
+{
+    sim_scriptstate_unloaded = 0,
+    sim_scriptstate_uninitialized,
+    sim_scriptstate_initialized,
+    sim_scriptstate_ended,
+    sim_scriptstate_error = 8,
+    sim_scriptstate_suspended = 16  // only add-ons
+};
+
 enum { // System callbacks
     sim_syscb_info=0,
     sim_syscb_cleanup, // last time called. Do some clean-up
