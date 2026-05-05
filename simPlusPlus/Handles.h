@@ -163,7 +163,7 @@ namespace sim
     private:
         static int getSceneID(int scriptID)
         {
-            int scriptType = sim::getIntProperty(scriptID, "scriptType");
+            int scriptType = sim::getIntProperty(scriptID, "type");
             if(0
                     || scriptType == sim_scripttype_main
                     || scriptType == sim_scripttype_simulation
