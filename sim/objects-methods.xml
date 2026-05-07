@@ -6883,12 +6883,143 @@
             <see-also>
             </see-also>
         </method>
+    </object-class>
+
+ 
+
+    <object-class name="ocTree" superclass="sceneObject">
+        <method name="insertFrom" func="sim.callMethod" lang="python,lua">
+            <info>similar method present in both ocTree and pointCloud</info>
+            <description>
+                Adds voxels from scene objects
+            </description>
+            <params>
+                <param name="objects" type="handle[]">
+                    <description>
+                        List of scene objects, where only shapes, dummies, point clouds and oc-trees are considered
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>color (color): voxel color</li>
+                            <li>tag (int): voxel tag, i.e. a user defined value</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="ocTree" />
+                <category name="pointCloud" />
+                <category name="dummy" />
+                <category name="shape" />
+            </categories>
+            <see-also>
+                <function-ref name="ocTree:subtractFrom" />
+                <function-ref name="pointCloud:insertFrom" />
+            </see-also>
+        </method>
 
         
 
+        <method name="subtractFrom" func="sim.callMethod" lang="python,lua">
+            <info>similar method present in both ocTree and pointCloud</info>
+            <description>
+                Subtracts voxels from scene objects
+            </description>
+            <params>
+                <param name="objects" type="handle[]">
+                    <description>
+                        List of scene objects, where only shapes, dummies, point clouds and oc-trees are considered
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="ocTree" />
+                <category name="pointCloud" />
+                <category name="dummy" />
+                <category name="shape" />
+            </categories>
+            <see-also>
+                <function-ref name="ocTree:insertFrom" />
+                <function-ref name="pointCloud:subtractFrom" />
+            </see-also>
+        </method>
     </object-class>
 
     
+
+    <object-class name="pointCloud" superclass="sceneObject">
+        <method name="insertFrom" func="sim.callMethod" lang="python,lua">
+            <info>similar method present in both ocTree and pointCloud</info>
+            <description>
+                Adds points from scene objects
+            </description>
+            <params>
+                <param name="objects" type="handle[]">
+                    <description>
+                        List of scene objects, where only shapes, dummies, point clouds and oc-trees are considered
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>color (color): voxel color</li>
+                            <li>gridSize (float): when a shape is inserted, it will first be converted to an OC tree with the specified grid/voxel size</li>
+                            <li>duplicateTolerance (float): a minimum distance value used to avoid duplicate points</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="ocTree" />
+                <category name="pointCloud" />
+                <category name="dummy" />
+                <category name="shape" />
+            </categories>
+            <see-also>
+                <function-ref name="pointCloud:subtractFrom" />
+                <function-ref name="ocTree:insertFrom" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="subtractFrom" func="sim.callMethod" lang="python,lua">
+            <info>similar method present in both ocTree and pointCloud</info>
+            <description>
+                Subtracts points from scene objects
+            </description>
+            <params>
+                <param name="objects" type="handle[]">
+                    <description>
+                        List of scene objects, where only dummies, point clouds and oc-trees are considered
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>tolerance (float): a distance tolerance value</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="ocTree" />
+                <category name="pointCloud" />
+                <category name="dummy" />
+                <category name="shape" />
+            </categories>
+            <see-also>
+                <function-ref name="pointCloud:insertFrom" />
+                <function-ref name="ocTree:subtractFrom" />
+            </see-also>
+        </method>
+    </object-class>
+
 
     <method name="addParticleObject" func="sim.addParticleObject" lang="python,lua">
         <description>
@@ -9946,119 +10077,6 @@ end</code>
 
     
 
-    <method name="insertObjectIntoOctree" func="sim.insertObjectIntoOctree" lang="python,lua">
-        <description>
-            Inserts an object into an 
-            <a href="../octrees.htm"> OC tree </a>
-            , as voxels. Each voxel will store
-            a color and a tag value
-        </description>
-        <params>
-            <param name="octreeHandle" type="int">
-                <description>
-                    handle of the OC tree
-                </description>
-            </param>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of the object to insert. Only potentially 
-                    <a href="../collidableObjects.htm"> collidable objects </a>
-                    are supported
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    reserved. Set to 0
-                </description>
-            </param>
-            <param name="color" type="int[]" default="nil">
-                <description>
-                    array of RGB triplet, specifying the red, green and blue color components (0 - 255). Can be None/nil
-                </description>
-            </param>
-            <param name="tag" type="int" default="0">
-                <description>
-                    uint32 value, which is user-defined
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="totalVoxelCnt" type="int">
-                <description>
-                    the total number of voxels in the OC tree
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="ocTree" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.subtractObjectFromOctree" />
-            <function-ref name="sim.insertVoxelsIntoOctree" />
-            <link href="../apiFunctions.htm#octree" label=" OC tree related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="insertObjectIntoPointCloud" func="sim.insertObjectIntoPointCloud" lang="python,lua">
-        <description>
-            Inserts an object into a 
-            <a href="../pointClouds.htm"> point cloud </a>
-            , as points
-        </description>
-        <params>
-            <param name="pointCloudHandle" type="int">
-                <description>
-                    handle of the point cloud
-                </description>
-            </param>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of the object to insert. Only potentially 
-                    <a href="../collidableObjects.htm"> collidable objects </a>
-                    are supported
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    reserved. Set to 0
-                </description>
-            </param>
-            <param name="gridSize" type="float">
-                <description>
-                    when a shape is inserted, it will first be converted to an OC tree with a given grid or voxel size
-                </description>
-            </param>
-            <param name="color" type="int[]" default="nil">
-                <description>
-                    array containing an RGB triplet, specifying the red, green and blue color components (0 - 255). Can be None/nil.
-                </description>
-            </param>
-            <param name="duplicateTolerance" type="float" default="nil">
-                <description>
-                    a minimum distance tolerance value that is used to avoid duplicate points
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="totalPointCnt" type="int">
-                <description>
-                    the total number of points in the point cloud
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="pointCloud" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.insertPointsIntoPointCloud" />
-            <link href="../apiFunctions.htm#pointCloud" label=" point cloud related functions " />
-        </see-also>
-    </method>
-
-    
-
     <method name="insertPointsIntoPointCloud" func="sim.insertPointsIntoPointCloud" lang="python,lua">
         <description>
             Inserts points into a 
@@ -11486,100 +11504,6 @@ end</code>
             <function-ref name="sim.getShapeMass" />
             <function-ref name="sim.setShapeInertia" />
             <function-ref name="sim.computeMassAndInertia" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="subtractObjectFromOctree" func="sim.subtractObjectFromOctree" lang="python,lua">
-        <description>
-            Removes an object from an 
-            <a href="../octrees.htm"> OC tree </a>
-            , as voxel subtractions
-        </description>
-        <params>
-            <param name="octreeHandle" type="int">
-                <description>
-                    handle of the OC tree
-                </description>
-            </param>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of the object to subtract. Only potentially 
-                    <a href="../collidableObjects.htm"> collidable objects </a>
-                    are supported
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    reserved. Set to 0
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="totalVoxelCnt" type="int">
-                <description>
-                    total number of voxels in the OC tree
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="ocTree" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.insertObjectIntoOctree" />
-            <function-ref name="sim.removeVoxelsFromOctree" />
-            <link href="../apiFunctions.htm#octree" label=" OC tree related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="subtractObjectFromPointCloud" func="sim.subtractObjectFromPointCloud" lang="python,lua">
-        <description>
-            Removes an object from a 
-            <a href="../pointClouds.htm"> point cloud </a>
-            , as a subtraction
-        </description>
-        <params>
-            <param name="pcHandle" type="int">
-                <description>
-                    handle of the point cloud
-                </description>
-            </param>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of the object to subtract. Only potentially 
-                    <a href="../measurableObjects.htm"> measurable objects </a>
-                    are supported
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    reserved. Set to 0
-                </description>
-            </param>
-            <param name="tolerance" type="float">
-                <description>
-                    distance used as a tolerance value
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="totalPointCnt" type="int">
-                <description>
-                    total number of points in the point cloud
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="pointCloud" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.insertPointsIntoPointCloud" />
-            <function-ref name="sim.insertObjectIntoPointCloud" />
-            <function-ref name="sim.removePointsFromPointCloud" />
-            <link href="../apiFunctions.htm#pointCloud" label=" point cloud related functions " />
         </see-also>
     </method>
 
