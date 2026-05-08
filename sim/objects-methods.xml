@@ -10,8 +10,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): errors are suppressed</li>
-                            <li>delayed (bool): removal is delayed</li>
+                            <li>noError (bool, defaults to false): errors are suppressed</li>
+                            <li>delayed (bool, defaults to false): removal is delayed</li>
                         </ul>
                     </description>
                 </param>
@@ -97,7 +97,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -135,7 +135,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -165,7 +165,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -203,7 +203,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -233,7 +233,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -271,7 +271,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -301,7 +301,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -339,7 +339,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -369,7 +369,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -407,7 +407,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -437,7 +437,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -475,7 +475,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -505,7 +505,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -544,7 +544,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -575,7 +575,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -613,7 +613,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -643,7 +643,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -681,7 +681,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -711,7 +711,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -749,7 +749,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -779,7 +779,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -817,7 +817,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -847,7 +847,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -885,7 +885,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -915,7 +915,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -953,7 +953,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -983,7 +983,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -1021,7 +1021,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -1051,7 +1051,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -1089,7 +1089,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -1119,7 +1119,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -1157,7 +1157,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -1187,7 +1187,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -1225,7 +1225,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -1255,7 +1255,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -1293,7 +1293,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -1323,7 +1323,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -1361,8 +1361,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
-                            <li>type (int): force property type</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
+                            <li>type (int, defaults to nil): force property type</li>
                         </ul>
                     </description>
                 </param>
@@ -1387,7 +1387,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>skipLarge (bool): skips large data</li>
+                            <li>skipLarge (bool, defaults to false): skips large data</li>
                         </ul>
                     </description>
                 </param>
@@ -1446,7 +1446,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>prefix (string): performs an initial filtering based on a prefix</li>
+                            <li>prefix (string, defaults to ""): performs an initial filtering based on a prefix</li>
+                            <li>excludeFlags (int, defaults to 0): property exclude mask</li>
                         </ul>
                     </description>
                 </param>
@@ -1488,7 +1489,9 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>shortInfoTxt (bool): fetches a short version of the description text</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
+                            <li>shortInfoTxt (bool, defaults to false): fetches a short version of the description text</li>
+                            <li>bitCoded (int, defaults to 0): reserved</li>
                         </ul>
                     </description>
                 </param>
@@ -1566,7 +1569,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -1601,7 +1604,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates silent errors</li>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
                         </ul>
                     </description>
                 </param>
@@ -1632,7 +1635,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>metaInfo (string): object meta information</li>
+                            <li>metaInfo (string, defaults to '{"superclass": "object"}'): object meta information</li>
                         </ul>
                     </description>
                 </param>
@@ -2538,8 +2541,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li> undecorated(bool): an undecorated message is displayed</li>
-                            <li> once(bool): subsequent calls with the same message are ignored</li>
+                            <li> undecorated (bool, defaults to false): an undecorated message is displayed</li>
+                            <li> once (bool, defaults to false): subsequent calls with the same message are ignored</li>
                         </ul>
                     </description>
                 </param>
@@ -2569,8 +2572,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li> undecorated(bool): an undecorated message is displayed</li>
-                            <li> once(bool): subsequent calls with the same message are ignored</li>
+                            <li> undecorated (bool, defaults to false): an undecorated message is displayed</li>
+                            <li> once (bool, defaults to false): subsequent calls with the same message are ignored</li>
                         </ul>
                     </description>
                 </param>
@@ -2600,8 +2603,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li> undecorated(bool): an undecorated message is displayed</li>
-                            <li> once(bool): subsequent calls with the same message are ignored</li>
+                            <li> undecorated (bool, defaults to false): an undecorated message is displayed</li>
+                            <li> once (bool, defaults to false): subsequent calls with the same message are ignored</li>
                         </ul>
                     </description>
                 </param>
@@ -2656,7 +2659,7 @@
                             <li id="detachedScript"><a href="../scripts.htm">detached script</a> fields:
                                 <ul>
                                     <li>objectType (string): "detachedScript"</li>
-                                    <li>scriptType (int): the <a href="#scriptType">script type</a>. As of now only sim.scripttype_addon is supported</li>
+                                    <li>type (int): the <a href="#scriptType">script type</a>. As of now only sim.scripttype_addon is supported</li>
                                     <li>lang (string): the script language ("lua" or "python")</li>
                                     <li>code (string): the script content</li>
                                 </ul>
@@ -2700,7 +2703,7 @@
                             <li id="light"><a href="../lights.htm">light</a> fields:
                                 <ul>
                                     <li>objectType (string): "light"</li>
-                                    <li>lightType (int): the <a href="#lightType">light type</a></li>
+                                    <li>type (int): the <a href="#lightType">light type</a></li>
                                     <li>attenuationFactors (float[3]): constant, linear and quadratic attenuation factors</li>
                                     <li>spotCutoffAngle (float): spotlight cutoff angle</li>
                                     <li>lightSize (float): light size</li>
@@ -2740,14 +2743,14 @@
                             <li id="joint"><a href="../joints.htm">joint</a> fields:
                                 <ul>
                                     <li>objectType (string): "joint"</li>
-                                    <li>jointType (int): the <a href="#jointType">joint type</a></li>
-                                    <li>jointMode (int): the <a href="#jointMode">joint mode</a></li>
+                                    <li>type (int): the <a href="#jointType">joint type</a></li>
+                                    <li>mode (int): the <a href="#jointMode">joint mode</a></li>
                                     <li>dynCtrlMode (int): the <a href="#dynCtrlMode">joint dynamic control mode</a></li>
                                     <li>interval (float[]): joint lower and upper bounds, if not cyclic</li>
                                     <li>cyclic (bool): whether the joint is cyclic. Only revolute joints with a screw lead of 0.0 can be cyclic</li>
                                     <li>screwLead (float): a revolute joint with a screw lead different than 0.0 is a screw</li>
-                                    <li>jointLength (float): length of the joint</li>
-                                    <li>jointDiameter (float): diameter of the joint</li>
+                                    <li>length (float): length of the joint</li>
+                                    <li>diameter (float): diameter of the joint</li>
                                     <li>color.diffuse (color): diffuse color</li>
                                     <li>color.specular (color): specular color</li>
                                     <li>color.emission (color): emission color</li>
@@ -2850,7 +2853,7 @@
                             <li id="script"><a href="../scriptObjects.htm">script</a> fields:
                                 <ul>
                                     <li>objectType (string): "script"</li>
-                                    <li>scriptType (int): the <a href="#scriptType">script type</a></li>
+                                    <li>type (int): the <a href="#scriptType">script type</a></li>
                                     <li>language (string): 'lua' or 'python'</li>
                                     <li>code (string): the content of the script</li>
                                     <li>scriptDisabled (bool): the script is initially disabled</li>
@@ -2873,8 +2876,8 @@
                             <li id="proximitySensor"><a href="../proximitySensors.htm">proximity sensor</a> fields:
                                 <ul>
                                     <li>objectType (string): "proximitySensor"</li>
-                                    <li>sensorType (int): the <a href="#proximitySensorType">proximity sensor type</a></li>
-                                    <li>sensorPointSize (float): the sensor point size</li>
+                                    <li>type (int): the <a href="#proximitySensorType">proximity sensor type</a></li>
+                                    <li>pointSize (float): the sensor point size</li>
                                     <li>explicitHandling (bool): whether the sensor is explicitly handled</li>
                                     <li>showVolume (bool): whether the detection volume is shown</li>
                                     <li>frontFaceDetection (bool): whether front faces are detected</li>
@@ -3160,7 +3163,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): errors are suppressed</li>
+                            <li>noError (bool, defaults to false): errors are suppressed</li>
                             <li>delayed (bool): removal is delayed</li>
                         </ul>
                     </description>
@@ -3509,8 +3512,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates a silent error if an object was not found </li>
-                            <li>index (int): fetches the n-th object (zero based index) that satisfies the specified objectPath </li>
+                            <li>noError (bool, defaults to false): generates a silent error if an object was not found </li>
+                            <li>index (int, defaults to 0): fetches the n-th object (zero based index) that satisfies the specified objectPath </li>
                         </ul>
                     </description>
                 </param>
@@ -3725,8 +3728,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): errors are suppressed</li>
-                            <li>delayed (bool): removal is delayed</li>
+                            <li>noError (bool, defaults to false): errors are suppressed</li>
+                            <li>delayed (bool, defaults to false): removal is delayed</li>
                         </ul>
                     </description>
                 </param>
@@ -4009,8 +4012,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): errors are suppressed</li>
-                            <li>delayed (bool): removal is delayed</li>
+                            <li>noError (bool, defaults to false): errors are suppressed</li>
+                            <li>delayed (bool, defaults to false): removal is delayed</li>
                         </ul>
                     </description>
                 </param>
@@ -4312,7 +4315,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates a silent error if an object was not found </li>
+                            <li>noError (bool, defaults to false): generates a silent error if an object was not found </li>
                         </ul>
                     </description>
                 </param>
@@ -4362,8 +4365,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates a silent error if an object was not found </li>
-                            <li>index (int): fetches the n-th object (zero based index) that satisfies the specified objectPath </li>
+                            <li>noError (bool, defaults to false): generates a silent error if an object was not found </li>
+                            <li>index (int, defaults to 0): fetches the n-th object (zero based index) that satisfies the specified objectPath </li>
                         </ul>
                     </description>
                 </param>
@@ -4556,8 +4559,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): errors are suppressed</li>
-                            <li>delayed (bool): removal is delayed</li>
+                            <li>noError (bool, defaults to false): errors are suppressed</li>
+                            <li>delayed (bool, defaults to false): removal is delayed</li>
                         </ul>
                     </description>
                 </param>
@@ -4729,7 +4732,7 @@
                             <li id="detachedScript"><a href="../scripts.htm">detached script</a> fields:
                                 <ul>
                                     <li>objectType (string): "detachedScript"</li>
-                                    <li>scriptType (int): the <a href="#scriptType">script type</a>. As of now only sim.scripttype_addon is supported</li>
+                                    <li>type (int): the <a href="#scriptType">script type</a>. As of now only sim.scripttype_addon is supported</li>
                                     <li>lang (string): the script language ("lua" or "python")</li>
                                     <li>code (string): the script content</li>
                                 </ul>
@@ -4773,7 +4776,7 @@
                             <li id="light"><a href="../lights.htm">light</a> fields:
                                 <ul>
                                     <li>objectType (string): "light"</li>
-                                    <li>lightType (int): the <a href="#lightType">light type</a></li>
+                                    <li>type (int): the <a href="#lightType">light type</a></li>
                                     <li>attenuationFactors (float[3]): constant, linear and quadratic attenuation factors</li>
                                     <li>spotCutoffAngle (float): spotlight cutoff angle</li>
                                     <li>lightSize (float): light size</li>
@@ -4813,14 +4816,14 @@
                             <li id="joint"><a href="../joints.htm">joint</a> fields:
                                 <ul>
                                     <li>objectType (string): "joint"</li>
-                                    <li>jointType (int): the <a href="#jointType">joint type</a></li>
-                                    <li>jointMode (int): the <a href="#jointMode">joint mode</a></li>
+                                    <li>type (int): the <a href="#jointType">joint type</a></li>
+                                    <li>mode (int): the <a href="#jointMode">joint mode</a></li>
                                     <li>dynCtrlMode (int): the <a href="#dynCtrlMode">joint dynamic control mode</a></li>
                                     <li>interval (float[]): joint lower and upper bounds, if not cyclic</li>
                                     <li>cyclic (bool): whether the joint is cyclic. Only revolute joints with a screw lead of 0.0 can be cyclic</li>
                                     <li>screwLead (float): a revolute joint with a screw lead different than 0.0 is a screw</li>
-                                    <li>jointLength (float): length of the joint</li>
-                                    <li>jointDiameter (float): diameter of the joint</li>
+                                    <li>length (float): length of the joint</li>
+                                    <li>diameter (float): diameter of the joint</li>
                                     <li>color.diffuse (color): diffuse color</li>
                                     <li>color.specular (color): specular color</li>
                                     <li>color.emission (color): emission color</li>
@@ -4923,7 +4926,7 @@
                             <li id="script"><a href="../scriptObjects.htm">script</a> fields:
                                 <ul>
                                     <li>objectType (string): "script"</li>
-                                    <li>scriptType (int): the <a href="#scriptType">script type</a></li>
+                                    <li>type (int): the <a href="#scriptType">script type</a></li>
                                     <li>language (string): 'lua' or 'python'</li>
                                     <li>code (string): the content of the script</li>
                                     <li>scriptDisabled (bool): the script is initially disabled</li>
@@ -4946,8 +4949,8 @@
                             <li id="proximitySensor"><a href="../proximitySensors.htm">proximity sensor</a> fields:
                                 <ul>
                                     <li>objectType (string): "proximitySensor"</li>
-                                    <li>sensorType (int): the <a href="#proximitySensorType">proximity sensor type</a></li>
-                                    <li>sensorPointSize (float): the sensor point size</li>
+                                    <li>type (int): the <a href="#proximitySensorType">proximity sensor type</a></li>
+                                    <li>pointSize (float): the sensor point size</li>
                                     <li>explicitHandling (bool): whether the sensor is explicitly handled</li>
                                     <li>showVolume (bool): whether the detection volume is shown</li>
                                     <li>frontFaceDetection (bool): whether front faces are detected</li>
@@ -5133,9 +5136,9 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>appScope (bool): whether the custom object lives in sim.app, or in sim.scene</li>
-                            <li>scriptPersistent (bool): whether the object survives the script that created it</li>
-                            <li>volatile (bool): whether the object is serialized</li>
+                            <li>appScope (bool, defaults to true): whether the custom object lives in sim.app, or in sim.scene</li>
+                            <li>scriptPersistent (bool, defaults to false): whether the object survives the script that created it</li>
+                            <li>volatile (bool, defaults to true): whether the object is serialized</li>
                         </ul>
                     </description>
                 </param>
@@ -5169,7 +5172,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): errors are suppressed</li>
+                            <li>noError (bool, defaults to false): errors are suppressed</li>
                         </ul>
                     </description>
                 </param>
@@ -5314,8 +5317,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): generates a silent error if an object was not found </li>
-                            <li>index (int): fetches the n-th object (zero based index) that satisfies the specified objectPath </li>
+                            <li>noError (bool, defaults to false): generates a silent error if an object was not found </li>
+                            <li>index (int, defaults to 0): fetches the n-th object (zero based index) that satisfies the specified objectPath </li>
                         </ul>
                     </description>
                 </param>
@@ -5352,7 +5355,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>tree (bool): set to true, in order to reset the object, together with its hierarchy tree </li>
+                            <li>tree (bool, defaults to false): set to true, in order to reset the object, together with its hierarchy tree </li>
                         </ul>
                     </description>
                 </param>
@@ -5374,8 +5377,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): errors are suppressed</li>
-                            <li>delayed (bool): removal is delayed</li>
+                            <li>noError (bool, defaults to false): errors are suppressed</li>
+                            <li>delayed (bool, defaults to false): removal is delayed</li>
                         </ul>
                     </description>
                 </param>
@@ -5398,8 +5401,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>noError (bool): errors are suppressed</li>
-                            <li>delayed (bool): removal is delayed</li>
+                            <li>noError (bool, defaults to false): errors are suppressed</li>
+                            <li>delayed (bool, defaults to false): removal is delayed</li>
                         </ul>
                     </description>
                 </param>
@@ -5688,17 +5691,16 @@
                 Retrieves the pose of a scene object
             </description>
             <params>
-                <param name="relativeToObject" type="handle" default="sim.handle_world">
+                <param name="options" type="map" default="{}">
                     <description>
-                        indicates relative to which reference frame we want the pose. 
+                        optional map:
+                        <ul>
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the pose. 
                         Specify sim.handle_world to retrieve the absolute pose, sim.handle_inverse to retrieve the inverse of the absolute pose, 
-                        sim.handle_parent to retrieve the pose relative to the object's parent, or an object relative to whose reference frame we want the pose
-                    </description>
-                </param>
-                <param name="relativeToJointBaseFrame" type="bool" default="false">
-                    <description>
-                        If <b>relativeToObject</b> is a joint, then the pose relative to the joint's moving frame is returned, unless
-                        this argument is true, in which case the pose relative to the joint's base frame is returned
+                        sim.handle_parent to retrieve the pose relative to the object's parent, or an object relative to whose reference frame we want the pose</li>
+                            <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the pose relative to the joint's moving frame is returned, unless
+                        this argument is true, in which case the pose relative to the joint's base frame is returned</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -5726,17 +5728,16 @@
                 Retrieves the position of a scene object
             </description>
             <params>
-                <param name="relativeToObject" type="handle" default="sim.handle_world">
+                <param name="options" type="map" default="{}">
                     <description>
-                        indicates relative to which reference frame we want the position. 
+                        optional map:
+                        <ul>
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the position. 
                         Specify sim.handle_world to retrieve the absolute position, sim.handle_inverse to retrieve the inverse of the absolute position, 
-                        sim.handle_parent to retrieve the position relative to the object's parent, or an object relative to whose reference frame we want the position
-                    </description>
-                </param>
-                <param name="relativeToJointBaseFrame" type="bool" default="false">
-                    <description>
-                        If <b>relativeToObject</b> is a joint, then the position relative to the joint's moving frame is returned, unless
-                        this argument is true, in which case the position relative to the joint's base frame is returned
+                        sim.handle_parent to retrieve the position relative to the object's parent, or an object relative to whose reference frame we want the position </li>
+                            <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the position relative to the joint's moving frame is returned, unless
+                        this argument is true, in which case the position relative to the joint's base frame is returned</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -5764,17 +5765,16 @@
                 Retrieves the quaternion of a scene object
             </description>
             <params>
-                <param name="relativeToObject" type="handle" default="sim.handle_world">
+                <param name="options" type="map" default="{}">
                     <description>
-                        indicates relative to which reference frame we want the quaternion. 
+                        optional map:
+                        <ul>
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the quaternion. 
                         Specify sim.handle_world to retrieve the absolute quaternion, sim.handle_inverse to retrieve the inverse of the absolute quaternion, 
-                        sim.handle_parent to retrieve the quaternion relative to the object's parent, or an object relative to whose reference frame we want the quaternion
-                    </description>
-                </param>
-                <param name="relativeToJointBaseFrame" type="bool" default="false">
-                    <description>
-                        If <b>relativeToObject</b> is a joint, then the quaternion relative to the joint's moving frame is returned, unless
-                        this argument is true, in which case the quaternion relative to the joint's base frame is returned
+                        sim.handle_parent to retrieve the quaternion relative to the object's parent, or an object relative to whose reference frame we want the quaternion</li>
+                            <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the quaternion relative to the joint's moving frame is returned, unless
+                        this argument is true, in which case the quaternion relative to the joint's base frame is returned</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -5805,17 +5805,16 @@
                 <param name="pose" type="pose">
                     <description>the pose: [x, y, z, qx, qy, qz, qw])</description>
                 </param>
-                <param name="relativeToObject" type="handle" default="sim.handle_world">
+                <param name="options" type="map" default="{}">
                     <description>
-                        indicates relative to which reference frame the pose is specified. Specify sim.handle_world to set the absolute pose, sim.handle_inverse to
+                        optional map:
+                        <ul>
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame the pose is specified. Specify sim.handle_world to set the absolute pose, sim.handle_inverse to
                         set the inverse of the absolute pose, sim.handle_parent to set the pose relative to the scene object's parent, or a scene object relative to
-                        whose reference frame the pose is specified.
-                    </description>
-                </param>
-                <param name="relativeToJointBaseFrame" type="bool" default="false">
-                    <description>
-                        If <b>relativeToObject</b> is a joint, then the pose relative to the joint's moving frame is set, unless
-                        this argument is true, in which case the pose relative to the joint's base frame is set
+                        whose reference frame the pose is specified</li>
+                            <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the pose relative to the joint's moving frame is set, unless
+                        this argument is true, in which case the pose relative to the joint's base frame is set</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -5839,17 +5838,16 @@
                 <param name="position" type="vector3">
                     <description>the position: [x, y, z])</description>
                 </param>
-                <param name="relativeToObject" type="handle" default="sim.handle_world">
+                <param name="options" type="map" default="{}">
                     <description>
-                        indicates relative to which reference frame the position is specified. Specify sim.handle_world to set the absolute position, sim.handle_inverse to
+                        optional map:
+                        <ul>
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame the position is specified. Specify sim.handle_world to set the absolute position, sim.handle_inverse to
                         set the inverse of the absolute position, sim.handle_parent to set the position relative to the scene object's parent, or a scene object relative to
-                        whose reference frame the position is specified.
-                    </description>
-                </param>
-                <param name="relativeToJointBaseFrame" type="bool" default="false">
-                    <description>
-                        If <b>relativeToObject</b> is a joint, then the position relative to the joint's moving frame is set, unless
-                        this argument is true, in which case the position relative to the joint's base frame is set
+                        whose reference frame the position is specified</li>
+                            <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the position relative to the joint's moving frame is set, unless
+                        this argument is true, in which case the position relative to the joint's base frame is set</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -5873,17 +5871,16 @@
                 <param name="quaternion" type="quaternion">
                     <description>the quaternion: [qx, qy, qz, qw])</description>
                 </param>
-                <param name="relativeToObject" type="handle" default="sim.handle_world">
+                <param name="options" type="map" default="{}">
                     <description>
-                        indicates relative to which reference frame the quaternion is specified. Specify sim.handle_world to set the absolute quaternion, sim.handle_inverse to
+                        optional map:
+                        <ul>
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame the quaternion is specified. Specify sim.handle_world to set the absolute quaternion, sim.handle_inverse to
                         set the inverse of the absolute quaternion, sim.handle_parent to set the quaternion relative to the scene object's parent, or a scene object relative to
-                        whose reference frame the quaternion is specified.
-                    </description>
-                </param>
-                <param name="relativeToJointBaseFrame" type="bool" default="false">
-                    <description>
-                        If <b>relativeToObject</b> is a joint, then the quaternion relative to the joint's moving frame is set, unless
-                        this argument is true, in which case the quaternion relative to the joint's base frame is set
+                        whose reference frame the quaternion is specified</li>
+                            <li>relativeToJointBase (bool, defaults to false): is a joint, then the quaternion relative to the joint's moving frame is set, unless
+                        this argument is true, in which case the quaternion relative to the joint's base frame is set</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -6170,8 +6167,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li> reset (bool): clears cumulative forces before applying the new force</li>
-                            <li> relative (bool): applies the force/offset relative to the shape's reference frame axes, otherwise relative to the world</li>
+                            <li> reset (bool, defaults to false): clears cumulative forces before applying the new force</li>
+                            <li> relative (bool, defaults to false): applies the force/offset relative to the shape's reference frame axes, otherwise relative to the world</li>
                         </ul>
                     </description>
                 </param>
@@ -6200,8 +6197,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li> reset (bool): clears cumulative torques before applying the new torque</li>
-                            <li> relative (bool): applies the torque relative to the shape's reference frame axes, otherwise relative to the world</li>
+                            <li> reset (bool, defaults to false): clears cumulative torques before applying the new torque</li>
+                            <li> relative (bool, defaults to false): applies the torque relative to the shape's reference frame axes, otherwise relative to the world</li>
                         </ul>
                     </description>
                 </param>
@@ -6685,18 +6682,18 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>name (string): signal name</li>
-                            <li>unit (string): signal unit</li>
-                            <li>hideSignal (bool): hides the signal</li>
-                            <li>hideLabel (bool): hides the label</li>
-                            <li>drawLine (bool): draws a line</li>
-                            <li>cyclicRange (float): can be used with cyclic values (e.g. angles) for correct data interpretation during stream data transformation</li>
+                            <li>name (string, defaults to "signal"): signal name</li>
+                            <li>unit (string, defaults to ""): signal unit</li>
+                            <li>hideSignal (bool, defaults to false): hides the signal</li>
+                            <li>hideLabel (bool, defaults to false): hides the label</li>
+                            <li>drawLine (bool, defaults to false): draws a line</li>
+                            <li>cyclicRange (float, defaults to 0.0): can be used with cyclic values (e.g. angles) for correct data interpretation during stream data transformation</li>
                             <li>transformation (map): signal transformation options:
                                <ul>
-                                    <li>type (string): transformation type: "raw", "derivative", "integral" or "cumulative"</li>
-                                    <li>scale (float): scaling</li>
-                                    <li>offset (float): offset</li>
-                                    <li>smoothing (int): the moving average period. Set to 1 for no moving average</li>
+                                    <li>type (string, defaults to "raw"): transformation type: "raw", "derivative", "integral" or "cumulative"</li>
+                                    <li>scale (float, defaults to 1.0): scaling</li>
+                                    <li>offset (float, defaults to 0.0): offset</li>
+                                    <li>smoothing (int, defaults to 1): the moving average period. Set to 1 for no moving average</li>
                                 </ul>
                             </li>
                         </ul>
@@ -6739,12 +6736,12 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>name (string): curve name</li>
-                            <li>unit (string): curve unit</li>
-                            <li>default (float[2]): default signal values</li>
-                            <li>width (int): curve width</li>
-                            <li>hideLabel (bool): hides the label</li>
-                            <li>drawLine (bool): draws a line</li>
+                            <li>name (string, defaults to "curve"): curve name</li>
+                            <li>unit (string, defaults to ""): curve unit</li>
+                            <li>default (float[2], defaults to {0.0, 0.0}): default signal values</li>
+                            <li>width (int, defaults to 2): curve width</li>
+                            <li>hideLabel (bool, defaults to false): hides the label</li>
+                            <li>drawLine (bool, defaults to false): draws a line</li>
                         </ul>
                     </description>
                 </param>
@@ -6866,7 +6863,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>name (string): trace name</li>
+                            <li>name (string, defaults to "snapshot"): trace name</li>
                         </ul>
                     </description>
                 </param>
@@ -6903,8 +6900,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>color (color): voxel color</li>
-                            <li>tag (int): voxel tag, i.e. a user defined value</li>
+                            <li>color (color, defaults to the oc tree's default): voxel color</li>
+                            <li>tag (int, defaults to 0): voxel tag, i.e. a user defined value</li>
                         </ul>
                     </description>
                 </param>
@@ -6966,9 +6963,9 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>color (color): voxel color</li>
-                            <li>gridSize (float): when a shape is inserted, it will first be converted to an OC tree with the specified grid/voxel size</li>
-                            <li>duplicateTolerance (float): a minimum distance value used to avoid duplicate points</li>
+                            <li>color (color, defaults to the point cloud's default): point color</li>
+                            <li>gridSize (float, defaults to 0.02): when a shape is inserted, it will first be converted to an OC tree with the specified grid/voxel size</li>
+                            <li>duplicateTolerance (float, defaults to the point cloud's default): a minimum distance value used to avoid duplicate points</li>
                         </ul>
                     </description>
                 </param>
@@ -7002,7 +6999,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>tolerance (float): a distance tolerance value</li>
+                            <li>tolerance (float, defaults to 0.02): a distance tolerance value</li>
                         </ul>
                     </description>
                 </param>
