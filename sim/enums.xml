@@ -66,6 +66,14 @@
         <item name="sandbox" value="8"/>
         <item name="passive" value="9"/>
     </enum>
+    <enum name="scriptState" label="script states" type="int" prefix="sim_scriptstate_" description="">
+        <item name="unloaded" value="0"/>
+        <item name="uninitialized" value="1"/>
+        <item name="initialized" value="2"/>
+        <item name="ended" value="3"/>
+        <item name="error" value="8"/>
+        <item name="suspended" value="16"/>
+    </enum>
     <enum name="codeLang" label="code languages" type="int" prefix="sim_lang_" description="">
         <item name="undefined" value="-1"/>
         <item name="lua" value="0"/>
