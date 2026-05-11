@@ -1708,19 +1708,22 @@
                 Limits the rate at which a function can be called
             </description>
             <params>
-                <param name="interval" type="float">
-                    <description>
-                        The throttle time
-                    </description>
-                </param>
                 <param name="function" type="func">
                     <description>
                         The function to execute
                     </description>
                 </param>
-                <param name="arg1" type="any" default="nil">
+                <param name="interval" type="float">
                     <description>
-                        The first argument to pass to the function. Additional arguments can be provided as needed.
+                        The throttle time
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>args (any[], defaults to {}): arguments to pass to the function</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -1741,24 +1744,23 @@
                 Schedules a function to be called after a delay
             </description>
             <params>
-                <param name="delay" type="float">
-                    <description>
-                        The execution delay
-                    </description>
-                </param>
-                <param name="simulationTime" type="bool">
-                    <description>
-                        Whether to use simulation time or real-time for the delay
-                    </description>
-                </param>
                 <param name="function" type="func">
                     <description>
                         The function to execute
                     </description>
                 </param>
-                <param name="arg1" type="any" default="nil">
+                <param name="delay" type="float">
                     <description>
-                        The first argument to pass to the function. Additional arguments can be provided as needed.
+                        The execution delay
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>simulationTime (bool, defaults to false)</li>
+                            <li>args (any[], defaults to {}): arguments to pass to the function</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -1818,19 +1820,14 @@
                         packed data
                     </description>
                 </param>
-                <param name="startIndex" type="int" default="0">
+                <param name="options" type="map" default="{}">
                     <description>
-                        zero-based index from which on data is unpacked
-                    </description>
-                </param>
-                <param name="count" type="int" default="0">
-                    <description>
-                        amount of doubles that are unpacked
-                    </description>
-                </param>
-                <param name="byteOffset" type="int" default="0">
-                    <description>
-                        byte offset to be added before reading the data
+                        optional map:
+                        <ul>
+                            <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
+                            <li> count (int, defaults to 0): amount of doubles to unpack (0 = all)</li>
+                            <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -1861,19 +1858,14 @@
                         packed data
                     </description>
                 </param>
-                <param name="startIndex" type="int" default="0">
+                <param name="options" type="map" default="{}">
                     <description>
-                        zero-based index from which on data is unpacked
-                    </description>
-                </param>
-                <param name="count" type="int" default="0">
-                    <description>
-                        amount of floats that are unpacked
-                    </description>
-                </param>
-                <param name="byteOffset" type="int" default="0">
-                    <description>
-                        byte offset to be added before reading the data
+                        optional map:
+                        <ul>
+                            <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
+                            <li> count (int, defaults to 0): amount of floats to unpack (0 = all)</li>
+                            <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -1904,19 +1896,14 @@
                         packed data
                     </description>
                 </param>
-                <param name="startIndex" type="int" default="0">
+                <param name="options" type="map" default="{}">
                     <description>
-                        zero-based index from which on data is unpacked
-                    </description>
-                </param>
-                <param name="count" type="int" default="0">
-                    <description>
-                        amount of int32 that are unpacked
-                    </description>
-                </param>
-                <param name="byteOffset" type="int" default="0">
-                    <description>
-                        byte offset to be added before reading the data
+                        optional map:
+                        <ul>
+                            <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
+                            <li> count (int, defaults to 0): amount of int32 values to unpack (0 = all)</li>
+                            <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -1947,19 +1934,14 @@
                         packed data
                     </description>
                 </param>
-                <param name="startIndex" type="int" default="0">
+                <param name="options" type="map" default="{}">
                     <description>
-                        zero-based index from which on data is unpacked
-                    </description>
-                </param>
-                <param name="count" type="int" default="0">
-                    <description>
-                        amount of int64 that are unpacked
-                    </description>
-                </param>
-                <param name="byteOffset" type="int" default="0">
-                    <description>
-                        byte offset to be added before reading the data
+                        optional map:
+                        <ul>
+                            <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
+                            <li> count (int, defaults to 0): amount of int64 values to unpack (0 = all)</li>
+                            <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -1990,19 +1972,14 @@
                         packed data
                     </description>
                 </param>
-                <param name="startIndex" type="int" default="0">
+                <param name="options" type="map" default="{}">
                     <description>
-                        zero-based index from which on data is unpacked
-                    </description>
-                </param>
-                <param name="count" type="int" default="0">
-                    <description>
-                        amount of unsigned int32 that are unpacked
-                    </description>
-                </param>
-                <param name="byteOffset" type="int" default="0">
-                    <description>
-                        byte offset to be added before reading the data
+                        optional map:
+                        <ul>
+                            <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
+                            <li> count (int, defaults to 0): amount of unsigned int32 values to unpack (0 = all)</li>
+                            <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -2023,6 +2000,44 @@
 
         
 
+        <method name="unpackInt16Table" func="sim.callMethod" lang="python,lua">
+            <description>
+                Unpacks a buffer into an array of int16 values
+            </description>
+            <params>
+                <param name="data" type="buffer">
+                    <description>
+                        packed data
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
+                            <li> count (int, defaults to 0): amount of int16 values to unpack (0 = all)</li>
+                            <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="ints" type="int[]">
+                    <description>
+                        int array
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="packing" />
+            </categories>
+            <see-also>
+                <function-ref name="app:packInt16Table" />
+            </see-also>
+        </method>
+
+        
+
         <method name="unpackUInt16Table" func="sim.callMethod" lang="python,lua">
             <description>
                 Unpacks a buffer into an array of unsigned int16 values
@@ -2033,19 +2048,14 @@
                         packed data
                     </description>
                 </param>
-                <param name="startIndex" type="int" default="0">
+                <param name="options" type="map" default="{}">
                     <description>
-                        zero-based index from which on data is unpacked
-                    </description>
-                </param>
-                <param name="count" type="int" default="0">
-                    <description>
-                        amount of unsigned int16 that are unpacked
-                    </description>
-                </param>
-                <param name="byteOffset" type="int" default="0">
-                    <description>
-                        byte offset to be added before reading the data
+                        optional map:
+                        <ul>
+                            <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
+                            <li> count (int, defaults to 0): amount of unsigned int16 values to unpack (0 = all)</li>
+                            <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -2076,19 +2086,14 @@
                         packed data
                     </description>
                 </param>
-                <param name="startIndex" type="int" default="0">
+                <param name="options" type="map" default="{}">
                     <description>
-                        zero-based index from which on data is unpacked
-                    </description>
-                </param>
-                <param name="count" type="int" default="0">
-                    <description>
-                        amount of unsigned int8 that are unpacked
-                    </description>
-                </param>
-                <param name="byteOffset" type="int" default="0">
-                    <description>
-                        byte offset to be added before reading the data
+                        optional map:
+                        <ul>
+                            <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
+                            <li> count (int, defaults to 0): amount of unsigned int8 values to unpack (0 = all)</li>
+                            <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -2109,6 +2114,44 @@
 
         
 
+        <method name="unpackInt8Table" func="sim.callMethod" lang="python,lua">
+            <description>
+                Unpacks a buffer into an array of int8 values
+            </description>
+            <params>
+                <param name="data" type="buffer">
+                    <description>
+                        packed data
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
+                            <li> count (int, defaults to 0): amount of int8 values to unpack (0 = all)</li>
+                            <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="ints" type="int[]">
+                    <description>
+                        int array
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="packing" />
+            </categories>
+            <see-also>
+                <function-ref name="app:packInt8Table" />
+            </see-also>
+        </method>
+
+        
+
         <method name="packDoubleTable" func="sim.callMethod" lang="python,lua">
             <description>
                 Packs doubles as little-endian
@@ -2119,14 +2162,13 @@
                         array of doubles. Non-numbers are packed as zeros
                     </description>
                 </param>
-                <param name="start" type="int" default="0">
+                <param name="options" type="map" default="{}">
                     <description>
-                        zero-based index from which on data is packed
-                    </description>
-                </param>
-                <param name="count" type="int" default="0">
-                    <description>
-                        amount of doubles that are packed
+                        optional map:
+                        <ul>
+                            <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
+                            <li> count (int, defaults to 0): amount of doubles to pack (0 = all)</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -2157,14 +2199,13 @@
                         array of floats. Non-numbers are packed as zeros
                     </description>
                 </param>
-                <param name="start" type="int" default="0">
+                <param name="options" type="map" default="{}">
                     <description>
-                        zero-based index from which on data is packed
-                    </description>
-                </param>
-                <param name="count" type="int" default="0">
-                    <description>
-                        amount of floats that are packed
+                        optional map:
+                        <ul>
+                            <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
+                            <li> count (int, defaults to 0): amount of floats to pack (0 = all)</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -2195,14 +2236,13 @@
                         array of ints. Non-numbers are packed as zeros
                     </description>
                 </param>
-                <param name="start" type="int" default="0">
+                <param name="options" type="map" default="{}">
                     <description>
-                        zero-based index from which on data is packed
-                    </description>
-                </param>
-                <param name="count" type="int" default="0">
-                    <description>
-                        amount of ints that are packed
+                        optional map:
+                        <ul>
+                            <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
+                            <li> count (int, defaults to 0): amount of ints to pack (0 = all)</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -2233,14 +2273,13 @@
                         array of ints. Non-numbers are packed as zeros
                     </description>
                 </param>
-                <param name="start" type="int" default="0">
+                <param name="options" type="map" default="{}">
                     <description>
-                        zero-based index from which on data is packed
-                    </description>
-                </param>
-                <param name="count" type="int" default="0">
-                    <description>
-                        amount of ints that are packed
+                        optional map:
+                        <ul>
+                            <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
+                            <li> count (int, defaults to 0): amount of ints to pack (0 = all)</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -2271,14 +2310,13 @@
                         array of ints. Non-numbers are packed as zeros
                     </description>
                 </param>
-                <param name="start" type="int" default="0">
+                <param name="options" type="map" default="{}">
                     <description>
-                        zero-based index from which on data is packed
-                    </description>
-                </param>
-                <param name="count" type="int" default="0">
-                    <description>
-                        amount of ints that are packed
+                        optional map:
+                        <ul>
+                            <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
+                            <li> count (int, defaults to 0): amount of ints to pack (0 = all)</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -2309,14 +2347,13 @@
                         array of ints. Non-numbers are packed as zeros
                     </description>
                 </param>
-                <param name="start" type="int" default="0">
+                <param name="options" type="map" default="{}">
                     <description>
-                        zero-based index from which on data is packed
-                    </description>
-                </param>
-                <param name="count" type="int" default="0">
-                    <description>
-                        amount of ints that are packed
+                        optional map:
+                        <ul>
+                            <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
+                            <li> count (int, defaults to 0): amount of ints to pack (0 = all)</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -2337,6 +2374,43 @@
 
         
 
+        <method name="packInt16Table" func="sim.callMethod" lang="python,lua">
+            <description>
+                Packs int16 values as little-endian
+            </description>
+            <params>
+                <param name="ints" type="int[]">
+                    <description>
+                        array of ints. Non-numbers are packed as zeros
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
+                            <li> count (int, defaults to 0): amount of ints to pack (0 = all)</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="data" type="buffer">
+                    <description>
+                        packed data
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="packing" />
+            </categories>
+            <see-also>
+                <function-ref name="app:unpackInt16Table" />
+            </see-also>
+        </method>
+
+        
+
         <method name="packUInt8Table" func="sim.callMethod" lang="python,lua">
             <description>
                 Packs unsigned int8 values as little-endian
@@ -2347,14 +2421,13 @@
                         array of ints. Non-numbers are packed as zeros
                     </description>
                 </param>
-                <param name="start" type="int" default="0">
+                <param name="options" type="map" default="{}">
                     <description>
-                        zero-based index from which on data is packed
-                    </description>
-                </param>
-                <param name="count" type="int" default="0">
-                    <description>
-                        amount of ints that are packed
+                        optional map:
+                        <ul>
+                            <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
+                            <li> count (int, defaults to 0): amount of ints to pack (0 = all)</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -2370,6 +2443,43 @@
             </categories>
             <see-also>
                 <function-ref name="app:unpackUInt8Table" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="packInt8Table" func="sim.callMethod" lang="python,lua">
+            <description>
+                Packs int8 values as little-endian
+            </description>
+            <params>
+                <param name="ints" type="int[]">
+                    <description>
+                        array of ints. Non-numbers are packed as zeros
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
+                            <li> count (int, defaults to 0): amount of ints to pack (0 = all)</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="data" type="buffer">
+                    <description>
+                        packed data
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="packing" />
+            </categories>
+            <see-also>
+                <function-ref name="app:unpackInt8Table" />
             </see-also>
         </method>
 
@@ -3963,9 +4073,12 @@
                         The desired color
                     </description>
                 </param>
-                <param name="materialComponent" type="int" default="sim.materialcomponent_diffuse">
+                <param name="options" type="map" default="{}">
                     <description>
-                        The target <a href="#markerObjectType">material component</a>
+                        optional map:
+                        <ul>
+                            <li>component (int, defaults to sim.materialcomponent_diffuse): The target <a href="#materialComponent">material component</a></li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -5239,9 +5352,12 @@
                         The desired color
                     </description>
                 </param>
-                <param name="materialComponent" type="int" default="sim.materialcomponent_diffuse">
+                <param name="options" type="map" default="{}">
                     <description>
-                        The target <a href="#markerObjectType">material component</a>
+                        optional map:
+                        <ul>
+                            <li>component (int, defaults to sim.materialcomponent_diffuse): The target <a href="#materialComponent">material component</a></li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -5455,14 +5571,13 @@
                 Retrieves descendant scene objects (children, grand-children, etc.)
             </description>
             <params>
-                <param name="objectTypes" type="string[]" default="{'sceneObject'}">
+                <param name="options" type="map" default="{}">
                     <description>
-                        the desired scene object types
-                    </description>
-                </param>
-                <param name="depth" type="int" default="9999">
-                    <description>
-                        the retrieval depth
+                        optional map:
+                        <ul>
+                            <li>types (string[], defaults to {'sceneObject'}): the desired scene object types</li>
+                            <li>depth (int, defaults to 9999): the maximum retrieval depth</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -5488,14 +5603,13 @@
                 Retrieves ancestor scene objects (parent, grand-parent, etc.)
             </description>
             <params>
-                <param name="objectTypes" type="string[]" default="{'sceneObject'}">
+                <param name="options" type="map" default="{}">
                     <description>
-                        the desired scene object types
-                    </description>
-                </param>
-                <param name="cnt" type="int" default="9999">
-                    <description>
-                        the maximum retrieval count
+                        optional map:
+                        <ul>
+                            <li>types (string[], defaults to {'sceneObject'}): the desired scene object types</li>
+                            <li>count (int, defaults to 9999): the maximum retrieval count</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -5525,9 +5639,12 @@
                         the visitor function. Visitation ends if the function return false 
                     </description>
                 </param>
-                <param name="objectTypes" type="string[]" default="{'sceneObject'}">
+                <param name="options" type="map" default="{}">
                     <description>
-                        the scene object types to be processed
+                        optional map:
+                        <ul>
+                            <li>types (string[], defaults to {'sceneObject'}): the desired scene object types to be taken into account</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -6448,14 +6565,13 @@
                 Reads the vision sensor's depth buffer (or a portion of it)
             </description>
             <params>
-                <param name="pos" type="int[2]" default="{0, 0}">
+                <param name="options" type="map" default="{}">
                     <description>
-                        position of the depth buffer portion to retrieve
-                    </description>
-                </param>
-                <param name="size" type="int[2]" default="{0, 0}">
-                    <description>
-                        size of the depth buffer portion to retrieve. [0, 0] corresponds to [resolutionX, resolution Y] 
+                        optional map:
+                        <ul>
+                            <li>position (int[2], defaults to {0, 0}): position of the image portion to write</li>
+                            <li>size (int[2], defaults to {0, 0}): size of the image portion to write. [0, 0] corresponds to [resolutionX, resolution Y]</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -6531,14 +6647,13 @@
                 <param name="image" type="buffer">
                     <description>image to write</description>
                 </param>
-                <param name="pos" type="int[2]" default="{0, 0}">
+                <param name="options" type="map" default="{}">
                     <description>
-                        position of the image portion to write
-                    </description>
-                </param>
-                <param name="size" type="int[2]" default="{0, 0}">
-                    <description>
-                        size of the image portion to write. [0, 0] corresponds to [resolutionX, resolution Y] 
+                        optional map:
+                        <ul>
+                            <li>position (int[2], defaults to {0, 0}): position of the image portion to write</li>
+                            <li>size (int[2], defaults to {0, 0}): size of the image portion to write. [0, 0] corresponds to [resolutionX, resolution Y]</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -6703,15 +6818,11 @@
                         signal ids. -1 for a missing signal, in which case the default value is used
                     </description>
                 </param>
-                <param name="color" type="color" default="{0.0, 1.0, 0.0}">
-                    <description>
-                        curve color
-                    </description>
-                </param>
                 <param name="options" type="map" default="{}">
                     <description>
                         optional map:
                         <ul>
+                            <li>color (color, defaults to Color("green")): curve color</li>
                             <li>name (string, defaults to "curve"): curve name</li>
                             <li>unit (string, defaults to ""): curve unit</li>
                             <li>default (float[2], defaults to {0.0, 0.0}): default signal values</li>
@@ -6830,15 +6941,11 @@
                         trace id
                     </description>
                 </param>
-                <param name="color" type="color" default="{1.0, 1.0, 1.0}">
-                    <description>
-                        trace color
-                    </description>
-                </param>
                 <param name="options" type="map" default="{}">
                     <description>
                         optional map:
                         <ul>
+                            <li>color (color, defaults to Color("white")): trace color</li>
                             <li>name (string, defaults to "snapshot"): trace name</li>
                         </ul>
                     </description>
