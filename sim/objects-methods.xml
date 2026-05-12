@@ -5172,11 +5172,10 @@
                 <function-ref name="app:removeObjects" />
             </see-also>
         </method>
-    </object-class>
-    
 
-    <object-class name="simulation" superclass="scene">
-        <method name="start" func="sim.callMethod" lang="python,lua">
+
+
+        <method name="simulation.start" func="sim.callMethod" lang="python,lua">
             <description>
                 Requests a start of a simulation (or a resume of a paused simulation). Operation executes asynchronously
             </description>
@@ -5189,10 +5188,11 @@
                 <link href="../simulation.htm" label=" simulation state diagram " />
             </see-also>
         </method>
+        
 
         
 
-        <method name="stop" func="sim.callMethod" lang="python,lua">
+        <method name="simulation.stop" func="sim.callMethod" lang="python,lua">
             <description>
                 Requests a simulation stop. Operation executes asynchronously
             </description>
@@ -5208,7 +5208,7 @@
 
 
 
-        <method name="pause" func="sim.callMethod" lang="python,lua">
+        <method name="simulation.pause" func="sim.callMethod" lang="python,lua">
             <description>
                 Requests a simulation pause. Operation executes asynchronously
             </description>
@@ -5223,8 +5223,8 @@
         </method>
     </object-class>
     
-    
-    
+
+
     <object-class name="customObject" superclass="object">
         <method name="makeObject" func="sim.callMethod" lang="python,lua">
             <description>
@@ -6093,9 +6093,9 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>colors (color[], defaults to {}): point-specific colors (one color per point)</li>
-                            <li>quaternions (quaternion[], defaults to {}): quaternions (one quaternion per item)</li>
-                            <li>sizes (matrix, defaults to {}): x/y/z sizes (one x/y/z per item)</li>
+                            <li>colors (color[], defaults to nil): point-specific colors (one color per point)</li>
+                            <li>quaternions (matrix n X 4, defaults to nil): quaternions (one quaternion per item)</li>
+                            <li>sizes (matrix 3 X n, defaults to nil): x/y/z sizes (one x/y/z per item)</li>
                         </ul>
                     </description>
                 </param>
@@ -7026,6 +7026,227 @@
                 <function-ref name="pointCloud:subtractFrom" />
             </see-also>
         </method>
+
+
+
+        <method name="insertVoxels" func="sim.callMethod" lang="python,lua">
+            <info>similar method present in both ocTree and pointCloud</info>
+            <description>
+                Inserts voxels
+            </description>
+            <params>
+                <param name="voxels" type="matrix">
+                    <description>
+                        voxel positions, in column-major order (the matrix should be 3 X n in size)
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>color (color, defaults to nil): color for all voxels</li>
+                            <li>colors (color[], defaults to nil): voxel-specific colors (one color per voxel)</li>
+                            <li>tag (int, defaults to 0): tag for all voxels</li>
+                            <li>tags (int[], defaults to nil): voxel-specific tags (one tag per voxel)</li>
+                            <li>relative (bool, defaults to false): specified voxels are relative to the OC tree reference frame, otherwise they are relative to the world reference frame</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+            </returns>
+            <categories>
+                <category name="ocTree" />
+            </categories>
+            <see-also>
+                <function-ref name="ocTree:clear" />
+                <function-ref name="ocTree:subtractVoxels" />
+                <function-ref name="ocTree:insertVoxelsFromBuffer" />
+                <function-ref name="ocTree:insertFrom" />
+                <function-ref name="ocTree:checkPoints" />
+                <function-ref name="pointCloud:insertPoints" />
+            </see-also>
+        </method>
+
+
+
+        <method name="insertVoxelsFromBuffer" func="sim.callMethod" lang="python,lua">
+            <info>similar method present in both ocTree and pointCloud</info>
+            <description>
+                Inserts voxels from a buffer, instead from a table/list
+            </description>
+            <params>
+                <param name="voxels" type="buffer">
+                    <description>
+                        voxel positions, packed as a float array
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>color (color, defaults to nil): color for all voxels</li>
+                            <li>colors (buffer, defaults to nil): voxel-specific colors, packed as a float array (one color per voxel)</li>
+                            <li>tag (int, defaults to 0): tag for all voxels</li>
+                            <li>tags (buffer, defaults to nil): voxel-specific tags, packed as an unsigned float array (one tag per voxel)</li>
+                            <li>relative (bool, defaults to false): specified voxels are relative to the OC tree reference frame, otherwise they are relative to the world reference frame</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+            </returns>
+            <categories>
+                <category name="ocTree" />
+            </categories>
+            <see-also>
+                <function-ref name="ocTree:clear" />
+                <function-ref name="ocTree:subtractVoxelsFromBuffer" />
+                <function-ref name="ocTree:insertVoxels" />
+                <function-ref name="app:packFloatTable" />
+                <function-ref name="app:packUInt32Table" />
+            </see-also>
+        </method>
+
+
+
+        <method name="subtractVoxels" func="sim.callMethod" lang="python,lua">
+            <description>
+                Removes voxels
+            </description>
+            <params>
+                <param name="voxels" type="matrix">
+                    <description>
+                        voxel positions, in column-major order (the matrix should be 3 X n in size)
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>relative (bool, defaults to false): specified voxels are relative to the OC tree reference frame, otherwise they are relative to the world reference frame</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+            </returns>
+            <categories>
+                <category name="ocTree" />
+            </categories>
+            <see-also>
+                <function-ref name="ocTree:clear" />
+                <function-ref name="ocTree:insertVoxels" />
+                <function-ref name="ocTree:subtractVoxelsFromBuffer" />
+                <function-ref name="ocTree:checkPoints" />
+                <function-ref name="pointCloud:subtractPoints" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="subtractVoxelsFromBuffer" func="sim.callMethod" lang="python,lua">
+            <description>
+                Removes voxels from a buffer, instead from a table/list
+            </description>
+            <params>
+                <param name="voxels" type="buffer">
+                    <description>
+                        voxel positions, packed as a float array
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>relative (bool, defaults to false): specified voxels are relative to the OC tree reference frame, otherwise they are relative to the world reference frame</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+            </returns>
+            <categories>
+                <category name="ocTree" />
+            </categories>
+            <see-also>
+                <function-ref name="ocTree:clear" />
+                <function-ref name="ocTree:insertVoxelsFromBuffer" />
+                <function-ref name="ocTree:subtractVoxels" />
+                <function-ref name="ocTree:checkPoints" />
+                <function-ref name="app:packFloatTable" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="checkPoints" func="sim.callMethod" lang="python,lua">
+            <description>
+                Checks whether the provided points collide with the voxels
+            </description>
+            <params>
+                <param name="points" type="matrix">
+                    <description>
+                        point positions, in column-major order (the matrix should be 3 X n in size)
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>relative (bool, defaults to false): specified points are relative to the OC tree reference frame, otherwise they are relative to the world reference frame</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="result" type="bool">
+                    <description>
+                        whether the points collide with the voxels
+                    </description>
+                </param>
+                <param name="tag" type="int">
+                    <description>
+                        tag value of the voxel that collides with a single point. If several points are tested, this return value should be ignored
+                    </description>
+                </param>
+                <param name="locLow" type="int">
+                    <description>
+                        low value specifying the location of the voxel that collides with a single point. If several points are tested, then this return value should be ignored
+                    </description>
+                </param>
+                <param name="locHigh" type="int">
+                    <description>
+                        high value specifying the location of the voxel that collides with a single point. If several points are tested, then this return value should be ignored
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="collision" />
+            </categories>
+            <see-also>
+                <function-ref name="sceneObject:checkCollision" />
+                <function-ref name="collection:checkCollision" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="clear" func="sim.callMethod" lang="python,lua">
+            <info>similar method present in both ocTree and pointCloud</info>
+            <description>
+                Removes all voxels
+            </description>
+            <params>
+            </params>
+            <returns>
+            </returns>
+            <categories>
+                <category name="ocTree" />
+            </categories>
+            <see-also>
+            </see-also>
+        </method>
     </object-class>
 
     
@@ -7096,6 +7317,203 @@
             <see-also>
                 <function-ref name="pointCloud:insertFrom" />
                 <function-ref name="ocTree:subtractFrom" />
+            </see-also>
+        </method>
+
+
+
+        <method name="insertPoints" func="sim.callMethod" lang="python,lua">
+            <description>
+                Inserts points
+            </description>
+            <params>
+                <param name="points" type="matrix">
+                    <description>
+                        point positions, in column-major order (the matrix should be 3 X n in size)
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>color (color, defaults to nil): color for all points</li>
+                            <li>colors (color[], defaults to nil): point-specific colors (one color per point)</li>
+                            <li>relative (bool, defaults to false): specified points are relative to the point cloud reference frame, otherwise they are relative to the world reference frame</li>
+                            <li>tolerance (float, defaults to nil): an insertion duplicate tolerance</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+            </returns>
+            <categories>
+                <category name="pointCloud" />
+            </categories>
+            <see-also>
+                <function-ref name="pointCloud:clear" />
+                <function-ref name="pointCloud:insertPointsFromBuffer" />
+                <function-ref name="pointCloud:subtractPoints" />
+                <function-ref name="pointCloud:insertFrom" />
+                <function-ref name="ocTree:insertPoints" />
+            </see-also>
+        </method>
+
+
+
+        <method name="insertPointsFromBuffer" func="sim.callMethod" lang="python,lua">
+            <description>
+                Inserts points from a buffer, instead from a table/list
+            </description>
+            <params>
+                <param name="points" type="matrix">
+                    <description>
+                        point positions, packed as a float array
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>color (color, defaults to nil): color for all points</li>
+                            <li>colors (buffer, defaults to nil): point-specific colors, packed as a float array (one color per point)</li>
+                            <li>relative (bool, defaults to false): specified points are relative to the point cloud reference frame, otherwise they are relative to the world reference frame</li>
+                            <li>tolerance (float, defaults to nil): an insertion duplicate tolerance</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+            </returns>
+            <categories>
+                <category name="pointCloud" />
+            </categories>
+            <see-also>
+                <function-ref name="pointCloud:clear" />
+                <function-ref name="pointCloud:insertPoints" />
+                <function-ref name="pointCloud:subtractPointsFromBuffer" />
+                <function-ref name="app:packFloatTable" />
+            </see-also>
+        </method>
+
+    
+
+        <method name="subtractPoints" func="sim.callMethod" lang="python,lua">
+            <description>
+                Removes points
+            </description>
+            <params>
+                <param name="points" type="matrix">
+                    <description>
+                        point positions, in column-major order (the matrix should be 3 X n in size)
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>relative (bool, defaults to false): specified points are relative to the point cloud reference frame, otherwise they are relative to the world reference frame</li>
+                            <li>tolerance (float, defaults to 0.01): an insertion duplicate tolerance</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+            </returns>
+            <categories>
+                <category name="pointCloud" />
+            </categories>
+            <see-also>
+                <function-ref name="pointCloud:clear" />
+                <function-ref name="pointCloud:subtractPointsFromBuffer" />
+                <function-ref name="pointCloud:insertPoints" />
+                <function-ref name="pointCloud:subtractFrom" />
+                <function-ref name="ocTree:subtractVoxels" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="subtractPointsFromBuffer" func="sim.callMethod" lang="python,lua">
+            <description>
+                Removes points from a buffer, instead from a table/list
+            </description>
+            <params>
+                <param name="points" type="matrix">
+                    <description>
+                        point positions, packed as a float array
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>relative (bool, defaults to false): specified points are relative to the point cloud reference frame, otherwise they are relative to the world reference frame</li>
+                            <li>tolerance (float, defaults to 0.01): an insertion duplicate tolerance</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+            </returns>
+            <categories>
+                <category name="pointCloud" />
+            </categories>
+            <see-also>
+                <function-ref name="pointCloud:clear" />
+                <function-ref name="pointCloud:insertPointsFromBuffer" />
+                <function-ref name="pointCloud:subtractPoints" />
+                <function-ref name="pointCloud:subtractFrom" />
+                <function-ref name="app:packFloatTable" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="intersectPoints" func="sim.callMethod" lang="python,lua">
+            <description>
+                Removes points that do not intersect with the
+                provided points (i.e. the result in the point cloud will be the intersection between the two sets of points)
+            </description>
+            <params>
+                <param name="points" type="matrix">
+                    <description>
+                        point positions, in column-major order (the matrix should be 3 X n in size)
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>relative (bool, defaults to false): specified points are relative to the point cloud reference frame, otherwise they are relative to the world reference frame</li>
+                            <li>tolerance (float, defaults to 0.01): a distance tolerance</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="pointCloud" />
+            </categories>
+            <see-also>
+                <function-ref name="pointCloud:clear" />
+                <function-ref name="pointCloud:insertPoints" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="clear" func="sim.callMethod" lang="python,lua">
+            <info>similar method present in both ocTree and pointCloud</info>
+            <description>
+                Removes all points
+            </description>
+            <params>
+            </params>
+            <returns>
+            </returns>
+            <categories>
+                <category name="pointCloud" />
+            </categories>
+            <see-also>
             </see-also>
         </method>
     </object-class>
@@ -7434,62 +7852,6 @@
         <see-also>
             <function-ref name="sim.adjustView" />
             <function-ref name="sim.floatingViewAdd" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="checkOctreePointOccupancy" func="sim.checkOctreePointOccupancy" lang="python,lua">
-        <description>
-            Checks whether the provided points collide with the 
-            <a href="../octrees.htm"> OC tree </a>
-            voxels
-        </description>
-        <params>
-            <param name="octreeHandle" type="handle">
-                <description>
-                    handle of the OC tree
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li> bit0 set (1): specified points are relative to the OC tree reference frame, otherwise they are relative to the world reference frame </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="points" type="float[]">
-                <description>
-                    bit0 set (1): specified points are relative to the OC tree reference frame, otherwise they are relative to the world reference frame
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="res" type="int">
-                <description>
-                    0 if the points do not collide with the voxels, 1 if the points collide with the voxels
-                </description>
-            </param>
-            <param name="tag" type="int">
-                <description>
-                    tag value of the voxel that collides with a single point. If several points are tested, this return value should be ignored
-                </description>
-            </param>
-            <param name="locLow" type="int">
-                <description>
-                    value specifying the location of the voxel that collides with a single point. If several points are tested, then this return value should be ignored
-                </description>
-            </param>
-            <param name="locHigh" type="int">
-                <description />
-            </param>
-        </returns>
-        <categories>
-        <category name="ocTree" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#octree" label=" OC tree related functions " />
         </see-also>
     </method>
 
@@ -10157,167 +10519,6 @@ end</code>
 
     
 
-    <method name="insertPointsIntoPointCloud" func="sim.insertPointsIntoPointCloud" lang="python,lua">
-        <description>
-            Inserts points into a 
-            <a href="../pointClouds.htm"> point cloud </a>
-        </description>
-        <params>
-            <param name="pcHandle" type="int">
-                <description>
-                    handle of the point cloud, can be combined with sim.handleflag_codedstring, when one wishes to provide point data as a float buffer, and color data as a char buffer
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li> bit0 set (1): specified points are relative to the point cloud reference frame, otherwise they are relative to the world reference frame </li>
-                        <li> bit1 set (2): the color array contains one RGB triple per point. Otherwise it contains a single RGB triple </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="points" type="float[]">
-                <description>
-                    bit0 set (1): specified points are relative to the point cloud reference frame, otherwise they are relative to the world reference frame
-                </description>
-            </param>
-            <param name="color" type="int[]" default="nil">
-                <description>
-                    bit1 set (2): the color array contains one RGB triple per point. Otherwise it contains a single RGB triple
-                </description>
-            </param>
-            <param name="duplicateTolerance" type="float" default="nil">
-                <description>
-                    array of point positions specified as x/y/z coordinates
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="totalPointCnt" type="int">
-                <description>
-                    the total number of points in the point cloud
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="pointCloud" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.removePointsFromPointCloud" />
-            <link href="../apiFunctions.htm#pointCloud" label=" point cloud related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="insertVoxelsIntoOctree" func="sim.insertVoxelsIntoOctree" lang="python,lua">
-        <description>
-            Inserts voxels into an 
-            <a href="../octrees.htm"> OC tree </a>
-            . Each voxel will store a color and a tag value
-        </description>
-        <params>
-            <param name="octreeHandle" type="int">
-                <description>
-                    handle of the OC tree, can be combined with sim.handleflag_codedstring, when one wishes to provide point data as a float buffer, color data as a char buffer and tag as an uint32 buffer
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li> bit0 set (1): specified points are relative to the OC tree reference frame, otherwise they are relative to the world reference frame </li>
-                        <li> bit1 set (2): the color array contains one RGB triple per point, and the tag array contains one value per point. Otherwise it the color array contains a single RGB triple, and the tag array contains a single value. </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="points" type="float[]">
-                <description>
-                    bit0 set (1): specified points are relative to the OC tree reference frame, otherwise they are relative to the world reference frame
-                </description>
-            </param>
-            <param name="color" type="int[]" default="nil">
-                <description>
-                    bit1 set (2): the color array contains one RGB triple per point, and the tag array contains one value per point. Otherwise it the color array contains a single RGB triple, and the tag array contains a single value.
-                </description>
-            </param>
-            <param name="tag" type="int[]" default="nil">
-                <description>
-                    array of voxel positions specified as x/y/z coordinates
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="totalVoxelCnt" type="int">
-                <description>
-                    the total number of voxels in the OC tree
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="ocTree" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.removeVoxelsFromOctree" />
-            <link href="../apiFunctions.htm#octree" label=" OC tree related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="intersectPointsWithPointCloud" func="sim.intersectPointsWithPointCloud" lang="python,lua">
-        <description>
-            Removes points from a 
-            <a href="../pointClouds.htm"> point cloud </a>
-            , that do not intersect with the
-            provided points (i.e. the result in the point cloud will be the intersection between the two sets of points).
-            When a point cloud doesn't use an OC tree calculation structure, then this operation cannot be performed
-        </description>
-        <params>
-            <param name="pcHandle" type="int">
-                <description>
-                    handle of the point cloud
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li> bit0 set (1): specified points are relative to the point cloud reference frame, otherwise they are relative to the world reference frame </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="points" type="float[]">
-                <description>
-                    bit0 set (1): specified points are relative to the point cloud reference frame, otherwise they are relative to the world reference frame
-                </description>
-            </param>
-            <param name="tolerance" type="float">
-                <description>
-                    array of point positions specified as x/y/z coordinates
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="totalPointCnt" type="int">
-                <description>
-                    the total number of points in the point cloud
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="pointCloud" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.insertPointsIntoPointCloud" />
-            <function-ref name="sim.setPointCloudOptions" />
-            <link href="../apiFunctions.htm#pointCloud" label=" point cloud related functions " />
-        </see-also>
-    </method>
-
-    
-
     <method name="isDynamicallyEnabled" func="sim.isDynamicallyEnabled" lang="python,lua">
         <description>
             Checks whether a scene object is dynamically enabled, i.e. is being handled and simulated by the physics engine.
@@ -10868,101 +11069,6 @@ end</code>
         <see-also>
             <function-ref name="sim.addParticleObject" />
             <function-ref name="sim.addParticleObjectItem" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="removePointsFromPointCloud" func="sim.removePointsFromPointCloud" lang="python,lua">
-        <description>
-            Removes points from a 
-            <a href="../pointClouds.htm"> point cloud </a>
-            . When a point cloud doesn't
-            use an OC tree calculation structure, then individual points cannot be removed,
-            only all points can be removed in that case
-        </description>
-        <params>
-            <param name="pointCloudHandle" type="int">
-                <description>
-                    handle of the point cloud
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li> bit0 set (1): specified points are relative to the point cloud reference frame, otherwise they are relative to the world reference frame </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="points" type="float[]">
-                <description>
-                    bit0 set (1): specified points are relative to the point cloud reference frame, otherwise they are relative to the world reference frame
-                </description>
-            </param>
-            <param name="tolerance" type="float">
-                <description>
-                    point positions specified as x/y/z coordinates. Set to None/nil to remove all points
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="totalPointCnt" type="int">
-                <description>
-                    total number of points in the point cloud
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="pointCloud" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.insertPointsIntoPointCloud" />
-            <function-ref name="sim.setPointCloudOptions" />
-            <link href="../apiFunctions.htm#pointCloud" label=" point cloud related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="removeVoxelsFromOctree" func="sim.removeVoxelsFromOctree" lang="python,lua">
-        <description>
-            Removes voxels from an 
-            <a href="../octrees.htm"> OC tree </a>
-        </description>
-        <params>
-            <param name="octreeHandle" type="int">
-                <description>
-                    handle of the OC tree
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li> bit0 set (1): specified points are relative to the OC tree reference frame, otherwise they are relative to the world reference frame </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="points" type="float[]">
-                <description>
-                    bit0 set (1): specified points are relative to the OC tree reference frame, otherwise they are relative to the world reference frame
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="totalVoxelCnt" type="int">
-                <description>
-                    total number of voxels in the OC tree
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="ocTree" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.insertVoxelsIntoOctree" />
-            <link href="../apiFunctions.htm#octree" label=" OC tree related functions " />
         </see-also>
     </method>
 
