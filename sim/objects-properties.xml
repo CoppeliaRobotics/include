@@ -806,17 +806,24 @@
     <property name="setVector3Property" type="method" readable="false" writable="false" />
   </object-class>
   <object-class name="ocTree" superclass="sceneObject">
+    <property name="checkPoints" type="method" readable="false" writable="false" />
+    <property name="checkPointsFromBuffer" type="method" readable="false" writable="false" />
+    <property name="clear" type="method" readable="false" writable="false" />
     <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
     <property name="colors" type="buffer" writable="false" label="Voxel Colors" />
     <property name="insertFrom" type="method" readable="false" writable="false" />
+    <property name="insertVoxels" type="method" readable="false" writable="false" />
+    <property name="insertVoxelsFromBuffer" type="method" readable="false" writable="false" />
     <property name="points" type="floatarray" writable="false" label="Voxels">
       <description>Voxel positions</description>
     </property>
     <property name="randomColors" type="bool" label="Random voxel colors" />
     <property name="showPoints" type="bool" label="Show points instead of voxels" />
     <property name="subtractFrom" type="method" readable="false" writable="false" />
+    <property name="subtractVoxels" type="method" readable="false" writable="false" />
+    <property name="subtractVoxelsFromBuffer" type="method" readable="false" writable="false" />
     <property name="voxelSize" type="float" label="Voxel size" />
     <property name="voxels" type="floatarray" deprecated="true" writable="false" />
   </object-class>
@@ -824,6 +831,7 @@
     <property name="cellSize" type="float" label="Cell size">
       <description>Size of the oc-tree cell/voxel</description>
     </property>
+    <property name="clear" type="method" readable="false" writable="false" />
     <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
@@ -831,6 +839,10 @@
       <description>Point colors</description>
     </property>
     <property name="insertFrom" type="method" readable="false" writable="false" />
+    <property name="insertPoints" type="method" readable="false" writable="false" />
+    <property name="insertPointsFromBuffer" type="method" readable="false" writable="false" />
+    <property name="intersectPoints" type="method" readable="false" writable="false" />
+    <property name="intersectPointsFromBuffer" type="method" readable="false" writable="false" />
     <property name="maxPointsInCell" type="int" label="Max. points in cell">
       <description>Maximum number of points in an oc-tree cell/voxel</description>
     </property>
@@ -846,6 +858,8 @@
     </property>
     <property name="randomColors" type="bool" label="Random point colors" />
     <property name="subtractFrom" type="method" readable="false" writable="false" />
+    <property name="subtractPoints" type="method" readable="false" writable="false" />
+    <property name="subtractPointsFromBuffer" type="method" readable="false" writable="false" />
   </object-class>
   <object-class name="proximitySensor" superclass="sceneObject">
     <property name="angleThreshold" type="float" label="Angle threshold">
