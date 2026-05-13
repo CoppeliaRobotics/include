@@ -1640,11 +1640,13 @@
     <property name="getStringArrayProperty" type="method" readable="false" writable="false" />
     <property name="getStringProperty" type="method" readable="false" writable="false" />
     <property name="getTableProperty" type="method" readable="false" writable="false" />
-    <property name="getVector2Property" type="method" readable="false" writable="false" />
     <property name="getVector3Property" type="method" readable="false" writable="false" />
     <property name="handle" type="long" writable="false" constant="true" label="Handle" />
     <property name="isValid" type="method" readable="false" writable="false" />
-    <property name="objectMetaInfo" type="string" writable="false" constant="true" label="Object meta information" />
+    <property name="metaInfo.isClass" type="bool" writable="false" constant="true" label="class flag" />
+    <property name="metaInfo.isSceneObject" type="bool" writable="false" constant="true" label="sceneObject flag" />
+    <property name="metaInfo.namespaces" type="stringarray" writable="false" constant="true" label="object name spaces" />
+    <property name="metaInfo.superClass" type="stringarray" writable="false" constant="true" label="object super class" />
     <property name="objectType" type="string" writable="false" constant="true" label="Object type" />
     <property name="removeProperty" type="method" readable="false" writable="false" />
     <property name="setBoolProperty" type="method" readable="false" writable="false" />
@@ -1667,7 +1669,6 @@
     <property name="setStringArrayProperty" type="method" readable="false" writable="false" />
     <property name="setStringProperty" type="method" readable="false" writable="false" />
     <property name="setTableProperty" type="method" readable="false" writable="false" />
-    <property name="setVector2Property" type="method" readable="false" writable="false" />
     <property name="setVector3Property" type="method" readable="false" writable="false" />
   </object-class>
 
