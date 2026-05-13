@@ -10,7 +10,7 @@ function sysCall_init()
     lfsx = require 'lfsx'
 
     classInfo = {}
-    superclass = {sceneObject = 'object'}
+    superclass = {}
     flags = {'readable', 'writable', 'removable', 'silent', 'deprecated', 'constant'}
     typemap = table.invert(table.filter(sim, {matchKeyPrefix = 'propertytype_', stripKeyPrefix = true}))
 
@@ -45,11 +45,20 @@ function sysCall_init()
         sim.scene:loadModel(lfsx.pathjoin(addOnDir, 'shape.simmodel.xml')).meshes[1], --sim.scene:createObject{objectType = 'shape', mesh = {texture = {resolution = {2, 2}, image = string.rep('\x00', 3 * 4), rgba = false}}}.meshes[1],
     }
 
+    local function setSuperClass(objectType, superClass)
+        if superclass[objectType] == nil then
+            log('superclass(%s) -> %s', objectType, superClass)
+            superclass[objectType] = superClass
+        end
+    end
+
     local foundInconsistentFlags = false
     for _, h in ipairs(allHandles) do
-        local objectType = h.objectType
-        local objectMetaInfo = json.decode(h.objectMetaInfo)
-        superclass[objectType] = objectMetaInfo.superclass
+        log('object %s:%d superClass=%s', h.objectType, h.handle, json.encode(h.metaInfo.superClass))
+        local classHierarchy = table.add({h.objectType}, h.metaInfo.superClass)
+        for i = 2, #classHierarchy do
+            setSuperClass(classHierarchy[i-1], classHierarchy[i])
+        end
         local info
         local ok, err = pcall(function()
             info = sim.getPropertiesInfos(h, {excludeFlags = 0})
@@ -57,11 +66,11 @@ function sysCall_init()
         if not ok then
             error(string.format('target %d: %s', h.handle, err))
         end
-        classInfo[objectType] = classInfo[objectType] or {properties = {}}
+        classInfo[h.objectType] = classInfo[h.objectType] or {properties = {}}
         --FIXME: namespace info is not reported in the correct class (typically: sceneObject) but in its subclasses
-        --classInfo[objectType].namespaces = objectMetaInfo.namespaces
+        --classInfo[h.objectType].namespaces = h.metaInfo.namespaces
         for pname, pinfo in pairs(info) do
-            local pclass = pinfo.class or objectType
+            local pclass = pinfo.class or h.objectType
             local fullk = pclass .. '.' .. pname
             pinfo.type = typemap[pinfo.type]
             pinfo.flags.large = nil
