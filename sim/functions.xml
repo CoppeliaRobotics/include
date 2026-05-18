@@ -1056,303 +1056,6 @@
 
     
 
-    <function name="simAuxiliaryConsoleClose" lang="c">
-        <description>
-            Closes an auxiliary console window
-        </description>
-        <params>
-            <param name="consoleHandle" type="int">
-                <description>
-                    handle of the console window, previously returned by simAuxiliaryConsoleOpen
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="return" type="int">
-                <description>
-                    -1 if operation was not successful. 0 if the console doesn't exist (anymore), in which case no error is generated. 1 if the console window was closed.
-                </description>
-            </param>
-        </returns>
-        <categories>
-                <category name="messaging" />
-                <category name="console" />
-        </categories>
-        <see-also>
-            <function-ref name="simAuxiliaryConsoleOpen" />
-        </see-also>
-    </function>
-
-    
-
-    <function name="sim.auxiliaryConsoleClose" lang="python,lua">
-        <description>
-            Closes an auxiliary console window
-        </description>
-        <params>
-            <param name="consoleHandle" type="handle">
-                <description>
-                    handle of the console window, previously returned by sim.auxiliaryConsoleOpen
-                </description>
-            </param>
-        </params>
-        <categories>
-                <category name="messaging" />
-                <category name="console" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.auxiliaryConsoleOpen" />
-        </see-also>
-    </function>
-
-    
-
-    <function name="simAuxiliaryConsoleOpen" lang="c">
-        <description>
-            Opens an auxiliary console window for text display. This console window is different from
-            the application main console window. Console window handles are shared across all simulator scenes
-        </description>
-        <params>
-            <param name="title" type="const char*">
-                <description>
-                    title of the console window
-                </description>
-            </param>
-            <param name="maxLines" type="int">
-                <description>
-                    number of text lines that can be displayed and buffered
-                </description>
-            </param>
-            <param name="mode" type="int">
-                <description>
-                    bit-coded value:
-                    <ul>
-                        <li> bit0 (1) set indicates that the console window automatically closes at simulation end </li>
-                        <li> bit1 (2) set indicates that lines will be wrapped </li>
-                        <li> bit2 (4) set indicates that the user can close the console window </li>
-                        <li> bit3 (8) is not used </li>
-                        <li> bit4 (16) set indicates that the console will not automatically hide when the user switches to another scene </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="position" type="const int*">
-                <description>
-                    bit0 (1) set indicates that the console window automatically closes at simulation end
-                </description>
-            </param>
-            <param name="size" type="const int*">
-                <description>
-                    bit1 (2) set indicates that lines will be wrapped
-                </description>
-            </param>
-            <param name="textColor" type="const float*">
-                <description>
-                    bit2 (4) set indicates that the user can close the console window
-                </description>
-            </param>
-            <param name="backgroundColor" type="const float*">
-                <description>
-                    bit3 (8) is not used
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="return" type="int">
-                <description>
-                    -1 if operation was not successful. Otherwise a console window handle
-                </description>
-            </param>
-        </returns>
-        <categories>
-                <category name="messaging" />
-                <category name="console" />
-        </categories>
-        <see-also>
-            <function-ref name="simAuxiliaryConsolePrint" />
-            <function-ref name="simAuxiliaryConsoleClose" />
-            <function-ref name="simAddLog" />
-        </see-also>
-    </function>
-
-    
-
-    <function name="sim.auxiliaryConsoleOpen" lang="python,lua">
-        <description>
-            Opens an auxiliary console window for text display. This console window is different from
-            the application main console window. Console window handles are shared across all simulator scenes
-        </description>
-        <params>
-            <param name="title" type="string">
-                <description>
-                    title of the console window
-                </description>
-            </param>
-            <param name="maxLines" type="int" default="50">
-                <description>
-                    number of text lines that can be displayed and buffered
-                </description>
-            </param>
-            <param name="mode" type="int" default="0">
-                <description>
-                    bit-coded value:
-                    <ul>
-                        <li> bit0 (1) set indicates that the console window automatically closes at simulation end </li>
-                        <li> bit1 (2) set indicates that lines will be wrapped </li>
-                        <li> bit2 (4) set indicates that the user can close the console window </li>
-                        <li> bit3 (8) is not used </li>
-                        <li> bit4 (16) set indicates that the console will not automatically hide when the user switches to another scene </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="position" type="int[2]" default="{100, 100}">
-                <description>
-                    bit0 (1) set indicates that the console window automatically closes at simulation end
-                </description>
-            </param>
-            <param name="size" type="int[2]" default="{640, 200}">
-                <description>
-                    bit1 (2) set indicates that lines will be wrapped
-                </description>
-            </param>
-            <param name="textColor" type="float[3]" default="{0.0, 0.0, 0.0}">
-                <description>
-                    bit2 (4) set indicates that the user can close the console window
-                </description>
-            </param>
-            <param name="backgroundColor" type="float[3]" default="{1.0, 1.0, 1.0}">
-                <description>
-                    bit3 (8) is not used
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="consoleHandle" type="handle">
-                <description>
-                    console window handle
-                </description>
-            </param>
-        </returns>
-        <categories>
-                <category name="messaging" />
-                <category name="console" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.auxiliaryConsolePrint" />
-            <function-ref name="sim.auxiliaryConsoleClose" />
-            <function-ref name="sim.addLog" />
-        </see-also>
-    </function>
-
-    
-
-    <function name="simAuxiliaryConsolePrint" lang="c">
-        <description>
-            Prints to an auxiliary console window
-        </description>
-        <params>
-            <param name="consoleHandle" type="int">
-                <description>
-                    handle of the console window, previously returned by the 
-                    <a href="simAuxiliaryConsoleOpen.htm"> simAuxiliaryConsoleOpen </a>
-                </description>
-            </param>
-            <param name="text" type="const char*">
-                <description>
-                    text to append, or nullptr to clear the console window
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="return" type="int">
-                <description>
-                    -1 if operation was not successful. 0 if the console doesn't exist (anymore), in which case no error is generated. 1 if the operation was successful.
-                </description>
-            </param>
-        </returns>
-        <categories>
-                <category name="messaging" />
-                <category name="console" />
-        </categories>
-        <see-also>
-            <function-ref name="simAuxiliaryConsoleOpen" />
-        </see-also>
-    </function>
-
-    
-
-    <function name="simAuxiliaryConsoleShow" lang="c">
-        <description>
-            Shows or hides an auxiliary console window
-        </description>
-        <params>
-            <param name="consoleHandle" type="int">
-                <description>
-                    handle of the console window, previously returned by 
-                    <a href="simAuxiliaryConsoleOpen.htm"> simAuxiliaryConsoleOpen </a>
-                    . When combined with 
-                    <em>
-                        sim.handleflag_extended
-                    </em>
-                    , then the function will simply query the visibility state of the console.
-                </description>
-            </param>
-            <param name="showState" type="bool">
-                <description>
-                    indicates whether the console should be hidden (0) or shown (!=0)
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="return" type="int">
-                <description>
-                    -1 if operation was not successful. 0 if the console doesn't exist (anymore), in which case no error is generated. 1 if the console window's show state was changed.
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="console" />
-        </categories>
-        <see-also>
-            <function-ref name="simAuxiliaryConsoleOpen" />
-            <function-ref name="simAuxiliaryConsoleClose" />
-        </see-also>
-    </function>
-
-    
-
-    <function name="sim.auxiliaryConsoleShow" lang="python,lua">
-        <description>
-            Shows or hides an auxiliary console window
-        </description>
-        <params>
-            <param name="consoleHandle" type="handle">
-                <description>
-                    handle of the console window, previously returned by 
-                    <a href="simAuxiliaryConsoleOpen.htm"> sim.auxiliaryConsoleOpen </a>
-                    . When combined with 
-                    <em>
-                        sim.handleflag_extended
-                    </em>
-                    , then the function will simply query the visibility state of the console.
-                </description>
-            </param>
-            <param name="showState" type="bool">
-                <description>
-                    indicates whether the console should be hidden (0) or shown (!=0)
-                </description>
-            </param>
-        </params>
-        <categories>
-            <category name="console" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.auxiliaryConsoleOpen" />
-            <function-ref name="sim.auxiliaryConsoleClose" />
-        </see-also>
-    </function>
-
-    
-
     <function name="simBuildMatrix" lang="c">
         <description>
             Builds a transformation matrix based on a position vector and
@@ -13428,368 +13131,6 @@ end</code>
 
     
 
-    <function name="sim.moveToConfig" lang="python,lua">
-        <description>
-            Executes a n-DoF motion using the 
-            <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
-            . This function can only be called from scripts running in a thread, since this is a blocking operation
-        </description>
-        <params>
-            <param name="params" type="table">
-                <description>
-                    parameters of the function:
-                    <ul>
-                        <li> <strong> pos </strong> : mandatory if joints is not specified. Specifies the current configuration as a vector with one value per DoF </li>
-                        <li> <strong> joints </strong> : mandatory if pos is not specified. Specifies the joint handles as a vector with one handle per DoF </li>
-                        <li> <strong> targetPos </strong> : specifies the target configuration as a vector with one value per DoF </li>
-                        <li> <strong> flags </strong> : optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a> , -1 for default flags. </li>
-                        <li> <strong> vel </strong> : optional. Specifies current velocity as a vector with one value per DoF. Defaults to [0, 0, ...] if omitted </li>
-                        <li> <strong> accel </strong> : optional. Specifies current acceleration as a vector with one value per DoF. Defaults to [0, 0, ...] if omitted </li>
-                        <li> <strong> maxVel </strong> : optional. Specifies the maximum allowed velocity as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to [inf, inf, ...] if omitted </li>
-                        <li> <strong> minVel </strong> : optional. Specifies the minimum allowed velocity as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to -maxVel if omitted </li>
-                        <li> <strong> maxAccel </strong> : optional. Specifies the maximum allowed acceleration as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to [inf, inf, ...] if omitted </li>
-                        <li> <strong> minAccel </strong> : optional. Specifies the minimum allowed acceleration as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to -maxAccel if omitted </li>
-                        <li> <strong> maxJerk </strong> : optional. Specifies the maximum allowed jerk as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to [inf, inf, ...] if omitted </li>
-                        <li> <strong> targetVel </strong> : optional. Specifies the target velocity as a vector with one value per DoF. Defaults to [0, 0, ...] if omitted </li>
-                        <li> <strong> callback </strong> : optional. Callback function called for each motion step. The argument provided to the callback function is the current motion state </li>
-                        <li> <strong> auxData </strong> : optional. Data to be forwarded to the callback function </li>
-                        <li> <strong> cyclicJoints </strong> : optional. Indicates which joint is cyclic (for cyclic joints, the movement always goes in the direction that represents the shortest distance to the goal). Defaults to [false, false, ...] is omitted </li>
-                        <li> <strong> timeStep </strong> : optional. The desired time step size. A value of 0 indicates that the current simulation time step is used. Defaults to 0 if omitted </li>
-                    </ul>
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="data" type="table">
-                <description>
-                    current motion state
-                </description>
-            </param>
-        </returns>
-        <categories>
-                <category name="blocking" />
-                <category name="motion" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.moveToConfig_init" />
-            <function-ref name="sim.moveToConfig_step" />
-            <function-ref name="sim.moveToConfig_cleanup" />
-            <function-ref name="sim.moveToPose" />
-            <function-ref name="sim.ruckigPos" />
-        </see-also>
-    </function>
-
-    
-
-    <function name="sim.moveToConfig_init" lang="python,lua">
-        <description>
-            Initiates a n-DoF motion using the 
-            <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
-        </description>
-        <params>
-            <param name="params" type="table">
-                <description>
-                    parameters of the function:
-                    <ul>
-                        <li> <strong> pos </strong> : mandatory if joints is not specified. Specifies the current configuration as a vector with one value per DoF </li>
-                        <li> <strong> joints </strong> : mandatory if pos is not specified. Specifies the joint handles as a vector with one handle per DoF </li>
-                        <li> <strong> targetPos </strong> : specifies the target configuration as a vector with one value per DoF </li>
-                        <li> <strong> flags </strong> : optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a> , -1 for default flags. </li>
-                        <li> <strong> vel </strong> : optional. Specifies current velocity as a vector with one value per DoF. Defaults to [0, 0, ...] if omitted </li>
-                        <li> <strong> accel </strong> : optional. Specifies current acceleration as a vector with one value per DoF. Defaults to [0, 0, ...] if omitted </li>
-                        <li> <strong> maxVel </strong> : optional. Specifies the maximum allowed velocity as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to [inf, inf, ...] if omitted </li>
-                        <li> <strong> minVel </strong> : optional. Specifies the minimum allowed velocity as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to -maxVel if omitted </li>
-                        <li> <strong> maxAccel </strong> : optional. Specifies the maximum allowed acceleration as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to [inf, inf, ...] if omitted </li>
-                        <li> <strong> minAccel </strong> : optional. Specifies the minimum allowed acceleration as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to -maxAccel if omitted </li>
-                        <li> <strong> maxJerk </strong> : optional. Specifies the maximum allowed jerk as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to [inf, inf, ...] if omitted </li>
-                        <li> <strong> targetVel </strong> : optional. Specifies the target velocity as a vector with one value per DoF. Defaults to [0, 0, ...] if omitted </li>
-                        <li> <strong> callback </strong> : optional. Callback function called for each motion step. The argument provided to the callback function is the current motion state </li>
-                        <li> <strong> auxData </strong> : optional. Data to be forwarded to the callback function </li>
-                        <li> <strong> cyclicJoints </strong> : optional. Indicates which joint is cyclic (for cyclic joints, the movement always goes in the direction that represents the shortest distance to the goal). Defaults to [false, false, ...] is omitted </li>
-                        <li> <strong> timeStep </strong> : optional. The desired time step size. A value of 0 indicates that the current simulation time step is used. Defaults to 0 if omitted </li>
-                    </ul>
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="motionObject" type="table">
-                <description>
-                    a motion object
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="motion" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.moveToConfig_step" />
-            <function-ref name="sim.moveToConfig_cleanup" />
-            <function-ref name="sim.moveToPose_init" />
-            <function-ref name="sim.ruckigPos" />
-        </see-also>
-    </function>
-
-    
-
-    <function name="sim.moveToConfig_step" lang="python,lua">
-        <description>
-            Steps a motion object
-        </description>
-        <params>
-            <param name="motionObject" type="table">
-                <description>
-                    a motion object
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="res" type="int">
-                <description>
-                    step result:
-                    <ul>
-                        <li> <strong> negative </strong> : error </li>
-                        <li> <strong> 0 </strong> : step successful, motion is still ongoing </li>
-                        <li> <strong> 1 </strong> : step successful, motion ended </li>
-                        <li> <strong> 2 </strong> : motion aborted </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="data" type="table">
-                <description>
-                    error
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="motion" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.moveToConfig_init" />
-            <function-ref name="sim.moveToConfig_cleanup" />
-        </see-also>
-    </function>
-
-    
-
-    <function name="sim.moveToConfig_cleanup" lang="python,lua">
-        <description>
-            Destroys a motion object
-        </description>
-        <params>
-            <param name="motionObject" type="table">
-                <description>
-                    handle of the motion object
-                </description>
-            </param>
-        </params>
-        <categories>
-            <category name="motion" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.moveToConfig_init" />
-            <function-ref name="sim.moveToConfig_step" />
-        </see-also>
-    </function>
-
-    
-
-    <function name="sim.moveToPose" lang="python,lua">
-        <description>
-            Executes an object motion using the 
-            <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
-            , by performing interpolations between two poses. The function can operate by handling 4 motion variables (x,y,z and
-            angle between the two poses), or a single movement variable (t, which requires a metric to be specified for distance
-            calculation between the two poses). This function can only be called from a script running in a thread, since this is a blocking
-            operation
-        </description>
-        <params>
-            <param name="params" type="table">
-                <description>
-                    parameters of the function:
-                    <ul>
-                        <li> <strong> pose </strong> : mandatory if neither object nor ik are specified. Specifies current pose </li>
-                        <li> <strong> object </strong> : mandatory if neither pose nor ik are specified. Specifies the handle of the object to move </li>
-                        <li> <strong> ik </strong> : mandatory if neither pose nor object are specified. Contains IK-relevant informations, if a kinematic chain should move via IK to a target: 
-                            <ul> 
-                                <li> <strong> tip </strong> : specifies the handle of the tip object (on the end-effector) </li> 
-                                <li> <strong> target </strong> : specifies the handle of the target object (the object to reach) </li> 
-                                <li> <strong> base </strong> : optional. Specifies the handle of the base object (the base of the kinematic chain). Defaults to -1 </li> 
-                                <li> <strong> joints </strong> : optional. Specifies the handles of the joints involved in IK calculations. Defaults to all joints within tip and base </li> 
-                                <li> <strong> method </strong> : optional. Specifies the resolution method. Defaults to simIK.method_damped_least_squares </li> 
-                                <li> <strong> damping </strong> : optional. Specifies the resolution damping. Defaults to 0.02 </li> 
-                                <li> <strong> iterations </strong> : optional. Specifies the max. number of iterations. Defaults to 20 </li> 
-                                <li> <strong> constraints </strong> : optional. Specifies the constraints. Defaults to simIK.constraint_pose </li> 
-                                <li> <strong> precision </strong> : optional. Specifies the desired precision. Defaults to [0.001, 0.5 * math.pi / 180.0] </li> 
-                                <li> <strong> allowError </strong> : optional. Specifies whether a resolution with precision values over what is allowed will be applied anyway. Defaults to params.ik.allowError </li> 
-                                <li> <strong> breakFlags </strong> : optional. Specified the reasons-flags required for simIK.handleGroup to fail Defaults to 0 </li> 
-                            </ul> 
-                        </li>
-                        <li> <strong> targetPose </strong> : specifies the target pose </li>
-                        <li> <strong> targetVel </strong> : optional. Specifies the target velocity. Defaults to [0, ...] if omitted </li>
-                        <li> <strong> flags </strong> : optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a> , -1 for default flags. </li>
-                        <li> <strong> metric </strong> : optional. A metric to compute a pose-pose distance. If omitted, the motion calculation happens in the 4-dimensional space (dim = 4: x, y, z, angle), otherwise it happens in the 1-dimensional space (dim = 1: t) </li>
-                        <li> <strong> maxVel </strong> : optional. Specifies the maximum allowed velocity as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to [inf, ...] if omitted </li>
-                        <li> <strong> minVel </strong> : optional. Specifies the minimum allowed velocity as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to -maxVel if omitted </li>
-                        <li> <strong> maxAccel </strong> : optional. Specifies the maximum allowed acceleration as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to [inf, ...] if omitted </li>
-                        <li> <strong> minAccel </strong> : optional. Specifies the minimum allowed acceleration as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to -maxAccel if omitted </li>
-                        <li> <strong> maxJerk </strong> : optional. Specifies the maximum allowed jerk as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to [inf, ...] if omitted </li>
-                        <li> <strong> callback </strong> : optional. Callback function called for each motion step. The argument provided to the callback function is the current motion state </li>
-                        <li> <strong> auxData </strong> : optional. Data to be forwarded to the callback function </li>
-                        <li> <strong> timeStep </strong> : optional. The desired time step size. A value of 0 indicates that the current simulation time step is used. Defaults to 0 if omitted </li>
-                    </ul>
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="data" type="table">
-                <description>
-                    current motion state
-                </description>
-            </param>
-        </returns>
-        <categories>
-                <category name="blocking" />
-                <category name="motion" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.moveToPose_init" />
-            <function-ref name="sim.moveToPose_step" />
-            <function-ref name="sim.moveToPose_cleanup" />
-            <function-ref name="sim.moveToConfig" />
-            <function-ref name="sim.ruckigPos" />
-        </see-also>
-    </function>
-
-    
-
-    <function name="sim.moveToPose_init" lang="python,lua">
-        <description>
-            Initiates an object motion using the 
-            <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
-            , by performing interpolations between two poses. The function can operate by handling 4 motion variables (x,y,z and
-            angle between the two poses), or a single movement variable (t, which requires a metric to be specified for distance
-            calculation between the two poses)
-        </description>
-        <params>
-            <param name="params" type="table">
-                <description>
-                    parameters of the function:
-                    <ul>
-                        <li> <strong> pose </strong> : mandatory if neither object nor ik are specified. Specifies current pose </li>
-                        <li> <strong> object </strong> : mandatory if neither pose nor ik are specified. Specifies the handle of the object to move </li>
-                        <li> <strong> ik </strong> : mandatory if neither pose nor object are specified. Contains IK-relevant informations, if a kinematic chain should move via IK to a target: 
-                            <ul> 
-                                <li> <strong> tip </strong> : specifies the handle of the tip object (on the end-effector) </li> 
-                                <li> <strong> target </strong> : specifies the handle of the target object (the object to reach) </li> 
-                                <li> <strong> base </strong> : optional. Specifies the handle of the base object (the base of the kinematic chain). Defaults to -1 </li> 
-                                <li> <strong> joints </strong> : optional. Specifies the handles of the joints involved in IK calculations. Defaults to all joints within tip and base </li> 
-                                <li> <strong> method </strong> : optional. Specifies the resolution method. Defaults to simIK.method_damped_least_squares </li> 
-                                <li> <strong> damping </strong> : optional. Specifies the resolution damping. Defaults to 0.02 </li> 
-                                <li> <strong> iterations </strong> : optional. Specifies the max. number of iterations. Defaults to 20 </li> 
-                                <li> <strong> constraints </strong> : optional. Specifies the constraints. Defaults to simIK.constraint_pose </li> 
-                                <li> <strong> precision </strong> : optional. Specifies the desired precision. Defaults to [0.001, 0.5 * math.pi / 180.0] </li> 
-                                <li> <strong> allowError </strong> : optional. Specifies whether a resolution with precision values over what is allowed will be applied anyway. Defaults to params.ik.allowError </li> 
-                                <li> <strong> breakFlags </strong> : optional. Specified the reasons-flags required for simIK.handleGroup to fail Defaults to 0 </li> 
-                            </ul> 
-                        </li>
-                        <li> <strong> targetPose </strong> : specifies the target pose </li>
-                        <li> <strong> targetVel </strong> : optional. Specifies the target velocity. Defaults to [0, ...] if omitted </li>
-                        <li> <strong> flags </strong> : optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a> , -1 for default flags. </li>
-                        <li> <strong> metric </strong> : optional. A metric to compute a pose-pose distance. If omitted, the motion calculation happens in the 4-dimensional space (dim = 4: x, y, z, angle), otherwise it happens in the 1-dimensional space (dim = 1: t) </li>
-                        <li> <strong> maxVel </strong> : optional. Specifies the maximum allowed velocity as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to [inf, ...] if omitted </li>
-                        <li> <strong> minVel </strong> : optional. Specifies the minimum allowed velocity as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to -maxVel if omitted </li>
-                        <li> <strong> maxAccel </strong> : optional. Specifies the maximum allowed acceleration as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to [inf, ...] if omitted </li>
-                        <li> <strong> minAccel </strong> : optional. Specifies the minimum allowed acceleration as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to -maxAccel if omitted </li>
-                        <li> <strong> maxJerk </strong> : optional. Specifies the maximum allowed jerk as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to [inf, ...] if omitted </li>
-                        <li> <strong> callback </strong> : optional. Callback function called for each motion step. The argument provided to the callback function is the current motion state </li>
-                        <li> <strong> auxData </strong> : optional. Data to be forwarded to the callback function </li>
-                        <li> <strong> timeStep </strong> : optional. The desired time step size. A value of 0 indicates that the current simulation time step is used. Defaults to 0 if omitted </li>
-                    </ul>
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="motionObject" type="table">
-                <description>
-                    a motion object
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="motion" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.moveToPose_step" />
-            <function-ref name="sim.moveToPose_cleanup" />
-            <function-ref name="sim.moveToConfig_init" />
-            <function-ref name="sim.ruckigPos" />
-        </see-also>
-    </function>
-
-    
-
-    <function name="sim.moveToPose_step" lang="python,lua">
-        <description>
-            Steps a motion object
-        </description>
-        <params>
-            <param name="motionObject" type="table">
-                <description>
-                    a motion object
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="res" type="int">
-                <description>
-                    step result:
-                    <ul>
-                        <li> <strong> negative </strong> : error </li>
-                        <li> <strong> 0 </strong> : step successful, motion is still ongoing </li>
-                        <li> <strong> 1 </strong> : step successful, motion ended </li>
-                        <li> <strong> 2 </strong> : motion aborted </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="data" type="table">
-                <description>
-                    error
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="motion" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.moveToPose_init" />
-            <function-ref name="sim.moveToPose_cleanup" />
-        </see-also>
-    </function>
-
-    
-
-    <function name="sim.moveToPose_cleanup" lang="python,lua">
-        <description>
-            Destroys a motion object
-        </description>
-        <params>
-            <param name="motionObject" type="table">
-                <description>
-                    handle of the motion object
-                </description>
-            </param>
-        </params>
-        <categories>
-            <category name="motion" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.moveToPose_init" />
-            <function-ref name="sim.moveToPose_step" />
-        </see-also>
-    </function>
-
-    
-
     <function name="simMultiplyMatrices" lang="c">
         <description>
             Multiplies two transformation matrices
@@ -16434,7 +15775,7 @@ word4Color = "152 64 0"</comment>
             </param>
         </returns>
         <categories>
-            <category name="motion" />
+            <category name="Motion" />
         </categories>
         <see-also>
             <function-ref name="simRuckigVel" />
@@ -16504,7 +15845,7 @@ word4Color = "152 64 0"</comment>
             </param>
         </returns>
         <categories>
-            <category name="motion" />
+            <category name="Motion" />
         </categories>
         <see-also>
             <function-ref name="sim.ruckigVel" />
@@ -16542,7 +15883,7 @@ word4Color = "152 64 0"</comment>
             </param>
         </returns>
         <categories>
-            <category name="motion" />
+            <category name="Motion" />
         </categories>
     </function>
 
@@ -16568,7 +15909,7 @@ word4Color = "152 64 0"</comment>
             </param>
         </params>
         <categories>
-            <category name="motion" />
+            <category name="Motion" />
         </categories>
     </function>
 
@@ -16648,7 +15989,7 @@ word4Color = "152 64 0"</comment>
             </param>
         </returns>
         <categories>
-            <category name="motion" />
+            <category name="Motion" />
         </categories>
     </function>
 
@@ -16708,7 +16049,7 @@ word4Color = "152 64 0"</comment>
             </param>
         </returns>
         <categories>
-            <category name="motion" />
+            <category name="Motion" />
         </categories>
     </function>
 
@@ -16798,7 +16139,7 @@ word4Color = "152 64 0"</comment>
             </param>
         </returns>
         <categories>
-            <category name="motion" />
+            <category name="Motion" />
         </categories>
         <see-also>
             <function-ref name="simRuckigPos" />
@@ -16866,7 +16207,7 @@ word4Color = "152 64 0"</comment>
             </param>
         </returns>
         <categories>
-            <category name="motion" />
+            <category name="Motion" />
         </categories>
         <see-also>
             <function-ref name="sim.ruckigPos" />

@@ -1,6 +1,265 @@
 <?xml version='1.0' encoding='utf-8'?>
 <object-classes>
-    <object-class name="console" superclass="customObject">
+    <object-class name="MoveToConfig" superclass="Motion">
+        <method name="run" func="sim.callMethod" lang="python,lua">
+            <description>
+                Executes a n-DoF motion using the 
+                <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
+                . This function can only be called from scripts running in a thread, since this is a blocking operation
+            </description>
+            <params>
+            </params>
+            <returns>
+            </returns>
+            <categories>
+                <category name="blocking" />
+                <category name="Motion" />
+            </categories>
+            <see-also>
+                <function-ref name="MoveToConfig:new" />
+                <function-ref name="MoveToConfig:step" />
+                <function-ref name="MoveToConfig:remove" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="new" func="sim.callMethod" lang="python,lua">
+            <description>
+                Initiates a n-DoF motion using the 
+                <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
+            </description>
+            <params>
+                <param name="params" type="table">
+                    <description>
+                        parameters of the function:
+                        <ul>
+                            <li> <strong> pos </strong> : mandatory if joints is not specified. Specifies the current configuration as a vector with one value per DoF </li>
+                            <li> <strong> joints </strong> : mandatory if pos is not specified. Specifies the joint handles as a vector with one handle per DoF </li>
+                            <li> <strong> targetPos </strong> : specifies the target configuration as a vector with one value per DoF </li>
+                            <li> <strong> flags </strong> : optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a> , -1 for default flags. </li>
+                            <li> <strong> vel </strong> : optional. Specifies current velocity as a vector with one value per DoF. Defaults to [0, 0, ...] if omitted </li>
+                            <li> <strong> accel </strong> : optional. Specifies current acceleration as a vector with one value per DoF. Defaults to [0, 0, ...] if omitted </li>
+                            <li> <strong> maxVel </strong> : optional. Specifies the maximum allowed velocity as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to [inf, inf, ...] if omitted </li>
+                            <li> <strong> minVel </strong> : optional. Specifies the minimum allowed velocity as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to -maxVel if omitted </li>
+                            <li> <strong> maxAccel </strong> : optional. Specifies the maximum allowed acceleration as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to [inf, inf, ...] if omitted </li>
+                            <li> <strong> minAccel </strong> : optional. Specifies the minimum allowed acceleration as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to -maxAccel if omitted </li>
+                            <li> <strong> maxJerk </strong> : optional. Specifies the maximum allowed jerk as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to [inf, inf, ...] if omitted </li>
+                            <li> <strong> targetVel </strong> : optional. Specifies the target velocity as a vector with one value per DoF. Defaults to [0, 0, ...] if omitted </li>
+                            <li> <strong> callback </strong> : optional. Callback function called for each motion step. The argument provided to the callback function is the current motion state </li>
+                            <li> <strong> auxData </strong> : optional. Data to be forwarded to the callback function </li>
+                            <li> <strong> cyclicJoints </strong> : optional. Indicates which joint is cyclic (for cyclic joints, the movement always goes in the direction that represents the shortest distance to the goal). Defaults to [false, false, ...] is omitted </li>
+                            <li> <strong> timeStep </strong> : optional. The desired time step size. A value of 0 indicates that the current simulation time step is used. Defaults to 0 if omitted </li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="motionObject" type="table">
+                    <description>
+                        a motion object
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="Motion" />
+            </categories>
+            <see-also>
+                <function-ref name="MoveToConfig:run" />
+                <function-ref name="MoveToConfig:step" />
+                <function-ref name="MoveToConfig:remove" />
+                <function-ref name="MoveToPose:new" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="step" func="sim.callMethod" lang="python,lua">
+            <description>
+                Steps the motion
+            </description>
+            <params>
+            </params>
+            <returns>
+                <param name="res" type="int">
+                    <description>
+                        step result:
+                        <ul>
+                            <li> <strong> negative </strong> : error </li>
+                            <li> <strong> 0 </strong> : step successful, motion is still ongoing </li>
+                            <li> <strong> 1 </strong> : step successful, motion ended </li>
+                            <li> <strong> 2 </strong> : motion aborted </li>
+                        </ul>
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="Motion" />
+            </categories>
+            <see-also>
+                <function-ref name="MoveToConfig:new" />
+                <function-ref name="MoveToConfig:data" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="remove" func="sim.callMethod" lang="python,lua">
+            <description>
+                Destroys the motion object
+            </description>
+            <params>
+            </params>
+            <categories>
+                <category name="Motion" />
+            </categories>
+            <see-also>
+            </see-also>
+        </method>
+    </object-class>
+
+        
+
+    <object-class name="MoveToPose" superclass="Motion">
+        <method name="run" func="sim.callMethod" lang="python,lua">
+            <description>
+                Executes a motion using the 
+                <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
+                , by performing interpolations between two poses. The function can operate by handling 4 motion variables (x,y,z and
+                angle between the two poses), or a single movement variable (t, which requires a metric to be specified for distance
+                calculation between the two poses). This function can only be called from a script running in a thread, since this is a blocking
+                operation
+            </description>
+            <params>
+            </params>
+            <returns>
+            </returns>
+            <categories>
+                <category name="blocking" />
+                <category name="Motion" />
+            </categories>
+            <see-also>
+                <function-ref name="MoveToPose:new" />
+                <function-ref name="MoveToPose:step" />
+                <function-ref name="MoveToPose:remove" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="new" func="sim.callMethod" lang="python,lua">
+            <description>
+                Initiates motion using the 
+                <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
+                , by performing interpolations between two poses. The function can operate by handling 4 motion variables (x,y,z and
+                angle between the two poses), or a single movement variable (t, which requires a metric to be specified for distance
+                calculation between the two poses)
+            </description>
+            <params>
+                <param name="params" type="table">
+                    <description>
+                        parameters of the function:
+                        <ul>
+                            <li> <strong> pose </strong> : mandatory if neither object nor ik are specified. Specifies current pose </li>
+                            <li> <strong> object </strong> : mandatory if neither pose nor ik are specified. Specifies the handle of the object to move </li>
+                            <li> <strong> ik </strong> : mandatory if neither pose nor object are specified. Contains IK-relevant informations, if a kinematic chain should move via IK to a target: 
+                                <ul> 
+                                    <li> <strong> tip </strong> : specifies the handle of the tip object (on the end-effector) </li> 
+                                    <li> <strong> target </strong> : specifies the handle of the target object (the object to reach) </li> 
+                                    <li> <strong> base </strong> : optional. Specifies the handle of the base object (the base of the kinematic chain). Defaults to -1 </li> 
+                                    <li> <strong> joints </strong> : optional. Specifies the handles of the joints involved in IK calculations. Defaults to all joints within tip and base </li> 
+                                    <li> <strong> method </strong> : optional. Specifies the resolution method. Defaults to simIK.method_damped_least_squares </li> 
+                                    <li> <strong> damping </strong> : optional. Specifies the resolution damping. Defaults to 0.02 </li> 
+                                    <li> <strong> iterations </strong> : optional. Specifies the max. number of iterations. Defaults to 20 </li> 
+                                    <li> <strong> constraints </strong> : optional. Specifies the constraints. Defaults to simIK.constraint_pose </li> 
+                                    <li> <strong> precision </strong> : optional. Specifies the desired precision. Defaults to [0.001, 0.5 * math.pi / 180.0] </li> 
+                                    <li> <strong> allowError </strong> : optional. Specifies whether a resolution with precision values over what is allowed will be applied anyway. Defaults to params.ik.allowError </li> 
+                                    <li> <strong> breakFlags </strong> : optional. Specified the reasons-flags required for simIK.handleGroup to fail Defaults to 0 </li> 
+                                </ul> 
+                            </li>
+                            <li> <strong> targetPose </strong> : specifies the target pose </li>
+                            <li> <strong> targetVel </strong> : optional. Specifies the target velocity. Defaults to [0, ...] if omitted </li>
+                            <li> <strong> flags </strong> : optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a> , -1 for default flags. </li>
+                            <li> <strong> metric </strong> : optional. A metric to compute a pose-pose distance. If omitted, the motion calculation happens in the 4-dimensional space (dim = 4: x, y, z, angle), otherwise it happens in the 1-dimensional space (dim = 1: t) </li>
+                            <li> <strong> maxVel </strong> : optional. Specifies the maximum allowed velocity as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to [inf, ...] if omitted </li>
+                            <li> <strong> minVel </strong> : optional. Specifies the minimum allowed velocity as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to -maxVel if omitted </li>
+                            <li> <strong> maxAccel </strong> : optional. Specifies the maximum allowed acceleration as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to [inf, ...] if omitted </li>
+                            <li> <strong> minAccel </strong> : optional. Specifies the minimum allowed acceleration as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to -maxAccel if omitted </li>
+                            <li> <strong> maxJerk </strong> : optional. Specifies the maximum allowed jerk as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to [inf, ...] if omitted </li>
+                            <li> <strong> callback </strong> : optional. Callback function called for each motion step. The argument provided to the callback function is the current motion state </li>
+                            <li> <strong> auxData </strong> : optional. Data to be forwarded to the callback function </li>
+                            <li> <strong> timeStep </strong> : optional. The desired time step size. A value of 0 indicates that the current simulation time step is used. Defaults to 0 if omitted </li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="motionObject" type="table">
+                    <description>
+                        a motion object
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="Motion" />
+            </categories>
+            <see-also>
+                <function-ref name="MoveToPose:run" />
+                <function-ref name="MoveToPose:step" />
+                <function-ref name="MoveToPose:remove" />
+                <function-ref name="MoveToConfig:new" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="step" func="sim.callMethod" lang="python,lua">
+            <description>
+                Steps the motion
+            </description>
+            <params>
+            </params>
+            <returns>
+                <param name="res" type="int">
+                    <description>
+                        step result:
+                        <ul>
+                            <li> <strong> negative </strong> : error </li>
+                            <li> <strong> 0 </strong> : step successful, motion is still ongoing </li>
+                            <li> <strong> 1 </strong> : step successful, motion ended </li>
+                            <li> <strong> 2 </strong> : motion aborted </li>
+                        </ul>
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="Motion" />
+            </categories>
+            <see-also>
+                <function-ref name="MoveToPose:new" />
+                <function-ref name="MoveToPose:data" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="remove" func="sim.callMethod" lang="python,lua">
+            <description>
+                Destroys the motion object
+            </description>
+            <params>
+            </params>
+            <categories>
+                <category name="Motion" />
+            </categories>
+            <see-also>
+            </see-also>
+        </method>
+    </object-class>
+
+
+
+    <object-class name="Console" superclass="customObject">
         <method name="remove" func="sim.callMethod" lang="python,lua">
             <description>
                 Removes the console
@@ -40,7 +299,7 @@
             <categories>
             </categories>
             <see-also>
-                <function-ref name="console:clear" />
+                <function-ref name="Console:clear" />
             </see-also>
         </method>
 
@@ -53,7 +312,7 @@
             <categories>
             </categories>
             <see-also>
-                <function-ref name="console:print" />
+                <function-ref name="Console:print" />
             </see-also>
         </method>
     </object-class>
@@ -2783,13 +3042,15 @@
                                 <ul>
                                     <li>objectType (string): "console"</li>
                                     <li>title (string): console title</li>
-                                    <li>size (int[2]): console size</li>
-                                    <li>position (int[2]): console position</li>
+                                    <li>size.width (int): console width</li>
+                                    <li>size.height (int): console height</li>
+                                    <li>position.x (int): console position x</li>
+                                    <li>position.y (int): console position y</li>
                                     <li>closeable (bool): whether there is a close button or not</li>
                                     <li>resizable (bool): whether the console can be resized</li>
                                     <li>hiddenInSimulation (bool): whether the console is hidden during simulation</li>
                                     <li>fontSize (int): the size of the font</li>
-                                    <li>color (color): text default color</li>
+                                    <li>defaultColor (color): text default color</li>
                                     <li>background (color): background color</li>
                                     <li>style (string): style information, e.g. "font-family: 'Courier New', 'Consolas', 'Liberation Mono', 'DejaVu Sans Mono'; font-size: 10; background-color: #000000; color: #ffffff;"</li>
                                 </ul>
@@ -2841,9 +3102,9 @@
                                     <li>duplicateTolerance (float): indicates a distance threshold under which points are not added. Does not apply to line- or triangle items</li>
                                     <li>itemCnt (int): maximum item count</li>
                                     <li>color (color): default item color</li>
-                                    <li>mesh.vertices (matrix): vertices for a mesh item type (sim.markertype_custom). Vertices are arranged in a 3 * n matrix</li> 
+                                    <li>mesh.vertices (matrix): vertices for a mesh item type (sim.markertype_custom). Vertices are arranged in a n * 3 matrix</li> 
                                     <li>mesh.indices (table): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li> 
-                                    <li>mesh.normals (matrix): normals for a mesh item type (sim.markertype_custom). Normals are arranged in a 3 * n matrix. One normal for each vertex</li>
+                                    <li>mesh.normals (matrix): normals for a mesh item type (sim.markertype_custom). Normals are arranged in a n * 3 matrix. One normal for each vertex</li>
                                 </ul>
                             </li>
                             <li id="customSceneObject"><a href="../customSceneObjects.htm">custom scene object</a> fields:
@@ -2944,9 +3205,9 @@
                                     </li>
                                     <li>mesh (map/dict): holds parameters for the creation of a mesh:
                                         <ul>
-                                            <li>vertices (matrix): the vertices organized in a column-major 3*n matrix</li>
+                                            <li>vertices (matrix): the vertices organized row-wise (n * 3 matrix)</li>
                                             <li>indices (int[]): the zero-based indices</li>
-                                            <li>normals (matrix): the normals organized in a column-major 3*(3*n) matrix</li>
+                                            <li>normals (matrix): the normals organized in row-wise (n * 9)) matrix</li>
                                             <li>boundingBoxQuaternion (quaternion): the orientation of the shape's bounding box</li>
                                             <li>frameOrigin (pose): the pose of the shape's frame</li>
                                             <li>texture (map/dict): holds parameters for an optional texture:
@@ -3050,7 +3311,7 @@
                             <li id="path"><a href="../paths.htm">path</a> fields:
                                 <ul>
                                     <li>objectType (string): "path"</li>
-                                    <li>ctrlPts (matrix): control points, specified in row-major order, with [x y z qx qy qz qw] values for each path point</li>
+                                    <li>ctrlPts (matrix): control points, specified row-wise, with [x y z qx qy qz qw] values for each path point (n * 7 matrix)</li>
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
                                     <li>subdiv (int): number of individual path points</li>
@@ -3090,7 +3351,7 @@
             <categories>
                 <category name="collection" />
                 <category name="detachedScript" />
-                <category name="console" />
+                <category name="Console" />
                 <category name="dummy" />
                 <category name="marker" />
                 <category name="customSceneObject" />
@@ -3111,7 +3372,7 @@
                 <function-ref name="sceneObject:remove" />
                 <function-ref name="collection:remove" />
                 <function-ref name="detachedScript:remove" />
-                <function-ref name="console:remove" />
+                <function-ref name="Console:remove" />
                 <function-ref name="app:removeObjects" />
             </see-also>
         </method>
@@ -3297,13 +3558,13 @@
                 <category name="sceneObject" />
                 <category name="collection" />
                 <category name="detachedScript" />
-                <category name="console" />
+                <category name="Console" />
             </categories>
             <see-also>
                 <function-ref name="sceneObject:remove" />
                 <function-ref name="collection:remove" />
                 <function-ref name="detachedScript:remove" />
-                <function-ref name="console:remove" />
+                <function-ref name="Console:remove" />
                 <function-ref name="sceneObject:removeModel" />
                 <function-ref name="app:createObject" />
             </see-also>
@@ -4673,13 +4934,13 @@
                 <category name="sceneObject" />
                 <category name="collection" />
                 <category name="detachedScript" />
-                <category name="console" />
+                <category name="Console" />
             </categories>
             <see-also>
                 <function-ref name="sceneObject:remove" />
                 <function-ref name="collection:remove" />
                 <function-ref name="detachedScript:remove" />
-                <function-ref name="console:remove" />
+                <function-ref name="Console:remove" />
                 <function-ref name="sceneObject:removeModel" />
                 <function-ref name="scene:createObject" />
             </see-also>
@@ -4845,13 +5106,15 @@
                                 <ul>
                                     <li>objectType (string): "console"</li>
                                     <li>title (string): console title</li>
-                                    <li>size (int[2]): console size</li>
-                                    <li>position (int[2]): console position</li>
+                                    <li>size.width (int): console width</li>
+                                    <li>size.height (int): console height</li>
+                                    <li>position.x (int): console position x</li>
+                                    <li>position.y (int): console position y</li>
                                     <li>closeable (bool): whether there is a close button or not</li>
                                     <li>resizable (bool): whether the console can be resized</li>
                                     <li>hiddenInSimulation (bool): whether the console is hidden during simulation</li>
                                     <li>fontSize (int): the size of the font</li>
-                                    <li>color (color): text default color</li>
+                                    <li>defaultColor (color): text default color</li>
                                     <li>background (color): background color</li>
                                     <li>style (string): style information, e.g. "font-family: 'Courier New', 'Consolas', 'Liberation Mono', 'DejaVu Sans Mono'; font-size: 10; background-color: #000000; color: #ffffff;"</li>
                                 </ul>
@@ -4903,9 +5166,9 @@
                                     <li>duplicateTolerance (float): indicates a distance threshold under which points are not added. Does not apply to line- or triangle items</li>
                                     <li>itemCnt (int): maximum item count</li>
                                     <li>color (color): default item color</li>
-                                    <li>mesh.vertices (matrix): vertices for a mesh item type (sim.markertype_custom). Vertices are arranged in a 3 * n matrix</li> 
+                                    <li>mesh.vertices (matrix): vertices for a mesh item type (sim.markertype_custom). Vertices are arranged in a n * 3 matrix</li> 
                                     <li>mesh.indices (table): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li> 
-                                    <li>mesh.normals (matrix): normals for a mesh item type (sim.markertype_custom). Normals are arranged in a 3 * n matrix. One normal for each vertex</li>
+                                    <li>mesh.normals (matrix): normals for a mesh item type (sim.markertype_custom). Normals are arranged in a n * 3 matrix. One normal for each vertex</li>
                                 </ul>
                             </li>
                             <li id="customSceneObject"><a href="../customSceneObjects.htm">custom scene object</a> fields:
@@ -5006,9 +5269,9 @@
                                     </li>
                                     <li>mesh (map/dict): holds parameters for the creation of a mesh:
                                         <ul>
-                                            <li>vertices (matrix): the vertices organized in a column-major 3*n matrix</li>
+                                            <li>vertices (matrix): the vertices organized row-wise (n * 3 matrix)</li>
                                             <li>indices (int[]): the zero-based indices</li>
-                                            <li>normals (matrix): the normals organized in a column-major 3*(3*n) matrix</li>
+                                            <li>normals (matrix): the normals organized row-wise (n * 9 matrix)</li>
                                             <li>boundingBoxQuaternion (quaternion): the orientation of the shape's bounding box</li>
                                             <li>frameOrigin (pose): the pose of the shape's frame</li>
                                             <li>texture (map/dict): holds parameters for an optional texture:
@@ -5112,7 +5375,7 @@
                             <li id="path"><a href="../paths.htm">path</a> fields:
                                 <ul>
                                     <li>objectType (string): "path"</li>
-                                    <li>ctrlPts (matrix): control points, specified in row-major order, with [x y z qx qy qz qw] values for each path point</li>
+                                    <li>ctrlPts (matrix): control points, specified in row-major order, with [x y z qx qy qz qw] values for each path point (n * 7 matrix)</li>
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
                                     <li>subdiv (int): number of individual path points</li>
@@ -5152,7 +5415,7 @@
             <categories>
                 <category name="collection" />
                 <category name="detachedScript" />
-                <category name="console" />
+                <category name="Console" />
                 <category name="dummy" />
                 <category name="marker" />
                 <category name="customSceneObject" />
@@ -5173,7 +5436,7 @@
                 <function-ref name="sceneObject:remove" />
                 <function-ref name="collection:remove" />
                 <function-ref name="detachedScript:remove" />
-                <function-ref name="console:remove" />
+                <function-ref name="Console:remove" />
                 <function-ref name="app:removeObjects" />
             </see-also>
         </method>
@@ -6091,7 +6354,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        points, in column-major order. If the items are point items, the matrix should be 3 X n in size. If the items are line items, the matrix should be 3 X 2n in size, etc
+                        points, organised row-wise. If the items are point items, the matrix should be n * 3 in size. If the items are line items, the matrix should be 2n * 3 in size, etc
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -6099,8 +6362,8 @@
                         optional map:
                         <ul>
                             <li>colors (color[], defaults to nil): point-specific colors (one color per point)</li>
-                            <li>quaternions (matrix n X 4, defaults to nil): quaternions (one quaternion per item)</li>
-                            <li>sizes (matrix 3 X n, defaults to nil): x/y/z sizes (one x/y/z per item)</li>
+                            <li>quaternions (matrix n * 4, defaults to nil): quaternions (one quaternion per item)</li>
+                            <li>sizes (matrix n * 3, defaults to nil): x/y/z sizes (one x/y/z per item)</li>
                         </ul>
                     </description>
                 </param>
@@ -6769,16 +7032,12 @@
                 Adds or updates a graph signal
             </description>
             <params>
-                <param name="color" type="color" default="{1.0, 0.0, 0.0}">
-                    <description>
-                        signal color
-                    </description>
-                </param>
                 <param name="options" type="map" default="{}">
                     <description>
                         optional map:
                         <ul>
                             <li>name (string, defaults to "signal"): signal name</li>
+                            <li>color (color, defaults to Color("red")): signal color</li>
                             <li>unit (string, defaults to ""): signal unit</li>
                             <li>hideSignal (bool, defaults to false): hides the signal</li>
                             <li>hideLabel (bool, defaults to false): hides the label</li>
@@ -7042,7 +7301,7 @@
             <params>
                 <param name="voxels" type="matrix">
                     <description>
-                        voxel positions, in column-major order (the matrix should be 3 X n in size)
+                        voxel positions, organised row-wise (the matrix should be n * 3 in size)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -7122,7 +7381,7 @@
             <params>
                 <param name="voxels" type="matrix">
                     <description>
-                        voxel positions, in column-major order (the matrix should be 3 X n in size)
+                        voxel positions, organised row-wise (the matrix should be n * 3 in size)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -7192,7 +7451,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        point positions, in column-major order (the matrix should be 3 X n in size)
+                        point positions, organised row-wise (the matrix should be n * 3 in size)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -7334,7 +7593,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        point positions, in column-major order (the matrix should be 3 X n in size)
+                        point positions, organised row-wise (the matrix should be n * 3 in size)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -7370,7 +7629,7 @@
                 Inserts points from a buffer, instead from a table/list
             </description>
             <params>
-                <param name="points" type="matrix">
+                <param name="points" type="buffer">
                     <description>
                         point positions, packed as a float array
                     </description>
@@ -7409,7 +7668,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        point positions, in column-major order (the matrix should be 3 X n in size)
+                        point positions, organised row-wise (the matrix should be n * 3 in size)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -7443,7 +7702,7 @@
                 Removes points from a buffer, instead from a table/list
             </description>
             <params>
-                <param name="points" type="matrix">
+                <param name="points" type="buffer">
                     <description>
                         point positions, packed as a float array
                     </description>
@@ -7482,7 +7741,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        point positions, in column-major order (the matrix should be 3 X n in size)
+                        point positions, organised row-wise (the matrix should be n * 3 in size)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -7524,6 +7783,73 @@
     </object-class>
 
 
+
+    <object-class name="joint" superclass="sceneObject">
+        <method name="setTargetPosition" func="sim.callMethod" lang="python,lua">
+            <description>
+                Sets the joints's desired linear/angular position (only for non-spherical joints). When in kinematic mode, the joint moves according to a motion profile that respects maximum velocity, acceleration and jerk values. In dynamic and position/custom control mode, the controller is instructed about the desired position
+            </description>
+            <params>
+                <param name="targetPosition" type="float">
+                    <description>desired position</description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>maxVelocity (float, defaults to joint's setting): the maximum allowed velocity</li>
+                            <li>maxAcceleration (float, defaults to joint's setting): the maximum allowed acceleration</li>
+                            <li>maxJerk (float, defaults to joint's setting): the maximum allowed jerk</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="dynamics" />
+                <category name="joint" />
+            </categories>
+            <see-also>
+                <function-ref name="joint:setTargetVelocity" />
+                <property-ref name="joint.targetPosition" />
+                <property-ref name="joint.jointPosition" />
+            </see-also>
+        </method>
+
+
+
+        <method name="setTargetVelocity" func="sim.callMethod" lang="python,lua">
+            <description>
+                Sets the joint's desired linear/angular velocity (only for non-spherical joints). When in kinematic mode, the joint moves according to a motion profile that
+                respects maximum acceleration and jerk values. In dynamic and velocity control mode, the controller is instructed about the desired velocity
+            </description>
+            <params>
+                <param name="targetVelocity" type="float">
+                    <description>desired velocity</description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>initVel (float, defaults to joint's current velocity): the initial velocity, when in kinematic mode</li>
+                            <li>maxAcceleration (float, defaults to joint's setting): the maximum allowed acceleration</li>
+                            <li>maxJerk (float, defaults to joint's setting): the maximum allowed jerk</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="dynamics" />
+                <category name="joint" />
+            </categories>
+            <see-also>
+                <function-ref name="joint:setTargetPosition" />
+                <property-ref name="joint.targetVelocity" />
+                <property-ref name="joint.calcVelocity" />
+            </see-also>
+        </method>
+    </object-class>
+
+    
 
     <method name="cameraFitToView" func="sim.cameraFitToView" lang="python,lua">
         <description>
@@ -9653,360 +9979,6 @@ end</code>
 
     
 
-    <method name="moveToConfig" func="sim.moveToConfig" lang="python,lua">
-        <description>
-            Executes a n-DoF motion using the 
-            <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
-            . This function can only be called from scripts running in a thread, since this is a blocking operation
-        </description>
-        <params>
-            <param name="params" type="table">
-                <description>
-                    parameters of the function:
-                    <ul>
-                        <li> <strong> pos </strong> : mandatory if joints is not specified. Specifies the current configuration as a vector with one value per DoF </li>
-                        <li> <strong> joints </strong> : mandatory if pos is not specified. Specifies the joint handles as a vector with one handle per DoF </li>
-                        <li> <strong> targetPos </strong> : specifies the target configuration as a vector with one value per DoF </li>
-                        <li> <strong> flags </strong> : optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a> , -1 for default flags. </li>
-                        <li> <strong> vel </strong> : optional. Specifies current velocity as a vector with one value per DoF. Defaults to [0, 0, ...] if omitted </li>
-                        <li> <strong> accel </strong> : optional. Specifies current acceleration as a vector with one value per DoF. Defaults to [0, 0, ...] if omitted </li>
-                        <li> <strong> maxVel </strong> : optional. Specifies the maximum allowed velocity as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to [inf, inf, ...] if omitted </li>
-                        <li> <strong> minVel </strong> : optional. Specifies the minimum allowed velocity as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to -maxVel if omitted </li>
-                        <li> <strong> maxAccel </strong> : optional. Specifies the maximum allowed acceleration as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to [inf, inf, ...] if omitted </li>
-                        <li> <strong> minAccel </strong> : optional. Specifies the minimum allowed acceleration as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to -maxAccel if omitted </li>
-                        <li> <strong> maxJerk </strong> : optional. Specifies the maximum allowed jerk as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to [inf, inf, ...] if omitted </li>
-                        <li> <strong> targetVel </strong> : optional. Specifies the target velocity as a vector with one value per DoF. Defaults to [0, 0, ...] if omitted </li>
-                        <li> <strong> callback </strong> : optional. Callback function called for each motion step. The argument provided to the callback function is the current motion state </li>
-                        <li> <strong> auxData </strong> : optional. Data to be forwarded to the callback function </li>
-                        <li> <strong> cyclicJoints </strong> : optional. Indicates which joint is cyclic (for cyclic joints, the movement always goes in the direction that represents the shortest distance to the goal). Defaults to [false, false, ...] is omitted </li>
-                        <li> <strong> timeStep </strong> : optional. The desired time step size. A value of 0 indicates that the current simulation time step is used. Defaults to 0 if omitted </li>
-                    </ul>
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="data" type="table">
-                <description>
-                    current motion state
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="blocking" /><category name="motion" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.moveToConfig_init" />
-            <function-ref name="sim.moveToConfig_step" />
-            <function-ref name="sim.moveToConfig_cleanup" />
-            <function-ref name="sim.moveToPose" />
-            <function-ref name="sim.ruckigPos" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="sim.moveToConfig_init" lang="python,lua">
-        <description>
-            Initiates a n-DoF motion using the 
-            <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
-        </description>
-        <params>
-            <param name="params" type="table">
-                <description>
-                    parameters of the function:
-                    <ul>
-                        <li> <strong> pos </strong> : mandatory if joints is not specified. Specifies the current configuration as a vector with one value per DoF </li>
-                        <li> <strong> joints </strong> : mandatory if pos is not specified. Specifies the joint handles as a vector with one handle per DoF </li>
-                        <li> <strong> targetPos </strong> : specifies the target configuration as a vector with one value per DoF </li>
-                        <li> <strong> flags </strong> : optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a> , -1 for default flags. </li>
-                        <li> <strong> vel </strong> : optional. Specifies current velocity as a vector with one value per DoF. Defaults to [0, 0, ...] if omitted </li>
-                        <li> <strong> accel </strong> : optional. Specifies current acceleration as a vector with one value per DoF. Defaults to [0, 0, ...] if omitted </li>
-                        <li> <strong> maxVel </strong> : optional. Specifies the maximum allowed velocity as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to [inf, inf, ...] if omitted </li>
-                        <li> <strong> minVel </strong> : optional. Specifies the minimum allowed velocity as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to -maxVel if omitted </li>
-                        <li> <strong> maxAccel </strong> : optional. Specifies the maximum allowed acceleration as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to [inf, inf, ...] if omitted </li>
-                        <li> <strong> minAccel </strong> : optional. Specifies the minimum allowed acceleration as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to -maxAccel if omitted </li>
-                        <li> <strong> maxJerk </strong> : optional. Specifies the maximum allowed jerk as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to [inf, inf, ...] if omitted </li>
-                        <li> <strong> targetVel </strong> : optional. Specifies the target velocity as a vector with one value per DoF. Defaults to [0, 0, ...] if omitted </li>
-                        <li> <strong> callback </strong> : optional. Callback function called for each motion step. The argument provided to the callback function is the current motion state </li>
-                        <li> <strong> auxData </strong> : optional. Data to be forwarded to the callback function </li>
-                        <li> <strong> cyclicJoints </strong> : optional. Indicates which joint is cyclic (for cyclic joints, the movement always goes in the direction that represents the shortest distance to the goal). Defaults to [false, false, ...] is omitted </li>
-                        <li> <strong> timeStep </strong> : optional. The desired time step size. A value of 0 indicates that the current simulation time step is used. Defaults to 0 if omitted </li>
-                    </ul>
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="motionObject" type="table">
-                <description>
-                    a motion object
-                </description>
-            </param>
-        </returns>
-        <categories>
-        </categories>
-        <see-also>
-            <function-ref name="sim.moveToConfig_step" />
-            <function-ref name="sim.moveToConfig_cleanup" />
-            <function-ref name="sim.moveToPose_init" />
-            <function-ref name="sim.ruckigPos" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="sim.moveToConfig_step" lang="python,lua">
-        <description>
-            Steps a motion object
-        </description>
-        <params>
-            <param name="motionObject" type="table">
-                <description>
-                    a motion object
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="res" type="int">
-                <description>
-                    step result:
-                    <ul>
-                        <li> <strong> negative </strong> : error </li>
-                        <li> <strong> 0 </strong> : step successful, motion is still ongoing </li>
-                        <li> <strong> 1 </strong> : step successful, motion ended </li>
-                        <li> <strong> 2 </strong> : motion aborted </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="data" type="table">
-                <description>
-                    error
-                </description>
-            </param>
-        </returns>
-        <categories>
-        </categories>
-        <see-also>
-            <function-ref name="sim.moveToConfig_init" />
-            <function-ref name="sim.moveToConfig_cleanup" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="sim.moveToConfig_cleanup" lang="python,lua">
-        <description>
-            Destroys a motion object
-        </description>
-        <params>
-            <param name="motionObject" type="table">
-                <description>
-                    handle of the motion object
-                </description>
-            </param>
-        </params>
-        <categories>
-        </categories>
-        <see-also>
-            <function-ref name="sim.moveToConfig_init" />
-            <function-ref name="sim.moveToConfig_step" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="moveToPose" func="sim.moveToPose" lang="python,lua">
-        <description>
-            Executes an object motion using the 
-            <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
-            , by performing interpolations between two poses. The function can operate by handling 4 motion variables (x,y,z and
-            angle between the two poses), or a single movement variable (t, which requires a metric to be specified for distance
-            calculation between the two poses). This function can only be called from a script running in a thread, since this is a blocking
-            operation
-        </description>
-        <params>
-            <param name="params" type="table">
-                <description>
-                    parameters of the function:
-                    <ul>
-                        <li> <strong> pose </strong> : mandatory if neither object nor ik are specified. Specifies current pose </li>
-                        <li> <strong> object </strong> : mandatory if neither pose nor ik are specified. Specifies the handle of the object to move </li>
-                        <li> <strong> ik </strong> : mandatory if neither pose nor object are specified. Contains IK-relevant informations, if a kinematic chain should move via IK to a target: 
-                            <ul> 
-                                <li> <strong> tip </strong> : specifies the handle of the tip object (on the end-effector) </li> 
-                                <li> <strong> target </strong> : specifies the handle of the target object (the object to reach) </li> 
-                                <li> <strong> base </strong> : optional. Specifies the handle of the base object (the base of the kinematic chain). Defaults to -1 </li> 
-                                <li> <strong> joints </strong> : optional. Specifies the handles of the joints involved in IK calculations. Defaults to all joints within tip and base </li> 
-                                <li> <strong> method </strong> : optional. Specifies the resolution method. Defaults to simIK.method_damped_least_squares </li> 
-                                <li> <strong> damping </strong> : optional. Specifies the resolution damping. Defaults to 0.02 </li> 
-                                <li> <strong> iterations </strong> : optional. Specifies the max. number of iterations. Defaults to 20 </li> 
-                                <li> <strong> constraints </strong> : optional. Specifies the constraints. Defaults to simIK.constraint_pose </li> 
-                                <li> <strong> precision </strong> : optional. Specifies the desired precision. Defaults to [0.001, 0.5 * math.pi / 180.0] </li> 
-                                <li> <strong> allowError </strong> : optional. Specifies whether a resolution with precision values over what is allowed will be applied anyway. Defaults to params.ik.allowError </li> 
-                                <li> <strong> breakFlags </strong> : optional. Specified the reasons-flags required for simIK.handleGroup to fail Defaults to 0 </li> 
-                            </ul> 
-                        </li>
-                        <li> <strong> targetPose </strong> : specifies the target pose </li>
-                        <li> <strong> targetVel </strong> : optional. Specifies the target velocity. Defaults to [0, ...] if omitted </li>
-                        <li> <strong> flags </strong> : optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a> , -1 for default flags. </li>
-                        <li> <strong> metric </strong> : optional. A metric to compute a pose-pose distance. If omitted, the motion calculation happens in the 4-dimensional space (dim = 4: x, y, z, angle), otherwise it happens in the 1-dimensional space (dim = 1: t) </li>
-                        <li> <strong> maxVel </strong> : optional. Specifies the maximum allowed velocity as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to [inf, ...] if omitted </li>
-                        <li> <strong> minVel </strong> : optional. Specifies the minimum allowed velocity as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to -maxVel if omitted </li>
-                        <li> <strong> maxAccel </strong> : optional. Specifies the maximum allowed acceleration as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to [inf, ...] if omitted </li>
-                        <li> <strong> minAccel </strong> : optional. Specifies the minimum allowed acceleration as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to -maxAccel if omitted </li>
-                        <li> <strong> maxJerk </strong> : optional. Specifies the maximum allowed jerk as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to [inf, ...] if omitted </li>
-                        <li> <strong> callback </strong> : optional. Callback function called for each motion step. The argument provided to the callback function is the current motion state </li>
-                        <li> <strong> auxData </strong> : optional. Data to be forwarded to the callback function </li>
-                        <li> <strong> timeStep </strong> : optional. The desired time step size. A value of 0 indicates that the current simulation time step is used. Defaults to 0 if omitted </li>
-                    </ul>
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="data" type="table">
-                <description>
-                    current motion state
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="blocking" /><category name="motion" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.moveToPose_init" />
-            <function-ref name="sim.moveToPose_step" />
-            <function-ref name="sim.moveToPose_cleanup" />
-            <function-ref name="sim.moveToConfig" />
-            <function-ref name="sim.ruckigPos" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="sim.moveToPose_init" lang="python,lua">
-        <description>
-            Initiates an object motion using the 
-            <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
-            , by performing interpolations between two poses. The function can operate by handling 4 motion variables (x,y,z and
-            angle between the two poses), or a single movement variable (t, which requires a metric to be specified for distance
-            calculation between the two poses)
-        </description>
-        <params>
-            <param name="params" type="table">
-                <description>
-                    parameters of the function:
-                    <ul>
-                        <li> <strong> pose </strong> : mandatory if neither object nor ik are specified. Specifies current pose </li>
-                        <li> <strong> object </strong> : mandatory if neither pose nor ik are specified. Specifies the handle of the object to move </li>
-                        <li> <strong> ik </strong> : mandatory if neither pose nor object are specified. Contains IK-relevant informations, if a kinematic chain should move via IK to a target: 
-                            <ul> 
-                                <li> <strong> tip </strong> : specifies the handle of the tip object (on the end-effector) </li> 
-                                <li> <strong> target </strong> : specifies the handle of the target object (the object to reach) </li> 
-                                <li> <strong> base </strong> : optional. Specifies the handle of the base object (the base of the kinematic chain). Defaults to -1 </li> 
-                                <li> <strong> joints </strong> : optional. Specifies the handles of the joints involved in IK calculations. Defaults to all joints within tip and base </li> 
-                                <li> <strong> method </strong> : optional. Specifies the resolution method. Defaults to simIK.method_damped_least_squares </li> 
-                                <li> <strong> damping </strong> : optional. Specifies the resolution damping. Defaults to 0.02 </li> 
-                                <li> <strong> iterations </strong> : optional. Specifies the max. number of iterations. Defaults to 20 </li> 
-                                <li> <strong> constraints </strong> : optional. Specifies the constraints. Defaults to simIK.constraint_pose </li> 
-                                <li> <strong> precision </strong> : optional. Specifies the desired precision. Defaults to [0.001, 0.5 * math.pi / 180.0] </li> 
-                                <li> <strong> allowError </strong> : optional. Specifies whether a resolution with precision values over what is allowed will be applied anyway. Defaults to params.ik.allowError </li> 
-                                <li> <strong> breakFlags </strong> : optional. Specified the reasons-flags required for simIK.handleGroup to fail Defaults to 0 </li> 
-                            </ul> 
-                        </li>
-                        <li> <strong> targetPose </strong> : specifies the target pose </li>
-                        <li> <strong> targetVel </strong> : optional. Specifies the target velocity. Defaults to [0, ...] if omitted </li>
-                        <li> <strong> flags </strong> : optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a> , -1 for default flags. </li>
-                        <li> <strong> metric </strong> : optional. A metric to compute a pose-pose distance. If omitted, the motion calculation happens in the 4-dimensional space (dim = 4: x, y, z, angle), otherwise it happens in the 1-dimensional space (dim = 1: t) </li>
-                        <li> <strong> maxVel </strong> : optional. Specifies the maximum allowed velocity as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to [inf, ...] if omitted </li>
-                        <li> <strong> minVel </strong> : optional. Specifies the minimum allowed velocity as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to -maxVel if omitted </li>
-                        <li> <strong> maxAccel </strong> : optional. Specifies the maximum allowed acceleration as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to [inf, ...] if omitted </li>
-                        <li> <strong> minAccel </strong> : optional. Specifies the minimum allowed acceleration as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to -maxAccel if omitted </li>
-                        <li> <strong> maxJerk </strong> : optional. Specifies the maximum allowed jerk as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to [inf, ...] if omitted </li>
-                        <li> <strong> callback </strong> : optional. Callback function called for each motion step. The argument provided to the callback function is the current motion state </li>
-                        <li> <strong> auxData </strong> : optional. Data to be forwarded to the callback function </li>
-                        <li> <strong> timeStep </strong> : optional. The desired time step size. A value of 0 indicates that the current simulation time step is used. Defaults to 0 if omitted </li>
-                    </ul>
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="motionObject" type="table">
-                <description>
-                    a motion object
-                </description>
-            </param>
-        </returns>
-        <categories>
-        </categories>
-        <see-also>
-            <function-ref name="sim.moveToPose_step" />
-            <function-ref name="sim.moveToPose_cleanup" />
-            <function-ref name="sim.moveToConfig_init" />
-            <function-ref name="sim.ruckigPos" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="sim.moveToPose_step" lang="python,lua">
-        <description>
-            Steps a motion object
-        </description>
-        <params>
-            <param name="motionObject" type="table">
-                <description>
-                    a motion object
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="res" type="int">
-                <description>
-                    step result:
-                    <ul>
-                        <li> <strong> negative </strong> : error </li>
-                        <li> <strong> 0 </strong> : step successful, motion is still ongoing </li>
-                        <li> <strong> 1 </strong> : step successful, motion ended </li>
-                        <li> <strong> 2 </strong> : motion aborted </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="data" type="table">
-                <description>
-                    error
-                </description>
-            </param>
-        </returns>
-        <categories>
-        </categories>
-        <see-also>
-            <function-ref name="sim.moveToPose_init" />
-            <function-ref name="sim.moveToPose_cleanup" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="sim.moveToPose_cleanup" lang="python,lua">
-        <description>
-            Destroys a motion object
-        </description>
-        <params>
-            <param name="motionObject" type="table">
-                <description>
-                    handle of the motion object
-                </description>
-            </param>
-        </params>
-        <categories>
-        </categories>
-        <see-also>
-            <function-ref name="sim.moveToPose_init" />
-            <function-ref name="sim.moveToPose_step" />
-        </see-also>
-    </method>
-
-    
-
     <method name="readTexture" func="sim.readTexture" lang="python,lua">
         <description>
             Retrieves the RGB data (or a portion of it) related to a specific texture
@@ -10214,8 +10186,8 @@ end</code>
             </param>
         </returns>
         <categories>
-        <category name="motion" />
-            </categories>
+            <category name="Motion" />
+        </categories>
         <see-also>
             <function-ref name="sim.ruckigVel" />
             <function-ref name="sim.moveToPose" />
@@ -10245,8 +10217,8 @@ end</code>
             </param>
         </params>
         <categories>
-        <category name="motion" />
-            </categories>
+            <category name="Motion" />
+        </categories>
     </method>
 
     
@@ -10305,8 +10277,8 @@ end</code>
             </param>
         </returns>
         <categories>
-        <category name="motion" />
-            </categories>
+            <category name="Motion" />
+        </categories>
     </method>
 
     
@@ -10370,8 +10342,8 @@ end</code>
             </param>
         </returns>
         <categories>
-        <category name="motion" />
-            </categories>
+            <category name="Motion" />
+        </categories>
         <see-also>
             <function-ref name="sim.ruckigPos" />
         </see-also>
@@ -11025,31 +10997,6 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
 
 
-    <method name="auxiliaryConsolePrint" func="sim.auxiliaryConsolePrint" lang="python,lua">
-        <description>
-            Prints to an auxiliary console window
-        </description>
-        <params>
-            <param name="consoleHandle" type="handle">
-                <description>
-                    handle of the console window, previously returned by the
-                    <a href="simAuxiliaryConsoleOpen.htm">sim.auxiliaryConsoleOpen</a>
-                </description>
-            </param>
-            <param name="text" type="string" default="&quot;&quot;">
-                <description>text to append, or an empty string to clear the console window</description>
-            </param>
-        </params>
-        <categories>
-        <category name="messaging" /><category name="console" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.auxiliaryConsoleOpen" />
-        </see-also>
-    </method>
-
-
-
     <method name="broadcastMsg" func="sim.broadcastMsg" lang="python,lua">
         <description>
             Broadcasts a message to all scripts, except for the emitting script. Messages are received synchronously via the sysCall_msg
@@ -11184,67 +11131,6 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
             <function-ref name="sim.getJointTargetForce" />
             <function-ref name="sim.getJointForce" />
             <function-ref name="sim.setJointTargetVelocity" />
-        </see-also>
-    </method>
-
-
-
-    <method name="setJointTargetPosition" func="sim.setJointTargetPosition" lang="python,lua">
-        <description>
-            Sets the target linear/angular position of a joint. When in kinematic mode, the joint moves according to a motion profile that respects maximum
-            velocity, acceleration and jerk values. In dynamic and position/custom control mode, the controller is instructed about the desired position
-        </description>
-        <params>
-            <param name="objectHandle" type="handle">
-                <description>handle of the joint object</description>
-            </param>
-            <param name="targetPosition" type="float">
-                <description>target position of the joint</description>
-            </param>
-            <param name="motionParams" type="float[]" default="{}">
-                <description>
-                    when in kinematic mode: the maximum allowed velocity, acceleration and jerk. When in dynamics mode with position control and motion profile enabled, the maximum allowed velocity, acceleration and jerk. Can be None/nil for default values. See also the
-                    <a href="../propertiesReference.htm#maxVelAccelJerk">maxVelAccelJerk</a>
-                    property
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="dynamics" /><category name="joint" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getJointTargetPosition" />
-            <function-ref name="sim.setJointPosition" />
-        </see-also>
-    </method>
-
-
-
-    <method name="setJointTargetVelocity" func="sim.setJointTargetVelocity" lang="python,lua">
-        <description>
-            Sets the target linear/angular velocity of a non-spherical joint. When in kinematic mode, the joint moves according to a motion profile that
-            respects maximum acceleration and jerk values. In dynamic and velocity control mode, the controller is instructed about the desired velocity
-        </description>
-        <params>
-            <param name="objectHandle" type="handle">
-                <description>handle of the joint object</description>
-            </param>
-            <param name="targetVelocity" type="float">
-                <description>target velocity of the joint</description>
-            </param>
-            <param name="motionParams" type="float[]" default="{}">
-                <description>
-                    when the joint is in kinematic mode: the maximum allowed acceleration and jerk. When in dynamic mode with motion profile control enabled: the maximum allowed acceleration and jerk. Can be None/nil for default values. See also the
-                    <a href="../propertiesReference.htm#maxVelAccelJerk">maxVelAccelJerk</a>
-                    property
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="dynamics" /><category name="joint" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getJointTargetVelocity" />
         </see-also>
     </method>
 

@@ -587,14 +587,18 @@
     <property name="ode.stopCfm" type="float" deprecated="true" />
     <property name="ode.stopErp" type="float" deprecated="true" />
     <property name="screwLead" type="float" label="Screw lead" />
+    <property name="setTargetPosition" type="method" readable="false" writable="false" />
+    <property name="setTargetVelocity" type="method" readable="false" writable="false" />
     <property name="springDamperParams" type="floatarray" deprecated="true" />
     <property name="targetForce" type="float" label="Target force">
       <description>Maximum force to exert</description>
     </property>
-    <property name="targetPos" type="float" label="Target position">
+    <property name="targetPos" type="float" deprecated="true" />
+    <property name="targetPosition" type="float" label="Target position">
       <description>Position to reach by controller</description>
     </property>
-    <property name="targetVel" type="float" label="Target velocity">
+    <property name="targetVel" type="float" deprecated="true" />
+    <property name="targetVelocity" type="float" label="Target velocity">
       <description>Velocity to reach by controller</description>
     </property>
     <property name="type" type="int" writable="false" constant="true" label="Type">
@@ -1317,6 +1321,7 @@
     <property name="dynamicFlag" type="int" writable="false" label="Dynamic flag" />
     <property name="dynamicIcon" type="int" writable="false" label="Dynamic icon" />
     <property name="dynamicReset" type="method" readable="false" writable="false" />
+    <property name="dynamicallyEnabled" type="bool" writable="false" silent="true" label="Dynamically enabled" />
     <property name="eulerAngles" type="vector3" silent="true" label="Euler angles">
       <description>Scene object local Euler angles</description>
     </property>
