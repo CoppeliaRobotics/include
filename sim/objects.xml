@@ -76,7 +76,7 @@
 
         <method name="step" func="sim.callMethod" lang="python,lua">
             <description>
-                Steps a motion object
+                Steps the motion
             </description>
             <params>
             </params>
@@ -98,7 +98,7 @@
             </categories>
             <see-also>
                 <function-ref name="MoveToConfig:new" />
-                <function-ref name="MoveToConfig:getData" />
+                <function-ref name="MoveToConfig:data" />
             </see-also>
         </method>
 
@@ -106,7 +106,7 @@
 
         <method name="remove" func="sim.callMethod" lang="python,lua">
             <description>
-                Destroys a motion object
+                Destroys the motion object
             </description>
             <params>
             </params>
@@ -123,7 +123,7 @@
     <object-class name="MoveToPose" superclass="Motion">
         <method name="run" func="sim.callMethod" lang="python,lua">
             <description>
-                Executes an object motion using the 
+                Executes a motion using the 
                 <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
                 , by performing interpolations between two poses. The function can operate by handling 4 motion variables (x,y,z and
                 angle between the two poses), or a single movement variable (t, which requires a metric to be specified for distance
@@ -149,7 +149,7 @@
 
         <method name="new" func="sim.callMethod" lang="python,lua">
             <description>
-                Initiates an object motion using the 
+                Initiates motion using the 
                 <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
                 , by performing interpolations between two poses. The function can operate by handling 4 motion variables (x,y,z and
                 angle between the two poses), or a single movement variable (t, which requires a metric to be specified for distance
@@ -215,7 +215,7 @@
 
         <method name="step" func="sim.callMethod" lang="python,lua">
             <description>
-                Steps a motion object
+                Steps the motion
             </description>
             <params>
             </params>
@@ -237,7 +237,7 @@
             </categories>
             <see-also>
                 <function-ref name="MoveToPose:new" />
-                <function-ref name="MoveToPose:getData" />
+                <function-ref name="MoveToPose:data" />
             </see-also>
         </method>
 
@@ -245,7 +245,7 @@
 
         <method name="remove" func="sim.callMethod" lang="python,lua">
             <description>
-                Destroys a motion object
+                Destroys the motion object
             </description>
             <params>
             </params>
@@ -3088,7 +3088,7 @@
                                 <ul>
                                     <li>objectType (string): "detachedScript"</li>
                                     <li>type (int): the <a href="#scriptType">script type</a>. As of now only sim.scripttype_addon is supported</li>
-                                    <li>lang (string): the script language ("lua" or "python")</li>
+                                    <li>language (string): the script language ("lua" or "python")</li>
                                     <li>code (string): the script content</li>
                                 </ul>
                             </li>
@@ -3156,9 +3156,9 @@
                                     <li>duplicateTolerance (float): indicates a distance threshold under which points are not added. Does not apply to line- or triangle items</li>
                                     <li>itemCnt (int): maximum item count</li>
                                     <li>color (color): default item color</li>
-                                    <li>mesh.vertices (matrix): vertices for a mesh item type (sim.markertype_custom). Vertices are arranged in a 3 * n matrix</li> 
+                                    <li>mesh.vertices (matrix): vertices for a mesh item type (sim.markertype_custom). Vertices are arranged in a n * 3 matrix</li> 
                                     <li>mesh.indices (table): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li> 
-                                    <li>mesh.normals (matrix): normals for a mesh item type (sim.markertype_custom). Normals are arranged in a 3 * n matrix. One normal for each vertex</li>
+                                    <li>mesh.normals (matrix): normals for a mesh item type (sim.markertype_custom). Normals are arranged in a n * 3 matrix. One normal for each vertex</li>
                                 </ul>
                             </li>
                             <li id="customSceneObject"><a href="../customSceneObjects.htm">custom scene object</a> fields:
@@ -3259,9 +3259,9 @@
                                     </li>
                                     <li>mesh (map/dict): holds parameters for the creation of a mesh:
                                         <ul>
-                                            <li>vertices (matrix): the vertices organized in a column-major 3*n matrix</li>
+                                            <li>vertices (matrix): the vertices organized row-wise (n * 3 matrix)</li>
                                             <li>indices (int[]): the zero-based indices</li>
-                                            <li>normals (matrix): the normals organized in a column-major 3*(3*n) matrix</li>
+                                            <li>normals (matrix): the normals organized in row-wise (n * 9)) matrix</li>
                                             <li>boundingBoxQuaternion (quaternion): the orientation of the shape's bounding box</li>
                                             <li>frameOrigin (pose): the pose of the shape's frame</li>
                                             <li>texture (map/dict): holds parameters for an optional texture:
@@ -3365,7 +3365,7 @@
                             <li id="path"><a href="../paths.htm">path</a> fields:
                                 <ul>
                                     <li>objectType (string): "path"</li>
-                                    <li>ctrlPts (matrix): control points, specified in row-major order, with [x y z qx qy qz qw] values for each path point</li>
+                                    <li>ctrlPts (matrix): control points, specified row-wise, with [x y z qx qy qz qw] values for each path point (n * 7 matrix)</li>
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
                                     <li>subdiv (int): number of individual path points</li>
@@ -5403,7 +5403,7 @@
                                 <ul>
                                     <li>objectType (string): "detachedScript"</li>
                                     <li>type (int): the <a href="#scriptType">script type</a>. As of now only sim.scripttype_addon is supported</li>
-                                    <li>lang (string): the script language ("lua" or "python")</li>
+                                    <li>language (string): the script language ("lua" or "python")</li>
                                     <li>code (string): the script content</li>
                                 </ul>
                             </li>
@@ -5471,9 +5471,9 @@
                                     <li>duplicateTolerance (float): indicates a distance threshold under which points are not added. Does not apply to line- or triangle items</li>
                                     <li>itemCnt (int): maximum item count</li>
                                     <li>color (color): default item color</li>
-                                    <li>mesh.vertices (matrix): vertices for a mesh item type (sim.markertype_custom). Vertices are arranged in a 3 * n matrix</li> 
+                                    <li>mesh.vertices (matrix): vertices for a mesh item type (sim.markertype_custom). Vertices are arranged in a n * 3 matrix</li> 
                                     <li>mesh.indices (table): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li> 
-                                    <li>mesh.normals (matrix): normals for a mesh item type (sim.markertype_custom). Normals are arranged in a 3 * n matrix. One normal for each vertex</li>
+                                    <li>mesh.normals (matrix): normals for a mesh item type (sim.markertype_custom). Normals are arranged in a n * 3 matrix. One normal for each vertex</li>
                                 </ul>
                             </li>
                             <li id="customSceneObject"><a href="../customSceneObjects.htm">custom scene object</a> fields:
@@ -5574,9 +5574,9 @@
                                     </li>
                                     <li>mesh (map/dict): holds parameters for the creation of a mesh:
                                         <ul>
-                                            <li>vertices (matrix): the vertices organized in a column-major 3*n matrix</li>
+                                            <li>vertices (matrix): the vertices organized row-wise (n * 3 matrix)</li>
                                             <li>indices (int[]): the zero-based indices</li>
-                                            <li>normals (matrix): the normals organized in a column-major 3*(3*n) matrix</li>
+                                            <li>normals (matrix): the normals organized row-wise (n * 9 matrix)</li>
                                             <li>boundingBoxQuaternion (quaternion): the orientation of the shape's bounding box</li>
                                             <li>frameOrigin (pose): the pose of the shape's frame</li>
                                             <li>texture (map/dict): holds parameters for an optional texture:
@@ -5680,7 +5680,7 @@
                             <li id="path"><a href="../paths.htm">path</a> fields:
                                 <ul>
                                     <li>objectType (string): "path"</li>
-                                    <li>ctrlPts (matrix): control points, specified in row-major order, with [x y z qx qy qz qw] values for each path point</li>
+                                    <li>ctrlPts (matrix): control points, specified in row-major order, with [x y z qx qy qz qw] values for each path point (n * 7 matrix)</li>
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
                                     <li>subdiv (int): number of individual path points</li>
@@ -7213,7 +7213,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        points, in column-major order. If the items are point items, the matrix should be 3 X n in size. If the items are line items, the matrix should be 3 X 2n in size, etc
+                        points, organised row-wise. If the items are point items, the matrix should be n * 3 in size. If the items are line items, the matrix should be 2n * 3 in size, etc
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -7221,8 +7221,8 @@
                         optional map:
                         <ul>
                             <li>colors (color[], defaults to nil): point-specific colors (one color per point)</li>
-                            <li>quaternions (matrix n X 4, defaults to nil): quaternions (one quaternion per item)</li>
-                            <li>sizes (matrix 3 X n, defaults to nil): x/y/z sizes (one x/y/z per item)</li>
+                            <li>quaternions (matrix n * 4, defaults to nil): quaternions (one quaternion per item)</li>
+                            <li>sizes (matrix n * 3, defaults to nil): x/y/z sizes (one x/y/z per item)</li>
                         </ul>
                     </description>
                 </param>
@@ -8637,7 +8637,7 @@
             <params>
                 <param name="voxels" type="matrix">
                     <description>
-                        voxel positions, in column-major order (the matrix should be 3 X n in size)
+                        voxel positions, organised row-wise (the matrix should be n * 3 in size)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -8717,7 +8717,7 @@
             <params>
                 <param name="voxels" type="matrix">
                     <description>
-                        voxel positions, in column-major order (the matrix should be 3 X n in size)
+                        voxel positions, organised row-wise (the matrix should be n * 3 in size)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -8787,7 +8787,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        point positions, in column-major order (the matrix should be 3 X n in size)
+                        point positions, organised row-wise (the matrix should be n * 3 in size)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -8949,7 +8949,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        point positions, in column-major order (the matrix should be 3 X n in size)
+                        point positions, organised row-wise (the matrix should be n * 3 in size)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -8985,7 +8985,7 @@
                 Inserts points from a buffer, instead from a table/list
             </description>
             <params>
-                <param name="points" type="matrix">
+                <param name="points" type="buffer">
                     <description>
                         point positions, packed as a float array
                     </description>
@@ -9024,7 +9024,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        point positions, in column-major order (the matrix should be 3 X n in size)
+                        point positions, organised row-wise (the matrix should be n * 3 in size)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -9058,7 +9058,7 @@
                 Removes points from a buffer, instead from a table/list
             </description>
             <params>
-                <param name="points" type="matrix">
+                <param name="points" type="buffer">
                     <description>
                         point positions, packed as a float array
                     </description>
@@ -9097,7 +9097,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        point positions, in column-major order (the matrix should be 3 X n in size)
+                        point positions, organised row-wise (the matrix should be n * 3 in size)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">

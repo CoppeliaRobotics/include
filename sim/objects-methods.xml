@@ -3034,7 +3034,7 @@
                                 <ul>
                                     <li>objectType (string): "detachedScript"</li>
                                     <li>type (int): the <a href="#scriptType">script type</a>. As of now only sim.scripttype_addon is supported</li>
-                                    <li>lang (string): the script language ("lua" or "python")</li>
+                                    <li>language (string): the script language ("lua" or "python")</li>
                                     <li>code (string): the script content</li>
                                 </ul>
                             </li>
@@ -5098,7 +5098,7 @@
                                 <ul>
                                     <li>objectType (string): "detachedScript"</li>
                                     <li>type (int): the <a href="#scriptType">script type</a>. As of now only sim.scripttype_addon is supported</li>
-                                    <li>lang (string): the script language ("lua" or "python")</li>
+                                    <li>language (string): the script language ("lua" or "python")</li>
                                     <li>code (string): the script content</li>
                                 </ul>
                             </li>
