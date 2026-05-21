@@ -1,11 +1,243 @@
 <?xml version='1.0' encoding='utf-8'?>
 <object-classes>
+    <object-class name="RuckigPosition" superclass="Motion">
+        <method name="new" func="sim.callMethod" lang="python,lua">
+            <description>
+                Initializes a <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>.
+                The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities
+                for motion control systems. This function prepares a position-based trajectory generation object
+            </description>
+            <params>
+                <param name="params" type="map">
+                    <description>
+                        parameters of the function:
+                        <ul>
+                            <li>pos (vector n): specifies the current configuration with one value per DoF </li>
+                            <li>vel (vector n, defaults to zero vector): optional. Specifies current velocity with one value per DoF</li>
+                            <li>accel (vector n, defaults to zero vector): optional. Specifies current acceleration with one value per DoF</li>
+                            <li>maxVel (vector n): specifies the maximum allowed velocity with one value per DoF</li>
+                            <li>minVel (vector n, defaults to -maxVel): optional. Specifies the minimum allowed velocity with one value per DoF</li>
+                            <li>maxAccel (vector n): specifies the maximum allowed acceleration with one value per DoF</li>
+                            <li>minAccel (vector n, defaults to -maxAccel): optional. Specifies the minimum allowed acceleration with one value per DoF</li>
+                            <li>maxJerk (vector n): specifies the maximum allowed jerk with one value per DoF</li>
+                            <li>flags (int): optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a> , -1 for default flags. </li>
+                            <li>targetPos (vector n): specifies the target configuration with one value per DoF </li>
+                            <li>targetVel (vector n, defaults to zero vector): optional. Specifies the target velocity with one value per DoF</li>
+                            <li>baseCycleTime (float, defaults to 0.0001): optional. Smallest expected cycle time</li>
+                            <li>timeStep (float, defaults to 0.0): optional. The desired time step size. A value of 0 indicates that the current simulation time step is used. The timeStep time should always be a multiple of baseCycleTime</li>
+                            <li>selection (int[n], defaults to [1, ..., 1]): optional</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="motionObject" type="table">
+                    <description>
+                        a motion object
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="Motion" />
+            </categories>
+            <see-also>
+                <function-ref name="RuckigPosition:step" />
+                <function-ref name="RuckigPosition:remove" />
+                <function-ref name="RuckigVelocity:new" />
+                <function-ref name="MoveToConfig:new" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="remove" func="sim.callMethod" lang="python,lua">
+            <description>
+                Destroys the motion object
+            </description>
+            <params>
+            </params>
+            <categories>
+                <category name="Motion" />
+            </categories>
+            <see-also>
+            </see-also>
+        </method>
+
+        
+
+        <method name="step" func="sim.callMethod" lang="python,lua">
+            <description>
+                Steps the motion
+            </description>
+            <params>
+            </params>
+            <returns>
+                <param name="result" type="int">
+                    <description>
+                        return value of the update function in the motion library:
+                        <ul>
+                            <li> 1: Result::Finished (final state reached) </li>
+                            <li> 0: Result::Working (final state not yet reached) </li>
+                            <li> -100: Result::ErrorInvalidInput </li>
+                            <li> -101: Result::ErrorTrajectoryDuration </li>
+                            <li> -110: Result::ErrorExecutionTimeCalculation </li>
+                            <li> -111: Result::ErrorSynchronizationCalculation </li>
+                        </ul>
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="Motion" />
+            </categories>
+            <see-also>
+                <function-ref name="RuckigPosition:new" />
+                <function-ref name="RuckigPosition:data" />
+            </see-also>
+        </method>
+
+
+
+        <method name="data" func="sim.callMethod" lang="python,lua">
+            <description>
+                Returns motion information
+            </description>
+            <params>
+            </params>
+            <returns>
+                <param name="data" type="map">
+                    <description>
+                        Motion information
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="Motion" />
+            </categories>
+            <see-also>
+            </see-also>
+        </method>
+    </object-class>
+
+
+    <object-class name="RuckigVelocity" superclass="Motion">
+        <method name="new" func="sim.callMethod" lang="python,lua">
+            <description>
+                Initializes a <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>.
+                The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities
+                for motion control systems. This function prepares a velocity-based trajectory generation object
+            </description>
+            <params>
+                <param name="params" type="map">
+                    <description>
+                        parameters of the function:
+                        <ul>
+                            <li>pos (vector n, defaults to zero vector): optional. Specifies the current configuration with one value per DoF </li>
+                            <li>vel (vector n): specifies current velocity with one value per DoF</li>
+                            <li>accel (vector n, defaults to zero vector): optional. Specifies current acceleration with one value per DoF</li>
+                            <li>maxAccel (vector n): specifies the maximum allowed acceleration with one value per DoF</li>
+                            <li>minAccel (vector n, defaults to -maxAccel): optional. Specifies the minimum allowed acceleration with one value per DoF</li>
+                            <li>maxJerk (vector n): specifies the maximum allowed jerk with one value per DoF</li>
+                            <li>flags (int): optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a> , -1 for default flags. </li>
+                            <li>targetVel (vector n, defaults to zero vector): optional. Specifies the target velocity with one value per DoF</li>
+                            <li>baseCycleTime (float, defaults to 0.0001): optional. Smallest expected cycle time</li>
+                            <li>timeStep (float, defaults to 0.0): optional. The desired time step size. A value of 0 indicates that the current simulation time step is used. The timeStep time should always be a multiple of baseCycleTime</li>
+                            <li>selection (int[n], defaults to [1, ..., 1]): optional</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="motionObject" type="table">
+                    <description>
+                        a motion object
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="Motion" />
+            </categories>
+            <see-also>
+                <function-ref name="RuckigVelocity:step" />
+                <function-ref name="RuckigVelocity:remove" />
+                <function-ref name="RuckigPosition:new" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="remove" func="sim.callMethod" lang="python,lua">
+            <description>
+                Destroys the motion object
+            </description>
+            <params>
+            </params>
+            <categories>
+                <category name="Motion" />
+            </categories>
+            <see-also>
+            </see-also>
+        </method>
+
+        
+
+        <method name="step" func="sim.callMethod" lang="python,lua">
+            <description>
+                Steps the motion
+            </description>
+            <params>
+            </params>
+            <returns>
+                <param name="result" type="int">
+                    <description>
+                        return value of the update function in the motion library:
+                        <ul>
+                            <li> 1: Result::Finished (final state reached) </li>
+                            <li> 0: Result::Working (final state not yet reached) </li>
+                            <li> -100: Result::ErrorInvalidInput </li>
+                            <li> -101: Result::ErrorTrajectoryDuration </li>
+                            <li> -110: Result::ErrorExecutionTimeCalculation </li>
+                            <li> -111: Result::ErrorSynchronizationCalculation </li>
+                        </ul>
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="Motion" />
+            </categories>
+            <see-also>
+                <function-ref name="RuckigVelocity:new" />
+                <function-ref name="RuckigVelocity:data" />
+            </see-also>
+        </method>
+
+
+
+        <method name="data" func="sim.callMethod" lang="python,lua">
+            <description>
+                Returns motion information
+            </description>
+            <params>
+            </params>
+            <returns>
+                <param name="data" type="map">
+                    <description>
+                        Motion information
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="Motion" />
+            </categories>
+            <see-also>
+            </see-also>
+        </method>
+    </object-class>
+
+
     <object-class name="MoveToConfig" superclass="Motion">
         <method name="run" func="sim.callMethod" lang="python,lua">
             <description>
-                Executes a n-DoF motion using the 
-                <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
-                . This function can only be called from scripts running in a thread, since this is a blocking operation
+                Executes the motion. Can only be called from scripts running in a thread, since this is a blocking operation
             </description>
             <params>
             </params>
@@ -30,26 +262,26 @@
                 <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
             </description>
             <params>
-                <param name="params" type="table">
+                <param name="params" type="map">
                     <description>
                         parameters of the function:
                         <ul>
-                            <li> <strong> pos </strong> : mandatory if joints is not specified. Specifies the current configuration as a vector with one value per DoF </li>
-                            <li> <strong> joints </strong> : mandatory if pos is not specified. Specifies the joint handles as a vector with one handle per DoF </li>
-                            <li> <strong> targetPos </strong> : specifies the target configuration as a vector with one value per DoF </li>
-                            <li> <strong> flags </strong> : optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a> , -1 for default flags. </li>
-                            <li> <strong> vel </strong> : optional. Specifies current velocity as a vector with one value per DoF. Defaults to [0, 0, ...] if omitted </li>
-                            <li> <strong> accel </strong> : optional. Specifies current acceleration as a vector with one value per DoF. Defaults to [0, 0, ...] if omitted </li>
-                            <li> <strong> maxVel </strong> : optional. Specifies the maximum allowed velocity as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to [inf, inf, ...] if omitted </li>
-                            <li> <strong> minVel </strong> : optional. Specifies the minimum allowed velocity as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to -maxVel if omitted </li>
-                            <li> <strong> maxAccel </strong> : optional. Specifies the maximum allowed acceleration as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to [inf, inf, ...] if omitted </li>
-                            <li> <strong> minAccel </strong> : optional. Specifies the minimum allowed acceleration as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to -maxAccel if omitted </li>
-                            <li> <strong> maxJerk </strong> : optional. Specifies the maximum allowed jerk as a vector with one value per DoF, or as a scalar (scaled to a DoF-vector). Defaults to [inf, inf, ...] if omitted </li>
-                            <li> <strong> targetVel </strong> : optional. Specifies the target velocity as a vector with one value per DoF. Defaults to [0, 0, ...] if omitted </li>
-                            <li> <strong> callback </strong> : optional. Callback function called for each motion step. The argument provided to the callback function is the current motion state </li>
-                            <li> <strong> auxData </strong> : optional. Data to be forwarded to the callback function </li>
-                            <li> <strong> cyclicJoints </strong> : optional. Indicates which joint is cyclic (for cyclic joints, the movement always goes in the direction that represents the shortest distance to the goal). Defaults to [false, false, ...] is omitted </li>
-                            <li> <strong> timeStep </strong> : optional. The desired time step size. A value of 0 indicates that the current simulation time step is used. Defaults to 0 if omitted </li>
+                            <li>pos (vector n): mandatory if joints is not specified. Specifies the current configuration with one value per DoF </li>
+                            <li>joints (handle[]): mandatory if pos is not specified. Specifies the joint handles with one handle per DoF </li>
+                            <li>vel (vector n, defaults to zero vector): optional. Specifies current velocity with one value per DoF</li>
+                            <li>accel (vector n, defaults to zero vector): optional. Specifies current acceleration with one value per DoF</li>
+                            <li>maxVel (vector n, defaults to infinity vector): optional. Specifies the maximum allowed velocity with one value per DoF</li>
+                            <li>minVel (vector n, defaults to -maxVel): optional. Specifies the minimum allowed velocity with one value per DoF</li>
+                            <li>maxAccel (vector n, defaults to infinity vector): optional. Specifies the maximum allowed acceleration with one value per DoF</li>
+                            <li>minAccel (vector n, defaults to -maxAccel): optional. Specifies the minimum allowed acceleration with one value per DoF</li>
+                            <li>maxJerk (vector n, defaults to infinity vector): optional. Specifies the maximum allowed jerk with one value per DoF</li>
+                            <li>targetVel (vector n, defaults to zero vector): optional. Specifies the target velocity with one value per DoF</li>
+                            <li>targetPos (vector n): specifies the target configuration with one value per DoF </li>
+                            <li>flags (int): optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a> , -1 for default flags. </li>
+                            <li>callback (function): optional. Callback function called for each motion step. The argument provided to the callback function is the current motion state </li>
+                            <li>auxData (any): optional. Data to be forwarded to the callback function </li>
+                            <li>cyclicJoints (bool[], defaults to [false, ..., false]): optional. Indicates which joint is cyclic (for cyclic joints, the movement always goes in the direction that represents the shortest distance to the goal)</li>
+                            <li>timeStep (float, defaults to 0.0): optional. The desired time step size. A value of 0 indicates that the current simulation time step is used</li>
                         </ul>
                     </description>
                 </param>
@@ -69,6 +301,7 @@
                 <function-ref name="MoveToConfig:step" />
                 <function-ref name="MoveToConfig:remove" />
                 <function-ref name="MoveToPose:new" />
+                <function-ref name="RuckigPosition:new" />
             </see-also>
         </method>
 
@@ -81,14 +314,14 @@
             <params>
             </params>
             <returns>
-                <param name="res" type="int">
+                <param name="result" type="int">
                     <description>
                         step result:
                         <ul>
-                            <li> <strong> negative </strong> : error </li>
-                            <li> <strong> 0 </strong> : step successful, motion is still ongoing </li>
-                            <li> <strong> 1 </strong> : step successful, motion ended </li>
-                            <li> <strong> 2 </strong> : motion aborted </li>
+                            <li>negative: error </li>
+                            <li>0: step successful, motion is still ongoing </li>
+                            <li>1: step successful, motion ended </li>
+                            <li>2: motion aborted </li>
                         </ul>
                     </description>
                 </param>
@@ -103,6 +336,28 @@
         </method>
 
         
+
+        <method name="data" func="sim.callMethod" lang="python,lua">
+            <description>
+                Returns motion information
+            </description>
+            <params>
+            </params>
+            <returns>
+                <param name="data" type="map">
+                    <description>
+                        Motion information
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="Motion" />
+            </categories>
+            <see-also>
+            </see-also>
+        </method>
+
+
 
         <method name="remove" func="sim.callMethod" lang="python,lua">
             <description>
@@ -123,12 +378,7 @@
     <object-class name="MoveToPose" superclass="Motion">
         <method name="run" func="sim.callMethod" lang="python,lua">
             <description>
-                Executes a motion using the 
-                <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
-                , by performing interpolations between two poses. The function can operate by handling 4 motion variables (x,y,z and
-                angle between the two poses), or a single movement variable (t, which requires a metric to be specified for distance
-                calculation between the two poses). This function can only be called from a script running in a thread, since this is a blocking
-                operation
+                Executes a motion. Can only be called from a script running in a thread, since this is a blocking operation
             </description>
             <params>
             </params>
@@ -156,39 +406,39 @@
                 calculation between the two poses)
             </description>
             <params>
-                <param name="params" type="table">
+                <param name="params" type="map">
                     <description>
                         parameters of the function:
                         <ul>
-                            <li> <strong> pose </strong> : mandatory if neither object nor ik are specified. Specifies current pose </li>
-                            <li> <strong> object </strong> : mandatory if neither pose nor ik are specified. Specifies the handle of the object to move </li>
-                            <li> <strong> ik </strong> : mandatory if neither pose nor object are specified. Contains IK-relevant informations, if a kinematic chain should move via IK to a target: 
+                            <li>pose (pose): mandatory if neither object nor ik are specified. Specifies current pose </li>
+                            <li>object (handle): mandatory if neither pose nor ik are specified. Specifies the handle of the object to move </li>
+                            <li>ik (map): mandatory if neither pose nor object are specified. Contains IK-relevant informations, if a kinematic chain should move via IK to a target: 
                                 <ul> 
-                                    <li> <strong> tip </strong> : specifies the handle of the tip object (on the end-effector) </li> 
-                                    <li> <strong> target </strong> : specifies the handle of the target object (the object to reach) </li> 
-                                    <li> <strong> base </strong> : optional. Specifies the handle of the base object (the base of the kinematic chain). Defaults to -1 </li> 
-                                    <li> <strong> joints </strong> : optional. Specifies the handles of the joints involved in IK calculations. Defaults to all joints within tip and base </li> 
-                                    <li> <strong> method </strong> : optional. Specifies the resolution method. Defaults to simIK.method_damped_least_squares </li> 
-                                    <li> <strong> damping </strong> : optional. Specifies the resolution damping. Defaults to 0.02 </li> 
-                                    <li> <strong> iterations </strong> : optional. Specifies the max. number of iterations. Defaults to 20 </li> 
-                                    <li> <strong> constraints </strong> : optional. Specifies the constraints. Defaults to simIK.constraint_pose </li> 
-                                    <li> <strong> precision </strong> : optional. Specifies the desired precision. Defaults to [0.001, 0.5 * math.pi / 180.0] </li> 
-                                    <li> <strong> allowError </strong> : optional. Specifies whether a resolution with precision values over what is allowed will be applied anyway. Defaults to params.ik.allowError </li> 
-                                    <li> <strong> breakFlags </strong> : optional. Specified the reasons-flags required for simIK.handleGroup to fail Defaults to 0 </li> 
+                                    <li>tip (handle): specifies the tip object (on the end-effector) </li> 
+                                    <li>target (handle): specifies the target object (the object to reach) </li> 
+                                    <li>base (handle, defaults to nil): optional. Specifies the base object (the base of the kinematic chain)</li> 
+                                    <li>joints (handle[], defaults to all joints within tip and base): optional. Specifies the handles of the joints involved in IK calculations</li> 
+                                    <li>method (int, defaults to simIK.method_damped_least_squares): optional. Specifies the resolution method</li> 
+                                    <li>damping (float, defaults to 0.02): optional. Specifies the resolution damping</li> 
+                                    <li>iterations (int, defaults to 20): optional. Specifies the max. number of iterations</li> 
+                                    <li>constraints (int, defaults to simIK.constraint_pose): optional. Specifies the constraints</li> 
+                                    <li>precision (int[2], defaults to [0.001, 0.5 * math.pi / 180.0]): optional. Specifies the desired precision (linear and angular)</li> 
+                                    <li>allowError (bool, defaults to false): optional. Specifies whether a resolution with precision values over what is allowed will be applied anyway</li> 
+                                    <li>breakFlags (int, defaults to 0): optional. Specified the reasons-flags required for simIK.handleGroup to fail</li> 
                                 </ul> 
                             </li>
-                            <li> <strong> targetPose </strong> : specifies the target pose </li>
-                            <li> <strong> targetVel </strong> : optional. Specifies the target velocity. Defaults to [0, ...] if omitted </li>
-                            <li> <strong> flags </strong> : optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a> , -1 for default flags. </li>
-                            <li> <strong> metric </strong> : optional. A metric to compute a pose-pose distance. If omitted, the motion calculation happens in the 4-dimensional space (dim = 4: x, y, z, angle), otherwise it happens in the 1-dimensional space (dim = 1: t) </li>
-                            <li> <strong> maxVel </strong> : optional. Specifies the maximum allowed velocity as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to [inf, ...] if omitted </li>
-                            <li> <strong> minVel </strong> : optional. Specifies the minimum allowed velocity as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to -maxVel if omitted </li>
-                            <li> <strong> maxAccel </strong> : optional. Specifies the maximum allowed acceleration as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to [inf, ...] if omitted </li>
-                            <li> <strong> minAccel </strong> : optional. Specifies the minimum allowed acceleration as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to -maxAccel if omitted </li>
-                            <li> <strong> maxJerk </strong> : optional. Specifies the maximum allowed jerk as a vector with one value per dim, or as a scalar (scaled to a dim-vector). Defaults to [inf, ...] if omitted </li>
-                            <li> <strong> callback </strong> : optional. Callback function called for each motion step. The argument provided to the callback function is the current motion state </li>
-                            <li> <strong> auxData </strong> : optional. Data to be forwarded to the callback function </li>
-                            <li> <strong> timeStep </strong> : optional. The desired time step size. A value of 0 indicates that the current simulation time step is used. Defaults to 0 if omitted </li>
+                            <li>targetPose (pose): specifies the target pose </li>
+                            <li>targetVel (vector n, defaults to zero vector): optional. Specifies the target velocity, with n = 1 or n = 4</li>
+                            <li>flags (int, default to -1): optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a></li>
+                            <li>metric (vector n, defaults to [1.0, 1.0, 1.0, 1.0]): optional. A metric to compute a pose-pose distance. With n = 4, the motion calculation happens in the 4-dimensional space (x, y, z, angle), with n = 1, it happens in the 1-dimensional space (t) </li>
+                            <li>maxVel (vector n, defaults to infinity vector): optional. Specifies the maximum allowed velocity</li>
+                            <li>minVel (vector n, defaults to -maxVel): optional. Specifies the minimum allowed velocity</li>
+                            <li>maxAccel (vector n, defaults to infinity vector): optional. Specifies the maximum allowed acceleration</li>
+                            <li>minAccel (vector n, defaults to -maxAccel): optional. Specifies the minimum allowed acceleration</li>
+                            <li>maxJerk (vector n, defaults to infinity vector): optional. Specifies the maximum allowed jerk</li>
+                            <li>callback (function): optional. Callback function called for each motion step. The argument provided to the callback function is the current motion state </li>
+                            <li>auxData (any): optional. Data to be forwarded to the callback function </li>
+                            <li>timeStep (float, defaults to 0.0): optional. The desired time step size. A value of 0 indicates that the current simulation time step is used</li>
                         </ul>
                     </description>
                 </param>
@@ -220,14 +470,14 @@
             <params>
             </params>
             <returns>
-                <param name="res" type="int">
+                <param name="result" type="int">
                     <description>
                         step result:
                         <ul>
-                            <li> <strong> negative </strong> : error </li>
-                            <li> <strong> 0 </strong> : step successful, motion is still ongoing </li>
-                            <li> <strong> 1 </strong> : step successful, motion ended </li>
-                            <li> <strong> 2 </strong> : motion aborted </li>
+                            <li>negative: error </li>
+                            <li>0: step successful, motion is still ongoing </li>
+                            <li>1: step successful, motion ended </li>
+                            <li>2: motion aborted </li>
                         </ul>
                     </description>
                 </param>
@@ -242,6 +492,28 @@
         </method>
 
         
+
+        <method name="data" func="sim.callMethod" lang="python,lua">
+            <description>
+                Returns motion information
+            </description>
+            <params>
+            </params>
+            <returns>
+                <param name="data" type="map">
+                    <description>
+                        Motion information
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="Motion" />
+            </categories>
+            <see-also>
+            </see-also>
+        </method>
+
+
 
         <method name="remove" func="sim.callMethod" lang="python,lua">
             <description>
@@ -258,6 +530,90 @@
     </object-class>
 
 
+
+    <object-class name="TimeOptimalTrajectory" superclass="Motion">
+        <method name="generate" func="sim.callMethod" lang="python,lua">
+            <description>
+                Generates a time optimal trajectory
+            </description>
+            <params>
+                <param name="params" type="map">
+                    <description>
+                        parameters of the function:
+                        <ul>
+                            <li>path (matrix m * n): m path points/configurations, with n dimensions per point</li>
+                            <li>pathLengths (matrix m * 1): lengths of a path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path)</li>
+                            <li>maxVel (matrix n * 1): maximum allowed velocity, for each dimension/axis</li>
+                            <li>minVel (matrix n * 1, defaults to -maxVel): minimum allowed velocity, for each dimension/axis</li>
+                            <li>maxAccel (matrix n * 1): maximum allowed acceleration, for each dimension/axis</li>
+                            <li>minAccel (matrix n * 1, defaults to -maxAccel): minimum allowed acceleration, for each dimension/axis</li>
+                            <li>samples (int, defaults to 1000): desired number of path points/configurations</li>
+                            <li>boundaryCondition (string, defaults to 'not-a-knot'): boundary condition</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="points" type="matrix">
+                    <description>
+                        generated path
+                    </description>
+                </param>
+                <param name="times" type="vector">
+                    <description>
+                        generated path point times
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="Motion" />
+            </categories>
+            <see-also>
+                <function-ref name="TimeOptimalTrajectory:new" />
+            </see-also>
+        </method>
+
+
+
+        <method name="new" func="sim.callMethod" lang="python,lua">
+            <description>
+                Initializes a time optimal trajectory generator, based on the TOPPRA library
+            </description>
+            <params>
+            </params>
+            <returns>
+                <param name="motionObject" type="table">
+                    <description>
+                        a motion object
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="Motion" />
+            </categories>
+            <see-also>
+                <function-ref name="TimeOptimalTrajectory:generate" />
+                <function-ref name="TimeOptimalTrajectory:remove" />
+            </see-also>
+        </method>
+
+
+
+        <method name="remove" func="sim.callMethod" lang="python,lua">
+            <description>
+                Destroys the motion object
+            </description>
+            <params>
+            </params>
+            <categories>
+                <category name="Motion" />
+            </categories>
+            <see-also>
+            </see-also>
+        </method>
+    </object-class>
+
+    
 
     <object-class name="Console" superclass="customObject">
         <method name="remove" func="sim.callMethod" lang="python,lua">
@@ -9754,81 +10110,6 @@
 
     
 
-    <method name="generateTimeOptimalTrajectory" func="sim.generateTimeOptimalTrajectory" lang="python,lua">
-        <description>
-            Generates a time optimal trajectory, based on the TOPPRA library
-        </description>
-        <params>
-            <param name="path" type="float[]">
-                <description>
-                    path, specified in row-major order, e.g. a path containing two 3D positions would be [x1 y1 z1 x2 y2 z2]
-                </description>
-            </param>
-            <param name="pathLengths" type="float[]">
-                <description>
-                    lengths of a path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path). See also 
-                    <a href="simGetPathLengths.htm"> sim.getPathLengths </a>
-                    .
-                </description>
-            </param>
-            <param name="minMaxVel" type="float[]">
-                <description>
-                    minimum and maximum allowed velocity, for each dimension/axis, e.g. {xmin,xmax,ymin,ymax,zmin,zmax}
-                </description>
-            </param>
-            <param name="minMaxAccel" type="float[]">
-                <description>
-                    minimum and maximum allowed acceleration, for each dimension/axis, e.g. [xmin xmax ymin ymax zmin zmax]
-                </description>
-            </param>
-            <param name="trajPtSamples" type="int" default="1000">
-                <description>
-                    desired number of path points/configurations
-                </description>
-            </param>
-            <param name="boundaryCondition" type="string" default="'not-a-knot'">
-                <description>
-                    boundary condition
-                </description>
-            </param>
-            <param name="timeout" type="float" default="5">
-                <description>
-                    a timeout duration
-                </description>
-            </param>
-            <param name="calculationScriptHandle" type="int" default="nil">
-                <description>
-                    optional. Can indicate a script handle returned in a previous call to this function, including -1 to indicate that the created calculation script should be returned for future reuse
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="outP" type="float[]">
-                <description>
-                    generated path points
-                </description>
-            </param>
-            <param name="times" type="float[]">
-                <description>
-                    generated times corresponding to path points
-                </description>
-            </param>
-            <param name="scriptHandle" type="handle">
-                <description>
-                    the handle of the calculation script for reuse in a subsequent call to this function
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="path" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
-
-    
-
     <method name="getClosestPosOnPath" func="sim.getClosestPosOnPath" lang="python,lua">
         <description>
             Returns the position or distance along a path that is closest to a specified point in space
@@ -11753,230 +12034,6 @@ end</code>
             </categories>
         <see-also>
             <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="ruckigPos" func="sim.ruckigPos" lang="python,lua">
-        <description>
-            Executes a call to the 
-            <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
-            .
-            The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities
-            for motion control systems. This function prepares a position-based trajectory generation object,
-            that can then be calculated with 
-            <a href="simRuckigStep.htm"> sim.ruckigStep </a>
-            . When this object
-            is not needed anymore, remove it with 
-            <a href="simRuckigRemove.htm"> sim.ruckigRemove </a>
-        </description>
-        <params>
-            <param name="dofs" type="int">
-                <description>
-                    number of degrees of freedom (n).
-                </description>
-            </param>
-            <param name="baseCycleTime" type="float">
-                <description>
-                    smallest expected cycle time. The cycle time should always be a multiple of baseCycleTime. Use a value of 0.0001 (0.1ms).
-                </description>
-            </param>
-            <param name="flags" type="int">
-                <description>
-                    <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a>
-                    . -1 for default flags.
-                </description>
-            </param>
-            <param name="currentPosVelAccel" type="float[]">
-                <description>
-                    current position, velocity and acceleration: [pos_1 ... pos_n vel_1 ... vel_n accel_1 ... accel_n] (one value for each DoF)
-                </description>
-            </param>
-            <param name="maxVelAccelJerk" type="float[]">
-                <description>
-                    maximum allowed velocity, acceleration and jerk: [maxV_1 ... maxV_n maxA_1 ... maxA_n maxJ_1 ... maxJ_n]. If sim.ruckig_minvel is specified in flags, then maxVelAccelJerk should contain following additional values: [minV_1 ... minV_n]. If sim.ruckig_minaccel is specified in flags, then maxVelAccelJerk should contain following additional values: [minA_1 ... minA_n]
-                </description>
-            </param>
-            <param name="selection" type="int[]">
-                <description>
-                    selection vector (one value for each DoF). For a default behaviour, fill the vector with non-zero values.
-                </description>
-            </param>
-            <param name="targetPosVel" type="float[]">
-                <description>
-                    target position and velocity: [tPos_1 ... tPos_n tVel_1 ... tVel_n]
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="handle" type="int">
-                <description>
-                    the handle to the created object
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="Motion" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.ruckigVel" />
-            <function-ref name="sim.moveToPose" />
-            <function-ref name="sim.moveToConfig" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="ruckigRemove" func="sim.ruckigRemove" lang="python,lua">
-        <description>
-            Removes an object previously created via 
-            <a href="simRuckigPos.htm"> sim.ruckigPos </a>
-            or 
-            <a href="simRuckigVel.htm"> sim.ruckigVel </a>
-            .
-        </description>
-        <params>
-            <param name="handle" type="int">
-                <description>
-                    handle of the object created via 
-                    <a href="simRuckigPos.htm"> sim.ruckigPos </a>
-                    or 
-                    <a href="simRuckigVel.htm"> sim.ruckigVel </a>
-                    .
-                </description>
-            </param>
-        </params>
-        <categories>
-            <category name="Motion" />
-        </categories>
-    </method>
-
-    
-
-    <method name="ruckigStep" func="sim.ruckigStep" lang="python,lua">
-        <description>
-            Executes a call to the 
-            <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
-            .
-            The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities for
-            motion control systems. This function steps forward a trajectory generation algorithm previously prepared
-            via 
-            <a href="simRuckigPos.htm"> sim.ruckigPos </a>
-            or 
-            <a href="simRuckigVel.htm"> sim.ruckigVel </a>
-        </description>
-        <params>
-            <param name="handle" type="int">
-                <description>
-                    handle of the object created via 
-                    <a href="simRuckigPos.htm"> sim.ruckigPos </a>
-                    or 
-                    <a href="simRuckigVel.htm"> sim.ruckigVel </a>
-                    .
-                </description>
-            </param>
-            <param name="cycleTime" type="float">
-                <description>
-                    cycle time or simulation step. Should always be a multiple of the base cycle time
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="result" type="int">
-                <description>
-                    return value of the update function in the motion library:
-                    <ul>
-                        <li> 1: Result::Finished (final state reached) </li>
-                        <li> 0: Result::Working (final state not yet reached) </li>
-                        <li> -100: Result::ErrorInvalidInput </li>
-                        <li> -101: Result::ErrorTrajectoryDuration </li>
-                        <li> -110: Result::ErrorExecutionTimeCalculation </li>
-                        <li> -111: Result::ErrorSynchronizationCalculation </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="newPosVelAccel" type="float[]">
-                <description>
-                    1: Result::Finished (final state reached)
-                </description>
-            </param>
-            <param name="synchronizationTime" type="float">
-                <description>
-                    0: Result::Working (final state not yet reached)
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="Motion" />
-        </categories>
-    </method>
-
-    
-
-    <method name="ruckigVel" func="sim.ruckigVel" lang="python,lua">
-        <description>
-            Executes a call to the 
-            <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
-            .
-            The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities for
-            motion control systems. This function prepares a velocity-based trajectory generation object,
-            that can then be calculated with 
-            <a href="simRuckigStep.htm"> sim.ruckigStep </a>
-            . When this object
-            is not needed anymore, remove it with 
-            <a href="simRuckigRemove.htm"> sim.ruckigRemove </a>
-        </description>
-        <params>
-            <param name="dofs" type="int">
-                <description>
-                    number of degrees of freedom (n).
-                </description>
-            </param>
-            <param name="baseCycleTime" type="float">
-                <description>
-                    smallest expected cycle time. The cycle time should always be a multiple of baseCycleTime. Use a value of 0.0001 (0.1ms).
-                </description>
-            </param>
-            <param name="flags" type="int">
-                <description>
-                    <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a>
-                    . -1 for default flags.
-                </description>
-            </param>
-            <param name="currentPosVelAccel" type="float[]">
-                <description>
-                    current position, velocity and acceleration: [pos_1 ... pos_n vel_1 ... vel_n accel_1 ... accel_n] (one value for each DoF)
-                </description>
-            </param>
-            <param name="maxAccelJerk" type="float[]">
-                <description>
-                    maximum allowed acceleration and jerk: [maxA_1 ... maxA_n maxJ_1 ... maxJ_n]. If sim.ruckig_minaccel is specified in flags, then maxAccelJerk should contain following additional values: [minA_1 ... minA_n]
-                </description>
-            </param>
-            <param name="selection" type="int[]">
-                <description>
-                    selection vector (one value for each DoF). For a default behaviour, fill the vector with non-zero values.
-                </description>
-            </param>
-            <param name="targetVel" type="float[]">
-                <description>
-                    target velocity (one value for each DoF)
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="handle" type="int">
-                <description>
-                    the handle of the created object
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="Motion" />
-        </categories>
-        <see-also>
-            <function-ref name="sim.ruckigPos" />
         </see-also>
     </method>
 
