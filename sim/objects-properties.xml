@@ -102,16 +102,16 @@
     </property>
     <property name="openFile" type="method" readable="false" writable="false" />
     <property name="pack" type="method" readable="false" writable="false" />
-    <property name="packDoubleTable" type="method" readable="false" writable="false" />
-    <property name="packFloatTable" type="method" readable="false" writable="false" />
-    <property name="packInt16Table" type="method" readable="false" writable="false" />
-    <property name="packInt32Table" type="method" readable="false" writable="false" />
-    <property name="packInt64Table" type="method" readable="false" writable="false" />
-    <property name="packInt8Table" type="method" readable="false" writable="false" />
+    <property name="packDoubleArray" type="method" readable="false" writable="false" />
+    <property name="packFloatArray" type="method" readable="false" writable="false" />
+    <property name="packInt16Array" type="method" readable="false" writable="false" />
+    <property name="packInt32Array" type="method" readable="false" writable="false" />
+    <property name="packInt64Array" type="method" readable="false" writable="false" />
+    <property name="packInt8Array" type="method" readable="false" writable="false" />
     <property name="packTable" type="method" readable="false" writable="false" />
-    <property name="packUInt16Table" type="method" readable="false" writable="false" />
-    <property name="packUInt32Table" type="method" readable="false" writable="false" />
-    <property name="packUInt8Table" type="method" readable="false" writable="false" />
+    <property name="packUInt16Array" type="method" readable="false" writable="false" />
+    <property name="packUInt32Array" type="method" readable="false" writable="false" />
+    <property name="packUInt8Array" type="method" readable="false" writable="false" />
     <property name="paths.addOns" type="string" writable="false" constant="true" label="Add-on path" />
     <property name="paths.app" type="string" writable="false" constant="true" label="Application path" />
     <property name="paths.importExport" type="string" silent="true" label="Import/export path" />
@@ -147,6 +147,7 @@
     <property name="protocolVersion" type="int" label="Protocol">
       <description>Protocol version</description>
     </property>
+    <property name="pushEvent" type="method" readable="false" writable="false" />
     <property name="pythonPath" type="string" deprecated="true" writable="false" constant="true" />
     <property name="qtVersion" type="int" writable="false" constant="true" label="Qt">
       <description>Qt version</description>
@@ -183,16 +184,16 @@
     <property name="throttle" type="method" readable="false" writable="false" />
     <property name="transformImage" type="method" readable="false" writable="false" />
     <property name="unpack" type="method" readable="false" writable="false" />
-    <property name="unpackDoubleTable" type="method" readable="false" writable="false" />
-    <property name="unpackFloatTable" type="method" readable="false" writable="false" />
-    <property name="unpackInt16Table" type="method" readable="false" writable="false" />
-    <property name="unpackInt32Table" type="method" readable="false" writable="false" />
-    <property name="unpackInt64Table" type="method" readable="false" writable="false" />
-    <property name="unpackInt8Table" type="method" readable="false" writable="false" />
+    <property name="unpackDoubleArray" type="method" readable="false" writable="false" />
+    <property name="unpackFloatArray" type="method" readable="false" writable="false" />
+    <property name="unpackInt16Array" type="method" readable="false" writable="false" />
+    <property name="unpackInt32Array" type="method" readable="false" writable="false" />
+    <property name="unpackInt64Array" type="method" readable="false" writable="false" />
+    <property name="unpackInt8Array" type="method" readable="false" writable="false" />
     <property name="unpackTable" type="method" readable="false" writable="false" />
-    <property name="unpackUInt16Table" type="method" readable="false" writable="false" />
-    <property name="unpackUInt32Table" type="method" readable="false" writable="false" />
-    <property name="unpackUInt8Table" type="method" readable="false" writable="false" />
+    <property name="unpackUInt16Array" type="method" readable="false" writable="false" />
+    <property name="unpackUInt32Array" type="method" readable="false" writable="false" />
+    <property name="unpackUInt8Array" type="method" readable="false" writable="false" />
     <namespace name="customData" />
     <namespace name="namedParam" />
     <namespace name="signal" />
@@ -243,7 +244,7 @@
     <property name="restoreColor" type="method" readable="false" writable="false" />
   </object-class>
   <object-class name="detachedScript" superclass="object">
-    <property name="addOnMenuPath" type="string" writable="false" constant="true" label="Add-on menu path">
+    <property name="addOnMenuPath" type="string" constant="true" label="Add-on menu path">
       <description>Menu path of add-on</description>
     </property>
     <property name="addOnPath" type="string" writable="false" constant="true" label="Add-on path">
@@ -704,6 +705,9 @@
     <property name="overlay" type="bool" writable="false" constant="true" label="Overlay">
       <description>Items are are displayed overlaid</description>
     </property>
+    <property name="packedPoints" type="buffer" writable="false" silent="true" label="Packed points" />
+    <property name="packedQuaternions" type="buffer" writable="false" silent="true" label="Packed quaternions" />
+    <property name="packedSizes" type="buffer" writable="false" silent="true" label="Packed sizes" />
     <property name="points" type="floatarray" writable="false" label="Points" />
     <property name="quaternions" type="floatarray" writable="false" label="Quaternions" />
     <property name="removeItems" type="method" readable="false" writable="false" />
@@ -811,28 +815,34 @@
     <property name="setVector3Property" type="method" readable="false" writable="false" />
   </object-class>
   <object-class name="ocTree" superclass="sceneObject">
+    <property name="addFromObject" type="method" readable="false" writable="false" />
+    <property name="addPackedVoxels" type="method" readable="false" writable="false" />
+    <property name="addVoxels" type="method" readable="false" writable="false" />
+    <property name="checkPackedPoints" type="method" readable="false" writable="false" />
     <property name="checkPoints" type="method" readable="false" writable="false" />
-    <property name="checkPointsFromBuffer" type="method" readable="false" writable="false" />
     <property name="clear" type="method" readable="false" writable="false" />
     <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
     <property name="colors" type="buffer" writable="false" label="Voxel Colors" />
-    <property name="insertFrom" type="method" readable="false" writable="false" />
-    <property name="insertVoxels" type="method" readable="false" writable="false" />
-    <property name="insertVoxelsFromBuffer" type="method" readable="false" writable="false" />
+    <property name="packedPoints" type="buffer" writable="false" silent="true" label="Packed voxels">
+      <description>Voxel positions, as packed floats</description>
+    </property>
     <property name="points" type="floatarray" writable="false" label="Voxels">
       <description>Voxel positions</description>
     </property>
     <property name="randomColors" type="bool" label="Random voxel colors" />
     <property name="showPoints" type="bool" label="Show points instead of voxels" />
-    <property name="subtractFrom" type="method" readable="false" writable="false" />
+    <property name="subtractFromObject" type="method" readable="false" writable="false" />
+    <property name="subtractPackedVoxels" type="method" readable="false" writable="false" />
     <property name="subtractVoxels" type="method" readable="false" writable="false" />
-    <property name="subtractVoxelsFromBuffer" type="method" readable="false" writable="false" />
     <property name="voxelSize" type="float" label="Voxel size" />
     <property name="voxels" type="floatarray" deprecated="true" writable="false" />
   </object-class>
   <object-class name="pointCloud" superclass="sceneObject">
+    <property name="addFromObject" type="method" readable="false" writable="false" />
+    <property name="addPackedPoints" type="method" readable="false" writable="false" />
+    <property name="addPoints" type="method" readable="false" writable="false" />
     <property name="cellSize" type="float" label="Cell size">
       <description>Size of the oc-tree cell/voxel</description>
     </property>
@@ -843,16 +853,16 @@
     <property name="colors" type="buffer" writable="false" label="Colors">
       <description>Point colors</description>
     </property>
-    <property name="insertFrom" type="method" readable="false" writable="false" />
-    <property name="insertPoints" type="method" readable="false" writable="false" />
-    <property name="insertPointsFromBuffer" type="method" readable="false" writable="false" />
+    <property name="intersectPackedPoints" type="method" readable="false" writable="false" />
     <property name="intersectPoints" type="method" readable="false" writable="false" />
-    <property name="intersectPointsFromBuffer" type="method" readable="false" writable="false" />
     <property name="maxPointsInCell" type="int" label="Max. points in cell">
       <description>Maximum number of points in an oc-tree cell/voxel</description>
     </property>
-    <property name="ocTreeStruct" type="bool" label="OC-Tree structure Enabled">
+    <property name="octreeStruct" type="bool" label="OC-Tree structure Enabled">
       <description>Use an oc-tree structure</description>
+    </property>
+    <property name="packedPoints" type="buffer" writable="false" silent="true" label="Packed points">
+      <description>Point positions, as packed floats</description>
     </property>
     <property name="pointDisplayFraction" type="float" label="Display fraction">
       <description>Fraction of points to be displayed in an oc-tree cell/voxel</description>
@@ -862,9 +872,9 @@
       <description>Point positions</description>
     </property>
     <property name="randomColors" type="bool" label="Random point colors" />
-    <property name="subtractFrom" type="method" readable="false" writable="false" />
+    <property name="subtractFromObject" type="method" readable="false" writable="false" />
+    <property name="subtractPackedPoints" type="method" readable="false" writable="false" />
     <property name="subtractPoints" type="method" readable="false" writable="false" />
-    <property name="subtractPointsFromBuffer" type="method" readable="false" writable="false" />
   </object-class>
   <object-class name="proximitySensor" superclass="sceneObject">
     <property name="angleThreshold" type="float" label="Angle threshold">

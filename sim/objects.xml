@@ -542,7 +542,7 @@
                         parameters of the function:
                         <ul>
                             <li>path (matrix m * n): m path points/configurations, with n dimensions per point</li>
-                            <li>pathLengths (matrix m * 1): lengths of a path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path)</li>
+                            <li>pathLengths (matrix m * 1): parameterization of the path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path)</li>
                             <li>maxVel (matrix n * 1): maximum allowed velocity, for each dimension/axis</li>
                             <li>minVel (matrix n * 1, defaults to -maxVel): minimum allowed velocity, for each dimension/axis</li>
                             <li>maxAccel (matrix n * 1): maximum allowed acceleration, for each dimension/axis</li>
@@ -2290,6 +2290,36 @@
     
     
     <object-class name="app" superclass="object">
+        <method name="pushEvent" func="sim.callMethod" lang="python,lua">
+            <description>
+                Pushes a user event. Messages are received asynchronously via the sysCall_event
+                <a href="../callbackFunctions.htm">callback function</a> and via the plugin
+                <a href="../apiConstants.htm#simulatorMessages">sim_message_eventcallback_events</a>
+                message call
+            </description>
+            <params>
+                <param name="eventData" type="table">
+                    <description>event data</description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>name (string, defaults to 'userEvent'): event name</li>
+                            <li>handle (int, defaults to -1): event handle</li>
+                            <li>uid (int, defaults to -1): event unique id</li>
+                            <li>mergeable (bool, defaults to false): whether same-name events can be merged</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="messaging" />
+            </categories>
+        </method>
+
+
+
         <method name="createCustomObjectClass" func="sim.callMethod" lang="python,lua">
             <description>
                 Creates a class or template of a custom object
@@ -2484,7 +2514,7 @@
 
         
 
-        <method name="unpackDoubleTable" func="sim.callMethod" lang="python,lua">
+        <method name="unpackDoubleArray" func="sim.callMethod" lang="python,lua">
             <description>
                 Unpacks a buffer into an array of doubles
             </description>
@@ -2516,13 +2546,13 @@
                 <category name="packing" />
             </categories>
             <see-also>
-                <function-ref name="app:packDoubleTable" />
+                <function-ref name="app:packDoubleArray" />
             </see-also>
         </method>
 
         
 
-        <method name="unpackFloatTable" func="sim.callMethod" lang="python,lua">
+        <method name="unpackFloatArray" func="sim.callMethod" lang="python,lua">
             <description>
                 Unpacks a buffer into an array of floats
             </description>
@@ -2554,13 +2584,13 @@
                 <category name="packing" />
             </categories>
             <see-also>
-                <function-ref name="app:packFloatTable" />
+                <function-ref name="app:packFloatArray" />
             </see-also>
         </method>
 
         
 
-        <method name="unpackInt32Table" func="sim.callMethod" lang="python,lua">
+        <method name="unpackInt32Array" func="sim.callMethod" lang="python,lua">
             <description>
                 Unpacks a buffer into an array of int32 values
             </description>
@@ -2592,13 +2622,13 @@
                 <category name="packing" />
             </categories>
             <see-also>
-                <function-ref name="app:packInt32Table" />
+                <function-ref name="app:packInt32Array" />
             </see-also>
         </method>
 
         
 
-        <method name="unpackInt64Table" func="sim.callMethod" lang="python,lua">
+        <method name="unpackInt64Array" func="sim.callMethod" lang="python,lua">
             <description>
                 Unpacks a buffer into an array of int64 values
             </description>
@@ -2630,13 +2660,13 @@
                 <category name="packing" />
             </categories>
             <see-also>
-                <function-ref name="app:packInt64Table" />
+                <function-ref name="app:packInt64Array" />
             </see-also>
         </method>
 
         
 
-        <method name="unpackUInt32Table" func="sim.callMethod" lang="python,lua">
+        <method name="unpackUInt32Array" func="sim.callMethod" lang="python,lua">
             <description>
                 Unpacks a buffer into an array of unsigned int32 values
             </description>
@@ -2668,13 +2698,13 @@
                 <category name="packing" />
             </categories>
             <see-also>
-                <function-ref name="app:packUInt32Table" />
+                <function-ref name="app:packUInt32Array" />
             </see-also>
         </method>
 
         
 
-        <method name="unpackInt16Table" func="sim.callMethod" lang="python,lua">
+        <method name="unpackInt16Array" func="sim.callMethod" lang="python,lua">
             <description>
                 Unpacks a buffer into an array of int16 values
             </description>
@@ -2706,13 +2736,13 @@
                 <category name="packing" />
             </categories>
             <see-also>
-                <function-ref name="app:packInt16Table" />
+                <function-ref name="app:packInt16Array" />
             </see-also>
         </method>
 
         
 
-        <method name="unpackUInt16Table" func="sim.callMethod" lang="python,lua">
+        <method name="unpackUInt16Array" func="sim.callMethod" lang="python,lua">
             <description>
                 Unpacks a buffer into an array of unsigned int16 values
             </description>
@@ -2744,13 +2774,13 @@
                 <category name="packing" />
             </categories>
             <see-also>
-                <function-ref name="app:packUInt16Table" />
+                <function-ref name="app:packUInt16Array" />
             </see-also>
         </method>
 
         
 
-        <method name="unpackUInt8Table" func="sim.callMethod" lang="python,lua">
+        <method name="unpackUInt8Array" func="sim.callMethod" lang="python,lua">
             <description>
                 Unpacks a buffer into an array of unsigned int8 values
             </description>
@@ -2782,13 +2812,13 @@
                 <category name="packing" />
             </categories>
             <see-also>
-                <function-ref name="app:packUInt8Table" />
+                <function-ref name="app:packUInt8Array" />
             </see-also>
         </method>
 
         
 
-        <method name="unpackInt8Table" func="sim.callMethod" lang="python,lua">
+        <method name="unpackInt8Array" func="sim.callMethod" lang="python,lua">
             <description>
                 Unpacks a buffer into an array of int8 values
             </description>
@@ -2820,13 +2850,13 @@
                 <category name="packing" />
             </categories>
             <see-also>
-                <function-ref name="app:packInt8Table" />
+                <function-ref name="app:packInt8Array" />
             </see-also>
         </method>
 
         
 
-        <method name="packDoubleTable" func="sim.callMethod" lang="python,lua">
+        <method name="packDoubleArray" func="sim.callMethod" lang="python,lua">
             <description>
                 Packs doubles as little-endian
             </description>
@@ -2857,13 +2887,13 @@
                 <category name="packing" />
             </categories>
             <see-also>
-                <function-ref name="app:unpackDoubleTable" />
+                <function-ref name="app:unpackDoubleArray" />
             </see-also>
         </method>
 
         
 
-        <method name="packFloatTable" func="sim.callMethod" lang="python,lua">
+        <method name="packFloatArray" func="sim.callMethod" lang="python,lua">
             <description>
                 Packs floats as little-endian
             </description>
@@ -2894,13 +2924,13 @@
                 <category name="packing" />
             </categories>
             <see-also>
-                <function-ref name="app:unpackFloatTable" />
+                <function-ref name="app:unpackFloatArray" />
             </see-also>
         </method>
 
         
 
-        <method name="packInt32Table" func="sim.callMethod" lang="python,lua">
+        <method name="packInt32Array" func="sim.callMethod" lang="python,lua">
             <description>
                 Packs int32 values as little-endian
             </description>
@@ -2931,13 +2961,13 @@
                 <category name="packing" />
             </categories>
             <see-also>
-                <function-ref name="app:unpackInt32Table" />
+                <function-ref name="app:unpackInt32Array" />
             </see-also>
         </method>
 
         
 
-        <method name="packInt64Table" func="sim.callMethod" lang="python,lua">
+        <method name="packInt64Array" func="sim.callMethod" lang="python,lua">
             <description>
                 Packs int64 values as little-endian
             </description>
@@ -2968,13 +2998,13 @@
                 <category name="packing" />
             </categories>
             <see-also>
-                <function-ref name="app:unpackInt64Table" />
+                <function-ref name="app:unpackInt64Array" />
             </see-also>
         </method>
 
         
 
-        <method name="packUInt32Table" func="sim.callMethod" lang="python,lua">
+        <method name="packUInt32Array" func="sim.callMethod" lang="python,lua">
             <description>
                 Packs unsigned int32 values as little-endian
             </description>
@@ -3005,13 +3035,13 @@
                 <category name="packing" />
             </categories>
             <see-also>
-                <function-ref name="app:unpackUInt32Table" />
+                <function-ref name="app:unpackUInt32Array" />
             </see-also>
         </method>
 
         
 
-        <method name="packUInt16Table" func="sim.callMethod" lang="python,lua">
+        <method name="packUInt16Array" func="sim.callMethod" lang="python,lua">
             <description>
                 Packs unsigned int16 values as little-endian
             </description>
@@ -3042,13 +3072,13 @@
                 <category name="packing" />
             </categories>
             <see-also>
-                <function-ref name="app:unpackUInt16Table" />
+                <function-ref name="app:unpackUInt16Array" />
             </see-also>
         </method>
 
         
 
-        <method name="packInt16Table" func="sim.callMethod" lang="python,lua">
+        <method name="packInt16Array" func="sim.callMethod" lang="python,lua">
             <description>
                 Packs int16 values as little-endian
             </description>
@@ -3079,13 +3109,13 @@
                 <category name="packing" />
             </categories>
             <see-also>
-                <function-ref name="app:unpackInt16Table" />
+                <function-ref name="app:unpackInt16Array" />
             </see-also>
         </method>
 
         
 
-        <method name="packUInt8Table" func="sim.callMethod" lang="python,lua">
+        <method name="packUInt8Array" func="sim.callMethod" lang="python,lua">
             <description>
                 Packs unsigned int8 values as little-endian
             </description>
@@ -3116,13 +3146,13 @@
                 <category name="packing" />
             </categories>
             <see-also>
-                <function-ref name="app:unpackUInt8Table" />
+                <function-ref name="app:unpackUInt8Array" />
             </see-also>
         </method>
 
         
 
-        <method name="packInt8Table" func="sim.callMethod" lang="python,lua">
+        <method name="packInt8Array" func="sim.callMethod" lang="python,lua">
             <description>
                 Packs int8 values as little-endian
             </description>
@@ -3153,7 +3183,7 @@
                 <category name="packing" />
             </categories>
             <see-also>
-                <function-ref name="app:unpackInt8Table" />
+                <function-ref name="app:unpackInt8Array" />
             </see-also>
         </method>
 
@@ -4365,16 +4395,16 @@
     </property>
     <property name="openFile" type="method" readable="false" writable="false" />
     <property name="pack" type="method" readable="false" writable="false" />
-    <property name="packDoubleTable" type="method" readable="false" writable="false" />
-    <property name="packFloatTable" type="method" readable="false" writable="false" />
-    <property name="packInt16Table" type="method" readable="false" writable="false" />
-    <property name="packInt32Table" type="method" readable="false" writable="false" />
-    <property name="packInt64Table" type="method" readable="false" writable="false" />
-    <property name="packInt8Table" type="method" readable="false" writable="false" />
+    <property name="packDoubleArray" type="method" readable="false" writable="false" />
+    <property name="packFloatArray" type="method" readable="false" writable="false" />
+    <property name="packInt16Array" type="method" readable="false" writable="false" />
+    <property name="packInt32Array" type="method" readable="false" writable="false" />
+    <property name="packInt64Array" type="method" readable="false" writable="false" />
+    <property name="packInt8Array" type="method" readable="false" writable="false" />
     <property name="packTable" type="method" readable="false" writable="false" />
-    <property name="packUInt16Table" type="method" readable="false" writable="false" />
-    <property name="packUInt32Table" type="method" readable="false" writable="false" />
-    <property name="packUInt8Table" type="method" readable="false" writable="false" />
+    <property name="packUInt16Array" type="method" readable="false" writable="false" />
+    <property name="packUInt32Array" type="method" readable="false" writable="false" />
+    <property name="packUInt8Array" type="method" readable="false" writable="false" />
     <property name="paths.addOns" type="string" writable="false" constant="true" label="Add-on path" />
     <property name="paths.app" type="string" writable="false" constant="true" label="Application path" />
     <property name="paths.importExport" type="string" silent="true" label="Import/export path" />
@@ -4410,6 +4440,7 @@
     <property name="protocolVersion" type="int" label="Protocol">
       <description>Protocol version</description>
     </property>
+    <property name="pushEvent" type="method" readable="false" writable="false" />
     <property name="pythonPath" type="string" deprecated="true" writable="false" constant="true" />
     <property name="qtVersion" type="int" writable="false" constant="true" label="Qt">
       <description>Qt version</description>
@@ -4446,16 +4477,16 @@
     <property name="throttle" type="method" readable="false" writable="false" />
     <property name="transformImage" type="method" readable="false" writable="false" />
     <property name="unpack" type="method" readable="false" writable="false" />
-    <property name="unpackDoubleTable" type="method" readable="false" writable="false" />
-    <property name="unpackFloatTable" type="method" readable="false" writable="false" />
-    <property name="unpackInt16Table" type="method" readable="false" writable="false" />
-    <property name="unpackInt32Table" type="method" readable="false" writable="false" />
-    <property name="unpackInt64Table" type="method" readable="false" writable="false" />
-    <property name="unpackInt8Table" type="method" readable="false" writable="false" />
+    <property name="unpackDoubleArray" type="method" readable="false" writable="false" />
+    <property name="unpackFloatArray" type="method" readable="false" writable="false" />
+    <property name="unpackInt16Array" type="method" readable="false" writable="false" />
+    <property name="unpackInt32Array" type="method" readable="false" writable="false" />
+    <property name="unpackInt64Array" type="method" readable="false" writable="false" />
+    <property name="unpackInt8Array" type="method" readable="false" writable="false" />
     <property name="unpackTable" type="method" readable="false" writable="false" />
-    <property name="unpackUInt16Table" type="method" readable="false" writable="false" />
-    <property name="unpackUInt32Table" type="method" readable="false" writable="false" />
-    <property name="unpackUInt8Table" type="method" readable="false" writable="false" />
+    <property name="unpackUInt16Array" type="method" readable="false" writable="false" />
+    <property name="unpackUInt32Array" type="method" readable="false" writable="false" />
+    <property name="unpackUInt8Array" type="method" readable="false" writable="false" />
     <namespace name="customData" />
     <namespace name="namedParam" />
     <namespace name="signal" />
@@ -4929,7 +4960,7 @@
                 <category name="scriptRelated" />
             </categories>
         </method>
-    <property name="addOnMenuPath" type="string" writable="false" constant="true" label="Add-on menu path">
+    <property name="addOnMenuPath" type="string" constant="true" label="Add-on menu path">
       <description>Menu path of add-on</description>
     </property>
     <property name="addOnPath" type="string" writable="false" constant="true" label="Add-on path">
@@ -7656,6 +7687,9 @@
     <property name="overlay" type="bool" writable="false" constant="true" label="Overlay">
       <description>Items are are displayed overlaid</description>
     </property>
+    <property name="packedPoints" type="buffer" writable="false" silent="true" label="Packed points" />
+    <property name="packedQuaternions" type="buffer" writable="false" silent="true" label="Packed quaternions" />
+    <property name="packedSizes" type="buffer" writable="false" silent="true" label="Packed sizes" />
     <property name="points" type="floatarray" writable="false" label="Points" />
     <property name="quaternions" type="floatarray" writable="false" label="Quaternions" />
     <property name="removeItems" type="method" readable="false" writable="false" />
@@ -8924,7 +8958,7 @@
  
 
     <object-class name="ocTree" superclass="sceneObject">
-        <method name="insertFrom" func="sim.callMethod" lang="python,lua">
+        <method name="addFromObject" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both ocTree and pointCloud</info>
             <description>
                 Adds voxels from scene objects
@@ -8952,14 +8986,14 @@
                 <category name="shape" />
             </categories>
             <see-also>
-                <function-ref name="ocTree:subtractFrom" />
-                <function-ref name="pointCloud:insertFrom" />
+                <function-ref name="ocTree:subtractFromObject" />
+                <function-ref name="pointCloud:addFromObject" />
             </see-also>
         </method>
 
         
 
-        <method name="subtractFrom" func="sim.callMethod" lang="python,lua">
+        <method name="subtractFromObject" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both ocTree and pointCloud</info>
             <description>
                 Subtracts voxels from scene objects
@@ -8978,14 +9012,14 @@
                 <category name="shape" />
             </categories>
             <see-also>
-                <function-ref name="ocTree:insertFrom" />
-                <function-ref name="pointCloud:subtractFrom" />
+                <function-ref name="ocTree:addFromObject" />
+                <function-ref name="pointCloud:subtractFromObject" />
             </see-also>
         </method>
 
 
 
-        <method name="insertVoxels" func="sim.callMethod" lang="python,lua">
+        <method name="addVoxels" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both ocTree and pointCloud</info>
             <description>
                 Inserts voxels
@@ -9017,16 +9051,16 @@
             <see-also>
                 <function-ref name="ocTree:clear" />
                 <function-ref name="ocTree:subtractVoxels" />
-                <function-ref name="ocTree:insertVoxelsFromBuffer" />
-                <function-ref name="ocTree:insertFrom" />
+                <function-ref name="ocTree:addPackedVoxels" />
+                <function-ref name="ocTree:addFromObject" />
                 <function-ref name="ocTree:checkPoints" />
-                <function-ref name="pointCloud:insertPoints" />
+                <function-ref name="pointCloud:addPoints" />
             </see-also>
         </method>
 
 
 
-        <method name="insertVoxelsFromBuffer" func="sim.callMethod" lang="python,lua">
+        <method name="addPackedVoxels" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both ocTree and pointCloud</info>
             <description>
                 Inserts voxels from a buffer, instead from a table/list
@@ -9057,10 +9091,10 @@
             </categories>
             <see-also>
                 <function-ref name="ocTree:clear" />
-                <function-ref name="ocTree:subtractVoxelsFromBuffer" />
-                <function-ref name="ocTree:insertVoxels" />
-                <function-ref name="app:packFloatTable" />
-                <function-ref name="app:packUInt32Table" />
+                <function-ref name="ocTree:subtractPackedVoxels" />
+                <function-ref name="ocTree:addVoxels" />
+                <function-ref name="app:packFloatArray" />
+                <function-ref name="app:packUInt32Array" />
             </see-also>
         </method>
 
@@ -9092,8 +9126,8 @@
             </categories>
             <see-also>
                 <function-ref name="ocTree:clear" />
-                <function-ref name="ocTree:insertVoxels" />
-                <function-ref name="ocTree:subtractVoxelsFromBuffer" />
+                <function-ref name="ocTree:addVoxels" />
+                <function-ref name="ocTree:subtractPackedVoxels" />
                 <function-ref name="ocTree:checkPoints" />
                 <function-ref name="pointCloud:subtractPoints" />
             </see-also>
@@ -9101,7 +9135,7 @@
 
         
 
-        <method name="subtractVoxelsFromBuffer" func="sim.callMethod" lang="python,lua">
+        <method name="subtractPackedVoxels" func="sim.callMethod" lang="python,lua">
             <description>
                 Removes voxels from a buffer, instead from a table/list
             </description>
@@ -9127,10 +9161,10 @@
             </categories>
             <see-also>
                 <function-ref name="ocTree:clear" />
-                <function-ref name="ocTree:insertVoxelsFromBuffer" />
+                <function-ref name="ocTree:addPackedVoxels" />
                 <function-ref name="ocTree:subtractVoxels" />
                 <function-ref name="ocTree:checkPoints" />
-                <function-ref name="app:packFloatTable" />
+                <function-ref name="app:packFloatArray" />
             </see-also>
         </method>
 
@@ -9203,24 +9237,27 @@
             <see-also>
             </see-also>
         </method>
+    <property name="addFromObject" type="method" readable="false" writable="false" />
+    <property name="addPackedVoxels" type="method" readable="false" writable="false" />
+    <property name="addVoxels" type="method" readable="false" writable="false" />
+    <property name="checkPackedPoints" type="method" readable="false" writable="false" />
     <property name="checkPoints" type="method" readable="false" writable="false" />
-    <property name="checkPointsFromBuffer" type="method" readable="false" writable="false" />
     <property name="clear" type="method" readable="false" writable="false" />
     <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
     <property name="colors" type="buffer" writable="false" label="Voxel Colors" />
-    <property name="insertFrom" type="method" readable="false" writable="false" />
-    <property name="insertVoxels" type="method" readable="false" writable="false" />
-    <property name="insertVoxelsFromBuffer" type="method" readable="false" writable="false" />
+    <property name="packedPoints" type="buffer" writable="false" silent="true" label="Packed voxels">
+      <description>Voxel positions, as packed floats</description>
+    </property>
     <property name="points" type="floatarray" writable="false" label="Voxels">
       <description>Voxel positions</description>
     </property>
     <property name="randomColors" type="bool" label="Random voxel colors" />
     <property name="showPoints" type="bool" label="Show points instead of voxels" />
-    <property name="subtractFrom" type="method" readable="false" writable="false" />
+    <property name="subtractFromObject" type="method" readable="false" writable="false" />
+    <property name="subtractPackedVoxels" type="method" readable="false" writable="false" />
     <property name="subtractVoxels" type="method" readable="false" writable="false" />
-    <property name="subtractVoxelsFromBuffer" type="method" readable="false" writable="false" />
     <property name="voxelSize" type="float" label="Voxel size" />
     <property name="voxels" type="floatarray" deprecated="true" writable="false" />
   </object-class>
@@ -9228,7 +9265,7 @@
     
 
     <object-class name="pointCloud" superclass="sceneObject">
-        <method name="insertFrom" func="sim.callMethod" lang="python,lua">
+        <method name="addFromObject" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both ocTree and pointCloud</info>
             <description>
                 Adds points from scene objects
@@ -9257,14 +9294,14 @@
                 <category name="shape" />
             </categories>
             <see-also>
-                <function-ref name="pointCloud:subtractFrom" />
-                <function-ref name="ocTree:insertFrom" />
+                <function-ref name="pointCloud:subtractFromObject" />
+                <function-ref name="ocTree:addFromObject" />
             </see-also>
         </method>
 
         
 
-        <method name="subtractFrom" func="sim.callMethod" lang="python,lua">
+        <method name="subtractFromObject" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both ocTree and pointCloud</info>
             <description>
                 Subtracts points from scene objects
@@ -9291,14 +9328,14 @@
                 <category name="shape" />
             </categories>
             <see-also>
-                <function-ref name="pointCloud:insertFrom" />
-                <function-ref name="ocTree:subtractFrom" />
+                <function-ref name="pointCloud:addFromObject" />
+                <function-ref name="ocTree:subtractFromObject" />
             </see-also>
         </method>
 
 
 
-        <method name="insertPoints" func="sim.callMethod" lang="python,lua">
+        <method name="addPoints" func="sim.callMethod" lang="python,lua">
             <description>
                 Inserts points
             </description>
@@ -9327,16 +9364,16 @@
             </categories>
             <see-also>
                 <function-ref name="pointCloud:clear" />
-                <function-ref name="pointCloud:insertPointsFromBuffer" />
+                <function-ref name="pointCloud:addPackedPoints" />
                 <function-ref name="pointCloud:subtractPoints" />
-                <function-ref name="pointCloud:insertFrom" />
-                <function-ref name="ocTree:insertPoints" />
+                <function-ref name="pointCloud:addFromObject" />
+                <function-ref name="ocTree:addPoints" />
             </see-also>
         </method>
 
 
 
-        <method name="insertPointsFromBuffer" func="sim.callMethod" lang="python,lua">
+        <method name="addPackedPoints" func="sim.callMethod" lang="python,lua">
             <description>
                 Inserts points from a buffer, instead from a table/list
             </description>
@@ -9365,9 +9402,9 @@
             </categories>
             <see-also>
                 <function-ref name="pointCloud:clear" />
-                <function-ref name="pointCloud:insertPoints" />
-                <function-ref name="pointCloud:subtractPointsFromBuffer" />
-                <function-ref name="app:packFloatTable" />
+                <function-ref name="pointCloud:addPoints" />
+                <function-ref name="pointCloud:subtractPackedPoints" />
+                <function-ref name="app:packFloatArray" />
             </see-also>
         </method>
 
@@ -9400,16 +9437,16 @@
             </categories>
             <see-also>
                 <function-ref name="pointCloud:clear" />
-                <function-ref name="pointCloud:subtractPointsFromBuffer" />
-                <function-ref name="pointCloud:insertPoints" />
-                <function-ref name="pointCloud:subtractFrom" />
+                <function-ref name="pointCloud:subtractPackedPoints" />
+                <function-ref name="pointCloud:addPoints" />
+                <function-ref name="pointCloud:subtractFromObject" />
                 <function-ref name="ocTree:subtractVoxels" />
             </see-also>
         </method>
 
         
 
-        <method name="subtractPointsFromBuffer" func="sim.callMethod" lang="python,lua">
+        <method name="subtractPackedPoints" func="sim.callMethod" lang="python,lua">
             <description>
                 Removes points from a buffer, instead from a table/list
             </description>
@@ -9436,10 +9473,10 @@
             </categories>
             <see-also>
                 <function-ref name="pointCloud:clear" />
-                <function-ref name="pointCloud:insertPointsFromBuffer" />
+                <function-ref name="pointCloud:addPackedPoints" />
                 <function-ref name="pointCloud:subtractPoints" />
-                <function-ref name="pointCloud:subtractFrom" />
-                <function-ref name="app:packFloatTable" />
+                <function-ref name="pointCloud:subtractFromObject" />
+                <function-ref name="app:packFloatArray" />
             </see-also>
         </method>
 
@@ -9471,7 +9508,7 @@
             </categories>
             <see-also>
                 <function-ref name="pointCloud:clear" />
-                <function-ref name="pointCloud:insertPoints" />
+                <function-ref name="pointCloud:addPoints" />
             </see-also>
         </method>
 
@@ -9492,6 +9529,9 @@
             <see-also>
             </see-also>
         </method>
+    <property name="addFromObject" type="method" readable="false" writable="false" />
+    <property name="addPackedPoints" type="method" readable="false" writable="false" />
+    <property name="addPoints" type="method" readable="false" writable="false" />
     <property name="cellSize" type="float" label="Cell size">
       <description>Size of the oc-tree cell/voxel</description>
     </property>
@@ -9502,16 +9542,16 @@
     <property name="colors" type="buffer" writable="false" label="Colors">
       <description>Point colors</description>
     </property>
-    <property name="insertFrom" type="method" readable="false" writable="false" />
-    <property name="insertPoints" type="method" readable="false" writable="false" />
-    <property name="insertPointsFromBuffer" type="method" readable="false" writable="false" />
+    <property name="intersectPackedPoints" type="method" readable="false" writable="false" />
     <property name="intersectPoints" type="method" readable="false" writable="false" />
-    <property name="intersectPointsFromBuffer" type="method" readable="false" writable="false" />
     <property name="maxPointsInCell" type="int" label="Max. points in cell">
       <description>Maximum number of points in an oc-tree cell/voxel</description>
     </property>
-    <property name="ocTreeStruct" type="bool" label="OC-Tree structure Enabled">
+    <property name="octreeStruct" type="bool" label="OC-Tree structure Enabled">
       <description>Use an oc-tree structure</description>
+    </property>
+    <property name="packedPoints" type="buffer" writable="false" silent="true" label="Packed points">
+      <description>Point positions, as packed floats</description>
     </property>
     <property name="pointDisplayFraction" type="float" label="Display fraction">
       <description>Fraction of points to be displayed in an oc-tree cell/voxel</description>
@@ -9521,9 +9561,9 @@
       <description>Point positions</description>
     </property>
     <property name="randomColors" type="bool" label="Random point colors" />
-    <property name="subtractFrom" type="method" readable="false" writable="false" />
+    <property name="subtractFromObject" type="method" readable="false" writable="false" />
+    <property name="subtractPackedPoints" type="method" readable="false" writable="false" />
     <property name="subtractPoints" type="method" readable="false" writable="false" />
-    <property name="subtractPointsFromBuffer" type="method" readable="false" writable="false" />
   </object-class>
 
 
@@ -11078,234 +11118,6 @@
 
     
 
-    <method name="getScript" func="sim.getScript" lang="python,lua">
-        <description>
-            Retrieves the handle of a script. For script objects, use sim.getObject instead
-        </description>
-        <params>
-            <param name="scriptType" type="int">
-                <description>
-                    <a href="../apiConstants.htm#scriptTypes"> type of the script </a>
-                    , or sim.handle_self
-                </description>
-            </param>
-            <param name="scriptName" type="string" default="''">
-                <description>
-                    name of the add-on, in case of an add-on
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="scriptHandle" type="int">
-                <description>
-                    handle of the script
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="scriptRelated" />
-            </categories>
-    </method>
-
-    
-
-    <method name="getShapeBB" func="sim.getShapeBB" lang="python,lua">
-        <description>
-            Returns the size and relative pose of a shape's bounding box
-        </description>
-        <params>
-            <param name="shapeHandle" type="int">
-                <description>
-                    handle of the shape
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="size" type="float[3]">
-                <description>
-                    size array [Sx Sy Sz]
-                </description>
-            </param>
-            <param name="pose" type="float[7]">
-                <description>
-                    pose array: [x y z qx qy qz qw]. The pose is relative to the shape's pose
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="shape" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getObjectPose" />
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getShapeColor" func="sim.getShapeColor" lang="python,lua">
-        <description>
-            Retrieves the color of a shape
-        </description>
-        <params>
-            <param name="shapeHandle" type="int">
-                <description>
-                    handle of the shape
-                </description>
-            </param>
-            <param name="colorName" type="string">
-                <description>
-                    name of a color. If a non-empty name is provided, a specific color component is retrieved (e.g. if a shape is a compound shape. If colorName is 
-                    <em>
-                        @compound
-                    </em>
-                    , then rgb data for every component of a compound shape is returned)
-                </description>
-            </param>
-            <param name="colorComponent" type="int">
-                <description>
-                    <a href="../apiConstants.htm#colorComponents"> color component </a>
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="result" type="int">
-                <description>
-                    0 if the color name was not found in the shape, 1 otherwise
-                </description>
-            </param>
-            <param name="rgbData" type="float[3]">
-                <description>
-                    red, green and blue components of the color (3 values), or the transparency value (1 value)
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="shape" /><category name="rendering" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#rendering" label=" rendering related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getShapeGeomInfo" func="sim.getShapeGeomInfo" lang="python,lua">
-        <description>
-            Retrieves geometric information related to a shape
-        </description>
-        <params>
-            <param name="shapeHandle" type="int">
-                <description>
-                    handle of the shape
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="result" type="int">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li> bit0 set (1): shape is a compound shape </li>
-                        <li> bit1 set (2): shape is a primitive </li>
-                        <li> bit2 set (4): shape is convex </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="pureType" type="int">
-                <description>
-                    bit0 set (1): shape is a compound shape
-                </description>
-            </param>
-            <param name="dimensions" type="float[4]">
-                <description>
-                    bit1 set (2): shape is a primitive
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="shape" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getShapeMesh" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getShapeMass" func="sim.getShapeMass" lang="python,lua">
-        <description>
-            Retrieves the mass of a shape
-        </description>
-        <params>
-            <param name="shapeHandle" type="handle">
-                <description>
-                    handle of the 
-                    <a href="../shapes.htm"> shape object </a>
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="mass" type="float">
-                <description>
-                    mass of the shape
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="dynamics" /><category name="shape" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.setShapeMass" />
-            <function-ref name="sim.getShapeInertia" />
-            <function-ref name="sim.computeMassAndInertia" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getShapeMesh" func="sim.getShapeMesh" lang="python,lua">
-        <description>
-            Retrieves a shape's mesh information
-        </description>
-        <params>
-            <param name="shapeHandle" type="handle">
-                <description>
-                    handle of the shape. See 
-                    <a href="simExportMesh.htm"> sim.exportMesh </a>
-                    for a usage example.
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="vertices" type="float[]">
-                <description>
-                    array of vertices
-                </description>
-            </param>
-            <param name="indices" type="int[]">
-                <description>
-                    array of indices
-                </description>
-            </param>
-            <param name="normals" type="float[]">
-                <description>
-                    array of normals
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="shape" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getShapeViz" />
-            <function-ref name="sim.createShape" />
-            <function-ref name="sim.exportMesh" />
-        </see-also>
-    </method>
-
-    
-
     <method name="getShapeTextureId" func="sim.getShapeTextureId" lang="python,lua">
         <description>
             Retrieves the texture ID of a texture that is applied to a specific shape
@@ -11333,163 +11145,7 @@
         </see-also>
     </method>
 
-    
-
-    <method name="getShapeViz" func="sim.getShapeViz" lang="python,lua">
-        <description>
-            Retrieves a shape's visual information.
-        </description>
-        <params>
-            <param name="shapeHandle" type="int">
-                <description>
-                    handle of the shape.
-                </description>
-            </param>
-            <param name="index" type="int">
-                <description>
-                    0-based index of the shape element to retrieve (compound shapes contain more than one shape element)
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="data" type="table">
-                <description>
-                    array containing the vertices, relative to the shape's reference frame
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="shape" />
-            </categories>
-    </method>
-
-    
-
-    <method name="getSimulationState" func="sim.getSimulationState" lang="python,lua">
-        <description>
-            Retrieves current 
-            <a href="../apiConstants.htm#simulationStatus"> simulation state </a>
-        </description>
-        <returns>
-            <param name="simulationState" type="int">
-                <description>
-                    current 
-                    <a href="../apiConstants.htm#simulationStatus"> state of the simulation </a>
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="simulation" />
-            </categories>
-        <see-also>
-            <link href="../simulation.htm" label=" simulation state diagram " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getSimulationStopping" func="sim.getSimulationStopping" lang="python,lua">
-        <description>
-            Convenience function that returns true when the simulation is about to stop or stopped.
-        </description>
-        <returns>
-            <param name="stopping" type="bool">
-                <description>
-                    if true, the simulation is about to stop, or stopped.
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="thread" />
-            </categories>
-    </method>
-
-    
-
-    <method name="getSimulationTime" lang="python,lua">
-        <description>
-            Retrieves the current simulation time
-        </description>
-        <returns>
-            <param name="simulationTime" type="float">
-                <description>
-                    simulation time
-                </description>
-            </param>
-        </returns>
-        <categories>
-        </categories>
-    </method>
-
-    
-
-    <method name="getSimulationTimeStep" func="sim.getSimulationTimeStep" lang="python,lua">
-        <description>
-            Retrieves the simulation time step (the simulation time (i.e. not real-time) that
-            passes at each main script simulation pass). This value might not be constant for a given simulation.
-        </description>
-        <returns>
-            <param name="timeStep" type="float">
-                <description>
-                    simulation time step
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="simulation" />
-            </categories>
-    </method>
-
-    
-
-    <method name="getSimulatorMessage" func="sim.getSimulatorMessage" lang="python,lua">
-        <description>
-            Retrieves and removes the next message in the C/C++ or Lua message queues. Use this in a while-loop until
-            all messages have been extracted. While the C/C++ interface has one single message queue, each Lua script
-            has its own message queue. The C/C++ version of this function should only be called from the CoppeliaSim
-            client application. A given message queue cannot hold more than 64 messages, unread messages will be discarded.
-        </description>
-        <returns>
-            <param name="message" type="int">
-                <description>
-                    <a href="../apiConstants.htm#simulatorMessages"> simulator message </a>
-                </description>
-            </param>
-            <param name="auxiliaryData" type="int[4]">
-                <description>
-                    array of numbers that describe the returned message in more details
-                </description>
-            </param>
-            <param name="auxiliaryData2" type="int[]">
-                <description>
-                    array of numbers that describe the returned message in more details
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="messaging" />
-            </categories>
-    </method>
-
-    
-
-    <method name="getSystemTime" func="sim.getSystemTime" lang="python,lua">
-        <description>
-            Retrieves the system time.
-        </description>
-        <returns>
-            <param name="systemTime" type="float">
-                <description>
-                    the system time
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="other" />
-            </categories>
-    </method>
-
-    
+ 
 
     <method name="getTextureId" func="sim.getTextureId" lang="python,lua">
         <description>
@@ -11521,58 +11177,6 @@
             <function-ref name="sim.readTexture" />
             <function-ref name="sim.writeTexture" />
             <function-ref name="sim.createTexture" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getUserVariables" func="sim.getUserVariables" lang="python,lua">
-        <description>
-            Lua only. Returns all variables, except those set by CoppeliaSim.
-        </description>
-        <returns>
-            <param name="variables" type="string[]">
-                <description>
-                    a map-like table with all global user variables
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="other" />
-            </categories>
-    </method>
-
-    
-
-    <method name="getVelocity" func="sim.getVelocity" lang="python,lua">
-        <description>
-            Retrieves the linear and/or angular velocity of the center of mass of a non-static shape.
-            Data is provided by the selected physics engine
-        </description>
-        <params>
-            <param name="shapeHandle" type="int">
-                <description>
-                    handle of a dynamically enabled shape
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="linearVelocity" type="float[3]">
-                <description>
-                    array of 3 values that represent the linear velocity in absolute coordinates
-                </description>
-            </param>
-            <param name="angularVelocity" type="float[3]">
-                <description>
-                    array of 3 values that represent the angular velocity in absolute coordinates. The length of the vector represents the rotation speed, and the vector direction represents the rotation axis passing through the center of mass of the shape
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="dynamics" /><category name="shape" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getObjectVelocity" />
         </see-also>
     </method>
 
@@ -12703,123 +12307,6 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
         <categories>
         <category name="messaging" />
             </categories>
-    </method>
-
-
-
-    <method name="launchExecutable" func="sim.launchExecutable" lang="python,lua">
-        <description>
-            Launches an executable. Similar to os.execute or io.popen, but is system independent
-        </description>
-        <params>
-            <param name="filename" type="string">
-                <description>
-                    file name of the executable. If the filename starts with '@', then it will be considered as a system command, otherwise the current
-                    directory might be automatically prepended to the filename if it makes sense.
-                </description>
-            </param>
-            <param name="parameters" type="string" default="''">
-                <description>optional input arguments</description>
-            </param>
-            <param name="showStatus" type="int" default="1">
-                <description>0 to hide the application's window, 1 to show it. Works only with Windows OS.</description>
-            </param>
-        </params>
-        <categories>
-        <category name="file" />
-            </categories>
-    </method>
-
-
-
-    <method name="pushUserEvent" func="sim.pushUserEvent" lang="python,lua">
-        <description>
-            Pushes a user-triggered event. Messages are received asynchronously via the sysCall_event
-            <a href="../callbackFunctions.htm">callback function</a>
-            and via the plugin
-            <a href="../apiConstants.htm#simulatorMessages">sim_message_eventcallback_events</a>
-            message call
-        </description>
-        <params>
-            <param name="event" type="string">
-                <description>event name</description>
-            </param>
-            <param name="handle" type="int">
-                <description>optional handle associated with the event. Can be -1</description>
-            </param>
-            <param name="eventData" type="table">
-                <description>optional unique id associated with the event. Can be -1</description>
-            </param>
-            <param name="options" type="int" default="0">
-                <description>event data</description>
-            </param>
-        </params>
-        <categories>
-        <category name="messaging" />
-            </categories>
-    </method>
-
-
-
-    <method name="setGraphStreamTransformation" func="sim.setGraphStreamTransformation" lang="python,lua">
-        <description>
-            Applies a transformation to a graph stream
-        </description>
-        <params>
-            <param name="graphHandle" type="int">
-                <description>handle of the graph</description>
-            </param>
-            <param name="streamId" type="int">
-                <description>id of the stream</description>
-            </param>
-            <param name="trType" type="int">
-                <description>
-                    <a href="../apiConstants.htm#streamTransformations">stream transformation</a>
-                </description>
-            </param>
-            <param name="mult" type="float" default="1.0">
-                <description>multiplication factor</description>
-            </param>
-            <param name="off" type="float" default="0.0">
-                <description>an offset</description>
-            </param>
-            <param name="movingAvgPeriod" type="int" default="1">
-                <description>moving average period. Set to 1 for no moving average</description>
-            </param>
-        </params>
-        <categories>
-        <category name="graph" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#graphs" label="functions related to graphs" />
-        </see-also>
-    </method>
-
-
-
-    <method name="setJointTargetForce" func="sim.setJointTargetForce" lang="python,lua">
-        <description>
-            Sets the force or torque that a joint can exert
-        </description>
-        <params>
-            <param name="objectHandle" type="handle">
-                <description>handle of the joint object</description>
-            </param>
-            <param name="forceOrTorque" type="float">
-                <description>maximum force or torque the joint can exert</description>
-            </param>
-            <param name="signedValue" type="bool" default="true">
-                <description>if true, the sign of the force/torque indicates the desired movement direction</description>
-            </param>
-        </params>
-        <categories>
-        <category name="dynamics" /><category name="joint" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getJointTargetForce" />
-            <function-ref name="sim.getJointForce" />
-            <function-ref name="sim.setJointTargetVelocity" />
-        </see-also>
     </method>
 
 
