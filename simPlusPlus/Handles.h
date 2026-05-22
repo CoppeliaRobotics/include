@@ -51,7 +51,9 @@ namespace sim
         std::string toHandle(T object)
         {
             std::stringstream ss;
-            ss << typeString_ << ':' << toPtr(object);
+            ss << std::hex << reinterpret_cast<uintptr_t>(toPtr(object));
+            ss << ':';
+            ss << typeString_;
             return ss.str();
         }
 
