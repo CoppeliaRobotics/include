@@ -31,7 +31,7 @@
                 </param>
             </params>
             <returns>
-                <param name="motionObject" type="table">
+                <param name="motionObject" type="object">
                     <description>
                         a motion object
                     </description>
@@ -147,7 +147,7 @@
                 </param>
             </params>
             <returns>
-                <param name="motionObject" type="table">
+                <param name="motionObject" type="object">
                     <description>
                         a motion object
                     </description>
@@ -287,7 +287,7 @@
                 </param>
             </params>
             <returns>
-                <param name="motionObject" type="table">
+                <param name="motionObject" type="object">
                     <description>
                         a motion object
                     </description>
@@ -444,7 +444,7 @@
                 </param>
             </params>
             <returns>
-                <param name="motionObject" type="table">
+                <param name="motionObject" type="object">
                     <description>
                         a motion object
                     </description>
@@ -582,7 +582,7 @@
             <params>
             </params>
             <returns>
-                <param name="motionObject" type="table">
+                <param name="motionObject" type="object">
                     <description>
                         a motion object
                     </description>
@@ -2244,7 +2244,7 @@
                 message call
             </description>
             <params>
-                <param name="eventData" type="table">
+                <param name="eventData" type="map">
                     <description>event data</description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -2262,9 +2262,33 @@
             <categories>
                 <category name="messaging" />
             </categories>
+            <see-also>
+                <function-ref name="app:getGenesisEvents" />
+            </see-also>
         </method>
 
 
+
+        <method name="getGenesisEvents" func="sim.callMethod" lang="python,lua">
+            <description>
+                Retrieves all events that allow to reconstruct the app's state remotely
+            </description>
+            <returns>
+                <param name="events" type="buffer">
+                    <description>
+                        the genesis events as a cbor-coded buffer
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="messaging" />
+            </categories>
+            <see-also>
+                <function-ref name="app:pushEvent" />
+            </see-also>
+        </method>
+
+    
 
         <method name="createCustomObjectClass" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3297,7 +3321,7 @@
                         the message. None/nil clears the status bar
                     </description>
                 </param>
-                <param name="options" type="table" default="{}">
+                <param name="options" type="map" default="{}">
                     <description>
                         optional map:
                         <ul>
@@ -3328,7 +3352,7 @@
                         the message. None/nil clears the status bar
                     </description>
                 </param>
-                <param name="options" type="table" default="{}">
+                <param name="options" type="map" default="{}">
                     <description>
                         optional map:
                         <ul>
@@ -3359,7 +3383,7 @@
                         the message. None/nil clears the status bar
                     </description>
                 </param>
-                <param name="options" type="table" default="{}">
+                <param name="options" type="map" default="{}">
                     <description>
                         optional map:
                         <ul>
@@ -3489,7 +3513,7 @@
                                     <li>itemCnt (int): maximum item count</li>
                                     <li>color (color): default item color</li>
                                     <li>mesh.vertices (matrix): vertices for a mesh item type (sim.markertype_custom). Vertices are arranged in a n * 3 matrix</li> 
-                                    <li>mesh.indices (table): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li> 
+                                    <li>mesh.indices (int[]): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li> 
                                     <li>mesh.normals (matrix): normals for a mesh item type (sim.markertype_custom). Normals are arranged in a n * 3 matrix. One normal for each vertex</li>
                                 </ul>
                             </li>
@@ -4957,6 +4981,55 @@
     
     
     <object-class name="scene" superclass="object">
+        <method name="getContacts" func="sim.callMethod" lang="python,lua">
+            <info>same method present in both scene and shape</info>
+            <description>
+                Retrieves contact information from the dynamics world
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>dynPass (int, defaults to the last dynamic pass): by default, each simulation step runs the dynamics engine x times, i.e. executes sub-steps.
+                            At each of those sub-steps, contacts are created and destroyed. The dynPass parameter allows to focus on a particular sub-step, or on all
+                            sub-steps if dynPass is sim.handle_all</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="collisionPairs" type="any[]">
+                    <description>
+                        pairs of colliding objects
+                    </description>
+                </param>
+                <param name="points" type="matrix">
+                    <description>
+                        contact points. n contacts result in a matrix of size n * 3
+                    </description>
+                </param>
+                <param name="forces" type="matrix">
+                    <description>
+                        force vectors. n contacts result in a matrix of size n * 3
+                    </description>
+                </param>
+                <param name="normals" type="matrix">
+                    <description>
+                        normal vectors. n contacts result in a matrix of size n * 3
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="dynamics" />
+            </categories>
+            <see-also>
+                <function-ref name="shape:getContacts" />
+            </see-also>
+        </method>
+
+        
+
         <method name="getDescendants" func="sim.callMethod" lang="python,lua">
             <description>
                 Retrieves scene objects up to a specific depth
@@ -5553,7 +5626,7 @@
                                     <li>itemCnt (int): maximum item count</li>
                                     <li>color (color): default item color</li>
                                     <li>mesh.vertices (matrix): vertices for a mesh item type (sim.markertype_custom). Vertices are arranged in a n * 3 matrix</li> 
-                                    <li>mesh.indices (table): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li> 
+                                    <li>mesh.indices (int[]): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li> 
                                     <li>mesh.normals (matrix): normals for a mesh item type (sim.markertype_custom). Normals are arranged in a n * 3 matrix. One normal for each vertex</li>
                                 </ul>
                             </li>
@@ -6811,6 +6884,55 @@
 
 
     <object-class name="shape" superclass="sceneObject">
+        <method name="getContacts" func="sim.callMethod" lang="python,lua">
+            <info>same method present in both scene and shape</info>
+            <description>
+                Retrieves this shape's contact information from the dynamics world 
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>dynPass (int, defaults to the last dynamic pass): by default, each simulation step runs the dynamics engine x times, i.e. executes sub-steps.
+                            At each of those sub-steps, contacts are created and destroyed. The dynPass parameter allows to focus on a particular sub-step, or on all
+                            sub-steps if dynPass is sim.handle_all</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="collisionPairs" type="any[]">
+                    <description>
+                        pairs of colliding objects
+                    </description>
+                </param>
+                <param name="points" type="matrix">
+                    <description>
+                        contact points. n contacts result in a matrix of size n * 3
+                    </description>
+                </param>
+                <param name="forces" type="matrix">
+                    <description>
+                        force vectors. n contacts result in a matrix of size n * 3
+                    </description>
+                </param>
+                <param name="normals" type="matrix">
+                    <description>
+                        normal vectors. n contacts result in a matrix of size n * 3
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="dynamics" />
+            </categories>
+            <see-also>
+                <function-ref name="scene:getContacts" />
+            </see-also>
+        </method>
+
+        
+
         <method name="getAppearance" func="sim.callMethod" lang="python,lua">
             <description>
                 Fetches the shape's main properties related to appearance
@@ -7723,7 +7845,7 @@
         <method name="addPackedVoxels" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both ocTree and pointCloud</info>
             <description>
-                Inserts voxels from a buffer, instead from a table/list
+                Inserts voxels from a buffer, instead from an array
             </description>
             <params>
                 <param name="voxels" type="buffer">
@@ -7797,7 +7919,7 @@
 
         <method name="subtractPackedVoxels" func="sim.callMethod" lang="python,lua">
             <description>
-                Removes voxels from a buffer, instead from a table/list
+                Removes voxels from a buffer, instead from an array
             </description>
             <params>
                 <param name="voxels" type="buffer">
@@ -8012,7 +8134,7 @@
 
         <method name="addPackedPoints" func="sim.callMethod" lang="python,lua">
             <description>
-                Inserts points from a buffer, instead from a table/list
+                Inserts points from a buffer, instead from an array
             </description>
             <params>
                 <param name="points" type="buffer">
@@ -8085,7 +8207,7 @@
 
         <method name="subtractPackedPoints" func="sim.callMethod" lang="python,lua">
             <description>
-                Removes points from a buffer, instead from a table/list
+                Removes points from a buffer, instead from an array
             </description>
             <params>
                 <param name="points" type="buffer">
@@ -8237,108 +8359,6 @@
 
     
 
-    <method name="cameraFitToView" func="sim.cameraFitToView" lang="python,lua">
-        <description>
-            Shifts and adjusts a camera associated with a view to fill the view entirely with
-            the specified objects or models
-        </description>
-        <params>
-            <param name="viewHandleOrIndex" type="int">
-                <description>
-                    handle of the view (can also be a floating view), or the index of the view. If the camera is not associated with any view, then you can specify the handle of the camera, together with the 
-                    <em>
-                        sim.handleflag_camera
-                    </em>
-                    flag.
-                </description>
-            </param>
-            <param name="objectHandles" type="handle[]" default="{}">
-                <description>
-                    object handles. Only visible objects will be taken into account. Can be None/nil, in which case the whole visible scene will be filling the view.
-                </description>
-            </param>
-            <param name="options" type="int" default="0">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li> bit0 (1): if set, then individual objects will be filling the view. If not set, then models associated with model base objects will also be included </li>
-                        <li> bit1 (2): if set, then the view proportions will be 1 by 1, independently on what the view size is </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="scaling" type="float" default="1">
-                <description>
-                    bit0 (1): if set, then individual objects will be filling the view. If not set, then models associated with model base objects will also be included
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="result" type="int">
-                <description>
-                    0 for a silent error (e.g. when the indicated view doesn't exist anymore), 1 for success
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="camera" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.adjustView" />
-            <function-ref name="sim.floatingViewAdd" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="combineRgbImages" func="sim.combineRgbImages" lang="python,lua">
-        <description>
-            Combines two RGB images
-        </description>
-        <params>
-            <param name="img1" type="buffer">
-                <description>
-                    input image 1, as succession of rgb values.
-                </description>
-            </param>
-            <param name="img1Res" type="int[2]">
-                <description>
-                    x/y resolution of image 1.
-                </description>
-            </param>
-            <param name="img2" type="buffer">
-                <description>
-                    input image 2, as succession of rgb values.
-                </description>
-            </param>
-            <param name="img2Res" type="int[2]">
-                <description>
-                    x/y resolution of image 2.
-                </description>
-            </param>
-            <param name="operation" type="int">
-                <description>
-                    <a href="../apiConstants.htm#imageCombination"> operation </a>
-                    to be performed with the two input images.
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="outImg" type="buffer">
-                <description>
-                    output image as succession of rgb values.
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="other" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.transformImage" />
-        </see-also>
-    </method>
-
-    
-
     <method name="createTexture" func="sim.createTexture" lang="python,lua">
         <description>
             Creates a planar shape, that will be textured with a new, or imported texture
@@ -8464,51 +8484,6 @@
 
     
 
-    <method name="generateTextShape" func="sim.generateTextShape" lang="python,lua">
-        <description>
-            Generates a 3D text model.
-        </description>
-        <params>
-            <param name="txt" type="string">
-                <description>
-                    the text string
-                </description>
-            </param>
-            <param name="color" type="float[3]" default="{1, 1, 1}">
-                <description>
-                    the text color. Optional
-                </description>
-            </param>
-            <param name="height" type="float" default="0.1">
-                <description>
-                    the height of the text. Optional
-                </description>
-            </param>
-            <param name="centered" type="bool" default="false">
-                <description>
-                    whether the text should be centered. Optional
-                </description>
-            </param>
-            <param name="alphabetLocation" type="string" default="nil">
-                <description>
-                    the path to an alphabet model. Optional
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="modelHandle" type="handle">
-                <description>
-                    handle of the generated model
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="shape" /><category name="creation" /><category name="importExport" />
-            </categories>
-    </method>
-
-    
-
     <method name="getClosestPosOnPath" func="sim.getClosestPosOnPath" lang="python,lua">
         <description>
             Returns the position or distance along a path that is closest to a specified point in space
@@ -8586,682 +8561,6 @@
             </categories>
         <see-also>
             <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getContactInfo" func="sim.getContactInfo" lang="python,lua">
-        <description>
-            Retrieves contact point information of a dynamic simulation pass.
-        </description>
-        <params>
-            <param name="dynamicPass" type="int">
-                <description>
-                    a specific dynamic sub-step index or sim.handle_all. By default a call to 
-                    <a href="simHandleDynamics.htm"> simHandleDynamics </a>
-                    executes the dynamics engine x times, with x times smaller time steps (where x is a parameter that can be adjusted). At each of those sub-steps, contacts are created and destroyed. With the dynamicPass argument you can select which sub-step you wish to retrieve contacts from (zero-based index), or sim.handle_all to retrieve the contacts of all sub-steps. See also the 
-                    <a href="../propertiesReference.htm#dynamicsStepSize"> dynamicsStepSize </a>
-                    property.
-                </description>
-            </param>
-            <param name="objectHandle" type="handle">
-                <description>
-                    handle of a specific object you wish to retrieve contacts from, or sim.handle_all to retrieve all contacts in the scene.
-                </description>
-            </param>
-            <param name="index" type="int">
-                <description>
-                    zero-based index of the contact to retrieve
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="coll" type="int[2]">
-                <description>
-                    handles of the two objects contacting. The handles might also refer to particle objects that are not treated as regular scene objects
-                </description>
-            </param>
-            <param name="point" type="float[3]">
-                <description>
-                    coordinates of the contact
-                </description>
-            </param>
-            <param name="rForce" type="float[3]">
-                <description>
-                    vector that represents the force generated by the contact
-                </description>
-            </param>
-            <param name="n" type="float[3]">
-                <description>
-                    normal vector at the contact point
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="dynamics" />
-            </categories>
-    </method>
-
-    
-
-    <method name="getGenesisEvents" func="sim.getGenesisEvents" lang="python,lua">
-        <description>
-            Retrieves all events that allow to reconstruct a scene's (mostly) visual content remotely
-        </description>
-        <returns>
-            <param name="events" type="buffer">
-                <description>
-                    the genesis events as a cbor-coded buffer
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="rendering" /><category name="messaging" />
-            </categories>
-    </method>
-
-    
-
-    <method name="getJointDependency" func="sim.getJointDependency" lang="python,lua">
-        <description>
-            Retrieves joint dependency information, when the joint is in dependent mode
-        </description>
-        <params>
-            <param name="jointHandle" type="handle">
-                <description>
-                    handle of the slave joint
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="masterJointHandle" type="handle">
-                <description>
-                    handle of the master joint, or -1 if the joint is not dependent
-                </description>
-            </param>
-            <param name="offset" type="float">
-                <description>
-                    offset in equation slave = offset + master * multCoeff
-                </description>
-            </param>
-            <param name="multCoeff" type="float">
-                <description>
-                    coeff in equation slave = offset + master * multCoeff
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="joint" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.setJointDependency" />
-            <function-ref name="sim.getJointMode" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getJointForce" func="sim.getJointForce" lang="python,lua">
-        <description>
-            Retrieves the force or torque applied to a joint along/about its active axis.
-            This function retrieves meaningful information only if the joint is prismatic or revolute,
-            and is dynamically enabled. With the Bullet, MuJoCo and Newton engine, this function returns
-            the force or torque applied to the joint motor  (torques from joint limits are not taken into account).
-            With the ODE and Vortex engine, this function returns the total force or torque applied to a joint
-            along/about its z-axis
-        </description>
-        <params>
-            <param name="jointHandle" type="handle">
-                <description>
-                    handle of the joint. Can be combined with 
-                    <a href="../apiConstants.htm#specialHandleFlags"> sim.handleflag_rawvalue </a>
-                    (simply add sim.handleflag_rawvalue to jointHandle), if you wish to access the raw values generated by each individual dynamic simulation step (by default, there are 10 dynamic simulation steps for each simulation step). Raw values can only be accessed from inside a 
-                    <a href="../callbackFunctions.htm"> callback function </a>
-                    triggered by the physics engine.
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="forceOrTorque" type="float">
-                <description>
-                    force or the torque applied to the joint along/about its z-axis.
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="dynamics" /><category name="joint" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.setJointTargetForce" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getJointInterval" func="sim.getJointInterval" lang="python,lua">
-        <description>
-            Retrieves the interval parameters of a joint
-        </description>
-        <params>
-            <param name="objectHandle" type="handle">
-                <description>
-                    handle of the joint
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="cyclic" type="bool">
-                <description>
-                    indicates whether the joint is cyclic (the joint varies between -pi and +pi in a cyclic manner).
-                </description>
-            </param>
-            <param name="interval" type="float[2]">
-                <description>
-                    interval of the joint. interval[1] is the joint minimum allowed value, interval[2] is the joint range (the maximum allowed value is interval[1]+interval[2]). When the joint is "cyclic", then the interval parameters don't have any meaning.
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="joint" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.setJointInterval" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getJointMode" func="sim.getJointMode" lang="python,lua">
-        <description>
-            Retrieves the operation mode of a joint
-        </description>
-        <params>
-            <param name="jointHandle" type="handle">
-                <description>
-                    handle of the joint object
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="jointMode" type="int">
-                <description>
-                    the 
-                    <a href="../apiConstants.htm#jointModes"> joint mode </a>
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="joint" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.setJointMode" />
-            <link href="../propertiesReference.htm#dynCtrlMode" label=" dynCtrlMode " />
-            <function-ref name="property" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getJointPosition" func="sim.getJointPosition" lang="python,lua">
-        <description>
-            Retrieves the linear/angular displacement/angle of a joint. This function cannot be used with spherical joints
-            (use 
-            <a href="simGetObjectChildPose.htm"> sim.getObjectChildPose </a>
-            instead)
-        </description>
-        <params>
-            <param name="objectHandle" type="handle">
-                <description>
-                    handle of the joint
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="pos" type="float">
-                <description>
-                    linear/angular displacement/angle of the joint
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="joint" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.setJointPosition" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getJointTargetForce" func="sim.getJointTargetForce" lang="python,lua">
-        <description>
-            Retrieves the force or torque that a joint can exert
-        </description>
-        <params>
-            <param name="jointHandle" type="handle">
-                <description>
-                    handle of the joint
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="forceOrTorque" type="float">
-                <description>
-                    the maximum force or torque the joint can apply. The sign indicates the desired movement direction
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="dynamics" /><category name="joint" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.setJointTargetForce" />
-            <function-ref name="sim.getJointTargetVelocity" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getJointTargetPosition" func="sim.getJointTargetPosition" lang="python,lua">
-        <description>
-            Retrieves the target linear/angular displacement/angle of a joint
-        </description>
-        <params>
-            <param name="objectHandle" type="handle">
-                <description>
-                    handle of the joint object
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="targetPosition" type="float">
-                <description>
-                    target position of the joint
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="joint" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.setJointTargetPosition" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getJointTargetVelocity" func="sim.getJointTargetVelocity" lang="python,lua">
-        <description>
-            Retrieves the target linear/angular velocity of a non-spherical joint
-        </description>
-        <params>
-            <param name="objectHandle" type="handle">
-                <description>
-                    handle of the joint object
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="targetVelocity" type="float">
-                <description>
-                    target velocity of the joint.
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="joint" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.setJointTargetVelocity" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getJointType" func="sim.getJointType" lang="python,lua">
-        <description>
-            Retrieves the type of a joint
-        </description>
-        <params>
-            <param name="objectHandle" type="handle">
-                <description>
-                    handle of the joint
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="jointType" type="int">
-                <description>
-                    type of the joint:
-                    <ul>
-                        <li> sim.joint_revolute </li>
-                        <li> sim.joint_prismatic </li>
-                        <li> sim.joint_spherical </li>
-                    </ul>
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="joint" />
-            </categories>
-    </method>
-
-    
-
-    <method name="getJointVelocity" func="sim.getJointVelocity" lang="python,lua">
-        <description>
-            Retrieves the linear or angular velocity of a joint. The velocity is a measured velocity
-            (i.e. from one simulation step to the next), and is available for all joints in the scene
-        </description>
-        <params>
-            <param name="jointHandle" type="handle">
-                <description>
-                    handle of a joint
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="velocity" type="float">
-                <description>
-                    the velocity
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="joint" />
-            </categories>
-    </method>
-
-    
-
-    <method name="getLastInfo" func="sim.getLastInfo" lang="python,lua">
-        <description>
-            Retrieves and clears the information string generated by last API call
-        </description>
-        <returns>
-            <param name="info" type="string">
-                <description>
-                    the information string
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="other" />
-            </categories>
-    </method>
-
-    
-
-    <method name="getLinkDummy" func="sim.getLinkDummy" lang="python,lua">
-        <description>
-            Retrieves the object handle of the dummy linked to this one
-        </description>
-        <params>
-            <param name="dummyHandle" type="handle">
-                <description>
-                    handle of the dummy whose linked dummy has to be retrieved
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="linkedDummyHandle" type="int">
-                <description>
-                    handle of the dummy linked to the specified dummy object, or -1 if the dummy is not linked
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="dynamics" /><category name="dummy" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.setLinkDummy" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getNavigationMode" func="sim.getNavigationMode" lang="python,lua">
-        <description>
-            Retrieves the navigation and selection mode for the mouse
-        </description>
-        <returns>
-            <param name="navigationMode" type="int">
-                <description>
-                    <a href="../apiConstants.htm#navigationModes"> navigation mode </a>
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="other" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.setNavigationMode" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getObjectChildPose" func="sim.getObjectChildPose" lang="python,lua">
-        <description>
-            Retrieves the intrinsic or internal transformation of an object. For a joint, this is the transformation caused
-            by the joint movement, mainly. For joints and force sensors, this will also include a possible error
-            transformation caused by the physics engine (a physics engine can cause joints and force sensors to come apart,
-            when constraints can't be perfectly resolved)
-        </description>
-        <params>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of the joint
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="pose" type="float[7]">
-                <description>
-                    the pose
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="joint" /><category name="transformation" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.setObjectChildPose" />
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getObjectColor" func="sim.getObjectColor" lang="python,lua">
-        <description>
-            Retrieves the color of a scene object
-        </description>
-        <params>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of the object
-                </description>
-            </param>
-            <param name="index" type="int">
-                <description>
-                    zero-based index of the color, if the object has several colors
-                </description>
-            </param>
-            <param name="colorComponent" type="int">
-                <description>
-                    <a href="../apiConstants.htm#colorComponents"> color component </a>
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="rgbData" type="float[3]">
-                <description>
-                    red, green and blue components of the color (3 values)
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="sceneObject" /><category name="rendering" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#rendering" label=" rendering related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getObjectType" func="sim.getObjectType" lang="python,lua">
-        <description>
-            Retrieves the type of an object
-        </description>
-        <params>
-            <param name="objectHandle" type="handle">
-                <description>
-                    handle of the object
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="objectType" type="int">
-                <description>
-                    type of the object (sim.sceneobject_shape, sim.sceneobject_joint, etc. (see the 
-                    <a href="../apiConstants.htm#sceneObjectTypes"> object types </a>
-                    )
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="sceneObject" />
-            </categories>
-    </method>
-
-    
-
-    <method name="getObjectUid" func="sim.getObjectUid" lang="python,lua">
-        <description>
-            Retrieves the unique identifier of an object: throughout a CoppeliaSim session, there won't be two
-            identical unique identifiers. Unique identifiers are however not persistent (i.e. are not saved with the object)
-        </description>
-        <params>
-            <param name="objectHandle" type="int">
-                <description>
-                    object handle
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="uid" type="int">
-                <description>
-                    the unique identifier
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="sceneObject" /><category name="messaging" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getObjectFromUid" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getObjectVelocity" func="sim.getObjectVelocity" lang="python,lua">
-        <description>
-            Retrieves the linear and/or angular velocity of an object, in absolute coordinates. The velocity is
-            a measured velocity (i.e. from one simulation step to the next), and is available for all
-            objects in the scene
-        </description>
-        <params>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of a 
-                    <a href="../objects.htm"> scene object </a>
-                    . It is highly recommended to add 
-                    <em>
-                        <a href="../apiConstants.htm#specialHandleFlags"> sim.handleflag_axis </a>
-                    </em>
-                    to the object handle, in order to obtain the 
-                    <em>
-                        regular
-                    </em>
-                    angular velocity for the object, i.e. the rotation axis and the rotation velocity that is represented by the axis' length. If 
-                    <em>
-                        sim.handleflag_axis
-                    </em>
-                    is omitted, then a derivative of Euler angles expressed relative to previous' simulation frame will be returned for the angular velocity
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="linearVelocity" type="float[3]">
-                <description>
-                    array of 3 values that represent the linear velocity
-                </description>
-            </param>
-            <param name="angularVelocity" type="float[3]">
-                <description>
-                    array of 3 values that represent the angular velocity
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="sceneObject" /><category name="transformation" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getVelocity" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getOctreeVoxels" func="sim.getOctreeVoxels" lang="python,lua">
-        <description>
-            Retrieves voxel positions from an 
-            <a href="../octrees.htm"> OC tree </a>
-        </description>
-        <params>
-            <param name="octreeHandle" type="int">
-                <description>
-                    handle of the OC tree
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="voxels" type="float[]">
-                <description>
-                    the voxel [x y z] positions, relative to the OC tree reference frame
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="ocTree" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#octree" label=" OC tree related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getPage" func="sim.getPage" lang="python,lua">
-        <description>
-            Retrieves the current page index (view)
-        </description>
-        <returns>
-            <param name="pageIndex" type="int">
-                <description>
-                    page index
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="other" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.setPage" />
         </see-also>
     </method>
 

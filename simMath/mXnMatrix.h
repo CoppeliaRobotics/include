@@ -9,7 +9,7 @@ class CMatrix
 {
 public:
     CMatrix();
-    CMatrix(size_t nRows,size_t nCols);
+    CMatrix(size_t nRows,size_t nCols,const simReal* dat=nullptr);
     CMatrix(const C3X3Matrix& m);
     CMatrix(const C4X4Matrix& m);
     CMatrix(const CMatrix& m);

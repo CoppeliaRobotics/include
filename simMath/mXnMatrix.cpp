@@ -7,11 +7,14 @@ CMatrix::CMatrix()
     cols=0;
 }
 
-CMatrix::CMatrix(size_t nRows,size_t nCols)
+CMatrix::CMatrix(size_t nRows,size_t nCols,const simReal* dat/*=nullptr*/)
 {
-    data.resize(nRows*nCols);
     rows=nRows;
     cols=nCols;
+    if (dat!=nullptr)
+        data.assign(dat,dat+rows*cols);
+    else
+        data.resize(rows*cols);
 }
 
 CMatrix::CMatrix(const C3X3Matrix& m)

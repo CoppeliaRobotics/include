@@ -6647,7 +6647,7 @@ end</code>
                     for details.
                 </description>
             </param>
-            <param name="options" type="table" default="{}">
+            <param name="options" type="map" default="{}">
                 <description>
                     optional map indicating how the object should be searched:
                     <ul>
@@ -7003,7 +7003,7 @@ end</code>
                     the object unique identifier.
                 </description>
             </param>
-            <param name="options" type="table" default="{}">
+            <param name="options" type="map" default="{}">
                 <description>
                     optional map indicating how the object should be searched. {
                     =true} will generate a silent error if an object was not found.
@@ -9310,7 +9310,7 @@ end</code>
             </param>
         </params>
         <returns>
-            <param name="data" type="table">
+            <param name="data" type="map">
                 <description>
                     array containing the vertices, relative to the shape's reference frame
                 </description>

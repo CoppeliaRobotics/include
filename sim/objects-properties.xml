@@ -67,6 +67,7 @@
     <property name="flavor" type="int" writable="false" constant="true" label="Flavor">
       <description>Flavor (0: lite, 1: edu, 2: pro)</description>
     </property>
+    <property name="getGenesisEvents" type="method" readable="false" writable="false" />
     <property name="getObjects" type="method" readable="false" writable="false" />
     <property name="handleAddOnScripts" type="method" readable="false" writable="false" />
     <property name="handleSandboxScript" type="method" readable="false" writable="false" />
@@ -1092,6 +1093,7 @@
     <property name="finalSaveRequest" type="bool" label="Final save">
       <description>Lock scene and models after next scene save operation</description>
     </property>
+    <property name="getContacts" type="method" readable="false" writable="false" />
     <property name="getDescendants" type="method" readable="false" writable="false" />
     <property name="getObject" type="method" readable="false" writable="false" />
     <property name="getObjectFromUid" type="method" readable="false" writable="false" />
@@ -1455,9 +1457,7 @@
     <property name="objectPropertyFlags" type="int" label="Object flags">
       <description>Scene object flags, redundant</description>
     </property>
-    <property name="objectUid" type="long" writable="false" constant="true" label="Object UID">
-      <description>Scene object unique identifier</description>
-    </property>
+    <property name="objectUid" type="long" deprecated="true" writable="false" constant="true" />
     <property name="parent" type="handle" handle-type="sceneObject" label="Parent">
       <description>Parent scene object handle</description>
     </property>
@@ -1502,6 +1502,9 @@
     <property name="setQuaternion" type="method" readable="false" writable="false" />
     <property name="size" type="vector3" label="Bounding box size" />
     <property name="tree" type="handlearray" writable="false" silent="true" label="Object tree" />
+    <property name="uid" type="long" writable="false" constant="true" label="Object UID">
+      <description>Scene object unique identifier</description>
+    </property>
     <property name="visible" type="bool" writable="false" silent="true" label="Visible">
       <description>Whether the scene object is currently visible</description>
     </property>
@@ -1710,6 +1713,7 @@
       <description>Flips faces of all contained meshes</description>
     </property>
     <property name="getAppearance" type="method" readable="false" writable="false" />
+    <property name="getContactInfo" type="method" readable="false" writable="false" />
     <property name="getInertia" type="method" readable="false" writable="false" />
     <property name="inertia" type="floatarray" deprecated="true" label="Inertia tensor">
       <description>Inertia tensor, relative to the shape&apos;s reference frame</description>
@@ -1818,7 +1822,7 @@
     <property name="vortex.linearSecondaryAxisSlip" type="float" deprecated="true" />
     <property name="vortex.linearSecondaryAxisStaticFrictionScale" type="float" deprecated="true" />
     <property name="vortex.linearVelDamping" type="float" deprecated="true" />
-    <property name="vortex.materialUniqueId" type="int" />
+    <property name="vortex.materialUniqueId" type="int" deprecated="true" />
     <property name="vortex.primitiveAsConvex" type="bool" deprecated="true" />
     <property name="vortex.randomAsTerrain" type="bool" deprecated="true" />
     <property name="vortex.restitution" type="float" deprecated="true" />
