@@ -109,7 +109,6 @@
     <property name="packInt32Array" type="method" readable="false" writable="false" />
     <property name="packInt64Array" type="method" readable="false" writable="false" />
     <property name="packInt8Array" type="method" readable="false" writable="false" />
-    <property name="packTable" type="method" readable="false" writable="false" />
     <property name="packUInt16Array" type="method" readable="false" writable="false" />
     <property name="packUInt32Array" type="method" readable="false" writable="false" />
     <property name="packUInt8Array" type="method" readable="false" writable="false" />
@@ -191,7 +190,6 @@
     <property name="unpackInt32Array" type="method" readable="false" writable="false" />
     <property name="unpackInt64Array" type="method" readable="false" writable="false" />
     <property name="unpackInt8Array" type="method" readable="false" writable="false" />
-    <property name="unpackTable" type="method" readable="false" writable="false" />
     <property name="unpackUInt16Array" type="method" readable="false" writable="false" />
     <property name="unpackUInt32Array" type="method" readable="false" writable="false" />
     <property name="unpackUInt8Array" type="method" readable="false" writable="false" />
@@ -261,8 +259,6 @@
     <property name="execPriority" type="int" label="Execution priority" />
     <property name="executeString" type="method" readable="false" writable="false" />
     <property name="executionDepth" type="int" writable="false" silent="true" label="Execution depth" />
-    <property name="getApiFunc" type="method" readable="false" writable="false" />
-    <property name="getApiInfo" type="method" readable="false" writable="false" />
     <property name="getFunctions" type="method" readable="false" writable="false" />
     <property name="getObject" type="method" readable="false" writable="false" />
     <property name="getStackTraceback" type="method" readable="false" writable="false" />
@@ -282,6 +278,7 @@
     </property>
     <property name="scriptState" type="int" deprecated="true" writable="false" />
     <property name="scriptType" type="int" deprecated="true" writable="false" constant="true" />
+    <property name="setEventFilters" type="method" readable="false" writable="false" />
     <property name="setStepping" type="method" readable="false" writable="false" />
     <property name="state" type="int" writable="false" label="State">
       <description>Script state</description>
@@ -700,7 +697,7 @@
     <property name="local" type="bool" writable="false" constant="true" label="Local">
       <description>Coordinates are local to the marker&apos;s reference frame</description>
     </property>
-    <property name="normals" type="floatarray" writable="false" label="Normals">
+    <property name="normals" type="matrix" writable="false" label="Normals">
       <description>Normals for custom marker</description>
     </property>
     <property name="overlay" type="bool" writable="false" constant="true" label="Overlay">
@@ -709,11 +706,11 @@
     <property name="packedPoints" type="buffer" writable="false" silent="true" label="Packed points" />
     <property name="packedQuaternions" type="buffer" writable="false" silent="true" label="Packed quaternions" />
     <property name="packedSizes" type="buffer" writable="false" silent="true" label="Packed sizes" />
-    <property name="points" type="floatarray" writable="false" label="Points" />
-    <property name="quaternions" type="floatarray" writable="false" label="Quaternions" />
+    <property name="points" type="matrix" writable="false" label="Points" />
+    <property name="quaternions" type="matrix" writable="false" label="Quaternions" />
     <property name="removeItems" type="method" readable="false" writable="false" />
-    <property name="sizes" type="floatarray" writable="false" label="Sizes" />
-    <property name="vertices" type="floatarray" writable="false" label="Vertices">
+    <property name="sizes" type="matrix" writable="false" label="Sizes" />
+    <property name="vertices" type="matrix" writable="false" label="Vertices">
       <description>Vertices for custom marker</description>
     </property>
   </object-class>
@@ -730,7 +727,7 @@
     <property name="indices" type="intarray" writable="false" label="Indices">
       <description>Indices (3 values per triangle)</description>
     </property>
-    <property name="normals" type="floatarray" writable="false" label="Normals">
+    <property name="normals" type="matrix" writable="false" label="Normals">
       <description>Normals (3*3 values per triangle)</description>
     </property>
     <property name="primitiveType" type="int" writable="false" label="Primitive type" />
@@ -756,7 +753,7 @@
     <property name="textureRepeatU" type="bool" deprecated="true" />
     <property name="textureRepeatV" type="bool" deprecated="true" />
     <property name="textureResolution" type="intarray2" deprecated="true" writable="false" />
-    <property name="vertices" type="floatarray" writable="false" label="Vertices" />
+    <property name="vertices" type="matrix" writable="false" label="Vertices" />
     <property name="wireframe" type="bool" label="Wireframe" />
   </object-class>
   <object-class name="object">
@@ -829,7 +826,7 @@
     <property name="packedPoints" type="buffer" writable="false" silent="true" label="Packed voxels">
       <description>Voxel positions, as packed floats</description>
     </property>
-    <property name="points" type="floatarray" writable="false" label="Voxels">
+    <property name="points" type="matrix" writable="false" label="Voxels">
       <description>Voxel positions</description>
     </property>
     <property name="randomColors" type="bool" label="Random voxel colors" />
@@ -869,7 +866,7 @@
       <description>Fraction of points to be displayed in an oc-tree cell/voxel</description>
     </property>
     <property name="pointSize" type="int" label="Point size" />
-    <property name="points" type="floatarray" writable="false" label="Points">
+    <property name="points" type="matrix" writable="false" label="Points">
       <description>Point positions</description>
     </property>
     <property name="randomColors" type="bool" label="Random point colors" />
@@ -1713,11 +1710,9 @@
       <description>Flips faces of all contained meshes</description>
     </property>
     <property name="getAppearance" type="method" readable="false" writable="false" />
-    <property name="getContactInfo" type="method" readable="false" writable="false" />
+    <property name="getContacts" type="method" readable="false" writable="false" />
     <property name="getInertia" type="method" readable="false" writable="false" />
-    <property name="inertia" type="floatarray" deprecated="true" label="Inertia tensor">
-      <description>Inertia tensor, relative to the shape&apos;s reference frame</description>
-    </property>
+    <property name="inertia" type="floatarray" deprecated="true" />
     <property name="inertiaMatrix" type="matrix" label="Inertia matrix">
       <description>Inertia matrix, relative to the shape&apos;s reference frame</description>
     </property>
@@ -1757,15 +1752,16 @@
     <property name="ode.maxContacts" type="int" deprecated="true" />
     <property name="ode.softCfm" type="float" deprecated="true" />
     <property name="ode.softErp" type="float" deprecated="true" />
+    <property name="pmi" type="vector3" writable="false" label="Principal moment of inertia">
+      <description>Principal moment of inertia, relative to pmiQuaternion</description>
+    </property>
     <property name="pmiQuaternion" type="quaternion" writable="false" label="Quaternion of the principal moment of inertia">
       <description>Quaternion of the principal moment of inertia, relative to the shape&apos;s reference frame</description>
     </property>
     <property name="primitive" type="bool" writable="false" label="Primitive">
       <description>Whether the shape&apos;s components are all primitives</description>
     </property>
-    <property name="principalMomentOfInertia" type="floatarray" writable="false" label="Principal moment of inertia">
-      <description>Principal moment of inertia, relative to pmiQuaternion</description>
-    </property>
+    <property name="principalMomentOfInertia" type="floatarray" deprecated="true" writable="false" />
     <property name="relocateFrame" type="method" readable="false" writable="false" />
     <property name="respondable" type="bool" label="Respondable">
       <description>Shape will transmit a collision force</description>
@@ -1839,7 +1835,8 @@
     <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
-    <property name="depthBuffer" type="floatarray" writable="false" label="Depth buffer" />
+    <property name="depth" type="matrix" writable="false" label="Depth buffer" />
+    <property name="depthBuffer" type="floatarray" deprecated="true" writable="false" />
     <property name="emitDepthChangedEvent" type="bool" label="Emit depth change event" />
     <property name="emitImageChangedEvent" type="bool" label="Emit image change event" />
     <property name="explicitHandling" type="bool" label="Explicit handling" />

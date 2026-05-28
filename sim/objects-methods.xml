@@ -2263,6 +2263,7 @@
                 <category name="messaging" />
             </categories>
             <see-also>
+                <function-ref name="detachedScript:setEventFilters" />
                 <function-ref name="app:getGenesisEvents" />
             </see-also>
         </method>
@@ -2285,6 +2286,7 @@
             </categories>
             <see-also>
                 <function-ref name="app:pushEvent" />
+                <function-ref name="detachedScript:setEventFilters" />
             </see-also>
         </method>
 
@@ -4268,6 +4270,34 @@
 
 
     <object-class name="detachedScript" superclass="object">
+        <method name="setEventFilters" func="sim.callMethod" lang="python,lua">
+            <description>
+                Specifies filters for the sysCall_event callback, in this script
+            </description>
+            <params>
+                <param name="filters" type="map">
+                    <description>
+                        filters, e.g.:
+                        <br />
+                        filters = {objectHandle --> {'pose', 'jointPosition', 'layer'}, 'scene' --> {'engineProperties'}}
+                        <br />
+                        filters = {object1Handle --> {}, object2Handle --> {'pose'}}
+                        <br />
+                        filters = {'sceneObject' --> {'pose'}, 'shape' --> {'position'}}
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="scriptRelated" />
+                <category name="messaging" />
+            </categories>
+            <see-also>
+                <function-ref name="app:pushEvent" />
+            </see-also>
+        </method>
+        
+        
+
         <method name="wait" func="sim.callMethod" lang="python,lua">
             <description>
                 Waits for a certain amount of time
@@ -4536,65 +4566,6 @@
             </categories>
             <see-also>
                 <function-ref name="scene:removeObjects" />
-            </see-also>
-        </method>
-
-
-
-        <method name="getApiFunc" func="sim.callMethod" lang="python,lua">
-            <description>
-                Retrieves all API functions and variables that match a specific word.
-                Useful for script code auto-completion functionality
-            </description>
-            <params>
-                <param name="apiWord" type="string">
-                    <description>
-                        word that API functions and variables should match, e.g. "sim.getObj". Only matches up to the first dot are returned, if the apiWord does not contain any dot. To retrieve all functions and variables, leave apiWord empty. To retrieve only functions, add '+' as prefix. To retrieve only variables, add '-' as prefix.
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="funcsAndVars" type="string[]">
-                    <description>
-                        array containing all matching API functions and variables.
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="script" />
-                <category name="scriptRelated" />
-            </categories>
-            <see-also>
-                <function-ref name="detachedScript:getApiInfo" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="getApiInfo" func="sim.callMethod" lang="python,lua">
-            <description>
-                Returns the call tip (or info text) for an API function
-            </description>
-            <params>
-                <param name="apiWord" type="string">
-                    <description>
-                        API functions or variable to retrieve the info for, e.g. "sim.getObject". Return is for the latest version of a module by default. For a specific module version, specify its full name, e.g. "sim-1.getObject". Using the wildcard, e.g. "sim-*.getObject", the returned information is prepended by its related module name (e.g. "[sim-1]"), for all available modules
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="info" type="string">
-                    <description>
-                        information related to the API function or variable
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="script" />
-                <category name="scriptRelated" />
-            </categories>
-            <see-also>
-                <function-ref name="detachedScript:getApiFunc" />
             </see-also>
         </method>
 
@@ -7352,9 +7323,9 @@
                 </param>
             </params>
             <returns>
-                <param name="depth" type="float[]">
+                <param name="depth" type="matrix">
                     <description>
-                        the depth values, in meters
+                        a matrix y * x, with depth values in meters
                     </description>
                 </param>
                 <param name="resolution" type="int[2]">
@@ -9868,33 +9839,6 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
 
     
 
-    <method name="setEventFilters" func="sim.setEventFilters" lang="python,lua">
-        <description>
-            Specifies filters for the sysCall_event callback. Operates on a per script basis
-        </description>
-        <params>
-            <param name="filters" type="map">
-                <description>
-                    filters, e.g.:
-                    <br />
-                    filters = {[objectHandle] = {'pose', 'jointPosition', 'layer'}, [sim.handle_scene] = {'engineProperties'}}
-                    <br />
-                    filters = {[object1Handle] = {}, [object2Handle] = {'pose'}}
-                    <br />
-                    filters = {[sim.handle_sceneobject] = {'pose'}}
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="scriptRelated" />
-            </categories>
-        <see-also>
-            <link href="../callbackFunctions.htm" label=" callback functions " />
-        </see-also>
-    </method>
-    
-    
-
     <method name="removeFromCollection" func="sim.removeFromCollection" lang="python,lua">
         <description>
             Removes an item from a
@@ -9966,6 +9910,65 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
         <category name="messaging" />
             </categories>
     </method>
+
+
+
+        <method name="getApiFunc" func="sim.callMethod" lang="python,lua">
+            <description>
+                Retrieves all API functions and variables that match a specific word.
+                Useful for script code auto-completion functionality
+            </description>
+            <params>
+                <param name="apiWord" type="string">
+                    <description>
+                        word that API functions and variables should match, e.g. "sim.getObj". Only matches up to the first dot are returned, if the apiWord does not contain any dot. To retrieve all functions and variables, leave apiWord empty. To retrieve only functions, add '+' as prefix. To retrieve only variables, add '-' as prefix.
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="funcsAndVars" type="string[]">
+                    <description>
+                        array containing all matching API functions and variables.
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="script" />
+                <category name="scriptRelated" />
+            </categories>
+            <see-also>
+                <function-ref name="detachedScript:getApiInfo" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="getApiInfo" func="sim.callMethod" lang="python,lua">
+            <description>
+                Returns the call tip (or info text) for an API function
+            </description>
+            <params>
+                <param name="apiWord" type="string">
+                    <description>
+                        API functions or variable to retrieve the info for, e.g. "sim.getObject". Return is for the latest version of a module by default. For a specific module version, specify its full name, e.g. "sim-1.getObject". Using the wildcard, e.g. "sim-*.getObject", the returned information is prepended by its related module name (e.g. "[sim-1]"), for all available modules
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="info" type="string">
+                    <description>
+                        information related to the API function or variable
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="script" />
+                <category name="scriptRelated" />
+            </categories>
+            <see-also>
+                <function-ref name="detachedScript:getApiFunc" />
+            </see-also>
+        </method>
 
 
 
