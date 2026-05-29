@@ -149,18 +149,19 @@ SIM_DLLEXPORT int simInit(SSimInit *initInfo) \
     { \
         sim::pluginInfo = new sim::PluginInfo; \
         sim::pluginInfo->name = PLUGIN_NAME; \
-        sim::pluginInfo->version = PLUGIN_VERSION; \
+        sim::pluginInfo->version = std::max(1, PLUGIN_VERSION); \
         sim::pluginInfo->nameAndVersion = sim::pluginInfo->name; \
-        if(sim::pluginInfo->version > 0) \
+        if(PLUGIN_VERSION > 0) \
         { \
             sim::pluginInfo->nameAndVersion += "-"; \
-            sim::pluginInfo->nameAndVersion += std::to_string(sim::pluginInfo->version); \
+            sim::pluginInfo->nameAndVersion += std::to_string(PLUGIN_VERSION); \
         } \
         sim::plugin = new className_; \
-        sim::plugin->setName(sim::pluginInfo->name); \
         sim::pluginInfo->lib = sim::plugin->loadSimLibrary(initInfo->coppeliaSimLibPath); \
+        sim::plugin->setName(sim::pluginInfo->name); \
+        sim::plugin->setExtVersion(sim::pluginInfo->version); \
         sim::plugin->onInit(); \
-        return std::max(1, sim::pluginInfo->version); \
+        return sim::pluginInfo->version; \
     } \
     catch(std::exception &ex) \
     { \
