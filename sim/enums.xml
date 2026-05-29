@@ -124,6 +124,27 @@
         <item name="spring" value="12"/>
         <item name="callback" value="16"/>
     </enum>
+    <enum name="verbosity" label="verbosity" type="int" prefix="sim_verbosity_" description="">
+        <item name="useglobal" value="-1"/>
+        <item name="none" value="100"/>
+        <item name="errors" value="200"/>
+        <item name="warnings" value="300"/>
+        <item name="loadinfos" value="400"/>
+        <item name="questions" value="410"/>
+        <item name="scripterrors" value="420"/>
+        <item name="scriptwarnings" value="430"/>
+        <item name="scriptinfos" value="450"/>
+        <item name="msgs" value="451"/>
+        <item name="infos" value="500"/>
+        <item name="debug" value="600"/>
+        <item name="trace" value="700"/>
+        <item name="tracelua" value="800"/>
+        <item name="traceall" value="900"/>
+        <item name="default" value="901"/>
+        <item name="undecorated" value="61440"/>
+        <item name="onlyterminal" value="65536"/>
+        <item name="once" value="131072"/>
+    </enum>
     <enum name="physicsEngine" label="physics engines" type="int" prefix="sim_physics_" description="">
         <item name="bullet" value="0"/>
         <item name="ode" value="1"/>

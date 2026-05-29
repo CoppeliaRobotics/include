@@ -3,19 +3,19 @@
 #include "mathDefines.h"
 #include "3Vector.h"
 
-class C4Vector;
+class CQuaternion;
 
 class C3X3Matrix  
 {
 public:
     C3X3Matrix();
-    C3X3Matrix(const C4Vector& q);
+    C3X3Matrix(const CQuaternion& q);
     C3X3Matrix(const C3X3Matrix& m);
     C3X3Matrix(const C3Vector& xAxis,const C3Vector& yAxis,const C3Vector& zAxis);
     ~C3X3Matrix();
 
     void buildInterpolation(const C3X3Matrix& fromThis,const C3X3Matrix& toThat,simReal t);
-    C4Vector getQuaternion() const;
+    CQuaternion getQuaternion() const;
     void setEulerAngles(simReal a,simReal b,simReal g);
     void setEulerAngles(const C3Vector& v);
     C3Vector getEulerAngles() const;

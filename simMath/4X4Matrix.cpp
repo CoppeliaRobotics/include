@@ -11,7 +11,7 @@ C4X4Matrix::C4X4Matrix(const C3X3Matrix& m,const C3Vector& x)
     X=x;
 }
 
-C4X4Matrix::C4X4Matrix(const C7Vector& transf)
+C4X4Matrix::C4X4Matrix(const CPose& transf)
 {
     M=transf.Q.getMatrix();
     X=transf.X;
@@ -66,15 +66,15 @@ C4X4Matrix& C4X4Matrix::operator= (const CMatrix& m)
     return(*this);
 }
 
-C7Vector C4X4Matrix::getTransformation() const
+CPose C4X4Matrix::getTransformation() const
 {
-    return(C7Vector(M.getQuaternion(),X));
+    return(CPose(M.getQuaternion(),X));
 }
 
 
 void C4X4Matrix::buildInterpolation(const C4X4Matrix& fromThis,const C4X4Matrix& toThat,simReal t)
 {   // Builds the interpolation (based on t) from 'fromThis' to 'toThat'
-    C7Vector out;
+    CPose out;
     out.buildInterpolation(fromThis.getTransformation(),toThat.getTransformation(),t);
     (*this)=out;
 }

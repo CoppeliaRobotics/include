@@ -2,7 +2,6 @@
 #include "3Vector.h"
 #include "3X3Matrix.h"
 #include "4X4Matrix.h"
-#include "7Vector.h"
 
 const C3Vector C3Vector::unitXVector(1.0,0.0,0.0);
 const C3Vector C3Vector::unitYVector(0.0,1.0,0.0);
@@ -90,7 +89,7 @@ void C3Vector::operator*= (const C3X3Matrix& m)
 }
 
 
-void C3Vector::operator*= (const C7Vector& transf)
+void C3Vector::operator*= (const CPose& transf)
 {
     (*this)=transf*(*this);
 }

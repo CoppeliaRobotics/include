@@ -4,7 +4,7 @@
 
 class C3X3Matrix;
 class C4X4Matrix;
-class C7Vector;
+class CPose;
 
 class C3Vector  
 {
@@ -40,7 +40,7 @@ public:
 
     void operator*= (const C4X4Matrix& m);
     void operator*= (const C3X3Matrix& m);
-    void operator*= (const C7Vector& transf);
+    void operator*= (const CPose& transf);
     void operator*= (simReal d);
     void operator/= (simReal d);
     void operator+= (const C3Vector& v);

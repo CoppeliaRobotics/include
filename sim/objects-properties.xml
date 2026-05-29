@@ -69,6 +69,7 @@
     </property>
     <property name="getGenesisEvents" type="method" readable="false" writable="false" />
     <property name="getObjects" type="method" readable="false" writable="false" />
+    <property name="getPluginInfo" type="method" readable="false" writable="false" />
     <property name="handleAddOnScripts" type="method" readable="false" writable="false" />
     <property name="handleSandboxScript" type="method" readable="false" writable="false" />
     <property name="headlessMode" type="int" writable="false" constant="true" label="Headless mode">
@@ -171,6 +172,7 @@
     <property name="scheduleExecution" type="method" readable="false" writable="false" />
     <property name="serialize" type="method" readable="false" writable="false" />
     <property name="sessionId" type="string" writable="false" constant="true" label="Session ID" />
+    <property name="setPluginInfo" type="method" readable="false" writable="false" />
     <property name="settingsPath" type="string" deprecated="true" writable="false" constant="true" />
     <property name="startupCode" type="string" constant="true" label="Start-up code" />
     <property name="statusbarVerbosity" type="int" label="Statusbar verbosity" />

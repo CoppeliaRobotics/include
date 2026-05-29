@@ -2236,6 +2236,64 @@
     
     
     <object-class name="app" superclass="object">
+        <method name="getPluginInfo" func="sim.callMethod" lang="python,lua">
+            <description>
+                Returns information about a loaded plugin
+            </description>
+            <params>
+                <param name="pluginName" type="string">
+                    <description>
+                        name of the plugin
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="info" type="map">
+                    <description>
+                        the retrieved information
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="other" />
+            </categories>
+            <see-also>
+                <function-ref name="app:setPluginInfo" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="setPluginInfo" func="sim.callMethod" lang="python,lua">
+            <description>
+                Modifies information of a loaded plugin
+            </description>
+            <params>
+                <param name="pluginName" type="string">
+                    <description>
+                        name of the plugin
+                    </description>
+                </param>
+                <param name="info" type="map">
+                    <description>
+                        map with following optional fields:
+                        <ul>
+                            <li>consoleVerbosity (int): <a href="#verbosity">console verbosity</a></li>
+                            <li>statusbarVerbosity (int): <a href="#verbosity">status bar verbosity</a></li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="other" />
+            </categories>
+            <see-also>
+                <function-ref name="app:getPluginInfo" />
+            </see-also>
+        </method>
+
+        
+
         <method name="pushEvent" func="sim.callMethod" lang="python,lua">
             <description>
                 Pushes a user event. Messages are received asynchronously via the sysCall_event
@@ -3514,9 +3572,9 @@
                                     <li>duplicateTolerance (float): indicates a distance threshold under which points are not added. Does not apply to line- or triangle items</li>
                                     <li>itemCnt (int): maximum item count</li>
                                     <li>color (color): default item color</li>
-                                    <li>mesh.vertices (matrix): vertices for a mesh item type (sim.markertype_custom). Vertices are arranged in a n * 3 matrix</li> 
+                                    <li>mesh.vertices (matrix n * 3): vertices for a mesh item type (sim.markertype_custom)</li> 
                                     <li>mesh.indices (int[]): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li> 
-                                    <li>mesh.normals (matrix): normals for a mesh item type (sim.markertype_custom). Normals are arranged in a n * 3 matrix. One normal for each vertex</li>
+                                    <li>mesh.normals (matrix n * 3): normals for a mesh item type (sim.markertype_custom). One normal for each vertex</li>
                                 </ul>
                             </li>
                             <li id="customSceneObject"><a href="../customSceneObjects.htm">custom scene object</a> fields:
@@ -3617,9 +3675,9 @@
                                     </li>
                                     <li>mesh (map/dict): holds parameters for the creation of a mesh:
                                         <ul>
-                                            <li>vertices (matrix): the vertices organized row-wise (n * 3 matrix)</li>
+                                            <li>vertices (matrix n * 3)</li>
                                             <li>indices (int[]): the zero-based indices</li>
-                                            <li>normals (matrix): the normals organized in row-wise (n * 9)) matrix</li>
+                                            <li>normals (matrix 3n * 3)</li>
                                             <li>boundingBoxQuaternion (quaternion): the orientation of the shape's bounding box</li>
                                             <li>frameOrigin (pose): the pose of the shape's frame</li>
                                             <li>texture (map/dict): holds parameters for an optional texture:
@@ -3627,7 +3685,7 @@
                                                     <li>resolution (int[2]): texture resolution</li>
                                                     <li>image (buffer): texture specified as rgb or rgba</li>
                                                     <li>rgba (bool): whether the texture is specified as rgba or rgb</li>
-                                                    <li>coordinates (matrix): texture coordinates</li>
+                                                    <li>coordinates (matrix m * 2): texture coordinates</li>
                                                     <li>interpolate (bool): whether adjecent texture pixels are interpolated</li>
                                                     <li>decal (bool): whether the texture is applied as decal</li>
                                                     <li>horizFlip (bool): whether the texture is horizontally flipped</li>
@@ -3723,7 +3781,7 @@
                             <li id="path"><a href="../paths.htm">path</a> fields:
                                 <ul>
                                     <li>objectType (string): "path"</li>
-                                    <li>ctrlPts (matrix): control points, specified row-wise, with [x y z qx qy qz qw] values for each path point (n * 7 matrix)</li>
+                                    <li>ctrlPts (matrix n * 7): control points, specified row-wise, with pose values for each path point</li>
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
                                     <li>subdiv (int): number of individual path points</li>
@@ -4977,17 +5035,17 @@
                 </param>
                 <param name="points" type="matrix">
                     <description>
-                        contact points. n contacts result in a matrix of size n * 3
+                        contact points (matrix n * 3)
                     </description>
                 </param>
                 <param name="forces" type="matrix">
                     <description>
-                        force vectors. n contacts result in a matrix of size n * 3
+                        force vectors (matrix n * 3)
                     </description>
                 </param>
                 <param name="normals" type="matrix">
                     <description>
-                        normal vectors. n contacts result in a matrix of size n * 3
+                        normal vectors (matrix n * 3)
                     </description>
                 </param>
             </returns>
@@ -5596,9 +5654,9 @@
                                     <li>duplicateTolerance (float): indicates a distance threshold under which points are not added. Does not apply to line- or triangle items</li>
                                     <li>itemCnt (int): maximum item count</li>
                                     <li>color (color): default item color</li>
-                                    <li>mesh.vertices (matrix): vertices for a mesh item type (sim.markertype_custom). Vertices are arranged in a n * 3 matrix</li> 
+                                    <li>mesh.vertices (matrix n * 3): vertices for a mesh item type (sim.markertype_custom)</li> 
                                     <li>mesh.indices (int[]): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li> 
-                                    <li>mesh.normals (matrix): normals for a mesh item type (sim.markertype_custom). Normals are arranged in a n * 3 matrix. One normal for each vertex</li>
+                                    <li>mesh.normals (matrix n * 3): normals for a mesh item type (sim.markertype_custom). One normal for each vertex</li>
                                 </ul>
                             </li>
                             <li id="customSceneObject"><a href="../customSceneObjects.htm">custom scene object</a> fields:
@@ -5699,9 +5757,9 @@
                                     </li>
                                     <li>mesh (map/dict): holds parameters for the creation of a mesh:
                                         <ul>
-                                            <li>vertices (matrix): the vertices organized row-wise (n * 3 matrix)</li>
+                                            <li>vertices (matrix n * 3)</li>
                                             <li>indices (int[]): the zero-based indices</li>
-                                            <li>normals (matrix): the normals organized row-wise (n * 9 matrix)</li>
+                                            <li>normals (matrix 3n * 3)</li>
                                             <li>boundingBoxQuaternion (quaternion): the orientation of the shape's bounding box</li>
                                             <li>frameOrigin (pose): the pose of the shape's frame</li>
                                             <li>texture (map/dict): holds parameters for an optional texture:
@@ -5709,7 +5767,7 @@
                                                     <li>resolution (int[2]): texture resolution</li>
                                                     <li>image (buffer): texture specified as rgb or rgba</li>
                                                     <li>rgba (bool): whether the texture is specified as rgba or rgb</li>
-                                                    <li>coordinates (matrix): texture coordinates</li>
+                                                    <li>coordinates (matrix m * 2): texture coordinates</li>
                                                     <li>interpolate (bool): whether adjecent texture pixels are interpolated</li>
                                                     <li>decal (bool): whether the texture is applied as decal</li>
                                                     <li>horizFlip (bool): whether the texture is horizontally flipped</li>
@@ -5805,7 +5863,7 @@
                             <li id="path"><a href="../paths.htm">path</a> fields:
                                 <ul>
                                     <li>objectType (string): "path"</li>
-                                    <li>ctrlPts (matrix): control points, specified in row-major order, with [x y z qx qy qz qw] values for each path point (n * 7 matrix)</li>
+                                    <li>ctrlPts (matrix n * 7): control points, specified in row-major order, with a pose for each path point</li>
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
                                     <li>subdiv (int): number of individual path points</li>
@@ -6880,17 +6938,17 @@
                 </param>
                 <param name="points" type="matrix">
                     <description>
-                        contact points. n contacts result in a matrix of size n * 3
+                        contact points (matrix n * 3)
                     </description>
                 </param>
                 <param name="forces" type="matrix">
                     <description>
-                        force vectors. n contacts result in a matrix of size n * 3
+                        force vectors (matrix n * 3)
                     </description>
                 </param>
                 <param name="normals" type="matrix">
                     <description>
-                        normal vectors. n contacts result in a matrix of size n * 3
+                        normal vectors (matrix n * 3)
                     </description>
                 </param>
             </returns>
@@ -7096,7 +7154,7 @@
             <params>
                 <param name="inertia" type="matrix">
                     <description>
-                        new inertia matrix (3 x 3 values), expressed relative to <em>comPose</em> (itself expressed relative to the shape's reference frame)
+                        new inertia (matrix 3 * 3), expressed relative to <em>comPose</em> (itself expressed relative to the shape's reference frame)
                     </description>
                 </param>
                 <param name="comPose" type="pose">
@@ -7126,7 +7184,7 @@
             <returns>
                 <param name="inertia" type="matrix">
                     <description>
-                        inertia matrix, expressed relative to the shape's reference frame orientation. The matrix is symmetric
+                        inertia (matrix 3 * 3), expressed relative to the shape's reference frame orientation. The matrix is symmetric
                     </description>
                 </param>
                 <param name="com" type="vector3">
@@ -7325,7 +7383,7 @@
             <returns>
                 <param name="depth" type="matrix">
                     <description>
-                        a matrix y * x, with depth values in meters
+                        depth values in meters (matrix y * x)
                     </description>
                 </param>
                 <param name="resolution" type="int[2]">
@@ -7780,7 +7838,7 @@
             <params>
                 <param name="voxels" type="matrix">
                     <description>
-                        voxel positions, organised row-wise (the matrix should be n * 3 in size)
+                        voxel positions (matrix n * 3)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -7860,7 +7918,7 @@
             <params>
                 <param name="voxels" type="matrix">
                     <description>
-                        voxel positions, organised row-wise (the matrix should be n * 3 in size)
+                        voxel positions (matrix n * 3)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -7930,7 +7988,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        point positions, organised row-wise (the matrix should be n * 3 in size)
+                        point positions (matrix n * 3)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -8072,7 +8130,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        point positions, organised row-wise (the matrix should be n * 3 in size)
+                        point positions (matrix n * 3)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -8147,7 +8205,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        point positions, organised row-wise (the matrix should be n * 3 in size)
+                        point positions (matrix n * 3)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -8220,7 +8278,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        point positions, organised row-wise (the matrix should be n * 3 in size)
+                        point positions (matrix n * 3)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -8628,40 +8686,6 @@
             </categories>
         <see-also>
             <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getPluginInfo" func="sim.getPluginInfo" lang="python,lua">
-        <description>
-            Returns information about a loaded plugin
-        </description>
-        <params>
-            <param name="pluginName" type="string">
-                <description>
-                    name of the plugin
-                </description>
-            </param>
-            <param name="infoType" type="int">
-                <description>
-                    <a href="../apiConstants.htm#pluginInfos"> type of information </a>
-                    to retrieve
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="info" type="any">
-                <description>
-                    the retrieved information
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="other" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.setPluginInfo" />
         </see-also>
     </method>
 
@@ -9433,38 +9457,6 @@ end</code>
             </categories>
         <see-also>
             <function-ref name="sim.getPage" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setPluginInfo" func="sim.setPluginInfo" lang="python,lua">
-        <description>
-            Attaches additional information to a loaded plugin
-        </description>
-        <params>
-            <param name="pluginName" type="string">
-                <description>
-                    name of the plugin
-                </description>
-            </param>
-            <param name="infoType" type="int">
-                <description>
-                    <a href="../apiConstants.htm#pluginInfos"> the type of information </a>
-                    to set
-                </description>
-            </param>
-            <param name="info" type="any">
-                <description>
-                    string or integer information value
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="other" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getPluginInfo" />
         </see-also>
     </method>
 

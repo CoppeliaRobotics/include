@@ -1,5 +1,5 @@
 #include "3X3Matrix.h"
-#include "4Vector.h"
+#include "quaternion.h"
 #include "mathFuncs.h"
 
 C3X3Matrix::C3X3Matrix()
@@ -14,7 +14,7 @@ C3X3Matrix::C3X3Matrix(const C3Vector& xAxis,const C3Vector& yAxis,const C3Vecto
     (*this).axis[2]=zAxis;
 }
 
-C3X3Matrix::C3X3Matrix(const C4Vector& q)
+C3X3Matrix::C3X3Matrix(const CQuaternion& q)
 {
     (*this)=q.getMatrix();
 }
@@ -82,9 +82,9 @@ C3Vector C3X3Matrix::getEulerAngles() const
     return(retV);
 }
 
-C4Vector C3X3Matrix::getQuaternion() const
+CQuaternion C3X3Matrix::getQuaternion() const
 {   
-    C4Vector retV;
+    CQuaternion retV;
     simReal trace=axis[0](0)+axis[1](1)+axis[2](2);
     if (trace>=0.0)    // trace>0.00000001)
     {
@@ -130,7 +130,7 @@ C4Vector C3X3Matrix::getQuaternion() const
 
 void C3X3Matrix::buildInterpolation(const C3X3Matrix& fromThis,const C3X3Matrix& toThat,simReal t)
 {   // Builds the interpolation (based on t) from 'fromThis' to 'toThat'
-    C4Vector out;
+    CQuaternion out;
     out.buildInterpolation(fromThis.getQuaternion(),toThat.getQuaternion(),t);
     (*this)=out;
 }

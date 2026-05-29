@@ -399,6 +399,7 @@ enum {
     sim_jointdynctrl_callback = 16
 };
 
+// @enum name="verbosity" label="verbosity" type="int" prefix="sim_verbosity_" description=""
 enum { // verbosity
     sim_verbosity_useglobal = -1,
     sim_verbosity_none = 100,
