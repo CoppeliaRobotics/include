@@ -333,19 +333,19 @@ static void readFromStack(TypeTag_table<ItemTypeTag>, sim::handle_t stackHandle,
 }
 
 template<>
-void readFromStack(TypeTag_table<float> t, sim::handle_t stackHandle, std::vector<float> *vec, const ReadOptions &rdopt)
+void readFromStack(TypeTag_table<TypeTag_float> t, sim::handle_t stackHandle, std::vector<float> *vec, const ReadOptions &rdopt)
 {
     readFromStack(t, stackHandle, vec, sim::getStackFloatTable, rdopt);
 }
 
 template<>
-void readFromStack(TypeTag_table<double> t, sim::handle_t stackHandle, std::vector<double> *vec, const ReadOptions &rdopt)
+void readFromStack(TypeTag_table<TypeTag_double> t, sim::handle_t stackHandle, std::vector<double> *vec, const ReadOptions &rdopt)
 {
     readFromStack(t, stackHandle, vec, sim::getStackDoubleTable, rdopt);
 }
 
 template<>
-void readFromStack(TypeTag_table<int> t, sim::handle_t stackHandle, std::vector<int> *vec, const ReadOptions &rdopt)
+void readFromStack(TypeTag_table<TypeTag_int> t, sim::handle_t stackHandle, std::vector<int> *vec, const ReadOptions &rdopt)
 {
     readFromStack(t, stackHandle, vec, sim::getStackInt32Table, rdopt);
 }
@@ -379,7 +379,7 @@ static void readFromStack(TypeTag_grid<ItemTypeTag>, sim::handle_t stackHandle, 
                 if(0) {}
                 else if(key == "dims")
                 {
-                    readFromStack(TypeTag_table<int>{}, stackHandle, &grid->dims, ReadOptions().setBounds(0, 1, -1));
+                    readFromStack(TypeTag_table<TypeTag_int>{}, stackHandle, &grid->dims, ReadOptions().setBounds(0, 1, -1));
                 }
                 else if(key == "data")
                 {
@@ -425,7 +425,7 @@ static void readFromStack(TypeTag_vector3, sim::handle_t stackHandle, Eigen::Vec
     std::vector<double> v;
     ReadOptions rdopt1;
     rdopt1.minSize = rdopt1.maxSize = {3};
-    readFromStack(TypeTag_table<double>{}, stackHandle, &v, sim::getStackDoubleTable, rdopt1);
+    readFromStack(TypeTag_table<TypeTag_double>{}, stackHandle, &v, sim::getStackDoubleTable, rdopt1);
     (*vec) << v[0], v[1], v[2];
 }
 
@@ -434,7 +434,7 @@ static void readFromStack(TypeTag_quaternion, sim::handle_t stackHandle, Eigen::
     std::vector<double> v;
     ReadOptions rdopt1;
     rdopt1.minSize = rdopt1.maxSize = {4};
-    readFromStack(TypeTag_table<double>{}, stackHandle, &v, sim::getStackDoubleTable, rdopt1);
+    readFromStack(TypeTag_table<TypeTag_double>{}, stackHandle, &v, sim::getStackDoubleTable, rdopt1);
     // note about quaternion order: Eigen=WXYZ, CoppeliaSim=XYZW
     *q = Eigen::Quaterniond(v[3], v[0], v[1], v[2]);
 }
@@ -619,19 +619,19 @@ static void writeToStack(TypeTag_table<ItemTypeTag>, const std::vector<T> &vec, 
 }
 
 template<>
-void writeToStack(TypeTag_table<float>, const std::vector<float> &vec, sim::handle_t stackHandle, const WriteOptions &wropt)
+void writeToStack(TypeTag_table<TypeTag_float>, const std::vector<float> &vec, sim::handle_t stackHandle, const WriteOptions &wropt)
 {
     sim::pushFloatTableOntoStack(stackHandle, vec);
 }
 
 template<>
-void writeToStack(TypeTag_table<double>, const std::vector<double> &vec, sim::handle_t stackHandle, const WriteOptions &wropt)
+void writeToStack(TypeTag_table<TypeTag_double>, const std::vector<double> &vec, sim::handle_t stackHandle, const WriteOptions &wropt)
 {
     sim::pushDoubleTableOntoStack(stackHandle, vec);
 }
 
 template<>
-void writeToStack(TypeTag_table<int>, const std::vector<int> &vec, sim::handle_t stackHandle, const WriteOptions &wropt)
+void writeToStack(TypeTag_table<TypeTag_int>, const std::vector<int> &vec, sim::handle_t stackHandle, const WriteOptions &wropt)
 {
     sim::pushInt32TableOntoStack(stackHandle, vec);
 }
@@ -645,7 +645,7 @@ static void writeToStack(TypeTag_grid<ItemTypeTag>, const Grid<T> &grid, sim::ha
         try
         {
             writeToStack(TypeTag_string{}, std::string{"dims"}, stackHandle);
-            writeToStack(TypeTag_table<int>{}, grid.dims, stackHandle);
+            writeToStack(TypeTag_table<TypeTag_int>{}, grid.dims, stackHandle);
             sim::insertDataIntoStackTable(stackHandle);
         }
         catch(std::exception &ex)
@@ -655,7 +655,7 @@ static void writeToStack(TypeTag_grid<ItemTypeTag>, const Grid<T> &grid, sim::ha
         try
         {
             writeToStack(TypeTag_string{}, std::string{"data"}, stackHandle);
-            writeToStack(TypeTag_table<T>{}, grid.data, stackHandle);
+            writeToStack(TypeTag_table<ItemTypeTag>{}, grid.data, stackHandle);
             sim::insertDataIntoStackTable(stackHandle);
         }
         catch(std::exception &ex)
@@ -674,14 +674,14 @@ static void writeToStack(TypeTag_grid<ItemTypeTag>, const Grid<T> &grid, sim::ha
 static void writeToStack(TypeTag_vector3, const Eigen::Vector3d &vec, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     std::vector<double> v {vec.x(), vec.y(), vec.z()};
-    writeToStack(TypeTag_table<double>{}, v, stackHandle, wropt);
+    writeToStack(TypeTag_table<TypeTag_double>{}, v, stackHandle, wropt);
 }
 
 static void writeToStack(TypeTag_quaternion, const Eigen::Quaterniond &q, sim::handle_t stackHandle, const WriteOptions &wropt = {})
 {
     // note about quaternion order: Eigen=WXYZ, CoppeliaSim=XYZW
     std::vector<double> v {q.x(), q.y(), q.z(), q.w()};
-    writeToStack(TypeTag_table<double>{}, v, stackHandle, wropt);
+    writeToStack(TypeTag_table<TypeTag_double>{}, v, stackHandle, wropt);
 }
 
 #endif // SIM_STUBS_GEN_EIGEN

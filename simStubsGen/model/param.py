@@ -219,7 +219,11 @@ class ParamGrid(Param):
         self.ctype_base = 'Grid< %s >' % self.itype
 
     def typetag(self):
-        return f'TypeTag_grid<{self.itype}>'
+        return f'TypeTag_grid<{self.item_dummy().typetag()}>'
+
+    def item_dummy(self):
+        n = type('dummyNode', (object,), dict(tag='param', attrib={'name': 'dummy', 'type': self.itype}))
+        return Param.factory(n)
 
 class ParamVector3(Param):
     def __init__(self, node):
