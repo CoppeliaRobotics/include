@@ -2332,6 +2332,9 @@
                     <description>
                         map with following optional fields:
                         <ul>
+                            <li>versionStr (string): name and version</li>
+                            <li>buildDate (string): build date</li>
+                            <li>version (int): version number</li>
                             <li>consoleVerbosity (int): <a href="#verbosity">console verbosity</a></li>
                             <li>statusbarVerbosity (int): <a href="#verbosity">status bar verbosity</a></li>
                         </ul>
