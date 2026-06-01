@@ -116,7 +116,8 @@
             <see-also>
             </see-also>
         </method>
-    </object-class>
+    </object-class> <!-- RuckigPosition -->
+
 
 
     <object-class name="RuckigVelocity" superclass="Motion">
@@ -231,7 +232,8 @@
             <see-also>
             </see-also>
         </method>
-    </object-class>
+    </object-class> <!-- RuckigVelocity -->
+
 
 
     <object-class name="MoveToConfig" superclass="Motion">
@@ -371,7 +373,7 @@
             <see-also>
             </see-also>
         </method>
-    </object-class>
+    </object-class> <!-- MoveToConfig -->
 
         
 
@@ -527,7 +529,7 @@
             <see-also>
             </see-also>
         </method>
-    </object-class>
+    </object-class> <!-- MoveToPose -->
 
 
 
@@ -611,7 +613,7 @@
             <see-also>
             </see-also>
         </method>
-    </object-class>
+    </object-class> <!-- TimeOptimalTrajectory -->
 
     
 
@@ -671,7 +673,7 @@
                 <function-ref name="Console:print" />
             </see-also>
         </method>
-    </object-class>
+    </object-class> <!-- Console -->
 
     
 
@@ -2231,7 +2233,7 @@
                 <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
-    </object-class>
+    </object-class> <!-- object -->
 
     
     
@@ -4326,7 +4328,7 @@
                 <function-ref name="visionSensor:setImage" />
             </see-also>
         </method>
-    </object-class>
+    </object-class> <!-- app -->
 
 
 
@@ -4765,7 +4767,7 @@
                 <category name="scriptRelated" />
             </categories>
         </method>
-    </object-class>
+    </object-class> <!-- detachedScript -->
 
 
 
@@ -5008,7 +5010,7 @@
                 <function-ref name="sceneObject:checkDistance" />
             </see-also>
         </method>
-    </object-class>
+    </object-class> <!-- collection -->
     
     
     
@@ -5980,7 +5982,7 @@
                 <link href="../simulation.htm" label=" simulation state diagram " />
             </see-also>
         </method>
-    </object-class>
+    </object-class> <!-- scene -->
     
 
 
@@ -6042,7 +6044,7 @@
                 <function-ref name="scene:removeObjects" />
             </see-also>
         </method>
-    </object-class>
+    </object-class> <!-- customObject -->
 
 
 
@@ -6833,7 +6835,7 @@
                 <function-ref name="sceneObject:scaleTree" />
             </see-also>
         </method>
-    </object-class>
+    </object-class> <!-- sceneObject -->
 
 
 
@@ -6911,7 +6913,7 @@
                 <function-ref name="marker:addItems" />
             </see-also>
         </method>
-    </object-class>
+    </object-class> <!-- marker -->
 
 
 
@@ -7247,7 +7249,7 @@
                 <function-ref name="shape:relocateFrame" />
             </see-also>
         </method>
-    </object-class>
+    </object-class> <!-- shape -->
 
     
 
@@ -7363,7 +7365,7 @@
                 <function-ref name="proximitySensor:handleSensor" />
             </see-also>
         </method>
-    </object-class>
+    </object-class> <!-- proximitySensor -->
 
     
 
@@ -7562,7 +7564,7 @@
                 <function-ref name="visionSensor:handleSensor" />
             </see-also>
         </method>
-    </object-class>
+    </object-class> <!-- visionSensor -->
 
     
 
@@ -7767,7 +7769,7 @@
             <see-also>
             </see-also>
         </method>
-    </object-class>
+    </object-class> <!-- graph -->
 
  
 
@@ -8051,7 +8053,7 @@
             <see-also>
             </see-also>
         </method>
-    </object-class>
+    </object-class> <!-- ocTree -->
 
     
 
@@ -8320,7 +8322,7 @@
             <see-also>
             </see-also>
         </method>
-    </object-class>
+    </object-class> <!-- pointCloud -->
 
 
 
@@ -8387,8 +8389,24 @@
                 <property-ref name="joint.calcVelocity" />
             </see-also>
         </method>
-    </object-class>
+    </object-class> <!-- joint -->
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 
     <method name="createTexture" func="sim.createTexture" lang="python,lua">
@@ -8689,86 +8707,6 @@
             </categories>
         <see-also>
             <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getPointCloudOptions" func="sim.getPointCloudOptions" lang="python,lua">
-        <description>
-            Gets various properties of a 
-            <a href="../pointClouds.htm"> point cloud </a>
-        </description>
-        <params>
-            <param name="pcHandle" type="int">
-                <description>
-                    handle of the point cloud
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="maxVoxelS" type="float">
-                <description>
-                    maximum size of the OC tree voxels containing points
-                </description>
-            </param>
-            <param name="maxPtCntPerVoxel" type="int">
-                <description>
-                    maximum number of points allowed in a same OC tree voxel
-                </description>
-            </param>
-            <param name="opt" type="int">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li> bit0 set (1): points have random colors </li>
-                        <li> bit1 set (2): show OC tree structure </li>
-                        <li> bit2 set (4): reserved. keep unset </li>
-                        <li> bit3 set (8): do not use an OC tree structure. When enabled, point cloud operations are limited, and point clouds will not be <a href="../collidableObjects.htm"> collidable </a> , <a href="../measurableObjects.htm"> measurable </a> or <a href="../detectableObjects.htm"> detectable </a> anymore, but adding points will be much faster </li>
-                        <li> bit4 set (16): color is emissive </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="ps" type="float">
-                <description>
-                    bit0 set (1): points have random colors
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="pointCloud" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#pointCloud" label=" point cloud related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getPointCloudPoints" func="sim.getPointCloudPoints" lang="python,lua">
-        <description>
-            Retrieves point positions from a 
-            <a href="../pointClouds.htm"> point cloud </a>
-        </description>
-        <params>
-            <param name="pointCloudHandle" type="int">
-                <description>
-                    handle of the point cloud
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="points" type="float[]">
-                <description>
-                    the point [x y z] positions, relative to the point cloud reference frame
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="pointCloud" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#pointCloud" label=" point cloud related functions " />
         </see-also>
     </method>
 
@@ -9460,56 +9398,6 @@ end</code>
             </categories>
         <see-also>
             <function-ref name="sim.getPage" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setPointCloudOptions" func="sim.setPointCloudOptions" lang="python,lua">
-        <description>
-            Sets various properties of a 
-            <a href="../pointClouds.htm"> point cloud </a>
-        </description>
-        <params>
-            <param name="pcHandle" type="int">
-                <description>
-                    handle of the point cloud
-                </description>
-            </param>
-            <param name="maxVoxelSize" type="float">
-                <description>
-                    maximum size of the OC tree voxels containing points
-                </description>
-            </param>
-            <param name="maxPtCntPerVoxel" type="int">
-                <description>
-                    maximum number of points allowed in a same OC tree voxel
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li> bit0 set (1): points have random colors </li>
-                        <li> bit1 set (2): show OC tree structure </li>
-                        <li> bit2 set (4): reserved. keep unset </li>
-                        <li> bit3 set (8): do not use an OC tree structure. When enabled, point cloud operations are limited, and point clouds will not be <a href="../collidableObjects.htm"> collidable </a> , <a href="../measurableObjects.htm"> measurable </a> or <a href="../detectableObjects.htm"> detectable </a> anymore, but adding points will be much faster </li>
-                        <li> bit4 set (16): color is emissive </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="pointSize" type="float">
-                <description>
-                    bit0 set (1): points have random colors
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="pointCloud" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getPointCloudOptions" />
-            <link href="../apiFunctions.htm#pointCloud" label=" point cloud related functions " />
         </see-also>
     </method>
 
