@@ -116,7 +116,8 @@
             <see-also>
             </see-also>
         </method>
-    </object-class>
+    </object-class> 
+
 
 
     <object-class name="RuckigVelocity" superclass="Motion">
@@ -231,7 +232,8 @@
             <see-also>
             </see-also>
         </method>
-    </object-class>
+    </object-class> 
+
 
 
     <object-class name="MoveToConfig" superclass="Motion">
@@ -371,7 +373,7 @@
             <see-also>
             </see-also>
         </method>
-    </object-class>
+    </object-class> 
 
         
 
@@ -527,7 +529,7 @@
             <see-also>
             </see-also>
         </method>
-    </object-class>
+    </object-class> 
 
 
 
@@ -611,7 +613,7 @@
             <see-also>
             </see-also>
         </method>
-    </object-class>
+    </object-class> 
 
     
 
@@ -671,7 +673,7 @@
                 <function-ref name="Console:print" />
             </see-also>
         </method>
-    </object-class>
+    </object-class> 
 
     
 
@@ -2258,6 +2260,7 @@
     <property name="getVector3Property" type="method" readable="false" writable="false" />
     <property name="handle" type="long" writable="false" constant="true" label="Handle" />
     <property name="isValid" type="method" readable="false" writable="false" />
+    <property name="metaInfo" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="metaInfo.isClass" type="bool" writable="false" constant="true" label="class flag" />
     <property name="metaInfo.isSceneObject" type="bool" writable="false" constant="true" label="sceneObject flag" />
     <property name="metaInfo.namespaces" type="stringarray" writable="false" constant="true" label="object name spaces" />
@@ -2285,7 +2288,7 @@
     <property name="setStringProperty" type="method" readable="false" writable="false" />
     <property name="setTableProperty" type="method" readable="false" writable="false" />
     <property name="setVector3Property" type="method" readable="false" writable="false" />
-  </object-class>
+  </object-class> 
 
     
     
@@ -4493,6 +4496,7 @@
     <property name="packUInt16Array" type="method" readable="false" writable="false" />
     <property name="packUInt32Array" type="method" readable="false" writable="false" />
     <property name="packUInt8Array" type="method" readable="false" writable="false" />
+    <property name="paths" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="paths.addOns" type="string" writable="false" constant="true" label="Add-on path" />
     <property name="paths.app" type="string" writable="false" constant="true" label="Application path" />
     <property name="paths.importExport" type="string" silent="true" label="Import/export path" />
@@ -4578,7 +4582,7 @@
     <namespace name="customData" />
     <namespace name="namedParam" />
     <namespace name="signal" />
-  </object-class>
+  </object-class> 
 
 
 
@@ -5063,7 +5067,7 @@
     </property>
     <property name="wait" type="method" readable="false" writable="false" />
     <property name="yield" type="method" readable="false" writable="false" />
-  </object-class>
+  </object-class> 
 
 
 
@@ -5314,7 +5318,7 @@
     <property name="remove" type="method" readable="false" writable="false" />
     <property name="removeItem" type="method" readable="false" writable="false" />
     <property name="restoreColor" type="method" readable="false" writable="false" />
-  </object-class>
+  </object-class> 
     
     
     
@@ -6308,6 +6312,8 @@
       <description>Handles of all drawing objects</description>
     </property>
     <property name="duplicateObjects" type="method" readable="false" writable="false" />
+    <property name="dynamics" type="group" readable="false" writable="false" silent="true" constant="true" />
+    <property name="dynamics.bullet" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.bullet.collisionMarginScaling" type="float" />
     <property name="dynamics.bullet.computeInertias" type="bool" />
     <property name="dynamics.bullet.internalScalingFull" type="bool" />
@@ -6322,6 +6328,7 @@
       <description>Engine properties as JSON text</description>
     </property>
     <property name="dynamics.gravity" type="vector3" label="Gravity" />
+    <property name="dynamics.mujoco" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.mujoco.actuationEnable" type="bool" />
     <property name="dynamics.mujoco.alignfree" type="bool" />
     <property name="dynamics.mujoco.autoresetEnable" type="bool" />
@@ -6384,12 +6391,14 @@
     <property name="dynamics.mujoco.viscosity" type="float" />
     <property name="dynamics.mujoco.warmstartEnable" type="bool" />
     <property name="dynamics.mujoco.wind" type="vector3" />
+    <property name="dynamics.newton" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.newton.computeInertias" type="bool" />
     <property name="dynamics.newton.contactMergeTolerance" type="float" />
     <property name="dynamics.newton.exactSolver" type="bool" />
     <property name="dynamics.newton.highJointAccuracy" type="bool" />
     <property name="dynamics.newton.iterations" type="int" />
     <property name="dynamics.newton.multithreading" type="bool" />
+    <property name="dynamics.ode" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.ode.computeInertias" type="bool" />
     <property name="dynamics.ode.globalCfm" type="float" />
     <property name="dynamics.ode.globalErp" type="float" />
@@ -6398,9 +6407,11 @@
     <property name="dynamics.ode.quickStepEnabled" type="bool" />
     <property name="dynamics.ode.quickStepIterations" type="int" />
     <property name="dynamics.showContactPoints" type="bool" label="Show contact points" />
+    <property name="dynamics.step" type="method" readable="false" writable="false" />
     <property name="dynamics.stepSize" type="float" label="Dynamics dt">
       <description>Dynamics step size</description>
     </property>
+    <property name="dynamics.vortex" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.vortex.autoSleep" type="bool" />
     <property name="dynamics.vortex.computeInertias" type="bool" />
     <property name="dynamics.vortex.constraintsAngularCompliance" type="float" />
@@ -6554,6 +6565,7 @@
     </property>
     <property name="selectionHandles" type="intarray" deprecated="true" />
     <property name="showContactPoints" type="bool" deprecated="true" label="Show contact points" />
+    <property name="simulation" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="simulation.pause" type="method" readable="false" writable="false" />
     <property name="simulation.pauseAtError" type="bool" label="Pause simulation on script error" />
     <property name="simulation.pauseAtTime" type="bool" label="Pause simulation at time">
@@ -6611,7 +6623,7 @@
     <property name="vortex.multithreading" type="bool" deprecated="true" />
     <namespace name="customData" />
     <namespace name="signal" />
-  </object-class>
+  </object-class> 
     
 
 
@@ -6673,7 +6685,7 @@
                 <function-ref name="scene:removeObjects" />
             </see-also>
         </method>
-    </object-class>
+    </object-class> 
 
 
 
@@ -7539,6 +7551,7 @@
     <property name="makeClass" type="method" readable="false" writable="false" />
     <property name="makeObject" type="method" readable="false" writable="false" />
     <property name="measurable" type="bool" label="Measurable" />
+    <property name="model" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="model.bbPos" type="vector3" writable="false" silent="true" label="Model bounding boxe position" />
     <property name="model.bbSize" type="vector3" writable="false" silent="true" label="Model bounding boxe size" />
     <property name="model.notCollidable" type="bool" label="Model not collidable">
@@ -7585,6 +7598,7 @@
     <property name="modelNotVisible" type="bool" deprecated="true" />
     <property name="modelPropertyFlags" type="int" deprecated="true" />
     <property name="modelScriptsNotActive" type="bool" deprecated="true" />
+    <property name="mov" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="mov.altRot" type="bool" label="Alternate rotation axes enabled" />
     <property name="mov.altTransl" type="bool" label="Alternate translation axes enabled" />
     <property name="mov.optionsFlags" type="int" label="Movement flags">
@@ -7695,7 +7709,7 @@
     <namespace name="origRefs" new-property-forced-type="handlearray" />
     <namespace name="refs" new-property-forced-type="handlearray" />
     <namespace name="signal" />
-  </object-class>
+  </object-class> 
 
 
 
@@ -7804,7 +7818,7 @@
     <property name="vertices" type="matrix" writable="false" label="Vertices">
       <description>Vertices for custom marker</description>
     </property>
-  </object-class>
+  </object-class> 
 
 
 
@@ -8143,6 +8157,7 @@
     <property name="addForce" type="method" readable="false" writable="false" />
     <property name="addTorque" type="method" readable="false" writable="false" />
     <property name="alignBoundingBox" type="method" readable="false" writable="false" />
+    <property name="applyColor" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="applyColor.diffuse" type="color" readable="false" silent="true" label="Apply diffuse color">
       <description>Applies the diffuse color component to all contained meshes</description>
     </property>
@@ -8181,6 +8196,7 @@
     <property name="compound" type="bool" writable="false" label="Compound">
       <description>Whether the shape is a compound</description>
     </property>
+    <property name="compoundColors" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="compoundColors.diffuse" type="floatarray" silent="true" label="Diffuse color data">
       <description>Diffuse color from all compound elements</description>
     </property>
@@ -8219,6 +8235,8 @@
     <property name="dynamic" type="bool" label="Dynamic">
       <description>Shape is dynamic, i.e. not static</description>
     </property>
+    <property name="dynamics" type="group" readable="false" writable="false" silent="true" constant="true" />
+    <property name="dynamics.bullet" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.bullet.angularDamping" type="float" />
     <property name="dynamics.bullet.autoShrinkConvexMeshes" type="bool" />
     <property name="dynamics.bullet.customCollisionMarginConvexEnabled" type="bool" />
@@ -8233,6 +8251,7 @@
     <property name="dynamics.engineProperties" type="string" label="Engine properties">
       <description>Engine properties as JSON text</description>
     </property>
+    <property name="dynamics.mujoco" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.mujoco.adhesion" type="bool" />
     <property name="dynamics.mujoco.adhesionctrl" type="float" />
     <property name="dynamics.mujoco.adhesionctrlrange" type="floatarray" />
@@ -8248,18 +8267,21 @@
     <property name="dynamics.mujoco.solimp" type="floatarray" />
     <property name="dynamics.mujoco.solmix" type="float" />
     <property name="dynamics.mujoco.solref" type="floatarray" />
+    <property name="dynamics.newton" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.newton.angularDrag" type="float" />
     <property name="dynamics.newton.fastMoving" type="bool" />
     <property name="dynamics.newton.kineticFriction" type="float" />
     <property name="dynamics.newton.linearDrag" type="float" />
     <property name="dynamics.newton.restitution" type="float" />
     <property name="dynamics.newton.staticFriction" type="float" />
+    <property name="dynamics.ode" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.ode.angularDamping" type="float" />
     <property name="dynamics.ode.friction" type="float" />
     <property name="dynamics.ode.linearDamping" type="float" />
     <property name="dynamics.ode.maxContacts" type="int" />
     <property name="dynamics.ode.softCfm" type="float" />
     <property name="dynamics.ode.softErp" type="float" />
+    <property name="dynamics.vortex" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.vortex.adhesiveForce" type="float" />
     <property name="dynamics.vortex.angularNormalAxisFollowPrimaryAxis" type="bool" />
     <property name="dynamics.vortex.angularNormalAxisFrictionModel" type="int" />
@@ -8431,7 +8453,7 @@
     <property name="vortex.restitution" type="float" deprecated="true" />
     <property name="vortex.restitutionThreshold" type="float" deprecated="true" />
     <property name="vortex.skinThickness" type="float" deprecated="true" />
-  </object-class>
+  </object-class> 
 
     
 
@@ -8582,6 +8604,7 @@
     <property name="type" type="int" writable="false" constant="true" label="Type">
       <description>Sensor type</description>
     </property>
+    <property name="volume" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="volume.angle" type="floatarray" label="Angles">
       <description>Angle and inside gap for disk- and cone-type volumes</description>
     </property>
@@ -8622,7 +8645,7 @@
     <property name="volume_subdivisions" type="intarray" deprecated="true" />
     <property name="volume_xSize" type="floatarray" deprecated="true" />
     <property name="volume_ySize" type="floatarray" deprecated="true" />
-  </object-class>
+  </object-class> 
 
     
 
@@ -8856,6 +8879,7 @@
     <property name="perspective" type="bool" writable="false" constant="true" label="Perspective">
       <description>Perspective projection mode, otherwise orthogonal projection mode</description>
     </property>
+    <property name="povray" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="povray.aperture" type="float" silent="true" label="POV-Ray: aperture">
       <description>Aperture (with the POV-Ray renderer plugin)</description>
     </property>
@@ -8886,7 +8910,7 @@
     <property name="viewSize" type="float" label="View size">
       <description>View size (in orthogonal projection mode)</description>
     </property>
-  </object-class>
+  </object-class> 
 
     
 
@@ -9110,7 +9134,7 @@
     <property name="setSignalPoint" type="method" readable="false" writable="false" />
     <property name="snapshotTrace" type="method" readable="false" writable="false" />
     <property name="step" type="method" readable="false" writable="false" />
-  </object-class>
+  </object-class> 
 
  
 
@@ -9417,7 +9441,7 @@
     <property name="subtractVoxels" type="method" readable="false" writable="false" />
     <property name="voxelSize" type="float" label="Voxel size" />
     <property name="voxels" type="floatarray" deprecated="true" writable="false" />
-  </object-class>
+  </object-class> 
 
     
 
@@ -9721,7 +9745,7 @@
     <property name="subtractFromObject" type="method" readable="false" writable="false" />
     <property name="subtractPackedPoints" type="method" readable="false" writable="false" />
     <property name="subtractPoints" type="method" readable="false" writable="false" />
-  </object-class>
+  </object-class> 
 
 
 
@@ -9818,6 +9842,8 @@
     <property name="dynCtrlMode" type="int" deprecated="true" enum="jointDynCtrlMode" />
     <property name="dynPosMode" type="int" deprecated="true" />
     <property name="dynVelMode" type="int" deprecated="true" />
+    <property name="dynamics" type="group" readable="false" writable="false" silent="true" constant="true" />
+    <property name="dynamics.bullet" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.bullet.normalCfm" type="float" />
     <property name="dynamics.bullet.posPid" type="floatarray" />
     <property name="dynamics.bullet.stopCfm" type="float" />
@@ -9828,6 +9854,7 @@
     <property name="dynamics.engineProperties" type="string" label="Engine properties">
       <description>Engine properties as JSON text</description>
     </property>
+    <property name="dynamics.mujoco" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.mujoco.armature" type="float" />
     <property name="dynamics.mujoco.dependencyPolyCoeff" type="floatarray" />
     <property name="dynamics.mujoco.frictionLoss" type="float" />
@@ -9841,7 +9868,9 @@
     <property name="dynamics.mujoco.springRef" type="float" />
     <property name="dynamics.mujoco.springSpringDamper" type="floatarray" />
     <property name="dynamics.mujoco.springStiffness" type="float" />
+    <property name="dynamics.newton" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.newton.posPid" type="floatarray" />
+    <property name="dynamics.ode" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.ode.bounce" type="float" />
     <property name="dynamics.ode.fudge" type="float" />
     <property name="dynamics.ode.normalCfm" type="float" />
@@ -9855,6 +9884,7 @@
     <property name="dynamics.velMode" type="int" label="Dynamic velocity mode">
       <description>Dynamic velocity mode (0: default, 1: Ruckig)</description>
     </property>
+    <property name="dynamics.vortex" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.vortex.axisFrictionEnabled" type="bool" />
     <property name="dynamics.vortex.axisFrictionLoss" type="float" />
     <property name="dynamics.vortex.axisFrictionMaxForce" type="float" />
@@ -10031,8 +10061,24 @@
     <property name="vortex.zAxisPosRelaxationDamping" type="float" deprecated="true" />
     <property name="vortex.zAxisPosRelaxationLoss" type="float" deprecated="true" />
     <property name="vortex.zAxisPosRelaxationStiffness" type="float" deprecated="true" />
-  </object-class>
+  </object-class> 
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 
     <method name="createTexture" func="sim.createTexture" lang="python,lua">
@@ -10333,86 +10379,6 @@
             </categories>
         <see-also>
             <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getPointCloudOptions" func="sim.getPointCloudOptions" lang="python,lua">
-        <description>
-            Gets various properties of a 
-            <a href="../pointClouds.htm"> point cloud </a>
-        </description>
-        <params>
-            <param name="pcHandle" type="int">
-                <description>
-                    handle of the point cloud
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="maxVoxelS" type="float">
-                <description>
-                    maximum size of the OC tree voxels containing points
-                </description>
-            </param>
-            <param name="maxPtCntPerVoxel" type="int">
-                <description>
-                    maximum number of points allowed in a same OC tree voxel
-                </description>
-            </param>
-            <param name="opt" type="int">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li> bit0 set (1): points have random colors </li>
-                        <li> bit1 set (2): show OC tree structure </li>
-                        <li> bit2 set (4): reserved. keep unset </li>
-                        <li> bit3 set (8): do not use an OC tree structure. When enabled, point cloud operations are limited, and point clouds will not be <a href="../collidableObjects.htm"> collidable </a> , <a href="../measurableObjects.htm"> measurable </a> or <a href="../detectableObjects.htm"> detectable </a> anymore, but adding points will be much faster </li>
-                        <li> bit4 set (16): color is emissive </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="ps" type="float">
-                <description>
-                    bit0 set (1): points have random colors
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="pointCloud" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#pointCloud" label=" point cloud related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getPointCloudPoints" func="sim.getPointCloudPoints" lang="python,lua">
-        <description>
-            Retrieves point positions from a 
-            <a href="../pointClouds.htm"> point cloud </a>
-        </description>
-        <params>
-            <param name="pointCloudHandle" type="int">
-                <description>
-                    handle of the point cloud
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="points" type="float[]">
-                <description>
-                    the point [x y z] positions, relative to the point cloud reference frame
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="pointCloud" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#pointCloud" label=" point cloud related functions " />
         </see-also>
     </method>
 
@@ -11109,56 +11075,6 @@ end</code>
 
     
 
-    <method name="setPointCloudOptions" func="sim.setPointCloudOptions" lang="python,lua">
-        <description>
-            Sets various properties of a 
-            <a href="../pointClouds.htm"> point cloud </a>
-        </description>
-        <params>
-            <param name="pcHandle" type="int">
-                <description>
-                    handle of the point cloud
-                </description>
-            </param>
-            <param name="maxVoxelSize" type="float">
-                <description>
-                    maximum size of the OC tree voxels containing points
-                </description>
-            </param>
-            <param name="maxPtCntPerVoxel" type="int">
-                <description>
-                    maximum number of points allowed in a same OC tree voxel
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li> bit0 set (1): points have random colors </li>
-                        <li> bit1 set (2): show OC tree structure </li>
-                        <li> bit2 set (4): reserved. keep unset </li>
-                        <li> bit3 set (8): do not use an OC tree structure. When enabled, point cloud operations are limited, and point clouds will not be <a href="../collidableObjects.htm"> collidable </a> , <a href="../measurableObjects.htm"> measurable </a> or <a href="../detectableObjects.htm"> detectable </a> anymore, but adding points will be much faster </li>
-                        <li> bit4 set (16): color is emissive </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="pointSize" type="float">
-                <description>
-                    bit0 set (1): points have random colors
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="pointCloud" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getPointCloudOptions" />
-            <link href="../apiFunctions.htm#pointCloud" label=" point cloud related functions " />
-        </see-also>
-    </method>
-
-    
-
     <method name="setShapeBB" func="sim.setShapeBB" lang="python,lua">
         <description>
             Sets the size of a shape's bounding box, effectively scaling the shape.
@@ -11782,9 +11698,11 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
       <description>Dummy size</description>
     </property>
     <property name="dummyType" type="int" deprecated="true" />
+    <property name="dynamics" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.engineProperties" type="string" label="Engine properties">
       <description>Engine properties as JSON text</description>
     </property>
+    <property name="dynamics.mujoco" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.mujoco.jointProxyHandle" type="int" label="Joint proxy">
       <description>Handle of the joint proxy, MuJoCo only</description>
     </property>
@@ -11900,6 +11818,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
       <description>Unique identifier of parent shape</description>
     </property>
     <property name="showEdges" type="bool" label="Visible edges" />
+    <property name="texture" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="texture.applyMode" type="int" label="Texture apply mode" />
     <property name="texture.coordinates" type="floatarray" writable="false" label="Texture coordinates" />
     <property name="texture.id" type="int" writable="false" label="Texture ID" />
