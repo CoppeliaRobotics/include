@@ -3,13 +3,15 @@
 
 #ifdef __cplusplus
 #include <cstring>
+#include <cstdint>
 #else
 #include <string.h>
+#include <stdint.h>
 #endif
 
 #ifndef UID
 #if defined(SIM_UNIFIED_HANDLES)
-#define UID long long int
+#define UID int64_t
 #else
 #define UID int
 #endif

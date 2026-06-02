@@ -5982,6 +5982,29 @@
                 <link href="../simulation.htm" label=" simulation state diagram " />
             </see-also>
         </method>
+        
+        
+        
+        <method name="dynamics.step" func="sim.callMethod" lang="python,lua">
+            <description>
+                Steps the dynamics engine
+            </description>
+            <params>
+                <param name="deltaTime" type="float" default="0.0">
+                    <description>
+                        the simulation time step
+                    </description>
+                </param>
+            </params>
+            <returns>
+            </returns>
+            <categories>
+                <category name="dynamics" />
+            </categories>
+            <see-also>
+                <property-ref name="sim.scene.simulation.timeStep" />
+            </see-also>
+        </method>
     </object-class> <!-- scene -->
     
 
@@ -8772,33 +8795,6 @@
             <function-ref name="sim.writeTexture" />
             <function-ref name="sim.createTexture" />
         </see-also>
-    </method>
-
-    
-
-    <method name="handleDynamics" func="sim.handleDynamics" lang="python,lua">
-        <description>
-            Handles the dynamics functionality in a scene
-        </description>
-        <params>
-            <param name="deltaTime" type="float">
-                <description>
-                    simulation time step, i.e. 
-                    <a href="simGetSimulationTimeStep.htm"> sim.getSimulationTimeStep </a>
-                    ()
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="result" type="int">
-                <description>
-                    0 if the sepcified physics engine could not be found, otherwise the number of calculation steps performed by the physics engine.
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="dynamics" />
-            </categories>
     </method>
 
     

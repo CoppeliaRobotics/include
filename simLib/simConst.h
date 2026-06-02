@@ -267,7 +267,7 @@ enum { // special argument of some functions:
 };
 
 enum { // special handle flags (use only below 4 bits, i.e. 0x3c00000):
-#if defined(USE_LONG_LONG_HANDLES) || defined(SIM_UNIFIED_HANDLES)
+#if defined(USE_INT64_HANDLES) || defined(SIM_UNIFIED_HANDLES)
     sim_handleflag_assembly             =0x0040000000000000,
     sim_handleflag_togglevisibility     =0x0040000000000000,
     sim_handleflag_extended             =0x0040000000000000,
