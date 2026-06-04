@@ -4333,6 +4333,28 @@
 
 
     <object-class name="detachedScript" superclass="object">
+        <method name="broadcast" func="sim.callMethod" lang="python,lua">
+            <description>
+                Broadcasts a message to all scripts, except for the emitting script. Messages are received synchronously via the sysCall_msg callback function
+            </description>
+            <params>
+                <param name="message" type="map">
+                    <description>
+                        message to broadcast, with following structure: {id --> 'msgIdentifyingString', data --> {...}}
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="scriptRelated" />
+                <category name="messaging" />
+            </categories>
+            <see-also>
+                <link href="../callbackFunctions.htm" label="callback functions" />
+            </see-also>
+        </method>
+        
+        
+        
         <method name="setEventFilters" func="sim.callMethod" lang="python,lua">
             <description>
                 Specifies filters for the sysCall_event callback, in this script
@@ -4429,7 +4451,7 @@
 
         <method name="step" func="sim.callMethod" lang="python,lua">
             <description>
-                Triggers the next simulation step, when in stepping operation mode. When simulation is running, step()
+                Triggers the next simulation step, when in stepping operation mode and running in a thread. When simulation is running, step()
                 only returns once the simulation time has changed
             </description>
             <categories>
@@ -4488,6 +4510,7 @@
             <see-also>
                 <function-ref name="detachedScript:getStepping" />
                 <function-ref name="detachedScript:step" />
+                <property-ref name="detachedScript.autoYieldDelay" />
             </see-also>
         </method>
 
@@ -4771,6 +4794,41 @@
 
 
 
+    <object-class name="mesh" superclass="object">
+        <method name="texture.setData" func="sim.callMethod" lang="python,lua">
+            <description>
+                Overwrites a portion of the texture
+            </description>
+            <params>
+                <param name="data" type="buffer">
+                    <description>
+                        RGB data corresponding to the portion of the texture to overwrite. A buffer size of 3 overwrites the portion of the texture with a single color
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>position (int[2], defaults to [0, 0]): position where to copy the RGB data. Set to [0, 0] to overwrite the full texture</li>
+                            <li>size (int[2], defaults to [0, 0]): size of the RGB data. Set to [0, 0] to overwrite the full texture</li>
+                            <li>interpolation (float, defaults to 0.0): fade or interpolation factor</li>
+                            <li>rectangular (bool, defaults true): to write a rectangular or elliptical/circular portion of the texture</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="shape" />
+                <category name="texture" />
+            </categories>
+            <see-also>
+                <property-ref name="mesh.texture.data" />
+            </see-also>
+        </method>
+    </object-class> <!-- mesh -->
+    
+    
+    
     <object-class name="collection" superclass="object">
         <method name="changeColor" func="sim.callMethod" lang="python,lua">
             <info>same method present in collection and sceneObject</info>
@@ -8856,6 +8914,109 @@
 
     
 
+    <method name="readTexture" func="sim.readTexture" lang="python,lua">
+        <description>
+            Retrieves the RGB data (or a portion of it) related to a specific texture
+        </description>
+        <params>
+            <param name="textureId" type="int">
+                <description>
+                    ID of the texture. See also 
+                    <a href="simGetTextureId.htm"> simGetTextureId </a>
+                    .
+                </description>
+            </param>
+            <param name="options" type="int">
+                <description>
+                    reserved for future functionality. Set to zero.
+                </description>
+            </param>
+            <param name="posX" type="int" default="0">
+                <description>
+                    x/y position of the texture portion to retrieve. Set to [0 0] to retrieve the full texture
+                </description>
+            </param>
+            <param name="posY" type="int" default="0">
+                <description>
+                    x/y size of the texture portion to retrieve. Set to [0 0] to retrieve the full texture
+                </description>
+            </param>
+            <param name="sizeX" type="int" default="0">
+                <description />
+            </param>
+            <param name="sizeY" type="int" default="0">
+                <description />
+            </param>
+        </params>
+        <returns>
+            <param name="textureData" type="buffer">
+                <description>
+                    texture data
+                </description>
+            </param>
+        </returns>
+        <categories>
+        <category name="texture" />
+            </categories>
+        <see-also>
+            <function-ref name="sim.getTextureId" />
+            <function-ref name="sim.writeTexture" />
+            <function-ref name="sim.createTexture" />
+        </see-also>
+    </method>
+
+    
+
+    <method name="resamplePath" func="sim.resamplePath" lang="python,lua">
+        <description>
+            Returns a resampled path
+        </description>
+        <params>
+            <param name="path" type="float[]">
+                <description>
+                    path, specified in row-major order, e.g. a path containing two 3D poses (position+quaternion) would be [x1 y1 z1 qx1 qy1 qz1 qw1 x2 y2 z2 qx2 qy2 qz2 qw2]
+                </description>
+            </param>
+            <param name="pathLengths" type="float[]">
+                <description>
+                    lengths of a path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path). See also 
+                    <a href="simGetPathLengths.htm"> sim.getPathLengths </a>
+                    .
+                </description>
+            </param>
+            <param name="finalConfigCnt" type="int">
+                <description>
+                    number of points or configurations the resampled path should contain
+                </description>
+            </param>
+            <param name="method" type="map" default="{type = 'linear', strength = 1.0, forceOpen = false}">
+                <description>
+                    optional map specifying the type of interpolation (linear or quadraticBezier), and whether the path should be considered as open, even if the first and last path points overlap, and the bezier strength (0.05-1.0)
+                </description>
+            </param>
+            <param name="types" type="int[]" default="nil">
+                <description>
+                    optional array specifying the type of each configuration value/dimension: 0=cartesian value, 1=2pi-cyclic value, 2=quaternion value. e.g. a configuration representing 3D poses should use a types argument [0 0 0 2 2 2 2], a configuration representing revolute and cyclic joints should use a types argument [1 1 1 ...]
+                </description>
+            </param>
+        </params>
+        <returns>
+            <param name="outputPath" type="float[]">
+                <description>
+                    the resampled path
+                </description>
+            </param>
+        </returns>
+        <categories>
+        <category name="path" />
+            </categories>
+        <see-also>
+            <link href="../apiFunctions.htm#paths" label=" path related functions " />
+        </see-also>
+    </method>
+
+    
+
     <method name="importMesh" func="sim.importMesh" lang="python,lua">
         <description>
             Imports a mesh from a file
@@ -8982,64 +9143,6 @@ end</code>
 
     
 
-    <method name="isDynamicallyEnabled" func="sim.isDynamicallyEnabled" lang="python,lua">
-        <description>
-            Checks whether a scene object is dynamically enabled, i.e. is being handled and simulated by the physics engine.
-            Note that until the physics engine has parsed the scene in the first simulation step (i.e. the first time
-            <a href="simHandleDynamics.htm"> sim.handleDynamics </a>
-            is called), no object will be dynamically enabled
-        </description>
-        <params>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of the scene object
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="dynamicallyEnabled" type="bool">
-                <description>
-                    whether the object is dynamically enabled
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="dynamics" /><category name="sceneObject" />
-            </categories>
-    </method>
-
-    
-
-    <method name="isHandle" func="sim.isHandle" lang="python,lua">
-        <description>
-            Checks whether a general object handle is still valid. When a general object is destroyed
-            (e.g. programmatically or via the user interface), then its related handle is not valid anymore
-            and will trigger an error when used. Use this function to avoid triggering an error
-        </description>
-        <params>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of the object
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="result" type="bool">
-                <description>
-                    whether the handle is valid
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="main" /><category name="scriptRelated" /><category name="sceneObject" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getObject" />
-        </see-also>
-    </method>
-
-    
-
     <method name="moduleEntry" func="sim.moduleEntry" lang="python,lua">
         <description>
             Creates, modifies or destroys module menu entries. Those are user selectable items located in [Menu bar &gt; Modules].
@@ -9081,419 +9184,6 @@ end</code>
         <categories>
         <category name="other" />
             </categories>
-    </method>
-
-    
-
-    <method name="readTexture" func="sim.readTexture" lang="python,lua">
-        <description>
-            Retrieves the RGB data (or a portion of it) related to a specific texture
-        </description>
-        <params>
-            <param name="textureId" type="int">
-                <description>
-                    ID of the texture. See also 
-                    <a href="simGetTextureId.htm"> simGetTextureId </a>
-                    .
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    reserved for future functionality. Set to zero.
-                </description>
-            </param>
-            <param name="posX" type="int" default="0">
-                <description>
-                    x/y position of the texture portion to retrieve. Set to [0 0] to retrieve the full texture
-                </description>
-            </param>
-            <param name="posY" type="int" default="0">
-                <description>
-                    x/y size of the texture portion to retrieve. Set to [0 0] to retrieve the full texture
-                </description>
-            </param>
-            <param name="sizeX" type="int" default="0">
-                <description />
-            </param>
-            <param name="sizeY" type="int" default="0">
-                <description />
-            </param>
-        </params>
-        <returns>
-            <param name="textureData" type="buffer">
-                <description>
-                    texture data
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="texture" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getTextureId" />
-            <function-ref name="sim.writeTexture" />
-            <function-ref name="sim.createTexture" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="refreshDialogs" func="sim.refreshDialogs" lang="python,lua">
-        <description>
-            Refreshes CoppeliaSim's internal dialogs. Calling 
-            <a href="simRefreshDialogs.htm"> sim.refreshDialogs </a>
-            will
-            not trigger a 
-            <a href="../apiConstants.htm#simulatorMessages"> sim.message_eventcallback_refreshdialogs </a>
-            message
-        </description>
-        <params>
-            <param name="refreshDegree" type="int">
-                <description>
-                    refresh degree (0=light, 1=medium, 2=full)
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="other" />
-            </categories>
-    </method>
-
-    
-
-    <method name="removeParticleObject" func="sim.removeParticleObject" lang="python,lua">
-        <description>
-            Removes a previously added particle object
-        </description>
-        <params>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of a previously added particle object. sim.handle_all removes all particle objects from the scene
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="dynamics" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.addParticleObject" />
-            <function-ref name="sim.addParticleObjectItem" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="resamplePath" func="sim.resamplePath" lang="python,lua">
-        <description>
-            Returns a resampled path
-        </description>
-        <params>
-            <param name="path" type="float[]">
-                <description>
-                    path, specified in row-major order, e.g. a path containing two 3D poses (position+quaternion) would be [x1 y1 z1 qx1 qy1 qz1 qw1 x2 y2 z2 qx2 qy2 qz2 qw2]
-                </description>
-            </param>
-            <param name="pathLengths" type="float[]">
-                <description>
-                    lengths of a path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path). See also 
-                    <a href="simGetPathLengths.htm"> sim.getPathLengths </a>
-                    .
-                </description>
-            </param>
-            <param name="finalConfigCnt" type="int">
-                <description>
-                    number of points or configurations the resampled path should contain
-                </description>
-            </param>
-            <param name="method" type="map" default="{type = 'linear', strength = 1.0, forceOpen = false}">
-                <description>
-                    optional map specifying the type of interpolation (linear or quadraticBezier), and whether the path should be considered as open, even if the first and last path points overlap, and the bezier strength (0.05-1.0)
-                </description>
-            </param>
-            <param name="types" type="int[]" default="nil">
-                <description>
-                    optional array specifying the type of each configuration value/dimension: 0=cartesian value, 1=2pi-cyclic value, 2=quaternion value. e.g. a configuration representing 3D poses should use a types argument [0 0 0 2 2 2 2], a configuration representing revolute and cyclic joints should use a types argument [1 1 1 ...]
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="outputPath" type="float[]">
-                <description>
-                    the resampled path
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="path" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setAutoYieldDelay" func="sim.setAutoYieldDelay" lang="python,lua">
-        <description>
-            Allows specifying a thread interruption or yield delay, that will be
-            automatically enforced by the system (preemptive threading). By default this value is 2 ms
-        </description>
-        <params>
-            <param name="dt" type="float">
-                <description>
-                    desired execution time, before an interruption or yield occurs
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="thread" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#threads" label=" thread related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setJointDependency" func="sim.setJointDependency" lang="python,lua">
-        <description>
-            Sets a joint dependent of another joint. The dependent joint should first be set
-            into dependent mode via 
-            <a href="simSetJointMode.htm"> sim.setJointMode </a>
-        </description>
-        <params>
-            <param name="jointHandle" type="int">
-                <description>
-                    handle of the joint to become slave
-                </description>
-            </param>
-            <param name="masterJointHandle" type="int">
-                <description>
-                    handle of the joint to become master, or -1 to free the slave joint from dependency
-                </description>
-            </param>
-            <param name="offset" type="float">
-                <description>
-                    offset in equation slave = offset + master * multCoeff
-                </description>
-            </param>
-            <param name="multCoeff" type="float">
-                <description>
-                    coeff in equation slave = offset + master * multCoeff
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="joint" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getJointDependency" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setNavigationMode" func="sim.setNavigationMode" lang="python,lua">
-        <description>
-            Sets the navigation and selection mode for the mouse
-        </description>
-        <params>
-            <param name="navigationMode" type="int">
-                <description>
-                    <a href="../apiConstants.htm#navigationModes"> mouse navigation mode </a>
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="other" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getNavigationMode" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setObjectChildPose" func="sim.setObjectChildPose" lang="python,lua">
-        <description>
-            Can be used to set a spherical joint's rotational transformation
-            (the translational part is ignored)
-        </description>
-        <params>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of the object
-                </description>
-            </param>
-            <param name="pose" type="float[7]">
-                <description>
-                    the pose (array of 7 values [x y z qx qy qz qw])
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="joint" /><category name="transformation" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getObjectChildPose" />
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setObjectColor" func="sim.setObjectColor" lang="python,lua">
-        <description>
-            Sets the color of a scene object
-        </description>
-        <params>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of the object
-                </description>
-            </param>
-            <param name="index" type="int">
-                <description>
-                    zero-based index of the color, if the object has several colors
-                </description>
-            </param>
-            <param name="colorComponent" type="int">
-                <description>
-                    <a href="../apiConstants.htm#colorComponents"> color component </a>
-                </description>
-            </param>
-            <param name="rgbData" type="float[3]">
-                <description>
-                    red, green and blue components of the color (3 values)
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="sceneObject" /><category name="rendering" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#rendering" label=" rendering related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setPage" func="sim.setPage" lang="python,lua">
-        <description>
-            Switches between pages (main scene views)
-        </description>
-        <params>
-            <param name="index" type="int">
-                <description>
-                    index of the page. Valid values are 0-7
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="other" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getPage" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setShapeBB" func="sim.setShapeBB" lang="python,lua">
-        <description>
-            Sets the size of a shape's bounding box, effectively scaling the shape.
-            Non-isometric scaling is not always possible
-        </description>
-        <params>
-            <param name="shapeHandle" type="int">
-                <description>
-                    handle of the shape
-                </description>
-            </param>
-            <param name="size" type="float[3]">
-                <description>
-                    size of the bounding box
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="shape" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#size" label=" size and scaling functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setShapeColor" func="sim.setShapeColor" lang="python,lua">
-        <description>
-            Sets the color of a shape
-        </description>
-        <params>
-            <param name="shapeHandle" type="int">
-                <description>
-                    handle of the shape
-                </description>
-            </param>
-            <param name="colorName" type="string">
-                <description>
-                    name of a color. Can be an empty string, but if a name is provided, only shapes (or sub-entities of them) with a same color name will be modified. If colorName is 
-                    <em>
-                        @compound
-                    </em>
-                    , then all individual colors of a compound shape can be set at once
-                </description>
-            </param>
-            <param name="colorComponent" type="int">
-                <description>
-                    <a href="../apiConstants.htm#colorComponents"> color component </a>
-                </description>
-            </param>
-            <param name="rgbData" type="float[3]">
-                <description>
-                    red, green and blue components of the color (3 values), or the transparency value (1 value)
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="shape" /><category name="rendering" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#rendering" label=" rendering related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setShapeMass" func="sim.setShapeMass" lang="python,lua">
-        <description>
-            Applies a new mass value to a shape. If simulation is running, the shape is dynamically reset
-            (similar to calling 
-            <a href="simResetDynamicObject.htm"> sim.resetDynamicObject </a>
-            right after)
-        </description>
-        <params>
-            <param name="shapeHandle" type="handle">
-                <description>
-                    handle of the 
-                    <a href="../shapes.htm"> shape object </a>
-                </description>
-            </param>
-            <param name="mass" type="float">
-                <description>
-                    new mass of the shape
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="dynamics" /><category name="shape" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getShapeMass" />
-            <function-ref name="sim.setShapeInertia" />
-            <function-ref name="sim.computeMassAndInertia" />
-        </see-also>
     </method>
 
     
@@ -9713,258 +9403,6 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
             </categories>
         <see-also>
             <link href="../apiFunctions.htm#packing" label=" data packing/unpacking functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="removeFromCollection" func="sim.removeFromCollection" lang="python,lua">
-        <description>
-            Removes an item from a
-            <a href="../collections.htm">collection</a>
-        </description>
-        <params>
-            <param name="collectionHandle" type="handle">
-                <description>handle of a collection.</description>
-            </param>
-            <param name="objectHandle" type="handle">
-                <description>handle of an object</description>
-            </param>
-            <param name="what" type="int" default="sim.handle_single">
-                <description>
-                    type of object (or group of objects) to remove. Following are allowed values:
-                    <ul>
-                        <li>
-                            <em>sim.handle_single</em>
-                            (for a single object)
-                        </li>
-                        <li>
-                            <em>sim.handle_all</em>
-                            (for all objects in the scene)
-                        </li>
-                        <li>
-                            <em>sim.handle_tree</em>
-                            (for a tree of objects)
-                        </li>
-                        <li>
-                            <em>sim.handle_chain</em>
-                            (for a chain of objects (i.e. an inverted tree)).
-                        </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="options" type="int" default="0">
-                <description>
-                    <em>sim.handle_single</em>
-                    (for a single object)
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="collection" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#collections" label="functions related to collections" />
-        </see-also>
-    </method>
-
-
-
-    <method name="broadcastMsg" func="sim.broadcastMsg" lang="python,lua">
-        <description>
-            Broadcasts a message to all scripts, except for the emitting script. Messages are received synchronously via the sysCall_msg
-            <a href="../callbackFunctions.htm">callback function</a>
-        </description>
-        <params>
-            <param name="message" type="map">
-                <description>
-                    message to broadcast. Best is to use following skeleton message: message = {'id': 'msgIdentifyingString', 'data': [...]}
-                </description>
-            </param>
-            <param name="options" type="int" default="0">
-                <description>not used, keep at 0</description>
-            </param>
-        </params>
-        <categories>
-        <category name="messaging" />
-            </categories>
-    </method>
-
-
-
-        <method name="getApiFunc" func="sim.callMethod" lang="python,lua">
-            <description>
-                Retrieves all API functions and variables that match a specific word.
-                Useful for script code auto-completion functionality
-            </description>
-            <params>
-                <param name="apiWord" type="string">
-                    <description>
-                        word that API functions and variables should match, e.g. "sim.getObj". Only matches up to the first dot are returned, if the apiWord does not contain any dot. To retrieve all functions and variables, leave apiWord empty. To retrieve only functions, add '+' as prefix. To retrieve only variables, add '-' as prefix.
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="funcsAndVars" type="string[]">
-                    <description>
-                        array containing all matching API functions and variables.
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="script" />
-                <category name="scriptRelated" />
-            </categories>
-            <see-also>
-                <function-ref name="detachedScript:getApiInfo" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="getApiInfo" func="sim.callMethod" lang="python,lua">
-            <description>
-                Returns the call tip (or info text) for an API function
-            </description>
-            <params>
-                <param name="apiWord" type="string">
-                    <description>
-                        API functions or variable to retrieve the info for, e.g. "sim.getObject". Return is for the latest version of a module by default. For a specific module version, specify its full name, e.g. "sim-1.getObject". Using the wildcard, e.g. "sim-*.getObject", the returned information is prepended by its related module name (e.g. "[sim-1]"), for all available modules
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="info" type="string">
-                    <description>
-                        information related to the API function or variable
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="script" />
-                <category name="scriptRelated" />
-            </categories>
-            <see-also>
-                <function-ref name="detachedScript:getApiFunc" />
-            </see-also>
-        </method>
-
-
-
-    <method name="setShapeTexture" func="sim.setShapeTexture" lang="python,lua">
-        <description>
-            Applies/removes a texture to/from a shape
-        </description>
-        <params>
-            <param name="shapeHandle" type="int">
-                <description>handle of the shape.</description>
-            </param>
-            <param name="textureId" type="int">
-                <description>
-                    ID of the texture or -1 to remove any existing texture. See also
-                    <a href="simGetTextureId.htm">sim.getTextureId</a>
-                    ,
-                    <a href="simGetShapeTextureId.htm">sim.getShapeTextureId</a>
-                    and
-                    <a href="simCreateTexture.htm">sim.createTexture</a>
-                </description>
-            </param>
-            <param name="mappingMode" type="int">
-                <description>
-                    <a href="../apiConstants.htm#textureMappingModes">texture mapping mode</a>
-                    .
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li>bit0: if set (1), then adjacent texture pixels are not interpolated.</li>
-                        <li>bit1: if set (2), then the texture is applied as a decal (its appearance won't be influenced by light conditions).</li>
-                        <li>bit2: if set (4), then the texture will be repeated along the U direction.</li>
-                        <li>bit3: if set (8), then the texture will be repeated along the V direction.</li>
-                    </ul>
-                </description>
-            </param>
-            <param name="uvScaling" type="float[2]">
-                <description>bit0: if set (1), then adjacent texture pixels are not interpolated.</description>
-            </param>
-            <param name="position" type="float[3]" default="nil">
-                <description>bit1: if set (2), then the texture is applied as a decal (its appearance won't be influenced by light conditions).</description>
-            </param>
-            <param name="orientation" type="float[3]" default="nil">
-                <description>bit2: if set (4), then the texture will be repeated along the U direction.</description>
-            </param>
-        </params>
-        <categories>
-        <category name="shape" /><category name="texture" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getTextureId" />
-            <function-ref name="sim.getShapeTextureId" />
-            <function-ref name="sim.createTexture" />
-            <function-ref name="simApplyTexture" />
-        </see-also>
-    </method>
-
-
-
-    <method name="writeTexture" func="sim.writeTexture" lang="python,lua">
-        <description>
-            Overwrites a specific texture (or a portion of it) with RGB data
-        </description>
-        <params>
-            <param name="textureId" type="int">
-                <description>
-                    ID of the texture. See also
-                    <a href="simGetTextureId.htm">sim.getTextureId</a>
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li>
-                            <strong>bit0</strong>
-                            reserved. Do not set
-                        </li>
-                        <li>
-                            <strong>bit1</strong>
-                            reserved. Do not set
-                        </li>
-                        <li>
-                            <strong>bit2</strong>
-                            set (4)=only an elliptical/circular portion of the texture data will be written
-                        </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="textureData" type="buffer">
-                <description>reserved. Do not set</description>
-            </param>
-            <param name="posX" type="int" default="0">
-                <description>reserved. Do not set</description>
-            </param>
-            <param name="posY" type="int" default="0">
-                <description>set (4)=only an elliptical/circular portion of the texture data will be written</description>
-            </param>
-            <param name="sizeX" type="int" default="0">
-                <description>RGB data to write onto the texture. Each pixel is represented with 3 bytes (0-255)</description>
-            </param>
-            <param name="sizeY" type="int" default="0">
-                <description>x/y position where to copy the RGB data. Set to 0/0 to overwrite the full texture</description>
-            </param>
-            <param name="interpolation" type="float" default="0">
-                <description>x/y size of the RGB data. Set to 0/0 to overwrite the full texture</description>
-            </param>
-        </params>
-        <categories>
-        <category name="texture" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getTextureId" />
-            <function-ref name="sim.readTexture" />
-            <function-ref name="sim.createTexture" />
         </see-also>
     </method>
 </object-classes>
