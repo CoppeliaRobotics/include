@@ -2233,61 +2233,13 @@
                 <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
-    <property name="getBoolProperty" type="method" readable="false" writable="false" />
-    <property name="getBufferProperty" type="method" readable="false" writable="false" />
-    <property name="getColorProperty" type="method" readable="false" writable="false" />
-    <property name="getFloatArrayProperty" type="method" readable="false" writable="false" />
-    <property name="getFloatProperty" type="method" readable="false" writable="false" />
-    <property name="getHandleArrayProperty" type="method" readable="false" writable="false" />
-    <property name="getHandleProperty" type="method" readable="false" writable="false" />
-    <property name="getIntArray2Property" type="method" readable="false" writable="false" />
-    <property name="getIntArrayProperty" type="method" readable="false" writable="false" />
-    <property name="getIntProperty" type="method" readable="false" writable="false" />
-    <property name="getLongProperty" type="method" readable="false" writable="false" />
-    <property name="getMatrixProperty" type="method" readable="false" writable="false" />
-    <property name="getMethodProperty" type="method" readable="false" writable="false" />
-    <property name="getPoseProperty" type="method" readable="false" writable="false" />
-    <property name="getProperties" type="method" readable="false" writable="false" />
-    <property name="getPropertiesInfos" type="method" readable="false" writable="false" />
-    <property name="getProperty" type="method" readable="false" writable="false" />
-    <property name="getPropertyInfo" type="method" readable="false" writable="false" />
-    <property name="getPropertyName" type="method" readable="false" writable="false" />
-    <property name="getPropertyTypeString" type="method" readable="false" writable="false" />
-    <property name="getQuaternionProperty" type="method" readable="false" writable="false" />
-    <property name="getStringArrayProperty" type="method" readable="false" writable="false" />
-    <property name="getStringProperty" type="method" readable="false" writable="false" />
-    <property name="getTableProperty" type="method" readable="false" writable="false" />
-    <property name="getVector3Property" type="method" readable="false" writable="false" />
     <property name="handle" type="long" writable="false" constant="true" label="Handle" />
-    <property name="isValid" type="method" readable="false" writable="false" />
     <property name="metaInfo" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="metaInfo.isClass" type="bool" writable="false" constant="true" label="class flag" />
     <property name="metaInfo.isSceneObject" type="bool" writable="false" constant="true" label="sceneObject flag" />
     <property name="metaInfo.namespaces" type="stringarray" writable="false" constant="true" label="object name spaces" />
     <property name="metaInfo.superClass" type="stringarray" writable="false" constant="true" label="object super class" />
     <property name="objectType" type="string" writable="false" constant="true" label="Object type" />
-    <property name="removeProperty" type="method" readable="false" writable="false" />
-    <property name="setBoolProperty" type="method" readable="false" writable="false" />
-    <property name="setBufferProperty" type="method" readable="false" writable="false" />
-    <property name="setColorProperty" type="method" readable="false" writable="false" />
-    <property name="setFloatArrayProperty" type="method" readable="false" writable="false" />
-    <property name="setFloatProperty" type="method" readable="false" writable="false" />
-    <property name="setHandleArrayProperty" type="method" readable="false" writable="false" />
-    <property name="setHandleProperty" type="method" readable="false" writable="false" />
-    <property name="setIntArray2Property" type="method" readable="false" writable="false" />
-    <property name="setIntArrayProperty" type="method" readable="false" writable="false" />
-    <property name="setIntProperty" type="method" readable="false" writable="false" />
-    <property name="setLongProperty" type="method" readable="false" writable="false" />
-    <property name="setMatrixProperty" type="method" readable="false" writable="false" />
-    <property name="setMethodProperty" type="method" readable="false" writable="false" />
-    <property name="setPoseProperty" type="method" readable="false" writable="false" />
-    <property name="setProperties" type="method" readable="false" writable="false" />
-    <property name="setProperty" type="method" readable="false" writable="false" />
-    <property name="setQuaternionProperty" type="method" readable="false" writable="false" />
-    <property name="setStringArrayProperty" type="method" readable="false" writable="false" />
-    <property name="setStringProperty" type="method" readable="false" writable="false" />
-    <property name="setTableProperty" type="method" readable="false" writable="false" />
-    <property name="setVector3Property" type="method" readable="false" writable="false" />
   </object-class> 
 
     
@@ -4408,16 +4360,14 @@
     <property name="canSave" type="bool" writable="false" constant="true" label="Can save">
       <description>Whether save operation is allowed in given state</description>
     </property>
-    <property name="cancelScheduledExecution" type="method" readable="false" writable="false" />
     <property name="consoleVerbosity" type="int" label="Console verbosity" />
     <property name="consoleVerbosityStr" type="string" readable="false" silent="true" label="Console verbosity string">
       <description>Console verbosity string, only for client app</description>
     </property>
-    <property name="createCustomObjectClass" type="method" readable="false" writable="false" />
-    <property name="createObject" type="method" readable="false" writable="false" />
     <property name="customClasses" type="handlearray" handle-type="customObject" writable="false" label="Custom classes">
       <description>List of app custom classes</description>
     </property>
+    <property name="customData" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="customObjects" type="handlearray" handle-type="customObject" writable="false" label="Custom objects">
       <description>List of app custom objects</description>
     </property>
@@ -4433,7 +4383,6 @@
     <property name="defaultTranslationStepSize" type="float" label="Translation step size">
       <description>Default translation step size</description>
     </property>
-    <property name="deserialize" type="method" readable="false" writable="false" />
     <property name="dialogVerbosity" type="int" label="Dialog verbosity" />
     <property name="dialogVerbosityStr" type="string" readable="false" silent="true" label="Dialog verbosity string">
       <description>Dialog verbosity string, only for client app</description>
@@ -4441,20 +4390,13 @@
     <property name="displayEnabled" type="bool" label="Display enabled" />
     <property name="dongleID" type="string" writable="false" constant="true" />
     <property name="dongleSerial" type="string" writable="false" constant="true" />
-    <property name="duplicateObjects" type="method" readable="false" writable="false" />
     <property name="execUnsafe" type="bool" writable="false" constant="true" label="Execute unsafe" />
     <property name="execUnsafeExt" type="bool" writable="false" constant="true" label="Execute unsafe extended">
       <description>Execute unsafe for code triggered externally</description>
     </property>
-    <property name="fastIdleLoop" type="method" readable="false" writable="false" />
     <property name="flavor" type="int" writable="false" constant="true" label="Flavor">
       <description>Flavor (0: lite, 1: edu, 2: pro)</description>
     </property>
-    <property name="getGenesisEvents" type="method" readable="false" writable="false" />
-    <property name="getObjects" type="method" readable="false" writable="false" />
-    <property name="getPluginInfo" type="method" readable="false" writable="false" />
-    <property name="handleAddOnScripts" type="method" readable="false" writable="false" />
-    <property name="handleSandboxScript" type="method" readable="false" writable="false" />
     <property name="headlessMode" type="int" writable="false" constant="true" label="Headless mode">
       <description>Headless mode (0: not headless, 1: GUI suppressed, 2: headless library)</description>
     </property>
@@ -4462,15 +4404,6 @@
     <property name="idleFps" type="int" writable="false" label="Loaded plugin names" />
     <property name="importExportPath" type="string" deprecated="true" silent="true" />
     <property name="legacyMachineId" type="string" writable="false" constant="true" label="Legacy machine ID" />
-    <property name="loadImage" type="method" readable="false" writable="false" />
-    <property name="loadImageFromBuffer" type="method" readable="false" writable="false" />
-    <property name="loadModelThumbnail" type="method" readable="false" writable="false" />
-    <property name="loadModelThumbnailFromBuffer" type="method" readable="false" writable="false" />
-    <property name="loadScene" type="method" readable="false" writable="false" />
-    <property name="loadSceneFromBuffer" type="method" readable="false" writable="false" />
-    <property name="logError" type="method" readable="false" writable="false" />
-    <property name="logInfo" type="method" readable="false" writable="false" />
-    <property name="logWarn" type="method" readable="false" writable="false" />
     <property name="luaPath" type="string" deprecated="true" writable="false" constant="true" />
     <property name="machineID0" type="string" writable="false" constant="true" />
     <property name="machineID1" type="string" writable="false" constant="true" />
@@ -4482,20 +4415,10 @@
     <property name="machineSerialND" type="string" writable="false" constant="true" />
     <property name="modelPath" type="string" deprecated="true" silent="true" />
     <property name="mujocoPath" type="string" deprecated="true" writable="false" constant="true" />
+    <property name="namedParam" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="notifyDeprecated" type="int" writable="false" constant="true" label="Notify deprecated">
       <description>Notify deprecated API (0: off, 1: light, 2: full)</description>
     </property>
-    <property name="openFile" type="method" readable="false" writable="false" />
-    <property name="pack" type="method" readable="false" writable="false" />
-    <property name="packDoubleArray" type="method" readable="false" writable="false" />
-    <property name="packFloatArray" type="method" readable="false" writable="false" />
-    <property name="packInt16Array" type="method" readable="false" writable="false" />
-    <property name="packInt32Array" type="method" readable="false" writable="false" />
-    <property name="packInt64Array" type="method" readable="false" writable="false" />
-    <property name="packInt8Array" type="method" readable="false" writable="false" />
-    <property name="packUInt16Array" type="method" readable="false" writable="false" />
-    <property name="packUInt32Array" type="method" readable="false" writable="false" />
-    <property name="packUInt8Array" type="method" readable="false" writable="false" />
     <property name="paths" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="paths.addOns" type="string" writable="false" constant="true" label="Add-on path" />
     <property name="paths.app" type="string" writable="false" constant="true" label="Application path" />
@@ -4532,16 +4455,13 @@
     <property name="protocolVersion" type="int" label="Protocol">
       <description>Protocol version</description>
     </property>
-    <property name="pushEvent" type="method" readable="false" writable="false" />
     <property name="pythonPath" type="string" deprecated="true" writable="false" constant="true" />
     <property name="qtVersion" type="int" writable="false" constant="true" label="Qt">
       <description>Qt version</description>
     </property>
-    <property name="quit" type="method" readable="false" writable="false" />
     <property name="randomFloat" type="float" writable="false" silent="true" label="Random number" />
     <property name="randomQuaternion" type="quaternion" writable="false" silent="true" label="Random quaternion" />
     <property name="randomString" type="string" writable="false" silent="true" label="Random string" />
-    <property name="removeObjects" type="method" readable="false" writable="false" />
     <property name="resourcePath" type="string" deprecated="true" writable="false" constant="true" />
     <property name="sandbox" type="handle" handle-type="detachedScript" writable="false" constant="true" label="Sandbox">
       <description>Handle of the sandbox script</description>
@@ -4549,36 +4469,19 @@
     <property name="sandboxLang" type="string" writable="false" constant="true" label="Sandbox language">
       <description>Default sandbox language</description>
     </property>
-    <property name="saveImage" type="method" readable="false" writable="false" />
-    <property name="saveImageToBuffer" type="method" readable="false" writable="false" />
     <property name="scenePath" type="string" deprecated="true" silent="true" />
     <property name="sceneTempPath" type="string" deprecated="true" writable="false" constant="true" />
-    <property name="scheduleExecution" type="method" readable="false" writable="false" />
-    <property name="serialize" type="method" readable="false" writable="false" />
     <property name="sessionId" type="string" writable="false" constant="true" label="Session ID" />
-    <property name="setPluginInfo" type="method" readable="false" writable="false" />
     <property name="settingsPath" type="string" deprecated="true" writable="false" constant="true" />
+    <property name="signal" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="startupCode" type="string" constant="true" label="Start-up code" />
     <property name="statusbarVerbosity" type="int" label="Statusbar verbosity" />
     <property name="statusbarVerbosityStr" type="string" readable="false" silent="true" label="Statusbar verbosity string">
       <description>Statusbar verbosity string, only for client app</description>
     </property>
-    <property name="systemLock" type="method" readable="false" writable="false" />
     <property name="systemPath" type="string" deprecated="true" writable="false" constant="true" />
     <property name="systemTime" type="float" writable="false" silent="true" label="System time" />
     <property name="tempPath" type="string" deprecated="true" writable="false" constant="true" />
-    <property name="throttle" type="method" readable="false" writable="false" />
-    <property name="transformImage" type="method" readable="false" writable="false" />
-    <property name="unpack" type="method" readable="false" writable="false" />
-    <property name="unpackDoubleArray" type="method" readable="false" writable="false" />
-    <property name="unpackFloatArray" type="method" readable="false" writable="false" />
-    <property name="unpackInt16Array" type="method" readable="false" writable="false" />
-    <property name="unpackInt32Array" type="method" readable="false" writable="false" />
-    <property name="unpackInt64Array" type="method" readable="false" writable="false" />
-    <property name="unpackInt8Array" type="method" readable="false" writable="false" />
-    <property name="unpackUInt16Array" type="method" readable="false" writable="false" />
-    <property name="unpackUInt32Array" type="method" readable="false" writable="false" />
-    <property name="unpackUInt8Array" type="method" readable="false" writable="false" />
     <namespace name="customData" />
     <namespace name="namedParam" />
     <namespace name="signal" />
@@ -4587,6 +4490,28 @@
 
 
     <object-class name="detachedScript" superclass="object">
+        <method name="broadcast" func="sim.callMethod" lang="python,lua">
+            <description>
+                Broadcasts a message to all scripts, except for the emitting script. Messages are received synchronously via the sysCall_msg callback function
+            </description>
+            <params>
+                <param name="message" type="map">
+                    <description>
+                        message to broadcast, with following structure: {id --&gt; 'msgIdentifyingString', data --&gt; {...}}
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="scriptRelated" />
+                <category name="messaging" />
+            </categories>
+            <see-also>
+                <link href="../callbackFunctions.htm" label="callback functions" />
+            </see-also>
+        </method>
+        
+        
+        
         <method name="setEventFilters" func="sim.callMethod" lang="python,lua">
             <description>
                 Specifies filters for the sysCall_event callback, in this script
@@ -4683,7 +4608,7 @@
 
         <method name="step" func="sim.callMethod" lang="python,lua">
             <description>
-                Triggers the next simulation step, when in stepping operation mode. When simulation is running, step()
+                Triggers the next simulation step, when in stepping operation mode and running in a thread. When simulation is running, step()
                 only returns once the simulation time has changed
             </description>
             <categories>
@@ -4742,6 +4667,7 @@
             <see-also>
                 <function-ref name="detachedScript:getStepping" />
                 <function-ref name="detachedScript:step" />
+                <property-ref name="detachedScript.autoYieldDelay" />
             </see-also>
         </method>
 
@@ -5027,7 +4953,7 @@
     <property name="addOnPath" type="string" writable="false" constant="true" label="Add-on path">
       <description>Path of add-on</description>
     </property>
-    <property name="callFunction" type="method" readable="false" writable="false" />
+    <property name="autoYieldDelay" type="float" silent="true" label="Automatic yield delay" />
     <property name="code" type="string" label="Code">
       <description>Script content</description>
     </property>
@@ -5035,18 +4961,8 @@
       <description>Distabled state</description>
     </property>
     <property name="execPriority" type="int" label="Execution priority" />
-    <property name="executeString" type="method" readable="false" writable="false" />
     <property name="executionDepth" type="int" writable="false" silent="true" label="Execution depth" />
-    <property name="getFunctions" type="method" readable="false" writable="false" />
-    <property name="getObject" type="method" readable="false" writable="false" />
-    <property name="getStackTraceback" type="method" readable="false" writable="false" />
-    <property name="getStepping" type="method" readable="false" writable="false" />
-    <property name="init" type="method" readable="false" writable="false" />
     <property name="language" type="string" writable="false" constant="true" label="Language" />
-    <property name="lock" type="method" readable="false" writable="false" />
-    <property name="registerFunctionHook" type="method" readable="false" writable="false" />
-    <property name="remove" type="method" readable="false" writable="false" />
-    <property name="removeFunctionHook" type="method" readable="false" writable="false" />
     <property name="restartOnError" type="bool" label="Restart">
       <description>Restart on error</description>
     </property>
@@ -5056,21 +4972,93 @@
     </property>
     <property name="scriptState" type="int" deprecated="true" writable="false" />
     <property name="scriptType" type="int" deprecated="true" writable="false" constant="true" />
-    <property name="setEventFilters" type="method" readable="false" writable="false" />
-    <property name="setStepping" type="method" readable="false" writable="false" />
     <property name="state" type="int" writable="false" label="State">
       <description>Script state</description>
     </property>
-    <property name="step" type="method" readable="false" writable="false" />
     <property name="type" type="int" writable="false" constant="true" label="Type">
       <description>Script type</description>
     </property>
-    <property name="wait" type="method" readable="false" writable="false" />
-    <property name="yield" type="method" readable="false" writable="false" />
   </object-class> 
 
 
 
+    <object-class name="mesh" superclass="object">
+        <method name="texture.setData" func="sim.callMethod" lang="python,lua">
+            <description>
+                Overwrites a portion of the texture
+            </description>
+            <params>
+                <param name="data" type="buffer">
+                    <description>
+                        RGB data corresponding to the portion of the texture to overwrite. A buffer size of 3 overwrites the portion of the texture with a single color
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>position (int[2], defaults to [0, 0]): position where to copy the RGB data. Set to [0, 0] to overwrite the full texture</li>
+                            <li>size (int[2], defaults to [0, 0]): size of the RGB data. Set to [0, 0] to overwrite the full texture</li>
+                            <li>interpolation (float, defaults to 0.0): fade or interpolation factor</li>
+                            <li>rectangular (bool, defaults true): to write a rectangular or elliptical/circular portion of the texture</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="shape" />
+                <category name="texture" />
+            </categories>
+            <see-also>
+                <property-ref name="mesh.texture.data" />
+            </see-also>
+        </method>
+    <property name="color" type="group" readable="false" writable="false" silent="true" constant="true" />
+    <property name="color.diffuse" type="color" label="Diffuse color" />
+    <property name="color.emission" type="color" label="Emission color" />
+    <property name="color.specular" type="color" label="Specular color" />
+    <property name="color.transparency" type="float" label="Transparency" />
+    <property name="colorName" type="string" label="Color name" />
+    <property name="convex" type="bool" writable="false" label="Convex">
+      <description>Whether mesh is convex or not</description>
+    </property>
+    <property name="culling" type="bool" label="Backface culling" />
+    <property name="indices" type="intarray" writable="false" label="Indices">
+      <description>Indices (3 values per triangle)</description>
+    </property>
+    <property name="normals" type="matrix" writable="false" label="Normals">
+      <description>Normals (3*3 values per triangle)</description>
+    </property>
+    <property name="primitiveType" type="int" writable="false" label="Primitive type" />
+    <property name="rawTexture" type="buffer" deprecated="true" writable="false" />
+    <property name="shadingAngle" type="float" label="Shading angle" />
+    <property name="shape" type="handle" handle-type="shape" writable="false" constant="true" label="Shape handle" />
+    <property name="shapeUid" type="int" writable="false" constant="true" label="Shape UID">
+      <description>Unique identifier of parent shape</description>
+    </property>
+    <property name="showEdges" type="bool" label="Visible edges" />
+    <property name="texture" type="group" readable="false" writable="false" silent="true" constant="true" />
+    <property name="texture.applyMode" type="int" label="Texture apply mode" />
+    <property name="texture.coordinates" type="floatarray" writable="false" label="Texture coordinates" />
+    <property name="texture.data" type="buffer" writable="false" label="Texture" />
+    <property name="texture.id" type="int" writable="false" label="Texture ID" />
+    <property name="texture.interpolate" type="bool" label="Interpolate texture" />
+    <property name="texture.repeatU" type="bool" label="Texture repeat U" />
+    <property name="texture.repeatV" type="bool" label="Texture repeat V" />
+    <property name="texture.resolution" type="intarray2" writable="false" label="Texture resolution" />
+    <property name="textureApplyMode" type="int" deprecated="true" />
+    <property name="textureCoordinates" type="floatarray" deprecated="true" writable="false" />
+    <property name="textureID" type="int" deprecated="true" writable="false" />
+    <property name="textureInterpolate" type="bool" deprecated="true" />
+    <property name="textureRepeatU" type="bool" deprecated="true" />
+    <property name="textureRepeatV" type="bool" deprecated="true" />
+    <property name="textureResolution" type="intarray2" deprecated="true" writable="false" />
+    <property name="vertices" type="matrix" writable="false" label="Vertices" />
+    <property name="wireframe" type="bool" label="Wireframe" />
+  </object-class> 
+    
+    
+    
     <object-class name="collection" superclass="object">
         <method name="changeColor" func="sim.callMethod" lang="python,lua">
             <info>same method present in collection and sceneObject</info>
@@ -5310,14 +5298,7 @@
                 <function-ref name="sceneObject:checkDistance" />
             </see-also>
         </method>
-    <property name="addItem" type="method" readable="false" writable="false" />
-    <property name="changeColor" type="method" readable="false" writable="false" />
-    <property name="checkCollision" type="method" readable="false" writable="false" />
-    <property name="checkDistance" type="method" readable="false" writable="false" />
     <property name="objects" type="handlearray" handle-type="sceneObject" writable="false" label="Children handles" />
-    <property name="remove" type="method" readable="false" writable="false" />
-    <property name="removeItem" type="method" readable="false" writable="false" />
-    <property name="restoreColor" type="method" readable="false" writable="false" />
   </object-class> 
     
     
@@ -6290,11 +6271,33 @@
                 <link href="../simulation.htm" label=" simulation state diagram " />
             </see-also>
         </method>
+        
+        
+        
+        <method name="dynamics.step" func="sim.callMethod" lang="python,lua">
+            <description>
+                Steps the dynamics engine
+            </description>
+            <params>
+                <param name="deltaTime" type="float" default="0.0">
+                    <description>
+                        the simulation time step
+                    </description>
+                </param>
+            </params>
+            <returns>
+            </returns>
+            <categories>
+                <category name="dynamics" />
+            </categories>
+            <see-also>
+                <property-ref name="sim.scene.simulation.timeStep" />
+            </see-also>
+        </method>
     <property name="acknowledgment" type="string" label="Acknowledgment">
       <description>Scene acknowledgment</description>
     </property>
     <property name="ambientLight" type="color" label="Ambient light" />
-    <property name="announceChange" type="method" readable="false" writable="false" />
     <property name="bullet.collisionMarginScaling" type="float" deprecated="true" />
     <property name="bullet.computeInertias" type="bool" deprecated="true" />
     <property name="bullet.internalScalingFull" type="bool" deprecated="true" />
@@ -6304,14 +6307,13 @@
     <property name="collections" type="handlearray" handle-type="collection" writable="false" label="Collections">
       <description>Handles of all collections</description>
     </property>
-    <property name="createObject" type="method" readable="false" writable="false" />
+    <property name="customData" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="customObjects" type="handlearray" handle-type="customObject" writable="false" label="Custom objects">
       <description>List of scene custom objects</description>
     </property>
     <property name="drawingObjects" type="handlearray" handle-type="drawingObject" writable="false" label="Drawing objects">
       <description>Handles of all drawing objects</description>
     </property>
-    <property name="duplicateObjects" type="method" readable="false" writable="false" />
     <property name="dynamics" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.bullet" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.bullet.collisionMarginScaling" type="float" />
@@ -6407,7 +6409,6 @@
     <property name="dynamics.ode.quickStepEnabled" type="bool" />
     <property name="dynamics.ode.quickStepIterations" type="int" />
     <property name="dynamics.showContactPoints" type="bool" label="Show contact points" />
-    <property name="dynamics.step" type="method" readable="false" writable="false" />
     <property name="dynamics.stepSize" type="float" label="Dynamics dt">
       <description>Dynamics step size</description>
     </property>
@@ -6435,25 +6436,14 @@
     <property name="finalSaveRequest" type="bool" label="Final save">
       <description>Lock scene and models after next scene save operation</description>
     </property>
-    <property name="getContacts" type="method" readable="false" writable="false" />
-    <property name="getDescendants" type="method" readable="false" writable="false" />
-    <property name="getObject" type="method" readable="false" writable="false" />
-    <property name="getObjectFromUid" type="method" readable="false" writable="false" />
-    <property name="getObjects" type="method" readable="false" writable="false" />
     <property name="gravity" type="vector3" deprecated="true" label="Gravity" />
-    <property name="groupShapes" type="method" readable="false" writable="false" />
-    <property name="handleCustomizationScripts" type="method" readable="false" writable="false" />
-    <property name="handleSimulationScripts" type="method" readable="false" writable="false" />
     <property name="hierarchyChangeCounter" type="int" writable="false" silent="true" label="Hierarchy change counter">
       <description>Counter of scene hierarchy changes</description>
     </property>
-    <property name="loadModel" type="method" readable="false" writable="false" />
-    <property name="loadModelFromBuffer" type="method" readable="false" writable="false" />
     <property name="locked" type="bool" writable="false" label="Scene is locked" />
     <property name="mainScript" type="handle" handle-type="detachedScript" writable="false" constant="true" label="Main script">
       <description>Handle of the main script</description>
     </property>
-    <property name="mergeShapes" type="method" readable="false" writable="false" />
     <property name="mujoco.actuationEnable" type="bool" deprecated="true" />
     <property name="mujoco.alignfree" type="bool" deprecated="true" />
     <property name="mujoco.autoresetEnable" type="bool" deprecated="true" />
@@ -6548,14 +6538,10 @@
     <property name="pauseSimulationAtTime" type="bool" deprecated="true" />
     <property name="realtimeModifier" type="float" deprecated="true" />
     <property name="realtimeSimulation" type="bool" deprecated="true" />
-    <property name="remove" type="method" readable="false" writable="false" />
     <property name="removeNewObjectsAtEnd" type="bool" deprecated="true" />
-    <property name="removeObjects" type="method" readable="false" writable="false" />
-    <property name="save" type="method" readable="false" writable="false" />
     <property name="saveCalculationStructs" type="bool" label="Save calculation structures">
       <description>Save operation also saves existing calculation structures</description>
     </property>
-    <property name="saveToBuffer" type="method" readable="false" writable="false" />
     <property name="sceneIsLocked" type="bool" deprecated="true" writable="false" />
     <property name="scenePath" type="string" deprecated="true" />
     <property name="sceneUid" type="int" deprecated="true" writable="false" constant="true" />
@@ -6565,8 +6551,8 @@
     </property>
     <property name="selectionHandles" type="intarray" deprecated="true" />
     <property name="showContactPoints" type="bool" deprecated="true" label="Show contact points" />
+    <property name="signal" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="simulation" type="group" readable="false" writable="false" silent="true" constant="true" />
-    <property name="simulation.pause" type="method" readable="false" writable="false" />
     <property name="simulation.pauseAtError" type="bool" label="Pause simulation on script error" />
     <property name="simulation.pauseAtTime" type="bool" label="Pause simulation at time">
       <description>Pause simulation when simulation time exceeds a threshold</description>
@@ -6579,7 +6565,6 @@
       <description>Remove new scene objects at simulation end</description>
     </property>
     <property name="simulation.speedModifier" type="int" label="Speed modifier" />
-    <property name="simulation.start" type="method" readable="false" writable="false" />
     <property name="simulation.state" type="int" writable="false" label="Simulation state" />
     <property name="simulation.stepCount" type="int" writable="false" label="Simulation steps">
       <description>Counter of simulation steps</description>
@@ -6587,7 +6572,6 @@
     <property name="simulation.stepsPerRendering" type="int" label="Steps per frame">
       <description>Simulation steps per frame</description>
     </property>
-    <property name="simulation.stop" type="method" readable="false" writable="false" />
     <property name="simulation.time" type="float" writable="false" label="Simulation time" />
     <property name="simulation.timeStep" type="float" label="Simulation dt">
       <description>Simulation time step</description>
@@ -7508,14 +7492,12 @@
     <property name="cannotDeleteInSim" type="bool" label="Cannot delete during simulation">
       <description>Scene object cannot be deleted while simulation is running</description>
     </property>
-    <property name="changeColor" type="method" readable="false" writable="false" />
-    <property name="checkCollision" type="method" readable="false" writable="false" />
-    <property name="checkDistance" type="method" readable="false" writable="false" />
     <property name="childOrder" type="int" writable="false" label="Child order" />
     <property name="children" type="handlearray" handle-type="sceneObject" writable="false" label="Children handles" />
     <property name="collapsed" type="bool" label="Collapsed hierarchy" />
     <property name="collectionSelfCollisionIndicator" type="int" label="Collection self collision indicator" />
     <property name="collidable" type="bool" label="Collidable" />
+    <property name="customData" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="deprecatedName" type="string" deprecated="true" />
     <property name="depthInvisible" type="bool" label="Depth pass invisible">
       <description>Scene object is invisible for the depth buffer during a click operation</description>
@@ -7526,18 +7508,10 @@
     </property>
     <property name="dynamicFlag" type="int" writable="false" label="Dynamic flag" />
     <property name="dynamicIcon" type="int" writable="false" label="Dynamic icon" />
-    <property name="dynamicReset" type="method" readable="false" writable="false" />
     <property name="dynamicallyEnabled" type="bool" writable="false" silent="true" label="Dynamically enabled" />
     <property name="eulerAngles" type="vector3" silent="true" label="Euler angles">
       <description>Scene object local Euler angles</description>
     </property>
-    <property name="getAncestors" type="method" readable="false" writable="false" />
-    <property name="getDescendants" type="method" readable="false" writable="false" />
-    <property name="getName" type="method" readable="false" writable="false" />
-    <property name="getObject" type="method" readable="false" writable="false" />
-    <property name="getPose" type="method" readable="false" writable="false" />
-    <property name="getPosition" type="method" readable="false" writable="false" />
-    <property name="getQuaternion" type="method" readable="false" writable="false" />
     <property name="hideFromModelBB" type="bool" label="Hide from model bounding box">
       <description>Scene object is not part of a parent model's bounding box</description>
     </property>
@@ -7548,8 +7522,6 @@
       <description>View fitting is ignored for this scene object</description>
     </property>
     <property name="layer" type="int" label="Visibility layer" />
-    <property name="makeClass" type="method" readable="false" writable="false" />
-    <property name="makeObject" type="method" readable="false" writable="false" />
     <property name="measurable" type="bool" label="Measurable" />
     <property name="model" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="model.bbPos" type="vector3" writable="false" silent="true" label="Model bounding boxe position" />
@@ -7654,6 +7626,7 @@
       <description>Scene object flags, redundant</description>
     </property>
     <property name="objectUid" type="long" deprecated="true" writable="false" constant="true" />
+    <property name="origRefs" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="parent" type="handle" handle-type="sceneObject" label="Parent">
       <description>Parent scene object handle</description>
     </property>
@@ -7673,13 +7646,7 @@
     <property name="quaternion" type="quaternion" label="Quaternion">
       <description>Scene object local quaternion</description>
     </property>
-    <property name="remove" type="method" readable="false" writable="false" />
-    <property name="removeModel" type="method" readable="false" writable="false" />
-    <property name="restoreColor" type="method" readable="false" writable="false" />
-    <property name="saveModel" type="method" readable="false" writable="false" />
-    <property name="saveModelToBuffer" type="method" readable="false" writable="false" />
-    <property name="scale" type="method" readable="false" writable="false" />
-    <property name="scaleTree" type="method" readable="false" writable="false" />
+    <property name="refs" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="selectInvisible" type="bool" label="Select invisible">
       <description>Scene object is invisible during a selection operation</description>
     </property>
@@ -7692,10 +7659,7 @@
     <property name="selected" type="bool" label="Selected">
       <description>Selection state</description>
     </property>
-    <property name="setParent" type="method" readable="false" writable="false" />
-    <property name="setPose" type="method" readable="false" writable="false" />
-    <property name="setPosition" type="method" readable="false" writable="false" />
-    <property name="setQuaternion" type="method" readable="false" writable="false" />
+    <property name="signal" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="size" type="vector3" label="Bounding box size" />
     <property name="tree" type="handlearray" writable="false" silent="true" label="Object tree" />
     <property name="uid" type="long" writable="false" constant="true" label="Object UID">
@@ -7704,7 +7668,6 @@
     <property name="visible" type="bool" writable="false" silent="true" label="Visible">
       <description>Whether the scene object is currently visible</description>
     </property>
-    <property name="visitTree" type="method" readable="false" writable="false" />
     <namespace name="customData" />
     <namespace name="origRefs" new-property-forced-type="handlearray" />
     <namespace name="refs" new-property-forced-type="handlearray" />
@@ -7787,8 +7750,6 @@
                 <function-ref name="marker:addItems" />
             </see-also>
         </method>
-    <property name="addItems" type="method" readable="false" writable="false" />
-    <property name="clearItems" type="method" readable="false" writable="false" />
     <property name="colors" type="buffer" writable="false" label="Colors" />
     <property name="cyclic" type="bool" writable="false" constant="true" label="Cyclic">
       <description>Item buffer is cyclic</description>
@@ -7813,7 +7774,6 @@
     <property name="packedSizes" type="buffer" writable="false" silent="true" label="Packed sizes" />
     <property name="points" type="matrix" writable="false" label="Points" />
     <property name="quaternions" type="matrix" writable="false" label="Quaternions" />
-    <property name="removeItems" type="method" readable="false" writable="false" />
     <property name="sizes" type="matrix" writable="false" label="Sizes" />
     <property name="vertices" type="matrix" writable="false" label="Vertices">
       <description>Vertices for custom marker</description>
@@ -8154,9 +8114,6 @@
                 <function-ref name="shape:relocateFrame" />
             </see-also>
         </method>
-    <property name="addForce" type="method" readable="false" writable="false" />
-    <property name="addTorque" type="method" readable="false" writable="false" />
-    <property name="alignBoundingBox" type="method" readable="false" writable="false" />
     <property name="applyColor" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="applyColor.diffuse" type="color" readable="false" silent="true" label="Apply diffuse color">
       <description>Applies the diffuse color component to all contained meshes</description>
@@ -8221,11 +8178,9 @@
     <property name="compoundWireframe" type="intarray" silent="true" label="Wireframe data">
       <description>Wireframe state from all compound elements</description>
     </property>
-    <property name="computeInertia" type="method" readable="false" writable="false" />
     <property name="convex" type="bool" writable="false" label="Convex">
       <description>Whether the shape's components are all convex or not</description>
     </property>
-    <property name="divide" type="method" readable="false" writable="false" />
     <property name="dynAngularVelocity" type="vector3" writable="false" label="Rotational velocity">
       <description>Rotational velocity, as transmitted by the physics engine</description>
     </property>
@@ -8338,9 +8293,6 @@
     <property name="flipFaces" type="bool" readable="false" silent="true" label="Flip faces">
       <description>Flips faces of all contained meshes</description>
     </property>
-    <property name="getAppearance" type="method" readable="false" writable="false" />
-    <property name="getContacts" type="method" readable="false" writable="false" />
-    <property name="getInertia" type="method" readable="false" writable="false" />
     <property name="inertia" type="floatarray" deprecated="true" />
     <property name="inertiaMatrix" type="matrix" label="Inertia matrix">
       <description>Inertia matrix, relative to the shape's reference frame</description>
@@ -8391,18 +8343,14 @@
       <description>Whether the shape's components are all primitives</description>
     </property>
     <property name="principalMomentOfInertia" type="floatarray" deprecated="true" writable="false" />
-    <property name="relocateFrame" type="method" readable="false" writable="false" />
     <property name="respondable" type="bool" label="Respondable">
       <description>Shape will transmit a collision force</description>
     </property>
     <property name="respondableMask" type="int" label="Respondable mask" />
-    <property name="setAppearance" type="method" readable="false" writable="false" />
-    <property name="setInertia" type="method" readable="false" writable="false" />
     <property name="setToDynamicWithParent" type="bool" label="Set to dynamic if gets parent">
       <description>Shape will be made dynamic if it receives a parent</description>
     </property>
     <property name="startInDynSleepMode" type="bool" label="Start in sleep mode" />
-    <property name="ungroup" type="method" readable="false" writable="false" />
     <property name="vortex.adhesiveForce" type="float" deprecated="true" />
     <property name="vortex.angularNormalAxisFollowPrimaryAxis" type="bool" deprecated="true" />
     <property name="vortex.angularNormalAxisFrictionModel" type="int" deprecated="true" />
@@ -8573,10 +8521,10 @@
       <description>Angle threshold, 0.0 to disable</description>
     </property>
     <property name="backFaceDetection" type="bool" label="Back face detection" />
-    <property name="checkSensor" type="method" readable="false" writable="false" />
     <property name="closeThreshold" type="float" label="Close threshold">
       <description>Close threshold: if a detection occures below that threshold, it is not registered. 0.0 to disable</description>
     </property>
+    <property name="color" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
@@ -8591,13 +8539,12 @@
     <property name="exactMode" type="bool" label="Exact mode" />
     <property name="explicitHandling" type="bool" label="Explicit handling" />
     <property name="frontFaceDetection" type="bool" label="Front face detection" />
-    <property name="handleSensor" type="method" readable="false" writable="false" />
     <property name="pointSize" type="float" label="Sensor point size" />
     <property name="randomizedDetection" type="bool" writable="false" label="Randomized detection" />
+    <property name="rayColor" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="rayColor.diffuse" type="color" label="Diffuse color" />
     <property name="rayColor.emission" type="color" label="Emission color" />
     <property name="rayColor.specular" type="color" label="Specular color" />
-    <property name="resetSensor" type="method" readable="false" writable="false" />
     <property name="sensorPointSize" type="float" deprecated="true" />
     <property name="sensorType" type="int" deprecated="true" writable="false" constant="true" />
     <property name="showVolume" type="bool" label="Show volume" />
@@ -8846,10 +8793,10 @@
         </method>
     <property name="backgroundColor" type="color" label="Background color" />
     <property name="backgroundColorFromEnvironment" type="bool" label="Background color from environment" />
-    <property name="checkSensor" type="method" readable="false" writable="false" />
     <property name="clippingPlanes" type="floatarray" label="Clipping planes">
       <description>Near and far clipping planes</description>
     </property>
+    <property name="color" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
@@ -8860,9 +8807,6 @@
     <property name="explicitHandling" type="bool" label="Explicit handling" />
     <property name="frustumCornerFar" type="vector3" writable="false" label="Far corner of view frustum" />
     <property name="frustumCornerNear" type="vector3" writable="false" label="Near corner of View frustum" />
-    <property name="getDepth" type="method" readable="false" writable="false" />
-    <property name="getImage" type="method" readable="false" writable="false" />
-    <property name="handleSensor" type="method" readable="false" writable="false" />
     <property name="ignoreDepthInfo" type="bool" label="Ignore Depth buffer">
       <description>Ignore Depth buffer (faster)</description>
     </property>
@@ -8893,14 +8837,12 @@
       <description>Focal blur (with the POV-Ray renderer plugin)</description>
     </property>
     <property name="renderMode" type="int" label="Render mode" />
-    <property name="resetSensor" type="method" readable="false" writable="false" />
     <property name="resolution" type="intarray2" label="Resolution">
       <description>Resolution (relevant only with vision sensors)</description>
     </property>
     <property name="sensorSize" type="float" label="Size">
       <description>Sensor size</description>
     </property>
-    <property name="setImage" type="method" readable="false" writable="false" />
     <property name="showFrustum" type="bool" label="Show view frustum" />
     <property name="triggerState" type="bool" writable="false" label="Trigger state" />
     <property name="useExtImage" type="bool" label="External input" />
@@ -9115,10 +9057,9 @@
             <see-also>
             </see-also>
         </method>
-    <property name="addCurve" type="method" readable="false" writable="false" />
-    <property name="addSignal" type="method" readable="false" writable="false" />
     <property name="backgroundColor" type="color" label="Background color" />
     <property name="bufferSize" type="int" label="Buffer size" />
+    <property name="color" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
@@ -9129,11 +9070,6 @@
     <property name="graphSize" type="float" label="Size">
       <description>Size of the 3D graph representation</description>
     </property>
-    <property name="removeTrace" type="method" readable="false" writable="false" />
-    <property name="resetGraph" type="method" readable="false" writable="false" />
-    <property name="setSignalPoint" type="method" readable="false" writable="false" />
-    <property name="snapshotTrace" type="method" readable="false" writable="false" />
-    <property name="step" type="method" readable="false" writable="false" />
   </object-class> 
 
  
@@ -9418,12 +9354,7 @@
             <see-also>
             </see-also>
         </method>
-    <property name="addFromObject" type="method" readable="false" writable="false" />
-    <property name="addPackedVoxels" type="method" readable="false" writable="false" />
-    <property name="addVoxels" type="method" readable="false" writable="false" />
-    <property name="checkPackedPoints" type="method" readable="false" writable="false" />
-    <property name="checkPoints" type="method" readable="false" writable="false" />
-    <property name="clear" type="method" readable="false" writable="false" />
+    <property name="color" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
@@ -9436,9 +9367,6 @@
     </property>
     <property name="randomColors" type="bool" label="Random voxel colors" />
     <property name="showPoints" type="bool" label="Show points instead of voxels" />
-    <property name="subtractFromObject" type="method" readable="false" writable="false" />
-    <property name="subtractPackedVoxels" type="method" readable="false" writable="false" />
-    <property name="subtractVoxels" type="method" readable="false" writable="false" />
     <property name="voxelSize" type="float" label="Voxel size" />
     <property name="voxels" type="floatarray" deprecated="true" writable="false" />
   </object-class> 
@@ -9710,21 +9638,16 @@
             <see-also>
             </see-also>
         </method>
-    <property name="addFromObject" type="method" readable="false" writable="false" />
-    <property name="addPackedPoints" type="method" readable="false" writable="false" />
-    <property name="addPoints" type="method" readable="false" writable="false" />
     <property name="cellSize" type="float" label="Cell size">
       <description>Size of the oc-tree cell/voxel</description>
     </property>
-    <property name="clear" type="method" readable="false" writable="false" />
+    <property name="color" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
     <property name="colors" type="buffer" writable="false" label="Colors">
       <description>Point colors</description>
     </property>
-    <property name="intersectPackedPoints" type="method" readable="false" writable="false" />
-    <property name="intersectPoints" type="method" readable="false" writable="false" />
     <property name="maxPointsInCell" type="int" label="Max. points in cell">
       <description>Maximum number of points in an oc-tree cell/voxel</description>
     </property>
@@ -9742,9 +9665,6 @@
       <description>Point positions</description>
     </property>
     <property name="randomColors" type="bool" label="Random point colors" />
-    <property name="subtractFromObject" type="method" readable="false" writable="false" />
-    <property name="subtractPackedPoints" type="method" readable="false" writable="false" />
-    <property name="subtractPoints" type="method" readable="false" writable="false" />
   </object-class> 
 
 
@@ -9823,6 +9743,7 @@
     <property name="calcVelocity" type="float" writable="false" label="Velocity">
       <description>Calculated joint linear or angular velocity</description>
     </property>
+    <property name="color" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
@@ -9848,7 +9769,7 @@
     <property name="dynamics.bullet.posPid" type="floatarray" />
     <property name="dynamics.bullet.stopCfm" type="float" />
     <property name="dynamics.bullet.stopErp" type="float" />
-    <property name="dynamics.ctrlMode" type="int" enum="jointDynCtrlMode" label="Control mode">
+    <property name="dynamics.ctrlMode" type="enum" enum="jointDynCtrlMode" label="Control mode">
       <description>Joint control mode, when in dynamic mode</description>
     </property>
     <property name="dynamics.engineProperties" type="string" label="Engine properties">
@@ -9991,8 +9912,6 @@
     <property name="ode.stopCfm" type="float" deprecated="true" />
     <property name="ode.stopErp" type="float" deprecated="true" />
     <property name="screwLead" type="float" label="Screw lead" />
-    <property name="setTargetPosition" type="method" readable="false" writable="false" />
-    <property name="setTargetVelocity" type="method" readable="false" writable="false" />
     <property name="springDamperParams" type="floatarray" deprecated="true" />
     <property name="targetForce" type="float" label="Target force">
       <description>Maximum force to exert</description>
@@ -10448,33 +10367,6 @@
 
     
 
-    <method name="handleDynamics" func="sim.handleDynamics" lang="python,lua">
-        <description>
-            Handles the dynamics functionality in a scene
-        </description>
-        <params>
-            <param name="deltaTime" type="float">
-                <description>
-                    simulation time step, i.e. 
-                    <a href="simGetSimulationTimeStep.htm"> sim.getSimulationTimeStep </a>
-                    ()
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="result" type="int">
-                <description>
-                    0 if the sepcified physics engine could not be found, otherwise the number of calculation steps performed by the physics engine.
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="dynamics" />
-            </categories>
-    </method>
-
-    
-
     <method name="handleExtCalls" func="sim.handleExtCalls" lang="python,lua">
         <description>
             Handles the message pump for threaded scripts
@@ -10527,6 +10419,109 @@
             </categories>
         <see-also>
             <function-ref name="sim.handleSensingStart" />
+        </see-also>
+    </method>
+
+    
+
+    <method name="readTexture" func="sim.readTexture" lang="python,lua">
+        <description>
+            Retrieves the RGB data (or a portion of it) related to a specific texture
+        </description>
+        <params>
+            <param name="textureId" type="int">
+                <description>
+                    ID of the texture. See also 
+                    <a href="simGetTextureId.htm"> simGetTextureId </a>
+                    .
+                </description>
+            </param>
+            <param name="options" type="int">
+                <description>
+                    reserved for future functionality. Set to zero.
+                </description>
+            </param>
+            <param name="posX" type="int" default="0">
+                <description>
+                    x/y position of the texture portion to retrieve. Set to [0 0] to retrieve the full texture
+                </description>
+            </param>
+            <param name="posY" type="int" default="0">
+                <description>
+                    x/y size of the texture portion to retrieve. Set to [0 0] to retrieve the full texture
+                </description>
+            </param>
+            <param name="sizeX" type="int" default="0">
+                <description />
+            </param>
+            <param name="sizeY" type="int" default="0">
+                <description />
+            </param>
+        </params>
+        <returns>
+            <param name="textureData" type="buffer">
+                <description>
+                    texture data
+                </description>
+            </param>
+        </returns>
+        <categories>
+        <category name="texture" />
+            </categories>
+        <see-also>
+            <function-ref name="sim.getTextureId" />
+            <function-ref name="sim.writeTexture" />
+            <function-ref name="sim.createTexture" />
+        </see-also>
+    </method>
+
+    
+
+    <method name="resamplePath" func="sim.resamplePath" lang="python,lua">
+        <description>
+            Returns a resampled path
+        </description>
+        <params>
+            <param name="path" type="float[]">
+                <description>
+                    path, specified in row-major order, e.g. a path containing two 3D poses (position+quaternion) would be [x1 y1 z1 qx1 qy1 qz1 qw1 x2 y2 z2 qx2 qy2 qz2 qw2]
+                </description>
+            </param>
+            <param name="pathLengths" type="float[]">
+                <description>
+                    lengths of a path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path). See also 
+                    <a href="simGetPathLengths.htm"> sim.getPathLengths </a>
+                    .
+                </description>
+            </param>
+            <param name="finalConfigCnt" type="int">
+                <description>
+                    number of points or configurations the resampled path should contain
+                </description>
+            </param>
+            <param name="method" type="map" default="{type = 'linear', strength = 1.0, forceOpen = false}">
+                <description>
+                    optional map specifying the type of interpolation (linear or quadraticBezier), and whether the path should be considered as open, even if the first and last path points overlap, and the bezier strength (0.05-1.0)
+                </description>
+            </param>
+            <param name="types" type="int[]" default="nil">
+                <description>
+                    optional array specifying the type of each configuration value/dimension: 0=cartesian value, 1=2pi-cyclic value, 2=quaternion value. e.g. a configuration representing 3D poses should use a types argument [0 0 0 2 2 2 2], a configuration representing revolute and cyclic joints should use a types argument [1 1 1 ...]
+                </description>
+            </param>
+        </params>
+        <returns>
+            <param name="outputPath" type="float[]">
+                <description>
+                    the resampled path
+                </description>
+            </param>
+        </returns>
+        <categories>
+        <category name="path" />
+            </categories>
+        <see-also>
+            <link href="../apiFunctions.htm#paths" label=" path related functions " />
         </see-also>
     </method>
 
@@ -10658,64 +10653,6 @@ end</code>
 
     
 
-    <method name="isDynamicallyEnabled" func="sim.isDynamicallyEnabled" lang="python,lua">
-        <description>
-            Checks whether a scene object is dynamically enabled, i.e. is being handled and simulated by the physics engine.
-            Note that until the physics engine has parsed the scene in the first simulation step (i.e. the first time
-            <a href="simHandleDynamics.htm"> sim.handleDynamics </a>
-            is called), no object will be dynamically enabled
-        </description>
-        <params>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of the scene object
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="dynamicallyEnabled" type="bool">
-                <description>
-                    whether the object is dynamically enabled
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="dynamics" /><category name="sceneObject" />
-            </categories>
-    </method>
-
-    
-
-    <method name="isHandle" func="sim.isHandle" lang="python,lua">
-        <description>
-            Checks whether a general object handle is still valid. When a general object is destroyed
-            (e.g. programmatically or via the user interface), then its related handle is not valid anymore
-            and will trigger an error when used. Use this function to avoid triggering an error
-        </description>
-        <params>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of the object
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="result" type="bool">
-                <description>
-                    whether the handle is valid
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="main" /><category name="scriptRelated" /><category name="sceneObject" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getObject" />
-        </see-also>
-    </method>
-
-    
-
     <method name="moduleEntry" func="sim.moduleEntry" lang="python,lua">
         <description>
             Creates, modifies or destroys module menu entries. Those are user selectable items located in [Menu bar &gt; Modules].
@@ -10757,419 +10694,6 @@ end</code>
         <categories>
         <category name="other" />
             </categories>
-    </method>
-
-    
-
-    <method name="readTexture" func="sim.readTexture" lang="python,lua">
-        <description>
-            Retrieves the RGB data (or a portion of it) related to a specific texture
-        </description>
-        <params>
-            <param name="textureId" type="int">
-                <description>
-                    ID of the texture. See also 
-                    <a href="simGetTextureId.htm"> simGetTextureId </a>
-                    .
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    reserved for future functionality. Set to zero.
-                </description>
-            </param>
-            <param name="posX" type="int" default="0">
-                <description>
-                    x/y position of the texture portion to retrieve. Set to [0 0] to retrieve the full texture
-                </description>
-            </param>
-            <param name="posY" type="int" default="0">
-                <description>
-                    x/y size of the texture portion to retrieve. Set to [0 0] to retrieve the full texture
-                </description>
-            </param>
-            <param name="sizeX" type="int" default="0">
-                <description />
-            </param>
-            <param name="sizeY" type="int" default="0">
-                <description />
-            </param>
-        </params>
-        <returns>
-            <param name="textureData" type="buffer">
-                <description>
-                    texture data
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="texture" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getTextureId" />
-            <function-ref name="sim.writeTexture" />
-            <function-ref name="sim.createTexture" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="refreshDialogs" func="sim.refreshDialogs" lang="python,lua">
-        <description>
-            Refreshes CoppeliaSim's internal dialogs. Calling 
-            <a href="simRefreshDialogs.htm"> sim.refreshDialogs </a>
-            will
-            not trigger a 
-            <a href="../apiConstants.htm#simulatorMessages"> sim.message_eventcallback_refreshdialogs </a>
-            message
-        </description>
-        <params>
-            <param name="refreshDegree" type="int">
-                <description>
-                    refresh degree (0=light, 1=medium, 2=full)
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="other" />
-            </categories>
-    </method>
-
-    
-
-    <method name="removeParticleObject" func="sim.removeParticleObject" lang="python,lua">
-        <description>
-            Removes a previously added particle object
-        </description>
-        <params>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of a previously added particle object. sim.handle_all removes all particle objects from the scene
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="dynamics" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.addParticleObject" />
-            <function-ref name="sim.addParticleObjectItem" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="resamplePath" func="sim.resamplePath" lang="python,lua">
-        <description>
-            Returns a resampled path
-        </description>
-        <params>
-            <param name="path" type="float[]">
-                <description>
-                    path, specified in row-major order, e.g. a path containing two 3D poses (position+quaternion) would be [x1 y1 z1 qx1 qy1 qz1 qw1 x2 y2 z2 qx2 qy2 qz2 qw2]
-                </description>
-            </param>
-            <param name="pathLengths" type="float[]">
-                <description>
-                    lengths of a path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path). See also 
-                    <a href="simGetPathLengths.htm"> sim.getPathLengths </a>
-                    .
-                </description>
-            </param>
-            <param name="finalConfigCnt" type="int">
-                <description>
-                    number of points or configurations the resampled path should contain
-                </description>
-            </param>
-            <param name="method" type="map" default="{type = 'linear', strength = 1.0, forceOpen = false}">
-                <description>
-                    optional map specifying the type of interpolation (linear or quadraticBezier), and whether the path should be considered as open, even if the first and last path points overlap, and the bezier strength (0.05-1.0)
-                </description>
-            </param>
-            <param name="types" type="int[]" default="nil">
-                <description>
-                    optional array specifying the type of each configuration value/dimension: 0=cartesian value, 1=2pi-cyclic value, 2=quaternion value. e.g. a configuration representing 3D poses should use a types argument [0 0 0 2 2 2 2], a configuration representing revolute and cyclic joints should use a types argument [1 1 1 ...]
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="outputPath" type="float[]">
-                <description>
-                    the resampled path
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="path" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setAutoYieldDelay" func="sim.setAutoYieldDelay" lang="python,lua">
-        <description>
-            Allows specifying a thread interruption or yield delay, that will be
-            automatically enforced by the system (preemptive threading). By default this value is 2 ms
-        </description>
-        <params>
-            <param name="dt" type="float">
-                <description>
-                    desired execution time, before an interruption or yield occurs
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="thread" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#threads" label=" thread related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setJointDependency" func="sim.setJointDependency" lang="python,lua">
-        <description>
-            Sets a joint dependent of another joint. The dependent joint should first be set
-            into dependent mode via 
-            <a href="simSetJointMode.htm"> sim.setJointMode </a>
-        </description>
-        <params>
-            <param name="jointHandle" type="int">
-                <description>
-                    handle of the joint to become slave
-                </description>
-            </param>
-            <param name="masterJointHandle" type="int">
-                <description>
-                    handle of the joint to become master, or -1 to free the slave joint from dependency
-                </description>
-            </param>
-            <param name="offset" type="float">
-                <description>
-                    offset in equation slave = offset + master * multCoeff
-                </description>
-            </param>
-            <param name="multCoeff" type="float">
-                <description>
-                    coeff in equation slave = offset + master * multCoeff
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="joint" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getJointDependency" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setNavigationMode" func="sim.setNavigationMode" lang="python,lua">
-        <description>
-            Sets the navigation and selection mode for the mouse
-        </description>
-        <params>
-            <param name="navigationMode" type="int">
-                <description>
-                    <a href="../apiConstants.htm#navigationModes"> mouse navigation mode </a>
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="other" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getNavigationMode" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setObjectChildPose" func="sim.setObjectChildPose" lang="python,lua">
-        <description>
-            Can be used to set a spherical joint's rotational transformation
-            (the translational part is ignored)
-        </description>
-        <params>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of the object
-                </description>
-            </param>
-            <param name="pose" type="float[7]">
-                <description>
-                    the pose (array of 7 values [x y z qx qy qz qw])
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="joint" /><category name="transformation" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getObjectChildPose" />
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setObjectColor" func="sim.setObjectColor" lang="python,lua">
-        <description>
-            Sets the color of a scene object
-        </description>
-        <params>
-            <param name="objectHandle" type="int">
-                <description>
-                    handle of the object
-                </description>
-            </param>
-            <param name="index" type="int">
-                <description>
-                    zero-based index of the color, if the object has several colors
-                </description>
-            </param>
-            <param name="colorComponent" type="int">
-                <description>
-                    <a href="../apiConstants.htm#colorComponents"> color component </a>
-                </description>
-            </param>
-            <param name="rgbData" type="float[3]">
-                <description>
-                    red, green and blue components of the color (3 values)
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="sceneObject" /><category name="rendering" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#rendering" label=" rendering related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setPage" func="sim.setPage" lang="python,lua">
-        <description>
-            Switches between pages (main scene views)
-        </description>
-        <params>
-            <param name="index" type="int">
-                <description>
-                    index of the page. Valid values are 0-7
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="other" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getPage" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setShapeBB" func="sim.setShapeBB" lang="python,lua">
-        <description>
-            Sets the size of a shape's bounding box, effectively scaling the shape.
-            Non-isometric scaling is not always possible
-        </description>
-        <params>
-            <param name="shapeHandle" type="int">
-                <description>
-                    handle of the shape
-                </description>
-            </param>
-            <param name="size" type="float[3]">
-                <description>
-                    size of the bounding box
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="shape" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#size" label=" size and scaling functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setShapeColor" func="sim.setShapeColor" lang="python,lua">
-        <description>
-            Sets the color of a shape
-        </description>
-        <params>
-            <param name="shapeHandle" type="int">
-                <description>
-                    handle of the shape
-                </description>
-            </param>
-            <param name="colorName" type="string">
-                <description>
-                    name of a color. Can be an empty string, but if a name is provided, only shapes (or sub-entities of them) with a same color name will be modified. If colorName is 
-                    <em>
-                        @compound
-                    </em>
-                    , then all individual colors of a compound shape can be set at once
-                </description>
-            </param>
-            <param name="colorComponent" type="int">
-                <description>
-                    <a href="../apiConstants.htm#colorComponents"> color component </a>
-                </description>
-            </param>
-            <param name="rgbData" type="float[3]">
-                <description>
-                    red, green and blue components of the color (3 values), or the transparency value (1 value)
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="shape" /><category name="rendering" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#rendering" label=" rendering related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="setShapeMass" func="sim.setShapeMass" lang="python,lua">
-        <description>
-            Applies a new mass value to a shape. If simulation is running, the shape is dynamically reset
-            (similar to calling 
-            <a href="simResetDynamicObject.htm"> sim.resetDynamicObject </a>
-            right after)
-        </description>
-        <params>
-            <param name="shapeHandle" type="handle">
-                <description>
-                    handle of the 
-                    <a href="../shapes.htm"> shape object </a>
-                </description>
-            </param>
-            <param name="mass" type="float">
-                <description>
-                    new mass of the shape
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="dynamics" /><category name="shape" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getShapeMass" />
-            <function-ref name="sim.setShapeInertia" />
-            <function-ref name="sim.computeMassAndInertia" />
-        </see-also>
     </method>
 
     
@@ -11391,264 +10915,13 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
             <link href="../apiFunctions.htm#packing" label=" data packing/unpacking functions " />
         </see-also>
     </method>
-
-    
-
-    <method name="removeFromCollection" func="sim.removeFromCollection" lang="python,lua">
-        <description>
-            Removes an item from a
-            <a href="../collections.htm">collection</a>
-        </description>
-        <params>
-            <param name="collectionHandle" type="handle">
-                <description>handle of a collection.</description>
-            </param>
-            <param name="objectHandle" type="handle">
-                <description>handle of an object</description>
-            </param>
-            <param name="what" type="int" default="sim.handle_single">
-                <description>
-                    type of object (or group of objects) to remove. Following are allowed values:
-                    <ul>
-                        <li>
-                            <em>sim.handle_single</em>
-                            (for a single object)
-                        </li>
-                        <li>
-                            <em>sim.handle_all</em>
-                            (for all objects in the scene)
-                        </li>
-                        <li>
-                            <em>sim.handle_tree</em>
-                            (for a tree of objects)
-                        </li>
-                        <li>
-                            <em>sim.handle_chain</em>
-                            (for a chain of objects (i.e. an inverted tree)).
-                        </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="options" type="int" default="0">
-                <description>
-                    <em>sim.handle_single</em>
-                    (for a single object)
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="collection" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#collections" label="functions related to collections" />
-        </see-also>
-    </method>
-
-
-
-    <method name="broadcastMsg" func="sim.broadcastMsg" lang="python,lua">
-        <description>
-            Broadcasts a message to all scripts, except for the emitting script. Messages are received synchronously via the sysCall_msg
-            <a href="../callbackFunctions.htm">callback function</a>
-        </description>
-        <params>
-            <param name="message" type="map">
-                <description>
-                    message to broadcast. Best is to use following skeleton message: message = {'id': 'msgIdentifyingString', 'data': [...]}
-                </description>
-            </param>
-            <param name="options" type="int" default="0">
-                <description>not used, keep at 0</description>
-            </param>
-        </params>
-        <categories>
-        <category name="messaging" />
-            </categories>
-    </method>
-
-
-
-        <method name="getApiFunc" func="sim.callMethod" lang="python,lua">
-            <description>
-                Retrieves all API functions and variables that match a specific word.
-                Useful for script code auto-completion functionality
-            </description>
-            <params>
-                <param name="apiWord" type="string">
-                    <description>
-                        word that API functions and variables should match, e.g. "sim.getObj". Only matches up to the first dot are returned, if the apiWord does not contain any dot. To retrieve all functions and variables, leave apiWord empty. To retrieve only functions, add '+' as prefix. To retrieve only variables, add '-' as prefix.
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="funcsAndVars" type="string[]">
-                    <description>
-                        array containing all matching API functions and variables.
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="script" />
-                <category name="scriptRelated" />
-            </categories>
-            <see-also>
-                <function-ref name="detachedScript:getApiInfo" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="getApiInfo" func="sim.callMethod" lang="python,lua">
-            <description>
-                Returns the call tip (or info text) for an API function
-            </description>
-            <params>
-                <param name="apiWord" type="string">
-                    <description>
-                        API functions or variable to retrieve the info for, e.g. "sim.getObject". Return is for the latest version of a module by default. For a specific module version, specify its full name, e.g. "sim-1.getObject". Using the wildcard, e.g. "sim-*.getObject", the returned information is prepended by its related module name (e.g. "[sim-1]"), for all available modules
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="info" type="string">
-                    <description>
-                        information related to the API function or variable
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="script" />
-                <category name="scriptRelated" />
-            </categories>
-            <see-also>
-                <function-ref name="detachedScript:getApiFunc" />
-            </see-also>
-        </method>
-
-
-
-    <method name="setShapeTexture" func="sim.setShapeTexture" lang="python,lua">
-        <description>
-            Applies/removes a texture to/from a shape
-        </description>
-        <params>
-            <param name="shapeHandle" type="int">
-                <description>handle of the shape.</description>
-            </param>
-            <param name="textureId" type="int">
-                <description>
-                    ID of the texture or -1 to remove any existing texture. See also
-                    <a href="simGetTextureId.htm">sim.getTextureId</a>
-                    ,
-                    <a href="simGetShapeTextureId.htm">sim.getShapeTextureId</a>
-                    and
-                    <a href="simCreateTexture.htm">sim.createTexture</a>
-                </description>
-            </param>
-            <param name="mappingMode" type="int">
-                <description>
-                    <a href="../apiConstants.htm#textureMappingModes">texture mapping mode</a>
-                    .
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li>bit0: if set (1), then adjacent texture pixels are not interpolated.</li>
-                        <li>bit1: if set (2), then the texture is applied as a decal (its appearance won't be influenced by light conditions).</li>
-                        <li>bit2: if set (4), then the texture will be repeated along the U direction.</li>
-                        <li>bit3: if set (8), then the texture will be repeated along the V direction.</li>
-                    </ul>
-                </description>
-            </param>
-            <param name="uvScaling" type="float[2]">
-                <description>bit0: if set (1), then adjacent texture pixels are not interpolated.</description>
-            </param>
-            <param name="position" type="float[3]" default="nil">
-                <description>bit1: if set (2), then the texture is applied as a decal (its appearance won't be influenced by light conditions).</description>
-            </param>
-            <param name="orientation" type="float[3]" default="nil">
-                <description>bit2: if set (4), then the texture will be repeated along the U direction.</description>
-            </param>
-        </params>
-        <categories>
-        <category name="shape" /><category name="texture" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getTextureId" />
-            <function-ref name="sim.getShapeTextureId" />
-            <function-ref name="sim.createTexture" />
-            <function-ref name="simApplyTexture" />
-        </see-also>
-    </method>
-
-
-
-    <method name="writeTexture" func="sim.writeTexture" lang="python,lua">
-        <description>
-            Overwrites a specific texture (or a portion of it) with RGB data
-        </description>
-        <params>
-            <param name="textureId" type="int">
-                <description>
-                    ID of the texture. See also
-                    <a href="simGetTextureId.htm">sim.getTextureId</a>
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li>
-                            <strong>bit0</strong>
-                            reserved. Do not set
-                        </li>
-                        <li>
-                            <strong>bit1</strong>
-                            reserved. Do not set
-                        </li>
-                        <li>
-                            <strong>bit2</strong>
-                            set (4)=only an elliptical/circular portion of the texture data will be written
-                        </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="textureData" type="buffer">
-                <description>reserved. Do not set</description>
-            </param>
-            <param name="posX" type="int" default="0">
-                <description>reserved. Do not set</description>
-            </param>
-            <param name="posY" type="int" default="0">
-                <description>set (4)=only an elliptical/circular portion of the texture data will be written</description>
-            </param>
-            <param name="sizeX" type="int" default="0">
-                <description>RGB data to write onto the texture. Each pixel is represented with 3 bytes (0-255)</description>
-            </param>
-            <param name="sizeY" type="int" default="0">
-                <description>x/y position where to copy the RGB data. Set to 0/0 to overwrite the full texture</description>
-            </param>
-            <param name="interpolation" type="float" default="0">
-                <description>x/y size of the RGB data. Set to 0/0 to overwrite the full texture</description>
-            </param>
-        </params>
-        <categories>
-        <category name="texture" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getTextureId" />
-            <function-ref name="sim.readTexture" />
-            <function-ref name="sim.createTexture" />
-        </see-also>
-    </method>
 <object-class name="camera" superclass="sceneObject"><property name="cameraSize" type="float" label="Size">
       <description>Camera size</description>
     </property>
     <property name="clippingPlanes" type="floatarray" label="Clipping planes">
       <description>Near and far clipping planes</description>
     </property>
+    <property name="color" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
@@ -11687,10 +10960,10 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
     <property name="parentUid" type="long" />
     <property name="points" type="floatarray" />
     <property name="quaternions" type="floatarray" />
-    <property name="remove" type="method" readable="false" writable="false" />
     <property name="size" type="float" />
     <property name="type" type="string" />
   </object-class><object-class name="dummy" superclass="sceneObject"><property name="assemblyTag" type="string" label="Assembly tag" />
+    <property name="color" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
@@ -11737,7 +11010,8 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
     <property name="type" type="int" label="Type">
       <description>Dummy type</description>
     </property>
-  </object-class><object-class name="forceSensor" superclass="sceneObject"><property name="color.diffuse" type="color" label="Diffuse color" />
+  </object-class><object-class name="forceSensor" superclass="sceneObject"><property name="color" type="group" readable="false" writable="false" silent="true" constant="true" />
+    <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
     <property name="consecutiveViolationsToTrigger" type="int" label="Consecutive violations to trigger" />
@@ -11774,10 +11048,12 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
     <property name="torqueThreshold" type="float" label="Torque threshold" />
     <property name="torqueThresholdEnabled" type="bool" label="Torque threshold enabled" />
   </object-class><object-class name="light" superclass="sceneObject"><property name="attenuationFactors" type="floatarray" label="Attenuation factor" />
+    <property name="color" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
     <property name="enabled" type="bool" label="Enabled" />
+    <property name="lightColor" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="lightColor.diffuse" type="color" label="Diffuse color" />
     <property name="lightColor.emission" type="color" label="Emission color" />
     <property name="lightColor.specular" type="color" label="Specular color" />
@@ -11785,6 +11061,7 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
       <description>Light size</description>
     </property>
     <property name="lightType" type="int" deprecated="true" writable="false" constant="true" />
+    <property name="povray" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="povray.castShadows" type="bool" silent="true" label="POV-Ray: cast shadows">
       <description>Light casts shadows (with the POV-Ray renderer plugin)</description>
     </property>
@@ -11795,50 +11072,10 @@ keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
     <property name="type" type="int" writable="false" constant="true" label="Type">
       <description>Light type</description>
     </property>
-  </object-class><object-class name="mesh" superclass="object"><property name="color.diffuse" type="color" label="Diffuse color" />
-    <property name="color.emission" type="color" label="Emission color" />
-    <property name="color.specular" type="color" label="Specular color" />
-    <property name="color.transparency" type="float" label="Transparency" />
-    <property name="colorName" type="string" label="Color name" />
-    <property name="convex" type="bool" writable="false" label="Convex">
-      <description>Whether mesh is convex or not</description>
-    </property>
-    <property name="culling" type="bool" label="Backface culling" />
-    <property name="indices" type="intarray" writable="false" label="Indices">
-      <description>Indices (3 values per triangle)</description>
-    </property>
-    <property name="normals" type="matrix" writable="false" label="Normals">
-      <description>Normals (3*3 values per triangle)</description>
-    </property>
-    <property name="primitiveType" type="int" writable="false" label="Primitive type" />
-    <property name="rawTexture" type="buffer" deprecated="true" writable="false" />
-    <property name="shadingAngle" type="float" label="Shading angle" />
-    <property name="shape" type="handle" handle-type="shape" writable="false" constant="true" label="Shape handle" />
-    <property name="shapeUid" type="int" writable="false" constant="true" label="Shape UID">
-      <description>Unique identifier of parent shape</description>
-    </property>
-    <property name="showEdges" type="bool" label="Visible edges" />
-    <property name="texture" type="group" readable="false" writable="false" silent="true" constant="true" />
-    <property name="texture.applyMode" type="int" label="Texture apply mode" />
-    <property name="texture.coordinates" type="floatarray" writable="false" label="Texture coordinates" />
-    <property name="texture.id" type="int" writable="false" label="Texture ID" />
-    <property name="texture.interpolate" type="bool" label="Interpolate texture" />
-    <property name="texture.rawData" type="buffer" writable="false" label="Texture" />
-    <property name="texture.repeatU" type="bool" label="Texture repeat U" />
-    <property name="texture.repeatV" type="bool" label="Texture repeat V" />
-    <property name="texture.resolution" type="intarray2" writable="false" label="Texture resolution" />
-    <property name="textureApplyMode" type="int" deprecated="true" />
-    <property name="textureCoordinates" type="floatarray" deprecated="true" writable="false" />
-    <property name="textureID" type="int" deprecated="true" writable="false" />
-    <property name="textureInterpolate" type="bool" deprecated="true" />
-    <property name="textureRepeatU" type="bool" deprecated="true" />
-    <property name="textureRepeatV" type="bool" deprecated="true" />
-    <property name="textureResolution" type="intarray2" deprecated="true" writable="false" />
-    <property name="vertices" type="matrix" writable="false" label="Vertices" />
-    <property name="wireframe" type="bool" label="Wireframe" />
   </object-class><object-class name="script" superclass="sceneObject"><property name="addOnMenuPath" type="string" deprecated="true" writable="false" constant="true" />
     <property name="addOnPath" type="string" deprecated="true" writable="false" constant="true" />
     <property name="code" type="string" deprecated="true" silent="true" />
+    <property name="color" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
