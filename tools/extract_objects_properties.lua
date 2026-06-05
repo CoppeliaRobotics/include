@@ -75,6 +75,7 @@ function sysCall_init()
             pinfo.type = typemap[pinfo.type]
             pinfo.flags.large = nil
             pinfo.flags.value = nil
+            if pinfo.type == 'method' then goto continue end
             if pclass == 'app' and string.startswith(pname, 'namedParam.') then goto continue end
             if string.startswith(pname, 'customData.') then goto continue end
             if string.startswith(pname, 'signal.') then goto continue end
