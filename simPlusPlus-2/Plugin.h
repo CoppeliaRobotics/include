@@ -159,7 +159,6 @@ SIM_DLLEXPORT int simInit(SSimInit *initInfo) \
         sim::plugin = new className_; \
         sim::pluginInfo->lib = sim::plugin->loadSimLibrary(initInfo->coppeliaSimLibPath); \
         sim::plugin->setName(sim::pluginInfo->name); \
-        sim::plugin->setExtVersion(sim::pluginInfo->version); \
         sim::plugin->onInit(); \
         return sim::pluginInfo->version; \
     } \
