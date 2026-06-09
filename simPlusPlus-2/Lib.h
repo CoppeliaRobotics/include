@@ -947,6 +947,180 @@ namespace sim
 
     int getStackValue(handle_t stackHandle, jsoncons::json *value);
 #endif
+
+    inline void pushValueOntoStack(sim::handle_t stack, bool value)
+    {
+        sim::pushBoolOntoStack(stack, value);
+    }
+
+    inline void pushValueOntoStack(sim::handle_t stack, int value)
+    {
+        sim::pushInt32OntoStack(stack, value);
+    }
+
+    inline void pushValueOntoStack(sim::handle_t stack, long long value)
+    {
+        sim::pushInt64OntoStack(stack, value);
+    }
+
+    inline void pushValueOntoStack(sim::handle_t stack, float value)
+    {
+        sim::pushFloatOntoStack(stack, value);
+    }
+
+    inline void pushValueOntoStack(sim::handle_t stack, double value)
+    {
+        sim::pushDoubleOntoStack(stack, value);
+    }
+
+    inline void pushValueOntoStack(sim::handle_t stack, const char* value)
+    {
+        sim::pushTextOntoStack(stack, value);
+    }
+
+    inline void pushValueOntoStack(sim::handle_t stack, const std::string& value)
+    {
+        sim::pushTextOntoStack(stack, value);
+    }
+
+    inline void pushValueOntoStack(sim::handle_t stack, const std::vector<uint8_t>& value)
+    {
+        sim::pushBufferOntoStack(stack, value);
+    }
+
+    inline void pushValueOntoStack(sim::handle_t stack, std::nullptr_t)
+    {
+        sim::pushNullOntoStack(stack);
+    }
+
+    inline void pushValueOntoStack(sim::handle_t stack, const std::variant<std::string, int>& var)
+    {
+        if(std::holds_alternative<std::string>(var))
+        {
+            sim::pushTextOntoStack(stack, std::get<std::string>(var));
+        }
+        else if(std::holds_alternative<int>(var))
+        {
+            sim::pushInt32OntoStack(stack, std::get<int>(var));
+        }
+        else
+        {
+            throw std::runtime_error("pushValueOntoStack: unsupported variant type");
+        }
+    }
+
+    inline void pushValueOntoStack(sim::handle_t stack, const std::map<std::string, std::variant<std::string, int>>& table)
+    {
+        sim::pushTableOntoStack(stack);
+        for(const auto& [key, value] : table)
+        {
+            sim::pushStringOntoStack(stack, key);          // key
+            pushValueOntoStack(stack, value);              // value
+            sim::insertDataIntoStackTable(stack);          // commit entry
+        }
+    }
+
+    template<typename T> T getStackValue(sim::handle_t stack);
+
+    template<> inline bool getStackValue<bool>(sim::handle_t stack)
+    {
+        bool val;
+        if(sim::getStackBoolValue(stack, &val) != 1)
+            throw std::runtime_error("getStackValue: expected bool");
+        return val;
+    }
+
+    template<> inline int getStackValue<int>(sim::handle_t stack)
+    {
+        int val;
+        if(sim::getStackInt32Value(stack, &val) != 1)
+            throw std::runtime_error("getStackValue: expected int32");
+        return val;
+    }
+
+    template<> inline long long getStackValue<long long>(sim::handle_t stack)
+    {
+        long long val;
+        if(sim::getStackInt64Value(stack, &val) != 1)
+            throw std::runtime_error("getStackValue: expected int64");
+        return val;
+    }
+
+    template<> inline float getStackValue<float>(sim::handle_t stack)
+    {
+        float val;
+        if(sim::getStackFloatValue(stack, &val) != 1)
+            throw std::runtime_error("getStackValue: expected float");
+        return val;
+    }
+
+    template<> inline double getStackValue<double>(sim::handle_t stack)
+    {
+        double val;
+        if(sim::getStackDoubleValue(stack, &val) != 1)
+            throw std::runtime_error("getStackValue: expected double");
+        return val;
+    }
+
+    template<> inline std::string getStackValue<std::string>(sim::handle_t stack)
+    {
+        std::string val;
+        if(sim::getStackStringValue(stack, &val) != 1)
+            throw std::runtime_error("getStackValue: expected string");
+        return val;
+    }
+
+    template<> inline std::vector<uint8_t> getStackValue<std::vector<uint8_t>>(sim::handle_t stack)
+    {
+        std::string str;
+        if(sim::getStackStringValue(stack, &str) != 1)
+            throw std::runtime_error("getStackValue: expected buffer");
+        return std::vector<uint8_t>(str.begin(), str.end());
+    }
+
+    template<typename T>
+    T readNextStackValue(sim::handle_t stack)
+    {
+        // move the bottom item to top, read it, pop it, and return the value
+        sim::moveStackItemToTop(stack, 0); // move bottom (index 0) item to the top
+        T value = getStackValue<T>(stack);
+        sim::popStackItem(stack, 1);
+        return value;
+    }
+
+    struct StackGuard
+    {
+        sim::handle_t handle;
+        explicit StackGuard(sim::handle_t h) : handle(h) {}
+        ~StackGuard() { if(handle) sim::releaseStack(handle); }
+        StackGuard(const StackGuard&) = delete;
+        StackGuard& operator=(const StackGuard&) = delete;
+    };
+
+    template<typename... OutputTypes, typename... InputArgs>
+    std::tuple<OutputTypes...> callMethod(
+        long long target,
+        const char* name,
+        InputArgs&&... inputs
+    )
+    {
+        StackGuard inStack(sim::createStack());
+        StackGuard outStack(sim::createStack());
+
+        (pushValueOntoStack(inStack.handle, std::forward<InputArgs>(inputs)), ...);
+
+        handle_t detachedScript = -1;
+        int result = simCallMethod(target, name, inStack.handle, outStack.handle, detachedScript);
+        if(result == -1)
+            throw std::runtime_error("simCallMethod failed");
+
+        int outCnt = sim::getStackSize(outStack.handle);
+        if(outCnt != static_cast<int>(sizeof...(OutputTypes)))
+            throw std::runtime_error("Number of outputs on stack does not match requested OutputTypes");
+
+        return std::tuple<OutputTypes...>{ readNextStackValue<OutputTypes>(outStack.handle)... };
+    }
+
 } // namespace sim
 
 #endif // SIMPLUSPLUS_LIB_H_INCLUDED
