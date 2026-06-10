@@ -46,8 +46,6 @@ public:
         if(!registerScriptStuff())
             throw std::runtime_error("failed to register script stuff");
 
-        setExtVersion("simStubsGen tests");
-
 #if 0
         auto v = sim::getStringProperty(sim_handle_app, "namedParam.simStubsGenTests.verbosity");
         if(v)

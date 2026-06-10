@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <?xml-stylesheet type="text/xsl" href="callbacks.xsl"?>
 
-<plugin name="StubsGenTests" author="federico.ferri.it@gmail.com">
+<plugin name="StubsGenTests" info="simStubsGen tests" author="federico.ferri.it@gmail.com">
     <description>Test suite for simStubsGen</description>
 
     <command name="basic">
