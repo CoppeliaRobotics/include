@@ -6,5 +6,6 @@
 
 #define PLUGIN_NAME "`plugin.name`"
 #define PLUGIN_VERSION `plugin.version`
+#define PLUGIN_INFO "`plugin.info`"
 
 #endif // `plugin.name.upper()`__PLUGIN_H__INCLUDED
