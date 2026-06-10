@@ -1011,19 +1011,19 @@ namespace sim
         {
             sim::pushBoolOntoStack(stack, std::get<bool>(var));
         }
-        if(std::holds_alternative<int>(var))
+        else if(std::holds_alternative<int>(var))
         {
             sim::pushInt32OntoStack(stack, std::get<int>(var));
         }
-        if(std::holds_alternative<long_t>(var))
+        else if(std::holds_alternative<long_t>(var))
         {
             sim::pushInt64OntoStack(stack, std::get<long_t>(var));
         }
-        if(std::holds_alternative<double>(var))
+        else if(std::holds_alternative<double>(var))
         {
             sim::pushDoubleOntoStack(stack, std::get<double>(var));
         }
-        if(std::holds_alternative<std::string>(var))
+        else if(std::holds_alternative<std::string>(var))
         {
             sim::pushTextOntoStack(stack, std::get<std::string>(var));
         }
