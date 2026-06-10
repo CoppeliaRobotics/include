@@ -159,7 +159,7 @@ SIM_DLLEXPORT int simInit(SSimInit *initInfo) \
         sim::plugin = new className_; \
         sim::pluginInfo->lib = sim::plugin->loadSimLibrary(initInfo->coppeliaSimLibPath); \
         sim::plugin->setName(sim::pluginInfo->name); \
-        sim::callMethod(sim_handle_app, "setPluginInfo", PLUGIN_NAME, std::map<std::string, std::variant<std::string, int>>{ \
+        sim::callMethod(sim_handle_app, "setPluginInfo", PLUGIN_NAME, std::map<std::string, sim::variant_t>{ \
             {"version", sim::pluginInfo->version}, \
             {"versionStr", PLUGIN_INFO}, \
             {"buildDate", BUILD_DATE}, \
