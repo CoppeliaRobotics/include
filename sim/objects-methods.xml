@@ -677,6 +677,32 @@
 
     
 
+    <object-class name="TextEditor" superclass="customObject">
+        <method name="remove" func="sim.callMethod" lang="python,lua">
+            <description>
+                Removes the text editor
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>noError (bool, defaults to false): errors are suppressed</li>
+                            <li>delayed (bool, defaults to false): removal is delayed</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="app:createObject" />
+            </see-also>
+        </method>
+    </object-class> <!-- TextEditor -->
+
+    
+
     <object-class name="object">
         <method name="isValid" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2549,681 +2575,6 @@
 
         
 
-        <method name="unpackDoubleArray" func="sim.callMethod" lang="python,lua">
-            <description>
-                Unpacks a buffer into an array of doubles
-            </description>
-            <params>
-                <param name="data" type="buffer">
-                    <description>
-                        packed data
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        optional map:
-                        <ul>
-                            <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
-                            <li> count (int, defaults to 0): amount of doubles to unpack (0 = all)</li>
-                            <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="doubles" type="float[]">
-                    <description>
-                        double array
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="packing" />
-            </categories>
-            <see-also>
-                <function-ref name="app:packDoubleArray" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="unpackFloatArray" func="sim.callMethod" lang="python,lua">
-            <description>
-                Unpacks a buffer into an array of floats
-            </description>
-            <params>
-                <param name="data" type="buffer">
-                    <description>
-                        packed data
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        optional map:
-                        <ul>
-                            <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
-                            <li> count (int, defaults to 0): amount of floats to unpack (0 = all)</li>
-                            <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="floats" type="float[]">
-                    <description>
-                        float array
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="packing" />
-            </categories>
-            <see-also>
-                <function-ref name="app:packFloatArray" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="unpackInt32Array" func="sim.callMethod" lang="python,lua">
-            <description>
-                Unpacks a buffer into an array of int32 values
-            </description>
-            <params>
-                <param name="data" type="buffer">
-                    <description>
-                        packed data
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        optional map:
-                        <ul>
-                            <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
-                            <li> count (int, defaults to 0): amount of int32 values to unpack (0 = all)</li>
-                            <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="ints" type="int[]">
-                    <description>
-                        int array
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="packing" />
-            </categories>
-            <see-also>
-                <function-ref name="app:packInt32Array" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="unpackInt64Array" func="sim.callMethod" lang="python,lua">
-            <description>
-                Unpacks a buffer into an array of int64 values
-            </description>
-            <params>
-                <param name="data" type="buffer">
-                    <description>
-                        packed data
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        optional map:
-                        <ul>
-                            <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
-                            <li> count (int, defaults to 0): amount of int64 values to unpack (0 = all)</li>
-                            <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="ints" type="int[]">
-                    <description>
-                        int array
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="packing" />
-            </categories>
-            <see-also>
-                <function-ref name="app:packInt64Array" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="unpackUInt32Array" func="sim.callMethod" lang="python,lua">
-            <description>
-                Unpacks a buffer into an array of unsigned int32 values
-            </description>
-            <params>
-                <param name="data" type="buffer">
-                    <description>
-                        packed data
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        optional map:
-                        <ul>
-                            <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
-                            <li> count (int, defaults to 0): amount of unsigned int32 values to unpack (0 = all)</li>
-                            <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="ints" type="int[]">
-                    <description>
-                        int array
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="packing" />
-            </categories>
-            <see-also>
-                <function-ref name="app:packUInt32Array" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="unpackInt16Array" func="sim.callMethod" lang="python,lua">
-            <description>
-                Unpacks a buffer into an array of int16 values
-            </description>
-            <params>
-                <param name="data" type="buffer">
-                    <description>
-                        packed data
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        optional map:
-                        <ul>
-                            <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
-                            <li> count (int, defaults to 0): amount of int16 values to unpack (0 = all)</li>
-                            <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="ints" type="int[]">
-                    <description>
-                        int array
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="packing" />
-            </categories>
-            <see-also>
-                <function-ref name="app:packInt16Array" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="unpackUInt16Array" func="sim.callMethod" lang="python,lua">
-            <description>
-                Unpacks a buffer into an array of unsigned int16 values
-            </description>
-            <params>
-                <param name="data" type="buffer">
-                    <description>
-                        packed data
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        optional map:
-                        <ul>
-                            <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
-                            <li> count (int, defaults to 0): amount of unsigned int16 values to unpack (0 = all)</li>
-                            <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="ints" type="int[]">
-                    <description>
-                        int array
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="packing" />
-            </categories>
-            <see-also>
-                <function-ref name="app:packUInt16Array" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="unpackUInt8Array" func="sim.callMethod" lang="python,lua">
-            <description>
-                Unpacks a buffer into an array of unsigned int8 values
-            </description>
-            <params>
-                <param name="data" type="buffer">
-                    <description>
-                        packed data
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        optional map:
-                        <ul>
-                            <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
-                            <li> count (int, defaults to 0): amount of unsigned int8 values to unpack (0 = all)</li>
-                            <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="ints" type="int[]">
-                    <description>
-                        int array
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="packing" />
-            </categories>
-            <see-also>
-                <function-ref name="app:packUInt8Array" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="unpackInt8Array" func="sim.callMethod" lang="python,lua">
-            <description>
-                Unpacks a buffer into an array of int8 values
-            </description>
-            <params>
-                <param name="data" type="buffer">
-                    <description>
-                        packed data
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        optional map:
-                        <ul>
-                            <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
-                            <li> count (int, defaults to 0): amount of int8 values to unpack (0 = all)</li>
-                            <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="ints" type="int[]">
-                    <description>
-                        int array
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="packing" />
-            </categories>
-            <see-also>
-                <function-ref name="app:packInt8Array" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="packDoubleArray" func="sim.callMethod" lang="python,lua">
-            <description>
-                Packs doubles as little-endian
-            </description>
-            <params>
-                <param name="doubles" type="float[]">
-                    <description>
-                        array of doubles. Non-numbers are packed as zeros
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        optional map:
-                        <ul>
-                            <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
-                            <li> count (int, defaults to 0): amount of doubles to pack (0 = all)</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="data" type="buffer">
-                    <description>
-                        packed data
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="packing" />
-            </categories>
-            <see-also>
-                <function-ref name="app:unpackDoubleArray" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="packFloatArray" func="sim.callMethod" lang="python,lua">
-            <description>
-                Packs floats as little-endian
-            </description>
-            <params>
-                <param name="floats" type="float[]">
-                    <description>
-                        array of floats. Non-numbers are packed as zeros
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        optional map:
-                        <ul>
-                            <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
-                            <li> count (int, defaults to 0): amount of floats to pack (0 = all)</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="data" type="buffer">
-                    <description>
-                        packed data
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="packing" />
-            </categories>
-            <see-also>
-                <function-ref name="app:unpackFloatArray" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="packInt32Array" func="sim.callMethod" lang="python,lua">
-            <description>
-                Packs int32 values as little-endian
-            </description>
-            <params>
-                <param name="ints" type="int[]">
-                    <description>
-                        array of ints. Non-numbers are packed as zeros
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        optional map:
-                        <ul>
-                            <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
-                            <li> count (int, defaults to 0): amount of ints to pack (0 = all)</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="data" type="buffer">
-                    <description>
-                        packed data
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="packing" />
-            </categories>
-            <see-also>
-                <function-ref name="app:unpackInt32Array" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="packInt64Array" func="sim.callMethod" lang="python,lua">
-            <description>
-                Packs int64 values as little-endian
-            </description>
-            <params>
-                <param name="ints" type="int[]">
-                    <description>
-                        array of ints. Non-numbers are packed as zeros
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        optional map:
-                        <ul>
-                            <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
-                            <li> count (int, defaults to 0): amount of ints to pack (0 = all)</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="data" type="buffer">
-                    <description>
-                        packed data
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="packing" />
-            </categories>
-            <see-also>
-                <function-ref name="app:unpackInt64Array" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="packUInt32Array" func="sim.callMethod" lang="python,lua">
-            <description>
-                Packs unsigned int32 values as little-endian
-            </description>
-            <params>
-                <param name="ints" type="int[]">
-                    <description>
-                        array of ints. Non-numbers are packed as zeros
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        optional map:
-                        <ul>
-                            <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
-                            <li> count (int, defaults to 0): amount of ints to pack (0 = all)</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="data" type="buffer">
-                    <description>
-                        packed data
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="packing" />
-            </categories>
-            <see-also>
-                <function-ref name="app:unpackUInt32Array" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="packUInt16Array" func="sim.callMethod" lang="python,lua">
-            <description>
-                Packs unsigned int16 values as little-endian
-            </description>
-            <params>
-                <param name="ints" type="int[]">
-                    <description>
-                        array of ints. Non-numbers are packed as zeros
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        optional map:
-                        <ul>
-                            <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
-                            <li> count (int, defaults to 0): amount of ints to pack (0 = all)</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="data" type="buffer">
-                    <description>
-                        packed data
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="packing" />
-            </categories>
-            <see-also>
-                <function-ref name="app:unpackUInt16Array" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="packInt16Array" func="sim.callMethod" lang="python,lua">
-            <description>
-                Packs int16 values as little-endian
-            </description>
-            <params>
-                <param name="ints" type="int[]">
-                    <description>
-                        array of ints. Non-numbers are packed as zeros
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        optional map:
-                        <ul>
-                            <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
-                            <li> count (int, defaults to 0): amount of ints to pack (0 = all)</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="data" type="buffer">
-                    <description>
-                        packed data
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="packing" />
-            </categories>
-            <see-also>
-                <function-ref name="app:unpackInt16Array" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="packUInt8Array" func="sim.callMethod" lang="python,lua">
-            <description>
-                Packs unsigned int8 values as little-endian
-            </description>
-            <params>
-                <param name="ints" type="int[]">
-                    <description>
-                        array of ints. Non-numbers are packed as zeros
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        optional map:
-                        <ul>
-                            <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
-                            <li> count (int, defaults to 0): amount of ints to pack (0 = all)</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="data" type="buffer">
-                    <description>
-                        packed data
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="packing" />
-            </categories>
-            <see-also>
-                <function-ref name="app:unpackUInt8Array" />
-            </see-also>
-        </method>
-
-        
-
-        <method name="packInt8Array" func="sim.callMethod" lang="python,lua">
-            <description>
-                Packs int8 values as little-endian
-            </description>
-            <params>
-                <param name="ints" type="int[]">
-                    <description>
-                        array of ints. Non-numbers are packed as zeros
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        optional map:
-                        <ul>
-                            <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
-                            <li> count (int, defaults to 0): amount of ints to pack (0 = all)</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="data" type="buffer">
-                    <description>
-                        packed data
-                    </description>
-                </param>
-            </returns>
-            <categories>
-                <category name="packing" />
-            </categories>
-            <see-also>
-                <function-ref name="app:unpackInt8Array" />
-            </see-also>
-        </method>
-
-        
-
         <method name="pack" func="sim.callMethod" lang="python,lua">
             <description>
                 Packs data via CoppeliaSim format. Functions and other non-serializable items are packed as string or None/nil values
@@ -3280,6 +2631,83 @@
         </method>
 
         
+
+        <method name="packArray" func="sim.callMethod" lang="python,lua">
+            <description>
+                Packs an array of numbers as little-endian
+            </description>
+            <params>
+                <param name="numbers" type="float[]">
+                    <description>
+                        array of numbers. Non-numbers are packed as zeros
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li> type (string, defaults to 'double'): packing type. Allowed values are 'double', 'float', 'int64', 'int32', 'uint32', 'int16', 'uint16', 'int8' and 'uint8'</li>
+                            <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
+                            <li> count (int, defaults to 0): amount of doubles to pack (0 = all)</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="data" type="buffer">
+                    <description>
+                        packed data
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="packing" />
+            </categories>
+            <see-also>
+                <function-ref name="app:unpackArray" />
+            </see-also>
+        </method>
+
+
+
+        <method name="unpackArray" func="sim.callMethod" lang="python,lua">
+            <description>
+                Unpacks a buffer into an array of numbers
+            </description>
+            <params>
+                <param name="data" type="buffer">
+                    <description>
+                        packed data
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li> type (string, defaults to 'double'): packing type. Allowed values are 'double', 'float', 'int64', 'int32', 'uint32', 'int16', 'uint16', 'int8' and 'uint8'</li>
+                            <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
+                            <li> count (int, defaults to 0): amount of doubles to unpack (0 = all)</li>
+                            <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="numbers" type="float[]">
+                    <description>
+                        number array
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="packing" />
+            </categories>
+            <see-also>
+                <function-ref name="app:packArray" />
+            </see-also>
+        </method>
+
+
 
         <method name="serialize" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3477,6 +2905,7 @@
                     <li><a href="#collection">collection</a></li>
                     <li><a href="#detachedScript">detached script</a></li>
                     <li><a href="#console">console</a></li>
+                    <li><a href="#textEditor">textEditor</a></li>
                     <li><a href="#dummy">dummy</a></li>
                     <li><a href="#joint">joint</a></li>
                     <li><a href="#camera">camera</a></li>
@@ -3527,7 +2956,24 @@
                                     <li>fontSize (int): the size of the font</li>
                                     <li>defaultColor (color): text default color</li>
                                     <li>background (color): background color</li>
-                                    <li>style (string): style information, e.g. "font-family: 'Courier New', 'Consolas', 'Liberation Mono', 'DejaVu Sans Mono'; font-size: 10; background-color: #000000; color: #ffffff;"</li>
+                                    <li>sceneUid (int): the scene unique identifier (sim.scene.uid) to which this console belongs to. Set to -1 for visibility across the whole application</li>
+                                </ul>
+                            </li>
+                            <li id="textEditor"><a href="../dataVisualizationAndOutput.htm#textEditor">textEditor</a> fields:
+                                <ul>
+                                    <li>objectType (string): "textEditor"</li>
+                                    <li>title (string): editor title</li>
+                                    <li>size.width (int): editor width</li>
+                                    <li>size.height (int): editor height</li>
+                                    <li>position.x (int): editor position x</li>
+                                    <li>position.y (int): editor position y</li>
+                                    <li>closeable (bool): whether there is a close button or not</li>
+                                    <li>resizable (bool): whether the editor can be resized</li>
+                                    <li>hiddenInSimulation (bool): whether the editor is hidden during simulation</li>
+                                    <li>fontSize (int): the size of the font</li>
+                                    <li>defaultColor (color): text default color</li>
+                                    <li>background (color): background color</li>
+                                    <li>sceneUid (int): the scene unique identifier (sim.scene.uid) to which this editor belongs to. Set to -1 for visibility across the whole application</li>
                                 </ul>
                             </li>
                             <li id="dummy"><a href="../dummies.htm">dummy</a> fields:
@@ -3827,6 +3273,7 @@
                 <category name="collection" />
                 <category name="detachedScript" />
                 <category name="Console" />
+                <category name="TextEditor" />
                 <category name="dummy" />
                 <category name="marker" />
                 <category name="customSceneObject" />
@@ -3848,6 +3295,7 @@
                 <function-ref name="collection:remove" />
                 <function-ref name="detachedScript:remove" />
                 <function-ref name="Console:remove" />
+                <function-ref name="TextEditor:remove" />
                 <function-ref name="app:removeObjects" />
             </see-also>
         </method>
@@ -4034,12 +3482,14 @@
                 <category name="collection" />
                 <category name="detachedScript" />
                 <category name="Console" />
+                <category name="TextEditor" />
             </categories>
             <see-also>
                 <function-ref name="sceneObject:remove" />
                 <function-ref name="collection:remove" />
                 <function-ref name="detachedScript:remove" />
                 <function-ref name="Console:remove" />
+                <function-ref name="TextEditor:remove" />
                 <function-ref name="sceneObject:removeModel" />
                 <function-ref name="app:createObject" />
             </see-also>
@@ -4047,6 +3497,20 @@
 
 
 
+        <method name="handleMessagePump" func="sim.callMethod" lang="python,lua">
+            <description>
+                Handles the message pump explicitly. Rarely needed
+            </description>
+            <categories>
+                <category name="thread" />
+            </categories>
+            <see-also>
+                <link href="../apiFunctions.htm#threads" label=" thread related functions " />
+            </see-also>
+        </method>
+        
+        
+        
         <method name="handleSandboxScript" func="sim.callMethod" lang="lua">
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a> in the <a href="../sandboxScript.htm"> sandbox </a>.
@@ -4140,6 +3604,7 @@
                 <function-ref name="app:saveImage" />
                 <function-ref name="app:loadImageFromBuffer" />
                 <function-ref name="app:transformImage" />
+                <function-ref name="app:transformBuffer" />
                 <function-ref name="visionSensor:setImage" />
             </see-also>
         </method>
@@ -4183,6 +3648,7 @@
                 <function-ref name="app:loadImage" />
                 <function-ref name="app:getScaledImage" />
                 <function-ref name="app:transformImage" />
+                <function-ref name="app:transformBuffer" />
                 <function-ref name="visionSensor:setImage" />
             </see-also>
         </method>
@@ -4264,6 +3730,7 @@
                 <function-ref name="app:loadImage" />
                 <function-ref name="app:saveImageToBuffer" />
                 <function-ref name="app:transformImage" />
+                <function-ref name="app:transformBuffer" />
                 <function-ref name="visionSensor:getImage" />
             </see-also>
         </method>
@@ -4322,10 +3789,61 @@
             </returns>
             <categories>
                 <category name="texture" />
+                <category name="packing" />
             </categories>
             <see-also>
+                <function-ref name="app:transformBuffer" />
                 <function-ref name="app:loadImage" />
                 <function-ref name="visionSensor:setImage" />
+            </see-also>
+        </method>
+        
+        
+        
+        <method name="transformBuffer" func="sim.callMethod" lang="python,lua">
+            <description>
+                Modifies a buffer
+            </description>
+            <params>
+                <param name="inBuffer" type="buffer">
+                    <description>
+                        input buffer
+                    </description>
+                </param>
+                <param name="inFormat" type="int">
+                    <description>
+                        input data format. Allowed is "uint8", "int8", "uint16", "int16", "uint32", "int32", "uint64", "int64", "float", "double", "rgb", "bgr", "rgba", "argb" and "base64"
+                    </description>
+                </param>
+                <param name="outFormat" type="int">
+                    <description>
+                        desired output data format. Allowed is "uint8", "int8", "uint16", "int16", "uint32", "int32", "uint64", "int64", "float", "double", "rgb", "bgr", "rgba", "argb" and "base64"
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>scale (float, defaults to 1.0): scaling factor</li>
+                            <li>offset (float, defaults to 0.0): offset</li>
+                            <li>clamp (bool, defaults to false): clamping</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="outBuffer" type="buffer">
+                    <description>
+                        the modified buffer
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="packing" />
+                <category name="texture" />
+            </categories>
+            <see-also>
+                <link href="../apiFunctions.htm#packing" label=" data packing/unpacking functions " />
             </see-also>
         </method>
     </object-class> <!-- app -->
@@ -4333,6 +3851,48 @@
 
 
     <object-class name="detachedScript" superclass="object">
+        <method name="setModuleEntry" func="sim.callMethod" lang="python,lua">
+            <description>
+                Creates, modifies or destroys module menu entries. Those are user selectable items located in [Menu bar &gt; Modules].
+                When selected, the corresponding script will have its 
+                <a href="../callbackFunctions.htm"> sysCall_moduleEntry </a>
+                callback function triggered, or 
+                <a href="../apiConstants.htm#simulatorMessages"> sim_message_eventcallback_moduleentry </a>
+                triggered
+            </description>
+            <params>
+                <param name="handle" type="int">
+                    <description>
+                        handle of a module menu entry, or -1 to create one
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>label (string, defaults to ""): label of the module entry. If handle is -1, then a path can be specified, in order to build sub-menus, e.g. "Menu\nSubmenu1\nSubmenu2\nLabel"</li>
+                            <li>enabled (bool, defaults to true): the item is enabled</li>
+                            <li>checked (bool, defaults to false): the item is checked</li>
+                            <li>checkable (bool, defaults to false): the item is checkable</li>
+                            <li>remove (bool, defaults to false): the item will be removed</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="handle" type="int">
+                    <description>
+                        the handle of the module menu entry
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="other" />
+            </categories>
+        </method>
+        
+        
+        
         <method name="broadcast" func="sim.callMethod" lang="python,lua">
             <description>
                 Broadcasts a message to all scripts, except for the emitting script. Messages are received synchronously via the sysCall_msg callback function
@@ -4822,6 +4382,41 @@
                 <category name="texture" />
             </categories>
             <see-also>
+                <function-ref name="mesh.texture:getData" />
+                <property-ref name="mesh.texture.data" />
+            </see-also>
+        </method>
+        
+        
+        
+        <method name="texture.getData" func="sim.callMethod" lang="python,lua">
+            <description>
+                Reads a portion of the texture
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>position (int[2], defaults to [0, 0]): position where to read the RGB data. Set to [0, 0] to read the full texture</li>
+                            <li>size (int[2], defaults to [0, 0]): size of the RGB data. Set to [0, 0] to read the full texture</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="data" type="buffer">
+                    <description>
+                        RGB data
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="shape" />
+                <category name="texture" />
+            </categories>
+            <see-also>
+                <function-ref name="mesh.texture:setData" />
                 <property-ref name="mesh.texture.data" />
             </see-also>
         </method>
@@ -4845,7 +4440,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>component (int, defaults to sim.materialcomponent_diffuse): The target <a href="#materialComponent">material component</a></li>
+                            <li>component (string, defaults to 'diffuse'): possible values are 'diffuse', 'specular' and 'emission'</li>
                         </ul>
                     </description>
                 </param>
@@ -5486,12 +5081,14 @@
                 <category name="collection" />
                 <category name="detachedScript" />
                 <category name="Console" />
+                <category name="TextEditor" />
             </categories>
             <see-also>
                 <function-ref name="sceneObject:remove" />
                 <function-ref name="collection:remove" />
                 <function-ref name="detachedScript:remove" />
                 <function-ref name="Console:remove" />
+                <function-ref name="TextEditor:remove" />
                 <function-ref name="sceneObject:removeModel" />
                 <function-ref name="scene:createObject" />
             </see-also>
@@ -5617,6 +5214,7 @@
                     <li><a href="#collection">collection</a></li>
                     <li><a href="#detachedScript">detached script</a></li>
                     <li><a href="#console">console</a></li>
+                    <li><a href="#textEditor">textEditor</a></li>
                     <li><a href="#dummy">dummy</a></li>
                     <li><a href="#joint">joint</a></li>
                     <li><a href="#camera">camera</a></li>
@@ -5667,7 +5265,24 @@
                                     <li>fontSize (int): the size of the font</li>
                                     <li>defaultColor (color): text default color</li>
                                     <li>background (color): background color</li>
-                                    <li>style (string): style information, e.g. "font-family: 'Courier New', 'Consolas', 'Liberation Mono', 'DejaVu Sans Mono'; font-size: 10; background-color: #000000; color: #ffffff;"</li>
+                                    <li>sceneUid (int): the scene unique identifier (sim.scene.uid) to which this console belongs to. Set to -1 for visibility across the whole application</li>
+                                </ul>
+                            </li>
+                            <li id="textEditor"><a href="../dataVisualizationAndOutput.htm#textEditor">textEditor</a> fields:
+                                <ul>
+                                    <li>objectType (string): "textEditor"</li>
+                                    <li>title (string): editor title</li>
+                                    <li>size.width (int): editor width</li>
+                                    <li>size.height (int): editor height</li>
+                                    <li>position.x (int): editor position x</li>
+                                    <li>position.y (int): editor position y</li>
+                                    <li>closeable (bool): whether there is a close button or not</li>
+                                    <li>resizable (bool): whether the editor can be resized</li>
+                                    <li>hiddenInSimulation (bool): whether the editor is hidden during simulation</li>
+                                    <li>fontSize (int): the size of the font</li>
+                                    <li>defaultColor (color): text default color</li>
+                                    <li>background (color): background color</li>
+                                    <li>sceneUid (int): the scene unique identifier (sim.scene.uid) to which this editor belongs to. Set to -1 for visibility across the whole application</li>
                                 </ul>
                             </li>
                             <li id="dummy"><a href="../dummies.htm">dummy</a> fields:
@@ -5967,6 +5582,7 @@
                 <category name="collection" />
                 <category name="detachedScript" />
                 <category name="Console" />
+                <category name="TextEditor" />
                 <category name="dummy" />
                 <category name="marker" />
                 <category name="customSceneObject" />
@@ -5988,6 +5604,7 @@
                 <function-ref name="collection:remove" />
                 <function-ref name="detachedScript:remove" />
                 <function-ref name="Console:remove" />
+                <function-ref name="TextEditor:remove" />
                 <function-ref name="app:removeObjects" />
             </see-also>
         </method>
@@ -6198,7 +5815,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>component (int, defaults to sim.materialcomponent_diffuse): The target <a href="#materialComponent">material component</a></li>
+                            <li>component (string, defaults to 'diffuse'): possible values are 'diffuse', 'specular' and 'emission'</li>
                         </ul>
                     </description>
                 </param>
@@ -6847,7 +6464,7 @@
                 apply to static shapes)
             </description>
             <params>
-                <param name="parent" type="handle">
+                <param name="parent" type="handle" default='nil'>
                     <description>
                         scene object that should become parent, or nil/None if the object should become an orphan. In an assembly operation, the assembly dummy on
                         the parent should be specified instead
@@ -6857,7 +6474,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>mode (int, defaults to sim.parentingmode_keepworldpose): describes the <a href="#parentingMode">parenting mode</a></li>
+                            <li>mode (string, defaults to "keepAbsolutePose"). Possible value are "keepRelativePose", "keepAbsolutePose" and "assembly"</li>
                         </ul>
                     </description>
                 </param>
@@ -8490,83 +8107,6 @@
     
     
 
-    <method name="createTexture" func="sim.createTexture" lang="python,lua">
-        <description>
-            Creates a planar shape, that will be textured with a new, or imported texture
-        </description>
-        <params>
-            <param name="fileName" type="string">
-                <description>
-                    filename of the texure to import, or an empty string if you wish to create a new texture.
-                </description>
-            </param>
-            <param name="options" type="int" default="0">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li> <strong> bit0 </strong> set (1): do not interpolate adjacent color patches. </li>
-                        <li> <strong> bit1 </strong> set (2): apply the texture in decal-mode. </li>
-                        <li> <strong> bit2 </strong> set (4): repeat the texture along the U direction. </li>
-                        <li> <strong> bit3 </strong> set (8): repeat the texture along the V direction. </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="planeSizes" type="float[2]" default="{0.1, 0.1}">
-                <description>
-                    set (1): do not interpolate adjacent color patches.
-                </description>
-            </param>
-            <param name="scalingUV" type="float[2]" default="nil">
-                <description>
-                    set (2): apply the texture in decal-mode.
-                </description>
-            </param>
-            <param name="xy_g" type="float[3]" default="{0.0, 0.0, 0.0}">
-                <description>
-                    set (4): repeat the texture along the U direction.
-                </description>
-            </param>
-            <param name="fixedResolution" type="int" default="0">
-                <description>
-                    set (8): repeat the texture along the V direction.
-                </description>
-            </param>
-            <param name="resolution" type="int[2]" default="{512, 512}">
-                <description>
-                    array of 2 values: the dimensions of the planar shape that will be generated. Can be None/nil for default dimensions.
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="handle" type="handle">
-                <description>
-                    handle of the created planar shape
-                </description>
-            </param>
-            <param name="id" type="int">
-                <description>
-                    new texture ID. If a same texture is already present, the old texture ID will be returned
-                </description>
-            </param>
-            <param name="res" type="int[2]">
-                <description>
-                    the effective texture resolution
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="file" /><category name="creation" /><category name="texture" /><category name="importExport" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getTextureId" />
-            <function-ref name="sim.readTexture" />
-            <function-ref name="sim.writeTexture" />
-            <function-ref name="sim.setShapeTexture" />
-        </see-also>
-    </method>
-
-    
-
     <method name="generateShapeFromPath" func="sim.generateShapeFromPath" lang="python,lua">
         <description>
             Generates an extrusion shape from a path
@@ -8793,180 +8333,6 @@
 
     
 
-    <method name="getShapeTextureId" func="sim.getShapeTextureId" lang="python,lua">
-        <description>
-            Retrieves the texture ID of a texture that is applied to a specific shape
-        </description>
-        <params>
-            <param name="shapeHandle" type="int">
-                <description>
-                    handle of the shape.
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="textureId" type="int">
-                <description>
-                    texture ID, or -1 if texture does not exist
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="shape" /><category name="texture" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getTextureId" />
-            <function-ref name="sim.setShapeTexture" />
-        </see-also>
-    </method>
-
- 
-
-    <method name="getTextureId" func="sim.getTextureId" lang="python,lua">
-        <description>
-            Retrieves the texture ID of a specific texture
-        </description>
-        <params>
-            <param name="textureName" type="string">
-                <description>
-                    name of the texture ID to be retrieved
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="textureId" type="int">
-                <description>
-                    the texture ID, or -1 if the texture does not exist
-                </description>
-            </param>
-            <param name="resolution" type="int[2]">
-                <description>
-                    an array of 2 values representing the resolution of the texture
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="texture" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.readTexture" />
-            <function-ref name="sim.writeTexture" />
-            <function-ref name="sim.createTexture" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="handleExtCalls" func="sim.handleExtCalls" lang="python,lua">
-        <description>
-            Handles the message pump for threaded scripts
-        </description>
-        <categories>
-        <category name="thread" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#threads" label=" thread related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="handleSensingStart" func="sim.handleSensingStart" lang="python,lua">
-        <description>
-            Handles various functionality (e.g. camera tracking during simulation, object velocity calculation, etc.).
-            Should only be called from the 
-            <a href="../mainScript.htm"> main script </a>
-            , as the first instruction in
-            the 
-            <em>
-                sensing
-            </em>
-            section
-        </description>
-        <categories>
-        <category name="other" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.handleSimulationStart" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="handleSimulationStart" func="sim.handleSimulationStart" lang="python,lua">
-        <description>
-            Initializes various functionality (e.g. camera tracking during simulation, object velocity calculation, etc.).
-            Should only be called from the 
-            <a href="../mainScript.htm"> main script </a>
-            , as the first instruction in the
-            <em>
-                initialization
-            </em>
-            section
-        </description>
-        <categories>
-        <category name="other" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.handleSensingStart" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="readTexture" func="sim.readTexture" lang="python,lua">
-        <description>
-            Retrieves the RGB data (or a portion of it) related to a specific texture
-        </description>
-        <params>
-            <param name="textureId" type="int">
-                <description>
-                    ID of the texture. See also 
-                    <a href="simGetTextureId.htm"> simGetTextureId </a>
-                    .
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    reserved for future functionality. Set to zero.
-                </description>
-            </param>
-            <param name="posX" type="int" default="0">
-                <description>
-                    x/y position of the texture portion to retrieve. Set to [0 0] to retrieve the full texture
-                </description>
-            </param>
-            <param name="posY" type="int" default="0">
-                <description>
-                    x/y size of the texture portion to retrieve. Set to [0 0] to retrieve the full texture
-                </description>
-            </param>
-            <param name="sizeX" type="int" default="0">
-                <description />
-            </param>
-            <param name="sizeY" type="int" default="0">
-                <description />
-            </param>
-        </params>
-        <returns>
-            <param name="textureData" type="buffer">
-                <description>
-                    texture data
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="texture" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.getTextureId" />
-            <function-ref name="sim.writeTexture" />
-            <function-ref name="sim.createTexture" />
-        </see-also>
-    </method>
-
-    
-
     <method name="resamplePath" func="sim.resamplePath" lang="python,lua">
         <description>
             Returns a resampled path
@@ -9012,397 +8378,6 @@
             </categories>
         <see-also>
             <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="importMesh" func="sim.importMesh" lang="python,lua">
-        <description>
-            Imports a mesh from a file
-        </description>
-        <params>
-            <param name="fileformat" type="int">
-                <description>
-                    set to 0. Fileformat is automatically detected
-                </description>
-            </param>
-            <param name="pathAndFilename" type="string">
-                <description>
-                    the location of the file to import.
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    bit-coded: bit0 set (1): keep identical vertices, bit7 set (128): ignore up-vector coded in fileformat
-                </description>
-            </param>
-            <param name="identicalVerticeTolerance" type="float">
-                <description>
-                    has no effect. set to zero
-                </description>
-            </param>
-            <param name="scalingFactor" type="float">
-                <description>
-                    the scaling factor to apply to the imported vertices
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="vertices" type="float[]">
-                <description>
-                    an array of vertice arrays. The import operation may generate several meshes depending on the fileformat
-                </description>
-            </param>
-            <param name="indices" type="int[]">
-                <description>
-                    an array of index arrays. The import operation may generate several meshes depending on the fileformat
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="file" /><category name="importExport" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.exportMesh" />
-            <function-ref name="sim.importShape" />
-            <function-ref name="sim.createShape" />
-        </see-also>
-        <more>
-            <h3>Example</h3>
-            <code class="hljs language-lua coppelia-coppeliasim-script">--lua
-
-local vertices, indices, reserved, names = sim.importMesh(1, "d:\\example.dxf", 0, 0.0001, 1)
-for i = 1, #vertices, 1 do
-    h = sim.createShape(2, 20 * math.pi / 180, vertices[i], indices[i])
-    sim.setShapeColor(h, "", sim.colorcomponent_ambient, {0.5, 0.5, 0.5})
-    sim.setObjectAlias(h, names[i])
-end</code>
-        </more>
-    </method>
-
-    
-
-    <method name="importShape" func="sim.importShape" lang="python,lua">
-        <description>
-            Imports a 
-            <a href="../shapes.htm"> shape </a>
-            from a file (first imports meshes, then groups/merges
-            them into a shape)
-        </description>
-        <params>
-            <param name="fileformat" type="int">
-                <description>
-                    set to 0. Fileformat is automatically detected
-                </description>
-            </param>
-            <param name="pathAndFilename" type="string">
-                <description>
-                    the location of the file to import.
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li> bit0 set (1): keep identical vertices </li>
-                        <li> bit1 set (2): reserced. keep at 0. </li>
-                        <li> bit2 set (4): reserved. keep at 0. </li>
-                        <li> bit3 set (8): do not preserve colors </li>
-                        <li> bit4 set (16): tries to preserve textures. </li>
-                        <li> bit5 set (32): realigns the shape's bounding box with the world. </li>
-                        <li> bit7 set (128): ignore up-vector coded in fileformat. </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="identicalVerticeTolerance" type="float">
-                <description>
-                    bit0 set (1): keep identical vertices
-                </description>
-            </param>
-            <param name="scalingFactor" type="float">
-                <description>
-                    bit1 set (2): reserced. keep at 0.
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="shapeHandle" type="int">
-                <description>
-                    the handle of the imported shape
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="file" /><category name="shape" /><category name="importExport" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.importMesh" />
-        </see-also>
-    </method>
-
-    
-
-    <method name="moduleEntry" func="sim.moduleEntry" lang="python,lua">
-        <description>
-            Creates, modifies or destroys module menu entries. Those are user selectable items located in [Menu bar &gt; Modules].
-            When selected, the corresponding script will have its 
-            <a href="../callbackFunctions.htm"> sysCall_moduleEntry </a>
-            callback function triggered, or 
-            <a href="../apiConstants.htm#simulatorMessages"> sim_message_eventcallback_moduleentry </a>
-            triggered
-        </description>
-        <params>
-            <param name="handle" type="int">
-                <description>
-                    handle of a module menu entry, or -1 to create one.
-                </description>
-            </param>
-            <param name="label" type="string" default="nil">
-                <description>
-                    label of the module entry. If handle is -1, then a path can be specified, in order to build sub-menus, e.g. "Menu\nSubmenu1\nSubmenu2\nLabel". Can be nullptr if handle is not -1.
-                </description>
-            </param>
-            <param name="state" type="int" default="-1">
-                <description>
-                    Bit-coded (is ignored if set to -1, -2 destroys an existing item):
-                    <ul>
-                        <li> bit0 is set (1): the item is enabled </li>
-                        <li> bit1 is set (2): the item is checked </li>
-                        <li> bit2 is set (4): the item is checkable </li>
-                    </ul>
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="handle" type="int">
-                <description>
-                    the handle of the module menu entry
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="other" />
-            </categories>
-    </method>
-
-    
-
-    <method name="textEditorClose" func="sim.textEditorClose" lang="python,lua">
-        <description>
-            Closes a text edition window previously opened with 
-            <a href="simTextEditorOpen.htm"> sim.textEditorOpen </a>
-        </description>
-        <params>
-            <param name="handle" type="int">
-                <description>
-                    handle of the text editor window
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="text" type="string">
-                <description>
-                    text of the editor
-                </description>
-            </param>
-            <param name="pos" type="int[2]">
-                <description>
-                    size of the editor
-                </description>
-            </param>
-            <param name="size" type="int[2]">
-                <description>
-                    absolute position the editor
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="textEditor" />
-            </categories>
-    </method>
-
-    
-
-    <method name="textEditorGetInfo" func="sim.textEditorGetInfo" lang="python,lua">
-        <description>
-            Retieves information from a text edition window previously opened with 
-            <a href="simTextEditorOpen.htm"> sim.textEditorOpen </a>
-        </description>
-        <params>
-            <param name="handle" type="int">
-                <description>
-                    handle of the text editor window
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="text" type="string">
-                <description>
-                    text of the editor, or None/nil if the given handle is not associated with any text editor window (or the window was already closed)
-                </description>
-            </param>
-            <param name="pos" type="int[2]">
-                <description>
-                    size of the editor
-                </description>
-            </param>
-            <param name="size" type="int[2]">
-                <description>
-                    absolute position the editor
-                </description>
-            </param>
-            <param name="visible" type="bool">
-                <description>
-                    visible state the editor
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="textEditor" />
-            </categories>
-    </method>
-
-    
-
-    <method name="textEditorOpen" func="sim.textEditorOpen" lang="python,lua">
-        <description>
-            Opens a text edition window
-        </description>
-        <params>
-            <param name="initText" type="string">
-                <description>
-                    initial text to be displayed.
-                </description>
-            </param>
-            <param name="properties" type="string">
-                <description>
-                    XML description of the text editor's properties. Can be an empty string for default properties
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="handle" type="int">
-                <description>
-                    handle of the text editor
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="textEditor" />
-            </categories>
-        <see-also>
-            <function-ref name="sim.textEditorClose" />
-            <function-ref name="sim.textEditorShow" />
-            <function-ref name="sim.textEditorGetInfo" />
-            <function-ref name="simOpenTextEditor" />
-        </see-also>
-        <more>
-            <h3>XML Example</h3>
-            <code class="hljs language-xml coppelia-coppeliasim-script">&lt;editor
-title="Window title" editable="true" searchable="true"
-tab-width="4" toolbar="false" statusbar="false" resizable="true" modal="false"
-on-close="callbackFunction" closeable="true" position="100 100" size="800 600"
-placement="absolute" font="Courier" font-size="14" activate="false" editable="true"
-line-numbers="true" max-lines="0" lang="lua" wrap-word="false"
-text-col="50 50 50" background-col="190 190 190" selectionColor="128 128 255"
-comment-col="0 140 0" number-col="220 0 220" string-col="255 255 0"
-character-col="255 255 0" operator-col="0 0 0" identifier-col="64 64 64"
-preprocessor-col="0 128 128" keyword1-col="152 0 0" keyword2-col="220 80 20"
-keyword3-col="0 0 255" keyword4-col="152 64 0"&gt;
-
-&lt;keywords1&gt;
-  &lt;item word="sim.getObject" autocomplete="true"
-    calltip="int handle=sim.getObject(string path)" /&gt;
-  &lt;item word="sim.getObjectPosition" autocomplete="true"
-    calltip="vector3 pos=sim.getObjectPosition(int handle,
-      int relHandle)" /&gt;
-&lt;/keywords1&gt;
-
-&lt;keywords2&gt;
-  &lt;item word="sim.getObjectQuaternion" autocomplete="true"
-    calltip="quaternion quat=sim.getObjectQuaternion(int handle,
-      int relHandle)" /&gt;
-&lt;/keywords2&gt;
-
-&lt;/editor&gt;
-
-<comment>placement attribute recognizes following values: center, absolute and relative</comment>
-            </code>
-        </more>
-    </method>
-
-    
-
-    <method name="textEditorShow" func="sim.textEditorShow" lang="python,lua">
-        <description>
-            Shows or hides a text edition window previously opened with 
-            <a href="simTextEditorOpen.htm"> sim.textEditorOpen </a>
-        </description>
-        <params>
-            <param name="handle" type="int">
-                <description>
-                    handle of the text editor window
-                </description>
-            </param>
-            <param name="showState" type="bool">
-                <description>
-                    desired show state of the text editor window
-                </description>
-            </param>
-        </params>
-        <categories>
-        <category name="textEditor" />
-            </categories>
-    </method>
-
-    
-
-    <method name="transformBuffer" func="sim.transformBuffer" lang="python,lua">
-        <description>
-            Modifies a buffer that contains packed data
-        </description>
-        <params>
-            <param name="inBuffer" type="buffer">
-                <description>
-                    input buffer that contains packed data
-                </description>
-            </param>
-            <param name="inFormat" type="int">
-                <description>
-                    <a href="../apiConstants.htm#bufferTypes"> buffer type </a>
-                </description>
-            </param>
-            <param name="outFormat" type="int">
-                <description>
-                    desired 
-                    <a href="../apiConstants.htm#bufferTypes"> buffer type </a>
-                    for the returned buffer
-                </description>
-            </param>
-            <param name="mult" type="float" default="1.0">
-                <description>
-                    multiplier value. We have out = offset + multiplier * in
-                </description>
-            </param>
-            <param name="offOrSplitSize" type="float" default="0.0">
-                <description>
-                    offset or split size value. We have out = offset + multiplier * in
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="outBuff" type="any">
-                <description>
-                    the modified buffer or the various split buffers
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="packing" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#packing" label=" data packing/unpacking functions " />
         </see-also>
     </method>
 </object-classes>
