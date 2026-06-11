@@ -209,6 +209,9 @@
     <property name="code" type="string" label="Code">
       <description>Script content</description>
     </property>
+    <property name="detachedScript.type" type="int" writable="false" constant="true" label="Type">
+      <description>Script type</description>
+    </property>
     <property name="disabled" type="bool" label="Disabled">
       <description>Distabled state</description>
     </property>
@@ -227,7 +230,6 @@
     <property name="state" type="int" writable="false" label="State">
       <description>Script state</description>
     </property>
-    <property name="type" type="string" writable="false" constant="true" label="Object type" />
   </object-class>
   <object-class name="drawingObject" superclass="object">
     <property name="appendColors" type="floatarray" />
