@@ -2265,7 +2265,8 @@
     <property name="metaInfo.isSceneObject" type="bool" writable="false" constant="true" label="sceneObject flag" />
     <property name="metaInfo.namespaces" type="stringarray" writable="false" constant="true" label="object name spaces" />
     <property name="metaInfo.superClass" type="stringarray" writable="false" constant="true" label="object super class" />
-    <property name="objectType" type="string" writable="false" constant="true" label="Object type" />
+    <property name="objectType" type="string" deprecated="true" writable="false" constant="true" />
+    <property name="type" type="string" writable="false" constant="true" label="Object type" />
   </object-class> 
 
     
@@ -4541,9 +4542,7 @@
     <property name="state" type="int" writable="false" label="State">
       <description>Script state</description>
     </property>
-    <property name="type" type="int" writable="false" constant="true" label="Type">
-      <description>Script type</description>
-    </property>
+    <property name="type" type="string" writable="false" constant="true" label="Object type" />
   </object-class> 
 
 
@@ -7088,19 +7087,6 @@
                 <function-ref name="sceneObject:scaleTree" />
             </see-also>
         </method>
-    <property name="absolute" type="group" readable="false" writable="false" silent="true" constant="true" />
-    <property name="absolute.eulerAngles" type="vector3" silent="true" label="Euler angles">
-      <description>Scene object absolute Euler angles</description>
-    </property>
-    <property name="absolute.pose" type="pose" silent="true" label="Pose">
-      <description>Scene object absolute pose</description>
-    </property>
-    <property name="absolute.position" type="vector3" silent="true" label="Position">
-      <description>Scene object absolute position</description>
-    </property>
-    <property name="absolute.quaternion" type="quaternion" silent="true" label="Quaternion">
-      <description>Scene object absolute quaternion</description>
-    </property>
     <property name="alias" type="string" deprecated="true" />
     <property name="bbHSize" type="vector3" deprecated="true" writable="false" />
     <property name="bbPose" type="pose" writable="false" label="Bounding box pose">
@@ -7139,7 +7125,9 @@
     <property name="dynamicFlag" type="int" writable="false" label="Dynamic flag" />
     <property name="dynamicIcon" type="int" writable="false" label="Dynamic icon" />
     <property name="dynamicallyEnabled" type="bool" writable="false" silent="true" label="Dynamically enabled" />
-    <property name="eulerAngles" type="vector3" deprecated="true" />
+    <property name="eulerAngles" type="vector3" silent="true" label="Euler angles">
+      <description>Scene object local Euler angles</description>
+    </property>
     <property name="hideFromModelBB" type="bool" label="Hide from model bounding box">
       <description>Scene object is not part of a parent model's bounding box</description>
     </property>
@@ -7265,21 +7253,16 @@
     <property name="persistentUid" type="string" writable="false" constant="true" label="Persistent UID">
       <description>Scene object persistent unique identifier</description>
     </property>
-    <property name="pose" type="pose" deprecated="true" />
-    <property name="refs" type="group" readable="false" writable="false" silent="true" constant="true" />
-    <property name="relative" type="group" readable="false" writable="false" silent="true" constant="true" />
-    <property name="relative.eulerAngles" type="vector3" silent="true" label="Euler angles">
-      <description>Scene object local Euler angles</description>
-    </property>
-    <property name="relative.pose" type="pose" label="Pose">
+    <property name="pose" type="pose" label="Pose">
       <description>Scene object local pose</description>
     </property>
-    <property name="relative.position" type="vector3" label="Position">
+    <property name="position" type="vector3" label="Position">
       <description>Scene object local position</description>
     </property>
-    <property name="relative.quaternion" type="quaternion" label="Quaternion">
+    <property name="quaternion" type="quaternion" label="Quaternion">
       <description>Scene object local quaternion</description>
     </property>
+    <property name="refs" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="selectInvisible" type="bool" label="Select invisible">
       <description>Scene object is invisible during a selection operation</description>
     </property>
@@ -7299,6 +7282,18 @@
     </property>
     <property name="visible" type="bool" writable="false" silent="true" label="Visible">
       <description>Whether the scene object is currently visible</description>
+    </property>
+    <property name="worldEulerAngles" type="vector3" silent="true" label="Euler angles">
+      <description>Scene object absolute Euler angles</description>
+    </property>
+    <property name="worldPose" type="pose" silent="true" label="Pose">
+      <description>Scene object absolute pose</description>
+    </property>
+    <property name="worldPosition" type="vector3" silent="true" label="Position">
+      <description>Scene object absolute position</description>
+    </property>
+    <property name="worldQuaternion" type="quaternion" silent="true" label="Quaternion">
+      <description>Scene object absolute quaternion</description>
     </property>
     <namespace name="customData" />
     <namespace name="origRefs" new-property-forced-type="handlearray" />
@@ -7395,6 +7390,7 @@
     <property name="local" type="bool" writable="false" constant="true" label="Local">
       <description>Coordinates are local to the marker's reference frame</description>
     </property>
+    <property name="marker" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="normals" type="matrix" writable="false" label="Normals">
       <description>Normals for custom marker</description>
     </property>
@@ -7986,6 +7982,7 @@
     <property name="setToDynamicWithParent" type="bool" label="Set to dynamic if gets parent">
       <description>Shape will be made dynamic if it receives a parent</description>
     </property>
+    <property name="shape" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="startInDynSleepMode" type="bool" label="Start in sleep mode" />
     <property name="vortex" type="group" deprecated="true" readable="false" writable="false" silent="true" constant="true" />
     <property name="vortex.adhesiveForce" type="float" deprecated="true" />
@@ -8177,6 +8174,10 @@
     <property name="explicitHandling" type="bool" label="Explicit handling" />
     <property name="frontFaceDetection" type="bool" label="Front face detection" />
     <property name="pointSize" type="float" label="Sensor point size" />
+    <property name="proximitySensor" type="group" readable="false" writable="false" silent="true" constant="true" />
+    <property name="proximitySensor.type" type="string" writable="false" constant="true" label="Type">
+      <description>Proximity sensor type</description>
+    </property>
     <property name="randomizedDetection" type="bool" writable="false" label="Randomized detection" />
     <property name="rayColor" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="rayColor.diffuse" type="color" label="Diffuse color" />
@@ -8185,9 +8186,6 @@
     <property name="sensorPointSize" type="float" deprecated="true" />
     <property name="sensorType" type="int" deprecated="true" writable="false" constant="true" />
     <property name="showVolume" type="bool" label="Show volume" />
-    <property name="type" type="int" writable="false" constant="true" label="Type">
-      <description>Sensor type</description>
-    </property>
     <property name="volume" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="volume.angle" type="floatarray" label="Angles">
       <description>Angle and inside gap for disk- and cone-type volumes</description>
@@ -8490,6 +8488,7 @@
     <property name="viewSize" type="float" label="View size">
       <description>View size (in orthogonal projection mode)</description>
     </property>
+    <property name="visionSensor" type="group" readable="false" writable="false" silent="true" constant="true" />
   </object-class> 
 
     
@@ -8705,6 +8704,7 @@
       <description>Buffer is cyclic</description>
     </property>
     <property name="foregroundColor" type="color" label="Foreground color" />
+    <property name="graph" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="graphSize" type="float" deprecated="true" />
     <property name="size" type="float" label="Size">
       <description>Size of the 3D graph representation</description>
@@ -8998,6 +8998,7 @@
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
     <property name="colors" type="buffer" writable="false" label="Voxel Colors" />
+    <property name="ocTree" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="packedPoints" type="buffer" writable="false" silent="true" label="Packed voxels">
       <description>Voxel positions, as packed floats</description>
     </property>
@@ -9296,6 +9297,7 @@
     <property name="packedPoints" type="buffer" writable="false" silent="true" label="Packed points">
       <description>Point positions, as packed floats</description>
     </property>
+    <property name="pointCloud" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="pointDisplayFraction" type="float" label="Display fraction">
       <description>Fraction of points to be displayed in an oc-tree cell/voxel</description>
     </property>
@@ -9515,6 +9517,14 @@
     <property name="intrinsicPose" type="pose" writable="false" label="Intrinsic pose">
       <description>Intrinsic pose (includes a possible intrinsic error)</description>
     </property>
+    <property name="joint" type="group" readable="false" writable="false" silent="true" constant="true" />
+    <property name="joint.position" type="float" label="Position">
+      <description>Joint linear/angular displacement</description>
+    </property>
+    <property name="joint.quaternion" type="quaternion" label="Spherical joint quaternion" />
+    <property name="joint.type" type="string" writable="false" constant="true" label="Type">
+      <description>Joint type</description>
+    </property>
     <property name="jointDiameter" type="float" deprecated="true" />
     <property name="jointForce" type="float" deprecated="true" writable="false" />
     <property name="jointLength" type="float" deprecated="true" />
@@ -9552,10 +9562,6 @@
     <property name="ode.posPid" type="floatarray" deprecated="true" />
     <property name="ode.stopCfm" type="float" deprecated="true" />
     <property name="ode.stopErp" type="float" deprecated="true" />
-    <property name="position" type="float" label="Position">
-      <description>Joint linear/angular displacement</description>
-    </property>
-    <property name="quaternion" type="quaternion" label="Spherical joint quaternion" />
     <property name="screwLead" type="float" label="Screw lead" />
     <property name="springDamperParams" type="floatarray" deprecated="true" />
     <property name="targetForce" type="float" label="Target force">
@@ -9568,9 +9574,6 @@
     <property name="targetVel" type="float" deprecated="true" />
     <property name="targetVelocity" type="float" label="Target velocity">
       <description>Velocity to reach by controller</description>
-    </property>
-    <property name="type" type="int" writable="false" constant="true" label="Type">
-      <description>Joint type</description>
     </property>
     <property name="vortex" type="group" deprecated="true" readable="false" writable="false" silent="true" constant="true" />
     <property name="vortex.axisFrictionEnabled" type="bool" deprecated="true" />
@@ -9919,7 +9922,8 @@
             <link href="../apiFunctions.htm#paths" label=" path related functions " />
         </see-also>
     </method>
-<object-class name="camera" superclass="sceneObject"><property name="cameraSize" type="float" deprecated="true" />
+<object-class name="camera" superclass="sceneObject"><property name="camera" type="group" readable="false" writable="false" silent="true" constant="true" />
+    <property name="cameraSize" type="float" deprecated="true" />
     <property name="clippingPlanes" type="floatarray" label="Clipping planes">
       <description>Near and far clipping planes</description>
     </property>
@@ -9972,6 +9976,10 @@
     <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
+    <property name="dummy" type="group" readable="false" writable="false" silent="true" constant="true" />
+    <property name="dummy.type" type="string" label="Type">
+      <description>Dummy type</description>
+    </property>
     <property name="dummySize" type="float" deprecated="true" />
     <property name="dummyType" type="int" deprecated="true" />
     <property name="dynamics" type="group" readable="false" writable="false" silent="true" constant="true" />
@@ -10014,9 +10022,6 @@
     <property name="size" type="float" label="Size">
       <description>Dummy size</description>
     </property>
-    <property name="type" type="int" label="Type">
-      <description>Dummy type</description>
-    </property>
   </object-class><object-class name="forceSensor" superclass="sceneObject"><property name="color" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="color.diffuse" type="color" label="Diffuse color" />
     <property name="color.emission" type="color" label="Emission color" />
@@ -10039,6 +10044,7 @@
     <property name="force" type="vector3" writable="false" label="Force">
       <description>Measured force vector</description>
     </property>
+    <property name="forceSensor" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="forceThreshold" type="float" label="Force threshold" />
     <property name="forceThresholdEnabled" type="bool" label="Force threshold enabled" />
     <property name="intrinsicError" type="pose" writable="false" label="Intrinsic error">
@@ -10061,6 +10067,10 @@
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
     <property name="enabled" type="bool" label="Enabled" />
+    <property name="light" type="group" readable="false" writable="false" silent="true" constant="true" />
+    <property name="light.type" type="string" writable="false" constant="true" label="Type">
+      <description>Light type</description>
+    </property>
     <property name="lightColor" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="lightColor.diffuse" type="color" label="Diffuse color" />
     <property name="lightColor.emission" type="color" label="Emission color" />
@@ -10078,9 +10088,6 @@
       <description>Spot cut off angle</description>
     </property>
     <property name="spotExponent" type="int" label="Spot exponent" />
-    <property name="type" type="int" writable="false" constant="true" label="Type">
-      <description>Light type</description>
-    </property>
   </object-class><object-class name="script" superclass="sceneObject"><property name="addOnMenuPath" type="string" deprecated="true" writable="false" constant="true" />
     <property name="addOnPath" type="string" deprecated="true" writable="false" constant="true" />
     <property name="code" type="string" deprecated="true" silent="true" />
@@ -10094,6 +10101,7 @@
     <property name="language" type="string" deprecated="true" writable="false" constant="true" />
     <property name="resetAfterSimError" type="bool" label="Reset after simulation error" />
     <property name="restartOnError" type="bool" deprecated="true" silent="true" />
+    <property name="script" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="scriptDisabled" type="bool" deprecated="true" silent="true" />
     <property name="scriptName" type="string" deprecated="true" writable="false" silent="true" />
     <property name="scriptSize" type="float" deprecated="true" />
