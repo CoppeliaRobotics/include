@@ -26,36 +26,36 @@ function sysCall_init()
     allHandles = {
         sim.app,
         sim.scene,
-        sim.app:createObject{objectType = 'collection'},
+        sim.app:createObject{type = 'collection'},
         sim.scene.mainScript,
-        sim.scene:createObject{objectType = 'drawingObject'},
-        sim.scene:createObject{objectType = 'dummy'},
-        sim.scene:createObject{objectType = 'joint'},
-        sim.scene:createObject{objectType = 'camera'},
-        sim.scene:createObject{objectType = 'marker'},
-        sim.scene:createObject{objectType = 'shape', mesh = {}},
-        sim.scene:createObject{objectType = 'script'},
-        sim.scene:createObject{objectType = 'forceSensor'},
-        sim.scene:loadModel(lfsx.pathjoin(addOnDir, 'graph.simmodel.xml')), --sim.scene:createObject{objectType = 'graph'},
-        sim.scene:createObject{objectType = 'light'},
-        sim.scene:createObject{objectType = 'ocTree'},
-        sim.scene:createObject{objectType = 'pointCloud'},
-        sim.scene:createObject{objectType = 'proximitySensor'},
-        sim.scene:createObject{objectType = 'visionSensor'},
-        sim.scene:loadModel(lfsx.pathjoin(addOnDir, 'shape.simmodel.xml')).meshes[1], --sim.scene:createObject{objectType = 'shape', mesh = {texture = {resolution = {2, 2}, image = string.rep('\x00', 3 * 4), rgba = false}}}.meshes[1],
+        sim.scene:createObject{type = 'drawingObject'},
+        sim.scene:createObject{type = 'dummy'},
+        sim.scene:createObject{type = 'joint'},
+        sim.scene:createObject{type = 'camera'},
+        sim.scene:createObject{type = 'marker'},
+        sim.scene:createObject{type = 'shape', mesh = {}},
+        sim.scene:createObject{type = 'script'},
+        sim.scene:createObject{type = 'forceSensor'},
+        sim.scene:loadModel(lfsx.pathjoin(addOnDir, 'graph.simmodel.xml')), --sim.scene:createObject{type = 'graph'},
+        sim.scene:createObject{type = 'light'},
+        sim.scene:createObject{type = 'ocTree'},
+        sim.scene:createObject{type = 'pointCloud'},
+        sim.scene:createObject{type = 'proximitySensor'},
+        sim.scene:createObject{type = 'visionSensor'},
+        sim.scene:loadModel(lfsx.pathjoin(addOnDir, 'shape.simmodel.xml')).meshes[1], --sim.scene:createObject{type = 'shape', mesh = {texture = {resolution = {2, 2}, image = string.rep('\x00', 3 * 4), rgba = false}}}.meshes[1],
     }
 
-    local function setSuperClass(objectType, superClass)
-        if superclass[objectType] == nil then
-            log('superclass(%s) -> %s', objectType, superClass)
-            superclass[objectType] = superClass
+    local function setSuperClass(t, superClass)
+        if superclass[t] == nil then
+            log('superclass(%s) -> %s', t, superClass)
+            superclass[t] = superClass
         end
     end
 
     local foundInconsistentFlags = false
     for _, h in ipairs(allHandles) do
-        log('object %s:%d superClass=%s', h.objectType, h.handle, json.encode(h.metaInfo.superClass))
-        local classHierarchy = table.add({h.objectType}, h.metaInfo.superClass)
+        log('object %s:%d superClass=%s', h.type, h.handle, json.encode(h.metaInfo.superClass))
+        local classHierarchy = table.add({h.type}, h.metaInfo.superClass)
         for i = 2, #classHierarchy do
             setSuperClass(classHierarchy[i-1], classHierarchy[i])
         end
@@ -66,11 +66,11 @@ function sysCall_init()
         if not ok then
             error(string.format('target %d: %s', h.handle, err))
         end
-        classInfo[h.objectType] = classInfo[h.objectType] or {properties = {}}
+        classInfo[h.type] = classInfo[h.type] or {properties = {}}
         --FIXME: namespace info is not reported in the correct class (typically: sceneObject) but in its subclasses
-        --classInfo[h.objectType].namespaces = h.metaInfo.namespaces
+        --classInfo[h.type].namespaces = h.metaInfo.namespaces
         for pname, pinfo in pairs(info) do
-            local pclass = pinfo.class or h.objectType
+            local pclass = pinfo.class or h.type
             local fullk = pclass .. '.' .. pname
             pinfo.type = typemap[pinfo.type]
             pinfo.flags.large = nil
