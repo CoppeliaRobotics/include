@@ -133,7 +133,7 @@ function sysCall_init()
     classInfo.joint.properties.dynCtrlMode.enum = 'jointDynCtrlMode'
     classInfo.scene.properties.simulationState.enum = 'simulationState'
 
-    outputFileXML = sim.app.namedParam.output_xml
+    objectsPropertiesXML = sim.app.namedParam.objects_properties_xml
 
     classesNode = {
         tag = 'object-classes',
@@ -228,12 +228,43 @@ function sysCall_init()
         'enum',
         'label',
     }
-    local file = io.open(outputFileXML, 'w')
+    local file = io.open(objectsPropertiesXML, 'w')
     if file then
         file:write(string.renderxml(classesNode, attrOrder))
         file:close()
     else
-        print('Error: Could not open output file ' .. outputFileXML)
+        print('Error: Could not open output file ' .. objectsPropertiesXML)
+    end
+
+    enumsXML = sim.app.namedParam.enums_xml
+    enumsNode = {
+        tag = 'enums',
+        attrs = {},
+        children = {},
+    }
+    for _, enumName in ipairs(sim.app.enumTypes) do
+        log('enum: %s', enumName)
+        local enumNode = {
+            tag = 'enum',
+            attrs = {name = enumName},
+            children = {},
+        }
+        local info = sim.app:getEnumInfo(enumName)
+        for k, v in pairs(info) do
+            table.insert(enumNode.children, {
+                tag = 'item',
+                attrs = {name = k, value = v},
+                children = {},
+            })
+        end
+        table.insert(enumsNode.children, enumNode)
+    end
+    local file = io.open(enumsXML, 'w')
+    if file then
+        file:write(string.renderxml(enumsNode, attrOrder))
+        file:close()
+    else
+        print('Error: Could not open output file ' .. enumsXML)
     end
 
     sim.app:quit()
