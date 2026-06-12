@@ -3040,7 +3040,7 @@
                             <li id="joint"><a href="../joints.htm">joint</a> fields:
                                 <ul>
                                     <li>type (string): "joint"</li>
-                                    <li>joint.type (string): the joint type. Allowed values are "revolute", "prismatic" or "spherical"</a></li>
+                                    <li>joint.type (string): the joint type. Allowed values are "revolute", "prismatic" or "spherical"</li>
                                     <li>mode (int): the <a href="#jointMode">joint mode</a></li>
                                     <li>dynamics.ctrlMode (enum): the <a href="#dynCtrlMode">joint dynamic control mode</a></li>
                                     <li>interval (float[]): joint lower and upper bounds, if not cyclic</li>
@@ -3150,7 +3150,7 @@
                             <li id="script"><a href="../scriptObjects.htm">script</a> fields:
                                 <ul>
                                     <li>type (string): "script"</li>
-                                    <li>script.type (string): the detached script type. Allowed values are "simulation" and "customization"</a></li>
+                                    <li>script.type (string): the detached script type. Allowed values are "simulation" and "customization"</li>
                                     <li>language (string): "lua" or "python"</li>
                                     <li>code (string): the content of the script</li>
                                     <li>scriptDisabled (bool): the script is initially disabled</li>
@@ -5459,7 +5459,7 @@
                             <li id="script"><a href="../scriptObjects.htm">script</a> fields:
                                 <ul>
                                     <li>type (string): "script"</li>
-                                    <li>script.type (string): the script type. Allowed values are "simulation" and "customization"</a></li>
+                                    <li>script.type (string): the script type. Allowed values are "simulation" and "customization"</li>
                                     <li>language (string): "lua" or "python"</li>
                                     <li>code (string): the content of the script</li>
                                     <li>scriptDisabled (bool): the script is initially disabled</li>
