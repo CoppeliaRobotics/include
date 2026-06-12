@@ -33,23 +33,529 @@
 #define SIM_DISABLE_DEPRECATED_BEFORE 0
 #endif
 
-// @enum name="sceneObjectType" label="scene object types" type="int" prefix="sim_sceneobject_" description=""
-enum { // values are serialized
-        sim_sceneobject_shape =0,
-        sim_sceneobject_joint = 1,
-        sim_sceneobject_graph = 2,
-        sim_sceneobject_camera = 3,
-        sim_sceneobject_dummy = 4,
-        sim_sceneobject_proximitysensor = 5, // @item label="proximity sensor"
-        sim_sceneobject_visionsensor = 9, // @item label="vision sensor"
-        sim_sceneobject_forcesensor = 12, // @item label="force sensor"
-        sim_sceneobject_light = 13,
-        sim_sceneobject_octree = 15, // @item label="oc tree"
-        sim_sceneobject_pointcloud = 16, // @item label="point cloud"
-        sim_sceneobject_script = 17,
-        sim_sceneobject_marker = 18,
-        sim_sceneobject_customsceneobject = 19, // @item label="custom scene object"
-};
+// ----------------------------------------------------------------------------------------------------
+#define PROXIMITYSENSORTYPE \
+    X(proximitysensor, pyramid,         30,     pyramid) \
+    X(proximitysensor, cylinder,        31,     cylinder) \
+    X(proximitysensor, disc,            32,     disc) \
+    X(proximitysensor, cone,            33,     cone) \
+    X(proximitysensor, ray,             34,     ray) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    PROXIMITYSENSORTYPE
+    #undef X
+} proximitySensorType;
+
+
+#ifdef __cplusplus
+    enum class SimProximitySensorType {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        PROXIMITYSENSORTYPE
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+
+// ----------------------------------------------------------------------------------------------------
+#define SIMULATIONSTATETYPE \
+    X(simulation, stopped,           0x00,     stopped) \
+    X(simulation, paused,            0x08,     paused) \
+    X(simulation, running,           0x11,     running) \
+    X(simulation, lastbeforestop,    0x16,     lastBeforeStop) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    SIMULATIONSTATETYPE
+    #undef X
+} simulationStateType;
+
+#ifdef __cplusplus
+    enum class SimSimulationState {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        SIMULATIONSTATETYPE
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define SCENEOBJECTTYPE \
+    X(sceneobject, shape, 0, shape) \
+    X(sceneobject, joint, 1, joint) \
+    X(sceneobject, graph, 2, graph) \
+    X(sceneobject, camera, 3, camera) \
+    X(sceneobject, dummy, 4, dummy) \
+    X(sceneobject, proximitysensor, 5, proximitySensor) \
+    X(sceneobject, visionsensor, 9, visionSensor) \
+    X(sceneobject, forcesensor, 12, forceSensor) \
+    X(sceneobject, light, 13, light) \
+    X(sceneobject, octree, 15, ocTree) \
+    X(sceneobject, pointcloud, 16, pointCloud) \
+    X(sceneobject, script, 17, script) \
+    X(sceneobject, marker, 18, marker) \
+    X(sceneobject, customsceneobject, 19, customSceneObject) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    SCENEOBJECTTYPE
+    #undef X
+} sceneObjectType;
+
+#ifdef __cplusplus
+    enum class SimSceneObjectType {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        SCENEOBJECTTYPE
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define LIGHTTYPE \
+    X(light, omnidirectional, 1, omnidirectional) \
+    X(light, spot, 2, spot) \
+    X(light, directional, 3, directional) \
+
+typedef enum {
+        #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+        LIGHTTYPE
+        #undef X
+} lightType;
+
+#ifdef __cplusplus
+    enum class SimLightType {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        LIGHTTYPE
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define JOINTTYPE \
+    X(joint, revolute, 10, revolute) \
+    X(joint, prismatic, 11, prismatic) \
+    X(joint, spherical, 12, spherical) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    JOINTTYPE
+    #undef X
+} jointType;
+
+#ifdef __cplusplus
+    enum class SimJointType {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        JOINTTYPE
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define SHAPETYPE \
+    X(shape, simple, 20, simple) \
+    X(shape, compound, 21, compound) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    SHAPETYPE
+    #undef X
+} shapeType;
+
+#ifdef __cplusplus
+    enum class SimShapeType {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        SHAPETYPE
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define PARENTINGMODE \
+    X(parentingmode, keeplocalpose, 0, keepLocalPose) \
+    X(parentingmode, keepworldpose, 1, keepWorldPose) \
+    X(parentingmode, assembly, 2, assembly) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    PARENTINGMODE
+    #undef X
+} parentingMode;
+
+#ifdef __cplusplus
+    enum class SimParentingMode {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        PARENTINGMODE
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define SCRIPTTYPE \
+    X(scripttype, main, 0, main) \
+    X(scripttype, simulation, 1, simulation) \
+    X(scripttype, addon, 2, addon) \
+    X(scripttype, customization, 6, customization) \
+    X(scripttype, sandbox, 8, sandbox) \
+    X(scripttype, passive, 9, passive) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    SCRIPTTYPE
+    #undef X
+} scriptType;
+
+#ifdef __cplusplus
+    enum class SimScriptType {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        SCRIPTTYPE
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define SCRIPTSTATE \
+    X(scriptstate, unloaded, 0, unloaded) \
+    X(scriptstate, uninitialized, 1, uninitialized) \
+    X(scriptstate, initialized, 2, initialized) \
+    X(scriptstate, ended, 3, ended) \
+    X(scriptstate, error, 8, error) \
+    X(scriptstate, suspended, 16, suspended) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    SCRIPTSTATE
+    #undef X
+} scriptState;
+
+#ifdef __cplusplus
+    enum class SimScriptState {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        SCRIPTSTATE
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define CODELANG \
+    X(lang, undefined, -1, undefined) \
+    X(lang, lua, 0, lua) \
+    X(lang, python, 1, python) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    CODELANG
+    #undef X
+} codeLang;
+
+#ifdef __cplusplus
+    enum class SimCodeLang {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        CODELANG
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define SCRIPTEXECORDER \
+    X(scriptexecorder, first, 0, first) \
+    X(scriptexecorder, normal, 1, normal) \
+    X(scriptexecorder, last, 2, last) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    SCRIPTEXECORDER
+    #undef X
+} scriptExecOrder;
+
+#ifdef __cplusplus
+    enum class SimScriptExecOrder {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        SCRIPTEXECORDER
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define MARKEROBJECTTYPE \
+    X(markertype, points, 0, points) \
+    X(markertype, lines, 1, lines) \
+    X(markertype, triangles, 2, triangles) \
+    X(markertype, spheres, 7, spheres) \
+    X(markertype, squares, 9, squares) \
+    X(markertype, discs, 10, discs) \
+    X(markertype, cubes, 11, cubes) \
+    X(markertype, cylinders, 12, cylinders) \
+    X(markertype, custom, 13, custom) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    MARKEROBJECTTYPE
+    #undef X
+} markerObjectType;
+
+#ifdef __cplusplus
+    enum class SimMarkerObjectType {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        MARKEROBJECTTYPE
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define MARKEROBJECTOPTIONS \
+    X(markeropts, local, 0, local) \
+    X(markeropts, cyclic, 0, cyclic) \
+    X(markeropts, overlay, 0, overlay) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    MARKEROBJECTOPTIONS
+    #undef X
+} markerObjectOptions;
+
+#ifdef __cplusplus
+    enum class SimMarkerObjectOptions {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        MARKEROBJECTOPTIONS
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define JOINTMODE \
+    X(jointmode, kinematic, 0, kinematic) \
+    X(jointmode, dependent, 4, dependent) \
+    X(jointmode, dynamic, 5, dynamic) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    JOINTMODE
+    #undef X
+} jointMode;
+
+#ifdef __cplusplus
+    enum class SimJointMode {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        JOINTMODE
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define JOINTDYNCTRLMODE \
+    X(jointdynctrl, free, 0, free) \
+    X(jointdynctrl, force, 1, force) \
+    X(jointdynctrl, velocity, 4, velocity) \
+    X(jointdynctrl, position, 8, position) \
+    X(jointdynctrl, spring, 12, spring) \
+    X(jointdynctrl, callback, 16, custom) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    JOINTDYNCTRLMODE
+    #undef X
+} jointDynCtrlMode;
+
+#ifdef __cplusplus
+    enum class SimJointDynCtrlMode {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        JOINTDYNCTRLMODE
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define VERBOSITY \
+    X(verbosity, useglobal, -1, useGlobal) \
+    X(verbosity, none, 100, none) \
+    X(verbosity, errors, 200, errors) \
+    X(verbosity, warnings, 300, warnings) \
+    X(verbosity, loadinfos, 400, loadInfos) \
+    X(verbosity, questions, 410, questions) \
+    X(verbosity, scripterrors, 420, scriptErrors) \
+    X(verbosity, scriptwarnings, 430, scriptWarnings) \
+    X(verbosity, scriptinfos, 450, scriptInfos) \
+    X(verbosity, msgs, 450, msgs) \
+    X(verbosity, infos, 500, infos) \
+    X(verbosity, debug, 600, debug) \
+    X(verbosity, trace, 700, trace) \
+    X(verbosity, tracelua, 800, traceLua) \
+    X(verbosity, traceall, 900, traceAll) \
+    X(verbosity, undecorated, 0, undecorated) \
+    X(verbosity, onlyterminal, 0, onlyterminal) \
+    X(verbosity, once, 0, once) \
+    sim_verbosity_default = sim_verbosity_loadinfos, \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    VERBOSITY
+    #undef X
+} verbosity;
+
+#ifdef __cplusplus
+    enum class SimVerbosity {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        VERBOSITY
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define PHYSICSENGINE \
+    X(physics, bullet, 0, bullet) \
+    X(physics, ode, 1, ode) \
+    X(physics, vortex, 2, vortex) \
+    X(physics, newton, 3, newton) \
+    X(physics, mujoco, 4, mujoco) \
+    X(physics, drake, 5, drake) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    PHYSICSENGINE
+    #undef X
+} physicsEngine;
+
+#ifdef __cplusplus
+    enum class SimPhysicsEngine {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        PHYSICSENGINE
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define DUMMYTYPE \
+    X(dummytype, dynloopclosure, 0, dynLoopClosure) \
+    X(dummytype, dyntendon, 7, dynTendon) \
+    X(dummytype, neutral, 8, neutral) /*default is a reserved keyword*/ \
+    X(dummytype, assembly, 9, assembly) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    DUMMYTYPE
+    #undef X
+    sim_dummytype_default = sim_dummytype_neutral
+} dummyType;
+
+#ifdef __cplusplus
+    enum class SimDummyType {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        DUMMYTYPE
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define MATERIALCOMPONENT \
+    X(materialcomponent, diffuse, 0, diffuse) \
+    X(materialcomponent, lightdiffuse, 1, lightDiffuse) \
+    X(materialcomponent, specular, 2, specular) \
+    X(materialcomponent, emission, 3, emission) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    MATERIALCOMPONENT
+    #undef X
+} materialComponent;
+
+#ifdef __cplusplus
+    enum class SimMaterialComponent {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        MATERIALCOMPONENT
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define STRINGTYPE \
+    X(string, text, 0, text) \
+    X(string, binary, 1, binary) \
+    X(string, buffer, 2, buffer) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    STRINGTYPE
+    #undef X
+} stringType;
+
+#ifdef __cplusplus
+    enum class SimStringType {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        STRINGTYPE
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define PROPERTYRETURNS \
+    X(propertyret, invalidvalue, -9, invalidValue) \
+    X(propertyret, invalidname, -8, invalidName) \
+    X(propertyret, corrupt, -7, corrupt) \
+    X(propertyret, typemismatch, -6, typeMismatch) \
+    X(propertyret, notremovable, -5, notRemovable) \
+    X(propertyret, notwritable, -4, notWritable) \
+    X(propertyret, notreadable, -3, notReadable) \
+    X(propertyret, unknowntarget, -2, unknownTarget) \
+    X(propertyret, unknownproperty, -1, unknownProperty) \
+    X(propertyret, unavailable, 0, unavailable) \
+    X(propertyret, ok, 1, ok) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    PROPERTYRETURNS
+    #undef X
+} propertyReturns;
+
+#ifdef __cplusplus
+    enum class SimPropertyReturns {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        PROPERTYRETURNS
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+#define SIM_ENUM_TYPES \
+    X(SimProximitySensorType) \
+    X(SimSimulationState) \
+    X(SimSceneObjectType) \
+    X(SimLightType) \
+    X(SimJointType) \
+    X(SimShapeType) \
+    X(SimParentingMode) \
+    X(SimScriptType) \
+    X(SimScriptState) \
+    X(SimCodeLang) \
+    X(SimScriptExecOrder) \
+    X(SimMarkerObjectType) \
+    X(SimMarkerObjectOptions) \
+    X(SimJointMode) \
+    X(SimJointDynCtrlMode) \
+    X(SimVerbosity) \
+    X(SimPhysicsEngine) \
+    X(SimDummyType) \
+    X(SimMaterialComponent) \
+    X(SimStringType) \
+    X(SimPropertyReturns) \
 
 // General object types. Values are serialized
 enum {
@@ -66,37 +572,6 @@ enum {
     sim_objecttype_scene = 127,
 };
 
-
-// @enum name="lightType" label="light types" type="int" prefix="sim_light_" description=""
-enum { // values are serialized
-        sim_light_omnidirectional = 1,
-        sim_light_spot = 2,
-        sim_light_directional = 3,
-};
-
-// @enum name="jointType" label="joint types" type="int" prefix="sim_joint_" description=""
-enum { // values are serialized
-        sim_joint_revolute = 10,
-        sim_joint_prismatic = 11,
-        sim_joint_spherical = 12,
-};
-
-// @enum name="shapeType" label="shape types" type="int" prefix="sim_shape_" description=""
-enum { // values are serialized
-        sim_shape_simple = 20,
-        sim_shape_compound = 21,
-};
-
-// @enum name="proximitySensorType" label="proximity sensor types" type="int" prefix="sim_proximitysensor_" description=""
-enum { // values are serialized
-        sim_proximitysensor_pyramid = 30,
-        sim_proximitysensor_cylinder = 31,
-        sim_proximitysensor_disc = 32,
-        sim_proximitysensor_cone = 33,
-        sim_proximitysensor_ray = 34,
-};
-
-// @enum name="scriptArgType" label="script argument types" type="int" prefix="sim_script_arg_" description=""
 enum {
     sim_script_arg_null=0,
     sim_script_arg_bool,
@@ -108,42 +583,6 @@ enum {
     sim_script_arg_double,
     sim_script_arg_table,
     // SIM_SCRIPT_ARG_NULL_ALLOWED=65536 is defined and used in CScriptFunctionData.h. This flag is reserved here.
-};
-
-// @enum name="simulationState" label="simulation states" type="int" prefix="sim_simulation_" description=""
-enum {
-    sim_simulation_stopped                      =0x00,      // Simulation is stopped
-    sim_simulation_paused                       =0x08,      // Simulation is paused
-    sim_simulation_running                      =0x11,      // Normal simulation pass (>=1x)
-    sim_simulation_lastbeforestop               =0x16       // Last simulation pass (1x)
-};
-
-// @enum name="parentingMode" label="assembly/parenting modes" type="int" prefix="sim_parentingmode_" description=""
-enum {
-    sim_parentingmode_keeplocalpose = 0,
-    sim_parentingmode_keepworldpose = 1,
-    sim_parentingmode_assembly = 2,
-};
-
-// @enum name="scriptType" label="script types" type="int" prefix="sim_scripttype_" description=""
-enum { // values are serialized
-    sim_scripttype_main = 0,
-    sim_scripttype_simulation = 1,
-    sim_scripttype_addon = 2,
-    sim_scripttype_customization = 6,
-    sim_scripttype_sandbox = 8,
-    sim_scripttype_passive = 9,
-};
-
-// @enum name="scriptState" label="script states" type="int" prefix="sim_scriptstate_" description=""
-enum
-{
-    sim_scriptstate_unloaded = 0,
-    sim_scriptstate_uninitialized,
-    sim_scriptstate_initialized,
-    sim_scriptstate_ended,
-    sim_scriptstate_error = 8,
-    sim_scriptstate_suspended = 16  // only add-ons
 };
 
 enum { // System callbacks
@@ -195,20 +634,6 @@ enum { // System callbacks
     sim_syscb_data, // called when a custom data block changed
     sim_syscb_afterload, // called just after a scene load operation
     sim_syscb_endoflist
-};
-
-// @enum name="codeLang" label="code languages" type="int" prefix="sim_lang_" description=""
-enum {
-    sim_lang_undefined=-1,
-    sim_lang_lua=0,
-    sim_lang_python
-};
-
-// @enum name="scriptExecOrder" label="script execution order" type="int" prefix="sim_scriptexecorder_" description=""
-enum { // values are serialized
-    sim_scriptexecorder_first=0,
-    sim_scriptexecorder_normal,
-    sim_scriptexecorder_last
 };
 
 enum { // Object handles. Some values are serialized:
@@ -325,7 +750,6 @@ enum { // distance calculation methods: (serialized)
     sim_distcalcmethod_dac_if_nonzero
 };
 
-// @enum name="drawingObjectType" label="drawing object types" type="int" prefix="sim_drawing_" description=""
 enum {
     sim_drawing_points = 0,         // 3 values per point (point size in pixels)
     sim_drawing_lines,              // 6 values per line (line size in pixels)
@@ -345,26 +769,6 @@ enum { // following can be or-combined with above drawing items:
     sim_drawing_local                   =0x800000,  // coordinates are specified locally to the attached object
 };
 
-// @enum name="markerObjectType" label="marker object types" type="int" prefix="sim_markertype_" description=""
-enum {
-    sim_markertype_points = 0,
-    sim_markertype_lines,
-    sim_markertype_triangles,
-    sim_markertype_spheres = 7,
-    sim_markertype_squares = 9,
-    sim_markertype_discs,
-    sim_markertype_cubes,
-    sim_markertype_cylinders,
-    sim_markertype_custom,
-};
-
-// @enum name="markerObjectOptions" label="marker object options" type="int" prefix="sim_markeropts_" description=""
-enum {
-    sim_markeropts_local    = 0x00001,
-    sim_markeropts_cyclic   = 0x00002,
-    sim_markeropts_overlay  = 0x00004,
-};
-
 enum { // UI properties:
     sim_gui_menubar                     =0x00001,
     sim_gui_popups                      =0x00002,
@@ -380,46 +784,6 @@ enum { // UI properties:
     sim_gui_splash                      =0x00800,
     sim_gui_all                         =0x0ffff,
     sim_gui_headless                    =0x10000,
-};
-
-// @enum name="jointMode" label="joint modes" type="int" prefix="sim_jointmode_" description=""
-enum {
-    sim_jointmode_kinematic = 0,
-    sim_jointmode_dependent = 4,
-    sim_jointmode_dynamic = 5,
-};
-
-// @enum name="jointDynCtrlMode" label="joint dynamic control modes" type="int" prefix="sim_jointdynctrl_" description=""
-enum {
-    sim_jointdynctrl_free = 0,
-    sim_jointdynctrl_force = 1,
-    sim_jointdynctrl_velocity = 4,
-    sim_jointdynctrl_position = 8,
-    sim_jointdynctrl_spring = 12,
-    sim_jointdynctrl_callback = 16
-};
-
-// @enum name="verbosity" label="verbosity" type="int" prefix="sim_verbosity_" description=""
-enum { // verbosity
-    sim_verbosity_useglobal = -1,
-    sim_verbosity_none = 100,
-    sim_verbosity_errors = 200,
-    sim_verbosity_warnings = 300,
-    sim_verbosity_loadinfos = 400, // default for console
-    sim_verbosity_questions = 410, // only for dialog verbosity
-    sim_verbosity_scripterrors = 420,
-    sim_verbosity_scriptwarnings = 430,
-    sim_verbosity_scriptinfos = 450, // mainly for statusbar info prints. Default for statusbar
-    sim_verbosity_msgs = sim_verbosity_scriptinfos,
-    sim_verbosity_infos = 500,
-    sim_verbosity_debug = 600,
-    sim_verbosity_trace = 700,
-    sim_verbosity_tracelua = 800,
-    sim_verbosity_traceall = 900,
-    sim_verbosity_default = sim_verbosity_loadinfos,
-    sim_verbosity_undecorated = 0x0f000,
-    sim_verbosity_onlyterminal = 0x10000,
-    sim_verbosity_once = 0x20000,
 };
 
 enum { // plugin info
@@ -462,16 +826,6 @@ enum { // Ruckig Library flags
     sim_ruckig_minaccel                             =0x0200,
 };
 
-// @enum name="physicsEngine" label="physics engines" type="int" prefix="sim_physics_" description=""
-enum {
-    sim_physics_bullet=0,
-    sim_physics_ode,
-    sim_physics_vortex,
-    sim_physics_newton,
-    sim_physics_mujoco,
-    sim_physics_drake
-};
-
 enum { // primitive shapes
     sim_primitiveshape_none=0,
     sim_primitiveshape_plane=1,
@@ -484,27 +838,11 @@ enum { // primitive shapes
     sim_primitiveshape_capsule=8,
 };
 
-// @enum name="dummyType" label="dummy types" type="int" prefix="sim_dummytype_" description=""
-enum {
-    sim_dummytype_dynloopclosure = 0,
-    sim_dummytype_dyntendon = 7,
-    sim_dummytype_default = 8,
-    sim_dummytype_assembly = 9,
-};
-
 enum { // texture map modes (serialized)
     sim_texturemap_plane = 0,
     sim_texturemap_cylinder,
     sim_texturemap_sphere,
     sim_texturemap_cube
-};
-
-// @enum name="materialComponent" label="material components" type="int" prefix="sim_materialcomponent" description=""
-enum {
-    sim_materialcomponent_diffuse = 0,
-    sim_materialcomponent_lightdiffuse = 1,
-    sim_materialcomponent_specular = 2,
-    sim_materialcomponent_emission = 3
 };
 
 enum { // color components, deprecated
@@ -595,13 +933,6 @@ enum { // Pov pattern types
     sim_pov_mirror
 };
 
-// @enum name="stringType" label="string types" type="int" prefix="sim_string_" description=""
-enum {
-    sim_string_text=0,
-    sim_string_binary,
-    sim_string_buffer
-};
-
 enum { // stack item types
     sim_stackitem_null=0,
     sim_stackitem_double,
@@ -671,21 +1002,6 @@ enum { // properties info
     sim_propertyinfo_constant           = 0x040, // no event generated for that property
     sim_propertyinfo_largedata          = 0x100,
     sim_propertyinfo_retmethodsonly     = 0x200, // internal use
-};
-
-// @enum name="propertyReturns" label="property return codes" type="int" prefix="sim_propertyret_" description=""
-enum {
-    sim_propertyret_invalidvalue = -9,
-    sim_propertyret_invalidname = -8,
-    sim_propertyret_corrupt = -7,
-    sim_propertyret_typemismatch = -6,
-    sim_propertyret_notremovable = -5,
-    sim_propertyret_notwritable = -4,
-    sim_propertyret_notreadable = -3,
-    sim_propertyret_unknowntarget = -2,
-    sim_propertyret_unknownproperty = -1,
-    sim_propertyret_unavailable = 0,
-    sim_propertyret_ok = 1,
 };
 
 enum { // Vortex friction models

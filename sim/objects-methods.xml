@@ -550,7 +550,7 @@
                             <li>maxAccel (matrix n * 1): maximum allowed acceleration, for each dimension/axis</li>
                             <li>minAccel (matrix n * 1, defaults to -maxAccel): minimum allowed acceleration, for each dimension/axis</li>
                             <li>samples (int, defaults to 1000): desired number of path points/configurations</li>
-                            <li>boundaryCondition (string, defaults to 'not-a-knot'): boundary condition</li>
+                            <li>boundaryCondition (string, defaults to "not-a-knot"): boundary condition</li>
                         </ul>
                     </description>
                 </param>
@@ -1930,7 +1930,7 @@
                     <description>property name</description>
                 </param>
                 <param name="propertyState" type="func">
-                    <description>property value (i.e. a Lua function). The function cannot use global variables, upvalues or closures, etc., i.e. it needs to be 'pure' in functional programming terms</description>
+                    <description>property value (i.e. a Lua function). The function cannot use global variables, upvalues or closures, etc., i.e. it needs to be "pure" in functional programming terms</description>
                 </param>
                 <param name="options" type="map" default="{}">
                     <description>
@@ -2340,7 +2340,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>name (string, defaults to 'userEvent'): event name</li>
+                            <li>name (string, defaults to "userEvent"): event name</li>
                             <li>handle (int, defaults to -1): event handle</li>
                             <li>uid (int, defaults to -1): event unique id</li>
                             <li>mergeable (bool, defaults to false): whether same-name events can be merged</li>
@@ -2646,7 +2646,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li> type (string, defaults to 'double'): packing type. Allowed values are 'double', 'float', 'int64', 'int32', 'uint32', 'int16', 'uint16', 'int8' and 'uint8'</li>
+                            <li> type (string, defaults to "double"): packing type. Allowed values are "double", "float", "int64", "int32", "uint32", "int16", "uint16", "int8" and "uint8"</li>
                             <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
                             <li> count (int, defaults to 0): amount of doubles to pack (0 = all)</li>
                         </ul>
@@ -2684,7 +2684,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li> type (string, defaults to 'double'): packing type. Allowed values are 'double', 'float', 'int64', 'int32', 'uint32', 'int16', 'uint16', 'int8' and 'uint8'</li>
+                            <li> type (string, defaults to "double"): packing type. Allowed values are "double", "float", "int64", "int32", "uint32", "int16", "uint16", "int8" and "uint8"</li>
                             <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
                             <li> count (int, defaults to 0): amount of doubles to unpack (0 = all)</li>
                             <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
@@ -2930,21 +2930,21 @@
                         <ul>
                             <li id="collection"><a href="../collections.htm">collection</a> fields:
                                 <ul>
-                                    <li>objectType (string): "collection"</li>
+                                    <li>type (string): "collection"</li>
                                     <li>override (bool): <a href="../collidableObjects.htm">collidable</a>, <a href="../measurableObjects.htm">measurable</a>, <a href="../detecatableObjects.htm">detectable</a> and visibility properties of scene objects are overridden</li>
                                 </ul>
                             </li>
                             <li id="detachedScript"><a href="../scripts.htm">detached script</a> fields:
                                 <ul>
-                                    <li>objectType (string): "detachedScript"</li>
-                                    <li>type (int): the <a href="#scriptType">script type</a>. As of now only sim.scripttype_addon is supported</li>
+                                    <li>type (string): "detachedScript"</li>
+                                    <li>detachedScript.type (string): the script type. As of now only "addon" is supported</li>
                                     <li>language (string): the script language ("lua" or "python")</li>
                                     <li>code (string): the script content</li>
                                 </ul>
                             </li>
                             <li id="console"><a href="../dataVisualizationAndOutput.htm#console">console</a> fields:
                                 <ul>
-                                    <li>objectType (string): "console"</li>
+                                    <li>type (string): "console"</li>
                                     <li>title (string): console title</li>
                                     <li>size.width (int): console width</li>
                                     <li>size.height (int): console height</li>
@@ -2961,7 +2961,7 @@
                             </li>
                             <li id="textEditor"><a href="../dataVisualizationAndOutput.htm#textEditor">textEditor</a> fields:
                                 <ul>
-                                    <li>objectType (string): "textEditor"</li>
+                                    <li>type (string): "textEditor"</li>
                                     <li>title (string): editor title</li>
                                     <li>size.width (int): editor width</li>
                                     <li>size.height (int): editor height</li>
@@ -2978,8 +2978,8 @@
                             </li>
                             <li id="dummy"><a href="../dummies.htm">dummy</a> fields:
                                 <ul>
-                                    <li>objectType (string): "dummy"</li>
-                                    <li>dummySize (float): size of the dummy</li>
+                                    <li>type (string): "dummy"</li>
+                                    <li>size (float): size of the dummy</li>
                                     <li>color.diffuse (color): diffuse color</li>
                                     <li>color.specular (color): specular color</li>
                                     <li>color.emission (color): emission color</li>
@@ -2987,9 +2987,9 @@
                             </li>
                             <li id="camera"><a href="../cameras.htm">camera</a> fields:
                                 <ul>
-                                    <li>objectType (string): "camera"</li>
+                                    <li>type (string): "camera"</li>
                                     <li>clippingPlanes (float[2]): camera near and far clipping planes</li>
-                                    <li>cameraSize (float): camera size</li>
+                                    <li>size (float): camera size</li>
                                     <li>viewAngle (float): the view angle, for a camera operating in perspective projection mode</li>
                                     <li>viewSize (float): the view size, for a camera operating in orthogonal projection mode</li>
                                     <li>color.diffuse (color): diffuse color</li>
@@ -2999,11 +2999,11 @@
                             </li>
                             <li id="light"><a href="../lights.htm">light</a> fields:
                                 <ul>
-                                    <li>objectType (string): "light"</li>
-                                    <li>type (int): the <a href="#lightType">light type</a></li>
+                                    <li>type (string): "light"</li>
+                                    <li>light.type (string): the light type, any of "omnidirectional", "directional" or "spot"</li>
                                     <li>attenuationFactors (float[3]): constant, linear and quadratic attenuation factors</li>
                                     <li>spotCutoffAngle (float): spotlight cutoff angle</li>
-                                    <li>lightSize (float): light size</li>
+                                    <li>size (float): light size</li>
                                     <li>lightColor.diffuse (color): light diffuse color</li>
                                     <li>lightColor.specular (color): light specular color</li>
                                     <li>lightColor.emission (color): light emission color</li>
@@ -3014,7 +3014,7 @@
                             </li>
                             <li id="marker"><a href="../markers">marker</a> fields:
                                 <ul>
-                                    <li>objectType (string): "marker"</li>
+                                    <li>type (string): "marker"</li>
                                     <li>itemType (int): the <a href="#markerObjectType">marker object type</a></li>
                                     <li>cyclic (bool): if the marker is full, then the first items are overwritten</li>
                                     <li>local (bool): coordinate data is specified locally</li>
@@ -3030,8 +3030,8 @@
                             </li>
                             <li id="customSceneObject"><a href="../customSceneObjects.htm">custom scene object</a> fields:
                                 <ul>
-                                    <li>objectType (string): "customSceneObject"</li>
-                                    <li>objectSize (float): size of the custom scene object</li>
+                                    <li>type (string): "customSceneObject"</li>
+                                    <li>size (float): size of the custom scene object</li>
                                     <li>color.diffuse (color): diffuse color</li>
                                     <li>color.specular (color): specular color</li>
                                     <li>color.emission (color): emission color</li>
@@ -3039,10 +3039,10 @@
                             </li>
                             <li id="joint"><a href="../joints.htm">joint</a> fields:
                                 <ul>
-                                    <li>objectType (string): "joint"</li>
-                                    <li>type (int): the <a href="#jointType">joint type</a></li>
+                                    <li>type (string): "joint"</li>
+                                    <li>joint.type (string): the joint type. Allowed values are "revolute", "prismatic" or "spherical"</a></li>
                                     <li>mode (int): the <a href="#jointMode">joint mode</a></li>
-                                    <li>dynCtrlMode (int): the <a href="#dynCtrlMode">joint dynamic control mode</a></li>
+                                    <li>dynamics.ctrlMode (enum): the <a href="#dynCtrlMode">joint dynamic control mode</a></li>
                                     <li>interval (float[]): joint lower and upper bounds, if not cyclic</li>
                                     <li>cyclic (bool): whether the joint is cyclic. Only revolute joints with a screw lead of 0.0 can be cyclic</li>
                                     <li>screwLead (float): a revolute joint with a screw lead different than 0.0 is a screw</li>
@@ -3055,7 +3055,7 @@
                             </li>
                             <li id="shape"><a href="../shapes.htm">shape</a> fields:
                                 <ul>
-                                    <li>objectType (string): "shape"</li>
+                                    <li>type (string): "shape"</li>
                                     <li>shadingAngle (float): the shading angle</li>
                                     <li>culling (bool): whether the shape has its back faces culled</li>
                                     <li>dynamic (bool): whether the shape is dynamically enabled</li>
@@ -3149,17 +3149,17 @@
                             </li>
                             <li id="script"><a href="../scriptObjects.htm">script</a> fields:
                                 <ul>
-                                    <li>objectType (string): "script"</li>
-                                    <li>type (int): the <a href="#scriptType">script type</a></li>
-                                    <li>language (string): 'lua' or 'python'</li>
+                                    <li>type (string): "script"</li>
+                                    <li>detachedScript.type (string): the detached script type. Allowed values are "simulation" and "customization"</a></li>
+                                    <li>language (string): "lua" or "python"</li>
                                     <li>code (string): the content of the script</li>
                                     <li>scriptDisabled (bool): the script is initially disabled</li>
                                 </ul>
                             </li>
                             <li id="forceSensor"><a href="../forceSensors.htm">force sensors</a> fields:
                                 <ul>
-                                    <li>objectType (string): "forceSensor"</li>
-                                    <li>sensorSize (float): size of the sensor</li>
+                                    <li>type (string): "forceSensor"</li>
+                                    <li>size (float): size of the sensor</li>
                                     <li>filterType (int): filter type (0 = average, 1 = median)</li>
                                     <li>filterSampleSize (int): value count the filter operates on</li>
                                     <li>consecutiveViolationsToTrigger (int): number of consecutive threshold violation for the sensor to trigger</li>
@@ -3172,8 +3172,8 @@
                             </li>
                             <li id="proximitySensor"><a href="../proximitySensors.htm">proximity sensor</a> fields:
                                 <ul>
-                                    <li>objectType (string): "proximitySensor"</li>
-                                    <li>type (int): the <a href="#proximitySensorType">proximity sensor type</a></li>
+                                    <li>type (string): "proximitySensor"</li>
+                                    <li>proximitySensor.type (string): the sensor type. Allowed values are "cone", "pyramid", "cylinder", "disc" and "ray"</li>
                                     <li>pointSize (float): the sensor point size</li>
                                     <li>explicitHandling (bool): whether the sensor is explicitly handled</li>
                                     <li>showVolume (bool): whether the detection volume is shown</li>
@@ -3198,13 +3198,13 @@
                             </li>
                             <li id="visionSensor"><a href="../visionSensors.htm">vision sensor</a> fields:
                                 <ul>
-                                    <li>objectType (string): "visionSensor"</li>
+                                    <li>type (string): "visionSensor"</li>
                                     <li>explicitHandling (bool): whether the sensor is explicitly handled</li>
                                     <li>showFrustum (bool): whether the view frustum is shown</li>
                                     <li>useExtImage (bool): whether the sensor is passive (uses an external image)</li>
                                     <li>resolution (int[2]): sensor resolution</li>
                                     <li>clippingPlanes (float[2]): sensor near and far clipping planes</li>
-                                    <li>sensorSize (float): sensor size</li>
+                                    <li>size (float): sensor size</li>
                                     <li>viewAngle (float): the view angle, for a sensor operating in perspective projection mode</li>
                                     <li>viewSize (float): the view size, for a sensor operating in orthogonal projection mode</li>
                                     <li>backgroundColor (color): the sensor uses a specific color as default background (i.e. null pixels)</li>
@@ -3215,7 +3215,7 @@
                             </li>
                             <li id="ocTree"><a href="../ocTrees.htm">oc tree</a> fields:
                                 <ul>
-                                    <li>objectType (string): "ocTree"</li>
+                                    <li>type (string): "ocTree"</li>
                                     <li>voxelSize (float): the voxel size</li>
                                     <li>showPoints (bool): whether points should be drawn instead of voxels</li>
                                     <li>pointSize (int): the point size in pixels, when voxels are rendered as points</li>
@@ -3223,7 +3223,7 @@
                             </li>
                             <li id="pointCloud"><a href="../pointClouds.htm">point cloud</a> fields:
                                 <ul>
-                                    <li>objectType (string): "pointCloud"</li>
+                                    <li>type (string): "pointCloud"</li>
                                     <li>cellSize (float): the maximum size of the OC tree voxels containing points</li>
                                     <li>pointSize (int): the point size in pixels</li>
                                     <li>maxPointsInCell (int): maximum number of points allowed in a same OC tree voxel</li>
@@ -3231,7 +3231,7 @@
                             </li>
                             <li id="path"><a href="../paths.htm">path</a> fields:
                                 <ul>
-                                    <li>objectType (string): "path"</li>
+                                    <li>type (string): "path"</li>
                                     <li>ctrlPts (matrix n * 7): control points, specified row-wise, with pose values for each path point</li>
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
@@ -3251,7 +3251,7 @@
                             </li>
                             <li id="graph"><a href="../graphs.htm">graph</a> fields:
                                 <ul>
-                                    <li>objectType (string): "graph"</li>
+                                    <li>type (string): "graph"</li>
                                     <li>bufferSize (int): buffer size</li>
                                     <li>graphSize (float): size of the graph's scene object</li>
                                     <li>backgroundColor (color): background color</li>
@@ -3900,7 +3900,7 @@
             <params>
                 <param name="message" type="map">
                     <description>
-                        message to broadcast, with following structure: {id --> 'msgIdentifyingString', data --> {...}}
+                        message to broadcast, with following structure: {id --> "msgIdentifyingString", data --> {...}}
                     </description>
                 </param>
             </params>
@@ -3924,11 +3924,11 @@
                     <description>
                         filters, e.g.:
                         <br />
-                        filters = {objectHandle --> {'pose', 'jointPosition', 'layer'}, 'scene' --> {'engineProperties'}}
+                        filters = {"objectHandle" --> {"pose", "jointPosition", "layer"}, "scene" --> {"engineProperties"}}
                         <br />
-                        filters = {object1Handle --> {}, object2Handle --> {'pose'}}
+                        filters = {"object1Handle" --> {}, "object2Handle" --> {"pose"}}
                         <br />
-                        filters = {'sceneObject' --> {'pose'}, 'shape' --> {'position'}}
+                        filters = {"sceneObject" --> {"pose"}, "shape" --> {"position"}}
                     </description>
                 </param>
             </params>
@@ -4440,7 +4440,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>component (string, defaults to 'diffuse'): possible values are 'diffuse', 'specular' and 'emission'</li>
+                            <li>component (string, defaults to "diffuse"): possible values are "diffuse", "specular" and "emission"</li>
                         </ul>
                     </description>
                 </param>
@@ -5239,21 +5239,21 @@
                         <ul>
                             <li id="collection"><a href="../collections.htm">collection</a> fields:
                                 <ul>
-                                    <li>objectType (string): "collection"</li>
+                                    <li>type (string): "collection"</li>
                                     <li>override (bool): <a href="../collidableObjects.htm">collidable</a>, <a href="../measurableObjects.htm">measurable</a>, <a href="../detecatableObjects.htm">detectable</a> and visibility properties of scene objects are overridden</li>
                                 </ul>
                             </li>
                             <li id="detachedScript"><a href="../scripts.htm">detached script</a> fields:
                                 <ul>
-                                    <li>objectType (string): "detachedScript"</li>
-                                    <li>type (int): the <a href="#scriptType">script type</a>. As of now only sim.scripttype_addon is supported</li>
+                                    <li>type (string): "detachedScript"</li>
+                                    <li>detachedScript.type (string): the script type. As of now only "addon" is supported</li>
                                     <li>language (string): the script language ("lua" or "python")</li>
                                     <li>code (string): the script content</li>
                                 </ul>
                             </li>
                             <li id="console"><a href="../dataVisualizationAndOutput.htm#console">console</a> fields:
                                 <ul>
-                                    <li>objectType (string): "console"</li>
+                                    <li>type (string): "console"</li>
                                     <li>title (string): console title</li>
                                     <li>size.width (int): console width</li>
                                     <li>size.height (int): console height</li>
@@ -5270,7 +5270,7 @@
                             </li>
                             <li id="textEditor"><a href="../dataVisualizationAndOutput.htm#textEditor">textEditor</a> fields:
                                 <ul>
-                                    <li>objectType (string): "textEditor"</li>
+                                    <li>type (string): "textEditor"</li>
                                     <li>title (string): editor title</li>
                                     <li>size.width (int): editor width</li>
                                     <li>size.height (int): editor height</li>
@@ -5287,8 +5287,8 @@
                             </li>
                             <li id="dummy"><a href="../dummies.htm">dummy</a> fields:
                                 <ul>
-                                    <li>objectType (string): "dummy"</li>
-                                    <li>dummySize (float): size of the dummy</li>
+                                    <li>type (string): "dummy"</li>
+                                    <li>size (float): size of the dummy</li>
                                     <li>color.diffuse (color): diffuse color</li>
                                     <li>color.specular (color): specular color</li>
                                     <li>color.emission (color): emission color</li>
@@ -5296,9 +5296,9 @@
                             </li>
                             <li id="camera"><a href="../cameras.htm">camera</a> fields:
                                 <ul>
-                                    <li>objectType (string): "camera"</li>
+                                    <li>type (string): "camera"</li>
                                     <li>clippingPlanes (float[2]): camera near and far clipping planes</li>
-                                    <li>cameraSize (float): camera size</li>
+                                    <li>size (float): camera size</li>
                                     <li>viewAngle (float): the view angle, for a camera operating in perspective projection mode</li>
                                     <li>viewSize (float): the view size, for a camera operating in orthogonal projection mode</li>
                                     <li>color.diffuse (color): diffuse color</li>
@@ -5308,11 +5308,11 @@
                             </li>
                             <li id="light"><a href="../lights.htm">light</a> fields:
                                 <ul>
-                                    <li>objectType (string): "light"</li>
-                                    <li>type (int): the <a href="#lightType">light type</a></li>
+                                    <li>type (string): "light"</li>
+                                    <li>light.type (string): the light type, any of "omnidirectional", "directional" or "spot"</li>
                                     <li>attenuationFactors (float[3]): constant, linear and quadratic attenuation factors</li>
                                     <li>spotCutoffAngle (float): spotlight cutoff angle</li>
-                                    <li>lightSize (float): light size</li>
+                                    <li>size (float): light size</li>
                                     <li>lightColor.diffuse (color): light diffuse color</li>
                                     <li>lightColor.specular (color): light specular color</li>
                                     <li>lightColor.emission (color): light emission color</li>
@@ -5323,7 +5323,7 @@
                             </li>
                             <li id="marker"><a href="../markers">marker</a> fields:
                                 <ul>
-                                    <li>objectType (string): "marker"</li>
+                                    <li>type (string): "marker"</li>
                                     <li>itemType (int): the <a href="#markerObjectType">marker object type</a></li>
                                     <li>cyclic (bool): if the marker is full, then the first items are overwritten</li>
                                     <li>local (bool): coordinate data is specified locally</li>
@@ -5339,8 +5339,8 @@
                             </li>
                             <li id="customSceneObject"><a href="../customSceneObjects.htm">custom scene object</a> fields:
                                 <ul>
-                                    <li>objectType (string): "customSceneObject"</li>
-                                    <li>objectSize (float): size of the custom scene object</li>
+                                    <li>type (string): "customSceneObject"</li>
+                                    <li>size (float): size of the custom scene object</li>
                                     <li>color.diffuse (color): diffuse color</li>
                                     <li>color.specular (color): specular color</li>
                                     <li>color.emission (color): emission color</li>
@@ -5348,8 +5348,8 @@
                             </li>
                             <li id="joint"><a href="../joints.htm">joint</a> fields:
                                 <ul>
-                                    <li>objectType (string): "joint"</li>
-                                    <li>type (int): the <a href="#jointType">joint type</a></li>
+                                    <li>type (string): "joint"</li>
+                                    <li>joint.type (string): the joint type. Allowed values are "revolute", "prismatic" or "spherical"</li>
                                     <li>mode (int): the <a href="#jointMode">joint mode</a></li>
                                     <li>dynCtrlMode (int): the <a href="#dynCtrlMode">joint dynamic control mode</a></li>
                                     <li>interval (float[]): joint lower and upper bounds, if not cyclic</li>
@@ -5364,7 +5364,7 @@
                             </li>
                             <li id="shape"><a href="../shapes.htm">shape</a> fields:
                                 <ul>
-                                    <li>objectType (string): "shape"</li>
+                                    <li>type (string): "shape"</li>
                                     <li>shadingAngle (float): the shading angle</li>
                                     <li>culling (bool): whether the shape has its back faces culled</li>
                                     <li>dynamic (bool): whether the shape is dynamically enabled</li>
@@ -5458,17 +5458,17 @@
                             </li>
                             <li id="script"><a href="../scriptObjects.htm">script</a> fields:
                                 <ul>
-                                    <li>objectType (string): "script"</li>
-                                    <li>type (int): the <a href="#scriptType">script type</a></li>
-                                    <li>language (string): 'lua' or 'python'</li>
+                                    <li>type (string): "script"</li>
+                                    <li>detachedScript.type (string): the detached script type. Allowed values are "simulation" and "customization"</a></li>
+                                    <li>language (string): "lua" or "python"</li>
                                     <li>code (string): the content of the script</li>
                                     <li>scriptDisabled (bool): the script is initially disabled</li>
                                 </ul>
                             </li>
                             <li id="forceSensor"><a href="../forceSensors.htm">force sensors</a> fields:
                                 <ul>
-                                    <li>objectType (string): "forceSensor"</li>
-                                    <li>sensorSize (float): size of the sensor</li>
+                                    <li>type (string): "forceSensor"</li>
+                                    <li>size (float): size of the sensor</li>
                                     <li>filterType (int): filter type (0 = average, 1 = median)</li>
                                     <li>filterSampleSize (int): value count the filter operates on</li>
                                     <li>consecutiveViolationsToTrigger (int): number of consecutive threshold violation for the sensor to trigger</li>
@@ -5481,8 +5481,8 @@
                             </li>
                             <li id="proximitySensor"><a href="../proximitySensors.htm">proximity sensor</a> fields:
                                 <ul>
-                                    <li>objectType (string): "proximitySensor"</li>
-                                    <li>type (int): the <a href="#proximitySensorType">proximity sensor type</a></li>
+                                    <li>type (string): "proximitySensor"</li>
+                                    <li>proximitySensor.type (string): the sensor type. Allowed values are "cone", "pyramid", "cylinder", "disc" and "ray"</li>
                                     <li>pointSize (float): the sensor point size</li>
                                     <li>explicitHandling (bool): whether the sensor is explicitly handled</li>
                                     <li>showVolume (bool): whether the detection volume is shown</li>
@@ -5507,13 +5507,13 @@
                             </li>
                             <li id="visionSensor"><a href="../visionSensors.htm">vision sensor</a> fields:
                                 <ul>
-                                    <li>objectType (string): "visionSensor"</li>
+                                    <li>type (string): "visionSensor"</li>
                                     <li>explicitHandling (bool): whether the sensor is explicitly handled</li>
                                     <li>showFrustum (bool): whether the view frustum is shown</li>
                                     <li>useExtImage (bool): whether the sensor is passive (uses an external image)</li>
                                     <li>resolution (int[2]): sensor resolution</li>
                                     <li>clippingPlanes (float[2]): sensor near and far clipping planes</li>
-                                    <li>sensorSize (float): sensor size</li>
+                                    <li>size (float): sensor size</li>
                                     <li>viewAngle (float): the view angle, for a sensor operating in perspective projection mode</li>
                                     <li>viewSize (float): the view size, for a sensor operating in orthogonal projection mode</li>
                                     <li>backgroundColor (color): the sensor uses a specific color as default background (i.e. null pixels)</li>
@@ -5524,7 +5524,7 @@
                             </li>
                             <li id="ocTree"><a href="../ocTrees.htm">oc tree</a> fields:
                                 <ul>
-                                    <li>objectType (string): "ocTree"</li>
+                                    <li>type (string): "ocTree"</li>
                                     <li>voxelSize (float): the voxel size</li>
                                     <li>showPoints (bool): whether points should be drawn instead of voxels</li>
                                     <li>pointSize (int): the point size in pixels, when voxels are rendered as points</li>
@@ -5532,7 +5532,7 @@
                             </li>
                             <li id="pointCloud"><a href="../pointClouds.htm">point cloud</a> fields:
                                 <ul>
-                                    <li>objectType (string): "pointCloud"</li>
+                                    <li>type (string): "pointCloud"</li>
                                     <li>cellSize (float): the maximum size of the OC tree voxels containing points</li>
                                     <li>pointSize (int): the point size in pixels</li>
                                     <li>maxPointsInCell (int): maximum number of points allowed in a same OC tree voxel</li>
@@ -5540,7 +5540,7 @@
                             </li>
                             <li id="path"><a href="../paths.htm">path</a> fields:
                                 <ul>
-                                    <li>objectType (string): "path"</li>
+                                    <li>type (string): "path"</li>
                                     <li>ctrlPts (matrix n * 7): control points, specified in row-major order, with a pose for each path point</li>
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
@@ -5560,7 +5560,7 @@
                             </li>
                             <li id="graph"><a href="../graphs.htm">graph</a> fields:
                                 <ul>
-                                    <li>objectType (string): "graph"</li>
+                                    <li>type (string): "graph"</li>
                                     <li>bufferSize (int): buffer size</li>
                                     <li>graphSize (float): size of the graph's scene object</li>
                                     <li>backgroundColor (color): background color</li>
@@ -5815,7 +5815,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>component (string, defaults to 'diffuse'): possible values are 'diffuse', 'specular' and 'emission'</li>
+                            <li>component (string, defaults to "diffuse"): possible values are "diffuse", "specular" and "emission"</li>
                         </ul>
                     </description>
                 </param>
@@ -6034,7 +6034,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>types (string[], defaults to {'sceneObject'}): the desired scene object types</li>
+                            <li>types (string[], defaults to {"sceneObject"}): the desired scene object types</li>
                             <li>depth (int, defaults to 9999): the maximum retrieval depth</li>
                         </ul>
                     </description>
@@ -6066,7 +6066,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>types (string[], defaults to {'sceneObject'}): the desired scene object types</li>
+                            <li>types (string[], defaults to {"sceneObject"}): the desired scene object types</li>
                             <li>count (int, defaults to 9999): the maximum retrieval count</li>
                         </ul>
                     </description>
@@ -6102,7 +6102,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>types (string[], defaults to {'sceneObject'}): the desired scene object types to be taken into account</li>
+                            <li>types (string[], defaults to {"sceneObject"}): the desired scene object types to be taken into account</li>
                         </ul>
                     </description>
                 </param>
@@ -6464,7 +6464,7 @@
                 apply to static shapes)
             </description>
             <params>
-                <param name="parent" type="handle" default='nil'>
+                <param name="parent" type="handle" default="nil">
                     <description>
                         scene object that should become parent, or nil/None if the object should become an orphan. In an assembly operation, the assembly dummy on
                         the parent should be specified instead
