@@ -56,6 +56,9 @@
     <property name="dongleID" type="string" deprecated="true" writable="false" constant="true" />
     <property name="dongleId" type="string" writable="false" constant="true" />
     <property name="dongleSerial" type="string" writable="false" constant="true" />
+    <property name="enumTypes" type="stringarray" writable="false" constant="true" label="Enum types">
+      <description>Main enum types</description>
+    </property>
     <property name="execUnsafe" type="bool" writable="false" constant="true" label="Execute unsafe" />
     <property name="execUnsafeExt" type="bool" writable="false" constant="true" label="Execute unsafe extended">
       <description>Execute unsafe for code triggered externally</description>
@@ -209,7 +212,8 @@
     <property name="code" type="string" label="Code">
       <description>Script content</description>
     </property>
-    <property name="detachedScript.type" type="int" writable="false" constant="true" label="Type">
+    <property name="detachedScript" type="group" readable="false" writable="false" silent="true" constant="true" />
+    <property name="detachedScript.type" type="string" writable="false" constant="true" label="Type">
       <description>Script type</description>
     </property>
     <property name="disabled" type="bool" label="Disabled">
@@ -396,7 +400,7 @@
     <property name="dynamics.bullet.posPid" type="floatarray" />
     <property name="dynamics.bullet.stopCfm" type="float" />
     <property name="dynamics.bullet.stopErp" type="float" />
-    <property name="dynamics.ctrlMode" type="enum" enum="jointDynCtrlMode" label="Control mode">
+    <property name="dynamics.ctrlMode" type="enum" enum="SimJointDynCtrlMode" label="Control mode">
       <description>Joint control mode, when in dynamic mode</description>
     </property>
     <property name="dynamics.engineProperties" type="string" label="Engine properties">
@@ -1404,6 +1408,9 @@
     <property name="resetAfterSimError" type="bool" label="Reset after simulation error" />
     <property name="restartOnError" type="bool" deprecated="true" silent="true" />
     <property name="script" type="group" readable="false" writable="false" silent="true" constant="true" />
+    <property name="script.type" type="string" writable="false" constant="true" label="Type">
+      <description>Script/detached script type</description>
+    </property>
     <property name="scriptDisabled" type="bool" deprecated="true" silent="true" />
     <property name="scriptName" type="string" deprecated="true" writable="false" silent="true" />
     <property name="scriptSize" type="float" deprecated="true" />

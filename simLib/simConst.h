@@ -395,9 +395,9 @@ typedef enum {
     X(verbosity, trace, 700, trace) \
     X(verbosity, tracelua, 800, traceLua) \
     X(verbosity, traceall, 900, traceAll) \
-    X(verbosity, undecorated, 0, undecorated) \
-    X(verbosity, onlyterminal, 0, onlyterminal) \
-    X(verbosity, once, 0, once) \
+    sim_verbosity_undecorated = 0x0f000, \
+    sim_verbosity_onlyterminal = 0x10000, \
+    sim_verbosity_once = 0x20000, \
     sim_verbosity_default = sim_verbosity_loadinfos, \
 
 typedef enum {

@@ -3150,7 +3150,7 @@
                             <li id="script"><a href="../scriptObjects.htm">script</a> fields:
                                 <ul>
                                     <li>type (string): "script"</li>
-                                    <li>detachedScript.type (string): the detached script type. Allowed values are "simulation" and "customization"</a></li>
+                                    <li>script.type (string): the detached script type. Allowed values are "simulation" and "customization"</a></li>
                                     <li>language (string): "lua" or "python"</li>
                                     <li>code (string): the content of the script</li>
                                     <li>scriptDisabled (bool): the script is initially disabled</li>
@@ -5459,7 +5459,7 @@
                             <li id="script"><a href="../scriptObjects.htm">script</a> fields:
                                 <ul>
                                     <li>type (string): "script"</li>
-                                    <li>detachedScript.type (string): the detached script type. Allowed values are "simulation" and "customization"</a></li>
+                                    <li>script.type (string): the script type. Allowed values are "simulation" and "customization"</a></li>
                                     <li>language (string): "lua" or "python"</li>
                                     <li>code (string): the content of the script</li>
                                     <li>scriptDisabled (bool): the script is initially disabled</li>
