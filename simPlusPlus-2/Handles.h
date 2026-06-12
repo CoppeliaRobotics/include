@@ -165,11 +165,11 @@ namespace sim
     private:
         static int getSceneID(int scriptID)
         {
-            int scriptType = sim::getIntProperty(scriptID, "detachedScript.type");
+            std::string scriptType = sim::getStringProperty(scriptID, "detachedScript.type");
             if(0
-                    || scriptType == sim_scripttype_main
-                    || scriptType == sim_scripttype_simulation
-                    || scriptType == sim_scripttype_customization
+                    || scriptType == "main"
+                    || scriptType == "simulation"
+                    || scriptType == "customization"
             )
                 return sim::getIntProperty(sim_handle_scene, "uid");
             else
