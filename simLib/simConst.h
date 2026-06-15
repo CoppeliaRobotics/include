@@ -59,7 +59,7 @@ typedef enum {
 
 
 // ----------------------------------------------------------------------------------------------------
-#define SIMULATIONSTATETYPE \
+#define SIMULATIONSTATE \
     X(simulation, stopped,           0x00,     stopped) \
     X(simulation, paused,            0x08,     paused) \
     X(simulation, running,           0x11,     running) \
@@ -67,14 +67,14 @@ typedef enum {
 
 typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
-    SIMULATIONSTATETYPE
+    SIMULATIONSTATE
     #undef X
-} simulationStateType;
+} simulationState;
 
 #ifdef __cplusplus
     enum class SimSimulationState {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
-        SIMULATIONSTATETYPE
+        SIMULATIONSTATE
         #undef X
     };
 #endif /* __cplusplus */
@@ -208,10 +208,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     SCRIPTTYPE
     #undef X
-} detachedScriptType;
+} scriptType;
 
 #ifdef __cplusplus
-    enum class SimDetachedScriptType {
+    enum class SimScriptType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         SCRIPTTYPE
         #undef X
@@ -232,10 +232,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     SCRIPTSTATE
     #undef X
-} detachedScriptState;
+} scriptState;
 
 #ifdef __cplusplus
-    enum class SimDetachedScriptState {
+    enum class SimScriptState {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         SCRIPTSTATE
         #undef X
@@ -274,10 +274,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     SCRIPTEXECORDER
     #undef X
-} detachedScriptExecOrder;
+} scriptExecOrder;
 
 #ifdef __cplusplus
-    enum class SimDetachedScriptExecOrder {
+    enum class SimScriptExecOrder {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         SCRIPTEXECORDER
         #undef X
@@ -314,21 +314,21 @@ typedef enum {
 // ----------------------------------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------------------------------------
-#define MARKEROBJECTOPTIONS \
+#define MARKEROPTIONS \
     X(markeropts, local, 1, local) \
     X(markeropts, cyclic, 2, cyclic) \
     X(markeropts, overlay, 4, overlay) \
 
 typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
-    MARKEROBJECTOPTIONS
+    MARKEROPTIONS
     #undef X
 } markerOptions;
 
 #ifdef __cplusplus
     enum class SimMarkerOptions {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
-        MARKEROBJECTOPTIONS
+        MARKEROPTIONS
         #undef X
     };
 #endif /* __cplusplus */
@@ -535,6 +535,166 @@ typedef enum {
 #endif /* __cplusplus */
 // ----------------------------------------------------------------------------------------------------
 
+// ----------------------------------------------------------------------------------------------------
+#define PLATFORM \
+    X(platform, windows, 0, windows) \
+    X(platform, macos, 1, macos) \
+    X(platform, linux, 2, linux) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    PLATFORM
+    #undef X
+} platform;
+
+#ifdef __cplusplus
+    enum class SimPlatform {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        PLATFORM
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define APPFLAVOR \
+    X(appflavor, lite, 0, lite) \
+    X(appflavor, edu, 1, edu) \
+    X(appflavor, pro, 2, pro) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    APPFLAVOR
+    #undef X
+} appFlavor;
+
+#ifdef __cplusplus
+    enum class SimAppFlavor {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        APPFLAVOR
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define HEADLESSMODE \
+    X(headlessmode, disabled, 0, disabled) \
+    X(headlessmode, emulated, 1, emulated) \
+    X(headlessmode, enabled, 2, enabled) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    HEADLESSMODE
+    #undef X
+} headlessMode;
+
+#ifdef __cplusplus
+    enum class SimHeadlessMode {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        HEADLESSMODE
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define TEXTUREAPPLYMODE \
+    X(textureapplymode, modulate, 0, modulate) \
+    X(textureapplymode, decal, 1, decal) \
+    X(textureapplymode, add, 2, add) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    TEXTUREAPPLYMODE
+    #undef X
+} textureApplyMode;
+
+#ifdef __cplusplus
+    enum class SimTextureApplyMode {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        TEXTUREAPPLYMODE
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define PRIMITIVETYPE \
+    X(primitiveshape, none, 0, none) \
+    X(primitiveshape, plane, 1, plane) \
+    X(primitiveshape, disc, 2, disc) \
+    X(primitiveshape, cuboid, 3, cuboid) \
+    X(primitiveshape, spheroid, 4, spheroid) \
+    X(primitiveshape, cylinder, 5, cylinder) \
+    X(primitiveshape, cone, 6, cone) \
+    X(primitiveshape, heightfield, 7, heightfield) \
+    X(primitiveshape, capsule, 8, capsule) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    PRIMITIVETYPE
+    #undef X
+} primitiveType;
+
+#ifdef __cplusplus
+    enum class SimPrimitiveType {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        PRIMITIVETYPE
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define FORCESENSORFILTER \
+    X(forcesensorfilter, average, 0, average) \
+    X(forcesensorfilter, median, 1, median) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    FORCESENSORFILTER
+    #undef X
+} forceSensorFilter;
+
+#ifdef __cplusplus
+    enum class SimForceSensorFilter {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        FORCESENSORFILTER
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define RENDERMODE \
+    X(rendermode, opengl, 0, openGl) \
+    X(rendermode, colorcoded, 2, colorCoded) \
+    X(rendermode, povray, 3, povray) \
+    X(rendermode, extrenderer, 5, extRenderer) \
+    X(rendermode, opengl3, 7, openGl3) \
+    X(rendermode, oglimg, 9, oglImg) \
+    X(rendermode, codedimg, 10, codedImg) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    RENDERMODE
+    #undef X
+    sim_rendermode_auxchannels = 1, // deprecated
+    sim_rendermode_reserved = 4, // deprecated
+    sim_rendermode_extrendererwindowed = 6, // deprecated
+    sim_rendermode_opengl3windowed = 8, // deprecated
+} renderMode;
+
+#ifdef __cplusplus
+    enum class SimRenderMode {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        RENDERMODE
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
 #define SIM_ENUM_TYPES \
     X(SimProximitySensorType) \
     X(SimSimulationState) \
@@ -543,10 +703,10 @@ typedef enum {
     X(SimJointType) \
     X(SimShapeType) \
     X(SimParentingMode) \
-    X(SimDetachedScriptType) \
-    X(SimDetachedScriptState) \
+    X(SimScriptType) \
+    X(SimScriptState) \
     X(SimCodeLang) \
-    X(SimDetachedScriptExecOrder) \
+    X(SimScriptExecOrder) \
     X(SimMarkerType) \
     X(SimMarkerOptions) \
     X(SimJointMode) \
@@ -557,6 +717,13 @@ typedef enum {
     X(SimMaterialComponent) \
     X(SimStringType) \
     X(SimPropertyReturns) \
+    X(SimPlatform) \
+    X(SimAppFlavor) \
+    X(SimHeadlessMode) \
+    X(SimTextureApplyMode) \
+    X(SimPrimitiveType) \
+    X(SimForceSensorFilter) \
+    X(SimRenderMode) \
 
 // General object types. Values are serialized
 enum {
@@ -827,18 +994,6 @@ enum { // Ruckig Library flags
     sim_ruckig_minaccel                             =0x0200,
 };
 
-enum { // primitive shapes
-    sim_primitiveshape_none=0,
-    sim_primitiveshape_plane=1,
-    sim_primitiveshape_disc=2,
-    sim_primitiveshape_cuboid=3,
-    sim_primitiveshape_spheroid=4,
-    sim_primitiveshape_cylinder=5,
-    sim_primitiveshape_cone=6,
-    sim_primitiveshape_heightfield=7,
-    sim_primitiveshape_capsule=8,
-};
-
 enum { // texture map modes (serialized)
     sim_texturemap_plane = 0,
     sim_texturemap_cylinder,
@@ -1073,20 +1228,6 @@ enum { // Graph data stream transformations
     sim_stream_transf_derivative,
     sim_stream_transf_integral,
     sim_stream_transf_cumulative
-};
-
-enum { // Vision sensors render modes
-    sim_rendermode_opengl=0,
-    sim_rendermode_auxchannels, // deprecated
-    sim_rendermode_colorcoded,
-    sim_rendermode_povray,
-    sim_rendermode_reserved,
-    sim_rendermode_extrenderer,
-    sim_rendermode_extrendererwindowed, // deprecated
-    sim_rendermode_opengl3,
-    sim_rendermode_opengl3windowed, // deprecated
-    sim_rendermode_oglimg,
-    sim_rendermode_codedimg,
 };
 
 enum { // Check the documentation instead of comments below!!
