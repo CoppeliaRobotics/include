@@ -250,7 +250,14 @@ function sysCall_init()
             children = {},
         }
         local info = sim.app:getEnumInfo(enumName)
+        -- sort entries by value:
+        local entries = {}
         for k, v in pairs(info) do
+            table.insert(entries, {k, v})
+        end
+        table.sort(entries, function(a, b) return a[2] < b[2] end)
+        for _, entry in ipairs(entries) do
+            local k, v = table.unpack(entry)
             table.insert(enumNode.children, {
                 tag = 'item',
                 attrs = {name = k, value = v},
