@@ -3015,7 +3015,7 @@
                             <li id="marker"><a href="../markers">marker</a> fields:
                                 <ul>
                                     <li>type (string): "marker"</li>
-                                    <li>itemType (int): the <a href="#markerObjectType">marker object type</a></li>
+                                    <li>marker.type (string): the marker object type. Allowed values are "points", "lines", "tubes", "triangles", "spheres", "squares", "discs", "cubes", "cylinders" or "custom"</li>
                                     <li>cyclic (bool): if the marker is full, then the first items are overwritten</li>
                                     <li>local (bool): coordinate data is specified locally</li>
                                     <li>overlay (bool): items are rendered on top of scene objects</li>
@@ -5324,7 +5324,7 @@
                             <li id="marker"><a href="../markers">marker</a> fields:
                                 <ul>
                                     <li>type (string): "marker"</li>
-                                    <li>itemType (int): the <a href="#markerObjectType">marker object type</a></li>
+                                    <li>marker.type (string): the marker object type. Allowed values are "points", "lines", "tubes", "triangles", "spheres", "squares", "discs", "cubes", "cylinders" or "custom"</li>
                                     <li>cyclic (bool): if the marker is full, then the first items are overwritten</li>
                                     <li>local (bool): coordinate data is specified locally</li>
                                     <li>overlay (bool): items are rendered on top of scene objects</li>

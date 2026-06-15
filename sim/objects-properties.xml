@@ -400,7 +400,7 @@
     <property name="dynamics.bullet.posPid" type="floatarray" />
     <property name="dynamics.bullet.stopCfm" type="float" />
     <property name="dynamics.bullet.stopErp" type="float" />
-    <property name="dynamics.ctrlMode" type="enum" enum="SimJointDynCtrlMode" label="Control mode">
+    <property name="dynamics.ctrlMode" type="enum" enum="SimJointDynamicsCtrlMode" label="Control mode">
       <description>Joint control mode, when in dynamic mode</description>
     </property>
     <property name="dynamics.engineProperties" type="string" label="Engine properties">
@@ -656,13 +656,13 @@
     <property name="indices" type="intarray" writable="false" label="Indices">
       <description>Indices for custom marker</description>
     </property>
-    <property name="itemType" type="int" writable="false" constant="true" label="Type">
-      <description>Item type</description>
-    </property>
     <property name="local" type="bool" writable="false" constant="true" label="Local">
       <description>Coordinates are local to the marker&apos;s reference frame</description>
     </property>
     <property name="marker" type="group" readable="false" writable="false" silent="true" constant="true" />
+    <property name="marker.type" type="string" writable="false" constant="true" label="Type">
+      <description>Marker type</description>
+    </property>
     <property name="normals" type="matrix" writable="false" label="Normals">
       <description>Normals for custom marker</description>
     </property>

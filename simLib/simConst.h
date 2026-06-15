@@ -208,10 +208,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     SCRIPTTYPE
     #undef X
-} scriptType;
+} detachedScriptType;
 
 #ifdef __cplusplus
-    enum class SimScriptType {
+    enum class SimDetachedScriptType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         SCRIPTTYPE
         #undef X
@@ -232,10 +232,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     SCRIPTSTATE
     #undef X
-} scriptState;
+} detachedScriptState;
 
 #ifdef __cplusplus
-    enum class SimScriptState {
+    enum class SimDetachedScriptState {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         SCRIPTSTATE
         #undef X
@@ -274,10 +274,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     SCRIPTEXECORDER
     #undef X
-} scriptExecOrder;
+} detachedScriptExecOrder;
 
 #ifdef __cplusplus
-    enum class SimScriptExecOrder {
+    enum class SimDetachedScriptExecOrder {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         SCRIPTEXECORDER
         #undef X
@@ -296,15 +296,16 @@ typedef enum {
     X(markertype, cubes, 11, cubes) \
     X(markertype, cylinders, 12, cylinders) \
     X(markertype, custom, 13, custom) \
+    X(markertype, tubes, 14, tubes) \
 
 typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     MARKEROBJECTTYPE
     #undef X
-} markerObjectType;
+} markerType;
 
 #ifdef __cplusplus
-    enum class SimMarkerObjectType {
+    enum class SimMarkerType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         MARKEROBJECTTYPE
         #undef X
@@ -314,18 +315,18 @@ typedef enum {
 
 // ----------------------------------------------------------------------------------------------------
 #define MARKEROBJECTOPTIONS \
-    X(markeropts, local, 0, local) \
-    X(markeropts, cyclic, 0, cyclic) \
-    X(markeropts, overlay, 0, overlay) \
+    X(markeropts, local, 1, local) \
+    X(markeropts, cyclic, 2, cyclic) \
+    X(markeropts, overlay, 4, overlay) \
 
 typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     MARKEROBJECTOPTIONS
     #undef X
-} markerObjectOptions;
+} markerOptions;
 
 #ifdef __cplusplus
-    enum class SimMarkerObjectOptions {
+    enum class SimMarkerOptions {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         MARKEROBJECTOPTIONS
         #undef X
@@ -367,10 +368,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     JOINTDYNCTRLMODE
     #undef X
-} jointDynCtrlMode;
+} jointDynamicsCtrlMode;
 
 #ifdef __cplusplus
-    enum class SimJointDynCtrlMode {
+    enum class SimJointDynamicsCtrlMode {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         JOINTDYNCTRLMODE
         #undef X
@@ -542,14 +543,14 @@ typedef enum {
     X(SimJointType) \
     X(SimShapeType) \
     X(SimParentingMode) \
-    X(SimScriptType) \
-    X(SimScriptState) \
+    X(SimDetachedScriptType) \
+    X(SimDetachedScriptState) \
     X(SimCodeLang) \
-    X(SimScriptExecOrder) \
-    X(SimMarkerObjectType) \
-    X(SimMarkerObjectOptions) \
+    X(SimDetachedScriptExecOrder) \
+    X(SimMarkerType) \
+    X(SimMarkerOptions) \
     X(SimJointMode) \
-    X(SimJointDynCtrlMode) \
+    X(SimJointDynamicsCtrlMode) \
     X(SimVerbosity) \
     X(SimPhysicsEngine) \
     X(SimDummyType) \
