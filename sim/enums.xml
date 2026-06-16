@@ -1,37 +1,37 @@
 <enums>
-  <enum name="SimCodeLang">
+  <enum name="appFlavor">
+    <item name="lite" value="0" />
+    <item name="edu" value="1" />
+    <item name="pro" value="2" />
+  </enum>
+  <enum name="codeLang">
     <item name="undefined" value="-1" />
     <item name="lua" value="0" />
     <item name="python" value="1" />
   </enum>
-  <enum name="SimDetachedScriptExecOrder">
-    <item name="first" value="0" />
-    <item name="normal" value="1" />
-    <item name="last" value="2" />
-  </enum>
-  <enum name="SimDetachedScriptState">
-    <item name="unloaded" value="0" />
-    <item name="uninitialized" value="1" />
-    <item name="initialized" value="2" />
-    <item name="ended" value="3" />
-    <item name="error" value="8" />
-    <item name="suspended" value="16" />
-  </enum>
-  <enum name="SimDetachedScriptType">
-    <item name="main" value="0" />
-    <item name="simulation" value="1" />
-    <item name="addon" value="2" />
-    <item name="customization" value="6" />
-    <item name="sandbox" value="8" />
-    <item name="passive" value="9" />
-  </enum>
-  <enum name="SimDummyType">
+  <enum name="dummyType">
     <item name="dynLoopClosure" value="0" />
     <item name="dynTendon" value="7" />
     <item name="neutral" value="8" />
     <item name="assembly" value="9" />
   </enum>
-  <enum name="SimJointDynamicsCtrlMode">
+  <enum name="forceSensorFilter">
+    <item name="average" value="0" />
+    <item name="median" value="1" />
+  </enum>
+  <enum name="handle">
+    <item name="app" value="-13" />
+    <item name="scene" value="-12" />
+    <item name="self" value="-4" />
+    <item name="all" value="-2" />
+    <item name="world" value="-1" />
+  </enum>
+  <enum name="headlessMode">
+    <item name="disabled" value="0" />
+    <item name="emulated" value="1" />
+    <item name="enabled" value="2" />
+  </enum>
+  <enum name="jointDynamicsCtrlMode">
     <item name="free" value="0" />
     <item name="force" value="1" />
     <item name="velocity" value="4" />
@@ -39,27 +39,27 @@
     <item name="spring" value="12" />
     <item name="custom" value="16" />
   </enum>
-  <enum name="SimJointMode">
+  <enum name="jointMode">
     <item name="kinematic" value="0" />
     <item name="dependent" value="4" />
     <item name="dynamic" value="5" />
   </enum>
-  <enum name="SimJointType">
+  <enum name="jointType">
     <item name="revolute" value="10" />
     <item name="prismatic" value="11" />
     <item name="spherical" value="12" />
   </enum>
-  <enum name="SimLightType">
+  <enum name="lightType">
     <item name="omnidirectional" value="1" />
     <item name="spot" value="2" />
     <item name="directional" value="3" />
   </enum>
-  <enum name="SimMarkerOptions">
+  <enum name="markerOptions">
     <item name="local" value="1" />
     <item name="cyclic" value="2" />
     <item name="overlay" value="4" />
   </enum>
-  <enum name="SimMarkerType">
+  <enum name="markerType">
     <item name="points" value="0" />
     <item name="lines" value="1" />
     <item name="triangles" value="2" />
@@ -71,18 +71,18 @@
     <item name="custom" value="13" />
     <item name="tubes" value="14" />
   </enum>
-  <enum name="SimMaterialComponent">
+  <enum name="materialComponent">
     <item name="diffuse" value="0" />
     <item name="lightDiffuse" value="1" />
     <item name="specular" value="2" />
     <item name="emission" value="3" />
   </enum>
-  <enum name="SimParentingMode">
+  <enum name="parentingMode">
     <item name="keepLocalPose" value="0" />
     <item name="keepWorldPose" value="1" />
     <item name="assembly" value="2" />
   </enum>
-  <enum name="SimPhysicsEngine">
+  <enum name="physicsEngine">
     <item name="bullet" value="0" />
     <item name="ode" value="1" />
     <item name="vortex" value="2" />
@@ -90,7 +90,23 @@
     <item name="mujoco" value="4" />
     <item name="drake" value="5" />
   </enum>
-  <enum name="SimPropertyReturns">
+  <enum name="platform">
+    <item name="windows" value="0" />
+    <item name="macos" value="1" />
+    <item name="linux" value="2" />
+  </enum>
+  <enum name="primitiveType">
+    <item name="none" value="0" />
+    <item name="plane" value="1" />
+    <item name="disc" value="2" />
+    <item name="cuboid" value="3" />
+    <item name="spheroid" value="4" />
+    <item name="cylinder" value="5" />
+    <item name="cone" value="6" />
+    <item name="heightfield" value="7" />
+    <item name="capsule" value="8" />
+  </enum>
+  <enum name="propertyReturns">
     <item name="invalidValue" value="-9" />
     <item name="invalidName" value="-8" />
     <item name="corrupt" value="-7" />
@@ -103,14 +119,23 @@
     <item name="unavailable" value="0" />
     <item name="ok" value="1" />
   </enum>
-  <enum name="SimProximitySensorType">
+  <enum name="proximitySensorType">
     <item name="pyramid" value="30" />
     <item name="cylinder" value="31" />
     <item name="disc" value="32" />
     <item name="cone" value="33" />
     <item name="ray" value="34" />
   </enum>
-  <enum name="SimSceneObjectType">
+  <enum name="renderMode">
+    <item name="openGl" value="0" />
+    <item name="colorCoded" value="2" />
+    <item name="povray" value="3" />
+    <item name="extRenderer" value="5" />
+    <item name="openGl3" value="7" />
+    <item name="oglImg" value="9" />
+    <item name="codedImg" value="10" />
+  </enum>
+  <enum name="sceneObjectType">
     <item name="shape" value="0" />
     <item name="joint" value="1" />
     <item name="graph" value="2" />
@@ -126,22 +151,48 @@
     <item name="marker" value="18" />
     <item name="customSceneObject" value="19" />
   </enum>
-  <enum name="SimShapeType">
+  <enum name="scriptExecOrder">
+    <item name="first" value="0" />
+    <item name="normal" value="1" />
+    <item name="last" value="2" />
+  </enum>
+  <enum name="scriptState">
+    <item name="unloaded" value="0" />
+    <item name="uninitialized" value="1" />
+    <item name="initialized" value="2" />
+    <item name="ended" value="3" />
+    <item name="error" value="8" />
+    <item name="suspended" value="16" />
+  </enum>
+  <enum name="scriptType">
+    <item name="main" value="0" />
+    <item name="simulation" value="1" />
+    <item name="addon" value="2" />
+    <item name="customization" value="6" />
+    <item name="sandbox" value="8" />
+    <item name="passive" value="9" />
+  </enum>
+  <enum name="shapeType">
     <item name="simple" value="20" />
     <item name="compound" value="21" />
   </enum>
-  <enum name="SimSimulationState">
+  <enum name="simulationState">
     <item name="stopped" value="0" />
     <item name="paused" value="8" />
     <item name="running" value="17" />
     <item name="lastBeforeStop" value="22" />
   </enum>
-  <enum name="SimStringType">
+  <enum name="stringType">
     <item name="text" value="0" />
     <item name="binary" value="1" />
     <item name="buffer" value="2" />
   </enum>
-  <enum name="SimVerbosity">
+  <enum name="textureApplyMode">
+    <item name="modulate" value="0" />
+    <item name="decal" value="1" />
+    <item name="add" value="2" />
+  </enum>
+  <enum name="verbosity">
     <item name="useGlobal" value="-1" />
     <item name="none" value="100" />
     <item name="errors" value="200" />

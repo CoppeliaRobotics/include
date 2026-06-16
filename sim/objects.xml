@@ -2405,8 +2405,8 @@
                         <ul>
                             <li>metaInfo: optional map:
                                 <ul>
-                                    <li>superClass: (string[], defaults to {"object"})</li>
-                                    <li>namespaces: (string[], defaults to {})</li>
+                                    <li>superClass: (string[], defaults to ["object"])</li>
+                                    <li>namespaces: (string[], defaults to [])</li>
                                 </ul>
                             </li>
                         </ul>
@@ -2495,7 +2495,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>args (any[], defaults to {}): arguments to pass to the function</li>
+                            <li>args (any[], defaults to []): arguments to pass to the function</li>
                         </ul>
                     </description>
                 </param>
@@ -2532,7 +2532,7 @@
                         optional map:
                         <ul>
                             <li>simulationTime (bool, defaults to false)</li>
-                            <li>args (any[], defaults to {}): arguments to pass to the function</li>
+                            <li>args (any[], defaults to []): arguments to pass to the function</li>
                         </ul>
                     </description>
                 </param>
@@ -3443,7 +3443,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>types (string[], defaults to {}): a string array specifying the types to retrieve. Allowed values are: "sceneObject", "shape", "joint", "dummy", "script", "mirror", "graph", "light", "camera", "proximitySensor", "visionSensor", "forceSensor", "ocTree", "pointCloud", "marker", "collection", "detachedScript", "mesh"</li>
+                            <li>types (string[], defaults to []): a string array specifying the types to retrieve. Allowed values are: "sceneObject", "shape", "joint", "dummy", "script", "mirror", "graph", "light", "camera", "proximitySensor", "visionSensor", "forceSensor", "ocTree", "pointCloud", "marker", "collection", "detachedScript", "mesh"</li>
                         </ul>
                     </description>
                 </param>
@@ -3917,12 +3917,10 @@
     <property name="execUnsafeExt" type="bool" writable="false" constant="true" label="Execute unsafe extended">
       <description>Execute unsafe for code triggered externally</description>
     </property>
-    <property name="flavor" type="int" writable="false" constant="true" label="Flavor">
-      <description>Flavor (0: lite, 1: edu, 2: pro)</description>
+    <property name="flavor" type="enum" writable="false" constant="true" enum="appFlavor" label="Flavor">
+      <description>Application flavor</description>
     </property>
-    <property name="headlessMode" type="int" writable="false" constant="true" label="Headless mode">
-      <description>Headless mode (0: not headless, 1: GUI suppressed, 2: headless library)</description>
-    </property>
+    <property name="headlessMode" type="enum" writable="false" constant="true" enum="simHeadlessMode" label="Headless mode" />
     <property name="hierarchyEnabled" type="bool" label="Hierarchy enabled" />
     <property name="idleFps" type="int" writable="false" label="Loaded plugin names" />
     <property name="importExportPath" type="string" deprecated="true" silent="true" />
@@ -3962,9 +3960,7 @@
     <property name="paths.system" type="string" writable="false" constant="true" label="System path" />
     <property name="paths.temp" type="string" writable="false" constant="true" label="Temporary path" />
     <property name="pid" type="long" writable="false" constant="true" label="PID" />
-    <property name="platform" type="int" writable="false" constant="true" label="Platform">
-      <description>Platform (0: Windows, 1: macOS, 2: Linux)</description>
-    </property>
+    <property name="platform" type="enum" writable="false" constant="true" enum="platform" label="OS type" />
     <property name="pluginNames" type="stringarray" writable="false" label="Plugins">
       <description>List of plugins</description>
     </property>
@@ -4534,7 +4530,7 @@
     <property name="disabled" type="bool" label="Disabled">
       <description>Distabled state</description>
     </property>
-    <property name="execPriority" type="int" label="Execution priority" />
+    <property name="execPriority" type="enum" enum="scriptExecOrder" label="Execution priority" />
     <property name="executionDepth" type="int" writable="false" silent="true" label="Execution depth" />
     <property name="language" type="string" writable="false" constant="true" label="Language" />
     <property name="restartOnError" type="bool" label="Restart">
@@ -4546,7 +4542,7 @@
     </property>
     <property name="scriptState" type="int" deprecated="true" writable="false" />
     <property name="scriptType" type="int" deprecated="true" writable="false" constant="true" />
-    <property name="state" type="int" writable="false" label="State">
+    <property name="state" type="enum" writable="false" enum="scriptState" label="State">
       <description>Script state</description>
     </property>
   </object-class> 
@@ -4635,7 +4631,8 @@
     <property name="normals" type="matrix" writable="false" label="Normals">
       <description>Normals (3*3 values per triangle)</description>
     </property>
-    <property name="primitiveType" type="int" writable="false" label="Primitive type" />
+    <property name="primitive" type="enum" writable="false" enum="primitiveType" label="Primitive type" />
+    <property name="primitiveType" type="int" deprecated="true" writable="false" />
     <property name="rawTexture" type="buffer" deprecated="true" writable="false" />
     <property name="shadingAngle" type="float" label="Shading angle" />
     <property name="shape" type="handle" handle-type="shape" writable="false" constant="true" label="Shape handle" />
@@ -4644,7 +4641,7 @@
     </property>
     <property name="showEdges" type="bool" label="Visible edges" />
     <property name="texture" type="group" readable="false" writable="false" silent="true" constant="true" />
-    <property name="texture.applyMode" type="int" label="Texture apply mode" />
+    <property name="texture.applyMode" type="enum" enum="textureApplyMode" label="Texture apply mode" />
     <property name="texture.coordinates" type="floatarray" writable="false" label="Texture coordinates" />
     <property name="texture.data" type="buffer" writable="false" label="Texture" />
     <property name="texture.id" type="int" writable="false" label="Texture ID" />
@@ -5952,12 +5949,11 @@
     <property name="dynamics.bullet.iterations" type="int" />
     <property name="dynamics.bullet.solver" type="int" />
     <property name="dynamics.enabled" type="bool" label="Dynamics enabled" />
-    <property name="dynamics.engine" type="intarray" label="Dynamics engine">
-      <description>Selected dynamics engine index and version</description>
-    </property>
+    <property name="dynamics.engine" type="enum" enum="physicsEngine" label="Dynamics engine" />
     <property name="dynamics.engineProperties" type="string" label="Engine properties">
       <description>Engine properties as JSON text</description>
     </property>
+    <property name="dynamics.engineVersion" type="int" label="Dynamics engine version" />
     <property name="dynamics.gravity" type="vector3" label="Gravity" />
     <property name="dynamics.mujoco" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.mujoco.actuationEnable" type="bool" />
@@ -6197,7 +6193,7 @@
       <description>Remove new scene objects at simulation end</description>
     </property>
     <property name="simulation.speedModifier" type="int" label="Speed modifier" />
-    <property name="simulation.state" type="int" writable="false" label="Simulation state" />
+    <property name="simulation.state" type="enum" writable="false" enum="simulationState" label="Simulation state" />
     <property name="simulation.stepCount" type="int" writable="false" label="Simulation steps">
       <description>Counter of simulation steps</description>
     </property>
@@ -6594,7 +6590,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>types (string[], defaults to {"sceneObject"}): the desired scene object types</li>
+                            <li>types (string[], defaults to ["sceneObject"]): the desired scene object types</li>
                             <li>depth (int, defaults to 9999): the maximum retrieval depth</li>
                         </ul>
                     </description>
@@ -6626,7 +6622,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>types (string[], defaults to {"sceneObject"}): the desired scene object types</li>
+                            <li>types (string[], defaults to ["sceneObject"]): the desired scene object types</li>
                             <li>count (int, defaults to 9999): the maximum retrieval count</li>
                         </ul>
                     </description>
@@ -6662,7 +6658,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>types (string[], defaults to {"sceneObject"}): the desired scene object types to be taken into account</li>
+                            <li>types (string[], defaults to ["sceneObject"]): the desired scene object types to be taken into account</li>
                         </ul>
                     </description>
                 </param>
@@ -7387,6 +7383,7 @@
     <property name="cyclic" type="bool" writable="false" constant="true" label="Cyclic">
       <description>Item buffer is cyclic</description>
     </property>
+    <property name="defaultItemSize" type="vector3" writable="false" constant="true" label="Default size" />
     <property name="indices" type="intarray" writable="false" label="Indices">
       <description>Indices for custom marker</description>
     </property>
@@ -8247,8 +8244,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>position (int[2], defaults to {0, 0}): position of the image portion to write</li>
-                            <li>size (int[2], defaults to {0, 0}): size of the image portion to write. [0, 0] corresponds to [resolutionX, resolution Y]</li>
+                            <li>position (int[2], defaults to [0, 0]): position of the image portion to write</li>
+                            <li>size (int[2], defaults to [0, 0]): size of the image portion to write. [0, 0] corresponds to [resolutionX, resolution Y]</li>
                         </ul>
                     </description>
                 </param>
@@ -8283,9 +8280,9 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>position (int[2], defaults to {0, 0}): position of the image portion to retrieve</li>
-                            <li>size (int[2], defaults to {0, 0}): size of the image portion to retrieve. [0, 0] corresponds to [resolutionX, resolution Y]</li>
-                            <li>type (string, defaults to "rgb"): the type of the returned image. Valiud values are "rgb", "rgba" and "grey"</li>
+                            <li>position (int[2], defaults to [0, 0]): position of the image portion to retrieve</li>
+                            <li>size (int[2], defaults to [0, 0]): size of the image portion to retrieve. [0, 0] corresponds to [resolutionX, resolution Y]</li>
+                            <li>type (string, defaults to "rgb"): the type of the returned image. Valid values are "rgb", "rgba" and "grey"</li>
                             <li>rgbaCutOff (float, defaults to 0.0): when a RGBA image is returned, the alpha component is 255 for all depth values below 
                             <em>rgbaCutOff</em>, and 0 for all depth values above <em>rgbaCutOff</em>. 0.0 corresponds to the near clipping plane, 1.0 to the far clipping plane</li>
                         </ul>
@@ -8329,8 +8326,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>position (int[2], defaults to {0, 0}): position of the image portion to write</li>
-                            <li>size (int[2], defaults to {0, 0}): size of the image portion to write. [0, 0] corresponds to [resolutionX, resolution Y]</li>
+                            <li>position (int[2], defaults to [0, 0]): position of the image portion to write</li>
+                            <li>size (int[2], defaults to [0, 0]): size of the image portion to write. [0, 0] corresponds to [resolutionX, resolution Y]</li>
                         </ul>
                     </description>
                 </param>
@@ -8477,7 +8474,7 @@
     <property name="povray.focalBlur" type="bool" silent="true" label="POV-Ray: focal blur">
       <description>Focal blur (with the POV-Ray renderer plugin)</description>
     </property>
-    <property name="renderMode" type="int" label="Render mode" />
+    <property name="renderMode" type="enum" enum="renderMode" label="Render mode" />
     <property name="resolution" type="intarray2" label="Resolution">
       <description>Resolution (relevant only with vision sensors)</description>
     </property>
@@ -8495,6 +8492,90 @@
       <description>View size (in orthogonal projection mode)</description>
     </property>
     <property name="visionSensor" type="group" readable="false" writable="false" silent="true" constant="true" />
+  </object-class> 
+
+    
+
+    <object-class name="camera" superclass="sceneObject">
+        <method name="getData" func="sim.callMethod" lang="python,lua">
+            <description>
+                Returns similar data as the one acquired by the camera
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>resolution (int[2], defaults to [1920, 1080]): desired resolution</li>
+                            <li>clippingPlanes (float[2], defaults to [0.05, 30.0]): near and far clipping planes</li>
+                            <li>renderMode (string, defaults to "openGl"): valid values are "openGl", "colorCoded", "povray", "extRenderer", "openGl3", "oglImg", "codedImg"</li>
+                            <li>viewAngle (float, defaults to 60 degrees): view angle. When specified, then the camera is in perspective projection mode</li>
+                            <li>viewSize (float, defaults to nil): view size. When specified, then the camera is in orthogonal projection mode</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="image" type="buffer">
+                    <description>
+                        the image as a succession of RGB values
+                    </description>
+                </param>
+                <param name="packedDepths" type="buffer">
+                    <description>
+                        the depth buffer in meters, packed as float values
+                    </description>
+                </param>
+                <param name="resolution" type="int[2]">
+                    <description>
+                        the resolution
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="visionSensor:getImage" />
+                <function-ref name="app:saveImage" />
+                <function-ref name="app:unpackArray" />
+            </see-also>
+        </method>
+    <property name="camera" type="group" readable="false" writable="false" silent="true" constant="true" />
+    <property name="cameraSize" type="float" deprecated="true" />
+    <property name="clippingPlanes" type="floatarray" label="Clipping planes">
+      <description>Near and far clipping planes</description>
+    </property>
+    <property name="color" type="group" readable="false" writable="false" silent="true" constant="true" />
+    <property name="color.diffuse" type="color" label="Diffuse color" />
+    <property name="color.emission" type="color" label="Emission color" />
+    <property name="color.specular" type="color" label="Specular color" />
+    <property name="frustumCornerFar" type="vector3" writable="false" label="Far corner of view frustum" />
+    <property name="frustumCornerNear" type="vector3" writable="false" label="Near corner of View frustum" />
+    <property name="parentAsManipulationProxy" type="bool" label="Parent as proxy">
+      <description>Use parent as manipulation proxy</description>
+    </property>
+    <property name="perspective" type="bool" writable="false" constant="true" label="Perspective">
+      <description>Perspective projection mode, otherwise orthogonal projection mode</description>
+    </property>
+    <property name="resolution" type="intarray2" label="Resolution">
+      <description>Resolution (relevant only with vision sensors)</description>
+    </property>
+    <property name="rotationEnabled" type="bool" label="Rotation enabled" />
+    <property name="showFrustum" type="bool" label="Show view frustum" />
+    <property name="size" type="float" label="Size">
+      <description>Camera size</description>
+    </property>
+    <property name="trackedObject" type="handle" handle-type="sceneObject" label="Tracked object">
+      <description>Tracked scene object</description>
+    </property>
+    <property name="trackedObjectHandle" type="int" deprecated="true" />
+    <property name="translationEnabled" type="bool" label="Translation enabled" />
+    <property name="viewAngle" type="float" label="View angle">
+      <description>View angle (in perspective projection mode)</description>
+    </property>
+    <property name="viewSize" type="float" label="View size">
+      <description>View size (in orthogonal projection mode)</description>
+    </property>
   </object-class> 
 
     
@@ -8562,7 +8643,7 @@
                             <li>color (color, defaults to Color("green")): curve color</li>
                             <li>name (string, defaults to "curve"): curve name</li>
                             <li>unit (string, defaults to ""): curve unit</li>
-                            <li>default (float[2], defaults to {0.0, 0.0}): default signal values</li>
+                            <li>default (float[2], defaults to [0.0, 0.0]): default signal values</li>
                             <li>width (int, defaults to 2): curve width</li>
                             <li>hideLabel (bool, defaults to false): hides the label</li>
                             <li>drawLine (bool, defaults to false): draws a line</li>
@@ -9417,7 +9498,7 @@
     <property name="dynamics.bullet.posPid" type="floatarray" />
     <property name="dynamics.bullet.stopCfm" type="float" />
     <property name="dynamics.bullet.stopErp" type="float" />
-    <property name="dynamics.ctrlMode" type="enum" enum="SimJointDynamicsCtrlMode" label="Control mode">
+    <property name="dynamics.ctrlMode" type="enum" enum="jointDynamicsCtrlMode" label="Control mode">
       <description>Joint control mode, when in dynamic mode</description>
     </property>
     <property name="dynamics.engineProperties" type="string" label="Engine properties">
@@ -9446,13 +9527,8 @@
     <property name="dynamics.ode.posPid" type="floatarray" />
     <property name="dynamics.ode.stopCfm" type="float" />
     <property name="dynamics.ode.stopErp" type="float" />
-    <property name="dynamics.posMode" type="int" label="Dynamic position mode">
-      <description>Dynamic position mode (0: default, 1: Ruckig)</description>
-    </property>
+    <property name="dynamics.smoothMotionProfile" type="bool" label="Smooth dynamics motion profile" />
     <property name="dynamics.springDamperParams" type="floatarray" label="Spring damper parameters" />
-    <property name="dynamics.velMode" type="int" label="Dynamic velocity mode">
-      <description>Dynamic velocity mode (0: default, 1: Ruckig)</description>
-    </property>
     <property name="dynamics.vortex" type="group" readable="false" writable="false" silent="true" constant="true" />
     <property name="dynamics.vortex.axisFrictionEnabled" type="bool" />
     <property name="dynamics.vortex.axisFrictionLoss" type="float" />
@@ -9542,7 +9618,7 @@
       <description>Joint length</description>
     </property>
     <property name="maxVelAccelJerk" type="floatarray" label="Maximum velocity, acceleration and jerk" />
-    <property name="mode" type="int" label="Mode">
+    <property name="mode" type="enum" enum="jointMode" label="Mode">
       <description>Joint mode</description>
     </property>
     <property name="mujoco" type="group" deprecated="true" readable="false" writable="false" silent="true" constant="true" />
@@ -9928,43 +10004,7 @@
             <link href="../apiFunctions.htm#paths" label=" path related functions " />
         </see-also>
     </method>
-<object-class name="camera" superclass="sceneObject"><property name="camera" type="group" readable="false" writable="false" silent="true" constant="true" />
-    <property name="cameraSize" type="float" deprecated="true" />
-    <property name="clippingPlanes" type="floatarray" label="Clipping planes">
-      <description>Near and far clipping planes</description>
-    </property>
-    <property name="color" type="group" readable="false" writable="false" silent="true" constant="true" />
-    <property name="color.diffuse" type="color" label="Diffuse color" />
-    <property name="color.emission" type="color" label="Emission color" />
-    <property name="color.specular" type="color" label="Specular color" />
-    <property name="frustumCornerFar" type="vector3" writable="false" label="Far corner of view frustum" />
-    <property name="frustumCornerNear" type="vector3" writable="false" label="Near corner of View frustum" />
-    <property name="parentAsManipulationProxy" type="bool" label="Parent as proxy">
-      <description>Use parent as manipulation proxy</description>
-    </property>
-    <property name="perspective" type="bool" writable="false" constant="true" label="Perspective">
-      <description>Perspective projection mode, otherwise orthogonal projection mode</description>
-    </property>
-    <property name="resolution" type="intarray2" label="Resolution">
-      <description>Resolution (relevant only with vision sensors)</description>
-    </property>
-    <property name="rotationEnabled" type="bool" label="Rotation enabled" />
-    <property name="showFrustum" type="bool" label="Show view frustum" />
-    <property name="size" type="float" label="Size">
-      <description>Camera size</description>
-    </property>
-    <property name="trackedObject" type="handle" handle-type="sceneObject" label="Tracked object">
-      <description>Tracked scene object</description>
-    </property>
-    <property name="trackedObjectHandle" type="int" deprecated="true" />
-    <property name="translationEnabled" type="bool" label="Translation enabled" />
-    <property name="viewAngle" type="float" label="View angle">
-      <description>View angle (in perspective projection mode)</description>
-    </property>
-    <property name="viewSize" type="float" label="View size">
-      <description>View size (in orthogonal projection mode)</description>
-    </property>
-  </object-class><object-class name="drawingObject" superclass="object"><property name="appendColors" type="floatarray" />
+<object-class name="drawingObject" superclass="object"><property name="appendColors" type="floatarray" />
     <property name="appendPoints" type="floatarray" />
     <property name="appendQuaternions" type="floatarray" />
     <property name="colors" type="floatarray" />
@@ -10033,14 +10073,15 @@
     <property name="color.emission" type="color" label="Emission color" />
     <property name="color.specular" type="color" label="Specular color" />
     <property name="consecutiveViolationsToTrigger" type="int" label="Consecutive violations to trigger" />
+    <property name="filter" type="enum" enum="forceSensorFilter" label="Filter">
+      <description>Filter type</description>
+    </property>
     <property name="filterSampleSize" type="int" label="Filter sample">
       <description>Filter sample size</description>
     </property>
     <property name="filterSensorForce" type="vector3" deprecated="true" writable="false" />
     <property name="filterSensorTorque" type="vector3" deprecated="true" writable="false" />
-    <property name="filterType" type="int" label="Filter">
-      <description>Filter type</description>
-    </property>
+    <property name="filterType" type="int" />
     <property name="filteredForce" type="vector3" writable="false" label="Filtered force">
       <description>Filtered force vector</description>
     </property>
