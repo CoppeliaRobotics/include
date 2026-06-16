@@ -45,11 +45,11 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     PROXIMITYSENSORTYPE
     #undef X
-} proximitySensorType;
+} proximitySensorType_enum;
 
 
 #ifdef __cplusplus
-    enum class SimProximitySensorType {
+    enum class proximitySensorType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         PROXIMITYSENSORTYPE
         #undef X
@@ -69,10 +69,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     SIMULATIONSTATE
     #undef X
-} simulationState;
+} simulationState_enum;
 
 #ifdef __cplusplus
-    enum class SimSimulationState {
+    enum class simulationState {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         SIMULATIONSTATE
         #undef X
@@ -101,10 +101,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     SCENEOBJECTTYPE
     #undef X
-} sceneObjectType;
+} sceneObjectType_enum;
 
 #ifdef __cplusplus
-    enum class SimSceneObjectType {
+    enum class sceneObjectType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         SCENEOBJECTTYPE
         #undef X
@@ -122,10 +122,10 @@ typedef enum {
         #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
         LIGHTTYPE
         #undef X
-} lightType;
+} lightType_enum;
 
 #ifdef __cplusplus
-    enum class SimLightType {
+    enum class lightType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         LIGHTTYPE
         #undef X
@@ -143,10 +143,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     JOINTTYPE
     #undef X
-} jointType;
+} jointType_enum;
 
 #ifdef __cplusplus
-    enum class SimJointType {
+    enum class jointType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         JOINTTYPE
         #undef X
@@ -163,10 +163,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     SHAPETYPE
     #undef X
-} shapeType;
+} shapeType_enum;
 
 #ifdef __cplusplus
-    enum class SimShapeType {
+    enum class shapeType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         SHAPETYPE
         #undef X
@@ -184,10 +184,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     PARENTINGMODE
     #undef X
-} parentingMode;
+} parentingMode_enum;
 
 #ifdef __cplusplus
-    enum class SimParentingMode {
+    enum class parentingMode {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         PARENTINGMODE
         #undef X
@@ -208,10 +208,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     SCRIPTTYPE
     #undef X
-} scriptType;
+} scriptType_enum;
 
 #ifdef __cplusplus
-    enum class SimScriptType {
+    enum class scriptType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         SCRIPTTYPE
         #undef X
@@ -232,10 +232,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     SCRIPTSTATE
     #undef X
-} scriptState;
+} scriptState_enum;
 
 #ifdef __cplusplus
-    enum class SimScriptState {
+    enum class scriptState {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         SCRIPTSTATE
         #undef X
@@ -253,10 +253,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     CODELANG
     #undef X
-} codeLang;
+} codeLang_enum;
 
 #ifdef __cplusplus
-    enum class SimCodeLang {
+    enum class codeLang {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         CODELANG
         #undef X
@@ -274,10 +274,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     SCRIPTEXECORDER
     #undef X
-} scriptExecOrder;
+} scriptExecOrder_enum;
 
 #ifdef __cplusplus
-    enum class SimScriptExecOrder {
+    enum class scriptExecOrder {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         SCRIPTEXECORDER
         #undef X
@@ -302,10 +302,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     MARKEROBJECTTYPE
     #undef X
-} markerType;
+} markerType_enum;
 
 #ifdef __cplusplus
-    enum class SimMarkerType {
+    enum class markerType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         MARKEROBJECTTYPE
         #undef X
@@ -323,10 +323,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     MARKEROPTIONS
     #undef X
-} markerOptions;
+} markerOptions_enum;
 
 #ifdef __cplusplus
-    enum class SimMarkerOptions {
+    enum class markerOptions {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         MARKEROPTIONS
         #undef X
@@ -344,10 +344,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     JOINTMODE
     #undef X
-} jointMode;
+} jointMode_enum;
 
 #ifdef __cplusplus
-    enum class SimJointMode {
+    enum class jointMode {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         JOINTMODE
         #undef X
@@ -368,10 +368,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     JOINTDYNCTRLMODE
     #undef X
-} jointDynamicsCtrlMode;
+} jointDynamicsCtrlMode_enum;
 
 #ifdef __cplusplus
-    enum class SimJointDynamicsCtrlMode {
+    enum class jointDynamicsCtrlMode {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         JOINTDYNCTRLMODE
         #undef X
@@ -405,10 +405,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     VERBOSITY
     #undef X
-} verbosity;
+} verbosity_enum;
 
 #ifdef __cplusplus
-    enum class SimVerbosity {
+    enum class verbosity {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         VERBOSITY
         #undef X
@@ -429,10 +429,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     PHYSICSENGINE
     #undef X
-} physicsEngine;
+} physicsEngine_enum;
 
 #ifdef __cplusplus
-    enum class SimPhysicsEngine {
+    enum class physicsEngine {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         PHYSICSENGINE
         #undef X
@@ -452,10 +452,10 @@ typedef enum {
     DUMMYTYPE
     #undef X
     sim_dummytype_default = sim_dummytype_neutral
-} dummyType;
+} dummyType_enum;
 
 #ifdef __cplusplus
-    enum class SimDummyType {
+    enum class dummyType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         DUMMYTYPE
         #undef X
@@ -474,10 +474,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     MATERIALCOMPONENT
     #undef X
-} materialComponent;
+} materialComponent_enum;
 
 #ifdef __cplusplus
-    enum class SimMaterialComponent {
+    enum class materialComponent {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         MATERIALCOMPONENT
         #undef X
@@ -495,10 +495,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     STRINGTYPE
     #undef X
-} stringType;
+} stringType_enum;
 
 #ifdef __cplusplus
-    enum class SimStringType {
+    enum class stringType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         STRINGTYPE
         #undef X
@@ -524,10 +524,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     PROPERTYRETURNS
     #undef X
-} propertyReturns;
+} propertyReturns_enum;
 
 #ifdef __cplusplus
-    enum class SimPropertyReturns {
+    enum class propertyReturns {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         PROPERTYRETURNS
         #undef X
@@ -545,10 +545,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     PLATFORM
     #undef X
-} platform;
+} platform_enum;
 
 #ifdef __cplusplus
-    enum class SimPlatform {
+    enum class platform {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         PLATFORM
         #undef X
@@ -566,10 +566,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     APPFLAVOR
     #undef X
-} appFlavor;
+} appFlavor_enum;
 
 #ifdef __cplusplus
-    enum class SimAppFlavor {
+    enum class appFlavor {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         APPFLAVOR
         #undef X
@@ -587,10 +587,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     HEADLESSMODE
     #undef X
-} headlessMode;
+} headlessMode_enum;
 
 #ifdef __cplusplus
-    enum class SimHeadlessMode {
+    enum class headlessMode {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         HEADLESSMODE
         #undef X
@@ -608,10 +608,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     TEXTUREAPPLYMODE
     #undef X
-} textureApplyMode;
+} textureApplyMode_enum;
 
 #ifdef __cplusplus
-    enum class SimTextureApplyMode {
+    enum class textureApplyMode {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         TEXTUREAPPLYMODE
         #undef X
@@ -635,10 +635,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     PRIMITIVETYPE
     #undef X
-} primitiveType;
+} primitiveType_enum;
 
 #ifdef __cplusplus
-    enum class SimPrimitiveType {
+    enum class primitiveType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         PRIMITIVETYPE
         #undef X
@@ -655,10 +655,10 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     FORCESENSORFILTER
     #undef X
-} forceSensorFilter;
+} forceSensorFilter_enum;
 
 #ifdef __cplusplus
-    enum class SimForceSensorFilter {
+    enum class forceSensorFilter {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         FORCESENSORFILTER
         #undef X
@@ -684,10 +684,10 @@ typedef enum {
     sim_rendermode_reserved = 4, // deprecated
     sim_rendermode_extrendererwindowed = 6, // deprecated
     sim_rendermode_opengl3windowed = 8, // deprecated
-} renderMode;
+} renderMode_enum;
 
 #ifdef __cplusplus
-    enum class SimRenderMode {
+    enum class renderMode {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         RENDERMODE
         #undef X
@@ -696,34 +696,34 @@ typedef enum {
 // ----------------------------------------------------------------------------------------------------
 
 #define SIM_ENUM_TYPES \
-    X(SimProximitySensorType) \
-    X(SimSimulationState) \
-    X(SimSceneObjectType) \
-    X(SimLightType) \
-    X(SimJointType) \
-    X(SimShapeType) \
-    X(SimParentingMode) \
-    X(SimScriptType) \
-    X(SimScriptState) \
-    X(SimCodeLang) \
-    X(SimScriptExecOrder) \
-    X(SimMarkerType) \
-    X(SimMarkerOptions) \
-    X(SimJointMode) \
-    X(SimJointDynamicsCtrlMode) \
-    X(SimVerbosity) \
-    X(SimPhysicsEngine) \
-    X(SimDummyType) \
-    X(SimMaterialComponent) \
-    X(SimStringType) \
-    X(SimPropertyReturns) \
-    X(SimPlatform) \
-    X(SimAppFlavor) \
-    X(SimHeadlessMode) \
-    X(SimTextureApplyMode) \
-    X(SimPrimitiveType) \
-    X(SimForceSensorFilter) \
-    X(SimRenderMode) \
+    X(proximitySensorType) \
+    X(simulationState) \
+    X(sceneObjectType) \
+    X(lightType) \
+    X(jointType) \
+    X(shapeType) \
+    X(parentingMode) \
+    X(scriptType) \
+    X(scriptState) \
+    X(codeLang) \
+    X(scriptExecOrder) \
+    X(markerType) \
+    X(markerOptions) \
+    X(jointMode) \
+    X(jointDynamicsCtrlMode) \
+    X(verbosity) \
+    X(physicsEngine) \
+    X(dummyType) \
+    X(materialComponent) \
+    X(stringType) \
+    X(propertyReturns) \
+    X(platform) \
+    X(appFlavor) \
+    X(headlessMode) \
+    X(textureApplyMode) \
+    X(primitiveType) \
+    X(forceSensorFilter) \
+    X(renderMode) \
 
 // General object types. Values are serialized
 enum {
