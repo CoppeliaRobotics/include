@@ -187,8 +187,10 @@ function sysCall_init()
             if (classInfo[className].properties[propertyName].label or '') ~= '' then
                 propertyNode.attrs.label = classInfo[className].properties[propertyName].label
             end
-            propertyNode.attrs.enum = classInfo[className].properties[propertyName].enum
-            propertyNode.attrs['deprecated-by'] = classInfo[className].properties[propertyName]['deprecated-by']
+            for _, attrName in ipairs{'enum', 'start-support', 'start-deprecated', 'end-support'} do
+                local infoName = attrName:gsub('%-(.)', string.upper)
+                propertyNode.attrs[attrName] = classInfo[className].properties[propertyName][infoName]
+            end
             if (classInfo[className].properties[propertyName].description or '') ~= '' then
                 local descrNode = {
                     tag = 'description',
@@ -227,6 +229,9 @@ function sysCall_init()
         'constant',
         'enum',
         'label',
+        'start-support',
+        'start-deprecated',
+        'end-support',
     }
     local file = io.open(objectsPropertiesXML, 'w')
     if file then
