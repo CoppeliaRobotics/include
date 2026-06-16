@@ -695,6 +695,43 @@ typedef enum {
 #endif /* __cplusplus */
 // ----------------------------------------------------------------------------------------------------
 
+// ----------------------------------------------------------------------------------------------------
+#define HANDLEENUMS \
+    X(handle, world, -1, world) \
+    X(handle, all, -2, all) \
+    X(handle, self, -4, self) \
+    X(handle, scene, -12, scene) \
+    X(handle, app, -13, app) \
+
+typedef enum {
+    #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+    HANDLEENUMS
+    #undef X
+    sim_handle_all_except_explicit      = -3,
+    sim_handle_mainscript               = -5,
+    sim_handle_main_script              = sim_handle_mainscript, // deprecated
+    sim_handle_tree                     = -6,
+    sim_handle_chain                    = -7,
+    sim_handle_single                   = -8,
+    sim_handle_default                  = -9,
+    sim_handle_all_except_self          = -10,
+    sim_handle_parent                   = -11,
+    sim_handle_inverse                  = -14,
+    sim_handle_appstorage               = -15,
+    sim_handle_sceneobject              = -16,
+    sim_handle_sandbox                  = -17,
+    sim_handle_mesh                     = -18,
+} handle_enum;
+
+#ifdef __cplusplus
+    enum class handle {
+        #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        HANDLEENUMS
+        #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
 #define SIM_ENUM_TYPES \
     X(proximitySensorType) \
     X(simulationState) \
@@ -724,6 +761,7 @@ typedef enum {
     X(primitiveType) \
     X(forceSensorFilter) \
     X(renderMode) \
+    X(handle) \
 
 // General object types. Values are serialized
 enum {
@@ -835,28 +873,6 @@ enum { // Object handles. Some values are serialized:
     sim_object_customend = sim_object_customsceneend,
 
     sim_object_variousstart = 10000000
-};
-
-enum { // special argument of some functions:
-    sim_handle_world                    = -1,
-    sim_handle_all                      = -2,
-    sim_handle_all_except_explicit      = -3,
-    sim_handle_self                     = -4,
-    sim_handle_mainscript               = -5,
-    sim_handle_main_script              = sim_handle_mainscript, // deprecated
-    sim_handle_tree                     = -6,
-    sim_handle_chain                    = -7,
-    sim_handle_single                   = -8,
-    sim_handle_default                  = -9,
-    sim_handle_all_except_self          = -10,
-    sim_handle_parent                   = -11,
-    sim_handle_scene                    = -12,
-    sim_handle_app                      = -13,
-    sim_handle_inverse                  = -14,
-    sim_handle_appstorage               = -15,
-    sim_handle_sceneobject              = -16,
-    sim_handle_sandbox                  = -17,
-    sim_handle_mesh                     = -18,
 };
 
 enum { // special handle flags (use only below 4 bits, i.e. 0x3c00000):
