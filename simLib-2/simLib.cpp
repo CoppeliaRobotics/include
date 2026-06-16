@@ -60,6 +60,8 @@ SIM_API_SYMBOL(ptrSimSetPoseProperty) SIM_API_SYMBOL(simSetPoseProperty) = nullp
 SIM_API_SYMBOL(ptrSimGetPoseProperty) SIM_API_SYMBOL(simGetPoseProperty) = nullptr;
 SIM_API_SYMBOL(ptrSimSetColorProperty) SIM_API_SYMBOL(simSetColorProperty) = nullptr;
 SIM_API_SYMBOL(ptrSimGetColorProperty) SIM_API_SYMBOL(simGetColorProperty) = nullptr;
+SIM_API_SYMBOL(ptrSimSetColor4Property) SIM_API_SYMBOL(simSetColor4Property) = nullptr;
+SIM_API_SYMBOL(ptrSimGetColor4Property) SIM_API_SYMBOL(simGetColor4Property) = nullptr;
 SIM_API_SYMBOL(ptrSimSetFloatArrayProperty) SIM_API_SYMBOL(simSetFloatArrayProperty) = nullptr;
 SIM_API_SYMBOL(ptrSimGetFloatArrayProperty) SIM_API_SYMBOL(simGetFloatArrayProperty) = nullptr;
 SIM_API_SYMBOL(ptrSimSetIntArrayProperty) SIM_API_SYMBOL(simSetIntArrayProperty) = nullptr;
@@ -550,6 +552,8 @@ int SIM_API_SYMBOL(getSimProcAddresses)(LIBRARY lib)
     SIM_API_SYMBOL(simGetPoseProperty) = (SIM_API_SYMBOL(ptrSimGetPoseProperty))(_getProcAddress(lib, "simGetPoseProperty", false));
     SIM_API_SYMBOL(simSetColorProperty) = (SIM_API_SYMBOL(ptrSimSetColorProperty))(_getProcAddress(lib, "simSetColorProperty", false));
     SIM_API_SYMBOL(simGetColorProperty) = (SIM_API_SYMBOL(ptrSimGetColorProperty))(_getProcAddress(lib, "simGetColorProperty", false));
+    SIM_API_SYMBOL(simSetColor4Property) = (SIM_API_SYMBOL(ptrSimSetColor4Property))(_getProcAddress(lib, "simSetColor4Property", false));
+    SIM_API_SYMBOL(simGetColor4Property) = (SIM_API_SYMBOL(ptrSimGetColor4Property))(_getProcAddress(lib, "simGetColor4Property", false));
     SIM_API_SYMBOL(simSetFloatArrayProperty) = (SIM_API_SYMBOL(ptrSimSetFloatArrayProperty))(_getProcAddress(lib, "simSetFloatArrayProperty", false));
     SIM_API_SYMBOL(simGetFloatArrayProperty) = (SIM_API_SYMBOL(ptrSimGetFloatArrayProperty))(_getProcAddress(lib, "simGetFloatArrayProperty2", false));
     SIM_API_SYMBOL(simSetIntArrayProperty) = (SIM_API_SYMBOL(ptrSimSetIntArrayProperty))(_getProcAddress(lib, "simSetIntArrayProperty", false));
@@ -1083,6 +1087,16 @@ int SIM_API_SYMBOL(getSimProcAddresses)(LIBRARY lib)
     if (SIM_API_SYMBOL(simGetColorProperty) == nullptr)
     {
         printf("%s simGetColorProperty\n", couldNotFind);
+        return 0;
+    }
+    if (SIM_API_SYMBOL(simSetColor4Property) == nullptr)
+    {
+        printf("%s simSetColor4Property\n", couldNotFind);
+        return 0;
+    }
+    if (SIM_API_SYMBOL(simGetColor4Property) == nullptr)
+    {
+        printf("%s simGetColor4Property\n", couldNotFind);
         return 0;
     }
     if (SIM_API_SYMBOL(simSetFloatArrayProperty) == nullptr)

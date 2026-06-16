@@ -84,6 +84,8 @@ typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetPoseProperty))(long long int targe
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetPoseProperty))(long long int target, const char* pName, double* pState);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetColorProperty))(long long int target, const char* pName, const float* pState);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetColorProperty))(long long int target, const char* pName, float* pState);
+typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetColor4Property))(long long int target, const char* pName, const float* pState);
+typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetColor4Property))(long long int target, const char* pName, float* pState);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetFloatArrayProperty))(long long int target, const char* pName, const double* v, int vL);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetFloatArrayProperty))(long long int target, const char* pName, double** v, int* vL);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetIntArrayProperty))(long long int target, const char* pName, const int* v, int vL);
@@ -511,6 +513,8 @@ extern SIM_API_SYMBOL(ptrSimSetPoseProperty) SIM_API_SYMBOL(simSetPoseProperty);
 extern SIM_API_SYMBOL(ptrSimGetPoseProperty) SIM_API_SYMBOL(simGetPoseProperty);
 extern SIM_API_SYMBOL(ptrSimSetColorProperty) SIM_API_SYMBOL(simSetColorProperty);
 extern SIM_API_SYMBOL(ptrSimGetColorProperty) SIM_API_SYMBOL(simGetColorProperty);
+extern SIM_API_SYMBOL(ptrSimSetColor4Property) SIM_API_SYMBOL(simSetColor4Property);
+extern SIM_API_SYMBOL(ptrSimGetColor4Property) SIM_API_SYMBOL(simGetColor4Property);
 extern SIM_API_SYMBOL(ptrSimSetFloatArrayProperty) SIM_API_SYMBOL(simSetFloatArrayProperty);
 extern SIM_API_SYMBOL(ptrSimGetFloatArrayProperty) SIM_API_SYMBOL(simGetFloatArrayProperty);
 extern SIM_API_SYMBOL(ptrSimSetIntArrayProperty) SIM_API_SYMBOL(simSetIntArrayProperty);
@@ -931,6 +935,8 @@ static inline int simSetPoseProperty(long long int target, const char* pName, co
 static inline int simGetPoseProperty(long long int target, const char* pName, double* pState) { return SIM_API_SYMBOL(simGetPoseProperty)(target,pName,pState); }
 static inline int simSetColorProperty(long long int target, const char* pName, const float* pState) { return SIM_API_SYMBOL(simSetColorProperty)(target,pName,pState); }
 static inline int simGetColorProperty(long long int target, const char* pName, float* pState) { return SIM_API_SYMBOL(simGetColorProperty)(target,pName,pState); }
+static inline int simSetColor4Property(long long int target, const char* pName, const float* pState) { return SIM_API_SYMBOL(simSetColor4Property)(target,pName,pState); }
+static inline int simGetColor4Property(long long int target, const char* pName, float* pState) { return SIM_API_SYMBOL(simGetColor4Property)(target,pName,pState); }
 static inline int simSetFloatArrayProperty(long long int target, const char* pName, const double* v, int vL) { return SIM_API_SYMBOL(simSetFloatArrayProperty)(target,pName,v,vL); }
 static inline int simGetFloatArrayProperty(long long int target, const char* pName, double** v, int* vL) { return SIM_API_SYMBOL(simGetFloatArrayProperty)(target,pName,v,vL); }
 static inline int simSetIntArrayProperty(long long int target, const char* pName, const int* v, int vL) { return SIM_API_SYMBOL(simSetIntArrayProperty)(target,pName,v,vL); }

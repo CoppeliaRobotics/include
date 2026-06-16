@@ -1146,7 +1146,7 @@ enum { // property type
     sim_propertytype_vector3,
     sim_propertytype_quaternion,
     sim_propertytype_pose,
-    sim_propertytype_color = 10,
+    sim_propertytype_color3 = 10,
     sim_propertytype_floatarray,
     sim_propertytype_table,
     sim_propertytype_intarray,
@@ -1161,6 +1161,7 @@ enum { // property type
     sim_propertytype_stringarray,
     sim_propertytype_group,
     sim_propertytype_enum,
+    sim_propertytype_color,
     sim_propertytype_method = 0xf0,
 };
 
