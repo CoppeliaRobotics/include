@@ -2397,8 +2397,8 @@
                         <ul>
                             <li>metaInfo: optional map:
                                 <ul>
-                                    <li>superClass: (string[], defaults to {"object"})</li>
-                                    <li>namespaces: (string[], defaults to {})</li>
+                                    <li>superClass: (string[], defaults to ["object"])</li>
+                                    <li>namespaces: (string[], defaults to [])</li>
                                 </ul>
                             </li>
                         </ul>
@@ -2487,7 +2487,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>args (any[], defaults to {}): arguments to pass to the function</li>
+                            <li>args (any[], defaults to []): arguments to pass to the function</li>
                         </ul>
                     </description>
                 </param>
@@ -2524,7 +2524,7 @@
                         optional map:
                         <ul>
                             <li>simulationTime (bool, defaults to false)</li>
-                            <li>args (any[], defaults to {}): arguments to pass to the function</li>
+                            <li>args (any[], defaults to []): arguments to pass to the function</li>
                         </ul>
                     </description>
                 </param>
@@ -3435,7 +3435,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>types (string[], defaults to {}): a string array specifying the types to retrieve. Allowed values are: "sceneObject", "shape", "joint", "dummy", "script", "mirror", "graph", "light", "camera", "proximitySensor", "visionSensor", "forceSensor", "ocTree", "pointCloud", "marker", "collection", "detachedScript", "mesh"</li>
+                            <li>types (string[], defaults to []): a string array specifying the types to retrieve. Allowed values are: "sceneObject", "shape", "joint", "dummy", "script", "mirror", "graph", "light", "camera", "proximitySensor", "visionSensor", "forceSensor", "ocTree", "pointCloud", "marker", "collection", "detachedScript", "mesh"</li>
                         </ul>
                     </description>
                 </param>
@@ -6034,7 +6034,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>types (string[], defaults to {"sceneObject"}): the desired scene object types</li>
+                            <li>types (string[], defaults to ["sceneObject"]): the desired scene object types</li>
                             <li>depth (int, defaults to 9999): the maximum retrieval depth</li>
                         </ul>
                     </description>
@@ -6066,7 +6066,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>types (string[], defaults to {"sceneObject"}): the desired scene object types</li>
+                            <li>types (string[], defaults to ["sceneObject"]): the desired scene object types</li>
                             <li>count (int, defaults to 9999): the maximum retrieval count</li>
                         </ul>
                     </description>
@@ -6102,7 +6102,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>types (string[], defaults to {"sceneObject"}): the desired scene object types to be taken into account</li>
+                            <li>types (string[], defaults to ["sceneObject"]): the desired scene object types to be taken into account</li>
                         </ul>
                     </description>
                 </param>
@@ -7077,8 +7077,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>position (int[2], defaults to {0, 0}): position of the image portion to write</li>
-                            <li>size (int[2], defaults to {0, 0}): size of the image portion to write. [0, 0] corresponds to [resolutionX, resolution Y]</li>
+                            <li>position (int[2], defaults to [0, 0]): position of the image portion to write</li>
+                            <li>size (int[2], defaults to [0, 0]): size of the image portion to write. [0, 0] corresponds to [resolutionX, resolution Y]</li>
                         </ul>
                     </description>
                 </param>
@@ -7113,9 +7113,9 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>position (int[2], defaults to {0, 0}): position of the image portion to retrieve</li>
-                            <li>size (int[2], defaults to {0, 0}): size of the image portion to retrieve. [0, 0] corresponds to [resolutionX, resolution Y]</li>
-                            <li>type (string, defaults to "rgb"): the type of the returned image. Valiud values are "rgb", "rgba" and "grey"</li>
+                            <li>position (int[2], defaults to [0, 0]): position of the image portion to retrieve</li>
+                            <li>size (int[2], defaults to [0, 0]): size of the image portion to retrieve. [0, 0] corresponds to [resolutionX, resolution Y]</li>
+                            <li>type (string, defaults to "rgb"): the type of the returned image. Valid values are "rgb", "rgba" and "grey"</li>
                             <li>rgbaCutOff (float, defaults to 0.0): when a RGBA image is returned, the alpha component is 255 for all depth values below 
                             <em>rgbaCutOff</em>, and 0 for all depth values above <em>rgbaCutOff</em>. 0.0 corresponds to the near clipping plane, 1.0 to the far clipping plane</li>
                         </ul>
@@ -7159,8 +7159,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>position (int[2], defaults to {0, 0}): position of the image portion to write</li>
-                            <li>size (int[2], defaults to {0, 0}): size of the image portion to write. [0, 0] corresponds to [resolutionX, resolution Y]</li>
+                            <li>position (int[2], defaults to [0, 0]): position of the image portion to write</li>
+                            <li>size (int[2], defaults to [0, 0]): size of the image portion to write. [0, 0] corresponds to [resolutionX, resolution Y]</li>
                         </ul>
                     </description>
                 </param>
@@ -7266,6 +7266,54 @@
 
     
 
+    <object-class name="camera" superclass="sceneObject">
+        <method name="getData" func="sim.callMethod" lang="python,lua">
+            <description>
+                Returns similar data as the one acquired by the camera
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>resolution (int[2], defaults to [1920, 1080]): desired resolution</li>
+                            <li>clippingPlanes (float[2], defaults to [0.05, 30.0]): near and far clipping planes</li>
+                            <li>renderMode (string, defaults to "openGl"): valid values are "openGl", "colorCoded", "povray", "extRenderer", "openGl3", "oglImg", "codedImg"</li>
+                            <li>viewAngle (float, defaults to 60 degrees): view angle. When specified, then the camera is in perspective projection mode</li>
+                            <li>viewSize (float, defaults to nil): view size. When specified, then the camera is in orthogonal projection mode</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="image" type="buffer">
+                    <description>
+                        the image as a succession of RGB values
+                    </description>
+                </param>
+                <param name="packedDepths" type="buffer">
+                    <description>
+                        the depth buffer in meters, packed as float values
+                    </description>
+                </param>
+                <param name="resolution" type="int[2]">
+                    <description>
+                        the resolution
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="visionSensor:getImage" />
+                <function-ref name="app:saveImage" />
+                <function-ref name="app:unpackArray" />
+            </see-also>
+        </method>
+    </object-class> <!-- camera -->
+
+    
+
     <object-class name="graph" superclass="sceneObject">
         <method name="addSignal" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7329,7 +7377,7 @@
                             <li>color (color, defaults to Color("green")): curve color</li>
                             <li>name (string, defaults to "curve"): curve name</li>
                             <li>unit (string, defaults to ""): curve unit</li>
-                            <li>default (float[2], defaults to {0.0, 0.0}): default signal values</li>
+                            <li>default (float[2], defaults to [0.0, 0.0]): default signal values</li>
                             <li>width (int, defaults to 2): curve width</li>
                             <li>hideLabel (bool, defaults to false): hides the label</li>
                             <li>drawLine (bool, defaults to false): draws a line</li>

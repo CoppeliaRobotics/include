@@ -60,8 +60,6 @@ typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetBoolProperty))(long long int targe
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetBoolProperty))(long long int target, const char* pName, int* pState);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetIntProperty))(long long int target, const char* pName, int pState);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetIntProperty))(long long int target, const char* pName, int* pState);
-typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetEnumProperty))(long long int target, const char* pName, int pState);
-typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetEnumProperty))(long long int target, const char* pName, int* pState);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetHandleProperty))(long long int target, const char* pName, long long int pState);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetHandleProperty))(long long int target, const char* pName, long long int* pState);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetLongProperty))(long long int target, const char* pName, long long int pState);
@@ -70,8 +68,6 @@ typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetFloatProperty))(long long int targ
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetFloatProperty))(long long int target, const char* pName, double* pState);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetStringProperty))(long long int target, const char* pName, const char* pState);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetStringProperty))(long long int target, const char* pName, char** pState);
-typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetStrEnumProperty))(long long int target, const char* pName, const char* pState);
-typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetStrEnumProperty))(long long int target, const char* pName, char** pState);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetTableProperty))(long long int target, const char* pName, const char* buffer, int bufferL);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimGetTableProperty))(long long int target, const char* pName, char** buffer, int* bufferL);
 typedef int (__cdecl *SIM_API_SYMBOL(ptrSimSetBufferProperty))(long long int target, const char* pName, const char* buffer, int bufferL);
@@ -491,8 +487,6 @@ extern SIM_API_SYMBOL(ptrSimSetBoolProperty) SIM_API_SYMBOL(simSetBoolProperty);
 extern SIM_API_SYMBOL(ptrSimGetBoolProperty) SIM_API_SYMBOL(simGetBoolProperty);
 extern SIM_API_SYMBOL(ptrSimSetIntProperty) SIM_API_SYMBOL(simSetIntProperty);
 extern SIM_API_SYMBOL(ptrSimGetIntProperty) SIM_API_SYMBOL(simGetIntProperty);
-extern SIM_API_SYMBOL(ptrSimSetEnumProperty) SIM_API_SYMBOL(simSetEnumProperty);
-extern SIM_API_SYMBOL(ptrSimGetEnumProperty) SIM_API_SYMBOL(simGetEnumProperty);
 extern SIM_API_SYMBOL(ptrSimSetHandleProperty) SIM_API_SYMBOL(simSetHandleProperty);
 extern SIM_API_SYMBOL(ptrSimGetHandleProperty) SIM_API_SYMBOL(simGetHandleProperty);
 extern SIM_API_SYMBOL(ptrSimSetLongProperty) SIM_API_SYMBOL(simSetLongProperty);
@@ -501,8 +495,6 @@ extern SIM_API_SYMBOL(ptrSimSetFloatProperty) SIM_API_SYMBOL(simSetFloatProperty
 extern SIM_API_SYMBOL(ptrSimGetFloatProperty) SIM_API_SYMBOL(simGetFloatProperty);
 extern SIM_API_SYMBOL(ptrSimSetStringProperty) SIM_API_SYMBOL(simSetStringProperty);
 extern SIM_API_SYMBOL(ptrSimGetStringProperty) SIM_API_SYMBOL(simGetStringProperty);
-extern SIM_API_SYMBOL(ptrSimSetStrEnumProperty) SIM_API_SYMBOL(simSetStrEnumProperty);
-extern SIM_API_SYMBOL(ptrSimGetStrEnumProperty) SIM_API_SYMBOL(simGetStrEnumProperty);
 extern SIM_API_SYMBOL(ptrSimSetTableProperty) SIM_API_SYMBOL(simSetTableProperty);
 extern SIM_API_SYMBOL(ptrSimGetTableProperty) SIM_API_SYMBOL(simGetTableProperty);
 extern SIM_API_SYMBOL(ptrSimSetBufferProperty) SIM_API_SYMBOL(simSetBufferProperty);
@@ -915,8 +907,6 @@ static inline int simSetBoolProperty(long long int target, const char* pName, in
 static inline int simGetBoolProperty(long long int target, const char* pName, int* pState) { return SIM_API_SYMBOL(simGetBoolProperty)(target,pName,pState); }
 static inline int simSetIntProperty(long long int target, const char* pName, int pState) { return SIM_API_SYMBOL(simSetIntProperty)(target,pName,pState); }
 static inline int simGetIntProperty(long long int target, const char* pName, int* pState) { return SIM_API_SYMBOL(simGetIntProperty)(target,pName,pState); }
-static inline int simSetEnumProperty(long long int target, const char* pName, int pState) { return SIM_API_SYMBOL(simSetEnumProperty)(target,pName,pState); }
-static inline int simGetEnumProperty(long long int target, const char* pName, int* pState) { return SIM_API_SYMBOL(simGetEnumProperty)(target,pName,pState); }
 static inline int simSetHandleProperty(long long int target, const char* pName, long long int pState) { return SIM_API_SYMBOL(simSetHandleProperty)(target,pName,pState); }
 static inline int simGetHandleProperty(long long int target, const char* pName, long long int* pState) { return SIM_API_SYMBOL(simGetHandleProperty)(target,pName,pState); }
 static inline int simSetLongProperty(long long int target, const char* pName, long long int pState) { return SIM_API_SYMBOL(simSetLongProperty)(target,pName,pState); }
@@ -925,8 +915,6 @@ static inline int simSetFloatProperty(long long int target, const char* pName, d
 static inline int simGetFloatProperty(long long int target, const char* pName, double* pState) { return SIM_API_SYMBOL(simGetFloatProperty)(target,pName,pState); }
 static inline int simSetStringProperty(long long int target, const char* pName, const char* pState) { return SIM_API_SYMBOL(simSetStringProperty)(target,pName,pState); }
 static inline int simGetStringProperty(long long int target, const char* pName, char** pState) { return SIM_API_SYMBOL(simGetStringProperty)(target,pName,pState); }
-static inline int simSetStrEnumProperty(long long int target, const char* pName, const char* pState) { return SIM_API_SYMBOL(simSetStrEnumProperty)(target,pName,pState); }
-static inline int simGetStrEnumProperty(long long int target, const char* pName, char** pState) { return SIM_API_SYMBOL(simGetStrEnumProperty)(target,pName,pState); }
 static inline int simSetTableProperty(long long int target, const char* pName, const char* buffer, int bufferL) { return SIM_API_SYMBOL(simSetTableProperty)(target,pName,buffer,bufferL); }
 static inline int simGetTableProperty(long long int target, const char* pName, char** buffer, int* bufferL) { return SIM_API_SYMBOL(simGetTableProperty)(target,pName,buffer,bufferL); }
 static inline int simSetBufferProperty(long long int target, const char* pName, const char* buffer, int bufferL) { return SIM_API_SYMBOL(simSetBufferProperty)(target,pName,buffer,bufferL); }
