@@ -7520,7 +7520,7 @@
  
 
     <object-class name="ocTree" superclass="sceneObject">
-        <method name="addFromObject" func="sim.callMethod" lang="python,lua">
+        <method name="addFromObjects" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both ocTree and pointCloud</info>
             <description>
                 Adds voxels from scene objects
@@ -7548,14 +7548,14 @@
                 <category name="shape" />
             </categories>
             <see-also>
-                <function-ref name="ocTree:subtractFromObject" />
-                <function-ref name="pointCloud:addFromObject" />
+                <function-ref name="ocTree:subtractFromObjects" />
+                <function-ref name="pointCloud:addFromObjects" />
             </see-also>
         </method>
 
         
 
-        <method name="subtractFromObject" func="sim.callMethod" lang="python,lua">
+        <method name="subtractFromObjects" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both ocTree and pointCloud</info>
             <description>
                 Subtracts voxels from scene objects
@@ -7574,8 +7574,8 @@
                 <category name="shape" />
             </categories>
             <see-also>
-                <function-ref name="ocTree:addFromObject" />
-                <function-ref name="pointCloud:subtractFromObject" />
+                <function-ref name="ocTree:addFromObjects" />
+                <function-ref name="pointCloud:subtractFromObjects" />
             </see-also>
         </method>
 
@@ -7597,7 +7597,7 @@
                         optional map:
                         <ul>
                             <li>color (color, defaults to nil): color for all voxels</li>
-                            <li>colors (color[], defaults to nil): voxel-specific colors (one color per voxel)</li>
+                            <li>colors (matrix n * 4, defaults to nil): voxel-specific colors (one color per voxel)</li>
                             <li>tag (int, defaults to 0): tag for all voxels</li>
                             <li>tags (int[], defaults to nil): voxel-specific tags (one tag per voxel)</li>
                             <li>relative (bool, defaults to false): specified voxels are relative to the OC tree reference frame, otherwise they are relative to the world reference frame</li>
@@ -7614,7 +7614,7 @@
                 <function-ref name="ocTree:clear" />
                 <function-ref name="ocTree:subtractVoxels" />
                 <function-ref name="ocTree:addPackedVoxels" />
-                <function-ref name="ocTree:addFromObject" />
+                <function-ref name="ocTree:addFromObjects" />
                 <function-ref name="ocTree:checkPoints" />
                 <function-ref name="pointCloud:addPoints" />
             </see-also>
@@ -7804,7 +7804,7 @@
     
 
     <object-class name="pointCloud" superclass="sceneObject">
-        <method name="addFromObject" func="sim.callMethod" lang="python,lua">
+        <method name="addFromObjects" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both ocTree and pointCloud</info>
             <description>
                 Adds points from scene objects
@@ -7833,14 +7833,14 @@
                 <category name="shape" />
             </categories>
             <see-also>
-                <function-ref name="pointCloud:subtractFromObject" />
-                <function-ref name="ocTree:addFromObject" />
+                <function-ref name="pointCloud:subtractFromObjects" />
+                <function-ref name="ocTree:addFromObjects" />
             </see-also>
         </method>
 
         
 
-        <method name="subtractFromObject" func="sim.callMethod" lang="python,lua">
+        <method name="subtractFromObjects" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both ocTree and pointCloud</info>
             <description>
                 Subtracts points from scene objects
@@ -7867,8 +7867,8 @@
                 <category name="shape" />
             </categories>
             <see-also>
-                <function-ref name="pointCloud:addFromObject" />
-                <function-ref name="ocTree:subtractFromObject" />
+                <function-ref name="pointCloud:addFromObjects" />
+                <function-ref name="ocTree:subtractFromObjects" />
             </see-also>
         </method>
 
@@ -7889,7 +7889,7 @@
                         optional map:
                         <ul>
                             <li>color (color, defaults to nil): color for all points</li>
-                            <li>colors (color[], defaults to nil): point-specific colors (one color per point)</li>
+                            <li>colors (matrix n * 4, defaults to nil): point-specific colors (one color per point)</li>
                             <li>relative (bool, defaults to false): specified points are relative to the point cloud reference frame, otherwise they are relative to the world reference frame</li>
                             <li>tolerance (float, defaults to nil): an insertion duplicate tolerance</li>
                         </ul>
@@ -7905,7 +7905,7 @@
                 <function-ref name="pointCloud:clear" />
                 <function-ref name="pointCloud:addPackedPoints" />
                 <function-ref name="pointCloud:subtractPoints" />
-                <function-ref name="pointCloud:addFromObject" />
+                <function-ref name="pointCloud:addFromObjects" />
                 <function-ref name="ocTree:addPoints" />
             </see-also>
         </method>
@@ -7978,7 +7978,7 @@
                 <function-ref name="pointCloud:clear" />
                 <function-ref name="pointCloud:subtractPackedPoints" />
                 <function-ref name="pointCloud:addPoints" />
-                <function-ref name="pointCloud:subtractFromObject" />
+                <function-ref name="pointCloud:subtractFromObjects" />
                 <function-ref name="ocTree:subtractVoxels" />
             </see-also>
         </method>
@@ -8014,7 +8014,7 @@
                 <function-ref name="pointCloud:clear" />
                 <function-ref name="pointCloud:addPackedPoints" />
                 <function-ref name="pointCloud:subtractPoints" />
-                <function-ref name="pointCloud:subtractFromObject" />
+                <function-ref name="pointCloud:subtractFromObjects" />
                 <function-ref name="app:packFloatArray" />
             </see-also>
         </method>
