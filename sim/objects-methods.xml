@@ -3022,7 +3022,7 @@
                                     <li>itemSize (vector3): default item size</li>
                                     <li>duplicateTolerance (float): indicates a distance threshold under which points are not added. Does not apply to line- or triangle items</li>
                                     <li>itemCnt (int): maximum item count</li>
-                                    <li>color (color): default item color</li>
+                                    <li>itemColor (color): default item color</li>
                                     <li>mesh.vertices (matrix n * 3): vertices for a mesh item type (sim.markertype_custom)</li> 
                                     <li>mesh.indices (int[]): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li> 
                                     <li>mesh.normals (matrix n * 3): normals for a mesh item type (sim.markertype_custom). One normal for each vertex</li>
@@ -5331,7 +5331,7 @@
                                     <li>itemSize (vector3): default item size</li>
                                     <li>duplicateTolerance (float): indicates a distance threshold under which points are not added. Does not apply to line- or triangle items</li>
                                     <li>itemCnt (int): maximum item count</li>
-                                    <li>color (color): default item color</li>
+                                    <li>itemColor (color): default item color</li>
                                     <li>mesh.vertices (matrix n * 3): vertices for a mesh item type (sim.markertype_custom)</li> 
                                     <li>mesh.indices (int[]): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li> 
                                     <li>mesh.normals (matrix n * 3): normals for a mesh item type (sim.markertype_custom). One normal for each vertex</li>
@@ -6552,7 +6552,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>colors (color[], defaults to nil): point-specific colors (one color per point)</li>
+                            <li>colors (matrix n * 4, defaults to nil, defaults to nil): point-specific colors (one color per point)</li>
                             <li>quaternions (matrix n * 4, defaults to nil): quaternions (one quaternion per item)</li>
                             <li>sizes (matrix n * 3, defaults to nil): x/y/z sizes (one x/y/z per item)</li>
                         </ul>

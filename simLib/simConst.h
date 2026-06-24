@@ -297,6 +297,7 @@ typedef enum {
     X(markertype, cylinders, 12, cylinders) \
     X(markertype, custom, 13, custom) \
     X(markertype, tubes, 14, tubes) \
+    X(markertype, axes, 15, axes) \
 
 typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
