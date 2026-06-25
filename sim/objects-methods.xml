@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <object-classes>
     <object-class name="RuckigPosition" superclass="Motion">
-        <method name="new" func="sim.callMethod" lang="python,lua">
+        <method name="Constructor" func="sim.callMethod" lang="python,lua">
             <description>
                 Initializes a <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>.
                 The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities
@@ -43,8 +43,8 @@
             <see-also>
                 <function-ref name="RuckigPosition:step" />
                 <function-ref name="RuckigPosition:remove" />
-                <function-ref name="RuckigVelocity:new" />
-                <function-ref name="MoveToConfig:new" />
+                <function-ref name="RuckigVelocity:Constructor" />
+                <function-ref name="MoveToConfig:Constructor" />
             </see-also>
         </method>
 
@@ -90,7 +90,7 @@
                 <category name="Motion" />
             </categories>
             <see-also>
-                <function-ref name="RuckigPosition:new" />
+                <function-ref name="RuckigPosition:Constructor" />
                 <function-ref name="RuckigPosition:data" />
             </see-also>
         </method>
@@ -121,7 +121,7 @@
 
 
     <object-class name="RuckigVelocity" superclass="Motion">
-        <method name="new" func="sim.callMethod" lang="python,lua">
+        <method name="Constructor" func="sim.callMethod" lang="python,lua">
             <description>
                 Initializes a <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>.
                 The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities
@@ -160,7 +160,7 @@
             <see-also>
                 <function-ref name="RuckigVelocity:step" />
                 <function-ref name="RuckigVelocity:remove" />
-                <function-ref name="RuckigPosition:new" />
+                <function-ref name="RuckigPosition:Constructor" />
             </see-also>
         </method>
 
@@ -206,7 +206,7 @@
                 <category name="Motion" />
             </categories>
             <see-also>
-                <function-ref name="RuckigVelocity:new" />
+                <function-ref name="RuckigVelocity:Constructor" />
                 <function-ref name="RuckigVelocity:data" />
             </see-also>
         </method>
@@ -250,7 +250,7 @@
                 <category name="Motion" />
             </categories>
             <see-also>
-                <function-ref name="MoveToConfig:new" />
+                <function-ref name="MoveToConfig:Constructor" />
                 <function-ref name="MoveToConfig:step" />
                 <function-ref name="MoveToConfig:remove" />
             </see-also>
@@ -258,7 +258,7 @@
 
         
 
-        <method name="new" func="sim.callMethod" lang="python,lua">
+        <method name="Constructor" func="sim.callMethod" lang="python,lua">
             <description>
                 Initiates a n-DoF motion using the 
                 <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
@@ -302,8 +302,8 @@
                 <function-ref name="MoveToConfig:run" />
                 <function-ref name="MoveToConfig:step" />
                 <function-ref name="MoveToConfig:remove" />
-                <function-ref name="MoveToPose:new" />
-                <function-ref name="RuckigPosition:new" />
+                <function-ref name="MoveToPose:Constructor" />
+                <function-ref name="RuckigPosition:Constructor" />
             </see-also>
         </method>
 
@@ -332,7 +332,7 @@
                 <category name="Motion" />
             </categories>
             <see-also>
-                <function-ref name="MoveToConfig:new" />
+                <function-ref name="MoveToConfig:Constructor" />
                 <function-ref name="MoveToConfig:data" />
             </see-also>
         </method>
@@ -391,7 +391,7 @@
                 <category name="Motion" />
             </categories>
             <see-also>
-                <function-ref name="MoveToPose:new" />
+                <function-ref name="MoveToPose:Constructor" />
                 <function-ref name="MoveToPose:step" />
                 <function-ref name="MoveToPose:remove" />
             </see-also>
@@ -399,7 +399,7 @@
 
         
 
-        <method name="new" func="sim.callMethod" lang="python,lua">
+        <method name="Constructor" func="sim.callMethod" lang="python,lua">
             <description>
                 Initiates motion using the 
                 <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
@@ -459,7 +459,7 @@
                 <function-ref name="MoveToPose:run" />
                 <function-ref name="MoveToPose:step" />
                 <function-ref name="MoveToPose:remove" />
-                <function-ref name="MoveToConfig:new" />
+                <function-ref name="MoveToConfig:Constructor" />
             </see-also>
         </method>
 
@@ -488,7 +488,7 @@
                 <category name="Motion" />
             </categories>
             <see-also>
-                <function-ref name="MoveToPose:new" />
+                <function-ref name="MoveToPose:Constructor" />
                 <function-ref name="MoveToPose:data" />
             </see-also>
         </method>
@@ -571,13 +571,13 @@
                 <category name="Motion" />
             </categories>
             <see-also>
-                <function-ref name="TimeOptimalTrajectory:new" />
+                <function-ref name="TimeOptimalTrajectory:Constructor" />
             </see-also>
         </method>
 
 
 
-        <method name="new" func="sim.callMethod" lang="python,lua">
+        <method name="Constructor" func="sim.callMethod" lang="python,lua">
             <description>
                 Initializes a time optimal trajectory generator, based on the TOPPRA library
             </description>
@@ -700,6 +700,196 @@
             </see-also>
         </method>
     </object-class> <!-- TextEditor -->
+
+    
+
+    <object-class name="Path" superclass="">
+        <method name="Constructor" func="" lang="python,lua">
+            <description>
+                Creates a path
+            </description>
+            <params>
+                <param name="ctrlPoints" type="matrix">
+                    <description>
+                        the path control points, organized in cnt * n matrix with cnt the number of path points, and n the dimension of the path. Set to null for an empty path:
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>types (string[n], defaults to ["scal", ..., "scal"]): allowed values are "scal" for regular coordinates, "cycl" for cyclic coordinates and "quat" for quaternions (where 4 consecutive values should be "quat")</li>
+                            <li>metric (matrix 1 * n, defaults to [1.0, ..., 1.0]): a weight for each dimension</li>
+                            <li>closed (bool, defaults to false): whether the path is closed or open</li>
+                            <li>closedRepeatsStart (bool, defaults to false): whether a closed path has the first path point identical to the last path point</li>
+                            <li>ctrlPoints: optional map describing control point properties:
+                                <ul>
+                                    <li>duplicateThreshold (float, defaults to 0.02): distance below which points are merged</li>
+                                    <li>linearityTolerance (float, defaults to 0.05): points within a certain distance to the segment formed by its two neighbours can be discarded</li>
+                                    <li>pointType (enum, defaults to "cube"): allowed values are "none", "sphere" and "cube"</li>
+                                    <li>pointColor (color): point color</li>
+                                    <li>pointRadius (float): point radius</li>
+                                    <li>lineType (enum, defaults to "line"): allowed values are "none", "line" and "tube"</li>
+                                    <li>lineColor (color): line color</li>
+                                    <li>tubeRadius (float): tube radius</li>
+                                    <li>showAxes (bool, defaults to false): whether points display reference frames</li>
+                                </ul>
+                            </li>
+                            <li>pathPoints: optional map describing path point properties:
+                                <ul>
+                                    <li>type (enum, defaults to "quadraticBezier"): allowed values are "linear" and "quadraticBezier"</li>
+                                    <li>bezierSmoothing (float, defaults to 1.0): the Bezier smoothing strength</li>
+                                    <li>samplingDistance (float, defaults to 0.02): the maximum allowable spacing between consecutive points along the generated path</li>
+                                    <li>pointType (enum, defaults to "cube"): allowed values are "none", "sphere" and "cube"</li>
+                                    <li>pointColor (color): point color</li>
+                                    <li>pointRadius (float): point radius</li>
+                                    <li>lineType (enum, defaults to "line"): allowed values are "none", "line" and "tube"</li>
+                                    <li>lineColor (color): line color</li>
+                                    <li>tubeRadius (float): tube radius</li>
+                                    <li>showAxes (bool, defaults to false): whether points display reference frames</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="Path:data" />
+                <function-ref name="Path:dist" />
+                <function-ref name="Path:lerp" />
+                <function-ref name="Path:createMarkers" />
+            </see-also>
+        </method>
+
+
+
+        <method name="data" func="" lang="python,lua">
+            <description>
+                Returns path information
+            </description>
+            <params>
+            </params>
+            <returns>
+                <param name="data" type="map">
+                    <description>
+                        path information
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+            </see-also>
+        </method>
+
+
+
+        <method name="createMarkers" func="" lang="python,lua">
+            <description>
+                Creates markers allowing to visualize the path. Only paths with following coordinates can be visualized:
+                ["scal", "scal", ...],
+                ["scal", "scal", "scal", ...],
+                ["scal", "scal", "scal", "quat", "quat", "quat", "quat", ...]
+            </description>
+            <params>
+            </params>
+            <returns>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="Path:removeMarkers" />
+            </see-also>
+        </method>
+
+
+
+        <method name="removeMarkers" func="" lang="python,lua">
+            <description>
+                Removes markers previously created with createMarkers()
+            </description>
+            <params>
+            </params>
+            <returns>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="Path:createMarkers" />
+            </see-also>
+        </method>
+        
+        
+        
+        <method name="dist" func="" lang="python,lua">
+            <description>
+                Returns the distance between two points
+            </description>
+            <params>
+                <param name="point1" type="vector">
+                    <description>
+                        point1. Must have the same dimension as the path
+                    </description>
+                </param>
+                <param name="point2" type="vector">
+                    <description>
+                        point2. Must have the same dimension as the path
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="distance" type="float">
+                    <description>
+                        distance between the two points
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="Path:lerp" />
+            </see-also>
+        </method>
+
+
+
+        <method name="lerp" func="" lang="python,lua">
+            <description>
+                Returns the linear interpolation between two points
+            </description>
+            <params>
+                <param name="point1" type="vector">
+                    <description>
+                        point1. Must have the same dimension as the path
+                    </description>
+                </param>
+                <param name="point2" type="vector">
+                    <description>
+                        point2. Must have the same dimension as the path
+                    </description>
+                </param>
+                <param name="t" type="float">
+                    <description>
+                        interpolation factor
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="lerpPoint" type="vector">
+                    <description>
+                        interpolated point
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="Path:dist" />
+            </see-also>
+        </method>
+    </object-class> <!-- Path -->
 
     
 
@@ -3015,7 +3205,7 @@
                             <li id="marker"><a href="../markers">marker</a> fields:
                                 <ul>
                                     <li>type (string): "marker"</li>
-                                    <li>marker.type (string): the marker object type. Allowed values are "points", "lines", "tubes", "triangles", "spheres", "squares", "discs", "cubes", "cylinders" or "custom"</li>
+                                    <li>marker.type (string): the marker object type. Allowed values are "points", "lines", "tubes", "triangles", "spheres", "squares", "discs", "cubes", "cylinders", "axes" or "custom"</li>
                                     <li>cyclic (bool): if the marker is full, then the first items are overwritten</li>
                                     <li>local (bool): coordinate data is specified locally</li>
                                     <li>overlay (bool): items are rendered on top of scene objects</li>
@@ -5324,7 +5514,7 @@
                             <li id="marker"><a href="../markers">marker</a> fields:
                                 <ul>
                                     <li>type (string): "marker"</li>
-                                    <li>marker.type (string): the marker object type. Allowed values are "points", "lines", "tubes", "triangles", "spheres", "squares", "discs", "cubes", "cylinders" or "custom"</li>
+                                    <li>marker.type (string): the marker object type. Allowed values are "points", "lines", "tubes", "triangles", "spheres", "squares", "discs", "cubes", "cylinders", "axes" or "custom"</li>
                                     <li>cyclic (bool): if the marker is full, then the first items are overwritten</li>
                                     <li>local (bool): coordinate data is specified locally</li>
                                     <li>overlay (bool): items are rendered on top of scene objects</li>

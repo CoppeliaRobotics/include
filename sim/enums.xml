@@ -70,6 +70,7 @@
     <item name="cylinders" value="12" />
     <item name="custom" value="13" />
     <item name="tubes" value="14" />
+    <item name="axes" value="15" />
   </enum>
   <enum name="materialComponent">
     <item name="diffuse" value="0" />
