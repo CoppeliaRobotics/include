@@ -368,9 +368,7 @@
     <property name="bullet.posPid" type="floatarray" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="bullet.stopCfm" type="float" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="bullet.stopErp" type="float" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="calcVelocity" type="float" writable="false" label="Velocity" start-support="2" start-deprecated="0" end-support="0">
-      <description>Calculated joint linear or angular velocity</description>
-    </property>
+    <property name="calcVelocity" type="float" deprecated="true" writable="false" start-support="1" start-deprecated="2" end-support="2" />
     <property name="color" type="group" readable="false" writable="false" silent="true" constant="true" start-support="2" start-deprecated="0" end-support="0" />
     <property name="color.diffuse" type="color" label="Diffuse color" start-support="2" start-deprecated="0" end-support="0" />
     <property name="color.emission" type="color" label="Emission color" start-support="2" start-deprecated="0" end-support="0" />
@@ -555,6 +553,9 @@
     <property name="targetVel" type="float" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="targetVelocity" type="float" label="Target velocity" start-support="2" start-deprecated="0" end-support="0">
       <description>Velocity to reach by controller</description>
+    </property>
+    <property name="velocity" type="float" writable="false" label="Velocity" start-support="2" start-deprecated="0" end-support="0">
+      <description>Calculated joint linear or angular velocity</description>
     </property>
     <property name="vortex" type="group" deprecated="true" readable="false" writable="false" silent="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="vortex.axisFrictionEnabled" type="bool" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
@@ -1178,15 +1179,9 @@
     <property name="bbPose" type="pose" writable="false" label="Bounding box pose" start-support="2" start-deprecated="0" end-support="0">
       <description>Bounding box local pose</description>
     </property>
-    <property name="calcLinearVelocity" type="vector3" writable="false" label="Linear velocity" start-support="2" start-deprecated="0" end-support="0">
-      <description>Calculated scene object linear velocity vector</description>
-    </property>
-    <property name="calcRotationAxis" type="vector3" writable="false" label="Rotation axis" start-support="2" start-deprecated="0" end-support="0">
-      <description>Calculated scene object rotation axis</description>
-    </property>
-    <property name="calcRotationVelocity" type="float" writable="false" label="Rotation velocity" start-support="2" start-deprecated="0" end-support="0">
-      <description>Calculated scene object rotation velocity</description>
-    </property>
+    <property name="calcLinearVelocity" type="vector3" deprecated="true" writable="false" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="calcRotationAxis" type="vector3" deprecated="true" writable="false" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="calcRotationVelocity" type="float" deprecated="true" writable="false" start-support="1" start-deprecated="2" end-support="2" />
     <property name="cannotDelete" type="bool" label="Cannot delete" start-support="2" start-deprecated="0" end-support="0">
       <description>Scene object cannot be deleted while simulation is not running</description>
     </property>
@@ -1224,6 +1219,9 @@
       <description>View fitting is ignored for this scene object</description>
     </property>
     <property name="layer" type="int" label="Visibility layer" start-support="2" start-deprecated="0" end-support="0" />
+    <property name="linearVelocity" type="vector3" writable="false" label="Linear velocity" start-support="2" start-deprecated="0" end-support="0">
+      <description>Calculated scene object linear velocity vector</description>
+    </property>
     <property name="measurable" type="bool" label="Measurable" start-support="2" start-deprecated="0" end-support="0" />
     <property name="model" type="group" readable="false" writable="false" silent="true" constant="true" start-support="2" start-deprecated="0" end-support="0" />
     <property name="model.bbPos" type="vector3" writable="false" silent="true" label="Model bounding box position" start-support="2" start-deprecated="0" end-support="0" />
@@ -1349,6 +1347,12 @@
       <description>Scene object local quaternion</description>
     </property>
     <property name="refs" type="group" readable="false" writable="false" silent="true" constant="true" start-support="2" start-deprecated="0" end-support="0" />
+    <property name="rotationAxis" type="vector3" writable="false" label="Rotation axis" start-support="2" start-deprecated="0" end-support="0">
+      <description>Calculated scene object rotation axis</description>
+    </property>
+    <property name="rotationVelocity" type="float" writable="false" label="Rotation velocity" start-support="2" start-deprecated="0" end-support="0">
+      <description>Calculated scene object rotation velocity</description>
+    </property>
     <property name="selectInvisible" type="bool" label="Select invisible" start-support="2" start-deprecated="0" end-support="0">
       <description>Scene object is invisible during a selection operation</description>
     </property>
@@ -1482,16 +1486,15 @@
     <property name="convex" type="bool" writable="false" label="Convex" start-support="2" start-deprecated="0" end-support="0">
       <description>Whether the shape&apos;s components are all convex or not</description>
     </property>
-    <property name="dynAngularVelocity" type="vector3" writable="false" label="Rotational velocity" start-support="2" start-deprecated="0" end-support="0">
-      <description>Rotational velocity, as transmitted by the physics engine</description>
-    </property>
-    <property name="dynLinearVelocity" type="vector3" writable="false" label="Linear velocity" start-support="2" start-deprecated="0" end-support="0">
-      <description>Linear velocity, as transmitted by the physics engine</description>
-    </property>
+    <property name="dynAngularVelocity" type="vector3" deprecated="true" writable="false" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="dynLinearVelocity" type="vector3" deprecated="true" writable="false" start-support="1" start-deprecated="2" end-support="2" />
     <property name="dynamic" type="bool" label="Dynamic" start-support="2" start-deprecated="0" end-support="0">
       <description>Shape is dynamic, i.e. not static</description>
     </property>
     <property name="dynamics" type="group" readable="false" writable="false" silent="true" constant="true" start-support="2" start-deprecated="0" end-support="0" />
+    <property name="dynamics.angularVelocity" type="vector3" writable="false" label="Rotational velocity" start-support="2" start-deprecated="0" end-support="0">
+      <description>Rotational velocity, as transmitted by the physics engine</description>
+    </property>
     <property name="dynamics.bullet" type="group" readable="false" writable="false" silent="true" constant="true" start-support="2" start-deprecated="0" end-support="0" />
     <property name="dynamics.bullet.angularDamping" type="float" start-support="2" start-deprecated="0" end-support="0" />
     <property name="dynamics.bullet.autoShrinkConvexMeshes" type="bool" start-support="2" start-deprecated="0" end-support="0" />
@@ -1506,6 +1509,9 @@
     <property name="dynamics.bullet.stickyContact" type="bool" start-support="2" start-deprecated="0" end-support="0" />
     <property name="dynamics.engineProperties" type="string" label="Engine properties" start-support="2" start-deprecated="0" end-support="0">
       <description>Engine properties as JSON text</description>
+    </property>
+    <property name="dynamics.linearVelocity" type="vector3" writable="false" label="Linear velocity" start-support="2" start-deprecated="0" end-support="0">
+      <description>Linear velocity, as transmitted by the physics engine</description>
     </property>
     <property name="dynamics.mujoco" type="group" readable="false" writable="false" silent="true" constant="true" start-support="2" start-deprecated="0" end-support="0" />
     <property name="dynamics.mujoco.adhesion" type="bool" start-support="2" start-deprecated="0" end-support="0" />
