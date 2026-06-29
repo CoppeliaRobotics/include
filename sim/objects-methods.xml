@@ -722,10 +722,11 @@
                             <li>metric (matrix 1 * n, defaults to [1.0, ..., 1.0]): a weight for each dimension</li>
                             <li>closed (bool, defaults to false): whether the path is closed or open</li>
                             <li>closedRepeatsStart (bool, defaults to false): whether a closed path has the first path point identical to the last path point</li>
+                            <li>onlyCtrlPoints (bool, defaults to false): if true, then only the control points are taken into account (no interpolated path is generated)</li>
                             <li>ctrlPoints: optional map describing control point properties:
                                 <ul>
                                     <li>duplicateThreshold (float, defaults to 0.02): distance below which points are merged</li>
-                                    <li>linearityTolerance (float, defaults to 0.05): points within a certain distance to the segment formed by its two neighbours can be discarded</li>
+                                    <li>linearityTolerance (float, defaults to 0.001): points within a certain distance to the segment formed by its two neighbours can be discarded</li>
                                     <li>pointType (enum, defaults to "cube"): allowed values are "none", "sphere" and "cube"</li>
                                     <li>pointColor (color): point color</li>
                                     <li>pointRadius (float): point radius</li>
@@ -756,10 +757,261 @@
             <categories>
             </categories>
             <see-also>
+                <function-ref name="Path.fromJoints" />
+                <function-ref name="Path.fromObject" />
                 <function-ref name="Path:data" />
+                <function-ref name="Path:setPoints" />
+                <function-ref name="Path:appendPoints" />
+                <function-ref name="Path:clearPoints" />
                 <function-ref name="Path:dist" />
                 <function-ref name="Path:lerp" />
                 <function-ref name="Path:createMarkers" />
+            </see-also>
+        </method>
+
+
+
+        <method name="fromJoints" func="" lang="python,lua">
+            <description>
+                Creates an empty path based on joints located between an end-effector and a base object (both not included, if of joint type). Ordering goes from base to end-effector 
+            </description>
+            <params>
+                <param name="endEffector" type="handle">
+                    <description>
+                        end-effector object
+                    </description>
+                </param>
+                <param name="base" type="handle" default = "nil">
+                    <description>
+                        base object. Can be null
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>metric (matrix 1 * n, defaults to [1.0, ..., 1.0]): a weight for each dimension</li>
+                            <li>closed (bool, defaults to false): whether the path is closed or open</li>
+                            <li>closedRepeatsStart (bool, defaults to false): whether a closed path has the first path point identical to the last path point</li>
+                            <li>onlyCtrlPoints (bool, defaults to false): if true, then only the control points are taken into account (no interpolated path is generated)</li>
+                            <li>ctrlPoints: optional map describing control point properties:
+                                <ul>
+                                    <li>duplicateThreshold (float, defaults to 0.02): distance below which points are merged</li>
+                                    <li>linearityTolerance (float, defaults to 0.001): points within a certain distance to the segment formed by its two neighbours can be discarded</li>
+                                    <li>pointType (enum, defaults to "cube"): allowed values are "none", "sphere" and "cube"</li>
+                                    <li>pointColor (color): point color</li>
+                                    <li>pointRadius (float): point radius</li>
+                                    <li>lineType (enum, defaults to "line"): allowed values are "none", "line" and "tube"</li>
+                                    <li>lineColor (color): line color</li>
+                                    <li>tubeRadius (float): tube radius</li>
+                                    <li>showAxes (bool, defaults to false): whether points display reference frames</li>
+                                </ul>
+                            </li>
+                            <li>pathPoints: optional map describing path point properties:
+                                <ul>
+                                    <li>type (enum, defaults to "quadraticBezier"): allowed values are "linear" and "quadraticBezier"</li>
+                                    <li>bezierSmoothing (float, defaults to 1.0): the Bezier smoothing strength</li>
+                                    <li>samplingDistance (float, defaults to 0.02): the maximum allowable spacing between consecutive points along the generated path</li>
+                                    <li>pointType (enum, defaults to "cube"): allowed values are "none", "sphere" and "cube"</li>
+                                    <li>pointColor (color): point color</li>
+                                    <li>pointRadius (float): point radius</li>
+                                    <li>lineType (enum, defaults to "line"): allowed values are "none", "line" and "tube"</li>
+                                    <li>lineColor (color): line color</li>
+                                    <li>tubeRadius (float): tube radius</li>
+                                    <li>showAxes (bool, defaults to false): whether points display reference frames</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="Path:constructor" />
+                <function-ref name="Path.fromObject" />
+                <function-ref name="Path:data" />
+                <function-ref name="Path:appendFromJoints" />
+                <function-ref name="Path:clearPoints" />
+                <function-ref name="Path:dist" />
+                <function-ref name="Path:lerp" />
+                <function-ref name="Path:createMarkers" />
+            </see-also>
+        </method>
+
+
+
+        <method name="fromObject" func="" lang="python,lua">
+            <description>
+                Creates an empty path based on the pose of an object 
+            </description>
+            <params>
+                <param name="object" type="handle">
+                    <description>
+                        object
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>metric (matrix 1 * 7, defaults to [1.0, ..., 1.0]): a weight for each dimension</li>
+                            <li>closed (bool, defaults to false): whether the path is closed or open</li>
+                            <li>closedRepeatsStart (bool, defaults to false): whether a closed path has the first path point identical to the last path point</li>
+                            <li>onlyCtrlPoints (bool, defaults to false): if true, then only the control points are taken into account (no interpolated path is generated)</li>
+                            <li>ctrlPoints: optional map describing control point properties:
+                                <ul>
+                                    <li>duplicateThreshold (float, defaults to 0.02): distance below which points are merged</li>
+                                    <li>linearityTolerance (float, defaults to 0.001): points within a certain distance to the segment formed by its two neighbours can be discarded</li>
+                                    <li>pointType (enum, defaults to "cube"): allowed values are "none", "sphere" and "cube"</li>
+                                    <li>pointColor (color): point color</li>
+                                    <li>pointRadius (float): point radius</li>
+                                    <li>lineType (enum, defaults to "line"): allowed values are "none", "line" and "tube"</li>
+                                    <li>lineColor (color): line color</li>
+                                    <li>tubeRadius (float): tube radius</li>
+                                    <li>showAxes (bool, defaults to false): whether points display reference frames</li>
+                                </ul>
+                            </li>
+                            <li>pathPoints: optional map describing path point properties:
+                                <ul>
+                                    <li>type (enum, defaults to "quadraticBezier"): allowed values are "linear" and "quadraticBezier"</li>
+                                    <li>bezierSmoothing (float, defaults to 1.0): the Bezier smoothing strength</li>
+                                    <li>samplingDistance (float, defaults to 0.02): the maximum allowable spacing between consecutive points along the generated path</li>
+                                    <li>pointType (enum, defaults to "cube"): allowed values are "none", "sphere" and "cube"</li>
+                                    <li>pointColor (color): point color</li>
+                                    <li>pointRadius (float): point radius</li>
+                                    <li>lineType (enum, defaults to "line"): allowed values are "none", "line" and "tube"</li>
+                                    <li>lineColor (color): line color</li>
+                                    <li>tubeRadius (float): tube radius</li>
+                                    <li>showAxes (bool, defaults to false): whether points display reference frames</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="Path:constructor" />
+                <function-ref name="Path.fromJoints" />
+                <function-ref name="Path:data" />
+                <function-ref name="Path:appendFromJoints" />
+                <function-ref name="Path:clearPoints" />
+                <function-ref name="Path:dist" />
+                <function-ref name="Path:lerp" />
+                <function-ref name="Path:createMarkers" />
+            </see-also>
+        </method>
+
+
+
+        <method name="setPoints" func="" lang="python,lua">
+            <description>
+                Sets the path control points
+            </description>
+            <params>
+                <param name="ctrlPoints" type="matrix">
+                    <description>
+                        the path control points, organized in cnt * n matrix with cnt the number of path points, and n the dimension of the path
+                    </description>
+                </param>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="Path:appendPoints" />
+                <function-ref name="Path:clearPoints" />
+            </see-also>
+        </method>
+
+
+
+        <method name="appendPoints" func="" lang="python,lua">
+            <description>
+                Appends path control points
+            </description>
+            <params>
+                <param name="ctrlPoints" type="matrix">
+                    <description>
+                        the path control points to append, organized in cnt * n matrix with cnt the number of path points, and n the dimension of the path
+                    </description>
+                </param>
+                <param name="update" type="bool" default="true">
+                    <description>
+                        whether the path is immediately updated
+                    </description>
+                </param>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="Path:setPoints" />
+                <function-ref name="Path:appendFromJoints" />
+                <function-ref name="Path:appendFromObject" />
+                <function-ref name="Path:clearPoints" />
+                <function-ref name="Path:update" />
+            </see-also>
+        </method>
+
+
+
+        <method name="appendFromJoints" func="" lang="python,lua">
+            <description>
+                Appends a path control point based on the joints' current configuration
+            </description>
+            <params>
+                <param name="update" type="bool" default="true">
+                    <description>
+                        whether the path is immediately updated
+                    </description>
+                </param>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="Path:appendPoints" />
+                <function-ref name="Path:appendFromObject" />
+                <function-ref name="Path:clearPoints" />
+                <function-ref name="Path:update" />
+            </see-also>
+        </method>
+
+
+
+        <method name="appendFromObject" func="" lang="python,lua">
+            <description>
+                Appends a path control point based on the object's current pose
+            </description>
+            <params>
+                <param name="update" type="bool" default="true">
+                    <description>
+                        whether the path is immediately updated
+                    </description>
+                </param>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="Path:appendPoints" />
+                <function-ref name="Path:appendFromJoints" />
+                <function-ref name="Path:clearPoints" />
+                <function-ref name="Path:update" />
+            </see-also>
+        </method>
+
+
+
+        <method name="clearPoints" func="" lang="python,lua">
+            <description>
+                Clears all path control points
+            </description>
+            <params>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="Path:setPoints" />
             </see-also>
         </method>
 
@@ -788,7 +1040,7 @@
 
         <method name="createMarkers" func="" lang="python,lua">
             <description>
-                Creates markers allowing to visualize the path. Only paths with following coordinates can be visualized:
+                Creates markers allowing to visualize the path. Only joint-based paths, and paths with following coordinates can be visualized:
                 ["scal", "scal", ...],
                 ["scal", "scal", "scal", ...],
                 ["scal", "scal", "scal", "quat", "quat", "quat", "quat", ...]
@@ -1046,6 +1298,76 @@
             </categories>
             <see-also>
                 <function-ref name="object:getIntProperty" />
+                <link href="../properties.htm" label="properties" />
+            </see-also>
+        </method>
+
+
+
+        <method name="getEnumProperty" func="sim.callMethod" lang="python,lua">
+            <description>
+                Fetches an enum property. For the string equivalent of an enum, use getStringProperty
+            </description>
+            <params>
+                <param name="propertyName" type="string">
+                    <description>
+                        property name
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="propertyState" type="enum">
+                    <description>
+                        property value
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="property" />
+            </categories>
+            <see-also>
+                <function-ref name="object:setEnumProperty" />
+                <function-ref name="object:getStringProperty" />
+                <link href="../properties.htm" label=" properties " />
+            </see-also>
+        </method>
+
+        
+
+        <method name="setEnumProperty" func="sim.callMethod" lang="python,lua">
+            <description>
+                Sets an enum property. For the string equivalent of an enum, use setStringProperty
+            </description>
+            <params>
+                <param name="propertyName" type="string">
+                    <description>property name</description>
+                </param>
+                <param name="propertyState" type="enum">
+                    <description>property value</description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="property" />
+            </categories>
+            <see-also>
+                <function-ref name="object:getEnumProperty" />
+                <function-ref name="object:setStringProperty" />
                 <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
@@ -2454,6 +2776,35 @@
     
     
     <object-class name="app" superclass="object">
+        <method name="getEnumInfo" func="sim.callMethod" lang="python,lua">
+            <description>
+                Returns information about a loaded plugin
+            </description>
+            <params>
+                <param name="enumType" type="string">
+                    <description>
+                        type of the enum
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="info" type="map">
+                    <description>
+                        a map linking all possible string representations with their value representations
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="other" />
+            </categories>
+            <see-also>
+                <function-ref name="object:getEnumProperty" />
+                <function-ref name="object:setEnumProperty" />
+            </see-also>
+        </method>
+
+        
+
         <method name="getPluginInfo" func="sim.callMethod" lang="python,lua">
             <description>
                 Returns information about a loaded plugin
@@ -4114,9 +4465,9 @@
                     <description>
                         filters, e.g.:
                         <br />
-                        filters = {"objectHandle" --> {"pose", "jointPosition", "layer"}, "scene" --> {"engineProperties"}}
+                        filters = {<object> --> {"pose", "jointPosition", "layer"}, sim.scene --> {"engineProperties"}}
                         <br />
-                        filters = {"object1Handle" --> {}, "object2Handle" --> {"pose"}}
+                        filters = {<object1> --> {}, <object2> --> {"pose"}}
                         <br />
                         filters = {"sceneObject" --> {"pose"}, "shape" --> {"position"}}
                     </description>
