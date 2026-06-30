@@ -373,6 +373,9 @@
     <property name="color.diffuse" type="color" label="Diffuse color" start-support="2" start-deprecated="0" end-support="0" />
     <property name="color.emission" type="color" label="Emission color" start-support="2" start-deprecated="0" end-support="0" />
     <property name="color.specular" type="color" label="Specular color" start-support="2" start-deprecated="0" end-support="0" />
+    <property name="configuration" type="floatarray" silent="true" label="Configuration" start-support="2" start-deprecated="0" end-support="0">
+      <description>Joint configuration</description>
+    </property>
     <property name="cyclic" type="bool" label="Cyclic" start-support="2" start-deprecated="0" end-support="0">
       <description>Cyclic revolute joint, has no limits</description>
     </property>

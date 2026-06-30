@@ -48,7 +48,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="remove" func="sim.callMethod" lang="python,lua">
             <description>
@@ -63,7 +63,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="step" func="sim.callMethod" lang="python,lua">
             <description>
@@ -164,7 +164,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="remove" func="sim.callMethod" lang="python,lua">
             <description>
@@ -179,7 +179,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="step" func="sim.callMethod" lang="python,lua">
             <description>
@@ -256,11 +256,11 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="Constructor" func="sim.callMethod" lang="python,lua">
             <description>
-                Initiates a n-DoF motion using the 
+                Initiates a n-DoF motion using the
                 <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
             </description>
             <params>
@@ -307,7 +307,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="step" func="sim.callMethod" lang="python,lua">
             <description>
@@ -337,7 +337,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="data" func="sim.callMethod" lang="python,lua">
             <description>
@@ -375,7 +375,7 @@
         </method>
     </object-class> <!-- MoveToConfig -->
 
-        
+
 
     <object-class name="MoveToPose" superclass="Motion">
         <method name="run" func="sim.callMethod" lang="python,lua">
@@ -397,11 +397,11 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="Constructor" func="sim.callMethod" lang="python,lua">
             <description>
-                Initiates motion using the 
+                Initiates motion using the
                 <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
                 , by performing interpolations between two poses. The function can operate by handling 4 motion variables (x,y,z and
                 angle between the two poses), or a single movement variable (t, which requires a metric to be specified for distance
@@ -414,20 +414,20 @@
                         <ul>
                             <li>pose (pose): mandatory if neither object nor ik are specified. Specifies current pose </li>
                             <li>object (handle): mandatory if neither pose nor ik are specified. Specifies the handle of the object to move </li>
-                            <li>ik (map): mandatory if neither pose nor object are specified. Contains IK-relevant informations, if a kinematic chain should move via IK to a target: 
-                                <ul> 
-                                    <li>tip (handle): specifies the tip object (on the end-effector) </li> 
-                                    <li>target (handle): specifies the target object (the object to reach) </li> 
-                                    <li>base (handle, defaults to nil): optional. Specifies the base object (the base of the kinematic chain)</li> 
-                                    <li>joints (handle[], defaults to all joints within tip and base): optional. Specifies the handles of the joints involved in IK calculations</li> 
-                                    <li>method (int, defaults to simIK.method_damped_least_squares): optional. Specifies the resolution method</li> 
-                                    <li>damping (float, defaults to 0.02): optional. Specifies the resolution damping</li> 
-                                    <li>iterations (int, defaults to 20): optional. Specifies the max. number of iterations</li> 
-                                    <li>constraints (int, defaults to simIK.constraint_pose): optional. Specifies the constraints</li> 
-                                    <li>precision (int[2], defaults to [0.001, 0.5 * math.pi / 180.0]): optional. Specifies the desired precision (linear and angular)</li> 
-                                    <li>allowError (bool, defaults to false): optional. Specifies whether a resolution with precision values over what is allowed will be applied anyway</li> 
-                                    <li>breakFlags (int, defaults to 0): optional. Specified the reasons-flags required for simIK.handleGroup to fail</li> 
-                                </ul> 
+                            <li>ik (map): mandatory if neither pose nor object are specified. Contains IK-relevant informations, if a kinematic chain should move via IK to a target:
+                                <ul>
+                                    <li>tip (handle): specifies the tip object (on the end-effector) </li>
+                                    <li>target (handle): specifies the target object (the object to reach) </li>
+                                    <li>base (handle, defaults to nil): optional. Specifies the base object (the base of the kinematic chain)</li>
+                                    <li>joints (handle[], defaults to all joints within tip and base): optional. Specifies the handles of the joints involved in IK calculations</li>
+                                    <li>method (int, defaults to simIK.method_damped_least_squares): optional. Specifies the resolution method</li>
+                                    <li>damping (float, defaults to 0.02): optional. Specifies the resolution damping</li>
+                                    <li>iterations (int, defaults to 20): optional. Specifies the max. number of iterations</li>
+                                    <li>constraints (int, defaults to simIK.constraint_pose): optional. Specifies the constraints</li>
+                                    <li>precision (int[2], defaults to [0.001, 0.5 * math.pi / 180.0]): optional. Specifies the desired precision (linear and angular)</li>
+                                    <li>allowError (bool, defaults to false): optional. Specifies whether a resolution with precision values over what is allowed will be applied anyway</li>
+                                    <li>breakFlags (int, defaults to 0): optional. Specified the reasons-flags required for simIK.handleGroup to fail</li>
+                                </ul>
                             </li>
                             <li>targetPose (pose): specifies the target pose </li>
                             <li>targetVel (vector n, defaults to zero vector): optional. Specifies the target velocity, with n = 1 or n = 4</li>
@@ -463,7 +463,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="step" func="sim.callMethod" lang="python,lua">
             <description>
@@ -493,7 +493,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="data" func="sim.callMethod" lang="python,lua">
             <description>
@@ -615,7 +615,7 @@
         </method>
     </object-class> <!-- TimeOptimalTrajectory -->
 
-    
+
 
     <object-class name="Console" superclass="customObject">
         <method name="remove" func="sim.callMethod" lang="python,lua">
@@ -675,7 +675,7 @@
         </method>
     </object-class> <!-- Console -->
 
-    
+
 
     <object-class name="TextEditor" superclass="customObject">
         <method name="remove" func="sim.callMethod" lang="python,lua">
@@ -701,7 +701,7 @@
         </method>
     </object-class> <!-- TextEditor -->
 
-    
+
 
     <object-class name="Path" superclass="">
         <method name="Constructor" func="" lang="python,lua">
@@ -773,7 +773,7 @@
 
         <method name="fromJoints" func="" lang="python,lua">
             <description>
-                Creates an empty path based on joints located between an end-effector and a base object (both not included, if of joint type). Ordering goes from base to end-effector 
+                Creates an empty path based on joints located between an end-effector and a base object (both not included, if of joint type). Ordering goes from base to end-effector
             </description>
             <params>
                 <param name="endEffector" type="handle">
@@ -843,7 +843,7 @@
 
         <method name="fromObject" func="" lang="python,lua">
             <description>
-                Creates an empty path based on the pose of an object 
+                Creates an empty path based on the pose of an object
             </description>
             <params>
                 <param name="object" type="handle">
@@ -1072,9 +1072,9 @@
                 <function-ref name="Path:createMarkers" />
             </see-also>
         </method>
-        
-        
-        
+
+
+
         <method name="dist" func="" lang="python,lua">
             <description>
                 Returns the distance between two points
@@ -1143,7 +1143,7 @@
         </method>
     </object-class> <!-- Path -->
 
-    
+
 
     <object-class name="object">
         <method name="isValid" func="sim.callMethod" lang="python,lua">
@@ -1166,7 +1166,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="getBoolProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1203,7 +1203,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setBoolProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1271,7 +1271,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setIntProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1340,7 +1340,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setEnumProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1409,7 +1409,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setLongProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1477,7 +1477,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setHandleProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1545,7 +1545,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setFloatProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1613,7 +1613,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setStringProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1682,7 +1682,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setBufferProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1751,7 +1751,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setIntArray2Property" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1819,7 +1819,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setVector2Property" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1887,7 +1887,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setVector3Property" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1955,7 +1955,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setQuaternionProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2023,7 +2023,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setPoseProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2091,7 +2091,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setColorProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2159,7 +2159,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setFloatArrayProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2227,7 +2227,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setIntArrayProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2295,7 +2295,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setStringArrayProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2363,7 +2363,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setHandleArrayProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2431,7 +2431,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setMethodProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2563,7 +2563,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setProperties" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2585,7 +2585,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="getPropertyName" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2628,7 +2628,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="getPropertyInfo" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2679,7 +2679,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setPropertyInfo" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2713,7 +2713,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="getPropertiesInfos" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2745,7 +2745,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="removeProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2773,8 +2773,8 @@
         </method>
     </object-class> <!-- object -->
 
-    
-    
+
+
     <object-class name="app" superclass="object">
         <method name="getEnumInfo" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2803,7 +2803,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="getPluginInfo" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2831,7 +2831,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setPluginInfo" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2864,7 +2864,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="pushEvent" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2920,7 +2920,7 @@
             </see-also>
         </method>
 
-    
+
 
         <method name="createCustomObjectClass" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2963,11 +2963,11 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="openFile" func="sim.callMethod" lang="python,lua">
             <description>
-                Opens a file in a subprocess, via cmd (Windows), open (macOS), or xdg-open (Linux) 
+                Opens a file in a subprocess, via cmd (Windows), open (macOS), or xdg-open (Linux)
             </description>
             <params>
                 <param name="file" type="string">
@@ -2985,11 +2985,11 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="fastIdleLoop" func="sim.callMethod" lang="python,lua">
             <description>
-                Speeds the idle loop up, for better reactivity when idle, i.e. not simulating 
+                Speeds the idle loop up, for better reactivity when idle, i.e. not simulating
             </description>
             <params>
                 <param name="fast" type="bool">
@@ -3007,7 +3007,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="throttle" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3043,7 +3043,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="scheduleExecution" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3086,7 +3086,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="cancelScheduledExecution" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3095,7 +3095,7 @@
             <params>
                 <param name="handle" type="int">
                     <description>
-                        The handle of the scheduled function execution 
+                        The handle of the scheduled function execution
                     </description>
                 </param>
             </params>
@@ -3114,7 +3114,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="pack" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3142,9 +3142,9 @@
                 <function-ref name="app:serialize" />
             </see-also>
         </method>
-        
-        
-        
+
+
+
         <method name="unpack" func="sim.callMethod" lang="python,lua">
             <description>
                 Unpacks a buffer via CoppeliaSim format
@@ -3171,7 +3171,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="packArray" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3276,9 +3276,9 @@
                 <function-ref name="app:pack" />
             </see-also>
         </method>
-        
-        
-        
+
+
+
         <method name="deserialize" func="sim.callMethod" lang="python,lua">
             <description>
                 Deserializes a buffer via CBOR format
@@ -3305,7 +3305,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="systemLock" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3333,7 +3333,7 @@
         </method>
 
 
-        
+
         <method name="quit" func="sim.callMethod" lang="python,lua">
             <description>
                 Triggers a quit signal for the application to end
@@ -3343,7 +3343,7 @@
             </categories>
         </method>
 
-        
+
 
         <method name="logInfo" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3374,7 +3374,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="logWarn" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3405,7 +3405,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="logError" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3436,7 +3436,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="createObject" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
@@ -3467,7 +3467,7 @@
             <params>
                 <param name="params" type="map">
                     <description>
-                        a map/dict describing the object to create. All fields are optional except for <b>objectType</b>. Fields described hereafter are not exhaustive (all writable properties of the object to create can be specified too): 
+                        a map/dict describing the object to create. All fields are optional except for <b>objectType</b>. Fields described hereafter are not exhaustive (all writable properties of the object to create can be specified too):
                         <ul>
                             <li id="collection"><a href="../collections.htm">collection</a> fields:
                                 <ul>
@@ -3564,8 +3564,8 @@
                                     <li>duplicateTolerance (float): indicates a distance threshold under which points are not added. Does not apply to line- or triangle items</li>
                                     <li>itemCnt (int): maximum item count</li>
                                     <li>itemColor (color): default item color</li>
-                                    <li>mesh.vertices (matrix n * 3): vertices for a mesh item type (sim.markertype_custom)</li> 
-                                    <li>mesh.indices (int[]): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li> 
+                                    <li>mesh.vertices (matrix n * 3): vertices for a mesh item type (sim.markertype_custom)</li>
+                                    <li>mesh.indices (int[]): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li>
                                     <li>mesh.normals (matrix n * 3): normals for a mesh item type (sim.markertype_custom). One normal for each vertex</li>
                                 </ul>
                             </li>
@@ -3840,8 +3840,8 @@
                 <function-ref name="app:removeObjects" />
             </see-also>
         </method>
-        
-        
+
+
 
         <method name="loadScene" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
@@ -3874,7 +3874,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="loadSceneFromBuffer" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
@@ -3904,7 +3904,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="loadModelThumbnail" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
@@ -3934,7 +3934,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="loadModelThumbnailFromBuffer" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
@@ -3964,7 +3964,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="getObjects" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
@@ -3997,7 +3997,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="removeObjects" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
@@ -4049,9 +4049,9 @@
                 <link href="../apiFunctions.htm#threads" label=" thread related functions " />
             </see-also>
         </method>
-        
-        
-        
+
+
+
         <method name="handleSandboxScript" func="sim.callMethod" lang="lua">
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a> in the <a href="../sandboxScript.htm"> sandbox </a>.
@@ -4150,7 +4150,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="loadImageFromBuffer" func="sim.callMethod" lang="python,lua">
             <description>
@@ -4194,7 +4194,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="saveImageToBuffer" func="sim.callMethod" lang="python,lua">
             <description>
@@ -4238,7 +4238,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="saveImage" func="sim.callMethod" lang="python,lua">
             <description>
@@ -4338,9 +4338,9 @@
                 <function-ref name="visionSensor:setImage" />
             </see-also>
         </method>
-        
-        
-        
+
+
+
         <method name="transformBuffer" func="sim.callMethod" lang="python,lua">
             <description>
                 Modifies a buffer
@@ -4395,9 +4395,9 @@
         <method name="setModuleEntry" func="sim.callMethod" lang="python,lua">
             <description>
                 Creates, modifies or destroys module menu entries. Those are user selectable items located in [Menu bar &gt; Modules].
-                When selected, the corresponding script will have its 
+                When selected, the corresponding script will have its
                 <a href="../callbackFunctions.htm"> sysCall_moduleEntry </a>
-                callback function triggered, or 
+                callback function triggered, or
                 <a href="../apiConstants.htm#simulatorMessages"> sim_message_eventcallback_moduleentry </a>
                 triggered
             </description>
@@ -4431,9 +4431,9 @@
                 <category name="other" />
             </categories>
         </method>
-        
-        
-        
+
+
+
         <method name="broadcast" func="sim.callMethod" lang="python,lua">
             <description>
                 Broadcasts a message to all scripts, except for the emitting script. Messages are received synchronously via the sysCall_msg callback function
@@ -4453,9 +4453,9 @@
                 <link href="../callbackFunctions.htm" label="callback functions" />
             </see-also>
         </method>
-        
-        
-        
+
+
+
         <method name="setEventFilters" func="sim.callMethod" lang="python,lua">
             <description>
                 Specifies filters for the sysCall_event callback, in this script
@@ -4465,11 +4465,11 @@
                     <description>
                         filters, e.g.:
                         <br />
-                        filters = {<object> --> {"pose", "jointPosition", "layer"}, sim.scene --> {"engineProperties"}}
+                        filters = {&lt;object&gt; --&gt; {"pose", "jointPosition", "layer"}, sim.scene --&gt; {"engineProperties"}}
                         <br />
-                        filters = {<object1> --> {}, <object2> --> {"pose"}}
+                        filters = {&lt;object1&gt; --&gt; {}, &lt;object2&gt; --&gt; {"pose"}}
                         <br />
-                        filters = {"sceneObject" --> {"pose"}, "shape" --> {"position"}}
+                        filters = {"sceneObject" --&gt; {"pose"}, "shape" --&gt; {"position"}}
                     </description>
                 </param>
             </params>
@@ -4481,8 +4481,8 @@
                 <function-ref name="app:pushEvent" />
             </see-also>
         </method>
-        
-        
+
+
 
         <method name="wait" func="sim.callMethod" lang="python,lua">
             <description>
@@ -4509,7 +4509,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="getObject" func="sim.callMethod" lang="python,lua">
             <description>
@@ -4548,7 +4548,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="step" func="sim.callMethod" lang="python,lua">
             <description>
@@ -4615,7 +4615,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="getStepping" func="sim.callMethod" lang="python,lua">
             <description>
@@ -4640,7 +4640,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="lock" func="sim.callMethod" lang="python,lua">
             <description>
@@ -4664,7 +4664,7 @@
         </method>
 
 
-        
+
         <method name="registerFunctionHook" func="sim.callMethod" lang="python,lua">
             <description>
                 Registers a function hook for <a href="../callbackFunctions.htm"> callback functions </a>,
@@ -4697,7 +4697,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="removeFunctionHook" func="sim.callMethod" lang="python,lua">
             <description>
@@ -4730,7 +4730,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="remove" func="sim.callMethod" lang="python,lua">
             <info>same method present in several classes</info>
@@ -4760,10 +4760,10 @@
 
         <method name="callFunction" func="sim.callScriptFunction" lang="python,lua">
             <description>
-                Calls a script function. This represents a 
+                Calls a script function. This represents a
                 <a href="../callbackFunctions.htm"> user callback </a>
                 inside of a script. The
-                target smust be initialized for this call to succeed, e.g. when calling 
+                target smust be initialized for this call to succeed, e.g. when calling
                 from <a href="../simulationScripts.htm"> simulation scripts </a>
                 , then simulation must be running
             </description>
@@ -4927,9 +4927,9 @@
                 <property-ref name="mesh.texture.data" />
             </see-also>
         </method>
-        
-        
-        
+
+
+
         <method name="texture.getData" func="sim.callMethod" lang="python,lua">
             <description>
                 Reads a portion of the texture
@@ -4962,9 +4962,9 @@
             </see-also>
         </method>
     </object-class> <!-- mesh -->
-    
-    
-    
+
+
+
     <object-class name="collection" superclass="object">
         <method name="changeColor" func="sim.callMethod" lang="python,lua">
             <info>same method present in collection and sceneObject</info>
@@ -5004,12 +5004,12 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="restoreColor" func="sim.callMethod" lang="python,lua">
             <info>same method present in collection and sceneObject</info>
             <description>
-                Restores the color of all shapes contained in the collection 
+                Restores the color of all shapes contained in the collection
             </description>
             <params>
                 <param name="originalColorData" type="map[]">
@@ -5028,7 +5028,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="remove" func="sim.callMethod" lang="python,lua">
             <info>same method present in several classes</info>
@@ -5146,7 +5146,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="checkDistance" func="sim.callMethod" lang="python,lua">
             <description>
@@ -5205,9 +5205,9 @@
             </see-also>
         </method>
     </object-class> <!-- collection -->
-    
-    
-    
+
+
+
     <object-class name="scene" superclass="object">
         <method name="getContacts" func="sim.callMethod" lang="python,lua">
             <info>same method present in both scene and shape</info>
@@ -5256,7 +5256,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="getDescendants" func="sim.callMethod" lang="python,lua">
             <description>
@@ -5289,11 +5289,11 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="groupShapes" func="sim.callMethod" lang="python,lua">
             <description>
-                Groups several shapes, and returns a compound shape 
+                Groups several shapes, and returns a compound shape
             </description>
             <params>
                 <param name="shapes" type="handle[]">
@@ -5320,11 +5320,11 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="mergeShapes" func="sim.callMethod" lang="python,lua">
             <description>
-                Merges several shapes 
+                Merges several shapes
             </description>
             <params>
                 <param name="shapes" type="handle[]">
@@ -5351,7 +5351,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="getObjectFromUid" func="sim.callMethod" lang="python,lua">
             <description>
@@ -5387,7 +5387,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="announceChange" func="sim.callMethod" lang="python,lua">
             <description>
@@ -5401,7 +5401,7 @@
             </categories>
         </method>
 
-        
+
 
         <method name="getObject" func="sim.callMethod" lang="python,lua">
             <description>
@@ -5440,7 +5440,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="save" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both app and scene</info>
@@ -5465,7 +5465,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="saveToBuffer" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both app and scene</info>
@@ -5488,7 +5488,7 @@
             </see-also>
         </method>
 
-    
+
 
         <method name="remove" func="sim.callMethod" lang="python,lua">
             <info>similar method present in many classes</info>
@@ -5504,7 +5504,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="loadModel" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
@@ -5537,7 +5537,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="loadModelFromBuffer" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
@@ -5567,7 +5567,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="getObjects" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
@@ -5577,7 +5577,7 @@
             <params>
                 <param name="types" type="string[]" default="{}">
                     <description>
-                        a string array specifying the types to retrieve. Allowed values are: "sceneObject", "shape", "joint", "dummy", "script", "mirror", "graph", "light", "camera", "marker", "proximitySensor", "visionSensor", "forceSensor", "ocTree", "pointCloud", "collection", "detachedScript", "mesh"  
+                        a string array specifying the types to retrieve. Allowed values are: "sceneObject", "shape", "joint", "dummy", "script", "mirror", "graph", "light", "camera", "marker", "proximitySensor", "visionSensor", "forceSensor", "ocTree", "pointCloud", "collection", "detachedScript", "mesh"
                     </description>
                 </param>
             </params>
@@ -5596,7 +5596,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="removeObjects" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
@@ -5678,14 +5678,14 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="handleCustomizationScripts" func="sim.callMethod" lang="lua">
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a>
                 in <a href="../customizationScripts.htm"> customization scripts </a>.
-                Customization scripts will be executed in a 
-                <a href="../scriptExecution.htm"> precise order </a>. This function should only be called from the 
+                Customization scripts will be executed in a
+                <a href="../scriptExecution.htm"> precise order </a>. This function should only be called from the
                 <a href="../mainScript.htm"> main script </a>
             </description>
             <params>
@@ -5717,7 +5717,7 @@
         <method name="handleSimulationScripts" func="sim.callMethod" lang="lua">
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a>
-                in <a href="../simulationScripts.htm"> simulation scripts </a>. Simulation scripts will be executed in a 
+                in <a href="../simulationScripts.htm"> simulation scripts </a>. Simulation scripts will be executed in a
                 <a href="../scriptExecution.htm"> precise order </a>.
                 This function should only be called from the <a href="../mainScript.htm"> main script </a>.
             </description>
@@ -5776,7 +5776,7 @@
             <params>
                 <param name="params" type="map">
                     <description>
-                        a map/dict describing the object to create. All fields are optional except for <b>objectType</b>. Fields described hereafter are not exhaustive (all writable properties of the object to create can be specified too): 
+                        a map/dict describing the object to create. All fields are optional except for <b>objectType</b>. Fields described hereafter are not exhaustive (all writable properties of the object to create can be specified too):
                         <ul>
                             <li id="collection"><a href="../collections.htm">collection</a> fields:
                                 <ul>
@@ -5873,8 +5873,8 @@
                                     <li>duplicateTolerance (float): indicates a distance threshold under which points are not added. Does not apply to line- or triangle items</li>
                                     <li>itemCnt (int): maximum item count</li>
                                     <li>itemColor (color): default item color</li>
-                                    <li>mesh.vertices (matrix n * 3): vertices for a mesh item type (sim.markertype_custom)</li> 
-                                    <li>mesh.indices (int[]): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li> 
+                                    <li>mesh.vertices (matrix n * 3): vertices for a mesh item type (sim.markertype_custom)</li>
+                                    <li>mesh.indices (int[]): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li>
                                     <li>mesh.normals (matrix n * 3): normals for a mesh item type (sim.markertype_custom). One normal for each vertex</li>
                                 </ul>
                             </li>
@@ -6165,9 +6165,9 @@
                 <link href="../simulation.htm" label=" simulation state diagram " />
             </see-also>
         </method>
-        
 
-        
+
+
 
         <method name="simulation.stop" func="sim.callMethod" lang="python,lua">
             <description>
@@ -6198,9 +6198,9 @@
                 <link href="../simulation.htm" label=" simulation state diagram " />
             </see-also>
         </method>
-        
-        
-        
+
+
+
         <method name="dynamics.step" func="sim.callMethod" lang="python,lua">
             <description>
                 Steps the dynamics engine
@@ -6222,7 +6222,7 @@
             </see-also>
         </method>
     </object-class> <!-- scene -->
-    
+
 
 
     <object-class name="customObject" superclass="object">
@@ -6319,7 +6319,7 @@
             <params>
                 <param name="className" type="string">
                     <description>
-                        The name of the class 
+                        The name of the class
                     </description>
                 </param>
             </params>
@@ -6339,7 +6339,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="changeColor" func="sim.callMethod" lang="python,lua">
             <info>same method present in collection and sceneObject</info>
@@ -6379,12 +6379,12 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="restoreColor" func="sim.callMethod" lang="python,lua">
             <info>same method present in collection and sceneObject</info>
             <description>
-                Restores the color of the object, if it is a shape 
+                Restores the color of the object, if it is a shape
             </description>
             <params>
                 <param name="originalColorData" type="map[]">
@@ -6403,7 +6403,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="getObject" func="sim.callMethod" lang="python,lua">
             <description>
@@ -6444,7 +6444,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="dynamicReset" func="sim.callMethod" lang="python,lua">
             <description>
@@ -6467,7 +6467,7 @@
             </categories>
         </method>
 
-        
+
 
         <method name="remove" func="sim.callMethod" lang="python,lua">
             <info>similar method present in several classes</info>
@@ -6518,7 +6518,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="saveModel" func="sim.callMethod" lang="python,lua">
             <description>
@@ -6542,7 +6542,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="saveModelToBuffer" func="sim.callMethod" lang="python,lua">
             <description>
@@ -6564,7 +6564,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="getDescendants" func="sim.callMethod" lang="python,lua">
             <description>
@@ -6596,7 +6596,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="getAncestors" func="sim.callMethod" lang="python,lua">
             <description>
@@ -6627,7 +6627,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="visitTree" func="sim.callMethod" lang="python,lua">
             <description>
@@ -6636,7 +6636,7 @@
             <params>
                 <param name="visitorFunction" type="func">
                     <description>
-                        the visitor function. Visitation ends if the function return false 
+                        the visitor function. Visitation ends if the function return false
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -6658,7 +6658,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="checkCollision" func="sim.callMethod" lang="python,lua">
             <description>
@@ -6693,7 +6693,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="checkDistance" func="sim.callMethod" lang="python,lua">
             <description>
@@ -6798,8 +6798,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the pose. 
-                        Specify sim.handle_world to retrieve the absolute pose, sim.handle_inverse to retrieve the inverse of the absolute pose, 
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the pose.
+                        Specify sim.handle_world to retrieve the absolute pose, sim.handle_inverse to retrieve the inverse of the absolute pose,
                         sim.handle_parent to retrieve the pose relative to the object's parent, or an object relative to whose reference frame we want the pose</li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the pose relative to the joint's moving frame is returned, unless
                         this argument is true, in which case the pose relative to the joint's base frame is returned</li>
@@ -6824,7 +6824,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="getPosition" func="sim.callMethod" lang="python,lua">
             <description>
@@ -6835,8 +6835,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the position. 
-                        Specify sim.handle_world to retrieve the absolute position, sim.handle_inverse to retrieve the inverse of the absolute position, 
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the position.
+                        Specify sim.handle_world to retrieve the absolute position, sim.handle_inverse to retrieve the inverse of the absolute position,
                         sim.handle_parent to retrieve the position relative to the object's parent, or an object relative to whose reference frame we want the position </li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the position relative to the joint's moving frame is returned, unless
                         this argument is true, in which case the position relative to the joint's base frame is returned</li>
@@ -6872,8 +6872,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the quaternion. 
-                        Specify sim.handle_world to retrieve the absolute quaternion, sim.handle_inverse to retrieve the inverse of the absolute quaternion, 
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the quaternion.
+                        Specify sim.handle_world to retrieve the absolute quaternion, sim.handle_inverse to retrieve the inverse of the absolute quaternion,
                         sim.handle_parent to retrieve the quaternion relative to the object's parent, or an object relative to whose reference frame we want the quaternion</li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the quaternion relative to the joint's moving frame is returned, unless
                         this argument is true, in which case the quaternion relative to the joint's base frame is returned</li>
@@ -7160,7 +7160,7 @@
         <method name="getContacts" func="sim.callMethod" lang="python,lua">
             <info>same method present in both scene and shape</info>
             <description>
-                Retrieves this shape's contact information from the dynamics world 
+                Retrieves this shape's contact information from the dynamics world
             </description>
             <params>
                 <param name="options" type="map" default="{}">
@@ -7204,7 +7204,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="getAppearance" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7227,7 +7227,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setAppearance" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7251,7 +7251,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="ungroup" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7276,7 +7276,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="divide" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7301,7 +7301,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="addForce" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7336,7 +7336,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="addTorque" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7365,9 +7365,9 @@
                 <function-ref name="shape:addForce" />
             </see-also>
         </method>
-        
-        
-        
+
+
+
         <method name="computeInertia" func="sim.callMethod" lang="python,lua">
             <description>
                 Computes and applies mass and inertia properties to the shape, based on its convex representation
@@ -7389,7 +7389,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setInertia" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7403,7 +7403,7 @@
                 </param>
                 <param name="comPose" type="pose">
                     <description>
-                        a pose expressed relative to the shape's reference frame. The pose indicates the center of mass of the shape, and is the frame relative to which 
+                        a pose expressed relative to the shape's reference frame. The pose indicates the center of mass of the shape, and is the frame relative to which
                         <em>inertiaMatrix</em> is expressed
                     </description>
                 </param>
@@ -7417,7 +7417,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="getInertia" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7445,7 +7445,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="relocateFrame" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7490,7 +7490,7 @@
         </method>
     </object-class> <!-- shape -->
 
-    
+
 
     <object-class name="proximitySensor" superclass="sceneObject">
         <method name="checkSensor" func="sim.callMethod" lang="python,lua">
@@ -7606,7 +7606,7 @@
         </method>
     </object-class> <!-- proximitySensor -->
 
-    
+
 
     <object-class name="visionSensor" superclass="sceneObject">
         <method name="getDepth" func="sim.callMethod" lang="python,lua">
@@ -7643,7 +7643,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="getImage" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7657,7 +7657,7 @@
                             <li>position (int[2], defaults to [0, 0]): position of the image portion to retrieve</li>
                             <li>size (int[2], defaults to [0, 0]): size of the image portion to retrieve. [0, 0] corresponds to [resolutionX, resolution Y]</li>
                             <li>type (string, defaults to "rgb"): the type of the returned image. Valid values are "rgb", "rgba" and "grey"</li>
-                            <li>rgbaCutOff (float, defaults to 0.0): when a RGBA image is returned, the alpha component is 255 for all depth values below 
+                            <li>rgbaCutOff (float, defaults to 0.0): when a RGBA image is returned, the alpha component is 255 for all depth values below
                             <em>rgbaCutOff</em>, and 0 for all depth values above <em>rgbaCutOff</em>. 0.0 corresponds to the near clipping plane, 1.0 to the far clipping plane</li>
                         </ul>
                     </description>
@@ -7684,7 +7684,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setImage" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7758,7 +7758,7 @@
         <method name="handleSensor" func="sim.callMethod" lang="python,lua">
             <description>
                 Handles (performs sensing, etc. of) the vision sensor object. It (1) clear previous computed image processing data, (2) reads
-                an image and (3) performs image processing via the 
+                an image and (3) performs image processing via the
                 <a href="../visionCallbackFunctions.htm"> vision callback functions </a>
                 (if the vision sensor is using an <strong> external input </strong> only (1) is performed)
             </description>
@@ -7789,7 +7789,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="resetSensor" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7805,7 +7805,7 @@
         </method>
     </object-class> <!-- visionSensor -->
 
-    
+
 
     <object-class name="camera" superclass="sceneObject">
         <method name="getData" func="sim.callMethod" lang="python,lua">
@@ -7853,7 +7853,7 @@
         </method>
     </object-class> <!-- camera -->
 
-    
+
 
     <object-class name="graph" superclass="sceneObject">
         <method name="addSignal" func="sim.callMethod" lang="python,lua">
@@ -7899,7 +7899,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="addCurve" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7941,7 +7941,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="reset" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7956,7 +7956,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="removeTrace" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7976,7 +7976,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="setSignalPoint" func="sim.callMethod" lang="python,lua">
             <description>
@@ -8002,7 +8002,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="step" func="sim.callMethod" lang="python,lua">
             <description>
@@ -8022,7 +8022,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="snapshotTrace" func="sim.callMethod" lang="python,lua">
             <description>
@@ -8058,7 +8058,7 @@
         </method>
     </object-class> <!-- graph -->
 
- 
+
 
     <object-class name="ocTree" superclass="sceneObject">
         <method name="addFromObjects" func="sim.callMethod" lang="python,lua">
@@ -8094,7 +8094,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="subtractFromObjects" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both ocTree and pointCloud</info>
@@ -8236,7 +8236,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="subtractPackedVoxels" func="sim.callMethod" lang="python,lua">
             <description>
@@ -8271,7 +8271,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="checkPoints" func="sim.callMethod" lang="python,lua">
             <description>
@@ -8323,7 +8323,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="clear" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both ocTree and pointCloud</info>
@@ -8342,7 +8342,7 @@
         </method>
     </object-class> <!-- ocTree -->
 
-    
+
 
     <object-class name="pointCloud" superclass="sceneObject">
         <method name="addFromObjects" func="sim.callMethod" lang="python,lua">
@@ -8379,7 +8379,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="subtractFromObjects" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both ocTree and pointCloud</info>
@@ -8488,7 +8488,7 @@
             </see-also>
         </method>
 
-    
+
 
         <method name="subtractPoints" func="sim.callMethod" lang="python,lua">
             <description>
@@ -8524,7 +8524,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="subtractPackedPoints" func="sim.callMethod" lang="python,lua">
             <description>
@@ -8560,7 +8560,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="intersectPoints" func="sim.callMethod" lang="python,lua">
             <description>
@@ -8592,7 +8592,7 @@
             </see-also>
         </method>
 
-        
+
 
         <method name="clear" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both ocTree and pointCloud</info>
@@ -8678,23 +8678,23 @@
         </method>
     </object-class> <!-- joint -->
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <method name="generateShapeFromPath" func="sim.generateShapeFromPath" lang="python,lua">
         <description>
@@ -8703,7 +8703,7 @@
         <params>
             <param name="path" type="float[]">
                 <description>
-                    path, specified in row-major order, with [x y z qx qy qz qw] values for each path point. The orientation parts for each path point are ignored if the two first bits of 
+                    path, specified in row-major order, with [x y z qx qy qz qw] values for each path point. The orientation parts for each path point are ignored if the two first bits of
                     are zero.
                 </description>
             </param>
@@ -8742,7 +8742,7 @@
         </see-also>
     </method>
 
-    
+
 
     <method name="getClosestPosOnPath" func="sim.getClosestPosOnPath" lang="python,lua">
         <description>
@@ -8781,7 +8781,7 @@
         </see-also>
     </method>
 
-    
+
 
     <method name="getConfigDistance" func="sim.getConfigDistance" lang="python,lua">
         <description>
@@ -8824,7 +8824,7 @@
         </see-also>
     </method>
 
-    
+
 
     <method name="getPathInterpolatedConfig" func="sim.getPathInterpolatedConfig" lang="python,lua">
         <description>
@@ -8838,7 +8838,7 @@
             </param>
             <param name="pathLengths" type="float[]">
                 <description>
-                    the lengths of a path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path). See also 
+                    the lengths of a path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path). See also
                     <a href="simGetPathLengths.htm"> sim.getPathLengths </a>
                     .
                 </description>
@@ -8874,7 +8874,7 @@
         </see-also>
     </method>
 
-    
+
 
     <method name="getPathLengths" func="sim.getPathLengths" lang="python,lua">
         <description>
@@ -8895,7 +8895,7 @@
             </param>
             <param name="distCallback" type="func" default="nil">
                 <description>
-                    an optional function that takes as input two configurations, and returns the calculated distance between them. See also 
+                    an optional function that takes as input two configurations, and returns the calculated distance between them. See also
                     <a href="simGetConfigDistance.htm"> sim.getConfigDistance </a>
                 </description>
             </param>
@@ -8920,7 +8920,7 @@
         </see-also>
     </method>
 
-    
+
 
     <method name="resamplePath" func="sim.resamplePath" lang="python,lua">
         <description>
@@ -8934,7 +8934,7 @@
             </param>
             <param name="pathLengths" type="float[]">
                 <description>
-                    lengths of a path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path). See also 
+                    lengths of a path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path). See also
                     <a href="simGetPathLengths.htm"> sim.getPathLengths </a>
                     .
                 </description>
