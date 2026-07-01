@@ -718,8 +718,9 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>types (string[n], defaults to ["scal", ..., "scal"]): allowed values are "scal" for regular coordinates, "cycl" for cyclic coordinates and "quat" for quaternions (where 4 consecutive values should be "quat")</li>
+                            <li>types (string[n], defaults to ["lin", ..., "lin"]): allowed values are "lin" for regular coordinates, "ang" for cyclic coordinates and "quat" for quaternions (where 4 consecutive values should be "quat")</li>
                             <li>metric (matrix 1 * n, defaults to [1.0, ..., 1.0]): a weight for each dimension</li>
+                            <li>bounds (array[n], defaults to [[], ..., []]): lower and upper bounds for each dimension</li>
                             <li>closed (bool, defaults to false): whether the path is closed or open</li>
                             <li>closedRepeatsStart (bool, defaults to false): whether a closed path has the first path point identical to the last path point</li>
                             <li>onlyCtrlPoints (bool, defaults to false): if true, then only the control points are taken into account (no interpolated path is generated)</li>
@@ -1041,9 +1042,9 @@
         <method name="createMarkers" func="" lang="python,lua">
             <description>
                 Creates markers allowing to visualize the path. Only joint-based paths, and paths with following coordinates can be visualized:
-                ["scal", "scal", ...],
-                ["scal", "scal", "scal", ...],
-                ["scal", "scal", "scal", "quat", "quat", "quat", "quat", ...]
+                ["lin", "lin", ...],
+                ["lin", "lin", "lin", ...],
+                ["lin", "lin", "lin", "quat", "quat", "quat", "quat", ...]
             </description>
             <params>
             </params>
@@ -5547,11 +5548,24 @@
                         model filename. The filename extension is required (ttm, or simmodel.xml)
                     </description>
                 </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>offset (vector3, defaults to [0.0, 0.0, 0.0]): position offset</li>
+                        </ul>
+                    </description>
+                </param>
             </params>
             <returns>
                 <param name="object" type="handle">
                     <description>
                         the model base scene object
+                    </description>
+                </param>
+                <param name="info" type="string">
+                    <description>
+                        information string
                     </description>
                 </param>
             </returns>
@@ -5580,11 +5594,24 @@
                         a buffer containing the model
                     </description>
                 </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>offset (vector3, defaults to [0.0, 0.0, 0.0]): position offset</li>
+                        </ul>
+                    </description>
+                </param>
             </params>
             <returns>
                 <param name="object" type="handle">
                     <description>
                         the model base scene object
+                    </description>
+                </param>
+                <param name="info" type="string">
+                    <description>
+                        information string
                     </description>
                 </param>
             </returns>
