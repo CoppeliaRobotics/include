@@ -1083,12 +1083,12 @@
             <params>
                 <param name="point1" type="vector">
                     <description>
-                        point1. Must have the same dimension as the path
+                        point1. Must have the same size as the path's columns
                     </description>
                 </param>
                 <param name="point2" type="vector">
                     <description>
-                        point2. Must have the same dimension as the path
+                        point2. Must have the same size as the path's columns
                     </description>
                 </param>
             </params>
@@ -1115,12 +1115,12 @@
             <params>
                 <param name="point1" type="vector">
                     <description>
-                        point1. Must have the same dimension as the path
+                        point1. Must have the same size as the path's columns
                     </description>
                 </param>
                 <param name="point2" type="vector">
                     <description>
-                        point2. Must have the same dimension as the path
+                        point2. Must have the same size as the path's columns
                     </description>
                 </param>
                 <param name="t" type="float">
@@ -1140,6 +1140,32 @@
             </categories>
             <see-also>
                 <function-ref name="Path:dist" />
+            </see-also>
+        </method>
+
+
+
+        <method name="equiv" func="" lang="python,lua">
+            <description>
+                Return all equivalent configurations within the specified joint bounds (when a revolute coordinate's range exceeds 2π, the same physical pose can be represented by multiple angle values)
+            </description>
+            <params>
+                <param name="conf" type="vector">
+                    <description>
+                        configuration. Must have the same size as the path's columns
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="confs" type="matrix">
+                    <description>
+                        equivalent configurations, with one configuration per row
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
             </see-also>
         </method>
     </object-class> <!-- Path -->
@@ -5553,6 +5579,7 @@
                         optional map:
                         <ul>
                             <li>offset (vector3, defaults to [0.0, 0.0, 0.0]): position offset</li>
+                            <li>assemblyDummy (handle, defaults to nil): dummy, onto which the model  should be assembled</li>
                         </ul>
                     </description>
                 </param>
@@ -5599,6 +5626,7 @@
                         optional map:
                         <ul>
                             <li>offset (vector3, defaults to [0.0, 0.0, 0.0]): position offset</li>
+                            <li>assemblyDummy (handle, defaults to nil): dummy, onto which the model  should be assembled</li>
                         </ul>
                     </description>
                 </param>
