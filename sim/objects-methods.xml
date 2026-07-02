@@ -1168,6 +1168,37 @@
             <see-also>
             </see-also>
         </method>
+
+
+
+        <method name="createShape" func="" lang="python,lua">
+            <description>
+                Creates an extrusion shape from the path 
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>section (matrix n * 2, defaults to [[-0.01, -0.01], [0.01, -0.01], [0.01, 0.01], [-0.01, 0.01], [-0.01, -0.01]}): the extrusion profile, with x/y pairs. If the first and last pair overlap, the section is closed</li>
+                            <li>upVector (vector3, defaults to [0.0, 0.0, 1.0]): up-vector, used to generate the path</li>
+                            <li>axis (int, defaults to 0): indicates what up-vector to use:
+                                <ul>
+                                    <li>0: the upVector above</li>
+                                    <li>1: the upVector is the x-axis of path points</li>
+                                    <li>2: the upVector is the y-axis of path points</li>
+                                    <li>3: the upVector is the z-axis of path points</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+            </see-also>
+        </method>
     </object-class> <!-- Path -->
 
     
@@ -8777,54 +8808,6 @@
     
     
     
-    
-
-    <method name="generateShapeFromPath" func="sim.generateShapeFromPath" lang="python,lua">
-        <description>
-            Generates an extrusion shape from a path
-        </description>
-        <params>
-            <param name="path" type="float[]">
-                <description>
-                    path, specified in row-major order, with [x y z qx qy qz qw] values for each path point. The orientation parts for each path point are ignored if the two first bits of 
-                    are zero.
-                </description>
-            </param>
-            <param name="section" type="float[]">
-                <description>
-                    extrusion profile, with x/y pairs, e.g. [x1 y1 x2 y2 ... xn yn]. If the first and last pair overlap, the section is closed
-                </description>
-            </param>
-            <param name="options" type="int" default="0">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li> bit0-bit1: 0 = upVector is <strong> upVector </strong> , 1 = upVector is the x-axis of the path point frame, 2 = upVector is the y-axis of the path point frame, 3 = upVector is the z-axis of the path point frame </li>
-                        <li> bit2 set (4): the path is closed </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="upVector" type="float[3]" default="{0.0, 0.0, 1.0}">
-                <description>
-                    bit0-bit1: 0 = upVector is , 1 = upVector is the x-axis of the path point frame, 2 = upVector is the y-axis of the path point frame, 3 = upVector is the z-axis of the path point frame
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="shapeHandle" type="handle">
-                <description>
-                    the handle of the generated shape
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="path" /><category name="creation" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
-
     
 
     <method name="getClosestPosOnPath" func="sim.getClosestPosOnPath" lang="python,lua">
