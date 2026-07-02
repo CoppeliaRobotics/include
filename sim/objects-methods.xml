@@ -718,9 +718,9 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>types (string[n], defaults to ["lin", ..., "lin"]): allowed values are "lin" for regular coordinates, "ang" for cyclic coordinates and "quat" for quaternions (where 4 consecutive values should be "quat")</li>
+                            <li>types (string[n], defaults to ["lin", ..., "lin"]): allowed values are "lin" for cartesian coordinates, "ang" for revolute coordinates and "quat" for quaternions (where 4 consecutive values should be "quat")</li>
                             <li>metric (matrix 1 * n, defaults to [1.0, ..., 1.0]): a weight for each dimension</li>
-                            <li>bounds (array[n], defaults to [[], ..., []]): lower and upper bounds for each dimension</li>
+                            <li>bounds (array[n], defaults to [[], ..., []]): lower and upper bounds for each dimension. Revolute coordinates without bounds are cyclic</li>
                             <li>closed (bool, defaults to false): whether the path is closed or open</li>
                             <li>closedRepeatsStart (bool, defaults to false): whether a closed path has the first path point identical to the last path point</li>
                             <li>onlyCtrlPoints (bool, defaults to false): if true, then only the control points are taken into account (no interpolated path is generated)</li>
@@ -3611,8 +3611,7 @@
                                     <li>joint.type (string): the joint type. Allowed values are "revolute", "prismatic" or "spherical"</li>
                                     <li>mode (int): the <a href="#jointMode">joint mode</a></li>
                                     <li>dynamics.ctrlMode (enum): the <a href="#dynCtrlMode">joint dynamic control mode</a></li>
-                                    <li>interval (float[]): joint lower and upper bounds, if not cyclic</li>
-                                    <li>cyclic (bool): whether the joint is cyclic. Only revolute joints with a screw lead of 0.0 can be cyclic</li>
+                                    <li>bounds (float[]): joint lower and upper bounds, [] for cyclic revolute joints, or for spherical joints</li>
                                     <li>screwLead (float): a revolute joint with a screw lead different than 0.0 is a screw</li>
                                     <li>length (float): length of the joint</li>
                                     <li>diameter (float): diameter of the joint</li>
@@ -5978,8 +5977,7 @@
                                     <li>joint.type (string): the joint type. Allowed values are "revolute", "prismatic" or "spherical"</li>
                                     <li>mode (int): the <a href="#jointMode">joint mode</a></li>
                                     <li>dynCtrlMode (int): the <a href="#dynCtrlMode">joint dynamic control mode</a></li>
-                                    <li>interval (float[]): joint lower and upper bounds, if not cyclic</li>
-                                    <li>cyclic (bool): whether the joint is cyclic. Only revolute joints with a screw lead of 0.0 can be cyclic</li>
+                                    <li>bounds (float[]): joint lower and upper bounds, [] for cyclic revolute joints, or for spherical joints</li>
                                     <li>screwLead (float): a revolute joint with a screw lead different than 0.0 is a screw</li>
                                     <li>length (float): length of the joint</li>
                                     <li>diameter (float): diameter of the joint</li>
@@ -8855,195 +8853,6 @@
             <param name="posAlongPath" type="float">
                 <description>
                     position/distance along the path
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="path" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getConfigDistance" func="sim.getConfigDistance" lang="python,lua">
-        <description>
-            Returns the distance between two configurations points
-        </description>
-        <params>
-            <param name="configA" type="float[]">
-                <description>
-                    the first configuration, e.g. in case of a 3D pose (position+quaternion), would be [x1 y1 z1 qx1 qy1 qz1 qw1]
-                </description>
-            </param>
-            <param name="configB" type="float[]">
-                <description>
-                    the second configuration
-                </description>
-            </param>
-            <param name="metric" type="float[]" default="{1, 1, 1 ...}">
-                <description>
-                    an optional array specifying the metric to use to compute distances. e.g. if the specified configurations were 3D positions, the distance between two configurations would be calculated as SQRT( mx * (x2 - x1)^2 + my * (y2 - y1)^2 + mz * (z2 - z1)^2 ), where [mx my mz] would be the metric.
-                </description>
-            </param>
-            <param name="types" type="int[]" default="{0, 0, 0, ...}">
-                <description>
-                    an optional array specifying the type of each configuration value/dimension: 0=cartesian value, 1=2pi-cyclic value, 2=quaternion value. e.g. a configuration representing 3D poses should use a types argument [0 0 0 2 2 2 2], a configuration representing revolute and cyclic joints should use a types argument [1 1 1 ...]
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="distance" type="float">
-                <description>
-                    the distance between the two configurations
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="path" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getPathInterpolatedConfig" func="sim.getPathInterpolatedConfig" lang="python,lua">
-        <description>
-            Returns an interpolated configuration from a path
-        </description>
-        <params>
-            <param name="path" type="float[]">
-                <description>
-                    the path, specified in row-major order, e.g. a path containing two 3D poses (position+quaternion) would be [x1 y1 z1 qx1 qy1 qz1 qw1 x2 y2 z2 qx2 qy2 qz2 qw2]
-                </description>
-            </param>
-            <param name="pathLengths" type="float[]">
-                <description>
-                    the lengths of a path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path). See also 
-                    <a href="simGetPathLengths.htm"> sim.getPathLengths </a>
-                    .
-                </description>
-            </param>
-            <param name="t" type="float">
-                <description>
-                    the distance from the beginning of the path, where the interpolation point should be picked from
-                </description>
-            </param>
-            <param name="method" type="map" default="{type = 'linear', strength = 1.0, forceOpen = false}">
-                <description>
-                    an optional map specifying the type of interpolation (linear or quadraticBezier), whether the path should be considered as open, even if the first and last path points overlap, and the bezier strength (0.05-1.0)
-                </description>
-            </param>
-            <param name="types" type="int[]" default="nil">
-                <description>
-                    an optional array specifying the type of each configuration value/dimension: 0=cartesian value, 1=2pi-cyclic value, 2=quaternion value. e.g. a configuration representing 3D poses should use a types argument [0 0 0 2 2 2 2], a configuration representing revolute and cyclic joints should use a types argument [1 1 1 ...]
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="config" type="float[]">
-                <description>
-                    the interpolated path configuration
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="path" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="getPathLengths" func="sim.getPathLengths" lang="python,lua">
-        <description>
-            Returns the lengths of a path in 1, 2 or 3D Cartesian space, even if more coordinates are
-            provided. Each path point will have a corresponding length value (taken as the distance from the
-            path's first point, along the path)
-        </description>
-        <params>
-            <param name="path" type="float[]">
-                <description>
-                    the path, specified in row-major order, e.g. a path containing two 3D poses (position+quaternion) would be [x1 y1 z1 qx1 qy1 qz1 qw1 x2 y2 z2 qx2 qy2 qz2 qw2]
-                </description>
-            </param>
-            <param name="dof" type="int">
-                <description>
-                    the size or dimension of path points, e.g. in case of a 3D pose, this would be 7 (however only the first 3 dimensions would be taken into account)
-                </description>
-            </param>
-            <param name="distCallback" type="func" default="nil">
-                <description>
-                    an optional function that takes as input two configurations, and returns the calculated distance between them. See also 
-                    <a href="simGetConfigDistance.htm"> sim.getConfigDistance </a>
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="pathLengths" type="float[]">
-                <description>
-                    the lengths corresponding to each path point
-                </description>
-            </param>
-            <param name="totalLength" type="float">
-                <description>
-                    the total length of the path
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="path" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
-
-    
-
-    <method name="resamplePath" func="sim.resamplePath" lang="python,lua">
-        <description>
-            Returns a resampled path
-        </description>
-        <params>
-            <param name="path" type="float[]">
-                <description>
-                    path, specified in row-major order, e.g. a path containing two 3D poses (position+quaternion) would be [x1 y1 z1 qx1 qy1 qz1 qw1 x2 y2 z2 qx2 qy2 qz2 qw2]
-                </description>
-            </param>
-            <param name="pathLengths" type="float[]">
-                <description>
-                    lengths of a path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path). See also 
-                    <a href="simGetPathLengths.htm"> sim.getPathLengths </a>
-                    .
-                </description>
-            </param>
-            <param name="finalConfigCnt" type="int">
-                <description>
-                    number of points or configurations the resampled path should contain
-                </description>
-            </param>
-            <param name="method" type="map" default="{type = 'linear', strength = 1.0, forceOpen = false}">
-                <description>
-                    optional map specifying the type of interpolation (linear or quadraticBezier), and whether the path should be considered as open, even if the first and last path points overlap, and the bezier strength (0.05-1.0)
-                </description>
-            </param>
-            <param name="types" type="int[]" default="nil">
-                <description>
-                    optional array specifying the type of each configuration value/dimension: 0=cartesian value, 1=2pi-cyclic value, 2=quaternion value. e.g. a configuration representing 3D poses should use a types argument [0 0 0 2 2 2 2], a configuration representing revolute and cyclic joints should use a types argument [1 1 1 ...]
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="outputPath" type="float[]">
-                <description>
-                    the resampled path
                 </description>
             </param>
         </returns>
