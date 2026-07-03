@@ -764,8 +764,8 @@
                 <function-ref name="Path:setPoints" />
                 <function-ref name="Path:appendPoints" />
                 <function-ref name="Path:clearPoints" />
-                <function-ref name="Path:dist" />
-                <function-ref name="Path:lerp" />
+                <function-ref name="Path:distance" />
+                <function-ref name="Path:interpolate" />
                 <function-ref name="Path:createMarkers" />
             </see-also>
         </method>
@@ -834,8 +834,8 @@
                 <function-ref name="Path:data" />
                 <function-ref name="Path:appendFromJoints" />
                 <function-ref name="Path:clearPoints" />
-                <function-ref name="Path:dist" />
-                <function-ref name="Path:lerp" />
+                <function-ref name="Path:distance" />
+                <function-ref name="Path:interpolate" />
                 <function-ref name="Path:createMarkers" />
             </see-also>
         </method>
@@ -899,8 +899,8 @@
                 <function-ref name="Path:data" />
                 <function-ref name="Path:appendFromJoints" />
                 <function-ref name="Path:clearPoints" />
-                <function-ref name="Path:dist" />
-                <function-ref name="Path:lerp" />
+                <function-ref name="Path:distance" />
+                <function-ref name="Path:interpolate" />
                 <function-ref name="Path:createMarkers" />
             </see-also>
         </method>
@@ -1076,7 +1076,7 @@
         
         
         
-        <method name="dist" func="" lang="python,lua">
+        <method name="distance" func="" lang="python,lua">
             <description>
                 Returns the distance between two points
             </description>
@@ -1102,13 +1102,13 @@
             <categories>
             </categories>
             <see-also>
-                <function-ref name="Path:lerp" />
+                <function-ref name="Path:interpolate" />
             </see-also>
         </method>
 
 
 
-        <method name="lerp" func="" lang="python,lua">
+        <method name="interpolate" func="" lang="python,lua">
             <description>
                 Returns the linear interpolation between two points
             </description>
@@ -1139,13 +1139,13 @@
             <categories>
             </categories>
             <see-also>
-                <function-ref name="Path:dist" />
+                <function-ref name="Path:distance" />
             </see-also>
         </method>
 
 
 
-        <method name="equiv" func="" lang="python,lua">
+        <method name="configs" func="" lang="python,lua">
             <description>
                 Return all equivalent configurations within the specified joint bounds (when a revolute coordinate's range exceeds 2π, the same physical pose can be represented by multiple angle values)
             </description>
@@ -1197,6 +1197,65 @@
             <categories>
             </categories>
             <see-also>
+            </see-also>
+        </method>
+
+
+
+        <method name="closest" func="" lang="python,lua">
+            <description>
+                Returns the point on the path that is closest to the input point  
+            </description>
+            <params>
+                <param name="point" type="vector">
+                    <description>
+                        input point. Must have the same size as the path's columns
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="pointOnPath" type="vector">
+                    <description>
+                        closest point that lies on the path
+                    </description>
+                </param>
+                <param name="t" type="float">
+                    <description>
+                        the relative distance along the path to the output point
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="Path:getPoint" />
+            </see-also>
+        </method>
+
+
+
+        <method name="getPoint" func="" lang="python,lua">
+            <description>
+                Returns the point on the path that lies at a specific distance along the path  
+            </description>
+            <params>
+                <param name="t" type="float">
+                    <description>
+                        relative distance
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="pointOnPath" type="vector">
+                    <description>
+                        point on the path at relative distance t
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="Path:closest" />
             </see-also>
         </method>
     </object-class> <!-- Path -->
