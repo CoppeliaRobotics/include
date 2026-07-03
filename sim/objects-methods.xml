@@ -543,12 +543,12 @@
                     <description>
                         parameters of the function:
                         <ul>
-                            <li>path (matrix m * n): m path points/configurations, with n dimensions per point</li>
-                            <li>pathLengths (matrix m * 1): parameterization of the path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path)</li>
-                            <li>maxVel (matrix n * 1): maximum allowed velocity, for each dimension/axis</li>
-                            <li>minVel (matrix n * 1, defaults to -maxVel): minimum allowed velocity, for each dimension/axis</li>
-                            <li>maxAccel (matrix n * 1): maximum allowed acceleration, for each dimension/axis</li>
-                            <li>minAccel (matrix n * 1, defaults to -maxAccel): minimum allowed acceleration, for each dimension/axis</li>
+                            <li>path (matrix n * dim): n path points/configurations, with dim dimensions per point</li>
+                            <li>pathLengths (vector of size n): parameterization of the path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path)</li>
+                            <li>maxVel (vector of size dim): maximum allowed velocity, for each dimension/axis</li>
+                            <li>minVel (vector of size dim, defaults to -maxVel): minimum allowed velocity, for each dimension/axis</li>
+                            <li>maxAccel (vector of size dim): maximum allowed acceleration, for each dimension/axis</li>
+                            <li>minAccel (vector of size dim, defaults to -maxAccel): minimum allowed acceleration, for each dimension/axis</li>
                             <li>samples (int, defaults to 1000): desired number of path points/configurations</li>
                             <li>boundaryCondition (string, defaults to "not-a-knot"): boundary condition</li>
                         </ul>
@@ -711,16 +711,16 @@
             <params>
                 <param name="ctrlPoints" type="matrix">
                     <description>
-                        the path control points, organized in cnt * n matrix with cnt the number of path points, and n the dimension of the path. Set to null for an empty path:
+                        the path control points, organized in dim * n matrix with n the number of path points, and dim the dimension of the path. Set to null for an empty path:
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
                     <description>
                         optional map:
                         <ul>
-                            <li>types (string[n], defaults to ["lin", ..., "lin"]): allowed values are "lin" for cartesian coordinates, "ang" for revolute coordinates and "quat" for quaternions (where 4 consecutive values should be "quat")</li>
-                            <li>metric (matrix 1 * n, defaults to [1.0, ..., 1.0]): a weight for each dimension</li>
-                            <li>bounds (array[n], defaults to [[], ..., []]): lower and upper bounds for each dimension. Revolute coordinates without bounds are cyclic</li>
+                            <li>types (string[dim], defaults to ["lin", ..., "lin"]): allowed values are "lin" for cartesian coordinates, "ang" for revolute coordinates and "quat" for quaternions (where 4 consecutive values should be "quat")</li>
+                            <li>metric (vector dim, defaults to [1.0, ..., 1.0]): a weight for each dimension</li>
+                            <li>bounds (array[dim], defaults to [[], ..., []]): lower and upper bounds for each dimension. Revolute coordinates without bounds are cyclic</li>
                             <li>closed (bool, defaults to false): whether the path is closed or open</li>
                             <li>closedRepeatsStart (bool, defaults to false): whether a closed path has the first path point identical to the last path point</li>
                             <li>onlyCtrlPoints (bool, defaults to false): if true, then only the control points are taken into account (no interpolated path is generated)</li>
@@ -791,7 +791,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>metric (matrix 1 * n, defaults to [1.0, ..., 1.0]): a weight for each dimension</li>
+                            <li>metric (vector dim, defaults to [1.0, ..., 1.0]): a weight for each dimension</li>
                             <li>closed (bool, defaults to false): whether the path is closed or open</li>
                             <li>closedRepeatsStart (bool, defaults to false): whether a closed path has the first path point identical to the last path point</li>
                             <li>onlyCtrlPoints (bool, defaults to false): if true, then only the control points are taken into account (no interpolated path is generated)</li>
@@ -856,7 +856,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>metric (matrix 1 * 7, defaults to [1.0, ..., 1.0]): a weight for each dimension</li>
+                            <li>metric (vector 7, defaults to [1.0, ..., 1.0]): a weight for each dimension</li>
                             <li>closed (bool, defaults to false): whether the path is closed or open</li>
                             <li>closedRepeatsStart (bool, defaults to false): whether a closed path has the first path point identical to the last path point</li>
                             <li>onlyCtrlPoints (bool, defaults to false): if true, then only the control points are taken into account (no interpolated path is generated)</li>
@@ -914,7 +914,7 @@
             <params>
                 <param name="ctrlPoints" type="matrix">
                     <description>
-                        the path control points, organized in cnt * n matrix with cnt the number of path points, and n the dimension of the path
+                        the path control points, organized in dim * n matrix with n the number of path points, and dim the dimension of the path
                     </description>
                 </param>
             </params>
@@ -935,7 +935,7 @@
             <params>
                 <param name="ctrlPoints" type="matrix">
                     <description>
-                        the path control points to append, organized in cnt * n matrix with cnt the number of path points, and n the dimension of the path
+                        the path control points to append, organized in dim * n matrix with n the number of path points, and dim the dimension of the path
                     </description>
                 </param>
                 <param name="update" type="bool" default="true">
@@ -1083,12 +1083,12 @@
             <params>
                 <param name="point1" type="vector">
                     <description>
-                        point1. Must have the same size as the path's columns
+                        point1. Must have the same dimension as the path
                     </description>
                 </param>
                 <param name="point2" type="vector">
                     <description>
-                        point2. Must have the same size as the path's columns
+                        point2. Must have the same dimension as the path
                     </description>
                 </param>
             </params>
@@ -1115,12 +1115,12 @@
             <params>
                 <param name="point1" type="vector">
                     <description>
-                        point1. Must have the same size as the path's columns
+                        point1. Must have the same dimension as the path
                     </description>
                 </param>
                 <param name="point2" type="vector">
                     <description>
-                        point2. Must have the same size as the path's columns
+                        point2. Must have the same dimension as the path
                     </description>
                 </param>
                 <param name="t" type="float">
@@ -1152,14 +1152,14 @@
             <params>
                 <param name="conf" type="vector">
                     <description>
-                        configuration. Must have the same size as the path's columns
+                        configuration. Must have the same dimension as the path
                     </description>
                 </param>
             </params>
             <returns>
                 <param name="confs" type="matrix">
                     <description>
-                        equivalent configurations, with one configuration per row
+                        equivalent configurations, with one configuration per column
                     </description>
                 </param>
             </returns>
@@ -1180,7 +1180,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>section (matrix n * 2, defaults to [[-0.01, -0.01], [0.01, -0.01], [0.01, 0.01], [-0.01, 0.01], [-0.01, -0.01]}): the extrusion profile, with x/y pairs. If the first and last pair overlap, the section is closed</li>
+                            <li>section (matrix 2 * n, defaults to transposed([[-0.01, -0.01], [0.01, -0.01], [0.01, 0.01], [-0.01, 0.01], [-0.01, -0.01]])): the extrusion profile, with x/y pairs. If the first and last pair overlap, the section is closed</li>
                             <li>upVector (vector3, defaults to [0.0, 0.0, 1.0]): up-vector, used to generate the path</li>
                             <li>axis (int, defaults to 0): indicates what up-vector to use:
                                 <ul>
@@ -1209,7 +1209,7 @@
             <params>
                 <param name="point" type="vector">
                     <description>
-                        input point. Must have the same size as the path's columns
+                        input point. Must have the same dimension as the path
                     </description>
                 </param>
             </params>
@@ -3681,9 +3681,9 @@
                                     <li>duplicateTolerance (float): indicates a distance threshold under which points are not added. Does not apply to line- or triangle items</li>
                                     <li>itemCnt (int): maximum item count</li>
                                     <li>itemColor (color): default item color</li>
-                                    <li>mesh.vertices (matrix n * 3): vertices for a mesh item type (sim.markertype_custom)</li> 
+                                    <li>mesh.vertices (matrix 3 * n): vertices for a mesh item type (sim.markertype_custom)</li> 
                                     <li>mesh.indices (int[]): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li> 
-                                    <li>mesh.normals (matrix n * 3): normals for a mesh item type (sim.markertype_custom). One normal for each vertex</li>
+                                    <li>mesh.normals (matrix 3 * n): normals for a mesh item type (sim.markertype_custom). One normal for each vertex</li>
                                 </ul>
                             </li>
                             <li id="customSceneObject"><a href="../customSceneObjects.htm">custom scene object</a> fields:
@@ -3783,9 +3783,9 @@
                                     </li>
                                     <li>mesh (map/dict): holds parameters for the creation of a mesh:
                                         <ul>
-                                            <li>vertices (matrix n * 3)</li>
+                                            <li>vertices (matrix 3 * n)</li>
                                             <li>indices (int[]): the zero-based indices</li>
-                                            <li>normals (matrix 3n * 3)</li>
+                                            <li>normals (matrix 3 * 3n)</li>
                                             <li>boundingBoxQuaternion (quaternion): the orientation of the shape's bounding box</li>
                                             <li>frameOrigin (pose): the pose of the shape's frame</li>
                                             <li>texture (map/dict): holds parameters for an optional texture:
@@ -3793,7 +3793,7 @@
                                                     <li>resolution (int[2]): texture resolution</li>
                                                     <li>image (buffer): texture specified as rgb or rgba</li>
                                                     <li>rgba (bool): whether the texture is specified as rgba or rgb</li>
-                                                    <li>coordinates (matrix m * 2): texture coordinates</li>
+                                                    <li>coordinates (matrix 2 * m): texture coordinates</li>
                                                     <li>interpolate (bool): whether adjecent texture pixels are interpolated</li>
                                                     <li>decal (bool): whether the texture is applied as decal</li>
                                                     <li>horizFlip (bool): whether the texture is horizontally flipped</li>
@@ -3889,7 +3889,7 @@
                             <li id="path"><a href="../paths.htm">path</a> fields:
                                 <ul>
                                     <li>type (string): "path"</li>
-                                    <li>ctrlPts (matrix n * 7): control points, specified row-wise, with pose values for each path point</li>
+                                    <li>ctrlPts (matrix 7 * n): control points, with pose values for each path point</li>
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
                                     <li>subdiv (int): number of individual path points</li>
@@ -5356,7 +5356,6 @@
     
     <object-class name="scene" superclass="object">
         <method name="getContacts" func="sim.callMethod" lang="python,lua">
-            <info>same method present in both scene and shape</info>
             <description>
                 Retrieves contact information from the dynamics world
             </description>
@@ -5380,17 +5379,17 @@
                 </param>
                 <param name="points" type="matrix">
                     <description>
-                        contact points (matrix n * 3)
+                        contact points (matrix 3 * n)
                     </description>
                 </param>
                 <param name="forces" type="matrix">
                     <description>
-                        force vectors (matrix n * 3)
+                        force vectors (matrix 3 * n)
                     </description>
                 </param>
                 <param name="normals" type="matrix">
                     <description>
-                        normal vectors (matrix n * 3)
+                        normal vectors (matrix 3 * n)
                     </description>
                 </param>
             </returns>
@@ -6047,9 +6046,9 @@
                                     <li>duplicateTolerance (float): indicates a distance threshold under which points are not added. Does not apply to line- or triangle items</li>
                                     <li>itemCnt (int): maximum item count</li>
                                     <li>itemColor (color): default item color</li>
-                                    <li>mesh.vertices (matrix n * 3): vertices for a mesh item type (sim.markertype_custom)</li> 
+                                    <li>mesh.vertices (matrix 3 * n): vertices for a mesh item type (sim.markertype_custom)</li> 
                                     <li>mesh.indices (int[]): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li> 
-                                    <li>mesh.normals (matrix n * 3): normals for a mesh item type (sim.markertype_custom). One normal for each vertex</li>
+                                    <li>mesh.normals (matrix 3 * n): normals for a mesh item type (sim.markertype_custom). One normal for each vertex</li>
                                 </ul>
                             </li>
                             <li id="customSceneObject"><a href="../customSceneObjects.htm">custom scene object</a> fields:
@@ -6149,9 +6148,9 @@
                                     </li>
                                     <li>mesh (map/dict): holds parameters for the creation of a mesh:
                                         <ul>
-                                            <li>vertices (matrix n * 3)</li>
+                                            <li>vertices (matrix 3 * n)</li>
                                             <li>indices (int[]): the zero-based indices</li>
-                                            <li>normals (matrix 3n * 3)</li>
+                                            <li>normals (matrix 3 * 3n)</li>
                                             <li>boundingBoxQuaternion (quaternion): the orientation of the shape's bounding box</li>
                                             <li>frameOrigin (pose): the pose of the shape's frame</li>
                                             <li>texture (map/dict): holds parameters for an optional texture:
@@ -6159,7 +6158,7 @@
                                                     <li>resolution (int[2]): texture resolution</li>
                                                     <li>image (buffer): texture specified as rgb or rgba</li>
                                                     <li>rgba (bool): whether the texture is specified as rgba or rgb</li>
-                                                    <li>coordinates (matrix m * 2): texture coordinates</li>
+                                                    <li>coordinates (matrix 2 * m): texture coordinates</li>
                                                     <li>interpolate (bool): whether adjecent texture pixels are interpolated</li>
                                                     <li>decal (bool): whether the texture is applied as decal</li>
                                                     <li>horizFlip (bool): whether the texture is horizontally flipped</li>
@@ -6255,7 +6254,7 @@
                             <li id="path"><a href="../paths.htm">path</a> fields:
                                 <ul>
                                     <li>type (string): "path"</li>
-                                    <li>ctrlPts (matrix n * 7): control points, specified in row-major order, with a pose for each path point</li>
+                                    <li>ctrlPts (matrix 7 * n): control points, with a pose for each path point</li>
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
                                     <li>subdiv (int): number of individual path points</li>
@@ -7259,16 +7258,16 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        points, organised row-wise. If the items are point items, the matrix should be n * 3 in size. If the items are line items, the matrix should be 2n * 3 in size, etc
+                        points, organised column-wise. If the items are point items, the matrix should be 3 * n in size. If the items are line items, the matrix should be 3 * 2n in size, etc
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
                     <description>
                         optional map:
                         <ul>
-                            <li>colors (matrix n * 4, defaults to nil, defaults to nil): point-specific colors (one color per point)</li>
-                            <li>quaternions (matrix n * 4, defaults to nil): quaternions (one quaternion per item)</li>
-                            <li>sizes (matrix n * 3, defaults to nil): x/y/z sizes (one x/y/z per item)</li>
+                            <li>colors (matrix 4 * n, defaults to nil): point-specific colors (one color per point)</li>
+                            <li>quaternions (matrix 4 * n, defaults to nil): quaternions (one quaternion per item)</li>
+                            <li>sizes (matrix 3 * n, defaults to nil): x/y/z sizes (one x/y/z per item)</li>
                         </ul>
                     </description>
                 </param>
@@ -7355,17 +7354,17 @@
                 </param>
                 <param name="points" type="matrix">
                     <description>
-                        contact points (matrix n * 3)
+                        contact points (matrix 3 * n)
                     </description>
                 </param>
                 <param name="forces" type="matrix">
                     <description>
-                        force vectors (matrix n * 3)
+                        force vectors (matrix 3 * n)
                     </description>
                 </param>
                 <param name="normals" type="matrix">
                     <description>
-                        normal vectors (matrix n * 3)
+                        normal vectors (matrix 3 * n)
                     </description>
                 </param>
             </returns>
@@ -8303,7 +8302,7 @@
             <params>
                 <param name="voxels" type="matrix">
                     <description>
-                        voxel positions (matrix n * 3)
+                        voxel positions (matrix 3 * n)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -8311,7 +8310,7 @@
                         optional map:
                         <ul>
                             <li>color (color, defaults to nil): color for all voxels</li>
-                            <li>colors (matrix n * 4, defaults to nil): voxel-specific colors (one color per voxel)</li>
+                            <li>colors (matrix 4 * n, defaults to nil): voxel-specific colors (one color per voxel)</li>
                             <li>tag (int, defaults to 0): tag for all voxels</li>
                             <li>tags (int[], defaults to nil): voxel-specific tags (one tag per voxel)</li>
                             <li>relative (bool, defaults to false): specified voxels are relative to the OC tree reference frame, otherwise they are relative to the world reference frame</li>
@@ -8383,7 +8382,7 @@
             <params>
                 <param name="voxels" type="matrix">
                     <description>
-                        voxel positions (matrix n * 3)
+                        voxel positions (matrix 3 * n)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -8453,7 +8452,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        point positions (matrix n * 3)
+                        point positions (matrix 3 * n)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -8595,7 +8594,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        point positions (matrix n * 3)
+                        point positions (matrix 3 * n)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -8603,7 +8602,7 @@
                         optional map:
                         <ul>
                             <li>color (color, defaults to nil): color for all points</li>
-                            <li>colors (matrix n * 4, defaults to nil): point-specific colors (one color per point)</li>
+                            <li>colors (matrix 4 * n, defaults to nil): point-specific colors (one color per point)</li>
                             <li>relative (bool, defaults to false): specified points are relative to the point cloud reference frame, otherwise they are relative to the world reference frame</li>
                             <li>tolerance (float, defaults to nil): an insertion duplicate tolerance</li>
                         </ul>
@@ -8670,7 +8669,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        point positions (matrix n * 3)
+                        point positions (matrix 3 * n)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -8743,7 +8742,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        point positions (matrix n * 3)
+                        point positions (matrix 3 * n)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">

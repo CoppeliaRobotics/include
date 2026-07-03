@@ -21,6 +21,7 @@ public:
     void transpose();
     void clear();
     void setIdentity();
+    void switchStorage();
     simReal getAt(size_t row,size_t col) const;
     void setAt(size_t row,size_t col,simReal value);
 

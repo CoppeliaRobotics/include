@@ -92,6 +92,13 @@ void CMatrix::setIdentity()
     }
 }
 
+void CMatrix::switchStorage()
+{
+    CMatrix c(this[0]);
+    c.transpose();
+    data = c.data;
+}
+
 CMatrix CMatrix::operator* (const C3X3Matrix& m) const
 {
     CMatrix retM(rows,3);
