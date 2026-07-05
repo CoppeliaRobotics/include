@@ -760,6 +760,7 @@
             <see-also>
                 <function-ref name="Path.fromJoints" />
                 <function-ref name="Path.fromObject" />
+                <function-ref name="Path.fromBuffer" />
                 <function-ref name="Path:data" />
                 <function-ref name="Path:setPoints" />
                 <function-ref name="Path:appendPoints" />
@@ -767,6 +768,31 @@
                 <function-ref name="Path:distance" />
                 <function-ref name="Path:interpolate" />
                 <function-ref name="Path:createMarkers" />
+            </see-also>
+        </method>
+
+
+
+        <method name="fromBuffer" func="" lang="python,lua">
+            <description>
+                Creates a path based on previously serialized path data
+            </description>
+            <params>
+                <param name="buffer" type="buffer">
+                    <description>
+                        serialized path data
+                    </description>
+                </param>
+                <param name="objects" type="handle[]" default = "nil">
+                    <description>
+                        objects that might be associated with the path, e.g. joint or sceneObjects. 
+                    </description>
+                </param>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="Path:toBuffer" />
             </see-also>
         </method>
 
@@ -1013,6 +1039,31 @@
             </categories>
             <see-also>
                 <function-ref name="Path:setPoints" />
+            </see-also>
+        </method>
+
+
+
+        <method name="toBuffer" func="" lang="python,lua">
+            <description>
+                Returns serialized path data
+            </description>
+            <returns>
+                <param name="buffer" type="buffer">
+                    <description>
+                        serialized path data
+                    </description>
+                </param>
+                <param name="objects" type="handle[]">
+                    <description>
+                        objects that might be associated with the path, e.g. joint or sceneObjects. 
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="Path.fromBuffer" />
             </see-also>
         </method>
 
