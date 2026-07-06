@@ -3943,13 +3943,19 @@
                                     <li>ctrlPts (matrix 7 * n): control points, with a pose for each path point</li>
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
-                                    <li>upVector (vector3, defaults to [0.0, 0.0, 1.0]): up-vector, used to generate the extruded shape</li>
-                                    <li>axis (int, defaults to 0): indicates what up-vector to use:
+                                    <li>extrusion: optional map describing how extrusion shapes are generated:
                                         <ul>
-                                            <li>0: the upVector above</li>
-                                            <li>1: the upVector is the x-axis of path points</li>
-                                            <li>2: the upVector is the y-axis of path points</li>
-                                            <li>3: the upVector is the z-axis of path points</li>
+                                            <li>section (matrix 2 * n): the extrusion profile, with x/y pairs. If the first and last pair overlap, the section is closed</li>
+                                            <li>color (color): shape color</li>
+                                            <li>upVector (vector3, defaults to [0.0, 0.0, 1.0]): up-vector, used to generate the extruded shape</li>
+                                            <li>axis (int, defaults to 0): indicates what up-vector to use:
+                                                <ul>
+                                                    <li>0: the upVector above</li>
+                                                    <li>1: the upVector is the x-axis of path points</li>
+                                                    <li>2: the upVector is the y-axis of path points</li>
+                                                    <li>3: the upVector is the z-axis of path points</li>
+                                                </ul>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li>ctrlPoints: optional map describing control point properties:
@@ -6326,13 +6332,19 @@
                                     <li>ctrlPts (matrix 7 * n): control points, with a pose for each path point</li>
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
-                                    <li>upVector (vector3, defaults to [0.0, 0.0, 1.0]): up-vector, used to generate the extruded shape</li>
-                                    <li>axis (int, defaults to 0): indicates what up-vector to use:
+                                    <li>extrusion: optional map describing how extrusion shapes are generated:
                                         <ul>
-                                            <li>0: the upVector above</li>
-                                            <li>1: the upVector is the x-axis of path points</li>
-                                            <li>2: the upVector is the y-axis of path points</li>
-                                            <li>3: the upVector is the z-axis of path points</li>
+                                            <li>section (matrix 2 * n): the extrusion profile, with x/y pairs. If the first and last pair overlap, the section is closed</li>
+                                            <li>color (color): shape color</li>
+                                            <li>upVector (vector3, defaults to [0.0, 0.0, 1.0]): up-vector, used to generate the extruded shape</li>
+                                            <li>axis (int, defaults to 0): indicates what up-vector to use:
+                                                <ul>
+                                                    <li>0: the upVector above</li>
+                                                    <li>1: the upVector is the x-axis of path points</li>
+                                                    <li>2: the upVector is the y-axis of path points</li>
+                                                    <li>3: the upVector is the z-axis of path points</li>
+                                                </ul>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li>ctrlPoints: optional map describing control point properties:
