@@ -1232,7 +1232,7 @@
                         optional map:
                         <ul>
                             <li>section (matrix 2 * n, defaults to transposed([[-0.01, -0.01], [0.01, -0.01], [0.01, 0.01], [-0.01, 0.01], [-0.01, -0.01]])): the extrusion profile, with x/y pairs. If the first and last pair overlap, the section is closed</li>
-                            <li>upVector (vector3, defaults to [0.0, 0.0, 1.0]): up-vector, used to generate the path</li>
+                            <li>upVector (vector3, defaults to [0.0, 0.0, 1.0]): up-vector, used to generate the extruded shape's orientation</li>
                             <li>axis (int, defaults to 0): indicates what up-vector to use:
                                 <ul>
                                     <li>0: the upVector above</li>
@@ -3940,21 +3940,39 @@
                             <li id="path"><a href="../paths.htm">path</a> fields:
                                 <ul>
                                     <li>type (string): "path"</li>
-                                    <li>ctrlPts (matrix 7 * n): control points, with pose values for each path point</li>
+                                    <li>ctrlPts (matrix 7 * n): control points, with a pose for each path point</li>
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
-                                    <li>subdiv (int): number of individual path points</li>
-                                    <li>smoothness (float): value between 0.0 (linear interpolation) and 1.0 (100% Bezier interpolation)</li>
-                                    <li>orientationMode (int): value specifiying how the individual path points are oriented along the path:
+                                    <li>upVector (vector3, defaults to [0.0, 0.0, 1.0]): up-vector, used to generate the extruded shape</li>
+                                    <li>axis (int, defaults to 0): indicates what up-vector to use:
                                         <ul>
-                                            <li> 0: x along path, y is up</li>
-                                            <li> 1: x along path, z is up</li>
-                                            <li> 2: y along path, x is up</li>
-                                            <li> 3: y along path, z is up</li>
-                                            <li> 4: z along path, x is up</li>
-                                            <li> 5: z along path, y is up</li>
-                                        </ul></li>
-                                    <li>upVector (vector3): up vector, used for generating an extruded shape and for computing individual path point orientations</li>
+                                            <li>0: the upVector above</li>
+                                            <li>1: the upVector is the x-axis of path points</li>
+                                            <li>2: the upVector is the y-axis of path points</li>
+                                            <li>3: the upVector is the z-axis of path points</li>
+                                        </ul>
+                                    </li>
+                                    <li>ctrlPoints: optional map describing control point properties:
+                                        <ul>
+                                            <li>duplicateThreshold (float): distance below which points are merged</li>
+                                            <li>linearityTolerance (float): points within a certain distance to the segment formed by its two neighbours can be discarded</li>
+                                            <li>lineType (enum, defaults to "line"): allowed values are "none", "line" and "tube"</li>
+                                            <li>lineColor (color): line color</li>
+                                        </ul>
+                                    </li>
+                                    <li>pathPoints: optional map describing path point properties:
+                                        <ul>
+                                            <li>type (enum, defaults to "quadraticBezier"): allowed values are "linear" and "quadraticBezier"</li>
+                                            <li>bezierSmoothing (float, defaults to 1.0): the Bezier smoothing strength</li>
+                                            <li>samplingDistance (float): the maximum allowable spacing between consecutive points along the generated path</li>
+                                            <li>pointType (enum): allowed values are "none", "sphere" and "cube"</li>
+                                            <li>pointColor (color): point color</li>
+                                            <li>pointRadius (float): point radius</li>
+                                            <li>lineType (enum, defaults to "line"): allowed values are "none", "line" and "tube"</li>
+                                            <li>lineColor (color): line color</li>
+                                            <li>showAxes (bool): whether points display reference frames</li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </li>
                             <li id="graph"><a href="../graphs.htm">graph</a> fields:
@@ -6308,18 +6326,36 @@
                                     <li>ctrlPts (matrix 7 * n): control points, with a pose for each path point</li>
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
-                                    <li>subdiv (int): number of individual path points</li>
-                                    <li>smoothness (float): value between 0.0 (linear interpolation) and 1.0 (100% Bezier interpolation)</li>
-                                    <li>orientationMode (int): value specifiying how the individual path points are oriented along the path:
+                                    <li>upVector (vector3, defaults to [0.0, 0.0, 1.0]): up-vector, used to generate the extruded shape</li>
+                                    <li>axis (int, defaults to 0): indicates what up-vector to use:
                                         <ul>
-                                            <li> 0: x along path, y is up</li>
-                                            <li> 1: x along path, z is up</li>
-                                            <li> 2: y along path, x is up</li>
-                                            <li> 3: y along path, z is up</li>
-                                            <li> 4: z along path, x is up</li>
-                                            <li> 5: z along path, y is up</li>
-                                        </ul></li>
-                                    <li>upVector (vector3): up vector, used for generating an extruded shape and for computing individual path point orientations</li>
+                                            <li>0: the upVector above</li>
+                                            <li>1: the upVector is the x-axis of path points</li>
+                                            <li>2: the upVector is the y-axis of path points</li>
+                                            <li>3: the upVector is the z-axis of path points</li>
+                                        </ul>
+                                    </li>
+                                    <li>ctrlPoints: optional map describing control point properties:
+                                        <ul>
+                                            <li>duplicateThreshold (float): distance below which points are merged</li>
+                                            <li>linearityTolerance (float): points within a certain distance to the segment formed by its two neighbours can be discarded</li>
+                                            <li>lineType (enum, defaults to "line"): allowed values are "none", "line" and "tube"</li>
+                                            <li>lineColor (color): line color</li>
+                                        </ul>
+                                    </li>
+                                    <li>pathPoints: optional map describing path point properties:
+                                        <ul>
+                                            <li>type (enum, defaults to "quadraticBezier"): allowed values are "linear" and "quadraticBezier"</li>
+                                            <li>bezierSmoothing (float, defaults to 1.0): the Bezier smoothing strength</li>
+                                            <li>samplingDistance (float): the maximum allowable spacing between consecutive points along the generated path</li>
+                                            <li>pointType (enum): allowed values are "none", "sphere" and "cube"</li>
+                                            <li>pointColor (color): point color</li>
+                                            <li>pointRadius (float): point radius</li>
+                                            <li>lineType (enum, defaults to "line"): allowed values are "none", "line" and "tube"</li>
+                                            <li>lineColor (color): line color</li>
+                                            <li>showAxes (bool): whether points display reference frames</li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </li>
                             <li id="graph"><a href="../graphs.htm">graph</a> fields:
