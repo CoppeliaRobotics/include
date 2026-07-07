@@ -3943,21 +3943,7 @@
                                     <li>ctrlPts (matrix 7 * n): control points, with a pose for each path point</li>
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
-                                    <li>extrusion: optional map describing how extrusion shapes are generated:
-                                        <ul>
-                                            <li>section (matrix 2 * n): the extrusion profile, with x/y pairs. If the first and last pair overlap, the section is closed</li>
-                                            <li>color (color): shape color</li>
-                                            <li>upVector (vector3, defaults to [0.0, 0.0, 1.0]): up-vector, used to generate the extruded shape</li>
-                                            <li>axis (int, defaults to 0): indicates what up-vector to use:
-                                                <ul>
-                                                    <li>0: the upVector above</li>
-                                                    <li>1: the upVector is the x-axis of path points</li>
-                                                    <li>2: the upVector is the y-axis of path points</li>
-                                                    <li>3: the upVector is the z-axis of path points</li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
+                                    <li>orientationMetric (float): the weight of orientation vs position</li>
                                     <li>ctrlPoints: optional map describing control point properties:
                                         <ul>
                                             <li>duplicateThreshold (float): distance below which points are merged</li>
@@ -3977,6 +3963,28 @@
                                             <li>lineType (enum, defaults to "line"): allowed values are "none", "line" and "tube"</li>
                                             <li>lineColor (color): line color</li>
                                             <li>showAxes (bool): whether points display reference frames</li>
+                                        </ul>
+                                    </li>
+                                    <li>extrusion: optional map describing how extrusion shapes are generated:
+                                        <ul>
+                                            <li>section (matrix 2 * n): the extrusion profile, with x/y pairs. If the first and last pair overlap, the section is closed</li>
+                                            <li>color (color): shape color</li>
+                                            <li>upVector (vector3, defaults to [0.0, 0.0, 1.0]): up-vector, used to generate the extruded shape</li>
+                                            <li>axis (int, defaults to 0): indicates what up-vector to use:
+                                                <ul>
+                                                    <li>0: the upVector above</li>
+                                                    <li>1: the upVector is the x-axis of path points</li>
+                                                    <li>2: the upVector is the y-axis of path points</li>
+                                                    <li>3: the upVector is the z-axis of path points</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>dummy: optional map describing how control point dummies are displayed:
+                                        <ul>
+                                            <li>size (float): the dummy size</li>
+                                            <li>color (color): the dummy color</li>
+                                            <li>visible (bool): whether the dummy is visible</li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -6332,21 +6340,7 @@
                                     <li>ctrlPts (matrix 7 * n): control points, with a pose for each path point</li>
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
-                                    <li>extrusion: optional map describing how extrusion shapes are generated:
-                                        <ul>
-                                            <li>section (matrix 2 * n): the extrusion profile, with x/y pairs. If the first and last pair overlap, the section is closed</li>
-                                            <li>color (color): shape color</li>
-                                            <li>upVector (vector3, defaults to [0.0, 0.0, 1.0]): up-vector, used to generate the extruded shape</li>
-                                            <li>axis (int, defaults to 0): indicates what up-vector to use:
-                                                <ul>
-                                                    <li>0: the upVector above</li>
-                                                    <li>1: the upVector is the x-axis of path points</li>
-                                                    <li>2: the upVector is the y-axis of path points</li>
-                                                    <li>3: the upVector is the z-axis of path points</li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
+                                    <li>orientationMetric (float): the weight of orientation vs position</li>
                                     <li>ctrlPoints: optional map describing control point properties:
                                         <ul>
                                             <li>duplicateThreshold (float): distance below which points are merged</li>
@@ -6366,6 +6360,28 @@
                                             <li>lineType (enum, defaults to "line"): allowed values are "none", "line" and "tube"</li>
                                             <li>lineColor (color): line color</li>
                                             <li>showAxes (bool): whether points display reference frames</li>
+                                        </ul>
+                                    </li>
+                                    <li>extrusion: optional map describing how extrusion shapes are generated:
+                                        <ul>
+                                            <li>section (matrix 2 * n): the extrusion profile, with x/y pairs. If the first and last pair overlap, the section is closed</li>
+                                            <li>color (color): shape color</li>
+                                            <li>upVector (vector3, defaults to [0.0, 0.0, 1.0]): up-vector, used to generate the extruded shape</li>
+                                            <li>axis (int, defaults to 0): indicates what up-vector to use:
+                                                <ul>
+                                                    <li>0: the upVector above</li>
+                                                    <li>1: the upVector is the x-axis of path points</li>
+                                                    <li>2: the upVector is the y-axis of path points</li>
+                                                    <li>3: the upVector is the z-axis of path points</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>dummy: optional map describing how control point dummies are displayed:
+                                        <ul>
+                                            <li>size (float): the dummy size</li>
+                                            <li>color (color): the dummy color</li>
+                                            <li>visible (bool): whether the dummy is visible</li>
                                         </ul>
                                     </li>
                                 </ul>
