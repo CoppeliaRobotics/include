@@ -121,7 +121,7 @@ function sysCall_init()
     classInfo.drawingObject.properties.overlay = {type = 'bool'}
     classInfo.drawingObject.properties.parentUid = {type = 'long'}
     classInfo.drawingObject.properties.size = {type = 'float'}
-    classInfo.drawingObject.properties.type = {type = 'string'}
+    classInfo.drawingObject.properties.itemType = {type = 'string'}
     classInfo.drawingObject.properties.points = {type = 'floatarray'}
     classInfo.drawingObject.properties.quaternions = {type = 'floatarray'}
     classInfo.drawingObject.properties.colors = {type = 'floatarray'}
