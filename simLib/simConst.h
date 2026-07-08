@@ -1163,6 +1163,9 @@ enum { // property type
     sim_propertytype_group,
     sim_propertytype_enum,
     sim_propertytype_color,
+    sim_propertytype_object = 0xe0, /* special. Random object, not directly supported */
+    sim_propertytype_objectarray = 0xe1, /* special. Array of random object, not directly supported */
+    sim_propertytype_objectmap = 0xe2, /* special. Array of random object, not directly supported */
     sim_propertytype_method = 0xf0,
 };
 

@@ -1313,6 +1313,512 @@
 
     
 
+    <object-class name="IK" superclass="">
+        <method name="Constructor" func="" lang="python,lua">
+            <description>
+                Creates an IK world. An IK world contains one or several IK groups, each one containing one or several IK elements
+            </description>
+            <params>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IK:createGroup" />
+                <function-ref name="IK:remove" />
+                <function-ref name="IK:solve" />
+                <function-ref name="IK:syncFromSim" />
+                <function-ref name="IK:syncToSim" />
+            </see-also>
+        </method>
+
+        <method name="createGroup" func="" lang="python,lua">
+            <description>
+                Creates an IK group inside of the IK world. An IK group contains one or several IK elements, that will be solved together
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>method (string): the solving method. Allowed values are "pseudoInverse", "undampedPseudoInverse", "dampedLeastSquares" and "jacobianTranspose"</li>
+                            <li>damping (float): the damping factor used with the damped least squares method</li>
+                            <li>maxIterations (int): the maximum number of iterations the solver runs for this group</li>
+                            <li>enabled (bool): whether the IK group is enabled</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="group" type="IKGroup">
+                    <description>
+                        the created IK group object
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IKGroup:addElementFromScene" />
+                <function-ref name="IKGroup:solve" />
+            </see-also>
+        </method>
+
+        <method name="solve" func="" lang="python,lua">
+            <description>
+                Sequentially solves all enabled IK groups contained in the IK world
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>debug (int, defaults to 0): the debug verbosity level</li>
+                            <li>syncWorlds (bool, defaults to true): whether the IK world and the sim world should be synchronized with each other</li>
+                            <li>ignoreTolerance (bool, defaults to false): whether precision/tolerance settings should be ignored when evaluating the result of the solve operation</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="result" type="bool">
+                    <description>
+                        the overall result
+                    </description>
+                </param>
+                <param name="flags" type="int">
+                    <description>
+                        various flags:
+                        <ul>
+                            <li>IK.calc_notperformed: no calculation was performed</li>
+                            <li>IK.calc_cannotinvert: cannot invert Jacobian matrix</li>
+                            <li>IK.calc_invalidcallbackdata: invalid callback data</li>
+                            <li>IK.calc_outoftolerance: the positional and orientational tolerance was overshot</li>
+                            <li>IK.calc_largesteps: some joints moved larger steps than desired</li>
+                            <li>IK.calc_boundshit: some joints had their bounds hit</li>
+                        </ul>
+                    </description>
+                </param>
+                <param name="precision" type="float[2]">
+                    <description>
+                        maximum positional and orientational deviation between tip/target pairs
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IKGroup:solve" />
+                <function-ref name="IK:syncFromSim" />
+                <function-ref name="IK:syncToSim" />
+            </see-also>
+        </method>
+
+        <method name="syncFromSim" func="" lang="python,lua">
+            <description>
+                Synchronizes the IK world with the sim world: all object poses and joint configurations in the IK world are updated to reflect the current state of their sim world counterparts
+            </description>
+            <params>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IK:syncToSim" />
+                <function-ref name="IKGroup:syncFromSim" />
+            </see-also>
+        </method>
+
+        <method name="syncToSim" func="" lang="python,lua">
+            <description>
+                Synchronizes the sim world with the IK world: all object poses and joint configurations in the sim world are updated to reflect the current state of their IK world counterparts
+            </description>
+            <params>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IK:syncFromSim" />
+                <function-ref name="IKGroup:syncToSim" />
+            </see-also>
+        </method>
+
+        <method name="remove" func="" lang="python,lua">
+            <description>
+                Removes the IK world and releases all associated resources
+            </description>
+            <params>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IK:Constructor" />
+            </see-also>
+        </method>
+    </object-class> <!-- IK -->
+    
+    
+
+    <object-class name="IKGroup" superclass="">
+        <method name="addElementFromScene" func="" lang="python,lua">
+            <description>
+                Creates an IK element inside of this IK group. Items are imported from the sim world into the IK world
+            </description>
+            <params>
+                <param name="base" type="handle">
+                    <description>
+                        the base scene object of the kinematic chain. Can be null, in which case the world is the base
+                    </description>
+                </param>
+                <param name="tip" type="handle">
+                    <description>
+                        the the tip scene object of the kinematic chain
+                    </description>
+                </param>
+                <param name="target" type="handle">
+                    <description>
+                        the target scene object, i.e. the object the tip should follow / be constrained to
+                    </description>
+                </param>
+                <param name="constraints" type="int">
+                    <description>
+                        the constraints the tip should try to satisfy relative to the target. Following flags are possible and can be combined:
+                        <ul>
+                            <li>IK.constraint_x: constraint along the base object's x-direction</li>
+                            <li>IK.constraint_y: constraint along the base object's y-direction</li>
+                            <li>IK.constraint_z: constraint along the base object's z-direction</li>
+                            <li>IK.constraint_position: full positional constraint</li>
+                            <li>IK.constraint_alphabeta: alpha-beta constraint</li>
+                            <li>IK.constraint_gamma: gamma-angle constraint</li>
+                            <li>IK.constraint_orientation: full orientational constraint</li>
+                            <li>IK.constraint_pose: full positional and orientational constraint</li>
+                        </ul>
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>precision (float[2]): the linear and angular precision (i.e. tolerance) for the IK element</li>
+                            <li>weights (float[2], defaults to [1.0, 1.0]): the weights of the linear and angular components of the IK element</li>
+                            <li>enabled (bool, defaults to true): whether the IK element is enabled</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="element" type="IKElement">
+                    <description>
+                        the created IK element object
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+            </see-also>
+        </method>
+
+        <method name="solve" func="" lang="python,lua">
+            <description>
+                Solves the IK group, i.e. tries to satisfy the constraints of all enabled IK elements it contains
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>debug (int, defaults to 0): the debug verbosity level</li>
+                            <li>syncWorlds (bool, defaults to true): whether the IK world and the sim world should be synchronized with each other</li>
+                            <li>ignoreTolerance (bool, defaults to false): whether precision/tolerance settings should be ignored when evaluating the result of the solve operation</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="result" type="bool">
+                    <description>
+                        the overall result
+                    </description>
+                </param>
+                <param name="flags" type="int">
+                    <description>
+                        various flags:
+                        <ul>
+                            <li>IK.calc_notperformed: no calculation was performed</li>
+                            <li>IK.calc_cannotinvert: cannot invert Jacobian matrix</li>
+                            <li>IK.calc_invalidcallbackdata: invalid callback data</li>
+                            <li>IK.calc_outoftolerance: the positional and orientational tolerance was overshot</li>
+                            <li>IK.calc_largesteps: some joints moved larger steps than desired</li>
+                            <li>IK.calc_boundshit: some joints had their bounds hit</li>
+                        </ul>
+                    </description>
+                </param>
+                <param name="precision" type="float[2]">
+                    <description>
+                        maximum positional and orientational deviation between tip/target pairs
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IK:solve" />
+                <function-ref name="IKGroup:findConfig" />
+                <function-ref name="IKGroup:syncFromSim" />
+                <function-ref name="IKGroup:syncToSim" />
+            </see-also>
+        </method>
+
+        <method name="findConfig" func="" lang="python,lua">
+            <description>
+                Searches for one joint configurations that satisfy the provided target pose(s), for the IK element(s) contained in the IK group. Search happens in a randomized fashion
+            </description>
+            <params>
+                <param name="poses" type="pose[]">
+                    <description>
+                        one target pose for each enabled IK element contained in the IK group (at least one pose)
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>maxTime (float, defaults to 1.0): the maximum search time, in seconds</li>
+                            <li>altConfigs (bool, defaults to false): whether alternate configurations (e.g. configurations that differ by +/- 360 degrees for non-cyclic revolute joints) should also be returned</li>
+                            <li>orientationMetric (float, defaults to 0.5): the weight of the angular component (relative to the linear component) when computing pose-pose distances</li>
+                            <li>solveDistance (float, defaults to 2.5): the pose-pose distance below which a full solve operation is attempted from the current random configuration</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="config" type="matrix">
+                    <description>
+                        the found joint configuration(s), or null if no configuration was found within the allotted time. Configurations are the matrix' columns, with one value per joint (4 for spherical joints) 
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IKGroup:solve" />
+            </see-also>
+        </method>
+
+        <method name="syncFromSim" func="" lang="python,lua">
+            <description>
+                Synchronizes the IK world with the sim world, limited to the objects involved in this IK group: object poses and joint configurations in the IK environment are updated to reflect the current state of their sim world counterparts
+            </description>
+            <params>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IKGroup:syncToSim" />
+                <function-ref name="IK:syncFromSim" />
+            </see-also>
+        </method>
+
+        <method name="syncToSim" func="" lang="python,lua">
+            <description>
+                Synchronizes the sim world with the IK world, limited to the objects involved in this IK group: object poses and joint configurations in the sim world are updated to reflect the current state of their IK environment counterparts (e.g. after a solve operation)
+            </description>
+            <params>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IKGroup:syncFromSim" />
+                <function-ref name="IK:syncToSim" />
+            </see-also>
+        </method>
+    </object-class> <!-- IKGroup -->
+    
+    
+
+    <object-class name="IKObject" superclass="">
+        <method name="setPose" func="" lang="python,lua">
+            <description>
+                Sets the pose of an IK object, in the IK world
+            </description>
+            <params>
+                <param name="pose" type="pose">
+                    <description>
+                        the desired pose
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>relativeToObject (IKObject, defaults to the world): indicates relative to which reference frame the pose is specified. Specify null (or omit) to set the absolute pose, or an IK object relative to whose reference frame the pose is specified</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="transformation" />
+            </categories>
+            <see-also>
+                <function-ref name="IKObject:getPose" />
+                <function-ref name="IKObject:setPosition" />
+                <function-ref name="IKObject:setQuaternion" />
+            </see-also>
+        </method>
+
+        <method name="getPose" func="" lang="python,lua">
+            <description>
+                Retrieves the pose of an IK object, in the IK world
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>relativeToObject (IKObject, defaults to the world): indicates relative to which reference frame we want the pose. Specify null (or omit) to retrieve the absolute pose, or an IK object relative to whose reference frame we want the pose</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="pose" type="pose">
+                    <description>
+                        the pose
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="transformation" />
+            </categories>
+            <see-also>
+                <function-ref name="IKObject:setPose" />
+                <function-ref name="IKObject:getPosition" />
+                <function-ref name="IKObject:getQuaternion" />
+            </see-also>
+        </method>
+
+        <method name="setPosition" func="" lang="python,lua">
+            <description>
+                Sets the position of an IK object, in the IK world
+            </description>
+            <params>
+                <param name="position" type="vector3">
+                    <description>
+                        the position]
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>relativeToObject (IKObject, defaults to the world): indicates relative to which reference frame the position is specified. Specify null (or omit) to set the absolute position, or an IK object relative to whose reference frame the position is specified</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="transformation" />
+            </categories>
+            <see-also>
+                <function-ref name="IKObject:getPosition" />
+                <function-ref name="IKObject:setPose" />
+                <function-ref name="IKObject:setQuaternion" />
+            </see-also>
+        </method>
+
+        <method name="getPosition" func="" lang="python,lua">
+            <description>
+                Retrieves the position of an IK object, in the IK world
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>relativeToObject (IKObject, defaults to the world): indicates relative to which reference frame we want the position. Specify null (or omit) to retrieve the absolute position, or an IK object relative to whose reference frame we want the position</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="position" type="vector3">
+                    <description>
+                        the position
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="transformation" />
+            </categories>
+            <see-also>
+                <function-ref name="IKObject:setPosition" />
+                <function-ref name="IKObject:getPose" />
+                <function-ref name="IKObject:getQuaternion" />
+            </see-also>
+        </method>
+
+        <method name="setQuaternion" func="" lang="python,lua">
+            <description>
+                Sets the orientation (as a quaternion) of an IK object, in the IK world
+            </description>
+            <params>
+                <param name="quaternion" type="quaternion">
+                    <description>
+                        the quaternion
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>relativeToObject (IKObject, defaults to the world): indicates relative to which reference frame the quaternion is specified. Specify null (or omit) to set the absolute orientation, or an IK object relative to whose reference frame the quaternion is specified</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="transformation" />
+            </categories>
+            <see-also>
+                <function-ref name="IKObject:getQuaternion" />
+                <function-ref name="IKObject:setPose" />
+                <function-ref name="IKObject:setPosition" />
+            </see-also>
+        </method>
+
+        <method name="getQuaternion" func="" lang="python,lua">
+            <description>
+                Retrieves the orientation (as a quaternion) of an IK object, in the IK world
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>relativeToObject (IKObject, defaults to the world): indicates relative to which reference frame we want the quaternion. Specify null (or omit) to retrieve the absolute orientation, or an IK object relative to whose reference frame we want the quaternion</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="quaternion" type="quaternion">
+                    <description>
+                        the quaternion
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="transformation" />
+            </categories>
+            <see-also>
+                <function-ref name="IKObject:setQuaternion" />
+                <function-ref name="IKObject:getPose" />
+                <function-ref name="IKObject:getPosition" />
+            </see-also>
+        </method>
+    </object-class> <!-- IKObject -->
+
+
+
     <object-class name="object">
         <method name="isValid" func="sim.callMethod" lang="python,lua">
             <description>
