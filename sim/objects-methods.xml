@@ -1326,8 +1326,8 @@
                 <function-ref name="IK:createGroup" />
                 <function-ref name="IK:remove" />
                 <function-ref name="IK:solve" />
-                <function-ref name="IK:syncFromSim" />
-                <function-ref name="IK:syncToSim" />
+                <function-ref name="IK:syncFromScene" />
+                <function-ref name="IK:syncToScene" />
             </see-also>
         </method>
 
@@ -1374,6 +1374,7 @@
                         <ul>
                             <li>debug (int, defaults to 0): the debug verbosity level</li>
                             <li>syncWorlds (bool, defaults to true): whether the IK world and the sim world should be synchronized with each other</li>
+                            <li>returnExtras (bool, defaults to false): whether the two last return arguments should be calculated/returned</li>
                             <li>ignoreTolerance (bool, defaults to false): whether precision/tolerance settings should be ignored when evaluating the result of the solve operation</li>
                         </ul>
                     </description>
@@ -1403,17 +1404,33 @@
                         maximum positional and orientational deviation between tip/target pairs
                     </description>
                 </param>
+                <param name="calculatedValues" type="vector">
+                    <description>
+                        the newly calculated values. Requires 'returnExtras' option enabled 
+                    </description>
+                </param>
+                <param name="metaData" type="map[]">
+                    <description>
+                        an array with information. Requires 'returnExtras' option enabled:
+                        <ul>
+                            <li>joint (IKJoint): the joint in the IK world</li>
+                            <li>index (int): the index in the 'calculatedValues' vector</li>
+                            <li>cnt (int): the number of consecutive values in the 'calculatedValues' vector (4 for spherical joints, 1 otherwise)</li>
+                            <li>touched (bool): whether the joint configuration has changed</li>
+                        </ul>
+                    </description>
+                </param>
             </returns>
             <categories>
             </categories>
             <see-also>
                 <function-ref name="IKGroup:solve" />
-                <function-ref name="IK:syncFromSim" />
-                <function-ref name="IK:syncToSim" />
+                <function-ref name="IK:syncFromScene" />
+                <function-ref name="IK:syncToScene" />
             </see-also>
         </method>
 
-        <method name="syncFromSim" func="" lang="python,lua">
+        <method name="syncFromScene" func="" lang="python,lua">
             <description>
                 Synchronizes the IK world with the sim world: all object poses and joint configurations in the IK world are updated to reflect the current state of their sim world counterparts
             </description>
@@ -1422,12 +1439,12 @@
             <categories>
             </categories>
             <see-also>
-                <function-ref name="IK:syncToSim" />
-                <function-ref name="IKGroup:syncFromSim" />
+                <function-ref name="IK:syncToScene" />
+                <function-ref name="IKGroup:syncFromScene" />
             </see-also>
         </method>
 
-        <method name="syncToSim" func="" lang="python,lua">
+        <method name="syncToScene" func="" lang="python,lua">
             <description>
                 Synchronizes the sim world with the IK world: all object poses and joint configurations in the sim world are updated to reflect the current state of their IK world counterparts
             </description>
@@ -1436,8 +1453,8 @@
             <categories>
             </categories>
             <see-also>
-                <function-ref name="IK:syncFromSim" />
-                <function-ref name="IKGroup:syncToSim" />
+                <function-ref name="IK:syncFromScene" />
+                <function-ref name="IKGroup:syncToScene" />
             </see-also>
         </method>
 
@@ -1528,6 +1545,7 @@
                         <ul>
                             <li>debug (int, defaults to 0): the debug verbosity level</li>
                             <li>syncWorlds (bool, defaults to true): whether the IK world and the sim world should be synchronized with each other</li>
+                            <li>returnExtras (bool, defaults to false): whether the two last return arguments should be calculated/returned</li>
                             <li>ignoreTolerance (bool, defaults to false): whether precision/tolerance settings should be ignored when evaluating the result of the solve operation</li>
                         </ul>
                     </description>
@@ -1557,14 +1575,30 @@
                         maximum positional and orientational deviation between tip/target pairs
                     </description>
                 </param>
+                <param name="calculatedValues" type="vector">
+                    <description>
+                        the newly calculated values. Requires 'returnExtras' option enabled 
+                    </description>
+                </param>
+                <param name="metaData" type="map[]">
+                    <description>
+                        an array with information. Requires 'returnExtras' option enabled:
+                        <ul>
+                            <li>joint (IKJoint): the joint in the IK world</li>
+                            <li>index (int): the index in the 'calculatedValues' vector</li>
+                            <li>cnt (int): the number of consecutive values in the 'calculatedValues' vector (4 for spherical joints, 1 otherwise)</li>
+                            <li>touched (bool): whether the joint configuration has changed</li>
+                        </ul>
+                    </description>
+                </param>
             </returns>
             <categories>
             </categories>
             <see-also>
                 <function-ref name="IK:solve" />
                 <function-ref name="IKGroup:findConfig" />
-                <function-ref name="IKGroup:syncFromSim" />
-                <function-ref name="IKGroup:syncToSim" />
+                <function-ref name="IKGroup:syncFromScene" />
+                <function-ref name="IKGroup:syncToScene" />
             </see-also>
         </method>
 
@@ -1596,6 +1630,16 @@
                         the found joint configuration(s), or null if no configuration was found within the allotted time. Configurations are the matrix' columns, with one value per joint (4 for spherical joints) 
                     </description>
                 </param>
+                <param name="metaData" type="map[]">
+                    <description>
+                        an array with information:
+                        <ul>
+                            <li>joint (IKJoint): the joint in the IK world</li>
+                            <li>index (int): the row index in the 'config' matrix</li>
+                            <li>cnt (int): the number of consecutive values in the 'config' matrix (4 for spherical joints, 1 otherwise)</li>
+                        </ul>
+                    </description>
+                </param>
             </returns>
             <categories>
             </categories>
@@ -1604,7 +1648,7 @@
             </see-also>
         </method>
 
-        <method name="syncFromSim" func="" lang="python,lua">
+        <method name="syncFromScene" func="" lang="python,lua">
             <description>
                 Synchronizes the IK world with the sim world, limited to the objects involved in this IK group: object poses and joint configurations in the IK environment are updated to reflect the current state of their sim world counterparts
             </description>
@@ -1613,12 +1657,12 @@
             <categories>
             </categories>
             <see-also>
-                <function-ref name="IKGroup:syncToSim" />
-                <function-ref name="IK:syncFromSim" />
+                <function-ref name="IKGroup:syncToScene" />
+                <function-ref name="IK:syncFromScene" />
             </see-also>
         </method>
 
-        <method name="syncToSim" func="" lang="python,lua">
+        <method name="syncToScene" func="" lang="python,lua">
             <description>
                 Synchronizes the sim world with the IK world, limited to the objects involved in this IK group: object poses and joint configurations in the sim world are updated to reflect the current state of their IK environment counterparts (e.g. after a solve operation)
             </description>
@@ -1627,8 +1671,8 @@
             <categories>
             </categories>
             <see-also>
-                <function-ref name="IKGroup:syncFromSim" />
-                <function-ref name="IK:syncToSim" />
+                <function-ref name="IKGroup:syncFromScene" />
+                <function-ref name="IK:syncToScene" />
             </see-also>
         </method>
     </object-class> <!-- IKGroup -->
