@@ -4,15 +4,15 @@
     <property name="addOns" type="handlearray" handle-type="detachedScript" writable="false" constant="true" label="Add-ons" start-support="2" start-deprecated="0" end-support="0">
       <description>List of add-ons</description>
     </property>
-    <property name="appArg1" type="string" deprecated="true" constant="true" label="App arg. 1" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="appArg2" type="string" deprecated="true" constant="true" label="App arg. 2" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="appArg3" type="string" deprecated="true" constant="true" label="App arg. 3" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="appArg4" type="string" deprecated="true" constant="true" label="App arg. 4" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="appArg5" type="string" deprecated="true" constant="true" label="App arg. 5" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="appArg6" type="string" deprecated="true" constant="true" label="App arg. 6" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="appArg7" type="string" deprecated="true" constant="true" label="App arg. 7" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="appArg8" type="string" deprecated="true" constant="true" label="App arg. 8" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="appArg9" type="string" deprecated="true" constant="true" label="App arg. 9" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="appArg1" type="string" deprecated="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="appArg2" type="string" deprecated="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="appArg3" type="string" deprecated="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="appArg4" type="string" deprecated="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="appArg5" type="string" deprecated="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="appArg6" type="string" deprecated="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="appArg7" type="string" deprecated="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="appArg8" type="string" deprecated="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="appArg9" type="string" deprecated="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="appPath" type="string" deprecated="true" writable="false" constant="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="args" type="stringarray" constant="true" label="App args" start-support="2" start-deprecated="0" end-support="0" />
     <property name="auxAddOn1" type="string" constant="true" label="Aux. add-on 1" start-support="2" start-deprecated="0" end-support="0">
@@ -212,8 +212,8 @@
     <property name="detachedScript.type" type="string" writable="false" constant="true" label="Type" start-support="2" start-deprecated="0" end-support="0">
       <description>Script type</description>
     </property>
-    <property name="disabled" type="bool" label="Disabled" start-support="2" start-deprecated="0" end-support="0">
-      <description>Distabled state</description>
+    <property name="enabled" type="bool" label="Enabled" start-support="2" start-deprecated="0" end-support="0">
+      <description>Enabled state</description>
     </property>
     <property name="execPriority" type="enum" enum="scriptExecOrder" label="Execution priority" start-support="2" start-deprecated="0" end-support="0" />
     <property name="executionDepth" type="int" writable="false" silent="true" label="Execution depth" start-support="2" start-deprecated="0" end-support="0" />
@@ -237,6 +237,7 @@
     <property name="appendQuaternions" type="floatarray" />
     <property name="colors" type="floatarray" />
     <property name="cyclic" type="bool" />
+    <property name="itemType" type="string" />
     <property name="maxCnt" type="int" />
     <property name="overlay" type="bool" />
     <property name="parent" type="handle" handle-type="sceneObject" writable="false" constant="true" label="Parent handle" start-support="2" start-deprecated="0" end-support="0" />
@@ -244,7 +245,6 @@
     <property name="points" type="floatarray" />
     <property name="quaternions" type="floatarray" />
     <property name="size" type="float" />
-    <property name="type" type="string" />
   </object-class>
   <object-class name="dummy" superclass="sceneObject">
     <property name="assemblyTag" type="string" label="Assembly tag" start-support="2" start-deprecated="0" end-support="0" />
@@ -253,7 +253,7 @@
     <property name="color.emission" type="color" label="Emission color" start-support="2" start-deprecated="0" end-support="0" />
     <property name="color.specular" type="color" label="Specular color" start-support="2" start-deprecated="0" end-support="0" />
     <property name="dummy" type="group" readable="false" writable="false" silent="true" constant="true" start-support="2" start-deprecated="0" end-support="0" />
-    <property name="dummy.type" type="string" label="Type" start-support="2" start-deprecated="0" end-support="0">
+    <property name="dummy.type" type="string" enum="dummyType" label="Type" start-support="2" start-deprecated="0" end-support="0">
       <description>Dummy type</description>
     </property>
     <property name="dummySize" type="float" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
@@ -363,6 +363,9 @@
       <description>Force applied on average (in a simulation step)</description>
     </property>
     <property name="averageJointForce" type="float" deprecated="true" writable="false" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="bounds" type="floatarray" label="Bounds" start-support="2" start-deprecated="0" end-support="0">
+      <description>Joint lower and upper bounds</description>
+    </property>
     <property name="bullet" type="group" deprecated="true" readable="false" writable="false" silent="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="bullet.normalCfm" type="float" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="bullet.posPid" type="floatarray" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
@@ -490,9 +493,7 @@
     <property name="force" type="float" writable="false" label="Force" start-support="2" start-deprecated="0" end-support="0">
       <description>Force applied</description>
     </property>
-    <property name="interval" type="floatarray" label="Interval" start-support="2" start-deprecated="0" end-support="0">
-      <description>Joint limits (lower and upper bounds)</description>
-    </property>
+    <property name="interval" type="floatarray" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="intrinsicError" type="pose" writable="false" label="Intrinsic error" start-support="2" start-deprecated="0" end-support="0">
       <description>Intrinsic error, generated by some physics engines</description>
     </property>
@@ -705,8 +706,8 @@
     <property name="texture" type="group" readable="false" writable="false" silent="true" constant="true" start-support="2" start-deprecated="0" end-support="0" />
     <property name="texture.applyMode" type="enum" enum="textureApplyMode" label="Texture apply mode" start-support="2" start-deprecated="0" end-support="0" />
     <property name="texture.coordinates" type="floatarray" writable="false" label="Texture coordinates" start-support="2" start-deprecated="0" end-support="0" />
-    <property name="texture.data" type="buffer" writable="false" label="Texture" start-support="2" start-deprecated="0" end-support="0" />
     <property name="texture.id" type="int" writable="false" label="Texture ID" start-support="2" start-deprecated="0" end-support="0" />
+    <property name="texture.image" type="buffer" writable="false" label="Texture" start-support="2" start-deprecated="0" end-support="0" />
     <property name="texture.interpolate" type="bool" label="Interpolate texture" start-support="2" start-deprecated="0" end-support="0" />
     <property name="texture.repeatU" type="bool" label="Texture repeat U" start-support="2" start-deprecated="0" end-support="0" />
     <property name="texture.repeatV" type="bool" label="Texture repeat V" start-support="2" start-deprecated="0" end-support="0" />
@@ -987,20 +988,14 @@
     <property name="dynamics.vortex.constraintsLinearKineticLoss" type="float" start-support="2" start-deprecated="0" end-support="0" />
     <property name="dynamics.vortex.contactTolerance" type="float" start-support="2" start-deprecated="0" end-support="0" />
     <property name="dynamics.vortex.multithreading" type="bool" start-support="2" start-deprecated="0" end-support="0" />
-    <property name="dynamicsEnabled" type="bool" deprecated="true" label="Dynamics enabled" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="dynamicsEngine" type="intarray" deprecated="true" label="Dynamics engine" start-support="1" start-deprecated="2" end-support="2">
-      <description>Selected dynamics engine index and version</description>
-    </property>
-    <property name="dynamicsStepSize" type="float" deprecated="true" label="Dynamics dt" start-support="1" start-deprecated="2" end-support="2">
-      <description>Dynamics step size</description>
-    </property>
-    <property name="engineProperties" type="string" deprecated="true" label="Engine properties" start-support="1" start-deprecated="2" end-support="2">
-      <description>Engine properties as JSON text</description>
-    </property>
+    <property name="dynamicsEnabled" type="bool" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="dynamicsEngine" type="intarray" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="dynamicsStepSize" type="float" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="engineProperties" type="string" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="finalSaveRequest" type="bool" label="Final save" start-support="2" start-deprecated="0" end-support="0">
       <description>Lock scene and models after next scene save operation</description>
     </property>
-    <property name="gravity" type="vector3" deprecated="true" label="Gravity" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="gravity" type="vector3" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="hierarchyChangeCounter" type="int" writable="false" silent="true" label="Hierarchy change counter" start-support="2" start-deprecated="0" end-support="0">
       <description>Counter of scene hierarchy changes</description>
     </property>
@@ -1049,17 +1044,11 @@
     <property name="mujoco.multiccd" type="bool" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="mujoco.multithreaded" type="bool" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="mujoco.nativeccdEnable" type="bool" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="mujoco.nconmax" type="int" deprecated="true" start-support="1" start-deprecated="2" end-support="2">
-      <description>Deprecated. See mujoco.mbmemory instead.</description>
-    </property>
-    <property name="mujoco.njmax" type="int" deprecated="true" start-support="1" start-deprecated="2" end-support="2">
-      <description>Deprecated. See mujoco.mbmemory instead.</description>
-    </property>
+    <property name="mujoco.nconmax" type="int" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="mujoco.njmax" type="int" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="mujoco.noslip_iterations" type="int" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="mujoco.noslip_tolerance" type="float" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="mujoco.nstack" type="int" deprecated="true" start-support="1" start-deprecated="2" end-support="2">
-      <description>Deprecated. See mujoco.mbmemory instead.</description>
-    </property>
+    <property name="mujoco.nstack" type="int" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="mujoco.passiveEnable" type="bool" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="mujoco.rebuildTrigger" type="int" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="mujoco.refsafeEnable" type="bool" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
@@ -1117,7 +1106,7 @@
       <description>Handles of selected scene objects</description>
     </property>
     <property name="selectionHandles" type="intarray" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="showContactPoints" type="bool" deprecated="true" label="Show contact points" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="showContactPoints" type="bool" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="signal" type="group" readable="false" writable="false" silent="true" constant="true" start-support="2" start-deprecated="0" end-support="0" />
     <property name="simulation" type="group" readable="false" writable="false" silent="true" constant="true" start-support="2" start-deprecated="0" end-support="0" />
     <property name="simulation.pauseAtError" type="bool" label="Pause simulation on script error" start-support="2" start-deprecated="0" end-support="0" />
@@ -1241,7 +1230,7 @@
     <property name="model.notDynamic" type="bool" label="Model not dynamic" start-support="2" start-deprecated="0" end-support="0">
       <description>Model is not dynamic, i.e. model is static</description>
     </property>
-    <property name="model.notInParentBB" type="bool" label="Model invisible to other model&apos;s bounding boxes" start-support="2" start-deprecated="0" end-support="0">
+    <property name="model.notInParentBB" type="bool" label="Model invisible to other model&amp;apos;s bounding boxes" start-support="2" start-deprecated="0" end-support="0">
       <description>Model is invisible to other model&apos;s bounding boxes</description>
     </property>
     <property name="model.notMeasurable" type="bool" label="Model not measurable" start-support="2" start-deprecated="0" end-support="0">
@@ -1594,9 +1583,7 @@
     <property name="dynamics.vortex.restitution" type="float" start-support="2" start-deprecated="0" end-support="0" />
     <property name="dynamics.vortex.restitutionThreshold" type="float" start-support="2" start-deprecated="0" end-support="0" />
     <property name="dynamics.vortex.skinThickness" type="float" start-support="2" start-deprecated="0" end-support="0" />
-    <property name="engineProperties" type="string" deprecated="true" label="Engine properties" start-support="1" start-deprecated="2" end-support="2">
-      <description>Engine properties as JSON text</description>
-    </property>
+    <property name="engineProperties" type="string" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="flipFaces" type="bool" readable="false" silent="true" label="Flip faces" start-support="2" start-deprecated="0" end-support="0">
       <description>Flips faces of all contained meshes</description>
     </property>
@@ -1610,9 +1597,7 @@
       <description>Special flag mainly used for MuJoCo static shapes that move and need to transmit a friction</description>
     </property>
     <property name="mass" type="float" label="Mass" start-support="2" start-deprecated="0" end-support="0" />
-    <property name="meshes" type="handlearray" handle-type="mesh" writable="false" label="Meshes" start-support="2" start-deprecated="0" end-support="0">
-      <description>Mesh handles</description>
-    </property>
+    <property name="meshes" type="handlearray" handle-type="mesh" writable="false" label="Meshes" start-support="2" start-deprecated="0" end-support="0" />
     <property name="mujoco" type="group" deprecated="true" readable="false" writable="false" silent="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="mujoco.adhesion" type="bool" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="mujoco.adhesionctrl" type="float" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />

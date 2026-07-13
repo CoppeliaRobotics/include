@@ -48,7 +48,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="remove" func="sim.callMethod" lang="python,lua">
             <description>
@@ -63,7 +63,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="step" func="sim.callMethod" lang="python,lua">
             <description>
@@ -164,7 +164,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="remove" func="sim.callMethod" lang="python,lua">
             <description>
@@ -179,7 +179,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="step" func="sim.callMethod" lang="python,lua">
             <description>
@@ -256,11 +256,11 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="Constructor" func="sim.callMethod" lang="python,lua">
             <description>
-                Initiates a n-DoF motion using the
+                Initiates a n-DoF motion using the 
                 <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
             </description>
             <params>
@@ -307,7 +307,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="step" func="sim.callMethod" lang="python,lua">
             <description>
@@ -337,7 +337,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="data" func="sim.callMethod" lang="python,lua">
             <description>
@@ -375,7 +375,7 @@
         </method>
     </object-class> 
 
-
+        
 
     <object-class name="MoveToPose" superclass="Motion">
         <method name="run" func="sim.callMethod" lang="python,lua">
@@ -397,11 +397,11 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="Constructor" func="sim.callMethod" lang="python,lua">
             <description>
-                Initiates motion using the
+                Initiates motion using the 
                 <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
                 , by performing interpolations between two poses. The function can operate by handling 4 motion variables (x,y,z and
                 angle between the two poses), or a single movement variable (t, which requires a metric to be specified for distance
@@ -414,20 +414,20 @@
                         <ul>
                             <li>pose (pose): mandatory if neither object nor ik are specified. Specifies current pose </li>
                             <li>object (handle): mandatory if neither pose nor ik are specified. Specifies the handle of the object to move </li>
-                            <li>ik (map): mandatory if neither pose nor object are specified. Contains IK-relevant informations, if a kinematic chain should move via IK to a target:
-                                <ul>
-                                    <li>tip (handle): specifies the tip object (on the end-effector) </li>
-                                    <li>target (handle): specifies the target object (the object to reach) </li>
-                                    <li>base (handle, defaults to nil): optional. Specifies the base object (the base of the kinematic chain)</li>
-                                    <li>joints (handle[], defaults to all joints within tip and base): optional. Specifies the handles of the joints involved in IK calculations</li>
-                                    <li>method (int, defaults to simIK.method_damped_least_squares): optional. Specifies the resolution method</li>
-                                    <li>damping (float, defaults to 0.02): optional. Specifies the resolution damping</li>
-                                    <li>iterations (int, defaults to 20): optional. Specifies the max. number of iterations</li>
-                                    <li>constraints (int, defaults to simIK.constraint_pose): optional. Specifies the constraints</li>
-                                    <li>precision (int[2], defaults to [0.001, 0.5 * math.pi / 180.0]): optional. Specifies the desired precision (linear and angular)</li>
-                                    <li>allowError (bool, defaults to false): optional. Specifies whether a resolution with precision values over what is allowed will be applied anyway</li>
-                                    <li>breakFlags (int, defaults to 0): optional. Specified the reasons-flags required for simIK.handleGroup to fail</li>
-                                </ul>
+                            <li>ik (map): mandatory if neither pose nor object are specified. Contains IK-relevant informations, if a kinematic chain should move via IK to a target: 
+                                <ul> 
+                                    <li>tip (handle): specifies the tip object (on the end-effector) </li> 
+                                    <li>target (handle): specifies the target object (the object to reach) </li> 
+                                    <li>base (handle, defaults to nil): optional. Specifies the base object (the base of the kinematic chain)</li> 
+                                    <li>joints (handle[], defaults to all joints within tip and base): optional. Specifies the handles of the joints involved in IK calculations</li> 
+                                    <li>method (int, defaults to simIK.method_damped_least_squares): optional. Specifies the resolution method</li> 
+                                    <li>damping (float, defaults to 0.02): optional. Specifies the resolution damping</li> 
+                                    <li>iterations (int, defaults to 20): optional. Specifies the max. number of iterations</li> 
+                                    <li>constraints (int, defaults to simIK.constraint_pose): optional. Specifies the constraints</li> 
+                                    <li>precision (int[2], defaults to [0.001, 0.5 * math.pi / 180.0]): optional. Specifies the desired precision (linear and angular)</li> 
+                                    <li>allowError (bool, defaults to false): optional. Specifies whether a resolution with precision values over what is allowed will be applied anyway</li> 
+                                    <li>breakFlags (int, defaults to 0): optional. Specified the reasons-flags required for simIK.handleGroup to fail</li> 
+                                </ul> 
                             </li>
                             <li>targetPose (pose): specifies the target pose </li>
                             <li>targetVel (vector n, defaults to zero vector): optional. Specifies the target velocity, with n = 1 or n = 4</li>
@@ -463,7 +463,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="step" func="sim.callMethod" lang="python,lua">
             <description>
@@ -493,7 +493,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="data" func="sim.callMethod" lang="python,lua">
             <description>
@@ -543,12 +543,12 @@
                     <description>
                         parameters of the function:
                         <ul>
-                            <li>path (matrix m * n): m path points/configurations, with n dimensions per point</li>
-                            <li>pathLengths (matrix m * 1): parameterization of the path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path)</li>
-                            <li>maxVel (matrix n * 1): maximum allowed velocity, for each dimension/axis</li>
-                            <li>minVel (matrix n * 1, defaults to -maxVel): minimum allowed velocity, for each dimension/axis</li>
-                            <li>maxAccel (matrix n * 1): maximum allowed acceleration, for each dimension/axis</li>
-                            <li>minAccel (matrix n * 1, defaults to -maxAccel): minimum allowed acceleration, for each dimension/axis</li>
+                            <li>path (matrix n * dim): n path points/configurations, with dim dimensions per point</li>
+                            <li>pathLengths (vector of size n): parameterization of the path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path)</li>
+                            <li>maxVel (vector of size dim): maximum allowed velocity, for each dimension/axis</li>
+                            <li>minVel (vector of size dim, defaults to -maxVel): minimum allowed velocity, for each dimension/axis</li>
+                            <li>maxAccel (vector of size dim): maximum allowed acceleration, for each dimension/axis</li>
+                            <li>minAccel (vector of size dim, defaults to -maxAccel): minimum allowed acceleration, for each dimension/axis</li>
                             <li>samples (int, defaults to 1000): desired number of path points/configurations</li>
                             <li>boundaryCondition (string, defaults to "not-a-knot"): boundary condition</li>
                         </ul>
@@ -615,7 +615,7 @@
         </method>
     </object-class> 
 
-
+    
 
     <object-class name="Console" superclass="customObject">
         <method name="remove" func="sim.callMethod" lang="python,lua">
@@ -675,7 +675,7 @@
         </method>
     </object-class> 
 
-
+    
 
     <object-class name="TextEditor" superclass="customObject">
         <method name="remove" func="sim.callMethod" lang="python,lua">
@@ -701,7 +701,7 @@
         </method>
     </object-class> 
 
-
+    
 
     <object-class name="Path" superclass="">
         <method name="Constructor" func="" lang="python,lua">
@@ -711,15 +711,16 @@
             <params>
                 <param name="ctrlPoints" type="matrix">
                     <description>
-                        the path control points, organized in cnt * n matrix with cnt the number of path points, and n the dimension of the path. Set to null for an empty path:
+                        the path control points, organized in dim * n matrix with n the number of path points, and dim the dimension of the path. Set to null for an empty path:
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
                     <description>
                         optional map:
                         <ul>
-                            <li>types (string[n], defaults to ["scal", ..., "scal"]): allowed values are "scal" for regular coordinates, "cycl" for cyclic coordinates and "quat" for quaternions (where 4 consecutive values should be "quat")</li>
-                            <li>metric (matrix 1 * n, defaults to [1.0, ..., 1.0]): a weight for each dimension</li>
+                            <li>types (string[dim], defaults to ["lin", ..., "lin"]): allowed values are "lin" for cartesian coordinates, "ang" for revolute coordinates and "quat" for quaternions (where 4 consecutive values should be "quat")</li>
+                            <li>metric (vector dim, defaults to [1.0, ..., 1.0]): a weight for each dimension</li>
+                            <li>bounds (array[dim], defaults to [[], ..., []]): lower and upper bounds for each dimension. Revolute coordinates without bounds are cyclic</li>
                             <li>closed (bool, defaults to false): whether the path is closed or open</li>
                             <li>closedRepeatsStart (bool, defaults to false): whether a closed path has the first path point identical to the last path point</li>
                             <li>onlyCtrlPoints (bool, defaults to false): if true, then only the control points are taken into account (no interpolated path is generated)</li>
@@ -759,13 +760,39 @@
             <see-also>
                 <function-ref name="Path.fromJoints" />
                 <function-ref name="Path.fromObject" />
+                <function-ref name="Path.fromBuffer" />
                 <function-ref name="Path:data" />
                 <function-ref name="Path:setPoints" />
                 <function-ref name="Path:appendPoints" />
                 <function-ref name="Path:clearPoints" />
-                <function-ref name="Path:dist" />
-                <function-ref name="Path:lerp" />
+                <function-ref name="Path:distance" />
+                <function-ref name="Path:interpolate" />
                 <function-ref name="Path:createMarkers" />
+            </see-also>
+        </method>
+
+
+
+        <method name="fromBuffer" func="" lang="python,lua">
+            <description>
+                Creates a path based on previously serialized path data
+            </description>
+            <params>
+                <param name="buffer" type="buffer">
+                    <description>
+                        serialized path data
+                    </description>
+                </param>
+                <param name="objects" type="handle[]" default="nil">
+                    <description>
+                        objects that might be associated with the path, e.g. joint or sceneObjects. 
+                    </description>
+                </param>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="Path:toBuffer" />
             </see-also>
         </method>
 
@@ -773,7 +800,7 @@
 
         <method name="fromJoints" func="" lang="python,lua">
             <description>
-                Creates an empty path based on joints located between an end-effector and a base object (both not included, if of joint type). Ordering goes from base to end-effector
+                Creates an empty path based on joints located between an end-effector and a base object (both not included, if of joint type). Ordering goes from base to end-effector 
             </description>
             <params>
                 <param name="endEffector" type="handle">
@@ -790,7 +817,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>metric (matrix 1 * n, defaults to [1.0, ..., 1.0]): a weight for each dimension</li>
+                            <li>metric (vector dim, defaults to [1.0, ..., 1.0]): a weight for each dimension</li>
                             <li>closed (bool, defaults to false): whether the path is closed or open</li>
                             <li>closedRepeatsStart (bool, defaults to false): whether a closed path has the first path point identical to the last path point</li>
                             <li>onlyCtrlPoints (bool, defaults to false): if true, then only the control points are taken into account (no interpolated path is generated)</li>
@@ -833,8 +860,8 @@
                 <function-ref name="Path:data" />
                 <function-ref name="Path:appendFromJoints" />
                 <function-ref name="Path:clearPoints" />
-                <function-ref name="Path:dist" />
-                <function-ref name="Path:lerp" />
+                <function-ref name="Path:distance" />
+                <function-ref name="Path:interpolate" />
                 <function-ref name="Path:createMarkers" />
             </see-also>
         </method>
@@ -843,7 +870,7 @@
 
         <method name="fromObject" func="" lang="python,lua">
             <description>
-                Creates an empty path based on the pose of an object
+                Creates an empty path based on the pose of an object 
             </description>
             <params>
                 <param name="object" type="handle">
@@ -855,7 +882,7 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>metric (matrix 1 * 7, defaults to [1.0, ..., 1.0]): a weight for each dimension</li>
+                            <li>metric (vector 7, defaults to [1.0, ..., 1.0]): a weight for each dimension</li>
                             <li>closed (bool, defaults to false): whether the path is closed or open</li>
                             <li>closedRepeatsStart (bool, defaults to false): whether a closed path has the first path point identical to the last path point</li>
                             <li>onlyCtrlPoints (bool, defaults to false): if true, then only the control points are taken into account (no interpolated path is generated)</li>
@@ -898,8 +925,8 @@
                 <function-ref name="Path:data" />
                 <function-ref name="Path:appendFromJoints" />
                 <function-ref name="Path:clearPoints" />
-                <function-ref name="Path:dist" />
-                <function-ref name="Path:lerp" />
+                <function-ref name="Path:distance" />
+                <function-ref name="Path:interpolate" />
                 <function-ref name="Path:createMarkers" />
             </see-also>
         </method>
@@ -913,7 +940,7 @@
             <params>
                 <param name="ctrlPoints" type="matrix">
                     <description>
-                        the path control points, organized in cnt * n matrix with cnt the number of path points, and n the dimension of the path
+                        the path control points, organized in dim * n matrix with n the number of path points, and dim the dimension of the path
                     </description>
                 </param>
             </params>
@@ -934,7 +961,7 @@
             <params>
                 <param name="ctrlPoints" type="matrix">
                     <description>
-                        the path control points to append, organized in cnt * n matrix with cnt the number of path points, and n the dimension of the path
+                        the path control points to append, organized in dim * n matrix with n the number of path points, and dim the dimension of the path
                     </description>
                 </param>
                 <param name="update" type="bool" default="true">
@@ -1017,6 +1044,31 @@
 
 
 
+        <method name="toBuffer" func="" lang="python,lua">
+            <description>
+                Returns serialized path data
+            </description>
+            <returns>
+                <param name="buffer" type="buffer">
+                    <description>
+                        serialized path data
+                    </description>
+                </param>
+                <param name="objects" type="handle[]">
+                    <description>
+                        objects that might be associated with the path, e.g. joint or sceneObjects. 
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="Path.fromBuffer" />
+            </see-also>
+        </method>
+
+
+
         <method name="data" func="" lang="python,lua">
             <description>
                 Returns path information
@@ -1041,9 +1093,9 @@
         <method name="createMarkers" func="" lang="python,lua">
             <description>
                 Creates markers allowing to visualize the path. Only joint-based paths, and paths with following coordinates can be visualized:
-                ["scal", "scal", ...],
-                ["scal", "scal", "scal", ...],
-                ["scal", "scal", "scal", "quat", "quat", "quat", "quat", ...]
+                ["lin", "lin", ...],
+                ["lin", "lin", "lin", ...],
+                ["lin", "lin", "lin", "quat", "quat", "quat", "quat", ...]
             </description>
             <params>
             </params>
@@ -1072,10 +1124,10 @@
                 <function-ref name="Path:createMarkers" />
             </see-also>
         </method>
-
-
-
-        <method name="dist" func="" lang="python,lua">
+        
+        
+        
+        <method name="distance" func="" lang="python,lua">
             <description>
                 Returns the distance between two points
             </description>
@@ -1101,13 +1153,13 @@
             <categories>
             </categories>
             <see-also>
-                <function-ref name="Path:lerp" />
+                <function-ref name="Path:interpolate" />
             </see-also>
         </method>
 
 
 
-        <method name="lerp" func="" lang="python,lua">
+        <method name="interpolate" func="" lang="python,lua">
             <description>
                 Returns the linear interpolation between two points
             </description>
@@ -1138,7 +1190,673 @@
             <categories>
             </categories>
             <see-also>
-                <function-ref name="Path:dist" />
+                <function-ref name="Path:distance" />
+            </see-also>
+        </method>
+
+
+
+        <method name="configs" func="" lang="python,lua">
+            <description>
+                Return all equivalent configurations within the specified joint bounds (when a revolute coordinate's range exceeds 2π, the same physical pose can be represented by multiple angle values)
+            </description>
+            <params>
+                <param name="conf" type="vector">
+                    <description>
+                        configuration. Must have the same dimension as the path
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="confs" type="matrix">
+                    <description>
+                        equivalent configurations, with one configuration per column
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+            </see-also>
+        </method>
+
+
+
+        <method name="createShape" func="" lang="python,lua">
+            <description>
+                Creates an extrusion shape from the path 
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>section (matrix 2 * n, defaults to transposed([[-0.01, -0.01], [0.01, -0.01], [0.01, 0.01], [-0.01, 0.01], [-0.01, -0.01]])): the extrusion profile, with x/y pairs. If the first and last pair overlap, the section is closed</li>
+                            <li>upVector (vector3, defaults to [0.0, 0.0, 1.0]): up-vector, used to generate the extruded shape's orientation</li>
+                            <li>axis (int, defaults to 0): indicates what up-vector to use:
+                                <ul>
+                                    <li>0: the upVector above</li>
+                                    <li>1: the upVector is the x-axis of path points</li>
+                                    <li>2: the upVector is the y-axis of path points</li>
+                                    <li>3: the upVector is the z-axis of path points</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+            </see-also>
+        </method>
+
+
+
+        <method name="closest" func="" lang="python,lua">
+            <description>
+                Returns the point on the path that is closest to the input point  
+            </description>
+            <params>
+                <param name="point" type="vector">
+                    <description>
+                        input point. Must have the same dimension as the path
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="pointOnPath" type="vector">
+                    <description>
+                        closest point that lies on the path
+                    </description>
+                </param>
+                <param name="t" type="float">
+                    <description>
+                        the relative distance along the path to the output point
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="Path:getPoint" />
+            </see-also>
+        </method>
+
+
+
+        <method name="getPoint" func="" lang="python,lua">
+            <description>
+                Returns the point on the path that lies at a specific distance along the path  
+            </description>
+            <params>
+                <param name="t" type="float">
+                    <description>
+                        relative distance
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="pointOnPath" type="vector">
+                    <description>
+                        point on the path at relative distance t
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="Path:closest" />
+            </see-also>
+        </method>
+    </object-class> 
+
+    
+
+    <object-class name="IK" superclass="">
+        <method name="Constructor" func="" lang="python,lua">
+            <description>
+                Creates an IK world. An IK world contains one or several IK groups, each one containing one or several IK elements
+            </description>
+            <params>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IK:createGroup" />
+                <function-ref name="IK:remove" />
+                <function-ref name="IK:solve" />
+                <function-ref name="IK:syncFromScene" />
+                <function-ref name="IK:syncToScene" />
+            </see-also>
+        </method>
+
+        <method name="createGroup" func="" lang="python,lua">
+            <description>
+                Creates an IK group inside of the IK world. An IK group contains one or several IK elements, that will be solved together
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>method (string): the solving method. Allowed values are "pseudoInverse", "undampedPseudoInverse", "dampedLeastSquares" and "jacobianTranspose"</li>
+                            <li>damping (float): the damping factor used with the damped least squares method</li>
+                            <li>maxIterations (int): the maximum number of iterations the solver runs for this group</li>
+                            <li>enabled (bool): whether the IK group is enabled</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="group" type="IKGroup">
+                    <description>
+                        the created IK group object
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IKGroup:addElementFromScene" />
+                <function-ref name="IKGroup:solve" />
+            </see-also>
+        </method>
+
+        <method name="solve" func="" lang="python,lua">
+            <description>
+                Sequentially solves all enabled IK groups contained in the IK world
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>debug (int, defaults to 0): the debug verbosity level</li>
+                            <li>syncWorlds (bool, defaults to true): whether the IK world and the sim world should be synchronized with each other</li>
+                            <li>returnExtras (bool, defaults to false): whether the two last return arguments should be calculated/returned</li>
+                            <li>ignoreTolerance (bool, defaults to false): whether precision/tolerance settings should be ignored when evaluating the result of the solve operation</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="result" type="bool">
+                    <description>
+                        the overall result
+                    </description>
+                </param>
+                <param name="flags" type="int">
+                    <description>
+                        various flags:
+                        <ul>
+                            <li>IK.calc_notperformed: no calculation was performed</li>
+                            <li>IK.calc_cannotinvert: cannot invert Jacobian matrix</li>
+                            <li>IK.calc_invalidcallbackdata: invalid callback data</li>
+                            <li>IK.calc_outoftolerance: the positional and orientational tolerance was overshot</li>
+                            <li>IK.calc_largesteps: some joints moved larger steps than desired</li>
+                            <li>IK.calc_boundshit: some joints had their bounds hit</li>
+                        </ul>
+                    </description>
+                </param>
+                <param name="precision" type="float[2]">
+                    <description>
+                        maximum positional and orientational deviation between tip/target pairs
+                    </description>
+                </param>
+                <param name="calculatedValues" type="vector">
+                    <description>
+                        the newly calculated values. Requires 'returnExtras' option enabled 
+                    </description>
+                </param>
+                <param name="metaData" type="map[]">
+                    <description>
+                        an array with information. Requires 'returnExtras' option enabled:
+                        <ul>
+                            <li>joint (IKJoint): the joint in the IK world</li>
+                            <li>index (int): the index in the 'calculatedValues' vector</li>
+                            <li>cnt (int): the number of consecutive values in the 'calculatedValues' vector (4 for spherical joints, 1 otherwise)</li>
+                            <li>touched (bool): whether the joint configuration has changed</li>
+                        </ul>
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IKGroup:solve" />
+                <function-ref name="IK:syncFromScene" />
+                <function-ref name="IK:syncToScene" />
+            </see-also>
+        </method>
+
+        <method name="syncFromScene" func="" lang="python,lua">
+            <description>
+                Synchronizes the IK world with the sim world: all object poses and joint configurations in the IK world are updated to reflect the current state of their sim world counterparts
+            </description>
+            <params>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IK:syncToScene" />
+                <function-ref name="IKGroup:syncFromScene" />
+            </see-also>
+        </method>
+
+        <method name="syncToScene" func="" lang="python,lua">
+            <description>
+                Synchronizes the sim world with the IK world: all object poses and joint configurations in the sim world are updated to reflect the current state of their IK world counterparts
+            </description>
+            <params>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IK:syncFromScene" />
+                <function-ref name="IKGroup:syncToScene" />
+            </see-also>
+        </method>
+
+        <method name="remove" func="" lang="python,lua">
+            <description>
+                Removes the IK world and releases all associated resources
+            </description>
+            <params>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IK:Constructor" />
+            </see-also>
+        </method>
+    </object-class> 
+    
+    
+
+    <object-class name="IKGroup" superclass="">
+        <method name="addElementFromScene" func="" lang="python,lua">
+            <description>
+                Creates an IK element inside of this IK group. Items are imported from the sim world into the IK world
+            </description>
+            <params>
+                <param name="base" type="handle">
+                    <description>
+                        the base scene object of the kinematic chain. Can be null, in which case the world is the base
+                    </description>
+                </param>
+                <param name="tip" type="handle">
+                    <description>
+                        the the tip scene object of the kinematic chain
+                    </description>
+                </param>
+                <param name="target" type="handle">
+                    <description>
+                        the target scene object, i.e. the object the tip should follow / be constrained to
+                    </description>
+                </param>
+                <param name="constraints" type="int">
+                    <description>
+                        the constraints the tip should try to satisfy relative to the target. Following flags are possible and can be combined:
+                        <ul>
+                            <li>IK.constraint_x: constraint along the base object's x-direction</li>
+                            <li>IK.constraint_y: constraint along the base object's y-direction</li>
+                            <li>IK.constraint_z: constraint along the base object's z-direction</li>
+                            <li>IK.constraint_position: full positional constraint</li>
+                            <li>IK.constraint_alphabeta: alpha-beta constraint</li>
+                            <li>IK.constraint_gamma: gamma-angle constraint</li>
+                            <li>IK.constraint_orientation: full orientational constraint</li>
+                            <li>IK.constraint_pose: full positional and orientational constraint</li>
+                        </ul>
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>precision (float[2]): the linear and angular precision (i.e. tolerance) for the IK element</li>
+                            <li>weights (float[2], defaults to [1.0, 1.0]): the weights of the linear and angular components of the IK element</li>
+                            <li>enabled (bool, defaults to true): whether the IK element is enabled</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="element" type="IKElement">
+                    <description>
+                        the created IK element object
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+            </see-also>
+        </method>
+
+        <method name="solve" func="" lang="python,lua">
+            <description>
+                Solves the IK group, i.e. tries to satisfy the constraints of all enabled IK elements it contains
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>debug (int, defaults to 0): the debug verbosity level</li>
+                            <li>syncWorlds (bool, defaults to true): whether the IK world and the sim world should be synchronized with each other</li>
+                            <li>returnExtras (bool, defaults to false): whether the two last return arguments should be calculated/returned</li>
+                            <li>ignoreTolerance (bool, defaults to false): whether precision/tolerance settings should be ignored when evaluating the result of the solve operation</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="result" type="bool">
+                    <description>
+                        the overall result
+                    </description>
+                </param>
+                <param name="flags" type="int">
+                    <description>
+                        various flags:
+                        <ul>
+                            <li>IK.calc_notperformed: no calculation was performed</li>
+                            <li>IK.calc_cannotinvert: cannot invert Jacobian matrix</li>
+                            <li>IK.calc_invalidcallbackdata: invalid callback data</li>
+                            <li>IK.calc_outoftolerance: the positional and orientational tolerance was overshot</li>
+                            <li>IK.calc_largesteps: some joints moved larger steps than desired</li>
+                            <li>IK.calc_boundshit: some joints had their bounds hit</li>
+                        </ul>
+                    </description>
+                </param>
+                <param name="precision" type="float[2]">
+                    <description>
+                        maximum positional and orientational deviation between tip/target pairs
+                    </description>
+                </param>
+                <param name="calculatedValues" type="vector">
+                    <description>
+                        the newly calculated values. Requires 'returnExtras' option enabled 
+                    </description>
+                </param>
+                <param name="metaData" type="map[]">
+                    <description>
+                        an array with information. Requires 'returnExtras' option enabled:
+                        <ul>
+                            <li>joint (IKJoint): the joint in the IK world</li>
+                            <li>index (int): the index in the 'calculatedValues' vector</li>
+                            <li>cnt (int): the number of consecutive values in the 'calculatedValues' vector (4 for spherical joints, 1 otherwise)</li>
+                            <li>touched (bool): whether the joint configuration has changed</li>
+                        </ul>
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IK:solve" />
+                <function-ref name="IKGroup:findConfig" />
+                <function-ref name="IKGroup:syncFromScene" />
+                <function-ref name="IKGroup:syncToScene" />
+            </see-also>
+        </method>
+
+        <method name="findConfig" func="" lang="python,lua">
+            <description>
+                Searches for one joint configurations that satisfy the provided target pose(s), for the IK element(s) contained in the IK group. Search happens in a randomized fashion
+            </description>
+            <params>
+                <param name="poses" type="pose[]">
+                    <description>
+                        one target pose for each enabled IK element contained in the IK group (at least one pose)
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>maxTime (float, defaults to 1.0): the maximum search time, in seconds</li>
+                            <li>altConfigs (bool, defaults to false): whether alternate configurations (e.g. configurations that differ by +/- 360 degrees for non-cyclic revolute joints) should also be returned</li>
+                            <li>orientationMetric (float, defaults to 0.5): the weight of the angular component (relative to the linear component) when computing pose-pose distances</li>
+                            <li>solveDistance (float, defaults to 2.5): the pose-pose distance below which a full solve operation is attempted from the current random configuration</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="config" type="matrix">
+                    <description>
+                        the found joint configuration(s), or null if no configuration was found within the allotted time. Configurations are the matrix' columns, with one value per joint (4 for spherical joints) 
+                    </description>
+                </param>
+                <param name="metaData" type="map[]">
+                    <description>
+                        an array with information:
+                        <ul>
+                            <li>joint (IKJoint): the joint in the IK world</li>
+                            <li>index (int): the row index in the 'config' matrix</li>
+                            <li>cnt (int): the number of consecutive values in the 'config' matrix (4 for spherical joints, 1 otherwise)</li>
+                        </ul>
+                    </description>
+                </param>
+            </returns>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IKGroup:solve" />
+            </see-also>
+        </method>
+
+        <method name="syncFromScene" func="" lang="python,lua">
+            <description>
+                Synchronizes the IK world with the sim world, limited to the objects involved in this IK group: object poses and joint configurations in the IK environment are updated to reflect the current state of their sim world counterparts
+            </description>
+            <params>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IKGroup:syncToScene" />
+                <function-ref name="IK:syncFromScene" />
+            </see-also>
+        </method>
+
+        <method name="syncToScene" func="" lang="python,lua">
+            <description>
+                Synchronizes the sim world with the IK world, limited to the objects involved in this IK group: object poses and joint configurations in the sim world are updated to reflect the current state of their IK environment counterparts (e.g. after a solve operation)
+            </description>
+            <params>
+            </params>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IKGroup:syncFromScene" />
+                <function-ref name="IK:syncToScene" />
+            </see-also>
+        </method>
+    </object-class> 
+    
+    
+
+    <object-class name="IKObject" superclass="">
+        <method name="setPose" func="" lang="python,lua">
+            <description>
+                Sets the pose of an IK object, in the IK world
+            </description>
+            <params>
+                <param name="pose" type="pose">
+                    <description>
+                        the desired pose
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>relativeToObject (IKObject, defaults to the world): indicates relative to which reference frame the pose is specified. Specify null (or omit) to set the absolute pose, or an IK object relative to whose reference frame the pose is specified</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="transformation" />
+            </categories>
+            <see-also>
+                <function-ref name="IKObject:getPose" />
+                <function-ref name="IKObject:setPosition" />
+                <function-ref name="IKObject:setQuaternion" />
+            </see-also>
+        </method>
+
+        <method name="getPose" func="" lang="python,lua">
+            <description>
+                Retrieves the pose of an IK object, in the IK world
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>relativeToObject (IKObject, defaults to the world): indicates relative to which reference frame we want the pose. Specify null (or omit) to retrieve the absolute pose, or an IK object relative to whose reference frame we want the pose</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="pose" type="pose">
+                    <description>
+                        the pose
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="transformation" />
+            </categories>
+            <see-also>
+                <function-ref name="IKObject:setPose" />
+                <function-ref name="IKObject:getPosition" />
+                <function-ref name="IKObject:getQuaternion" />
+            </see-also>
+        </method>
+
+        <method name="setPosition" func="" lang="python,lua">
+            <description>
+                Sets the position of an IK object, in the IK world
+            </description>
+            <params>
+                <param name="position" type="vector3">
+                    <description>
+                        the position]
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>relativeToObject (IKObject, defaults to the world): indicates relative to which reference frame the position is specified. Specify null (or omit) to set the absolute position, or an IK object relative to whose reference frame the position is specified</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="transformation" />
+            </categories>
+            <see-also>
+                <function-ref name="IKObject:getPosition" />
+                <function-ref name="IKObject:setPose" />
+                <function-ref name="IKObject:setQuaternion" />
+            </see-also>
+        </method>
+
+        <method name="getPosition" func="" lang="python,lua">
+            <description>
+                Retrieves the position of an IK object, in the IK world
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>relativeToObject (IKObject, defaults to the world): indicates relative to which reference frame we want the position. Specify null (or omit) to retrieve the absolute position, or an IK object relative to whose reference frame we want the position</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="position" type="vector3">
+                    <description>
+                        the position
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="transformation" />
+            </categories>
+            <see-also>
+                <function-ref name="IKObject:setPosition" />
+                <function-ref name="IKObject:getPose" />
+                <function-ref name="IKObject:getQuaternion" />
+            </see-also>
+        </method>
+
+        <method name="setQuaternion" func="" lang="python,lua">
+            <description>
+                Sets the orientation (as a quaternion) of an IK object, in the IK world
+            </description>
+            <params>
+                <param name="quaternion" type="quaternion">
+                    <description>
+                        the quaternion
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>relativeToObject (IKObject, defaults to the world): indicates relative to which reference frame the quaternion is specified. Specify null (or omit) to set the absolute orientation, or an IK object relative to whose reference frame the quaternion is specified</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="transformation" />
+            </categories>
+            <see-also>
+                <function-ref name="IKObject:getQuaternion" />
+                <function-ref name="IKObject:setPose" />
+                <function-ref name="IKObject:setPosition" />
+            </see-also>
+        </method>
+
+        <method name="getQuaternion" func="" lang="python,lua">
+            <description>
+                Retrieves the orientation (as a quaternion) of an IK object, in the IK world
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>relativeToObject (IKObject, defaults to the world): indicates relative to which reference frame we want the quaternion. Specify null (or omit) to retrieve the absolute orientation, or an IK object relative to whose reference frame we want the quaternion</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="quaternion" type="quaternion">
+                    <description>
+                        the quaternion
+                    </description>
+                </param>
+            </returns>
+            <categories>
+                <category name="transformation" />
+            </categories>
+            <see-also>
+                <function-ref name="IKObject:setQuaternion" />
+                <function-ref name="IKObject:getPose" />
+                <function-ref name="IKObject:getPosition" />
             </see-also>
         </method>
     </object-class> 
@@ -1166,7 +1884,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="getBoolProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1203,7 +1921,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setBoolProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1271,7 +1989,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setIntProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1340,7 +2058,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setEnumProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1409,7 +2127,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setLongProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1477,7 +2195,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setHandleProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1545,7 +2263,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setFloatProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1613,7 +2331,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setStringProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1682,7 +2400,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setBufferProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1751,7 +2469,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setIntArray2Property" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1819,7 +2537,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setVector2Property" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1887,7 +2605,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setVector3Property" func="sim.callMethod" lang="python,lua">
             <description>
@@ -1955,7 +2673,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setQuaternionProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2023,7 +2741,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setPoseProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2091,7 +2809,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setColorProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2159,7 +2877,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setFloatArrayProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2227,7 +2945,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setIntArrayProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2295,7 +3013,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setStringArrayProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2363,7 +3081,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setHandleArrayProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2431,7 +3149,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setMethodProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2563,7 +3281,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setProperties" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2585,7 +3303,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="getPropertyName" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2628,7 +3346,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="getPropertyInfo" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2679,7 +3397,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setPropertyInfo" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2713,7 +3431,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="getPropertiesInfos" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2745,7 +3463,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="removeProperty" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2781,8 +3499,8 @@
     <property name="type" type="string" writable="false" constant="true" label="Object type" start-support="2" start-deprecated="0" end-support="0" />
   </object-class> 
 
-
-
+    
+    
     <object-class name="app" superclass="object">
         <method name="getEnumInfo" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2811,7 +3529,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="getPluginInfo" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2839,7 +3557,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setPluginInfo" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2872,7 +3590,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="pushEvent" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2928,7 +3646,7 @@
             </see-also>
         </method>
 
-
+    
 
         <method name="createCustomObjectClass" func="sim.callMethod" lang="python,lua">
             <description>
@@ -2971,11 +3689,11 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="openFile" func="sim.callMethod" lang="python,lua">
             <description>
-                Opens a file in a subprocess, via cmd (Windows), open (macOS), or xdg-open (Linux)
+                Opens a file in a subprocess, via cmd (Windows), open (macOS), or xdg-open (Linux) 
             </description>
             <params>
                 <param name="file" type="string">
@@ -2993,11 +3711,11 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="fastIdleLoop" func="sim.callMethod" lang="python,lua">
             <description>
-                Speeds the idle loop up, for better reactivity when idle, i.e. not simulating
+                Speeds the idle loop up, for better reactivity when idle, i.e. not simulating 
             </description>
             <params>
                 <param name="fast" type="bool">
@@ -3015,7 +3733,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="throttle" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3051,7 +3769,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="scheduleExecution" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3094,7 +3812,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="cancelScheduledExecution" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3103,7 +3821,7 @@
             <params>
                 <param name="handle" type="int">
                     <description>
-                        The handle of the scheduled function execution
+                        The handle of the scheduled function execution 
                     </description>
                 </param>
             </params>
@@ -3122,7 +3840,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="pack" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3150,9 +3868,9 @@
                 <function-ref name="app:serialize" />
             </see-also>
         </method>
-
-
-
+        
+        
+        
         <method name="unpack" func="sim.callMethod" lang="python,lua">
             <description>
                 Unpacks a buffer via CoppeliaSim format
@@ -3179,7 +3897,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="packArray" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3284,9 +4002,9 @@
                 <function-ref name="app:pack" />
             </see-also>
         </method>
-
-
-
+        
+        
+        
         <method name="deserialize" func="sim.callMethod" lang="python,lua">
             <description>
                 Deserializes a buffer via CBOR format
@@ -3313,7 +4031,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="systemLock" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3341,7 +4059,7 @@
         </method>
 
 
-
+        
         <method name="quit" func="sim.callMethod" lang="python,lua">
             <description>
                 Triggers a quit signal for the application to end
@@ -3351,7 +4069,7 @@
             </categories>
         </method>
 
-
+        
 
         <method name="logInfo" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3368,6 +4086,7 @@
                         optional map:
                         <ul>
                             <li> undecorated (bool, defaults to false): an undecorated message is displayed</li>
+                            <li> onlyTerminal (bool, defaults to false): the message is displayed only in the terminal</li>
                             <li> once (bool, defaults to false): subsequent calls with the same message are ignored</li>
                         </ul>
                     </description>
@@ -3382,7 +4101,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="logWarn" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3399,6 +4118,7 @@
                         optional map:
                         <ul>
                             <li> undecorated (bool, defaults to false): an undecorated message is displayed</li>
+                            <li> onlyTerminal (bool, defaults to false): the message is displayed only in the terminal</li>
                             <li> once (bool, defaults to false): subsequent calls with the same message are ignored</li>
                         </ul>
                     </description>
@@ -3413,7 +4133,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="logError" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3430,6 +4150,7 @@
                         optional map:
                         <ul>
                             <li> undecorated (bool, defaults to false): an undecorated message is displayed</li>
+                            <li> onlyTerminal (bool, defaults to false): the message is displayed only in the terminal</li>
                             <li> once (bool, defaults to false): subsequent calls with the same message are ignored</li>
                         </ul>
                     </description>
@@ -3444,7 +4165,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="createObject" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
@@ -3475,7 +4196,7 @@
             <params>
                 <param name="params" type="map">
                     <description>
-                        a map/dict describing the object to create. All fields are optional except for <b>objectType</b>. Fields described hereafter are not exhaustive (all writable properties of the object to create can be specified too):
+                        a map/dict describing the object to create. All fields are optional except for <b>objectType</b>. Fields described hereafter are not exhaustive (all writable properties of the object to create can be specified too): 
                         <ul>
                             <li id="collection"><a href="../collections.htm">collection</a> fields:
                                 <ul>
@@ -3572,9 +4293,9 @@
                                     <li>duplicateTolerance (float): indicates a distance threshold under which points are not added. Does not apply to line- or triangle items</li>
                                     <li>itemCnt (int): maximum item count</li>
                                     <li>itemColor (color): default item color</li>
-                                    <li>mesh.vertices (matrix n * 3): vertices for a mesh item type (sim.markertype_custom)</li>
-                                    <li>mesh.indices (int[]): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li>
-                                    <li>mesh.normals (matrix n * 3): normals for a mesh item type (sim.markertype_custom). One normal for each vertex</li>
+                                    <li>mesh.vertices (matrix 3 * n): vertices for a mesh item type (sim.markertype_custom)</li> 
+                                    <li>mesh.indices (int[]): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li> 
+                                    <li>mesh.normals (matrix 3 * n): normals for a mesh item type (sim.markertype_custom). One normal for each vertex</li>
                                 </ul>
                             </li>
                             <li id="customSceneObject"><a href="../customSceneObjects.htm">custom scene object</a> fields:
@@ -3592,8 +4313,7 @@
                                     <li>joint.type (string): the joint type. Allowed values are "revolute", "prismatic" or "spherical"</li>
                                     <li>mode (int): the <a href="#jointMode">joint mode</a></li>
                                     <li>dynamics.ctrlMode (enum): the <a href="#dynCtrlMode">joint dynamic control mode</a></li>
-                                    <li>interval (float[]): joint lower and upper bounds, if not cyclic</li>
-                                    <li>cyclic (bool): whether the joint is cyclic. Only revolute joints with a screw lead of 0.0 can be cyclic</li>
+                                    <li>bounds (float[]): joint lower and upper bounds, [] for cyclic revolute joints, or for spherical joints</li>
                                     <li>screwLead (float): a revolute joint with a screw lead different than 0.0 is a screw</li>
                                     <li>length (float): length of the joint</li>
                                     <li>diameter (float): diameter of the joint</li>
@@ -3675,21 +4395,24 @@
                                     </li>
                                     <li>mesh (map/dict): holds parameters for the creation of a mesh:
                                         <ul>
-                                            <li>vertices (matrix n * 3)</li>
+                                            <li>vertices (matrix 3 * n)</li>
                                             <li>indices (int[]): the zero-based indices</li>
-                                            <li>normals (matrix 3n * 3)</li>
+                                            <li>normals (matrix 3 * 3n)</li>
                                             <li>boundingBoxQuaternion (quaternion): the orientation of the shape's bounding box</li>
                                             <li>frameOrigin (pose): the pose of the shape's frame</li>
                                             <li>texture (map/dict): holds parameters for an optional texture:
                                                 <ul>
-                                                    <li>resolution (int[2]): texture resolution</li>
                                                     <li>image (buffer): texture specified as rgb or rgba</li>
-                                                    <li>rgba (bool): whether the texture is specified as rgba or rgb</li>
-                                                    <li>coordinates (matrix m * 2): texture coordinates</li>
-                                                    <li>interpolate (bool): whether adjecent texture pixels are interpolated</li>
-                                                    <li>decal (bool): whether the texture is applied as decal</li>
-                                                    <li>horizFlip (bool): whether the texture is horizontally flipped</li>
-                                                    <li>vertFlip (bool): whether the texture is vertically flipped</li>
+                                                    <li>resolution (int[2]): texture resolution</li>
+                                                    <li>scalingUV (float[2], defaults to [1.0, 1.0]): texture scaling along the U or V direction</li>
+                                                    <li>repeatU (bool, defaults to false): repeats the texture along the U direction</li>
+                                                    <li>repeatV (bool, defaults to false): repeats the texture along the V direction</li>
+                                                    <li>interpolate (bool, defaults to false): adjacent pixels are interpolated</li>
+                                                    <li>decal (bool, defaults to false): decal apply mode</li>
+                                                    <li>flipH (bool, defaults to false): flips the texture horizontally</li>
+                                                    <li>flipV (bool, defaults to false): flips the texture vertically</li>
+                                                    <li>pose (pose, defaults to the identify pose): pose of the texture in relation to the mesh</li>
+                                                    <li>coordinates (matrix, defaults to nil): texture coordinates as a 2 * n matrix, where n is the number of vertex indices</li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -3781,21 +4504,53 @@
                             <li id="path"><a href="../paths.htm">path</a> fields:
                                 <ul>
                                     <li>type (string): "path"</li>
-                                    <li>ctrlPts (matrix n * 7): control points, specified row-wise, with pose values for each path point</li>
+                                    <li>ctrlPts (matrix 7 * n): control points, with a pose for each path point</li>
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
-                                    <li>subdiv (int): number of individual path points</li>
-                                    <li>smoothness (float): value between 0.0 (linear interpolation) and 1.0 (100% Bezier interpolation)</li>
-                                    <li>orientationMode (int): value specifiying how the individual path points are oriented along the path:
+                                    <li>orientationMetric (float): the weight of orientation vs position</li>
+                                    <li>ctrlPoints: optional map describing control point properties:
                                         <ul>
-                                            <li> 0: x along path, y is up</li>
-                                            <li> 1: x along path, z is up</li>
-                                            <li> 2: y along path, x is up</li>
-                                            <li> 3: y along path, z is up</li>
-                                            <li> 4: z along path, x is up</li>
-                                            <li> 5: z along path, y is up</li>
-                                        </ul></li>
-                                    <li>upVector (vector3): up vector, used for generating an extruded shape and for computing individual path point orientations</li>
+                                            <li>duplicateThreshold (float): distance below which points are merged</li>
+                                            <li>linearityTolerance (float): points within a certain distance to the segment formed by its two neighbours can be discarded</li>
+                                            <li>lineType (enum, defaults to "line"): allowed values are "none", "line" and "tube"</li>
+                                            <li>lineColor (color): line color</li>
+                                        </ul>
+                                    </li>
+                                    <li>pathPoints: optional map describing path point properties:
+                                        <ul>
+                                            <li>type (enum, defaults to "quadraticBezier"): allowed values are "linear" and "quadraticBezier"</li>
+                                            <li>bezierSmoothing (float, defaults to 1.0): the Bezier smoothing strength</li>
+                                            <li>samplingDistance (float): the maximum allowable spacing between consecutive points along the generated path</li>
+                                            <li>pointType (enum): allowed values are "none", "sphere" and "cube"</li>
+                                            <li>pointColor (color): point color</li>
+                                            <li>pointRadius (float): point radius</li>
+                                            <li>lineType (enum, defaults to "line"): allowed values are "none", "line" and "tube"</li>
+                                            <li>lineColor (color): line color</li>
+                                            <li>showAxes (bool): whether points display reference frames</li>
+                                        </ul>
+                                    </li>
+                                    <li>extrusion: optional map describing how extrusion shapes are generated:
+                                        <ul>
+                                            <li>section (matrix 2 * n): the extrusion profile, with x/y pairs. If the first and last pair overlap, the section is closed</li>
+                                            <li>color (color): shape color</li>
+                                            <li>upVector (vector3, defaults to [0.0, 0.0, 1.0]): up-vector, used to generate the extruded shape</li>
+                                            <li>axis (int, defaults to 0): indicates what up-vector to use:
+                                                <ul>
+                                                    <li>0: the upVector above</li>
+                                                    <li>1: the upVector is the x-axis of path points</li>
+                                                    <li>2: the upVector is the y-axis of path points</li>
+                                                    <li>3: the upVector is the z-axis of path points</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>dummy: optional map describing how control point dummies are displayed:
+                                        <ul>
+                                            <li>size (float): the dummy size</li>
+                                            <li>color (color): the dummy color</li>
+                                            <li>visible (bool): whether the dummy is visible</li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </li>
                             <li id="graph"><a href="../graphs.htm">graph</a> fields:
@@ -3848,8 +4603,8 @@
                 <function-ref name="app:removeObjects" />
             </see-also>
         </method>
-
-
+        
+        
 
         <method name="loadScene" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
@@ -3882,7 +4637,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="loadSceneFromBuffer" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
@@ -3912,9 +4667,9 @@
             </see-also>
         </method>
 
+        
 
-
-        <method name="loadModelThumbnail" func="sim.callMethod" lang="python,lua">
+        <method name="loadModelInfo" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
             <description>
                 Loads a model thumbnail
@@ -3932,6 +4687,21 @@
                         the model thumbnail image (128 x 128 x 4, rgba)
                     </description>
                 </param>
+                <param name="boundingBoxSize" type="vector3">
+                    <description>
+                        model bounding box size
+                    </description>
+                </param>
+                <param name="modelPose" type="pose">
+                    <description>
+                        model default pose
+                    </description>
+                </param>
+                <param name="info" type="string">
+                    <description>
+                        information string
+                    </description>
+                </param>
             </returns>
             <categories>
                 <category name="file" />
@@ -3942,9 +4712,9 @@
             </see-also>
         </method>
 
+        
 
-
-        <method name="loadModelThumbnailFromBuffer" func="sim.callMethod" lang="python,lua">
+        <method name="loadModelInfoFromBuffer" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
             <description>
                 Loads a model thumbnail from a buffer
@@ -3962,6 +4732,21 @@
                         the model thumbnail image (128 x 128 x 4, rgba)
                     </description>
                 </param>
+                <param name="boundingBoxSize" type="vector3">
+                    <description>
+                        model bounding box size
+                    </description>
+                </param>
+                <param name="modelPose" type="pose">
+                    <description>
+                        model default pose
+                    </description>
+                </param>
+                <param name="info" type="string">
+                    <description>
+                        information string
+                    </description>
+                </param>
             </returns>
             <categories>
                 <category name="file" />
@@ -3972,7 +4757,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="getObjects" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
@@ -4005,7 +4790,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="removeObjects" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
@@ -4057,9 +4842,9 @@
                 <link href="../apiFunctions.htm#threads" label=" thread related functions " />
             </see-also>
         </method>
-
-
-
+        
+        
+        
         <method name="handleSandboxScript" func="sim.callMethod" lang="lua">
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a> in the <a href="../sandboxScript.htm"> sandbox </a>.
@@ -4158,7 +4943,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="loadImageFromBuffer" func="sim.callMethod" lang="python,lua">
             <description>
@@ -4202,7 +4987,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="saveImageToBuffer" func="sim.callMethod" lang="python,lua">
             <description>
@@ -4246,7 +5031,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="saveImage" func="sim.callMethod" lang="python,lua">
             <description>
@@ -4346,9 +5131,9 @@
                 <function-ref name="visionSensor:setImage" />
             </see-also>
         </method>
-
-
-
+        
+        
+        
         <method name="transformBuffer" func="sim.callMethod" lang="python,lua">
             <description>
                 Modifies a buffer
@@ -4399,15 +5184,15 @@
     <property name="addOns" type="handlearray" handle-type="detachedScript" writable="false" constant="true" label="Add-ons" start-support="2" start-deprecated="0" end-support="0">
       <description>List of add-ons</description>
     </property>
-    <property name="appArg1" type="string" deprecated="true" constant="true" label="App arg. 1" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="appArg2" type="string" deprecated="true" constant="true" label="App arg. 2" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="appArg3" type="string" deprecated="true" constant="true" label="App arg. 3" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="appArg4" type="string" deprecated="true" constant="true" label="App arg. 4" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="appArg5" type="string" deprecated="true" constant="true" label="App arg. 5" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="appArg6" type="string" deprecated="true" constant="true" label="App arg. 6" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="appArg7" type="string" deprecated="true" constant="true" label="App arg. 7" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="appArg8" type="string" deprecated="true" constant="true" label="App arg. 8" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="appArg9" type="string" deprecated="true" constant="true" label="App arg. 9" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="appArg1" type="string" deprecated="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="appArg2" type="string" deprecated="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="appArg3" type="string" deprecated="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="appArg4" type="string" deprecated="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="appArg5" type="string" deprecated="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="appArg6" type="string" deprecated="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="appArg7" type="string" deprecated="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="appArg8" type="string" deprecated="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="appArg9" type="string" deprecated="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="appPath" type="string" deprecated="true" writable="false" constant="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="args" type="stringarray" constant="true" label="App args" start-support="2" start-deprecated="0" end-support="0" />
     <property name="auxAddOn1" type="string" constant="true" label="Aux. add-on 1" start-support="2" start-deprecated="0" end-support="0">
@@ -4558,9 +5343,9 @@
         <method name="setModuleEntry" func="sim.callMethod" lang="python,lua">
             <description>
                 Creates, modifies or destroys module menu entries. Those are user selectable items located in [Menu bar &gt; Modules].
-                When selected, the corresponding script will have its
+                When selected, the corresponding script will have its 
                 <a href="../callbackFunctions.htm"> sysCall_moduleEntry </a>
-                callback function triggered, or
+                callback function triggered, or 
                 <a href="../apiConstants.htm#simulatorMessages"> sim_message_eventcallback_moduleentry </a>
                 triggered
             </description>
@@ -4594,9 +5379,9 @@
                 <category name="other" />
             </categories>
         </method>
-
-
-
+        
+        
+        
         <method name="broadcast" func="sim.callMethod" lang="python,lua">
             <description>
                 Broadcasts a message to all scripts, except for the emitting script. Messages are received synchronously via the sysCall_msg callback function
@@ -4616,9 +5401,9 @@
                 <link href="../callbackFunctions.htm" label="callback functions" />
             </see-also>
         </method>
-
-
-
+        
+        
+        
         <method name="setEventFilters" func="sim.callMethod" lang="python,lua">
             <description>
                 Specifies filters for the sysCall_event callback, in this script
@@ -4644,8 +5429,8 @@
                 <function-ref name="app:pushEvent" />
             </see-also>
         </method>
-
-
+        
+        
 
         <method name="wait" func="sim.callMethod" lang="python,lua">
             <description>
@@ -4672,7 +5457,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="getObject" func="sim.callMethod" lang="python,lua">
             <description>
@@ -4711,7 +5496,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="step" func="sim.callMethod" lang="python,lua">
             <description>
@@ -4778,7 +5563,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="getStepping" func="sim.callMethod" lang="python,lua">
             <description>
@@ -4803,7 +5588,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="lock" func="sim.callMethod" lang="python,lua">
             <description>
@@ -4827,7 +5612,7 @@
         </method>
 
 
-
+        
         <method name="registerFunctionHook" func="sim.callMethod" lang="python,lua">
             <description>
                 Registers a function hook for <a href="../callbackFunctions.htm"> callback functions </a>,
@@ -4860,7 +5645,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="removeFunctionHook" func="sim.callMethod" lang="python,lua">
             <description>
@@ -4893,7 +5678,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="remove" func="sim.callMethod" lang="python,lua">
             <info>same method present in several classes</info>
@@ -4923,10 +5708,10 @@
 
         <method name="callFunction" func="sim.callScriptFunction" lang="python,lua">
             <description>
-                Calls a script function. This represents a
+                Calls a script function. This represents a 
                 <a href="../callbackFunctions.htm"> user callback </a>
                 inside of a script. The
-                target smust be initialized for this call to succeed, e.g. when calling
+                target smust be initialized for this call to succeed, e.g. when calling 
                 from <a href="../simulationScripts.htm"> simulation scripts </a>
                 , then simulation must be running
             </description>
@@ -5068,8 +5853,8 @@
     <property name="detachedScript.type" type="string" writable="false" constant="true" label="Type" start-support="2" start-deprecated="0" end-support="0">
       <description>Script type</description>
     </property>
-    <property name="disabled" type="bool" label="Disabled" start-support="2" start-deprecated="0" end-support="0">
-      <description>Distabled state</description>
+    <property name="enabled" type="bool" label="Enabled" start-support="2" start-deprecated="0" end-support="0">
+      <description>Enabled state</description>
     </property>
     <property name="execPriority" type="enum" enum="scriptExecOrder" label="Execution priority" start-support="2" start-deprecated="0" end-support="0" />
     <property name="executionDepth" type="int" writable="false" silent="true" label="Execution depth" start-support="2" start-deprecated="0" end-support="0" />
@@ -5091,6 +5876,50 @@
 
 
     <object-class name="mesh" superclass="object">
+        <method name="texture.set" func="sim.callMethod" lang="python,lua">
+            <description>
+                Sets a texture
+            </description>
+            <params>
+                <param name="image" type="buffer">
+                    <description>
+                        RGB or RGBA texture/image
+                    </description>
+                </param>
+                <param name="resolution" type="int[2]">
+                    <description>
+                        texture resolution
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>scalingUV (float[2], defaults to [1.0, 1.0]): texture scaling along the U or V direction</li>
+                            <li>repeatU (bool, defaults to false): repeats the texture along the U direction</li>
+                            <li>repeatV (bool, defaults to false): repeats the texture along the V direction</li>
+                            <li>interpolate (bool, defaults to false): adjacent pixels are interpolated</li>
+                            <li>decal (bool, defaults to false): decal apply mode</li>
+                            <li>flipH (bool, defaults to false): flips the texture horizontally</li>
+                            <li>flipV (bool, defaults to false): flips the texture vertically</li>
+                            <li>pose (pose, defaults to the identify pose): pose of the texture in relation to the mesh</li>
+                            <li>coordinates (matrix, defaults to nil): texture coordinates as a 2 * n matrix, where n is the number of vertex indices</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="shape" />
+                <category name="texture" />
+            </categories>
+            <see-also>
+                <function-ref name="mesh.texture:setData" />
+                <property-ref name="mesh.texture.data" />
+            </see-also>
+        </method>
+        
+        
+        
         <method name="texture.setData" func="sim.callMethod" lang="python,lua">
             <description>
                 Overwrites a portion of the texture
@@ -5119,12 +5948,13 @@
             </categories>
             <see-also>
                 <function-ref name="mesh.texture:getData" />
+                <function-ref name="mesh.texture:set" />
                 <property-ref name="mesh.texture.data" />
             </see-also>
         </method>
-
-
-
+        
+        
+        
         <method name="texture.getData" func="sim.callMethod" lang="python,lua">
             <description>
                 Reads a portion of the texture
@@ -5184,8 +6014,8 @@
     <property name="texture" type="group" readable="false" writable="false" silent="true" constant="true" start-support="2" start-deprecated="0" end-support="0" />
     <property name="texture.applyMode" type="enum" enum="textureApplyMode" label="Texture apply mode" start-support="2" start-deprecated="0" end-support="0" />
     <property name="texture.coordinates" type="floatarray" writable="false" label="Texture coordinates" start-support="2" start-deprecated="0" end-support="0" />
-    <property name="texture.data" type="buffer" writable="false" label="Texture" start-support="2" start-deprecated="0" end-support="0" />
     <property name="texture.id" type="int" writable="false" label="Texture ID" start-support="2" start-deprecated="0" end-support="0" />
+    <property name="texture.image" type="buffer" writable="false" label="Texture" start-support="2" start-deprecated="0" end-support="0" />
     <property name="texture.interpolate" type="bool" label="Interpolate texture" start-support="2" start-deprecated="0" end-support="0" />
     <property name="texture.repeatU" type="bool" label="Texture repeat U" start-support="2" start-deprecated="0" end-support="0" />
     <property name="texture.repeatV" type="bool" label="Texture repeat V" start-support="2" start-deprecated="0" end-support="0" />
@@ -5200,9 +6030,9 @@
     <property name="vertices" type="matrix" writable="false" label="Vertices" start-support="2" start-deprecated="0" end-support="0" />
     <property name="wireframe" type="bool" label="Wireframe" start-support="2" start-deprecated="0" end-support="0" />
   </object-class> 
-
-
-
+    
+    
+    
     <object-class name="collection" superclass="object">
         <method name="changeColor" func="sim.callMethod" lang="python,lua">
             <info>same method present in collection and sceneObject</info>
@@ -5242,12 +6072,12 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="restoreColor" func="sim.callMethod" lang="python,lua">
             <info>same method present in collection and sceneObject</info>
             <description>
-                Restores the color of all shapes contained in the collection
+                Restores the color of all shapes contained in the collection 
             </description>
             <params>
                 <param name="originalColorData" type="map[]">
@@ -5266,7 +6096,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="remove" func="sim.callMethod" lang="python,lua">
             <info>same method present in several classes</info>
@@ -5384,7 +6214,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="checkDistance" func="sim.callMethod" lang="python,lua">
             <description>
@@ -5444,12 +6274,11 @@
         </method>
     <property name="objects" type="handlearray" handle-type="sceneObject" writable="false" label="Children handles" start-support="2" start-deprecated="0" end-support="0" />
   </object-class> 
-
-
-
+    
+    
+    
     <object-class name="scene" superclass="object">
         <method name="getContacts" func="sim.callMethod" lang="python,lua">
-            <info>same method present in both scene and shape</info>
             <description>
                 Retrieves contact information from the dynamics world
             </description>
@@ -5473,17 +6302,17 @@
                 </param>
                 <param name="points" type="matrix">
                     <description>
-                        contact points (matrix n * 3)
+                        contact points (matrix 3 * n)
                     </description>
                 </param>
                 <param name="forces" type="matrix">
                     <description>
-                        force vectors (matrix n * 3)
+                        force vectors (matrix 3 * n)
                     </description>
                 </param>
                 <param name="normals" type="matrix">
                     <description>
-                        normal vectors (matrix n * 3)
+                        normal vectors (matrix 3 * n)
                     </description>
                 </param>
             </returns>
@@ -5495,7 +6324,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="getDescendants" func="sim.callMethod" lang="python,lua">
             <description>
@@ -5528,11 +6357,11 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="groupShapes" func="sim.callMethod" lang="python,lua">
             <description>
-                Groups several shapes, and returns a compound shape
+                Groups several shapes, and returns a compound shape 
             </description>
             <params>
                 <param name="shapes" type="handle[]">
@@ -5559,11 +6388,11 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="mergeShapes" func="sim.callMethod" lang="python,lua">
             <description>
-                Merges several shapes
+                Merges several shapes 
             </description>
             <params>
                 <param name="shapes" type="handle[]">
@@ -5590,7 +6419,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="getObjectFromUid" func="sim.callMethod" lang="python,lua">
             <description>
@@ -5626,7 +6455,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="announceChange" func="sim.callMethod" lang="python,lua">
             <description>
@@ -5640,7 +6469,7 @@
             </categories>
         </method>
 
-
+        
 
         <method name="getObject" func="sim.callMethod" lang="python,lua">
             <description>
@@ -5679,7 +6508,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="save" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both app and scene</info>
@@ -5704,7 +6533,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="saveToBuffer" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both app and scene</info>
@@ -5727,7 +6556,7 @@
             </see-also>
         </method>
 
-
+    
 
         <method name="remove" func="sim.callMethod" lang="python,lua">
             <info>similar method present in many classes</info>
@@ -5743,7 +6572,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="loadModel" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
@@ -5756,11 +6585,25 @@
                         model filename. The filename extension is required (ttm, or simmodel.xml)
                     </description>
                 </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>offset (vector3, defaults to [0.0, 0.0, 0.0]): position offset</li>
+                            <li>assemblyDummy (handle, defaults to nil): dummy, onto which the model  should be assembled</li>
+                        </ul>
+                    </description>
+                </param>
             </params>
             <returns>
                 <param name="object" type="handle">
                     <description>
                         the model base scene object
+                    </description>
+                </param>
+                <param name="info" type="string">
+                    <description>
+                        information string
                     </description>
                 </param>
             </returns>
@@ -5770,13 +6613,13 @@
             </categories>
             <see-also>
                 <function-ref name="scene:loadModelFromBuffer" />
-                <function-ref name="app:loadModelThumbnail" />
-                <function-ref name="app:loadModelThumbnailFromBuffer" />
+                <function-ref name="app:loadModelInfo" />
+                <function-ref name="app:loadModelInfoFromBuffer" />
                 <function-ref name="app:loadScene" />
             </see-also>
         </method>
 
-
+        
 
         <method name="loadModelFromBuffer" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
@@ -5789,11 +6632,25 @@
                         a buffer containing the model
                     </description>
                 </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>offset (vector3, defaults to [0.0, 0.0, 0.0]): position offset</li>
+                            <li>assemblyDummy (handle, defaults to nil): dummy, onto which the model  should be assembled</li>
+                        </ul>
+                    </description>
+                </param>
             </params>
             <returns>
                 <param name="object" type="handle">
                     <description>
                         the model base scene object
+                    </description>
+                </param>
+                <param name="info" type="string">
+                    <description>
+                        information string
                     </description>
                 </param>
             </returns>
@@ -5806,7 +6663,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="getObjects" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
@@ -5816,7 +6673,7 @@
             <params>
                 <param name="types" type="string[]" default="{}">
                     <description>
-                        a string array specifying the types to retrieve. Allowed values are: "sceneObject", "shape", "joint", "dummy", "script", "mirror", "graph", "light", "camera", "marker", "proximitySensor", "visionSensor", "forceSensor", "ocTree", "pointCloud", "collection", "detachedScript", "mesh"
+                        a string array specifying the types to retrieve. Allowed values are: "sceneObject", "shape", "joint", "dummy", "script", "mirror", "graph", "light", "camera", "marker", "proximitySensor", "visionSensor", "forceSensor", "ocTree", "pointCloud", "collection", "detachedScript", "mesh"  
                     </description>
                 </param>
             </params>
@@ -5835,7 +6692,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="removeObjects" func="sim.callMethod" lang="python,lua">
             <info>same method present in both app and scene</info>
@@ -5917,14 +6774,14 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="handleCustomizationScripts" func="sim.callMethod" lang="lua">
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a>
                 in <a href="../customizationScripts.htm"> customization scripts </a>.
-                Customization scripts will be executed in a
-                <a href="../scriptExecution.htm"> precise order </a>. This function should only be called from the
+                Customization scripts will be executed in a 
+                <a href="../scriptExecution.htm"> precise order </a>. This function should only be called from the 
                 <a href="../mainScript.htm"> main script </a>
             </description>
             <params>
@@ -5956,7 +6813,7 @@
         <method name="handleSimulationScripts" func="sim.callMethod" lang="lua">
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a>
-                in <a href="../simulationScripts.htm"> simulation scripts </a>. Simulation scripts will be executed in a
+                in <a href="../simulationScripts.htm"> simulation scripts </a>. Simulation scripts will be executed in a 
                 <a href="../scriptExecution.htm"> precise order </a>.
                 This function should only be called from the <a href="../mainScript.htm"> main script </a>.
             </description>
@@ -6015,7 +6872,7 @@
             <params>
                 <param name="params" type="map">
                     <description>
-                        a map/dict describing the object to create. All fields are optional except for <b>objectType</b>. Fields described hereafter are not exhaustive (all writable properties of the object to create can be specified too):
+                        a map/dict describing the object to create. All fields are optional except for <b>objectType</b>. Fields described hereafter are not exhaustive (all writable properties of the object to create can be specified too): 
                         <ul>
                             <li id="collection"><a href="../collections.htm">collection</a> fields:
                                 <ul>
@@ -6112,9 +6969,9 @@
                                     <li>duplicateTolerance (float): indicates a distance threshold under which points are not added. Does not apply to line- or triangle items</li>
                                     <li>itemCnt (int): maximum item count</li>
                                     <li>itemColor (color): default item color</li>
-                                    <li>mesh.vertices (matrix n * 3): vertices for a mesh item type (sim.markertype_custom)</li>
-                                    <li>mesh.indices (int[]): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li>
-                                    <li>mesh.normals (matrix n * 3): normals for a mesh item type (sim.markertype_custom). One normal for each vertex</li>
+                                    <li>mesh.vertices (matrix 3 * n): vertices for a mesh item type (sim.markertype_custom)</li> 
+                                    <li>mesh.indices (int[]): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li> 
+                                    <li>mesh.normals (matrix 3 * n): normals for a mesh item type (sim.markertype_custom). One normal for each vertex</li>
                                 </ul>
                             </li>
                             <li id="customSceneObject"><a href="../customSceneObjects.htm">custom scene object</a> fields:
@@ -6132,8 +6989,7 @@
                                     <li>joint.type (string): the joint type. Allowed values are "revolute", "prismatic" or "spherical"</li>
                                     <li>mode (int): the <a href="#jointMode">joint mode</a></li>
                                     <li>dynCtrlMode (int): the <a href="#dynCtrlMode">joint dynamic control mode</a></li>
-                                    <li>interval (float[]): joint lower and upper bounds, if not cyclic</li>
-                                    <li>cyclic (bool): whether the joint is cyclic. Only revolute joints with a screw lead of 0.0 can be cyclic</li>
+                                    <li>bounds (float[]): joint lower and upper bounds, [] for cyclic revolute joints, or for spherical joints</li>
                                     <li>screwLead (float): a revolute joint with a screw lead different than 0.0 is a screw</li>
                                     <li>length (float): length of the joint</li>
                                     <li>diameter (float): diameter of the joint</li>
@@ -6215,21 +7071,24 @@
                                     </li>
                                     <li>mesh (map/dict): holds parameters for the creation of a mesh:
                                         <ul>
-                                            <li>vertices (matrix n * 3)</li>
+                                            <li>vertices (matrix 3 * n)</li>
                                             <li>indices (int[]): the zero-based indices</li>
-                                            <li>normals (matrix 3n * 3)</li>
+                                            <li>normals (matrix 3 * 3n)</li>
                                             <li>boundingBoxQuaternion (quaternion): the orientation of the shape's bounding box</li>
                                             <li>frameOrigin (pose): the pose of the shape's frame</li>
                                             <li>texture (map/dict): holds parameters for an optional texture:
                                                 <ul>
-                                                    <li>resolution (int[2]): texture resolution</li>
                                                     <li>image (buffer): texture specified as rgb or rgba</li>
-                                                    <li>rgba (bool): whether the texture is specified as rgba or rgb</li>
-                                                    <li>coordinates (matrix m * 2): texture coordinates</li>
-                                                    <li>interpolate (bool): whether adjecent texture pixels are interpolated</li>
-                                                    <li>decal (bool): whether the texture is applied as decal</li>
-                                                    <li>horizFlip (bool): whether the texture is horizontally flipped</li>
-                                                    <li>vertFlip (bool): whether the texture is vertically flipped</li>
+                                                    <li>resolution (int[2]): texture resolution</li>
+                                                    <li>scalingUV (float[2], defaults to [1.0, 1.0]): texture scaling along the U or V direction</li>
+                                                    <li>repeatU (bool, defaults to false): repeats the texture along the U direction</li>
+                                                    <li>repeatV (bool, defaults to false): repeats the texture along the V direction</li>
+                                                    <li>interpolate (bool, defaults to false): adjacent pixels are interpolated</li>
+                                                    <li>decal (bool, defaults to false): decal apply mode</li>
+                                                    <li>flipH (bool, defaults to false): flips the texture horizontally</li>
+                                                    <li>flipV (bool, defaults to false): flips the texture vertically</li>
+                                                    <li>pose (pose, defaults to the identify pose): pose of the texture in relation to the mesh</li>
+                                                    <li>coordinates (matrix, defaults to nil): texture coordinates as a 2 * n matrix, where n is the number of vertex indices</li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -6321,21 +7180,53 @@
                             <li id="path"><a href="../paths.htm">path</a> fields:
                                 <ul>
                                     <li>type (string): "path"</li>
-                                    <li>ctrlPts (matrix n * 7): control points, specified in row-major order, with a pose for each path point</li>
+                                    <li>ctrlPts (matrix 7 * n): control points, with a pose for each path point</li>
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
-                                    <li>subdiv (int): number of individual path points</li>
-                                    <li>smoothness (float): value between 0.0 (linear interpolation) and 1.0 (100% Bezier interpolation)</li>
-                                    <li>orientationMode (int): value specifiying how the individual path points are oriented along the path:
+                                    <li>orientationMetric (float): the weight of orientation vs position</li>
+                                    <li>ctrlPoints: optional map describing control point properties:
                                         <ul>
-                                            <li> 0: x along path, y is up</li>
-                                            <li> 1: x along path, z is up</li>
-                                            <li> 2: y along path, x is up</li>
-                                            <li> 3: y along path, z is up</li>
-                                            <li> 4: z along path, x is up</li>
-                                            <li> 5: z along path, y is up</li>
-                                        </ul></li>
-                                    <li>upVector (vector3): up vector, used for generating an extruded shape and for computing individual path point orientations</li>
+                                            <li>duplicateThreshold (float): distance below which points are merged</li>
+                                            <li>linearityTolerance (float): points within a certain distance to the segment formed by its two neighbours can be discarded</li>
+                                            <li>lineType (enum, defaults to "line"): allowed values are "none", "line" and "tube"</li>
+                                            <li>lineColor (color): line color</li>
+                                        </ul>
+                                    </li>
+                                    <li>pathPoints: optional map describing path point properties:
+                                        <ul>
+                                            <li>type (enum, defaults to "quadraticBezier"): allowed values are "linear" and "quadraticBezier"</li>
+                                            <li>bezierSmoothing (float, defaults to 1.0): the Bezier smoothing strength</li>
+                                            <li>samplingDistance (float): the maximum allowable spacing between consecutive points along the generated path</li>
+                                            <li>pointType (enum): allowed values are "none", "sphere" and "cube"</li>
+                                            <li>pointColor (color): point color</li>
+                                            <li>pointRadius (float): point radius</li>
+                                            <li>lineType (enum, defaults to "line"): allowed values are "none", "line" and "tube"</li>
+                                            <li>lineColor (color): line color</li>
+                                            <li>showAxes (bool): whether points display reference frames</li>
+                                        </ul>
+                                    </li>
+                                    <li>extrusion: optional map describing how extrusion shapes are generated:
+                                        <ul>
+                                            <li>section (matrix 2 * n): the extrusion profile, with x/y pairs. If the first and last pair overlap, the section is closed</li>
+                                            <li>color (color): shape color</li>
+                                            <li>upVector (vector3, defaults to [0.0, 0.0, 1.0]): up-vector, used to generate the extruded shape</li>
+                                            <li>axis (int, defaults to 0): indicates what up-vector to use:
+                                                <ul>
+                                                    <li>0: the upVector above</li>
+                                                    <li>1: the upVector is the x-axis of path points</li>
+                                                    <li>2: the upVector is the y-axis of path points</li>
+                                                    <li>3: the upVector is the z-axis of path points</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>dummy: optional map describing how control point dummies are displayed:
+                                        <ul>
+                                            <li>size (float): the dummy size</li>
+                                            <li>color (color): the dummy color</li>
+                                            <li>visible (bool): whether the dummy is visible</li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </li>
                             <li id="graph"><a href="../graphs.htm">graph</a> fields:
@@ -6404,9 +7295,9 @@
                 <link href="../simulation.htm" label=" simulation state diagram " />
             </see-also>
         </method>
+        
 
-
-
+        
 
         <method name="simulation.stop" func="sim.callMethod" lang="python,lua">
             <description>
@@ -6437,9 +7328,9 @@
                 <link href="../simulation.htm" label=" simulation state diagram " />
             </see-also>
         </method>
-
-
-
+        
+        
+        
         <method name="dynamics.step" func="sim.callMethod" lang="python,lua">
             <description>
                 Steps the dynamics engine
@@ -6589,20 +7480,14 @@
     <property name="dynamics.vortex.constraintsLinearKineticLoss" type="float" start-support="2" start-deprecated="0" end-support="0" />
     <property name="dynamics.vortex.contactTolerance" type="float" start-support="2" start-deprecated="0" end-support="0" />
     <property name="dynamics.vortex.multithreading" type="bool" start-support="2" start-deprecated="0" end-support="0" />
-    <property name="dynamicsEnabled" type="bool" deprecated="true" label="Dynamics enabled" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="dynamicsEngine" type="intarray" deprecated="true" label="Dynamics engine" start-support="1" start-deprecated="2" end-support="2">
-      <description>Selected dynamics engine index and version</description>
-    </property>
-    <property name="dynamicsStepSize" type="float" deprecated="true" label="Dynamics dt" start-support="1" start-deprecated="2" end-support="2">
-      <description>Dynamics step size</description>
-    </property>
-    <property name="engineProperties" type="string" deprecated="true" label="Engine properties" start-support="1" start-deprecated="2" end-support="2">
-      <description>Engine properties as JSON text</description>
-    </property>
+    <property name="dynamicsEnabled" type="bool" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="dynamicsEngine" type="intarray" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="dynamicsStepSize" type="float" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="engineProperties" type="string" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="finalSaveRequest" type="bool" label="Final save" start-support="2" start-deprecated="0" end-support="0">
       <description>Lock scene and models after next scene save operation</description>
     </property>
-    <property name="gravity" type="vector3" deprecated="true" label="Gravity" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="gravity" type="vector3" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="hierarchyChangeCounter" type="int" writable="false" silent="true" label="Hierarchy change counter" start-support="2" start-deprecated="0" end-support="0">
       <description>Counter of scene hierarchy changes</description>
     </property>
@@ -6651,17 +7536,11 @@
     <property name="mujoco.multiccd" type="bool" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="mujoco.multithreaded" type="bool" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="mujoco.nativeccdEnable" type="bool" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="mujoco.nconmax" type="int" deprecated="true" start-support="1" start-deprecated="2" end-support="2">
-      <description>Deprecated. See mujoco.mbmemory instead.</description>
-    </property>
-    <property name="mujoco.njmax" type="int" deprecated="true" start-support="1" start-deprecated="2" end-support="2">
-      <description>Deprecated. See mujoco.mbmemory instead.</description>
-    </property>
+    <property name="mujoco.nconmax" type="int" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="mujoco.njmax" type="int" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="mujoco.noslip_iterations" type="int" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="mujoco.noslip_tolerance" type="float" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="mujoco.nstack" type="int" deprecated="true" start-support="1" start-deprecated="2" end-support="2">
-      <description>Deprecated. See mujoco.mbmemory instead.</description>
-    </property>
+    <property name="mujoco.nstack" type="int" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="mujoco.passiveEnable" type="bool" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="mujoco.rebuildTrigger" type="int" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="mujoco.refsafeEnable" type="bool" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
@@ -6719,7 +7598,7 @@
       <description>Handles of selected scene objects</description>
     </property>
     <property name="selectionHandles" type="intarray" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
-    <property name="showContactPoints" type="bool" deprecated="true" label="Show contact points" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="showContactPoints" type="bool" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="signal" type="group" readable="false" writable="false" silent="true" constant="true" start-support="2" start-deprecated="0" end-support="0" />
     <property name="simulation" type="group" readable="false" writable="false" silent="true" constant="true" start-support="2" start-deprecated="0" end-support="0" />
     <property name="simulation.pauseAtError" type="bool" label="Pause simulation on script error" start-support="2" start-deprecated="0" end-support="0" />
@@ -6778,7 +7657,7 @@
     <namespace name="customData" />
     <namespace name="signal" />
   </object-class> 
-
+    
 
 
     <object-class name="customObject" superclass="object">
@@ -6875,7 +7754,7 @@
             <params>
                 <param name="className" type="string">
                     <description>
-                        The name of the class
+                        The name of the class 
                     </description>
                 </param>
             </params>
@@ -6895,7 +7774,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="changeColor" func="sim.callMethod" lang="python,lua">
             <info>same method present in collection and sceneObject</info>
@@ -6935,12 +7814,12 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="restoreColor" func="sim.callMethod" lang="python,lua">
             <info>same method present in collection and sceneObject</info>
             <description>
-                Restores the color of the object, if it is a shape
+                Restores the color of the object, if it is a shape 
             </description>
             <params>
                 <param name="originalColorData" type="map[]">
@@ -6959,7 +7838,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="getObject" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7000,7 +7879,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="dynamicReset" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7023,7 +7902,7 @@
             </categories>
         </method>
 
-
+        
 
         <method name="remove" func="sim.callMethod" lang="python,lua">
             <info>similar method present in several classes</info>
@@ -7074,7 +7953,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="saveModel" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7098,7 +7977,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="saveModelToBuffer" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7120,7 +7999,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="getDescendants" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7152,7 +8031,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="getAncestors" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7183,7 +8062,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="visitTree" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7192,7 +8071,7 @@
             <params>
                 <param name="visitorFunction" type="func">
                     <description>
-                        the visitor function. Visitation ends if the function return false
+                        the visitor function. Visitation ends if the function return false 
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -7214,7 +8093,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="checkCollision" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7249,7 +8128,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="checkDistance" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7354,8 +8233,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the pose.
-                        Specify sim.handle_world to retrieve the absolute pose, sim.handle_inverse to retrieve the inverse of the absolute pose,
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the pose. 
+                        Specify sim.handle_world to retrieve the absolute pose, sim.handle_inverse to retrieve the inverse of the absolute pose, 
                         sim.handle_parent to retrieve the pose relative to the object's parent, or an object relative to whose reference frame we want the pose</li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the pose relative to the joint's moving frame is returned, unless
                         this argument is true, in which case the pose relative to the joint's base frame is returned</li>
@@ -7380,7 +8259,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="getPosition" func="sim.callMethod" lang="python,lua">
             <description>
@@ -7391,8 +8270,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the position.
-                        Specify sim.handle_world to retrieve the absolute position, sim.handle_inverse to retrieve the inverse of the absolute position,
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the position. 
+                        Specify sim.handle_world to retrieve the absolute position, sim.handle_inverse to retrieve the inverse of the absolute position, 
                         sim.handle_parent to retrieve the position relative to the object's parent, or an object relative to whose reference frame we want the position </li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the position relative to the joint's moving frame is returned, unless
                         this argument is true, in which case the position relative to the joint's base frame is returned</li>
@@ -7428,8 +8307,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the quaternion.
-                        Specify sim.handle_world to retrieve the absolute quaternion, sim.handle_inverse to retrieve the inverse of the absolute quaternion,
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the quaternion. 
+                        Specify sim.handle_world to retrieve the absolute quaternion, sim.handle_inverse to retrieve the inverse of the absolute quaternion, 
                         sim.handle_parent to retrieve the quaternion relative to the object's parent, or an object relative to whose reference frame we want the quaternion</li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the quaternion relative to the joint's moving frame is returned, unless
                         this argument is true, in which case the quaternion relative to the joint's base frame is returned</li>
@@ -7694,7 +8573,7 @@
     <property name="model.notDynamic" type="bool" label="Model not dynamic" start-support="2" start-deprecated="0" end-support="0">
       <description>Model is not dynamic, i.e. model is static</description>
     </property>
-    <property name="model.notInParentBB" type="bool" label="Model invisible to other model's bounding boxes" start-support="2" start-deprecated="0" end-support="0">
+    <property name="model.notInParentBB" type="bool" label="Model invisible to other model&amp;apos;s bounding boxes" start-support="2" start-deprecated="0" end-support="0">
       <description>Model is invisible to other model's bounding boxes</description>
     </property>
     <property name="model.notMeasurable" type="bool" label="Model not measurable" start-support="2" start-deprecated="0" end-support="0">
@@ -7854,16 +8733,16 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        points, organised row-wise. If the items are point items, the matrix should be n * 3 in size. If the items are line items, the matrix should be 2n * 3 in size, etc
+                        points, organised column-wise. If the items are point items, the matrix should be 3 * n in size. If the items are line items, the matrix should be 3 * 2n in size, etc
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
                     <description>
                         optional map:
                         <ul>
-                            <li>colors (matrix n * 4, defaults to nil, defaults to nil): point-specific colors (one color per point)</li>
-                            <li>quaternions (matrix n * 4, defaults to nil): quaternions (one quaternion per item)</li>
-                            <li>sizes (matrix n * 3, defaults to nil): x/y/z sizes (one x/y/z per item)</li>
+                            <li>colors (matrix 4 * n, defaults to nil): point-specific colors (one color per point)</li>
+                            <li>quaternions (matrix 4 * n, defaults to nil): quaternions (one quaternion per item)</li>
+                            <li>sizes (matrix 3 * n, defaults to nil): x/y/z sizes (one x/y/z per item)</li>
                         </ul>
                     </description>
                 </param>
@@ -7958,7 +8837,7 @@
         <method name="getContacts" func="sim.callMethod" lang="python,lua">
             <info>same method present in both scene and shape</info>
             <description>
-                Retrieves this shape's contact information from the dynamics world
+                Retrieves this shape's contact information from the dynamics world 
             </description>
             <params>
                 <param name="options" type="map" default="{}">
@@ -7980,17 +8859,17 @@
                 </param>
                 <param name="points" type="matrix">
                     <description>
-                        contact points (matrix n * 3)
+                        contact points (matrix 3 * n)
                     </description>
                 </param>
                 <param name="forces" type="matrix">
                     <description>
-                        force vectors (matrix n * 3)
+                        force vectors (matrix 3 * n)
                     </description>
                 </param>
                 <param name="normals" type="matrix">
                     <description>
-                        normal vectors (matrix n * 3)
+                        normal vectors (matrix 3 * n)
                     </description>
                 </param>
             </returns>
@@ -8002,7 +8881,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="getAppearance" func="sim.callMethod" lang="python,lua">
             <description>
@@ -8025,7 +8904,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setAppearance" func="sim.callMethod" lang="python,lua">
             <description>
@@ -8049,7 +8928,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="ungroup" func="sim.callMethod" lang="python,lua">
             <description>
@@ -8074,7 +8953,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="divide" func="sim.callMethod" lang="python,lua">
             <description>
@@ -8099,7 +8978,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="addForce" func="sim.callMethod" lang="python,lua">
             <description>
@@ -8111,17 +8990,13 @@
                         force to add
                     </description>
                 </param>
-                <param name="offset" type="vector3" default="{0.0, 0.0, 0.0}">
-                    <description>
-                        optional offset (relative to the shape center of mass) where to apply the force: induces a torque when non-zero
-                    </description>
-                </param>
                 <param name="options" type="map" default="{}">
                     <description>
                         optional map:
                         <ul>
                             <li> reset (bool, defaults to false): clears cumulative forces before applying the new force</li>
                             <li> relative (bool, defaults to false): applies the force/offset relative to the shape's reference frame axes, otherwise relative to the world</li>
+                            <li> offset (vector3, defaults to [0.0, 0.0, 0.0]): offset (relative to the shape center of mass) where to apply the force: induces a torque when non-zero</li>
                         </ul>
                     </description>
                 </param>
@@ -8134,7 +9009,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="addTorque" func="sim.callMethod" lang="python,lua">
             <description>
@@ -8163,9 +9038,9 @@
                 <function-ref name="shape:addForce" />
             </see-also>
         </method>
-
-
-
+        
+        
+        
         <method name="computeInertia" func="sim.callMethod" lang="python,lua">
             <description>
                 Computes and applies mass and inertia properties to the shape, based on its convex representation
@@ -8187,7 +9062,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setInertia" func="sim.callMethod" lang="python,lua">
             <description>
@@ -8201,7 +9076,7 @@
                 </param>
                 <param name="comPose" type="pose">
                     <description>
-                        a pose expressed relative to the shape's reference frame. The pose indicates the center of mass of the shape, and is the frame relative to which
+                        a pose expressed relative to the shape's reference frame. The pose indicates the center of mass of the shape, and is the frame relative to which 
                         <em>inertiaMatrix</em> is expressed
                     </description>
                 </param>
@@ -8215,7 +9090,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="getInertia" func="sim.callMethod" lang="python,lua">
             <description>
@@ -8243,7 +9118,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="relocateFrame" func="sim.callMethod" lang="python,lua">
             <description>
@@ -8462,9 +9337,7 @@
     <property name="dynamics.vortex.restitution" type="float" start-support="2" start-deprecated="0" end-support="0" />
     <property name="dynamics.vortex.restitutionThreshold" type="float" start-support="2" start-deprecated="0" end-support="0" />
     <property name="dynamics.vortex.skinThickness" type="float" start-support="2" start-deprecated="0" end-support="0" />
-    <property name="engineProperties" type="string" deprecated="true" label="Engine properties" start-support="1" start-deprecated="2" end-support="2">
-      <description>Engine properties as JSON text</description>
-    </property>
+    <property name="engineProperties" type="string" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="flipFaces" type="bool" readable="false" silent="true" label="Flip faces" start-support="2" start-deprecated="0" end-support="0">
       <description>Flips faces of all contained meshes</description>
     </property>
@@ -8478,9 +9351,7 @@
       <description>Special flag mainly used for MuJoCo static shapes that move and need to transmit a friction</description>
     </property>
     <property name="mass" type="float" label="Mass" start-support="2" start-deprecated="0" end-support="0" />
-    <property name="meshes" type="handlearray" handle-type="mesh" writable="false" label="Meshes" start-support="2" start-deprecated="0" end-support="0">
-      <description>Mesh handles</description>
-    </property>
+    <property name="meshes" type="handlearray" handle-type="mesh" writable="false" label="Meshes" start-support="2" start-deprecated="0" end-support="0" />
     <property name="mujoco" type="group" deprecated="true" readable="false" writable="false" silent="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="mujoco.adhesion" type="bool" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="mujoco.adhesionctrl" type="float" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
@@ -8583,7 +9454,7 @@
     <property name="vortex.skinThickness" type="float" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
   </object-class> 
 
-
+    
 
     <object-class name="proximitySensor" superclass="sceneObject">
         <method name="checkSensor" func="sim.callMethod" lang="python,lua">
@@ -8775,7 +9646,7 @@
     <property name="volume_ySize" type="floatarray" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
   </object-class> 
 
-
+    
 
     <object-class name="visionSensor" superclass="sceneObject">
         <method name="getDepth" func="sim.callMethod" lang="python,lua">
@@ -8812,7 +9683,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="getImage" func="sim.callMethod" lang="python,lua">
             <description>
@@ -8826,7 +9697,7 @@
                             <li>position (int[2], defaults to [0, 0]): position of the image portion to retrieve</li>
                             <li>size (int[2], defaults to [0, 0]): size of the image portion to retrieve. [0, 0] corresponds to [resolutionX, resolution Y]</li>
                             <li>type (string, defaults to "rgb"): the type of the returned image. Valid values are "rgb", "rgba" and "grey"</li>
-                            <li>rgbaCutOff (float, defaults to 0.0): when a RGBA image is returned, the alpha component is 255 for all depth values below
+                            <li>rgbaCutOff (float, defaults to 0.0): when a RGBA image is returned, the alpha component is 255 for all depth values below 
                             <em>rgbaCutOff</em>, and 0 for all depth values above <em>rgbaCutOff</em>. 0.0 corresponds to the near clipping plane, 1.0 to the far clipping plane</li>
                         </ul>
                     </description>
@@ -8853,7 +9724,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setImage" func="sim.callMethod" lang="python,lua">
             <description>
@@ -8927,7 +9798,7 @@
         <method name="handleSensor" func="sim.callMethod" lang="python,lua">
             <description>
                 Handles (performs sensing, etc. of) the vision sensor object. It (1) clear previous computed image processing data, (2) reads
-                an image and (3) performs image processing via the
+                an image and (3) performs image processing via the 
                 <a href="../visionCallbackFunctions.htm"> vision callback functions </a>
                 (if the vision sensor is using an <strong> external input </strong> only (1) is performed)
             </description>
@@ -8958,7 +9829,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="resetSensor" func="sim.callMethod" lang="python,lua">
             <description>
@@ -9037,7 +9908,7 @@
     <property name="visionSensor" type="group" readable="false" writable="false" silent="true" constant="true" start-support="2" start-deprecated="0" end-support="0" />
   </object-class> 
 
-
+    
 
     <object-class name="camera" superclass="sceneObject">
         <method name="getData" func="sim.callMethod" lang="python,lua">
@@ -9121,7 +9992,7 @@
     </property>
   </object-class> 
 
-
+    
 
     <object-class name="graph" superclass="sceneObject">
         <method name="addSignal" func="sim.callMethod" lang="python,lua">
@@ -9167,7 +10038,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="addCurve" func="sim.callMethod" lang="python,lua">
             <description>
@@ -9209,7 +10080,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="reset" func="sim.callMethod" lang="python,lua">
             <description>
@@ -9224,7 +10095,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="removeTrace" func="sim.callMethod" lang="python,lua">
             <description>
@@ -9244,7 +10115,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="setSignalPoint" func="sim.callMethod" lang="python,lua">
             <description>
@@ -9270,7 +10141,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="step" func="sim.callMethod" lang="python,lua">
             <description>
@@ -9290,7 +10161,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="snapshotTrace" func="sim.callMethod" lang="python,lua">
             <description>
@@ -9341,7 +10212,7 @@
     </property>
   </object-class> 
 
-
+ 
 
     <object-class name="ocTree" superclass="sceneObject">
         <method name="addFromObjects" func="sim.callMethod" lang="python,lua">
@@ -9377,7 +10248,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="subtractFromObjects" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both ocTree and pointCloud</info>
@@ -9413,7 +10284,7 @@
             <params>
                 <param name="voxels" type="matrix">
                     <description>
-                        voxel positions (matrix n * 3)
+                        voxel positions (matrix 3 * n)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -9421,7 +10292,7 @@
                         optional map:
                         <ul>
                             <li>color (color, defaults to nil): color for all voxels</li>
-                            <li>colors (matrix n * 4, defaults to nil): voxel-specific colors (one color per voxel)</li>
+                            <li>colors (matrix 4 * n, defaults to nil): voxel-specific colors (one color per voxel)</li>
                             <li>tag (int, defaults to 0): tag for all voxels</li>
                             <li>tags (int[], defaults to nil): voxel-specific tags (one tag per voxel)</li>
                             <li>relative (bool, defaults to false): specified voxels are relative to the OC tree reference frame, otherwise they are relative to the world reference frame</li>
@@ -9493,7 +10364,7 @@
             <params>
                 <param name="voxels" type="matrix">
                     <description>
-                        voxel positions (matrix n * 3)
+                        voxel positions (matrix 3 * n)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -9519,7 +10390,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="subtractPackedVoxels" func="sim.callMethod" lang="python,lua">
             <description>
@@ -9554,7 +10425,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="checkPoints" func="sim.callMethod" lang="python,lua">
             <description>
@@ -9563,7 +10434,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        point positions (matrix n * 3)
+                        point positions (matrix 3 * n)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -9606,7 +10477,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="clear" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both ocTree and pointCloud</info>
@@ -9641,7 +10512,7 @@
     <property name="voxels" type="floatarray" deprecated="true" writable="false" start-support="1" start-deprecated="2" end-support="2" />
   </object-class> 
 
-
+    
 
     <object-class name="pointCloud" superclass="sceneObject">
         <method name="addFromObjects" func="sim.callMethod" lang="python,lua">
@@ -9678,7 +10549,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="subtractFromObjects" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both ocTree and pointCloud</info>
@@ -9721,7 +10592,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        point positions (matrix n * 3)
+                        point positions (matrix 3 * n)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -9729,7 +10600,7 @@
                         optional map:
                         <ul>
                             <li>color (color, defaults to nil): color for all points</li>
-                            <li>colors (matrix n * 4, defaults to nil): point-specific colors (one color per point)</li>
+                            <li>colors (matrix 4 * n, defaults to nil): point-specific colors (one color per point)</li>
                             <li>relative (bool, defaults to false): specified points are relative to the point cloud reference frame, otherwise they are relative to the world reference frame</li>
                             <li>tolerance (float, defaults to nil): an insertion duplicate tolerance</li>
                         </ul>
@@ -9787,7 +10658,7 @@
             </see-also>
         </method>
 
-
+    
 
         <method name="subtractPoints" func="sim.callMethod" lang="python,lua">
             <description>
@@ -9796,7 +10667,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        point positions (matrix n * 3)
+                        point positions (matrix 3 * n)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -9823,7 +10694,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="subtractPackedPoints" func="sim.callMethod" lang="python,lua">
             <description>
@@ -9859,7 +10730,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="intersectPoints" func="sim.callMethod" lang="python,lua">
             <description>
@@ -9869,7 +10740,7 @@
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        point positions (matrix n * 3)
+                        point positions (matrix 3 * n)
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -9891,7 +10762,7 @@
             </see-also>
         </method>
 
-
+        
 
         <method name="clear" func="sim.callMethod" lang="python,lua">
             <info>similar method present in both ocTree and pointCloud</info>
@@ -10007,6 +10878,9 @@
       <description>Force applied on average (in a simulation step)</description>
     </property>
     <property name="averageJointForce" type="float" deprecated="true" writable="false" start-support="1" start-deprecated="2" end-support="2" />
+    <property name="bounds" type="floatarray" label="Bounds" start-support="2" start-deprecated="0" end-support="0">
+      <description>Joint lower and upper bounds</description>
+    </property>
     <property name="bullet" type="group" deprecated="true" readable="false" writable="false" silent="true" constant="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="bullet.normalCfm" type="float" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="bullet.posPid" type="floatarray" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
@@ -10134,9 +11008,7 @@
     <property name="force" type="float" writable="false" label="Force" start-support="2" start-deprecated="0" end-support="0">
       <description>Force applied</description>
     </property>
-    <property name="interval" type="floatarray" label="Interval" start-support="2" start-deprecated="0" end-support="0">
-      <description>Joint limits (lower and upper bounds)</description>
-    </property>
+    <property name="interval" type="floatarray" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="intrinsicError" type="pose" writable="false" label="Intrinsic error" start-support="2" start-deprecated="0" end-support="0">
       <description>Intrinsic error, generated by some physics engines</description>
     </property>
@@ -10259,303 +11131,12 @@
     <property name="vortex.zAxisPosRelaxationLoss" type="float" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
     <property name="vortex.zAxisPosRelaxationStiffness" type="float" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
   </object-class> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <method name="generateShapeFromPath" func="sim.generateShapeFromPath" lang="python,lua">
-        <description>
-            Generates an extrusion shape from a path
-        </description>
-        <params>
-            <param name="path" type="float[]">
-                <description>
-                    path, specified in row-major order, with [x y z qx qy qz qw] values for each path point. The orientation parts for each path point are ignored if the two first bits of
-                    are zero.
-                </description>
-            </param>
-            <param name="section" type="float[]">
-                <description>
-                    extrusion profile, with x/y pairs, e.g. [x1 y1 x2 y2 ... xn yn]. If the first and last pair overlap, the section is closed
-                </description>
-            </param>
-            <param name="options" type="int" default="0">
-                <description>
-                    bit-coded:
-                    <ul>
-                        <li> bit0-bit1: 0 = upVector is <strong> upVector </strong> , 1 = upVector is the x-axis of the path point frame, 2 = upVector is the y-axis of the path point frame, 3 = upVector is the z-axis of the path point frame </li>
-                        <li> bit2 set (4): the path is closed </li>
-                    </ul>
-                </description>
-            </param>
-            <param name="upVector" type="float[3]" default="{0.0, 0.0, 1.0}">
-                <description>
-                    bit0-bit1: 0 = upVector is , 1 = upVector is the x-axis of the path point frame, 2 = upVector is the y-axis of the path point frame, 3 = upVector is the z-axis of the path point frame
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="shapeHandle" type="handle">
-                <description>
-                    the handle of the generated shape
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="path" /><category name="creation" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
-
-
-
-    <method name="getClosestPosOnPath" func="sim.getClosestPosOnPath" lang="python,lua">
-        <description>
-            Returns the position or distance along a path that is closest to a specified point in space
-        </description>
-        <params>
-            <param name="path" type="float[]">
-                <description>
-                    path, specified in row-major order, with x/y/z values for each path point
-                </description>
-            </param>
-            <param name="pathLengths" type="float[]">
-                <description>
-                    lengths of a path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path). See also
-                    <a href="simGetPathLengths.htm"> sim.getPathLengths </a>.
-                </description>
-            </param>
-            <param name="absPt" type="float[3]">
-                <description>
-                    point in 3D space
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="posAlongPath" type="float">
-                <description>
-                    position/distance along the path
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="path" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
-
-
-
-    <method name="getConfigDistance" func="sim.getConfigDistance" lang="python,lua">
-        <description>
-            Returns the distance between two configurations points
-        </description>
-        <params>
-            <param name="configA" type="float[]">
-                <description>
-                    the first configuration, e.g. in case of a 3D pose (position+quaternion), would be [x1 y1 z1 qx1 qy1 qz1 qw1]
-                </description>
-            </param>
-            <param name="configB" type="float[]">
-                <description>
-                    the second configuration
-                </description>
-            </param>
-            <param name="metric" type="float[]" default="{1, 1, 1 ...}">
-                <description>
-                    an optional array specifying the metric to use to compute distances. e.g. if the specified configurations were 3D positions, the distance between two configurations would be calculated as SQRT( mx * (x2 - x1)^2 + my * (y2 - y1)^2 + mz * (z2 - z1)^2 ), where [mx my mz] would be the metric.
-                </description>
-            </param>
-            <param name="types" type="int[]" default="{0, 0, 0, ...}">
-                <description>
-                    an optional array specifying the type of each configuration value/dimension: 0=cartesian value, 1=2pi-cyclic value, 2=quaternion value. e.g. a configuration representing 3D poses should use a types argument [0 0 0 2 2 2 2], a configuration representing revolute and cyclic joints should use a types argument [1 1 1 ...]
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="distance" type="float">
-                <description>
-                    the distance between the two configurations
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="path" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
-
-
-
-    <method name="getPathInterpolatedConfig" func="sim.getPathInterpolatedConfig" lang="python,lua">
-        <description>
-            Returns an interpolated configuration from a path
-        </description>
-        <params>
-            <param name="path" type="float[]">
-                <description>
-                    the path, specified in row-major order, e.g. a path containing two 3D poses (position+quaternion) would be [x1 y1 z1 qx1 qy1 qz1 qw1 x2 y2 z2 qx2 qy2 qz2 qw2]
-                </description>
-            </param>
-            <param name="pathLengths" type="float[]">
-                <description>
-                    the lengths of a path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path). See also
-                    <a href="simGetPathLengths.htm"> sim.getPathLengths </a>
-                    .
-                </description>
-            </param>
-            <param name="t" type="float">
-                <description>
-                    the distance from the beginning of the path, where the interpolation point should be picked from
-                </description>
-            </param>
-            <param name="method" type="map" default="{type = 'linear', strength = 1.0, forceOpen = false}">
-                <description>
-                    an optional map specifying the type of interpolation (linear or quadraticBezier), whether the path should be considered as open, even if the first and last path points overlap, and the bezier strength (0.05-1.0)
-                </description>
-            </param>
-            <param name="types" type="int[]" default="nil">
-                <description>
-                    an optional array specifying the type of each configuration value/dimension: 0=cartesian value, 1=2pi-cyclic value, 2=quaternion value. e.g. a configuration representing 3D poses should use a types argument [0 0 0 2 2 2 2], a configuration representing revolute and cyclic joints should use a types argument [1 1 1 ...]
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="config" type="float[]">
-                <description>
-                    the interpolated path configuration
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="path" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
-
-
-
-    <method name="getPathLengths" func="sim.getPathLengths" lang="python,lua">
-        <description>
-            Returns the lengths of a path in 1, 2 or 3D Cartesian space, even if more coordinates are
-            provided. Each path point will have a corresponding length value (taken as the distance from the
-            path's first point, along the path)
-        </description>
-        <params>
-            <param name="path" type="float[]">
-                <description>
-                    the path, specified in row-major order, e.g. a path containing two 3D poses (position+quaternion) would be [x1 y1 z1 qx1 qy1 qz1 qw1 x2 y2 z2 qx2 qy2 qz2 qw2]
-                </description>
-            </param>
-            <param name="dof" type="int">
-                <description>
-                    the size or dimension of path points, e.g. in case of a 3D pose, this would be 7 (however only the first 3 dimensions would be taken into account)
-                </description>
-            </param>
-            <param name="distCallback" type="func" default="nil">
-                <description>
-                    an optional function that takes as input two configurations, and returns the calculated distance between them. See also
-                    <a href="simGetConfigDistance.htm"> sim.getConfigDistance </a>
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="pathLengths" type="float[]">
-                <description>
-                    the lengths corresponding to each path point
-                </description>
-            </param>
-            <param name="totalLength" type="float">
-                <description>
-                    the total length of the path
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="path" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
-
-
-
-    <method name="resamplePath" func="sim.resamplePath" lang="python,lua">
-        <description>
-            Returns a resampled path
-        </description>
-        <params>
-            <param name="path" type="float[]">
-                <description>
-                    path, specified in row-major order, e.g. a path containing two 3D poses (position+quaternion) would be [x1 y1 z1 qx1 qy1 qz1 qw1 x2 y2 z2 qx2 qy2 qz2 qw2]
-                </description>
-            </param>
-            <param name="pathLengths" type="float[]">
-                <description>
-                    lengths of a path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path). See also
-                    <a href="simGetPathLengths.htm"> sim.getPathLengths </a>
-                    .
-                </description>
-            </param>
-            <param name="finalConfigCnt" type="int">
-                <description>
-                    number of points or configurations the resampled path should contain
-                </description>
-            </param>
-            <param name="method" type="map" default="{type = 'linear', strength = 1.0, forceOpen = false}">
-                <description>
-                    optional map specifying the type of interpolation (linear or quadraticBezier), and whether the path should be considered as open, even if the first and last path points overlap, and the bezier strength (0.05-1.0)
-                </description>
-            </param>
-            <param name="types" type="int[]" default="nil">
-                <description>
-                    optional array specifying the type of each configuration value/dimension: 0=cartesian value, 1=2pi-cyclic value, 2=quaternion value. e.g. a configuration representing 3D poses should use a types argument [0 0 0 2 2 2 2], a configuration representing revolute and cyclic joints should use a types argument [1 1 1 ...]
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="outputPath" type="float[]">
-                <description>
-                    the resampled path
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="path" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
 <object-class name="drawingObject" superclass="object"><property name="appendColors" type="floatarray" />
     <property name="appendPoints" type="floatarray" />
     <property name="appendQuaternions" type="floatarray" />
     <property name="colors" type="floatarray" />
     <property name="cyclic" type="bool" />
+    <property name="itemType" type="string" />
     <property name="maxCnt" type="int" />
     <property name="overlay" type="bool" />
     <property name="parent" type="handle" handle-type="sceneObject" writable="false" constant="true" label="Parent handle" start-support="2" start-deprecated="0" end-support="0" />
@@ -10563,14 +11144,13 @@
     <property name="points" type="floatarray" />
     <property name="quaternions" type="floatarray" />
     <property name="size" type="float" />
-    <property name="type" type="string" />
   </object-class><object-class name="dummy" superclass="sceneObject"><property name="assemblyTag" type="string" label="Assembly tag" start-support="2" start-deprecated="0" end-support="0" />
     <property name="color" type="group" readable="false" writable="false" silent="true" constant="true" start-support="2" start-deprecated="0" end-support="0" />
     <property name="color.diffuse" type="color" label="Diffuse color" start-support="2" start-deprecated="0" end-support="0" />
     <property name="color.emission" type="color" label="Emission color" start-support="2" start-deprecated="0" end-support="0" />
     <property name="color.specular" type="color" label="Specular color" start-support="2" start-deprecated="0" end-support="0" />
     <property name="dummy" type="group" readable="false" writable="false" silent="true" constant="true" start-support="2" start-deprecated="0" end-support="0" />
-    <property name="dummy.type" type="string" label="Type" start-support="2" start-deprecated="0" end-support="0">
+    <property name="dummy.type" type="string" enum="dummyType" label="Type" start-support="2" start-deprecated="0" end-support="0">
       <description>Dummy type</description>
     </property>
     <property name="dummySize" type="float" deprecated="true" start-support="1" start-deprecated="2" end-support="2" />
