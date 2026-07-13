@@ -17,12 +17,6 @@ function sysCall_init()
     addOnDir = lfsx.dirname(sim.self.addOnPath)
     log('addOnDir = %s', addOnDir)
 
-    local shapePath = lfsx.pathjoin(addOnDir, 'shape.simmodel.xml')
-    log('shapePath = %s', shapePath)
-    local shape = sim.scene:loadModel(shapePath)
-    log('shape = %s', shape)
-    log('shape.meshes = %s', shape.meshes)
-
     allHandles = {
         sim.app,
         sim.scene,
@@ -36,13 +30,13 @@ function sysCall_init()
         sim.scene:createObject{type = 'shape', mesh = {}},
         sim.scene:createObject{type = 'script'},
         sim.scene:createObject{type = 'forceSensor'},
-        sim.scene:loadModel(lfsx.pathjoin(addOnDir, 'graph.simmodel.xml')), --sim.scene:createObject{type = 'graph'},
+        sim.scene:createObject{type = 'graph'},
         sim.scene:createObject{type = 'light'},
         sim.scene:createObject{type = 'ocTree'},
         sim.scene:createObject{type = 'pointCloud'},
         sim.scene:createObject{type = 'proximitySensor'},
         sim.scene:createObject{type = 'visionSensor'},
-        sim.scene:loadModel(lfsx.pathjoin(addOnDir, 'shape.simmodel.xml')).meshes[1], --sim.scene:createObject{type = 'shape', mesh = {texture = {resolution = {2, 2}, image = string.rep('\x00', 3 * 4), rgba = false}}}.meshes[1],
+        sim.scene:createObject{type = 'shape', mesh = {texture = {resolution = {2, 2}, image = string.rep('\x00', 3 * 4), rgba = false}}}.meshes[1],
     }
 
     local function setSuperClass(t, superClass)
@@ -217,7 +211,7 @@ function sysCall_init()
             table.insert(classNode.children, namespaceNode)
         end
     end
-    local attrOrder = {
+    local attrsOrder = {
         'name',
         'type',
         'handle-type',
@@ -235,7 +229,7 @@ function sysCall_init()
     }
     local file = io.open(objectsPropertiesXML, 'w')
     if file then
-        file:write(string.renderxml(classesNode, attrOrder))
+        file:write(string.renderxml(classesNode, {attrsOrder = attrsOrder}))
         file:close()
     else
         print('Error: Could not open output file ' .. objectsPropertiesXML)
@@ -271,9 +265,13 @@ function sysCall_init()
         end
         table.insert(enumsNode.children, enumNode)
     end
+    local attrsOrder = {
+        'name',
+        'value',
+    }
     local file = io.open(enumsXML, 'w')
     if file then
-        file:write(string.renderxml(enumsNode, attrOrder))
+        file:write(string.renderxml(enumsNode, {attrsOrder = attrsOrder}))
         file:close()
     else
         print('Error: Could not open output file ' .. enumsXML)
