@@ -4078,6 +4078,7 @@
                         optional map:
                         <ul>
                             <li> undecorated (bool, defaults to false): an undecorated message is displayed</li>
+                            <li> onlyTerminal (bool, defaults to false): the message is displayed only in the terminal</li>
                             <li> once (bool, defaults to false): subsequent calls with the same message are ignored</li>
                         </ul>
                     </description>
@@ -4109,6 +4110,7 @@
                         optional map:
                         <ul>
                             <li> undecorated (bool, defaults to false): an undecorated message is displayed</li>
+                            <li> onlyTerminal (bool, defaults to false): the message is displayed only in the terminal</li>
                             <li> once (bool, defaults to false): subsequent calls with the same message are ignored</li>
                         </ul>
                     </description>
@@ -4140,6 +4142,7 @@
                         optional map:
                         <ul>
                             <li> undecorated (bool, defaults to false): an undecorated message is displayed</li>
+                            <li> onlyTerminal (bool, defaults to false): the message is displayed only in the terminal</li>
                             <li> once (bool, defaults to false): subsequent calls with the same message are ignored</li>
                         </ul>
                     </description>
@@ -4391,14 +4394,17 @@
                                             <li>frameOrigin (pose): the pose of the shape's frame</li>
                                             <li>texture (map/dict): holds parameters for an optional texture:
                                                 <ul>
-                                                    <li>resolution (int[2]): texture resolution</li>
                                                     <li>image (buffer): texture specified as rgb or rgba</li>
-                                                    <li>rgba (bool): whether the texture is specified as rgba or rgb</li>
-                                                    <li>coordinates (matrix 2 * m): texture coordinates</li>
-                                                    <li>interpolate (bool): whether adjecent texture pixels are interpolated</li>
-                                                    <li>decal (bool): whether the texture is applied as decal</li>
-                                                    <li>horizFlip (bool): whether the texture is horizontally flipped</li>
-                                                    <li>vertFlip (bool): whether the texture is vertically flipped</li>
+                                                    <li>resolution (int[2]): texture resolution</li>
+                                                    <li>scalingUV (float[2], defaults to [1.0, 1.0]): texture scaling along the U or V direction</li>
+                                                    <li>repeatU (bool, defaults to false): repeats the texture along the U direction</li>
+                                                    <li>repeatV (bool, defaults to false): repeats the texture along the V direction</li>
+                                                    <li>interpolate (bool, defaults to false): adjacent pixels are interpolated</li>
+                                                    <li>decal (bool, defaults to false): decal apply mode</li>
+                                                    <li>flipH (bool, defaults to false): flips the texture horizontally</li>
+                                                    <li>flipV (bool, defaults to false): flips the texture vertically</li>
+                                                    <li>pose (pose, defaults to the identify pose): pose of the texture in relation to the mesh</li>
+                                                    <li>coordinates (matrix, defaults to nil): texture coordinates as a 2 * n matrix, where n is the number of vertex indices</li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -5675,6 +5681,50 @@
 
 
     <object-class name="mesh" superclass="object">
+        <method name="texture.set" func="sim.callMethod" lang="python,lua">
+            <description>
+                Sets a texture
+            </description>
+            <params>
+                <param name="image" type="buffer">
+                    <description>
+                        RGB or RGBA texture/image
+                    </description>
+                </param>
+                <param name="resolution" type="int[2]">
+                    <description>
+                        texture resolution
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>scalingUV (float[2], defaults to [1.0, 1.0]): texture scaling along the U or V direction</li>
+                            <li>repeatU (bool, defaults to false): repeats the texture along the U direction</li>
+                            <li>repeatV (bool, defaults to false): repeats the texture along the V direction</li>
+                            <li>interpolate (bool, defaults to false): adjacent pixels are interpolated</li>
+                            <li>decal (bool, defaults to false): decal apply mode</li>
+                            <li>flipH (bool, defaults to false): flips the texture horizontally</li>
+                            <li>flipV (bool, defaults to false): flips the texture vertically</li>
+                            <li>pose (pose, defaults to the identify pose): pose of the texture in relation to the mesh</li>
+                            <li>coordinates (matrix, defaults to nil): texture coordinates as a 2 * n matrix, where n is the number of vertex indices</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <categories>
+                <category name="shape" />
+                <category name="texture" />
+            </categories>
+            <see-also>
+                <function-ref name="mesh.texture:setData" />
+                <property-ref name="mesh.texture.data" />
+            </see-also>
+        </method>
+        
+        
+        
         <method name="texture.setData" func="sim.callMethod" lang="python,lua">
             <description>
                 Overwrites a portion of the texture
@@ -5703,6 +5753,7 @@
             </categories>
             <see-also>
                 <function-ref name="mesh.texture:getData" />
+                <function-ref name="mesh.texture:set" />
                 <property-ref name="mesh.texture.data" />
             </see-also>
         </method>
@@ -6788,14 +6839,17 @@
                                             <li>frameOrigin (pose): the pose of the shape's frame</li>
                                             <li>texture (map/dict): holds parameters for an optional texture:
                                                 <ul>
-                                                    <li>resolution (int[2]): texture resolution</li>
                                                     <li>image (buffer): texture specified as rgb or rgba</li>
-                                                    <li>rgba (bool): whether the texture is specified as rgba or rgb</li>
-                                                    <li>coordinates (matrix 2 * m): texture coordinates</li>
-                                                    <li>interpolate (bool): whether adjecent texture pixels are interpolated</li>
-                                                    <li>decal (bool): whether the texture is applied as decal</li>
-                                                    <li>horizFlip (bool): whether the texture is horizontally flipped</li>
-                                                    <li>vertFlip (bool): whether the texture is vertically flipped</li>
+                                                    <li>resolution (int[2]): texture resolution</li>
+                                                    <li>scalingUV (float[2], defaults to [1.0, 1.0]): texture scaling along the U or V direction</li>
+                                                    <li>repeatU (bool, defaults to false): repeats the texture along the U direction</li>
+                                                    <li>repeatV (bool, defaults to false): repeats the texture along the V direction</li>
+                                                    <li>interpolate (bool, defaults to false): adjacent pixels are interpolated</li>
+                                                    <li>decal (bool, defaults to false): decal apply mode</li>
+                                                    <li>flipH (bool, defaults to false): flips the texture horizontally</li>
+                                                    <li>flipV (bool, defaults to false): flips the texture vertically</li>
+                                                    <li>pose (pose, defaults to the identify pose): pose of the texture in relation to the mesh</li>
+                                                    <li>coordinates (matrix, defaults to nil): texture coordinates as a 2 * n matrix, where n is the number of vertex indices</li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -8150,17 +8204,13 @@
                         force to add
                     </description>
                 </param>
-                <param name="offset" type="vector3" default="{0.0, 0.0, 0.0}">
-                    <description>
-                        optional offset (relative to the shape center of mass) where to apply the force: induces a torque when non-zero
-                    </description>
-                </param>
                 <param name="options" type="map" default="{}">
                     <description>
                         optional map:
                         <ul>
                             <li> reset (bool, defaults to false): clears cumulative forces before applying the new force</li>
                             <li> relative (bool, defaults to false): applies the force/offset relative to the shape's reference frame axes, otherwise relative to the world</li>
+                            <li> offset (vector3, defaults to [0.0, 0.0, 0.0]): offset (relative to the shape center of mass) where to apply the force: induces a torque when non-zero</li>
                         </ul>
                     </description>
                 </param>
@@ -9514,59 +9564,4 @@
             </see-also>
         </method>
     </object-class> <!-- joint -->
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    <method name="getClosestPosOnPath" func="sim.getClosestPosOnPath" lang="python,lua">
-        <description>
-            Returns the position or distance along a path that is closest to a specified point in space
-        </description>
-        <params>
-            <param name="path" type="float[]">
-                <description>
-                    path, specified in row-major order, with x/y/z values for each path point
-                </description>
-            </param>
-            <param name="pathLengths" type="float[]">
-                <description>
-                    lengths of a path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path). See also
-                    <a href="simGetPathLengths.htm"> sim.getPathLengths </a>.
-                </description>
-            </param>
-            <param name="absPt" type="float[3]">
-                <description>
-                    point in 3D space
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="posAlongPath" type="float">
-                <description>
-                    position/distance along the path
-                </description>
-            </param>
-        </returns>
-        <categories>
-        <category name="path" />
-            </categories>
-        <see-also>
-            <link href="../apiFunctions.htm#paths" label=" path related functions " />
-        </see-also>
-    </method>
 </object-classes>
