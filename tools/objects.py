@@ -84,6 +84,9 @@ class PropertyInfo:
         if self.type == 'method': self.ignored = True # temp workaround
 
         if support_node := prop_node.find('support'):
+            self.start_support = support_node.attrib['start']
+            self.end_support = support_node.attrib['end']
+            self.start_deprecated = support_node.attrib['start-deprecated']
             if replaced_by_node := support_node.find('replaced-by'):
                 self.replaced_by = replaced_by_node.attrib.get('name')
             if migrate_to_node := support_node.find('migrate-to'):
