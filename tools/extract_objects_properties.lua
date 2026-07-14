@@ -160,7 +160,28 @@ function sysCall_init()
                 },
                 children = {},
             }
-            flgs = {}
+
+            if classInfo[className].properties[propertyName].handleType then
+                local handleNode = {
+                    tag = 'handle',
+                    attrs = {type = classInfo[className].properties[propertyName].handleType},
+                }
+                table.insert(propertyNode.children, handleNode)
+            end
+
+            if classInfo[className].properties[propertyName].enum then
+                local enumNode = {
+                    tag = 'enum',
+                    attrs = {name = classInfo[className].properties[propertyName].enum},
+                }
+                table.insert(propertyNode.children, enumNode)
+            end
+
+            local flagsNode = {
+                tag = 'flags',
+                attrs = {},
+                children = {},
+            }
             local flgs_def = {
                 readable = true,
                 writable = true,
@@ -171,20 +192,21 @@ function sysCall_init()
             }
             for flg, v in pairs(pinfo.flags or {}) do
                 if v ~= flgs_def[flg] then
-                    table.insert(flgs, '"' .. flg .. '": ' .. (v and 'true' or 'false'))
-                    propertyNode.attrs[flg] = (v and 'true' or 'false')
+                    table.insert(flagsNode.children, {tag = 'flag', attrs = {name = flg, value = v}})
                 end
             end
-            if (classInfo[className].properties[propertyName].handleType or '') ~= '' then
-                propertyNode.attrs['handle-type'] = classInfo[className].properties[propertyName].handleType
-            end
+            table.insert(propertyNode.children, flagsNode)
+
             if (classInfo[className].properties[propertyName].label or '') ~= '' then
-                propertyNode.attrs.label = classInfo[className].properties[propertyName].label
+                local labelNode = {
+                    tag = 'label',
+                    children = {
+                        classInfo[className].properties[propertyName].label,
+                    }
+                }
+                table.insert(propertyNode.children, labelNode)
             end
-            for _, attrName in ipairs{'enum', 'start-support', 'start-deprecated', 'end-support'} do
-                local infoName = attrName:gsub('%-(.)', string.upper)
-                propertyNode.attrs[attrName] = classInfo[className].properties[propertyName][infoName]
-            end
+
             if (classInfo[className].properties[propertyName].description or '') ~= '' then
                 local descrNode = {
                     tag = 'description',
@@ -193,6 +215,49 @@ function sysCall_init()
                 }
                 table.insert(propertyNode.children, descrNode)
             end
+
+            local supportNode = {
+                tag = 'support',
+                attrs = {
+                    ['start'] = classInfo[className].properties[propertyName].startSupport,
+                    ['end'] = classInfo[className].properties[propertyName].endSupport,
+                    ['start-deprecated'] = classInfo[className].properties[propertyName].startDeprecated,
+                },
+                children = {},
+            }
+            if classInfo[className].properties[propertyName].replacedBy then
+                table.insert(supportNode.children, {
+                    tag = 'replaced-by',
+                    attrs = {name = classInfo[className].properties[propertyName].replacedBy},
+                })
+            end
+            if classInfo[className].properties[propertyName].migrateTo then
+                table.insert(supportNode.children, {
+                    tag = 'migrate-to',
+                    attrs = {name = classInfo[className].properties[propertyName].migrateTo},
+                })
+            end
+            if classInfo[className].properties[propertyName].supersedes then
+                table.insert(supportNode.children, {
+                    tag = 'supersedes',
+                    attrs = {name = classInfo[className].properties[propertyName].supersedes},
+                })
+            end
+            table.insert(propertyNode.children, supportNode)
+
+            if classInfo[className].properties[propertyName].seeAlso then
+                local seeAlsoNode = {
+                    tag = 'see-also',
+                    children = {
+                        {
+                            tag = 'ref',
+                            attrs = {name = classInfo[className].properties[propertyName].seeAlso},
+                        }
+                    },
+                }
+                table.insert(propertyNode.children, seeAlsoNode)
+            end
+
             table.insert(classNode.children, propertyNode)
         end
 
@@ -223,9 +288,15 @@ function sysCall_init()
         'constant',
         'enum',
         'label',
+        'start',
         'start-support',
         'start-deprecated',
+        'end',
         'end-support',
+        'replaced-by',
+        'migrate-to',
+        'supersedes',
+        'see-also',
     }
     local file = io.open(objectsPropertiesXML, 'w')
     if file then
