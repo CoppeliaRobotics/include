@@ -37,6 +37,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="Motion" />
             </categories>
@@ -56,6 +59,9 @@
             </description>
             <params>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="Motion" />
             </categories>
@@ -86,6 +92,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="Motion" />
             </categories>
@@ -110,6 +119,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="Motion" />
             </categories>
@@ -154,6 +166,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="Motion" />
             </categories>
@@ -172,6 +187,9 @@
             </description>
             <params>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="Motion" />
             </categories>
@@ -202,6 +220,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="Motion" />
             </categories>
@@ -226,6 +247,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="Motion" />
             </categories>
@@ -245,6 +269,9 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="blocking" />
                 <category name="Motion" />
@@ -295,6 +322,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="Motion" />
             </categories>
@@ -328,6 +358,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="Motion" />
             </categories>
@@ -352,6 +385,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="Motion" />
             </categories>
@@ -367,6 +403,9 @@
             </description>
             <params>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="Motion" />
             </categories>
@@ -386,6 +425,9 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="blocking" />
                 <category name="Motion" />
@@ -452,6 +494,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="Motion" />
             </categories>
@@ -484,6 +529,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="Motion" />
             </categories>
@@ -508,6 +556,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="Motion" />
             </categories>
@@ -523,6 +574,9 @@
             </description>
             <params>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="Motion" />
             </categories>
@@ -567,6 +621,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="Motion" />
             </categories>
@@ -590,6 +647,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="Motion" />
             </categories>
@@ -607,6 +667,9 @@
             </description>
             <params>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="Motion" />
             </categories>
@@ -633,6 +696,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -654,6 +720,9 @@
                     <description>text color</description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -667,6 +736,9 @@
             <description>
                 Clears the console
             </description>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -693,6 +765,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -755,6 +830,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -789,6 +867,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -852,6 +933,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -917,6 +1001,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -944,6 +1031,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -970,6 +1060,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -994,6 +1087,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1017,6 +1113,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1035,6 +1134,9 @@
             </description>
             <params>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1060,6 +1162,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1082,6 +1187,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1101,6 +1209,9 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1118,6 +1229,9 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1150,6 +1264,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1187,6 +1304,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1214,6 +1334,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1245,6 +1368,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1276,6 +1402,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1303,6 +1432,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1320,6 +1452,9 @@
             </description>
             <params>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1355,6 +1490,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1421,6 +1559,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1436,6 +1577,9 @@
             </description>
             <params>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1450,6 +1594,9 @@
             </description>
             <params>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1464,6 +1611,9 @@
             </description>
             <params>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1528,6 +1678,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1592,6 +1745,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1641,6 +1797,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1654,6 +1813,9 @@
             </description>
             <params>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1668,6 +1830,9 @@
             </description>
             <params>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -1699,6 +1864,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="transformation" />
             </categories>
@@ -1730,6 +1898,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="transformation" />
             </categories>
@@ -1759,6 +1930,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="transformation" />
             </categories>
@@ -1790,6 +1964,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="transformation" />
             </categories>
@@ -1819,6 +1996,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="transformation" />
             </categories>
@@ -1850,6 +2030,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="transformation" />
             </categories>
@@ -1877,6 +2060,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.isHandle" />
+            </supersedes>
             <categories>
                 <category name="other" />
             </categories>
@@ -1912,6 +2099,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getBoolProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -1943,6 +2134,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setBoolProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -1980,6 +2175,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getIntProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2011,6 +2210,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setIntProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2048,6 +2251,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2080,6 +2286,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2118,6 +2327,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getLongProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2149,6 +2362,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setLongProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2186,6 +2403,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2217,6 +2437,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2254,6 +2477,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getFloatProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2285,6 +2512,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setFloatProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2322,6 +2553,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getStringProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2353,6 +2588,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setStringProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2390,6 +2629,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getBufferProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2422,6 +2665,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setBufferProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2460,6 +2707,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getIntArray2Property" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2491,6 +2742,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setIntArray2Property" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2528,6 +2783,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2559,6 +2817,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2596,6 +2857,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getVector3Property" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2627,6 +2892,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setVector3Property" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2664,6 +2933,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getQuaternionProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2695,6 +2968,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setQuaternionProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2732,6 +3009,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getPoseProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2763,6 +3044,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setPoseProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2800,6 +3085,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getColorProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2831,6 +3120,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setColorProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2868,6 +3161,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getFloatArrayProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2899,6 +3196,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setFloatArrayProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2936,6 +3237,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getIntArrayProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -2967,6 +3272,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setIntArrayProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -3004,6 +3313,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -3035,6 +3347,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -3072,6 +3387,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -3103,6 +3421,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -3140,6 +3461,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -3171,6 +3495,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -3208,6 +3535,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -3240,6 +3571,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -3272,6 +3607,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getProperties" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -3294,6 +3633,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setProperties" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -3337,6 +3680,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getPropertyName" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -3386,6 +3733,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getPropertyInfo" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -3422,6 +3773,9 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -3454,6 +3808,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getPropertiesInfos" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -3482,6 +3840,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.removeProperty" />
+            </supersedes>
             <categories>
                 <category name="property" />
             </categories>
@@ -3554,6 +3916,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="other" />
             </categories>
@@ -3583,6 +3948,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getPluginInfo" />
+            </supersedes>
             <categories>
                 <category name="other" />
             </categories>
@@ -3616,6 +3985,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="simSetPluginInfo" />
+            </supersedes>
             <categories>
                 <category name="other" />
             </categories>
@@ -3649,6 +4022,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.pushUserEvent" />
+            </supersedes>
             <categories>
                 <category name="messaging" />
             </categories>
@@ -3671,6 +4048,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getGenesisEvents" />
+            </supersedes>
             <categories>
                 <category name="messaging" />
             </categories>
@@ -3713,6 +4094,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="customization" />
                 <category name="creation" />
@@ -3738,6 +4122,9 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="other" />
             </categories>
@@ -3760,6 +4147,9 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="other" />
             </categories>
@@ -3795,6 +4185,9 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="other" />
             </categories>
@@ -3837,6 +4230,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.scheduleExecution" />
+            </supersedes>
             <categories>
                 <category name="other" />
             </categories>
@@ -3866,6 +4263,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.cancelScheduledExecution" />
+            </supersedes>
             <categories>
                 <category name="other" />
             </categories>
@@ -3894,6 +4295,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.packTable" />
+            </supersedes>
             <categories>
                 <category name="packing" />
             </categories>
@@ -3923,6 +4328,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.unpackTable" />
+            </supersedes>
             <categories>
                 <category name="packing" />
             </categories>
@@ -3961,6 +4370,15 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.packDoubleTable" />
+                <item name="sim.packFloatTable" />
+                <item name="sim.packInt32Table" />
+                <item name="sim.packUInt16Table" />
+                <item name="sim.packUInt32Table" />
+                <item name="sim.packUInt8Table" />
+            </supersedes>
             <categories>
                 <category name="packing" />
             </categories>
@@ -4000,6 +4418,15 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.unpackDoubleTable" />
+                <item name="sim.unpackFloatTable" />
+                <item name="sim.unpackInt32Table" />
+                <item name="sim.unpackUInt16Table" />
+                <item name="sim.unpackUInt32Table" />
+                <item name="sim.unpackUInt8Table" />
+            </supersedes>
             <categories>
                 <category name="packing" />
             </categories>
@@ -4028,6 +4455,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="packing" />
             </categories>
@@ -4057,6 +4487,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="packing" />
             </categories>
@@ -4083,6 +4516,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.systemSemaphore" />
+            </supersedes>
             <categories>
                 <category name="messaging" />
                 <category name="blocking" />
@@ -4098,6 +4535,10 @@
             <description>
                 Triggers a quit signal for the application to end
             </description>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.quitSimulator" />
+            </supersedes>
             <categories>
                 <category name="other" />
             </categories>
@@ -4126,6 +4567,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.addLog" />
+            </supersedes>
             <categories>
                 <category name="messaging" />
             </categories>
@@ -4158,6 +4603,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.addLog" />
+            </supersedes>
             <categories>
                 <category name="messaging" />
             </categories>
@@ -4190,6 +4639,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.addLog" />
+            </supersedes>
             <categories>
                 <category name="messaging" />
             </categories>
@@ -4607,6 +5060,21 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.createDummy" />
+                <item name="sim.createScript" />
+                <item name="sim.createForceSensor" />
+                <item name="sim.createHeightfieldShape" />
+                <item name="sim.createJoint" />
+                <item name="sim.createOctree" />
+                <item name="sim.createPath" />
+                <item name="sim.createPointCloud" />
+                <item name="sim.createPrimitiveShape" />
+                <item name="sim.createProximitySensor" />
+                <item name="sim.createShape" />
+                <item name="sim.createVisionSensor" />
+            </supersedes>
             <categories>
                 <category name="collection" />
                 <category name="detachedScript" />
@@ -4660,6 +5128,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.loadScene" />
+            </supersedes>
             <categories>
             <category name="file" />
                 </categories>
@@ -4693,6 +5165,10 @@
                     </description>
                 </param>
            </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.loadScene" />
+            </supersedes>
             <categories>
             <category name="file" />
                 </categories>
@@ -4737,6 +5213,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="file" />
                 <category name="model" />
@@ -4782,6 +5261,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="file" />
                 <category name="model" />
@@ -4815,12 +5297,16 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getObjects" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
                 <function-ref name="sceneObject:getDescendants" />
                 <function-ref name="sceneObject:getAncestors" />
-                <function-ref name="sceneObject:getDescendants" />
+                <function-ref name="scene:getobject" />
             </see-also>
         </method>
 
@@ -4845,6 +5331,11 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.removeObjects" />
+                <item name="sim.removeModel" />
+            </supersedes>
             <categories>
                 <category name="sceneObject" />
                 <category name="collection" />
@@ -4869,6 +5360,10 @@
             <description>
                 Handles the message pump explicitly. Rarely needed
             </description>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.handleExtCalls" />
+            </supersedes>
             <categories>
                 <category name="thread" />
             </categories>
@@ -4891,6 +5386,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.handleSandboxScript" />
+            </supersedes>
             <categories>
                 <category name="scriptRelated" />
                 <category name="detachedScript" />
@@ -4923,6 +5422,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.handleAddOnScripts" />
+            </supersedes>
             <categories>
                 <category name="scriptRelated" />
                 <category name="detachedScript" />
@@ -4964,6 +5467,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.loadImage" />
+            </supersedes>
             <categories>
                 <category name="texture" />
                 <category name="importExport" />
@@ -4974,6 +5481,8 @@
                 <function-ref name="app:transformImage" />
                 <function-ref name="app:transformBuffer" />
                 <function-ref name="visionSensor:setImage" />
+                <function-ref name="mesh.texture:set" />
+                <property-ref name="mesh.texture.image" />
             </see-also>
         </method>
 
@@ -5007,6 +5516,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.loadImage" />
+            </supersedes>
             <categories>
                 <category name="texture" />
                 <category name="importExport" />
@@ -5055,6 +5568,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.saveImage" />
+            </supersedes>
             <categories>
                 <category name="texture" />
                 <category name="importExport" />
@@ -5090,6 +5607,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.saveImage" />
+            </supersedes>
             <categories>
                 <category name="texture" />
                 <category name="importExport" />
@@ -5155,6 +5676,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.transformImage" />
+            </supersedes>
             <categories>
                 <category name="texture" />
                 <category name="packing" />
@@ -5206,6 +5731,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.transformBuffer" />
+            </supersedes>
             <categories>
                 <category name="packing" />
                 <category name="texture" />
@@ -5810,6 +6339,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.moduleEntry" />
+            </supersedes>
             <categories>
                 <category name="other" />
             </categories>
@@ -5828,6 +6361,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.broadcastMsg" />
+            </supersedes>
             <categories>
                 <category name="scriptRelated" />
                 <category name="messaging" />
@@ -5856,6 +6393,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setEventFilters" />
+            </supersedes>
             <categories>
                 <category name="scriptRelated" />
                 <category name="messaging" />
@@ -5885,6 +6426,10 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.wait" />
+            </supersedes>
             <categories>
                 <category name="blocking" />
             </categories>
@@ -5921,6 +6466,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="main" />
             </categories>
@@ -5938,6 +6486,10 @@
                 Triggers the next simulation step, when in stepping operation mode and running in a thread. When simulation is running, step()
                 only returns once the simulation time has changed
             </description>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.step" />
+            </supersedes>
             <categories>
                 <category name="scriptRelated" />
                 <category name="thread" />
@@ -5955,6 +6507,9 @@
             <description>
                 Identical to step()
             </description>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="scriptRelated" />
                 <category name="thread" />
@@ -5986,6 +6541,10 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setStepping" />
+            </supersedes>
             <categories>
                 <category name="scriptRelated" />
                 <category name="thread" />
@@ -6013,6 +6572,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="scriptRelated" />
                 <category name="thread" />
@@ -6036,6 +6598,11 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.acquireLock" />
+                <item name="sim.releaseLock" />
+            </supersedes>
             <categories>
                 <category name="scriptRelated" />
                 <category name="thread" />
@@ -6072,6 +6639,10 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.registerScriptFuncHook" />
+            </supersedes>
             <categories>
                 <category name="scriptRelated" />
             </categories>
@@ -6105,6 +6676,10 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.registerScriptFuncHook" />
+            </supersedes>
             <categories>
                 <category name="scriptRelated" />
             </categories>
@@ -6131,6 +6706,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="detachedScript" />
             </categories>
@@ -6169,6 +6747,11 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.callScriptFunction" />
+                <item name="simCallScriptFunctionEx" />
+            </supersedes>
             <categories>
                 <category name="script" />
                 <category name="scriptRelated" />
@@ -6193,6 +6776,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getScriptFunctions" />
+            </supersedes>
             <categories>
                 <category name="script" />
                 <category name="scriptRelated" />
@@ -6233,6 +6820,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.executeScriptString" />
+            </supersedes>
             <categories>
                 <category name="script" />
                 <category name="scriptRelated" />
@@ -6257,6 +6848,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getStackTraceback" />
+            </supersedes>
             <categories>
                 <category name="script" />
                 <category name="scriptRelated" />
@@ -6269,6 +6864,10 @@
             <description>
                 Initializes/reinitializes a script. Operates in an asynchronous way when called upon the calling script
             </description>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.initScript" />
+            </supersedes>
             <categories>
                 <category name="script" />
                 <category name="scriptRelated" />
@@ -6419,13 +7018,21 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setShapeTexture" />
+                <item name="sim.writeTexture" />
+                <item name="simApplyTexture" />
+                <item name="sim.createTexture" />
+            </supersedes>
             <categories>
                 <category name="shape" />
                 <category name="texture" />
             </categories>
             <see-also>
                 <function-ref name="mesh.texture:setData" />
-                <property-ref name="mesh.texture.data" />
+                <property-ref name="mesh.texture.image" />
+                <function-ref name="app:loadImage" />
             </see-also>
         </method>
         
@@ -6453,6 +7060,12 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setShapeTexture" />
+                <item name="sim.writeTexture" />
+                <item name="simApplyTexture" />
+            </supersedes>
             <categories>
                 <category name="shape" />
                 <category name="texture" />
@@ -6460,7 +7073,7 @@
             <see-also>
                 <function-ref name="mesh.texture:getData" />
                 <function-ref name="mesh.texture:set" />
-                <property-ref name="mesh.texture.data" />
+                <property-ref name="mesh.texture.image" />
             </see-also>
         </method>
         
@@ -6488,6 +7101,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.readTexture" />
+            </supersedes>
             <categories>
                 <category name="shape" />
                 <category name="texture" />
@@ -6762,6 +7379,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.changeEntityColor" />
+            </supersedes>
             <categories>
                 <category name="rendering" />
                 <category name="shape" />
@@ -6787,6 +7408,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.restoreEntityColor" />
+            </supersedes>
             <categories>
                 <category name="rendering" />
                 <category name="shape" />
@@ -6815,6 +7440,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.destroyCollection" />
+            </supersedes>
             <categories>
                 <category name="collection" />
             </categories>
@@ -6844,6 +7473,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.addItemToCollection" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -6872,6 +7505,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.addItemToCollection" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -6906,6 +7543,11 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.checkCollision" />
+                <item name="sim.checkCollisionEx" />
+            </supersedes>
             <categories>
                 <category name="collision" />
             </categories>
@@ -6965,6 +7607,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.checkDistance" />
+            </supersedes>
             <categories>
                 <category name="distance" />
             </categories>
@@ -7024,6 +7670,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getContactInfo" />
+            </supersedes>
             <categories>
                 <category name="dynamics" />
             </categories>
@@ -7057,6 +7707,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getObjectsInTree" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -7085,6 +7739,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.groupShapes" />
+            </supersedes>
             <categories>
                 <category name="shape" />
             </categories>
@@ -7116,6 +7774,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.groupShapes" />
+            </supersedes>
             <categories>
                 <category name="shape" />
             </categories>
@@ -7155,6 +7817,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getObjectFromUid" />
+            </supersedes>
             <categories>
                 <category name="main" />
             </categories>
@@ -7172,6 +7838,10 @@
                 scene image, and compared to a previously memorized scene image. Differences between both images are memorized.
                 A call to this function has no effect (and doesn't generate any error) when called during simulation or when in edit mode.
             </description>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.announceSceneContentChange" />
+            </supersedes>
             <categories>
                 <category name="other" />
             </categories>
@@ -7206,6 +7876,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getObject" />
+            </supersedes>
             <categories>
                 <category name="main" />
             </categories>
@@ -7230,6 +7904,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.saveScene" />
+            </supersedes>
             <categories>
                 <category name="file" />
             </categories>
@@ -7255,6 +7933,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.saveScene" />
+            </supersedes>
             <categories>
                 <category name="file" />
             </categories>
@@ -7272,6 +7954,10 @@
                 Closes the scene, and switches to another open scene. If there is no other open scene,
                 a new scene is created
             </description>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.closeScene" />
+            </supersedes>
             <categories>
                 <category name="file" />
             </categories>
@@ -7315,6 +8001,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.loadModel" />
+            </supersedes>
             <categories>
                 <category name="file" />
                 <category name="model" />
@@ -7362,6 +8052,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.loadModel" />
+            </supersedes>
             <categories>
                 <category name="file" />
                 <category name="model" />
@@ -7392,6 +8086,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getObjects" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -7421,6 +8119,11 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.removeObjects" />
+                <item name="sim.removeModel" />
+            </supersedes>
             <categories>
                 <category name="sceneObject" />
                 <category name="collection" />
@@ -7472,6 +8175,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.copyPasteObjects" />
+            </supersedes>
             <categories>
                 <category name="sceneObject" />
             </categories>
@@ -7506,6 +8213,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="scriptRelated" />
             </categories>
@@ -7539,6 +8249,11 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.handleSimulationScripts" />
+                <item name="sim.handleEmbeddedScripts" />
+            </supersedes>
             <categories>
                 <category name="scriptRelated" />
             </categories>
@@ -7957,6 +8672,21 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.createDummy" />
+                <item name="sim.createScript" />
+                <item name="sim.createForceSensor" />
+                <item name="sim.createHeightfieldShape" />
+                <item name="sim.createJoint" />
+                <item name="sim.createOctree" />
+                <item name="sim.createPath" />
+                <item name="sim.createPointCloud" />
+                <item name="sim.createPrimitiveShape" />
+                <item name="sim.createProximitySensor" />
+                <item name="sim.createShape" />
+                <item name="sim.createVisionSensor" />
+            </supersedes>
             <categories>
                 <category name="collection" />
                 <category name="detachedScript" />
@@ -7994,6 +8724,10 @@
             <description>
                 Requests a start of a simulation (or a resume of a paused simulation). Operation executes asynchronously
             </description>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.startSimulation" />
+            </supersedes>
             <categories>
                 <category name="simulation" />
             </categories>
@@ -8011,6 +8745,10 @@
             <description>
                 Requests a simulation stop. Operation executes asynchronously
             </description>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.stopSimulation" />
+            </supersedes>
             <categories>
                 <category name="simulation" />
             </categories>
@@ -8027,6 +8765,10 @@
             <description>
                 Requests a simulation pause. Operation executes asynchronously
             </description>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.pauseSimulation" />
+            </supersedes>
             <categories>
                 <category name="simulation" />
             </categories>
@@ -8052,6 +8794,10 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.handleDynamics" />
+            </supersedes>
             <categories>
                 <category name="dynamics" />
             </categories>
@@ -9496,6 +10242,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="customization" />
             </categories>
@@ -9523,6 +10272,9 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -9548,6 +10300,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="customization" />
             </categories>
@@ -9577,6 +10332,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="customization" />
             </categories>
@@ -9615,6 +10373,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.changeEntityColor" />
+            </supersedes>
             <categories>
                 <category name="rendering" />
                 <category name="shape" />
@@ -9640,6 +10402,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.restoreEntityColor" />
+            </supersedes>
             <categories>
                 <category name="rendering" />
                 <category name="shape" />
@@ -9679,6 +10445,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="main" />
             </categories>
@@ -9709,6 +10478,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.resetDynamicObject" />
+            </supersedes>
             <categories>
                 <category name="dynamics" />
             </categories>
@@ -9732,6 +10505,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.removeObjects" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -9756,6 +10533,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.removeModel" />
+            </supersedes>
             <categories>
                 <category name="sceneObject" />
             </categories>
@@ -9778,6 +10559,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.saveModel" />
+            </supersedes>
             <categories>
                 <category name="file" />
                 <category name="model" />
@@ -9802,6 +10587,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.saveModel" />
+            </supersedes>
             <categories>
                 <category name="file" />
                 <category name="model" />
@@ -9835,11 +10624,16 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getObjectsInTree" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
                 <function-ref name="sceneObject:getAncestors" />
                 <function-ref name="scene:getDescendants" />
+                <property-ref name="sceneObject.children" />
             </see-also>
         </method>
 
@@ -9867,10 +10661,14 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
                 <function-ref name="sceneObject:getDescendants" />
+                <property-ref name="sceneObject.parent" />
             </see-also>
         </method>
 
@@ -9897,6 +10695,9 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -9931,6 +10732,11 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.checkCollision" />
+                <item name="sim.checkCollisionEx" />
+            </supersedes>
             <categories>
                 <category name="collision" />
             </categories>
@@ -9989,6 +10795,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.checkDistance" />
+            </supersedes>
             <categories>
                 <category name="distance" />
             </categories>
@@ -10028,6 +10838,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getObjectAlias" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -10061,6 +10875,11 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getObjectPose" />
+                <item name="sim.getObjectMatrix" />
+            </supersedes>
             <categories>
                 <category name="transformation" />
             </categories>
@@ -10068,6 +10887,8 @@
                 <function-ref name="sceneObject:setPose" />
                 <function-ref name="sceneObject:getPosition" />
                 <function-ref name="sceneObject:getQuaternion" />
+                <property-ref name="sceneObject.pose" />
+                <property-ref name="sceneObject.worldPose" />
             </see-also>
         </method>
 
@@ -10098,6 +10919,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getObjectPosition" />
+            </supersedes>
             <categories>
                 <category name="transformation" />
             </categories>
@@ -10105,6 +10930,8 @@
                 <function-ref name="sceneObject:setPosition" />
                 <function-ref name="sceneObject:getPose" />
                 <function-ref name="sceneObject:getQuaternion" />
+                <property-ref name="sceneObject.position" />
+                <property-ref name="sceneObject.worldPosition" />
             </see-also>
         </method>
 
@@ -10135,6 +10962,11 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getObjectQuaternion" />
+                <item name="sim.getObjectOrientation" />
+            </supersedes>
             <categories>
                 <category name="transformation" />
             </categories>
@@ -10142,6 +10974,8 @@
                 <function-ref name="sceneObject:setQuaternion" />
                 <function-ref name="sceneObject:getPose" />
                 <function-ref name="sceneObject:getPosition" />
+                <property-ref name="sceneObject.quaternion" />
+                <property-ref name="sceneObject.worldQuaternion" />
             </see-also>
         </method>
 
@@ -10168,6 +11002,11 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setObjectPose" />
+                <item name="sim.setObjectMatrix" />
+            </supersedes>
             <categories>
                 <category name="transformation" />
             </categories>
@@ -10175,6 +11014,8 @@
                 <function-ref name="sceneObject:getPose" />
                 <function-ref name="sceneObject:setPosition" />
                 <function-ref name="sceneObject:setQuaternion" />
+                <property-ref name="sceneObject.pose" />
+                <property-ref name="sceneObject.worldPose" />
             </see-also>
         </method>
 
@@ -10201,6 +11042,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setObjectPosition" />
+            </supersedes>
             <categories>
                 <category name="transformation" />
             </categories>
@@ -10208,6 +11053,8 @@
                 <function-ref name="sceneObject:getPosition" />
                 <function-ref name="sceneObject:setPose" />
                 <function-ref name="sceneObject:setQuaternion" />
+                <property-ref name="sceneObject.position" />
+                <property-ref name="sceneObject.worldPosition" />
             </see-also>
         </method>
 
@@ -10234,6 +11081,11 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setObjectQuaternion" />
+                <item name="sim.setObjectOrientation" />
+            </supersedes>
             <categories>
                 <category name="transformation" />
             </categories>
@@ -10241,6 +11093,8 @@
                 <function-ref name="sceneObject:getQuaternion" />
                 <function-ref name="sceneObject:setPose" />
                 <function-ref name="sceneObject:setPosition" />
+                <property-ref name="sceneObject.quaternion" />
+                <property-ref name="sceneObject.worldQuaternion" />
             </see-also>
         </method>
 
@@ -10267,10 +11121,16 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setObjectParent" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
                 <link href="../assembly.htm" label="assembly operation" />
+                <property-ref name="sceneObject.parent" />
+                <property-ref name="sceneObject.children" />
             </see-also>
         </method>
 
@@ -10296,6 +11156,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.scaleObjects" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -10315,6 +11179,10 @@
                     <description>scaling factors along the object's x, y and z-axis</description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.scaleObject" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -11049,6 +11917,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.addDrawingObjectItem" />
+            </supersedes>
             <categories>
                 <category name="rendering" />
             </categories>
@@ -11066,6 +11938,10 @@
             <description>
                 Clears a marker
             </description>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.addDrawingObjectItem" />
+            </supersedes>
             <categories>
                 <category name="rendering" />
             </categories>
@@ -11086,6 +11962,10 @@
                         item-specific ids (one id per item to remove)
                     </description>
                 </param>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.addDrawingObjectItem" />
+            </supersedes>
             <categories>
                 <category name="rendering" />
             </categories>
@@ -11224,6 +12104,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getContactInfo" />
+            </supersedes>
             <categories>
                 <category name="dynamics" />
             </categories>
@@ -11247,6 +12131,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="rendering" />
             </categories>
@@ -11270,6 +12157,9 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
                 <category name="rendering" />
             </categories>
@@ -11294,6 +12184,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.ungroupShape" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -11319,6 +12213,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -11352,6 +12249,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.addForce" />
+            </supersedes>
             <categories>
                 <category name="dynamics" />
             </categories>
@@ -11382,6 +12283,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.addForceAndTorque" />
+            </supersedes>
             <categories>
                 <category name="dynamics" />
             </categories>
@@ -11405,6 +12310,10 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.computeMassAndInertia" />
+            </supersedes>
             <categories>
                 <category name="dynamics" />
             </categories>
@@ -11432,6 +12341,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setShapeInertia" />
+            </supersedes>
             <categories>
                 <category name="dynamics" />
             </categories>
@@ -11461,6 +12374,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getShapeInertia" />
+            </supersedes>
             <categories>
                 <category name="dynamics" />
             </categories>
@@ -11483,6 +12400,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.relocateShapeFrame" />
+            </supersedes>
             <categories>
                 <category name="transformation" />
             </categories>
@@ -11505,6 +12426,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.alignShapeBB" />
+            </supersedes>
             <categories>
                 <category name="transformation" />
             </categories>
@@ -12966,6 +13891,12 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.checkProximitySensor" />
+                <item name="sim.checkProximitySensorEx" />
+                <item name="sim.checkProximitySensorEx2" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -13007,6 +13938,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.handleProximitySensor" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -13021,6 +13956,10 @@
             <description>
                 Clears the detection state and visual feedback of this proximity sensor
             </description>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.resetProximitySensor" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -13338,10 +14277,16 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getVisionSensorDepth" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
                 <function-ref name="visionSensor:getImage" />
+                <property-ref name="visionSensor.depth" />
+                <property-ref name="visionSensor.packedDepth" />
             </see-also>
         </method>
 
@@ -13377,12 +14322,18 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getVisionSensorImg" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
                 <function-ref name="visionSensor:setImage" />
+                <function-ref name="camera:getImage" />
                 <function-ref name="visionSensor:getDepth" />
                 <function-ref name="app:saveImage" />
+                <property-ref name="visionSensor.image" />
             </see-also>
         </method>
 
@@ -13408,6 +14359,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setVisionSensorImg" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -13448,6 +14403,11 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.checkVisionSensor" />
+                <item name="sim.checkVisionSensorEx" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -13483,6 +14443,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.handleVisionSensor" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -13499,6 +14463,10 @@
             </description>
             <params>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.resetVisionSensor" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -13762,7 +14730,7 @@
     
 
     <object-class name="camera" superclass="sceneObject">
-        <method name="getData" func="sim.callMethod" lang="python,lua">
+        <method name="getImage" func="sim.callMethod" lang="python,lua">
             <description>
                 Returns similar data as the one acquired by the camera
             </description>
@@ -13797,6 +14765,9 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -13974,6 +14945,11 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.addGraphStream" />
+                <item name="sim.setGraphStreamTransformation" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -14016,6 +14992,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.addGraphCurve" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -14032,6 +15012,10 @@
             </description>
             <params>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.resetGraph" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -14052,6 +15036,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.destroyGraphCurve" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -14077,6 +15065,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setGraphStreamValue" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -14098,6 +15090,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.handleGraph" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -14134,6 +15130,10 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.duplicateGraphCurveToStatic" />
+            </supersedes>
             <categories>
             </categories>
             <see-also>
@@ -14227,6 +15227,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.insertObjectIntoOctree" />
+            </supersedes>
             <categories>
                 <category name="ocTree" />
                 <category name="pointCloud" />
@@ -14253,6 +15257,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.subtractObjectFromOctree" />
+            </supersedes>
             <categories>
                 <category name="ocTree" />
                 <category name="pointCloud" />
@@ -14293,6 +15301,10 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.insertVoxelsIntoOctree" />
+            </supersedes>
             <categories>
                 <category name="ocTree" />
             </categories>
@@ -14334,6 +15346,10 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.insertVoxelsIntoOctree" />
+            </supersedes>
             <categories>
                 <category name="ocTree" />
             </categories>
@@ -14369,6 +15385,10 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.removeVoxelsFromOctree" />
+            </supersedes>
             <categories>
                 <category name="ocTree" />
             </categories>
@@ -14404,6 +15424,10 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.removeVoxelsFromOctree" />
+            </supersedes>
             <categories>
                 <category name="ocTree" />
             </categories>
@@ -14459,10 +15483,72 @@
                     </description>
                 </param>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.checkOctreePointOccupancy" />
+            </supersedes>
             <categories>
                 <category name="collision" />
             </categories>
             <see-also>
+                <function-ref name="ocTree:checkPackedPoints" />
+                <function-ref name="sceneObject:checkCollision" />
+                <function-ref name="collection:checkCollision" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="checkPackedPoints" func="sim.callMethod" lang="python,lua">
+            <description>
+                Checks whether the provided buffer points collide with the voxels
+            </description>
+            <params>
+                <param name="packedPoints" type="float[]">
+                    <description>
+                        points, packed as a float array
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>relative (bool, defaults to false): specified points are relative to the OC tree reference frame, otherwise they are relative to the world reference frame</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="result" type="bool">
+                    <description>
+                        whether the points collide with the voxels
+                    </description>
+                </param>
+                <param name="tag" type="int">
+                    <description>
+                        tag value of the voxel that collides with a single point. If several points are tested, this return value should be ignored
+                    </description>
+                </param>
+                <param name="locLow" type="int">
+                    <description>
+                        low value specifying the location of the voxel that collides with a single point. If several points are tested, then this return value should be ignored
+                    </description>
+                </param>
+                <param name="locHigh" type="int">
+                    <description>
+                        high value specifying the location of the voxel that collides with a single point. If several points are tested, then this return value should be ignored
+                    </description>
+                </param>
+            </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.checkOctreePointOccupancy" />
+            </supersedes>
+            <categories>
+                <category name="collision" />
+            </categories>
+            <see-also>
+                <function-ref name="ocTree:checkPoints" />
                 <function-ref name="sceneObject:checkCollision" />
                 <function-ref name="collection:checkCollision" />
             </see-also>
@@ -14479,6 +15565,10 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.removeVoxelsFromOctree" />
+            </supersedes>
             <categories>
                 <category name="ocTree" />
             </categories>
@@ -14583,6 +15673,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.insertObjectIntoPointCloud" />
+            </supersedes>
             <categories>
                 <category name="ocTree" />
                 <category name="pointCloud" />
@@ -14617,6 +15711,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.subtractObjectFromPointCloud" />
+            </supersedes>
             <categories>
                 <category name="ocTree" />
                 <category name="pointCloud" />
@@ -14655,6 +15753,10 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.insertPointsIntoPointCloud" />
+            </supersedes>
             <categories>
                 <category name="pointCloud" />
             </categories>
@@ -14693,6 +15795,10 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.insertPointsIntoPointCloud" />
+            </supersedes>
             <categories>
                 <category name="pointCloud" />
             </categories>
@@ -14728,6 +15834,10 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.removePointsFromPointCloud" />
+            </supersedes>
             <categories>
                 <category name="pointCloud" />
             </categories>
@@ -14764,6 +15874,10 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.removePointsFromPointCloud" />
+            </supersedes>
             <categories>
                 <category name="pointCloud" />
             </categories>
@@ -14799,10 +15913,52 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.intersectPointsWithPointCloud" />
+            </supersedes>
             <categories>
                 <category name="pointCloud" />
             </categories>
             <see-also>
+                <function-ref name="pointCloud:intersectPackedPoints" />
+                <function-ref name="pointCloud:clear" />
+                <function-ref name="pointCloud:addPoints" />
+            </see-also>
+        </method>
+
+        
+
+        <method name="intersectPackedPoints" func="sim.callMethod" lang="python,lua">
+            <description>
+                Removes points that do not intersect with the
+                provided buffer points (i.e. the result in the point cloud will be the intersection between the two sets of points)
+            </description>
+            <params>
+                <param name="packedPoints" type="float[]">
+                    <description>
+                        points, packed as a float array
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>relative (bool, defaults to false): specified points are relative to the point cloud reference frame, otherwise they are relative to the world reference frame</li>
+                            <li>tolerance (float, defaults to 0.01): a distance tolerance</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.intersectPointsWithPointCloud" />
+            </supersedes>
+            <categories>
+                <category name="pointCloud" />
+            </categories>
+            <see-also>
+                <function-ref name="pointCloud:intersectPoints" />
                 <function-ref name="pointCloud:clear" />
                 <function-ref name="pointCloud:addPoints" />
             </see-also>
@@ -14819,6 +15975,10 @@
             </params>
             <returns>
             </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.removePointsFromPointCloud" />
+            </supersedes>
             <categories>
                 <category name="pointCloud" />
             </categories>
@@ -14944,6 +16104,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setJointTargetPosition" />
+            </supersedes>
             <categories>
                 <category name="dynamics" />
                 <category name="joint" />
@@ -14977,6 +16141,10 @@
                     </description>
                 </param>
             </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setJointTargetVelocity" />
+            </supersedes>
             <categories>
                 <category name="dynamics" />
                 <category name="joint" />
