@@ -2,6 +2,8 @@ import sys
 import fnmatch
 import re
 import cplusplus
+from typing import Optional
+import xml.etree.ElementTree as ET
 
 if sys.version_info < (3, 7):
     sys.exit("Python 3.7 or higher is required.")
@@ -10,27 +12,27 @@ if sys.version_info < (3, 7):
 issues = {}
 
 
-def report_issue(kind, obj, msg):
+def report_issue(kind: str, obj: object, msg: str) -> None:
     context_str = str(obj)
     if context_str not in issues:
         issues[context_str] = []
     issues[context_str].append((kind, msg))
 
 
-def parse_bool(attr_value, default=False):
+def parse_bool(attr_value: str, default: bool = False) -> bool:
     if attr_value is None:
         return default
     return attr_value.lower() in ('true', '1', 'yes')
 
 
-def cppBool(b):
+def cppBool(b: bool) -> str:
     return 'true' if b else 'false'
 
 
 class PropertyFlags:
-    def __init__(self, flags_node):
-        self.readable = True
-        self.writable = True
+    def __init__(self, flags_node: Optional[ET.Element]) -> None:
+        self.readable = False
+        self.writable = False
         self.removable = False
         self.deprecated = False
         self.silent = False
@@ -64,13 +66,13 @@ class PropertyInfo:
         },
     }
 
-    def __init__(self, cinfo, propnode):
+    def __init__(self, cinfo: ClassInfo, prop_node: ET.Element) -> None:
         assert isinstance(cinfo, ClassInfo)
 
         self.class_info = cinfo
-        self.name = propnode.attrib['name']
-        self.type = propnode.attrib['type']
-        self.flags = PropertyFlags(propnode.find('flags'))
+        self.name = prop_node.attrib['name']
+        self.type = prop_node.attrib['type']
+        self.flags = PropertyFlags(prop_node.find('flags'))
         self.label = ''
         self.description = ''
         self.replaced_by = None
@@ -81,20 +83,20 @@ class PropertyInfo:
         self.ignored = any(fnmatch.fnmatchcase(self.name, ipn) for ipn in PropertyInfo.ignored_properties.get(cinfo.name, set()))
         if self.type == 'method': self.ignored = True # temp workaround
 
-        if support_node := propnode.find('support'):
+        if support_node := prop_node.find('support'):
             if replaced_by_node := support_node.find('replaced-by'):
                 self.replaced_by = replaced_by_node.attrib.get('name')
             if migrate_to_node := support_node.find('migrate-to'):
                 self.migrate_to = migrate_to_node.attrib.get('name')
             if supersedes_node := support_node.find('supersedes'):
                 self.supersedes = supersedes_node.attrib.get('name')
-        if label_node := propnode.find('label'):
+        if label_node := prop_node.find('label'):
             self.label = label_node.text
-        if description_node := propnode.find('description'):
+        if description_node := prop_node.find('description'):
             self.description = description_node.text
-        if handle_node := propnode.find('handle'):
+        if handle_node := prop_node.find('handle'):
             self.handle_type = handle_node.attrib.get('type', 'object')
-        if enum_node := propnode.find('enum'):
+        if enum_node := prop_node.find('enum'):
             self.enum = enum_node.attrib.get('name')
 
     def __str__(self):
@@ -234,13 +236,13 @@ class PropertyInfo:
 
 
 class NamespaceInfo:
-    def __init__(self, cinfo, nsnode):
+    def __init__(self, cinfo: ClassInfo, ns_node: ET.Element) -> None:
         assert isinstance(cinfo, ClassInfo)
         self.class_info = cinfo
-        self.name = nsnode.attrib['name']
-        self.new_property_forced_type = nsnode.attrib.get('new-property-forced-type', '')
+        self.name = ns_node.attrib['name']
+        self.new_property_forced_type = ns_node.attrib.get('new-property-forced-type', '')
         self.ignored = False
-        self.deprecated = nsnode.attrib.get('deprecated', False)
+        self.deprecated = ns_node.attrib.get('deprecated', False)
 
     def __str__(self):
         return f'{self.class_info!s}, namespace {self.name}'
@@ -260,15 +262,15 @@ class ParamInfo:
         'handlearray2': 'handlearray',
     }
 
-    def __init__(self, minfo, paramnode):
+    def __init__(self, minfo: MethodInfo, param_node: ET.Element) -> None:
         assert isinstance(minfo, MethodInfo)
         self.method_info = minfo
         self.array, self.item_type, self.size = False, None, None
-        if isinstance(paramnode, str):
-            self.type = paramnode
+        if isinstance(param_node, str):
+            self.type = param_node
             return
-        self.name = paramnode.attrib['name']
-        self.type = paramnode.attrib['type']
+        self.name = param_node.attrib['name']
+        self.type = param_node.attrib['type']
         if m := re.match(r'^(\w+)\[(\d*)\]$', self.type):
             self.array, self.item_type, self.size = True, ParamInfo(minfo, m.group(1)), int(m.group(2)) if m.group(2) else None
             self.type = f'{self.item_type.type}array{self.size or ""}'
@@ -276,7 +278,7 @@ class ParamInfo:
             report_issue('warning', self, f'type {self.type} is not a valid type, using {ParamInfo.fallback_types[self.type]}')
             self.type = ParamInfo.fallback_types[self.type]
         self.ref = self.array or self.type in ('string', 'buffer', 'vector3', 'color', 'matrix')
-        desc_node = paramnode.find('description')
+        desc_node = param_node.find('description')
         self.description = desc_node.text if desc_node is not None else ''
         if self.type not in ParamInfo.valid_types:
             report_issue('error', self, f'type {self.type} is not a valid type')
@@ -351,27 +353,27 @@ class MethodInfo:
         },
     }
 
-    def __init__(self, cinfo, metnode):
+    def __init__(self, cinfo: ClassInfo, method_node: ET.Element) -> None:
         assert isinstance(cinfo, ClassInfo)
         self.class_info = cinfo
-        self.name = metnode.attrib['name']
+        self.name = method_node.attrib['name']
         self.ignored = any(fnmatch.fnmatchcase(self.name, imn) for imn in MethodInfo.ignored_methods.get(cinfo.name, set()))
         self.params = []
         self.returns = []
         self.has_errors = False
-        if paramsnode := metnode.find('params'):
-            for n in paramsnode.findall('param'):
+        if params_node := method_node.find('params'):
+            for n in params_node.findall('param'):
                 try:
                     self.params.append(ParamInfo(self, n))
                 except Exception:
                     self.has_errors = True
-        if returnsnode := metnode.find('returns'):
-            for n in returnsnode.findall('param'):
+        if returns_node := method_node.find('returns'):
+            for n in returns_node.findall('param'):
                 try:
                     self.returns.append(ParamInfo(self, n))
                 except Exception:
                     self.has_errors = True
-        desc_node = metnode.find('description')
+        desc_node = method_node.find('description')
         self.description = desc_node.text if desc_node is not None else ''
 
     def __str__(self):
@@ -404,7 +406,7 @@ class ClassInfo:
         'pointCloud': 'PointCloudBase',
     }
 
-    def __init__(self, name, superclass=None):
+    def __init__(self, name: str, superclass: Optional[str] = None) -> None:
         self.name = name
         self.superclass = superclass
         self.properties = {}
@@ -414,17 +416,17 @@ class ClassInfo:
     def __str__(self):
         return f'class {self.name}'
 
-    def add_property(self, name, pinfo):
+    def add_property(self, name: str, pinfo: PropertyInfo):
         assert name not in self.properties
         assert isinstance(pinfo, PropertyInfo)
         self.properties[name] = pinfo
 
-    def add_namespace(self, name, nsinfo):
+    def add_namespace(self, name: str, nsinfo: NamespaceInfo):
         assert name not in self.namespaces
         assert isinstance(nsinfo, NamespaceInfo)
         self.namespaces[name] = nsinfo
 
-    def add_method(self, name, minfo):
+    def add_method(self, name: str, minfo: MethodInfo):
         assert name not in self.methods
         assert isinstance(minfo, MethodInfo)
         self.methods[name] = minfo
@@ -470,7 +472,6 @@ def sorted_classes(mapping):
     return order
 
 def get_classes(object_classes_xml):
-    import xml.etree.ElementTree as ET
     tree = ET.parse(object_classes_xml)
     object_classes_root = tree.getroot()
     assert object_classes_root.tag == 'object-classes'
