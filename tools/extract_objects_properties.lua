@@ -184,10 +184,8 @@ function sysCall_init()
             }
             for _, flg in ipairs(table.sorted(table.keys(pinfo.flags or {}))) do
                 local v = pinfo.flags[flg]
-                local def = false
-                if flg == 'readable' or flg == 'writable' then def = true end
-                if v ~= def then
-                    table.insert(flagsNode.children, {tag = 'flag', attrs = {name = flg, value = v}})
+                if v then
+                    flagsNode.attrs[flg] = v
                 end
             end
             table.insert(propertyNode.children, flagsNode)
@@ -275,10 +273,11 @@ function sysCall_init()
         'name',
         'type',
         'handle-type',
-        'deprecated',
         'readable',
         'writable',
         'removable',
+        'modelhashexclude',
+        'deprecated',
         'silent',
         'constant',
         'enum',
