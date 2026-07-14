@@ -36,8 +36,8 @@ class PropertyFlags:
         self.silent = False
         self.constant = False
         self.modelhashexclude = False
-        if flags_node:
-            for k, v in flags_node.attrib:
+        if flags_node is not None:
+            for k, v in flags_node.attrib.items():
                 if hasattr(self, k):
                     setattr(self, k, parse_bool(v))
 
