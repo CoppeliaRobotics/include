@@ -2,7 +2,6 @@ import sys
 import fnmatch
 import re
 import cplusplus
-from dataclasses import dataclass
 
 if sys.version_info < (3, 7):
     sys.exit("Python 3.7 or higher is required.")
@@ -28,15 +27,19 @@ def cppBool(b):
     return 'true' if b else 'false'
 
 
-@dataclass
 class PropertyFlags:
-    readable: bool = True
-    writable: bool = True
-    removable: bool = False
-    deprecated: bool = False
-    silent: bool = False
-    constant: bool = False
-    modelhashexclude: bool = False
+    def __init__(self, flags_node):
+        self.readable = True
+        self.writable = True
+        self.removable = False
+        self.deprecated = False
+        self.silent = False
+        self.constant = False
+        self.modelhashexclude = False
+        if flags_node:
+            for k, v in flags_node.attrib:
+                if hasattr(self, k):
+                    setattr(self, k, parse_bool(v))
 
 
 class PropertyInfo:
@@ -67,7 +70,7 @@ class PropertyInfo:
         self.class_info = cinfo
         self.name = propnode.attrib['name']
         self.type = propnode.attrib['type']
-        self.flags = PropertyFlags()
+        self.flags = PropertyFlags(propnode.find('flags'))
         self.label = ''
         self.description = ''
         self.replaced_by = None
@@ -78,13 +81,6 @@ class PropertyInfo:
         self.ignored = any(fnmatch.fnmatchcase(self.name, ipn) for ipn in PropertyInfo.ignored_properties.get(cinfo.name, set()))
         if self.type == 'method': self.ignored = True # temp workaround
 
-
-        if flags_node := propnode.find('flags'):
-            for flag_node in flags_node.findall('flag'):
-                name = flag_node.attrib['name']
-                value = parse_bool(flag_node.attrib['value'])
-                if hasattr(self.flags, name):
-                    setattr(self.flags, name, value)
         if support_node := propnode.find('support'):
             if replaced_by_node := support_node.find('replaced-by'):
                 self.replaced_by = replaced_by_node.attrib.get('name')
