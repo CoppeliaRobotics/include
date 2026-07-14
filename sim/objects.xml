@@ -15456,7 +15456,7 @@
         <supersedes name="sim.visionintparam_rgbignored" />
       </support>
     </property>
-    <property name="imageBuffer" type="buffer">
+    <property name="image" type="buffer">
       <flags>
         <flag name="modelhashexclude" value="true" />
       </flags>
@@ -15465,13 +15465,22 @@
         <supersedes name="sim.getVisionSensorImg,sim.setVisionSensorImg" />
       </support>
     </property>
+    <property name="imageBuffer" type="buffer">
+      <flags>
+        <flag name="deprecated" value="true" />
+        <flag name="modelhashexclude" value="true" />
+      </flags>
+      <support start="1" start-deprecated="2" end="2">
+        <replaced-by name="image" />
+      </support>
+    </property>
     <property name="omitPacket1" type="bool">
       <flags />
       <label>Packet 1 is blank</label>
       <description>Omit packet 1 (faster)</description>
       <support start="2" start-deprecated="0" end="0" />
     </property>
-    <property name="packedDepthBuffer" type="buffer">
+    <property name="packedDepth" type="buffer">
       <flags>
         <flag name="modelhashexclude" value="true" />
         <flag name="silent" value="true" />
@@ -17702,10 +17711,10 @@
         <supersedes name="sim.vortex_joint_p2stiffness" />
       </support>
     </property>
-    <property name="enforceLimits" type="bool">
+    <property name="enforceBounds" type="bool">
       <flags />
-      <label>Enforce limits</label>
-      <description>Enforce limits strictly</description>
+      <label>Enforce bounds</label>
+      <description>Enforce bounds strictly</description>
       <support start="2" start-deprecated="0" end="0" />
     </property>
     <property name="engineProperties" type="string">
