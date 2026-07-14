@@ -161,18 +161,18 @@ function sysCall_init()
                 children = {},
             }
 
-            if classInfo[className].properties[propertyName].handleType then
+            if pinfo.handleType then
                 local handleNode = {
                     tag = 'handle',
-                    attrs = {type = classInfo[className].properties[propertyName].handleType},
+                    attrs = {type = pinfo.handleType},
                 }
                 table.insert(propertyNode.children, handleNode)
             end
 
-            if classInfo[className].properties[propertyName].enum then
+            if pinfo.enum then
                 local enumNode = {
                     tag = 'enum',
-                    attrs = {name = classInfo[className].properties[propertyName].enum},
+                    attrs = {name = pinfo.enum},
                 }
                 table.insert(propertyNode.children, enumNode)
             end
@@ -182,36 +182,31 @@ function sysCall_init()
                 attrs = {},
                 children = {},
             }
-            local flgs_def = {
-                readable = true,
-                writable = true,
-                removable = false,
-                deprecated = false,
-                silent = false,
-                constant = false,
-            }
-            for flg, v in pairs(pinfo.flags or {}) do
-                if v ~= flgs_def[flg] then
+            for _, flg in ipairs(table.sorted(table.keys(pinfo.flags or {}))) do
+                local v = pinfo.flags[flg]
+                local def = false
+                if flg == 'readable' or flg == 'writable' then def = true end
+                if v ~= def then
                     table.insert(flagsNode.children, {tag = 'flag', attrs = {name = flg, value = v}})
                 end
             end
             table.insert(propertyNode.children, flagsNode)
 
-            if (classInfo[className].properties[propertyName].label or '') ~= '' then
+            if (pinfo.label or '') ~= '' then
                 local labelNode = {
                     tag = 'label',
                     children = {
-                        classInfo[className].properties[propertyName].label,
+                        pinfo.label,
                     }
                 }
                 table.insert(propertyNode.children, labelNode)
             end
 
-            if (classInfo[className].properties[propertyName].description or '') ~= '' then
+            if (pinfo.description or '') ~= '' then
                 local descrNode = {
                     tag = 'description',
                     attrs = {},
-                    children = {classInfo[className].properties[propertyName].description},
+                    children = {pinfo.description},
                 }
                 table.insert(propertyNode.children, descrNode)
             end
@@ -219,39 +214,39 @@ function sysCall_init()
             local supportNode = {
                 tag = 'support',
                 attrs = {
-                    ['start'] = classInfo[className].properties[propertyName].startSupport,
-                    ['end'] = classInfo[className].properties[propertyName].endSupport,
-                    ['start-deprecated'] = classInfo[className].properties[propertyName].startDeprecated,
+                    ['start'] = pinfo.startSupport,
+                    ['end'] = pinfo.endSupport,
+                    ['start-deprecated'] = pinfo.startDeprecated,
                 },
                 children = {},
             }
-            if classInfo[className].properties[propertyName].replacedBy then
+            if pinfo.replacedBy then
                 table.insert(supportNode.children, {
                     tag = 'replaced-by',
-                    attrs = {name = classInfo[className].properties[propertyName].replacedBy},
+                    attrs = {name = pinfo.replacedBy},
                 })
             end
-            if classInfo[className].properties[propertyName].migrateTo then
+            if pinfo.migrateTo then
                 table.insert(supportNode.children, {
                     tag = 'migrate-to',
-                    attrs = {name = classInfo[className].properties[propertyName].migrateTo},
+                    attrs = {name = pinfo.migrateTo},
                 })
             end
-            if classInfo[className].properties[propertyName].supersedes then
+            if pinfo.supersedes then
                 table.insert(supportNode.children, {
                     tag = 'supersedes',
-                    attrs = {name = classInfo[className].properties[propertyName].supersedes},
+                    attrs = {name = pinfo.supersedes},
                 })
             end
             table.insert(propertyNode.children, supportNode)
 
-            if classInfo[className].properties[propertyName].seeAlso then
+            if pinfo.seeAlso then
                 local seeAlsoNode = {
                     tag = 'see-also',
                     children = {
                         {
                             tag = 'ref',
-                            attrs = {name = classInfo[className].properties[propertyName].seeAlso},
+                            attrs = {name = pinfo.seeAlso},
                         }
                     },
                 }
