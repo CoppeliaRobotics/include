@@ -1,7 +1,5 @@
 import sys
-import fnmatch
 import re
-import cplusplus
 from typing import Optional
 import xml.etree.ElementTree as ET
 
