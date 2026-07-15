@@ -4,13 +4,12 @@
         <description>
             Adds a non-central force to a shape object that is dynamically enabled. Added forces are cumulative,
             applied relative to the center of mass, and are reset to zero after 
-            <a href="simHandleDynamics.htm"> sim.handleDynamics </a>
-            was called (or by using the following flag: sim.handleflag_resetforcetorque)
+            the physics engine advanced by one simulation time step (or by using the following flag: sim_handleflag_resetforcetorque)
         </description>
         <params>
             <param name="shapeHandle" type="int">
                 <description>
-                    handle of a dynamically enabled shape. Can be combined with sim.handleflag_resetforcetorque in order to clear the accumulated force and torque.
+                    handle of a dynamically enabled shape. Can be combined with sim_handleflag_resetforcetorque in order to clear the accumulated force and torque.
                 </description>
             </param>
             <param name="position" type="const double*">
@@ -47,14 +46,13 @@
             Adds a force and/or torque to a shape object that is dynamically enabled.
             Forces are applied at the center of mass. Added forces and torques are cumulative, and are reset to zero
             after 
-            <a href="simHandleDynamics.htm"> sim.handleDynamics </a>
-            was called (or by using the following
-            flags: sim.handleflag_resetforce and/or sim.handleflag_resettorque)
+            the physics engine advanced by one simulation time step (or by using the following
+            flags: sim_handleflag_resetforce and/or sim_handleflag_resettorque)
         </description>
         <params>
             <param name="shapeHandle" type="int">
                 <description>
-                    handle of a dynamically enabled shape. Can be combined with sim.handleflag_resetforce and/or sim.handleflag_resettorque in order to clear the accumulated force or torque.
+                    handle of a dynamically enabled shape. Can be combined with sim_handleflag_resetforce and/or sim_handleflag_resettorque in order to clear the accumulated force or torque.
                 </description>
             </param>
             <param name="force" type="const double*">
@@ -88,8 +86,7 @@
 
     <function name="simAddGraphCurve" lang="c">
         <description>
-            Adds or updates a graph curve. A graph curve is persistent, but can be removed with
-            <a href="simDestroyGraphCurve.htm"> sim.destroyGraphCurve </a>
+            Adds or updates a graph curve
         </description>
         <params>
             <param name="graphHandle" type="int">
@@ -149,7 +146,7 @@
             <category name="graph" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#graphs" label=" functions related to graphs " />
+            <function-ref name="simDestroyGraphCurve" />
         </see-also>
     </function>
 
@@ -157,9 +154,7 @@
 
     <function name="simAddGraphStream" lang="c">
         <description>
-            Adds or updates a graph stream. A graph stream is persistent, but can be removed
-            with 
-            <a href="simDestroyGraphCurve.htm"> sim.destroyGraphCurve </a>
+            Adds or updates a graph stream
         </description>
         <params>
             <param name="graphHandle" type="int">
@@ -206,7 +201,7 @@
             <category name="graph" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#graphs" label=" functions related to graphs " />
+            <function-ref name="simDestroyGraphCurve" />
         </see-also>
     </function>
 
@@ -227,19 +222,19 @@
                 <description>
                     the type of object (or group of objects) to add. Following are allowed values: 
                     <em>
-                        sim.handle_single
+                        sim_handle_single
                     </em>
                     (for a single object), 
                     <em>
-                        sim.handle_all
+                        sim_handle_all
                     </em>
                     (for all objects in the scene), 
                     <em>
-                        sim.handle_tree
+                        sim_handle_tree
                     </em>
                     (for a tree of objects), or 
                     <em>
-                        sim.handle_chain
+                        sim_handle_chain
                     </em>
                     (for a chain of objects (i.e. an inverted tree)).
                 </description>
@@ -254,7 +249,7 @@
                     bit-coded options:
                     <ul>
                         <li> bit 0 set (1): the specified object (or group of objects) is removed from the collection. Otherwise it is added. </li>
-                        <li> bit 1 set (2): the specified object is not included in the group of objects, if sim.handle_tree or sim.handle_chain is specified (i.e. the tree base or tip is excluded). </li>
+                        <li> bit 1 set (2): the specified object is not included in the group of objects, if sim_handle_tree or sim_handle_chain is specified (i.e. the tree base or tip is excluded). </li>
                     </ul>
                 </description>
             </param>
@@ -293,7 +288,7 @@
                 <description>
                     the 
                     <a href="../apiConstants.htm#verbosity"> verbosity level </a>
-                    . Most appropriate values are sim.verbosity_errors (for errors), sim.verbosity_warnings (for warning) and sim.verbosity_infos.
+                    . Most appropriate values are sim_verbosity_errors (for errors), sim_verbosity_warnings (for warning) and sim_verbosity_infos.
                 </description>
             </param>
             <param name="message" type="const char*">
@@ -647,7 +642,7 @@
                 <description>
                     the handle of the view (can also be a floating view), or the index of the view. If the camera is not associated with any view, then you can specify the handle of the camera, together with the 
                     <em>
-                        sim.handleflag_camera
+                        sim_handleflag_camera
                     </em>
                     flag.
                 </description>
@@ -673,7 +668,7 @@
             </param>
             <param name="scaling" type="double">
                 <description>
-                    bit0 (1): if set, then individual objects will be filling the view. If not set, then models associated with model base objects will also be included
+                    a scaling factor
                 </description>
             </param>
         </params>
@@ -709,7 +704,7 @@
             </param>
             <param name="entity2Handle" type="int">
                 <description>
-                    handle of entity 2 (can be an object handle or a collection handle), or sim.handle_all to check entity1 against all other collidable objects
+                    handle of entity 2 (can be an object handle or a collection handle), or sim_handle_all to check entity1 against all other collidable objects
                 </description>
             </param>
         </params>
@@ -742,7 +737,7 @@
             </param>
             <param name="entity2Handle" type="int">
                 <description>
-                    handle of entity 2 (can be an object handle or a collection handle), or sim.handle_all to check entity1 against all other measurable objects
+                    handle of entity 2 (can be an object handle or a collection handle), or sim_handle_all to check entity1 against all other measurable objects
                 </description>
             </param>
             <param name="threshold" type="double">
@@ -792,25 +787,20 @@
             </param>
             <param name="pts" type="const double*">
                 <description>
-                    bit0 set (1): specified points are relative to the OC tree reference frame, otherwise they are relative to the world reference frame
+                    pointer to the points specified as x/y/z coordinates
                 </description>
             </param>
             <param name="ptCnt" type="int">
                 <description>
-                    pointer to the points specified as x/y/z coordinates
+                    number of points contained in pts
                 </description>
             </param>
             <param name="tag" type="unsigned int*">
                 <description>
-                    number of points contained in pts
-                </description>
-            </param>
-            <param name="location" type="unsigned long long int*">
-                <description>
                     pointer to a tag value, receiving the tag value of the voxel that collides with a single point. If several points are tested, then this pointer is ignored. Can be nullptr.
                 </description>
             </param>
-            <param name="reserved" type="void*">
+            <param name="location" type="unsigned long long int*">
                 <description>
                     pointer to a uint64 value, which specifies the location of the voxel that collides with a single point. If several points are tested, then this pointer is ignored. Can be nullptr. The location value is coded in following way:
                     <ul>
@@ -828,6 +818,11 @@
                             </ul> 
                         </li>
                     </ul>
+                </description>
+            </param>
+            <param name="reserved" type="void*">
+                <description>
+                    set to null
                 </description>
             </param>
         </params>
@@ -850,11 +845,8 @@
 
     <function name="simCheckProximitySensor" lang="c">
         <description>
-            Checks whether the proximity sensor detects the indicated entity. Detection is silent (no visual
-            feedback) compared to 
-            <a href="simHandleProximitySensor.htm"> sim.handleProximitySensor </a>
-            .
-            Also, the detectable flags of the entity are overridden if the entity is an object
+            Checks whether the proximity sensor detects the indicated entity. Detection is silent and
+            the detectable flags of the entity are overridden if the entity is an object
         </description>
         <params>
             <param name="sensorHandle" type="int">
@@ -864,7 +856,7 @@
             </param>
             <param name="entityHandle" type="int">
                 <description>
-                    handle of entity to detect (object or collection), or sim.handle_all to detect all detectable objects
+                    handle of entity to detect (object or collection), or sim_handle_all to detect all detectable objects
                 </description>
             </param>
             <param name="detectedPoint" type="double*">
@@ -892,14 +884,7 @@
 
     <function name="simCheckVisionSensor" lang="c">
         <description>
-            Checks whether the vision sensor detects the indicated entity. Detection is silent
-            (no visual feedback) compared to 
-            <a href="simHandleVisionSensor.htm"> sim.handleVisionSensor </a>
-            .
-            The 
-            <a href="../visionCallbackFunctions.htm"> vision callback functions </a>
-            will be called on the
-            acquired image. Also, the visibility state of the entity is overridden if the entity is an object
+            Checks whether the vision sensor detects the indicated entity. Detection is silent and the visibility state of the entity is overridden if the entity is an object
         </description>
         <params>
             <param name="sensorHandle" type="int">
@@ -909,7 +894,7 @@
             </param>
             <param name="entityHandle" type="int">
                 <description>
-                    handle of entity to detect (object or collection), or sim.handle_all to detect all detectable objects
+                    handle of entity to detect (object or collection), or sim_handle_all to detect all detectable objects
                 </description>
             </param>
             <param name="auxValues" type="double**">
@@ -965,12 +950,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
 
     <function name="simCheckVisionSensorEx" lang="c">
         <description>
-            Checks whether the vision sensor detects the indicated entity. Detection is silent (no visual feedback) compared
-            to 
-            <a href="simHandleVisionSensor.htm"> sim.handleVisionSensor </a>
-            . The 
-            <a href="../visionCallbackFunctions.htm"> vision callback functions </a>
-            will be called on the acquired image. Also, the visibility state of the entity is overridden if the entity is an object
+            Checks whether the vision sensor detects the indicated entity. Detection is silent and the visibility state of the entity is overridden if the entity is an object
         </description>
         <params>
             <param name="sensorHandle" type="int">
@@ -980,7 +960,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             </param>
             <param name="entityHandle" type="int">
                 <description>
-                    handle of entity to detect (object or collection), or sim.handle_all to detect all detectable objects
+                    handle of entity to detect (object or collection), or sim_handle_all to detect all detectable objects
                 </description>
             </param>
             <param name="returnImage" type="bool">
@@ -1036,9 +1016,6 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
     <function name="simComputeMassAndInertia" lang="c">
         <description>
             Computes and applies the mass and inertia matrix for a shape, based on its convex representation.
-            When calling this function while the simulation is running, one should then call
-            <a href="simResetDynamicObject.htm"> sim.resetDynamicObject </a>
-            , for the changes to take effect
         </description>
         <params>
             <param name="shapeHandle" type="int">
@@ -1105,12 +1082,36 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             </param>
             <param name="intParams" type="const int*">
                 <description>
-                    bit0 set (1): the specified shape will be morphed into its convex decomposition. Otherwise, the convex decomposition will smply be added to the scene
+                    10 int values:
+                    <ul>
+                        <li>intParams[0]: HACD: the minimum number of clusters to be generated (e.g. 1)</li>
+                        <li>intParams[1]: HACD: the targeted number of triangles of the decimated mesh (e.g. 500)</li>
+                        <li>intParams[2]: HACD: the maximum number of vertices for each generated convex hull (e.g. 100)</li>
+                        <li>intParams[3]: reserved. Set to 0</li>
+                        <li>intParams[4]: reserved. Set to 0</li>
+                        <li>intParams[5]: V-HACD: resolution (10000-64000000, 100000 is default).</li>
+                        <li>intParams[6]: V-HACD: depth (1-32, 20 is default).</li>
+                        <li>intParams[7]: V-HACD: plane downsampling (1-16, 4 is default).</li>
+                        <li>intParams[8]: V-HACD: convex hull downsampling (1-16, 4 is default).</li>
+                        <li>intParams[9]: V-HACD: max. number of vertices per convex hull (4-1024, 64 is default).</li>
+                    </ul>
                 </description>
             </param>
             <param name="floatParams" type="const double*">
                 <description>
-                    bit1 set (2): specified convex decomposition parameters will be displayed in a dialog, allowing the user to modify them.
+                    10 double values:
+                    <ul>
+                        <li>floatParams[0]: HACD: the maximum allowed concavity (e.g. 100.0)</li>
+                        <li>floatParams[1]: HACD: the maximum allowed distance to get convex clusters connected (e.g. 30)</li>
+                        <li>floatParams[2]: HACD: the threshold to detect small clusters. The threshold is expressed as a percentage of the total mesh surface (e.g. 0.25)</li>
+                        <li>floatParams[3]: reserved. Set to 0.0</li>
+                        <li>floatParams[4]: reserved. Set to 0.0</li>
+                        <li>floatParams[5]: V-HACD: concavity (0.0-1.0, 0.0025 is default).</li>
+                        <li>floatParams[6]: V-HACD: alpha (0.0-1.0, 0.05 is default).</li>
+                        <li>floatParams[7]: V-HACD: beta (0.0-1.0, 0.05 is default).</li>
+                        <li>floatParams[8]: V-HACD: gamma (0.0-1.0, 0.00125 is default).</li>
+                        <li>floatParams[9]: V-HACD: min. volume per convex hull (0.0-0.01, 0.0001 is default).</li>
+                    </ul>
                 </description>
             </param>
         </params>
@@ -1340,7 +1341,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             </param>
             <param name="lang" type="const char*">
                 <description>
-                    bit 0 set (1): script is initially disabled
+                language. A value different from "lua" or "python" disables the script. nullptr defaults to "lua"
                 </description>
             </param>
         </params>
@@ -1437,24 +1438,31 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             </param>
             <param name="intParams" type="const int*">
                 <description>
-                    bit 0 set (1): force threshold enabled
+                    5 integer parameters:
+                    <ul>
+                        <li>intParams[0]: filter type (0=average, 1=median)</li>
+                        <li>intParams[1]: value count the filter operates on</li>
+                        <li>intParams[2]: number of consecutive threshold violation for the sensor to break</li>
+                        <li>intParams[3]: reserved. Set to 0</li>
+                        <li>intParams[4]: reserved. Set to 0</li>
+                    </ul>
                 </description>
             </param>
             <param name="floatParams" type="const double*">
                 <description>
-                    bit 1 set (2): torque threshold enabled
+                    5 floating point parameters:
+                    <ul>
+                        <li>floatParams[0]: sensor size</li>
+                        <li>floatParams[1]: force threshold value</li>
+                        <li>floatParams[2]: torque threshold value</li>
+                        <li>floatParams[3]: reserved. Set to 0.0</li>
+                        <li>floatParams[4]: reserved. Set to 0.0</li>
+                    </ul>
                 </description>
             </param>
             <param name="reserved" type="const double*">
                 <description>
-                    5 integer parameters:
-                    <ul>
-                        <li> intParams[0]: filter type (0=average, 1=median) </li>
-                        <li> intParams[1]: value count the filter operates on </li>
-                        <li> intParams[2]: number of consecutive threshold violation for the sensor to break </li>
-                        <li> intParams[3]: reserved. Set to 0 </li>
-                        <li> intParams[4]: reserved. Set to 0 </li>
-                    </ul>
+                    set to null
                 </description>
             </param>
         </params>
@@ -1493,27 +1501,27 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             </param>
             <param name="shadingAngle" type="double">
                 <description>
-                    bit0 set (1): back faces are culled
+                the shading angle
                 </description>
             </param>
             <param name="xPointCount" type="int">
                 <description>
-                    bit1 set (2): overlay mesh is visible
+                the number of rows of the heightfield
                 </description>
             </param>
             <param name="yPointCount" type="int">
                 <description>
-                    bit2 set (4): a simple shape is generated instead of a heightfield
+                the number of lines of the heightfield
                 </description>
             </param>
             <param name="xSize" type="double">
                 <description>
-                    bit3 set (8): the heightfield is not respondable
+                the length of the x side of the heightfield
                 </description>
             </param>
             <param name="heights" type="const double*">
                 <description>
-                    the shading angle
+                a pointer to xPointCount*yPointCount height values
                 </description>
             </param>
         </params>
@@ -1545,36 +1553,35 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             <param name="jointType" type="int">
                 <description>
                     <ul>
-                        <li> sim.joint_revolute </li>
-                        <li> sim.joint_prismatic </li>
-                        <li> sim.joint_spherical </li>
+                        <li> sim_joint_revolute </li>
+                        <li> sim_joint_prismatic </li>
+                        <li> sim_joint_spherical </li>
                     </ul>
                 </description>
             </param>
             <param name="jointMode" type="int">
                 <description>
-                    sim.joint_revolute
+                a <a href="../apiConstants.htm#jointModes">joint mode</a>
                 </description>
             </param>
             <param name="options" type="int">
                 <description>
-                    sim.joint_prismatic
+                reserved. Set to 0
                 </description>
             </param>
             <param name="sizes" type="const double*">
                 <description>
-                    sim.joint_spherical
+                pointer to 2 values indicating the joint length and diameter. Can be nullptr for default values
                 </description>
             </param>
             <param name="reservedA" type="const double*">
                 <description>
-                    a 
-                    <a href="../apiConstants.htm#jointModes"> joint mode </a>
+                    set to null
                 </description>
             </param>
             <param name="reservedB" type="const double*">
                 <description>
-                    reserved. Set to 0
+                    set to null
                 </description>
             </param>
         </params>
@@ -1621,12 +1628,12 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             </param>
             <param name="pointSize" type="double">
                 <description>
-                    bit0 set (1): voxels have random colors
+                    the size of the points in pixels, when voxels are rendered with points
                 </description>
             </param>
             <param name="reserved" type="void*">
                 <description>
-                    bit1 set (2): show OC tree structure
+                    set to null
                 </description>
             </param>
         </params>
@@ -1679,12 +1686,12 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             </param>
             <param name="pointSize" type="double">
                 <description>
-                    bit0 set (1): points have random colors
+                    size of the points, in pixels
                 </description>
             </param>
             <param name="reserved" type="void*">
                 <description>
-                    bit1 set (2): show OC tree structure
+                    set to null
                 </description>
             </param>
         </params>
@@ -1765,7 +1772,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
                 <description>
                     desired 
                     <a href="../apiConstants.htm#sceneObjectSubTypes"> proximity sensor type </a>
-                    (e.g. sim.proximitysensor_cone)
+                    (e.g. sim_proximitysensor_cone)
                 </description>
             </param>
             <param name="subType" type="int">
@@ -1791,17 +1798,44 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             </param>
             <param name="intParams" type="const int*">
                 <description>
-                    bit0 set (1): the sensor will be explicitly handled
+                    8 integer parameters:
+                    <ul>
+                        <li>intParams[0]: face count (volume description)</li>
+                        <li>intParams[1]: face count far (volume description)</li>
+                        <li>intParams[2]: subdivisions (volume description)</li>
+                        <li>intParams[3]: subdivisions far (volume description)</li>
+                        <li>intParams[4]: reserved. Set to 1</li>
+                        <li>intParams[5]: reserved. Set to 1</li>
+                        <li>intParams[6]: reserved. Set to 0</li>
+                        <li>intParams[7]: reserved. Set to 0</li>
+                    </ul>
                 </description>
             </param>
             <param name="floatParams" type="const double*">
                 <description>
-                    bit1 set (2): reserved. Set to 0
+                    15 floating point parameters:
+                    <ul>
+                        <li>floatParams[0]: offset (volume description)</li>
+                        <li>floatParams[1]: range (volume description)</li>
+                        <li>floatParams[2]: x size (volume description)</li>
+                        <li>floatParams[3]: y size (volume description)</li>
+                        <li>floatParams[4]: x size far (volume description)</li>
+                        <li>floatParams[5]: y size far (volume description)</li>
+                        <li>floatParams[6]: inside gap (volume description)</li>
+                        <li>floatParams[7]: radius (volume description)</li>
+                        <li>floatParams[8]: radius far (volume description)</li>
+                        <li>floatParams[9]: angle (volume description)</li>
+                        <li>floatParams[10]: threshold angle for limited angle detection (see bit 6 above)</li>
+                        <li>floatParams[11]: smallest detection distance (see bit 8 above)</li>
+                        <li>floatParams[12]: sensing point size</li>
+                        <li>floatParams[13]: reserved. Set to 0.0</li>
+                        <li>floatParams[14]: reserved. Set to 0.0</li>
+                    </ul>
                 </description>
             </param>
             <param name="reserved" type="const double*">
                 <description>
-                    bit2 set (4): the detection volume is not shown
+                    set to null
                 </description>
             </param>
         </params>
@@ -1841,47 +1875,47 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             </param>
             <param name="shadingAngle" type="double">
                 <description>
-                    if bit0 is set (1), backfaces are culled
+                shading angle
                 </description>
             </param>
             <param name="vertices" type="const double*">
                 <description>
-                    If bit1 is set (2), edges are visible
+                array of vertices
                 </description>
             </param>
             <param name="verticesSize" type="int">
                 <description>
-                    If bit2 is set (4), adjacent texture pixels are not interpolated
+                size of the vertice array
                 </description>
             </param>
             <param name="indices" type="const int*">
                 <description>
-                    If bit3 is set (8), texture is applied as a decal
+                array of indices
                 </description>
             </param>
             <param name="indicesSize" type="int">
                 <description>
-                    If bit4 is set (16), texture is RGBA, otherwise it is RGB
+                size of the indice array
                 </description>
             </param>
             <param name="normals" type="const double*">
                 <description>
-                    If bit5 is set (32), texture is horizontally flipped
+                optional array of normal vectors. Has to be 3*indicesSize in length
                 </description>
             </param>
             <param name="textureCoordinates" type="const double*">
                 <description>
-                    If bit6 is set (64), texture is vertically flipped
+                optional array of texture coordinates. Has to be 2*indicesSize in length
                 </description>
             </param>
             <param name="texture" type="const unsigned char*">
                 <description>
-                    shading angle
+                optional texture, specified as RGB or RGBA
                 </description>
             </param>
             <param name="textureResolution" type="const int*">
                 <description>
-                    array of vertices
+                resolution of the specified texture
                 </description>
             </param>
         </params>
@@ -1901,6 +1935,55 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             <function-ref name="simCreateHeightfieldShape" />
             <function-ref name="simGetShapeMesh" />
             <function-ref name="simImportMesh" />
+        </see-also>
+    </function>
+
+    
+
+    <function name="simCallMethod" lang="c">
+        <description>
+            Calls a method
+        </description>
+        <params>
+            <param name="target" type="long long">
+                <description>
+                    target object
+                </description>
+            </param>
+            <param name="name" type="const char*">
+                <description>
+                    method name
+                </description>
+            </param>
+            <param name="inputStack" type="int">
+                <description>
+                    input stack handle. The input stack holds the input arguments. Can be -1
+                </description>
+            </param>
+            <param name="outputStack" type="int">
+                <description>
+                    output stack handle. The output stack holds the return arguments. Can be -1
+                </description>
+            </param>
+            <param name="detachedScript" type="int">
+                <description>
+                    the handle of a detached script, that will be used if the method is implemented in Lua. Can be -1, which targets the sandbox script
+                </description>
+            </param>
+        </params>
+        <returns>
+            <param name="return" type="int">
+                <description>
+                    -1 in case of an error, otherwise a stack handle.
+                </description>
+            </param>
+        </returns>
+        <categories>
+            <category name="stack" />
+        </categories>
+        <see-also>
+            <function-ref name="simReleaseStack" />
+            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -1951,37 +2034,37 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             </param>
             <param name="planeSizes" type="const double*">
                 <description>
-                    set (1): do not interpolate adjacent color patches.
+                a pointer to 2 values: the dimensions of the planar shape that will be generated. Can be nullptr for default dimensions
                 </description>
             </param>
             <param name="scalingUV" type="const double*">
                 <description>
-                    set (2): apply the texture in decal-mode.
+                a pointer to 2 values: the desired scaling of the texture, along the U and V directions. Can be nullptr for default scalings
                 </description>
             </param>
             <param name="xy_g" type="const double*">
                 <description>
-                    set (4): repeat the texture along the U direction.
+                a pointer to 3 values: the texture x/y shift, and the texture gamma-rotation. Can be nullptr for default shift/rotation values
                 </description>
             </param>
             <param name="fixedResolution" type="int">
                 <description>
-                    set (8): repeat the texture along the V direction.
+                0 to import the shape with its original resolution. Otherwise, specify a power of 2 value which will be the maximum texture resolution (the texture will also be applied a power of 2 resolution)
                 </description>
             </param>
             <param name="textureId" type="int*">
                 <description>
-                    a pointer to 2 values: the dimensions of the planar shape that will be generated. Can be nullptr for default dimensions.
+                a pointer to an integer that will be used to return the new texture ID. If a same texture is already present, the old texture ID will be returned. Can be nullptr
                 </description>
             </param>
             <param name="resolution" type="int*">
                 <description>
-                    a pointer to 2 values: the desired scaling of the texture, along the U and V directions. Can be nullptr for default scalings.
+                a pointer to 2 values representing the desired texture resolution when creating a new texture. The same pointer is used to return the effective resolution of the created/imported texture
                 </description>
             </param>
             <param name="reserved" type="const void*">
                 <description>
-                    a pointer to 3 values: the texture x/y shift, and the texture gamma-rotation. Can be nullptr for default shift/rotation values.
+                    set to null
                 </description>
             </param>
         </params>
@@ -2032,17 +2115,36 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             </param>
             <param name="intParams" type="const int*">
                 <description>
-                    bit 0 set (1): the sensor will be explicitly handled
+                    4 integer parameters:
+                    <ul>
+                        <li>intParams[0]: sensor resolution x</li>
+                        <li>intParams[1]: sensor resolution y</li>
+                        <li>intParams[2]: reserved. Set to 0</li>
+                        <li>intParams[3]: reserved. Set to 0</li>
+                    </ul>
                 </description>
             </param>
             <param name="floatParams" type="const double*">
                 <description>
-                    bit 1 set (2): the sensor will be in perspective operation mode
+                    11 floating point parameters:
+                    <ul>
+                        <li>floatParams[0]: near clipping plane</li>
+                        <li>floatParams[1]: far clipping plane</li>
+                        <li>floatParams[2]: view angle / ortho view size</li>
+                        <li>floatParams[3]: sensor size x</li>
+                        <li>floatParams[4]: reserved. Set to 0.0</li>
+                        <li>floatParams[5]: reserved. Set to 0.0</li>
+                        <li>floatParams[6]: null pixel red-value</li>
+                        <li>floatParams[7]: null pixel green-value</li>
+                        <li>floatParams[8]: null pixel blue-value</li>
+                        <li>floatParams[9]: reserved. Set to 0.0</li>
+                        <li>floatParams[10]: reserved. Set to 0.0</li>
+                    </ul>
                 </description>
             </param>
             <param name="reserved" type="const double*">
                 <description>
-                    bit 2 set (4): the view frustum will not be shown
+                    set to null
                 </description>
             </param>
         </params>
@@ -2299,52 +2401,52 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             </param>
             <param name="pathAndFilename" type="const char*">
                 <description>
-                    0: OBJ format
+                the location of the file to create
                 </description>
             </param>
             <param name="options" type="int">
                 <description>
-                    3: TEXT STL format
+                keep at 0
                 </description>
             </param>
             <param name="scalingFactor" type="double">
                 <description>
-                    4: BINARY STL format
+                the scaling factor to apply to the vertices to export
                 </description>
             </param>
             <param name="elementCount" type="int">
                 <description>
-                    5: COLLADA format
+                the number of meshes
                 </description>
             </param>
             <param name="vertices" type="double**">
                 <description>
-                    6: TEXT PLY format
+                an array to vertice arrays
                 </description>
             </param>
             <param name="verticesSizes" type="const int*">
                 <description>
-                    7: BINARY PLY format
+                an array indicating the individual vertice array sizes
                 </description>
             </param>
             <param name="indices" type="int**">
                 <description>
-                    the location of the file to create.
+                an array to indice arrays
                 </description>
             </param>
             <param name="indicesSizes" type="const int*">
                 <description>
-                    keep at 0
+                an array indicating the individual indice array sizes
                 </description>
             </param>
             <param name="reserved" type="double**">
                 <description>
-                    the scaling factor to apply to the vertices to export
+                    set to null
                 </description>
             </param>
             <param name="names" type="char**">
                 <description>
-                    the number of meshes
+                set to null
                 </description>
             </param>
         </params>
@@ -2367,7 +2469,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             <h3>Example</h3>
             <code class="hljs language-c++ coppelia-coppeliasim-plugin">// Exports all shapes in the scene
 int shapeCount = 0;
-while (simGetObjects(shapeCount++, sim.sceneobject_shape) != -1);
+while (simGetObjects(shapeCount++, sim_sceneobject_shape) != -1);
 shapeCount--;
 double** vertices = new double*[shapeCount];
 int* verticesSizes = new int[shapeCount];
@@ -2376,7 +2478,7 @@ int* indicesSizes = new int[shapeCount];
 int index = 0;
 while (true)
 {
-    int shapeHandle = simGetObjects(index++, sim.sceneobject_shape);
+    int shapeHandle = simGetObjects(index++, sim_sceneobject_shape);
     if (shapeHandle &lt; 0)
         break;
     double* vert;
@@ -2424,15 +2526,25 @@ delete[] indicesSizes;</code>
         <params>
             <param name="posX" type="double">
                 <description>
-                    relative position of the center of the floating view. Accepted values are between 0 and 1.
+                    relative X position of the center of the floating view. Accepted values are between 0 and 1.
                 </description>
             </param>
             <param name="posY" type="double">
                 <description>
-                    relative size of the floating view. Accepted values are between 0 and 1.
+                    relative Y position of the center of the floating view. Accepted values are between 0 and 1.
                 </description>
             </param>
             <param name="sizeX" type="double">
+                <description>
+                    relative X size of the floating view. Accepted values are between 0 and 1.
+                </description>
+            </param>
+            <param name="sizeY" type="double">
+                <description>
+                    relative Y size of the floating view. Accepted values are between 0 and 1.
+                </description>
+            </param>
+            <param name="options" type="int">
                 <description>
                     bit-coded:
                     <ul>
@@ -2441,16 +2553,6 @@ delete[] indicesSizes;</code>
                         <li> bit2 set (4)=the floating view cannot be shifted </li>
                         <li> bit3 set (8)=the floating view cannot be resized </li>
                     </ul>
-                </description>
-            </param>
-            <param name="sizeY" type="double">
-                <description>
-                    bit0 set (1)=double click allows swapping the floating view with the main view
-                </description>
-            </param>
-            <param name="options" type="int">
-                <description>
-                    bit1 set (2)=the floating view doesn't have a close button
                 </description>
             </param>
         </params>
@@ -2476,7 +2578,7 @@ delete[] indicesSizes;</code>
     <function name="simFloatingViewRemove" lang="c">
         <description>
             Removes a floating view previously added with 
-            <a href="simFloatingViewAdd.htm"> sim.floatingViewAdd </a>
+            <a href="simFloatingViewAdd.htm"> sim_floatingViewAdd </a>
             .
         </description>
         <params>
@@ -2537,12 +2639,12 @@ delete[] indicesSizes;</code>
             </param>
             <param name="upVector" type="const double*">
                 <description>
-                    bit0-bit1: 0 = upVector is , 1 = upVector is the x-axis of the path point frame, 2 = upVector is the y-axis of the path point frame, 3 = upVector is the z-axis of the path point frame
+                    vector that identifies the up-side of the extrusion shape. Can be nullptr if the two first bits of <strong>options</strong> are non-zero
                 </description>
             </param>
             <param name="reserved" type="double">
                 <description>
-                    bit2 set (4): the path is closed
+                    set to 0.0
                 </description>
             </param>
         </params>
@@ -2578,7 +2680,7 @@ delete[] indicesSizes;</code>
             </param>
             <param name="apiWord" type="const char*">
                 <description>
-                    word that API functions and variables should match, e.g. "sim.getObj". Only matches up to the first dot are returned, if the apiWord does not contain any dot. To retrieve all functions and variables, leave apiWord empty. To retrieve only functions, add '+' as prefix. To retrieve only variables, add '-' as prefix.
+                    word that API functions and variables should match, e.g. "sim_getObj". Only matches up to the first dot are returned, if the apiWord does not contain any dot. To retrieve all functions and variables, leave apiWord empty. To retrieve only functions, add '+' as prefix. To retrieve only variables, add '-' as prefix.
                 </description>
             </param>
         </params>
@@ -2614,7 +2716,7 @@ delete[] indicesSizes;</code>
             </param>
             <param name="apiWord" type="const char*">
                 <description>
-                    API functions or variable to retrieve the info for, e.g. "sim.getObject". Return is for the latest version of a module by default. For a specific module version, specify its full name, e.g. "sim-1.getObject". Using the wildcard, e.g. "sim-*.getObject", the returned information is prepended by its related module name (e.g. "[sim-1]"), for all available modules
+                    API functions or variable to retrieve the info for, e.g. "sim_getObject". Return is for the latest version of a module by default. For a specific module version, specify its full name, e.g. "sim-1.getObject". Using the wildcard, e.g. "sim-*.getObject", the returned information is prepended by its related module name (e.g. "[sim-1]"), for all available modules
                 </description>
             </param>
         </params>
@@ -2655,7 +2757,7 @@ delete[] indicesSizes;</code>
             <param name="pathLengths" type="const double*">
                 <description>
                     lengths of a path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path). See also
-                    <a href="simGetPathLengths.htm"> sim.getPathLengths </a>.
+                    <a href="simGetPathLengths.htm"> sim_getPathLengths </a>.
                 </description>
             </param>
             <param name="absPt" type="const double*">
@@ -2724,21 +2826,21 @@ delete[] indicesSizes;</code>
         <params>
             <param name="dynamicPass" type="int">
                 <description>
-                    specific dynamic sub-step index or sim.handle_all. By default a call to 
+                    specific dynamic sub-step index or sim_handle_all. By default a call to 
                     <a href="simHandleDynamics.htm"> simHandleDynamics </a>
-                    executes the dynamics engine x times, with x times smaller time steps (where x is a parameter that can be adjusted). At each of those sub-steps, contacts are created and destroyed. With the dynamicPass argument you can select which sub-step you wish to retrieve contacts from (zero-based index), or sim.handle_all to retrieve the contacts of all sub-steps. See also the 
+                    executes the dynamics engine x times, with x times smaller time steps (where x is a parameter that can be adjusted). At each of those sub-steps, contacts are created and destroyed. With the dynamicPass argument you can select which sub-step you wish to retrieve contacts from (zero-based index), or sim_handle_all to retrieve the contacts of all sub-steps. See also the 
                     <a href="../propertiesReference.htm#dynamicsStepSize"> dynamicsStepSize </a>
                     property.
                 </description>
             </param>
             <param name="objectHandle" type="int">
                 <description>
-                    handle of a specific object you wish to retrieve contacts from, or sim.handle_all to retrieve all contacts in the scene.
+                    handle of a specific object you wish to retrieve contacts from, or sim_handle_all to retrieve all contacts in the scene.
                 </description>
             </param>
             <param name="index" type="int">
                 <description>
-                    zero-based index of the contact to retrieve. Optionally, you may add sim.handleflag_extended to the index, if you also wish to retrieve the normal vector (see further down)
+                    zero-based index of the contact to retrieve. Optionally, you may add sim_handleflag_extended to the index, if you also wish to retrieve the normal vector (see further down)
                 </description>
             </param>
             <param name="objectHandles" type="int*">
@@ -2748,7 +2850,7 @@ delete[] indicesSizes;</code>
             </param>
             <param name="contactInfo" type="double*">
                 <description>
-                    pointer to 6 values (or 9 values if sim.handleflag_extended was added to index), where the 3 first values represent the contact position, the 3 next values represent the force generated by the contact, and the (optional) 3 last values represent the normal vector at the contact. The force vector returned by the Bullet engine will omit the component that results from fricition.
+                    pointer to 6 values (or 9 values if sim_handleflag_extended was added to index), where the 3 first values represent the contact position, the 3 next values represent the force generated by the contact, and the (optional) 3 last values represent the normal vector at the contact. The force vector returned by the Bullet engine will omit the component that results from fricition.
                 </description>
             </param>
         </params>
@@ -3022,8 +3124,8 @@ delete[] indicesSizes;</code>
             <param name="jointHandle" type="int">
                 <description>
                     handle of the joint. Can be combined with 
-                    <a href="../apiConstants.htm#specialHandleFlags"> sim.handleflag_rawvalue </a>
-                    (simply add sim.handleflag_rawvalue to jointHandle), if you wish to access the raw values generated by each individual dynamic simulation step (by default, there are 10 dynamic simulation steps for each simulation step). Raw values can only be accessed from inside a 
+                    <a href="../apiConstants.htm#specialHandleFlags"> sim_handleflag_rawvalue </a>
+                    (simply add sim_handleflag_rawvalue to jointHandle), if you wish to access the raw values generated by each individual dynamic simulation step (by default, there are 10 dynamic simulation steps for each simulation step). Raw values can only be accessed from inside a 
                     <a href="../callbackFunctions.htm"> callback function </a>
                     triggered by the physics engine.
                 </description>
@@ -3133,7 +3235,7 @@ delete[] indicesSizes;</code>
         <description>
             Retrieves the linear/angular displacement/angle of a joint. This function cannot be used with spherical joints
             (use 
-            <a href="simGetObjectChildPose.htm"> sim.getObjectChildPose </a>
+            <a href="simGetObjectChildPose.htm"> sim_getObjectChildPose </a>
             instead)
         </description>
         <params>
@@ -3280,7 +3382,7 @@ delete[] indicesSizes;</code>
         <returns>
             <param name="return" type="int">
                 <description>
-                    Type of the joint (sim.joint_revolute, sim.joint_prismatic or sim.joint_spherical), or -1 if operation was not successful
+                    Type of the joint (sim_joint_revolute, sim_joint_prismatic or sim_joint_spherical), or -1 if operation was not successful
                 </description>
             </param>
         </returns>
@@ -3696,13 +3798,13 @@ delete[] indicesSizes;</code>
         <params>
             <param name="objectHandle" type="int">
                 <description>
-                    handle of the object. Can be combined with sim.handleflag_reljointbaseframe (see next argument)
+                    handle of the object. Can be combined with sim_handleflag_reljointbaseframe (see next argument)
                 </description>
             </param>
             <param name="relativeToObjectHandle" type="int">
                 <description>
-                    indicates relative to which reference frame we want the matrix. Specify sim.handle_world to retrieve the absolute transformation matrix, sim.handle_inverse to retrieve the inverse of the absolute transformation matrix, sim.handle_parent to retrieve the transformation matrix relative to the object's parent, or an object handle relative to whose reference frame we want the transformation matrix. If this handle is the handle of a joint, then the matrix relative to the joint's moving frame will be returned (unless 
-                    is combined with sim.handleflag_reljointbaseframe, in which case the matrix relative to the joint's base frame will be returned).
+                    indicates relative to which reference frame we want the matrix. Specify sim_handle_world to retrieve the absolute transformation matrix, sim_handle_inverse to retrieve the inverse of the absolute transformation matrix, sim_handle_parent to retrieve the transformation matrix relative to the object's parent, or an object handle relative to whose reference frame we want the transformation matrix. If this handle is the handle of a joint, then the matrix relative to the joint's moving frame will be returned (unless 
+                    is combined with sim_handleflag_reljointbaseframe, in which case the matrix relative to the joint's base frame will be returned).
                 </description>
             </param>
             <param name="matrix" type="double*">
@@ -3739,13 +3841,13 @@ delete[] indicesSizes;</code>
         <params>
             <param name="objectHandle" type="int">
                 <description>
-                    handle of the object. Can be combined with sim.handleflag_reljointbaseframe (see next argument)
+                    handle of the object. Can be combined with sim_handleflag_reljointbaseframe (see next argument)
                 </description>
             </param>
             <param name="relativeToObjectHandle" type="int">
                 <description>
-                    indicates relative to which reference frame we want the orientation. Specify sim.handle_world to retrieve the absolute orientation, sim.handle_inverse to retrieve the inverse of the absolute orientation, sim.handle_parent to retrieve the orientation relative to the object's parent, or an object handle relative to whose reference frame you want the orientation. If this handle is the handle of a joint, then the orientation relative to the joint's moving frame will be returned (unless 
-                    is combined with sim.handleflag_reljointbaseframe, in which case the orientation relative to the joint's base frame will be returned).
+                    indicates relative to which reference frame we want the orientation. Specify sim_handle_world to retrieve the absolute orientation, sim_handle_inverse to retrieve the inverse of the absolute orientation, sim_handle_parent to retrieve the orientation relative to the object's parent, or an object handle relative to whose reference frame you want the orientation. If this handle is the handle of a joint, then the orientation relative to the joint's moving frame will be returned (unless 
+                    is combined with sim_handleflag_reljointbaseframe, in which case the orientation relative to the joint's base frame will be returned).
                 </description>
             </param>
             <param name="eulerAngles" type="double*">
@@ -3809,13 +3911,13 @@ delete[] indicesSizes;</code>
         <params>
             <param name="objectHandle" type="int">
                 <description>
-                    handle of the object. Combine with sim.handleflag_wxyzquat to retrieve the quaternion as [qw qx qy qz] order instead of [qx qy qz qw] order. Can also be combined with sim.handleflag_reljointbaseframe (see next argument)
+                    handle of the object. Combine with sim_handleflag_wxyzquat to retrieve the quaternion as [qw qx qy qz] order instead of [qx qy qz qw] order. Can also be combined with sim_handleflag_reljointbaseframe (see next argument)
                 </description>
             </param>
             <param name="relativeToObjectHandle" type="int">
                 <description>
-                    indicates relative to which reference frame we want the pose. Specify sim.handle_world to retrieve the absolute pose, sim.handle_inverse to retrieve the inverse of the absolute pose, sim.handle_parent to retrieve the pose relative to the object's parent, or an object handle relative to whose reference frame we want the pose. If this handle is the handle of a joint, then the pose relative to the joint's moving frame will be returned (unless 
-                    is combined with sim.handleflag_reljointbaseframe, in which case the pose relative to the joint's base frame will be returned).
+                    indicates relative to which reference frame we want the pose. Specify sim_handle_world to retrieve the absolute pose, sim_handle_inverse to retrieve the inverse of the absolute pose, sim_handle_parent to retrieve the pose relative to the object's parent, or an object handle relative to whose reference frame we want the pose. If this handle is the handle of a joint, then the pose relative to the joint's moving frame will be returned (unless 
+                    is combined with sim_handleflag_reljointbaseframe, in which case the pose relative to the joint's base frame will be returned).
                 </description>
             </param>
             <param name="pose" type="double*">
@@ -3850,13 +3952,13 @@ delete[] indicesSizes;</code>
         <params>
             <param name="objectHandle" type="int">
                 <description>
-                    handle of the object. Can be combined with sim.handleflag_reljointbaseframe (see next argument)
+                    handle of the object. Can be combined with sim_handleflag_reljointbaseframe (see next argument)
                 </description>
             </param>
             <param name="relativeToObjectHandle" type="int">
                 <description>
-                    indicates relative to which reference frame we want the position. Specify sim.handle_world to retrieve the absolute position, sim.handle_parent to retrieve the position relative to the object's parent, or an object handle relative to whose reference frame we want the position. If this handle is the handle of a joint, then the position relative to the joint's moving frame will be returned (unless 
-                    is combined with sim.handleflag_reljointbaseframe, in which case the position relative to the joint's base frame will be returned).
+                    indicates relative to which reference frame we want the position. Specify sim_handle_world to retrieve the absolute position, sim_handle_parent to retrieve the position relative to the object's parent, or an object handle relative to whose reference frame we want the position. If this handle is the handle of a joint, then the position relative to the joint's moving frame will be returned (unless 
+                    is combined with sim_handleflag_reljointbaseframe, in which case the position relative to the joint's base frame will be returned).
                 </description>
             </param>
             <param name="position" type="double*">
@@ -3891,13 +3993,13 @@ delete[] indicesSizes;</code>
         <params>
             <param name="objectHandle" type="int">
                 <description>
-                    handle of the object. Combine with sim.handleflag_wxyzquat to retrieve the quaternion as [qw qx qy qz] order instead of [qx qy qz qw] order. Can also be combined with sim.handleflag_reljointbaseframe (see next argument)
+                    handle of the object. Combine with sim_handleflag_wxyzquat to retrieve the quaternion as [qw qx qy qz] order instead of [qx qy qz qw] order. Can also be combined with sim_handleflag_reljointbaseframe (see next argument)
                 </description>
             </param>
             <param name="relativeToObjectHandle" type="int">
                 <description>
-                    indicates relative to which reference frame we want the orientation. Specify sim.handle_world to retrieve the absolute orientation, sim.handle_inverse to retrieve the inverse of the absolute orientation, sim.handle_parent to retrieve the orientation relative to the object's parent, or an object handle relative to whose reference frame you want the orientation. If this handle is the handle of a joint, then the quaternion relative to the joint's moving frame will be returned (unless 
-                    is combined with sim.handleflag_reljointbaseframe, in which case the quaternion relative to the joint's base frame will be returned).
+                    indicates relative to which reference frame we want the orientation. Specify sim_handle_world to retrieve the absolute orientation, sim_handle_inverse to retrieve the inverse of the absolute orientation, sim_handle_parent to retrieve the orientation relative to the object's parent, or an object handle relative to whose reference frame you want the orientation. If this handle is the handle of a joint, then the quaternion relative to the joint's moving frame will be returned (unless 
+                    is combined with sim_handleflag_reljointbaseframe, in which case the quaternion relative to the joint's base frame will be returned).
                 </description>
             </param>
             <param name="quaternion" type="double*">
@@ -3937,9 +4039,9 @@ delete[] indicesSizes;</code>
             </param>
             <param name="objectType" type="int">
                 <description>
-                    object type (sim.sceneobject_shape, sim.sceneobject_joint, etc. (see the 
+                    object type (sim_sceneobject_shape, sim_sceneobject_joint, etc. (see the 
                     <a href="../apiConstants.htm#sceneObjectTypes"> object types </a>
-                    ) or sim.handle_all for any type of object
+                    ) or sim_handle_all for any type of object
                 </description>
             </param>
         </params>
@@ -3998,13 +4100,13 @@ delete[] indicesSizes;</code>
         <params>
             <param name="treeBaseHandle" type="int">
                 <description>
-                    handle of the object that describes the hierarchy tree, or sim.handle_scene for all objects in the scene.
+                    handle of the object that describes the hierarchy tree, or sim_handle_scene for all objects in the scene.
                 </description>
             </param>
             <param name="objectType" type="int">
                 <description>
                     <a href="../apiConstants.htm#sceneObjectTypes"> object type </a>
-                    to retrieve or sim.handle_all for any type of object in the tree
+                    to retrieve or sim_handle_all for any type of object in the tree
                 </description>
             </param>
             <param name="options" type="int">
@@ -4012,13 +4114,13 @@ delete[] indicesSizes;</code>
                     bit-coded:
                     <ul>
                         <li> bit0 set (1): exclude the tree base from the returned array </li>
-                        <li> bit1 set (2): include in the returned array only the object's first children. If <strong> treeBaseHandle </strong> is sim.handle_scene, then only parentless objects will be included. </li>
+                        <li> bit1 set (2): include in the returned array only the object's first children. If <strong> treeBaseHandle </strong> is sim_handle_scene, then only parentless objects will be included. </li>
                     </ul>
                 </description>
             </param>
             <param name="objectCount" type="int*">
                 <description>
-                    bit0 set (1): exclude the tree base from the returned array
+                    the number of returned object handles
                 </description>
             </param>
         </params>
@@ -4056,7 +4158,7 @@ delete[] indicesSizes;</code>
         <returns>
             <param name="return" type="int">
                 <description>
-                    type of the object (sim.sceneobject_shape, sim.sceneobject_joint, etc. (see the 
+                    type of the object (sim_sceneobject_shape, sim_sceneobject_joint, etc. (see the 
                     <a href="../apiConstants.htm#sceneObjectTypes"> object types </a>
                     ) or -1 in case of error
                 </description>
@@ -4112,7 +4214,7 @@ delete[] indicesSizes;</code>
                     <a href="../objects.htm"> scene object </a>
                     . It is highly recommended to add 
                     <em>
-                        <a href="../apiConstants.htm#specialHandleFlags"> sim.handleflag_axis </a>
+                        <a href="../apiConstants.htm#specialHandleFlags"> sim_handleflag_axis </a>
                     </em>
                     to the object handle, in order to obtain the 
                     <em>
@@ -4120,7 +4222,7 @@ delete[] indicesSizes;</code>
                     </em>
                     angular velocity for the object, i.e. the rotation axis and the rotation velocity that is represented by the axis' length. If 
                     <em>
-                        sim.handleflag_axis
+                        sim_handleflag_axis
                     </em>
                     is omitted, then a derivative of Euler angles expressed relative to previous' simulation frame will be returned for the angular velocity
                 </description>
@@ -4233,7 +4335,7 @@ delete[] indicesSizes;</code>
             <param name="stringInfo" type="char**">
                 <description>
                     pointer to a string information, in case the information type is for a string. The user is in charge of releasing the string buffer with 
-                    <a href="simReleaseBuffer_cpp.htm"> sim.releaseBuffer </a>
+                    <a href="simReleaseBuffer_cpp.htm"> sim_releaseBuffer </a>
                 </description>
             </param>
             <param name="intInfo" type="int*">
@@ -4294,12 +4396,12 @@ delete[] indicesSizes;</code>
             </param>
             <param name="pointSize" type="double*">
                 <description>
-                    bit0 set (1): points have random colors
+                    size of the points, in pixels
                 </description>
             </param>
             <param name="reserved" type="void*">
                 <description>
-                    bit1 set (2): show OC tree structure
+                    set to null
                 </description>
             </param>
         </params>
@@ -4437,7 +4539,7 @@ delete[] indicesSizes;</code>
                 <description>
                     handle of the scene object that stores the list of handles. Can be optionally combined with 
                     <em>
-                        sim.handleflag_keeporiginal
+                        sim_handleflag_keeporiginal
                     </em>
                     , in which case the handles that link to originals are retrieved.
                 </description>
@@ -4642,24 +4744,25 @@ delete[] indicesSizes;</code>
             <param name="intData" type="int*">
                 <description>
                     pointer to 5 integer values:
-                </description>
-            </param>
-            <param name="floatData" type="double*">
-                <description>
                     intData[0]: the 
                     <a href="../apiConstants.htm#primitiveTypes"> primitive type </a>
                     of the shape. Undefined if the shape is a compound shape.
                 </description>
             </param>
-            <param name="reserved" type="void*">
+            <param name="floatData" type="double*">
                 <description>
-                    pointer to 5 double values:
+                    pointer to 4 double values:
                     <ul>
                         <li> floatData[0]: X-size or diameter of the primitive shape. Undefined if the shape is a compound shape or not primitive. </li>
                         <li> floatData[1]: Y-size of the primitive shape. Undefined if the shape is a compound shape or not primitive. </li>
                         <li> floatData[2]: Z-size or height of the primitive shape. Undefined if the shape is a compound shape or not primitive. </li>
                         <li> floatData[3]: Reserved. </li>
                     </ul>
+                </description>
+            </param>
+            <param name="reserved" type="void*">
+                <description>
+                    set to null
                 </description>
             </param>
         </params>
@@ -4934,7 +5037,7 @@ delete[] indicesSizes;</code>
         <returns>
             <param name="return" type="int">
                 <description>
-                    The current state of the simulation (sim.simulation_stopped, sim.simulation_paused, etc. (see the 
+                    The current state of the simulation (sim_simulation_stopped, sim_simulation_paused, etc. (see the 
                     <a href="../apiConstants.htm#simulationStatus"> simulation state values </a>
                     )), or -1 in case of an error
                 </description>
@@ -5860,7 +5963,7 @@ delete[] indicesSizes;</code>
     <function name="simGetVisionSensorDepth" lang="c">
         <description>
             Reads the depth buffer of a vision sensor. The returned data doesn't make sense if
-            <a href="simHandleVisionSensor.htm"> sim.handleVisionSensor </a>
+            <a href="simHandleVisionSensor.htm"> sim_handleVisionSensor </a>
             wasn't called previously
         </description>
         <params>
@@ -5879,17 +5982,17 @@ delete[] indicesSizes;</code>
             </param>
             <param name="pos" type="const int*">
                 <description>
-                    bit0 set (1): the returned values indicate distances in meters, otherwise return values are in the range of 0.0 - 1.0 (0.0 = closest to sensor (i.e. close clipping plane), 1.0 = farthest from sensor (i.e. far clipping plane))
+                position of the depth buffer portion to retrieve. Can be nullptr, which defaults to [0 0]
                 </description>
             </param>
             <param name="size" type="const int*">
                 <description>
-                    position of the depth buffer portion to retrieve. Can be nullptr, which defaults to [0 0]
+                size of the depth buffer portion to retrieve. Can be nullptr, which defaults to [0 0], which corresponds to [resolutionX resolutionY]
                 </description>
             </param>
             <param name="resolution" type="int*">
                 <description>
-                    size of the depth buffer portion to retrieve. Can be nullptr, which defaults to [0 0], which corresponds to [resolutionX resolutionY]
+                the returned vision sensor resolution. Can be nullptr
                 </description>
             </param>
         </params>
@@ -5914,7 +6017,7 @@ delete[] indicesSizes;</code>
     <function name="simGetVisionSensorImg" lang="c">
         <description>
             Reads the image of a vision sensor. The returned data doesn't make sense if
-            <a href="simHandleVisionSensor.htm"> sim.handleVisionSensor </a>
+            <a href="simHandleVisionSensor.htm"> sim_handleVisionSensor </a>
             wasn't called previously
         </description>
         <params>
@@ -5934,30 +6037,22 @@ delete[] indicesSizes;</code>
             </param>
             <param name="rgbaCutOff" type="double">
                 <description>
-                    bit0 set (1): the returned image will by a greyscale image (1 byte per pixel), otherwise an RGB image
+                when an RGBA image is returned, the alpha component will be 255 for all depth values below <em>rgbaCutOff</em>, and 0 for all depth values above <em>rgbaCutOff</em>. 0 corresponds to the near clipping plane, 1 to the far clipping plane
                 </description>
             </param>
             <param name="pos" type="const int*">
                 <description>
-                    bit1 set (2): the returned image will have one additional byte per pixel, as alpha channel (RGBA or greyscale+A)
+                position of the image portion to retrieve. Can be nullptr, which defaults to [0 0]
                 </description>
             </param>
             <param name="size" type="const int*">
                 <description>
-                    when an RGBA image is returned, the alpha component will be 255 for all depth values below 
-                    <em>
-                        rgbaCutOff
-                    </em>
-                    , and 0 for all depth values above 
-                    <em>
-                        rgbaCutOff
-                    </em>
-                    . 0 corresponds to the near clipping plane, 1 to the far clipping plane
+                size of the image portion to retrieve. Can be nullptr which defaults to [0 0], which corresponds to [resolutionX resolutionY]
                 </description>
             </param>
             <param name="resolution" type="int*">
                 <description>
-                    position of the image portion to retrieve. Can be nullptr, which defaults to [0 0]
+                the returned vision sensor resolution. Can be null
                 </description>
             </param>
         </params>
@@ -6050,77 +6145,6 @@ delete[] indicesSizes;</code>
 
     
 
-    <function name="sim.handleAddOnScripts" lang="lua">
-        <description>
-            Calls a specific function in 
-            <a href="../addOns.htm"> add-ons </a>
-            .
-            Should only be called from the 
-            <a href="../mainScript.htm"> main script </a>
-        </description>
-        <params>
-            <param name="callType" type="int">
-                <description>
-                    desired system call type (e.g. 
-                    <em>
-                        sysCall_actuation
-                    </em>
-                    ).
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="count" type="int">
-                <description>
-                    number of called add-ons
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="scriptRelated" />
-        </categories>
-    </function>
-
-    
-
-    <function name="sim.handleSimulationScripts" lang="lua">
-        <description>
-            Calls a specific 
-            <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a>
-            in
-            <a href="../simulationScripts.htm"> simulation scripts </a>
-            . Simulation scripts will be executed in a 
-            <a href="../scriptExecution.htm"> precise order </a>
-            .
-            This function should only be called from the 
-            <a href="../mainScript.htm"> main script </a>
-            .
-        </description>
-        <params>
-            <param name="callType" type="int">
-                <description>
-                    the desired system call type (e.g. 
-                    <em>
-                        sysCall_actuation
-                    </em>
-                    )
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="scriptCount" type="int">
-                <description>
-                    number of called simulation scripts
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="scriptRelated" />
-        </categories>
-    </function>
-
-    
-
     <function name="simHandleDynamics" lang="c">
         <description>
             Handles the dynamics functionality in a scene
@@ -6148,51 +6172,11 @@ delete[] indicesSizes;</code>
 
     
 
-    <function name="sim.handleEmbeddedScripts" lang="lua">
-        <description>
-            Calls a specific 
-            <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a>
-            in
-            <a href="../simulationScripts.htm"> simulation scripts </a>
-            and 
-            <a href="../customizationScripts.htm"> customization scripts </a>
-            .
-            Simulation- and customization scripts will be executed in a 
-            <a href="../scriptExecution.htm"> precise order </a>
-            .
-            This function should only be called from the 
-            <a href="../mainScript.htm"> main script </a>
-        </description>
-        <params>
-            <param name="callType" type="int">
-                <description>
-                    desired system call type (e.g. 
-                    <em>
-                        sysCall_actuation
-                    </em>
-                    )
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="scriptCount" type="int">
-                <description>
-                    number of called scripts
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="scriptRelated" />
-        </categories>
-    </function>
-
-    
-
     <function name="simHandleGraph" lang="c">
         <description>
             Handles a graph object (i.e. records another value for each curve, given that such value was provided
             via 
-            <a href="simSetGraphStreamValue.htm"> sim.setGraphStreamValue </a>
+            <a href="simSetGraphStreamValue.htm"> sim_setGraphStreamValue </a>
         </description>
         <params>
             <param name="graphHandle" type="int">
@@ -6230,7 +6214,7 @@ delete[] indicesSizes;</code>
         <params>
             <param name="sensorHandle" type="int">
                 <description>
-                    handle of a proximity sensor object or sim.handle_all or sim.handle_all_except_explicit. (sim.handle_all will handle all proximity sensor objects, while sim.handle_all_except_explicit will only handle those that are not marked as "explicit handling")
+                    handle of a proximity sensor object or sim_handle_all or sim_handle_all_except_explicit. (sim_handle_all will handle all proximity sensor objects, while sim_handle_all_except_explicit will only handle those that are not marked as "explicit handling")
                 </description>
             </param>
             <param name="detectedPoint" type="double*">
@@ -6267,32 +6251,6 @@ delete[] indicesSizes;</code>
 
     
 
-    <function name="sim.handleSandboxScript" lang="lua">
-        <description>
-            Calls a specific function in the 
-            <a href="../sandboxScript.htm"> sandbox </a>
-            .
-            sim.handleSandboxScript should only be called from the 
-            <a href="../mainScript.htm"> main script </a>
-        </description>
-        <params>
-            <param name="callType" type="int">
-                <description>
-                    system call type (e.g. 
-                    <em>
-                        sysCall_actuation
-                    </em>
-                    )
-                </description>
-            </param>
-        </params>
-        <categories>
-            <category name="scriptRelated" />
-        </categories>
-    </function>
-
-    
-
     <function name="simHandleVisionSensor" lang="c">
         <description>
             Handles (performs sensing, etc. of) a vision sensor object. It (1) clear previous computed image processing data, (2) reads
@@ -6305,7 +6263,7 @@ delete[] indicesSizes;</code>
         <params>
             <param name="visionSensorHandle" type="int">
                 <description>
-                    handle of a vision sensor object or sim.handle_all or sim.handle_all_except_explicit. (sim.handle_all will handle all vision sensor objects, while sim.handle_all_except_explicit will only handle those that are not marked as "explicit handling")
+                    handle of a vision sensor object or sim_handle_all or sim_handle_all_except_explicit. (sim_handle_all will handle all vision sensor objects, while sim_handle_all_except_explicit will only handle those that are not marked as "explicit handling")
                 </description>
             </param>
             <param name="auxValues" type="double**">
@@ -6314,7 +6272,7 @@ delete[] indicesSizes;</code>
                     <a href="../visionCallbackFunctions.htm"> vision callback function </a>
                     returns additional values, then they are appended as packets to the first packet. AuxValues can be nullptr. The user is in charge of releasing the auxValues buffer with 
                     <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
-                    (*auxValues). If visionSensorHandle is sim.handle_all or sim.handle_all_except_explicit, nothing is returned in auxValues.
+                    (*auxValues). If visionSensorHandle is sim_handle_all or sim_handle_all_except_explicit, nothing is returned in auxValues.
                 </description>
             </param>
             <param name="auxValuesCount" type="int**">
@@ -6454,7 +6412,7 @@ if (elementCount &gt; 0)
         int shapeHandle = simCreateShape(2, 20.0 * 3.1415 / 180.0, vertices[i],
                                verticesSizes[i], indices[i], indicesSizes[i], nullptr,
                                nullptr, nullptr, nullptr);
-        simSetShapeColor(shapeHandle, "", sim.colorcomponent_ambient, grey);
+        simSetShapeColor(shapeHandle, "", sim_colorcomponent_ambient, grey);
         simReleaseBuffer((char*)indices[i]);
         simReleaseBuffer((char*)vertices[i]);
     }
@@ -6502,12 +6460,12 @@ if (elementCount &gt; 0)
             </param>
             <param name="identicalVerticeTolerance" type="double">
                 <description>
-                    bit0 set (1): keep identical vertices
+                not used. Set to 0
                 </description>
             </param>
             <param name="scalingFactor" type="double">
                 <description>
-                    bit1 set (2): reserced. keep at 0.
+                the scaling factor to apply to the imported vertices
                 </description>
             </param>
         </params>
@@ -6741,22 +6699,26 @@ if (elementCount &gt; 0)
             </param>
             <param name="pts" type="const double*">
                 <description>
-                    bit0 set (1): specified points are relative to the point cloud reference frame, otherwise they are relative to the world reference frame
+                a pointer to the point positions specified as x/y/z coordinates
                 </description>
             </param>
             <param name="ptCnt" type="int">
                 <description>
-                    bit1 set (2): the color array contains one RGB triple per point. Otherwise it contains a single RGB triple
+                the number of point coordinates contained in pts
                 </description>
             </param>
             <param name="color" type="const unsigned char*">
                 <description>
-                    a pointer to the point positions specified as x/y/z coordinates
+                a pointer to one or several RGB triplets, specifying the red, green and blue color components (0-255). Can be nullptr
                 </description>
             </param>
             <param name="optionalValues" type="void*">
                 <description>
-                    the number of point coordinates contained in pts
+                can be used to specify additional parameters, or set to nullptr for default parameter values:
+                    <ul>
+                        <li>((int*)optionalValues)[0]: an integer value that is bit coded. Each bit indicates which additional parameter will be taken into account:</li>
+                        <li>((float*)optionalValues)[1]: <strong>duplicateTolerance</strong>: a minimum distance tolerance value that is used to avoid duplicate points. To have this parameter taken into account, set bit0 to 1 in ((int*)optionalValues)[0]. Point insertion is slower when the duplicate tolerance is &gt; then 0.0</li>
+                    </ul>
                 </description>
             </param>
         </params>
@@ -6801,22 +6763,22 @@ if (elementCount &gt; 0)
             </param>
             <param name="pts" type="const double*">
                 <description>
-                    bit0 set (1): specified points are relative to the OC tree reference frame, otherwise they are relative to the world reference frame
+                pointer to the voxel positions specified as x/y/z coordinates
                 </description>
             </param>
             <param name="ptCnt" type="int">
                 <description>
-                    bit1 set (2): the color array contains one RGB triple per point, and the tag array contains one value per point. Otherwise it the color array contains a single RGB triple, and the tag array contains a single value.
+                number of point coordinates contained in pts
                 </description>
             </param>
             <param name="color" type="const unsigned char*">
                 <description>
-                    pointer to the voxel positions specified as x/y/z coordinates
+                pointer to one or several RGB triplets, specifying the red, green and blue color components (0-255). Can be nullptr
                 </description>
             </param>
             <param name="tag" type="const unsigned int*">
                 <description>
-                    number of point coordinates contained in pts
+                pointer to one or several uint32 values, which are user-defined values. Can be nullptr, and should be nullptr if <em>color</em> is nullptr
                 </description>
             </param>
             <param name="reserved" type="void*">
@@ -6867,22 +6829,22 @@ if (elementCount &gt; 0)
             </param>
             <param name="pts" type="const double*">
                 <description>
-                    bit0 set (1): specified points are relative to the point cloud reference frame, otherwise they are relative to the world reference frame
+                pointer to the point positions specified as x/y/z coordinates
                 </description>
             </param>
             <param name="ptCnt" type="int">
                 <description>
-                    pointer to the point positions specified as x/y/z coordinates.
+                number of point coordinates contained in pts
                 </description>
             </param>
             <param name="tolerance" type="double">
                 <description>
-                    number of point coordinates contained in pts
+                distance used as a tolerance value
                 </description>
             </param>
             <param name="reserved" type="void*">
                 <description>
-                    distance used as a tolerance value
+                    set to null
                 </description>
             </param>
         </params>
@@ -6965,7 +6927,7 @@ if (elementCount &gt; 0)
         <description>
             Checks whether a scene object is dynamically enabled, i.e. is being handled and simulated by the physics engine.
             Note that until the physics engine has parsed the scene in the first simulation step (i.e. the first time
-            <a href="simHandleDynamics.htm"> sim.handleDynamics </a>
+            <a href="simHandleDynamics.htm"> sim_handleDynamics </a>
             is called), no object will be dynamically enabled
         </description>
         <params>
@@ -7047,12 +7009,12 @@ if (elementCount &gt; 0)
             </param>
             <param name="filenameOrBuffer" type="const char*">
                 <description>
-                    bit0 is set (1): the returned image is rgba, otherwise it is rgb
+                    name of the file to read. The file extension indicates the format. If you wish to load an image from a memory buffer, then have filename point to that memory buffer
                 </description>
             </param>
             <param name="reserved" type="void*">
                 <description>
-                    name of the file to read. The file extension indicates the format. If you wish to load an image from a memory buffer, then have filename point to that memory buffer.
+                    set to null
                 </description>
             </param>
         </params>
@@ -7116,7 +7078,7 @@ if (elementCount &gt; 0)
         <returns>
             <param name="return" type="int">
                 <description>
-                    1 if operation was not successful.
+                    1 if operation was successful.
                 </description>
             </param>
         </returns>
@@ -7427,50 +7389,13 @@ if (elementCount &gt; 0)
         <see-also>
             <function-ref name="simTextEditorOpen" />
         </see-also>
-        <more>
-            <h3>XML example</h3>
-            <code class="hljs language-xml coppelia-coppeliasim-plugin">&lt;editor title="Window title" editable="true" searchable="true"
-  tabWidth="4" textColor="50 50 50" backgroundColor="190 190 190"
-  selectionColor="128 128 255" size="800 600" position="100 100" &gt;
-
-  &lt;keywords1 color="152 0 0" &gt;
-    &lt;item word="sim.getObject" autocomplete="true"
-      calltip="int handle=sim.getObject(string path)" /&gt;
-    &lt;item word="sim.getObjectPosition" autocomplete="true"
-      calltip="vector3 pos=sim.getObjectPosition(int handle,
-        int relHandle)" /&gt;
-  &lt;/keywords1&gt;
-
-  &lt;keywords2 color="220 80 20" &gt;
-    &lt;item word="sim.getObjectQuaternion" autocomplete="true"
-      calltip="quaternion quat=sim.getObjectQuaternion(int handle,
-        int relHandle)" /&gt;
-  &lt;/keywords2&gt;
-&lt;/editor&gt;
-
-<comment>
-Other <em>editor</em> attributes with their default values are:
-
-isLua = "false"
-useSimKeywords = "false"
-commentColor = "0 140 0"
-numberColor = "220 0 220"
-stringColor = "255 255 0"
-characterColor = "255 255 0"
-operatorColor = "0 0 0"
-preprocessorColor = "0 128 128"
-identifierColor = "64 64 64"
-wordColor = "0 0 255"
-word4Color = "152 64 0"</comment>
-            </code>
-        </more>
     </function>
 
     
 
     <function name="simPackTable" lang="c">
         <description>
-            Packs a table into a buffer. Functions and other non-serializable items will be packed as string or None/nil values. You can also use sim.packTable to quickly compare two tables
+            Packs a table into a buffer. Functions and other non-serializable items will be packed as string or None/nil values. You can also use sim_packTable to quickly compare two tables
         </description>
         <params>
             <param name="stackHandle" type="int">
@@ -8337,8 +8262,8 @@ word4Color = "152 64 0"</comment>
             <param name="objectHandle" type="int">
                 <description>
                     handle of the object (must be a force sensor). Can be combined with 
-                    <a href="../apiConstants.htm#specialHandleFlags"> sim.handleflag_rawvalue </a>
-                    (simply add sim.handleflag_rawvalue to objectHandle), if you wish to access the raw values generated by each individual dynamic simulation step (by default, there are 10 dynamic simulation steps for each simulation step). Raw values can only be accessed from inside a 
+                    <a href="../apiConstants.htm#specialHandleFlags"> sim_handleflag_rawvalue </a>
+                    (simply add sim_handleflag_rawvalue to objectHandle), if you wish to access the raw values generated by each individual dynamic simulation step (by default, there are 10 dynamic simulation steps for each simulation step). Raw values can only be accessed from inside a 
                     <a href="../callbackFunctions.htm"> callback function </a>
                     triggered by the physics engine.
                 </description>
@@ -8379,7 +8304,7 @@ word4Color = "152 64 0"</comment>
         <description>
             Reads the state of a proximity sensor. This function doesn't perform detection,
             it merely reads the result from a previous call to 
-            <a href="simHandleProximitySensor.htm"> sim.handleProximitySensor </a>
+            <a href="simHandleProximitySensor.htm"> sim_handleProximitySensor </a>
         </description>
         <params>
             <param name="sensorHandle" type="int">
@@ -8446,14 +8371,18 @@ word4Color = "152 64 0"</comment>
             </param>
             <param name="posY" type="int">
                 <description>
-                    x/y size of the texture portion to retrieve. Set to [0 0] to retrieve the full texture
+                    x/y position of the texture portion to retrieve. Set to [0 0] to retrieve the full texture
                 </description>
             </param>
             <param name="sizeX" type="int">
-                <description />
+                <description>
+                    x/y size of the texture portion to retrieve. Set to [0 0] to retrieve the full texture
+                </description>
             </param>
             <param name="sizeY" type="int">
-                <description />
+                <description>
+                    x/y size of the texture portion to retrieve. Set to [0 0] to retrieve the full texture
+                </description>
             </param>
         </params>
         <returns>
@@ -8481,7 +8410,7 @@ word4Color = "152 64 0"</comment>
         <description>
             Reads the state of a vision sensor. This function doesn't perform detection, it merely
             reads the result from a previous call to 
-            <a href="simHandleVisionSensor.htm"> sim.handleVisionSensor </a>
+            <a href="simHandleVisionSensor.htm"> sim_handleVisionSensor </a>
         </description>
         <params>
             <param name="visionSensorHandle" type="int">
@@ -8530,10 +8459,10 @@ word4Color = "152 64 0"</comment>
     <function name="simRefreshDialogs" lang="c">
         <description>
             Refreshes CoppeliaSim's internal dialogs. Calling 
-            <a href="simRefreshDialogs.htm"> sim.refreshDialogs </a>
+            <a href="simRefreshDialogs.htm"> sim_refreshDialogs </a>
             will
             not trigger a 
-            <a href="../apiConstants.htm#simulatorMessages"> sim.message_eventcallback_refreshdialogs </a>
+            <a href="../apiConstants.htm#simulatorMessages"> sim_message_eventcallback_refreshdialogs </a>
             message
         </description>
         <params>
@@ -8901,17 +8830,17 @@ word4Color = "152 64 0"</comment>
             </param>
             <param name="pts" type="const double*">
                 <description>
-                    bit0 set (1): specified points are relative to the point cloud reference frame, otherwise they are relative to the world reference frame
+                pointer to the point positions specified as x/y/z coordinates. Set to nullptr to remove all points
                 </description>
             </param>
             <param name="ptCnt" type="int">
                 <description>
-                    pointer to the point positions specified as x/y/z coordinates. Set to nullptr to remove all points
+                number of point coordinates contained in pts
                 </description>
             </param>
             <param name="tolerance" type="double">
                 <description>
-                    number of point coordinates contained in pts
+                distance used as a tolerance value
                 </description>
             </param>
             <param name="reserved" type="void*">
@@ -8960,17 +8889,17 @@ word4Color = "152 64 0"</comment>
             </param>
             <param name="pts" type="const double*">
                 <description>
-                    bit0 set (1): specified points are relative to the OC tree reference frame, otherwise they are relative to the world reference frame
+                pointer to the voxel positions specified as x/y/z coordinates. Set to nullptr to remove all voxels
                 </description>
             </param>
             <param name="ptCnt" type="int">
                 <description>
-                    pointer to the voxel positions specified as x/y/z coordinates. Set to nullptr to remove all voxels
+                number of point coordinates contained in pts
                 </description>
             </param>
             <param name="reserved" type="void*">
                 <description>
-                    number of point coordinates contained in pts
+                    set to null
                 </description>
             </param>
         </params>
@@ -9002,7 +8931,7 @@ word4Color = "152 64 0"</comment>
             <param name="objectHandle" type="int">
                 <description>
                     handle of the object. Can be combined with 
-                    <a href="../apiConstants.htm#specialHandleFlags"> sim.handleflag_model </a>
+                    <a href="../apiConstants.htm#specialHandleFlags"> sim_handleflag_model </a>
                     , if you wish to reset all objects in a 
                     <a href="../models.htm"> model </a>
                     (where objectHandle would be the model base).
@@ -9058,7 +8987,7 @@ word4Color = "152 64 0"</comment>
         <params>
             <param name="sensorHandle" type="int">
                 <description>
-                    handle of the proximity sensor object or sim.handle_all or sim.handle_all_except_explicit. (sim.handle_all will reset all proximity sensor objects, while sim.handle_all_except_explicit will only reset those that are not marked as "explicit handling")
+                    handle of the proximity sensor object or sim_handle_all or sim_handle_all_except_explicit. (sim_handle_all will reset all proximity sensor objects, while sim_handle_all_except_explicit will only reset those that are not marked as "explicit handling")
                 </description>
             </param>
         </params>
@@ -9086,7 +9015,7 @@ word4Color = "152 64 0"</comment>
         <params>
             <param name="scriptHandle" type="int">
                 <description>
-                    handle of the script to reset or sim.handle_all to reset all scripts
+                    handle of the script to reset or sim_handle_all to reset all scripts
                 </description>
             </param>
         </params>
@@ -9111,7 +9040,7 @@ word4Color = "152 64 0"</comment>
         <params>
             <param name="sensorHandle" type="int">
                 <description>
-                    handle of the vision sensor object or sim.handle_all or sim.handle_all_except_explicit. (sim.handle_all will reset all vision sensor objects, while sim.handle_all_except_explicit will only reset those that are not marked as "explicit handling")
+                    handle of the vision sensor object or sim_handle_all or sim_handle_all_except_explicit. (sim_handle_all will reset all vision sensor objects, while sim_handle_all_except_explicit will only reset those that are not marked as "explicit handling")
                 </description>
             </param>
         </params>
@@ -9140,10 +9069,10 @@ word4Color = "152 64 0"</comment>
             The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities
             for motion control systems. This function prepares a position-based trajectory generation object,
             that can then be calculated with 
-            <a href="simRuckigStep.htm"> sim.ruckigStep </a>
+            <a href="simRuckigStep.htm"> sim_ruckigStep </a>
             . When this object
             is not needed anymore, remove it with 
-            <a href="simRuckigRemove.htm"> sim.ruckigRemove </a>
+            <a href="simRuckigRemove.htm"> sim_ruckigRemove </a>
         </description>
         <params>
             <param name="dofs" type="int">
@@ -9179,12 +9108,12 @@ word4Color = "152 64 0"</comment>
             </param>
             <param name="maxVel" type="const double*">
                 <description>
-                    maximum allowed velocity (one value for each DoF, i.e. [maxV_1 ... maxV_n]). If sim.ruckig_minvel is specified in flags, then maxVel should contain [maxV_1 ... maxV_n minV_1 ... minV_n]
+                    maximum allowed velocity (one value for each DoF, i.e. [maxV_1 ... maxV_n]). If sim_ruckig_minvel is specified in flags, then maxVel should contain [maxV_1 ... maxV_n minV_1 ... minV_n]
                 </description>
             </param>
             <param name="maxAccel" type="const double*">
                 <description>
-                    maximum allowed acceleration (one value for each DoF, i.e. [maxA_1 ... maxA_n]). If sim.ruckig_minaccel is specified in flags, then maxAccel should contain [maxA_1 ... maxA_n minA_1 ... minA_n]
+                    maximum allowed acceleration (one value for each DoF, i.e. [maxA_1 ... maxA_n]). If sim_ruckig_minaccel is specified in flags, then maxAccel should contain [maxA_1 ... maxA_n minA_1 ... minA_n]
                 </description>
             </param>
             <param name="maxJerk" type="const double*">
@@ -9202,7 +9131,7 @@ word4Color = "152 64 0"</comment>
                     target position (one value for each DoF)
                 </description>
             </param>
-            <param name="targetVe" type="const double*">
+            <param name="targetVel" type="const double*">
                 <description>
                     target velocity (one value for each DoF)
                 </description>
@@ -9240,9 +9169,9 @@ word4Color = "152 64 0"</comment>
     <function name="simRuckigRemove" lang="c">
         <description>
             Removes an object previously created via 
-            <a href="simRuckigPos.htm"> sim.ruckigPos </a>
+            <a href="simRuckigPos.htm"> sim_ruckigPos </a>
             or 
-            <a href="simRuckigVel.htm"> sim.ruckigVel </a>
+            <a href="simRuckigVel.htm"> sim_ruckigVel </a>
             .
         </description>
         <params>
@@ -9278,9 +9207,9 @@ word4Color = "152 64 0"</comment>
             The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities for
             motion control systems. This function steps forward a trajectory generation algorithm previously prepared
             via 
-            <a href="simRuckigPos.htm"> sim.ruckigPos </a>
+            <a href="simRuckigPos.htm"> sim_ruckigPos </a>
             or 
-            <a href="simRuckigVel.htm"> sim.ruckigVel </a>
+            <a href="simRuckigVel.htm"> sim_ruckigVel </a>
         </description>
         <params>
             <param name="handle" type="int">
@@ -9314,7 +9243,7 @@ word4Color = "152 64 0"</comment>
             </param>
             <param name="syncTime" type="double*">
                 <description>
-                    synchronization time (output). This is the time needed to reach the desired state. This time does not include the cycle time of the current call to sim.RuckigStep)
+                    synchronization time (output). This is the time needed to reach the desired state. This time does not include the cycle time of the current call to sim_RuckigStep)
                 </description>
             </param>
             <param name="reserved1" type="double*">
@@ -9358,10 +9287,10 @@ word4Color = "152 64 0"</comment>
             The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities for
             motion control systems. This function prepares a velocity-based trajectory generation object,
             that can then be calculated with 
-            <a href="simRuckigStep.htm"> sim.ruckigStep </a>
+            <a href="simRuckigStep.htm"> sim_ruckigStep </a>
             . When this object
             is not needed anymore, remove it with 
-            <a href="simRuckigRemove.htm"> sim.ruckigRemove </a>
+            <a href="simRuckigRemove.htm"> sim_ruckigRemove </a>
         </description>
         <params>
             <param name="dofs" type="int">
@@ -9397,7 +9326,7 @@ word4Color = "152 64 0"</comment>
             </param>
             <param name="maxAccel" type="const double*">
                 <description>
-                    maximum allowed acceleration (one value for each DoF, i.e. [maxA_1 ... maxA_n]). If sim.ruckig_minaccel is specified in flags, then maxAccel should contain [maxA_1 ... maxA_n minA_1 ... minA_n]
+                    maximum allowed acceleration (one value for each DoF, i.e. [maxA_1 ... maxA_n]). If sim_ruckig_minaccel is specified in flags, then maxAccel should contain [maxA_1 ... maxA_n minA_1 ... minA_n]
                 </description>
             </param>
             <param name="maxJerk" type="const double*">
@@ -9530,19 +9459,23 @@ word4Color = "152 64 0"</comment>
             </param>
             <param name="xScale" type="double">
                 <description>
-                    scaling factors along the object's x, y and z-axis
+                    scaling factors along the object's x-axis
                 </description>
             </param>
             <param name="yScale" type="double">
                 <description>
-                    keep at 0
+                    scaling factors along the object's y-axis
                 </description>
             </param>
             <param name="zScale" type="double">
-                <description />
+                <description>
+                    scaling factors along the object's z-axis
+                </description>
             </param>
             <param name="options" type="int">
-                <description />
+                <description>
+                    keep at 0
+                </description>
             </param>
         </params>
         <returns>
@@ -9601,195 +9534,6 @@ word4Color = "152 64 0"</comment>
         </categories>
         <see-also>
             <link href="../apiFunctions.htm#size" label=" size and scaling functions " />
-        </see-also>
-    </function>
-
-    
-
-    <function name="simSerialCheck" lang="c">
-        <description>
-            Reads how many bytes are waiting to be read on a serial port (RS-232)
-        </description>
-        <params>
-            <param name="portHandle" type="int">
-                <description>
-                    the handle returned by the 
-                    <a href="simSerialOpen.htm"> simSerialOpen </a>
-                    function
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="return" type="int">
-                <description>
-                    -1 if operation was not successful, otherwise the number of bytes that are waiting to be read
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="messaging" />
-        </categories>
-        <see-also>
-            <function-ref name="simSerialRead" />
-        </see-also>
-    </function>
-
-    
-
-    <function name="simSerialClose" lang="c">
-        <description>
-            Closes a serial port (RS-232)
-        </description>
-        <params>
-            <param name="portHandle" type="int">
-                <description>
-                    handle returned by 
-                    <a href="simSerialOpen.htm"> simSerialOpen </a>
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="return" type="int">
-                <description>
-                    -1 if operation was not successful
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="messaging" />
-        </categories>
-        <see-also>
-            <function-ref name="simSerialOpen" />
-        </see-also>
-    </function>
-
-    
-
-    <function name="simSerialOpen" lang="c">
-        <description>
-            Opens a serial port (RS-232) for communication. When called from a script,
-            the function can only be called when the simulation is running (and in that case the port is
-            automatically closed at simulation stop)
-        </description>
-        <params>
-            <param name="portString" type="char*">
-                <description>
-                    string specifying the port to open. Under Windows, use something similar to "\\.\COM1". Under MacOS and Linux, use something similar to "/dev/*" (check the "/dev" folder to know what file to specify). Under Linux, you might have to launch CoppeliaSim with super user priviledges in order to access the serial port.
-                </description>
-            </param>
-            <param name="baudRate" type="int">
-                <description>
-                    baudrate
-                </description>
-            </param>
-            <param name="reserved1" type="void*">
-                <description>
-                    reserved for future extension. Keep at nullptr.
-                </description>
-            </param>
-            <param name="reserved2" type="void*">
-                <description>
-                    reserved for future extension. Keep at nullptr.
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="return" type="int">
-                <description>
-                    -1 if operation was not successful, otherwise a port handle
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="messaging" />
-        </categories>
-        <see-also>
-            <function-ref name="simSerialClose" />
-            <function-ref name="simSerialSend" />
-            <function-ref name="simSerialCheck" />
-            <function-ref name="simSerialRead" />
-        </see-also>
-    </function>
-
-    
-
-    <function name="simSerialRead" lang="c">
-        <description>
-            Reads from a previously opened serial port (RS-232). The C version of the function cannot
-            be blocking
-        </description>
-        <params>
-            <param name="portHandle" type="int">
-                <description>
-                    handle returned by the 
-                    <a href="simSerialOpen.htm"> simSerialOpen </a>
-                    function
-                </description>
-            </param>
-            <param name="buffer" type="char*">
-                <description>
-                    buffer that will be filled with read data
-                </description>
-            </param>
-            <param name="dataLengthToRead" type="int">
-                <description>
-                    maximum data length that should be read
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="return" type="int">
-                <description>
-                    -1 if operation was not successful, otherwise the effective data length that was read
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="messaging" />
-        </categories>
-        <see-also>
-            <function-ref name="simSerialCheck" />
-            <function-ref name="simSerialSend" />
-        </see-also>
-    </function>
-
-    
-
-    <function name="simSerialSend" lang="c">
-        <description>
-            Writes data to a previously opened serial port (RS-232)
-        </description>
-        <params>
-            <param name="portHandle" type="int">
-                <description>
-                    handle returned by the 
-                    <a href="simSerialOpen.htm"> simSerialOpen </a>
-                    function
-                </description>
-            </param>
-            <param name="data" type="const char*">
-                <description>
-                    pointer to the data that should be sent
-                </description>
-            </param>
-            <param name="dataLength" type="int">
-                <description>
-                    length of the data to be sent
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="return" type="int">
-                <description>
-                    -1 if operation was not successful, otherwise the effective data length that was written
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="messaging" />
-        </categories>
-        <see-also>
-            <function-ref name="simSerialRead" />
         </see-also>
     </function>
 
@@ -9899,7 +9643,7 @@ word4Color = "152 64 0"</comment>
             <param name="value" type="double">
                 <description>
                     value to set. Omitting to set a value for a corresponding 
-                    <a href="simHandleGraph.htm"> sim.handleGraph </a>
+                    <a href="simHandleGraph.htm"> sim_handleGraph </a>
                     call, then the data point will be missing.
                 </description>
             </param>
@@ -9925,7 +9669,7 @@ word4Color = "152 64 0"</comment>
         <description>
             Sets a joint dependent of another joint. The dependent joint should first be set
             into dependent mode via 
-            <a href="simSetJointMode.htm"> sim.setJointMode </a>
+            <a href="simSetJointMode.htm"> sim_setJointMode </a>
         </description>
         <params>
             <param name="jointHandle" type="int">
@@ -10049,7 +9793,7 @@ word4Color = "152 64 0"</comment>
         <description>
             Sets the linear/angular displacement/angle of a joint. Cannot be used with spherical joints
             (use 
-            <a href="simSetObjectChildPose.htm"> sim.setObjectChildPose </a>
+            <a href="simSetObjectChildPose.htm"> sim_setObjectChildPose </a>
             instead)
         </description>
         <params>
@@ -10312,7 +10056,9 @@ word4Color = "152 64 0"</comment>
                 </description>
             </param>
             <param name="options" type="int" default="0">
-                <description />
+                <description>
+                    set to 0
+                </description>
             </param>
         </params>
         <returns>
@@ -10420,13 +10166,13 @@ word4Color = "152 64 0"</comment>
         <params>
             <param name="objectHandle" type="int">
                 <description>
-                    handle of the object. Can be combined with sim.handleflag_reljointbaseframe
+                    handle of the object. Can be combined with sim_handleflag_reljointbaseframe
                 </description>
             </param>
             <param name="relativeToObjectHandle" type="int">
                 <description>
-                    indicates relative to which reference frame the matrix is specified. Specify sim.handle_world to set the absolute transformation matrix, sim.handle_inverse to set the inverse of the absolute transformation matrix, sim.handle_parent to set the transformation matrix relative to the object's parent, or an object handle relative to whose reference frame the transformation matrix is specified. If this handle is the handle of a joint, then the matrix is applied relative to the joint's moving frame (unless 
-                    is combined with sim.handleflag_reljointbaseframe, in which case the matrix is applied relative to the joint's base frame)
+                    indicates relative to which reference frame the matrix is specified. Specify sim_handle_world to set the absolute transformation matrix, sim_handle_inverse to set the inverse of the absolute transformation matrix, sim_handle_parent to set the transformation matrix relative to the object's parent, or an object handle relative to whose reference frame the transformation matrix is specified. If this handle is the handle of a joint, then the matrix is applied relative to the joint's moving frame (unless 
+                    is combined with sim_handleflag_reljointbaseframe, in which case the matrix is applied relative to the joint's base frame)
                 </description>
             </param>
             <param name="matrix" type="const double*">
@@ -10465,13 +10211,13 @@ word4Color = "152 64 0"</comment>
         <params>
             <param name="objectHandle" type="int">
                 <description>
-                    handle of the object. Can be combined with sim.handleflag_reljointbaseframe
+                    handle of the object. Can be combined with sim_handleflag_reljointbaseframe
                 </description>
             </param>
             <param name="relativeToObjectHandle" type="int">
                 <description>
-                    indicates relative to which reference frame the orientation is specified. Specify sim.handle_world to set the absolute orientation, sim.handle_inverse to set the inverse of the absolute orientation, sim.handle_parent to set the orientation relative to the object's parent, or an object handle relative to whose reference frame the orientation is specified. If this handle is the handle of a joint, then the orientation is applied relative to the joint's moving frame (unless 
-                    is combined with sim.handleflag_reljointbaseframe, in which case the orientation is applied relative to the joint's base frame)
+                    indicates relative to which reference frame the orientation is specified. Specify sim_handle_world to set the absolute orientation, sim_handle_inverse to set the inverse of the absolute orientation, sim_handle_parent to set the orientation relative to the object's parent, or an object handle relative to whose reference frame the orientation is specified. If this handle is the handle of a joint, then the orientation is applied relative to the joint's moving frame (unless 
+                    is combined with sim_handleflag_reljointbaseframe, in which case the orientation is applied relative to the joint's base frame)
                 </description>
             </param>
             <param name="eulerAngles" type="const double*">
@@ -10658,13 +10404,13 @@ word4Color = "152 64 0"</comment>
         <params>
             <param name="objectHandle" type="int">
                 <description>
-                    handle of the object. Combine with sim.handleflag_wxyzquat to provide the quaternion as [qw qx qy qz] order instead of [qx qy qz qw] order. Can also be combined with sim.handleflag_reljointbaseframe
+                    handle of the object. Combine with sim_handleflag_wxyzquat to provide the quaternion as [qw qx qy qz] order instead of [qx qy qz qw] order. Can also be combined with sim_handleflag_reljointbaseframe
                 </description>
             </param>
             <param name="relativeToObjectHandle" type="int">
                 <description>
-                    indicates relative to which reference frame the pose is specified. Specify sim.handle_world to set the absolute pose, sim.handle_inverse to set the inverse of the absolute pose, sim.handle_parent to set the pose relative to the object's parent, or an object handle relative to whose reference frame the pose is specified. If this handle is the handle of a joint, then the pose is applied relative to the joint's moving frame (unless 
-                    is combined with sim.handleflag_reljointbaseframe, in which case the pose is applied relative to the joint's base frame)
+                    indicates relative to which reference frame the pose is specified. Specify sim_handle_world to set the absolute pose, sim_handle_inverse to set the inverse of the absolute pose, sim_handle_parent to set the pose relative to the object's parent, or an object handle relative to whose reference frame the pose is specified. If this handle is the handle of a joint, then the pose is applied relative to the joint's moving frame (unless 
+                    is combined with sim_handleflag_reljointbaseframe, in which case the pose is applied relative to the joint's base frame)
                 </description>
             </param>
             <param name="pose" type="const double*">
@@ -10701,13 +10447,13 @@ word4Color = "152 64 0"</comment>
         <params>
             <param name="objectHandle" type="int">
                 <description>
-                    handle of the object. Can be combined with sim.handleflag_reljointbaseframe
+                    handle of the object. Can be combined with sim_handleflag_reljointbaseframe
                 </description>
             </param>
             <param name="relativeToObjectHandle" type="int">
                 <description>
-                    indicates relative to which reference frame the position is specified. Specify sim.handle_world to set the absolute position, sim.handle_parent to set the position relative to the object's parent, or an object handle relative to whose reference frame the position is specified. If this handle is the handle of a joint, then the position is applied relative to the joint's moving frame (unless 
-                    is combined with sim.handleflag_reljointbaseframe, in which case the position is applied relative to the joint's base frame)
+                    indicates relative to which reference frame the position is specified. Specify sim_handle_world to set the absolute position, sim_handle_parent to set the position relative to the object's parent, or an object handle relative to whose reference frame the position is specified. If this handle is the handle of a joint, then the position is applied relative to the joint's moving frame (unless 
+                    is combined with sim_handleflag_reljointbaseframe, in which case the position is applied relative to the joint's base frame)
                 </description>
             </param>
             <param name="position" type="const double*">
@@ -10743,13 +10489,13 @@ word4Color = "152 64 0"</comment>
         <params>
             <param name="objectHandle" type="int">
                 <description>
-                    handle of the object. Combine with sim.handleflag_wxyzquat to provide the quaternion as [qw qx qy qz] order instead of [qx qy qz qw] order. Can also be combined with sim.handleflag_reljointbaseframe
+                    handle of the object. Combine with sim_handleflag_wxyzquat to provide the quaternion as [qw qx qy qz] order instead of [qx qy qz qw] order. Can also be combined with sim_handleflag_reljointbaseframe
                 </description>
             </param>
             <param name="relativeToObjectHandle" type="int">
                 <description>
-                    indicates relative to which reference frame the orientation is specified. Specify sim.handle_world to set the absolute orientation, sim.handle_inverse to set the inverse of the absolute orientation, sim.handle_parent to set the orientation relative to the object's parent, or an object handle relative to whose reference frame the orientation is specified. If this handle is the handle of a joint, then the quaternion is applied relative to the joint's moving frame (unless 
-                    is combined with sim.handleflag_reljointbaseframe, in which case the quaternion is applied relative to the joint's base frame)
+                    indicates relative to which reference frame the orientation is specified. Specify sim_handle_world to set the absolute orientation, sim_handle_inverse to set the inverse of the absolute orientation, sim_handle_parent to set the orientation relative to the object's parent, or an object handle relative to whose reference frame the orientation is specified. If this handle is the handle of a joint, then the quaternion is applied relative to the joint's moving frame (unless 
+                    is combined with sim_handleflag_reljointbaseframe, in which case the quaternion is applied relative to the joint's base frame)
                 </description>
             </param>
             <param name="quaternion" type="const double*">
@@ -10983,7 +10729,7 @@ word4Color = "152 64 0"</comment>
             </em>
             . Optionally, if
             <em>
-                sim.handleflag_keeporiginal 
+                sim_handleflag_keeporiginal 
             </em>
             is specified, then linking to original objects is guaranteed, e.g. in above example,
             after a duplication of 
@@ -11010,7 +10756,7 @@ word4Color = "152 64 0"</comment>
                 <description>
                     handle of the scene object that will store the list of handles. Can be optionally combined with 
                     <em>
-                        sim.handleflag_keeporiginal
+                        sim_handleflag_keeporiginal
                     </em>
                     , in which case the handles that link to originals are retrieved
                 </description>
@@ -11106,7 +10852,7 @@ word4Color = "152 64 0"</comment>
         <description>
             Applies a new inertia matrix to a shape. If simulation is running, the shape is
             dynamically reset (similar to calling 
-            <a href="simResetDynamicObject.htm"> sim.resetDynamicObject </a>
+            <a href="simResetDynamicObject.htm"> sim_resetDynamicObject </a>
             right after)
         </description>
         <params>
@@ -11159,7 +10905,7 @@ word4Color = "152 64 0"</comment>
         <description>
             Applies a new mass value to a shape. If simulation is running, the shape is dynamically reset
             (similar to calling 
-            <a href="simResetDynamicObject.htm"> sim.resetDynamicObject </a>
+            <a href="simResetDynamicObject.htm"> sim_resetDynamicObject </a>
             right after)
         </description>
         <params>
@@ -11235,17 +10981,17 @@ word4Color = "152 64 0"</comment>
             </param>
             <param name="uvScaling" type="const double*">
                 <description>
-                    bit0: if set (1), then adjacent texture pixels are not interpolated.
+                <pointer to 2 values that indicate the texture scaling factors along the U and V directions
                 </description>
             </param>
             <param name="pos" type="const double*">
                 <description>
-                    bit1: if set (2), then the texture is applied as a decal (its appearance won't be influenced by light conditions).
+                pointer to 3 values (x,y,z) that indicate the texture position on the shape. Can be nullptr for default values
                 </description>
             </param>
             <param name="orient" type="const double*">
                 <description>
-                    bit2: if set (4), then the texture will be repeated along the U direction.
+                pointer to 3 values (Euler angles) that indicate the texture orientation on the shape. Can be nullptr for default values
                 </description>
             </param>
         </params>
@@ -11300,12 +11046,12 @@ word4Color = "152 64 0"</comment>
             </param>
             <param name="pos" type="const int*">
                 <description>
-                    bit0 set (1): the provided image is a greyscale image (1 byte per pixel), otherwise an RGB image (3 bytes per pixel)
+                position of the image portion to write. Can be nullptr, which defaults to [0 0]
                 </description>
             </param>
             <param name="size" type="const int*">
                 <description>
-                    bit1 set (2): the provided image has one additional byte per pixel, as alpha channel (RGBA or greyscale+A)
+                size of the image portion to write. Can be nullptr which defaults to [0 0], which corresponds to [resolutionX resolutionY]
                 </description>
             </param>
         </params>
@@ -11505,17 +11251,17 @@ word4Color = "152 64 0"</comment>
             </param>
             <param name="floatParams" type="const double*">
                 <description>
-                    bit0 set (1): the provided image is rgba (or a depth buffer, i.e. one double per image pixel), otherwise it is rgb
+                    set to null
                 </description>
             </param>
             <param name="intParams" type="const int*">
                 <description>
-                    bit1 set (2): the image will be flipped on its x-axis
+                    set to null
                 </description>
             </param>
             <param name="reserved" type="void*">
                 <description>
-                    bit2 set (4): the image will be flipped on its y-axis
+                    set to null
                 </description>
             </param>
         </params>
@@ -11705,32 +11451,32 @@ word4Color = "152 64 0"</comment>
             </param>
             <param name="textureData" type="const char*">
                 <description>
-                    reserved. Do not set
+                RGB data to write onto the texture. Each pixel is represented with 3 bytes (0-255)
                 </description>
             </param>
             <param name="posX" type="int">
                 <description>
-                    reserved. Do not set
+                x/y position where to copy the RGB data. Set to 0/0 to overwrite the full texture
                 </description>
             </param>
             <param name="posY" type="int">
                 <description>
-                    set (4)=only an elliptical/circular portion of the texture data will be written
+                x/y position where to copy the RGB data. Set to 0/0 to overwrite the full texture
                 </description>
             </param>
             <param name="sizeX" type="int">
                 <description>
-                    RGB data to write onto the texture. Each pixel is represented with 3 bytes (0-255)
+                x/y size of the RGB data. Set to 0/0 to overwrite the full texture
                 </description>
             </param>
             <param name="sizeY" type="int">
                 <description>
-                    x/y position where to copy the RGB data. Set to 0/0 to overwrite the full texture
+                x/y size of the RGB data. Set to 0/0 to overwrite the full texture
                 </description>
             </param>
             <param name="interpolation" type="double">
                 <description>
-                    x/y size of the RGB data. Set to 0/0 to overwrite the full texture
+                fade or interpolation factor. 0.0 for no fade
                 </description>
             </param>
         </params>
@@ -12375,82 +12121,6 @@ word4Color = "152 64 0"</comment>
 
     
 
-    <function name="simSetVector2Property" lang="c">
-        <description>
-            Sets a vector2 property
-        </description>
-        <params>
-            <param name="target" type="long long">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="propertyName" type="const char*">
-                <description>
-                    property name
-                </description>
-            </param>
-            <param name="propertyState" type="const double*">
-                <description>
-                    pointer to property value
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="return" type="int">
-                <description>
-                    1 in case of success
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
-    <function name="simGetVector2Property" lang="c">
-        <description>
-            Fetches a vector2 property
-        </description>
-        <params>
-            <param name="target" type="long long">
-                <description>
-                    target item
-                </description>
-            </param>
-            <param name="propertyName" type="const char*">
-                <description>
-                    property name
-                </description>
-            </param>
-            <param name="propertyState" type="double*">
-                <description>
-                    pointer to property value
-                </description>
-            </param>
-        </params>
-        <returns>
-            <param name="return" type="int">
-                <description>
-                    1 in case of success
-                </description>
-            </param>
-        </returns>
-        <categories>
-            <category name="property" />
-        </categories>
-        <see-also>
-            <link href="../properties.htm" label=" properties " />
-        </see-also>
-    </function>
-
-    
-
     <function name="simSetVector3Property" lang="c">
         <description>
             Sets a vector3 property
@@ -12507,6 +12177,102 @@ word4Color = "152 64 0"</comment>
             <param name="propertyState" type="double*">
                 <description>
                     pointer to property value
+                </description>
+            </param>
+        </params>
+        <returns>
+            <param name="return" type="int">
+                <description>
+                    1 in case of success
+                </description>
+            </param>
+        </returns>
+        <categories>
+            <category name="property" />
+        </categories>
+        <see-also>
+            <link href="../properties.htm" label=" properties " />
+        </see-also>
+    </function>
+
+    
+
+    <function name="simSetMatrixProperty" lang="c">
+        <description>
+            Sets a matrix property
+        </description>
+        <params>
+            <param name="target" type="long long">
+                <description>
+                    target item
+                </description>
+            </param>
+            <param name="propertyName" type="const char*">
+                <description>
+                    property name
+                </description>
+            </param>
+            <param name="propertyState" type="const double*">
+                <description>
+                    pointer to property value
+                </description>
+            </param>
+            <param name="rows" type="int">
+                <description>
+                    number of rows
+                </description>
+            </param>
+            <param name="cols" type="int">
+                <description>
+                    number of cols
+                </description>
+            </param>
+        </params>
+        <returns>
+            <param name="return" type="int">
+                <description>
+                    1 in case of success
+                </description>
+            </param>
+        </returns>
+        <categories>
+            <category name="property" />
+        </categories>
+        <see-also>
+            <link href="../properties.htm" label=" properties " />
+        </see-also>
+    </function>
+
+    
+
+    <function name="simGetMatrixProperty" lang="c">
+        <description>
+            Fetches a matrix property
+        </description>
+        <params>
+            <param name="target" type="long long">
+                <description>
+                    target item
+                </description>
+            </param>
+            <param name="propertyName" type="const char*">
+                <description>
+                    property name
+                </description>
+            </param>
+            <param name="propertyState" type="double*">
+                <description>
+                    pointer to property value
+                </description>
+            </param>
+            <param name="rows" type="int*">
+                <description>
+                    pointer to number of rows
+                </description>
+            </param>
+            <param name="cols" type="int*">
+                <description>
+                    pointer to number of cols
                 </description>
             </param>
         </params>
@@ -12679,9 +12445,9 @@ word4Color = "152 64 0"</comment>
 
     
 
-    <function name="simSetColorProperty" lang="c">
+    <function name="simSetColor4Property" lang="c">
         <description>
-            Sets a color property
+            Sets a RGBA color property
         </description>
         <params>
             <param name="target" type="long long">
@@ -12717,9 +12483,9 @@ word4Color = "152 64 0"</comment>
 
     
 
-    <function name="simGetColorProperty" lang="c">
+    <function name="simGetColor4Property" lang="c">
         <description>
-            Fetches a color property
+            Fetches a RGBA color property
         </description>
         <params>
             <param name="target" type="long long">
@@ -12816,6 +12582,93 @@ word4Color = "152 64 0"</comment>
             <param name="propertyValue" type="double**">
                 <description>
                     pointer to pointer to property value, if successful. The memory has to be released with 
+                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
+                </description>
+            </param>
+            <param name="propertyLength" type="int*">
+                <description>
+                    property length
+                </description>
+            </param>
+        </params>
+        <returns>
+            <param name="return" type="int">
+                <description>
+                    1 in case of success
+                </description>
+            </param>
+        </returns>
+        <categories>
+            <category name="property" />
+        </categories>
+        <see-also>
+            <link href="../properties.htm" label=" properties " />
+        </see-also>
+    </function>
+
+    
+
+    <function name="simSetTableProperty" lang="c">
+        <description>
+            Sets a table property
+        </description>
+        <params>
+            <param name="target" type="long long">
+                <description>
+                    target item
+                </description>
+            </param>
+            <param name="propertyName" type="const char*">
+                <description>
+                    property name
+                </description>
+            </param>
+            <param name="propertyValue" type="const char*">
+                <description>
+                    the table property packed into a buffer, via sim.app:pack
+                </description>
+            </param>
+            <param name="propertyLength" type="int">
+                <description>
+                    the buffer length
+                </description>
+            </param>
+        </params>
+        <returns>
+            <param name="return" type="int">
+                <description>
+                    1 in case of success
+                </description>
+            </param>
+        </returns>
+        <categories>
+            <category name="property" />
+        </categories>
+        <see-also>
+            <link href="../properties.htm" label=" properties " />
+        </see-also>
+    </function>
+
+    
+
+    <function name="simGetTableProperty" lang="c">
+        <description>
+            Fetches a table property
+        </description>
+        <params>
+            <param name="target" type="long long">
+                <description>
+                    target item
+                </description>
+            </param>
+            <param name="propertyName" type="const char*">
+                <description>
+                    property name
+                </description>
+            </param>
+            <param name="propertyValue" type="char**">
+                <description>
+                    pointer to pointer to a buffer value (packed table property), if successful. The memory has to be released with 
                     <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
                 </description>
             </param>
