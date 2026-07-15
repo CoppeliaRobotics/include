@@ -17,7 +17,7 @@ function sysCall_init()
     addOnDir = lfsx.dirname(sim.self.addOnPath)
     log('addOnDir = %s', addOnDir)
 
-    allHandles = {
+    allObjs = {
         sim.app,
         sim.scene,
         sim.app:createObject{type = 'collection'},
@@ -47,24 +47,24 @@ function sysCall_init()
     end
 
     local foundInconsistentFlags = false
-    for _, h in ipairs(allHandles) do
-        log('object %s:%d superClass=%s', h.type, h.handle, json.encode(h.metaInfo.superClass))
-        local classHierarchy = table.add({h.type}, h.metaInfo.superClass)
+    for _, obj in ipairs(allObjs) do
+        log('object %s:%d superClass=%s', obj.type, obj.handle, json.encode(obj.metaInfo.superClass))
+        local classHierarchy = table.add({obj.type}, obj.metaInfo.superClass)
         for i = 2, #classHierarchy do
             setSuperClass(classHierarchy[i-1], classHierarchy[i])
         end
         local info
         local ok, err = pcall(function()
-            info = sim.getPropertiesInfos(h, {excludeFlags = 0})
+            info = obj:getPropertiesInfos({excludeFlags = 0})
         end)
         if not ok then
-            error(string.format('target %d: %s', h.handle, err))
+            error(string.format('target %d: %s', obj.handle, err))
         end
-        classInfo[h.type] = classInfo[h.type] or {properties = {}}
+        classInfo[obj.type] = classInfo[obj.type] or {properties = {}}
         --FIXME: namespace info is not reported in the correct class (typically: sceneObject) but in its subclasses
-        --classInfo[h.type].namespaces = h.metaInfo.namespaces
+        --classInfo[obj.type].namespaces = obj.metaInfo.namespaces
         for pname, pinfo in pairs(info) do
-            local pclass = pinfo.class or h.type
+            local pclass = pinfo.class or obj.type
             local fullk = pclass .. '.' .. pname
             pinfo.type = typemap[pinfo.type]
             pinfo.flags.large = nil
