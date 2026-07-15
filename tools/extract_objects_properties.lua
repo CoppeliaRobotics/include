@@ -129,144 +129,72 @@ function sysCall_init()
 
     objectsPropertiesXML = sim.app.namedParam.objects_properties_xml
 
-    classesNode = {
-        tag = 'object-classes',
-        attrs = {},
-        children = {},
-    }
+    classesNode = {'object-classes'}
 
     classNames = table.keys(classInfo)
     table.sort(classNames)
 
     for _, className in ipairs(classNames) do
-        local classNode = {
-            tag = 'object-class',
-            attrs = {
-                name = className,
-                superclass = superclass[className],
-            },
-            children = {},
-        }
-        table.insert(classesNode.children, classNode)
+        local classNode = {'object-class', name = className, superclass = superclass[className]}
+        table.insert(classesNode, classNode)
         local propertiesNames = table.keys(classInfo[className].properties)
         table.sort(propertiesNames)
         for _, propertyName in ipairs(propertiesNames) do
             local pinfo = classInfo[className].properties[propertyName]
-            local propertyNode = {
-                tag = 'property',
-                attrs = {
-                    name = propertyName,
-                    type = pinfo.type,
-                },
-                children = {},
-            }
+            local propertyNode = {'property', name = propertyName, type = pinfo.type}
 
             if pinfo.handleType then
-                local handleNode = {
-                    tag = 'handle',
-                    attrs = {type = pinfo.handleType},
-                }
-                table.insert(propertyNode.children, handleNode)
+                table.insert(propertyNode, {'handle', type = pinfo.handleType})
             end
 
             if pinfo.enum then
-                local enumNode = {
-                    tag = 'enum',
-                    attrs = {name = pinfo.enum},
-                }
-                table.insert(propertyNode.children, enumNode)
+                table.insert(propertyNode, {'enum', name = pinfo.enum})
             end
 
-            local flagsNode = {
-                tag = 'flags',
-                attrs = {},
-                children = {},
-            }
+            local flagsNode = {'flags'}
             for _, flg in ipairs(table.sorted(table.keys(pinfo.flags or {}))) do
                 local v = pinfo.flags[flg]
-                if v then
-                    flagsNode.attrs[flg] = v
-                end
+                if v then flagsNode[flg] = v end
             end
-            table.insert(propertyNode.children, flagsNode)
+            table.insert(propertyNode, flagsNode)
 
             if (pinfo.label or '') ~= '' then
-                local labelNode = {
-                    tag = 'label',
-                    children = {
-                        pinfo.label,
-                    }
-                }
-                table.insert(propertyNode.children, labelNode)
+                table.insert(propertyNode, {'label', pinfo.label})
             end
 
             if (pinfo.description or '') ~= '' then
-                local descrNode = {
-                    tag = 'description',
-                    attrs = {},
-                    children = {pinfo.description},
-                }
-                table.insert(propertyNode.children, descrNode)
+                table.insert(propertyNode, {'description', pinfo.description})
             end
 
-            local supportNode = {
-                tag = 'support',
-                attrs = {
-                    ['start'] = pinfo.startSupport,
-                    ['end'] = pinfo.endSupport,
-                    ['start-deprecated'] = pinfo.startDeprecated,
-                },
-                children = {},
+            local supportNode = {'support',
+                start = pinfo.startSupport,
+                ['end'] = pinfo.endSupport,
+                start_deprecated = pinfo.startDeprecated,
             }
             if pinfo.replacedBy then
-                table.insert(supportNode.children, {
-                    tag = 'replaced-by',
-                    attrs = {name = pinfo.replacedBy},
-                })
+                table.insert(supportNode, {'replaced-by', name = pinfo.replacedBy})
             end
             if pinfo.migrateTo then
-                table.insert(supportNode.children, {
-                    tag = 'migrate-to',
-                    attrs = {name = pinfo.migrateTo},
-                })
+                table.insert(supportNode, {'migrate-to', name = pinfo.migrateTo})
             end
             if pinfo.supersedes then
-                table.insert(supportNode.children, {
-                    tag = 'supersedes',
-                    attrs = {name = pinfo.supersedes},
-                })
+                table.insert(supportNode, {'supersedes', name = pinfo.supersedes})
             end
-            table.insert(propertyNode.children, supportNode)
+            table.insert(propertyNode, supportNode)
 
             if pinfo.seeAlso then
-                local seeAlsoNode = {
-                    tag = 'see-also',
-                    children = {
-                        {
-                            tag = 'ref',
-                            attrs = {name = pinfo.seeAlso},
-                        }
-                    },
-                }
-                table.insert(propertyNode.children, seeAlsoNode)
+                table.insert(propertyNode, {'see-also', {'ref', name = pinfo.seeAlso}})
             end
 
-            table.insert(classNode.children, propertyNode)
+            table.insert(classNode, propertyNode)
         end
 
         local namespacesNames = table.keys(classInfo[className].namespaces or {})
         table.sort(namespacesNames)
         for _, namespaceName in ipairs(namespacesNames) do
             local nsinfo = classInfo[className].namespaces[namespaceName]
-            local namespaceNode = {
-                tag = 'namespace',
-                attrs = {
-                    name = namespaceName,
-                    ['new-property-forced-type'] = nsinfo.newPropertyForcedType,
-                },
-                children = {},
-            }
-            table.insert(classNode.children, namespaceNode)
+            local namespaceNode = {'namespace', name = namespaceName, new_property_forced_type = nsinfo.newPropertyForcedType}
+            table.insert(classNode, namespaceNode)
         end
     end
     local attrsOrder = {
@@ -301,18 +229,10 @@ function sysCall_init()
     end
 
     enumsXML = sim.app.namedParam.enums_xml
-    enumsNode = {
-        tag = 'enums',
-        attrs = {},
-        children = {},
-    }
+    enumsNode = {'enums'}
     for _, enumName in ipairs(sim.app.enumTypes) do
         log('enum: %s', enumName)
-        local enumNode = {
-            tag = 'enum',
-            attrs = {name = enumName},
-            children = {},
-        }
+        local enumNode = {'enum', name = enumName}
         local info = sim.app:getEnumInfo(enumName)
         -- sort entries by value:
         local entries = {}
@@ -322,13 +242,9 @@ function sysCall_init()
         table.sort(entries, function(a, b) return a[2] < b[2] end)
         for _, entry in ipairs(entries) do
             local k, v = table.unpack(entry)
-            table.insert(enumNode.children, {
-                tag = 'item',
-                attrs = {name = k, value = v},
-                children = {},
-            })
+            table.insert(enumNode, {'item', name = k, value = v})
         end
-        table.insert(enumsNode.children, enumNode)
+        table.insert(enumsNode, enumNode)
     end
     local attrsOrder = {
         'name',
