@@ -304,7 +304,7 @@ SIM_API_SYMBOL(ptrSimPushBufferOntoStack) SIM_API_SYMBOL(simPushBufferOntoStack)
 SIM_API_SYMBOL(ptrSimPushMatrixOntoStack) SIM_API_SYMBOL(simPushMatrixOntoStack) = nullptr;
 SIM_API_SYMBOL(ptrSimPushQuaternionOntoStack) SIM_API_SYMBOL(simPushQuaternionOntoStack) = nullptr;
 SIM_API_SYMBOL(ptrSimPushPoseOntoStack) SIM_API_SYMBOL(simPushPoseOntoStack) = nullptr;
-SIM_API_SYMBOL(ptrSimPushColorOntoStack) SIM_API_SYMBOL(simPushColorOntoStack) = nullptr;
+SIM_API_SYMBOL(ptrSimPushColor4OntoStack) SIM_API_SYMBOL(simPushColor4OntoStack) = nullptr;
 SIM_API_SYMBOL(ptrSimPushUInt8TableOntoStack) SIM_API_SYMBOL(simPushUInt8TableOntoStack) = nullptr;
 SIM_API_SYMBOL(ptrSimPushInt32TableOntoStack) SIM_API_SYMBOL(simPushInt32TableOntoStack) = nullptr;
 SIM_API_SYMBOL(ptrSimPushInt64TableOntoStack) SIM_API_SYMBOL(simPushInt64TableOntoStack) = nullptr;
@@ -326,7 +326,7 @@ SIM_API_SYMBOL(ptrSimGetStackStringValue) SIM_API_SYMBOL(simGetStackStringValue)
 SIM_API_SYMBOL(ptrSimGetStackMatrix) SIM_API_SYMBOL(simGetStackMatrix) = nullptr;
 SIM_API_SYMBOL(ptrSimGetStackQuaternion) SIM_API_SYMBOL(simGetStackQuaternion) = nullptr;
 SIM_API_SYMBOL(ptrSimGetStackPose) SIM_API_SYMBOL(simGetStackPose) = nullptr;
-SIM_API_SYMBOL(ptrSimGetStackColor) SIM_API_SYMBOL(simGetStackColor) = nullptr;
+SIM_API_SYMBOL(ptrSimGetStackColor4) SIM_API_SYMBOL(simGetStackColor4) = nullptr;
 SIM_API_SYMBOL(ptrSimGetStackTableInfo) SIM_API_SYMBOL(simGetStackTableInfo) = nullptr;
 SIM_API_SYMBOL(ptrSimGetStackUInt8Table) SIM_API_SYMBOL(simGetStackUInt8Table) = nullptr;
 SIM_API_SYMBOL(ptrSimGetStackInt32Table) SIM_API_SYMBOL(simGetStackInt32Table) = nullptr;
@@ -688,7 +688,7 @@ int SIM_API_SYMBOL(getSimProcAddresses)(LIBRARY lib)
     SIM_API_SYMBOL(simPushMatrixOntoStack) = (SIM_API_SYMBOL(ptrSimPushMatrixOntoStack))(_getProcAddress(lib,"simPushMatrixOntoStack",false, LH));
     SIM_API_SYMBOL(simPushQuaternionOntoStack) = (SIM_API_SYMBOL(ptrSimPushQuaternionOntoStack))(_getProcAddress(lib,"simPushQuaternionOntoStack",false, LH));
     SIM_API_SYMBOL(simPushPoseOntoStack) = (SIM_API_SYMBOL(ptrSimPushPoseOntoStack))(_getProcAddress(lib,"simPushPoseOntoStack",false, LH));
-    SIM_API_SYMBOL(simPushColorOntoStack) = (SIM_API_SYMBOL(ptrSimPushColorOntoStack))(_getProcAddress(lib,"simPushColorOntoStack",false, LH));
+    SIM_API_SYMBOL(simPushColor4OntoStack) = (SIM_API_SYMBOL(ptrSimPushColor4OntoStack))(_getProcAddress(lib,"simPushColor4OntoStack",false, LH));
     SIM_API_SYMBOL(simPushUInt8TableOntoStack) = (SIM_API_SYMBOL(ptrSimPushUInt8TableOntoStack))(_getProcAddress(lib,"simPushUInt8TableOntoStack",false, LH));
     SIM_API_SYMBOL(simPushInt32TableOntoStack) = (SIM_API_SYMBOL(ptrSimPushInt32TableOntoStack))(_getProcAddress(lib,"simPushInt32TableOntoStack",false, LH));
     SIM_API_SYMBOL(simPushInt64TableOntoStack) = (SIM_API_SYMBOL(ptrSimPushInt64TableOntoStack))(_getProcAddress(lib,"simPushInt64TableOntoStack",false, LH));
@@ -710,7 +710,7 @@ int SIM_API_SYMBOL(getSimProcAddresses)(LIBRARY lib)
     SIM_API_SYMBOL(simGetStackMatrix) = (SIM_API_SYMBOL(ptrSimGetStackMatrix))(_getProcAddress(lib,"simGetStackMatrix",false, LH));
     SIM_API_SYMBOL(simGetStackQuaternion) = (SIM_API_SYMBOL(ptrSimGetStackQuaternion))(_getProcAddress(lib,"simGetStackQuaternion",false, LH));
     SIM_API_SYMBOL(simGetStackPose) = (SIM_API_SYMBOL(ptrSimGetStackPose))(_getProcAddress(lib,"simGetStackPose",false, LH));
-    SIM_API_SYMBOL(simGetStackColor) = (SIM_API_SYMBOL(ptrSimGetStackColor))(_getProcAddress(lib,"simGetStackColor",false, LH));
+    SIM_API_SYMBOL(simGetStackColor4) = (SIM_API_SYMBOL(ptrSimGetStackColor4))(_getProcAddress(lib,"simGetStackColor4",false, LH));
     SIM_API_SYMBOL(simGetStackTableInfo) = (SIM_API_SYMBOL(ptrSimGetStackTableInfo))(_getProcAddress(lib,"simGetStackTableInfo",false, LH));
     SIM_API_SYMBOL(simGetStackUInt8Table) = (SIM_API_SYMBOL(ptrSimGetStackUInt8Table))(_getProcAddress(lib,"simGetStackUInt8Table",false, LH));
     SIM_API_SYMBOL(simGetStackInt32Table) = (SIM_API_SYMBOL(ptrSimGetStackInt32Table))(_getProcAddress(lib,"simGetStackInt32Table",false, LH));
@@ -2299,9 +2299,9 @@ int SIM_API_SYMBOL(getSimProcAddresses)(LIBRARY lib)
         printf("%s simPushPoseOntoStack\n",couldNotFind);
         return 0;
     }
-    if (SIM_API_SYMBOL(simPushColorOntoStack) == nullptr)
+    if (SIM_API_SYMBOL(simPushColor4OntoStack) == nullptr)
     {
-        printf("%s simPushColorOntoStack\n",couldNotFind);
+        printf("%s simPushColor4OntoStack\n",couldNotFind);
         return 0;
     }
     if (SIM_API_SYMBOL(simPushUInt8TableOntoStack) == nullptr)
@@ -2409,9 +2409,9 @@ int SIM_API_SYMBOL(getSimProcAddresses)(LIBRARY lib)
         printf("%s simGetStackPose\n",couldNotFind);
         return 0;
     }
-    if (SIM_API_SYMBOL(simGetStackColor) == nullptr)
+    if (SIM_API_SYMBOL(simGetStackColor4) == nullptr)
     {
-        printf("%s simGetStackColor\n",couldNotFind);
+        printf("%s simGetStackColor4\n",couldNotFind);
         return 0;
     }
     if (SIM_API_SYMBOL(simGetStackTableInfo) == nullptr)
