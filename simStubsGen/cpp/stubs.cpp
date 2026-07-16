@@ -295,16 +295,19 @@ const char* `enum.name.lower()`_string(`enum.name` x)
 
 void `cmd.c_name`_callback(SScriptCallBack *p)
 {
+    if(!p)
+    {
+        addStubsDebugLog("`cmd.c_name`_callback: called with NULL argument");
+        return;
+    }
+
     addStubsDebugLog("`cmd.c_name`_callback: reading input arguments...");
     addStubsDebugStackDump(p->stackID);
 
     const char *cmd = "`plugin.name`.`cmd.name`";
 
     `cmd.c_in_name` in_args;
-    if(p)
-    {
-        std::memcpy(&in_args._, p, sizeof(SScriptCallBack));
-    }
+    std::memcpy(&in_args._, p, sizeof(SScriptCallBack));
     `cmd.c_out_name` out_args;
 
     try
