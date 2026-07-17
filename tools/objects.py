@@ -214,15 +214,12 @@ def get_classes(object_classes_xml):
             for property_node in object_class_node.findall('property'):
                 try:
                     pinfo = PropertyInfo(cinfo, property_node)
-                    #if pinfo.deprecated: continue
-                    if pinfo.type == 'group': continue
                     cinfo.add_property(property_node.attrib['name'], pinfo)
                 except Exception as e:
                     raise Exception(f'error in property "{property_node.attrib["name"]}"')
             for ns_node in object_class_node.findall('namespace'):
                 try:
                     nsinfo = NamespaceInfo(cinfo, ns_node)
-                    if nsinfo.deprecated: continue
                     cinfo.add_namespace(ns_node.attrib['name'], nsinfo)
                 except Exception as e:
                     raise Exception(f'error in namespace "{ns_node.attrib["name"]}"')
