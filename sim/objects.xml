@@ -260,7 +260,7 @@
         </method>
         <method name="Constructor" func="sim.callMethod" lang="python,lua">
             <description>
-                Initiates a n-DoF motion using the 
+                Initiates a n-DoF motion using the
                 <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
             </description>
             <params>
@@ -401,7 +401,7 @@
         </method>
         <method name="Constructor" func="sim.callMethod" lang="python,lua">
             <description>
-                Initiates motion using the 
+                Initiates motion using the
                 <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
                 , by performing interpolations between two poses. The function can operate by handling 4 motion variables (x,y,z and
                 angle between the two poses), or a single movement variable (t, which requires a metric to be specified for distance
@@ -414,7 +414,7 @@
                         <ul>
                             <li>pose (pose): mandatory if neither object nor ik are specified. Specifies current pose </li>
                             <li>object (handle): mandatory if neither pose nor ik are specified. Specifies the handle of the object to move </li>
-                            <li>ik (map): mandatory if neither pose nor object are specified. Contains IK-relevant informations, if a kinematic chain should move via IK to a target: 
+                            <li>ik (map): mandatory if neither pose nor object are specified. Contains IK-relevant informations, if a kinematic chain should move via IK to a target:
                                 <ul>
                                     <li>tip (handle): specifies the tip object (on the end-effector) </li>
                                     <li>target (handle): specifies the target object (the object to reach) </li>
@@ -786,7 +786,7 @@
                 </param>
                 <param name="objects" type="handle[]" default="nil">
                     <description>
-                        objects that might be associated with the path, e.g. joint or sceneObjects. 
+                        objects that might be associated with the path, e.g. joint or sceneObjects.
                     </description>
                 </param>
             </params>
@@ -801,7 +801,7 @@
         </method>
         <method name="fromJoints" func="" lang="python,lua">
             <description>
-                Creates an empty path based on joints located between an end-effector and a base object (both not included, if of joint type). Ordering goes from base to end-effector 
+                Creates an empty path based on joints located between an end-effector and a base object (both not included, if of joint type). Ordering goes from base to end-effector
             </description>
             <params>
                 <param name="endEffector" type="handle">
@@ -871,7 +871,7 @@
         </method>
         <method name="fromObject" func="" lang="python,lua">
             <description>
-                Creates an empty path based on the pose of an object 
+                Creates an empty path based on the pose of an object
             </description>
             <params>
                 <param name="object" type="handle">
@@ -1057,7 +1057,7 @@
                 </param>
                 <param name="objects" type="handle[]">
                     <description>
-                        objects that might be associated with the path, e.g. joint or sceneObjects. 
+                        objects that might be associated with the path, e.g. joint or sceneObjects.
                     </description>
                 </param>
             </returns>
@@ -1225,7 +1225,7 @@
         </method>
         <method name="createShape" func="" lang="python,lua">
             <description>
-                Creates an extrusion shape from the path 
+                Creates an extrusion shape from the path
             </description>
             <params>
                 <param name="options" type="map" default="{}">
@@ -1256,7 +1256,7 @@
         </method>
         <method name="closest" func="" lang="python,lua">
             <description>
-                Returns the point on the path that is closest to the input point  
+                Returns the point on the path that is closest to the input point
             </description>
             <params>
                 <param name="point" type="vector">
@@ -1288,7 +1288,7 @@
         </method>
         <method name="getPoint" func="" lang="python,lua">
             <description>
-                Returns the point on the path that lies at a specific distance along the path  
+                Returns the point on the path that lies at a specific distance along the path
             </description>
             <params>
                 <param name="t" type="float">
@@ -1411,7 +1411,7 @@
                 </param>
                 <param name="calculatedValues" type="vector">
                     <description>
-                        the newly calculated values. Requires 'returnExtras' option enabled 
+                        the newly calculated values. Requires 'returnExtras' option enabled
                     </description>
                 </param>
                 <param name="metaData" type="map[]">
@@ -1590,7 +1590,7 @@
                 </param>
                 <param name="calculatedValues" type="vector">
                     <description>
-                        the newly calculated values. Requires 'returnExtras' option enabled 
+                        the newly calculated values. Requires 'returnExtras' option enabled
                     </description>
                 </param>
                 <param name="metaData" type="map[]">
@@ -1642,7 +1642,7 @@
             <returns>
                 <param name="config" type="matrix">
                     <description>
-                        the found joint configuration(s), or null if no configuration was found within the allotted time. Configurations are the matrix' columns, with one value per joint (4 for spherical joints) 
+                        the found joint configuration(s), or null if no configuration was found within the allotted time. Configurations are the matrix' columns, with one value per joint (4 for spherical joints)
                     </description>
                 </param>
                 <param name="metaData" type="map[]">
@@ -2634,7 +2634,7 @@
                 </param>
             </params>
             <returns>
-                <param name="propertyState" type="float[3]">
+                <param name="propertyState" type="vector3">
                     <description>
                         property value
                     </description>
@@ -2660,7 +2660,7 @@
                 <param name="propertyName" type="string">
                     <description>property name</description>
                 </param>
-                <param name="propertyState" type="float[3]">
+                <param name="propertyState" type="vector3">
                     <description>property value</description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -2681,6 +2681,142 @@
             </categories>
             <see-also>
                 <function-ref name="object:getVector3Property" />
+                <link href="../properties.htm" label="properties" />
+            </see-also>
+        </method>
+        <method name="getTableProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getTableProperty">
+            <description>
+                Fetches a table property
+            </description>
+            <params>
+                <param name="propertyName" type="string">
+                    <description>
+                        property name
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="propertyState" type="table">
+                    <description>
+                        property value
+                    </description>
+                </param>
+            </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
+            <categories>
+                <category name="property" />
+            </categories>
+            <see-also>
+                <function-ref name="object:setTableProperty" />
+                <link href="../properties.htm" label=" properties " />
+            </see-also>
+        </method>
+        <method name="setTableProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setTableProperty">
+            <description>
+                Sets a table property
+            </description>
+            <params>
+                <param name="propertyName" type="string">
+                    <description>property name</description>
+                </param>
+                <param name="propertyState" type="table">
+                    <description>property value</description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
+            <categories>
+                <category name="property" />
+            </categories>
+            <see-also>
+                <function-ref name="object:getTableProperty" />
+                <link href="../properties.htm" label="properties" />
+            </see-also>
+        </method>
+        <method name="getMatrixProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getMatrixProperty">
+            <description>
+                Fetches a matrix property
+            </description>
+            <params>
+                <param name="propertyName" type="string">
+                    <description>
+                        property name
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="propertyState" type="matrix">
+                    <description>
+                        property value
+                    </description>
+                </param>
+            </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
+            <categories>
+                <category name="property" />
+            </categories>
+            <see-also>
+                <function-ref name="object:setMatrixProperty" />
+                <link href="../properties.htm" label=" properties " />
+            </see-also>
+        </method>
+        <method name="setMatrixProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setMatrixProperty">
+            <description>
+                Sets a vector3 property
+            </description>
+            <params>
+                <param name="propertyName" type="string">
+                    <description>property name</description>
+                </param>
+                <param name="propertyState" type="matrix">
+                    <description>property value</description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
+            <categories>
+                <category name="property" />
+            </categories>
+            <see-also>
+                <function-ref name="object:getMatrixProperty" />
                 <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
@@ -3461,7 +3597,7 @@
                 <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
-        <method name="setPropertyInfo" func="sim.callMethod" lang="python,lua">
+        <method name="setPropertyInfo" func="sim.callMethod" lang="python,lua" var="METHOD_setPropertyInfo">
             <description>
                 Sets information about a specific property
             </description>
@@ -3492,6 +3628,66 @@
             </categories>
             <see-also>
                 <function-ref name="object:getPropertyInfo" />
+                <link href="../properties.htm" label=" properties " />
+            </see-also>
+        </method>
+        <method name="getPropertyInfos" func="sim.callMethod" lang="python,lua" var="METHOD_getPropertyInfos">
+            <description>
+                Fetches an extended set of property infos
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        optional map:
+                        <ul>
+                            <li>decodeMetaInfo (bool, defaults to true): decodes the meta information</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="propertyInfos" type="map">
+                    <description>
+                        property infos
+                    </description>
+                </param>
+            </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
+            <categories>
+                <category name="property" />
+            </categories>
+            <see-also>
+                <function-ref name="object:getPropertyInfo" />
+                <link href="../properties.htm" label=" properties " />
+            </see-also>
+        </method>
+        <method name="getPropertyTypeString" func="sim.callMethod" lang="python,lua" var="METHOD_getPropertyTypeString">
+            <description>
+                Fetches the short string equivalent from a property type value
+            </description>
+            <params>
+                <param name="propertyType" type="int">
+                    <description>
+                        property type, e.g. sim.propertytype_matrix
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="stringValue" type="string">
+                    <description>
+                        the string representation, e.g. "matrix"
+                    </description>
+                </param>
+            </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
+            <categories>
+                <category name="property" />
+            </categories>
+            <see-also>
                 <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
@@ -3797,7 +3993,7 @@
         </method>
         <method name="openFile" func="sim.callMethod" lang="python,lua" var="METHOD_openFile">
             <description>
-                Opens a file in a subprocess, via cmd (Windows), open (macOS), or xdg-open (Linux) 
+                Opens a file in a subprocess, via cmd (Windows), open (macOS), or xdg-open (Linux)
             </description>
             <params>
                 <param name="file" type="string">
@@ -3819,7 +4015,7 @@
         </method>
         <method name="fastIdleLoop" func="sim.callMethod" lang="python,lua" var="METHOD_fastIdleLoop">
             <description>
-                Speeds the idle loop up, for better reactivity when idle, i.e. not simulating 
+                Speeds the idle loop up, for better reactivity when idle, i.e. not simulating
             </description>
             <params>
                 <param name="fast" type="bool">
@@ -3926,7 +4122,7 @@
             <params>
                 <param name="handle" type="int">
                     <description>
-                        The handle of the scheduled function execution 
+                        The handle of the scheduled function execution
                     </description>
                 </param>
             </params>
@@ -4359,7 +4555,7 @@
             <params>
                 <param name="params" type="map">
                     <description>
-                        a map/dict describing the object to create. All fields are optional except for <b>objectType</b>. Fields described hereafter are not exhaustive (all writable properties of the object to create can be specified too): 
+                        a map/dict describing the object to create. All fields are optional except for <b>objectType</b>. Fields described hereafter are not exhaustive (all writable properties of the object to create can be specified too):
                         <ul>
                             <li id="collection">
                                 <a href="../collections.htm">collection</a> fields:
@@ -5956,9 +6152,9 @@
         <method name="setModuleEntry" func="sim.callMethod" lang="python,lua" var="METHOD_setModuleEntry">
             <description>
                 Creates, modifies or destroys module menu entries. Those are user selectable items located in [Menu bar &gt; Modules].
-                When selected, the corresponding script will have its 
+                When selected, the corresponding script will have its
                 <a href="../callbackFunctions.htm"> sysCall_moduleEntry </a>
-                callback function triggered, or 
+                callback function triggered, or
                 <a href="../apiConstants.htm#simulatorMessages"> sim_message_eventcallback_moduleentry </a>
                 triggered
             </description>
@@ -6331,10 +6527,10 @@
         </method>
         <method name="callFunction" func="sim.callScriptFunction" lang="python,lua" var="METHOD_callFunction">
             <description>
-                Calls a script function. This represents a 
+                Calls a script function. This represents a
                 <a href="../callbackFunctions.htm"> user callback </a>
                 inside of a script. The
-                target smust be initialized for this call to succeed, e.g. when calling 
+                target smust be initialized for this call to succeed, e.g. when calling
                 from <a href="../simulationScripts.htm"> simulation scripts </a>
                 , then simulation must be running
             </description>
@@ -6982,7 +7178,7 @@
         <method name="restoreColor" func="sim.callMethod" lang="python,lua" var="METHOD_restoreColor">
             <info>same method present in collection and sceneObject</info>
             <description>
-                Restores the color of all shapes contained in the collection 
+                Restores the color of all shapes contained in the collection
             </description>
             <params>
                 <param name="originalColorData" type="map[]">
@@ -7282,7 +7478,7 @@
         </method>
         <method name="groupShapes" func="sim.callMethod" lang="python,lua" var="METHOD_groupShapes">
             <description>
-                Groups several shapes, and returns a compound shape 
+                Groups several shapes, and returns a compound shape
             </description>
             <params>
                 <param name="shapes" type="handle[]">
@@ -7314,7 +7510,7 @@
         </method>
         <method name="mergeShapes" func="sim.callMethod" lang="python,lua" var="METHOD_mergeShapes">
             <description>
-                Merges several shapes 
+                Merges several shapes
             </description>
             <params>
                 <param name="shapes" type="handle[]">
@@ -7604,7 +7800,7 @@
             <params>
                 <param name="types" type="string[]" default="{}">
                     <description>
-                        a string array specifying the types to retrieve. Allowed values are: "sceneObject", "shape", "joint", "dummy", "script", "mirror", "graph", "light", "camera", "marker", "proximitySensor", "visionSensor", "forceSensor", "ocTree", "pointCloud", "collection", "detachedScript", "mesh"  
+                        a string array specifying the types to retrieve. Allowed values are: "sceneObject", "shape", "joint", "dummy", "script", "mirror", "graph", "light", "camera", "marker", "proximitySensor", "visionSensor", "forceSensor", "ocTree", "pointCloud", "collection", "detachedScript", "mesh"
                     </description>
                 </param>
             </params>
@@ -7715,8 +7911,8 @@
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a>
                 in <a href="../customizationScripts.htm"> customization scripts </a>.
-                Customization scripts will be executed in a 
-                <a href="../scriptExecution.htm"> precise order </a>. This function should only be called from the 
+                Customization scripts will be executed in a
+                <a href="../scriptExecution.htm"> precise order </a>. This function should only be called from the
                 <a href="../mainScript.htm"> main script </a>
             </description>
             <params>
@@ -7748,7 +7944,7 @@
         <method name="handleSimulationScripts" func="sim.callMethod" lang="lua" var="METHOD_handleSimulationScripts">
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a>
-                in <a href="../simulationScripts.htm"> simulation scripts </a>. Simulation scripts will be executed in a 
+                in <a href="../simulationScripts.htm"> simulation scripts </a>. Simulation scripts will be executed in a
                 <a href="../scriptExecution.htm"> precise order </a>.
                 This function should only be called from the <a href="../mainScript.htm"> main script </a>.
             </description>
@@ -7847,7 +8043,7 @@
             <params>
                 <param name="params" type="map">
                     <description>
-                        a map/dict describing the object to create. All fields are optional except for <b>objectType</b>. Fields described hereafter are not exhaustive (all writable properties of the object to create can be specified too): 
+                        a map/dict describing the object to create. All fields are optional except for <b>objectType</b>. Fields described hereafter are not exhaustive (all writable properties of the object to create can be specified too):
                         <ul>
                             <li id="collection">
                                 <a href="../collections.htm">collection</a> fields:
@@ -9869,7 +10065,7 @@
             <params>
                 <param name="className" type="string">
                     <description>
-                        The name of the class 
+                        The name of the class
                     </description>
                 </param>
             </params>
@@ -9935,7 +10131,7 @@
         <method name="restoreColor" func="sim.callMethod" lang="python,lua" var="METHOD_restoreColor">
             <info>same method present in collection and sceneObject</info>
             <description>
-                Restores the color of the object, if it is a shape 
+                Restores the color of the object, if it is a shape
             </description>
             <params>
                 <param name="originalColorData" type="map[]">
@@ -10196,7 +10392,7 @@
             <params>
                 <param name="visitorFunction" type="func">
                     <description>
-                        the visitor function. Visitation ends if the function return false 
+                        the visitor function. Visitation ends if the function return false
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -10362,8 +10558,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the pose. 
-                        Specify sim.handle_world to retrieve the absolute pose, sim.handle_inverse to retrieve the inverse of the absolute pose, 
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the pose.
+                        Specify sim.handle_world to retrieve the absolute pose, sim.handle_inverse to retrieve the inverse of the absolute pose,
                         sim.handle_parent to retrieve the pose relative to the object's parent, or an object relative to whose reference frame we want the pose</li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the pose relative to the joint's moving frame is returned, unless
                         this argument is true, in which case the pose relative to the joint's base frame is returned</li>
@@ -10403,8 +10599,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the position. 
-                        Specify sim.handle_world to retrieve the absolute position, sim.handle_inverse to retrieve the inverse of the absolute position, 
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the position.
+                        Specify sim.handle_world to retrieve the absolute position, sim.handle_inverse to retrieve the inverse of the absolute position,
                         sim.handle_parent to retrieve the position relative to the object's parent, or an object relative to whose reference frame we want the position </li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the position relative to the joint's moving frame is returned, unless
                         this argument is true, in which case the position relative to the joint's base frame is returned</li>
@@ -10443,8 +10639,8 @@
                     <description>
                         optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the quaternion. 
-                        Specify sim.handle_world to retrieve the absolute quaternion, sim.handle_inverse to retrieve the inverse of the absolute quaternion, 
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the quaternion.
+                        Specify sim.handle_world to retrieve the absolute quaternion, sim.handle_inverse to retrieve the inverse of the absolute quaternion,
                         sim.handle_parent to retrieve the quaternion relative to the object's parent, or an object relative to whose reference frame we want the quaternion</li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the quaternion relative to the joint's moving frame is returned, unless
                         this argument is true, in which case the quaternion relative to the joint's base frame is returned</li>
@@ -11535,7 +11731,7 @@
         <method name="getContacts" func="sim.callMethod" lang="python,lua" var="METHOD_getContacts">
             <info>same method present in both scene and shape</info>
             <description>
-                Retrieves this shape's contact information from the dynamics world 
+                Retrieves this shape's contact information from the dynamics world
             </description>
             <params>
                 <param name="options" type="map" default="{}">
@@ -11779,7 +11975,7 @@
                 </param>
                 <param name="comPose" type="pose">
                     <description>
-                        a pose expressed relative to the shape's reference frame. The pose indicates the center of mass of the shape, and is the frame relative to which 
+                        a pose expressed relative to the shape's reference frame. The pose indicates the center of mass of the shape, and is the frame relative to which
                         <em>inertiaMatrix</em> is expressed
                     </description>
                 </param>
@@ -13723,7 +13919,7 @@
                             <li>position (int[2], defaults to [0, 0]): position of the image portion to retrieve</li>
                             <li>size (int[2], defaults to [0, 0]): size of the image portion to retrieve. [0, 0] corresponds to [resolutionX, resolution Y]</li>
                             <li>type (string, defaults to "rgb"): the type of the returned image. Valid values are "rgb", "rgba" and "grey"</li>
-                            <li>rgbaCutOff (float, defaults to 0.0): when a RGBA image is returned, the alpha component is 255 for all depth values below 
+                            <li>rgbaCutOff (float, defaults to 0.0): when a RGBA image is returned, the alpha component is 255 for all depth values below
                             <em>rgbaCutOff</em>, and 0 for all depth values above <em>rgbaCutOff</em>. 0.0 corresponds to the near clipping plane, 1.0 to the far clipping plane</li>
                         </ul>
                     </description>
@@ -13830,7 +14026,7 @@
         <method name="handleSensor" func="sim.callMethod" lang="python,lua" var="METHOD_handleSensor">
             <description>
                 Handles (performs sensing, etc. of) the vision sensor object. It (1) clear previous computed image processing data, (2) reads
-                an image and (3) performs image processing via the 
+                an image and (3) performs image processing via the
                 <a href="../visionCallbackFunctions.htm"> vision callback functions </a>
                 (if the vision sensor is using an <strong> external input </strong> only (1) is performed)
             </description>

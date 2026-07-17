@@ -12547,7 +12547,7 @@ if (elementCount &gt; 0)
             </param>
             <param name="uvScaling" type="const double*">
                 <description>
-                <pointer to 2 values that indicate the texture scaling factors along the U and V directions
+                pointer to 2 values that indicate the texture scaling factors along the U and V directions
                 </description>
             </param>
             <param name="pos" type="const double*">
