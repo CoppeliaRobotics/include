@@ -47,6 +47,10 @@ class PropertyInfo:
         self.migrate_to = None
         self.supersedes = None
         self.enum = None
+        self.var = prop_node.attrib.get('var')
+        self.aux = []
+        if auxStr := prop_node.attrib.get('aux'):
+            self.aux = auxStr.split(',')
 
         if support_node := prop_node.find('support'):
             self.start_support = support_node.attrib['start']
@@ -111,6 +115,7 @@ class MethodInfo:
         assert isinstance(cinfo, ClassInfo)
         self.class_info = cinfo
         self.name = method_node.attrib['name']
+        self.var = method_node.attrib.get('var')
         self.params = []
         self.returns = []
         self.has_errors = False
