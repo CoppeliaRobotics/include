@@ -201,27 +201,36 @@ def get_classes(object_classes_xml):
     classes = {}
     for object_class_node in object_classes_root:
         if object_class_node.tag != 'object-class': continue
-        cinfo = ClassInfo(
-            name = object_class_node.attrib['name'],
-            superclass = object_class_node.attrib.get('superclass'),
-        )
-        for property_node in object_class_node:
-            if property_node.tag != 'property': continue
-            pinfo = PropertyInfo(cinfo, property_node)
-            #if pinfo.deprecated: continue
-            if pinfo.type == 'group': continue
-            cinfo.add_property(property_node.attrib['name'], pinfo)
-        for ns_node in object_class_node:
-            if ns_node.tag != 'namespace': continue
-            nsinfo = NamespaceInfo(cinfo, ns_node)
-            if nsinfo.deprecated: continue
-            cinfo.add_namespace(ns_node.attrib['name'], nsinfo)
-        for method_node in object_class_node:
-            if method_node.tag != 'method': continue
-            minfo = MethodInfo(cinfo, method_node)
-            if minfo.has_errors: continue
-            cinfo.add_method(method_node.attrib['name'], minfo)
-        classes[object_class_node.attrib['name']] = cinfo
+        try:
+            cinfo = ClassInfo(
+                name = object_class_node.attrib['name'],
+                superclass = object_class_node.attrib.get('superclass'),
+            )
+            for property_node in object_class_node.findall('property'):
+                try:
+                    pinfo = PropertyInfo(cinfo, property_node)
+                    #if pinfo.deprecated: continue
+                    if pinfo.type == 'group': continue
+                    cinfo.add_property(property_node.attrib['name'], pinfo)
+                except Exception as e:
+                    raise Exception(f'error in property "{property_node.attrib["name"]}"')
+            for ns_node in object_class_node.findall('namespace'):
+                try:
+                    nsinfo = NamespaceInfo(cinfo, ns_node)
+                    if nsinfo.deprecated: continue
+                    cinfo.add_namespace(ns_node.attrib['name'], nsinfo)
+                except Exception as e:
+                    raise Exception(f'error in namespace "{ns_node.attrib["name"]}"')
+            for method_node in object_class_node.findall('method'):
+                try:
+                    minfo = MethodInfo(cinfo, method_node)
+                    if minfo.has_errors: continue
+                    cinfo.add_method(method_node.attrib['name'], minfo)
+                except Exception as e:
+                    raise Exception(f'error in method "{method_node.attrib["name"]}"')
+            classes[object_class_node.attrib['name']] = cinfo
+        except Exception as e:
+            raise Exception(f'error in class "{object_class_node.attrib["name"]}"')
 
     if 'custom' not in classes:
         classes['custom'] = ClassInfo(name = 'custom', superclass = 'object')
