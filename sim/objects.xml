@@ -8558,6 +8558,27 @@
                 <category name="dynamics" />
             </categories>
             <see-also>
+                <function-ref name="scene:stepKinematicJoints" />
+                <property-ref name="sim.scene.simulation.timeStep" />
+            </see-also>
+        </method>
+        <method name="stepKinematicJoints" func="sim.callMethod" lang="python,lua" var="METHOD_stepKinematicJoints">
+            <description>
+                Steps all kinematic mode joints
+            </description>
+            <params>
+            </params>
+            <returns>
+            </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.handleJointMotion" />
+            </supersedes>
+            <categories>
+                <category name="other" />
+            </categories>
+            <see-also>
+                <function-ref name="scene.dynamics.step" />
                 <property-ref name="sim.scene.simulation.timeStep" />
             </see-also>
         </method>
