@@ -4,9 +4,20 @@ import sys
 import re
 
 
+def normalize_flags(s):
+    s = s.strip()
+    if s[0] == ',': s = s[1:]
+    if s[-1] == ',': s = s[:-1]
+    s = s.strip()
+    r = ' | '.join(sorted([flag.strip() for flag in s.split('|')]))
+    return r
+
+
 def normalize_line(line):
     # Remove PropertyInfo({...})
-    line = re.sub(r'PropertyInfo\(\{.*?\}\)', '', line)
+    line = re.sub(r'PropertyInfo\(\{.*?\}\)', 'PropertyInfo(...)', line)
+
+    line = re.sub(r', *sim_propertyinfo_\w+ *(\| *sim_propertyinfo_\w+ *)*,', lambda m: f', {normalize_flags(m.group(0))},', line)
 
     # Normalize whitespace
     line = re.sub(r'\s+', ' ', line).strip()

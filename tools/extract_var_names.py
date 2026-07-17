@@ -4,8 +4,8 @@ import re
 import sys
 
 re_define = re.compile(r'^#define\s+([A-Z0-9_]+)_PROPERTIES\s*\\')
-re_func = re.compile(r'^\s*FUNCX\(([^,]+),\s*"([^"]+)"')
-re_strippfx = re.compile(r'^(DEPRECATED|GROUP|METHOD)_')
+re_func = re.compile(r'^\s*FUNCX\((.*)\)')
+re_strippinfo = re.compile(r'PropertyInfo\(\{.*\}\)')
 
 out = {}
 cur = {}
@@ -19,19 +19,19 @@ classes = ['object', 'app', 'detachedScript', 'mesh', 'collection',
 
 with open(sys.argv[1], encoding="utf-8") as f:
     for line in f:
+        line = re.sub(re_strippinfo, '0', line)
         if m := re_define.match(line):
             k = m.group(1).lower()
             cur = out[k] = {}
         elif m := re_func.match(line):
-            group = m.group(1)
-            prop = m.group(2)
-            group = re.sub(re_strippfx, '', group)
-            if prop != group:
-                cur[prop] = group
+            fields = [x.strip() for x in m.group(1).split(',')]
+            var, pname, ptype, pflags, pinfo, i1, i2, i3, i4, i5 = fields
+            if pname[0] == '"' and pname[-1] == '"':
+                pname = pname[1:-1]
+            cur[pname] = (var, i1, i2, i3, i4, i5)
 
+print('object_class,property,var,i1,i2,i3,i4,i5')
 for k, d in out.items():
     k = [h for h in classes if h.lower() == k][0]
-    print(f'    \'{k}\': {{')
-    for p, v in d.items():
-        print(f'        \'{p}\': \'{v}\',')
-    print(f'    }},')
+    for p, vs in d.items():
+        print(k, p, *vs, sep=',')
