@@ -19,7 +19,7 @@ def report_issue(kind: str, obj: object, msg: str) -> None:
 
 
 class PropertyFlags:
-    def __init__(self, flags_node: Optional[ET.Element]) -> None:
+    def __init__(self, flags_node: Optional[ET.Element] = None) -> None:
         self.readable = False
         self.writable = False
         self.removable = False
@@ -115,7 +115,13 @@ class MethodInfo:
         assert isinstance(cinfo, ClassInfo)
         self.class_info = cinfo
         self.name = method_node.attrib['name']
+        self.type = 'method'
+        self.flags = PropertyFlags()
+        self.flags.silent = True
+        self.flags.constant = True
+        self.flags.modelhashexclude = True
         self.var = method_node.attrib.get('var')
+        self.aux = []
         self.params = []
         self.returns = []
         self.has_errors = False
