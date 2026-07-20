@@ -17266,36 +17266,36 @@
     </object-class>
     <object-class name="drawingObject" superclass="object">
         <property name="appendColors" type="floatarray">
-            <flags />
-            <support />
+            <flags readable="true" writable="true" />
+            <support start="1" start-deprecated="2" end="2" />
         </property>
         <property name="appendPoints" type="floatarray">
-            <flags />
-            <support />
+            <flags readable="true" writable="true" />
+            <support start="1" start-deprecated="2" end="2" />
         </property>
         <property name="appendQuaternions" type="floatarray">
-            <flags />
-            <support />
+            <flags readable="true" writable="true" />
+            <support start="1" start-deprecated="2" end="2" />
         </property>
         <property name="colors" type="floatarray">
-            <flags />
-            <support />
+            <flags readable="true" writable="true" />
+            <support start="1" start-deprecated="2" end="2" />
         </property>
         <property name="cyclic" type="bool">
-            <flags />
-            <support />
+            <flags readable="true" writable="true" />
+            <support start="1" start-deprecated="2" end="2" />
         </property>
         <property name="itemType" type="string">
-            <flags />
-            <support />
+            <flags readable="true" writable="true" />
+            <support start="1" start-deprecated="2" end="2" />
         </property>
         <property name="maxCnt" type="int">
-            <flags />
-            <support />
+            <flags readable="true" writable="true" />
+            <support start="1" start-deprecated="2" end="2" />
         </property>
         <property name="overlay" type="bool">
-            <flags />
-            <support />
+            <flags readable="true" writable="true" />
+            <support start="1" start-deprecated="2" end="2" />
         </property>
         <property name="parent" type="handle" var="parent" aux="-1,-1,-1,-1,-1">
             <handle type="sceneObject" />
@@ -17304,20 +17304,20 @@
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="parentUid" type="long">
-            <flags />
-            <support />
+            <flags readable="true" writable="true" />
+            <support start="1" start-deprecated="2" end="2" />
         </property>
         <property name="points" type="floatarray">
-            <flags />
-            <support />
+            <flags readable="true" writable="true" />
+            <support start="1" start-deprecated="2" end="2" />
         </property>
         <property name="quaternions" type="floatarray">
-            <flags />
-            <support />
+            <flags readable="true" writable="true" />
+            <support start="1" start-deprecated="2" end="2" />
         </property>
         <property name="size" type="float">
-            <flags />
-            <support />
+            <flags readable="true" writable="true" />
+            <support start="1" start-deprecated="2" end="2" />
         </property>
     </object-class>
     <object-class name="dummy" superclass="sceneObject">
