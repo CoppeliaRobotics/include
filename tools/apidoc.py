@@ -326,3 +326,14 @@ def get_classes(object_classes_xml):
             print(f'{context_str}: {kind}: {msg}')
 
     return classes
+
+
+def get_enums(enums_xml):
+    tree = ET.parse(enums_xml)
+    enums_root = tree.getroot()
+    assert enums_root.tag == 'enums'
+    enums = {}
+    for enum_node in enums_root.findall('enum'):
+        enum = EnumInfo(enum_node)
+        enums[enum.name] = enum
+    return enums
