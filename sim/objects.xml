@@ -2684,7 +2684,7 @@
                 <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
-        <method name="getTableProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getTableProperty">
+        <method name="getTableProperty" func="sim.callMethod" lang="lua" var="METHOD_getTableProperty">
             <description>
                 Fetches a table property
             </description>
@@ -2721,7 +2721,7 @@
                 <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
-        <method name="setTableProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setTableProperty">
+        <method name="setTableProperty" func="sim.callMethod" lang="lua" var="METHOD_setTableProperty">
             <description>
                 Sets a table property
             </description>
@@ -4660,9 +4660,13 @@
                                     <li>duplicateTolerance (float): indicates a distance threshold under which points are not added. Does not apply to line- or triangle items</li>
                                     <li>itemCnt (int): maximum item count</li>
                                     <li>itemColor (color): default item color</li>
-                                    <li>mesh.vertices (matrix 3 * n): vertices for a mesh item type (sim.markertype_custom)</li>
-                                    <li>mesh.indices (int[]): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li>
-                                    <li>mesh.normals (matrix 3 * n): normals for a mesh item type (sim.markertype_custom). One normal for each vertex</li>
+                                    <li>mesh: mesh object or mesh table (if the marker is of type "custom"). Following fields are taken into account:
+                                        <ul>
+                                            <li>mesh.vertices (matrix 3 * n): vertices for a mesh item type</li>
+                                            <li>mesh.indices (int[]): indices for a mesh item type. One zero-based index for each vertex</li>
+                                            <li>mesh.normals (matrix 3 * n): normals for a mesh item type. One normal for each vertex</li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </li>
                             <li id="customSceneObject">
@@ -4765,7 +4769,7 @@
                                             <li>center (bool): whether the text is centered or not</li>
                                         </ul>
                                     </li>
-                                    <li>mesh (map/dict): holds parameters for the creation of a mesh:
+                                    <li>mesh (map/dict): data structure (or mesh object) holding parameters for the creation of a mesh shape:
                                         <ul>
                                             <li>vertices (matrix 3 * n)</li>
                                             <li>indices (int[]): the zero-based indices</li>
@@ -8159,9 +8163,13 @@
                                     <li>duplicateTolerance (float): indicates a distance threshold under which points are not added. Does not apply to line- or triangle items</li>
                                     <li>itemCnt (int): maximum item count</li>
                                     <li>itemColor (color): default item color</li>
-                                    <li>mesh.vertices (matrix 3 * n): vertices for a mesh item type (sim.markertype_custom)</li>
-                                    <li>mesh.indices (int[]): indices for a mesh item type (sim.markertype_custom). One zero-based index for each vertex</li>
-                                    <li>mesh.normals (matrix 3 * n): normals for a mesh item type (sim.markertype_custom). One normal for each vertex</li>
+                                    <li>mesh: mesh object or mesh table (if the marker is of type "custom"). Following fields are taken into account:
+                                        <ul>
+                                            <li>mesh.vertices (matrix 3 * n): vertices for a mesh item type</li>
+                                            <li>mesh.indices (int[]): indices for a mesh item type. One zero-based index for each vertex</li>
+                                            <li>mesh.normals (matrix 3 * n): normals for a mesh item type. One normal for each vertex</li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </li>
                             <li id="customSceneObject">
@@ -8264,7 +8272,7 @@
                                             <li>center (bool): whether the text is centered or not</li>
                                         </ul>
                                     </li>
-                                    <li>mesh (map/dict): holds parameters for the creation of a mesh:
+                                    <li>mesh (map/dict): data structure (or mesh object) holding parameters for the creation of a mesh shape:
                                         <ul>
                                             <li>vertices (matrix 3 * n)</li>
                                             <li>indices (int[]): the zero-based indices</li>
