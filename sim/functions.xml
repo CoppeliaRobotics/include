@@ -1,4 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
+<!--
+note: the generated see-also section contains the <see-also> items, but also the <categories> items. Make sure not to have duplicates!
+-->
 <functions>
     <function name="simCallMethod" lang="c">
         <description>
@@ -40,10 +43,9 @@
         </returns>
         <categories>
             <category name="c_main" />
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -200,10 +202,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -238,10 +239,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -276,10 +276,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -314,10 +313,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -352,10 +350,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -390,10 +387,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -428,10 +424,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -466,10 +461,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -504,10 +498,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -542,10 +535,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -580,10 +572,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -619,10 +610,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
             <function-ref name="simReleaseBuffer" />
         </see-also>
     </function>
@@ -663,11 +653,10 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
+            <category name="packing" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
-            <link href="../apiFunctions.htm#packing" label=" packing/unpacking related functions " />
         </see-also>
     </function>
 
@@ -708,11 +697,10 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
+            <category name="packing" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
-            <link href="../apiFunctions.htm#packing" label=" packing/unpacking related functions " />
         </see-also>
     </function>
 
@@ -747,10 +735,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -785,10 +772,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -833,10 +819,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -881,10 +866,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
             <function-ref name="simReleaseBuffer" />
         </see-also>
     </function>
@@ -920,10 +904,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -958,10 +941,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -996,10 +978,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -1034,10 +1015,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -1072,10 +1052,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -1110,10 +1089,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -1153,10 +1131,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -1197,10 +1174,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
             <function-ref name="simReleaseBuffer" />
         </see-also>
     </function>
@@ -1241,10 +1217,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -1285,10 +1260,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
             <function-ref name="simReleaseBuffer" />
         </see-also>
     </function>
@@ -1329,10 +1303,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -1372,10 +1345,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -1410,10 +1382,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -1453,10 +1424,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -1497,10 +1467,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
             <function-ref name="simReleaseBuffer" />
         </see-also>
     </function>
@@ -1542,10 +1511,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
             <function-ref name="simReleaseBuffer" />
         </see-also>
     </function>
@@ -1581,10 +1549,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -1625,10 +1592,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
             <function-ref name="simReleaseBuffer" />
         </see-also>
     </function>
@@ -1659,10 +1625,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -1702,10 +1667,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
             <function-ref name="simReleaseBuffer" />
         </see-also>
     </function>
@@ -1746,10 +1710,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -1784,10 +1747,9 @@
             </param>
         </returns>
         <categories>
-            <category name="property" />
+            <category name="c_property" />
         </categories>
         <see-also>
-            <link href="../properties.htm" label=" properties " />
         </see-also>
     </function>
 
@@ -1812,10 +1774,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -1833,10 +1794,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -1866,10 +1826,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -1899,10 +1858,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -1941,11 +1899,10 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
             <function-ref name="simGetStackTableInfo" />
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -1975,10 +1932,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2016,11 +1972,10 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
             <function-ref name="simGetStackTableInfo" />
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2050,10 +2005,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2091,11 +2045,10 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
             <function-ref name="simGetStackTableInfo" />
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2125,10 +2078,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2166,11 +2118,10 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
             <function-ref name="simGetStackTableInfo" />
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2200,10 +2151,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2234,10 +2184,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2268,10 +2217,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2296,10 +2244,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2342,10 +2289,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
             <function-ref name="simReleaseBuffer" />
         </see-also>
     </function>
@@ -2398,10 +2344,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
             <function-ref name="simReleaseBuffer" />
         </see-also>
     </function>
@@ -2428,10 +2373,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
             <function-ref name="simReleaseBuffer" />
         </see-also>
     </function>
@@ -2458,10 +2402,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
             <function-ref name="simReleaseBuffer" />
         </see-also>
     </function>
@@ -2488,10 +2431,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
             <function-ref name="simReleaseBuffer" />
         </see-also>
     </function>
@@ -2544,10 +2486,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
             <function-ref name="simReleaseBuffer" />
         </see-also>
     </function>
@@ -2585,11 +2526,10 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
             <function-ref name="simGetStackTableInfo" />
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2626,10 +2566,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2659,11 +2598,10 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
             <function-ref name="simPopStackItem" />
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2693,10 +2631,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2726,10 +2663,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2765,10 +2701,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2798,10 +2733,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2836,10 +2770,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2869,10 +2802,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2908,10 +2840,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2942,10 +2873,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -2981,10 +2911,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -3010,10 +2939,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -3043,11 +2971,10 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
             <function-ref name="simPushBufferOntoStack" />
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -3082,11 +3009,10 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
             <function-ref name="simPushTextOntoStack" />
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -3122,12 +3048,11 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
             <function-ref name="simPushTextOntoStack" />
             <function-ref name="simPushBufferOntoStack" />
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -3167,10 +3092,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -3200,10 +3124,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -3233,10 +3156,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -3266,10 +3188,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -3295,10 +3216,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -3334,10 +3254,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -3367,11 +3286,10 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
             <function-ref name="simMoveStackItemToTop" />
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -3396,10 +3314,9 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -3424,11 +3341,10 @@
             </param>
         </returns>
         <categories>
-            <category name="stack" />
+            <category name="c_stack" />
         </categories>
         <see-also>
             <function-ref name="simGetStackSize" />
-            <link href="../apiFunctions.htm#stacks" label=" stack functions " />
         </see-also>
     </function>
 
@@ -3704,7 +3620,6 @@
             <category name="collection" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#collections" label=" functions related to collections " />
         </see-also>
     </function>
 
@@ -3963,7 +3878,6 @@
             <category name="transformation" />
         </categories>
         <see-also>
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -4005,7 +3919,6 @@
             <category name="transformation" />
         </categories>
         <see-also>
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -4215,7 +4128,7 @@
 
 
 
-    <function name="checkOctreePointOccupancy" lang="c">
+    <function name="simCheckOctreePointOccupancy" lang="c">
         <description>
             Checks whether the provided points collide with the
             <a href="../octrees.htm"> OC tree </a>
@@ -4285,10 +4198,9 @@
         </returns>
         <categories>
             <category name="c_aux" />
-            <category name="other" />
+            <category name="octree" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#octree" label=" OC tree related functions " />
         </see-also>
     </function>
 
@@ -4675,7 +4587,6 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             <category name="collection" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#collections" label=" functions related to collections " />
         </see-also>
     </function>
 
@@ -5060,7 +4971,6 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
         </categories>
         <see-also>
             <function-ref name="simRemoveObjects" />
-            <link href="../apiFunctions.htm#octree" label=" OC tree related functions " />
         </see-also>
     </function>
 
@@ -5119,7 +5029,6 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
         </categories>
         <see-also>
             <function-ref name="simRemoveObjects" />
-            <link href="../apiFunctions.htm#pointCloud" label=" point cloud functions " />
         </see-also>
     </function>
 
@@ -5532,7 +5441,6 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             <category name="collection" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#collections" label=" functions related to collections " />
         </see-also>
     </function>
 
@@ -5566,7 +5474,6 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             <category name="graph" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#graphs" label=" functions related to graphs " />
         </see-also>
     </function>
 
@@ -5631,7 +5538,6 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             <category name="graph" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#graphs" label=" functions related to graphs " />
         </see-also>
     </function>
 
@@ -5977,9 +5883,9 @@ delete[] indicesSizes;</code>
             <category name="c_aux" />
                 <category name="Path" />
                 <category name="creation" />
+                <category name="shape" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#paths" label=" path related functions " />
         </see-also>
     </function>
 
@@ -6099,7 +6005,6 @@ delete[] indicesSizes;</code>
             <category name="Path" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#paths" label=" path related functions " />
         </see-also>
     </function>
 
@@ -6136,7 +6041,6 @@ delete[] indicesSizes;</code>
                 <category name="collection" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#collections" label=" functions related to collections " />
         </see-also>
     </function>
 
@@ -6307,7 +6211,6 @@ delete[] indicesSizes;</code>
             <category name="transformation" />
         </categories>
         <see-also>
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -6556,8 +6459,6 @@ delete[] indicesSizes;</code>
         </categories>
         <see-also>
             <function-ref name="simSetJointMode" />
-            <link href="../propertiesReference.htm#dynCtrlMode" label=" dynCtrlMode " />
-            <function-ref name="property" />
         </see-also>
     </function>
 
@@ -7025,7 +6926,6 @@ delete[] indicesSizes;</code>
         </categories>
         <see-also>
             <function-ref name="simSetObjectChildPose" />
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -7072,7 +6972,6 @@ delete[] indicesSizes;</code>
                 <category name="rendering" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#rendering" label=" rendering related functions " />
         </see-also>
     </function>
 
@@ -7148,7 +7047,6 @@ delete[] indicesSizes;</code>
         </categories>
         <see-also>
             <function-ref name="simSetObjectMatrix" />
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -7192,7 +7090,6 @@ delete[] indicesSizes;</code>
         </categories>
         <see-also>
             <function-ref name="simSetObjectOrientation" />
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -7264,7 +7161,6 @@ delete[] indicesSizes;</code>
         </categories>
         <see-also>
             <function-ref name="simSetObjectPose" />
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -7306,7 +7202,6 @@ delete[] indicesSizes;</code>
         </categories>
         <see-also>
             <function-ref name="simSetObjectPosition" />
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -7348,7 +7243,6 @@ delete[] indicesSizes;</code>
         </categories>
         <see-also>
             <function-ref name="simSetObjectQuaternion" />
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -7623,7 +7517,6 @@ delete[] indicesSizes;</code>
             <category name="ocTree" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#octree" label=" OC tree related functions " />
         </see-also>
     </function>
 
@@ -7753,7 +7646,6 @@ delete[] indicesSizes;</code>
             <category name="pointCloud" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#pointCloud" label=" point cloud related functions " />
         </see-also>
     </function>
 
@@ -7793,7 +7685,6 @@ delete[] indicesSizes;</code>
             <category name="pointCloud" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#pointCloud" label=" point cloud related functions " />
         </see-also>
     </function>
 
@@ -8068,7 +7959,6 @@ delete[] indicesSizes;</code>
                 <category name="rendering" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#rendering" label=" rendering related functions " />
         </see-also>
     </function>
 
@@ -8397,7 +8287,6 @@ delete[] indicesSizes;</code>
             <category name="simulation" />
         </categories>
         <see-also>
-            <link href="../simulation.htm" label=" simulation state diagram " />
         </see-also>
     </function>
 
@@ -8610,7 +8499,6 @@ delete[] indicesSizes;</code>
             <category name="visionSensor" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#visionSensor" label=" vision sensor related API functions " />
         </see-also>
     </function>
 
@@ -8672,7 +8560,6 @@ delete[] indicesSizes;</code>
         </categories>
         <see-also>
             <function-ref name="simSaveImage" />
-            <link href="../apiFunctions.htm#visionSensor" label=" vision sensor related API functions " />
         </see-also>
     </function>
 
@@ -8808,7 +8695,6 @@ delete[] indicesSizes;</code>
             <category name="graph" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#graphs" label=" functions related to graphs " />
         </see-also>
     </function>
 
@@ -9180,7 +9066,6 @@ if (elementCount &gt; 0)
         <see-also>
             <function-ref name="simSubtractObjectFromOctree" />
             <function-ref name="simInsertVoxelsIntoOctree" />
-            <link href="../apiFunctions.htm#octree" label=" OC tree related functions " />
         </see-also>
     </function>
 
@@ -9243,7 +9128,6 @@ if (elementCount &gt; 0)
         </categories>
         <see-also>
             <function-ref name="simInsertPointsIntoPointCloud" />
-            <link href="../apiFunctions.htm#pointCloud" label=" point cloud related functions " />
         </see-also>
     </function>
 
@@ -9307,7 +9191,6 @@ if (elementCount &gt; 0)
         </categories>
         <see-also>
             <function-ref name="simRemovePointsFromPointCloud" />
-            <link href="../apiFunctions.htm#pointCloud" label=" point cloud related functions " />
         </see-also>
     </function>
 
@@ -9373,7 +9256,6 @@ if (elementCount &gt; 0)
         </categories>
         <see-also>
             <function-ref name="simRemoveVoxelsFromOctree" />
-            <link href="../apiFunctions.htm#octree" label=" OC tree related functions " />
         </see-also>
     </function>
 
@@ -9436,7 +9318,6 @@ if (elementCount &gt; 0)
         <see-also>
             <function-ref name="simInsertPointsIntoPointCloud" />
             <function-ref name="simSetPointCloudOptions" />
-            <link href="../apiFunctions.htm#pointCloud" label=" point cloud related functions " />
         </see-also>
     </function>
 
@@ -9465,7 +9346,6 @@ if (elementCount &gt; 0)
             <category name="transformation" />
         </categories>
         <see-also>
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -9494,7 +9374,6 @@ if (elementCount &gt; 0)
             <category name="transformation" />
         </categories>
         <see-also>
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -9774,7 +9653,6 @@ if (elementCount &gt; 0)
             <category name="transformation" />
         </categories>
         <see-also>
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -9859,7 +9737,6 @@ if (elementCount &gt; 0)
             <category name="transformation" />
         </categories>
         <see-also>
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -9898,7 +9775,6 @@ if (elementCount &gt; 0)
             <category name="transformation" />
         </categories>
         <see-also>
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -9975,11 +9851,10 @@ if (elementCount &gt; 0)
         <categories>
             <category name="c_aux" />
                 <category name="packing" />
-                <category name="stack" />
+                <category name="c_stack" />
         </categories>
         <see-also>
             <function-ref name="simUnpackTable" />
-            <link href="../apiFunctions.htm#packing" label=" packing/unpacking functions " />
         </see-also>
     </function>
 
@@ -10037,7 +9912,6 @@ if (elementCount &gt; 0)
             <category name="transformation" />
         </categories>
         <see-also>
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -10625,7 +10499,6 @@ if (elementCount &gt; 0)
         <see-also>
             <function-ref name="simInsertPointsIntoPointCloud" />
             <function-ref name="simSetPointCloudOptions" />
-            <link href="../apiFunctions.htm#pointCloud" label=" point cloud related functions " />
         </see-also>
     </function>
 
@@ -10679,7 +10552,6 @@ if (elementCount &gt; 0)
         </categories>
         <see-also>
             <function-ref name="simInsertVoxelsIntoOctree" />
-            <link href="../apiFunctions.htm#octree" label=" OC tree related functions " />
         </see-also>
     </function>
 
@@ -10740,7 +10612,6 @@ if (elementCount &gt; 0)
             <category name="graph" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#graphs" label=" functions related to graphs " />
         </see-also>
     </function>
 
@@ -11265,7 +11136,6 @@ if (elementCount &gt; 0)
             <category name="sceneObject" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#size" label=" size and scaling functions " />
         </see-also>
     </function>
 
@@ -11310,7 +11180,6 @@ if (elementCount &gt; 0)
             <category name="sceneObject" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#size" label=" size and scaling functions " />
         </see-also>
     </function>
 
@@ -11398,7 +11267,6 @@ if (elementCount &gt; 0)
             <category name="graph" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#graphs" label=" functions related to graphs " />
         </see-also>
     </function>
 
@@ -11439,7 +11307,6 @@ if (elementCount &gt; 0)
             <category name="graph" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#graphs" label=" functions related to graphs " />
         </see-also>
     </function>
 
@@ -11863,7 +11730,6 @@ if (elementCount &gt; 0)
         </categories>
         <see-also>
             <function-ref name="simGetObjectChildPose" />
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -11908,7 +11774,6 @@ if (elementCount &gt; 0)
                 <category name="rendering" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#rendering" label=" rendering related functions " />
         </see-also>
     </function>
 
@@ -11951,7 +11816,6 @@ if (elementCount &gt; 0)
         </categories>
         <see-also>
             <function-ref name="simGetObjectMatrix" />
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -11997,7 +11861,6 @@ if (elementCount &gt; 0)
         </categories>
         <see-also>
             <function-ref name="simGetObjectOrientation" />
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -12054,7 +11917,6 @@ if (elementCount &gt; 0)
             <category name="transformation" />
         </categories>
         <see-also>
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -12107,7 +11969,6 @@ if (elementCount &gt; 0)
             <category name="transformation" />
         </categories>
         <see-also>
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -12194,7 +12055,6 @@ if (elementCount &gt; 0)
         </categories>
         <see-also>
             <function-ref name="simGetObjectPose" />
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -12238,7 +12098,6 @@ if (elementCount &gt; 0)
         </categories>
         <see-also>
             <function-ref name="simGetObjectPosition" />
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -12281,7 +12140,6 @@ if (elementCount &gt; 0)
         </categories>
         <see-also>
             <function-ref name="simGetObjectQuaternion" />
-            <link href="../positionOrientationTransformation.htm" label=" positions and orientations " />
         </see-also>
     </function>
 
@@ -12453,7 +12311,6 @@ if (elementCount &gt; 0)
         </categories>
         <see-also>
             <function-ref name="simGetPointCloudOptions" />
-            <link href="../apiFunctions.htm#pointCloud" label=" point cloud related functions " />
         </see-also>
     </function>
 
@@ -12612,7 +12469,6 @@ if (elementCount &gt; 0)
                 <category name="rendering" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#rendering" label=" rendering related functions " />
         </see-also>
     </function>
 
@@ -12840,7 +12696,6 @@ if (elementCount &gt; 0)
             <category name="visionSensor" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#visionSensor" label=" vision sensor related API functions " />
         </see-also>
     </function>
 
@@ -12865,7 +12720,6 @@ if (elementCount &gt; 0)
             <function-ref name="simPauseSimulation" />
             <function-ref name="simStopSimulation" />
             <function-ref name="simGetSimulationState" />
-            <link href="../simulation.htm" label=" simulation state diagram " />
         </see-also>
     </function>
 
@@ -12890,7 +12744,6 @@ if (elementCount &gt; 0)
             <function-ref name="simStartSimulation" />
             <function-ref name="simPauseSimulation" />
             <function-ref name="simGetSimulationState" />
-            <link href="../simulation.htm" label=" simulation state diagram " />
         </see-also>
     </function>
 
@@ -12940,7 +12793,6 @@ if (elementCount &gt; 0)
         <see-also>
             <function-ref name="simInsertObjectIntoOctree" />
             <function-ref name="simRemoveVoxelsFromOctree" />
-            <link href="../apiFunctions.htm#octree" label=" OC tree related functions " />
         </see-also>
     </function>
 
@@ -12996,7 +12848,6 @@ if (elementCount &gt; 0)
             <function-ref name="simInsertPointsIntoPointCloud" />
             <function-ref name="simInsertObjectIntoPointCloud" />
             <function-ref name="simRemovePointsFromPointCloud" />
-            <link href="../apiFunctions.htm#pointCloud" label=" point cloud related functions " />
         </see-also>
     </function>
 
@@ -13092,7 +12943,6 @@ if (elementCount &gt; 0)
             <category name="transformation" />
         </categories>
         <see-also>
-            <link href="../apiFunctions.htm#coordinatesAndTransformations" label=" matrix/transformation functions " />
         </see-also>
     </function>
 
@@ -13170,11 +13020,10 @@ if (elementCount &gt; 0)
         <categories>
             <category name="c_aux" />
                 <category name="packing" />
-                <category name="stack" />
+                <category name="c_stack" />
         </categories>
         <see-also>
             <function-ref name="simPackTable" />
-            <link href="../apiFunctions.htm#packing" label=" packing/unpacking functions " />
         </see-also>
     </function>
 

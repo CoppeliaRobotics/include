@@ -1,4 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
+<!--
+note: the generated see-also section contains the <see-also> items, but also the <categories> items. Make sure not to have duplicates!
+-->
 <object-classes>
     <object-class name="RuckigPosition" superclass="Motion">
         <method name="Constructor" func="sim.callMethod" lang="python,lua">
@@ -1951,7 +1954,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setBoolProperty" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setBoolProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setBoolProperty">
@@ -1983,7 +1985,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getBoolProperty" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getIntProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getIntProperty">
@@ -2021,7 +2022,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setIntProperty" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setIntProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setIntProperty">
@@ -2053,7 +2053,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getIntProperty" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getEnumProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getEnumProperty">
@@ -2091,7 +2090,6 @@
             <see-also>
                 <function-ref name="object:setEnumProperty" />
                 <function-ref name="object:getStringProperty" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setEnumProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setEnumProperty">
@@ -2123,7 +2121,6 @@
             <see-also>
                 <function-ref name="object:getEnumProperty" />
                 <function-ref name="object:setStringProperty" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getLongProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getLongProperty">
@@ -2161,7 +2158,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setLongProperty" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setLongProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setLongProperty">
@@ -2193,7 +2189,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getLongProperty" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getHandleProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getHandleProperty">
@@ -2230,7 +2225,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setHandleProperty" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setHandleProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setHandleProperty">
@@ -2261,7 +2255,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getHandleProperty" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getFloatProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getFloatProperty">
@@ -2299,7 +2292,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setFloatProperty" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setFloatProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setFloatProperty">
@@ -2331,7 +2323,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getFloatProperty" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getStringProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getStringProperty">
@@ -2369,7 +2360,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setStringProperty" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setStringProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setStringProperty">
@@ -2401,7 +2391,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getStringProperty" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getBufferProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getBufferProperty">
@@ -2436,11 +2425,10 @@
             </supersedes>
             <categories>
                 <category name="property" />
+                <category name="packing" />
             </categories>
             <see-also>
                 <function-ref name="object:setBufferProperty" />
-                <link href="../properties.htm" label=" properties " />
-                <link href="../apiFunctions.htm#packing" label=" packing/unpacking related functions " />
             </see-also>
         </method>
         <method name="setBufferProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setBufferProperty">
@@ -2469,11 +2457,10 @@
             </supersedes>
             <categories>
                 <category name="property" />
+                <category name="packing" />
             </categories>
             <see-also>
                 <function-ref name="object:getBufferProperty" />
-                <link href="../properties.htm" label="properties" />
-                <link href="../apiFunctions.htm#packing" label="packing/unpacking related functions" />
             </see-also>
         </method>
         <method name="getIntArray2Property" func="sim.callMethod" lang="python,lua" var="METHOD_getIntArray2Property">
@@ -2511,7 +2498,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setIntArray2Property" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setIntArray2Property" func="sim.callMethod" lang="python,lua" var="METHOD_setIntArray2Property">
@@ -2543,7 +2529,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getIntArray2Property" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getVector2Property" func="sim.callMethod" lang="python,lua">
@@ -2580,7 +2565,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setVector2Property" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setVector2Property" func="sim.callMethod" lang="python,lua">
@@ -2611,7 +2595,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getVector2Property" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getVector3Property" func="sim.callMethod" lang="python,lua" var="METHOD_getVector3Property">
@@ -2649,7 +2632,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setVector3Property" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setVector3Property" func="sim.callMethod" lang="python,lua" var="METHOD_setVector3Property">
@@ -2681,7 +2663,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getVector3Property" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getTableProperty" func="sim.callMethod" lang="lua" var="METHOD_getTableProperty">
@@ -2718,7 +2699,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setTableProperty" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setTableProperty" func="sim.callMethod" lang="lua" var="METHOD_setTableProperty">
@@ -2749,7 +2729,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getTableProperty" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getMatrixProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getMatrixProperty">
@@ -2786,7 +2765,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setMatrixProperty" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setMatrixProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setMatrixProperty">
@@ -2817,7 +2795,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getMatrixProperty" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getQuaternionProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getQuaternionProperty">
@@ -2855,7 +2832,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setQuaternionProperty" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setQuaternionProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setQuaternionProperty">
@@ -2887,7 +2863,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getQuaternionProperty" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getPoseProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getPoseProperty">
@@ -2925,7 +2900,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setPoseProperty" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setPoseProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setPoseProperty">
@@ -2957,7 +2931,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getPoseProperty" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getColorProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getColorProperty">
@@ -2995,7 +2968,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setColorProperty" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setColorProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setColorProperty">
@@ -3027,7 +2999,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getColorProperty" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getFloatArrayProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getFloatArrayProperty">
@@ -3065,7 +3036,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setFloatArrayProperty" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setFloatArrayProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setFloatArrayProperty">
@@ -3097,7 +3067,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getFloatArrayProperty" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getIntArrayProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getIntArrayProperty">
@@ -3135,7 +3104,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setIntArrayProperty" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setIntArrayProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setIntArrayProperty">
@@ -3167,7 +3135,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getIntArrayProperty" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getStringArrayProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getStringArrayProperty">
@@ -3204,7 +3171,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setStringArrayProperty" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setStringArrayProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setStringArrayProperty">
@@ -3235,7 +3201,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getStringArrayProperty" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getHandleArrayProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getHandleArrayProperty">
@@ -3272,7 +3237,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setHandleArrayProperty" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setHandleArrayProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setHandleArrayProperty">
@@ -3303,7 +3267,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getHandleArrayProperty" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getMethodProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getMethodProperty">
@@ -3340,7 +3303,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setMethodProperty" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setMethodProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setMethodProperty">
@@ -3371,7 +3333,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getMethodProperty" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getProperty">
@@ -3409,7 +3370,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setProperty" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setProperty">
@@ -3442,7 +3402,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getProperty" />
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <method name="getProperties" func="sim.callMethod" lang="python,lua" var="METHOD_getProperties">
@@ -3475,7 +3434,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:setProperties" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setProperties" func="sim.callMethod" lang="python,lua" var="METHOD_setProperties">
@@ -3498,7 +3456,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getProperties" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="getPropertyName" func="sim.callMethod" lang="python,lua" var="METHOD_getPropertyName">
@@ -3542,7 +3499,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getPropertyInfo" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="getPropertyInfo" func="sim.callMethod" lang="python,lua" var="METHOD_getPropertyInfo">
@@ -3594,7 +3550,6 @@
                 <function-ref name="object:setPropertyInfo" />
                 <function-ref name="object:getPropertiesInfos" />
                 <function-ref name="object:getPropertyName" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="setPropertyInfo" func="sim.callMethod" lang="python,lua" var="METHOD_setPropertyInfo">
@@ -3628,7 +3583,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getPropertyInfo" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="getPropertyInfos" func="sim.callMethod" lang="python,lua" var="METHOD_getPropertyInfos">
@@ -3660,7 +3614,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getPropertyInfo" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="getPropertyTypeString" func="sim.callMethod" lang="python,lua" var="METHOD_getPropertyTypeString">
@@ -3688,7 +3641,6 @@
                 <category name="property" />
             </categories>
             <see-also>
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="getPropertiesInfos" func="sim.callMethod" lang="python,lua" var="METHOD_getPropertiesInfos">
@@ -3721,7 +3673,6 @@
             </categories>
             <see-also>
                 <function-ref name="object:getPropertyInfo" />
-                <link href="../properties.htm" label=" properties " />
             </see-also>
         </method>
         <method name="removeProperty" func="sim.callMethod" lang="python,lua" var="METHOD_removeProperty">
@@ -3749,7 +3700,6 @@
                 <category name="property" />
             </categories>
             <see-also>
-                <link href="../properties.htm" label="properties" />
             </see-also>
         </method>
         <property name="handle" type="long" var="handle" >
@@ -5244,7 +5194,6 @@
                 <category name="thread" />
             </categories>
             <see-also>
-                <link href="../apiFunctions.htm#threads" label=" thread related functions " />
             </see-also>
         </method>
         <method name="handleSandboxScript" func="sim.callMethod" lang="lua" var="METHOD_handleSandboxScript">
@@ -5592,7 +5541,6 @@
                 <category name="texture" />
             </categories>
             <see-also>
-                <link href="../apiFunctions.htm#packing" label=" data packing/unpacking functions " />
             </see-also>
         </method>
         <property name="addOnPath" type="string" var="DEPRECATED_addOnDir" >
@@ -8519,7 +8467,6 @@
             <see-also>
                 <function-ref name="sim.scene.simulation:pause" />
                 <function-ref name="sim.scene.simulation:stop" />
-                <link href="../simulation.htm" label=" simulation state diagram " />
             </see-also>
         </method>
         <method name="simulation.stop" func="sim.callMethod" lang="python,lua" var="METHOD_stopSimulation">
@@ -8536,7 +8483,6 @@
             <see-also>
                 <function-ref name="sim.scene.simulation:start" />
                 <function-ref name="sim.scene.simulation:pause" />
-                <link href="../simulation.htm" label=" simulation state diagram " />
             </see-also>
         </method>
         <method name="simulation.pause" func="sim.callMethod" lang="python,lua" var="METHOD_pauseSimulation">
@@ -8553,7 +8499,6 @@
             <see-also>
                 <function-ref name="sim.scene.simulation:start" />
                 <function-ref name="sim.scene.simulation:stop" />
-                <link href="../simulation.htm" label=" simulation state diagram " />
             </see-also>
         </method>
         <method name="dynamics.step" func="sim.callMethod" lang="python,lua" var="METHOD_stepDynamics">
