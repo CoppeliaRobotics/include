@@ -6712,12 +6712,18 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Add-on menu path</label>
             <description>Menu path of add-on</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="customization" />
+            </categories>
         </property>
         <property name="addOnPath" type="string" var="addOnPath" >
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Add-on path</label>
             <description>Path of add-on</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="customization" />
+            </categories>
         </property>
         <property name="autoYieldDelay" type="float" var="autoYieldDelay" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
@@ -6726,6 +6732,10 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.setAutoYieldDelay" />
             </supersedes>
+            <categories>
+                <category name="scriptRelated" />
+                <category name="thread" />
+            </categories>
         </property>
         <property name="code" type="string" var="code" >
             <flags readable="true" writable="true" />
@@ -6735,10 +6745,16 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.scriptstringparam_text" />
             </supersedes>
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
         </property>
         <property name="detachedScript" type="group" var="GROUP_detachedScript" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
         </property>
         <property name="detachedScript.type" type="string" var="scriptType" >
             <flags readable="true" constant="true" />
@@ -6748,6 +6764,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.scriptintparam_type" />
             </supersedes>
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
         </property>
         <property name="enabled" type="bool" var="scriptEnabled" >
             <flags readable="true" writable="true" />
@@ -6757,6 +6776,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.scriptintparam_enabled" />
             </supersedes>
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
         </property>
         <property name="execPriority" type="enum" var="execPriority" >
             <enum name="scriptExecOrder" />
@@ -6766,11 +6788,17 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.scriptintparam_execorder" />
             </supersedes>
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
         </property>
         <property name="executionDepth" type="int" var="executionDepth" >
             <flags readable="true" modelhashexclude="true" silent="true" />
             <label>Execution depth</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
         </property>
         <property name="language" type="string" var="language" >
             <flags readable="true" constant="true" />
@@ -6779,6 +6807,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.scriptstringparam_lang" />
             </supersedes>
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
         </property>
         <property name="restartOnError" type="bool" var="restartOnError" >
             <flags readable="true" writable="true" />
@@ -6788,6 +6819,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.scriptintparam_autorestartonerror" />
             </supersedes>
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
         </property>
         <property name="scriptDisabled" type="bool" var="DEPRECATED_scriptDisabled" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
@@ -6803,6 +6837,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.scriptstringparam_name" />
                 <item name="sim.scriptstringparam_namext" />
             </supersedes>
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
         </property>
         <property name="scriptState" type="int" var="DEPRECATED_scriptState" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
@@ -6820,6 +6857,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>State</label>
             <description>Script state</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
         </property>
     </object-class>
     <object-class name="mesh" superclass="object">
