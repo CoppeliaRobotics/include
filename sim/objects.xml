@@ -6713,7 +6713,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>Menu path of add-on</description>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
-                <category name="customization" />
+                <category name="scriptRelated" />
             </categories>
         </property>
         <property name="addOnPath" type="string" var="addOnPath" >
@@ -6722,7 +6722,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>Path of add-on</description>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
-                <category name="customization" />
+                <category name="scriptRelated" />
             </categories>
         </property>
         <property name="autoYieldDelay" type="float" var="autoYieldDelay" >
@@ -6988,6 +6988,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="color" type="group">
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="color.diffuse" type="color">
             <flags readable="true" writable="true" />
@@ -6999,6 +7002,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.setShapeColor" />
                 <item name="sim.getShapeColor" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="color.emission" type="color">
             <flags readable="true" writable="true" />
@@ -7010,6 +7016,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.setShapeColor" />
                 <item name="sim.getShapeColor" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="color.specular" type="color">
             <flags readable="true" writable="true" />
@@ -7021,6 +7030,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.setShapeColor" />
                 <item name="sim.getShapeColor" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="color.transparency" type="float">
             <flags readable="true" writable="true" />
@@ -7030,6 +7042,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.setShapeColor" />
                 <item name="sim.getShapeColor" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="colorName" type="string" var="colorName" >
             <flags readable="true" writable="true" />
@@ -7038,6 +7053,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.shapestringparam_colorname" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="convex" type="bool" var="convex" >
             <flags readable="true" />
@@ -7048,6 +7066,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.shapeintparam_convex" />
                 <item name="sim.getShapeGeomInfo" />
             </supersedes>
+            <categories>
+            </categories>
         </property>
         <property name="culling" type="bool" var="culling" >
             <flags readable="true" writable="true" />
@@ -7056,6 +7076,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.shapeintparam_culling" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="indices" type="intarray" var="indices" >
             <flags readable="true" modelhashexclude="true" />
@@ -7066,6 +7089,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getShapeMesh" />
                 <item name="sim.getShapeViz" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="normals" type="matrix" var="normals" >
             <flags readable="true" modelhashexclude="true" />
@@ -7076,6 +7102,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getShapeMesh" />
                 <item name="sim.getShapeViz" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="primitive" type="enum" var="primitiveType" >
             <enum name="primitiveType" />
@@ -7085,6 +7114,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.getShapeGeomInfo" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="primitiveType" type="int" var="DEPRECATED_primitiveType" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
@@ -7104,18 +7136,25 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.shapefloatparam_shading_angle" />
                 <item name="sim.shapefloatparam_edge_angle" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="shape" type="handle" var="shape" >
             <handle type="shape" />
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Shape handle</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+            </categories>
         </property>
         <property name="shapeUid" type="int" var="shapeUid" >
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Shape UID</label>
             <description>Unique identifier of parent shape</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+            </categories>
         </property>
         <property name="showEdges" type="bool" var="showEdges" >
             <flags readable="true" writable="true" />
@@ -7124,10 +7163,17 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.shapeintparam_edge_visibility" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="texture" type="group" var="GROUP_texture" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="texture" />
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="texture.applyMode" type="enum" var="textureApplyMode" >
             <enum name="textureApplyMode" />
@@ -7137,6 +7183,10 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.setShapeTexture" />
             </supersedes>
+            <categories>
+                <category name="texture" />
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="texture.coordinates" type="floatarray" var="textureCoordinates" >
             <flags readable="true" modelhashexclude="true" />
@@ -7145,6 +7195,10 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.getShapeViz" />
             </supersedes>
+            <categories>
+                <category name="texture" />
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="texture.id" type="int" var="textureID" >
             <flags readable="true" modelhashexclude="true" />
@@ -7154,6 +7208,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getShapeTextureId" />
                 <item name="sim.getTextureId" />
             </supersedes>
+            <categories>
+                <category name="texture" />
+            </categories>
         </property>
         <property name="texture.image" type="buffer" var="texture" >
             <flags readable="true" modelhashexclude="true" />
@@ -7163,6 +7220,10 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.readTexture" />
                 <item name="sim.getShapeViz" />
             </supersedes>
+            <categories>
+                <category name="texture" />
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="texture.interpolate" type="bool" var="textureInterpolate" >
             <flags readable="true" writable="true" />
@@ -7171,6 +7232,10 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.setShapeTexture" />
             </supersedes>
+            <categories>
+                <category name="texture" />
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="texture.repeatU" type="bool" var="textureRepeatU" >
             <flags readable="true" writable="true" />
@@ -7179,6 +7244,10 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.setShapeTexture" />
             </supersedes>
+            <categories>
+                <category name="texture" />
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="texture.repeatV" type="bool" var="textureRepeatV" >
             <flags readable="true" writable="true" />
@@ -7187,6 +7256,10 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.setShapeTexture" />
             </supersedes>
+            <categories>
+                <category name="texture" />
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="texture.resolution" type="intarray2" var="textureResolution" >
             <flags readable="true" />
@@ -7195,6 +7268,10 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.getTextureId" />
             </supersedes>
+            <categories>
+                <category name="texture" />
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="textureApplyMode" type="int" var="DEPRECATED_textureApplyMode" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
@@ -7239,6 +7316,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getShapeMesh" />
                 <item name="sim.getShapeViz" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="wireframe" type="bool" var="wireframe" >
             <flags readable="true" writable="true" />
@@ -7247,6 +7327,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.shapeintparam_wireframe" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
     </object-class>
     <object-class name="collection" superclass="object">
