@@ -8796,6 +8796,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" writable="true" />
             <label>Ambient light</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="bullet" type="group" var="DEPRECATEDGROUP_dynamicsBullet" >
             <flags modelhashexclude="true" deprecated="true" silent="true" constant="true" />
@@ -8837,10 +8840,16 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Collections</label>
             <description>Handles of all collections</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="model" />
+            </categories>
         </property>
         <property name="customData" type="group" var="GROUP_customData" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="customization" />
+            </categories>
         </property>
         <property name="customObjects" type="handlearray" var="customObjects" >
             <handle type="customObject" />
@@ -8848,6 +8857,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Custom objects</label>
             <description>List of scene custom objects</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="customization" />
+            </categories>
         </property>
         <property name="drawingObjects" type="handlearray" var="drawingObjects" >
             <handle type="drawingObject" />
@@ -8855,14 +8867,23 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Drawing objects</label>
             <description>Handles of all drawing objects</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="dynamics" type="group" var="GROUP_dynamics" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.bullet" type="group" var="GROUP_dynamicsBullet" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.bullet.collisionMarginScaling" type="float" var="bulletCollMarginScaling" >
             <flags readable="true" writable="true" />
@@ -8870,6 +8891,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.bullet_global_collisionmarginfactor" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.bullet.computeInertias" type="bool" var="bulletComputeInertias" >
             <flags readable="true" writable="true" />
@@ -8877,6 +8901,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.bullet_global_computeinertias" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.bullet.internalScalingFull" type="bool" var="bulletInternalScalingFull" >
             <flags readable="true" writable="true" />
@@ -8884,6 +8911,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.bullet_global_fullinternalscaling" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.bullet.internalScalingValue" type="float" var="bulletInternalScalingScaling" >
             <flags readable="true" writable="true" />
@@ -8891,6 +8921,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.bullet_global_internalscalingfactor" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.bullet.iterations" type="int" var="bulletIterations" >
             <flags readable="true" writable="true" />
@@ -8898,6 +8931,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.bullet_global_constraintsolvingiterations" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.bullet.solver" type="int" var="bulletSolver" >
             <flags readable="true" writable="true" />
@@ -8905,49 +8941,79 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.bullet_global_constraintsolvertype" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.enabled" type="bool" var="dynamicsEnabled" >
             <flags readable="true" writable="true" />
             <label>Dynamics enabled</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.engine" type="enum" var="dynamicsEngine" >
             <enum name="physicsEngine" />
             <flags readable="true" writable="true" />
             <label>Dynamics engine</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.engineProperties" type="string" var="engineProperties" >
             <flags readable="true" writable="true" modelhashexclude="true" />
             <label>Engine properties</label>
             <description>Engine properties as JSON text</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.engineVersion" type="int" var="dynamicsEngineVersion" >
             <flags readable="true" writable="true" />
             <label>Dynamics engine version</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.gravity" type="vector3" var="gravity" >
             <flags readable="true" writable="true" />
             <label>Gravity</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco" type="group" var="GROUP_dynamicsMujoco" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.actuationEnable" type="bool" var="mujocoActuationEnable" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.alignfree" type="bool" var="mujocoAlignfree" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.autoresetEnable" type="bool" var="mujocoAutoresetEnable" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.balanceInertias" type="bool" var="mujocoBalanceInertias" >
             <flags readable="true" writable="true" />
@@ -8955,6 +9021,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_balanceinertias" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.boundInertia" type="float" var="mujocoBoundInertia" >
             <flags readable="true" writable="true" />
@@ -8962,6 +9031,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_boundinertia" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.boundMass" type="float" var="mujocoBoundMass" >
             <flags readable="true" writable="true" />
@@ -8969,14 +9041,23 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_boundmass" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.ccd_iterations" type="int" var="mujocoCcd_iterations" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.ccd_tolerance" type="float" var="mujocoCcd_tolerance" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.computeInertias" type="bool" var="mujocoComputeInertias" >
             <flags readable="true" writable="true" />
@@ -8984,6 +9065,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_computeinertias" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.cone" type="int" var="mujocoCone" >
             <flags readable="true" writable="true" />
@@ -8991,10 +9075,16 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_cone" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.contactEnable" type="bool" var="mujocoContactEnable" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.contactParamsMargin" type="float" var="mujocoContactParamsMargin" >
             <flags readable="true" writable="true" />
@@ -9002,6 +9092,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_overridemargin" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.contactParamsOverride" type="bool" var="mujocoContactParamsOverride" >
             <flags readable="true" writable="true" />
@@ -9009,6 +9102,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_overridecontacts" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.contactParamsSolimp" type="floatarray" var="mujocoContactParamsSolimp" >
             <flags readable="true" writable="true" />
@@ -9020,6 +9116,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.mujoco_global_overridesolimp4" />
                 <item name="sim.mujoco_global_overridesolimp5" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.contactParamsSolref" type="floatarray" var="mujocoContactParamsSolref" >
             <flags readable="true" writable="true" />
@@ -9028,6 +9127,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.mujoco_global_overridesolref1" />
                 <item name="sim.mujoco_global_overridesolref2" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.density" type="float" var="mujocoDensity" >
             <flags readable="true" writable="true" />
@@ -9035,26 +9137,44 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_density" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.energyEnable" type="bool" var="mujocoEnergyEnable" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.equalityEnable" type="bool" var="mujocoEqualityEnable" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.eulerdampEnable" type="bool" var="mujocoEulerdampEnable" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.frictionlossEnable" type="bool" var="mujocoFrictionlossEnable" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.gravityEnable" type="bool" var="mujocoGravityEnable" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.impratio" type="float" var="mujocoImpRatio" >
             <flags readable="true" writable="true" />
@@ -9062,6 +9182,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_impratio" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.integrator" type="int" var="mujocoIntegrator" >
             <flags readable="true" writable="true" />
@@ -9069,10 +9192,16 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_integrator" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.invdiscreteEnable" type="bool" var="mujocoInvdiscreteEnable" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.iterations" type="int" var="mujocoIterations" >
             <flags readable="true" writable="true" />
@@ -9080,10 +9209,16 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_iterations" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.jacobian" type="int" var="mujocoJacobian" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.kinematicBodiesInertia" type="float" var="mujocoKinematicBodiesInertia" >
             <flags readable="true" writable="true" />
@@ -9091,6 +9226,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_kininertia" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.kinematicBodiesMass" type="float" var="mujocoKinematicBodiesMass" >
             <flags readable="true" writable="true" />
@@ -9098,6 +9236,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_kinmass" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.kinematicBodiesOverrideFlags" type="int" var="mujocoKinematicBodiesOverrideFlags" >
             <flags readable="true" writable="true" />
@@ -9105,38 +9246,65 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_overridekin" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.kinematicWeldSolimp" type="floatarray" var="mujocoKinematicWeldSolimp" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.kinematicWeldSolref" type="floatarray" var="mujocoKinematicWeldSolref" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.kinematicWeldTorquescale" type="float" var="mujocoKinematicWeldTorqueScale" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.limitEnable" type="bool" var="mujocoLimitEnable" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.ls_iterations" type="int" var="mujocoLs_iterations" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.ls_tolerance" type="float" var="mujocoLs_tolerance" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.mbmemory" type="int" var="mujocoMbMemory" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.midphaseEnable" type="bool" var="mujocoMidphaseEnable" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.multiccd" type="bool" var="mujocoMulticcd" >
             <flags readable="true" writable="true" />
@@ -9144,6 +9312,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_multiccd" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.multithreaded" type="bool" var="mujocoMultithreaded" >
             <flags readable="true" writable="true" />
@@ -9151,10 +9322,17 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_multithreaded" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+                <category name="thread" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.nativeccdEnable" type="bool" var="mujocoNativeccdEnable" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.nconmax" type="int" var="mujocoNconMax" >
             <flags readable="true" writable="true" />
@@ -9163,6 +9341,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_nconmax" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.njmax" type="int" var="mujocoNjMax" >
             <flags readable="true" writable="true" />
@@ -9171,14 +9352,23 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_njmax" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.noslip_iterations" type="int" var="mujocoNoslip_iterations" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.noslip_tolerance" type="float" var="mujocoNoslip_tolerance" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.nstack" type="int" var="mujocoNstack" >
             <flags readable="true" writable="true" />
@@ -9187,10 +9377,16 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_nstack" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.passiveEnable" type="bool" var="mujocoPassiveEnable" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.rebuildTrigger" type="int" var="mujocoRebuildTrigger" >
             <flags readable="true" writable="true" />
@@ -9198,22 +9394,37 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_rebuildtrigger" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.refsafeEnable" type="bool" var="mujocoRefsafeEnable" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.sdf_initpoints" type="int" var="mujocoSdf_initpoints" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.sdf_iterations" type="int" var="mujocoSdf_iterations" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.sensorEnable" type="bool" var="mujocoSensorEnable" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.solver" type="int" var="mujocoSolver" >
             <flags readable="true" writable="true" />
@@ -9221,10 +9432,16 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_solver" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.tolerance" type="float" var="mujocoTolerance" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.viscosity" type="float" var="mujocoViscosity" >
             <flags readable="true" writable="true" />
@@ -9232,10 +9449,16 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_global_viscosity" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.warmstartEnable" type="bool" var="mujocoWarmstartEnable" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.wind" type="vector3" var="mujocoWind" >
             <flags readable="true" writable="true" />
@@ -9245,10 +9468,16 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.mujoco_global_wind2" />
                 <item name="sim.mujoco_global_wind3" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.newton" type="group" var="GROUP_dynamicsNewton" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.newton.computeInertias" type="bool" var="newtonComputeInertias" >
             <flags readable="true" writable="true" />
@@ -9256,6 +9485,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.newton_global_computeinertias" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.newton.contactMergeTolerance" type="float" var="newtonContactMergeTolerance" >
             <flags readable="true" writable="true" />
@@ -9263,6 +9495,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.newton_global_contactmergetolerance" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.newton.exactSolver" type="bool" var="newtonExactSolver" >
             <flags readable="true" writable="true" />
@@ -9270,6 +9505,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.newton_global_exactsolver" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.newton.highJointAccuracy" type="bool" var="newtonHighJointAccuracy" >
             <flags readable="true" writable="true" />
@@ -9277,6 +9515,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.newton_global_highjointaccuracy" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.newton.iterations" type="int" var="newtonIterations" >
             <flags readable="true" writable="true" />
@@ -9284,6 +9525,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.newton_global_constraintsolvingiterations" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.newton.multithreading" type="bool" var="newtonMultithreading" >
             <flags readable="true" writable="true" />
@@ -9291,10 +9535,17 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.newton_global_multithreading" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+                <category name="thread" />
+            </categories>
         </property>
         <property name="dynamics.ode" type="group" var="GROUP_dynamicsOde" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.ode.computeInertias" type="bool" var="odeComputeInertias" >
             <flags readable="true" writable="true" />
@@ -9302,6 +9553,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.ode_global_computeinertias" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.ode.globalCfm" type="float" var="odeGlobalCfm" >
             <flags readable="true" writable="true" />
@@ -9309,6 +9563,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.ode_global_cfm" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.ode.globalErp" type="float" var="odeGlobalErp" >
             <flags readable="true" writable="true" />
@@ -9316,6 +9573,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.ode_global_erp" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.ode.internalScalingFull" type="bool" var="odeInternalScalingFull" >
             <flags readable="true" writable="true" />
@@ -9323,6 +9583,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.ode_global_fullinternalscaling" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.ode.internalScalingValue" type="float" var="odeInternalScalingScaling" >
             <flags readable="true" writable="true" />
@@ -9330,6 +9593,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.ode_global_internalscalingfactor" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.ode.quickStepEnabled" type="bool" var="odeQuickStepEnabled" >
             <flags readable="true" writable="true" />
@@ -9337,6 +9603,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.ode_global_quickstep" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.ode.quickStepIterations" type="int" var="odeQuickStepIterations" >
             <flags readable="true" writable="true" />
@@ -9344,11 +9613,18 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.ode_global_constraintsolvingiterations" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.showContactPoints" type="bool" var="showContactPoints" >
             <flags readable="true" writable="true" />
             <label>Show contact points</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="dynamics.stepSize" type="float" var="dynamicsStepSize" >
             <flags readable="true" writable="true" />
@@ -9362,10 +9638,17 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.newton_global_stepsize" />
                 <item name="sim.mujoco_global_stepsize" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+                <category name="simulation" />
+            </categories>
         </property>
         <property name="dynamics.vortex" type="group" var="GROUP_dynamicsVortex" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.autoSleep" type="bool" var="vortexAutoSleep" >
             <flags readable="true" writable="true" />
@@ -9373,6 +9656,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_global_autosleep" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.computeInertias" type="bool" var="vortexComputeInertias" >
             <flags readable="true" writable="true" />
@@ -9380,6 +9666,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_global_computeinertias" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.constraintsAngularCompliance" type="float" var="vortexConstraintsAngularCompliance" >
             <flags readable="true" writable="true" />
@@ -9387,6 +9676,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_global_constraintangularcompliance" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.constraintsAngularDamping" type="float" var="vortexConstraintsAngularDamping" >
             <flags readable="true" writable="true" />
@@ -9394,6 +9686,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_global_constraintangulardamping" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.constraintsAngularKineticLoss" type="float" var="vortexConstraintsAngularKineticLoss" >
             <flags readable="true" writable="true" />
@@ -9401,6 +9696,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_global_constraintangularkineticloss" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.constraintsLinearCompliance" type="float" var="vortexConstraintsLinearCompliance" >
             <flags readable="true" writable="true" />
@@ -9408,6 +9706,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_global_constraintlinearcompliance" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.constraintsLinearDamping" type="float" var="vortexConstraintsLinearDamping" >
             <flags readable="true" writable="true" />
@@ -9415,6 +9716,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_global_constraintlineardamping" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.constraintsLinearKineticLoss" type="float" var="vortexConstraintsLinearKineticLoss" >
             <flags readable="true" writable="true" />
@@ -9422,6 +9726,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_global_constraintlinearkineticloss" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.contactTolerance" type="float" var="vortexContactTolerance" >
             <flags readable="true" writable="true" />
@@ -9429,6 +9736,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_global_contacttolerance" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.multithreading" type="bool" var="vortexMultithreading" >
             <flags readable="true" writable="true" />
@@ -9436,6 +9746,10 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_global_multithreading" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+                <category name="thread" />
+            </categories>
         </property>
         <property name="dynamicsEnabled" type="bool" var="DEPRECATED_dynamicsEnabled" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
@@ -9463,6 +9777,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Final save</label>
             <description>Lock scene and models after next scene save operation</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="file" />
+            </categories>
         </property>
         <property name="gravity" type="vector3" var="DEPRECATED_gravity" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
@@ -9478,6 +9795,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="locked" type="bool" var="sceneIsLocked" >
             <flags readable="true" />
             <label>Scene is locked</label>
+            <categories>
+                <category name="file" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="mainScript" type="handle" var="mainScript" >
@@ -9489,6 +9809,10 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.getScript" />
             </supersedes>
+            <categories>
+                <category name="detachedScript" />
+                <category name="scriptRelated" />
+            </categories>
         </property>
         <property name="mujoco" type="group" var="DEPRECATEDGROUP_dynamicsMujoco" >
             <flags modelhashexclude="true" deprecated="true" silent="true" constant="true" />
@@ -9812,12 +10136,18 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" modelhashexclude="true" silent="true" />
             <label>Object creation counter</label>
             <description>Counter of created scene objects</description>
+            <categories>
+                <category name="creation" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="objectDestructionCounter" type="int" var="objectDestructionCounter" >
             <flags readable="true" modelhashexclude="true" silent="true" />
             <label>Object destruction counter</label>
             <description>Counter of destroyed scene objects</description>
+            <categories>
+                <category name="creation" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="objectHandles" type="intarray" var="DEPRECATED_objectHandles" >
@@ -9834,6 +10164,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.getObjects" />
             </supersedes>
+            <categories>
+                <category name="creation" />
+            </categories>
         </property>
         <property name="ode" type="group" var="DEPRECATEDGROUP_dynamicsOde" >
             <flags modelhashexclude="true" deprecated="true" silent="true" constant="true" />
@@ -9885,6 +10218,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Orphan objects</label>
             <description>Handles of all orphan scene objects</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="creation" />
+            </categories>
         </property>
         <property name="path" type="string" var="scenePath" >
             <flags readable="true" writable="true" modelhashexclude="true" />
@@ -9920,6 +10256,10 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" writable="true" />
             <label>Save calculation structures</label>
             <description>Save operation also saves existing calculation structures</description>
+            <categories>
+                <category name="file" />
+                <category name="shape" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="sceneIsLocked" type="bool" var="DEPRECATED_sceneIsLocked" >
@@ -9952,6 +10292,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getObjectSel" />
                 <item name="sim.setObjectSel" />
             </supersedes>
+            <categories>
+                <category name="selection" />
+            </categories>
         </property>
         <property name="selectionHandles" type="intarray" var="DEPRECATED_selectionHandles" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
@@ -9966,43 +10309,68 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="signal" type="group" var="GROUP_signal" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="messaging" />
+            </categories>
         </property>
         <property name="simulation" type="group" var="GROUP_simulation" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="simulation" />
+            </categories>
         </property>
         <property name="simulation.pauseAtError" type="bool" var="pauseSimulationAtError" >
             <flags readable="true" writable="true" />
             <label>Pause simulation on script error</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="simulation" />
+            </categories>
         </property>
         <property name="simulation.pauseAtTime" type="bool" var="pauseSimulationAtTime" >
             <flags readable="true" writable="true" />
             <label>Pause simulation at time</label>
             <description>Pause simulation when simulation time exceeds a threshold</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="simulation" />
+            </categories>
         </property>
         <property name="simulation.realtime" type="bool" var="realtimeSimulation" >
             <flags readable="true" writable="true" />
             <label>Real-time simulation</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="simulation" />
+            </categories>
         </property>
         <property name="simulation.realtimeModifier" type="float" var="realtimeModifier" >
             <flags readable="true" writable="true" />
             <label>Real-time modifier</label>
             <description>Real-time multiplication factor</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="simulation" />
+            </categories>
         </property>
         <property name="simulation.removeNewObjects" type="bool" var="removeNewObjectsAtEnd" >
             <flags readable="true" writable="true" />
             <label>Remove new objects</label>
             <description>Remove new scene objects at simulation end</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="creation" />
+                <category name="simulation" />
+            </categories>
         </property>
         <property name="simulation.speedModifier" type="int" var="speedModifier" >
             <flags readable="true" writable="true" modelhashexclude="true" />
             <label>Speed modifier</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="simulation" />
+            </categories>
         </property>
         <property name="simulation.state" type="enum" var="simulationState" >
             <enum name="simulationState" />
@@ -10013,18 +10381,27 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getSimulationState" />
                 <item name="sim.getSimulationStopping" />
             </supersedes>
+            <categories>
+                <category name="simulation" />
+            </categories>
         </property>
         <property name="simulation.stepCount" type="int" var="stepCount" >
             <flags readable="true" modelhashexclude="true" />
             <label>Simulation steps</label>
             <description>Counter of simulation steps</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="simulation" />
+            </categories>
         </property>
         <property name="simulation.stepsPerRendering" type="int" var="stepsPerRendering" >
             <flags readable="true" writable="true" />
             <label>Steps per frame</label>
             <description>Simulation steps per frame</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="simulation" />
+            </categories>
         </property>
         <property name="simulation.time" type="float" var="simulationTime" >
             <flags readable="true" modelhashexclude="true" />
@@ -10033,6 +10410,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.getSimulationTime" />
             </supersedes>
+            <categories>
+                <category name="simulation" />
+            </categories>
         </property>
         <property name="simulation.timeStep" type="float" var="timeStep" >
             <flags readable="true" writable="true" />
@@ -10042,12 +10422,18 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.getSimulationTimeStep" />
             </supersedes>
+            <categories>
+                <category name="simulation" />
+            </categories>
         </property>
         <property name="simulation.timeToPause" type="float" var="timeToPause" >
             <flags readable="true" writable="true" />
             <label>Simulation pause time</label>
             <description>Time at which simulation should pause</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="simulation" />
+            </categories>
         </property>
         <property name="simulationState" type="int" var="DEPRECATED_simulationState" >
             <enum name="simulationState" />
@@ -10102,6 +10488,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Visibility layers</label>
             <description>Currently active visibility layers</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="vortex" type="group" var="DEPRECATEDGROUP_dynamicsVortex" >
             <flags modelhashexclude="true" deprecated="true" silent="true" constant="true" />
