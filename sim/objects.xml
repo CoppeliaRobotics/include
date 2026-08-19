@@ -5561,6 +5561,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Add-ons</label>
             <description>List of add-ons</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="customization" />
+            </categories>
         </property>
         <property name="appArg1" type="string" var="DEPRECATED_appArg1" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" constant="true" />
@@ -5622,12 +5625,18 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Aux. add-on 1</label>
             <description>Auxiliary add-on 1</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="customization" />
+            </categories>
         </property>
         <property name="auxAddOn2" type="string" var="auxAddOn2" >
             <flags readable="true" writable="true" modelhashexclude="true" constant="true" />
             <label>Aux. add-on 2</label>
             <description>Auxiliary add-on 2</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="customization" />
+            </categories>
         </property>
         <property name="browserEnabled" type="bool" var="browserEnabled" >
             <flags readable="true" writable="true" modelhashexclude="true" />
@@ -5644,12 +5653,18 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" writable="true" />
             <label>Console verbosity</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="messaging" />
+            </categories>
         </property>
         <property name="consoleVerbosityStr" type="string" var="consoleVerbosityStr" >
             <flags writable="true" modelhashexclude="true" silent="true" />
             <label>Console verbosity string</label>
             <description>Console verbosity string, only for client app</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="messaging" />
+            </categories>
         </property>
         <property name="customClasses" type="handlearray" var="customClasses" >
             <handle type="customObject" />
@@ -5657,10 +5672,16 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Custom classes</label>
             <description>List of app custom classes</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="customization" />
+            </categories>
         </property>
         <property name="customData" type="group" var="GROUP_customData" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="customization" />
+            </categories>
         </property>
         <property name="customObjects" type="handlearray" var="customObjects" >
             <handle type="customObject" />
@@ -5668,6 +5689,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Custom objects</label>
             <description>List of app custom objects</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="customization" />
+            </categories>
         </property>
         <property name="customSceneObjectClasses" type="handlearray" var="customSceneObjectClasses" >
             <handle type="sceneObject" />
@@ -5675,40 +5699,61 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Custom scene object classes</label>
             <description>List of app custom scene object classes</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="customization" />
+            </categories>
         </property>
         <property name="defaultPython" type="string" var="defaultPython" >
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Default Python</label>
             <description>Default Python interpreter</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
         </property>
         <property name="defaultRotationStepSize" type="float" var="defaultRotationStepSize" >
             <flags readable="true" writable="true" />
             <label>Rotation step size</label>
             <description>Default rotation step size</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="defaultTranslationStepSize" type="float" var="defaultTranslationStepSize" >
             <flags readable="true" writable="true" />
             <label>Translation step size</label>
             <description>Default translation step size</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="dialogVerbosity" type="int" var="dialogVerbosity" >
             <flags readable="true" writable="true" />
             <label>Dialog verbosity</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="messaging" />
+            </categories>
         </property>
         <property name="dialogVerbosityStr" type="string" var="dialogVerbosityStr" >
             <flags writable="true" modelhashexclude="true" silent="true" />
             <label>Dialog verbosity string</label>
             <description>Dialog verbosity string, only for client app</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="messaging" />
+            </categories>
         </property>
         <property name="displayEnabled" type="bool" var="displayEnabled" >
             <flags readable="true" writable="true" modelhashexclude="true" />
             <label>Display enabled</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="dongleID" type="string" var="DEPRECATED_dongleID" >
             <flags readable="true" modelhashexclude="true" deprecated="true" constant="true" />
@@ -5733,12 +5778,18 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Execute unsafe</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
         </property>
         <property name="execUnsafeExt" type="bool" var="execUnsafeExt" >
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Execute unsafe extended</label>
             <description>Execute unsafe for code triggered externally</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
         </property>
         <property name="flavor" type="enum" var="flavor" >
             <enum name="appFlavor" />
@@ -5752,6 +5803,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Headless mode</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="hierarchyEnabled" type="bool" var="hierarchyEnabled" >
             <flags readable="true" writable="true" modelhashexclude="true" />
@@ -5855,6 +5909,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Notify deprecated</label>
             <description>Notify deprecated API (0: off, 1: light, 2: full)</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="messaging" />
+            </categories>
         </property>
         <property name="paths" type="group" var="GROUP_paths" >
             <flags modelhashexclude="true" silent="true" constant="true" />
@@ -5864,6 +5921,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Add-on path</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="customization" />
+            </categories>
         </property>
         <property name="paths.app" type="string" var="appDir" >
             <flags readable="true" modelhashexclude="true" constant="true" />
@@ -5874,26 +5934,42 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
             <label>Import/export path</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="importExport" />
+            </categories>
         </property>
         <property name="paths.lua" type="string" var="luaDir" >
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Lua path</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
         </property>
         <property name="paths.models" type="string" var="modelDir" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
             <label>Model path</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="model" />
+            </categories>
         </property>
         <property name="paths.mujoco" type="string" var="mujocoDir" >
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>MuJoCo path</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+                <category name="simulation" />
+            </categories>
         </property>
         <property name="paths.python" type="string" var="pythonDir" >
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Python path</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
         </property>
         <property name="paths.resources" type="string" var="resourceDir" >
             <flags readable="true" modelhashexclude="true" constant="true" />
@@ -5909,11 +5985,17 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
             <label>Scene path</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="importExport" />
+            </categories>
         </property>
         <property name="paths.settings" type="string" var="settingsDir" >
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Settings path</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="customization" />
+            </categories>
         </property>
         <property name="paths.system" type="string" var="systemDir" >
             <flags readable="true" modelhashexclude="true" constant="true" />
@@ -5944,6 +6026,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.getPluginName" />
             </supersedes>
+            <categories>
+                <category name="customization" />
+            </categories>
         </property>
         <property name="processCnt" type="int" var="processCnt" >
             <flags readable="true" modelhashexclude="true" silent="true" />
@@ -5974,6 +6059,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Protocol</label>
             <description>Protocol version</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="messaging" />
+            </categories>
         </property>
         <property name="pythonPath" type="string" var="DEPRECATED_pythonDir" >
             <flags readable="true" modelhashexclude="true" deprecated="true" constant="true" />
@@ -6012,12 +6100,18 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Sandbox</label>
             <description>Handle of the sandbox script</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
         </property>
         <property name="sandboxLang" type="string" var="sandboxLang" >
             <flags readable="true" constant="true" />
             <label>Sandbox language</label>
             <description>Default sandbox language</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
         </property>
         <property name="scenePath" type="string" var="DEPRECATED_sceneDir" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" silent="true" />
@@ -6042,22 +6136,34 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="signal" type="group" var="GROUP_signal" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="messaging" />
+            </categories>
         </property>
         <property name="startupCode" type="string" var="startupCode" >
             <flags readable="true" writable="true" modelhashexclude="true" constant="true" />
             <label>Start-up code</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
         </property>
         <property name="statusbarVerbosity" type="int" var="statusbarVerbosity" >
             <flags readable="true" writable="true" />
             <label>Statusbar verbosity</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="messaging" />
+            </categories>
         </property>
         <property name="statusbarVerbosityStr" type="string" var="statusbarVerbosityStr" >
             <flags writable="true" modelhashexclude="true" silent="true" />
             <label>Statusbar verbosity string</label>
             <description>Statusbar verbosity string, only for client app</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="messaging" />
+            </categories>
         </property>
         <property name="systemPath" type="string" var="DEPRECATED_systemDir" >
             <flags readable="true" modelhashexclude="true" deprecated="true" constant="true" />
