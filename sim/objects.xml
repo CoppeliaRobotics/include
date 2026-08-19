@@ -641,6 +641,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
             </supersedes>
             <categories>
+                <category name="creation" />
             </categories>
             <see-also>
                 <function-ref name="app:createObject" />
@@ -701,6 +702,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
             </supersedes>
             <categories>
+                <category name="creation" />
             </categories>
             <see-also>
                 <function-ref name="app:createObject" />
@@ -3740,6 +3742,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Object type</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="creation" />
+            </categories>
             <supersedes>
                 <item name="sim.getObjectType" />
             </supersedes>
@@ -4923,6 +4928,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.createVisionSensor" />
             </supersedes>
             <categories>
+                <category name="creation" />
                 <category name="collection" />
                 <category name="detachedScript" />
                 <category name="Console" />
@@ -5166,6 +5172,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.removeModel" />
             </supersedes>
             <categories>
+                <category name="creation" />
                 <category name="sceneObject" />
                 <category name="collection" />
                 <category name="detachedScript" />
@@ -6445,6 +6452,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
             </supersedes>
             <categories>
+                <category name="creation" />
                 <category name="detachedScript" />
             </categories>
             <see-also>
@@ -7183,6 +7191,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.destroyCollection" />
             </supersedes>
             <categories>
+                <category name="creation" />
                 <category name="collection" />
             </categories>
             <see-also>
@@ -7810,6 +7819,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.removeModel" />
             </supersedes>
             <categories>
+                <category name="creation" />
                 <category name="sceneObject" />
                 <category name="collection" />
                 <category name="detachedScript" />
@@ -8424,6 +8434,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.createVisionSensor" />
             </supersedes>
             <categories>
+                <category name="creation" />
                 <category name="collection" />
                 <category name="detachedScript" />
                 <category name="Console" />
@@ -9948,6 +9959,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
             </supersedes>
             <categories>
+                <category name="creation" />
                 <category name="customization" />
             </categories>
             <see-also>
@@ -9975,6 +9987,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
             </supersedes>
             <categories>
+                <category name="creation" />
             </categories>
             <see-also>
                 <function-ref name="app:removeObjects" />
@@ -10188,6 +10201,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.removeObjects" />
             </supersedes>
             <categories>
+                <category name="creation" />
             </categories>
             <see-also>
                 <function-ref name="scene:removeObjects" />
@@ -10213,6 +10227,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.removeModel" />
             </supersedes>
             <categories>
+                <category name="creation" />
                 <category name="sceneObject" />
             </categories>
             <see-also>
@@ -17215,62 +17230,6 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.vortex.zAxisPosRelaxationStiffness" />
-        </property>
-    </object-class>
-    <object-class name="drawingObject" superclass="object">
-        <property name="appendColors" type="floatarray">
-            <flags readable="true" writable="true" />
-            <support start="1" start-deprecated="2" end="2" />
-        </property>
-        <property name="appendPoints" type="floatarray">
-            <flags readable="true" writable="true" />
-            <support start="1" start-deprecated="2" end="2" />
-        </property>
-        <property name="appendQuaternions" type="floatarray">
-            <flags readable="true" writable="true" />
-            <support start="1" start-deprecated="2" end="2" />
-        </property>
-        <property name="colors" type="floatarray">
-            <flags readable="true" writable="true" />
-            <support start="1" start-deprecated="2" end="2" />
-        </property>
-        <property name="cyclic" type="bool">
-            <flags readable="true" writable="true" />
-            <support start="1" start-deprecated="2" end="2" />
-        </property>
-        <property name="itemType" type="string">
-            <flags readable="true" writable="true" />
-            <support start="1" start-deprecated="2" end="2" />
-        </property>
-        <property name="maxCnt" type="int">
-            <flags readable="true" writable="true" />
-            <support start="1" start-deprecated="2" end="2" />
-        </property>
-        <property name="overlay" type="bool">
-            <flags readable="true" writable="true" />
-            <support start="1" start-deprecated="2" end="2" />
-        </property>
-        <property name="parent" type="handle" var="parent" >
-            <handle type="sceneObject" />
-            <flags readable="true" modelhashexclude="true" constant="true" />
-            <label>Parent handle</label>
-            <support start="2" start-deprecated="0" end="0" />
-        </property>
-        <property name="parentUid" type="long">
-            <flags readable="true" writable="true" />
-            <support start="1" start-deprecated="2" end="2" />
-        </property>
-        <property name="points" type="floatarray">
-            <flags readable="true" writable="true" />
-            <support start="1" start-deprecated="2" end="2" />
-        </property>
-        <property name="quaternions" type="floatarray">
-            <flags readable="true" writable="true" />
-            <support start="1" start-deprecated="2" end="2" />
-        </property>
-        <property name="size" type="float">
-            <flags readable="true" writable="true" />
-            <support start="1" start-deprecated="2" end="2" />
         </property>
     </object-class>
     <object-class name="dummy" superclass="sceneObject">
