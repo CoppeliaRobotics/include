@@ -19774,6 +19774,9 @@ note: the generated see-also section contains the <see-also> items, but also the
     <object-class name="light" superclass="sceneObject">
         <property name="attenuationFactors" type="floatarray" var="attenuationFactors" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Attenuation factor</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -19784,10 +19787,16 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color" type="group">
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="color.diffuse" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Diffuse color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -19799,6 +19808,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color.emission" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Emission color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -19810,6 +19822,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color.specular" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Specular color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -19821,25 +19836,42 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="enabled" type="bool" var="enabled" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+                <category name="simulation" />
+            </categories>
             <label>Enabled</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="light" type="group" var="GROUP_light" >
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories>
+                <category name="rendering" />
+                <category name="simulation" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="light.type" type="string" var="lightType" >
             <flags readable="true" modelhashexclude="true" constant="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Type</label>
             <description>Light type</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="lightColor" type="group">
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="lightColor.diffuse" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Diffuse color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -19851,6 +19883,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="lightColor.emission" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Emission color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -19862,6 +19897,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="lightColor.specular" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Specular color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -19883,10 +19921,16 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="povray" type="group" var="GROUP_povray" >
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="povray.castShadows" type="bool" var="povCastShadows" >
             <flags readable="true" writable="true" silent="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>POV-Ray: cast shadows</label>
             <description>Light casts shadows (with the POV-Ray renderer plugin)</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -19896,12 +19940,18 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="size" type="float" var="size" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Size</label>
             <description>Light size</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="spotCutoffAngle" type="float" var="spotCutoffAngle" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Cut off angle</label>
             <description>Spot cut off angle</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -19911,6 +19961,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="spotExponent" type="int" var="spotExponent" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Spot exponent</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
