@@ -16039,7 +16039,6 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" />
             <categories>
                 <category name="rendering" />
-                <category name="transformation" />
             </categories>
             <label>Far corner of view frustum</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -16052,7 +16051,6 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" />
             <categories>
                 <category name="rendering" />
-                <category name="transformation" />
             </categories>
             <label>Near corner of View frustum</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -16064,7 +16062,6 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="parentAsManipulationProxy" type="bool" var="parentAsManipProxy" >
             <flags readable="true" writable="true" />
             <categories>
-                <category name="selection" />
             </categories>
             <label>Parent as proxy</label>
             <description>Use parent as manipulation proxy</description>
@@ -16126,7 +16123,6 @@ note: the generated see-also section contains the <see-also> items, but also the
             <handle type="sceneObject" />
             <flags readable="true" writable="true" modelhashexclude="true" />
             <categories>
-                <category name="simulation" />
             </categories>
             <label>Tracked object</label>
             <description>Tracked scene object</description>
@@ -16386,20 +16382,32 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <property name="backgroundColor" type="color" var="backgroundColor" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Background color</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="bufferSize" type="int" var="bufferSize" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="simulation" />
+            </categories>
             <label>Buffer size</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="color" type="group">
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="color.diffuse" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Diffuse color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -16411,6 +16419,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color.emission" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Emission color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -16422,6 +16433,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color.specular" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Specular color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -16433,17 +16447,26 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="cyclic" type="bool" var="cyclic" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="simulation" />
+            </categories>
             <label>Cyclic</label>
             <description>Buffer is cyclic</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="foregroundColor" type="color" var="foregroundColor" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Foreground color</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="graph" type="group" var="GROUP_graph" >
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="graphSize" type="float" var="DEPRECATED_size" >
@@ -16453,6 +16476,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="size" type="float" var="size" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Size</label>
             <description>Size of the 3D graph representation</description>
             <support start="2" start-deprecated="0" end="0" />
