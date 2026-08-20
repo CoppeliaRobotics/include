@@ -16391,7 +16391,6 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="bufferSize" type="int" var="bufferSize" >
             <flags readable="true" writable="true" />
             <categories>
-                <category name="simulation" />
             </categories>
             <label>Buffer size</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -16448,7 +16447,6 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="cyclic" type="bool" var="cyclic" >
             <flags readable="true" writable="true" />
             <categories>
-                <category name="simulation" />
             </categories>
             <label>Cyclic</label>
             <description>Buffer is cyclic</description>
@@ -16465,7 +16463,6 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="graph" type="group" var="GROUP_graph" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <categories>
-                <category name="rendering" />
             </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
@@ -16832,10 +16829,16 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <property name="color" type="group">
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="color.diffuse" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Diffuse color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -16847,6 +16850,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color.emission" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Emission color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -16858,6 +16864,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color.specular" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Specular color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -16869,15 +16878,23 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="colors" type="buffer" var="colors" >
             <flags readable="true" modelhashexclude="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Voxel Colors</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="ocTree" type="group" var="GROUP_ocTree" >
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories>
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="packedPoints" type="buffer" var="packedPoints" >
             <flags readable="true" modelhashexclude="true" silent="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Packed voxels</label>
             <description>Voxel positions, as packed floats</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -16887,6 +16904,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="points" type="matrix" var="points" >
             <flags readable="true" modelhashexclude="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Voxels</label>
             <description>Voxel positions</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -16896,16 +16916,25 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="randomColors" type="bool" var="randomColors" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Random voxel colors</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="showPoints" type="bool" var="showPoints" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Show points instead of voxels</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="voxelSize" type="float" var="voxelSize" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Voxel size</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
