@@ -19241,6 +19241,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="assemblyTag" type="string" var="assemblyTag" >
             <flags readable="true" writable="true" />
             <label>Assembly tag</label>
+            <categories><category name="customization" /></categories>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.dummystringparam_assemblytag" />
@@ -19248,11 +19249,17 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color" type="group">
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="color.diffuse" type="color">
             <flags readable="true" writable="true" />
             <label>Diffuse color</label>
+            <categories>
+                <category name="rendering" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.setObjectColor" />
@@ -19264,6 +19271,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="color.emission" type="color">
             <flags readable="true" writable="true" />
             <label>Emission color</label>
+            <categories>
+                <category name="rendering" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.setObjectColor" />
@@ -19275,6 +19285,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="color.specular" type="color">
             <flags readable="true" writable="true" />
             <label>Specular color</label>
+            <categories>
+                <category name="rendering" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.setObjectColor" />
@@ -19315,16 +19328,23 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" writable="true" modelhashexclude="true" />
             <label>Engine properties</label>
             <description>Engine properties as JSON text</description>
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="dynamics.mujoco" type="group" var="GROUP_dynamicsMujoco" >
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories><category name="dynamics" /></categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="dynamics.mujoco.jointProxyHandle" type="int" var="mujocoJointProxyHandle" >
             <flags readable="true" writable="true" modelhashexclude="true" />
             <label>Joint proxy</label>
             <description>Handle of the joint proxy, MuJoCo only</description>
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.mujoco_dummy_proxyjointid" />
@@ -19332,6 +19352,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="dynamics.mujoco.limitsEnabled" type="bool" var="mujocoLimitsEnabled" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.mujoco_dummy_limited" />
@@ -19339,6 +19362,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="dynamics.mujoco.limitsRange" type="floatarray" var="mujocoLimitsRange" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.mujoco_dummy_range1" />
@@ -19347,6 +19373,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="dynamics.mujoco.limitsSolimp" type="floatarray" var="mujocoLimitsSolimp" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.mujoco_dummy_solimplimit1" />
@@ -19358,6 +19387,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="dynamics.mujoco.limitsSolref" type="floatarray" var="mujocoLimitsSolref" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.mujoco_dummy_solreflimit1" />
@@ -19366,6 +19398,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="dynamics.mujoco.margin" type="float" var="mujocoMargin" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.mujoco_dummy_margin" />
@@ -19373,18 +19408,30 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="dynamics.mujoco.overlapConstrSolimp" type="floatarray" var="mujocoOverlapConstrSolimp" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="dynamics.mujoco.overlapConstrSolref" type="floatarray" var="mujocoOverlapConstrSolref" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="dynamics.mujoco.overlapConstrTorquescale" type="float" var="mujocoOverlapConstrTorqueScale" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="dynamics.mujoco.springDamping" type="float" var="mujocoSpringDamping" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.mujoco_dummy_damping" />
@@ -19392,6 +19439,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="dynamics.mujoco.springLength" type="float" var="mujocoSpringLength" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.mujoco_dummy_springlength" />
@@ -19399,6 +19449,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="dynamics.mujoco.springStiffness" type="float" var="mujocoSpringStiffness" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.mujoco_dummy_stiffness" />
@@ -19493,6 +19546,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" writable="true" />
             <label>Size</label>
             <description>Dummy size</description>
+            <categories>
+                <category name="rendering" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.dummyfloatparam_size" />
