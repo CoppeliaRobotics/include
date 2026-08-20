@@ -12502,87 +12502,137 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" />
             <label>Colors</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="cyclic" type="bool" var="cyclic" >
             <flags readable="true" constant="true" />
             <label>Cyclic</label>
             <description>Item buffer is cyclic</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+            </categories>
         </property>
         <property name="defaultItemSize" type="vector3" var="defaultItemSize" >
             <flags readable="true" constant="true" />
             <label>Default size</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="indices" type="intarray" var="indices" >
             <flags readable="true" />
             <label>Indices</label>
             <description>Indices for custom marker</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="local" type="bool" var="local" >
             <flags readable="true" constant="true" />
             <label>Local</label>
             <description>Coordinates are local to the marker's reference frame</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="marker" type="group" var="GROUP_marker" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="marker.type" type="string" var="type" >
             <flags readable="true" constant="true" />
             <label>Type</label>
             <description>Marker type</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="normals" type="matrix" var="normals" >
             <flags readable="true" />
             <label>Normals</label>
             <description>Normals for custom marker</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="overlay" type="bool" var="overlay" >
             <flags readable="true" constant="true" />
             <label>Overlay</label>
             <description>Items are are displayed overlaid</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="packedPoints" type="buffer" var="packedPoints" >
             <flags readable="true" modelhashexclude="true" silent="true" />
             <label>Packed points</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="packedQuaternions" type="buffer" var="packedQuaternions" >
             <flags readable="true" modelhashexclude="true" silent="true" />
             <label>Packed quaternions</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="packedSizes" type="buffer" var="packedSizes" >
             <flags readable="true" modelhashexclude="true" silent="true" />
             <label>Packed sizes</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="points" type="matrix" var="points" >
             <flags readable="true" />
             <label>Points</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="quaternions" type="matrix" var="quaternions" >
             <flags readable="true" />
             <label>Quaternions</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="sizes" type="matrix" var="sizes" >
             <flags readable="true" />
             <label>Sizes</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="vertices" type="matrix" var="vertices" >
             <flags readable="true" />
             <label>Vertices</label>
             <description>Vertices for custom marker</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
     </object-class>
     <object-class name="shape" superclass="sceneObject">
