@@ -11460,6 +11460,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getObjectVelocity" />
                 <item name="sim.objfloatparam_abs_rot_velocity" />
             </supersedes>
+            <categories>
+            </categories>
         </property>
         <property name="bbHSize" type="vector3" var="DEPRECATED_bbHsize" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
@@ -11479,6 +11481,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.objfloatparam_objbbox_max_y" />
                 <item name="sim.objfloatparam_objbbox_max_z" />
             </supersedes>
+            <categories>
+            </categories>
         </property>
         <property name="calcLinearVelocity" type="vector3" var="DEPRECATED_calcLinearVelocity" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
@@ -11500,12 +11504,18 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Cannot delete</label>
             <description>Scene object cannot be deleted while simulation is not running</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="customization" />
+            </categories>
         </property>
         <property name="cannotDeleteInSim" type="bool" var="cannotDeleteSim" >
             <flags readable="true" writable="true" />
             <label>Cannot delete during simulation</label>
             <description>Scene object cannot be deleted while simulation is running</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="customization" />
+            </categories>
         </property>
         <property name="childOrder" type="int" var="childOrder" >
             <flags readable="true" modelhashexclude="true" />
@@ -11515,6 +11525,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getObjectHierarchyOrder" />
                 <item name="sim.setObjectHierarchyOrder" />
             </supersedes>
+            <categories>
+                <category name="model" />
+            </categories>
         </property>
         <property name="children" type="handlearray" var="children" >
             <handle type="sceneObject" />
@@ -11524,11 +11537,17 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.getObjectChild" />
             </supersedes>
+            <categories>
+                <category name="model" />
+            </categories>
         </property>
         <property name="collapsed" type="bool" var="collapsed" >
             <flags readable="true" writable="true" />
             <label>Collapsed hierarchy</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="model" />
+            </categories>
         </property>
         <property name="collectionSelfCollisionIndicator" type="int" var="collectionSelfCollInd" >
             <flags readable="true" writable="true" />
@@ -11537,15 +11556,25 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.objintparam_collection_self_collision_indicator" />
             </supersedes>
+            <categories>
+                <category name="collection" />
+                <category name="collision" />
+            </categories>
         </property>
         <property name="collidable" type="bool" var="collidable" >
             <flags readable="true" writable="true" />
             <label>Collidable</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="collision" />
+            </categories>
         </property>
         <property name="customData" type="group" var="GROUP_customData" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="customization" />
+            </categories>
         </property>
         <property name="deprecatedName" type="string" var="DEPRECATED_deprecatedName" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
@@ -11556,11 +11585,17 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Depth pass invisible</label>
             <description>Scene object is invisible for the depth buffer during a click operation</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="detectable" type="bool" var="detectable" >
             <flags readable="true" writable="true" />
             <label>Detectable</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="proximitySensor" />
+            </categories>
         </property>
         <property name="dimension" type="vector3" var="size" >
             <flags readable="true" writable="true" />
@@ -11576,6 +11611,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getObjectSizeFactor" />
                 <item name="sim.objfloatparam_size_factor" />
             </supersedes>
+            <categories>
+            </categories>
         </property>
         <property name="dna" type="buffer" var="dna" >
             <flags readable="true" />
@@ -11587,11 +11624,17 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" modelhashexclude="true" />
             <label>Dynamic flag</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamicIcon" type="int" var="dynamicIcon" >
             <flags readable="true" modelhashexclude="true" />
             <label>Dynamic icon</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamicallyEnabled" type="bool" var="dynamicallyEnabled" >
             <flags readable="true" modelhashexclude="true" silent="true" />
@@ -11600,6 +11643,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.isDynamicallyEnabled" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="eulerAngles" type="vector3" var="eulerAngles" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
@@ -11610,24 +11656,36 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getObjectOrientation" />
                 <item name="sim.setObjectOrientation" />
             </supersedes>
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="hideFromModelBB" type="bool" var="hideFromModelBB" >
             <flags readable="true" writable="true" />
             <label>Hide from model bounding box</label>
             <description>Scene object is not part of a parent model's bounding box</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="model" />
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="hierarchyColor" type="int" var="hierarchyColor" >
             <flags readable="true" writable="true" />
             <label>Hierarchy color</label>
             <description>Hierarchy color index</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="customization" />
+            </categories>
         </property>
         <property name="ignoreViewFitting" type="bool" var="ignoreViewFitting" >
             <flags readable="true" writable="true" />
             <label>Ignore view fitting</label>
             <description>View fitting is ignored for this scene object</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+            </categories>
         </property>
         <property name="layer" type="int" var="layer" >
             <flags readable="true" writable="true" />
@@ -11636,6 +11694,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.objintparam_visibility_layer" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="linearVelocity" type="vector3" var="calcLinearVelocity" >
             <flags readable="true" modelhashexclude="true" />
@@ -11648,15 +11709,23 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.objfloatparam_abs_y_velocity" />
                 <item name="sim.objfloatparam_abs_z_velocity" />
             </supersedes>
+            <categories>
+            </categories>
         </property>
         <property name="measurable" type="bool" var="measurable" >
             <flags readable="true" writable="true" />
             <label>Measurable</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="distance" />
+            </categories>
         </property>
         <property name="model" type="group" var="GROUP_model" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="model" />
+            </categories>
         </property>
         <property name="model.bbPos" type="vector3" var="modelBBPos" >
             <flags readable="true" modelhashexclude="true" silent="true" />
@@ -11670,6 +11739,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.objfloatparam_modelbbox_max_y" />
                 <item name="sim.objfloatparam_modelbbox_max_z" />
             </supersedes>
+            <categories>
+                <category name="model" />
+            </categories>
         </property>
         <property name="model.bbSize" type="vector3" var="modelBBSize" >
             <flags readable="true" modelhashexclude="true" silent="true" />
@@ -11683,82 +11755,134 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.objfloatparam_modelbbox_max_y" />
                 <item name="sim.objfloatparam_modelbbox_max_z" />
             </supersedes>
+            <categories>
+                <category name="model" />
+            </categories>
         </property>
         <property name="model.notCollidable" type="bool" var="modelNotCollidable" >
             <flags readable="true" writable="true" />
             <label>Model not collidable</label>
             <description>Model is not collidable</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="collision" />
+                <category name="model" />
+            </categories>
         </property>
         <property name="model.notDetectable" type="bool" var="modelNotDetectable" >
             <flags readable="true" writable="true" />
             <label>Model not detectable</label>
             <description>Model is not detectable</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="proximitySensor" />
+                <category name="model" />
+            </categories>
         </property>
         <property name="model.notDynamic" type="bool" var="modelNotDynamic" >
             <flags readable="true" writable="true" />
             <label>Model not dynamic</label>
             <description>Model is not dynamic, i.e. model is static</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+                <category name="model" />
+            </categories>
         </property>
         <property name="model.notInParentBB" type="bool" var="modelNotInParentBB" >
             <flags readable="true" writable="true" />
             <label>Model invisible to other model's bounding boxes</label>
             <description>Model is invisible to other model's bounding boxes</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="model" />
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="model.notMeasurable" type="bool" var="modelNotMeasurable" >
             <flags readable="true" writable="true" />
             <label>Model not measurable</label>
             <description>Model is not measurable</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="model" />
+                <category name="distance" />
+            </categories>
         </property>
         <property name="model.notRespondable" type="bool" var="modelNotRespondable" >
             <flags readable="true" writable="true" />
             <label>Model not respondable</label>
             <description>Model is not respondable</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+                <category name="model" />
+            </categories>
         </property>
         <property name="model.notVisible" type="bool" var="modelNotVisible" >
             <flags readable="true" writable="true" />
             <label>Model not visible</label>
             <description>Model is not visible</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="model" />
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="model.propertyFlags" type="int" var="modelProperty" >
             <flags readable="true" writable="true" modelhashexclude="true" />
             <label>Model flags</label>
             <description>Model flags, redundant</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="model" />
+            </categories>
         </property>
         <property name="model.scriptsNotActive" type="bool" var="modelScriptsNotActive" >
             <flags readable="true" writable="true" />
             <label>Model scripts inactive</label>
             <description>Model scripts are not active</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="model" />
+                <category name="script" />
+                <category name="scriptRelated" />
+            </categories>
         </property>
         <property name="modelAcknowledgment" type="string" var="modelAcknowledgment" >
             <flags readable="true" writable="true" />
             <label>Acknowledgment</label>
             <description>Model acknowledgment</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="model" />
+                <category name="messaging" />
+            </categories>
         </property>
         <property name="modelBase" type="bool" var="modelBase" >
             <flags readable="true" writable="true" />
             <label>Model base</label>
             <description>Model base flag, indicates the scene object is the base of a model</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="model" />
+            </categories>
         </property>
         <property name="modelHash" type="string" var="modelHash" >
             <flags readable="true" modelhashexclude="true" silent="true" />
             <label>Model hash</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="model" />
+            </categories>
         </property>
         <property name="modelInvisible" type="bool" var="modelInvisible" >
             <flags readable="true" modelhashexclude="true" />
             <label>Inherited model invisibility</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="model" />
+            </categories>
         </property>
         <property name="modelNotCollidable" type="bool" var="DEPRECATED_modelNotCollidable" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
@@ -11808,16 +11932,25 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="mov" type="group" var="GROUP_mov" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="mov.altRot" type="bool" var="movAltRot" >
             <flags readable="true" writable="true" />
             <label>Alternate rotation axes enabled</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="mov.altTransl" type="bool" var="movAltTransl" >
             <flags readable="true" writable="true" />
             <label>Alternate translation axes enabled</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="mov.optionsFlags" type="int" var="movementOptions" >
             <flags readable="true" writable="true" />
@@ -11827,78 +11960,120 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.objintparam_manipulation_permissions" />
             </supersedes>
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="mov.prefRotX" type="bool" var="movPrefRotX" >
             <flags readable="true" writable="true" />
             <label>Preferred X-axis rotation</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="mov.prefRotY" type="bool" var="movPrefRotY" >
             <flags readable="true" writable="true" />
             <label>Preferred Y-axis rotation</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="mov.prefRotZ" type="bool" var="movPrefRotZ" >
             <flags readable="true" writable="true" />
             <label>Preferred Z-axis rotation</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="mov.prefTranslX" type="bool" var="movPrefTranslX" >
             <flags readable="true" writable="true" />
             <label>Preferred X-translation</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="mov.prefTranslY" type="bool" var="movPrefTranslY" >
             <flags readable="true" writable="true" />
             <label>Preferred Y-translation</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="mov.prefTranslZ" type="bool" var="movPrefTranslZ" >
             <flags readable="true" writable="true" />
             <label>Preferred Z-translation</label>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="mov.preferredAxesFlags" type="int" var="movementPreferredAxes" >
             <flags readable="true" writable="true" />
             <label>Preferred axes</label>
             <description>Preferred axes flags (redundant)</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="mov.relativity" type="intarray" var="movementRelativity" >
             <flags readable="true" writable="true" />
             <label>Movement relativity</label>
             <description>Movement relativity, linear and angular</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="mov.rotInSim" type="bool" var="movRotInSim" >
             <flags readable="true" writable="true" />
             <label>Rotation enabled during simulation</label>
             <description>Rotation enabled when simulation is running</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="mov.rotNoSim" type="bool" var="movRotNoSim" >
             <flags readable="true" writable="true" />
             <label>Rotation enabled</label>
             <description>Rotation enabled when simulation is not running</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="mov.stepSize" type="floatarray" var="movementStepSize" >
             <flags readable="true" writable="true" />
             <label>Movement step sizes</label>
             <description>Linear and angular step sizes</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="mov.translInSim" type="bool" var="movTranslInSim" >
             <flags readable="true" writable="true" />
             <label>Translation enabled during simulation</label>
             <description>Translation enabled when simulation is running</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="mov.translNoSim" type="bool" var="movTranslNoSim" >
             <flags readable="true" writable="true" />
             <label>Translation enabled</label>
             <description>Translation enabled when simulation is not running</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="movAltRot" type="bool" var="DEPRECATED_movAltRot" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
@@ -11989,12 +12164,16 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getObjectAlias" />
                 <item name="sim.setObjectAlias" />
             </supersedes>
+            <categories>
+            </categories>
         </property>
         <property name="objectPropertyFlags" type="int" var="objectProperty" >
             <flags readable="true" writable="true" modelhashexclude="true" />
             <label>Object flags</label>
             <description>Scene object flags, redundant</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+            </categories>
         </property>
         <property name="objectUid" type="long" var="DEPRECATED_objectUid" >
             <flags readable="true" modelhashexclude="true" deprecated="true" constant="true" />
@@ -12015,6 +12194,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getObjectParent" />
                 <item name="sim.setObjectParent" />
             </supersedes>
+            <categories>
+                <category name="model" />
+            </categories>
         </property>
         <property name="parentHandle" type="int" var="DEPRECATED_parentHandle" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
@@ -12026,6 +12208,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Parent UID</label>
             <description>Parent scene object unique identifier</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="model" />
+            </categories>
         </property>
         <property name="persistentUid" type="string" var="persistentUid" >
             <flags readable="true" modelhashexclude="true" constant="true" />
@@ -12035,6 +12220,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.objstringparam_unique_id" />
             </supersedes>
+            <categories>
+                <category name="model" />
+            </categories>
         </property>
         <property name="pose" type="pose" var="pose" >
             <flags readable="true" writable="true" />
@@ -12047,6 +12235,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getObjectMatrix" />
                 <item name="sim.setObjectMatrix" />
             </supersedes>
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="position" type="vector3" var="position" >
             <flags readable="true" writable="true" modelhashexclude="true" />
@@ -12057,6 +12248,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getObjectPosition" />
                 <item name="sim.setObjectPosition" />
             </supersedes>
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="quaternion" type="quaternion" var="quaternion" >
             <flags readable="true" writable="true" modelhashexclude="true" />
@@ -12067,6 +12261,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getObjectQuaternion" />
                 <item name="sim.setObjectQuaternion" />
             </supersedes>
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="refs" type="group" var="GROUP_refs" >
             <flags modelhashexclude="true" silent="true" constant="true" />
@@ -12076,24 +12273,37 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.setReferencedHandles" />
                 <item name="sim.getReferencedHandlesTags" />
             </supersedes>
+            <categories>
+                <category name="model" />
+            </categories>
         </property>
         <property name="selectInvisible" type="bool" var="selectInvisible" >
             <flags readable="true" writable="true" />
             <label>Select invisible</label>
             <description>Scene object is invisible during a selection operation</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="selection" />
+            </categories>
         </property>
         <property name="selectModel" type="bool" var="selectModel" >
             <flags readable="true" writable="true" />
             <label>Select model instead</label>
             <description>Selecting the scene object instead selects the parent model</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="selection" />
+                <category name="model" />
+            </categories>
         </property>
         <property name="selectable" type="bool" var="selectable" >
             <flags readable="true" writable="true" />
             <label>Selectable</label>
             <description>Scene object is selectable</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="selection" />
+            </categories>
         </property>
         <property name="selected" type="bool" var="selected" >
             <flags readable="true" writable="true" modelhashexclude="true" />
@@ -12104,10 +12314,16 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getObjectSel" />
                 <item name="sim.setObjectSel" />
             </supersedes>
+            <categories>
+                <category name="selection" />
+            </categories>
         </property>
         <property name="signal" type="group" var="GROUP_signal" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="messaging" />
+            </categories>
         </property>
         <property name="tree" type="handlearray" var="tree" >
             <flags readable="true" modelhashexclude="true" silent="true" />
@@ -12116,6 +12332,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.getObjectsInTree" />
             </supersedes>
+            <categories>
+                <category name="model" />
+            </categories>
         </property>
         <property name="uid" type="long" var="uid" >
             <flags readable="true" modelhashexclude="true" constant="true" />
@@ -12125,6 +12344,8 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.getObjectUid" />
             </supersedes>
+            <categories>
+            </categories>
         </property>
         <property name="visible" type="bool" var="visible" >
             <flags readable="true" modelhashexclude="true" silent="true" />
@@ -12134,6 +12355,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.objintparam_visible" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="worldEulerAngles" type="vector3" var="absEulerAngles" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
@@ -12144,6 +12368,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getObjectOrientation" />
                 <item name="sim.setObjectOrientation" />
             </supersedes>
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="worldPose" type="pose" var="absPose" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
@@ -12156,6 +12383,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getObjectMatrix" />
                 <item name="sim.setObjectMatrix" />
             </supersedes>
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="worldPosition" type="vector3" var="absPosition" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
@@ -12166,6 +12396,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getObjectPosition" />
                 <item name="sim.setObjectPosition" />
             </supersedes>
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <property name="worldQuaternion" type="quaternion" var="absQuaternion" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
@@ -12176,6 +12409,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getObjectQuaternion" />
                 <item name="sim.setObjectQuaternion" />
             </supersedes>
+            <categories>
+                <category name="transformation" />
+            </categories>
         </property>
         <namespace name="customData" />
         <namespace name="origRefs" new-property-forced-type="handlearray" />
