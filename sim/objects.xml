@@ -14939,27 +14939,39 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <property name="angleThreshold" type="float" var="angleThreshold" >
             <flags readable="true" writable="true" />
+            <categories>
+            </categories>
             <label>Angle threshold</label>
             <description>Angle threshold, 0.0 to disable</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="backFaceDetection" type="bool" var="backFaceDetection" >
             <flags readable="true" writable="true" />
+            <categories>
+            </categories>
             <label>Back face detection</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="closeThreshold" type="float" var="closeThreshold" >
             <flags readable="true" writable="true" />
+            <categories>
+            </categories>
             <label>Close threshold</label>
             <description>Close threshold: if a detection occures below that threshold, it is not registered. 0.0 to disable</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="color" type="group">
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="color.diffuse" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Diffuse color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -14971,6 +14983,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color.emission" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Emission color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -14982,6 +14997,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color.specular" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Specular color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -14993,6 +15011,8 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="detectedNormal" type="vector3" var="detectedNormal" >
             <flags readable="true" modelhashexclude="true" />
+            <categories>
+            </categories>
             <label>Detected normal</label>
             <description>Detected normal vector</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -15003,6 +15023,8 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="detectedObject" type="handle" var="detectedObject" >
             <handle type="sceneObject" />
             <flags readable="true" modelhashexclude="true" />
+            <categories>
+            </categories>
             <label>Detected object</label>
             <description>Detected scene object</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -15017,6 +15039,8 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="detectedPoint" type="vector3" var="detectedPoint" >
             <flags readable="true" modelhashexclude="true" />
+            <categories>
+            </categories>
             <label>Detected point</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -15025,11 +15049,16 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="exactMode" type="bool" var="exactMode" >
             <flags readable="true" writable="true" />
+            <categories>
+            </categories>
             <label>Exact mode</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="explicitHandling" type="bool" var="explicitHandling" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
             <label>Explicit handling</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -15039,20 +15068,29 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="frontFaceDetection" type="bool" var="frontFaceDetection" >
             <flags readable="true" writable="true" />
+            <categories>
+            </categories>
             <label>Front face detection</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="pointSize" type="float" var="size" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Sensor point size</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="proximitySensor" type="group" var="GROUP_proximitySensor" >
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories>
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="proximitySensor.type" type="string" var="sensorType" >
             <flags readable="true" modelhashexclude="true" constant="true" />
+            <categories>
+            </categories>
             <label>Type</label>
             <description>Proximity sensor type</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -15062,15 +15100,23 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="randomizedDetection" type="bool" var="randomizedDetection" >
             <flags readable="true" />
+            <categories>
+            </categories>
             <label>Randomized detection</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="rayColor" type="group">
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="rayColor.diffuse" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Diffuse color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -15082,6 +15128,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="rayColor.emission" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Emission color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -15093,6 +15142,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="rayColor.specular" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Specular color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -15114,6 +15166,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="showVolume" type="bool" var="showVolume" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Show volume</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -15122,64 +15177,86 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="volume" type="group" var="GROUP_volume" >
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories>
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="volume.angle" type="floatarray" var="angle" >
             <flags readable="true" writable="true" />
+            <categories>
+            </categories>
             <label>Angles</label>
             <description>Angle and inside gap for disk- and cone-type volumes</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="volume.closeEdges" type="floatarray" var="closeEdges" >
             <flags readable="true" />
+            <categories>
+            </categories>
             <label>Volume close edges</label>
             <description>List of segments (defined by pairs of end-point coordinates) visualizing the close threshold of the volume</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="volume.edges" type="floatarray" var="edges" >
             <flags readable="true" />
+            <categories>
+            </categories>
             <label>Volume edges</label>
             <description>List of segments (defined by pairs of end-point coordinates) visualizing the volume</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="volume.faces" type="intarray" var="faces" >
             <flags readable="true" writable="true" />
+            <categories>
+            </categories>
             <label>Faces</label>
             <description>Number of faces (near and far) for cylinder-, disk- and pyramid-type volumes</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="volume.offset" type="float" var="offset" >
             <flags readable="true" writable="true" />
+            <categories>
+            </categories>
             <label>Offset</label>
             <description>Offset of detection volume</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="volume.radius" type="floatarray" var="radius" >
             <flags readable="true" writable="true" />
+            <categories>
+            </categories>
             <label>Radius</label>
             <description>Radius for cylinder-, disk- and cone-type volumes</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="volume.range" type="float" var="range" >
             <flags readable="true" writable="true" />
+            <categories>
+            </categories>
             <label>Range</label>
             <description>Range/depth of detection volume</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="volume.subdivisions" type="intarray" var="subdivisions" >
             <flags readable="true" writable="true" />
+            <categories>
+            </categories>
             <label>Subdivisions</label>
             <description>Number of subdivisions (near and far) for cone-type volumes</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="volume.xSize" type="floatarray" var="xSize" >
             <flags readable="true" writable="true" />
+            <categories>
+            </categories>
             <label>X-sizes</label>
             <description>X-size (near and far) for pyramid-type volumes</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="volume.ySize" type="floatarray" var="ySize" >
             <flags readable="true" writable="true" />
+            <categories>
+            </categories>
             <label>Y-sizes</label>
             <description>Y-size (near and far) for pyramid-type volumes</description>
             <support start="2" start-deprecated="0" end="0" />
