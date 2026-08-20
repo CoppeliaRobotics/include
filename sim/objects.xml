@@ -17257,6 +17257,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <property name="cellSize" type="float" var="cellSize" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Cell size</label>
             <description>Size of the oc-tree cell/voxel</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -17267,10 +17270,15 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color" type="group">
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories>
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="color.diffuse" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Diffuse color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -17282,6 +17290,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color.emission" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Emission color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -17293,6 +17304,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color.specular" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Specular color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -17304,12 +17318,18 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="colors" type="buffer" var="colors" >
             <flags readable="true" modelhashexclude="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Colors</label>
             <description>Point colors</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="maxPointsInCell" type="int" var="maxPtsInCell" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Max. points in cell</label>
             <description>Maximum number of points in an oc-tree cell/voxel</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -17320,6 +17340,8 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="octreeStruct" type="bool" var="ocTreeStruct" >
             <flags readable="true" writable="true" />
+            <categories>
+            </categories>
             <label>OC-Tree structure Enabled</label>
             <description>Use an oc-tree structure</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -17330,6 +17352,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="packedPoints" type="buffer" var="packedPoints" >
             <flags readable="true" modelhashexclude="true" silent="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Packed points</label>
             <description>Point positions, as packed floats</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -17339,16 +17364,24 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="pointCloud" type="group" var="GROUP_pointCloud" >
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories>
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="pointDisplayFraction" type="float" var="pointDisplayFraction" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Display fraction</label>
             <description>Fraction of points to be displayed in an oc-tree cell/voxel</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="pointSize" type="int" var="pointSize" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Point size</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -17358,6 +17391,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="points" type="matrix" var="points" >
             <flags readable="true" modelhashexclude="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Points</label>
             <description>Point positions</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -17367,6 +17403,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="randomColors" type="bool" var="randomColors" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Random point colors</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
