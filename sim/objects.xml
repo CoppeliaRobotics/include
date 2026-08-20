@@ -19562,6 +19562,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color.diffuse" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Diffuse color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -19573,6 +19576,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color.emission" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Emission color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -19584,6 +19590,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color.specular" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Specular color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -19595,18 +19604,26 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="consecutiveViolationsToTrigger" type="int" var="consecutiveViolationsToTrigger" >
             <flags readable="true" writable="true" />
+            <categories>
+            </categories>
             <label>Consecutive violations to trigger</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="filter" type="enum" var="filterType" >
             <enum name="forceSensorFilter" />
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <label>Filter</label>
             <description>Filter type</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="filterSampleSize" type="int" var="filterSampleSize" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <label>Filter sample</label>
             <description>Filter sample size</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -19628,6 +19645,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="filteredForce" type="vector3" var="filteredSensorForce" >
             <flags readable="true" modelhashexclude="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <label>Filtered force</label>
             <description>Filtered force vector</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -19637,6 +19657,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="filteredTorque" type="vector3" var="filteredSensorTorque" >
             <flags readable="true" modelhashexclude="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <label>Filtered torque</label>
             <description>Filtered torque vector</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -19646,6 +19669,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="force" type="vector3" var="sensorForce" >
             <flags readable="true" modelhashexclude="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <label>Force</label>
             <description>Measured force vector</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -19659,16 +19685,25 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="forceThreshold" type="float" var="forceThreshold" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <label>Force threshold</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="forceThresholdEnabled" type="bool" var="forceThresholdEnabled" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <label>Force threshold enabled</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="intrinsicError" type="pose" var="intrinsicError" >
             <flags readable="true" modelhashexclude="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <label>Intrinsic error</label>
             <description>Intrinsic error, generated by some physics engines</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -19700,12 +19735,18 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="size" type="float" var="size" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Size</label>
             <description>Sensor size</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="torque" type="vector3" var="sensorTorque" >
             <flags readable="true" modelhashexclude="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <label>Torque</label>
             <description>Measured torque vector</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -19715,11 +19756,17 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="torqueThreshold" type="float" var="torqueThreshold" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <label>Torque threshold</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="torqueThresholdEnabled" type="bool" var="torqueThresholdEnabled" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
             <label>Torque threshold enabled</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
