@@ -19838,7 +19838,6 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" writable="true" />
             <categories>
                 <category name="rendering" />
-                <category name="simulation" />
             </categories>
             <label>Enabled</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -19846,8 +19845,6 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="light" type="group" var="GROUP_light" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <categories>
-                <category name="rendering" />
-                <category name="simulation" />
             </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
@@ -19986,10 +19983,15 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color" type="group">
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories>
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="color.diffuse" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Diffuse color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -20001,6 +20003,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color.emission" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Emission color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -20012,6 +20017,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color.specular" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Specular color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -20024,6 +20032,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="detachedScript" type="handle" var="detachedScript" >
             <handle type="detachedScript" />
             <flags readable="true" modelhashexclude="true" constant="true" />
+            <categories>
+                <category name="detachedScript" />
+            </categories>
             <label>Detached script handle</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
@@ -20041,6 +20052,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="resetAfterSimError" type="bool" var="resetAfterSimError" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="simulation" />
+            </categories>
             <label>Reset after simulation error</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -20053,10 +20067,14 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="script" type="group" var="GROUP_script" >
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories>
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="script.type" type="string" var="type" >
             <flags readable="true" modelhashexclude="true" constant="true" />
+            <categories>
+            </categories>
             <label>Type</label>
             <description>Script/detached script type</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -20087,6 +20105,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="size" type="float" var="size" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Size</label>
             <description>Size of the object</description>
             <support start="2" start-deprecated="0" end="0" />
