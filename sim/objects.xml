@@ -12978,6 +12978,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="applyColor" type="group" var="GROUP_applyColor" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="applyColor.diffuse" type="color" var="applyColorDiffuse" >
             <flags writable="true" modelhashexclude="true" silent="true" />
@@ -12987,6 +12990,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.setShapeColor" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="applyColor.emission" type="color" var="applyColorEmission" >
             <flags writable="true" modelhashexclude="true" silent="true" />
@@ -12996,6 +13002,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.setShapeColor" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="applyColor.specular" type="color" var="applyColorSpecular" >
             <flags writable="true" modelhashexclude="true" silent="true" />
@@ -13005,6 +13014,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.setShapeColor" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="applyColor.transparency" type="float" var="applyColorTransparency" >
             <flags writable="true" modelhashexclude="true" silent="true" />
@@ -13014,6 +13026,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.setShapeColor" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="applyCulling" type="bool" var="applyCulling" >
             <flags writable="true" modelhashexclude="true" silent="true" />
@@ -13023,6 +13038,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.shapeintparam_culling" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="applyShadingAngle" type="float" var="applyShadingAngle" >
             <flags writable="true" modelhashexclude="true" silent="true" />
@@ -13032,6 +13050,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.shapefloatparam_shading_angle" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="applyShowEdges" type="bool" var="applyShowEdges" >
             <flags writable="true" modelhashexclude="true" silent="true" />
@@ -13041,6 +13062,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.shapeintparam_edge_visibility" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="bullet" type="group" var="DEPRECATEDGROUP_dynamicsBullet" >
             <flags modelhashexclude="true" deprecated="true" silent="true" constant="true" />
@@ -13110,6 +13134,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getShapeInertia" />
                 <item name="sim.setShapeInertia" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="compound" type="bool" var="compound" >
             <flags readable="true" />
@@ -13120,10 +13147,15 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.shapeintparam_compound" />
                 <item name="sim.getShapeGeomInfo" />
             </supersedes>
+            <categories>
+            </categories>
         </property>
         <property name="compoundColors" type="group" var="GROUP_compoundColors" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="compoundColors.diffuse" type="floatarray" var="compoundColorDiffuse" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
@@ -13134,6 +13166,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getShapeColor" />
                 <item name="sim.setShapeColor" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="compoundColors.emission" type="floatarray" var="compoundColorEmission" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
@@ -13144,6 +13179,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getShapeColor" />
                 <item name="sim.setShapeColor" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="compoundColors.specular" type="floatarray" var="compoundColorSpecular" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
@@ -13154,6 +13192,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getShapeColor" />
                 <item name="sim.setShapeColor" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="compoundColors.transparency" type="floatarray" var="compoundColorTransparency" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
@@ -13164,6 +13205,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getShapeColor" />
                 <item name="sim.setShapeColor" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="compoundCullings" type="intarray" var="compoundCullings" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
@@ -13173,6 +13217,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.shapeintparam_culling" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="compoundEdges" type="intarray" var="compoundEdges" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
@@ -13182,6 +13229,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.shapeintparam_edge_visibility" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="compoundShadingAngles" type="floatarray" var="compoundShadingAngles" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
@@ -13191,6 +13241,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.shapefloatparam_shading_angle" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="compoundWireframe" type="intarray" var="compoundWireframe" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
@@ -13200,6 +13253,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.shapeintparam_wireframe" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="convex" type="bool" var="convex" >
             <flags readable="true" />
@@ -13210,6 +13266,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.shapeintparam_convex" />
                 <item name="sim.getShapeGeomInfo" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynAngularVelocity" type="vector3" var="DEPRECATED_dynAngularVelocity" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
@@ -13229,10 +13288,16 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.shapeintparam_static" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics" type="group" var="GROUP_dynamics" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.angularVelocity" type="vector3" var="dynAngularVelocity" >
             <flags readable="true" modelhashexclude="true" />
@@ -13243,10 +13308,16 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getVelocity" />
                 <item name="sim.getObjectVelocity" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.bullet" type="group" var="GROUP_dynamicsBullet" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.bullet.angularDamping" type="float" var="bulletAngularDamping" >
             <flags readable="true" writable="true" />
@@ -13254,6 +13325,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.bullet_body_angulardamping" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.bullet.autoShrinkConvexMeshes" type="bool" var="bulletAutoShrinkConvex" >
             <flags readable="true" writable="true" />
@@ -13261,6 +13335,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.bullet_body_autoshrinkconvex" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.bullet.customCollisionMarginConvexEnabled" type="bool" var="bulletNonDefaultCollisionMarginConvex" >
             <flags readable="true" writable="true" />
@@ -13268,6 +13345,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.bullet_body_usenondefaultcollisionmarginconvex" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.bullet.customCollisionMarginConvexValue" type="float" var="bulletNonDefaultCollisionMarginFactorConvex" >
             <flags readable="true" writable="true" />
@@ -13275,6 +13355,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.bullet_body_nondefaultcollisionmargingfactorconvex" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.bullet.customCollisionMarginEnabled" type="bool" var="bulletNonDefaultCollisionMargin" >
             <flags readable="true" writable="true" />
@@ -13282,6 +13365,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.bullet_body_usenondefaultcollisionmargin" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.bullet.customCollisionMarginValue" type="float" var="bulletNonDefaultCollisionMarginFactor" >
             <flags readable="true" writable="true" />
@@ -13289,6 +13375,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.bullet_body_nondefaultcollisionmargingfactor" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.bullet.friction" type="float" var="bulletFriction" >
             <flags readable="true" writable="true" />
@@ -13296,6 +13385,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.bullet_body_friction" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.bullet.frictionOld" type="float" var="bulletFriction0" >
             <flags readable="true" writable="true" />
@@ -13303,6 +13395,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.bullet_body_oldfriction" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.bullet.linearDamping" type="float" var="bulletLinearDamping" >
             <flags readable="true" writable="true" />
@@ -13310,6 +13405,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.bullet_body_lineardamping" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.bullet.restitution" type="float" var="bulletRestitution" >
             <flags readable="true" writable="true" />
@@ -13317,6 +13415,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.bullet_body_restitution" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.bullet.stickyContact" type="bool" var="bulletSticky" >
             <flags readable="true" writable="true" />
@@ -13324,12 +13425,18 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.bullet_body_sticky" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.engineProperties" type="string" var="engineProperties" >
             <flags readable="true" writable="true" modelhashexclude="true" />
             <label>Engine properties</label>
             <description>Engine properties as JSON text</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.linearVelocity" type="vector3" var="dynLinearVelocity" >
             <flags readable="true" modelhashexclude="true" />
@@ -13340,34 +13447,58 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getVelocity" />
                 <item name="sim.getObjectVelocity" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco" type="group" var="GROUP_dynamicsMujoco" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.adhesion" type="bool" var="mujocoAdhesion" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.adhesionctrl" type="float" var="mujocoAdhesionCtrl" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.adhesionctrlrange" type="floatarray" var="mujocoAdhesionCtrlrange" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.adhesionforcelimited" type="int" var="mujocoAdhesionForcelimited" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.adhesionforcerange" type="floatarray" var="mujocoAdhesionForcerange" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.adhesiongain" type="float" var="mujocoAdhesionGain" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.condim" type="int" var="mujocoCondim" >
             <flags readable="true" writable="true" />
@@ -13375,6 +13506,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_body_condim" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.friction" type="floatarray" var="mujocoFriction" >
             <flags readable="true" writable="true" />
@@ -13384,14 +13518,23 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.mujoco_body_friction2" />
                 <item name="sim.mujoco_body_friction3" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.gap" type="float" var="mujocoGap" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.gravcomp" type="float" var="mujocoGravcomp" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.margin" type="float" var="mujocoMargin" >
             <flags readable="true" writable="true" />
@@ -13399,6 +13542,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_body_margin" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.priority" type="int" var="mujocoPriority" >
             <flags readable="true" writable="true" />
@@ -13406,6 +13552,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_body_priority" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.solimp" type="floatarray" var="mujocoSolimp" >
             <flags readable="true" writable="true" />
@@ -13417,6 +13566,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.mujoco_body_solimp4" />
                 <item name="sim.mujoco_body_solimp5" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.solmix" type="float" var="mujocoSolmix" >
             <flags readable="true" writable="true" />
@@ -13424,6 +13576,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.mujoco_body_solmix" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.mujoco.solref" type="floatarray" var="mujocoSolref" >
             <flags readable="true" writable="true" />
@@ -13432,10 +13587,16 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.mujoco_body_solref1" />
                 <item name="sim.mujoco_body_solref2" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.newton" type="group" var="GROUP_dynamicsNewton" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.newton.angularDrag" type="float" var="newtonAngularDrag" >
             <flags readable="true" writable="true" />
@@ -13443,6 +13604,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.newton_body_angulardrag" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.newton.fastMoving" type="bool" var="newtonFastMoving" >
             <flags readable="true" writable="true" />
@@ -13450,6 +13614,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.newton_body_fastmoving" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.newton.kineticFriction" type="float" var="newtonKineticFriction" >
             <flags readable="true" writable="true" />
@@ -13457,6 +13624,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.newton_body_kineticfriction" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.newton.linearDrag" type="float" var="newtonLinearDrag" >
             <flags readable="true" writable="true" />
@@ -13464,6 +13634,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.newton_body_lineardrag" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.newton.restitution" type="float" var="newtonRestitution" >
             <flags readable="true" writable="true" />
@@ -13471,6 +13644,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.newton_body_restitution" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.newton.staticFriction" type="float" var="newtonStaticFriction" >
             <flags readable="true" writable="true" />
@@ -13478,10 +13654,16 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.newton_body_staticfriction" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.ode" type="group" var="GROUP_dynamicsOde" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.ode.angularDamping" type="float" var="odeAngularDamping" >
             <flags readable="true" writable="true" />
@@ -13489,6 +13671,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.ode_body_angulardamping" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.ode.friction" type="float" var="odeFriction" >
             <flags readable="true" writable="true" />
@@ -13496,6 +13681,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.ode_body_friction" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.ode.linearDamping" type="float" var="odeLinearDamping" >
             <flags readable="true" writable="true" />
@@ -13503,6 +13691,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.ode_body_lineardamping" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.ode.maxContacts" type="int" var="odeMaxContacts" >
             <flags readable="true" writable="true" />
@@ -13510,6 +13701,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.ode_body_maxcontacts" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.ode.softCfm" type="float" var="odeSoftCfm" >
             <flags readable="true" writable="true" />
@@ -13517,6 +13711,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.ode_body_softcfm" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.ode.softErp" type="float" var="odeSoftErp" >
             <flags readable="true" writable="true" />
@@ -13524,10 +13721,16 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.ode_body_softerp" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex" type="group" var="GROUP_dynamicsVortex" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.adhesiveForce" type="float" var="vortexAdhesiveForce" >
             <flags readable="true" writable="true" />
@@ -13535,6 +13738,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_adhesiveforce" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.angularNormalAxisFollowPrimaryAxis" type="bool" var="vortexNormalAngularAxisSameAsPrimaryAngularAxis" >
             <flags readable="true" writable="true" />
@@ -13542,6 +13748,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_normangaxissameasprimangaxis" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.angularNormalAxisFrictionModel" type="int" var="vortexNormalAngularAxisFrictionModel" >
             <flags readable="true" writable="true" />
@@ -13549,6 +13758,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_normalangularaxisfrictionmodel" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.angularNormalAxisFrictionValue" type="float" var="vortexNormalAngularAxisFriction" >
             <flags readable="true" writable="true" />
@@ -13556,6 +13768,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_normalangularaxisfriction" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.angularNormalAxisSlide" type="float" var="vortexNormalAngularAxisSlide" >
             <flags readable="true" writable="true" />
@@ -13563,6 +13778,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_normalangularaxisslide" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.angularNormalAxisSlip" type="float" var="vortexNormalAngularAxisSlip" >
             <flags readable="true" writable="true" />
@@ -13570,6 +13788,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_normalangularaxisslip" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.angularNormalAxisStaticFrictionScale" type="float" var="vortexNormalAngularAxisStaticFrictionScale" >
             <flags readable="true" writable="true" />
@@ -13577,6 +13798,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_normalangularaxisstaticfrictionscale" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.angularPrimaryAxisFrictionModel" type="int" var="vortexPrimaryAngularAxisFrictionModel" >
             <flags readable="true" writable="true" />
@@ -13584,6 +13808,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_primangulararaxisfrictionmodel" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.angularPrimaryAxisFrictionValue" type="float" var="vortexPrimaryAngularAxisFriction" >
             <flags readable="true" writable="true" />
@@ -13591,6 +13818,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_primangularaxisfriction" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.angularPrimaryAxisSlide" type="float" var="vortexPrimaryAngularAxisSlide" >
             <flags readable="true" writable="true" />
@@ -13598,6 +13828,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_primangularaxisslide" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.angularPrimaryAxisSlip" type="float" var="vortexPrimaryAngularAxisSlip" >
             <flags readable="true" writable="true" />
@@ -13605,6 +13838,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_primangularaxisslip" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.angularPrimaryAxisStaticFrictionScale" type="float" var="vortexPrimaryAngularAxisStaticFrictionScale" >
             <flags readable="true" writable="true" />
@@ -13612,6 +13848,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_primangularaxisstaticfrictionscale" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.angularSecondaryAxisFollowPrimaryAxis" type="bool" var="vortexSecondaryAngularAxisSameAsPrimaryAngularAxis" >
             <flags readable="true" writable="true" />
@@ -13619,6 +13858,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_secangaxissameasprimangaxis" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.angularSecondaryAxisFrictionModel" type="int" var="vortexSecondaryAngularAxisFrictionModel" >
             <flags readable="true" writable="true" />
@@ -13626,6 +13868,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_secangularaxisfrictionmodel" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.angularSecondaryAxisFrictionValue" type="float" var="vortexSecondaryAngularAxisFriction" >
             <flags readable="true" writable="true" />
@@ -13633,6 +13878,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_secangularaxisfriction" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.angularSecondaryAxisSlide" type="float" var="vortexSecondaryAngularAxisSlide" >
             <flags readable="true" writable="true" />
@@ -13640,6 +13888,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_secangularaxisslide" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.angularSecondaryAxisSlip" type="float" var="vortexSecondaryAngularAxisSlip" >
             <flags readable="true" writable="true" />
@@ -13647,6 +13898,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_secangularaxisslip" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.angularSecondaryAxisStaticFrictionScale" type="float" var="vortexSecondaryAngularAxisStaticFrictionScale" >
             <flags readable="true" writable="true" />
@@ -13654,6 +13908,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_secangularaxisstaticfrictionscale" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.angularVelDamping" type="float" var="vortexAngularVelocityDamping" >
             <flags readable="true" writable="true" />
@@ -13661,6 +13918,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_angularvelocitydamping" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.autoAngularDampingEnabled" type="bool" var="vortexAutoAngularDamping" >
             <flags readable="true" writable="true" />
@@ -13668,6 +13928,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_autoangulardamping" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.autoAngularDampingTensionRatio" type="float" var="vortexAutoAngularDampingTensionRatio" >
             <flags readable="true" writable="true" />
@@ -13675,6 +13938,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_autoangulardampingtensionratio" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.autoSleepThresholdAngularAccel" type="float" var="vortexAutoSleepAngularAccelerationThreshold" >
             <flags readable="true" writable="true" />
@@ -13682,6 +13948,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_autosleepangularaccelthreshold" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.autoSleepThresholdAngularSpeed" type="float" var="vortexAutoSleepAngularSpeedThreshold" >
             <flags readable="true" writable="true" />
@@ -13689,6 +13958,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_autosleepangularspeedthreshold" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.autoSleepThresholdLinearAccel" type="float" var="vortexAutoSleepLinearAccelerationThreshold" >
             <flags readable="true" writable="true" />
@@ -13696,6 +13968,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_autosleeplinearaccelthreshold" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.autoSleepThresholdLinearSpeed" type="float" var="vortexAutoSleepLinearSpeedThreshold" >
             <flags readable="true" writable="true" />
@@ -13703,6 +13978,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_autosleeplinearspeedthreshold" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.autoSleepThresholdSteps" type="int" var="vortexAutoSleepStepLiveThreshold" >
             <flags readable="true" writable="true" />
@@ -13710,6 +13988,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_autosleepsteplivethreshold" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.autoSlip" type="bool" var="vortexAutoSlip" >
             <flags readable="true" writable="true" />
@@ -13717,6 +13998,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_autoslip" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.compliance" type="float" var="vortexCompliance" >
             <flags readable="true" writable="true" />
@@ -13724,6 +14008,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_compliance" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.convexAsRandom" type="bool" var="vortexConvexShapesAsRandom" >
             <flags readable="true" writable="true" />
@@ -13731,6 +14018,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_convexshapesasrandom" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.damping" type="float" var="vortexDamping" >
             <flags readable="true" writable="true" />
@@ -13738,6 +14028,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_damping" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.fastMoving" type="bool" var="vortexFastMoving" >
             <flags readable="true" writable="true" />
@@ -13745,6 +14038,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_fastmoving" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.linearPrimaryAxisFrictionModel" type="int" var="vortexPrimaryLinearAxisFrictionModel" >
             <flags readable="true" writable="true" />
@@ -13752,6 +14048,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_primlinearaxisfrictionmodel" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.linearPrimaryAxisFrictionValue" type="float" var="vortexPrimaryLinearAxisFriction" >
             <flags readable="true" writable="true" />
@@ -13759,6 +14058,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_primlinearaxisfriction" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.linearPrimaryAxisSlide" type="float" var="vortexPrimaryLinearAxisSlide" >
             <flags readable="true" writable="true" />
@@ -13766,6 +14068,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_primlinearaxisslide" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.linearPrimaryAxisSlip" type="float" var="vortexPrimaryLinearAxisSlip" >
             <flags readable="true" writable="true" />
@@ -13773,6 +14078,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_primlinearaxisslip" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.linearPrimaryAxisStaticFrictionScale" type="float" var="vortexPrimaryLinearAxisStaticFrictionScale" >
             <flags readable="true" writable="true" />
@@ -13780,6 +14088,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_primlinearaxisstaticfrictionscale" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.linearPrimaryValue" type="vector3" var="vortexPrimaryAxisVector" >
             <flags readable="true" writable="true" />
@@ -13789,6 +14100,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.vortex_body_primaxisvectory" />
                 <item name="sim.vortex_body_primaxisvectorz" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.linearSecondaryAxisFollowPrimaryAxis" type="bool" var="vortexSecondaryLinearAxisSameAsPrimaryLinearAxis" >
             <flags readable="true" writable="true" />
@@ -13796,6 +14110,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_seclinaxissameasprimlinaxis" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.linearSecondaryAxisFrictionModel" type="int" var="vortexSecondaryLinearAxisFrictionModel" >
             <flags readable="true" writable="true" />
@@ -13803,6 +14120,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_seclinearaxisfrictionmodel" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.linearSecondaryAxisFrictionValue" type="float" var="vortexSecondaryLinearAxisFriction" >
             <flags readable="true" writable="true" />
@@ -13810,6 +14130,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_seclinearaxisfriction" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.linearSecondaryAxisSlide" type="float" var="vortexSecondaryLinearAxisSlide" >
             <flags readable="true" writable="true" />
@@ -13817,6 +14140,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_seclinearaxisslide" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.linearSecondaryAxisSlip" type="float" var="vortexSecondaryLinearAxisSlip" >
             <flags readable="true" writable="true" />
@@ -13824,6 +14150,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_seclinearaxisslip" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.linearSecondaryAxisStaticFrictionScale" type="float" var="vortexSecondaryLinearAxisStaticFrictionScale" >
             <flags readable="true" writable="true" />
@@ -13831,6 +14160,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_seclinearaxisstaticfrictionscale" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.linearVelDamping" type="float" var="vortexLinearVelocityDamping" >
             <flags readable="true" writable="true" />
@@ -13838,6 +14170,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_linearvelocitydamping" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.materialUniqueId" type="int" var="vortexMaterialUniqueId" >
             <flags readable="true" writable="true" modelhashexclude="true" />
@@ -13845,6 +14180,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_materialuniqueid" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.primitiveAsConvex" type="bool" var="vortexPrimitiveShapesAsConvex" >
             <flags readable="true" writable="true" />
@@ -13852,6 +14190,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_pureshapesasconvex" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.randomAsTerrain" type="bool" var="vortexRandomShapesAsTerrain" >
             <flags readable="true" writable="true" />
@@ -13859,6 +14200,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_randomshapesasterrain" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.restitution" type="float" var="vortexRestitution" >
             <flags readable="true" writable="true" />
@@ -13866,6 +14210,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_restitution" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.restitutionThreshold" type="float" var="vortexRestitutionThreshold" >
             <flags readable="true" writable="true" />
@@ -13873,6 +14220,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_restitutionthreshold" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="dynamics.vortex.skinThickness" type="float" var="vortexSkinThickness" >
             <flags readable="true" writable="true" />
@@ -13880,6 +14230,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.vortex_body_skinthickness" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="engineProperties" type="string" var="DEPRECATED_engineProperties" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
@@ -13891,6 +14244,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Flip faces</label>
             <description>Flips faces of all contained meshes</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="inertia" type="floatarray" var="DEPRECATED_inertia" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
@@ -13906,6 +14262,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getShapeInertia" />
                 <item name="sim.setShapeInertia" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="initAngularVelocity" type="vector3" var="initAngularVelocity" >
             <flags readable="true" writable="true" />
@@ -13916,6 +14275,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.shapefloatparam_init_velocity_b" />
                 <item name="sim.shapefloatparam_init_velocity_g" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="initLinearVelocity" type="vector3" var="initLinearVelocity" >
             <flags readable="true" writable="true" />
@@ -13926,6 +14288,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.shapefloatparam_init_velocity_y" />
                 <item name="sim.shapefloatparam_init_velocity_z" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="kinematic" type="bool" var="kinematic" >
             <flags readable="true" writable="true" />
@@ -13935,6 +14300,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.shapeintparam_kinematic" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="mass" type="float" var="mass" >
             <flags readable="true" writable="true" />
@@ -13945,6 +14313,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.setShapeMass" />
                 <item name="sim.shapefloatparam_mass" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="meshes" type="handlearray" var="meshes" >
             <handle type="mesh" />
@@ -13956,6 +14327,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getShapeViz" />
                 <item name="sim.shapeintparam_component_cnt" />
             </supersedes>
+            <categories>
+                <category name="rendering" />
+            </categories>
         </property>
         <property name="mujoco" type="group" var="DEPRECATEDGROUP_dynamicsMujoco" >
             <flags modelhashexclude="true" deprecated="true" silent="true" constant="true" />
@@ -14109,12 +14483,18 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Principal moment of inertia</label>
             <description>Principal moment of inertia, relative to pmiQuaternion</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="pmiQuaternion" type="quaternion" var="pmiQuaternion" >
             <flags readable="true" />
             <label>Quaternion of the principal moment of inertia</label>
             <description>Quaternion of the principal moment of inertia, relative to the shape's reference frame</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="primitive" type="bool" var="primitive" >
             <flags readable="true" />
@@ -14124,6 +14504,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.getShapeGeomInfo" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="principalMomentOfInertia" type="floatarray" var="DEPRECATED_pmi" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
@@ -14138,6 +14521,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.shapeintparam_respondable" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="respondableMask" type="int" var="respondableMask" >
             <flags readable="true" writable="true" />
@@ -14146,16 +14532,24 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.shapeintparam_respondable_mask" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="setToDynamicWithParent" type="bool" var="setToDynamicWithParent" >
             <flags readable="true" writable="true" />
             <label>Set to dynamic if gets parent</label>
             <description>Shape will be made dynamic if it receives a parent</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="shape" type="group" var="GROUP_shape" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+            </categories>
         </property>
         <property name="startInDynSleepMode" type="bool" var="startInDynSleepMode" >
             <flags readable="true" writable="true" />
@@ -14164,6 +14558,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.shapeintparam_sleepmodestart" />
             </supersedes>
+            <categories>
+                <category name="dynamics" />
+            </categories>
         </property>
         <property name="vortex" type="group" var="DEPRECATEDGROUP_dynamicsVortex" >
             <flags modelhashexclude="true" deprecated="true" silent="true" constant="true" />
