@@ -15523,16 +15523,25 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <property name="backgroundColor" type="color" var="backgroundCol" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Background color</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="backgroundColorFromEnvironment" type="bool" var="backgroundSameAsEnv" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Background color from environment</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="clippingPlanes" type="floatarray" var="clippingPlanes" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Clipping planes</label>
             <description>Near and far clipping planes</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -15545,10 +15554,16 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color" type="group">
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="color.diffuse" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Diffuse color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -15560,6 +15575,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color.emission" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Emission color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -15571,6 +15589,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="color.specular" type="color">
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Specular color</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -15582,6 +15603,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="depth" type="matrix" var="depthBuffer" >
             <flags readable="true" modelhashexclude="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Depth buffer</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -15595,16 +15619,25 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="emitDepthChangedEvent" type="bool" var="emitDepthChangedEvent" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="messaging" />
+            </categories>
             <label>Emit depth change event</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="emitImageChangedEvent" type="bool" var="emitImageChangedEvent" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="messaging" />
+            </categories>
             <label>Emit image change event</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="explicitHandling" type="bool" var="explicitHandling" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
             <label>Explicit handling</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -15614,6 +15647,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="frustumCornerFar" type="vector3" var="frustumCornerFar" >
             <flags readable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Far corner of view frustum</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -15623,6 +15659,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="frustumCornerNear" type="vector3" var="frustumCornerNear" >
             <flags readable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Near corner of View frustum</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -15632,6 +15671,8 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="ignoreDepthInfo" type="bool" var="ignoreDepthInfo" >
             <flags readable="true" writable="true" />
+            <categories>
+            </categories>
             <label>Ignore Depth buffer</label>
             <description>Ignore Depth buffer (faster)</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -15641,6 +15682,8 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="ignoreImageInfo" type="bool" var="ignoreRgbInfo" >
             <flags readable="true" writable="true" />
+            <categories>
+            </categories>
             <label>Ignore RGB buffer</label>
             <description>Ignore RGB buffer (faster)</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -15650,6 +15693,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="image" type="buffer" var="imageBuffer" >
             <flags readable="true" writable="true" modelhashexclude="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>RGB buffer</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -15664,12 +15710,16 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="omitPacket1" type="bool" var="omitPacket1" >
             <flags readable="true" writable="true" />
+            <categories>
+            </categories>
             <label>Packet 1 is blank</label>
             <description>Omit packet 1 (faster)</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="packedDepth" type="buffer" var="packedDepthBuffer" >
             <flags readable="true" modelhashexclude="true" silent="true" />
+            <categories>
+            </categories>
             <label>Packed depth buffer</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -15678,6 +15728,8 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="packet1" type="floatarray" var="packet1" >
             <flags readable="true" modelhashexclude="true" />
+            <categories>
+            </categories>
             <label>Data packet 1</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -15686,6 +15738,8 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="packet2" type="floatarray" var="packet2" >
             <flags readable="true" modelhashexclude="true" />
+            <categories>
+            </categories>
             <label>Data packet 2</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -15694,6 +15748,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="perspective" type="bool" var="perspective" >
             <flags readable="true" constant="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Perspective</label>
             <description>Perspective projection mode, otherwise orthogonal projection mode</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -15704,10 +15761,16 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="povray" type="group" var="GROUP_povray" >
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="povray.aperture" type="float" var="povAperture" >
             <flags readable="true" writable="true" silent="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>POV-Ray: aperture</label>
             <description>Aperture (with the POV-Ray renderer plugin)</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -15717,6 +15780,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="povray.blurDistance" type="float" var="povBlurDistance" >
             <flags readable="true" writable="true" silent="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>POV-Ray: blur distance</label>
             <description>Focal blur distance (with the POV-Ray renderer plugin)</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -15726,6 +15792,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="povray.blurSamples" type="int" var="povBlurSamples" >
             <flags readable="true" writable="true" silent="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>POV-Ray: blur samples</label>
             <description>Focal blur samples (with the POV-Ray renderer plugin)</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -15735,6 +15804,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="povray.focalBlur" type="bool" var="povFocalBlur" >
             <flags readable="true" writable="true" silent="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>POV-Ray: focal blur</label>
             <description>Focal blur (with the POV-Ray renderer plugin)</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -15745,6 +15817,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="renderMode" type="enum" var="renderMode" >
             <enum name="renderMode" />
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Render mode</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -15753,6 +15828,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="resolution" type="intarray2" var="resolution" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Resolution</label>
             <description>Resolution (relevant only with vision sensors)</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -15769,17 +15847,25 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="showFrustum" type="bool" var="showFrustum" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Show view frustum</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="size" type="float" var="size" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>Size</label>
             <description>Sensor size</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="triggerState" type="bool" var="triggerState" >
             <flags readable="true" modelhashexclude="true" />
+            <categories>
+            </categories>
             <label>Trigger state</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -15788,11 +15874,16 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="useExtImage" type="bool" var="useExtImage" >
             <flags readable="true" writable="true" />
+            <categories>
+            </categories>
             <label>External input</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="viewAngle" type="float" var="viewAngle" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>View angle</label>
             <description>View angle (in perspective projection mode)</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -15803,6 +15894,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="viewSize" type="float" var="viewSize" >
             <flags readable="true" writable="true" />
+            <categories>
+                <category name="rendering" />
+            </categories>
             <label>View size</label>
             <description>View size (in orthogonal projection mode)</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -15813,6 +15907,8 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
         <property name="visionSensor" type="group" var="GROUP_visionSensor" >
             <flags modelhashexclude="true" silent="true" constant="true" />
+            <categories>
+            </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
     </object-class>
