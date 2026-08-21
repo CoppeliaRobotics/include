@@ -808,9 +808,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
             </categories>
             <see-also>
-                <function-ref name="Path.fromJoints" />
-                <function-ref name="Path.fromObject" />
-                <function-ref name="Path.fromBuffer" />
+                <function-ref name="Path:fromJoints" />
+                <function-ref name="Path:fromObject" />
+                <function-ref name="Path:fromBuffer" />
                 <function-ref name="Path:data" />
                 <function-ref name="Path:setPoints" />
                 <function-ref name="Path:appendPoints" />
@@ -906,7 +906,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
             <see-also>
                 <function-ref name="Path:constructor" />
-                <function-ref name="Path.fromObject" />
+                <function-ref name="Path:fromObject" />
                 <function-ref name="Path:data" />
                 <function-ref name="Path:appendFromJoints" />
                 <function-ref name="Path:clearPoints" />
@@ -971,7 +971,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
             <see-also>
                 <function-ref name="Path:constructor" />
-                <function-ref name="Path.fromJoints" />
+                <function-ref name="Path:fromJoints" />
                 <function-ref name="Path:data" />
                 <function-ref name="Path:appendFromJoints" />
                 <function-ref name="Path:clearPoints" />
@@ -1113,7 +1113,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
             </categories>
             <see-also>
-                <function-ref name="Path.fromBuffer" />
+                <function-ref name="Path:fromBuffer" />
             </see-also>
         </method>
         <method name="data" func="" lang="python,lua">
@@ -4056,7 +4056,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
             <see-also>
                 <function-ref name="app:setPluginInfo" />
-                <property-ref name="app:pluginNames" />
+                <property-ref name="app.pluginNames" />
             </see-also>
         </method>
         <method name="setPluginInfo" func="sim.callMethod" lang="python,lua" var="METHOD_setPluginInfo">
@@ -4194,7 +4194,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
                 <function-ref name="customObject:makeObject" />
                 <function-ref name="customObject:remove" />
-                <property-ref name="app:customClasses" />
+                <property-ref name="app.customClasses" />
             </see-also>
         </method>
         <method name="openFile" func="sim.callMethod" lang="python,lua" var="METHOD_openFile">
@@ -4626,7 +4626,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
                 <function-ref name="app:logWarn" />
                 <function-ref name="app:logError" />
-                <property-ref name="app:statusbarVerbosity" />
+                <property-ref name="app.statusbarVerbosity" />
             </see-also>
         </method>
         <method name="logWarn" func="sim.callMethod" lang="python,lua" var="METHOD_logWarn">
@@ -4660,7 +4660,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
                 <function-ref name="app:logInfo" />
                 <function-ref name="app:logError" />
-                <property-ref name="app:statusbarVerbosity" />
+                <property-ref name="app.statusbarVerbosity" />
             </see-also>
         </method>
         <method name="logError" func="sim.callMethod" lang="python,lua" var="METHOD_logError">
@@ -4694,7 +4694,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
                 <function-ref name="app:logInfo" />
                 <function-ref name="app:logWarn" />
-                <property-ref name="app:statusbarVerbosity" />
+                <property-ref name="app.statusbarVerbosity" />
             </see-also>
         </method>
         <method name="createObject" func="sim.callMethod" lang="python,lua" var="METHOD_createObject">
@@ -5244,7 +5244,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="scene:save" />
                 <function-ref name="scene:loadModel" />
                 <function-ref name="scene:remove" />
-                <property-ref name="app:paths.scenes" />
+                <property-ref name="app.paths.scenes" />
             </see-also>
         </method>
         <method name="loadSceneFromBuffer" func="sim.callMethod" lang="python,lua" var="METHOD_loadSceneFromBuffer">
@@ -5400,7 +5400,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="sceneObject:getDescendants" />
                 <function-ref name="sceneObject:getAncestors" />
                 <function-ref name="scene:getobject" />
-                <property-ref name="app:customObjects" />
+                <property-ref name="app.customObjects" />
             </see-also>
         </method>
         <method name="removeObjects" func="sim.callMethod" lang="python,lua" var="METHOD_removeObjects">
@@ -5483,7 +5483,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:handleAddOnScripts" />
                 <function-ref name="scene:handleCustomizationScripts" />
                 <function-ref name="scene:handleSimulationScripts" />
-                <property-ref name="app:sandbox" />
+                <property-ref name="app.sandbox" />
             </see-also>
         </method>
         <method name="handleAddOnScripts" func="sim.callMethod" lang="lua" var="METHOD_handleAddOnScripts">
@@ -5517,7 +5517,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:handleSandboxScript" />
                 <function-ref name="scene:handleCustomizationScripts" />
                 <function-ref name="scene:handleSimulationScripts" />
-                <property-ref name="app:addOns" />
+                <property-ref name="app.addOns" />
             </see-also>
         </method>
         <method name="loadImage" func="sim.callMethod" lang="python,lua" var="METHOD_loadImage">
@@ -5825,7 +5825,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
             <see-also>
                 <function-ref name="app:handleAddOnScripts" />
-                <property-ref name="app:paths.addOns" />
+                <property-ref name="app.paths.addOns" />
             </see-also>
         </property>
         <property name="appArg1" type="string" var="DEPRECATED_appArg1" >
@@ -6657,8 +6657,8 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
                 <function-ref name="detachedScript:setStepping" />
                 <function-ref name="detachedScript:yield" />
-                <property-ref name="scene:simulation.time" />
-                <property-ref name="scene:simulation.timeStep" />
+                <property-ref name="scene.simulation.time" />
+                <property-ref name="scene.simulation.timeStep" />
             </see-also>
         </method>
         <method name="yield" func="sim.callMethod" lang="python,lua" var="METHOD_yield">
@@ -6708,9 +6708,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
                 <function-ref name="detachedScript:getStepping" />
                 <function-ref name="detachedScript:step" />
-                <property-ref name="detachedScript:autoYieldDelay" />
-                <property-ref name="scene:simulation.time" />
-                <property-ref name="scene:simulation.timeStep" />
+                <property-ref name="detachedScript.autoYieldDelay" />
+                <property-ref name="scene.simulation.time" />
+                <property-ref name="scene.simulation.timeStep" />
             </see-also>
         </method>
         <method name="getStepping" func="sim.callMethod" lang="python,lua" var="METHOD_getStepping">
@@ -8167,8 +8167,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="sceneObject:getObject" />
                 <function-ref name="detachedScript:getObject" />
                 <link href="../accessingSceneObjects.htm" label="accessing scene objects" />
-                <property-ref name="sceneObject:name" />
-                <property-ref name="sceneObject:persistentUid" />
+                <property-ref name="sceneObject.name" />
+                <property-ref name="sceneObject.persistentUid" />
             </see-also>
         </method>
         <method name="save" func="sim.callMethod" lang="python,lua" var="METHOD_save">
@@ -8195,8 +8195,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="scene:saveToBuffer" />
                 <function-ref name="scene:remove" />
                 <function-ref name="sceneObject:saveModel" />
-                <property-ref name="scene:path" />
-                <property-ref name="app:paths.scenes" />
+                <property-ref name="scene.path" />
+                <property-ref name="app.paths.scenes" />
             </see-also>
         </method>
         <method name="saveToBuffer" func="sim.callMethod" lang="python,lua" var="METHOD_saveToBuffer">
@@ -8286,7 +8286,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:loadModelInfo" />
                 <function-ref name="app:loadModelInfoFromBuffer" />
                 <function-ref name="app:loadScene" />
-                <property-ref name="app:paths.models" />
+                <property-ref name="app.paths.models" />
             </see-also>
         </method>
         <method name="loadModelFromBuffer" func="sim.callMethod" lang="python,lua" var="METHOD_loadModelFromBuffer">
@@ -8362,8 +8362,8 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
                 <function-ref name="sceneObject:getDescendants" />
                 <function-ref name="sceneObject:getAncestors" />
-                <property-ref name="scene:objects" />
-                <property-ref name="scene:orphans" />
+                <property-ref name="scene.objects" />
+                <property-ref name="scene.orphans" />
             </see-also>
         </method>
         <method name="removeObjects" func="sim.callMethod" lang="python,lua" var="METHOD_removeObjects">
@@ -8406,7 +8406,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="TextEditor:remove" />
                 <function-ref name="sceneObject:removeModel" />
                 <function-ref name="scene:createObject" />
-                <property-ref name="scene:objects" />
+                <property-ref name="scene.objects" />
             </see-also>
         </method>
         <method name="duplicateObjects" func="sim.callMethod" lang="python,lua" var="METHOD_duplicateObjects">
@@ -8451,7 +8451,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="scene:removeObjects" />
                 <function-ref name="scene:loadModel" />
                 <function-ref name="sceneObject:removeModel" />
-                <property-ref name="sceneObject:dna" />
+                <property-ref name="sceneObject.dna" />
             </see-also>
         </method>
         <method name="handleCustomizationScripts" func="sim.callMethod" lang="lua" var="METHOD_handleCustomizationScripts">
@@ -8486,7 +8486,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:handleSandboxScript" />
                 <function-ref name="app:handleAddOnScripts" />
                 <function-ref name="scene:handleSimulationScripts" />
-                <property-ref name="scene:mainScript" />
+                <property-ref name="scene.mainScript" />
             </see-also>
         </method>
         <method name="handleSimulationScripts" func="sim.callMethod" lang="lua" var="METHOD_handleSimulationScripts">
@@ -9052,9 +9052,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="simulation" />
             </categories>
             <see-also>
-                <function-ref name="sim.scene.simulation:pause" />
-                <function-ref name="sim.scene.simulation:stop" />
-                <property-ref name="scene:simulation.state" />
+                <function-ref name="scene.simulation:pause" />
+                <function-ref name="scene.simulation:stop" />
+                <property-ref name="scene.simulation.state" />
             </see-also>
         </method>
         <method name="simulation.stop" func="sim.callMethod" lang="python,lua" var="METHOD_stopSimulation">
@@ -9069,9 +9069,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="simulation" />
             </categories>
             <see-also>
-                <function-ref name="sim.scene.simulation:start" />
-                <function-ref name="sim.scene.simulation:pause" />
-                <property-ref name="scene:simulation.state" />
+                <function-ref name="scene.simulation:start" />
+                <function-ref name="scene.simulation:pause" />
+                <property-ref name="scene.simulation.state" />
             </see-also>
         </method>
         <method name="simulation.pause" func="sim.callMethod" lang="python,lua" var="METHOD_pauseSimulation">
@@ -9086,9 +9086,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="simulation" />
             </categories>
             <see-also>
-                <function-ref name="sim.scene.simulation:start" />
-                <function-ref name="sim.scene.simulation:stop" />
-                <property-ref name="scene:simulation.state" />
+                <function-ref name="scene.simulation:start" />
+                <function-ref name="scene.simulation:stop" />
+                <property-ref name="scene.simulation.state" />
             </see-also>
         </method>
         <method name="dynamics.step" func="sim.callMethod" lang="python,lua" var="METHOD_stepDynamics">
@@ -9113,7 +9113,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
             <see-also>
                 <function-ref name="scene:stepKinematicJoints" />
-                <property-ref name="scene:simulation.timeStep" />
+                <property-ref name="scene.simulation.timeStep" />
             </see-also>
         </method>
         <method name="stepKinematicJoints" func="sim.callMethod" lang="python,lua" var="METHOD_stepKinematicJoints">
@@ -9132,9 +9132,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="other" />
             </categories>
             <see-also>
-                <function-ref name="scene.dynamics.step" />
-                <property-ref name="sim.scene.simulation.timeStep" />
-                <property-ref name="joint:mode" />
+                <function-ref name="scene.dynamics:step" />
+                <property-ref name="scene.simulation.timeStep" />
+                <property-ref name="joint.mode" />
             </see-also>
         </method>
         <property name="acknowledgment" type="string" var="acknowledgment" >
@@ -9324,7 +9324,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
             <see-also>
-                <function-ref name="scene:dynamics.step" />
+                <function-ref name="scene.dynamics:step" />
             </see-also>
         </property>
         <property name="dynamics.engineProperties" type="string" var="engineProperties" >
@@ -10540,7 +10540,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
                 <function-ref name="scene:createObject" />
                 <function-ref name="scene:removeObjects" />
-                <property-ref name="scene:orphans" />
+                <property-ref name="scene.orphans" />
             </see-also>
         </property>
         <property name="ode" type="group" var="DEPRECATEDGROUP_dynamicsOde" >
@@ -10598,7 +10598,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
             <see-also>
                 <function-ref name="scene:getObjects" />
-                <property-ref name="scene:objects" />
+                <property-ref name="scene.objects" />
             </see-also>
         </property>
         <property name="path" type="string" var="scenePath" >
@@ -10768,9 +10768,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="simulation" />
             </categories>
             <see-also>
-                <function-ref name="scene:simulation.start" />
-                <function-ref name="scene:simulation.stop" />
-                <function-ref name="scene:simulation.pause" />
+                <function-ref name="scene.simulation:start" />
+                <function-ref name="scene.simulation:stop" />
+                <function-ref name="scene.simulation:pause" />
             </see-also>
         </property>
         <property name="simulation.stepCount" type="int" var="stepCount" >
@@ -10802,8 +10802,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="simulation" />
             </categories>
             <see-also>
-                <function-ref name="scene:simulation.start" />
-                <function-ref name="scene:simulation.stop" />
+                <function-ref name="scene.simulation:start" />
+                <function-ref name="scene.simulation:stop" />
             </see-also>
         </property>
         <property name="simulation.timeStep" type="float" var="timeStep" >
@@ -10976,7 +10976,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:createCustomObjectClass" />
                 <function-ref name="customObject:remove" />
                 <function-ref name="sceneObject:makeObject" />
-                <property-ref name="app:customClasses" />
+                <property-ref name="app.customClasses" />
             </see-also>
         </method>
         <method name="remove" func="sim.callMethod" lang="python,lua" var="METHOD_remove">
@@ -11058,7 +11058,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
                 <function-ref name="sceneObjectClass:remove" />
                 <function-ref name="sceneObjectClass:makeObject" />
-                <property-ref name="app:customSceneObjectClasses" />
+                <property-ref name="app.customSceneObjectClasses" />
             </see-also>
         </method>
         <method name="changeColor" func="sim.callMethod" lang="python,lua" var="METHOD_changeColor">
@@ -11274,7 +11274,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="scene:loadModel" />
                 <function-ref name="sceneObject:saveModelToBuffer" />
                 <function-ref name="scene:save" />
-                <property-ref name="sceneObject:modelBase" />
+                <property-ref name="sceneObject.modelBase" />
             </see-also>
         </method>
         <method name="saveModelToBuffer" func="sim.callMethod" lang="python,lua" var="METHOD_saveModelToBuffer">
@@ -11331,8 +11331,8 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
                 <function-ref name="sceneObject:getAncestors" />
                 <function-ref name="scene:getDescendants" />
-                <property-ref name="sceneObject:children" />
-                <property-ref name="sceneObject:tree" />
+                <property-ref name="sceneObject.children" />
+                <property-ref name="sceneObject.tree" />
             </see-also>
         </method>
         <method name="getAncestors" func="sim.callMethod" lang="python,lua" var="METHOD_getAncestors">
@@ -11364,7 +11364,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
             <see-also>
                 <function-ref name="sceneObject:getDescendants" />
-                <property-ref name="sceneObject:parent" />
+                <property-ref name="sceneObject.parent" />
             </see-also>
         </method>
         <method name="visitTree" func="sim.callMethod" lang="python,lua" var="METHOD_visitTree">
@@ -11396,7 +11396,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
                 <function-ref name="sceneObject:getAncestors" />
                 <function-ref name="sceneObject:getDescendants" />
-                <property-ref name="sceneObject:tree" />
+                <property-ref name="sceneObject.tree" />
             </see-also>
         </method>
         <method name="checkCollision" func="sim.callMethod" lang="python,lua" var="METHOD_checkCollision">
@@ -11434,7 +11434,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
                 <function-ref name="sceneObject:checkDistance" />
                 <function-ref name="collection:checkCollision" />
-                <property-ref name="sceneObject:collidable" />
+                <property-ref name="sceneObject.collidable" />
             </see-also>
         </method>
         <method name="checkDistance" func="sim.callMethod" lang="python,lua" var="METHOD_checkDistance">
@@ -11494,7 +11494,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
                 <function-ref name="sceneObject:checkCollision" />
                 <function-ref name="collection:checkDistance" />
-                <property-ref name="sceneObject:measurable" />
+                <property-ref name="sceneObject.measurable" />
             </see-also>
         </method>
         <method name="getName" func="sim.callMethod" lang="python,lua" var="METHOD_getName">
@@ -11532,7 +11532,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
             </categories>
             <see-also>
-                <property-ref name="sceneObject:name" />
+                <property-ref name="sceneObject.name" />
             </see-also>
         </method>
         <method name="getPose" func="sim.callMethod" lang="python,lua" var="METHOD_getPose">
@@ -11796,9 +11796,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
             <see-also>
                 <link href="../assembly.htm" label="assembly operation" />
-                <property-ref name="sceneObject:parent" />
-                <property-ref name="sceneObject:children" />
-                <property-ref name="dummy:assemblyTag" />
+                <property-ref name="sceneObject.parent" />
+                <property-ref name="sceneObject.children" />
+                <property-ref name="dummy.assemblyTag" />
             </see-also>
         </method>
         <method name="scaleTree" func="sim.callMethod" lang="python,lua" var="METHOD_scaleTree">
@@ -11829,7 +11829,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
             <see-also>
                 <function-ref name="sceneObject:scale" />
-                <property-ref name="sceneObject:dimension" />
+                <property-ref name="sceneObject.dimension" />
             </see-also>
         </method>
         <method name="scale" func="sim.callMethod" lang="python,lua" var="METHOD_scale">
@@ -11850,7 +11850,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
             <see-also>
                 <function-ref name="sceneObject:scaleTree" />
-                <property-ref name="sceneObject:dimension" />
+                <property-ref name="sceneObject.dimension" />
             </see-also>
         </method>
         <property name="alias" type="string" var="DEPRECATED_alias" >
@@ -11949,7 +11949,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
             <see-also>
                 <function-ref name="sceneObject:getDescendants" />
-                <property-ref name="sceneObject:parent" />
+                <property-ref name="sceneObject.parent" />
             </see-also>
         </property>
         <property name="collapsed" type="bool" var="collapsed" >
@@ -15090,7 +15090,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
             <see-also>
-                <property-ref name="shape:respondableMask" />
+                <property-ref name="shape.respondableMask" />
                 <function-ref name="shape:getContacts" />
             </see-also>
         </property>
@@ -15105,7 +15105,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
             <see-also>
-                <property-ref name="shape:respondable" />
+                <property-ref name="shape.respondable" />
                 <function-ref name="shape:getContacts" />
             </see-also>
         </property>
@@ -16189,8 +16189,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getVisionSensorDepth" />
             </supersedes>
             <see-also>
-                <property-ref name="visionSensor:packedDepth" />
-                <property-ref name="visionSensor:image" />
+                <property-ref name="visionSensor.packedDepth" />
+                <property-ref name="visionSensor.image" />
                 <function-ref name="visionSensor:getDepth" />
             </see-also>
         </property>
@@ -16285,7 +16285,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.setVisionSensorImg" />
             </supersedes>
             <see-also>
-                <property-ref name="visionSensor:depth" />
+                <property-ref name="visionSensor.depth" />
                 <function-ref name="visionSensor:getImage" />
             </see-also>
         </property>
@@ -16312,7 +16312,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getVisionSensorDepth" />
             </supersedes>
             <see-also>
-                <property-ref name="visionSensor:depth" />
+                <property-ref name="visionSensor.depth" />
                 <function-ref name="visionSensor:getDepth" />
             </see-also>
         </property>
@@ -16349,8 +16349,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.cameraintparam_perspective_operation" />
             </supersedes>
             <see-also>
-                <property-ref name="visionSensor:viewAngle" />
-                <property-ref name="visionSensor:viewSize" />
+                <property-ref name="visionSensor.viewAngle" />
+                <property-ref name="visionSensor.viewSize" />
             </see-also>
         </property>
         <property name="povray" type="group" var="GROUP_povray" >
@@ -16434,7 +16434,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.visionintparam_resolution_y" />
             </supersedes>
             <see-also>
-                <property-ref name="visionSensor:image" />
+                <property-ref name="visionSensor.image" />
                 <function-ref name="visionSensor:getImage" />
             </see-also>
         </property>
@@ -16490,7 +16490,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.camerafloatparam_perspective_angle" />
             </supersedes>
             <see-also>
-                <property-ref name="visionSensor:perspective" />
+                <property-ref name="visionSensor.perspective" />
             </see-also>
         </property>
         <property name="viewSize" type="float" var="viewSize" >
@@ -16506,7 +16506,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.camerafloatparam_ortho_size" />
             </supersedes>
             <see-also>
-                <property-ref name="visionSensor:perspective" />
+                <property-ref name="visionSensor.perspective" />
             </see-also>
         </property>
         <property name="visionSensor" type="group" var="GROUP_visionSensor" >
@@ -16686,8 +16686,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.cameraintparam_perspective_operation" />
             </supersedes>
             <see-also>
-                <property-ref name="camera:viewAngle" />
-                <property-ref name="camera:viewSize" />
+                <property-ref name="camera.viewAngle" />
+                <property-ref name="camera.viewSize" />
             </see-also>
         </property>
         <property name="resolution" type="intarray2" var="resolution" >
@@ -16766,7 +16766,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.camerafloatparam_perspective_angle" />
             </supersedes>
             <see-also>
-                <property-ref name="camera:perspective" />
+                <property-ref name="camera.perspective" />
             </see-also>
         </property>
         <property name="viewSize" type="float" var="viewSize" >
@@ -16782,7 +16782,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.camerafloatparam_ortho_size" />
             </supersedes>
             <see-also>
-                <property-ref name="camera:perspective" />
+                <property-ref name="camera.perspective" />
             </see-also>
         </property>
     </object-class>
