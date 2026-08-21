@@ -1399,7 +1399,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="group" type="IKGroup">
+                <param name="group" type="object">
                     <description>
                         the created IK group object
                     </description>
@@ -1531,21 +1531,21 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="IK:Constructor" />
             </see-also>
         </method>
-        <property name="objects" type="objectMap" var="objects" >
+        <property name="objects" type="map" var="objects" >
             <flags readable="true" silent="true" />
             <description>A map linking scene object handles to their corresponding IK objects</description>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
             </categories>
         </property>
-        <property name="joints" type="objectMap" var="joints" >
+        <property name="joints" type="map" var="joints" >
             <flags readable="true" silent="true" />
             <description>A map linking scene joint handles to their corresponding IK joints</description>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
             </categories>
         </property>
-        <property name="groupList" type="objectArray" var="groupList" >
+        <property name="groupList" type="object[]" var="groupList" >
             <flags readable="true" silent="true" />
             <description>A list of the groups in an IK world</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -1601,7 +1601,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="element" type="IKElement">
+                <param name="element" type="object">
                     <description>
                         the created IK element object
                     </description>
@@ -1765,7 +1765,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="IK:syncToScene" />
             </see-also>
         </method>
-        <property name="elementList" type="objectArray" var="elementList" >
+        <property name="elementList" type="object[]" var="elementList" >
             <flags readable="true" silent="true" />
             <description>The elements of an IK group</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -1773,28 +1773,28 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
         </property>
         <property name="method" type="string" var="method" >
-            <flags readable="true" readable="true" />
+            <flags readable="true" writable="true" />
             <description>IK group calculation method</description>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
             </categories>
         </property>
         <property name="maxIterations" type="int" var="maxIterations" >
-            <flags readable="true" readable="true" />
+            <flags readable="true" writable="true" />
             <description>Maximum number of iterations</description>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
             </categories>
         </property>
         <property name="damping" type="float" var="damping" >
-            <flags readable="true" readable="true" />
+            <flags readable="true" writable="true" />
             <description>Damping coefficient</description>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
             </categories>
         </property>
         <property name="enabled" type="bool" var="enabled" >
-            <flags readable="true" readable="true" />
+            <flags readable="true" writable="true" />
             <description>Enabled state</description>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
@@ -2081,7 +2081,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="IKElement" superclass="">
-        <property name="jointList" type="objectArray" var="jointList" >
+        <property name="jointList" type="object[]" var="jointList" >
             <flags readable="true" silent="true" />
             <description>The involved joints, from base to tip</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -2932,7 +2932,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="propertyState" type="table">
+                <param name="propertyState" type="map">
                     <description>
                         property value
                     </description>
@@ -2956,7 +2956,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <param name="propertyName" type="string">
                     <description>property name</description>
                 </param>
-                <param name="propertyState" type="table">
+                <param name="propertyState" type="map">
                     <description>property value</description>
                 </param>
                 <param name="options" type="map" default="{}">
