@@ -7160,7 +7160,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="mesh" superclass="object">
-        <method name="texture.set" func="sim.callMethod" lang="python,lua" var="METHOD_textureSet">
+        <method name="texture:set" func="sim.callMethod" lang="python,lua" var="METHOD_textureSet">
             <description>
                 Sets a texture
             </description>
@@ -7209,7 +7209,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:loadImage" />
             </see-also>
         </method>
-        <method name="texture.setData" func="sim.callMethod" lang="python,lua" var="METHOD_textureSetData">
+        <method name="texture:setData" func="sim.callMethod" lang="python,lua" var="METHOD_textureSetData">
             <description>
                 Overwrites a portion of the texture
             </description>
@@ -7247,7 +7247,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="mesh.texture.image" />
             </see-also>
         </method>
-        <method name="texture.getData" func="sim.callMethod" lang="python,lua" var="METHOD_textureGetData">
+        <method name="texture:getData" func="sim.callMethod" lang="python,lua" var="METHOD_textureGetData">
             <description>
                 Reads a portion of the texture
             </description>
@@ -9040,7 +9040,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:removeObjects" />
             </see-also>
         </method>
-        <method name="simulation.start" func="sim.callMethod" lang="python,lua" var="METHOD_startSimulation">
+        <method name="simulation:start" func="sim.callMethod" lang="python,lua" var="METHOD_startSimulation">
             <description>
                 Requests a start of a simulation (or a resume of a paused simulation). Operation executes asynchronously
             </description>
@@ -9057,7 +9057,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="scene.simulation.state" />
             </see-also>
         </method>
-        <method name="simulation.stop" func="sim.callMethod" lang="python,lua" var="METHOD_stopSimulation">
+        <method name="simulation:stop" func="sim.callMethod" lang="python,lua" var="METHOD_stopSimulation">
             <description>
                 Requests a simulation stop. Operation executes asynchronously
             </description>
@@ -9074,7 +9074,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="scene.simulation.state" />
             </see-also>
         </method>
-        <method name="simulation.pause" func="sim.callMethod" lang="python,lua" var="METHOD_pauseSimulation">
+        <method name="simulation:pause" func="sim.callMethod" lang="python,lua" var="METHOD_pauseSimulation">
             <description>
                 Requests a simulation pause. Operation executes asynchronously
             </description>
@@ -9091,7 +9091,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="scene.simulation.state" />
             </see-also>
         </method>
-        <method name="dynamics.step" func="sim.callMethod" lang="python,lua" var="METHOD_stepDynamics">
+        <method name="dynamics:step" func="sim.callMethod" lang="python,lua" var="METHOD_stepDynamics">
             <description>
                 Steps the dynamics engine
             </description>
