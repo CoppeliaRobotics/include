@@ -2138,7 +2138,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
         </property>
     </object-class>
-    <object-class name="object">
+    <object-class name="object" superclass="">
         <method name="isValid" func="sim.callMethod" lang="python,lua" var="METHOD_isValid">
             <description>
                 Checks whether the object is a valid object
