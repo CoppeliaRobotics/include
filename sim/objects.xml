@@ -3,6 +3,7 @@
 note: the generated see-also section contains the <see-also> items, but also the <categories> items. Make sure not to have duplicates!
 -->
 <object-classes>
+    <object-class name="Motion" superclass="" />
     <object-class name="RuckigPosition" superclass="Motion">
         <method name="Constructor" func="sim.callMethod" lang="python,lua">
             <description>
@@ -630,6 +631,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
     </object-class>
+    <object-class name="customObject" superclass="object" />
     <object-class name="Console" superclass="customObject">
         <method name="remove" func="sim.callMethod" lang="python,lua">
             <description>
@@ -3999,7 +4001,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </supersedes>
         </property>
     </object-class>
-    <object-class name="app" superclass="object">
+    <object-class name="app" superclass="object" singleton="sim.app">
         <method name="getEnumInfo" func="sim.callMethod" lang="python,lua" var="METHOD_getEnumInfo">
             <description>
                 Returns information about a loaded plugin
@@ -7923,7 +7925,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </property>
     </object-class>
-    <object-class name="scene" superclass="object">
+    <object-class name="scene" superclass="object" singleton="sim.scene">
         <method name="getContacts" func="sim.callMethod" lang="python,lua" var="METHOD_getContacts">
             <description>
                 Retrieves contact information from the dynamics world
