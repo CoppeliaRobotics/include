@@ -3955,7 +3955,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
             </see-also>
         </method>
-        <property name="handle" type="long" var="handle" >
+        <property name="handle" type="int" var="handle" >
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Handle</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -3974,12 +3974,12 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>sceneObject flag</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="metaInfo.namespaces" type="stringarray" var="metaInfoNameSpaces" >
+        <property name="metaInfo.namespaces" type="string[]" var="metaInfoNameSpaces" >
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>object name spaces</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="metaInfo.superClass" type="stringarray" var="metaInfoSuperClass" >
+        <property name="metaInfo.superClass" type="string[]" var="metaInfoSuperClass" >
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>object super class</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -4004,7 +4004,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     <object-class name="app" superclass="object" singleton="sim.app">
         <method name="getEnumInfo" func="sim.callMethod" lang="python,lua" var="METHOD_getEnumInfo">
             <description>
-                Returns information about a loaded plugin
+                Returns information about an enum
             </description>
             <params>
                 <param name="enumType" type="string">
@@ -5816,7 +5816,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="paths.addOns" />
         </property>
-        <property name="addOns" type="handlearray" var="addOns" >
+        <property name="addOns" type="handle[]" var="addOns" >
             <handle type="detachedScript" />
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Add-ons</label>
@@ -5880,7 +5880,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="paths.app" />
         </property>
-        <property name="args" type="stringarray" var="appArgs" >
+        <property name="args" type="string[]" var="appArgs" >
             <flags readable="true" writable="true" modelhashexclude="true" constant="true" />
             <label>App args</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -5931,7 +5931,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="messaging" />
             </categories>
         </property>
-        <property name="customClasses" type="handlearray" var="customClasses" >
+        <property name="customClasses" type="handle[]" var="customClasses" >
             <handle type="customObject" />
             <flags readable="true" modelhashexclude="true" />
             <label>Custom classes</label>
@@ -5952,7 +5952,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="customization" />
             </categories>
         </property>
-        <property name="customObjects" type="handlearray" var="customObjects" >
+        <property name="customObjects" type="handle[]" var="customObjects" >
             <handle type="customObject" />
             <flags readable="true" modelhashexclude="true" />
             <label>Custom objects</label>
@@ -5964,7 +5964,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
             </see-also>
         </property>
-        <property name="customSceneObjectClasses" type="handlearray" var="customSceneObjectClasses" >
+        <property name="customSceneObjectClasses" type="handle[]" var="customSceneObjectClasses" >
             <handle type="sceneObject" />
             <flags readable="true" modelhashexclude="true" />
             <label>Custom scene object classes</label>
@@ -6044,7 +6044,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" modelhashexclude="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="enumTypes" type="stringarray" var="enumTypes" >
+        <property name="enumTypes" type="string[]" var="enumTypes" >
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Enum types</label>
             <description>Main enum types</description>
@@ -6288,7 +6288,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Temporary path</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="pid" type="long" var="pid" >
+        <property name="pid" type="int" var="pid" >
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>PID</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -6299,7 +6299,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>OS type</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="pluginNames" type="stringarray" var="pluginNames" >
+        <property name="pluginNames" type="string[]" var="pluginNames" >
             <flags readable="true" modelhashexclude="true" />
             <label>Plugins</label>
             <description>List of plugins</description>
@@ -7379,7 +7379,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
         </property>
-        <property name="indices" type="intarray" var="indices" >
+        <property name="indices" type="int[]" var="indices" >
             <flags readable="true" modelhashexclude="true" />
             <label>Indices</label>
             <description>Indices (3 values per triangle)</description>
@@ -7492,7 +7492,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="mesh.texture:set" />
             </see-also>
         </property>
-        <property name="texture.coordinates" type="floatarray" var="textureCoordinates" >
+        <property name="texture.coordinates" type="float[]" var="textureCoordinates" >
             <flags readable="true" modelhashexclude="true" />
             <label>Texture coordinates</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -7581,7 +7581,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="mesh.texture:set" />
             </see-also>
         </property>
-        <property name="texture.resolution" type="intarray2" var="textureResolution" >
+        <property name="texture.resolution" type="int[2]" var="textureResolution" >
             <flags readable="true" />
             <label>Texture resolution</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -7601,7 +7601,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="texture.applyMode" />
         </property>
-        <property name="textureCoordinates" type="floatarray" var="DEPRECATED_textureCoordinates" >
+        <property name="textureCoordinates" type="float[]" var="DEPRECATED_textureCoordinates" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="texture.coordinates" />
@@ -7626,7 +7626,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="texture.repeatV" />
         </property>
-        <property name="textureResolution" type="intarray2" var="DEPRECATED_textureResolution" >
+        <property name="textureResolution" type="int[2]" var="DEPRECATED_textureResolution" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="texture.resolution" />
@@ -7911,7 +7911,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.measurable" />
             </see-also>
         </method>
-        <property name="objects" type="handlearray" var="objects" >
+        <property name="objects" type="handle[]" var="objects" >
             <handle type="sceneObject" />
             <flags readable="true" modelhashexclude="true" />
             <label>Children handles</label>
@@ -9187,7 +9187,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.bullet.solver" />
         </property>
-        <property name="collections" type="handlearray" var="collections" >
+        <property name="collections" type="handle[]" var="collections" >
             <handle type="collection" />
             <flags readable="true" />
             <label>Collections</label>
@@ -9208,7 +9208,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="customization" />
             </categories>
         </property>
-        <property name="customObjects" type="handlearray" var="customObjects" >
+        <property name="customObjects" type="handle[]" var="customObjects" >
             <handle type="customObject" />
             <flags readable="true" modelhashexclude="true" />
             <label>Custom objects</label>
@@ -9221,7 +9221,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="scene:createObject" />
             </see-also>
         </property>
-        <property name="drawingObjects" type="handlearray" var="drawingObjects" >
+        <property name="drawingObjects" type="handle[]" var="drawingObjects" >
             <handle type="drawingObject" />
             <flags readable="true" />
             <label>Drawing objects</label>
@@ -9473,7 +9473,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.mujoco.contactParamsSolimp" type="floatarray" var="mujocoContactParamsSolimp" >
+        <property name="dynamics.mujoco.contactParamsSolimp" type="float[5]" var="mujocoContactParamsSolimp" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -9487,7 +9487,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.mujoco.contactParamsSolref" type="floatarray" var="mujocoContactParamsSolref" >
+        <property name="dynamics.mujoco.contactParamsSolref" type="float[2]" var="mujocoContactParamsSolref" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -9617,14 +9617,14 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.mujoco.kinematicWeldSolimp" type="floatarray" var="mujocoKinematicWeldSolimp" >
+        <property name="dynamics.mujoco.kinematicWeldSolimp" type="float[5]" var="mujocoKinematicWeldSolimp" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
             <categories>
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.mujoco.kinematicWeldSolref" type="floatarray" var="mujocoKinematicWeldSolref" >
+        <property name="dynamics.mujoco.kinematicWeldSolref" type="float[2]" var="mujocoKinematicWeldSolref" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
             <categories>
@@ -10126,7 +10126,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.enabled" />
         </property>
-        <property name="dynamicsEngine" type="intarray" var="DEPRECATED_dynamicsEngine" >
+        <property name="dynamicsEngine" type="int[2]" var="DEPRECATED_dynamicsEngine" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.engine" />
@@ -10255,12 +10255,12 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.contactParamsOverride" />
         </property>
-        <property name="mujoco.contactParamsSolimp" type="floatarray" var="DEPRECATED_mujocoContactParamsSolimp" >
+        <property name="mujoco.contactParamsSolimp" type="float[5]" var="DEPRECATED_mujocoContactParamsSolimp" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.contactParamsSolimp" />
         </property>
-        <property name="mujoco.contactParamsSolref" type="floatarray" var="DEPRECATED_mujocoContactParamsSolref" >
+        <property name="mujoco.contactParamsSolref" type="float[2]" var="DEPRECATED_mujocoContactParamsSolref" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.contactParamsSolref" />
@@ -10335,12 +10335,12 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.kinematicBodiesOverrideFlags" />
         </property>
-        <property name="mujoco.kinematicWeldSolimp" type="floatarray" var="DEPRECATED_mujocoKinematicWeldSolimp" >
+        <property name="mujoco.kinematicWeldSolimp" type="float[5]" var="DEPRECATED_mujocoKinematicWeldSolimp" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.kinematicWeldSolimp" />
         </property>
-        <property name="mujoco.kinematicWeldSolref" type="floatarray" var="DEPRECATED_mujocoKinematicWeldSolref" >
+        <property name="mujoco.kinematicWeldSolref" type="float[2]" var="DEPRECATED_mujocoKinematicWeldSolref" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.kinematicWeldSolref" />
@@ -10522,12 +10522,12 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="objectHandles" type="intarray" var="DEPRECATED_objectHandles" >
+        <property name="objectHandles" type="int[]" var="DEPRECATED_objectHandles" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <migrate-to name="objects" />
         </property>
-        <property name="objects" type="handlearray" var="objects" >
+        <property name="objects" type="handle[]" var="objects" >
             <handle type="sceneObject" />
             <flags readable="true" />
             <label>Objects</label>
@@ -10584,12 +10584,12 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.ode.quickStepIterations" />
         </property>
-        <property name="orphanHandles" type="intarray" var="DEPRECATED_orphanHandles" >
+        <property name="orphanHandles" type="int[]" var="DEPRECATED_orphanHandles" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <migrate-to name="orphans" />
         </property>
-        <property name="orphans" type="handlearray" var="orphans" >
+        <property name="orphans" type="handle[]" var="orphans" >
             <handle type="sceneObject" />
             <flags readable="true" />
             <label>Orphan objects</label>
@@ -10665,7 +10665,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="uidString" />
         </property>
-        <property name="selection" type="handlearray" var="selection" >
+        <property name="selection" type="handle[]" var="selection" >
             <handle type="sceneObject" />
             <flags readable="true" writable="true" modelhashexclude="true" />
             <label>Selected objects</label>
@@ -10679,7 +10679,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="selection" />
             </categories>
         </property>
-        <property name="selectionHandles" type="intarray" var="DEPRECATED_selectionHandles" >
+        <property name="selectionHandles" type="int[]" var="DEPRECATED_selectionHandles" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <migrate-to name="selection" />
@@ -11938,7 +11938,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="model" />
             </categories>
         </property>
-        <property name="children" type="handlearray" var="children" >
+        <property name="children" type="handle[]" var="children" >
             <handle type="sceneObject" />
             <flags readable="true" modelhashexclude="true" />
             <label>Children handles</label>
@@ -12462,7 +12462,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="transformation" />
             </categories>
         </property>
-        <property name="mov.relativity" type="intarray" var="movementRelativity" >
+        <property name="mov.relativity" type="int[2]" var="movementRelativity" >
             <flags readable="true" writable="true" />
             <label>Movement relativity</label>
             <description>Movement relativity, linear and angular</description>
@@ -12489,7 +12489,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="transformation" />
             </categories>
         </property>
-        <property name="mov.stepSize" type="floatarray" var="movementStepSize" >
+        <property name="mov.stepSize" type="float[2]" var="movementStepSize" >
             <flags readable="true" writable="true" />
             <label>Movement step sizes</label>
             <description>Linear and angular step sizes</description>
@@ -12586,12 +12586,12 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="mov.preferredAxesFlags" />
         </property>
-        <property name="movementRelativity" type="intarray" var="DEPRECATED_movementRelativity" >
+        <property name="movementRelativity" type="int[2]" var="DEPRECATED_movementRelativity" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="mov.relativity" />
         </property>
-        <property name="movementStepSize" type="floatarray" var="DEPRECATED_movementStepSize" >
+        <property name="movementStepSize" type="float[2]" var="DEPRECATED_movementStepSize" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="mov.stepSize" />
@@ -12621,7 +12621,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
             </categories>
         </property>
-        <property name="objectUid" type="long" var="DEPRECATED_objectUid" >
+        <property name="objectUid" type="int" var="DEPRECATED_objectUid" >
             <flags readable="true" modelhashexclude="true" deprecated="true" constant="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="uid" />
@@ -12653,7 +12653,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <migrate-to name="parent" />
         </property>
-        <property name="parentUid" type="long" var="parentUid" >
+        <property name="parentUid" type="int" var="parentUid" >
             <flags readable="true" modelhashexclude="true" />
             <label>Parent UID</label>
             <description>Parent scene object unique identifier</description>
@@ -12793,7 +12793,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="messaging" />
             </categories>
         </property>
-        <property name="tree" type="handlearray" var="tree" >
+        <property name="tree" type="handle[]" var="tree" >
             <flags readable="true" modelhashexclude="true" silent="true" />
             <label>Object tree</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -12808,7 +12808,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="sceneObject:visitTree" />
             </see-also>
         </property>
-        <property name="uid" type="long" var="uid" >
+        <property name="uid" type="int" var="uid" >
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Object UID</label>
             <description>Scene object unique identifier</description>
@@ -13016,7 +13016,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
         </property>
-        <property name="indices" type="intarray" var="indices" >
+        <property name="indices" type="int[]" var="indices" >
             <flags readable="true" />
             <label>Indices</label>
             <description>Indices for custom marker</description>
@@ -13703,7 +13703,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
         </property>
-        <property name="compoundColors.diffuse" type="floatarray" var="compoundColorDiffuse" >
+        <property name="compoundColors.diffuse" type="float[]" var="compoundColorDiffuse" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
             <label>Diffuse color data</label>
             <description>Diffuse color from all compound elements</description>
@@ -13716,7 +13716,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
         </property>
-        <property name="compoundColors.emission" type="floatarray" var="compoundColorEmission" >
+        <property name="compoundColors.emission" type="float[]" var="compoundColorEmission" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
             <label>Emission color data</label>
             <description>Emission color from all compound elements</description>
@@ -13729,7 +13729,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
         </property>
-        <property name="compoundColors.specular" type="floatarray" var="compoundColorSpecular" >
+        <property name="compoundColors.specular" type="float[]" var="compoundColorSpecular" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
             <label>Specular color data</label>
             <description>Specular color from all compound elements</description>
@@ -13742,7 +13742,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
         </property>
-        <property name="compoundColors.transparency" type="floatarray" var="compoundColorTransparency" >
+        <property name="compoundColors.transparency" type="float[]" var="compoundColorTransparency" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
             <label>Transparency data</label>
             <description>Transparency value from all compound elements</description>
@@ -13755,7 +13755,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
         </property>
-        <property name="compoundCullings" type="intarray" var="compoundCullings" >
+        <property name="compoundCullings" type="int[]" var="compoundCullings" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
             <label>Culling data</label>
             <description>Backface culling state from all compound elements</description>
@@ -13767,7 +13767,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
         </property>
-        <property name="compoundEdges" type="intarray" var="compoundEdges" >
+        <property name="compoundEdges" type="int[]" var="compoundEdges" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
             <label>Edge visibility data</label>
             <description>Edge visibility from all compound elements</description>
@@ -13779,7 +13779,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
         </property>
-        <property name="compoundShadingAngles" type="floatarray" var="compoundShadingAngles" >
+        <property name="compoundShadingAngles" type="float[]" var="compoundShadingAngles" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
             <label>Shading angle data</label>
             <description>Shading angle state from all compound elements</description>
@@ -13791,7 +13791,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
         </property>
-        <property name="compoundWireframe" type="intarray" var="compoundWireframe" >
+        <property name="compoundWireframe" type="int[]" var="compoundWireframe" >
             <flags readable="true" writable="true" modelhashexclude="true" silent="true" />
             <label>Wireframe data</label>
             <description>Wireframe state from all compound elements</description>
@@ -14023,7 +14023,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.mujoco.adhesionctrlrange" type="floatarray" var="mujocoAdhesionCtrlrange" >
+        <property name="dynamics.mujoco.adhesionctrlrange" type="float[2]" var="mujocoAdhesionCtrlrange" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
             <categories>
@@ -14037,7 +14037,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.mujoco.adhesionforcerange" type="floatarray" var="mujocoAdhesionForcerange" >
+        <property name="dynamics.mujoco.adhesionforcerange" type="float[2]" var="mujocoAdhesionForcerange" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
             <categories>
@@ -14061,7 +14061,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.mujoco.friction" type="floatarray" var="mujocoFriction" >
+        <property name="dynamics.mujoco.friction" type="float[3]" var="mujocoFriction" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -14107,7 +14107,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.mujoco.solimp" type="floatarray" var="mujocoSolimp" >
+        <property name="dynamics.mujoco.solimp" type="float[5]" var="mujocoSolimp" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -14131,7 +14131,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.mujoco.solref" type="floatarray" var="mujocoSolref" >
+        <property name="dynamics.mujoco.solref" type="float[2]" var="mujocoSolref" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -14799,7 +14799,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
         </property>
-        <property name="inertia" type="floatarray" var="DEPRECATED_inertia" >
+        <property name="inertia" type="float[9]" var="DEPRECATED_inertia" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <migrate-to name="inertiaMatrix" />
@@ -14878,7 +14878,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="shape:computeInertia" />
             </see-also>
         </property>
-        <property name="meshes" type="handlearray" var="meshes" >
+        <property name="meshes" type="handle[]" var="meshes" >
             <handle type="mesh" />
             <flags readable="true" modelhashexclude="true" />
             <label>Meshes</label>
@@ -14912,7 +14912,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.adhesionctrl" />
         </property>
-        <property name="mujoco.adhesionctrlrange" type="floatarray" var="DEPRECATED_mujocoAdhesionCtrlrange" >
+        <property name="mujoco.adhesionctrlrange" type="float[2]" var="DEPRECATED_mujocoAdhesionCtrlrange" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.adhesionctrlrange" />
@@ -14922,7 +14922,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.adhesionforcelimited" />
         </property>
-        <property name="mujoco.adhesionforcerange" type="floatarray" var="DEPRECATED_mujocoAdhesionForcerange" >
+        <property name="mujoco.adhesionforcerange" type="float[2]" var="DEPRECATED_mujocoAdhesionForcerange" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.adhesionforcerange" />
@@ -14937,7 +14937,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.condim" />
         </property>
-        <property name="mujoco.friction" type="floatarray" var="DEPRECATED_mujocoFriction" >
+        <property name="mujoco.friction" type="float[3]" var="DEPRECATED_mujocoFriction" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.friction" />
@@ -14962,7 +14962,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.priority" />
         </property>
-        <property name="mujoco.solimp" type="floatarray" var="DEPRECATED_mujocoSolimp" >
+        <property name="mujoco.solimp" type="float[5]" var="DEPRECATED_mujocoSolimp" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.solimp" />
@@ -14972,7 +14972,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.solmix" />
         </property>
-        <property name="mujoco.solref" type="floatarray" var="DEPRECATED_mujocoSolref" >
+        <property name="mujoco.solref" type="float[2]" var="DEPRECATED_mujocoSolref" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.solref" />
@@ -15075,7 +15075,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="principalMomentOfInertia" type="floatarray" var="DEPRECATED_pmi" >
+        <property name="principalMomentOfInertia" type="float[3]" var="DEPRECATED_pmi" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <migrate-to name="pmi" />
@@ -15757,7 +15757,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="volume.angle" type="floatarray" var="angle" >
+        <property name="volume.angle" type="float[2]" var="angle" >
             <flags readable="true" writable="true" />
             <categories>
             </categories>
@@ -15765,7 +15765,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>Angle and inside gap for disk- and cone-type volumes</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="volume.closeEdges" type="floatarray" var="closeEdges" >
+        <property name="volume.closeEdges" type="float[]" var="closeEdges" >
             <flags readable="true" />
             <categories>
             </categories>
@@ -15773,7 +15773,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>List of segments (defined by pairs of end-point coordinates) visualizing the close threshold of the volume</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="volume.edges" type="floatarray" var="edges" >
+        <property name="volume.edges" type="float[]" var="edges" >
             <flags readable="true" />
             <categories>
             </categories>
@@ -15781,7 +15781,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>List of segments (defined by pairs of end-point coordinates) visualizing the volume</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="volume.faces" type="intarray" var="faces" >
+        <property name="volume.faces" type="int[2]" var="faces" >
             <flags readable="true" writable="true" />
             <categories>
             </categories>
@@ -15797,7 +15797,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>Offset of detection volume</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="volume.radius" type="floatarray" var="radius" >
+        <property name="volume.radius" type="float[2]" var="radius" >
             <flags readable="true" writable="true" />
             <categories>
             </categories>
@@ -15813,7 +15813,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>Range/depth of detection volume</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="volume.subdivisions" type="intarray" var="subdivisions" >
+        <property name="volume.subdivisions" type="int[2]" var="subdivisions" >
             <flags readable="true" writable="true" />
             <categories>
             </categories>
@@ -15821,7 +15821,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>Number of subdivisions (near and far) for cone-type volumes</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="volume.xSize" type="floatarray" var="xSize" >
+        <property name="volume.xSize" type="float[2]" var="xSize" >
             <flags readable="true" writable="true" />
             <categories>
             </categories>
@@ -15829,7 +15829,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>X-size (near and far) for pyramid-type volumes</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="volume.ySize" type="floatarray" var="ySize" >
+        <property name="volume.ySize" type="float[2]" var="ySize" >
             <flags readable="true" writable="true" />
             <categories>
             </categories>
@@ -15837,22 +15837,22 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>Y-size (near and far) for pyramid-type volumes</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="volume_angle" type="floatarray" var="DEPRECATED_angle" >
+        <property name="volume_angle" type="float[2]" var="DEPRECATED_angle" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="volume.angle" />
         </property>
-        <property name="volume_closeEdges" type="floatarray" var="DEPRECATED_closeEdges" >
+        <property name="volume_closeEdges" type="float[]" var="DEPRECATED_closeEdges" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="volume.closeEdges" />
         </property>
-        <property name="volume_edges" type="floatarray" var="DEPRECATED_edges" >
+        <property name="volume_edges" type="float[2]" var="DEPRECATED_edges" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="volume.edges" />
         </property>
-        <property name="volume_faces" type="intarray" var="DEPRECATED_faces" >
+        <property name="volume_faces" type="int[2]" var="DEPRECATED_faces" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="volume.faces" />
@@ -15862,7 +15862,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="volume.offset" />
         </property>
-        <property name="volume_radius" type="floatarray" var="DEPRECATED_radius" >
+        <property name="volume_radius" type="float[2]" var="DEPRECATED_radius" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="volume.radius" />
@@ -15872,17 +15872,17 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="volume.range" />
         </property>
-        <property name="volume_subdivisions" type="intarray" var="DEPRECATED_subdivisions" >
+        <property name="volume_subdivisions" type="int[2]" var="DEPRECATED_subdivisions" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="volume.subdivisions" />
         </property>
-        <property name="volume_xSize" type="floatarray" var="DEPRECATED_xSize" >
+        <property name="volume_xSize" type="float[2]" var="DEPRECATED_xSize" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="volume.xSize" />
         </property>
-        <property name="volume_ySize" type="floatarray" var="DEPRECATED_ySize" >
+        <property name="volume_ySize" type="float[2]" var="DEPRECATED_ySize" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="volume.ySize" />
@@ -16116,7 +16116,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Background color from environment</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="clippingPlanes" type="floatarray" var="clippingPlanes" >
+        <property name="clippingPlanes" type="float[2]" var="clippingPlanes" >
             <flags readable="true" writable="true" />
             <categories>
                 <category name="rendering" />
@@ -16196,7 +16196,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="visionSensor:getDepth" />
             </see-also>
         </property>
-        <property name="depthBuffer" type="floatarray" var="DEPRECATED_depthBuffer" >
+        <property name="depthBuffer" type="float[]" var="DEPRECATED_depthBuffer" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <migrate-to name="depth" />
@@ -16318,7 +16318,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="visionSensor:getDepth" />
             </see-also>
         </property>
-        <property name="packet1" type="floatarray" var="packet1" >
+        <property name="packet1" type="float[]" var="packet1" >
             <flags readable="true" modelhashexclude="true" />
             <categories>
             </categories>
@@ -16328,7 +16328,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.readVisionSensor" />
             </supersedes>
         </property>
-        <property name="packet2" type="floatarray" var="packet2" >
+        <property name="packet2" type="float[]" var="packet2" >
             <flags readable="true" modelhashexclude="true" />
             <categories>
             </categories>
@@ -16422,7 +16422,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.visionintparam_render_mode" />
             </supersedes>
         </property>
-        <property name="resolution" type="intarray2" var="resolution" >
+        <property name="resolution" type="int[2]" var="resolution" >
             <flags readable="true" writable="true" />
             <categories>
                 <category name="rendering" />
@@ -16579,7 +16579,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="size" />
         </property>
-        <property name="clippingPlanes" type="floatarray" var="clippingPlanes" >
+        <property name="clippingPlanes" type="float[2]" var="clippingPlanes" >
             <flags readable="true" writable="true" />
             <categories>
                 <category name="rendering" />
@@ -16692,7 +16692,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="camera.viewSize" />
             </see-also>
         </property>
-        <property name="resolution" type="intarray2" var="resolution" >
+        <property name="resolution" type="int[2]" var="resolution" >
             <flags readable="true" writable="true" />
             <categories>
                 <category name="rendering" />
@@ -17580,7 +17580,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Voxel size</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="voxels" type="floatarray" var="DEPRECATED_voxels" >
+        <property name="voxels" type="float[]" var="DEPRECATED_voxels" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="points" />
@@ -18161,7 +18161,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="averageForce" />
         </property>
-        <property name="bounds" type="floatarray" var="bounds" >
+        <property name="bounds" type="float[2]" var="bounds" >
             <flags readable="true" writable="true" />
             <label>Bounds</label>
             <description>Joint lower and upper bounds</description>
@@ -18186,7 +18186,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.bullet.normalCfm" />
         </property>
-        <property name="bullet.posPid" type="floatarray" var="DEPRECATED_bulletPosPid" >
+        <property name="bullet.posPid" type="float[3]" var="DEPRECATED_bulletPosPid" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.bullet.posPid" />
@@ -18255,7 +18255,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
         </property>
-        <property name="configuration" type="floatarray" var="configuration" >
+        <property name="configuration" type="float[]" var="configuration" >
             <flags readable="true" writable="true" silent="true" />
             <label>Configuration</label>
             <description>Joint configuration</description>
@@ -18300,7 +18300,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <migrate-to name="dependencyMaster" />
         </property>
-        <property name="dependencyParams" type="floatarray" var="dependencyParams" >
+        <property name="dependencyParams" type="float[2]" var="dependencyParams" >
             <flags readable="true" writable="true" />
             <label>Dependency parameters</label>
             <description>Dependency parameters (offset and coefficient)</description>
@@ -18362,7 +18362,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.bullet.posPid" type="floatarray" var="bulletPosPid" >
+        <property name="dynamics.bullet.posPid" type="float[3]" var="bulletPosPid" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -18430,7 +18430,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.mujoco.dependencyPolyCoeff" type="floatarray" var="mujocoDependencyPolyCoef" >
+        <property name="dynamics.mujoco.dependencyPolyCoeff" type="float[5]" var="mujocoDependencyPolyCoef" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -18454,7 +18454,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.mujoco.frictionSolimp" type="floatarray" var="mujocoFrictionSolImp" >
+        <property name="dynamics.mujoco.frictionSolimp" type="float[5]" var="mujocoFrictionSolImp" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -18468,7 +18468,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.mujoco.frictionSolref" type="floatarray" var="mujocoFrictionSolRef" >
+        <property name="dynamics.mujoco.frictionSolref" type="float[2]" var="mujocoFrictionSolRef" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -18479,7 +18479,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.mujoco.limitsSolimp" type="floatarray" var="mujocoLimitsSolImp" >
+        <property name="dynamics.mujoco.limitsSolimp" type="float[5]" var="mujocoLimitsSolImp" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -18493,7 +18493,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.mujoco.limitsSolref" type="floatarray" var="mujocoLimitsSolRef" >
+        <property name="dynamics.mujoco.limitsSolref" type="float[2]" var="mujocoLimitsSolRef" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -18514,7 +18514,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.mujoco.posPid" type="floatarray" var="mujocoPosPid" >
+        <property name="dynamics.mujoco.posPid" type="float[3]" var="mujocoPosPid" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -18546,7 +18546,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.mujoco.springSpringDamper" type="floatarray" var="mujocoSpringDamper" >
+        <property name="dynamics.mujoco.springSpringDamper" type="float[2]" var="mujocoSpringDamper" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -18574,7 +18574,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.newton.posPid" type="floatarray" var="newtonPosPid" >
+        <property name="dynamics.newton.posPid" type="float[3]" var="newtonPosPid" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -18623,7 +18623,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.ode.posPid" type="floatarray" var="odePosPid" >
+        <property name="dynamics.ode.posPid" type="float[3]" var="odePosPid" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -18663,7 +18663,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.springDamperParams" type="floatarray" var="springDamperParams" >
+        <property name="dynamics.springDamperParams" type="float[2]" var="springDamperParams" >
             <flags readable="true" writable="true" />
             <label>Spring damper parameters</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -18828,7 +18828,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.vortex.posPid" type="floatarray" var="vortexPosPid" >
+        <property name="dynamics.vortex.posPid" type="float[3]" var="vortexPosPid" >
             <flags readable="true" writable="true" />
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
@@ -19236,7 +19236,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="interval" type="floatarray" var="DEPRECATED_interval" >
+        <property name="interval" type="float[2]" var="DEPRECATED_interval" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <migrate-to name="bounds" />
@@ -19369,7 +19369,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="maxVelAccelJerk" type="floatarray" var="maxVelAccelJerk" >
+        <property name="maxVelAccelJerk" type="float[3]" var="maxVelAccelJerk" >
             <flags readable="true" writable="true" />
             <label>Maximum velocity, acceleration and jerk</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -19410,7 +19410,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.armature" />
         </property>
-        <property name="mujoco.dependencyPolyCoeff" type="floatarray" var="DEPRECATED_mujocoDependencyPolyCoef" >
+        <property name="mujoco.dependencyPolyCoeff" type="float[5]" var="DEPRECATED_mujocoDependencyPolyCoef" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.dependencyPolyCoeff" />
@@ -19420,22 +19420,22 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.frictionLoss" />
         </property>
-        <property name="mujoco.frictionSolimp" type="floatarray" var="DEPRECATED_mujocoFrictionSolImp" >
+        <property name="mujoco.frictionSolimp" type="float[5]" var="DEPRECATED_mujocoFrictionSolImp" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.frictionSolimp" />
         </property>
-        <property name="mujoco.frictionSolref" type="floatarray" var="DEPRECATED_mujocoFrictionSolRef" >
+        <property name="mujoco.frictionSolref" type="float[2]" var="DEPRECATED_mujocoFrictionSolRef" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.frictionSolref" />
         </property>
-        <property name="mujoco.limitsSolimp" type="floatarray" var="DEPRECATED_mujocoLimitsSolImp" >
+        <property name="mujoco.limitsSolimp" type="float[5]" var="DEPRECATED_mujocoLimitsSolImp" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.limitsSolimp" />
         </property>
-        <property name="mujoco.limitsSolref" type="floatarray" var="DEPRECATED_mujocoLimitsSolRef" >
+        <property name="mujoco.limitsSolref" type="float[2]" var="DEPRECATED_mujocoLimitsSolRef" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.limitsSolref" />
@@ -19445,7 +19445,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.margin" />
         </property>
-        <property name="mujoco.posPid" type="floatarray" var="DEPRECATED_mujocoPosPid" >
+        <property name="mujoco.posPid" type="float[3]" var="DEPRECATED_mujocoPosPid" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.posPid" />
@@ -19460,7 +19460,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.springRef" />
         </property>
-        <property name="mujoco.springSpringDamper" type="floatarray" var="DEPRECATED_mujocoSpringDamper" >
+        <property name="mujoco.springSpringDamper" type="float[2]" var="DEPRECATED_mujocoSpringDamper" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.springSpringDamper" />
@@ -19474,7 +19474,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags modelhashexclude="true" deprecated="true" silent="true" constant="true" />
             <support start="1" start-deprecated="2" end="2" />
         </property>
-        <property name="newton.posPid" type="floatarray" var="DEPRECATED_newtonPosPid" >
+        <property name="newton.posPid" type="float[3]" var="DEPRECATED_newtonPosPid" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.newton.posPid" />
@@ -19498,7 +19498,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.ode.normalCfm" />
         </property>
-        <property name="ode.posPid" type="floatarray" var="DEPRECATED_odePosPid" >
+        <property name="ode.posPid" type="float[3]" var="DEPRECATED_odePosPid" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.ode.posPid" />
@@ -19521,7 +19521,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.jointfloatparam_screwlead" />
             </supersedes>
         </property>
-        <property name="springDamperParams" type="floatarray" var="DEPRECATED_springDamperParams" >
+        <property name="springDamperParams" type="float[2]" var="DEPRECATED_springDamperParams" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.springDamperParams" />
@@ -19676,7 +19676,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.vortex.frictionProportionalBits" />
         </property>
-        <property name="vortex.posPid" type="floatarray" var="DEPRECATED_vortexPosPid" >
+        <property name="vortex.posPid" type="float[3]" var="DEPRECATED_vortexPosPid" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.vortex.posPid" />
@@ -19868,19 +19868,19 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="drawingObject" superclass="object">
-        <property name="appendColors" type="floatarray">
+        <property name="appendColors" type="float[]">
             <flags readable="true" writable="true" />
             <support start="1" start-deprecated="2" end="2" />
         </property>
-        <property name="appendPoints" type="floatarray">
+        <property name="appendPoints" type="float[]">
             <flags readable="true" writable="true" />
             <support start="1" start-deprecated="2" end="2" />
         </property>
-        <property name="appendQuaternions" type="floatarray">
+        <property name="appendQuaternions" type="float[]">
             <flags readable="true" writable="true" />
             <support start="1" start-deprecated="2" end="2" />
         </property>
-        <property name="colors" type="floatarray">
+        <property name="colors" type="float[]">
             <flags readable="true" writable="true" />
             <support start="1" start-deprecated="2" end="2" />
         </property>
@@ -19906,15 +19906,15 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Parent handle</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="parentUid" type="long">
+        <property name="parentUid" type="int">
             <flags readable="true" writable="true" />
             <support start="1" start-deprecated="2" end="2" />
         </property>
-        <property name="points" type="floatarray">
+        <property name="points" type="float[]">
             <flags readable="true" writable="true" />
             <support start="1" start-deprecated="2" end="2" />
         </property>
-        <property name="quaternions" type="floatarray">
+        <property name="quaternions" type="float[]">
             <flags readable="true" writable="true" />
             <support start="1" start-deprecated="2" end="2" />
         </property>
@@ -20049,7 +20049,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.mujoco_dummy_limited" />
             </supersedes>
         </property>
-        <property name="dynamics.mujoco.limitsRange" type="floatarray" var="mujocoLimitsRange" >
+        <property name="dynamics.mujoco.limitsRange" type="float[2]" var="mujocoLimitsRange" >
             <flags readable="true" writable="true" />
             <categories>
                 <category name="dynamics" />
@@ -20060,7 +20060,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.mujoco_dummy_range2" />
             </supersedes>
         </property>
-        <property name="dynamics.mujoco.limitsSolimp" type="floatarray" var="mujocoLimitsSolimp" >
+        <property name="dynamics.mujoco.limitsSolimp" type="float[5]" var="mujocoLimitsSolimp" >
             <flags readable="true" writable="true" />
             <categories>
                 <category name="dynamics" />
@@ -20074,7 +20074,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.mujoco_dummy_solimplimit5" />
             </supersedes>
         </property>
-        <property name="dynamics.mujoco.limitsSolref" type="floatarray" var="mujocoLimitsSolref" >
+        <property name="dynamics.mujoco.limitsSolref" type="float[2]" var="mujocoLimitsSolref" >
             <flags readable="true" writable="true" />
             <categories>
                 <category name="dynamics" />
@@ -20095,14 +20095,14 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.mujoco_dummy_margin" />
             </supersedes>
         </property>
-        <property name="dynamics.mujoco.overlapConstrSolimp" type="floatarray" var="mujocoOverlapConstrSolimp" >
+        <property name="dynamics.mujoco.overlapConstrSolimp" type="float[5]" var="mujocoOverlapConstrSolimp" >
             <flags readable="true" writable="true" />
             <categories>
                 <category name="dynamics" />
             </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="dynamics.mujoco.overlapConstrSolref" type="floatarray" var="mujocoOverlapConstrSolref" >
+        <property name="dynamics.mujoco.overlapConstrSolref" type="float[2]" var="mujocoOverlapConstrSolref" >
             <flags readable="true" writable="true" />
             <categories>
                 <category name="dynamics" />
@@ -20181,17 +20181,17 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.limitsEnabled" />
         </property>
-        <property name="mujoco.limitsRange" type="floatarray" var="DEPRECATED_mujocoLimitsRange" >
+        <property name="mujoco.limitsRange" type="float[2]" var="DEPRECATED_mujocoLimitsRange" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.limitsRange" />
         </property>
-        <property name="mujoco.limitsSolimp" type="floatarray" var="DEPRECATED_mujocoLimitsSolimp" >
+        <property name="mujoco.limitsSolimp" type="float[5]" var="DEPRECATED_mujocoLimitsSolimp" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.limitsSolimp" />
         </property>
-        <property name="mujoco.limitsSolref" type="floatarray" var="DEPRECATED_mujocoLimitsSolref" >
+        <property name="mujoco.limitsSolref" type="float[2]" var="DEPRECATED_mujocoLimitsSolref" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.limitsSolref" />
@@ -20201,12 +20201,12 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.margin" />
         </property>
-        <property name="mujoco.overlapConstrSolimp" type="floatarray" var="DEPRECATED_mujocoOverlapConstrSolimp" >
+        <property name="mujoco.overlapConstrSolimp" type="float[5]" var="DEPRECATED_mujocoOverlapConstrSolimp" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.overlapConstrSolimp" />
         </property>
-        <property name="mujoco.overlapConstrSolref" type="floatarray" var="DEPRECATED_mujocoOverlapConstrSolref" >
+        <property name="mujoco.overlapConstrSolref" type="float[2]" var="DEPRECATED_mujocoOverlapConstrSolref" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.overlapConstrSolref" />
@@ -20461,7 +20461,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="light" superclass="sceneObject">
-        <property name="attenuationFactors" type="floatarray" var="attenuationFactors" >
+        <property name="attenuationFactors" type="float[3]" var="attenuationFactors" >
             <flags readable="true" writable="true" />
             <categories>
                 <category name="rendering" />
