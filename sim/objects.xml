@@ -6,6 +6,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     <object-class name="Motion" superclass="" />
     <object-class name="RuckigPosition" superclass="Motion">
         <method name="Constructor" lang="python,lua">
+            <short-description>Initializes a Ruckig position trajectory generator.</short-description>
             <description>
                 Initializes a <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>.
                 The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities
@@ -55,6 +56,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="remove" lang="python,lua">
+            <short-description>Destroys the motion object.</short-description>
             <description>
                 Destroys the motion object
             </description>
@@ -71,6 +73,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="step" lang="python,lua">
+            <short-description>Steps the motion.</short-description>
             <description>
                 Steps the motion
             </description>
@@ -103,6 +106,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="data" lang="python,lua">
+            <short-description>Returns motion information.</short-description>
             <description>
                 Returns motion information
             </description>
@@ -128,6 +132,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="RuckigVelocity" superclass="Motion">
         <method name="Constructor" lang="python,lua">
+            <short-description>Initializes a Ruckig velocity trajectory generator.</short-description>
             <description>
                 Initializes a <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>.
                 The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities
@@ -173,6 +178,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="remove" lang="python,lua">
+            <short-description>Destroys the motion object.</short-description>
             <description>
                 Destroys the motion object
             </description>
@@ -189,6 +195,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="step" lang="python,lua">
+            <short-description>Steps the motion.</short-description>
             <description>
                 Steps the motion
             </description>
@@ -221,6 +228,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="data" lang="python,lua">
+            <short-description>Returns motion information.</short-description>
             <description>
                 Returns motion information
             </description>
@@ -246,6 +254,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="MoveToConfig" superclass="Motion">
         <method name="run" lang="python,lua">
+            <short-description>Executes the motion in a thread.</short-description>
             <description>
                 Executes the motion. Can only be called from scripts running in a thread, since this is a blocking operation
             </description>
@@ -267,6 +276,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="Constructor" lang="python,lua">
+            <short-description>Initiates a n-DoF motion using Ruckig.</short-description>
             <description>
                 Initiates a n-DoF motion using the
                 <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
@@ -318,6 +328,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="step" lang="python,lua">
+            <short-description>Steps the motion.</short-description>
             <description>
                 Steps the motion
             </description>
@@ -348,6 +359,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="data" lang="python,lua">
+            <short-description>Returns motion information.</short-description>
             <description>
                 Returns motion information
             </description>
@@ -371,6 +383,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="remove" lang="python,lua">
+            <short-description>Destroys the motion object.</short-description>
             <description>
                 Destroys the motion object
             </description>
@@ -389,6 +402,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="MoveToPose" superclass="Motion">
         <method name="run" lang="python,lua">
+            <short-description>Executes the motion in a thread.</short-description>
             <description>
                 Executes a motion. Can only be called from a script running in a thread, since this is a blocking operation
             </description>
@@ -410,6 +424,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="Constructor" lang="python,lua">
+            <short-description>Initiates pose-based motion using Ruckig.</short-description>
             <description>
                 Initiates motion using the
                 <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
@@ -477,6 +492,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="step" lang="python,lua">
+            <short-description>Steps the motion.</short-description>
             <description>
                 Steps the motion
             </description>
@@ -507,6 +523,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="data" lang="python,lua">
+            <short-description>Returns motion information.</short-description>
             <description>
                 Returns motion information
             </description>
@@ -530,6 +547,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="remove" lang="python,lua">
+            <short-description>Destroys the motion object.</short-description>
             <description>
                 Destroys the motion object
             </description>
@@ -548,6 +566,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="TimeOptimalTrajectory" superclass="Motion">
         <method name="generate" lang="python,lua">
+            <short-description>Generates a time optimal trajectory.</short-description>
             <description>
                 Generates a time optimal trajectory
             </description>
@@ -591,6 +610,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="Constructor" lang="python,lua">
+            <short-description>Initializes a time optimal trajectory generator.</short-description>
             <description>
                 Initializes a time optimal trajectory generator, based on the TOPPRA library
             </description>
@@ -615,6 +635,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="remove" lang="python,lua">
+            <short-description>Destroys the motion object.</short-description>
             <description>
                 Destroys the motion object
             </description>
@@ -634,6 +655,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     <object-class name="customObject" superclass="object" />
     <object-class name="Console" superclass="customObject">
         <method name="remove" lang="python,lua">
+            <short-description>Removes the console.</short-description>
             <description>
                 Removes the console
             </description>
@@ -659,6 +681,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="print" lang="python,lua">
+            <short-description>Prints text to the console.</short-description>
             <description>
                 Prints to the console
             </description>
@@ -680,6 +703,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="clear" lang="python,lua">
+            <short-description>Clears the console.</short-description>
             <description>
                 Clears the console
             </description>
@@ -711,6 +735,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="TextEditor" superclass="customObject">
         <method name="remove" lang="python,lua">
+            <short-description>Removes the text editor.</short-description>
             <description>
                 Removes the text editor
             </description>
@@ -754,6 +779,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="Path" superclass="">
         <method name="Constructor" lang="python,lua">
+            <short-description>Creates a path.</short-description>
             <description>
                 Creates a path
             </description>
@@ -823,6 +849,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="fromBuffer" lang="python,lua">
+            <short-description>Creates a path from serialized data.</short-description>
             <description>
                 Creates a path based on previously serialized path data
             </description>
@@ -848,6 +875,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="fromJoints" lang="python,lua">
+            <short-description>Creates an empty path from joints.</short-description>
             <description>
                 Creates an empty path based on joints located between an end-effector and a base object (both not included, if of joint type). Ordering goes from base to end-effector
             </description>
@@ -918,6 +946,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="fromObject" lang="python,lua">
+            <short-description>Creates an empty path from an object's pose.</short-description>
             <description>
                 Creates an empty path based on the pose of an object
             </description>
@@ -983,6 +1012,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setPoints" lang="python,lua">
+            <short-description>Sets the path control points.</short-description>
             <description>
                 Sets the path control points
             </description>
@@ -1004,6 +1034,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="appendPoints" lang="python,lua">
+            <short-description>Appends path control points.</short-description>
             <description>
                 Appends path control points
             </description>
@@ -1033,6 +1064,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="appendFromJoints" lang="python,lua">
+            <short-description>Appends a point from the joints' current configuration.</short-description>
             <description>
                 Appends a path control point based on the joints' current configuration
             </description>
@@ -1056,6 +1088,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="appendFromObject" lang="python,lua">
+            <short-description>Appends a point from the object's current pose.</short-description>
             <description>
                 Appends a path control point based on the object's current pose
             </description>
@@ -1079,6 +1112,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="clearPoints" lang="python,lua">
+            <short-description>Clears all path control points.</short-description>
             <description>
                 Clears all path control points
             </description>
@@ -1094,6 +1128,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="toBuffer" lang="python,lua">
+            <short-description>Returns serialized path data.</short-description>
             <description>
                 Returns serialized path data
             </description>
@@ -1119,6 +1154,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="data" lang="python,lua">
+            <short-description>Returns path information.</short-description>
             <description>
                 Returns path information
             </description>
@@ -1140,6 +1176,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="createMarkers" lang="python,lua">
+            <short-description>Creates markers for path visualization.</short-description>
             <description>
                 Creates markers allowing visualization of the path. Only joint-based paths, and paths with following coordinates can be visualized:
                 ["lin", "lin", ...],
@@ -1160,6 +1197,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="removeMarkers" lang="python,lua">
+            <short-description>Removes path visualization markers.</short-description>
             <description>
                 Removes markers previously created with createMarkers()
             </description>
@@ -1177,6 +1215,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="distance" lang="python,lua">
+            <short-description>Returns distance between two points.</short-description>
             <description>
                 Returns the distance between two points
             </description>
@@ -1209,6 +1248,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="interpolate" lang="python,lua">
+            <short-description>Returns linear interpolation between two points.</short-description>
             <description>
                 Returns the linear interpolation between two points
             </description>
@@ -1246,6 +1286,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="configs" lang="python,lua">
+            <short-description>Returns equivalent configurations for a given one.</short-description>
             <description>
                 Return all equivalent configurations within the specified joint bounds (when a revolute coordinate's range exceeds 2π, the same physical pose can be represented by multiple angle values)
             </description>
@@ -1272,6 +1313,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="createShape" lang="python,lua">
+            <short-description>Creates an extrusion shape from the path.</short-description>
             <description>
                 Creates an extrusion shape from the path
             </description>
@@ -1304,6 +1346,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="closest" lang="python,lua">
+            <short-description>Returns the closest point on the path.</short-description>
             <description>
                 Returns the point on the path that is closest to the input point
             </description>
@@ -1336,6 +1379,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getPoint" lang="python,lua">
+            <short-description>Returns a point on the path at a specific distance.</short-description>
             <description>
                 Returns the point on the path that lies at a specific distance along the path
             </description>
@@ -1365,6 +1409,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="IK" superclass="">
         <method name="Constructor" lang="python,lua">
+            <short-description>Creates an IK world.</short-description>
             <description>
                 Creates an IK world. An IK world contains one or several IK groups, each one containing one or several IK elements
             </description>
@@ -1384,6 +1429,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="createGroup" lang="python,lua">
+            <short-description>Creates an IK group.</short-description>
             <description>
                 Creates an IK group inside of the IK world. An IK group contains one or several IK elements, that will be solved together
             </description>
@@ -1418,6 +1464,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="solve" lang="python,lua">
+            <short-description>Solves all enabled IK groups.</short-description>
             <description>
                 Sequentially solves all enabled IK groups contained in the IK world
             </description>
@@ -1487,6 +1534,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="syncFromScene" lang="python,lua">
+            <short-description>Synchronizes IK world from the simulation world.</short-description>
             <description>
                 Synchronizes the IK world with the sim world: all object poses and joint configurations in the IK world are updated to reflect the current state of their sim world counterparts
             </description>
@@ -1503,6 +1551,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="syncToScene" lang="python,lua">
+            <short-description>Synchronizes simulation world from the IK world.</short-description>
             <description>
                 Synchronizes the sim world with the IK world: all object poses and joint configurations in the sim world are updated to reflect the current state of their IK world counterparts
             </description>
@@ -1519,6 +1568,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="remove" lang="python,lua">
+            <short-description>Removes the IK world.</short-description>
             <description>
                 Removes the IK world and releases all associated resources
             </description>
@@ -1557,6 +1607,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="IKGroup" superclass="">
         <method name="addElementFromScene" lang="python,lua">
+            <short-description>Creates an IK element from the simulation world.</short-description>
             <description>
                 Creates an IK element inside of this IK group. Items are imported from the sim world into the IK world
             </description>
@@ -1618,6 +1669,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="solve" lang="python,lua">
+            <short-description>Solves the IK group's constraints.</short-description>
             <description>
                 Solves the IK group, i.e. tries to satisfy the constraints of all enabled IK elements it contains
             </description>
@@ -1688,6 +1740,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="findConfig" lang="python,lua">
+            <short-description>Searches for joint configurations satisfying target poses.</short-description>
             <description>
                 Searches for one or more joint configurations that satisfy the provided target pose(s), for the IK element(s) contained in the IK group. Search happens in a randomized fashion
             </description>
@@ -1736,6 +1789,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="syncFromScene" lang="python,lua">
+            <short-description>Synchronizes this IK group from the simulation world.</short-description>
             <description>
                 Synchronizes the IK world with the sim world, limited to the objects involved in this IK group: object poses and joint configurations in the IK environment are updated to reflect the current state of their sim world counterparts
             </description>
@@ -1752,6 +1806,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="syncToScene" lang="python,lua">
+            <short-description>Synchronizes simulation world from this IK group.</short-description>
             <description>
                 Synchronizes the sim world with the IK world, limited to the objects involved in this IK group: object poses and joint configurations in the sim world are updated to reflect the current state of their IK environment counterparts (e.g. after a solve operation)
             </description>
@@ -1805,6 +1860,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="IKObject" superclass="">
         <method name="setPose" lang="python,lua">
+            <short-description>Sets the IK object's pose.</short-description>
             <description>
                 Sets the pose of an IK object, in the IK world
             </description>
@@ -1837,6 +1893,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getPose" lang="python,lua">
+            <short-description>Retrieves the IK object's pose.</short-description>
             <description>
                 Retrieves the pose of an IK object, in the IK world
             </description>
@@ -1871,6 +1928,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setPosition" lang="python,lua">
+            <short-description>Sets the IK object's position.</short-description>
             <description>
                 Sets the position of an IK object, in the IK world
             </description>
@@ -1903,6 +1961,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getPosition" lang="python,lua">
+            <short-description>Retrieves the IK object's position.</short-description>
             <description>
                 Retrieves the position of an IK object, in the IK world
             </description>
@@ -1937,6 +1996,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setQuaternion" lang="python,lua">
+            <short-description>Sets the IK object's quaternion.</short-description>
             <description>
                 Sets the orientation (as a quaternion) of an IK object, in the IK world
             </description>
@@ -1969,6 +2029,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getQuaternion" lang="python,lua">
+            <short-description>Retrieves the IK object's quaternion.</short-description>
             <description>
                 Retrieves the orientation (as a quaternion) of an IK object, in the IK world
             </description>
@@ -2142,6 +2203,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="object" superclass="">
         <method name="isValid" lang="python,lua" var="METHOD_isValid">
+            <short-description>Checks if the object is valid.</short-description>
             <description>
                 Checks whether the object is a valid object
             </description>
@@ -2165,6 +2227,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getBoolProperty" lang="python,lua" var="METHOD_getBoolProperty">
+            <short-description>Fetches a boolean property.</short-description>
             <description>
                 Fetches a boolean property
             </description>
@@ -2202,6 +2265,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setBoolProperty" lang="python,lua" var="METHOD_setBoolProperty">
+            <short-description>Sets a boolean property.</short-description>
             <description>
                 Sets a boolean property
             </description>
@@ -2233,6 +2297,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getIntProperty" lang="python,lua" var="METHOD_getIntProperty">
+            <short-description>Fetches an int32 property.</short-description>
             <description>
                 Fetches an int32 property
             </description>
@@ -2270,6 +2335,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setIntProperty" lang="python,lua" var="METHOD_setIntProperty">
+            <short-description>Sets an int32 property.</short-description>
             <description>
                 Sets an int32 property
             </description>
@@ -2301,6 +2367,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getEnumProperty" lang="python,lua" var="METHOD_getEnumProperty">
+            <short-description>Fetches an enum property.</short-description>
             <description>
                 Fetches an enum property. For the string equivalent of an enum, use getStringProperty
             </description>
@@ -2339,6 +2406,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setEnumProperty" lang="python,lua" var="METHOD_setEnumProperty">
+            <short-description>Sets an enum property.</short-description>
             <description>
                 Sets an enum property. For the string equivalent of an enum, use setStringProperty
             </description>
@@ -2371,6 +2439,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getLongProperty" lang="python,lua" var="METHOD_getLongProperty">
+            <short-description>Fetches an int64 property.</short-description>
             <description>
                 Fetches an int64 property
             </description>
@@ -2408,6 +2477,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setLongProperty" lang="python,lua" var="METHOD_setLongProperty">
+            <short-description>Sets an int64 property.</short-description>
             <description>
                 Sets an int64 property
             </description>
@@ -2439,6 +2509,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getHandleProperty" lang="python,lua" var="METHOD_getHandleProperty">
+            <short-description>Fetches a handle property.</short-description>
             <description>
                 Fetches a handle property
             </description>
@@ -2475,6 +2546,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setHandleProperty" lang="python,lua" var="METHOD_setHandleProperty">
+            <short-description>Sets a handle property.</short-description>
             <description>
                 Sets a handle property
             </description>
@@ -2505,6 +2577,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getFloatProperty" lang="python,lua" var="METHOD_getFloatProperty">
+            <short-description>Fetches a float property.</short-description>
             <description>
                 Fetches a float property
             </description>
@@ -2542,6 +2615,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setFloatProperty" lang="python,lua" var="METHOD_setFloatProperty">
+            <short-description>Sets a float property.</short-description>
             <description>
                 Sets a float property
             </description>
@@ -2573,6 +2647,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getStringProperty" lang="python,lua" var="METHOD_getStringProperty">
+            <short-description>Fetches a string property.</short-description>
             <description>
                 Fetches a string property (text)
             </description>
@@ -2611,6 +2686,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setStringProperty" lang="python,lua" var="METHOD_setStringProperty">
+            <short-description>Sets a string property.</short-description>
             <description>
                 Sets a string property (text)
             </description>
@@ -2643,6 +2719,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getBufferProperty" lang="python,lua" var="METHOD_getBufferProperty">
+            <short-description>Fetches a buffer property.</short-description>
             <description>
                 Fetches a buffer property
             </description>
@@ -2681,6 +2758,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setBufferProperty" lang="python,lua" var="METHOD_setBufferProperty">
+            <short-description>Sets a buffer property.</short-description>
             <description>
                 Sets a buffer property
             </description>
@@ -2713,6 +2791,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getIntArray2Property" lang="python,lua" var="METHOD_getIntArray2Property">
+            <short-description>Fetches an int[2] property.</short-description>
             <description>
                 Fetches an int[2] property
             </description>
@@ -2750,6 +2829,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setIntArray2Property" lang="python,lua" var="METHOD_setIntArray2Property">
+            <short-description>Sets an int[2] property.</short-description>
             <description>
                 Sets an int[2] property
             </description>
@@ -2781,6 +2861,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getVector2Property" lang="python,lua">
+            <short-description>Fetches a vector2 property.</short-description>
             <description>
                 Fetches a vector2 property
             </description>
@@ -2817,6 +2898,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setVector2Property" lang="python,lua">
+            <short-description>Sets a vector2 property.</short-description>
             <description>
                 Sets a vector2 property
             </description>
@@ -2847,6 +2929,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getVector3Property" lang="python,lua" var="METHOD_getVector3Property">
+            <short-description>Fetches a vector3 property.</short-description>
             <description>
                 Fetches a vector3 property
             </description>
@@ -2884,6 +2967,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setVector3Property" lang="python,lua" var="METHOD_setVector3Property">
+            <short-description>Sets a vector3 property.</short-description>
             <description>
                 Sets a vector3 property
             </description>
@@ -2915,6 +2999,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getTableProperty" lang="lua" var="METHOD_getTableProperty">
+            <short-description>Fetches a table property.</short-description>
             <description>
                 Fetches a table property
             </description>
@@ -2951,6 +3036,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setTableProperty" lang="lua" var="METHOD_setTableProperty">
+            <short-description>Sets a table property.</short-description>
             <description>
                 Sets a table property
             </description>
@@ -2981,6 +3067,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getMatrixProperty" lang="python,lua" var="METHOD_getMatrixProperty">
+            <short-description>Fetches a matrix property.</short-description>
             <description>
                 Fetches a matrix property
             </description>
@@ -3017,6 +3104,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setMatrixProperty" lang="python,lua" var="METHOD_setMatrixProperty">
+            <short-description>Sets a matrix property.</short-description>
             <description>
                 Sets a matrix property
             </description>
@@ -3047,6 +3135,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getQuaternionProperty" lang="python,lua" var="METHOD_getQuaternionProperty">
+            <short-description>Fetches a quaternion property.</short-description>
             <description>
                 Fetches a quaternion property ([qx, qy, qz, qw])
             </description>
@@ -3084,6 +3173,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setQuaternionProperty" lang="python,lua" var="METHOD_setQuaternionProperty">
+            <short-description>Sets a quaternion property.</short-description>
             <description>
                 Sets a quaternion property ([qx, qy, qz, qw])
             </description>
@@ -3115,6 +3205,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getPoseProperty" lang="python,lua" var="METHOD_getPoseProperty">
+            <short-description>Fetches a pose property.</short-description>
             <description>
                 Fetches a pose property ([x, y, z, qx, qy, qz, qw])
             </description>
@@ -3152,6 +3243,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setPoseProperty" lang="python,lua" var="METHOD_setPoseProperty">
+            <short-description>Sets a pose property.</short-description>
             <description>
                 Sets a pose property ([x, y, z, qx, qy, qz, qw])
             </description>
@@ -3183,6 +3275,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getColorProperty" lang="python,lua" var="METHOD_getColorProperty">
+            <short-description>Fetches a color property.</short-description>
             <description>
                 Fetches a color property
             </description>
@@ -3220,6 +3313,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setColorProperty" lang="python,lua" var="METHOD_setColorProperty">
+            <short-description>Sets a color property.</short-description>
             <description>
                 Sets a color property
             </description>
@@ -3251,6 +3345,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getFloatArrayProperty" lang="python,lua" var="METHOD_getFloatArrayProperty">
+            <short-description>Fetches a float array property.</short-description>
             <description>
                 Fetches a float array property
             </description>
@@ -3288,6 +3383,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setFloatArrayProperty" lang="python,lua" var="METHOD_setFloatArrayProperty">
+            <short-description>Sets a float array property.</short-description>
             <description>
                 Sets a float array property
             </description>
@@ -3319,6 +3415,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getIntArrayProperty" lang="python,lua" var="METHOD_getIntArrayProperty">
+            <short-description>Fetches an int array property.</short-description>
             <description>
                 Fetches an int array property
             </description>
@@ -3356,6 +3453,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setIntArrayProperty" lang="python,lua" var="METHOD_setIntArrayProperty">
+            <short-description>Sets an int array property.</short-description>
             <description>
                 Sets an int array property
             </description>
@@ -3387,6 +3485,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getStringArrayProperty" lang="python,lua" var="METHOD_getStringArrayProperty">
+            <short-description>Fetches a text array property.</short-description>
             <description>
                 Fetches a text array property
             </description>
@@ -3423,6 +3522,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setStringArrayProperty" lang="python,lua" var="METHOD_setStringArrayProperty">
+            <short-description>Sets a text array property.</short-description>
             <description>
                 Sets a text array property
             </description>
@@ -3453,6 +3553,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getHandleArrayProperty" lang="python,lua" var="METHOD_getHandleArrayProperty">
+            <short-description>Fetches a handle array property.</short-description>
             <description>
                 Fetches a handle array property
             </description>
@@ -3489,6 +3590,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setHandleArrayProperty" lang="python,lua" var="METHOD_setHandleArrayProperty">
+            <short-description>Sets a handle array property.</short-description>
             <description>
                 Sets a handle array property
             </description>
@@ -3519,6 +3621,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getMethodProperty" lang="python,lua" var="METHOD_getMethodProperty">
+            <short-description>Fetches a method property.</short-description>
             <description>
                 Fetches a method property (i.e. a Lua function)
             </description>
@@ -3555,6 +3658,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setMethodProperty" lang="python,lua" var="METHOD_setMethodProperty">
+            <short-description>Sets a method property.</short-description>
             <description>
                 Sets a method property (i.e. a Lua function)
             </description>
@@ -3585,6 +3689,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getProperty" lang="python,lua" var="METHOD_getProperty">
+            <short-description>Convenience function to fetch a property.</short-description>
             <description>
                 Convenience function to fetch a property
             </description>
@@ -3623,6 +3728,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setProperty" lang="python,lua" var="METHOD_setProperty">
+            <short-description>Convenience function to set a property.</short-description>
             <description>
                 Convenience function to set a property
             </description>
@@ -3656,6 +3762,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getProperties" lang="python,lua" var="METHOD_getProperties">
+            <short-description>Fetches all properties of a target.</short-description>
             <description>
                 Convenience function to fetch all properties of a specific target item
             </description>
@@ -3689,6 +3796,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setProperties" lang="python,lua" var="METHOD_setProperties">
+            <short-description>Sets several properties at once.</short-description>
             <description>
                 Convenience function to set several properties at once
             </description>
@@ -3712,6 +3820,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getPropertyName" lang="python,lua" var="METHOD_getPropertyName">
+            <short-description>Fetches a property name by index.</short-description>
             <description>
                 Fetches the name of a property, based on an index
             </description>
@@ -3755,6 +3864,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getPropertyInfo" lang="python,lua" var="METHOD_getPropertyInfo">
+            <short-description>Fetches information about a property.</short-description>
             <description>
                 Fetches information about a specific property
             </description>
@@ -3806,6 +3916,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setPropertyInfo" lang="python,lua" var="METHOD_setPropertyInfo">
+            <short-description>Sets information about a property.</short-description>
             <description>
                 Sets information about a specific property
             </description>
@@ -3839,6 +3950,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getPropertyInfos" lang="python,lua" var="METHOD_getPropertyInfos">
+            <short-description>Fetches an extended set of property infos.</short-description>
             <description>
                 Fetches an extended set of property infos
             </description>
@@ -3870,6 +3982,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getPropertyTypeString" lang="python,lua" var="METHOD_getPropertyTypeString">
+            <short-description>Gets string for a property type.</short-description>
             <description>
                 Fetches the short string equivalent from a property type value
             </description>
@@ -3897,6 +4010,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getPropertiesInfos" lang="python,lua" var="METHOD_getPropertiesInfos">
+            <short-description>Fetches all property infos of a target.</short-description>
             <description>
                 Convenience function to fetch all properties infos of a specific target item
             </description>
@@ -3929,6 +4043,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="removeProperty" lang="python,lua" var="METHOD_removeProperty">
+            <short-description>Removes a removable property.</short-description>
             <description>
                 Removes a removable property
             </description>
@@ -4003,6 +4118,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="app" superclass="object" singleton="sim.app">
         <method name="getEnumInfo" lang="python,lua" var="METHOD_getEnumInfo">
+            <short-description>Returns information about an enum.</short-description>
             <description>
                 Returns information about an enum
             </description>
@@ -4032,6 +4148,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getPluginInfo" lang="python,lua" var="METHOD_getPluginInfo">
+            <short-description>Returns information about a loaded plugin.</short-description>
             <description>
                 Returns information about a loaded plugin
             </description>
@@ -4062,6 +4179,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setPluginInfo" lang="python,lua" var="METHOD_setPluginInfo">
+            <short-description>Modifies information of a loaded plugin.</short-description>
             <description>
                 Modifies information of a loaded plugin
             </description>
@@ -4098,6 +4216,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="pushEvent" lang="python,lua" var="METHOD_pushEvent">
+            <short-description>Pushes a user event for asynchronous reception.</short-description>
             <description>
                 Pushes a user event. Messages are received asynchronously via the sysCall_event
                 <a href="../callbackFunctions.htm">callback function</a> and via the plugin
@@ -4133,6 +4252,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getGenesisEvents" lang="python,lua" var="METHOD_getGenesisEvents">
+            <short-description>Retrieves events to reconstruct the app's state.</short-description>
             <description>
                 Retrieves all events that allow to reconstruct the app's state remotely
             </description>
@@ -4156,6 +4276,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="createCustomObjectClass" lang="python,lua" var="METHOD_createCustomObjectClass">
+            <short-description>Creates a custom object class.</short-description>
             <description>
                 Creates a class or template of a custom object
             </description>
@@ -4200,6 +4321,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="openFile" lang="python,lua" var="METHOD_openFile">
+            <short-description>Opens a file in a subprocess.</short-description>
             <description>
                 Opens a file in a subprocess, via cmd (Windows), open (macOS), or xdg-open (Linux)
             </description>
@@ -4222,6 +4344,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="fastIdleLoop" lang="python,lua" var="METHOD_fastIdleLoop">
+            <short-description>Speeds up the idle loop for reactivity.</short-description>
             <description>
                 Speeds the idle loop up, for better reactivity when idle, i.e. not simulating
             </description>
@@ -4244,6 +4367,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="throttle" lang="python,lua" var="METHOD_throttle">
+            <short-description>Limits the rate of a function call.</short-description>
             <description>
                 Limits the rate at which a function can be called
             </description>
@@ -4280,6 +4404,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="scheduleExecution" lang="python,lua" var="METHOD_scheduleExecution">
+            <short-description>Schedules a function for execution after a delay.</short-description>
             <description>
                 Schedules a function to be called after a delay
             </description>
@@ -4324,6 +4449,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="cancelScheduledExecution" lang="python,lua" var="METHOD_cancelScheduledExecution">
+            <short-description>Cancels a scheduled function execution.</short-description>
             <description>
                 Cancels a scheduled function execution
             </description>
@@ -4353,6 +4479,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="pack" lang="python,lua" var="METHOD_pack">
+            <short-description>Packs data using CoppeliaSim format.</short-description>
             <description>
                 Packs data via CoppeliaSim format. Functions and other non-serializable items are packed as string or None/nil values
             </description>
@@ -4383,6 +4510,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="unpack" lang="python,lua" var="METHOD_unpack">
+            <short-description>Unpacks data using CoppeliaSim format.</short-description>
             <description>
                 Unpacks a buffer via CoppeliaSim format
             </description>
@@ -4412,6 +4540,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="packArray" lang="python,lua" var="METHOD_packArray">
+            <short-description>Packs an array of numbers as little-endian.</short-description>
             <description>
                 Packs an array of numbers as little-endian
             </description>
@@ -4456,6 +4585,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="unpackArray" lang="python,lua" var="METHOD_unpackArray">
+            <short-description>Unpacks a buffer into an array of numbers.</short-description>
             <description>
                 Unpacks a buffer into an array of numbers
             </description>
@@ -4501,6 +4631,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="serialize" lang="python,lua" var="METHOD_serialize">
+            <short-description>Serializes data using CBOR format.</short-description>
             <description>
                 Serializes data via CBOR format
             </description>
@@ -4530,6 +4661,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="deserialize" lang="python,lua" var="METHOD_deserialize">
+            <short-description>Deserializes a buffer using CBOR format.</short-description>
             <description>
                 Deserializes a buffer via CBOR format
             </description>
@@ -4558,6 +4690,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="systemLock" lang="python,lua" var="METHOD_systemLock">
+            <short-description>Acquires/releases a system-wide semaphore.</short-description>
             <description>
                 Acquires or releases a system-wide semaphore, i.e. across several CoppeliaSim instances
             </description>
@@ -4586,6 +4719,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="quit" lang="python,lua" var="METHOD_quit">
+            <short-description>Triggers a quit signal for the application.</short-description>
             <description>
                 Triggers a quit signal for the application to end
             </description>
@@ -4598,6 +4732,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
         </method>
         <method name="logInfo" lang="python,lua" var="METHOD_logInfo">
+            <short-description>Outputs an information message in the status bar.</short-description>
             <description>
                 Outputs an information message in the status bar
             </description>
@@ -4632,6 +4767,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="logWarn" lang="python,lua" var="METHOD_logWarn">
+            <short-description>Outputs a warning message in the status bar.</short-description>
             <description>
                 Outputs a warning message in the status bar
             </description>
@@ -4666,6 +4802,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="logError" lang="python,lua" var="METHOD_logError">
+            <short-description>Outputs an error message in the status bar.</short-description>
             <description>
                 Outputs an error message in the status bar
             </description>
@@ -4701,6 +4838,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="createObject" lang="python,lua" var="METHOD_createObject">
             <info>same method present in both app and scene</info>
+            <short-description>Creates various objects (collections, scripts, sensors, etc.).</short-description>
             <description>
                 Creates one of following objects:
                 <ul>
@@ -5216,6 +5354,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="loadScene" lang="python,lua" var="METHOD_loadScene">
             <info>same method present in both app and scene</info>
+            <short-description>Loads a scene from file.</short-description>
             <description>
                 Loads a scene from file
             </description>
@@ -5251,6 +5390,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="loadSceneFromBuffer" lang="python,lua" var="METHOD_loadSceneFromBuffer">
             <info>same method present in both app and scene</info>
+            <short-description>Loads a scene from buffer.</short-description>
             <description>
                 Loads a scene from buffer
             </description>
@@ -5282,6 +5422,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="loadModelInfo" lang="python,lua" var="METHOD_loadModelInfo">
             <info>same method present in both app and scene</info>
+            <short-description>Loads a model thumbnail.</short-description>
             <description>
                 Loads a model thumbnail
             </description>
@@ -5327,6 +5468,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="loadModelInfoFromBuffer" lang="python,lua" var="METHOD_loadModelInfoFromBuffer">
             <info>same method present in both app and scene</info>
+            <short-description>Loads a model thumbnail from buffer.</short-description>
             <description>
                 Loads a model thumbnail from a buffer
             </description>
@@ -5372,6 +5514,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="getObjects" lang="python,lua" var="METHOD_getObjects">
             <info>same method present in both app and scene</info>
+            <short-description>Retrieves objects of a certain type.</short-description>
             <description>
                 Retrieves objects of a certain type
             </description>
@@ -5407,6 +5550,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="removeObjects" lang="python,lua" var="METHOD_removeObjects">
             <info>same method present in both app and scene</info>
+            <short-description>Removes one or several objects.</short-description>
             <description>
                 Removes one or several objects
             </description>
@@ -5448,6 +5592,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="handleMessagePump" lang="python,lua" var="METHOD_handleMessagePump">
+            <short-description>Handles the message pump explicitly.</short-description>
             <description>
                 Handles the message pump explicitly. Rarely needed
             </description>
@@ -5462,6 +5607,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="handleSandboxScript" lang="lua" var="METHOD_handleSandboxScript">
+            <short-description>Calls a system callback in the sandbox.</short-description>
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a> in the <a href="../sandboxScript.htm"> sandbox </a>.
                 Should only be called from the <a href="../mainScript.htm"> main script </a>
@@ -5489,6 +5635,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="handleAddOnScripts" lang="lua" var="METHOD_handleAddOnScripts">
+            <short-description>Calls a system callback in add-ons.</short-description>
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a> in <a href="../addOns.htm"> add-ons </a>.
                 Should only be called from the <a href="../mainScript.htm"> main script </a>
@@ -5523,6 +5670,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="loadImage" lang="python,lua" var="METHOD_loadImage">
+            <short-description>Loads an image from file.</short-description>
             <description>
                 Loads an image from file
             </description>
@@ -5569,6 +5717,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="loadImageFromBuffer" lang="python,lua" var="METHOD_loadImageFromBuffer">
+            <short-description>Loads an image from memory.</short-description>
             <description>
                 Loads an image from memory
             </description>
@@ -5614,6 +5763,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="saveImageToBuffer" lang="python,lua" var="METHOD_saveImageToBuffer">
+            <short-description>Saves an image to a buffer.</short-description>
             <description>
                 Saves an image to a buffer. Depending on the provided image buffer and resolution, a greyscale, rgb or rgba image is written
             </description>
@@ -5659,6 +5809,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="saveImage" lang="python,lua" var="METHOD_saveImage">
+            <short-description>Saves an image to file.</short-description>
             <description>
                 Saves an image to file. Depending on the provided image buffer and resolution, a greyscale, rgb or rgba image is written
             </description>
@@ -5698,6 +5849,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="transformImage" lang="python,lua" var="METHOD_transformImage">
+            <short-description>Transforms an image (scaling, flipping).</short-description>
             <description>
                 Transforms an image in various ways (up/down scaling, vertical/horizontal flipping)
             </description>
@@ -5762,6 +5914,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="transformBuffer" lang="python,lua" var="METHOD_transformBuffer">
+            <short-description>Modifies a buffer (format, scale, offset).</short-description>
             <description>
                 Modifies a buffer
             </description>
@@ -6481,6 +6634,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="detachedScript" superclass="object">
         <method name="setModuleEntry" lang="python,lua" var="METHOD_setModuleEntry">
+            <short-description>Creates/modifies/destroys module menu entries.</short-description>
             <description>
                 Creates, modifies or destroys module menu entries. Those are user selectable items located in [Menu bar &gt; Modules].
                 When selected, the corresponding script will have its
@@ -6524,6 +6678,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
         </method>
         <method name="broadcast" lang="python,lua" var="METHOD_broadcast">
+            <short-description>Broadcasts a message to all other scripts.</short-description>
             <description>
                 Broadcasts a message to all scripts, except for the emitting script. Messages are received synchronously via the sysCall_msg callback function
             </description>
@@ -6547,6 +6702,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setEventFilters" lang="python,lua" var="METHOD_setEventFilters">
+            <short-description>Specifies filters for the sysCall_event callback.</short-description>
             <description>
                 Specifies filters for the sysCall_event callback, in this script
             </description>
@@ -6576,6 +6732,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="wait" lang="python,lua" var="METHOD_wait">
+            <short-description>Waits for a certain amount of time.</short-description>
             <description>
                 Waits for a certain amount of time
             </description>
@@ -6604,6 +6761,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getObject" lang="python,lua" var="METHOD_getObject">
+            <short-description>Retrieves an object by its path and name.</short-description>
             <description>
                 Retrieves an object in the current hierarchy tree, based on its path and name
             </description>
@@ -6643,6 +6801,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="step" lang="python,lua" var="METHOD_step">
+            <short-description>Triggers the next simulation step.</short-description>
             <description>
                 Triggers the next simulation step, when in stepping operation mode and running in a thread. When simulation is running, step()
                 only returns once the simulation time has changed
@@ -6664,6 +6823,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="yield" lang="python,lua" var="METHOD_yield">
+            <short-description>Identical to step().</short-description>
             <description>
                 Identical to step()
             </description>
@@ -6680,6 +6840,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setStepping" lang="python,lua" var="METHOD_setStepping">
+            <short-description>Enables/disables stepping operation mode.</short-description>
             <description>
                 Enables or disables the stepping operation mode for a threaded script. If enabled, then the current script has
                 to trigger each simulation step explicitly, via step(). Is applied
@@ -6716,6 +6877,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getStepping" lang="python,lua" var="METHOD_getStepping">
+            <short-description>Informs if stepping operation mode is enabled.</short-description>
             <description>
                 Informs whether the stepping operation mode is enabled for the current script
             </description>
@@ -6741,6 +6903,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="lock" lang="python,lua" var="METHOD_lock">
+            <short-description>Acquires/releases a script lock to forbid yielding.</short-description>
             <description>
                 Acquires or releases a script lock, i.e. in order to forbid yielding or stepping
             </description>
@@ -6766,6 +6929,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="registerFunctionHook" lang="python,lua" var="METHOD_registerFunctionHook">
+            <short-description>Registers a function hook for callbacks.</short-description>
             <description>
                 Registers a function hook for <a href="../callbackFunctions.htm"> callback functions </a>,
                 that will be executed before or after the specified function
@@ -6801,6 +6965,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="removeFunctionHook" lang="python,lua" var="METHOD_removeFunctionHook">
+            <short-description>Removes a function hook.</short-description>
             <description>
                 Removes a function hook
             </description>
@@ -6836,6 +7001,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="remove" lang="python,lua" var="METHOD_remove">
             <info>same method present in several classes</info>
+            <short-description>Removes the detached script.</short-description>
             <description>
                 Removes the detached script. Currently only add-ons can be removed
             </description>
@@ -6862,6 +7028,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="callFunction" lang="python,lua" var="METHOD_callFunction">
+            <short-description>Calls a script function.</short-description>
             <description>
                 Calls a script function. This represents a
                 <a href="../callbackFunctions.htm"> user callback </a>
@@ -6904,6 +7071,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getFunctions" lang="python,lua" var="METHOD_getFunctions">
+            <short-description>Retrieves callable functions of the script.</short-description>
             <description>
                 Retrieves a map of the script's functions that can be called
             </description>
@@ -6929,6 +7097,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="executeString" lang="python,lua" var="METHOD_executeString">
+            <short-description>Executes code from a string.</short-description>
             <description>
                 Executes some code from a string. The target must be initialized for this call to succeed, e.g. when calling
                 from <a href="../simulationScripts.htm"> simulation scripts </a>, then simulation must be running
@@ -6969,6 +7138,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getStackTraceback" lang="lua" var="METHOD_getStackTraceback">
+            <short-description>Retrieves and clears the last stack traceback.</short-description>
             <description>
                 Retrieves and clears the last generated stack traceback for a script
             </description>
@@ -6989,6 +7159,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
         </method>
         <method name="init" lang="lua" var="METHOD_init">
+            <short-description>Initializes/reinitializes a script.</short-description>
             <description>
                 Initializes/reinitializes a script. Operates in an asynchronous way when called upon the calling script
             </description>
@@ -7161,6 +7332,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="mesh" superclass="object">
         <method name="texture:set" lang="python,lua" var="METHOD_textureSet">
+            <short-description>Sets a texture.</short-description>
             <description>
                 Sets a texture
             </description>
@@ -7210,6 +7382,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="texture:setData" lang="python,lua" var="METHOD_textureSetData">
+            <short-description>Overwrites a portion of the texture.</short-description>
             <description>
                 Overwrites a portion of the texture
             </description>
@@ -7248,6 +7421,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="texture:getData" lang="python,lua" var="METHOD_textureGetData">
+            <short-description>Reads a portion of the texture.</short-description>
             <description>
                 Reads a portion of the texture
             </description>
@@ -7656,6 +7830,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     <object-class name="collection" superclass="object">
         <method name="changeColor" lang="python,lua" var="METHOD_changeColor">
             <info>same method present in collection and sceneObject</info>
+            <short-description>Changes the color of all shapes in the collection.</short-description>
             <description>
                 Changes the color of all shapes contained in the collection
             </description>
@@ -7697,6 +7872,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="restoreColor" lang="python,lua" var="METHOD_restoreColor">
             <info>same method present in collection and sceneObject</info>
+            <short-description>Restores the color of shapes in the collection.</short-description>
             <description>
                 Restores the color of all shapes contained in the collection
             </description>
@@ -7722,6 +7898,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="remove" lang="python,lua" var="METHOD_remove">
             <info>same method present in several classes</info>
+            <short-description>Removes the collection.</short-description>
             <description>
                 Removes the collection
             </description>
@@ -7749,6 +7926,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="addItem" lang="python,lua" var="METHOD_addItem">
+            <short-description>Adds one or several items to the collection.</short-description>
             <description>
                 Adds one or several items to this collection
             </description>
@@ -7779,6 +7957,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="removeItem" lang="python,lua" var="METHOD_removeItem">
+            <short-description>Removes one or several items from the collection.</short-description>
             <description>
                 Removes one or several items from this collection
             </description>
@@ -7809,6 +7988,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="checkCollision" lang="python,lua" var="METHOD_checkCollision">
+            <short-description>Checks collision with another entity.</short-description>
             <description>
                 Checks whether this <a href="../collections.htm">collection</a> collides with another collection or <a href="../objects.htm">scene object</a>. If the entity to check against is a
                 scene object, then its <a href="../collidableObjects.htm">collidable</a> flag is ignored.
@@ -7849,6 +8029,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="checkDistance" lang="python,lua" var="METHOD_checkDistance">
+            <short-description>Checks minimum distance with another entity.</short-description>
             <description>
                 Checks the minimum distance between this <a href="../collections.htm">collection</a> and another collection or <a href="../objects.htm">scene object</a>. If the entity to check
                 against is a scene object, then its <a href="../measurableObjects.htm">measurable</a> flag is ignored.
@@ -7925,6 +8106,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="scene" superclass="object" singleton="sim.scene">
         <method name="getContacts" lang="python,lua" var="METHOD_getContacts">
+            <short-description>Retrieves contact information from the dynamics world.</short-description>
             <description>
                 Retrieves contact information from the dynamics world
             </description>
@@ -7975,6 +8157,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getDescendants" lang="python,lua" var="METHOD_getDescendants">
+            <short-description>Retrieves scene objects up to a specific depth.</short-description>
             <description>
                 Retrieves scene objects up to a specific depth
             </description>
@@ -8010,6 +8193,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="groupShapes" lang="python,lua" var="METHOD_groupShapes">
+            <short-description>Groups shapes into a compound shape.</short-description>
             <description>
                 Groups several shapes, and returns a compound shape
             </description>
@@ -8044,6 +8228,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="mergeShapes" lang="python,lua" var="METHOD_mergeShapes">
+            <short-description>Merges several shapes.</short-description>
             <description>
                 Merges several shapes
             </description>
@@ -8077,6 +8262,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getObjectFromUid" lang="python,lua" var="METHOD_getObjectFromUid">
+            <short-description>Retrieves an object by its unique identifier.</short-description>
             <description>
                 Retrieves an object based on its unique identifier
             </description>
@@ -8115,6 +8301,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="announceChange" lang="python,lua" var="METHOD_announceChange">
+            <short-description>Announces a change in the scene for undo/redo.</short-description>
             <description>
                 Announces a change in the scene. This is required for the undo/redo function to operate properly
                 when performing changes via the API. What this call will do is following: the whole scene will be serialized (saved) to memory as a
@@ -8130,6 +8317,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
         </method>
         <method name="getObject" lang="python,lua" var="METHOD_getObject">
+            <short-description>Retrieves an object by its path and name.</short-description>
             <description>
                 Retrieves an object based on its path and name
             </description>
@@ -8173,6 +8361,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="save" lang="python,lua" var="METHOD_save">
             <info>similar method present in both app and scene</info>
+            <short-description>Saves the scene to file.</short-description>
             <description>
                 Saves the scene to file. Any existing file with same name will be overwritten
             </description>
@@ -8201,6 +8390,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="saveToBuffer" lang="python,lua" var="METHOD_saveToBuffer">
             <info>similar method present in both app and scene</info>
+            <short-description>Serializes the scene to a buffer.</short-description>
             <description>
                 Serializes the scene to a buffer
             </description>
@@ -8225,6 +8415,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="remove" lang="python,lua" var="METHOD_remove">
             <info>similar method present in many classes</info>
+            <short-description>Closes the scene.</short-description>
             <description>
                 Closes the scene, and switches to another open scene. If there is no other open scene,
                 a new scene is created
@@ -8242,6 +8433,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="loadModel" lang="python,lua" var="METHOD_loadModel">
             <info>same method present in both app and scene</info>
+            <short-description>Loads a previously saved model.</short-description>
             <description>
                 Loads a previously saved model
             </description>
@@ -8291,6 +8483,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="loadModelFromBuffer" lang="python,lua" var="METHOD_loadModelFromBuffer">
             <info>same method present in both app and scene</info>
+            <short-description>Loads a model from buffer.</short-description>
             <description>
                 Loads a model from buffer
             </description>
@@ -8336,6 +8529,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="getObjects" lang="python,lua" var="METHOD_getObjects">
             <info>same method present in both app and scene</info>
+            <short-description>Retrieves objects of a certain type.</short-description>
             <description>
                 Retrieves objects of a certain type
             </description>
@@ -8368,6 +8562,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="removeObjects" lang="python,lua" var="METHOD_removeObjects">
             <info>same method present in both app and scene</info>
+            <short-description>Removes one or several objects.</short-description>
             <description>
                 Removes one or several objects
             </description>
@@ -8410,6 +8605,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="duplicateObjects" lang="python,lua" var="METHOD_duplicateObjects">
+            <short-description>Duplicates scene objects.</short-description>
             <description>
                 Duplicates scene objects
             </description>
@@ -8455,6 +8651,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="handleCustomizationScripts" lang="lua" var="METHOD_handleCustomizationScripts">
+            <short-description>Calls a system callback in customization scripts.</short-description>
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a>
                 in <a href="../customizationScripts.htm"> customization scripts </a>.
@@ -8490,6 +8687,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="handleSimulationScripts" lang="lua" var="METHOD_handleSimulationScripts">
+            <short-description>Calls a system callback in simulation scripts.</short-description>
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a>
                 in <a href="../simulationScripts.htm"> simulation scripts </a>. Simulation scripts will be executed in a
@@ -8527,6 +8725,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="createObject" lang="python,lua" var="METHOD_createObject">
             <info>same method present in both app and scene</info>
+            <short-description>Creates various objects (collections, scripts, sensors, etc.).</short-description>
             <description>
                 Creates one of following objects:
                 <ul>
@@ -9041,6 +9240,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="simulation:start" lang="python,lua" var="METHOD_startSimulation">
+            <short-description>Requests a simulation start or resume.</short-description>
             <description>
                 Requests a start of a simulation (or a resume of a paused simulation). Operation executes asynchronously
             </description>
@@ -9058,6 +9258,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="simulation:stop" lang="python,lua" var="METHOD_stopSimulation">
+            <short-description>Requests a simulation stop.</short-description>
             <description>
                 Requests a simulation stop. Operation executes asynchronously
             </description>
@@ -9075,6 +9276,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="simulation:pause" lang="python,lua" var="METHOD_pauseSimulation">
+            <short-description>Requests a simulation pause.</short-description>
             <description>
                 Requests a simulation pause. Operation executes asynchronously
             </description>
@@ -9092,6 +9294,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="dynamics:step" lang="python,lua" var="METHOD_stepDynamics">
+            <short-description>Steps the dynamics engine.</short-description>
             <description>
                 Steps the dynamics engine
             </description>
@@ -9117,6 +9320,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="stepKinematicJoints" lang="python,lua" var="METHOD_stepKinematicJoints">
+            <short-description>Steps all kinematic mode joints.</short-description>
             <description>
                 Steps all kinematic mode joints
             </description>
@@ -10943,6 +11147,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="customObject" superclass="object">
         <method name="makeObject" lang="python,lua">
+            <short-description>Instantiates a custom object from a class.</short-description>
             <description>
                 Instantiates a custom object from a class or template
             </description>
@@ -10981,6 +11186,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="remove" lang="python,lua" var="METHOD_remove">
             <info>similar method present in several classes</info>
+            <short-description>Removes the custom scene object.</short-description>
             <description>
                 Removes the custom scene object
             </description>
@@ -11008,6 +11214,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="sceneObject" superclass="object">
         <method name="makeObject" lang="python,lua" var="METHOD_makeObject">
+            <short-description>Instantiates a customized scene object from a class.</short-description>
             <description>
                 Instantiates a customized scene object from a class or template
             </description>
@@ -11032,6 +11239,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="makeClass" lang="python,lua" var="METHOD_makeClass">
+            <short-description>Creates a class from this object.</short-description>
             <description>
                 Creates a class or template from this object
             </description>
@@ -11063,6 +11271,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="changeColor" lang="python,lua" var="METHOD_changeColor">
             <info>same method present in collection and sceneObject</info>
+            <short-description>Changes the color of the object (if shape).</short-description>
             <description>
                 Changes the color of the object, if it is a shape
             </description>
@@ -11104,6 +11313,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="restoreColor" lang="python,lua" var="METHOD_restoreColor">
             <info>same method present in collection and sceneObject</info>
+            <short-description>Restores the object's color (if shape).</short-description>
             <description>
                 Restores the color of the object, if it is a shape
             </description>
@@ -11128,6 +11338,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getObject" lang="python,lua" var="METHOD_getObject">
+            <short-description>Retrieves an object by its path and name.</short-description>
             <description>
                 Retrieves an object in the current hierarchy tree, based on its path and name
             </description>
@@ -11169,6 +11380,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="dynamicReset" lang="python,lua" var="METHOD_dynamicReset">
+            <short-description>Dynamically resets the object in the physics engine.</short-description>
             <description>
                 Dynamically resets one or several objects that are dynamically simulated. This means that the object representation
                 in the dynamics engine is removed, and added again. This can be useful when the set-up of a dynamically
@@ -11197,6 +11409,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="remove" lang="python,lua" var="METHOD_remove">
             <info>similar method present in several classes</info>
+            <short-description>Removes the object from the scene.</short-description>
             <description>
                 Removes the object from the scene
             </description>
@@ -11223,6 +11436,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="removeModel" lang="python,lua" var="METHOD_removeModel">
+            <short-description>Removes the model from the scene.</short-description>
             <description>
                 Removes the model from the scene
             </description>
@@ -11252,6 +11466,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="saveModel" lang="python,lua" var="METHOD_saveModel">
+            <short-description>Saves this model to a file.</short-description>
             <description>
                 Saves this model. Any existing file with the same name will be overwritten
             </description>
@@ -11278,6 +11493,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="saveModelToBuffer" lang="python,lua" var="METHOD_saveModelToBuffer">
+            <short-description>Serializes this model to a buffer.</short-description>
             <description>
                 Serializes this model to a buffer
             </description>
@@ -11301,6 +11517,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getDescendants" lang="python,lua" var="METHOD_getDescendants">
+            <short-description>Retrieves descendant scene objects.</short-description>
             <description>
                 Retrieves descendant scene objects (children, grandchildren, etc.)
             </description>
@@ -11336,6 +11553,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getAncestors" lang="python,lua" var="METHOD_getAncestors">
+            <short-description>Retrieves ancestor scene objects.</short-description>
             <description>
                 Retrieves ancestor scene objects (parent, grandparent, etc.)
             </description>
@@ -11368,6 +11586,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="visitTree" lang="python,lua" var="METHOD_visitTree">
+            <short-description>Executes a visitor function on all objects in the tree.</short-description>
             <description>
                 Executes a function on all objects of this object tree, in a depth-first manner
             </description>
@@ -11400,6 +11619,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="checkCollision" lang="python,lua" var="METHOD_checkCollision">
+            <short-description>Checks collision with another entity.</short-description>
             <description>
                 Checks whether this <a href="../objects.htm">scene object</a> collides with another scene object or a <a href="../collections.htm">collection</a>. The
                 <a href="../collidableObjects.htm">collidable</a> flag of this object (and of the other entity if it is also a scene object) is ignored
@@ -11438,6 +11658,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="checkDistance" lang="python,lua" var="METHOD_checkDistance">
+            <short-description>Checks minimum distance with another entity.</short-description>
             <description>
                 Checks the minimum distance between this <a href="../objects.htm">scene object</a> and another scene object or a <a href="../collections.htm">collection</a>. The
                 <a href="../measurableObjects.htm">measurable</a> flag of this object (and of the other entity if it is also a scene object) is ignored
@@ -11498,6 +11719,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getName" lang="python,lua" var="METHOD_getName">
+            <short-description>Retrieves the name or path of the object.</short-description>
             <description>
                 Retrieves the name or path of a scene object
             </description>
@@ -11536,6 +11758,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getPose" lang="python,lua" var="METHOD_getPose">
+            <short-description>Retrieves the pose of the scene object.</short-description>
             <description>
                 Retrieves the pose of a scene object
             </description>
@@ -11577,6 +11800,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getPosition" lang="python,lua" var="METHOD_getPosition">
+            <short-description>Retrieves the position of the scene object.</short-description>
             <description>
                 Retrieves the position of a scene object
             </description>
@@ -11617,6 +11841,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getQuaternion" lang="python,lua" var="METHOD_getQuaternion">
+            <short-description>Retrieves the quaternion of the scene object.</short-description>
             <description>
                 Retrieves the quaternion of a scene object
             </description>
@@ -11658,6 +11883,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setPose" lang="python,lua" var="METHOD_setPose">
+            <short-description>Sets the pose of the scene object.</short-description>
             <description>
                 Sets the pose of a scene object. Dynamically simulated objects, together with their hierarchy tree, are dynamically reset (this however does not apply to static shapes)
             </description>
@@ -11695,6 +11921,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setPosition" lang="python,lua" var="METHOD_setPosition">
+            <short-description>Sets the position of the scene object.</short-description>
             <description>
                 Sets the position of a scene object. Dynamically simulated objects, together with their hierarchy tree, are dynamically reset (this however does not apply to static shapes)
             </description>
@@ -11731,6 +11958,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setQuaternion" lang="python,lua" var="METHOD_setQuaternion">
+            <short-description>Sets the quaternion of the scene object.</short-description>
             <description>
                 Sets the quaternion of a scene object. Dynamically simulated objects, together with their hierarchy tree, are dynamically reset (this however does not apply to static shapes)
             </description>
@@ -11768,6 +11996,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setParent" lang="python,lua" var="METHOD_setParent">
+            <short-description>Sets the object's parent.</short-description>
             <description>
                 Sets a scene object's parent. Dynamically simulated objects, together with their hierarchy tree, are dynamically reset (this however does not
                 apply to static shapes)
@@ -11802,6 +12031,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="scaleTree" lang="python,lua" var="METHOD_scaleTree">
+            <short-description>Scales the object tree isometrically.</short-description>
             <description>
                 Scales the specified scene object tree in an isometric fashion. All related values are automatically scaled appropriately
                 (e.g. masses, etc.)
@@ -11833,6 +12063,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="scale" lang="python,lua" var="METHOD_scale">
+            <short-description>Scales the object non-isometrically.</short-description>
             <description>
                 Scales the scene object in a non-isometric fashion, if possible. Some scene objects
                 might have some constraints between their axes
@@ -12905,6 +13136,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="marker" superclass="sceneObject">
         <method name="addItems" lang="python,lua" var="METHOD_addItems">
+            <short-description>Adds items to a marker.</short-description>
             <description>
                 Adds items to a marker
             </description>
@@ -12951,6 +13183,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="clearItems" lang="python,lua" var="METHOD_clearItems">
+            <short-description>Clears a marker.</short-description>
             <description>
                 Clears a marker
             </description>
@@ -12967,6 +13200,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="removeItems" lang="python,lua" var="METHOD_removeItems">
+            <short-description>Removes specific items from a marker.</short-description>
             <description>
                 Removes specific items from a marker
             </description>
@@ -13139,6 +13373,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     <object-class name="shape" superclass="sceneObject">
         <method name="getContacts" lang="python,lua" var="METHOD_getContacts">
             <info>same method present in both scene and shape</info>
+            <short-description>Retrieves the shape's contact information.</short-description>
             <description>
                 Retrieves this shape's contact information from the dynamics world
             </description>
@@ -13191,6 +13426,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getAppearance" lang="python,lua" var="METHOD_getAppearance">
+            <short-description>Fetches the shape's main appearance properties.</short-description>
             <description>
                 Fetches the shape's main properties related to appearance
             </description>
@@ -13220,6 +13456,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setAppearance" lang="python,lua" var="METHOD_setAppearance">
+            <short-description>Sets the shape's main appearance properties.</short-description>
             <description>
                 Sets the shape's main properties related to appearance
             </description>
@@ -13249,6 +13486,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="ungroup" lang="python,lua" var="METHOD_ungroup">
+            <short-description>Ungroups a compound shape.</short-description>
             <description>
                 Ungroups (decomposes) a compound shape
             </description>
@@ -13277,6 +13515,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="divide" lang="python,lua" var="METHOD_divide">
+            <short-description>Divides a simple shape into separate ones.</short-description>
             <description>
                 Divides a simple shape into shapes that do not share common vertices. A compound shape should be ungrouped before being divided
             </description>
@@ -13303,6 +13542,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="addForce" lang="python,lua" var="METHOD_addForce">
+            <short-description>Applies a force to the dynamically enabled shape.</short-description>
             <description>
                 Applies a force to the dynamically enabled shape. Forces are added cumulatively
             </description>
@@ -13338,6 +13578,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="addTorque" lang="python,lua" var="METHOD_addTorque">
+            <short-description>Applies a torque to the dynamically enabled shape.</short-description>
             <description>
                 Applies a torque to the dynamically enabled shape. Torques are added cumulatively
             </description>
@@ -13372,6 +13613,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="computeInertia" lang="python,lua" var="METHOD_computeInertia">
+            <short-description>Computes and applies mass/inertia properties.</short-description>
             <description>
                 Computes and applies mass and inertia properties to the shape, based on its convex representation
             </description>
@@ -13399,6 +13641,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setInertia" lang="python,lua" var="METHOD_setInertia">
+            <short-description>Applies a new inertia matrix.</short-description>
             <description>
                 Applies a new inertia matrix
             </description>
@@ -13431,6 +13674,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getInertia" lang="python,lua" var="METHOD_getInertia">
+            <short-description>Retrieves the shape's inertia information.</short-description>
             <description>
                 Retrieves the shape's inertia information
             </description>
@@ -13463,6 +13707,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="relocateFrame" lang="python,lua" var="METHOD_relocateFrame">
+            <short-description>Repositions/reorients the shape's reference frame.</short-description>
             <description>
                 Repositions and reorients the shape's reference frame, while keeping the mesh
                 in place. The shape's inertia properties are unaffected
@@ -13486,6 +13731,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="alignBoundingBox" lang="python,lua" var="METHOD_alignBoundingBox">
+            <short-description>Reorients the shape's bounding box.</short-description>
             <description>
                 Reorients the shape's bounding box, while keeping the shape frame in place.
                 The shape's inertia properties are unaffected
@@ -15392,6 +15638,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="proximitySensor" superclass="sceneObject">
         <method name="checkSensor" lang="python,lua" var="METHOD_checkSensor">
+            <short-description>Checks sensor detection silently.</short-description>
             <description>
                 Checks whether this proximity sensor detects the indicated entity. Detection is silent (no visual
                 feedback) and the detectable flags of the entity to detect are overridden, if the entity is a scene object
@@ -15455,6 +15702,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="handleSensor" lang="python,lua" var="METHOD_handleSensor">
+            <short-description>Handles the sensor with visual feedback.</short-description>
             <description>
                 Handles this proximity sensor, i.e. does detection. Detection is not silent (i.e. there is visual
                 feedback), and the detectable flags of the scene objects to detect are taken into account
@@ -15498,6 +15746,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="resetSensor" lang="python,lua" var="METHOD_resetSensor">
+            <short-description>Clears the sensor's detection state.</short-description>
             <description>
                 Clears the detection state and visual feedback of this proximity sensor
             </description>
@@ -15888,6 +16137,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="visionSensor" superclass="sceneObject">
         <method name="getDepth" lang="python,lua" var="METHOD_getDepth">
+            <short-description>Reads the vision sensor's depth buffer.</short-description>
             <description>
                 Reads the vision sensor's depth buffer (or a portion of it)
             </description>
@@ -15927,6 +16177,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getImage" lang="python,lua" var="METHOD_getImage">
+            <short-description>Reads the vision sensor's image.</short-description>
             <description>
                 Reads the vision sensor's image (or a portion of it)
             </description>
@@ -15972,6 +16223,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setImage" lang="python,lua" var="METHOD_setImage">
+            <short-description>Writes an image to the vision sensor.</short-description>
             <description>
                 Writes an image to the vision sensor (and applies any image processing via the
                 <a href="../visionCallbackFunctions.htm">vision callback functions</a>
@@ -16004,6 +16256,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="checkSensor" lang="python,lua" var="METHOD_checkSensor">
+            <short-description>Checks vision sensor detection silently.</short-description>
             <description>
                 Checks whether the vision sensor detects the indicated entity. Detection is silent.
                 The <a href="../visionCallbackFunctions.htm"> vision callback functions </a>
@@ -16046,6 +16299,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="handleSensor" lang="python,lua" var="METHOD_handleSensor">
+            <short-description>Handles the vision sensor (sensing, image processing).</short-description>
             <description>
                 Handles (performs sensing, etc. of) the vision sensor object. It (1) clears previously computed image processing data, (2) reads
                 an image and (3) performs image processing via the
@@ -16083,6 +16337,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="resetSensor" lang="python,lua" var="METHOD_resetSensor">
+            <short-description>Clears the vision sensor's detection state.</short-description>
             <description>
                 Clears the detection state, etc. of the vision sensor
             </description>
@@ -16518,6 +16773,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="camera" superclass="sceneObject">
         <method name="getImage" lang="python,lua" var="METHOD_getImage">
+            <short-description>Returns an image as seen by the camera.</short-description>
             <description>
                 Returns data similar to that acquired by the camera
             </description>
@@ -16788,6 +17044,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="graph" superclass="sceneObject">
         <method name="addSignal" lang="python,lua" var="METHOD_addSignal">
+            <short-description>Adds or updates a graph signal.</short-description>
             <description>
                 Adds or updates a graph signal
             </description>
@@ -16835,6 +17092,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="addCurve" lang="python,lua" var="METHOD_addCurve">
+            <short-description>Adds or updates a graph curve.</short-description>
             <description>
                 Adds or updates a graph curve
             </description>
@@ -16878,6 +17136,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="reset" lang="python,lua" var="METHOD_resetGraph">
+            <short-description>Resets the graph, clearing all signals.</short-description>
             <description>
                 Resets the graph, i.e. clears all its signals
             </description>
@@ -16894,6 +17153,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="removeTrace" lang="python,lua" var="METHOD_removeTrace">
+            <short-description>Removes a signal or curve.</short-description>
             <description>
                 Removes a signal or curve
             </description>
@@ -16915,6 +17175,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setSignalPoint" lang="python,lua" var="METHOD_setSignalPoint">
+            <short-description>Sets the next signal value to record.</short-description>
             <description>
                 Sets the next signal value to be recorded
             </description>
@@ -16942,6 +17203,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="step" lang="python,lua" var="METHOD_step">
+            <short-description>Records signal values for the current time.</short-description>
             <description>
                 Records another value for each signal, given that such value was provided via graph:setSignalPoint()
             </description>
@@ -16965,6 +17227,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="snapshotTrace" lang="python,lua" var="METHOD_snapshotTrace">
+            <short-description>Duplicates and freezes a graph trace.</short-description>
             <description>
                 Duplicates a graph trace, and freezes it
             </description>
@@ -17104,6 +17367,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     <object-class name="ocTree" superclass="sceneObject">
         <method name="addFromObjects" lang="python,lua" var="METHOD_addFromObjects">
             <info>similar method present in both ocTree and pointCloud</info>
+            <short-description>Adds voxels from scene objects.</short-description>
             <description>
                 Adds voxels from scene objects
             </description>
@@ -17142,6 +17406,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="subtractFromObjects" lang="python,lua" var="METHOD_subtractFromObjects">
             <info>similar method present in both ocTree and pointCloud</info>
+            <short-description>Subtracts voxels using scene objects.</short-description>
             <description>
                 Subtracts voxels from scene objects
             </description>
@@ -17171,6 +17436,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="addVoxels" lang="python,lua" var="METHOD_addVoxels">
             <info>similar method present in both ocTree and pointCloud</info>
+            <short-description>Inserts voxels.</short-description>
             <description>
                 Inserts voxels
             </description>
@@ -17215,6 +17481,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="addPackedVoxels" lang="python,lua" var="METHOD_addPackedVoxels">
             <info>similar method present in both ocTree and pointCloud</info>
+            <short-description>Inserts voxels from a packed buffer.</short-description>
             <description>
                 Inserts voxels from a buffer, instead of an array
             </description>
@@ -17257,6 +17524,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="subtractVoxels" lang="python,lua" var="METHOD_subtractVoxels">
+            <short-description>Removes voxels.</short-description>
             <description>
                 Removes voxels
             </description>
@@ -17295,6 +17563,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="subtractPackedVoxels" lang="python,lua" var="METHOD_subtractPackedVoxels">
+            <short-description>Removes voxels from a packed buffer.</short-description>
             <description>
                 Removes voxels from a buffer, instead of an array
             </description>
@@ -17333,6 +17602,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="checkPoints" lang="python,lua" var="METHOD_checkPoints">
+            <short-description>Checks if points collide with the voxels.</short-description>
             <description>
                 Checks whether the provided points collide with the voxels
             </description>
@@ -17387,6 +17657,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="checkPackedPoints" lang="python,lua" var="METHOD_checkPackedPoints">
+            <short-description>Checks if packed points collide with voxels.</short-description>
             <description>
                 Checks whether the provided buffer points collide with the voxels
             </description>
@@ -17442,6 +17713,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="clear" lang="python,lua" var="METHOD_clear">
             <info>similar method present in both ocTree and pointCloud</info>
+            <short-description>Removes all voxels.</short-description>
             <description>
                 Removes all voxels
             </description>
@@ -17587,6 +17859,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     <object-class name="pointCloud" superclass="sceneObject">
         <method name="addFromObjects" lang="python,lua" var="METHOD_addFromObjects">
             <info>similar method present in both ocTree and pointCloud</info>
+            <short-description>Adds points from scene objects.</short-description>
             <description>
                 Adds points from scene objects
             </description>
@@ -17626,6 +17899,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="subtractFromObjects" lang="python,lua" var="METHOD_subtractFromObjects">
             <info>similar method present in both ocTree and pointCloud</info>
+            <short-description>Subtracts points using scene objects.</short-description>
             <description>
                 Subtracts points from scene objects
             </description>
@@ -17662,6 +17936,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="addPoints" lang="python,lua" var="METHOD_addPoints">
+            <short-description>Inserts points.</short-description>
             <description>
                 Inserts points
             </description>
@@ -17703,6 +17978,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="addPackedPoints" lang="python,lua" var="METHOD_addPackedPoints">
+            <short-description>Inserts points from a packed buffer.</short-description>
             <description>
                 Inserts points from a buffer, instead of an array
             </description>
@@ -17743,6 +18019,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="subtractPoints" lang="python,lua" var="METHOD_subtractPoints">
+            <short-description>Removes points.</short-description>
             <description>
                 Removes points
             </description>
@@ -17782,6 +18059,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="subtractPackedPoints" lang="python,lua" var="METHOD_subtractPackedPoints">
+            <short-description>Removes points from a packed buffer.</short-description>
             <description>
                 Removes points from a buffer, instead of an array
             </description>
@@ -17821,6 +18099,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="intersectPoints" lang="python,lua" var="METHOD_intersectPoints">
+            <short-description>Keeps only points intersecting with provided points.</short-description>
             <description>
                 Removes points that do not intersect with the
                 provided points (i.e. the result in the point cloud will be the intersection between the two sets of points)
@@ -17855,6 +18134,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="intersectPackedPoints" lang="python,lua" var="METHOD_intersectPackedPoints">
+            <short-description>Keeps only points intersecting with provided packed points.</short-description>
             <description>
                 Removes points that do not intersect with the
                 provided buffer points (i.e. the result in the point cloud will be the intersection between the two sets of points)
@@ -17890,6 +18170,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
         <method name="clear" lang="python,lua" var="METHOD_clear">
             <info>similar method present in both ocTree and pointCloud</info>
+            <short-description>Removes all points.</short-description>
             <description>
                 Removes all points
             </description>
@@ -18074,6 +18355,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="joint" superclass="sceneObject">
         <method name="setTargetPosition" lang="python,lua" var="METHOD_setTargetPosition">
+            <short-description>Sets the joint's desired linear/angular position.</short-description>
             <description>
                 Sets the joint's desired linear/angular position (only for non-spherical joints). When in kinematic mode, the joint moves according to a motion profile that respects maximum velocity, acceleration and jerk values. In dynamic and position/custom control mode, the controller is instructed about the desired position
             </description>
@@ -18108,6 +18390,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setTargetVelocity" lang="python,lua" var="METHOD_setTargetVelocity">
+            <short-description>Sets the joint's desired linear/angular velocity.</short-description>
             <description>
                 Sets the joint's desired linear/angular velocity (only for non-spherical joints). When in kinematic mode, the joint moves according to a motion profile that
                 respects maximum acceleration and jerk values. In dynamic and velocity control mode, the controller is instructed about the desired velocity
