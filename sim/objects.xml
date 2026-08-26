@@ -5,7 +5,7 @@ note: the generated see-also section contains the <see-also> items, but also the
 <object-classes>
     <object-class name="Motion" superclass="" />
     <object-class name="RuckigPosition" superclass="Motion">
-        <method name="Constructor" func="sim.callMethod" lang="python,lua">
+        <method name="Constructor" lang="python,lua">
             <description>
                 Initializes a <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>.
                 The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities
@@ -54,7 +54,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="MoveToConfig:Constructor" />
             </see-also>
         </method>
-        <method name="remove" func="sim.callMethod" lang="python,lua">
+        <method name="remove" lang="python,lua">
             <description>
                 Destroys the motion object
             </description>
@@ -70,7 +70,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="RuckigPosition:Constructor" />
             </see-also>
         </method>
-        <method name="step" func="sim.callMethod" lang="python,lua">
+        <method name="step" lang="python,lua">
             <description>
                 Steps the motion
             </description>
@@ -102,7 +102,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="RuckigPosition:data" />
             </see-also>
         </method>
-        <method name="data" func="sim.callMethod" lang="python,lua">
+        <method name="data" lang="python,lua">
             <description>
                 Returns motion information
             </description>
@@ -127,7 +127,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
     </object-class>
     <object-class name="RuckigVelocity" superclass="Motion">
-        <method name="Constructor" func="sim.callMethod" lang="python,lua">
+        <method name="Constructor" lang="python,lua">
             <description>
                 Initializes a <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>.
                 The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities
@@ -172,7 +172,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="RuckigPosition:Constructor" />
             </see-also>
         </method>
-        <method name="remove" func="sim.callMethod" lang="python,lua">
+        <method name="remove" lang="python,lua">
             <description>
                 Destroys the motion object
             </description>
@@ -188,7 +188,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="RuckigVelocity:Constructor" />
             </see-also>
         </method>
-        <method name="step" func="sim.callMethod" lang="python,lua">
+        <method name="step" lang="python,lua">
             <description>
                 Steps the motion
             </description>
@@ -220,7 +220,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="RuckigVelocity:data" />
             </see-also>
         </method>
-        <method name="data" func="sim.callMethod" lang="python,lua">
+        <method name="data" lang="python,lua">
             <description>
                 Returns motion information
             </description>
@@ -245,7 +245,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
     </object-class>
     <object-class name="MoveToConfig" superclass="Motion">
-        <method name="run" func="sim.callMethod" lang="python,lua">
+        <method name="run" lang="python,lua">
             <description>
                 Executes the motion. Can only be called from scripts running in a thread, since this is a blocking operation
             </description>
@@ -266,7 +266,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="MoveToConfig:remove" />
             </see-also>
         </method>
-        <method name="Constructor" func="sim.callMethod" lang="python,lua">
+        <method name="Constructor" lang="python,lua">
             <description>
                 Initiates a n-DoF motion using the
                 <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
@@ -317,7 +317,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="RuckigPosition:Constructor" />
             </see-also>
         </method>
-        <method name="step" func="sim.callMethod" lang="python,lua">
+        <method name="step" lang="python,lua">
             <description>
                 Steps the motion
             </description>
@@ -347,7 +347,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="MoveToConfig:data" />
             </see-also>
         </method>
-        <method name="data" func="sim.callMethod" lang="python,lua">
+        <method name="data" lang="python,lua">
             <description>
                 Returns motion information
             </description>
@@ -370,7 +370,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="MoveToConfig:step" />
             </see-also>
         </method>
-        <method name="remove" func="sim.callMethod" lang="python,lua">
+        <method name="remove" lang="python,lua">
             <description>
                 Destroys the motion object
             </description>
@@ -388,7 +388,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
     </object-class>
     <object-class name="MoveToPose" superclass="Motion">
-        <method name="run" func="sim.callMethod" lang="python,lua">
+        <method name="run" lang="python,lua">
             <description>
                 Executes a motion. Can only be called from a script running in a thread, since this is a blocking operation
             </description>
@@ -409,7 +409,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="MoveToPose:remove" />
             </see-also>
         </method>
-        <method name="Constructor" func="sim.callMethod" lang="python,lua">
+        <method name="Constructor" lang="python,lua">
             <description>
                 Initiates motion using the
                 <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
@@ -476,7 +476,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="MoveToConfig:Constructor" />
             </see-also>
         </method>
-        <method name="step" func="sim.callMethod" lang="python,lua">
+        <method name="step" lang="python,lua">
             <description>
                 Steps the motion
             </description>
@@ -506,7 +506,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="MoveToPose:data" />
             </see-also>
         </method>
-        <method name="data" func="sim.callMethod" lang="python,lua">
+        <method name="data" lang="python,lua">
             <description>
                 Returns motion information
             </description>
@@ -529,7 +529,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="MoveToPose:step" />
             </see-also>
         </method>
-        <method name="remove" func="sim.callMethod" lang="python,lua">
+        <method name="remove" lang="python,lua">
             <description>
                 Destroys the motion object
             </description>
@@ -547,7 +547,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
     </object-class>
     <object-class name="TimeOptimalTrajectory" superclass="Motion">
-        <method name="generate" func="sim.callMethod" lang="python,lua">
+        <method name="generate" lang="python,lua">
             <description>
                 Generates a time optimal trajectory
             </description>
@@ -590,7 +590,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="TimeOptimalTrajectory:Constructor" />
             </see-also>
         </method>
-        <method name="Constructor" func="sim.callMethod" lang="python,lua">
+        <method name="Constructor" lang="python,lua">
             <description>
                 Initializes a time optimal trajectory generator, based on the TOPPRA library
             </description>
@@ -614,7 +614,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="TimeOptimalTrajectory:remove" />
             </see-also>
         </method>
-        <method name="remove" func="sim.callMethod" lang="python,lua">
+        <method name="remove" lang="python,lua">
             <description>
                 Destroys the motion object
             </description>
@@ -633,7 +633,7 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="customObject" superclass="object" />
     <object-class name="Console" superclass="customObject">
-        <method name="remove" func="sim.callMethod" lang="python,lua">
+        <method name="remove" lang="python,lua">
             <description>
                 Removes the console
             </description>
@@ -658,7 +658,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:createObject" />
             </see-also>
         </method>
-        <method name="print" func="sim.callMethod" lang="python,lua">
+        <method name="print" lang="python,lua">
             <description>
                 Prints to the console
             </description>
@@ -679,7 +679,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="Console:clear" />
             </see-also>
         </method>
-        <method name="clear" func="sim.callMethod" lang="python,lua">
+        <method name="clear" lang="python,lua">
             <description>
                 Clears the console
             </description>
@@ -710,7 +710,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="TextEditor" superclass="customObject">
-        <method name="remove" func="sim.callMethod" lang="python,lua">
+        <method name="remove" lang="python,lua">
             <description>
                 Removes the text editor
             </description>
@@ -753,7 +753,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="Path" superclass="">
-        <method name="Constructor" func="" lang="python,lua">
+        <method name="Constructor" lang="python,lua">
             <description>
                 Creates a path
             </description>
@@ -822,7 +822,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="Path:createMarkers" />
             </see-also>
         </method>
-        <method name="fromBuffer" func="" lang="python,lua">
+        <method name="fromBuffer" lang="python,lua">
             <description>
                 Creates a path based on previously serialized path data
             </description>
@@ -847,7 +847,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="Path:toBuffer" />
             </see-also>
         </method>
-        <method name="fromJoints" func="" lang="python,lua">
+        <method name="fromJoints" lang="python,lua">
             <description>
                 Creates an empty path based on joints located between an end-effector and a base object (both not included, if of joint type). Ordering goes from base to end-effector
             </description>
@@ -917,7 +917,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="Path:createMarkers" />
             </see-also>
         </method>
-        <method name="fromObject" func="" lang="python,lua">
+        <method name="fromObject" lang="python,lua">
             <description>
                 Creates an empty path based on the pose of an object
             </description>
@@ -982,7 +982,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="Path:createMarkers" />
             </see-also>
         </method>
-        <method name="setPoints" func="" lang="python,lua">
+        <method name="setPoints" lang="python,lua">
             <description>
                 Sets the path control points
             </description>
@@ -1003,7 +1003,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="Path:clearPoints" />
             </see-also>
         </method>
-        <method name="appendPoints" func="" lang="python,lua">
+        <method name="appendPoints" lang="python,lua">
             <description>
                 Appends path control points
             </description>
@@ -1032,7 +1032,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="Path:update" />
             </see-also>
         </method>
-        <method name="appendFromJoints" func="" lang="python,lua">
+        <method name="appendFromJoints" lang="python,lua">
             <description>
                 Appends a path control point based on the joints' current configuration
             </description>
@@ -1055,7 +1055,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="Path:update" />
             </see-also>
         </method>
-        <method name="appendFromObject" func="" lang="python,lua">
+        <method name="appendFromObject" lang="python,lua">
             <description>
                 Appends a path control point based on the object's current pose
             </description>
@@ -1078,7 +1078,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="Path:update" />
             </see-also>
         </method>
-        <method name="clearPoints" func="" lang="python,lua">
+        <method name="clearPoints" lang="python,lua">
             <description>
                 Clears all path control points
             </description>
@@ -1093,7 +1093,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="Path:setPoints" />
             </see-also>
         </method>
-        <method name="toBuffer" func="" lang="python,lua">
+        <method name="toBuffer" lang="python,lua">
             <description>
                 Returns serialized path data
             </description>
@@ -1118,7 +1118,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="Path:fromBuffer" />
             </see-also>
         </method>
-        <method name="data" func="" lang="python,lua">
+        <method name="data" lang="python,lua">
             <description>
                 Returns path information
             </description>
@@ -1139,7 +1139,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
             </see-also>
         </method>
-        <method name="createMarkers" func="" lang="python,lua">
+        <method name="createMarkers" lang="python,lua">
             <description>
                 Creates markers allowing visualization of the path. Only joint-based paths, and paths with following coordinates can be visualized:
                 ["lin", "lin", ...],
@@ -1159,7 +1159,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="Path:removeMarkers" />
             </see-also>
         </method>
-        <method name="removeMarkers" func="" lang="python,lua">
+        <method name="removeMarkers" lang="python,lua">
             <description>
                 Removes markers previously created with createMarkers()
             </description>
@@ -1176,7 +1176,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="Path:createMarkers" />
             </see-also>
         </method>
-        <method name="distance" func="" lang="python,lua">
+        <method name="distance" lang="python,lua">
             <description>
                 Returns the distance between two points
             </description>
@@ -1208,7 +1208,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="Path:interpolate" />
             </see-also>
         </method>
-        <method name="interpolate" func="" lang="python,lua">
+        <method name="interpolate" lang="python,lua">
             <description>
                 Returns the linear interpolation between two points
             </description>
@@ -1245,7 +1245,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="Path:distance" />
             </see-also>
         </method>
-        <method name="configs" func="" lang="python,lua">
+        <method name="configs" lang="python,lua">
             <description>
                 Return all equivalent configurations within the specified joint bounds (when a revolute coordinate's range exceeds 2π, the same physical pose can be represented by multiple angle values)
             </description>
@@ -1271,7 +1271,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
             </see-also>
         </method>
-        <method name="createShape" func="" lang="python,lua">
+        <method name="createShape" lang="python,lua">
             <description>
                 Creates an extrusion shape from the path
             </description>
@@ -1303,7 +1303,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="scene:createObject" />
             </see-also>
         </method>
-        <method name="closest" func="" lang="python,lua">
+        <method name="closest" lang="python,lua">
             <description>
                 Returns the point on the path that is closest to the input point
             </description>
@@ -1335,7 +1335,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="Path:getPoint" />
             </see-also>
         </method>
-        <method name="getPoint" func="" lang="python,lua">
+        <method name="getPoint" lang="python,lua">
             <description>
                 Returns the point on the path that lies at a specific distance along the path
             </description>
@@ -1364,7 +1364,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
     </object-class>
     <object-class name="IK" superclass="">
-        <method name="Constructor" func="" lang="python,lua">
+        <method name="Constructor" lang="python,lua">
             <description>
                 Creates an IK world. An IK world contains one or several IK groups, each one containing one or several IK elements
             </description>
@@ -1383,7 +1383,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="IK:syncToScene" />
             </see-also>
         </method>
-        <method name="createGroup" func="" lang="python,lua">
+        <method name="createGroup" lang="python,lua">
             <description>
                 Creates an IK group inside of the IK world. An IK group contains one or several IK elements, that will be solved together
             </description>
@@ -1417,7 +1417,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="IKGroup:solve" />
             </see-also>
         </method>
-        <method name="solve" func="" lang="python,lua">
+        <method name="solve" lang="python,lua">
             <description>
                 Sequentially solves all enabled IK groups contained in the IK world
             </description>
@@ -1486,7 +1486,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="IK:syncToScene" />
             </see-also>
         </method>
-        <method name="syncFromScene" func="" lang="python,lua">
+        <method name="syncFromScene" lang="python,lua">
             <description>
                 Synchronizes the IK world with the sim world: all object poses and joint configurations in the IK world are updated to reflect the current state of their sim world counterparts
             </description>
@@ -1502,7 +1502,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="IKGroup:syncFromScene" />
             </see-also>
         </method>
-        <method name="syncToScene" func="" lang="python,lua">
+        <method name="syncToScene" lang="python,lua">
             <description>
                 Synchronizes the sim world with the IK world: all object poses and joint configurations in the sim world are updated to reflect the current state of their IK world counterparts
             </description>
@@ -1518,7 +1518,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="IKGroup:syncToScene" />
             </see-also>
         </method>
-        <method name="remove" func="" lang="python,lua">
+        <method name="remove" lang="python,lua">
             <description>
                 Removes the IK world and releases all associated resources
             </description>
@@ -1556,7 +1556,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="IKGroup" superclass="">
-        <method name="addElementFromScene" func="" lang="python,lua">
+        <method name="addElementFromScene" lang="python,lua">
             <description>
                 Creates an IK element inside of this IK group. Items are imported from the sim world into the IK world
             </description>
@@ -1617,7 +1617,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
             </see-also>
         </method>
-        <method name="solve" func="" lang="python,lua">
+        <method name="solve" lang="python,lua">
             <description>
                 Solves the IK group, i.e. tries to satisfy the constraints of all enabled IK elements it contains
             </description>
@@ -1687,7 +1687,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="IKGroup:syncToScene" />
             </see-also>
         </method>
-        <method name="findConfig" func="" lang="python,lua">
+        <method name="findConfig" lang="python,lua">
             <description>
                 Searches for one or more joint configurations that satisfy the provided target pose(s), for the IK element(s) contained in the IK group. Search happens in a randomized fashion
             </description>
@@ -1735,7 +1735,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="IKGroup:solve" />
             </see-also>
         </method>
-        <method name="syncFromScene" func="" lang="python,lua">
+        <method name="syncFromScene" lang="python,lua">
             <description>
                 Synchronizes the IK world with the sim world, limited to the objects involved in this IK group: object poses and joint configurations in the IK environment are updated to reflect the current state of their sim world counterparts
             </description>
@@ -1751,7 +1751,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="IK:syncFromScene" />
             </see-also>
         </method>
-        <method name="syncToScene" func="" lang="python,lua">
+        <method name="syncToScene" lang="python,lua">
             <description>
                 Synchronizes the sim world with the IK world, limited to the objects involved in this IK group: object poses and joint configurations in the sim world are updated to reflect the current state of their IK environment counterparts (e.g. after a solve operation)
             </description>
@@ -1804,7 +1804,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="IKObject" superclass="">
-        <method name="setPose" func="" lang="python,lua">
+        <method name="setPose" lang="python,lua">
             <description>
                 Sets the pose of an IK object, in the IK world
             </description>
@@ -1836,7 +1836,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="sceneObject:setPose" />
             </see-also>
         </method>
-        <method name="getPose" func="" lang="python,lua">
+        <method name="getPose" lang="python,lua">
             <description>
                 Retrieves the pose of an IK object, in the IK world
             </description>
@@ -1870,7 +1870,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="sceneObject:getPose" />
             </see-also>
         </method>
-        <method name="setPosition" func="" lang="python,lua">
+        <method name="setPosition" lang="python,lua">
             <description>
                 Sets the position of an IK object, in the IK world
             </description>
@@ -1902,7 +1902,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="sceneObject:setPosition" />
             </see-also>
         </method>
-        <method name="getPosition" func="" lang="python,lua">
+        <method name="getPosition" lang="python,lua">
             <description>
                 Retrieves the position of an IK object, in the IK world
             </description>
@@ -1936,7 +1936,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="sceneObject:getPosition" />
             </see-also>
         </method>
-        <method name="setQuaternion" func="" lang="python,lua">
+        <method name="setQuaternion" lang="python,lua">
             <description>
                 Sets the orientation (as a quaternion) of an IK object, in the IK world
             </description>
@@ -1968,7 +1968,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="sceneObject:setQuaternion" />
             </see-also>
         </method>
-        <method name="getQuaternion" func="" lang="python,lua">
+        <method name="getQuaternion" lang="python,lua">
             <description>
                 Retrieves the orientation (as a quaternion) of an IK object, in the IK world
             </description>
@@ -2141,7 +2141,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="object" superclass="">
-        <method name="isValid" func="sim.callMethod" lang="python,lua" var="METHOD_isValid">
+        <method name="isValid" lang="python,lua" var="METHOD_isValid">
             <description>
                 Checks whether the object is a valid object
             </description>
@@ -2164,7 +2164,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
             </see-also>
         </method>
-        <method name="getBoolProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getBoolProperty">
+        <method name="getBoolProperty" lang="python,lua" var="METHOD_getBoolProperty">
             <description>
                 Fetches a boolean property
             </description>
@@ -2201,7 +2201,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setBoolProperty" />
             </see-also>
         </method>
-        <method name="setBoolProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setBoolProperty">
+        <method name="setBoolProperty" lang="python,lua" var="METHOD_setBoolProperty">
             <description>
                 Sets a boolean property
             </description>
@@ -2232,7 +2232,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getBoolProperty" />
             </see-also>
         </method>
-        <method name="getIntProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getIntProperty">
+        <method name="getIntProperty" lang="python,lua" var="METHOD_getIntProperty">
             <description>
                 Fetches an int32 property
             </description>
@@ -2269,7 +2269,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setIntProperty" />
             </see-also>
         </method>
-        <method name="setIntProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setIntProperty">
+        <method name="setIntProperty" lang="python,lua" var="METHOD_setIntProperty">
             <description>
                 Sets an int32 property
             </description>
@@ -2300,7 +2300,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getIntProperty" />
             </see-also>
         </method>
-        <method name="getEnumProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getEnumProperty">
+        <method name="getEnumProperty" lang="python,lua" var="METHOD_getEnumProperty">
             <description>
                 Fetches an enum property. For the string equivalent of an enum, use getStringProperty
             </description>
@@ -2338,7 +2338,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:getEnumInfo" />
             </see-also>
         </method>
-        <method name="setEnumProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setEnumProperty">
+        <method name="setEnumProperty" lang="python,lua" var="METHOD_setEnumProperty">
             <description>
                 Sets an enum property. For the string equivalent of an enum, use setStringProperty
             </description>
@@ -2370,7 +2370,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:getEnumInfo" />
             </see-also>
         </method>
-        <method name="getLongProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getLongProperty">
+        <method name="getLongProperty" lang="python,lua" var="METHOD_getLongProperty">
             <description>
                 Fetches an int64 property
             </description>
@@ -2407,7 +2407,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setLongProperty" />
             </see-also>
         </method>
-        <method name="setLongProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setLongProperty">
+        <method name="setLongProperty" lang="python,lua" var="METHOD_setLongProperty">
             <description>
                 Sets an int64 property
             </description>
@@ -2438,7 +2438,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getLongProperty" />
             </see-also>
         </method>
-        <method name="getHandleProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getHandleProperty">
+        <method name="getHandleProperty" lang="python,lua" var="METHOD_getHandleProperty">
             <description>
                 Fetches a handle property
             </description>
@@ -2474,7 +2474,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setHandleProperty" />
             </see-also>
         </method>
-        <method name="setHandleProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setHandleProperty">
+        <method name="setHandleProperty" lang="python,lua" var="METHOD_setHandleProperty">
             <description>
                 Sets a handle property
             </description>
@@ -2504,7 +2504,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getHandleProperty" />
             </see-also>
         </method>
-        <method name="getFloatProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getFloatProperty">
+        <method name="getFloatProperty" lang="python,lua" var="METHOD_getFloatProperty">
             <description>
                 Fetches a float property
             </description>
@@ -2541,7 +2541,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setFloatProperty" />
             </see-also>
         </method>
-        <method name="setFloatProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setFloatProperty">
+        <method name="setFloatProperty" lang="python,lua" var="METHOD_setFloatProperty">
             <description>
                 Sets a float property
             </description>
@@ -2572,7 +2572,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getFloatProperty" />
             </see-also>
         </method>
-        <method name="getStringProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getStringProperty">
+        <method name="getStringProperty" lang="python,lua" var="METHOD_getStringProperty">
             <description>
                 Fetches a string property (text)
             </description>
@@ -2610,7 +2610,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getEnumProperty" />
             </see-also>
         </method>
-        <method name="setStringProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setStringProperty">
+        <method name="setStringProperty" lang="python,lua" var="METHOD_setStringProperty">
             <description>
                 Sets a string property (text)
             </description>
@@ -2642,7 +2642,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setEnumProperty" />
             </see-also>
         </method>
-        <method name="getBufferProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getBufferProperty">
+        <method name="getBufferProperty" lang="python,lua" var="METHOD_getBufferProperty">
             <description>
                 Fetches a buffer property
             </description>
@@ -2680,7 +2680,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setBufferProperty" />
             </see-also>
         </method>
-        <method name="setBufferProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setBufferProperty">
+        <method name="setBufferProperty" lang="python,lua" var="METHOD_setBufferProperty">
             <description>
                 Sets a buffer property
             </description>
@@ -2712,7 +2712,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getBufferProperty" />
             </see-also>
         </method>
-        <method name="getIntArray2Property" func="sim.callMethod" lang="python,lua" var="METHOD_getIntArray2Property">
+        <method name="getIntArray2Property" lang="python,lua" var="METHOD_getIntArray2Property">
             <description>
                 Fetches an int[2] property
             </description>
@@ -2749,7 +2749,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setIntArray2Property" />
             </see-also>
         </method>
-        <method name="setIntArray2Property" func="sim.callMethod" lang="python,lua" var="METHOD_setIntArray2Property">
+        <method name="setIntArray2Property" lang="python,lua" var="METHOD_setIntArray2Property">
             <description>
                 Sets an int[2] property
             </description>
@@ -2780,7 +2780,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getIntArray2Property" />
             </see-also>
         </method>
-        <method name="getVector2Property" func="sim.callMethod" lang="python,lua">
+        <method name="getVector2Property" lang="python,lua">
             <description>
                 Fetches a vector2 property
             </description>
@@ -2816,7 +2816,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setVector2Property" />
             </see-also>
         </method>
-        <method name="setVector2Property" func="sim.callMethod" lang="python,lua">
+        <method name="setVector2Property" lang="python,lua">
             <description>
                 Sets a vector2 property
             </description>
@@ -2846,7 +2846,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getVector2Property" />
             </see-also>
         </method>
-        <method name="getVector3Property" func="sim.callMethod" lang="python,lua" var="METHOD_getVector3Property">
+        <method name="getVector3Property" lang="python,lua" var="METHOD_getVector3Property">
             <description>
                 Fetches a vector3 property
             </description>
@@ -2883,7 +2883,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setVector3Property" />
             </see-also>
         </method>
-        <method name="setVector3Property" func="sim.callMethod" lang="python,lua" var="METHOD_setVector3Property">
+        <method name="setVector3Property" lang="python,lua" var="METHOD_setVector3Property">
             <description>
                 Sets a vector3 property
             </description>
@@ -2914,7 +2914,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getVector3Property" />
             </see-also>
         </method>
-        <method name="getTableProperty" func="sim.callMethod" lang="lua" var="METHOD_getTableProperty">
+        <method name="getTableProperty" lang="lua" var="METHOD_getTableProperty">
             <description>
                 Fetches a table property
             </description>
@@ -2950,7 +2950,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setTableProperty" />
             </see-also>
         </method>
-        <method name="setTableProperty" func="sim.callMethod" lang="lua" var="METHOD_setTableProperty">
+        <method name="setTableProperty" lang="lua" var="METHOD_setTableProperty">
             <description>
                 Sets a table property
             </description>
@@ -2980,7 +2980,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getTableProperty" />
             </see-also>
         </method>
-        <method name="getMatrixProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getMatrixProperty">
+        <method name="getMatrixProperty" lang="python,lua" var="METHOD_getMatrixProperty">
             <description>
                 Fetches a matrix property
             </description>
@@ -3016,7 +3016,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setMatrixProperty" />
             </see-also>
         </method>
-        <method name="setMatrixProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setMatrixProperty">
+        <method name="setMatrixProperty" lang="python,lua" var="METHOD_setMatrixProperty">
             <description>
                 Sets a matrix property
             </description>
@@ -3046,7 +3046,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getMatrixProperty" />
             </see-also>
         </method>
-        <method name="getQuaternionProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getQuaternionProperty">
+        <method name="getQuaternionProperty" lang="python,lua" var="METHOD_getQuaternionProperty">
             <description>
                 Fetches a quaternion property ([qx, qy, qz, qw])
             </description>
@@ -3083,7 +3083,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setQuaternionProperty" />
             </see-also>
         </method>
-        <method name="setQuaternionProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setQuaternionProperty">
+        <method name="setQuaternionProperty" lang="python,lua" var="METHOD_setQuaternionProperty">
             <description>
                 Sets a quaternion property ([qx, qy, qz, qw])
             </description>
@@ -3114,7 +3114,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getQuaternionProperty" />
             </see-also>
         </method>
-        <method name="getPoseProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getPoseProperty">
+        <method name="getPoseProperty" lang="python,lua" var="METHOD_getPoseProperty">
             <description>
                 Fetches a pose property ([x, y, z, qx, qy, qz, qw])
             </description>
@@ -3151,7 +3151,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setPoseProperty" />
             </see-also>
         </method>
-        <method name="setPoseProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setPoseProperty">
+        <method name="setPoseProperty" lang="python,lua" var="METHOD_setPoseProperty">
             <description>
                 Sets a pose property ([x, y, z, qx, qy, qz, qw])
             </description>
@@ -3182,7 +3182,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getPoseProperty" />
             </see-also>
         </method>
-        <method name="getColorProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getColorProperty">
+        <method name="getColorProperty" lang="python,lua" var="METHOD_getColorProperty">
             <description>
                 Fetches a color property
             </description>
@@ -3219,7 +3219,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setColorProperty" />
             </see-also>
         </method>
-        <method name="setColorProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setColorProperty">
+        <method name="setColorProperty" lang="python,lua" var="METHOD_setColorProperty">
             <description>
                 Sets a color property
             </description>
@@ -3250,7 +3250,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getColorProperty" />
             </see-also>
         </method>
-        <method name="getFloatArrayProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getFloatArrayProperty">
+        <method name="getFloatArrayProperty" lang="python,lua" var="METHOD_getFloatArrayProperty">
             <description>
                 Fetches a float array property
             </description>
@@ -3287,7 +3287,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setFloatArrayProperty" />
             </see-also>
         </method>
-        <method name="setFloatArrayProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setFloatArrayProperty">
+        <method name="setFloatArrayProperty" lang="python,lua" var="METHOD_setFloatArrayProperty">
             <description>
                 Sets a float array property
             </description>
@@ -3318,7 +3318,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getFloatArrayProperty" />
             </see-also>
         </method>
-        <method name="getIntArrayProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getIntArrayProperty">
+        <method name="getIntArrayProperty" lang="python,lua" var="METHOD_getIntArrayProperty">
             <description>
                 Fetches an int array property
             </description>
@@ -3355,7 +3355,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setIntArrayProperty" />
             </see-also>
         </method>
-        <method name="setIntArrayProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setIntArrayProperty">
+        <method name="setIntArrayProperty" lang="python,lua" var="METHOD_setIntArrayProperty">
             <description>
                 Sets an int array property
             </description>
@@ -3386,7 +3386,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getIntArrayProperty" />
             </see-also>
         </method>
-        <method name="getStringArrayProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getStringArrayProperty">
+        <method name="getStringArrayProperty" lang="python,lua" var="METHOD_getStringArrayProperty">
             <description>
                 Fetches a text array property
             </description>
@@ -3422,7 +3422,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setStringArrayProperty" />
             </see-also>
         </method>
-        <method name="setStringArrayProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setStringArrayProperty">
+        <method name="setStringArrayProperty" lang="python,lua" var="METHOD_setStringArrayProperty">
             <description>
                 Sets a text array property
             </description>
@@ -3452,7 +3452,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getStringArrayProperty" />
             </see-also>
         </method>
-        <method name="getHandleArrayProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getHandleArrayProperty">
+        <method name="getHandleArrayProperty" lang="python,lua" var="METHOD_getHandleArrayProperty">
             <description>
                 Fetches a handle array property
             </description>
@@ -3488,7 +3488,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setHandleArrayProperty" />
             </see-also>
         </method>
-        <method name="setHandleArrayProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setHandleArrayProperty">
+        <method name="setHandleArrayProperty" lang="python,lua" var="METHOD_setHandleArrayProperty">
             <description>
                 Sets a handle array property
             </description>
@@ -3518,7 +3518,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getHandleArrayProperty" />
             </see-also>
         </method>
-        <method name="getMethodProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getMethodProperty">
+        <method name="getMethodProperty" lang="python,lua" var="METHOD_getMethodProperty">
             <description>
                 Fetches a method property (i.e. a Lua function)
             </description>
@@ -3554,7 +3554,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setMethodProperty" />
             </see-also>
         </method>
-        <method name="setMethodProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setMethodProperty">
+        <method name="setMethodProperty" lang="python,lua" var="METHOD_setMethodProperty">
             <description>
                 Sets a method property (i.e. a Lua function)
             </description>
@@ -3584,7 +3584,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getMethodProperty" />
             </see-also>
         </method>
-        <method name="getProperty" func="sim.callMethod" lang="python,lua" var="METHOD_getProperty">
+        <method name="getProperty" lang="python,lua" var="METHOD_getProperty">
             <description>
                 Convenience function to fetch a property
             </description>
@@ -3622,7 +3622,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getProperties" />
             </see-also>
         </method>
-        <method name="setProperty" func="sim.callMethod" lang="python,lua" var="METHOD_setProperty">
+        <method name="setProperty" lang="python,lua" var="METHOD_setProperty">
             <description>
                 Convenience function to set a property
             </description>
@@ -3655,7 +3655,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setProperties" />
             </see-also>
         </method>
-        <method name="getProperties" func="sim.callMethod" lang="python,lua" var="METHOD_getProperties">
+        <method name="getProperties" lang="python,lua" var="METHOD_getProperties">
             <description>
                 Convenience function to fetch all properties of a specific target item
             </description>
@@ -3688,7 +3688,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getProperty" />
             </see-also>
         </method>
-        <method name="setProperties" func="sim.callMethod" lang="python,lua" var="METHOD_setProperties">
+        <method name="setProperties" lang="python,lua" var="METHOD_setProperties">
             <description>
                 Convenience function to set several properties at once
             </description>
@@ -3711,7 +3711,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setProperty" />
             </see-also>
         </method>
-        <method name="getPropertyName" func="sim.callMethod" lang="python,lua" var="METHOD_getPropertyName">
+        <method name="getPropertyName" lang="python,lua" var="METHOD_getPropertyName">
             <description>
                 Fetches the name of a property, based on an index
             </description>
@@ -3754,7 +3754,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getPropertyInfo" />
             </see-also>
         </method>
-        <method name="getPropertyInfo" func="sim.callMethod" lang="python,lua" var="METHOD_getPropertyInfo">
+        <method name="getPropertyInfo" lang="python,lua" var="METHOD_getPropertyInfo">
             <description>
                 Fetches information about a specific property
             </description>
@@ -3805,7 +3805,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getPropertyName" />
             </see-also>
         </method>
-        <method name="setPropertyInfo" func="sim.callMethod" lang="python,lua" var="METHOD_setPropertyInfo">
+        <method name="setPropertyInfo" lang="python,lua" var="METHOD_setPropertyInfo">
             <description>
                 Sets information about a specific property
             </description>
@@ -3838,7 +3838,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getPropertyInfo" />
             </see-also>
         </method>
-        <method name="getPropertyInfos" func="sim.callMethod" lang="python,lua" var="METHOD_getPropertyInfos">
+        <method name="getPropertyInfos" lang="python,lua" var="METHOD_getPropertyInfos">
             <description>
                 Fetches an extended set of property infos
             </description>
@@ -3869,7 +3869,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getPropertyInfo" />
             </see-also>
         </method>
-        <method name="getPropertyTypeString" func="sim.callMethod" lang="python,lua" var="METHOD_getPropertyTypeString">
+        <method name="getPropertyTypeString" lang="python,lua" var="METHOD_getPropertyTypeString">
             <description>
                 Fetches the short string equivalent from a property type value
             </description>
@@ -3896,7 +3896,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
             </see-also>
         </method>
-        <method name="getPropertiesInfos" func="sim.callMethod" lang="python,lua" var="METHOD_getPropertiesInfos">
+        <method name="getPropertiesInfos" lang="python,lua" var="METHOD_getPropertiesInfos">
             <description>
                 Convenience function to fetch all properties infos of a specific target item
             </description>
@@ -3928,7 +3928,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:getPropertyInfo" />
             </see-also>
         </method>
-        <method name="removeProperty" func="sim.callMethod" lang="python,lua" var="METHOD_removeProperty">
+        <method name="removeProperty" lang="python,lua" var="METHOD_removeProperty">
             <description>
                 Removes a removable property
             </description>
@@ -4002,7 +4002,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="app" superclass="object" singleton="sim.app">
-        <method name="getEnumInfo" func="sim.callMethod" lang="python,lua" var="METHOD_getEnumInfo">
+        <method name="getEnumInfo" lang="python,lua" var="METHOD_getEnumInfo">
             <description>
                 Returns information about an enum
             </description>
@@ -4031,7 +4031,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="object:setEnumProperty" />
             </see-also>
         </method>
-        <method name="getPluginInfo" func="sim.callMethod" lang="python,lua" var="METHOD_getPluginInfo">
+        <method name="getPluginInfo" lang="python,lua" var="METHOD_getPluginInfo">
             <description>
                 Returns information about a loaded plugin
             </description>
@@ -4061,7 +4061,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="app.pluginNames" />
             </see-also>
         </method>
-        <method name="setPluginInfo" func="sim.callMethod" lang="python,lua" var="METHOD_setPluginInfo">
+        <method name="setPluginInfo" lang="python,lua" var="METHOD_setPluginInfo">
             <description>
                 Modifies information of a loaded plugin
             </description>
@@ -4097,7 +4097,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:getPluginInfo" />
             </see-also>
         </method>
-        <method name="pushEvent" func="sim.callMethod" lang="python,lua" var="METHOD_pushEvent">
+        <method name="pushEvent" lang="python,lua" var="METHOD_pushEvent">
             <description>
                 Pushes a user event. Messages are received asynchronously via the sysCall_event
                 <a href="../callbackFunctions.htm">callback function</a> and via the plugin
@@ -4132,7 +4132,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:getGenesisEvents" />
             </see-also>
         </method>
-        <method name="getGenesisEvents" func="sim.callMethod" lang="python,lua" var="METHOD_getGenesisEvents">
+        <method name="getGenesisEvents" lang="python,lua" var="METHOD_getGenesisEvents">
             <description>
                 Retrieves all events that allow to reconstruct the app's state remotely
             </description>
@@ -4155,7 +4155,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="detachedScript:setEventFilters" />
             </see-also>
         </method>
-        <method name="createCustomObjectClass" func="sim.callMethod" lang="python,lua" var="METHOD_createCustomObjectClass">
+        <method name="createCustomObjectClass" lang="python,lua" var="METHOD_createCustomObjectClass">
             <description>
                 Creates a class or template of a custom object
             </description>
@@ -4199,7 +4199,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="app.customClasses" />
             </see-also>
         </method>
-        <method name="openFile" func="sim.callMethod" lang="python,lua" var="METHOD_openFile">
+        <method name="openFile" lang="python,lua" var="METHOD_openFile">
             <description>
                 Opens a file in a subprocess, via cmd (Windows), open (macOS), or xdg-open (Linux)
             </description>
@@ -4221,7 +4221,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
             </see-also>
         </method>
-        <method name="fastIdleLoop" func="sim.callMethod" lang="python,lua" var="METHOD_fastIdleLoop">
+        <method name="fastIdleLoop" lang="python,lua" var="METHOD_fastIdleLoop">
             <description>
                 Speeds the idle loop up, for better reactivity when idle, i.e. not simulating
             </description>
@@ -4243,7 +4243,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
             </see-also>
         </method>
-        <method name="throttle" func="sim.callMethod" lang="python,lua" var="METHOD_throttle">
+        <method name="throttle" lang="python,lua" var="METHOD_throttle">
             <description>
                 Limits the rate at which a function can be called
             </description>
@@ -4279,7 +4279,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:scheduleExecution" />
             </see-also>
         </method>
-        <method name="scheduleExecution" func="sim.callMethod" lang="python,lua" var="METHOD_scheduleExecution">
+        <method name="scheduleExecution" lang="python,lua" var="METHOD_scheduleExecution">
             <description>
                 Schedules a function to be called after a delay
             </description>
@@ -4323,7 +4323,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:throttle" />
             </see-also>
         </method>
-        <method name="cancelScheduledExecution" func="sim.callMethod" lang="python,lua" var="METHOD_cancelScheduledExecution">
+        <method name="cancelScheduledExecution" lang="python,lua" var="METHOD_cancelScheduledExecution">
             <description>
                 Cancels a scheduled function execution
             </description>
@@ -4352,7 +4352,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:scheduleExecution" />
             </see-also>
         </method>
-        <method name="pack" func="sim.callMethod" lang="python,lua" var="METHOD_pack">
+        <method name="pack" lang="python,lua" var="METHOD_pack">
             <description>
                 Packs data via CoppeliaSim format. Functions and other non-serializable items are packed as string or None/nil values
             </description>
@@ -4382,7 +4382,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:serialize" />
             </see-also>
         </method>
-        <method name="unpack" func="sim.callMethod" lang="python,lua" var="METHOD_unpack">
+        <method name="unpack" lang="python,lua" var="METHOD_unpack">
             <description>
                 Unpacks a buffer via CoppeliaSim format
             </description>
@@ -4411,7 +4411,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:pack" />
             </see-also>
         </method>
-        <method name="packArray" func="sim.callMethod" lang="python,lua" var="METHOD_packArray">
+        <method name="packArray" lang="python,lua" var="METHOD_packArray">
             <description>
                 Packs an array of numbers as little-endian
             </description>
@@ -4455,7 +4455,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:unpackArray" />
             </see-also>
         </method>
-        <method name="unpackArray" func="sim.callMethod" lang="python,lua" var="METHOD_unpackArray">
+        <method name="unpackArray" lang="python,lua" var="METHOD_unpackArray">
             <description>
                 Unpacks a buffer into an array of numbers
             </description>
@@ -4500,7 +4500,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:packArray" />
             </see-also>
         </method>
-        <method name="serialize" func="sim.callMethod" lang="python,lua" var="METHOD_serialize">
+        <method name="serialize" lang="python,lua" var="METHOD_serialize">
             <description>
                 Serializes data via CBOR format
             </description>
@@ -4529,7 +4529,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:pack" />
             </see-also>
         </method>
-        <method name="deserialize" func="sim.callMethod" lang="python,lua" var="METHOD_deserialize">
+        <method name="deserialize" lang="python,lua" var="METHOD_deserialize">
             <description>
                 Deserializes a buffer via CBOR format
             </description>
@@ -4557,7 +4557,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:serialize" />
             </see-also>
         </method>
-        <method name="systemLock" func="sim.callMethod" lang="python,lua" var="METHOD_systemLock">
+        <method name="systemLock" lang="python,lua" var="METHOD_systemLock">
             <description>
                 Acquires or releases a system-wide semaphore, i.e. across several CoppeliaSim instances
             </description>
@@ -4585,7 +4585,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="detachedScript:lock" />
             </see-also>
         </method>
-        <method name="quit" func="sim.callMethod" lang="python,lua" var="METHOD_quit">
+        <method name="quit" lang="python,lua" var="METHOD_quit">
             <description>
                 Triggers a quit signal for the application to end
             </description>
@@ -4597,7 +4597,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="other" />
             </categories>
         </method>
-        <method name="logInfo" func="sim.callMethod" lang="python,lua" var="METHOD_logInfo">
+        <method name="logInfo" lang="python,lua" var="METHOD_logInfo">
             <description>
                 Outputs an information message in the status bar
             </description>
@@ -4631,7 +4631,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="app.statusbarVerbosity" />
             </see-also>
         </method>
-        <method name="logWarn" func="sim.callMethod" lang="python,lua" var="METHOD_logWarn">
+        <method name="logWarn" lang="python,lua" var="METHOD_logWarn">
             <description>
                 Outputs a warning message in the status bar
             </description>
@@ -4665,7 +4665,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="app.statusbarVerbosity" />
             </see-also>
         </method>
-        <method name="logError" func="sim.callMethod" lang="python,lua" var="METHOD_logError">
+        <method name="logError" lang="python,lua" var="METHOD_logError">
             <description>
                 Outputs an error message in the status bar
             </description>
@@ -4699,7 +4699,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="app.statusbarVerbosity" />
             </see-also>
         </method>
-        <method name="createObject" func="sim.callMethod" lang="python,lua" var="METHOD_createObject">
+        <method name="createObject" lang="python,lua" var="METHOD_createObject">
             <info>same method present in both app and scene</info>
             <description>
                 Creates one of following objects:
@@ -5214,7 +5214,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:removeObjects" />
             </see-also>
         </method>
-        <method name="loadScene" func="sim.callMethod" lang="python,lua" var="METHOD_loadScene">
+        <method name="loadScene" lang="python,lua" var="METHOD_loadScene">
             <info>same method present in both app and scene</info>
             <description>
                 Loads a scene from file
@@ -5249,7 +5249,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="app.paths.scenes" />
             </see-also>
         </method>
-        <method name="loadSceneFromBuffer" func="sim.callMethod" lang="python,lua" var="METHOD_loadSceneFromBuffer">
+        <method name="loadSceneFromBuffer" lang="python,lua" var="METHOD_loadSceneFromBuffer">
             <info>same method present in both app and scene</info>
             <description>
                 Loads a scene from buffer
@@ -5280,7 +5280,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:loadScene" />
             </see-also>
         </method>
-        <method name="loadModelInfo" func="sim.callMethod" lang="python,lua" var="METHOD_loadModelInfo">
+        <method name="loadModelInfo" lang="python,lua" var="METHOD_loadModelInfo">
             <info>same method present in both app and scene</info>
             <description>
                 Loads a model thumbnail
@@ -5325,7 +5325,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="scene:loadModel" />
             </see-also>
         </method>
-        <method name="loadModelInfoFromBuffer" func="sim.callMethod" lang="python,lua" var="METHOD_loadModelInfoFromBuffer">
+        <method name="loadModelInfoFromBuffer" lang="python,lua" var="METHOD_loadModelInfoFromBuffer">
             <info>same method present in both app and scene</info>
             <description>
                 Loads a model thumbnail from a buffer
@@ -5370,7 +5370,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="scene:loadModel" />
             </see-also>
         </method>
-        <method name="getObjects" func="sim.callMethod" lang="python,lua" var="METHOD_getObjects">
+        <method name="getObjects" lang="python,lua" var="METHOD_getObjects">
             <info>same method present in both app and scene</info>
             <description>
                 Retrieves objects of a certain type
@@ -5405,7 +5405,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="app.customObjects" />
             </see-also>
         </method>
-        <method name="removeObjects" func="sim.callMethod" lang="python,lua" var="METHOD_removeObjects">
+        <method name="removeObjects" lang="python,lua" var="METHOD_removeObjects">
             <info>same method present in both app and scene</info>
             <description>
                 Removes one or several objects
@@ -5447,7 +5447,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:createObject" />
             </see-also>
         </method>
-        <method name="handleMessagePump" func="sim.callMethod" lang="python,lua" var="METHOD_handleMessagePump">
+        <method name="handleMessagePump" lang="python,lua" var="METHOD_handleMessagePump">
             <description>
                 Handles the message pump explicitly. Rarely needed
             </description>
@@ -5461,7 +5461,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
             </see-also>
         </method>
-        <method name="handleSandboxScript" func="sim.callMethod" lang="lua" var="METHOD_handleSandboxScript">
+        <method name="handleSandboxScript" lang="lua" var="METHOD_handleSandboxScript">
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a> in the <a href="../sandboxScript.htm"> sandbox </a>.
                 Should only be called from the <a href="../mainScript.htm"> main script </a>
@@ -5488,7 +5488,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="app.sandbox" />
             </see-also>
         </method>
-        <method name="handleAddOnScripts" func="sim.callMethod" lang="lua" var="METHOD_handleAddOnScripts">
+        <method name="handleAddOnScripts" lang="lua" var="METHOD_handleAddOnScripts">
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a> in <a href="../addOns.htm"> add-ons </a>.
                 Should only be called from the <a href="../mainScript.htm"> main script </a>
@@ -5522,7 +5522,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="app.addOns" />
             </see-also>
         </method>
-        <method name="loadImage" func="sim.callMethod" lang="python,lua" var="METHOD_loadImage">
+        <method name="loadImage" lang="python,lua" var="METHOD_loadImage">
             <description>
                 Loads an image from file
             </description>
@@ -5568,7 +5568,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="mesh.texture.image" />
             </see-also>
         </method>
-        <method name="loadImageFromBuffer" func="sim.callMethod" lang="python,lua" var="METHOD_loadImageFromBuffer">
+        <method name="loadImageFromBuffer" lang="python,lua" var="METHOD_loadImageFromBuffer">
             <description>
                 Loads an image from memory
             </description>
@@ -5613,7 +5613,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="visionSensor:setImage" />
             </see-also>
         </method>
-        <method name="saveImageToBuffer" func="sim.callMethod" lang="python,lua" var="METHOD_saveImageToBuffer">
+        <method name="saveImageToBuffer" lang="python,lua" var="METHOD_saveImageToBuffer">
             <description>
                 Saves an image to a buffer. Depending on the provided image buffer and resolution, a greyscale, rgb or rgba image is written
             </description>
@@ -5658,7 +5658,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:saveImage" />
             </see-also>
         </method>
-        <method name="saveImage" func="sim.callMethod" lang="python,lua" var="METHOD_saveImage">
+        <method name="saveImage" lang="python,lua" var="METHOD_saveImage">
             <description>
                 Saves an image to file. Depending on the provided image buffer and resolution, a greyscale, rgb or rgba image is written
             </description>
@@ -5697,7 +5697,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="visionSensor:getImage" />
             </see-also>
         </method>
-        <method name="transformImage" func="sim.callMethod" lang="python,lua" var="METHOD_transformImage">
+        <method name="transformImage" lang="python,lua" var="METHOD_transformImage">
             <description>
                 Transforms an image in various ways (up/down scaling, vertical/horizontal flipping)
             </description>
@@ -5761,7 +5761,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="visionSensor:setImage" />
             </see-also>
         </method>
-        <method name="transformBuffer" func="sim.callMethod" lang="python,lua" var="METHOD_transformBuffer">
+        <method name="transformBuffer" lang="python,lua" var="METHOD_transformBuffer">
             <description>
                 Modifies a buffer
             </description>
@@ -6480,7 +6480,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <namespace name="signal" />
     </object-class>
     <object-class name="detachedScript" superclass="object">
-        <method name="setModuleEntry" func="sim.callMethod" lang="python,lua" var="METHOD_setModuleEntry">
+        <method name="setModuleEntry" lang="python,lua" var="METHOD_setModuleEntry">
             <description>
                 Creates, modifies or destroys module menu entries. Those are user selectable items located in [Menu bar &gt; Modules].
                 When selected, the corresponding script will have its
@@ -6523,7 +6523,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="other" />
             </categories>
         </method>
-        <method name="broadcast" func="sim.callMethod" lang="python,lua" var="METHOD_broadcast">
+        <method name="broadcast" lang="python,lua" var="METHOD_broadcast">
             <description>
                 Broadcasts a message to all scripts, except for the emitting script. Messages are received synchronously via the sysCall_msg callback function
             </description>
@@ -6546,7 +6546,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <link href="../callbackFunctions.htm" label="callback functions" />
             </see-also>
         </method>
-        <method name="setEventFilters" func="sim.callMethod" lang="python,lua" var="METHOD_setEventFilters">
+        <method name="setEventFilters" lang="python,lua" var="METHOD_setEventFilters">
             <description>
                 Specifies filters for the sysCall_event callback, in this script
             </description>
@@ -6575,7 +6575,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:pushEvent" />
             </see-also>
         </method>
-        <method name="wait" func="sim.callMethod" lang="python,lua" var="METHOD_wait">
+        <method name="wait" lang="python,lua" var="METHOD_wait">
             <description>
                 Waits for a certain amount of time
             </description>
@@ -6603,7 +6603,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
             </see-also>
         </method>
-        <method name="getObject" func="sim.callMethod" lang="python,lua" var="METHOD_getObject">
+        <method name="getObject" lang="python,lua" var="METHOD_getObject">
             <description>
                 Retrieves an object in the current hierarchy tree, based on its path and name
             </description>
@@ -6642,7 +6642,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <link href="../accessingSceneObjects.htm" label="accessing scene objects" />
             </see-also>
         </method>
-        <method name="step" func="sim.callMethod" lang="python,lua" var="METHOD_step">
+        <method name="step" lang="python,lua" var="METHOD_step">
             <description>
                 Triggers the next simulation step, when in stepping operation mode and running in a thread. When simulation is running, step()
                 only returns once the simulation time has changed
@@ -6663,7 +6663,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="scene.simulation.timeStep" />
             </see-also>
         </method>
-        <method name="yield" func="sim.callMethod" lang="python,lua" var="METHOD_yield">
+        <method name="yield" lang="python,lua" var="METHOD_yield">
             <description>
                 Identical to step()
             </description>
@@ -6679,7 +6679,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="detachedScript:step" />
             </see-also>
         </method>
-        <method name="setStepping" func="sim.callMethod" lang="python,lua" var="METHOD_setStepping">
+        <method name="setStepping" lang="python,lua" var="METHOD_setStepping">
             <description>
                 Enables or disables the stepping operation mode for a threaded script. If enabled, then the current script has
                 to trigger each simulation step explicitly, via step(). Is applied
@@ -6715,7 +6715,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="scene.simulation.timeStep" />
             </see-also>
         </method>
-        <method name="getStepping" func="sim.callMethod" lang="python,lua" var="METHOD_getStepping">
+        <method name="getStepping" lang="python,lua" var="METHOD_getStepping">
             <description>
                 Informs whether the stepping operation mode is enabled for the current script
             </description>
@@ -6740,7 +6740,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="detachedScript:setStepping" />
             </see-also>
         </method>
-        <method name="lock" func="sim.callMethod" lang="python,lua" var="METHOD_lock">
+        <method name="lock" lang="python,lua" var="METHOD_lock">
             <description>
                 Acquires or releases a script lock, i.e. in order to forbid yielding or stepping
             </description>
@@ -6765,7 +6765,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:systemLock" />
             </see-also>
         </method>
-        <method name="registerFunctionHook" func="sim.callMethod" lang="python,lua" var="METHOD_registerFunctionHook">
+        <method name="registerFunctionHook" lang="python,lua" var="METHOD_registerFunctionHook">
             <description>
                 Registers a function hook for <a href="../callbackFunctions.htm"> callback functions </a>,
                 that will be executed before or after the specified function
@@ -6800,7 +6800,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="detachedScript:removeFunctionHook" />
             </see-also>
         </method>
-        <method name="removeFunctionHook" func="sim.callMethod" lang="python,lua" var="METHOD_removeFunctionHook">
+        <method name="removeFunctionHook" lang="python,lua" var="METHOD_removeFunctionHook">
             <description>
                 Removes a function hook
             </description>
@@ -6834,7 +6834,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="detachedScript:registerFunctionHook" />
             </see-also>
         </method>
-        <method name="remove" func="sim.callMethod" lang="python,lua" var="METHOD_remove">
+        <method name="remove" lang="python,lua" var="METHOD_remove">
             <info>same method present in several classes</info>
             <description>
                 Removes the detached script. Currently only add-ons can be removed
@@ -6861,7 +6861,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="scene:removeObjects" />
             </see-also>
         </method>
-        <method name="callFunction" func="sim.callScriptFunction" lang="python,lua" var="METHOD_callFunction">
+        <method name="callFunction" lang="python,lua" var="METHOD_callFunction">
             <description>
                 Calls a script function. This represents a
                 <a href="../callbackFunctions.htm"> user callback </a>
@@ -6903,7 +6903,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="detachedScript:executeString" />
             </see-also>
         </method>
-        <method name="getFunctions" func="sim.getScriptFunctions" lang="python,lua" var="METHOD_getFunctions">
+        <method name="getFunctions" lang="python,lua" var="METHOD_getFunctions">
             <description>
                 Retrieves a map of the script's functions that can be called
             </description>
@@ -6928,7 +6928,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="detachedScript:executeString" />
             </see-also>
         </method>
-        <method name="executeString" func="sim.executeScriptString" lang="python,lua" var="METHOD_executeString">
+        <method name="executeString" lang="python,lua" var="METHOD_executeString">
             <description>
                 Executes some code from a string. The target must be initialized for this call to succeed, e.g. when calling
                 from <a href="../simulationScripts.htm"> simulation scripts </a>, then simulation must be running
@@ -6968,7 +6968,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="detachedScript:getFunctions" />
             </see-also>
         </method>
-        <method name="getStackTraceback" func="sim.callMethod" lang="lua" var="METHOD_getStackTraceback">
+        <method name="getStackTraceback" lang="lua" var="METHOD_getStackTraceback">
             <description>
                 Retrieves and clears the last generated stack traceback for a script
             </description>
@@ -6988,7 +6988,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="scriptRelated" />
             </categories>
         </method>
-        <method name="init" func="sim.callMethod" lang="lua" var="METHOD_init">
+        <method name="init" lang="lua" var="METHOD_init">
             <description>
                 Initializes/reinitializes a script. Operates in an asynchronous way when called upon the calling script
             </description>
@@ -7160,7 +7160,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="mesh" superclass="object">
-        <method name="texture:set" func="sim.callMethod" lang="python,lua" var="METHOD_textureSet">
+        <method name="texture:set" lang="python,lua" var="METHOD_textureSet">
             <description>
                 Sets a texture
             </description>
@@ -7209,7 +7209,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:loadImage" />
             </see-also>
         </method>
-        <method name="texture:setData" func="sim.callMethod" lang="python,lua" var="METHOD_textureSetData">
+        <method name="texture:setData" lang="python,lua" var="METHOD_textureSetData">
             <description>
                 Overwrites a portion of the texture
             </description>
@@ -7247,7 +7247,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="mesh.texture.image" />
             </see-also>
         </method>
-        <method name="texture:getData" func="sim.callMethod" lang="python,lua" var="METHOD_textureGetData">
+        <method name="texture:getData" lang="python,lua" var="METHOD_textureGetData">
             <description>
                 Reads a portion of the texture
             </description>
@@ -7654,7 +7654,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="collection" superclass="object">
-        <method name="changeColor" func="sim.callMethod" lang="python,lua" var="METHOD_changeColor">
+        <method name="changeColor" lang="python,lua" var="METHOD_changeColor">
             <info>same method present in collection and sceneObject</info>
             <description>
                 Changes the color of all shapes contained in the collection
@@ -7695,7 +7695,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="shape:getAppearance" />
             </see-also>
         </method>
-        <method name="restoreColor" func="sim.callMethod" lang="python,lua" var="METHOD_restoreColor">
+        <method name="restoreColor" lang="python,lua" var="METHOD_restoreColor">
             <info>same method present in collection and sceneObject</info>
             <description>
                 Restores the color of all shapes contained in the collection
@@ -7720,7 +7720,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="shape:getAppearance" />
             </see-also>
         </method>
-        <method name="remove" func="sim.callMethod" lang="python,lua" var="METHOD_remove">
+        <method name="remove" lang="python,lua" var="METHOD_remove">
             <info>same method present in several classes</info>
             <description>
                 Removes the collection
@@ -7748,7 +7748,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="scene:removeObjects" />
             </see-also>
         </method>
-        <method name="addItem" func="sim.callMethod" lang="python,lua" var="METHOD_addItem">
+        <method name="addItem" lang="python,lua" var="METHOD_addItem">
             <description>
                 Adds one or several items to this collection
             </description>
@@ -7778,7 +7778,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="collection.objects" />
             </see-also>
         </method>
-        <method name="removeItem" func="sim.callMethod" lang="python,lua" var="METHOD_removeItem">
+        <method name="removeItem" lang="python,lua" var="METHOD_removeItem">
             <description>
                 Removes one or several items from this collection
             </description>
@@ -7808,7 +7808,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="collection.objects" />
             </see-also>
         </method>
-        <method name="checkCollision" func="sim.callMethod" lang="python,lua" var="METHOD_checkCollision">
+        <method name="checkCollision" lang="python,lua" var="METHOD_checkCollision">
             <description>
                 Checks whether this <a href="../collections.htm">collection</a> collides with another collection or <a href="../objects.htm">scene object</a>. If the entity to check against is a
                 scene object, then its <a href="../collidableObjects.htm">collidable</a> flag is ignored.
@@ -7848,7 +7848,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.collectionSelfCollisionIndicator" />
             </see-also>
         </method>
-        <method name="checkDistance" func="sim.callMethod" lang="python,lua" var="METHOD_checkDistance">
+        <method name="checkDistance" lang="python,lua" var="METHOD_checkDistance">
             <description>
                 Checks the minimum distance between this <a href="../collections.htm">collection</a> and another collection or <a href="../objects.htm">scene object</a>. If the entity to check
                 against is a scene object, then its <a href="../measurableObjects.htm">measurable</a> flag is ignored.
@@ -7924,7 +7924,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="scene" superclass="object" singleton="sim.scene">
-        <method name="getContacts" func="sim.callMethod" lang="python,lua" var="METHOD_getContacts">
+        <method name="getContacts" lang="python,lua" var="METHOD_getContacts">
             <description>
                 Retrieves contact information from the dynamics world
             </description>
@@ -7974,7 +7974,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="scene.dynamics.showContactPoints" />
             </see-also>
         </method>
-        <method name="getDescendants" func="sim.callMethod" lang="python,lua" var="METHOD_getDescendants">
+        <method name="getDescendants" lang="python,lua" var="METHOD_getDescendants">
             <description>
                 Retrieves scene objects up to a specific depth
             </description>
@@ -8009,7 +8009,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="scene.objects" />
             </see-also>
         </method>
-        <method name="groupShapes" func="sim.callMethod" lang="python,lua" var="METHOD_groupShapes">
+        <method name="groupShapes" lang="python,lua" var="METHOD_groupShapes">
             <description>
                 Groups several shapes, and returns a compound shape
             </description>
@@ -8043,7 +8043,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="shape.meshes" />
             </see-also>
         </method>
-        <method name="mergeShapes" func="sim.callMethod" lang="python,lua" var="METHOD_mergeShapes">
+        <method name="mergeShapes" lang="python,lua" var="METHOD_mergeShapes">
             <description>
                 Merges several shapes
             </description>
@@ -8076,7 +8076,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="shape.meshes" />
             </see-also>
         </method>
-        <method name="getObjectFromUid" func="sim.callMethod" lang="python,lua" var="METHOD_getObjectFromUid">
+        <method name="getObjectFromUid" lang="python,lua" var="METHOD_getObjectFromUid">
             <description>
                 Retrieves an object based on its unique identifier
             </description>
@@ -8114,7 +8114,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.uid" />
             </see-also>
         </method>
-        <method name="announceChange" func="sim.callMethod" lang="python,lua" var="METHOD_announceChange">
+        <method name="announceChange" lang="python,lua" var="METHOD_announceChange">
             <description>
                 Announces a change in the scene. This is required for the undo/redo function to operate properly
                 when performing changes via the API. What this call will do is following: the whole scene will be serialized (saved) to memory as a
@@ -8129,7 +8129,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="other" />
             </categories>
         </method>
-        <method name="getObject" func="sim.callMethod" lang="python,lua" var="METHOD_getObject">
+        <method name="getObject" lang="python,lua" var="METHOD_getObject">
             <description>
                 Retrieves an object based on its path and name
             </description>
@@ -8171,7 +8171,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.persistentUid" />
             </see-also>
         </method>
-        <method name="save" func="sim.callMethod" lang="python,lua" var="METHOD_save">
+        <method name="save" lang="python,lua" var="METHOD_save">
             <info>similar method present in both app and scene</info>
             <description>
                 Saves the scene to file. Any existing file with same name will be overwritten
@@ -8199,7 +8199,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="app.paths.scenes" />
             </see-also>
         </method>
-        <method name="saveToBuffer" func="sim.callMethod" lang="python,lua" var="METHOD_saveToBuffer">
+        <method name="saveToBuffer" lang="python,lua" var="METHOD_saveToBuffer">
             <info>similar method present in both app and scene</info>
             <description>
                 Serializes the scene to a buffer
@@ -8223,7 +8223,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:loadSceneFromBuffer" />
             </see-also>
         </method>
-        <method name="remove" func="sim.callMethod" lang="python,lua" var="METHOD_remove">
+        <method name="remove" lang="python,lua" var="METHOD_remove">
             <info>similar method present in many classes</info>
             <description>
                 Closes the scene, and switches to another open scene. If there is no other open scene,
@@ -8240,7 +8240,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:loadScene" />
             </see-also>
         </method>
-        <method name="loadModel" func="sim.callMethod" lang="python,lua" var="METHOD_loadModel">
+        <method name="loadModel" lang="python,lua" var="METHOD_loadModel">
             <info>same method present in both app and scene</info>
             <description>
                 Loads a previously saved model
@@ -8289,7 +8289,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="app.paths.models" />
             </see-also>
         </method>
-        <method name="loadModelFromBuffer" func="sim.callMethod" lang="python,lua" var="METHOD_loadModelFromBuffer">
+        <method name="loadModelFromBuffer" lang="python,lua" var="METHOD_loadModelFromBuffer">
             <info>same method present in both app and scene</info>
             <description>
                 Loads a model from buffer
@@ -8334,7 +8334,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="scene:loadModel" />
             </see-also>
         </method>
-        <method name="getObjects" func="sim.callMethod" lang="python,lua" var="METHOD_getObjects">
+        <method name="getObjects" lang="python,lua" var="METHOD_getObjects">
             <info>same method present in both app and scene</info>
             <description>
                 Retrieves objects of a certain type
@@ -8366,7 +8366,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="scene.orphans" />
             </see-also>
         </method>
-        <method name="removeObjects" func="sim.callMethod" lang="python,lua" var="METHOD_removeObjects">
+        <method name="removeObjects" lang="python,lua" var="METHOD_removeObjects">
             <info>same method present in both app and scene</info>
             <description>
                 Removes one or several objects
@@ -8409,7 +8409,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="scene.objects" />
             </see-also>
         </method>
-        <method name="duplicateObjects" func="sim.callMethod" lang="python,lua" var="METHOD_duplicateObjects">
+        <method name="duplicateObjects" lang="python,lua" var="METHOD_duplicateObjects">
             <description>
                 Duplicates scene objects
             </description>
@@ -8454,7 +8454,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.dna" />
             </see-also>
         </method>
-        <method name="handleCustomizationScripts" func="sim.callMethod" lang="lua" var="METHOD_handleCustomizationScripts">
+        <method name="handleCustomizationScripts" lang="lua" var="METHOD_handleCustomizationScripts">
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a>
                 in <a href="../customizationScripts.htm"> customization scripts </a>.
@@ -8489,7 +8489,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="scene.mainScript" />
             </see-also>
         </method>
-        <method name="handleSimulationScripts" func="sim.callMethod" lang="lua" var="METHOD_handleSimulationScripts">
+        <method name="handleSimulationScripts" lang="lua" var="METHOD_handleSimulationScripts">
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a>
                 in <a href="../simulationScripts.htm"> simulation scripts </a>. Simulation scripts will be executed in a
@@ -8525,7 +8525,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="scene.mainScript" />
             </see-also>
         </method>
-        <method name="createObject" func="sim.callMethod" lang="python,lua" var="METHOD_createObject">
+        <method name="createObject" lang="python,lua" var="METHOD_createObject">
             <info>same method present in both app and scene</info>
             <description>
                 Creates one of following objects:
@@ -9040,7 +9040,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:removeObjects" />
             </see-also>
         </method>
-        <method name="simulation:start" func="sim.callMethod" lang="python,lua" var="METHOD_startSimulation">
+        <method name="simulation:start" lang="python,lua" var="METHOD_startSimulation">
             <description>
                 Requests a start of a simulation (or a resume of a paused simulation). Operation executes asynchronously
             </description>
@@ -9057,7 +9057,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="scene.simulation.state" />
             </see-also>
         </method>
-        <method name="simulation:stop" func="sim.callMethod" lang="python,lua" var="METHOD_stopSimulation">
+        <method name="simulation:stop" lang="python,lua" var="METHOD_stopSimulation">
             <description>
                 Requests a simulation stop. Operation executes asynchronously
             </description>
@@ -9074,7 +9074,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="scene.simulation.state" />
             </see-also>
         </method>
-        <method name="simulation:pause" func="sim.callMethod" lang="python,lua" var="METHOD_pauseSimulation">
+        <method name="simulation:pause" lang="python,lua" var="METHOD_pauseSimulation">
             <description>
                 Requests a simulation pause. Operation executes asynchronously
             </description>
@@ -9091,7 +9091,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="scene.simulation.state" />
             </see-also>
         </method>
-        <method name="dynamics:step" func="sim.callMethod" lang="python,lua" var="METHOD_stepDynamics">
+        <method name="dynamics:step" lang="python,lua" var="METHOD_stepDynamics">
             <description>
                 Steps the dynamics engine
             </description>
@@ -9116,7 +9116,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="scene.simulation.timeStep" />
             </see-also>
         </method>
-        <method name="stepKinematicJoints" func="sim.callMethod" lang="python,lua" var="METHOD_stepKinematicJoints">
+        <method name="stepKinematicJoints" lang="python,lua" var="METHOD_stepKinematicJoints">
             <description>
                 Steps all kinematic mode joints
             </description>
@@ -10942,7 +10942,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <namespace name="signal" />
     </object-class>
     <object-class name="customObject" superclass="object">
-        <method name="makeObject" func="sim.callMethod" lang="python,lua">
+        <method name="makeObject" lang="python,lua">
             <description>
                 Instantiates a custom object from a class or template
             </description>
@@ -10979,7 +10979,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="app.customClasses" />
             </see-also>
         </method>
-        <method name="remove" func="sim.callMethod" lang="python,lua" var="METHOD_remove">
+        <method name="remove" lang="python,lua" var="METHOD_remove">
             <info>similar method present in several classes</info>
             <description>
                 Removes the custom scene object
@@ -11007,7 +11007,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
     </object-class>
     <object-class name="sceneObject" superclass="object">
-        <method name="makeObject" func="sim.callMethod" lang="python,lua" var="METHOD_makeObject">
+        <method name="makeObject" lang="python,lua" var="METHOD_makeObject">
             <description>
                 Instantiates a customized scene object from a class or template
             </description>
@@ -11031,7 +11031,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="customObject:makeObject" />
             </see-also>
         </method>
-        <method name="makeClass" func="sim.callMethod" lang="python,lua" var="METHOD_makeClass">
+        <method name="makeClass" lang="python,lua" var="METHOD_makeClass">
             <description>
                 Creates a class or template from this object
             </description>
@@ -11061,7 +11061,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="app.customSceneObjectClasses" />
             </see-also>
         </method>
-        <method name="changeColor" func="sim.callMethod" lang="python,lua" var="METHOD_changeColor">
+        <method name="changeColor" lang="python,lua" var="METHOD_changeColor">
             <info>same method present in collection and sceneObject</info>
             <description>
                 Changes the color of the object, if it is a shape
@@ -11102,7 +11102,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="collection:changeColor" />
             </see-also>
         </method>
-        <method name="restoreColor" func="sim.callMethod" lang="python,lua" var="METHOD_restoreColor">
+        <method name="restoreColor" lang="python,lua" var="METHOD_restoreColor">
             <info>same method present in collection and sceneObject</info>
             <description>
                 Restores the color of the object, if it is a shape
@@ -11127,7 +11127,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="shape:getAppearance" />
             </see-also>
         </method>
-        <method name="getObject" func="sim.callMethod" lang="python,lua" var="METHOD_getObject">
+        <method name="getObject" lang="python,lua" var="METHOD_getObject">
             <description>
                 Retrieves an object in the current hierarchy tree, based on its path and name
             </description>
@@ -11168,7 +11168,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <link href="../accessingSceneObjects.htm" label="accessing scene objects" />
             </see-also>
         </method>
-        <method name="dynamicReset" func="sim.callMethod" lang="python,lua" var="METHOD_dynamicReset">
+        <method name="dynamicReset" lang="python,lua" var="METHOD_dynamicReset">
             <description>
                 Dynamically resets one or several objects that are dynamically simulated. This means that the object representation
                 in the dynamics engine is removed, and added again. This can be useful when the set-up of a dynamically
@@ -11195,7 +11195,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="shape.dynamicallyEnabled" />
             </see-also>
         </method>
-        <method name="remove" func="sim.callMethod" lang="python,lua" var="METHOD_remove">
+        <method name="remove" lang="python,lua" var="METHOD_remove">
             <info>similar method present in several classes</info>
             <description>
                 Removes the object from the scene
@@ -11222,7 +11222,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="scene:removeObjects" />
             </see-also>
         </method>
-        <method name="removeModel" func="sim.callMethod" lang="python,lua" var="METHOD_removeModel">
+        <method name="removeModel" lang="python,lua" var="METHOD_removeModel">
             <description>
                 Removes the model from the scene
             </description>
@@ -11251,7 +11251,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.modelBase" />
             </see-also>
         </method>
-        <method name="saveModel" func="sim.callMethod" lang="python,lua" var="METHOD_saveModel">
+        <method name="saveModel" lang="python,lua" var="METHOD_saveModel">
             <description>
                 Saves this model. Any existing file with the same name will be overwritten
             </description>
@@ -11277,7 +11277,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.modelBase" />
             </see-also>
         </method>
-        <method name="saveModelToBuffer" func="sim.callMethod" lang="python,lua" var="METHOD_saveModelToBuffer">
+        <method name="saveModelToBuffer" lang="python,lua" var="METHOD_saveModelToBuffer">
             <description>
                 Serializes this model to a buffer
             </description>
@@ -11300,7 +11300,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="sceneObject:saveModel" />
             </see-also>
         </method>
-        <method name="getDescendants" func="sim.callMethod" lang="python,lua" var="METHOD_getDescendants">
+        <method name="getDescendants" lang="python,lua" var="METHOD_getDescendants">
             <description>
                 Retrieves descendant scene objects (children, grandchildren, etc.)
             </description>
@@ -11335,7 +11335,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.tree" />
             </see-also>
         </method>
-        <method name="getAncestors" func="sim.callMethod" lang="python,lua" var="METHOD_getAncestors">
+        <method name="getAncestors" lang="python,lua" var="METHOD_getAncestors">
             <description>
                 Retrieves ancestor scene objects (parent, grandparent, etc.)
             </description>
@@ -11367,7 +11367,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.parent" />
             </see-also>
         </method>
-        <method name="visitTree" func="sim.callMethod" lang="python,lua" var="METHOD_visitTree">
+        <method name="visitTree" lang="python,lua" var="METHOD_visitTree">
             <description>
                 Executes a function on all objects of this object tree, in a depth-first manner
             </description>
@@ -11399,7 +11399,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.tree" />
             </see-also>
         </method>
-        <method name="checkCollision" func="sim.callMethod" lang="python,lua" var="METHOD_checkCollision">
+        <method name="checkCollision" lang="python,lua" var="METHOD_checkCollision">
             <description>
                 Checks whether this <a href="../objects.htm">scene object</a> collides with another scene object or a <a href="../collections.htm">collection</a>. The
                 <a href="../collidableObjects.htm">collidable</a> flag of this object (and of the other entity if it is also a scene object) is ignored
@@ -11437,7 +11437,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.collidable" />
             </see-also>
         </method>
-        <method name="checkDistance" func="sim.callMethod" lang="python,lua" var="METHOD_checkDistance">
+        <method name="checkDistance" lang="python,lua" var="METHOD_checkDistance">
             <description>
                 Checks the minimum distance between this <a href="../objects.htm">scene object</a> and another scene object or a <a href="../collections.htm">collection</a>. The
                 <a href="../measurableObjects.htm">measurable</a> flag of this object (and of the other entity if it is also a scene object) is ignored
@@ -11497,7 +11497,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.measurable" />
             </see-also>
         </method>
-        <method name="getName" func="sim.callMethod" lang="python,lua" var="METHOD_getName">
+        <method name="getName" lang="python,lua" var="METHOD_getName">
             <description>
                 Retrieves the name or path of a scene object
             </description>
@@ -11535,7 +11535,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.name" />
             </see-also>
         </method>
-        <method name="getPose" func="sim.callMethod" lang="python,lua" var="METHOD_getPose">
+        <method name="getPose" lang="python,lua" var="METHOD_getPose">
             <description>
                 Retrieves the pose of a scene object
             </description>
@@ -11576,7 +11576,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.worldPose" />
             </see-also>
         </method>
-        <method name="getPosition" func="sim.callMethod" lang="python,lua" var="METHOD_getPosition">
+        <method name="getPosition" lang="python,lua" var="METHOD_getPosition">
             <description>
                 Retrieves the position of a scene object
             </description>
@@ -11616,7 +11616,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.worldPosition" />
             </see-also>
         </method>
-        <method name="getQuaternion" func="sim.callMethod" lang="python,lua" var="METHOD_getQuaternion">
+        <method name="getQuaternion" lang="python,lua" var="METHOD_getQuaternion">
             <description>
                 Retrieves the quaternion of a scene object
             </description>
@@ -11657,7 +11657,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.worldQuaternion" />
             </see-also>
         </method>
-        <method name="setPose" func="sim.callMethod" lang="python,lua" var="METHOD_setPose">
+        <method name="setPose" lang="python,lua" var="METHOD_setPose">
             <description>
                 Sets the pose of a scene object. Dynamically simulated objects, together with their hierarchy tree, are dynamically reset (this however does not apply to static shapes)
             </description>
@@ -11694,7 +11694,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.worldPose" />
             </see-also>
         </method>
-        <method name="setPosition" func="sim.callMethod" lang="python,lua" var="METHOD_setPosition">
+        <method name="setPosition" lang="python,lua" var="METHOD_setPosition">
             <description>
                 Sets the position of a scene object. Dynamically simulated objects, together with their hierarchy tree, are dynamically reset (this however does not apply to static shapes)
             </description>
@@ -11730,7 +11730,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.worldPosition" />
             </see-also>
         </method>
-        <method name="setQuaternion" func="sim.callMethod" lang="python,lua" var="METHOD_setQuaternion">
+        <method name="setQuaternion" lang="python,lua" var="METHOD_setQuaternion">
             <description>
                 Sets the quaternion of a scene object. Dynamically simulated objects, together with their hierarchy tree, are dynamically reset (this however does not apply to static shapes)
             </description>
@@ -11767,7 +11767,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.worldQuaternion" />
             </see-also>
         </method>
-        <method name="setParent" func="sim.callMethod" lang="python,lua" var="METHOD_setParent">
+        <method name="setParent" lang="python,lua" var="METHOD_setParent">
             <description>
                 Sets a scene object's parent. Dynamically simulated objects, together with their hierarchy tree, are dynamically reset (this however does not
                 apply to static shapes)
@@ -11801,7 +11801,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="dummy.assemblyTag" />
             </see-also>
         </method>
-        <method name="scaleTree" func="sim.callMethod" lang="python,lua" var="METHOD_scaleTree">
+        <method name="scaleTree" lang="python,lua" var="METHOD_scaleTree">
             <description>
                 Scales the specified scene object tree in an isometric fashion. All related values are automatically scaled appropriately
                 (e.g. masses, etc.)
@@ -11832,7 +11832,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.dimension" />
             </see-also>
         </method>
-        <method name="scale" func="sim.callMethod" lang="python,lua" var="METHOD_scale">
+        <method name="scale" lang="python,lua" var="METHOD_scale">
             <description>
                 Scales the scene object in a non-isometric fashion, if possible. Some scene objects
                 might have some constraints between their axes
@@ -12904,7 +12904,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <namespace name="signal" />
     </object-class>
     <object-class name="marker" superclass="sceneObject">
-        <method name="addItems" func="sim.callMethod" lang="python,lua" var="METHOD_addItems">
+        <method name="addItems" lang="python,lua" var="METHOD_addItems">
             <description>
                 Adds items to a marker
             </description>
@@ -12950,7 +12950,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="marker.sizes" />
             </see-also>
         </method>
-        <method name="clearItems" func="sim.callMethod" lang="python,lua" var="METHOD_clearItems">
+        <method name="clearItems" lang="python,lua" var="METHOD_clearItems">
             <description>
                 Clears a marker
             </description>
@@ -12966,7 +12966,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="marker:addItems" />
             </see-also>
         </method>
-        <method name="removeItems" func="sim.callMethod" lang="python,lua" var="METHOD_removeItems">
+        <method name="removeItems" lang="python,lua" var="METHOD_removeItems">
             <description>
                 Removes specific items from a marker
             </description>
@@ -13137,7 +13137,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="shape" superclass="sceneObject">
-        <method name="getContacts" func="sim.callMethod" lang="python,lua" var="METHOD_getContacts">
+        <method name="getContacts" lang="python,lua" var="METHOD_getContacts">
             <info>same method present in both scene and shape</info>
             <description>
                 Retrieves this shape's contact information from the dynamics world
@@ -13190,7 +13190,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="shape.respondableMask" />
             </see-also>
         </method>
-        <method name="getAppearance" func="sim.callMethod" lang="python,lua" var="METHOD_getAppearance">
+        <method name="getAppearance" lang="python,lua" var="METHOD_getAppearance">
             <description>
                 Fetches the shape's main properties related to appearance
             </description>
@@ -13219,7 +13219,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="mesh.wireframe" />
             </see-also>
         </method>
-        <method name="setAppearance" func="sim.callMethod" lang="python,lua" var="METHOD_setAppearance">
+        <method name="setAppearance" lang="python,lua" var="METHOD_setAppearance">
             <description>
                 Sets the shape's main properties related to appearance
             </description>
@@ -13248,7 +13248,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="mesh.wireframe" />
             </see-also>
         </method>
-        <method name="ungroup" func="sim.callMethod" lang="python,lua" var="METHOD_ungroup">
+        <method name="ungroup" lang="python,lua" var="METHOD_ungroup">
             <description>
                 Ungroups (decomposes) a compound shape
             </description>
@@ -13276,7 +13276,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="shape.meshes" />
             </see-also>
         </method>
-        <method name="divide" func="sim.callMethod" lang="python,lua" var="METHOD_divide">
+        <method name="divide" lang="python,lua" var="METHOD_divide">
             <description>
                 Divides a simple shape into shapes that do not share common vertices. A compound shape should be ungrouped before being divided
             </description>
@@ -13302,7 +13302,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="shape.meshes" />
             </see-also>
         </method>
-        <method name="addForce" func="sim.callMethod" lang="python,lua" var="METHOD_addForce">
+        <method name="addForce" lang="python,lua" var="METHOD_addForce">
             <description>
                 Applies a force to the dynamically enabled shape. Forces are added cumulatively
             </description>
@@ -13337,7 +13337,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="shape.centerOfMass" />
             </see-also>
         </method>
-        <method name="addTorque" func="sim.callMethod" lang="python,lua" var="METHOD_addTorque">
+        <method name="addTorque" lang="python,lua" var="METHOD_addTorque">
             <description>
                 Applies a torque to the dynamically enabled shape. Torques are added cumulatively
             </description>
@@ -13371,7 +13371,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="shape.centerOfMass" />
             </see-also>
         </method>
-        <method name="computeInertia" func="sim.callMethod" lang="python,lua" var="METHOD_computeInertia">
+        <method name="computeInertia" lang="python,lua" var="METHOD_computeInertia">
             <description>
                 Computes and applies mass and inertia properties to the shape, based on its convex representation
             </description>
@@ -13398,7 +13398,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="shape.centerOfMass" />
             </see-also>
         </method>
-        <method name="setInertia" func="sim.callMethod" lang="python,lua" var="METHOD_setInertia">
+        <method name="setInertia" lang="python,lua" var="METHOD_setInertia">
             <description>
                 Applies a new inertia matrix
             </description>
@@ -13430,7 +13430,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="shape.centerOfMass" />
             </see-also>
         </method>
-        <method name="getInertia" func="sim.callMethod" lang="python,lua" var="METHOD_getInertia">
+        <method name="getInertia" lang="python,lua" var="METHOD_getInertia">
             <description>
                 Retrieves the shape's inertia information
             </description>
@@ -13462,7 +13462,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="shape.centerOfMass" />
             </see-also>
         </method>
-        <method name="relocateFrame" func="sim.callMethod" lang="python,lua" var="METHOD_relocateFrame">
+        <method name="relocateFrame" lang="python,lua" var="METHOD_relocateFrame">
             <description>
                 Repositions and reorients the shape's reference frame, while keeping the mesh
                 in place. The shape's inertia properties are unaffected
@@ -13485,7 +13485,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="shape:alignBoundingBox" />
             </see-also>
         </method>
-        <method name="alignBoundingBox" func="sim.callMethod" lang="python,lua" var="METHOD_alignBoundingBox">
+        <method name="alignBoundingBox" lang="python,lua" var="METHOD_alignBoundingBox">
             <description>
                 Reorients the shape's bounding box, while keeping the shape frame in place.
                 The shape's inertia properties are unaffected
@@ -15391,7 +15391,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="proximitySensor" superclass="sceneObject">
-        <method name="checkSensor" func="sim.callMethod" lang="python,lua" var="METHOD_checkSensor">
+        <method name="checkSensor" lang="python,lua" var="METHOD_checkSensor">
             <description>
                 Checks whether this proximity sensor detects the indicated entity. Detection is silent (no visual
                 feedback) and the detectable flags of the entity to detect are overridden, if the entity is a scene object
@@ -15454,7 +15454,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.detectable" />
             </see-also>
         </method>
-        <method name="handleSensor" func="sim.callMethod" lang="python,lua" var="METHOD_handleSensor">
+        <method name="handleSensor" lang="python,lua" var="METHOD_handleSensor">
             <description>
                 Handles this proximity sensor, i.e. does detection. Detection is not silent (i.e. there is visual
                 feedback), and the detectable flags of the scene objects to detect are taken into account
@@ -15497,7 +15497,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="proximitySensor:checkSensor" />
             </see-also>
         </method>
-        <method name="resetSensor" func="sim.callMethod" lang="python,lua" var="METHOD_resetSensor">
+        <method name="resetSensor" lang="python,lua" var="METHOD_resetSensor">
             <description>
                 Clears the detection state and visual feedback of this proximity sensor
             </description>
@@ -15887,7 +15887,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="visionSensor" superclass="sceneObject">
-        <method name="getDepth" func="sim.callMethod" lang="python,lua" var="METHOD_getDepth">
+        <method name="getDepth" lang="python,lua" var="METHOD_getDepth">
             <description>
                 Reads the vision sensor's depth buffer (or a portion of it)
             </description>
@@ -15926,7 +15926,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="visionSensor.packedDepth" />
             </see-also>
         </method>
-        <method name="getImage" func="sim.callMethod" lang="python,lua" var="METHOD_getImage">
+        <method name="getImage" lang="python,lua" var="METHOD_getImage">
             <description>
                 Reads the vision sensor's image (or a portion of it)
             </description>
@@ -15971,7 +15971,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="visionSensor.resolution" />
             </see-also>
         </method>
-        <method name="setImage" func="sim.callMethod" lang="python,lua" var="METHOD_setImage">
+        <method name="setImage" lang="python,lua" var="METHOD_setImage">
             <description>
                 Writes an image to the vision sensor (and applies any image processing via the
                 <a href="../visionCallbackFunctions.htm">vision callback functions</a>
@@ -16003,7 +16003,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:transformImage" />
             </see-also>
         </method>
-        <method name="checkSensor" func="sim.callMethod" lang="python,lua" var="METHOD_checkSensor">
+        <method name="checkSensor" lang="python,lua" var="METHOD_checkSensor">
             <description>
                 Checks whether the vision sensor detects the indicated entity. Detection is silent.
                 The <a href="../visionCallbackFunctions.htm"> vision callback functions </a>
@@ -16045,7 +16045,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="visionSensor:handleSensor" />
             </see-also>
         </method>
-        <method name="handleSensor" func="sim.callMethod" lang="python,lua" var="METHOD_handleSensor">
+        <method name="handleSensor" lang="python,lua" var="METHOD_handleSensor">
             <description>
                 Handles (performs sensing, etc. of) the vision sensor object. It (1) clears previously computed image processing data, (2) reads
                 an image and (3) performs image processing via the
@@ -16082,7 +16082,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="visionSensor:resetSensor" />
             </see-also>
         </method>
-        <method name="resetSensor" func="sim.callMethod" lang="python,lua" var="METHOD_resetSensor">
+        <method name="resetSensor" lang="python,lua" var="METHOD_resetSensor">
             <description>
                 Clears the detection state, etc. of the vision sensor
             </description>
@@ -16517,7 +16517,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="camera" superclass="sceneObject">
-        <method name="getImage" func="sim.callMethod" lang="python,lua" var="METHOD_getImage">
+        <method name="getImage" lang="python,lua" var="METHOD_getImage">
             <description>
                 Returns data similar to that acquired by the camera
             </description>
@@ -16787,7 +16787,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="graph" superclass="sceneObject">
-        <method name="addSignal" func="sim.callMethod" lang="python,lua" var="METHOD_addSignal">
+        <method name="addSignal" lang="python,lua" var="METHOD_addSignal">
             <description>
                 Adds or updates a graph signal
             </description>
@@ -16834,7 +16834,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="graph:addCurve" />
             </see-also>
         </method>
-        <method name="addCurve" func="sim.callMethod" lang="python,lua" var="METHOD_addCurve">
+        <method name="addCurve" lang="python,lua" var="METHOD_addCurve">
             <description>
                 Adds or updates a graph curve
             </description>
@@ -16877,7 +16877,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="graph:addSignal" />
             </see-also>
         </method>
-        <method name="reset" func="sim.callMethod" lang="python,lua" var="METHOD_resetGraph">
+        <method name="reset" lang="python,lua" var="METHOD_resetGraph">
             <description>
                 Resets the graph, i.e. clears all its signals
             </description>
@@ -16893,7 +16893,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="graph:removeTrace" />
             </see-also>
         </method>
-        <method name="removeTrace" func="sim.callMethod" lang="python,lua" var="METHOD_removeTrace">
+        <method name="removeTrace" lang="python,lua" var="METHOD_removeTrace">
             <description>
                 Removes a signal or curve
             </description>
@@ -16914,7 +16914,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="graph:reset" />
             </see-also>
         </method>
-        <method name="setSignalPoint" func="sim.callMethod" lang="python,lua" var="METHOD_setSignalPoint">
+        <method name="setSignalPoint" lang="python,lua" var="METHOD_setSignalPoint">
             <description>
                 Sets the next signal value to be recorded
             </description>
@@ -16941,7 +16941,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="graph:reset" />
             </see-also>
         </method>
-        <method name="step" func="sim.callMethod" lang="python,lua" var="METHOD_step">
+        <method name="step" lang="python,lua" var="METHOD_step">
             <description>
                 Records another value for each signal, given that such value was provided via graph:setSignalPoint()
             </description>
@@ -16964,7 +16964,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="scene.simulation.timeStep" />
             </see-also>
         </method>
-        <method name="snapshotTrace" func="sim.callMethod" lang="python,lua" var="METHOD_snapshotTrace">
+        <method name="snapshotTrace" lang="python,lua" var="METHOD_snapshotTrace">
             <description>
                 Duplicates a graph trace, and freezes it
             </description>
@@ -17102,7 +17102,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="ocTree" superclass="sceneObject">
-        <method name="addFromObjects" func="sim.callMethod" lang="python,lua" var="METHOD_addFromObjects">
+        <method name="addFromObjects" lang="python,lua" var="METHOD_addFromObjects">
             <info>similar method present in both ocTree and pointCloud</info>
             <description>
                 Adds voxels from scene objects
@@ -17140,7 +17140,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="ocTree.colors" />
             </see-also>
         </method>
-        <method name="subtractFromObjects" func="sim.callMethod" lang="python,lua" var="METHOD_subtractFromObjects">
+        <method name="subtractFromObjects" lang="python,lua" var="METHOD_subtractFromObjects">
             <info>similar method present in both ocTree and pointCloud</info>
             <description>
                 Subtracts voxels from scene objects
@@ -17169,7 +17169,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="ocTree.colors" />
             </see-also>
         </method>
-        <method name="addVoxels" func="sim.callMethod" lang="python,lua" var="METHOD_addVoxels">
+        <method name="addVoxels" lang="python,lua" var="METHOD_addVoxels">
             <info>similar method present in both ocTree and pointCloud</info>
             <description>
                 Inserts voxels
@@ -17213,7 +17213,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="ocTree.colors" />
             </see-also>
         </method>
-        <method name="addPackedVoxels" func="sim.callMethod" lang="python,lua" var="METHOD_addPackedVoxels">
+        <method name="addPackedVoxels" lang="python,lua" var="METHOD_addPackedVoxels">
             <info>similar method present in both ocTree and pointCloud</info>
             <description>
                 Inserts voxels from a buffer, instead of an array
@@ -17256,7 +17256,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="ocTree.colors" />
             </see-also>
         </method>
-        <method name="subtractVoxels" func="sim.callMethod" lang="python,lua" var="METHOD_subtractVoxels">
+        <method name="subtractVoxels" lang="python,lua" var="METHOD_subtractVoxels">
             <description>
                 Removes voxels
             </description>
@@ -17294,7 +17294,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="ocTree.colors" />
             </see-also>
         </method>
-        <method name="subtractPackedVoxels" func="sim.callMethod" lang="python,lua" var="METHOD_subtractPackedVoxels">
+        <method name="subtractPackedVoxels" lang="python,lua" var="METHOD_subtractPackedVoxels">
             <description>
                 Removes voxels from a buffer, instead of an array
             </description>
@@ -17332,7 +17332,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="ocTree.colors" />
             </see-also>
         </method>
-        <method name="checkPoints" func="sim.callMethod" lang="python,lua" var="METHOD_checkPoints">
+        <method name="checkPoints" lang="python,lua" var="METHOD_checkPoints">
             <description>
                 Checks whether the provided points collide with the voxels
             </description>
@@ -17386,7 +17386,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="collection:checkCollision" />
             </see-also>
         </method>
-        <method name="checkPackedPoints" func="sim.callMethod" lang="python,lua" var="METHOD_checkPackedPoints">
+        <method name="checkPackedPoints" lang="python,lua" var="METHOD_checkPackedPoints">
             <description>
                 Checks whether the provided buffer points collide with the voxels
             </description>
@@ -17440,7 +17440,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="collection:checkCollision" />
             </see-also>
         </method>
-        <method name="clear" func="sim.callMethod" lang="python,lua" var="METHOD_clear">
+        <method name="clear" lang="python,lua" var="METHOD_clear">
             <info>similar method present in both ocTree and pointCloud</info>
             <description>
                 Removes all voxels
@@ -17585,7 +17585,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="pointCloud" superclass="sceneObject">
-        <method name="addFromObjects" func="sim.callMethod" lang="python,lua" var="METHOD_addFromObjects">
+        <method name="addFromObjects" lang="python,lua" var="METHOD_addFromObjects">
             <info>similar method present in both ocTree and pointCloud</info>
             <description>
                 Adds points from scene objects
@@ -17624,7 +17624,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="pointCloud.colors" />
             </see-also>
         </method>
-        <method name="subtractFromObjects" func="sim.callMethod" lang="python,lua" var="METHOD_subtractFromObjects">
+        <method name="subtractFromObjects" lang="python,lua" var="METHOD_subtractFromObjects">
             <info>similar method present in both ocTree and pointCloud</info>
             <description>
                 Subtracts points from scene objects
@@ -17661,7 +17661,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="pointCloud.colors" />
             </see-also>
         </method>
-        <method name="addPoints" func="sim.callMethod" lang="python,lua" var="METHOD_addPoints">
+        <method name="addPoints" lang="python,lua" var="METHOD_addPoints">
             <description>
                 Inserts points
             </description>
@@ -17702,7 +17702,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="pointCloud.colors" />
             </see-also>
         </method>
-        <method name="addPackedPoints" func="sim.callMethod" lang="python,lua" var="METHOD_addPackedPoints">
+        <method name="addPackedPoints" lang="python,lua" var="METHOD_addPackedPoints">
             <description>
                 Inserts points from a buffer, instead of an array
             </description>
@@ -17742,7 +17742,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="pointCloud.colors" />
             </see-also>
         </method>
-        <method name="subtractPoints" func="sim.callMethod" lang="python,lua" var="METHOD_subtractPoints">
+        <method name="subtractPoints" lang="python,lua" var="METHOD_subtractPoints">
             <description>
                 Removes points
             </description>
@@ -17781,7 +17781,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="pointCloud.colors" />
             </see-also>
         </method>
-        <method name="subtractPackedPoints" func="sim.callMethod" lang="python,lua" var="METHOD_subtractPackedPoints">
+        <method name="subtractPackedPoints" lang="python,lua" var="METHOD_subtractPackedPoints">
             <description>
                 Removes points from a buffer, instead of an array
             </description>
@@ -17820,7 +17820,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="pointCloud.colors" />
             </see-also>
         </method>
-        <method name="intersectPoints" func="sim.callMethod" lang="python,lua" var="METHOD_intersectPoints">
+        <method name="intersectPoints" lang="python,lua" var="METHOD_intersectPoints">
             <description>
                 Removes points that do not intersect with the
                 provided points (i.e. the result in the point cloud will be the intersection between the two sets of points)
@@ -17854,7 +17854,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="pointCloud:addPoints" />
             </see-also>
         </method>
-        <method name="intersectPackedPoints" func="sim.callMethod" lang="python,lua" var="METHOD_intersectPackedPoints">
+        <method name="intersectPackedPoints" lang="python,lua" var="METHOD_intersectPackedPoints">
             <description>
                 Removes points that do not intersect with the
                 provided buffer points (i.e. the result in the point cloud will be the intersection between the two sets of points)
@@ -17888,7 +17888,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="pointCloud:addPoints" />
             </see-also>
         </method>
-        <method name="clear" func="sim.callMethod" lang="python,lua" var="METHOD_clear">
+        <method name="clear" lang="python,lua" var="METHOD_clear">
             <info>similar method present in both ocTree and pointCloud</info>
             <description>
                 Removes all points
@@ -18073,7 +18073,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="joint" superclass="sceneObject">
-        <method name="setTargetPosition" func="sim.callMethod" lang="python,lua" var="METHOD_setTargetPosition">
+        <method name="setTargetPosition" lang="python,lua" var="METHOD_setTargetPosition">
             <description>
                 Sets the joint's desired linear/angular position (only for non-spherical joints). When in kinematic mode, the joint moves according to a motion profile that respects maximum velocity, acceleration and jerk values. In dynamic and position/custom control mode, the controller is instructed about the desired position
             </description>
@@ -18107,7 +18107,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="joint.maxVelAccelJerk" />
             </see-also>
         </method>
-        <method name="setTargetVelocity" func="sim.callMethod" lang="python,lua" var="METHOD_setTargetVelocity">
+        <method name="setTargetVelocity" lang="python,lua" var="METHOD_setTargetVelocity">
             <description>
                 Sets the joint's desired linear/angular velocity (only for non-spherical joints). When in kinematic mode, the joint moves according to a motion profile that
                 respects maximum acceleration and jerk values. In dynamic and velocity control mode, the controller is instructed about the desired velocity
