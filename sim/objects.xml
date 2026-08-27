@@ -8105,6 +8105,99 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="scene" superclass="object" singleton="sim.scene">
+        <method name="copyObjects" lang="python,lua" var="METHOD_copyObjects">
+            <short-description>Copies selected objects</short-description>
+            <description>
+                Copies selected objects to an internal buffer
+            </description>
+            <params>
+                <param name="objects" type="handle[]">
+                    <description>
+                        List of objects to copy
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        Optional map:
+                        <ul>
+                            <li>models (bool, defaults to false): whole models are copied when the selection includes model bases</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+            </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
+            <categories>
+                <category name="sceneObject" />
+                <category name="model" />
+            </categories>
+            <see-also>
+                <function-ref name="scene:cutObjects" />
+                <function-ref name="scene:pasteObjects" />
+                <function-ref name="scene:duplicateObjects" />
+            </see-also>
+        </method>
+        <method name="cutObjects" lang="python,lua" var="METHOD_cutObjects">
+            <short-description>Cuts selected objects</short-description>
+            <description>
+                Cuts selected objects to an internal buffer
+            </description>
+            <params>
+                <param name="objects" type="handle[]">
+                    <description>
+                        List of objects to cut
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        Optional map:
+                        <ul>
+                            <li>models (bool, defaults to false): whole models are cut when the selection includes model bases</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+            </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
+            <categories>
+                <category name="sceneObject" />
+                <category name="model" />
+            </categories>
+            <see-also>
+                <function-ref name="scene:copyObjects" />
+                <function-ref name="scene:pasteObjects" />
+                <function-ref name="scene:duplicateObjects" />
+            </see-also>
+        </method>
+        <method name="pasteObjects" lang="python,lua" var="METHOD_pasteObjects">
+            <short-description>Pastes objects</short-description>
+            <description>
+                Pastes objects from the internal buffer
+            </description>
+            <params>
+            </params>
+            <returns>
+            </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
+            <categories>
+                <category name="sceneObject" />
+                <category name="model" />
+                <category name="creation" />
+            </categories>
+            <see-also>
+                <function-ref name="scene:copyObjects" />
+                <function-ref name="scene:cutObjects" />
+                <function-ref name="scene:duplicateObjects" />
+            </see-also>
+        </method>
         <method name="getContacts" lang="python,lua" var="METHOD_getContacts">
             <short-description>Retrieves contact information from the dynamics world</short-description>
             <description>
