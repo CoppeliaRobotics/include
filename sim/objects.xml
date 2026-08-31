@@ -1664,6 +1664,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
             </supersedes>
             <categories>
+                <category name="hierarchy" />
             </categories>
             <see-also>
             </see-also>
@@ -2149,6 +2150,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>The involved joints, from base to tip</description>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
+                <category name="hierarchy" />
             </categories>
         </property>
         <property name="base" type="object" var="base" >
@@ -2156,6 +2158,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>The associated base object</description>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
+                <category name="hierarchy" />
             </categories>
         </property>
         <property name="tip" type="object" var="tip" >
@@ -2163,6 +2166,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>The associated tip object</description>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
+                <category name="hierarchy" />
             </categories>
         </property>
         <property name="target" type="object" var="target" >
@@ -2170,6 +2174,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>The associated target object</description>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
+                <category name="hierarchy" />
             </categories>
         </property>
         <property name="constraints" type="int" var="constraints" >
@@ -4366,118 +4371,6 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
             </see-also>
         </method>
-        <method name="throttle" lang="python,lua" var="METHOD_throttle">
-            <short-description>Limits the rate of a function call</short-description>
-            <description>
-                Limits the rate at which a function can be called
-            </description>
-            <params>
-                <param name="function" type="func">
-                    <description>
-                        The function to execute
-                    </description>
-                </param>
-                <param name="interval" type="float">
-                    <description>
-                        The throttle time
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        Optional map:
-                        <ul>
-                            <li>args (any[], defaults to []): arguments to pass to the function</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-            </returns>
-            <support start="2" startDeprecated="0" end="0" />
-            <supersedes>
-            </supersedes>
-            <categories>
-                <category name="other" />
-            </categories>
-            <see-also>
-                <function-ref name="app:scheduleExecution" />
-            </see-also>
-        </method>
-        <method name="scheduleExecution" lang="python,lua" var="METHOD_scheduleExecution">
-            <short-description>Schedules a function for execution after a delay</short-description>
-            <description>
-                Schedules a function to be called after a delay
-            </description>
-            <params>
-                <param name="function" type="func">
-                    <description>
-                        The function to execute
-                    </description>
-                </param>
-                <param name="delay" type="float">
-                    <description>
-                        The execution delay
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        Optional map:
-                        <ul>
-                            <li>simulationTime (bool, defaults to false)</li>
-                            <li>args (any[], defaults to []): arguments to pass to the function</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="handle" type="int">
-                    <description>
-                        The handle to the function in the scheduler
-                    </description>
-                </param>
-            </returns>
-            <support start="2" startDeprecated="0" end="0" />
-            <supersedes>
-                <item name="sim.scheduleExecution" />
-            </supersedes>
-            <categories>
-                <category name="other" />
-            </categories>
-            <see-also>
-                <function-ref name="app:cancelScheduledExecution" />
-                <function-ref name="app:throttle" />
-            </see-also>
-        </method>
-        <method name="cancelScheduledExecution" lang="python,lua" var="METHOD_cancelScheduledExecution">
-            <short-description>Cancels a scheduled function execution</short-description>
-            <description>
-                Cancels a scheduled function execution
-            </description>
-            <params>
-                <param name="handle" type="int">
-                    <description>
-                        The handle of the scheduled function execution
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="result" type="bool">
-                    <description>
-                        The result of the operation
-                    </description>
-                </param>
-            </returns>
-            <support start="2" startDeprecated="0" end="0" />
-            <supersedes>
-                <item name="sim.cancelScheduledExecution" />
-            </supersedes>
-            <categories>
-                <category name="other" />
-            </categories>
-            <see-also>
-                <function-ref name="app:scheduleExecution" />
-            </see-also>
-        </method>
         <method name="pack" lang="python,lua" var="METHOD_pack">
             <short-description>Packs data using CoppeliaSim format</short-description>
             <description>
@@ -6633,6 +6526,118 @@ note: the generated see-also section contains the <see-also> items, but also the
         <namespace name="signal" />
     </object-class>
     <object-class name="detachedScript" superclass="object">
+        <method name="throttle" lang="python,lua" var="METHOD_throttle">
+            <short-description>Limits the rate of a function call</short-description>
+            <description>
+                Limits the rate at which a function can be called
+            </description>
+            <params>
+                <param name="function" type="func">
+                    <description>
+                        The function to execute
+                    </description>
+                </param>
+                <param name="interval" type="float">
+                    <description>
+                        The throttle time
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        Optional map:
+                        <ul>
+                            <li>args (any[], defaults to []): arguments to pass to the function</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+            </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
+            <see-also>
+                <function-ref name="detachedScript:scheduleExecution" />
+            </see-also>
+        </method>
+        <method name="scheduleExecution" lang="python,lua" var="METHOD_scheduleExecution">
+            <short-description>Schedules a function for execution after a delay</short-description>
+            <description>
+                Schedules a function to be called after a delay
+            </description>
+            <params>
+                <param name="function" type="func">
+                    <description>
+                        The function to execute
+                    </description>
+                </param>
+                <param name="delay" type="float">
+                    <description>
+                        The execution delay
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        Optional map:
+                        <ul>
+                            <li>simulationTime (bool, defaults to false)</li>
+                            <li>args (any[], defaults to []): arguments to pass to the function</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="handle" type="int">
+                    <description>
+                        The handle to the function in the scheduler
+                    </description>
+                </param>
+            </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.scheduleExecution" />
+            </supersedes>
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
+            <see-also>
+                <function-ref name="detachedScript:cancelScheduledExecution" />
+                <function-ref name="detachedScript:throttle" />
+            </see-also>
+        </method>
+        <method name="cancelScheduledExecution" lang="python,lua" var="METHOD_cancelScheduledExecution">
+            <short-description>Cancels a scheduled function execution</short-description>
+            <description>
+                Cancels a scheduled function execution
+            </description>
+            <params>
+                <param name="handle" type="int">
+                    <description>
+                        The handle of the scheduled function execution
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="result" type="bool">
+                    <description>
+                        The result of the operation
+                    </description>
+                </param>
+            </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.cancelScheduledExecution" />
+            </supersedes>
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
+            <see-also>
+                <function-ref name="detachedScript:scheduleExecution" />
+            </see-also>
+        </method>
         <method name="setModuleEntry" lang="python,lua" var="METHOD_setModuleEntry">
             <short-description>Creates/modifies/destroys module menu entries</short-description>
             <description>
@@ -7950,6 +7955,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.addItemToCollection" />
             </supersedes>
             <categories>
+                <category name="hierarchy" />
             </categories>
             <see-also>
                 <function-ref name="collection:removeItem" />
@@ -7981,6 +7987,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.addItemToCollection" />
             </supersedes>
             <categories>
+                <category name="hierarchy" />
             </categories>
             <see-also>
                 <function-ref name="collection:addItem" />
@@ -8278,6 +8285,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getObjectsInTree" />
             </supersedes>
             <categories>
+                <category name="hierarchy" />
             </categories>
             <see-also>
                 <function-ref name="sceneObject:getAncestors" />
@@ -8443,6 +8451,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </supersedes>
             <categories>
                 <category name="main" />
+                <category name="hierarchy" />
             </categories>
             <see-also>
                 <function-ref name="sceneObject:getObject" />
@@ -8565,6 +8574,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
                 <category name="file" />
                 <category name="model" />
+                <category name="hierarchy" />
             </categories>
             <see-also>
                 <function-ref name="scene:loadModelFromBuffer" />
@@ -8615,6 +8625,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
                 <category name="file" />
                 <category name="model" />
+                <category name="hierarchy" />
             </categories>
             <see-also>
                 <function-ref name="scene:loadModel" />
@@ -8645,6 +8656,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getObjects" />
             </supersedes>
             <categories>
+                <category name="hierarchy" />
             </categories>
             <see-also>
                 <function-ref name="sceneObject:getDescendants" />
@@ -10456,6 +10468,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Hierarchy change counter</label>
             <description>Counter of scene hierarchy changes</description>
             <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="hierarchy" />
+            </categories>
         </property>
         <property name="locked" type="bool" var="sceneIsLocked" >
             <flags readable="true" />
@@ -10892,6 +10907,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="2" start-deprecated="0" end="0" />
             <categories>
                 <category name="creation" />
+                <category name="hierarchy" />
             </categories>
             <see-also>
                 <function-ref name="scene:getObjects" />
@@ -11463,6 +11479,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </supersedes>
             <categories>
                 <category name="main" />
+                <category name="hierarchy" />
             </categories>
             <see-also>
                 <function-ref name="scene:getObject" />
@@ -11551,6 +11568,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
                 <category name="creation" />
                 <category name="sceneObject" />
+                <category name="hierarchy" />
             </categories>
             <see-also>
                 <function-ref name="sceneObject:remove" />
@@ -11577,6 +11595,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
                 <category name="file" />
                 <category name="model" />
+                <category name="hierarchy" />
             </categories>
             <see-also>
                 <function-ref name="scene:loadModel" />
@@ -11604,6 +11623,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
                 <category name="file" />
                 <category name="model" />
+                <category name="hierarchy" />
             </categories>
             <see-also>
                 <function-ref name="sceneObject:saveModel" />
@@ -11637,6 +11657,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getObjectsInTree" />
             </supersedes>
             <categories>
+                <category name="hierarchy" />
             </categories>
             <see-also>
                 <function-ref name="sceneObject:getAncestors" />
@@ -11672,6 +11693,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
             </supersedes>
             <categories>
+                <category name="hierarchy" />
             </categories>
             <see-also>
                 <function-ref name="sceneObject:getDescendants" />
@@ -11704,6 +11726,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
             </supersedes>
             <categories>
+                <category name="hierarchy" />
             </categories>
             <see-also>
                 <function-ref name="sceneObject:getAncestors" />
@@ -12114,6 +12137,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.setObjectParent" />
             </supersedes>
+                <category name="hierarchy" />
             <categories>
             </categories>
             <see-also>
@@ -12149,6 +12173,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.scaleObjects" />
             </supersedes>
             <categories>
+                <category name="hierarchy" />
             </categories>
             <see-also>
                 <function-ref name="sceneObject:scale" />
@@ -12258,6 +12283,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </supersedes>
             <categories>
                 <category name="model" />
+                <category name="hierarchy" />
             </categories>
         </property>
         <property name="children" type="handle[]" var="children" >
@@ -12270,6 +12296,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </supersedes>
             <categories>
                 <category name="model" />
+                <category name="hierarchy" />
             </categories>
             <see-also>
                 <function-ref name="sceneObject:getDescendants" />
@@ -12282,6 +12309,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="2" start-deprecated="0" end="0" />
             <categories>
                 <category name="model" />
+                <category name="hierarchy" />
             </categories>
         </property>
         <property name="collectionSelfCollisionIndicator" type="int" var="collectionSelfCollInd" >
@@ -12294,6 +12322,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
                 <category name="collection" />
                 <category name="collision" />
+                <category name="hierarchy" />
             </categories>
             <see-also>
                 <function-ref name="collection:checkCollision" />
@@ -12432,6 +12461,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="2" start-deprecated="0" end="0" />
             <categories>
                 <category name="customization" />
+                <category name="hierarchy" />
             </categories>
         </property>
         <property name="ignoreViewFitting" type="bool" var="ignoreViewFitting" >
@@ -12556,6 +12586,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
                 <category name="model" />
                 <category name="rendering" />
+                <category name="hierarchy" />
             </categories>
         </property>
         <property name="model.notMeasurable" type="bool" var="modelNotMeasurable" >
@@ -12629,6 +12660,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
                 <function-ref name="sceneObject:removeModel" />
                 <function-ref name="sceneObject:saveModel" />
+                <category name="hierarchy" />
             </see-also>
         </property>
         <property name="modelHash" type="string" var="modelHash" >
@@ -12637,6 +12669,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="2" start-deprecated="0" end="0" />
             <categories>
                 <category name="model" />
+                <category name="hierarchy" />
             </categories>
         </property>
         <property name="modelInvisible" type="bool" var="modelInvisible" >
@@ -12964,6 +12997,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </supersedes>
             <categories>
                 <category name="model" />
+                <category name="hierarchy" />
             </categories>
             <see-also>
                 <function-ref name="sceneObject:setParent" />
@@ -13084,6 +13118,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
                 <category name="selection" />
                 <category name="model" />
+                <category name="hierarchy" />
             </categories>
         </property>
         <property name="selectable" type="bool" var="selectable" >
@@ -13124,6 +13159,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </supersedes>
             <categories>
                 <category name="model" />
+                <category name="hierarchy" />
             </categories>
             <see-also>
                 <function-ref name="sceneObject:getDescendants" />
