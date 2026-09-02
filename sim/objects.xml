@@ -7943,8 +7943,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>mode (int, defaults to sim.handle_single): operation mode. Following are allowed values: sim.handle_single (for a single object),
-                                sim.handle_all (for all objects in the scene), sim.handle_tree (for a tree of objects), sim.handle_chain (for a chain of objects (i.e. an inverted tree))</li>
+                            <li>mode (string, defaults to 'single'): operation mode. Following are allowed values: 'single' (for a single object),
+                                'all' (for all objects in the scene), 'tree' (for a tree of objects), 'chain' (for a chain of objects (i.e. an inverted tree))</li>
                             <li>excludeObject (bool, defaults to false): if true, then the specified object is not included in the group of objects to add, if sim.handle_tree or sim.handle_chain is specified (i.e. the tree base or tip is excluded)</li>
                         </ul>
                     </description>
@@ -7975,8 +7975,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>mode (int, defaults to sim.handle_single): operation mode. Following are allowed values: sim.handle_single (for a single object),
-                                sim.handle_all (for all objects in the scene), sim.handle_tree (for a tree of objects), sim.handle_chain (for a chain of objects (i.e. an inverted tree))</li>
+                            <li>mode (string, defaults to 'single'): operation mode. Following are allowed values: 'single' (for a single object),
+                                'all' (for all objects in the scene), 'tree' (for a tree of objects), 'chain' (for a chain of objects (i.e. an inverted tree))</li>
                             <li>excludeObject (bool, defaults to false): if true, then the specified object is not included in the group of objects to remove, if sim.handle_tree or sim.handle_chain is specified (i.e. the tree base or tip is excluded)</li>
                         </ul>
                     </description>
