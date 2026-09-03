@@ -1136,7 +1136,7 @@ namespace sim
         handle_t detachedScript = -1;
         int result = simCallMethod(target, name, inStack.handle, outStack.handle, detachedScript);
         if(result == -1)
-            throw std::runtime_error("simCallMethod failed");
+            throw api_error("simCallMethod");
 
         int outCnt = sim::getStackSize(outStack.handle);
         if(outCnt != static_cast<int>(sizeof...(OutputTypes)))
