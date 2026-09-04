@@ -5,7 +5,7 @@ note: the generated see-also section contains the <see-also> items, but also the
 <object-classes>
     <object-class name="Motion" superclass="" />
     <object-class name="RuckigPosition" superclass="Motion">
-        <method name="Constructor" lang="python,lua">
+        <method name="new" lang="python,lua" callCmd="Motion.RuckigPosition" module="Motion">
             <short-description>Initializes a Ruckig position trajectory generator</short-description>
             <description>
                 Initializes a <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>.
@@ -36,7 +36,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="motionObject" type="object">
+                <param name="motionObject" type="middleclassObject">
                     <description>
                         A motion object
                     </description>
@@ -51,8 +51,8 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
                 <function-ref name="RuckigPosition:step" />
                 <function-ref name="RuckigPosition:remove" />
-                <function-ref name="RuckigVelocity:Constructor" />
-                <function-ref name="MoveToConfig:Constructor" />
+                <function-ref name="RuckigVelocity:new" />
+                <function-ref name="MoveToConfig:new" />
             </see-also>
         </method>
         <method name="remove" lang="python,lua">
@@ -69,7 +69,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="Motion" />
             </categories>
             <see-also>
-                <function-ref name="RuckigPosition:Constructor" />
+                <function-ref name="RuckigPosition:new" />
             </see-also>
         </method>
         <method name="step" lang="python,lua">
@@ -101,7 +101,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="Motion" />
             </categories>
             <see-also>
-                <function-ref name="RuckigPosition:Constructor" />
+                <function-ref name="RuckigPosition:new" />
                 <function-ref name="RuckigPosition:data" />
             </see-also>
         </method>
@@ -131,7 +131,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
     </object-class>
     <object-class name="RuckigVelocity" superclass="Motion">
-        <method name="Constructor" lang="python,lua">
+        <method name="new" lang="python,lua" callCmd="Motion.RuckigVelocity" module="Motion">
             <short-description>Initializes a Ruckig velocity trajectory generator</short-description>
             <description>
                 Initializes a <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>.
@@ -159,7 +159,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="motionObject" type="object">
+                <param name="motionObject" type="middleclassObject">
                     <description>
                         A motion object
                     </description>
@@ -174,7 +174,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
                 <function-ref name="RuckigVelocity:step" />
                 <function-ref name="RuckigVelocity:remove" />
-                <function-ref name="RuckigPosition:Constructor" />
+                <function-ref name="RuckigPosition:new" />
             </see-also>
         </method>
         <method name="remove" lang="python,lua">
@@ -191,7 +191,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="Motion" />
             </categories>
             <see-also>
-                <function-ref name="RuckigVelocity:Constructor" />
+                <function-ref name="RuckigVelocity:new" />
             </see-also>
         </method>
         <method name="step" lang="python,lua">
@@ -223,7 +223,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="Motion" />
             </categories>
             <see-also>
-                <function-ref name="RuckigVelocity:Constructor" />
+                <function-ref name="RuckigVelocity:new" />
                 <function-ref name="RuckigVelocity:data" />
             </see-also>
         </method>
@@ -253,29 +253,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
     </object-class>
     <object-class name="MoveToConfig" superclass="Motion">
-        <method name="run" lang="python,lua">
-            <short-description>Executes the motion in a thread</short-description>
-            <description>
-                Executes the motion. Can only be called from scripts running in a thread, since this is a blocking operation
-            </description>
-            <params>
-            </params>
-            <returns>
-            </returns>
-            <support start="2" startDeprecated="0" end="0" />
-            <supersedes>
-            </supersedes>
-            <categories>
-                <category name="blocking" />
-                <category name="Motion" />
-            </categories>
-            <see-also>
-                <function-ref name="MoveToConfig:Constructor" />
-                <function-ref name="MoveToConfig:step" />
-                <function-ref name="MoveToConfig:remove" />
-            </see-also>
-        </method>
-        <method name="Constructor" lang="python,lua">
+        <method name="new" lang="python,lua" callCmd="Motion.MoveToConfig" module="Motion">
             <short-description>Initiates a n-DoF motion using Ruckig</short-description>
             <description>
                 Initiates a n-DoF motion using the
@@ -287,7 +265,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Parameters of the function:
                         <ul>
                             <li>pos (vector n): mandatory if joints is not specified. Specifies the current configuration with one value per DoF </li>
-                            <li>joints (handle[]): mandatory if pos is not specified. Specifies the joint handles with one handle per DoF </li>
+                            <li>joints (sim.Object[]): mandatory if pos is not specified. Specifies the joints (one per DoF)</li>
                             <li>vel (vector n, defaults to zero vector): optional. Specifies current velocity with one value per DoF</li>
                             <li>accel (vector n, defaults to zero vector): optional. Specifies current acceleration with one value per DoF</li>
                             <li>maxVel (vector n, defaults to infinity vector): optional. Specifies the maximum allowed velocity with one value per DoF</li>
@@ -307,7 +285,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="motionObject" type="object">
+                <param name="motionObject" type="middleclassObject">
                     <description>
                         A motion object
                     </description>
@@ -323,8 +301,30 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="MoveToConfig:run" />
                 <function-ref name="MoveToConfig:step" />
                 <function-ref name="MoveToConfig:remove" />
-                <function-ref name="MoveToPose:Constructor" />
-                <function-ref name="RuckigPosition:Constructor" />
+                <function-ref name="MoveToPose:new" />
+                <function-ref name="RuckigPosition:new" />
+            </see-also>
+        </method>
+        <method name="run" lang="python,lua">
+            <short-description>Executes the motion in a thread</short-description>
+            <description>
+                Executes the motion. Can only be called from scripts running in a thread, since this is a blocking operation
+            </description>
+            <params>
+            </params>
+            <returns>
+            </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
+            <categories>
+                <category name="blocking" />
+                <category name="Motion" />
+            </categories>
+            <see-also>
+                <function-ref name="MoveToConfig:new" />
+                <function-ref name="MoveToConfig:step" />
+                <function-ref name="MoveToConfig:remove" />
             </see-also>
         </method>
         <method name="step" lang="python,lua">
@@ -354,7 +354,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="Motion" />
             </categories>
             <see-also>
-                <function-ref name="MoveToConfig:Constructor" />
+                <function-ref name="MoveToConfig:new" />
                 <function-ref name="MoveToConfig:data" />
             </see-also>
         </method>
@@ -396,34 +396,12 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="Motion" />
             </categories>
             <see-also>
-                <function-ref name="MoveToConfig:Constructor" />
+                <function-ref name="MoveToConfig:new" />
             </see-also>
         </method>
     </object-class>
     <object-class name="MoveToPose" superclass="Motion">
-        <method name="run" lang="python,lua">
-            <short-description>Executes the motion in a thread</short-description>
-            <description>
-                Executes a motion. Can only be called from a script running in a thread, since this is a blocking operation
-            </description>
-            <params>
-            </params>
-            <returns>
-            </returns>
-            <support start="2" startDeprecated="0" end="0" />
-            <supersedes>
-            </supersedes>
-            <categories>
-                <category name="blocking" />
-                <category name="Motion" />
-            </categories>
-            <see-also>
-                <function-ref name="MoveToPose:Constructor" />
-                <function-ref name="MoveToPose:step" />
-                <function-ref name="MoveToPose:remove" />
-            </see-also>
-        </method>
-        <method name="Constructor" lang="python,lua">
+        <method name="new" lang="python,lua" callCmd="Motion.MoveToPose" module="Motion">
             <short-description>Initiates pose-based motion using Ruckig</short-description>
             <description>
                 Initiates motion using the
@@ -438,13 +416,13 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Parameters of the function:
                         <ul>
                             <li>pose (pose): mandatory if neither object nor ik are specified. Specifies current pose </li>
-                            <li>object (handle): mandatory if neither pose nor ik are specified. Specifies the handle of the object to move </li>
+                            <li>object (sim.Object): mandatory if neither pose nor ik are specified. Specifies the object to move </li>
                             <li>ik (map): mandatory if neither pose nor object are specified. Contains IK-relevant information, if a kinematic chain should move via IK to a target:
                                 <ul>
-                                    <li>tip (handle): specifies the tip object (on the end-effector) </li>
-                                    <li>target (handle): specifies the target object (the object to reach) </li>
-                                    <li>base (handle, defaults to nil): optional. Specifies the base object (the base of the kinematic chain)</li>
-                                    <li>joints (handle[], defaults to all joints within tip and base): optional. Specifies the handles of the joints involved in IK calculations</li>
+                                    <li>tip (sim.Object): specifies the tip object (on the end-effector) </li>
+                                    <li>target (sim.Object): specifies the target object (the object to reach) </li>
+                                    <li>base (sim.Object, defaults to nil): optional. Specifies the base object (the base of the kinematic chain)</li>
+                                    <li>joints (sim.Object[], defaults to all joints within tip and base): optional. Specifies the joints involved in IK calculations</li>
                                     <li>method (int, defaults to simIK.method_damped_least_squares): optional. Specifies the resolution method</li>
                                     <li>damping (float, defaults to 0.02): optional. Specifies the resolution damping</li>
                                     <li>iterations (int, defaults to 20): optional. Specifies the max. number of iterations</li>
@@ -472,7 +450,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="motionObject" type="object">
+                <param name="motionObject" type="middleclassObject">
                     <description>
                         A motion object
                     </description>
@@ -488,7 +466,29 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="MoveToPose:run" />
                 <function-ref name="MoveToPose:step" />
                 <function-ref name="MoveToPose:remove" />
-                <function-ref name="MoveToConfig:Constructor" />
+                <function-ref name="MoveToConfig:new" />
+            </see-also>
+        </method>
+        <method name="run" lang="python,lua">
+            <short-description>Executes the motion in a thread</short-description>
+            <description>
+                Executes a motion. Can only be called from a script running in a thread, since this is a blocking operation
+            </description>
+            <params>
+            </params>
+            <returns>
+            </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
+            <categories>
+                <category name="blocking" />
+                <category name="Motion" />
+            </categories>
+            <see-also>
+                <function-ref name="MoveToPose:new" />
+                <function-ref name="MoveToPose:step" />
+                <function-ref name="MoveToPose:remove" />
             </see-also>
         </method>
         <method name="step" lang="python,lua">
@@ -518,7 +518,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="Motion" />
             </categories>
             <see-also>
-                <function-ref name="MoveToPose:Constructor" />
+                <function-ref name="MoveToPose:new" />
                 <function-ref name="MoveToPose:data" />
             </see-also>
         </method>
@@ -560,11 +560,36 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="Motion" />
             </categories>
             <see-also>
-                <function-ref name="MoveToPose:Constructor" />
+                <function-ref name="MoveToPose:new" />
             </see-also>
         </method>
     </object-class>
     <object-class name="TimeOptimalTrajectory" superclass="Motion">
+        <method name="new" lang="python,lua" callCmd="Motion.TimeOptimalTrajectory" module="Motion">
+            <short-description>Initializes a time optimal trajectory generator</short-description>
+            <description>
+                Initializes a time optimal trajectory generator, based on the TOPPRA library
+            </description>
+            <params>
+            </params>
+            <returns>
+                <param name="motionObject" type="middleclassObject">
+                    <description>
+                        A motion object
+                    </description>
+                </param>
+            </returns>
+            <support start="2" startDeprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
+            <categories>
+                <category name="Motion" />
+            </categories>
+            <see-also>
+                <function-ref name="TimeOptimalTrajectory:generate" />
+                <function-ref name="TimeOptimalTrajectory:remove" />
+            </see-also>
+        </method>
         <method name="generate" lang="python,lua">
             <short-description>Generates a time optimal trajectory</short-description>
             <description>
@@ -606,32 +631,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="Motion" />
             </categories>
             <see-also>
-                <function-ref name="TimeOptimalTrajectory:Constructor" />
-            </see-also>
-        </method>
-        <method name="Constructor" lang="python,lua">
-            <short-description>Initializes a time optimal trajectory generator</short-description>
-            <description>
-                Initializes a time optimal trajectory generator, based on the TOPPRA library
-            </description>
-            <params>
-            </params>
-            <returns>
-                <param name="motionObject" type="object">
-                    <description>
-                        A motion object
-                    </description>
-                </param>
-            </returns>
-            <support start="2" startDeprecated="0" end="0" />
-            <supersedes>
-            </supersedes>
-            <categories>
-                <category name="Motion" />
-            </categories>
-            <see-also>
-                <function-ref name="TimeOptimalTrajectory:generate" />
-                <function-ref name="TimeOptimalTrajectory:remove" />
+                <function-ref name="TimeOptimalTrajectory:new" />
             </see-also>
         </method>
         <method name="remove" lang="python,lua">
@@ -648,7 +648,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="Motion" />
             </categories>
             <see-also>
-                <function-ref name="TimeOptimalTrajectory:Constructor" />
+                <function-ref name="TimeOptimalTrajectory:new" />
             </see-also>
         </method>
     </object-class>
@@ -778,7 +778,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="Path" superclass="">
-        <method name="Constructor" lang="python,lua">
+        <method name="new" lang="python,lua" callCmd="Path" module="Path">
             <short-description>Creates a path</short-description>
             <description>
                 Creates a path
@@ -859,7 +859,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Serialized path data
                     </description>
                 </param>
-                <param name="objects" type="handle[]" default="nil">
+                <param name="objects" type="sim.Object[]" default="nil">
                     <description>
                         Objects that might be associated with the path, e.g. joint or sceneObjects.
                     </description>
@@ -880,12 +880,12 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Creates an empty path based on joints located between an end-effector and a base object (both not included, if of joint type). Ordering goes from base to end-effector
             </description>
             <params>
-                <param name="endEffector" type="handle">
+                <param name="endEffector" type="sim.Object">
                     <description>
                         End-effector object
                     </description>
                 </param>
-                <param name="base" type="handle" default="nil">
+                <param name="base" type="sim.Object" default="nil">
                     <description>
                         Base object. Can be null
                     </description>
@@ -951,7 +951,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Creates an empty path based on the pose of an object
             </description>
             <params>
-                <param name="object" type="handle">
+                <param name="object" type="sim.Object">
                     <description>
                         Object
                     </description>
@@ -1138,7 +1138,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Serialized path data
                     </description>
                 </param>
-                <param name="objects" type="handle[]">
+                <param name="objects" type="sim.Object[]">
                     <description>
                         Objects that might be associated with the path, e.g. joint or sceneObjects.
                     </description>
@@ -1408,7 +1408,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
     </object-class>
     <object-class name="IK" superclass="">
-        <method name="Constructor" lang="python,lua">
+        <method name="new" lang="python,lua" callCmd="IK" module="IK">
             <short-description>Creates an IK world</short-description>
             <description>
                 Creates an IK world. An IK world contains one or several IK groups, each one containing one or several IK elements
@@ -1447,7 +1447,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="group" type="object">
+                <param name="group" type="middleclassObject">
                     <description>
                         The created IK group object
                     </description>
@@ -1580,7 +1580,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
             </categories>
             <see-also>
-                <function-ref name="IK:Constructor" />
+                <function-ref name="IK:new" />
             </see-also>
         </method>
         <property name="objects" type="map" var="objects" >
@@ -1597,7 +1597,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
             </categories>
         </property>
-        <property name="groupList" type="object[]" var="groupList" >
+        <property name="groupList" type="middleclassObject[]" var="groupList" >
             <flags readable="true" silent="true" />
             <description>A list of the groups in an IK world</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -1612,17 +1612,17 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Creates an IK element inside of this IK group. Items are imported from the sim world into the IK world
             </description>
             <params>
-                <param name="base" type="handle">
+                <param name="base" type="sim.Object">
                     <description>
                         The base scene object of the kinematic chain. Can be null, in which case the world is the base
                     </description>
                 </param>
-                <param name="tip" type="handle">
+                <param name="tip" type="sim.Object">
                     <description>
                         The tip scene object of the kinematic chain
                     </description>
                 </param>
-                <param name="target" type="handle">
+                <param name="target" type="sim.Object">
                     <description>
                         The target scene object, i.e. the object the tip should follow / be constrained to
                     </description>
@@ -1654,7 +1654,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="element" type="object">
+                <param name="element" type="middleclassObject">
                     <description>
                         The created IK element object
                     </description>
@@ -1823,7 +1823,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="IK:syncToScene" />
             </see-also>
         </method>
-        <property name="elementList" type="object[]" var="elementList" >
+        <property name="elementList" type="middleclassObject[]" var="elementList" >
             <flags readable="true" silent="true" />
             <description>The elements of an IK group</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -2145,7 +2145,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="IKElement" superclass="">
-        <property name="jointList" type="object[]" var="jointList" >
+        <property name="jointList" type="middleclassObject[]" var="jointList" >
             <flags readable="true" silent="true" />
             <description>The involved joints, from base to tip</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -2153,7 +2153,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="hierarchy" />
             </categories>
         </property>
-        <property name="base" type="object" var="base" >
+        <property name="base" type="middleclassObject" var="base" >
             <flags readable="true" silent="true" />
             <description>The associated base object</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -2161,7 +2161,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="hierarchy" />
             </categories>
         </property>
-        <property name="tip" type="object" var="tip" >
+        <property name="tip" type="middleclassObject" var="tip" >
             <flags readable="true" silent="true" />
             <description>The associated tip object</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -2169,7 +2169,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="hierarchy" />
             </categories>
         </property>
-        <property name="target" type="object" var="target" >
+        <property name="target" type="middleclassObject" var="target" >
             <flags readable="true" silent="true" />
             <description>The associated target object</description>
             <support start="2" start-deprecated="0" end="0" />
@@ -2514,7 +2514,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getHandleProperty" lang="python,lua" var="METHOD_getHandleProperty">
-            <short-description>Fetches a handle property</short-description>
+            <short-description>Fetches a handle property (a sim.Object)</short-description>
             <description>
                 Fetches a handle property
             </description>
@@ -2534,7 +2534,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="propertyState" type="handle">
+                <param name="propertyState" type="sim.Object">
                     <description>
                         Property value
                     </description>
@@ -2551,7 +2551,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setHandleProperty" lang="python,lua" var="METHOD_setHandleProperty">
-            <short-description>Sets a handle property</short-description>
+            <short-description>Sets a handle property (a sim.Object)</short-description>
             <description>
                 Sets a handle property
             </description>
@@ -2559,7 +2559,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <param name="propertyName" type="string">
                     <description>Property name</description>
                 </param>
-                <param name="propertyState" type="handle">
+                <param name="propertyState" type="sim.Object">
                     <description>Property value</description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -3558,7 +3558,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getHandleArrayProperty" lang="python,lua" var="METHOD_getHandleArrayProperty">
-            <short-description>Fetches a handle array property</short-description>
+            <short-description>Fetches a handle array property (an array of sim.Object)</short-description>
             <description>
                 Fetches a handle array property
             </description>
@@ -3578,7 +3578,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="propertyState" type="handle[]">
+                <param name="propertyState" type="sim.Object[]">
                     <description>
                         Property value
                     </description>
@@ -3595,7 +3595,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setHandleArrayProperty" lang="python,lua" var="METHOD_setHandleArrayProperty">
-            <short-description>Sets a handle array property</short-description>
+            <short-description>Sets a handle array property (an array of sim.Object)</short-description>
             <description>
                 Sets a handle array property
             </description>
@@ -3603,7 +3603,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <param name="propertyName" type="string">
                     <description>Property name</description>
                 </param>
-                <param name="propertyState" type="handle[]">
+                <param name="propertyState" type="sim.Object[]">
                     <description>Property value</description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -4306,7 +4306,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="object" type="handle">
+                <param name="object" type="sim.Object">
                     <description>
                         The created custom object class
                     </description>
@@ -5193,7 +5193,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="object" type="handle">
+                <param name="object" type="sim.Object">
                     <description>
                         The created object
                     </description>
@@ -5422,7 +5422,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="objects" type="handle[]">
+                <param name="objects" type="sim.Object[]">
                     <description>
                         The retrieved objects
                     </description>
@@ -5448,7 +5448,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Removes one or several objects
             </description>
             <params>
-                <param name="objects" type="handle[]">
+                <param name="objects" type="sim.Object[]">
                     <description>Objects to remove</description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -5862,7 +5862,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="paths.addOns" />
         </property>
-        <property name="addOns" type="handle[]" var="addOns" >
+        <property name="addOns" type="sim.Object[]" var="addOns" >
             <handle type="detachedScript" />
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Add-ons</label>
@@ -5977,7 +5977,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="messaging" />
             </categories>
         </property>
-        <property name="customClasses" type="handle[]" var="customClasses" >
+        <property name="customClasses" type="sim.Object[]" var="customClasses" >
             <handle type="customObject" />
             <flags readable="true" modelhashexclude="true" />
             <label>Custom classes</label>
@@ -5998,7 +5998,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="customization" />
             </categories>
         </property>
-        <property name="customObjects" type="handle[]" var="customObjects" >
+        <property name="customObjects" type="sim.Object[]" var="customObjects" >
             <handle type="customObject" />
             <flags readable="true" modelhashexclude="true" />
             <label>Custom objects</label>
@@ -6010,7 +6010,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
             </see-also>
         </property>
-        <property name="customSceneObjectClasses" type="handle[]" var="customSceneObjectClasses" >
+        <property name="customSceneObjectClasses" type="sim.Object[]" var="customSceneObjectClasses" >
             <handle type="sceneObject" />
             <flags readable="true" modelhashexclude="true" />
             <label>Custom scene object classes</label>
@@ -6424,11 +6424,11 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="paths.resources" />
         </property>
-        <property name="sandbox" type="handle" var="sandbox" >
+        <property name="sandbox" type="sim.Object" var="sandbox" >
             <handle type="detachedScript" />
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Sandbox</label>
-            <description>Handle of the sandbox script</description>
+            <description>The sandbox script</description>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
                 <category name="scriptRelated" />
@@ -6787,7 +6787,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="object" type="handle">
+                <param name="object" type="sim.Object">
                     <description>
                         Retrieved object
                     </description>
@@ -7616,10 +7616,10 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
         </property>
-        <property name="shape" type="handle" var="shape" >
+        <property name="shape" type="sim.Object" var="shape" >
             <handle type="shape" />
             <flags readable="true" modelhashexclude="true" constant="true" />
-            <label>Shape handle</label>
+            <label>Shape</label>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
             </categories>
@@ -7936,7 +7936,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Adds one or several items to this collection
             </description>
             <params>
-                <param name="objectHandle" type="handle">
+                <param name="object" type="sim.Object">
                     <description>A scene object</description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -7968,8 +7968,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Removes one or several items from this collection
             </description>
             <params>
-                <param name="objectHandle" type="handle">
-                    <description>Handle of a scene object</description>
+                <param name="object" type="sim.Object">
+                    <description>Scene object</description>
                 </param>
                 <param name="options" type="map" default="{}">
                     <description>
@@ -8002,9 +8002,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 If the entity to check against is the same collection, then a self-collision check is performed (in which case the collection self-collision indicators are taken into account)
             </description>
             <params>
-                <param name="entityHandle" type="handle" default="sim.handle_all">
+                <param name="entity" type="sim.Object" default="sim.handle_all">
                     <description>
-                        Handle of the other entity (can be a scene object or another collection), or sim.handle_all to check this collection against all other collidable scene objects
+                        The other entity (can be a scene object or another collection), or sim.handle_all to check this collection against all other collidable scene objects
                     </description>
                 </param>
             </params>
@@ -8014,7 +8014,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Indicates the collision state
                     </description>
                 </param>
-                <param name="collidingObjectHandles" type="handle[2]">
+                <param name="collidingObjects" type="sim.Object[2]">
                     <description>
                         Array containing the colliding scene object pair
                     </description>
@@ -8043,9 +8043,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 If the entity to check against is the same collection, then the minimum distance within this collection is computed
             </description>
             <params>
-                <param name="entityHandle" type="handle" default="sim.handle_all">
+                <param name="entity" type="sim.Object" default="sim.handle_all">
                     <description>
-                        Handle of the other entity (can be a scene object or another collection), or sim.handle_all to check this collection against all other measurable scene objects
+                        The other entity (can be a scene object or another collection), or sim.handle_all to check this collection against all other measurable scene objects
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -8078,9 +8078,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Point on entity 2
                     </description>
                 </param>
-                <param name="objectHandlePair" type="handle[2]">
+                <param name="objectPair" type="sim.Object[2]">
                     <description>
-                        Array of 2 object handles representing the two objects that hold the minimum distance segment
+                        Array of 2 objects representing the two objects that hold the minimum distance segment
                     </description>
                 </param>
             </returns>
@@ -8097,10 +8097,10 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.measurable" />
             </see-also>
         </method>
-        <property name="objects" type="handle[]" var="objects" >
+        <property name="objects" type="sim.Object[]" var="objects" >
             <handle type="sceneObject" />
             <flags readable="true" modelhashexclude="true" />
-            <label>Children handles</label>
+            <label>Children</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.getCollectionObjects" />
@@ -8118,7 +8118,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Copies selected objects to an internal buffer
             </description>
             <params>
-                <param name="objects" type="handle[]">
+                <param name="objects" type="sim.Object[]">
                     <description>
                         List of objects to copy
                     </description>
@@ -8153,7 +8153,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Cuts selected objects to an internal buffer
             </description>
             <params>
-                <param name="objects" type="handle[]">
+                <param name="objects" type="sim.Object[]">
                     <description>
                         List of objects to cut
                     </description>
@@ -8274,7 +8274,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="descendants" type="handle[]">
+                <param name="descendants" type="sim.Object[]">
                     <description>
                         The retrieved descendant scene objects, ordered in a depth-first manner
                     </description>
@@ -8299,14 +8299,14 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Groups several shapes, and returns a compound shape
             </description>
             <params>
-                <param name="shapes" type="handle[]">
+                <param name="shapes" type="sim.Object[]">
                     <description>
                         Shapes to be grouped
                     </description>
                 </param>
             </params>
             <returns>
-                <param name="compoundShape" type="handle">
+                <param name="compoundShape" type="sim.Object">
                     <description>
                         Resulting compound shape
                     </description>
@@ -8334,14 +8334,14 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Merges several shapes
             </description>
             <params>
-                <param name="shapes" type="handle[]">
+                <param name="shapes" type="sim.Object[]">
                     <description>
                         Shapes to be merged. The last shape integrates the other shapes
                     </description>
                 </param>
             </params>
             <returns>
-                <param name="resultingShape" type="handle">
+                <param name="resultingShape" type="sim.Object">
                     <description>
                         Resulting shape
                     </description>
@@ -8383,7 +8383,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="object" type="handle">
+                <param name="object" type="sim.Object">
                     <description>
                         Retrieved object
                     </description>
@@ -8439,7 +8439,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="object" type="handle">
+                <param name="object" type="sim.Object">
                     <description>
                         Retrieved object
                     </description>
@@ -8550,13 +8550,13 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Optional map:
                         <ul>
                             <li>offset (vector3, defaults to [0.0, 0.0, 0.0]): position offset</li>
-                            <li>assemblyDummy (handle, defaults to nil): dummy, onto which the model should be assembled</li>
+                            <li>assemblyDummy (sim.Object, defaults to nil): dummy, onto which the model should be assembled</li>
                         </ul>
                     </description>
                 </param>
             </params>
             <returns>
-                <param name="object" type="handle">
+                <param name="object" type="sim.Object">
                     <description>
                         The model base scene object
                     </description>
@@ -8601,13 +8601,13 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Optional map:
                         <ul>
                             <li>offset (vector3, defaults to [0.0, 0.0, 0.0]): position offset</li>
-                            <li>assemblyDummy (handle, defaults to nil): dummy, onto which the model should be assembled</li>
+                            <li>assemblyDummy (sim.Object, defaults to nil): dummy, onto which the model should be assembled</li>
                         </ul>
                     </description>
                 </param>
             </params>
             <returns>
-                <param name="object" type="handle">
+                <param name="object" type="sim.Object">
                     <description>
                         The model base scene object
                     </description>
@@ -8645,7 +8645,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="objects" type="handle[]">
+                <param name="objects" type="sim.Object[]">
                     <description>
                         The retrieved objects
                     </description>
@@ -8672,7 +8672,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Removes one or several objects
             </description>
             <params>
-                <param name="objects" type="handle[]">
+                <param name="objects" type="sim.Object[]">
                     <description>Objects to remove</description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -8715,7 +8715,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Duplicates scene objects
             </description>
             <params>
-                <param name="objects" type="handle[]">
+                <param name="objects" type="sim.Object[]">
                     <description>
                         Array of scene objects to duplicate
                     </description>
@@ -8735,7 +8735,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="duplicates" type="handle[]">
+                <param name="duplicates" type="sim.Object[]">
                     <description>
                         The duplicate scene objects, where original and copy have the same location in their respective arrays
                     </description>
@@ -9292,7 +9292,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="object" type="handle">
+                <param name="object" type="sim.Object">
                     <description>
                         The created object
                     </description>
@@ -9494,11 +9494,11 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.bullet.solver" />
         </property>
-        <property name="collections" type="handle[]" var="collections" >
+        <property name="collections" type="sim.Object[]" var="collections" >
             <handle type="collection" />
             <flags readable="true" />
             <label>Collections</label>
-            <description>Handles of all collections</description>
+            <description>All collections</description>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
                 <category name="model" />
@@ -9515,7 +9515,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="customization" />
             </categories>
         </property>
-        <property name="customObjects" type="handle[]" var="customObjects" >
+        <property name="customObjects" type="sim.Object[]" var="customObjects" >
             <handle type="customObject" />
             <flags readable="true" modelhashexclude="true" />
             <label>Custom objects</label>
@@ -9528,11 +9528,11 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="scene:createObject" />
             </see-also>
         </property>
-        <property name="drawingObjects" type="handle[]" var="drawingObjects" >
+        <property name="drawingObjects" type="sim.Object[]" var="drawingObjects" >
             <handle type="drawingObject" />
             <flags readable="true" />
             <label>Drawing objects</label>
-            <description>Handles of all drawing objects</description>
+            <description>All drawing objects</description>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
                 <category name="rendering" />
@@ -10480,11 +10480,11 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="mainScript" type="handle" var="mainScript" >
+        <property name="mainScript" type="sim.Object" var="mainScript" >
             <handle type="detachedScript" />
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Main script</label>
-            <description>Handle of the main script</description>
+            <description>The main script</description>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.getScript" />
@@ -10837,11 +10837,11 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <migrate-to name="objects" />
         </property>
-        <property name="objects" type="handle[]" var="objects" >
+        <property name="objects" type="sim.Object[]" var="objects" >
             <handle type="sceneObject" />
             <flags readable="true" />
             <label>Objects</label>
-            <description>Handles of all scene objects</description>
+            <description>All scene objects</description>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.getObjects" />
@@ -10899,11 +10899,11 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <migrate-to name="orphans" />
         </property>
-        <property name="orphans" type="handle[]" var="orphans" >
+        <property name="orphans" type="sim.Object[]" var="orphans" >
             <handle type="sceneObject" />
             <flags readable="true" />
             <label>Orphan objects</label>
-            <description>Handles of all orphan scene objects</description>
+            <description>All orphan scene objects</description>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
                 <category name="creation" />
@@ -10976,11 +10976,11 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="uidString" />
         </property>
-        <property name="selection" type="handle[]" var="selection" >
+        <property name="selection" type="sim.Object[]" var="selection" >
             <handle type="sceneObject" />
             <flags readable="true" writable="true" modelhashexclude="true" />
             <label>Selected objects</label>
-            <description>Handles of selected scene objects</description>
+            <description>Selected scene objects</description>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.getObjectSel" />
@@ -11273,7 +11273,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="object" type="handle">
+                <param name="object" type="sim.Object">
                     <description>
                         The created custom object
                     </description>
@@ -11330,7 +11330,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <params>
             </params>
             <returns>
-                <param name="object" type="handle">
+                <param name="object" type="sim.Object">
                     <description>
                         The created customized scene object
                     </description>
@@ -11360,7 +11360,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="class" type="handle">
+                <param name="class" type="sim.Object">
                     <description>
                         The created class
                     </description>
@@ -11468,7 +11468,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="object" type="handle">
+                <param name="object" type="sim.Object">
                     <description>
                         Retrieved object
                     </description>
@@ -11646,7 +11646,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="descendants" type="handle[]">
+                <param name="descendants" type="sim.Object[]">
                     <description>
                         The retrieved descendant scene objects, ordered in a depth-first manner
                     </description>
@@ -11683,7 +11683,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="ancestors" type="handle[]">
+                <param name="ancestors" type="sim.Object[]">
                     <description>
                         The retrieved ancestor scene objects, ordered from near to far ancestors
                     </description>
@@ -11741,9 +11741,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <a href="../collidableObjects.htm">collidable</a> flag of this object (and of the other entity if it is also a scene object) is ignored
             </description>
             <params>
-                <param name="entityHandle" type="handle" default="sim.handle_all">
+                <param name="entity" type="sim.Object" default="sim.handle_all">
                     <description>
-                        Handle of the other entity (can be a collection or another scene object), or sim.handle_all to check this scene object against all other collidable scene objects
+                        The other entity (can be a collection or another scene object), or sim.handle_all to check this scene object against all other collidable scene objects
                     </description>
                 </param>
             </params>
@@ -11753,7 +11753,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Indicates the collision state
                     </description>
                 </param>
-                <param name="collidingObjectHandles" type="handle[2]">
+                <param name="collidingObjects" type="sim.Object[2]">
                     <description>
                         Array containing the colliding scene object pair
                     </description>
@@ -11780,9 +11780,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <a href="../measurableObjects.htm">measurable</a> flag of this object (and of the other entity if it is also a scene object) is ignored
             </description>
             <params>
-                <param name="entityHandle" type="handle" default="sim.handle_all">
+                <param name="entity" type="sim.Object" default="sim.handle_all">
                     <description>
-                        Handle of the other entity (can be a collection or another scene object), or sim.handle_all to check this collection against all other measurable scene objects
+                        The other entity (can be a collection or another scene object), or sim.handle_all to check this collection against all other measurable scene objects
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -11815,9 +11815,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Point on entity 2
                     </description>
                 </param>
-                <param name="objectHandlePair" type="handle[2]">
+                <param name="objectPair" type="sim.Object[2]">
                     <description>
-                        Array of 2 object handles representing the two objects that hold the minimum distance segment
+                        Array of 2 objects representing the two objects that hold the minimum distance segment
                     </description>
                 </param>
             </returns>
@@ -11883,7 +11883,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the pose.
+                            <li>relativeToObject (sim.Object, defaults to sim.handle_world): indicates relative to which reference frame we want the pose.
                         Specify sim.handle_world to retrieve the absolute pose, sim.handle_inverse to retrieve the inverse of the absolute pose,
                         sim.handle_parent to retrieve the pose relative to the object's parent, or an object relative to whose reference frame we want the pose</li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the pose relative to the joint's moving frame is returned, unless
@@ -11925,7 +11925,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the position.
+                            <li>relativeToObject (sim.Object, defaults to sim.handle_world): indicates relative to which reference frame we want the position.
                         Specify sim.handle_world to retrieve the absolute position, sim.handle_inverse to retrieve the inverse of the absolute position,
                         sim.handle_parent to retrieve the position relative to the object's parent, or an object relative to whose reference frame we want the position </li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the position relative to the joint's moving frame is returned, unless
@@ -11966,7 +11966,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the quaternion.
+                            <li>relativeToObject (sim.Object, defaults to sim.handle_world): indicates relative to which reference frame we want the quaternion.
                         Specify sim.handle_world to retrieve the absolute quaternion, sim.handle_inverse to retrieve the inverse of the absolute quaternion,
                         sim.handle_parent to retrieve the quaternion relative to the object's parent, or an object relative to whose reference frame we want the quaternion</li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the quaternion relative to the joint's moving frame is returned, unless
@@ -12011,7 +12011,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame the pose is specified. Specify sim.handle_world to set the absolute pose, sim.handle_inverse to
+                            <li>relativeToObject (sim.Object, defaults to sim.handle_world): indicates relative to which reference frame the pose is specified. Specify sim.handle_world to set the absolute pose, sim.handle_inverse to
                         set the inverse of the absolute pose, sim.handle_parent to set the pose relative to the scene object's parent, or a scene object relative to
                         whose reference frame the pose is specified</li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the pose relative to the joint's moving frame is set, unless
@@ -12049,7 +12049,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame the position is specified. Specify sim.handle_world to set the absolute position, sim.handle_inverse to
+                            <li>relativeToObject (sim.Object, defaults to sim.handle_world): indicates relative to which reference frame the position is specified. Specify sim.handle_world to set the absolute position, sim.handle_inverse to
                         set the inverse of the absolute position, sim.handle_parent to set the position relative to the scene object's parent, or a scene object relative to
                         whose reference frame the position is specified</li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the position relative to the joint's moving frame is set, unless
@@ -12086,7 +12086,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame the quaternion is specified. Specify sim.handle_world to set the absolute quaternion, sim.handle_inverse to
+                            <li>relativeToObject (sim.Object, defaults to sim.handle_world): indicates relative to which reference frame the quaternion is specified. Specify sim.handle_world to set the absolute quaternion, sim.handle_inverse to
                         set the inverse of the absolute quaternion, sim.handle_parent to set the quaternion relative to the scene object's parent, or a scene object relative to
                         whose reference frame the quaternion is specified</li>
                             <li>relativeToJointBase (bool, defaults to false): is a joint, then the quaternion relative to the joint's moving frame is set, unless
@@ -12118,7 +12118,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 apply to static shapes)
             </description>
             <params>
-                <param name="parent" type="handle" default="nil">
+                <param name="parent" type="sim.Object" default="nil">
                     <description>
                         Scene object that should become parent, or nil/None if the object should become an orphan. In an assembly operation, the assembly dummy on
                         the parent should be specified instead
@@ -12286,10 +12286,10 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="hierarchy" />
             </categories>
         </property>
-        <property name="children" type="handle[]" var="children" >
+        <property name="children" type="sim.Object[]" var="children" >
             <handle type="sceneObject" />
             <flags readable="true" modelhashexclude="true" />
-            <label>Children handles</label>
+            <label>Children</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.getObjectChild" />
@@ -12985,11 +12985,11 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="parent" type="handle" var="parent" >
+        <property name="parent" type="sim.Object" var="parent" >
             <handle type="sceneObject" />
             <flags readable="true" writable="true" modelhashexclude="true" />
             <label>Parent</label>
-            <description>Parent scene object handle</description>
+            <description>Parent scene object</description>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.getObjectParent" />
@@ -13150,7 +13150,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="messaging" />
             </categories>
         </property>
-        <property name="tree" type="handle[]" var="tree" >
+        <property name="tree" type="sim.Object[]" var="tree" >
             <flags readable="true" modelhashexclude="true" silent="true" />
             <label>Object tree</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -13622,7 +13622,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <params>
             </params>
             <returns>
-                <param name="shapes" type="handle[]">
+                <param name="shapes" type="sim.Object[]">
                     <description>
                         Array holding the ungrouped shapes
                     </description>
@@ -13651,7 +13651,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <params>
             </params>
             <returns>
-                <param name="shapes" type="handle[]">
+                <param name="shapes" type="sim.Object[]">
                     <description>
                         Array holding the divides shapes
                     </description>
@@ -15251,7 +15251,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="shape:computeInertia" />
             </see-also>
         </property>
-        <property name="meshes" type="handle[]" var="meshes" >
+        <property name="meshes" type="sim.Object[]" var="meshes" >
             <handle type="mesh" />
             <flags readable="true" modelhashexclude="true" />
             <label>Meshes</label>
@@ -15773,7 +15773,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 feedback) and the detectable flags of the entity to detect are overridden, if the entity is a scene object
             </description>
             <params>
-                <param name="entity" type="handle" default="sim.handle_all">
+                <param name="entity" type="sim.Object" default="sim.handle_all">
                     <description>
                         Entity to detect (scene object or collection), or sim.handle_all to detect all detectable objects
                     </description>
@@ -15806,7 +15806,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Position of the detected point relative to the sensor reference frame
                     </description>
                 </param>
-                <param name="detectedObject" type="handle">
+                <param name="detectedObject" type="sim.Object">
                     <description>
                         Detected object
                     </description>
@@ -15852,7 +15852,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Position of the detected point relative to the sensor reference frame
                     </description>
                 </param>
-                <param name="detectedObject" type="handle">
+                <param name="detectedObject" type="sim.Object">
                     <description>
                         Detected object
                     </description>
@@ -15972,7 +15972,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.readProximitySensor" />
             </supersedes>
         </property>
-        <property name="detectedObject" type="handle" var="detectedObject" >
+        <property name="detectedObject" type="sim.Object" var="detectedObject" >
             <handle type="sceneObject" />
             <flags readable="true" modelhashexclude="true" />
             <categories>
@@ -16393,9 +16393,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 acquired image. Also, the visibility state of the entity is overridden if the entity is an object
             </description>
             <params>
-                <param name="entityHandle" type="handle" default="sim.handle_all">
+                <param name="entity" type="sim.Object" default="sim.handle_all">
                     <description>
-                        Handle of entity to detect (object or collection), or sim.handle_all to detect all detectable objects
+                        Entity to detect (object or collection), or sim.handle_all to detect all detectable objects
                     </description>
                 </param>
             </params>
@@ -17116,7 +17116,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>Camera size</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="trackedObject" type="handle" var="trackedObject" >
+        <property name="trackedObject" type="sim.Object" var="trackedObject" >
             <handle type="sceneObject" />
             <flags readable="true" writable="true" modelhashexclude="true" />
             <categories>
@@ -17501,7 +17501,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Adds voxels from scene objects
             </description>
             <params>
-                <param name="objects" type="handle[]">
+                <param name="objects" type="sim.Object[]">
                     <description>
                         List of scene objects, where only shapes, dummies, point clouds and oc-trees are considered
                     </description>
@@ -17540,7 +17540,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Subtracts voxels from scene objects
             </description>
             <params>
-                <param name="objects" type="handle[]">
+                <param name="objects" type="sim.Object[]">
                     <description>
                         List of scene objects, where only shapes, dummies, point clouds and oc-trees are considered
                     </description>
@@ -17993,7 +17993,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Adds points from scene objects
             </description>
             <params>
-                <param name="objects" type="handle[]">
+                <param name="objects" type="sim.Object[]">
                     <description>
                         List of scene objects, where only shapes, dummies, point clouds and oc-trees are considered
                     </description>
@@ -18033,7 +18033,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Subtracts points from scene objects
             </description>
             <params>
-                <param name="objects" type="handle[]">
+                <param name="objects" type="sim.Object[]">
                     <description>
                         List of scene objects, where only dummies, point clouds and oc-trees are considered
                     </description>
@@ -18688,11 +18688,11 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="joint.bounds" />
             </see-also>
         </property>
-        <property name="dependencyMaster" type="handle" var="dependencyMaster" >
+        <property name="dependencyMaster" type="sim.Object" var="dependencyMaster" >
             <handle type="joint" />
             <flags readable="true" writable="true" modelhashexclude="true" />
             <label>Dependency master</label>
-            <description>Handle of master joint (in a dependency relationship)</description>
+            <description>The master joint (in a dependency relationship)</description>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.getJointDependency" />
@@ -20310,10 +20310,10 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" writable="true" />
             <support start="1" start-deprecated="2" end="2" />
         </property>
-        <property name="parent" type="handle" var="parent" >
+        <property name="parent" type="sim.Object" var="parent" >
             <handle type="sceneObject" />
             <flags readable="true" modelhashexclude="true" constant="true" />
-            <label>Parent handle</label>
+            <label>Parent</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="parentUid" type="int">
@@ -20561,11 +20561,11 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.engineProperties" />
         </property>
-        <property name="linkedDummy" type="handle" var="linkedDummy" >
+        <property name="linkedDummy" type="sim.Object" var="linkedDummy" >
             <handle type="dummy" />
             <flags readable="true" writable="true" modelhashexclude="true" />
             <label>Linked dummy</label>
-            <description>Handle of the linked dummy</description>
+            <description>The linked dummy</description>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.getLinkDummy" />
@@ -21128,13 +21128,13 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getShapeColor" />
             </supersedes>
         </property>
-        <property name="detachedScript" type="handle" var="detachedScript" >
+        <property name="detachedScript" type="sim.Object" var="detachedScript" >
             <handle type="detachedScript" />
             <flags readable="true" modelhashexclude="true" constant="true" />
             <categories>
                 <category name="detachedScript" />
             </categories>
-            <label>Detached script handle</label>
+            <label>Detached script</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="execPriority" type="int" var="DEPRECATED_execPriority" >
