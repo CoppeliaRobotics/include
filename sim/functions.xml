@@ -2,7 +2,7 @@
 <!--
 note: the generated see-also section contains the <see-also> items, but also the <categories> items. Make sure not to have duplicates!
 -->
-<functions>
+<functions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="functions.xsd">
     <function name="simCallMethod" lang="c">
         <description>
             Calls a method

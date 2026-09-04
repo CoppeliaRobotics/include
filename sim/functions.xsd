@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           version="1.0"
+           elementFormDefault="unqualified"
+           attributeFormDefault="unqualified">
+
+  <xs:annotation>
+    <xs:documentation>
+      Schema for a collection of documented C/C++ API functions.
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:simpleType name="NonEmptyString">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="DescriptionType" mixed="true">
+    <xs:sequence>
+      <xs:any namespace="##any"
+              processContents="skip"
+              minOccurs="0"
+              maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ParamType">
+    <xs:sequence>
+      <xs:element name="description"
+                  type="DescriptionType"
+                  minOccurs="0"
+                  maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="NonEmptyString" use="required"/>
+    <xs:attribute name="type" type="NonEmptyString" use="required"/>
+    <xs:attribute name="default" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="ParamsType">
+    <xs:sequence>
+      <xs:element name="param"
+                  type="ParamType"
+                  minOccurs="1"
+                  maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ReturnsType">
+    <xs:sequence>
+      <xs:element name="param"
+                  type="ParamType"
+                  minOccurs="1"
+                  maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CategoryType">
+    <xs:attribute name="name" type="NonEmptyString" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="CategoriesType">
+    <xs:sequence>
+      <xs:element name="category"
+                  type="CategoryType"
+                  minOccurs="1"
+                  maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="FunctionRefType">
+    <xs:attribute name="name" type="NonEmptyString" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="SeeAlsoType">
+    <xs:sequence>
+      <xs:element name="function-ref"
+                  type="FunctionRefType"
+                  minOccurs="0"
+                  maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="FunctionType">
+    <xs:sequence>
+      <xs:element name="description"
+                  type="DescriptionType"
+                  minOccurs="0"
+                  maxOccurs="1"/>
+      <xs:element name="params"
+                  type="ParamsType"
+                  minOccurs="0"
+                  maxOccurs="1"/>
+      <xs:element name="returns"
+                  type="ReturnsType"
+                  minOccurs="0"
+                  maxOccurs="1"/>
+      <xs:element name="categories"
+                  type="CategoriesType"
+                  minOccurs="0"
+                  maxOccurs="1"/>
+      <xs:element name="see-also"
+                  type="SeeAlsoType"
+                  minOccurs="0"
+                  maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="NonEmptyString" use="required"/>
+    <xs:attribute name="lang" type="NonEmptyString" use="required"/>
+  </xs:complexType>
+
+  <xs:element name="functions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="function"
+                    type="FunctionType"
+                    minOccurs="1"
+                    maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+
+    <xs:unique name="uniqueFunctionNames">
+      <xs:selector xpath="function"/>
+      <xs:field xpath="@name"/>
+    </xs:unique>
+  </xs:element>
+
+</xs:schema>
