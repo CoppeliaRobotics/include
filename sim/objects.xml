@@ -2,7 +2,7 @@
 <!--
 note: the generated see-also section contains the <see-also> items, but also the <categories> items. Make sure not to have duplicates!
 -->
-<object-classes>
+<object-classes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="objects.xsd">
     <object-class name="Motion" superclass="" />
     <object-class name="RuckigPosition" superclass="Motion">
         <method name="new" lang="python,lua" callCmd="Motion.RuckigPosition" module="Motion">

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           version="1.0">
+
+  <xs:simpleType name="identifier">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z_][A-Za-z0-9_]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="compoundIdentifier">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z_][A-Za-z0-9_]*([.:][A-Za-z_][A-Za-z0-9_]*)*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="objectType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="int"/>
+      <xs:enumeration value="long"/>
+      <xs:enumeration value="float"/>
+      <xs:enumeration value="bool"/>
+      <xs:enumeration value="string"/>
+      <xs:enumeration value="buffer"/>
+      <xs:enumeration value="func"/>
+      <xs:enumeration value="handle"/>
+      <xs:enumeration value="handle[]"/>
+      <xs:enumeration value="int[]"/>
+      <xs:enumeration value="int[2]"/>
+      <xs:enumeration value="long[]"/>
+      <xs:enumeration value="float[]"/>
+      <xs:enumeration value="string[]"/>
+      <xs:enumeration value="color"/>
+      <xs:enumeration value="vector"/>
+      <xs:enumeration value="vector3"/>
+      <xs:enumeration value="matrix"/>
+      <xs:enumeration value="quaternion"/>
+      <xs:enumeration value="pose"/>
+      <xs:enumeration value="any"/>
+      <xs:enumeration value="any[]"/>
+      <xs:enumeration value="map"/>
+      <xs:enumeration value="map[]"/>
+      <xs:enumeration value="enum"/>
+      <xs:enumeration value="luaObject"/>
+      <xs:enumeration value="group"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="xhtmlContent" mixed="true">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="i" type="xhtmlContent"/>
+      <xs:element name="b" type="xhtmlContent"/>
+      <xs:element name="u" type="xhtmlContent"/>
+      <xs:element name="ul" type="xhtmlContent"/>
+      <xs:element name="ol" type="xhtmlContent"/>
+      <xs:element name="li" type="xhtmlContent"/>
+      <xs:element name="a">
+        <xs:complexType mixed="true">
+          <xs:complexContent>
+            <xs:extension base="xhtmlContent">
+              <xs:anyAttribute processContents="lax"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="paramType">
+    <xs:sequence>
+      <xs:element name="description" type="xhtmlContent" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="param" type="paramType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="identifier" use="required"/>
+    <xs:attribute name="type" type="objectType" use="required"/>
+    <xs:attribute name="default" type="xs:string"/>
+    <!-- (the following would require XSD 1.1) -->
+    <!-- <xs:assert test="@type = 'map' or count(param) = 0"/> -->
+  </xs:complexType>
+
+  <xs:element name="object-classes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="object-class" type="objectClassType" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="objectClassType">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="method" type="methodType"/>
+        <xs:element name="property" type="propertyType"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="name" type="identifier" use="required"/>
+    <xs:attribute name="superclass" type="identifier" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="methodType">
+    <xs:all>
+      <xs:element name="short-description" type="xs:string" minOccurs="0"/>
+      <xs:element name="description" type="xhtmlContent" minOccurs="0"/>
+      <xs:element name="params" type="paramsType" minOccurs="0"/>
+      <xs:element name="returns" type="paramsType" minOccurs="0"/>
+      <xs:element name="support" type="supportType" minOccurs="0"/>
+      <xs:element name="supersedes" type="supersedesType" minOccurs="0"/>
+      <xs:element name="categories" type="categoriesType" minOccurs="0"/>
+      <xs:element name="see-also" type="seeAlsoType" minOccurs="0"/>
+    </xs:all>
+    <xs:attribute name="name" type="compoundIdentifier" use="required"/>
+    <xs:attribute name="lang" type="xs:string" use="required"/>
+    <xs:attribute name="var" type="identifier"/>
+  </xs:complexType>
+
+  <xs:complexType name="propertyType">
+    <xs:all>
+      <xs:element name="flags" type="flagsType" minOccurs="0"/>
+      <xs:element name="handle" type="handleType" minOccurs="0"/>
+      <xs:element name="enum" type="enumType" minOccurs="0"/>
+      <xs:element name="label" type="xs:string" minOccurs="0"/>
+      <xs:element name="description" type="xhtmlContent" minOccurs="0"/>
+      <xs:element name="support" type="supportType" minOccurs="0"/>
+      <xs:element name="replaced-by" type="replacedByType" minOccurs="0"/>
+      <xs:element name="migrate-to" type="migrateToType" minOccurs="0"/>
+      <xs:element name="supersedes" type="supersedesType" minOccurs="0"/>
+      <xs:element name="categories" type="categoriesType" minOccurs="0"/>
+      <xs:element name="see-also" type="seeAlsoType" minOccurs="0"/>
+    </xs:all>
+    <xs:attribute name="name" type="compoundIdentifier" use="required"/>
+    <xs:attribute name="type" type="objectType" use="required"/>
+    <xs:attribute name="var" type="identifier"/>
+  </xs:complexType>
+
+  <xs:complexType name="paramsType">
+    <xs:sequence>
+      <xs:element name="param" type="paramType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="supportType">
+    <xs:attribute name="start" type="xs:int" use="required"/>
+    <xs:attribute name="start-deprecated" type="xs:int" use="required"/>
+    <xs:attribute name="end" type="xs:int" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="supersedesType">
+    <xs:sequence>
+      <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="name" type="compoundIdentifier" use="required"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="categoriesType">
+    <xs:sequence>
+      <xs:element name="category" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="name" type="xs:string" use="required"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="seeAlsoType">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="function-ref" type="referenceType"/>
+      <xs:element name="property-ref" type="referenceType"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="referenceType">
+    <xs:attribute name="name" type="compoundIdentifier" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="flagsType">
+    <xs:attribute name="readable" type="xs:boolean"/>
+    <xs:attribute name="writable" type="xs:boolean"/>
+    <xs:attribute name="removable" type="xs:boolean"/>
+    <xs:attribute name="deprecated" type="xs:boolean"/>
+    <xs:attribute name="modelhashexclude" type="xs:boolean"/>
+    <xs:attribute name="constant" type="xs:boolean"/>
+    <xs:attribute name="silent" type="xs:boolean"/>
+  </xs:complexType>
+
+  <xs:complexType name="handleType">
+    <xs:attribute name="type" type="identifier" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="enumType">
+    <xs:attribute name="name" type="identifier" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="replacedByType">
+    <xs:attribute name="name" type="compoundIdentifier" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="migrateToType">
+    <xs:attribute name="name" type="compoundIdentifier" use="required"/>
+  </xs:complexType>
+
+</xs:schema>
