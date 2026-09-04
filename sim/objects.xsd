@@ -95,7 +95,8 @@
       </xs:choice>
     </xs:sequence>
     <xs:attribute name="name" type="identifier" use="required"/>
-    <xs:attribute name="superclass" type="identifier" use="required"/>
+    <xs:attribute name="superclass" type="compoundIdentifier"/>
+    <xs:attribute name="singleton" type="compoundIdentifier"/>
   </xs:complexType>
 
   <xs:complexType name="methodType">
