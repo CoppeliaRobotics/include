@@ -799,6 +799,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                             <li>closed (bool, defaults to false): whether the path is closed or open</li>
                             <li>closedRepeatsStart (bool, defaults to false): whether a closed path has the first path point identical to the last path point</li>
                             <li>onlyCtrlPoints (bool, defaults to false): if true, then only the control points are taken into account (no interpolated path is generated)</li>
+                            <li>forwardAndUpAxes (string, defaults to "xz"): possible values are "xy", "xz", "yx", "yz", "zx" and "zy". Indicates 2 axis used to reorient path points in
+                                a pose-type path: The first axis points along the path direction, the second axis points towards the upVector (if specified)</li>
+                            <li>upVector (vector3, defaults to nil): is used together with forwardAndUpAxes to reorient path points in a specific manner</li>
                             <li>ctrlPoints: optional map describing control point properties:
                                 <ul>
                                     <li>duplicateThreshold (float, defaults to 0.02): distance below which points are merged</li>
@@ -964,6 +967,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                             <li>closed (bool, defaults to false): whether the path is closed or open</li>
                             <li>closedRepeatsStart (bool, defaults to false): whether a closed path has the first path point identical to the last path point</li>
                             <li>onlyCtrlPoints (bool, defaults to false): if true, then only the control points are taken into account (no interpolated path is generated)</li>
+                            <li>forwardAndUpAxes (string, defaults to "xz"): possible values are "xy", "xz", "yx", "yz", "zx" and "zy". Indicates 2 axis used to reorient path points in
+                                a pose-type path: The first axis points along the path direction, the second axis points towards the upVector (if specified)</li>
+                            <li>upVector (vector3, defaults to nil): is used together with forwardAndUpAxes to reorient path points in a specific manner</li>
                             <li>ctrlPoints: optional map describing control point properties:
                                 <ul>
                                     <li>duplicateThreshold (float, defaults to 0.02): distance below which points are merged</li>
@@ -5133,6 +5139,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
                                     <li>orientationMetric (float): the weight of orientation vs position</li>
+                                    <li>forwardAndUpAxes (string, defaults to "xz"): possible values are "xy", "xz", "yx", "yz", "zx" and "zy". Indicates 2 axis used to reorient path points in
+                                        a pose-type path: The first axis points along the path direction, the second axis points towards the upVector (if specified)</li>
+                                    <li>upVector (vector3, defaults to nil): is used together with forwardAndUpAxes to reorient path points in a specific manner</li>
                                     <li>ctrlPoints: optional map describing control point properties:
                                         <ul>
                                             <li>duplicateThreshold (float): distance below which points are merged</li>
@@ -9232,6 +9241,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
                                     <li>orientationMetric (float): the weight of orientation vs position</li>
+                                    <li>forwardAndUpAxes (string, defaults to "xz"): possible values are "xy", "xz", "yx", "yz", "zx" and "zy". Indicates 2 axis used to reorient path points in
+                                        a pose-type path: The first axis points along the path direction, the second axis points towards the upVector (if specified)</li>
+                                    <li>upVector (vector3, defaults to nil): is used together with forwardAndUpAxes to reorient path points in a specific manner</li>
                                     <li>ctrlPoints: optional map describing control point properties:
                                         <ul>
                                             <li>duplicateThreshold (float): distance below which points are merged</li>
