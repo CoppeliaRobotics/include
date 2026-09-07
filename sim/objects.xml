@@ -5866,6 +5866,21 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:transformImage" />
             </see-also>
         </method>
+        <property name="current" type="handle" var="current" >
+            <handle type="object" />
+            <flags readable="true" writable="true" modelhashexclude="true" />
+            <label>Current</label>
+            <description>The current object</description>
+            <support start="2" start-deprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
+            <categories>
+                <category name="selection" />
+            </categories>
+            <see-also>
+                <property-ref name="scene.selection" />
+            </see-also>
+        </property>
         <property name="addOnPath" type="string" var="DEPRECATED_addOnDir" >
             <flags readable="true" modelhashexclude="true" deprecated="true" constant="true" />
             <support start="1" start-deprecated="2" end="2" />
@@ -11001,6 +11016,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
                 <category name="selection" />
             </categories>
+            <see-also>
+                <property-ref name="app.current" />
+            </see-also>
         </property>
         <property name="selectionHandles" type="int[]" var="DEPRECATED_selectionHandles" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
