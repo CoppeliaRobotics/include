@@ -6451,10 +6451,23 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="sandbox" type="handle" var="sandbox" >
             <handle type="detachedScript" />
             <flags readable="true" modelhashexclude="true" constant="true" />
-            <label>Sandbox</label>
-            <description>The sandbox script</description>
+            <label>Lua sandbox</label>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
+                <category name="detachedScript" />
+                <category name="scriptRelated" />
+            </categories>
+            <see-also>
+                <function-ref name="app:handleSandboxScript" />
+            </see-also>
+        </property>
+        <property name="pySandbox" type="handle" var="pySandbox" >
+            <handle type="detachedScript" />
+            <flags readable="true" modelhashexclude="true" constant="true" />
+            <label>Python sandbox</label>
+            <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="detachedScript" />
                 <category name="scriptRelated" />
             </categories>
             <see-also>
