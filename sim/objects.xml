@@ -6805,7 +6805,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <method name="getObject" lang="python,lua" var="METHOD_getObject">
             <short-description>Retrieves an object by its path and name</short-description>
             <description>
-                Retrieves an object in the current hierarchy tree, based on its path and name
+                Convenience method. Retrieves an object in the current hierarchy tree, based on its path and name
             </description>
             <params>
                 <param name="objectPath" type="string">
