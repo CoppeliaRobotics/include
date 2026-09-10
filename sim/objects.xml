@@ -10476,7 +10476,6 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="dynamicsEngine" type="int[2]" var="DEPRECATED_dynamicsEngine" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="dynamics.engine" />
             <migrate-to name="dynamics.engine" />
         </property>
         <property name="dynamicsStepSize" type="float" var="DEPRECATED_dynamicsStepSize" >
@@ -11926,9 +11925,10 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the pose.
-                        Specify sim.handle_world to retrieve the absolute pose, sim.handle_inverse to retrieve the inverse of the absolute pose,
-                        sim.handle_parent to retrieve the pose relative to the object's parent, or an object relative to whose reference frame we want the pose</li>
+                            <li>relativeToPose (pose, defaults to nil): indicates a pose relative to which we want the pose expressed</li>
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the pose expressed.
+                        Specify sim.handle_world to retrieve the absolute pose,
+                        sim.handle_parent to retrieve the pose relative to the object's parent, or an object relative to whose reference frame we want the pose expressed</li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the pose relative to the joint's moving frame is returned, unless
                         this argument is true, in which case the pose relative to the joint's base frame is returned</li>
                         </ul>
@@ -11968,9 +11968,10 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the position.
-                        Specify sim.handle_world to retrieve the absolute position, sim.handle_inverse to retrieve the inverse of the absolute position,
-                        sim.handle_parent to retrieve the position relative to the object's parent, or an object relative to whose reference frame we want the position </li>
+                            <li>relativeToPose (pose, defaults to nil): indicates a pose relative to which we want the position expressed</li>
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the position expressed.
+                        Specify sim.handle_world to retrieve the absolute position,
+                        sim.handle_parent to retrieve the position relative to the object's parent, or an object relative to whose reference frame we want the position expressed</li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the position relative to the joint's moving frame is returned, unless
                         this argument is true, in which case the position relative to the joint's base frame is returned</li>
                         </ul>
@@ -12009,9 +12010,10 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the quaternion.
-                        Specify sim.handle_world to retrieve the absolute quaternion, sim.handle_inverse to retrieve the inverse of the absolute quaternion,
-                        sim.handle_parent to retrieve the quaternion relative to the object's parent, or an object relative to whose reference frame we want the quaternion</li>
+                            <li>relativeToPose (pose, defaults to nil): indicates a pose relative to which we want the quaternion expressed</li>
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the quaternion expressed.
+                        Specify sim.handle_world to retrieve the absolute quaternion,
+                        sim.handle_parent to retrieve the quaternion relative to the object's parent, or an object relative to whose reference frame we want the quaternion expressed</li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the quaternion relative to the joint's moving frame is returned, unless
                         this argument is true, in which case the quaternion relative to the joint's base frame is returned</li>
                         </ul>
@@ -12054,8 +12056,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame the pose is specified. Specify sim.handle_world to set the absolute pose, sim.handle_inverse to
-                        set the inverse of the absolute pose, sim.handle_parent to set the pose relative to the scene object's parent, or a scene object relative to
+                            <li>relativeToPose (pose, defaults to nil): indicates a pose relative to which the pose is specified</li>
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame the pose is specified. Specify sim.handle_world to set the absolute pose,
+                        sim.handle_parent to set the pose relative to the scene object's parent, or a scene object relative to
                         whose reference frame the pose is specified</li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the pose relative to the joint's moving frame is set, unless
                         this argument is true, in which case the pose relative to the joint's base frame is set</li>
@@ -12092,8 +12095,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame the position is specified. Specify sim.handle_world to set the absolute position, sim.handle_inverse to
-                        set the inverse of the absolute position, sim.handle_parent to set the position relative to the scene object's parent, or a scene object relative to
+                            <li>relativeToPose (pose, defaults to nil): indicates a pose relative to which the position is specified</li>
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame the position is specified. Specify sim.handle_world to set the absolute position,
+                        sim.handle_parent to set the position relative to the scene object's parent, or a scene object relative to
                         whose reference frame the position is specified</li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the position relative to the joint's moving frame is set, unless
                         this argument is true, in which case the position relative to the joint's base frame is set</li>
@@ -12129,8 +12133,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame the quaternion is specified. Specify sim.handle_world to set the absolute quaternion, sim.handle_inverse to
-                        set the inverse of the absolute quaternion, sim.handle_parent to set the quaternion relative to the scene object's parent, or a scene object relative to
+                            <li>relativeToPose (pose, defaults to nil): indicates a pose relative to which the quaternion is specified</li>
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame the quaternion is specified. Specify sim.handle_world to set the absolute quaternion,
+                        sim.handle_parent to set the quaternion relative to the scene object's parent, or a scene object relative to
                         whose reference frame the quaternion is specified</li>
                             <li>relativeToJointBase (bool, defaults to false): is a joint, then the quaternion relative to the joint's moving frame is set, unless
                         this argument is true, in which case the quaternion relative to the joint's base frame is set</li>
