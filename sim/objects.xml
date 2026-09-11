@@ -4388,6 +4388,14 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Data to be packed
                     </description>
                 </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        Optional map:
+                        <ul>
+                            <li>compatibility (string, defaults to 'sim-2'): compatibility mode. Possible values are 'sim-1' and 'sim-2'</li>
+                        </ul>
+                    </description>
+                </param>
             </params>
             <returns>
                 <param name="packedData" type="buffer">
@@ -4417,6 +4425,14 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <param name="packedData" type="buffer">
                     <description>
                         Packed data
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        Optional map:
+                        <ul>
+                            <li>compatibility (string, defaults to 'sim-2'): compatibility mode. Possible values are 'sim-1' and 'sim-2'</li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -16042,6 +16058,17 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
             </categories>
             <label>Detected point</label>
+            <support start="2" start-deprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.readProximitySensor" />
+            </supersedes>
+        </property>
+        <property name="detectedDistance" type="float" var="detectedDistance" >
+            <flags readable="true" modelhashexclude="true" />
+            <categories>
+                <category name="distance" />
+            </categories>
+            <label>Detected distance</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.readProximitySensor" />
