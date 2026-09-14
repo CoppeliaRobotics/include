@@ -938,7 +938,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
             </categories>
             <see-also>
-                <function-ref name="Path:constructor" />
+                <function-ref name="Path:new" />
                 <function-ref name="Path:fromObject" />
                 <function-ref name="Path:data" />
                 <function-ref name="Path:appendFromJoints" />
@@ -11898,18 +11898,22 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Retrieves the name or path of a scene object
             </description>
             <params>
-                <param name="format" type="string" default="name">
+                <param name="options" type="map" default="{}">
                     <description>
-                        Name formatting options:
+                        Optional map:
                         <ul>
-                            <li> "name": naked name (e.g. "name") </li>
-                            <li> "nameOrder": ordered name (e.g. "name[0]") </li>
-                            <li> "shortPath": short path that fully identifies the object (e.g. "/parent/name[0]") </li>
-                            <li> "fullPath": full path (e.g. "/parentA/parentB/name[0]") </li>
-                            <li> "nameHandle": naked name with handle (e.g. "name__42__") </li>
-                            <li> "printpath": print version of the short path, not guaranteed to be unique (e.g. "/parent/ ... /name") </li>
-                            <li> "nameIndex": naked name with index information (e.g. "name{3}") </li>
-                            <li> "pathIndex": path with index information (e.g. "/parentModelA{4}/.../parentModelN{2}/name{3}") </li>
+                            <li>mode (string, defaults to "name"): Name formatting
+                                <ul>
+                                    <li> "name": naked name (e.g. "name") </li>
+                                    <li> "nameOrder": ordered name (e.g. "name[0]") </li>
+                                    <li> "shortPath": short path that fully identifies the object (e.g. "/parent/name[0]") </li>
+                                    <li> "fullPath": full path (e.g. "/parentA/parentB/name[0]") </li>
+                                    <li> "nameHandle": naked name with handle (e.g. "name__42__") </li>
+                                    <li> "printpath": print version of the short path, not guaranteed to be unique (e.g. "/parent/ ... /name") </li>
+                                    <li> "nameIndex": naked name with index information (e.g. "name{3}") </li>
+                                    <li> "pathIndex": path with index information (e.g. "/parentModelA{4}/.../parentModelN{2}/name{3}") </li>
+                                </ul>
+                            </li>
                         </ul>
                     </description>
                 </param>
