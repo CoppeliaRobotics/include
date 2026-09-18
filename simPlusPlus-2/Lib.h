@@ -1133,8 +1133,8 @@ namespace sim
 
         (pushValueOntoStack(inStack.handle, std::forward<InputArgs>(inputs)), ...);
 
-        handle_t detachedScript = -1;
-        int result = simCallMethod(target, name, inStack.handle, outStack.handle, detachedScript);
+        handle_t nakedScript = -1;
+        int result = simCallMethod(target, name, inStack.handle, outStack.handle, nakedScript);
         if(result == -1)
             throw api_error("simCallMethod");
 

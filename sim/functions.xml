@@ -28,9 +28,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                     output stack handle. The output stack holds the return arguments. Can be -1
                 </description>
             </param>
-            <param name="detachedScript" type="int">
+            <param name="script" type="int">
                 <description>
-                    the handle of a detached script, that will be used if the method is implemented in Lua. Can be -1, which targets the sandbox script
+                    the handle of a script, that will be used if the method is implemented in Lua. Can be -1, which targets the sandbox script
                 </description>
             </param>
         </params>
@@ -4198,7 +4198,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </returns>
         <categories>
             <category name="c_aux" />
-            <category name="octree" />
+            <category name="ocTree" />
         </categories>
         <see-also>
         </see-also>

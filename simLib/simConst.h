@@ -93,9 +93,10 @@ typedef enum {
     X(sceneobject, light, 13, light) \
     X(sceneobject, octree, 15, ocTree) \
     X(sceneobject, pointcloud, 16, pointCloud) \
-    X(sceneobject, script, 17, script) \
+    X(sceneobject, scriptobject, 17, scriptObject) \
     X(sceneobject, marker, 18, marker) \
     X(sceneobject, customsceneobject, 19, customSceneObject) \
+    sim_sceneobject_script = 17, \
 
 typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
@@ -768,8 +769,7 @@ typedef enum {
 enum {
     sim_objecttype_sceneobject = 109,
     sim_objecttype_collection = 115,
-    sim_objecttype_detachedscript = 117,
-    sim_objecttype_script = sim_objecttype_detachedscript,
+    sim_objecttype_script = 117,
     sim_objecttype_texture = 120,
     sim_objecttype_mesh = 122,
     sim_objecttype_interfacestack = 123,
@@ -850,8 +850,8 @@ enum { // Object handles. Some values are serialized:
     sim_object_sceneobjectclassstart = 1000000,
     sim_object_sceneobjectclassend = 1001000,
 
-    sim_object_detachedscriptstart = 1010000,
-    sim_object_detachedscriptend = 1019999,
+    sim_object_scriptstart = 1010000,
+    sim_object_scriptend = 1019999,
 
     sim_object_stackstart = 1020000,
     sim_object_stackend = 1029999,
