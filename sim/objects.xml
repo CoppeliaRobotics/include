@@ -7268,6 +7268,17 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="scriptRelated" />
             </categories>
         </method>
+        <method name="reset" lang="lua" var="METHOD_reset">
+            <short-description>Resets/ends the script</short-description>
+            <description>
+                Resets/ends the script. Operates in an asynchronous way when called upon the calling script
+            </description>
+            <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="scriptObject" />
+                <category name="scriptRelated" />
+            </categories>
+        </method>
         <method name="init" lang="lua" var="METHOD_init">
             <short-description>Initializes/reinitializes the script</short-description>
             <description>
@@ -7277,6 +7288,28 @@ note: the generated see-also section contains the <see-also> items, but also the
             <supersedes>
                 <item name="sim.initScript" />
             </supersedes>
+            <categories>
+                <category name="scriptObject" />
+                <category name="scriptRelated" />
+            </categories>
+        </method>
+        <method name="suspend" lang="lua" var="METHOD_suspend">
+            <short-description>Suspends the script</short-description>
+            <description>
+                Suspends the script. Only add-ons can be suspended
+            </description>
+            <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="scriptObject" />
+                <category name="scriptRelated" />
+            </categories>
+        </method>
+        <method name="resume" lang="lua" var="METHOD_resume">
+            <short-description>Resumes the suspended script</short-description>
+            <description>
+                Resumes the suspended script. Only add-ons can be suspended and resumed
+            </description>
+            <support start="2" start-deprecated="0" end="0" />
             <categories>
                 <category name="scriptObject" />
                 <category name="scriptRelated" />
