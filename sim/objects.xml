@@ -5574,7 +5574,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
             </see-also>
         </method>
-        <method name="handleSandboxScript" lang="lua" var="METHOD_handleSandboxScript">
+        <method name="handleSandboxes" lang="lua" var="METHOD_handleSandboxScripts">
             <short-description>Calls a system callback in the sandbox</short-description>
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a> in the <a href="../sandboxScript.htm"> sandbox </a>.
@@ -5596,13 +5596,13 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="script" />
             </categories>
             <see-also>
-                <function-ref name="app:handleAddOnScripts" />
+                <function-ref name="app:handleAddOns" />
                 <function-ref name="scene:handleCustomizationScripts" />
                 <function-ref name="scene:handleSimulationScripts" />
                 <property-ref name="app.sandbox" />
             </see-also>
         </method>
-        <method name="handleAddOnScripts" lang="lua" var="METHOD_handleAddOnScripts">
+        <method name="handleAddOns" lang="lua" var="METHOD_handleAddOnScripts">
             <short-description>Calls a system callback in add-ons</short-description>
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a> in <a href="../addOns.htm"> add-ons </a>.
@@ -5631,7 +5631,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="script" />
             </categories>
             <see-also>
-                <function-ref name="app:handleSandboxScript" />
+                <function-ref name="app:handleSandboxes" />
                 <function-ref name="scene:handleCustomizationScripts" />
                 <function-ref name="scene:handleSimulationScripts" />
                 <property-ref name="app.addOns" />
@@ -5962,7 +5962,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="customization" />
             </categories>
             <see-also>
-                <function-ref name="app:handleAddOnScripts" />
+                <function-ref name="app:handleAddOns" />
                 <property-ref name="app.paths.addOns" />
             </see-also>
         </property>
@@ -6524,7 +6524,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="scriptRelated" />
             </categories>
             <see-also>
-                <function-ref name="app:handleSandboxScript" />
+                <function-ref name="app:handleSandboxes" />
             </see-also>
         </property>
         <property name="pySandbox" type="handle" var="pySandbox" >
@@ -6537,7 +6537,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="scriptRelated" />
             </categories>
             <see-also>
-                <function-ref name="app:handleSandboxScript" />
+                <function-ref name="app:handleSandboxes" />
             </see-also>
         </property>
         <property name="sandboxLang" type="string" var="sandboxLang" >
@@ -8921,8 +8921,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="scriptRelated" />
             </categories>
             <see-also>
-                <function-ref name="app:handleSandboxScript" />
-                <function-ref name="app:handleAddOnScripts" />
+                <function-ref name="app:handleSandboxes" />
+                <function-ref name="app:handleAddOns" />
                 <function-ref name="scene:handleSimulationScripts" />
                 <property-ref name="scene.mainScript" />
             </see-also>
@@ -8958,8 +8958,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="scriptRelated" />
             </categories>
             <see-also>
-                <function-ref name="app:handleSandboxScript" />
-                <function-ref name="app:handleAddOnScripts" />
+                <function-ref name="app:handleSandboxes" />
+                <function-ref name="app:handleAddOns" />
                 <function-ref name="scene:handleCustomizationScripts" />
                 <property-ref name="scene.mainScript" />
             </see-also>
