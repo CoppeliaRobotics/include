@@ -5000,10 +5000,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                                 <ul>
                                     <li>type (string): "joint"</li>
                                     <li>joint.type (string): the joint type. Allowed values are "revolute", "prismatic" or "spherical"</li>
-                                    <li>mode (int): the <a href="#jointMode">joint mode</a>
-                                    </li>
-                                    <li>dynamics.ctrlMode (enum): the <a href="#dynCtrlMode">joint dynamic control mode</a>
-                                    </li>
+                                    <li>mode (int): the <a href="#jointMode">joint mode</a></li>
+                                    <li>dynamics.ctrlMode (int): the <a href="#dynCtrlMode">joint dynamic control mode</a></li>
                                     <li>bounds (float[]): joint lower and upper bounds, [] for cyclic revolute joints, or for spherical joints</li>
                                     <li>screwLead (float): a revolute joint with a screw lead different than 0.0 is a screw</li>
                                     <li>length (float): length of the joint</li>
@@ -5019,7 +5017,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>type (string): "shape"</li>
                                     <li>shadingAngle (float): the shading angle</li>
                                     <li>culling (bool): whether the shape has its back faces culled</li>
-                                    <li>dynamic (bool): whether the shape is dynamically enabled</li>
+                                    <li>dynamics.dynamic (bool): whether the shape is dynamically enabled</li>
                                     <li>showEdges (bool): whether the shape appears with visible edges</li>
                                     <li>color.diffuse (color): diffuse color</li>
                                     <li>color.specular (color): specular color</li>
@@ -5126,11 +5124,11 @@ note: the generated see-also section contains the <see-also> items, but also the
                                 <ul>
                                     <li>type (string): "forceSensor"</li>
                                     <li>size (float): size of the sensor</li>
-                                    <li>filterType (int): filter type (0 = average, 1 = median)</li>
-                                    <li>filterSampleSize (int): value count the filter operates on</li>
-                                    <li>consecutiveViolationsToTrigger (int): number of consecutive threshold violation for the sensor to trigger</li>
-                                    <li>forceThreshold (float): force threshold</li>
-                                    <li>torqueThreshold (float): torque threshold</li>
+                                    <li>dynamics.filter (int): filter type (0 = average, 1 = median)</li>
+                                    <li>dynamics.filterSampleSize (int): value count the filter operates on</li>
+                                    <li>dynamics.consecutiveViolationsToTrigger (int): number of consecutive threshold violation for the sensor to trigger</li>
+                                    <li>dynamics.forceThreshold (float): force threshold</li>
+                                    <li>dynamics.torqueThreshold (float): torque threshold</li>
                                     <li>color.diffuse (color): diffuse color</li>
                                     <li>color.specular (color): specular color</li>
                                     <li>color.emission (color): emission color</li>
@@ -5150,14 +5148,14 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>randomizedDetection (bool): randomized detection (only with ray-type proximity sensors)</li>
                                     <li>angleThreshold (float): threshold angle for limited angle detection</li>
                                     <li>closeThreshold (float): smallest detection distance</li>
-                                    <li>volume_faces (int[2]): near and far face count for the detection volume</li>
-                                    <li>volume_subdivisions (int[2]): near and far subdivisions for the detection volume</li>
-                                    <li>volume_offset (float): offset for the detection volume</li>
-                                    <li>volume_range (float): range for the detection volume</li>
-                                    <li>volume_xSize (float[2]): near and far x size for the detection volume</li>
-                                    <li>volume_ySize (float[2]): near and far y size for the detection volume</li>
-                                    <li>volume_radius (float[2]): near and far radius for the detection volume</li>
-                                    <li>volume_angle (float): angle for the detection volume</li>
+                                    <li>volume.faces (int[2]): near and far face count for the detection volume</li>
+                                    <li>volume.subdivisions (int[2]): near and far subdivisions for the detection volume</li>
+                                    <li>volume.offset (float): offset for the detection volume</li>
+                                    <li>volume.range (float): range for the detection volume</li>
+                                    <li>volume.xSize (float[2]): near and far x size for the detection volume</li>
+                                    <li>volume.ySize (float[2]): near and far y size for the detection volume</li>
+                                    <li>volume.radius (float[2]): near and far radius for the detection volume</li>
+                                    <li>volume.angle (float): angle for the detection volume</li>
                                     <li>color.diffuse (color): diffuse color</li>
                                     <li>color.specular (color): specular color</li>
                                     <li>color.emission (color): emission color</li>
@@ -8343,7 +8341,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="scene:duplicateObjects" />
             </see-also>
         </method>
-        <method name="getContacts" lang="python,lua" var="METHOD_getContacts">
+        <method name="dynamics:getContacts" lang="python,lua" var="METHOD_getContacts">
             <short-description>Retrieves contact information from the dynamics world</short-description>
             <description>
                 Retrieves contact information from the dynamics world
@@ -8390,7 +8388,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
             <see-also>
-                <function-ref name="shape:getContacts" />
+                <function-ref name="shape.dynamics:getContacts" />
                 <property-ref name="scene.dynamics.showContactPoints" />
             </see-also>
         </method>
@@ -9163,10 +9161,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                                 <ul>
                                     <li>type (string): "joint"</li>
                                     <li>joint.type (string): the joint type. Allowed values are "revolute", "prismatic" or "spherical"</li>
-                                    <li>mode (int): the <a href="#jointMode">joint mode</a>
-                                    </li>
-                                    <li>dynCtrlMode (int): the <a href="#dynCtrlMode">joint dynamic control mode</a>
-                                    </li>
+                                    <li>mode (int): the <a href="#jointMode">joint mode</a></li>
+                                    <li>dynamics.ctrlMode (int): the <a href="#dynCtrlMode">joint dynamic control mode</a></li>
                                     <li>bounds (float[]): joint lower and upper bounds, [] for cyclic revolute joints, or for spherical joints</li>
                                     <li>screwLead (float): a revolute joint with a screw lead different than 0.0 is a screw</li>
                                     <li>length (float): length of the joint</li>
@@ -9182,7 +9178,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>type (string): "shape"</li>
                                     <li>shadingAngle (float): the shading angle</li>
                                     <li>culling (bool): whether the shape has its back faces culled</li>
-                                    <li>dynamic (bool): whether the shape is dynamically enabled</li>
+                                    <li>dynamics.dynamic (bool): whether the shape is dynamically enabled</li>
                                     <li>showEdges (bool): whether the shape appears with visible edges</li>
                                     <li>color.diffuse (color): diffuse color</li>
                                     <li>color.specular (color): specular color</li>
@@ -9289,11 +9285,11 @@ note: the generated see-also section contains the <see-also> items, but also the
                                 <ul>
                                     <li>type (string): "forceSensor"</li>
                                     <li>size (float): size of the sensor</li>
-                                    <li>filterType (int): filter type (0 = average, 1 = median)</li>
-                                    <li>filterSampleSize (int): value count the filter operates on</li>
-                                    <li>consecutiveViolationsToTrigger (int): number of consecutive threshold violation for the sensor to trigger</li>
-                                    <li>forceThreshold (float): force threshold</li>
-                                    <li>torqueThreshold (float): torque threshold</li>
+                                    <li>dynamics.filter (int): filter type (0 = average, 1 = median)</li>
+                                    <li>dynamics.filterSampleSize (int): value count the filter operates on</li>
+                                    <li>dynamics.consecutiveViolationsToTrigger (int): number of consecutive threshold violation for the sensor to trigger</li>
+                                    <li>dynamics.forceThreshold (float): force threshold</li>
+                                    <li>dynamics.torqueThreshold (float): torque threshold</li>
                                     <li>color.diffuse (color): diffuse color</li>
                                     <li>color.specular (color): specular color</li>
                                     <li>color.emission (color): emission color</li>
@@ -9313,14 +9309,14 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>randomizedDetection (bool): randomized detection (only with ray-type proximity sensors)</li>
                                     <li>angleThreshold (float): threshold angle for limited angle detection</li>
                                     <li>closeThreshold (float): smallest detection distance</li>
-                                    <li>volume_faces (int[2]): near and far face count for the detection volume</li>
-                                    <li>volume_subdivisions (int[2]): near and far subdivisions for the detection volume</li>
-                                    <li>volume_offset (float): offset for the detection volume</li>
-                                    <li>volume_range (float): range for the detection volume</li>
-                                    <li>volume_xSize (float[2]): near and far x size for the detection volume</li>
-                                    <li>volume_ySize (float[2]): near and far y size for the detection volume</li>
-                                    <li>volume_radius (float[2]): near and far radius for the detection volume</li>
-                                    <li>volume_angle (float): angle for the detection volume</li>
+                                    <li>volume.faces (int[2]): near and far face count for the detection volume</li>
+                                    <li>volume.subdivisions (int[2]): near and far subdivisions for the detection volume</li>
+                                    <li>volume.offset (float): offset for the detection volume</li>
+                                    <li>volume.range (float): range for the detection volume</li>
+                                    <li>volume.xSize (float[2]): near and far x size for the detection volume</li>
+                                    <li>volume.ySize (float[2]): near and far y size for the detection volume</li>
+                                    <li>volume.radius (float[2]): near and far radius for the detection volume</li>
+                                    <li>volume.angle (float): angle for the detection volume</li>
                                     <li>color.diffuse (color): diffuse color</li>
                                     <li>color.specular (color): specular color</li>
                                     <li>color.emission (color): emission color</li>
@@ -10441,7 +10437,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
             <see-also>
-                <function-ref name="scene:getContacts" />
+                <function-ref name="scene.dynamics:getContacts" />
             </see-also>
         </property>
         <property name="dynamics.stepSize" type="float" var="dynamicsStepSize" >
@@ -13699,7 +13695,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="shape" superclass="sceneObject">
-        <method name="getContacts" lang="python,lua" var="METHOD_getContacts">
+        <method name="dynamics:getContacts" lang="python,lua" var="METHOD_getContacts">
             <info>same method present in both scene and shape</info>
             <short-description>Retrieves the shape's contact information</short-description>
             <description>
@@ -13747,10 +13743,10 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
             <see-also>
-                <function-ref name="scene:getContacts" />
+                <function-ref name="scene.dynamics:getContacts" />
                 <property-ref name="scene.dynamics.showContactPoints" />
-                <property-ref name="shape.respondable" />
-                <property-ref name="shape.respondableMask" />
+                <property-ref name="shape.dynamics.respondable" />
+                <property-ref name="shape.dynamics.respondableMask" />
             </see-also>
         </method>
         <method name="getAppearance" lang="python,lua" var="METHOD_getAppearance">
@@ -13875,7 +13871,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="shape.meshes" />
             </see-also>
         </method>
-        <method name="addForce" lang="python,lua" var="METHOD_addForce">
+        <method name="dynamics:addForce" lang="python,lua" var="METHOD_addForce">
             <short-description>Applies a force to the dynamically enabled shape</short-description>
             <description>
                 Applies a force to the dynamically enabled shape. Forces are added cumulatively
@@ -13905,13 +13901,13 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
             <see-also>
-                <function-ref name="shape:addTorque" />
-                <property-ref name="shape.dynamic" />
+                <function-ref name="shape.dynamics:addTorque" />
+                <property-ref name="shape.dynamics.dynamic" />
                 <property-ref name="shape.dynamics.mass" />
                 <property-ref name="shape.dynamics.centerOfMass" />
             </see-also>
         </method>
-        <method name="addTorque" lang="python,lua" var="METHOD_addTorque">
+        <method name="dynamics:addTorque" lang="python,lua" var="METHOD_addTorque">
             <short-description>Applies a torque to the dynamically enabled shape</short-description>
             <description>
                 Applies a torque to the dynamically enabled shape. Torques are added cumulatively
@@ -13940,13 +13936,13 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
             <see-also>
-                <function-ref name="shape:addForce" />
-                <property-ref name="shape.dynamic" />
+                <function-ref name="shape.dynamics:addForce" />
+                <property-ref name="shape.dynamics.dynamic" />
                 <property-ref name="shape.dynamics.mass" />
                 <property-ref name="shape.dynamics.centerOfMass" />
             </see-also>
         </method>
-        <method name="computeInertia" lang="python,lua" var="METHOD_computeInertia">
+        <method name="dynamics:computeInertia" lang="python,lua" var="METHOD_computeInertia">
             <short-description>Computes and applies mass/inertia properties</short-description>
             <description>
                 Computes and applies mass and inertia properties to the shape, based on its convex representation
@@ -13968,13 +13964,13 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
             <see-also>
-                <function-ref name="shape:setInertia" />
+                <function-ref name="shape.dynamics:setInertia" />
                 <property-ref name="shape.dynamics.mass" />
                 <property-ref name="shape.dynamics.inertiaMatrix" />
                 <property-ref name="shape.dynamics.centerOfMass" />
             </see-also>
         </method>
-        <method name="setInertia" lang="python,lua" var="METHOD_setInertia">
+        <method name="dynamics:setInertia" lang="python,lua" var="METHOD_setInertia">
             <short-description>Applies a new inertia matrix</short-description>
             <description>
                 Applies a new inertia matrix
@@ -14000,14 +13996,14 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
             <see-also>
-                <function-ref name="shape:getInertia" />
-                <function-ref name="shape:computeInertia" />
+                <function-ref name="shape.dynamics:getInertia" />
+                <function-ref name="shape.dynamics:computeInertia" />
                 <property-ref name="shape.dynamics.mass" />
                 <property-ref name="shape.dynamics.inertiaMatrix" />
                 <property-ref name="shape.dynamics.centerOfMass" />
             </see-also>
         </method>
-        <method name="getInertia" lang="python,lua" var="METHOD_getInertia">
+        <method name="dynamics:getInertia" lang="python,lua" var="METHOD_getInertia">
             <short-description>Retrieves the shape's inertia information</short-description>
             <description>
                 Retrieves the shape's inertia information
@@ -14034,7 +14030,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
             <see-also>
-                <function-ref name="shape:setInertia" />
+                <function-ref name="shape.dynamics:setInertia" />
                 <property-ref name="shape.dynamics.mass" />
                 <property-ref name="shape.dynamics.inertiaMatrix" />
                 <property-ref name="shape.dynamics.centerOfMass" />
@@ -14258,9 +14254,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
             <see-also>
-                <function-ref name="shape:setInertia" />
-                <function-ref name="shape:getInertia" />
-                <function-ref name="shape:computeInertia" />
+                <function-ref name="shape.dynamics:setInertia" />
+                <function-ref name="shape.dynamics:getInertia" />
+                <function-ref name="shape.dynamics:computeInertia" />
             </see-also>
         </property>
         <property name="compound" type="bool" var="compound" >
@@ -14411,7 +14407,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.linearVelocity" />
         </property>
-        <property name="dynamic" type="bool" var="dynamic" >
+        <property name="dynamics.dynamic" type="bool" var="dynamic" >
             <flags readable="true" writable="true" />
             <label>Dynamic</label>
             <description>Shape is dynamic, i.e. not static</description>
@@ -15400,12 +15396,12 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
             <see-also>
-                <function-ref name="shape:setInertia" />
-                <function-ref name="shape:getInertia" />
-                <function-ref name="shape:computeInertia" />
+                <function-ref name="shape.dynamics:setInertia" />
+                <function-ref name="shape.dynamics:getInertia" />
+                <function-ref name="shape.dynamics:computeInertia" />
             </see-also>
         </property>
-        <property name="initAngularVelocity" type="vector3" var="initAngularVelocity" >
+        <property name="dynamics.initAngularVelocity" type="vector3" var="initAngularVelocity" >
             <flags readable="true" writable="true" />
             <label>Initial rotational velocity</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -15418,7 +15414,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="initLinearVelocity" type="vector3" var="initLinearVelocity" >
+        <property name="dynamics.initLinearVelocity" type="vector3" var="initLinearVelocity" >
             <flags readable="true" writable="true" />
             <label>Initial linear velocity</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -15431,7 +15427,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="kinematic" type="bool" var="kinematic" >
+        <property name="dynamics.kinematic" type="bool" var="kinematic" >
             <flags readable="true" writable="true" />
             <label>Kinematic</label>
             <description>Special flag mainly used for MuJoCo static shapes that move and need to transmit a friction</description>
@@ -15443,8 +15439,23 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
+        <property name="initAngularVelocity" type="vector3" var="DEPRECATED_initAngularVelocity" >
+            <flags readable="true" writable="true" modelhashexclude="true" deprecated="true"/>
+            <support start="1" start-deprecated="2" end="2" />
+            <replaced-by name="dynamics.initAngularVelocity" />
+        </property>
+        <property name="initLinearVelocity" type="vector3" var="DEPRECATED_initLinearVelocity" >
+            <flags readable="true" writable="true" modelhashexclude="true" deprecated="true"/>
+            <support start="1" start-deprecated="2" end="2" />
+            <replaced-by name="dynamics.initLinearVelocity" />
+        </property>
+        <property name="kinematic" type="bool" var="DEPRECATED_kinematic" >
+            <flags readable="true" writable="true" modelhashexclude="true" deprecated="true"/>
+            <support start="1" start-deprecated="2" end="2" />
+            <replaced-by name="dynamics.kinematic" />
+        </property>
         <property name="mass" type="float" var="DEPRECATED_mass" >
-            <flags readable="true" writable="true" deprecated="true"/>
+            <flags readable="true" writable="true" modelhashexclude="true" deprecated="true"/>
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mass" />
         </property>
@@ -15461,9 +15472,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
             <see-also>
-                <function-ref name="shape:setInertia" />
-                <function-ref name="shape:getInertia" />
-                <function-ref name="shape:computeInertia" />
+                <function-ref name="shape.dynamics:setInertia" />
+                <function-ref name="shape.dynamics:getInertia" />
+                <function-ref name="shape.dynamics:computeInertia" />
             </see-also>
         </property>
         <property name="meshes" type="handle[]" var="meshes" >
@@ -15514,6 +15525,11 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.mujoco.adhesionforcerange" />
+        </property>
+        <property name="dynamic" type="bool" var="DEPRECATED_dynamic" >
+            <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
+            <support start="1" start-deprecated="2" end="2" />
+            <replaced-by name="dynamics.dynamic" />
         </property>
         <property name="mujoco.adhesiongain" type="float" var="DEPRECATED_mujocoAdhesionGain" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
@@ -15668,7 +15684,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <migrate-to name="dynamics.pmi" />
         </property>
-        <property name="respondable" type="bool" var="respondable" >
+        <property name="dynamics.respondable" type="bool" var="respondable" >
             <flags readable="true" writable="true" />
             <label>Respondable</label>
             <description>Shape will transmit a collision force</description>
@@ -15680,11 +15696,11 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
             <see-also>
-                <property-ref name="shape.respondableMask" />
-                <function-ref name="shape:getContacts" />
+                <property-ref name="shape.dynamics.respondableMask" />
+                <function-ref name="shape.dynamics:getContacts" />
             </see-also>
         </property>
-        <property name="respondableMask" type="int" var="respondableMask" >
+        <property name="dynamics.respondableMask" type="int" var="respondableMask" >
             <flags readable="true" writable="true" />
             <label>Respondable mask</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -15695,11 +15711,11 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
             <see-also>
-                <property-ref name="shape.respondable" />
-                <function-ref name="shape:getContacts" />
+                <property-ref name="shape.dynamics.respondable" />
+                <function-ref name="shape.dynamics:getContacts" />
             </see-also>
         </property>
-        <property name="setToDynamicWithParent" type="bool" var="setToDynamicWithParent" >
+        <property name="dynamics.setToDynamicWithParent" type="bool" var="setToDynamicWithParent" >
             <flags readable="true" writable="true" />
             <label>Set to dynamic if gets parent</label>
             <description>Shape will be made dynamic if it receives a parent</description>
@@ -15714,7 +15730,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
             </categories>
         </property>
-        <property name="startInDynSleepMode" type="bool" var="startInDynSleepMode" >
+        <property name="dynamics.startInSleepMode" type="bool" var="startInDynSleepMode" >
             <flags readable="true" writable="true" />
             <label>Start in sleep mode</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -15724,6 +15740,26 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
                 <category name="dynamics" />
             </categories>
+        </property>
+        <property name="setToDynamicWithParent" type="bool" var="DEPRECATED_setToDynamicWithParent" >
+            <flags readable="true" writable="true" modelhashexclude="true" deprecated="true"/>
+            <support start="1" start-deprecated="2" end="2" />
+            <replaced-by name="dynamics.setToDynamicWithParent" />
+        </property>
+        <property name="respondable" type="bool" var="DEPRECATED_respondable" >
+            <flags readable="true" writable="true" modelhashexclude="true" deprecated="true"/>
+            <support start="1" start-deprecated="2" end="2" />
+            <replaced-by name="dynamics.respondable" />
+        </property>
+        <property name="startInDynSleepMode" type="bool" var="DEPRECATED_startInDynSleepMode" >
+            <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
+            <support start="1" start-deprecated="2" end="2" />
+            <replaced-by name="dynamics.startInSleepMode" />
+        </property>
+        <property name="respondableMask" type="int" var="DEPRECATED_respondableMask" >
+            <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
+            <support start="1" start-deprecated="2" end="2" />
+            <replaced-by name="dynamics.respondableMask" />
         </property>
         <property name="vortex" type="group" var="DEPRECATEDGROUP_dynamicsVortex" >
             <flags modelhashexclude="true" deprecated="true" silent="true" constant="true" />
@@ -18779,7 +18815,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="joint.maxVelAccelJerk" />
             </see-also>
         </method>
-        <property name="averageForce" type="float" var="averageJointForce" >
+        <property name="dynamics.averageForce" type="float" var="averageJointForce" >
             <flags readable="true" modelhashexclude="true" />
             <label>Average force</label>
             <description>Force applied on average (in a simulation step)</description>
@@ -18794,7 +18830,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="averageJointForce" type="float" var="DEPRECATED_averageJointForce" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="averageForce" />
+            <replaced-by name="dynamics.averageForce" />
         </property>
         <property name="bounds" type="float[2]" var="bounds" >
             <flags readable="true" writable="true" />
@@ -19859,7 +19895,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.engineProperties" />
         </property>
-        <property name="force" type="float" var="jointForce" >
+        <property name="dynamics.force" type="float" var="jointForce" >
             <flags readable="true" modelhashexclude="true" />
             <label>Force</label>
             <description>Force applied</description>
@@ -19968,7 +20004,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="jointForce" type="float" var="DEPRECATED_jointForce" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="force" />
+            <replaced-by name="dynamics.force" />
         </property>
         <property name="jointLength" type="float" var="DEPRECATED_length" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
@@ -20161,7 +20197,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.springDamperParams" />
         </property>
-        <property name="targetForce" type="float" var="targetForce" >
+        <property name="dynamics.targetForce" type="float" var="targetForce" >
             <flags readable="true" writable="true" modelhashexclude="true" />
             <label>Target force</label>
             <description>Maximum force to exert</description>
@@ -20173,6 +20209,11 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
                 <category name="dynamics" />
             </categories>
+        </property>
+        <property name="targetForce" type="float" var="DEPRECATED_targetForce" >
+            <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
+            <support start="1" start-deprecated="2" end="2" />
+            <replaced-by name="dynamics.targetForce" />
         </property>
         <property name="targetPos" type="float" var="DEPRECATED_targetPos" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
@@ -20926,14 +20967,14 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getShapeColor" />
             </supersedes>
         </property>
-        <property name="consecutiveViolationsToTrigger" type="int" var="consecutiveViolationsToTrigger" >
+        <property name="dynamics.consecutiveViolationsToTrigger" type="int" var="consecutiveViolationsToTrigger" >
             <flags readable="true" writable="true" />
             <categories>
             </categories>
             <label>Consecutive violations to trigger</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="filter" type="enum" var="filterType" >
+        <property name="dynamics.filter" type="enum" var="filterType" >
             <enum name="forceSensorFilter" />
             <flags readable="true" writable="true" />
             <categories>
@@ -20943,7 +20984,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>Filter type</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="filterSampleSize" type="int" var="filterSampleSize" >
+        <property name="dynamics.filterSampleSize" type="int" var="filterSampleSize" >
             <flags readable="true" writable="true" />
             <categories>
                 <category name="dynamics" />
@@ -20952,22 +20993,32 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>Filter sample size</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
+        <property name="consecutiveViolationsToTrigger" type="int" var="DEPRECATED_consecutiveViolationsToTrigger" >
+            <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
+            <support start="1" start-deprecated="2" end="2" />
+            <replaced-by name="dynamics.consecutiveViolationsToTrigger" />
+        </property>
+        <property name="filterSampleSize" type="int" var="DEPRECATED_filterSampleSize" >
+            <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
+            <support start="1" start-deprecated="2" end="2" />
+            <replaced-by name="dynamics.filterSampleSize" />
+        </property>
         <property name="filterSensorForce" type="vector3" var="DEPRECATED_sensorAverageForce" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="filteredForce" />
+            <replaced-by name="dynamics.filteredForce" />
         </property>
         <property name="filterSensorTorque" type="vector3" var="DEPRECATED_sensorAverageTorque" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="filteredTorque" />
+            <replaced-by name="dynamics.filteredTorque" />
         </property>
         <property name="filterType" type="int" var="DEPRECATED_filterType" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="filter" />
+            <replaced-by name="dynamics.filter" />
         </property>
-        <property name="filteredForce" type="vector3" var="filteredSensorForce" >
+        <property name="dynamics.filteredForce" type="vector3" var="filteredSensorForce" >
             <flags readable="true" modelhashexclude="true" />
             <categories>
                 <category name="dynamics" />
@@ -20979,7 +21030,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.readForceSensor" />
             </supersedes>
         </property>
-        <property name="filteredTorque" type="vector3" var="filteredSensorTorque" >
+        <property name="dynamics.filteredTorque" type="vector3" var="filteredSensorTorque" >
             <flags readable="true" modelhashexclude="true" />
             <categories>
                 <category name="dynamics" />
@@ -20991,7 +21042,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.readForceSensor" />
             </supersedes>
         </property>
-        <property name="force" type="vector3" var="sensorForce" >
+        <property name="dynamics.force" type="vector3" var="sensorForce" >
             <flags readable="true" modelhashexclude="true" />
             <categories>
                 <category name="dynamics" />
@@ -21007,7 +21058,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="forceThreshold" type="float" var="forceThreshold" >
+        <property name="dynamics.forceThreshold" type="float" var="forceThreshold" >
             <flags readable="true" writable="true" />
             <categories>
                 <category name="dynamics" />
@@ -21015,7 +21066,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Force threshold</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="forceThresholdEnabled" type="bool" var="forceThresholdEnabled" >
+        <property name="dynamics.forceThresholdEnabled" type="bool" var="forceThresholdEnabled" >
             <flags readable="true" writable="true" />
             <categories>
                 <category name="dynamics" />
@@ -21042,10 +21093,30 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.forcefloatparam_error_angle" />
             </supersedes>
         </property>
+        <property name="torqueThreshold" type="float" var="DEPRECATED_torqueThreshold" >
+            <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
+            <support start="1" start-deprecated="2" end="2" />
+            <replaced-by name="dynamics.torqueThreshold" />
+        </property>
+        <property name="forceThreshold" type="float" var="DEPRECATED_forceThreshold" >
+            <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
+            <support start="1" start-deprecated="2" end="2" />
+            <replaced-by name="dynamics.forceThreshold" />
+        </property>
+        <property name="forceThresholdEnabled" type="bool" var="DEPRECATED_forceThresholdEnabled" >
+            <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
+            <support start="1" start-deprecated="2" end="2" />
+            <replaced-by name="dynamics.forceThresholdEnabled" />
+        </property>
+        <property name="torqueThresholdEnabled" type="bool" var="DEPRECATED_torqueThresholdEnabled" >
+            <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
+            <support start="1" start-deprecated="2" end="2" />
+            <replaced-by name="dynamics.torqueThresholdEnabled" />
+        </property>
         <property name="sensorForce" type="vector3" var="DEPRECATED_sensorForce" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="force" />
+            <replaced-by name="dynamics.force" />
         </property>
         <property name="sensorSize" type="float" var="DEPRECATED_size" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
@@ -21055,7 +21126,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="sensorTorque" type="vector3" var="DEPRECATED_sensorTorque" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="torque" />
+            <replaced-by name="dynamics.torque" />
         </property>
         <property name="size" type="float" var="size" >
             <flags readable="true" writable="true" />
@@ -21066,7 +21137,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>Sensor size</description>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="torque" type="vector3" var="sensorTorque" >
+        <property name="dynamics.torque" type="vector3" var="sensorTorque" >
             <flags readable="true" modelhashexclude="true" />
             <categories>
                 <category name="dynamics" />
@@ -21078,7 +21149,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.readForceSensor" />
             </supersedes>
         </property>
-        <property name="torqueThreshold" type="float" var="torqueThreshold" >
+        <property name="dynamics.torqueThreshold" type="float" var="torqueThreshold" >
             <flags readable="true" writable="true" />
             <categories>
                 <category name="dynamics" />
@@ -21086,7 +21157,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Torque threshold</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="torqueThresholdEnabled" type="bool" var="torqueThresholdEnabled" >
+        <property name="dynamics.torqueThresholdEnabled" type="bool" var="torqueThresholdEnabled" >
             <flags readable="true" writable="true" />
             <categories>
                 <category name="dynamics" />
