@@ -653,7 +653,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
     </object-class>
     <object-class name="customObject" superclass="object" />
-    <object-class name="Console" superclass="customObject">
+    <object-class name="console" superclass="customObject">
         <method name="remove" lang="python,lua">
             <short-description>Removes the console</short-description>
             <description>
@@ -699,7 +699,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
             </categories>
             <see-also>
-                <function-ref name="Console:clear" />
+                <function-ref name="console:clear" />
             </see-also>
         </method>
         <method name="clear" lang="python,lua">
@@ -713,7 +713,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
             </categories>
             <see-also>
-                <function-ref name="Console:print" />
+                <function-ref name="console:print" />
             </see-also>
         </method>
         <property name="visible" type="bool" var="visible" >
@@ -733,7 +733,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
         </property>
     </object-class>
-    <object-class name="TextEditor" superclass="customObject">
+    <object-class name="textEditor" superclass="customObject">
         <method name="remove" lang="python,lua">
             <short-description>Removes the text editor</short-description>
             <description>
@@ -1538,16 +1538,16 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
                 <param name="calculatedValues" type="vector">
                     <description>
-                        The newly calculated values. Requires 'returnExtras' option enabled
+                        The newly calculated values. Requires "returnExtras" option enabled
                     </description>
                 </param>
                 <param name="metaData" type="map[]">
                     <description>
-                        An array with information. Requires 'returnExtras' option enabled:
+                        An array with information. Requires "returnExtras" option enabled:
                         <ul>
                             <li>joint (IKJoint): the joint in the IK world</li>
-                            <li>index (int): the index in the 'calculatedValues' vector</li>
-                            <li>cnt (int): the number of consecutive values in the 'calculatedValues' vector (4 for spherical joints, 1 otherwise)</li>
+                            <li>index (int): the index in the "calculatedValues" vector</li>
+                            <li>cnt (int): the number of consecutive values in the "calculatedValues" vector (4 for spherical joints, 1 otherwise)</li>
                             <li>touched (bool): whether the joint configuration has changed</li>
                         </ul>
                     </description>
@@ -1770,16 +1770,16 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
                 <param name="calculatedValues" type="vector">
                     <description>
-                        The newly calculated values. Requires 'returnExtras' option enabled
+                        The newly calculated values. Requires "returnExtras" option enabled
                     </description>
                 </param>
                 <param name="metaData" type="map[]">
                     <description>
-                        An array with information. Requires 'returnExtras' option enabled:
+                        An array with information. Requires "returnExtras" option enabled:
                         <ul>
                             <li>joint (IKJoint): the joint in the IK world</li>
-                            <li>index (int): the index in the 'calculatedValues' vector</li>
-                            <li>cnt (int): the number of consecutive values in the 'calculatedValues' vector (4 for spherical joints, 1 otherwise)</li>
+                            <li>index (int): the index in the "calculatedValues" vector</li>
+                            <li>cnt (int): the number of consecutive values in the "calculatedValues" vector (4 for spherical joints, 1 otherwise)</li>
                             <li>touched (bool): whether the joint configuration has changed</li>
                         </ul>
                     </description>
@@ -1832,8 +1832,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                         An array with information:
                         <ul>
                             <li>joint (IKJoint): the joint in the IK world</li>
-                            <li>index (int): the row index in the 'config' matrix</li>
-                            <li>cnt (int): the number of consecutive values in the 'config' matrix (4 for spherical joints, 1 otherwise)</li>
+                            <li>index (int): the row index in the "config" matrix</li>
+                            <li>cnt (int): the number of consecutive values in the "config" matrix (4 for spherical joints, 1 otherwise)</li>
                         </ul>
                     </description>
                 </param>
@@ -4444,7 +4444,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>compatibility (string, defaults to 'sim-2'): compatibility mode. Possible values are 'sim-1' and 'sim-2'</li>
+                            <li>compatibility (string, defaults to "sim-2"): compatibility mode. Possible values are "sim-1" and "sim-2"</li>
                         </ul>
                     </description>
                 </param>
@@ -4483,7 +4483,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>compatibility (string, defaults to 'sim-2'): compatibility mode. Possible values are 'sim-1' and 'sim-2'</li>
+                            <li>compatibility (string, defaults to "sim-2"): compatibility mode. Possible values are "sim-1" and "sim-2"</li>
                         </ul>
                     </description>
                 </param>
@@ -4816,10 +4816,10 @@ note: the generated see-also section contains the <see-also> items, but also the
                         <a href="#script">script</a>
                     </li>
                     <li>
-                        <a href="#Console">Console</a>
+                        <a href="#console">console</a>
                     </li>
                     <li>
-                        <a href="#TextEditor">TextEditor</a>
+                        <a href="#textEditor">textEditor</a>
                     </li>
                     <li>
                         <a href="#dummy">dummy</a>
@@ -4889,8 +4889,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>code (string): the script content</li>
                                 </ul>
                             </li>
-                            <li id="Console">
-                                <a href="../dataVisualizationAndOutput.htm#console">Console</a> fields:
+                            <li id="console">
+                                <a href="../dataVisualizationAndOutput.htm#console">console</a> fields:
                                 <ul>
                                     <li>type (string): "console"</li>
                                     <li>title (string): console title</li>
@@ -4907,8 +4907,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>sceneUid (int): the scene unique identifier (sim.scene.uid) to which this console belongs to. Set to -1 for visibility across the whole application</li>
                                 </ul>
                             </li>
-                            <li id="TextEditor">
-                                <a href="../dataVisualizationAndOutput.htm#textEditor">TextEditor</a> fields:
+                            <li id="textEditor">
+                                <a href="../dataVisualizationAndOutput.htm#textEditor">textEditor</a> fields:
                                 <ul>
                                     <li>type (string): "textEditor"</li>
                                     <li>title (string): editor title</li>
@@ -5293,8 +5293,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="creation" />
                 <category name="collection" />
                 <category name="script" />
-                <category name="Console" />
-                <category name="TextEditor" />
+                <category name="console" />
+                <category name="textEditor" />
                 <category name="dummy" />
                 <category name="marker" />
                 <category name="customSceneObject" />
@@ -5315,8 +5315,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="sceneObject:remove" />
                 <function-ref name="collection:remove" />
                 <function-ref name="script:remove" />
-                <function-ref name="Console:remove" />
-                <function-ref name="TextEditor:remove" />
+                <function-ref name="console:remove" />
+                <function-ref name="textEditor:remove" />
                 <function-ref name="app:removeObjects" />
             </see-also>
         </method>
@@ -5546,15 +5546,15 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="sceneObject" />
                 <category name="collection" />
                 <category name="script" />
-                <category name="Console" />
-                <category name="TextEditor" />
+                <category name="console" />
+                <category name="textEditor" />
             </categories>
             <see-also>
                 <function-ref name="sceneObject:remove" />
                 <function-ref name="collection:remove" />
                 <function-ref name="script:remove" />
-                <function-ref name="Console:remove" />
-                <function-ref name="TextEditor:remove" />
+                <function-ref name="console:remove" />
+                <function-ref name="textEditor:remove" />
                 <function-ref name="sceneObject:removeModel" />
                 <function-ref name="app:createObject" />
             </see-also>
@@ -8079,8 +8079,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>mode (string, defaults to 'single'): operation mode. Following are allowed values: 'single' (for a single object),
-                                'all' (for all objects in the scene), 'tree' (for a tree of objects), 'chain' (for a chain of objects (i.e. an inverted tree))</li>
+                            <li>mode (string, defaults to "single"): operation mode. Following are allowed values: "single" (for a single object),
+                                "all" (for all objects in the scene), "tree" (for a tree of objects), "chain" (for a chain of objects (i.e. an inverted tree))</li>
                             <li>excludeObject (bool, defaults to false): if true, then the specified object is not included in the group of objects to add, if sim.handle_tree or sim.handle_chain is specified (i.e. the tree base or tip is excluded)</li>
                         </ul>
                     </description>
@@ -8111,8 +8111,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>mode (string, defaults to 'single'): operation mode. Following are allowed values: 'single' (for a single object),
-                                'all' (for all objects in the scene), 'tree' (for a tree of objects), 'chain' (for a chain of objects (i.e. an inverted tree))</li>
+                            <li>mode (string, defaults to "single"): operation mode. Following are allowed values: "single" (for a single object),
+                                "all" (for all objects in the scene), "tree" (for a tree of objects), "chain" (for a chain of objects (i.e. an inverted tree))</li>
                             <li>excludeObject (bool, defaults to false): if true, then the specified object is not included in the group of objects to remove, if sim.handle_tree or sim.handle_chain is specified (i.e. the tree base or tip is excluded)</li>
                         </ul>
                     </description>
@@ -8831,15 +8831,15 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="sceneObject" />
                 <category name="collection" />
                 <category name="script" />
-                <category name="Console" />
-                <category name="TextEditor" />
+                <category name="console" />
+                <category name="textEditor" />
             </categories>
             <see-also>
                 <function-ref name="sceneObject:remove" />
                 <function-ref name="collection:remove" />
                 <function-ref name="script:remove" />
-                <function-ref name="Console:remove" />
-                <function-ref name="TextEditor:remove" />
+                <function-ref name="console:remove" />
+                <function-ref name="textEditor:remove" />
                 <function-ref name="sceneObject:removeModel" />
                 <function-ref name="scene:createObject" />
                 <property-ref name="scene.objects" />
@@ -8977,10 +8977,10 @@ note: the generated see-also section contains the <see-also> items, but also the
                         <a href="#script">script</a>
                     </li>
                     <li>
-                        <a href="#Console">Console</a>
+                        <a href="#console">console</a>
                     </li>
                     <li>
-                        <a href="#TextEditor">TextEditor</a>
+                        <a href="#textEditor">textEditor</a>
                     </li>
                     <li>
                         <a href="#dummy">dummy</a>
@@ -9050,8 +9050,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>code (string): the script content</li>
                                 </ul>
                             </li>
-                            <li id="Console">
-                                <a href="../dataVisualizationAndOutput.htm#console">Console</a> fields:
+                            <li id="console">
+                                <a href="../dataVisualizationAndOutput.htm#console">console</a> fields:
                                 <ul>
                                     <li>type (string): "console"</li>
                                     <li>title (string): console title</li>
@@ -9068,8 +9068,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>sceneUid (int): the scene unique identifier (sim.scene.uid) to which this console belongs to. Set to -1 for visibility across the whole application</li>
                                 </ul>
                             </li>
-                            <li id="TextEditor">
-                                <a href="../dataVisualizationAndOutput.htm#textEditor">TextEditor</a> fields:
+                            <li id="textEditor">
+                                <a href="../dataVisualizationAndOutput.htm#textEditor">textEditor</a> fields:
                                 <ul>
                                     <li>type (string): "textEditor"</li>
                                     <li>title (string): editor title</li>
@@ -9454,8 +9454,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="creation" />
                 <category name="collection" />
                 <category name="script" />
-                <category name="Console" />
-                <category name="TextEditor" />
+                <category name="console" />
+                <category name="textEditor" />
                 <category name="dummy" />
                 <category name="marker" />
                 <category name="customSceneObject" />
@@ -9476,8 +9476,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="sceneObject:remove" />
                 <function-ref name="collection:remove" />
                 <function-ref name="script:remove" />
-                <function-ref name="Console:remove" />
-                <function-ref name="TextEditor:remove" />
+                <function-ref name="console:remove" />
+                <function-ref name="textEditor:remove" />
                 <function-ref name="app:removeObjects" />
             </see-also>
         </method>
@@ -19334,7 +19334,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="dynamics" />
             </categories>
         </property>
-        <property name="dynamics.springDamperParams" type="float[2]" var="springDamperParams" >
+        <property name="dynamics.springDamper" type="float[2]" var="springDamperParams" >
             <flags readable="true" writable="true" />
             <label>Spring damper parameters</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -20195,7 +20195,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="springDamperParams" type="float[2]" var="DEPRECATED_springDamperParams" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="dynamics.springDamperParams" />
+            <replaced-by name="dynamics.springDamper" />
         </property>
         <property name="dynamics.targetForce" type="float" var="targetForce" >
             <flags readable="true" writable="true" modelhashexclude="true" />
@@ -20921,6 +20921,15 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="forceSensor" superclass="sceneObject">
+        <property name="dynamics" type="group" var="GROUP_dynamics" >
+            <flags modelhashexclude="true" silent="true" constant="true" />
+            <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="dynamics" />
+            </categories>
+            <see-also>
+            </see-also>
+        </property>
         <property name="color" type="group">
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
