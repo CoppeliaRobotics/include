@@ -4,6 +4,7 @@
 #include <vector>
 #include <cstring>
 #include <iostream>
+#include <fstream>
 
 #ifdef HAVE_JSONCONS
 #include <jsoncons_ext/cbor/cbor.hpp>
@@ -403,9 +404,28 @@ namespace sim
     {
 #ifdef HAVE_JSONCONS
         auto u8data = reinterpret_cast<const uint8_t*>(data);
-        jsoncons::json msg = jsoncons::cbor::decode_cbor<jsoncons::json>(u8data, u8data + size);
-        for(size_t i = 0; i < msg.size(); i++)
-            onEvent(msg[i]);
+        try
+        {
+            jsoncons::json msg = jsoncons::cbor::decode_cbor<jsoncons::json>(u8data, u8data + size);
+            for(size_t i = 0; i < msg.size(); i++)
+                onEvent(msg[i]);
+        }
+        catch(const jsoncons::ser_error &ex)
+        {
+            std::cerr << "Invalid data in events: " << ex.what() << std::endl;
+            std::ofstream out("badCBORdata.bin", std::ios::binary | std::ios::trunc);
+            if(out)
+            {
+                out.write(reinterpret_cast<const char*>(u8data), static_cast<std::streamsize>(size));
+                out.close();
+                std::cerr << "Wrote " << size << " bytes to badCBORdata.bin" << std::endl;
+            }
+            else
+            {
+                std::cerr << "Failed to open badCBORdata.bin for writing" << std::endl;
+            }
+            throw;
+        }
 #endif // HAVE_JSONCONS
     }
 
