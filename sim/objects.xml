@@ -1384,12 +1384,22 @@ note: the generated see-also section contains the <see-also> items, but also the
         <method name="getPoint" lang="python,lua">
             <short-description>Returns a point on the path at a specific distance</short-description>
             <description>
-                Returns the point on the path that lies at a specific distance along the path
+                Returns the point on the path that lies at a specific relative distance along the path
             </description>
             <params>
                 <param name="t" type="float">
                     <description>
                         Relative distance
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        Optional map:
+                        <ul>
+                            <li>pathPoints (matrix, defaults to nil): matrix holding externally provided path points, which must have the same dimensions as internal path points. Either distancesAlongPath or arcLengths must be provided too</li>
+                            <li>distancesAlongPath (vector, defaults to nil): vector holding externally provided distances along the path</li>
+                            <li>arcLengths (vector, defaults to nil): vector holding externally provided arc lengths</li>
+                        </ul>
                     </description>
                 </param>
             </params>
