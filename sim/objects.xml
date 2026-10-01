@@ -11873,40 +11873,6 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <property-ref name="sceneObject.parent" />
             </see-also>
         </method>
-        <method name="visitTree" lang="python,lua" var="METHOD_visitTree">
-            <short-description>Executes a visitor function on all objects in the tree</short-description>
-            <description>
-                Executes a function on all objects of this object tree, in a depth-first manner
-            </description>
-            <params>
-                <param name="visitorFunction" type="func">
-                    <description>
-                        The visitor function. Visitation ends if the function returns false
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        Optional map:
-                        <ul>
-                            <li>types (string[], defaults to ["sceneObject"]): the desired scene object types to be taken into account</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-            </returns>
-            <support start="2" start-deprecated="0" end="0" />
-            <supersedes>
-            </supersedes>
-            <categories>
-                <category name="hierarchy" />
-            </categories>
-            <see-also>
-                <function-ref name="sceneObject:getAncestors" />
-                <function-ref name="sceneObject:getDescendants" />
-                <property-ref name="sceneObject.tree" />
-            </see-also>
-        </method>
         <method name="checkCollision" lang="python,lua" var="METHOD_checkCollision">
             <short-description>Checks collision with another entity</short-description>
             <description>
@@ -13346,7 +13312,6 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
             <see-also>
                 <function-ref name="sceneObject:getDescendants" />
-                <function-ref name="sceneObject:visitTree" />
             </see-also>
         </property>
         <property name="uid" type="int" var="uid" >
