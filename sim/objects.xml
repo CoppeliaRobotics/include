@@ -1857,6 +1857,31 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="IKGroup:solve" />
             </see-also>
         </method>
+        <method name="computeJacobian" lang="python,lua">
+            <short-description>Computes the Jacobian and error vector</short-description>
+            <params>
+            </params>
+            <returns>
+                <param name="jacobian" type="matrix">
+                    <description>
+                        the jacobian (row major order). Each row corresponds to one constraint in following order (if applicable): x, y, z, alpha, beta, gamma. Each column corresponds to one degree of freedom, from base to tip
+                    </description>
+                </param>
+                <param name="errorVector" type="vector">
+                    <description>
+                        the error vector between the target and the tip
+                    </description>
+                </param>
+            </returns>
+            <support start="2" start-deprecated="0" end="0" />
+            <supersedes>
+            </supersedes>
+            <categories>
+            </categories>
+            <see-also>
+                <function-ref name="IKGroup:solve" />
+            </see-also>
+        </method>
         <method name="syncFromScene" lang="python,lua">
             <short-description>Synchronizes this IK group from the simulation world</short-description>
             <description>
@@ -5902,12 +5927,12 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Input buffer
                     </description>
                 </param>
-                <param name="inFormat" type="int">
+                <param name="inFormat" type="string">
                     <description>
                         Input data format. Allowed is "uint8", "int8", "uint16", "int16", "uint32", "int32", "uint64", "int64", "float", "double", "rgb", "bgr", "rgba", "argb" and "base64"
                     </description>
                 </param>
-                <param name="outFormat" type="int">
+                <param name="outFormat" type="string">
                     <description>
                         Desired output data format. Allowed is "uint8", "int8", "uint16", "int16", "uint32", "int32", "uint64", "int64", "float", "double", "rgb", "bgr", "rgba", "argb" and "base64"
                     </description>
@@ -8408,14 +8433,13 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Retrieves scene objects up to a specific depth
             </description>
             <params>
-                <param name="objectTypes" type="string[]" default="{'sceneObject'}">
+                <param name="options" type="map" default="{}">
                     <description>
-                        The desired scene object types
-                    </description>
-                </param>
-                <param name="depth" type="int" default="9999">
-                    <description>
-                        The retrieval depth
+                        Optional map:
+                        <ul>
+                            <li>objectTypes (string[], defaults to {"sceneObject"}): the desired scene object types</li>
+                            <li>depth (int, defaults to 9999): the retrieval depth</li>
+                        </ul>
                     </description>
                 </param>
             </params>
