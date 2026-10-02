@@ -5526,7 +5526,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>types (string[], defaults to []): a string array specifying the types to retrieve. Allowed values are: "sceneObject", "shape", "joint", "dummy", "scriptObject", "mirror", "graph", "light", "camera", "proximitySensor", "visionSensor", "forceSensor", "ocTree", "pointCloud", "marker", "collection", "script", "mesh", "texture"</li>
+                            <li>types (string[], defaults to []): a string array specifying the types to retrieve. Allowed values are: "sceneObject", "shape", "joint", "dummy", "scriptObject", "mirror", "graph", "light", "camera", "proximitySensor", "visionSensor", "forceSensor", "ocTree", "pointCloud", "marker", "collection", "script", "mesh", "textureData"</li>
                         </ul>
                     </description>
                 </param>
@@ -5706,7 +5706,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.loadImage" />
             </supersedes>
             <categories>
-                <category name="texture" />
+                <category name="textureData" />
                 <category name="importExport" />
             </categories>
             <see-also>
@@ -5716,7 +5716,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:transformBuffer" />
                 <function-ref name="visionSensor:setImage" />
                 <function-ref name="mesh:setTexture" />
-                <property-ref name="mesh.texture.image" />
+                <property-ref name="textureData.image" />
             </see-also>
         </method>
         <method name="loadImageFromBuffer" lang="python,lua" var="METHOD_loadImageFromBuffer">
@@ -5753,7 +5753,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.loadImage" />
             </supersedes>
             <categories>
-                <category name="texture" />
+                <category name="textureData" />
                 <category name="importExport" />
             </categories>
             <see-also>
@@ -5803,7 +5803,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.saveImage" />
             </supersedes>
             <categories>
-                <category name="texture" />
+                <category name="textureData" />
                 <category name="importExport" />
             </categories>
             <see-also>
@@ -5840,7 +5840,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.saveImage" />
             </supersedes>
             <categories>
-                <category name="texture" />
+                <category name="textureData" />
                 <category name="importExport" />
             </categories>
             <see-also>
@@ -5907,7 +5907,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.transformImage" />
             </supersedes>
             <categories>
-                <category name="texture" />
+                <category name="textureData" />
                 <category name="packing" />
             </categories>
             <see-also>
@@ -5961,7 +5961,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </supersedes>
             <categories>
                 <category name="packing" />
-                <category name="texture" />
+                <category name="textureData" />
             </categories>
             <see-also>
                 <function-ref name="app:transformImage" />
@@ -7549,11 +7549,11 @@ note: the generated see-also section contains the <see-also> items, but also the
             </supersedes>
             <categories>
                 <category name="shape" />
-                <category name="texture" />
+                <category name="textureData" />
             </categories>
             <see-also>
-                <function-ref name="texture:setData" />
-                <property-ref name="texture.image" />
+                <function-ref name="textureData:setData" />
+                <property-ref name="textureData.image" />
                 <function-ref name="app:loadImage" />
             </see-also>
         </method>
@@ -7698,7 +7698,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="rawTexture" type="buffer" var="DEPRECATED_texture" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <migrate-to name="mesh.texture.image" />
+            <replaced-by name="texture.textureData.image" />
         </property>
         <property name="shadingAngle" type="float" var="shadingAngle" >
             <flags readable="true" writable="true" />
@@ -7739,17 +7739,17 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
         </property>
-        <property name="textureOpt" type="group" var="GROUP_texture" >
+        <property name="texture" type="group" var="GROUP_texture" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
             <categories>
-                <category name="texture" />
+                <category name="textureData" />
                 <category name="rendering" />
             </categories>
             <see-also>
             </see-also>
         </property>
-        <property name="textureOpt.applyMode" type="enum" var="textureApplyMode" >
+        <property name="texture.applyMode" type="enum" var="textureApplyMode" >
             <enum name="textureApplyMode" />
             <flags readable="true" writable="true" />
             <label>Texture apply mode</label>
@@ -7758,14 +7758,14 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.setShapeTexture" />
             </supersedes>
             <categories>
-                <category name="texture" />
+                <category name="textureData" />
                 <category name="rendering" />
             </categories>
             <see-also>
                 <function-ref name="mesh:setTexture" />
             </see-also>
         </property>
-        <property name="textureOpt.coordinates" type="float[]" var="textureCoordinates" >
+        <property name="textureCoordinates" type="float[]" var="textureCoordinates" >
             <flags readable="true" modelhashexclude="true" />
             <label>Texture coordinates</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -7773,15 +7773,15 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getShapeViz" />
             </supersedes>
             <categories>
-                <category name="texture" />
+                <category name="textureData" />
                 <category name="rendering" />
             </categories>
             <see-also>
                 <function-ref name="mesh:setTexture" />
             </see-also>
         </property>
-        <property name="texture" type="handle" var="textureID" >
-            <handle type="texture" />
+        <property name="texture.textureData" type="handle" var="textureID" >
+            <handle type="textureData" />
             <flags readable="true" writable="true" modelhashexclude="true" />
             <label>Texture</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -7790,10 +7790,10 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getTextureId" />
             </supersedes>
             <categories>
-                <category name="texture" />
+                <category name="textureData" />
             </categories>
         </property>
-        <property name="textureOpt.interpolate" type="bool" var="textureInterpolate" >
+        <property name="texture.interpolate" type="bool" var="textureInterpolate" >
             <flags readable="true" writable="true" />
             <label>Interpolate texture</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -7801,14 +7801,14 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.setShapeTexture" />
             </supersedes>
             <categories>
-                <category name="texture" />
+                <category name="textureData" />
                 <category name="rendering" />
             </categories>
             <see-also>
                 <function-ref name="mesh:setTexture" />
             </see-also>
         </property>
-        <property name="textureOpt.repeatU" type="bool" var="textureRepeatU" >
+        <property name="texture.repeatU" type="bool" var="textureRepeatU" >
             <flags readable="true" writable="true" />
             <label>Texture repeat U</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -7816,14 +7816,14 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.setShapeTexture" />
             </supersedes>
             <categories>
-                <category name="texture" />
+                <category name="textureData" />
                 <category name="rendering" />
             </categories>
             <see-also>
                 <function-ref name="mesh:setTexture" />
             </see-also>
         </property>
-        <property name="textureOpt.repeatV" type="bool" var="textureRepeatV" >
+        <property name="texture.repeatV" type="bool" var="textureRepeatV" >
             <flags readable="true" writable="true" />
             <label>Texture repeat V</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -7831,7 +7831,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.setShapeTexture" />
             </supersedes>
             <categories>
-                <category name="texture" />
+                <category name="textureData" />
                 <category name="rendering" />
             </categories>
             <see-also>
@@ -7843,35 +7843,30 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="textureOpt.applyMode" />
         </property>
-        <property name="textureCoordinates" type="float[]" var="DEPRECATED_textureCoordinates" >
-            <flags readable="true" modelhashexclude="true" deprecated="true" />
-            <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="textureOpt.coordinates" />
-        </property>
         <property name="textureID" type="int" var="DEPRECATED_textureID" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <migrate-to name="mesh.texture.handle" />
+            <migrate-to name="mesh.texture.textureData" />
         </property>
         <property name="textureInterpolate" type="bool" var="DEPRECATED_textureInterpolate" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="textureOpt.interpolate" />
+            <replaced-by name="texture.interpolate" />
         </property>
         <property name="textureRepeatU" type="bool" var="DEPRECATED_textureRepeatU" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="textureOpt.repeatU" />
+            <replaced-by name="texture.repeatU" />
         </property>
         <property name="textureRepeatV" type="bool" var="DEPRECATED_textureRepeatV" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="textureOpt.repeatV" />
+            <replaced-by name="texture.repeatV" />
         </property>
         <property name="textureResolution" type="int[2]" var="DEPRECATED_textureResolution" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <migrate-to name="mesh.texture.resolution" />
+            <replaced-by name="texture.textureData.resolution" />
         </property>
         <property name="vertices" type="matrix" var="vertices" >
             <flags readable="true" modelhashexclude="true" />
@@ -7897,7 +7892,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
         </property>
     </object-class>
-    <object-class name="texture" superclass="object">
+    <object-class name="textureData" superclass="object">
         <method name="remove" lang="python,lua" var="METHOD_remove">
             <info>similar method present in several classes</info>
             <short-description>Removes the texture</short-description>
@@ -7949,12 +7944,12 @@ note: the generated see-also section contains the <see-also> items, but also the
             </supersedes>
             <categories>
                 <category name="shape" />
-                <category name="texture" />
+                <category name="textureData" />
             </categories>
             <see-also>
-                <function-ref name="texture:getData" />
+                <function-ref name="textureData:getData" />
                 <function-ref name="mesh:setTexture" />
-                <property-ref name="texture.image" />
+                <property-ref name="textureData.image" />
             </see-also>
         </method>
         <method name="getData" lang="python,lua" var="METHOD_getData">
@@ -7987,14 +7982,14 @@ note: the generated see-also section contains the <see-also> items, but also the
             </supersedes>
             <categories>
                 <category name="shape" />
-                <category name="texture" />
+                <category name="textureData" />
             </categories>
             <see-also>
-                <function-ref name="texture:setData" />
-                <property-ref name="texture.image" />
+                <function-ref name="textureData:setData" />
+                <property-ref name="textureData.image" />
             </see-also>
         </method>
-        <property name="image" type="buffer" var="texture" >
+        <property name="image" type="buffer" var="image" >
             <flags readable="true" modelhashexclude="true" />
             <label>Image</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -8003,7 +7998,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getShapeViz" />
             </supersedes>
             <categories>
-                <category name="texture" />
+                <category name="textureData" />
                 <category name="rendering" />
             </categories>
             <see-also>
@@ -8011,7 +8006,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="mesh:setTexture" />
             </see-also>
         </property>
-        <property name="resolution" type="int[2]" var="textureResolution" >
+        <property name="resolution" type="int[2]" var="resolution" >
             <flags readable="true" />
             <label>Resolution</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -8019,7 +8014,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <item name="sim.getTextureId" />
             </supersedes>
             <categories>
-                <category name="texture" />
+                <category name="textureData" />
                 <category name="rendering" />
             </categories>
             <see-also>
@@ -8836,7 +8831,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>types (string[], defaults to []): a string array specifying the types to retrieve. Allowed values are: "sceneObject", "shape", "joint", "dummy", "scriptObject", "mirror", "graph", "light", "camera", "proximitySensor", "visionSensor", "forceSensor", "ocTree", "pointCloud", "marker", "collection", "script", "mesh", "texture"</li>
+                            <li>types (string[], defaults to []): a string array specifying the types to retrieve. Allowed values are: "sceneObject", "shape", "joint", "dummy", "scriptObject", "mirror", "graph", "light", "camera", "proximitySensor", "visionSensor", "forceSensor", "ocTree", "pointCloud", "marker", "collection", "script", "mesh", "textureData"</li>
                         </ul>
                     </description>
                 </param>
