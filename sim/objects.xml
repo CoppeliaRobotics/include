@@ -5526,7 +5526,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>types (string[], defaults to []): a string array specifying the types to retrieve. Allowed values are: "sceneObject", "shape", "joint", "dummy", "scriptObject", "mirror", "graph", "light", "camera", "proximitySensor", "visionSensor", "forceSensor", "ocTree", "pointCloud", "marker", "collection", "script", "mesh"</li>
+                            <li>types (string[], defaults to []): a string array specifying the types to retrieve. Allowed values are: "sceneObject", "shape", "joint", "dummy", "scriptObject", "mirror", "graph", "light", "camera", "proximitySensor", "visionSensor", "forceSensor", "ocTree", "pointCloud", "marker", "collection", "script", "mesh", "texture"</li>
                         </ul>
                     </description>
                 </param>
@@ -5715,7 +5715,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="app:transformImage" />
                 <function-ref name="app:transformBuffer" />
                 <function-ref name="visionSensor:setImage" />
-                <function-ref name="mesh.texture:set" />
+                <function-ref name="mesh:setTexture" />
                 <property-ref name="mesh.texture.image" />
             </see-also>
         </method>
@@ -7507,7 +7507,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         </property>
     </object-class>
     <object-class name="mesh" superclass="object">
-        <method name="texture:set" lang="python,lua" var="METHOD_textureSet">
+        <method name="setTexture" lang="python,lua" var="METHOD_setTexture">
             <short-description>Sets a texture</short-description>
             <description>
                 Sets a texture
@@ -7552,84 +7552,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="texture" />
             </categories>
             <see-also>
-                <function-ref name="mesh.texture:setData" />
-                <property-ref name="mesh.texture.image" />
+                <function-ref name="texture:setData" />
+                <property-ref name="texture.image" />
                 <function-ref name="app:loadImage" />
-            </see-also>
-        </method>
-        <method name="texture:setData" lang="python,lua" var="METHOD_textureSetData">
-            <short-description>Overwrites a portion of the texture</short-description>
-            <description>
-                Overwrites a portion of the texture
-            </description>
-            <params>
-                <param name="data" type="buffer">
-                    <description>
-                        RGB data corresponding to the portion of the texture to overwrite. A buffer size of 3 overwrites the portion of the texture with a single color
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        Optional map:
-                        <ul>
-                            <li>position (int[2], defaults to [0, 0]): position where to copy the RGB data. Set to [0, 0] to overwrite the full texture</li>
-                            <li>size (int[2], defaults to [0, 0]): size of the RGB data. Set to [0, 0] to overwrite the full texture</li>
-                            <li>interpolation (float, defaults to 0.0): fade or interpolation factor</li>
-                            <li>rectangular (bool, defaults true): to write a rectangular or elliptical/circular portion of the texture</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <support start="2" start-deprecated="0" end="0" />
-            <supersedes>
-                <item name="sim.setShapeTexture" />
-                <item name="sim.writeTexture" />
-                <item name="simApplyTexture" />
-            </supersedes>
-            <categories>
-                <category name="shape" />
-                <category name="texture" />
-            </categories>
-            <see-also>
-                <function-ref name="mesh.texture:getData" />
-                <function-ref name="mesh.texture:set" />
-                <property-ref name="mesh.texture.image" />
-            </see-also>
-        </method>
-        <method name="texture:getData" lang="python,lua" var="METHOD_textureGetData">
-            <short-description>Reads a portion of the texture</short-description>
-            <description>
-                Reads a portion of the texture
-            </description>
-            <params>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        Optional map:
-                        <ul>
-                            <li>position (int[2], defaults to [0, 0]): position where to read the RGB data. Set to [0, 0] to read the full texture</li>
-                            <li>size (int[2], defaults to [0, 0]): size of the RGB data. Set to [0, 0] to read the full texture</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="data" type="buffer">
-                    <description>
-                        RGB data
-                    </description>
-                </param>
-            </returns>
-            <support start="2" start-deprecated="0" end="0" />
-            <supersedes>
-                <item name="sim.readTexture" />
-            </supersedes>
-            <categories>
-                <category name="shape" />
-                <category name="texture" />
-            </categories>
-            <see-also>
-                <function-ref name="mesh.texture:setData" />
-                <property-ref name="mesh.texture.data" />
             </see-also>
         </method>
         <property name="color" type="group">
@@ -7773,7 +7698,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="rawTexture" type="buffer" var="DEPRECATED_texture" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="texture.image" />
+            <migrate-to name="mesh.texture.image" />
         </property>
         <property name="shadingAngle" type="float" var="shadingAngle" >
             <flags readable="true" writable="true" />
@@ -7814,7 +7739,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
         </property>
-        <property name="texture" type="group" var="GROUP_texture" >
+        <property name="textureOpt" type="group" var="GROUP_texture" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
             <categories>
@@ -7824,7 +7749,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
             </see-also>
         </property>
-        <property name="texture.applyMode" type="enum" var="textureApplyMode" >
+        <property name="textureOpt.applyMode" type="enum" var="textureApplyMode" >
             <enum name="textureApplyMode" />
             <flags readable="true" writable="true" />
             <label>Texture apply mode</label>
@@ -7837,10 +7762,10 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
             <see-also>
-                <function-ref name="mesh.texture:set" />
+                <function-ref name="mesh:setTexture" />
             </see-also>
         </property>
-        <property name="texture.coordinates" type="float[]" var="textureCoordinates" >
+        <property name="textureOpt.coordinates" type="float[]" var="textureCoordinates" >
             <flags readable="true" modelhashexclude="true" />
             <label>Texture coordinates</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -7852,12 +7777,13 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
             <see-also>
-                <function-ref name="mesh.texture:set" />
+                <function-ref name="mesh:setTexture" />
             </see-also>
         </property>
-        <property name="texture.id" type="int" var="textureID" >
-            <flags readable="true" modelhashexclude="true" />
-            <label>Texture ID</label>
+        <property name="texture" type="handle" var="textureID" >
+            <handle type="texture" />
+            <flags readable="true" writable="true" modelhashexclude="true" />
+            <label>Texture</label>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.getShapeTextureId" />
@@ -7867,24 +7793,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="texture" />
             </categories>
         </property>
-        <property name="texture.image" type="buffer" var="texture" >
-            <flags readable="true" modelhashexclude="true" />
-            <label>Texture</label>
-            <support start="2" start-deprecated="0" end="0" />
-            <supersedes>
-                <item name="sim.readTexture" />
-                <item name="sim.getShapeViz" />
-            </supersedes>
-            <categories>
-                <category name="texture" />
-                <category name="rendering" />
-            </categories>
-            <see-also>
-                <function-ref name="app:loadImage" />
-                <function-ref name="mesh.texture:set" />
-            </see-also>
-        </property>
-        <property name="texture.interpolate" type="bool" var="textureInterpolate" >
+        <property name="textureOpt.interpolate" type="bool" var="textureInterpolate" >
             <flags readable="true" writable="true" />
             <label>Interpolate texture</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -7896,10 +7805,10 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
             <see-also>
-                <function-ref name="mesh.texture:set" />
+                <function-ref name="mesh:setTexture" />
             </see-also>
         </property>
-        <property name="texture.repeatU" type="bool" var="textureRepeatU" >
+        <property name="textureOpt.repeatU" type="bool" var="textureRepeatU" >
             <flags readable="true" writable="true" />
             <label>Texture repeat U</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -7911,10 +7820,10 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
             <see-also>
-                <function-ref name="mesh.texture:set" />
+                <function-ref name="mesh:setTexture" />
             </see-also>
         </property>
-        <property name="texture.repeatV" type="bool" var="textureRepeatV" >
+        <property name="textureOpt.repeatV" type="bool" var="textureRepeatV" >
             <flags readable="true" writable="true" />
             <label>Texture repeat V</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -7926,58 +7835,43 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
             <see-also>
-                <function-ref name="mesh.texture:set" />
-            </see-also>
-        </property>
-        <property name="texture.resolution" type="int[2]" var="textureResolution" >
-            <flags readable="true" />
-            <label>Texture resolution</label>
-            <support start="2" start-deprecated="0" end="0" />
-            <supersedes>
-                <item name="sim.getTextureId" />
-            </supersedes>
-            <categories>
-                <category name="texture" />
-                <category name="rendering" />
-            </categories>
-            <see-also>
-                <function-ref name="mesh.texture:set" />
+                <function-ref name="mesh:setTexture" />
             </see-also>
         </property>
         <property name="textureApplyMode" type="int" var="DEPRECATED_textureApplyMode" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="texture.applyMode" />
+            <replaced-by name="textureOpt.applyMode" />
         </property>
         <property name="textureCoordinates" type="float[]" var="DEPRECATED_textureCoordinates" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="texture.coordinates" />
+            <replaced-by name="textureOpt.coordinates" />
         </property>
         <property name="textureID" type="int" var="DEPRECATED_textureID" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="texture.id" />
+            <migrate-to name="mesh.texture.handle" />
         </property>
         <property name="textureInterpolate" type="bool" var="DEPRECATED_textureInterpolate" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="texture.interpolate" />
+            <replaced-by name="textureOpt.interpolate" />
         </property>
         <property name="textureRepeatU" type="bool" var="DEPRECATED_textureRepeatU" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="texture.repeatU" />
+            <replaced-by name="textureOpt.repeatU" />
         </property>
         <property name="textureRepeatV" type="bool" var="DEPRECATED_textureRepeatV" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="texture.repeatV" />
+            <replaced-by name="textureOpt.repeatV" />
         </property>
         <property name="textureResolution" type="int[2]" var="DEPRECATED_textureResolution" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="texture.resolution" />
+            <migrate-to name="mesh.texture.resolution" />
         </property>
         <property name="vertices" type="matrix" var="vertices" >
             <flags readable="true" modelhashexclude="true" />
@@ -8001,6 +7895,136 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
                 <category name="rendering" />
             </categories>
+        </property>
+    </object-class>
+    <object-class name="texture" superclass="object">
+        <method name="remove" lang="python,lua" var="METHOD_remove">
+            <info>similar method present in several classes</info>
+            <short-description>Removes the texture</short-description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        Optional map:
+                        <ul>
+                            <li>noError (bool, defaults to false): errors are suppressed</li>
+                            <li>delayed (bool, defaults to false): removal is delayed</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="creation" />
+            </categories>
+        </method>
+        <method name="setData" lang="python,lua" var="METHOD_setData">
+            <short-description>Overwrites a portion of the texture</short-description>
+            <description>
+                Overwrites a portion of the texture
+            </description>
+            <params>
+                <param name="data" type="buffer">
+                    <description>
+                        data corresponding to the portion of the texture to overwrite. A buffer size smaller than what is expected overwrites the portion of the texture with a single color
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        Optional map:
+                        <ul>
+                            <li>type (string, defaults to "rgb"): type of the data provided. Possible values are "rgb", "rgba" and "grey"</li>
+                            <li>position (int[2], defaults to [0, 0]): position where to copy the texture portion. Set to [0, 0] to overwrite the full texture</li>
+                            <li>size (int[2], defaults to [0, 0]): size of the texture portion. Set to [0, 0] to overwrite the full texture</li>
+                            <li>interpolation (float, defaults to 0.0): fade or interpolation factor</li>
+                            <li>rectangular (bool, defaults true): to write a rectangular or elliptical/circular portion of the texture</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <support start="2" start-deprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.setShapeTexture" />
+                <item name="sim.writeTexture" />
+                <item name="simApplyTexture" />
+            </supersedes>
+            <categories>
+                <category name="shape" />
+                <category name="texture" />
+            </categories>
+            <see-also>
+                <function-ref name="texture:getData" />
+                <function-ref name="mesh:setTexture" />
+                <property-ref name="texture.image" />
+            </see-also>
+        </method>
+        <method name="getData" lang="python,lua" var="METHOD_getData">
+            <short-description>Reads a portion of the texture</short-description>
+            <description>
+                Reads a portion of the texture
+            </description>
+            <params>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        Optional map:
+                        <ul>
+                            <li>type (string, defaults to "rgb"): type of the data returned. Possible values are "rgb", "rgba" and "grey"</li>
+                            <li>position (int[2], defaults to [0, 0]): position where to read the texture portion. Set to [0, 0] to read the full texture</li>
+                            <li>size (int[2], defaults to [0, 0]): size of the texture portion. Set to [0, 0] to read the full texture</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="data" type="buffer">
+                    <description>
+                        texture portion
+                    </description>
+                </param>
+            </returns>
+            <support start="2" start-deprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.readTexture" />
+            </supersedes>
+            <categories>
+                <category name="shape" />
+                <category name="texture" />
+            </categories>
+            <see-also>
+                <function-ref name="texture:setData" />
+                <property-ref name="texture.image" />
+            </see-also>
+        </method>
+        <property name="image" type="buffer" var="texture" >
+            <flags readable="true" modelhashexclude="true" />
+            <label>Image</label>
+            <support start="2" start-deprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.readTexture" />
+                <item name="sim.getShapeViz" />
+            </supersedes>
+            <categories>
+                <category name="texture" />
+                <category name="rendering" />
+            </categories>
+            <see-also>
+                <function-ref name="app:loadImage" />
+                <function-ref name="mesh:setTexture" />
+            </see-also>
+        </property>
+        <property name="resolution" type="int[2]" var="textureResolution" >
+            <flags readable="true" />
+            <label>Resolution</label>
+            <support start="2" start-deprecated="0" end="0" />
+            <supersedes>
+                <item name="sim.getTextureId" />
+            </supersedes>
+            <categories>
+                <category name="texture" />
+                <category name="rendering" />
+            </categories>
+            <see-also>
+                <function-ref name="mesh:setTexture" />
+            </see-also>
         </property>
     </object-class>
     <object-class name="collection" superclass="object">
@@ -8808,9 +8832,12 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Retrieves objects of a certain type
             </description>
             <params>
-                <param name="types" type="string[]" default="{}">
+                <param name="options" type="map" default="{}">
                     <description>
-                        A string array specifying the types to retrieve. Allowed values are: "sceneObject", "shape", "joint", "dummy", "scriptObject", "mirror", "graph", "light", "camera", "marker", "proximitySensor", "visionSensor", "forceSensor", "ocTree", "pointCloud", "collection", "script", "mesh"
+                        Optional map:
+                        <ul>
+                            <li>types (string[], defaults to []): a string array specifying the types to retrieve. Allowed values are: "sceneObject", "shape", "joint", "dummy", "scriptObject", "mirror", "graph", "light", "camera", "proximitySensor", "visionSensor", "forceSensor", "ocTree", "pointCloud", "marker", "collection", "script", "mesh", "texture"</li>
+                        </ul>
                     </description>
                 </param>
             </params>
