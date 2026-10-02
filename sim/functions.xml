@@ -3835,7 +3835,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <categories>
             <category name="c_aux" />
                 <category name="shape" />
-                <category name="texture" />
+                <category name="textureData" />
         </categories>
         <see-also>
             <function-ref name="simSetShapeTexture" />
@@ -5331,7 +5331,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             <category name="c_aux" />
                         <category name="file" />
                 <category name="creation" />
-                <category name="texture" />
+                <category name="textureData" />
                 <category name="importExport" />
         </categories>
         <see-also>
@@ -7859,7 +7859,7 @@ delete[] indicesSizes;</code>
         </returns>
         <categories>
             <category name="c_aux" />
-            <category name="texture" />
+            <category name="textureData" />
         </categories>
         <see-also>
             <function-ref name="simTransformImage" />
@@ -8194,7 +8194,7 @@ delete[] indicesSizes;</code>
         <categories>
             <category name="c_aux" />
                 <category name="shape" />
-                <category name="texture" />
+                <category name="textureData" />
         </categories>
         <see-also>
             <function-ref name="simGetTextureId" />
@@ -8398,7 +8398,7 @@ delete[] indicesSizes;</code>
         </returns>
         <categories>
             <category name="c_aux" />
-            <category name="texture" />
+            <category name="textureData" />
         </categories>
         <see-also>
             <function-ref name="simReadTexture" />
@@ -9487,7 +9487,7 @@ if (elementCount &gt; 0)
         </returns>
         <categories>
             <category name="c_aux" />
-                <category name="texture" />
+                <category name="textureData" />
                 <category name="importExport" />
         </categories>
         <see-also>
@@ -9543,7 +9543,7 @@ if (elementCount &gt; 0)
         </returns>
         <categories>
             <category name="c_aux" />
-                <category name="texture" />
+                <category name="textureData" />
                 <category name="importExport" />
         </categories>
         <see-also>
@@ -10080,7 +10080,7 @@ if (elementCount &gt; 0)
         </returns>
         <categories>
             <category name="c_aux" />
-            <category name="texture" />
+            <category name="textureData" />
         </categories>
         <see-also>
             <function-ref name="simGetTextureId" />
@@ -12633,7 +12633,7 @@ if (elementCount &gt; 0)
         <categories>
             <category name="c_aux" />
                 <category name="shape" />
-                <category name="texture" />
+                <category name="textureData" />
         </categories>
         <see-also>
             <function-ref name="simGetTextureId" />
@@ -12903,7 +12903,7 @@ if (elementCount &gt; 0)
         </returns>
         <categories>
             <category name="c_aux" />
-            <category name="texture" />
+            <category name="textureData" />
         </categories>
         <see-also>
             <function-ref name="simLoadImage" />
@@ -13090,7 +13090,7 @@ if (elementCount &gt; 0)
         </returns>
         <categories>
             <category name="c_aux" />
-            <category name="texture" />
+            <category name="textureData" />
         </categories>
         <see-also>
             <function-ref name="simGetTextureId" />

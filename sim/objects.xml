@@ -9701,6 +9701,19 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="collection:remove" />
             </see-also>
         </property>
+        <property name="textures" type="handle[]" var="textures" >
+            <handle type="textureData" />
+            <flags readable="true" />
+            <label>Textures</label>
+            <description>All textures</description>
+            <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="textureData" />
+            </categories>
+            <see-also>
+                <function-ref name="textureData:remove" />
+            </see-also>
+        </property>
         <property name="customData" type="group" var="GROUP_customData" >
             <flags modelhashexclude="true" silent="true" constant="true" />
             <support start="2" start-deprecated="0" end="0" />
