@@ -6459,7 +6459,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <label>Temporary path</label>
             <support start="2" start-deprecated="0" end="0" />
         </property>
-        <property name="pid" type="int" var="pid" >
+        <property name="pid" type="long" var="pid" >
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>PID</label>
             <support start="2" start-deprecated="0" end="0" />
