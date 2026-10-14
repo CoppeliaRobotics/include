@@ -7780,7 +7780,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="mesh:setTexture" />
             </see-also>
         </property>
-        <property name="texture.textureData" type="handle" var="textureID" >
+        <property name="texture.textureData" type="handle" var="texture" >
             <handle type="textureData" />
             <flags readable="true" writable="true" modelhashexclude="true" />
             <label>Texture</label>
