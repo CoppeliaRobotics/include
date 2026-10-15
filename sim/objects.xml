@@ -4168,7 +4168,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
             </see-also>
         </method>
-        <property name="handle" type="int" var="handle" >
+        <property name="handle" type="long" var="handle" >
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Handle</label>
             <support start="2" start-deprecated="0" end="0" />
@@ -13160,7 +13160,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <categories>
             </categories>
         </property>
-        <property name="objectUid" type="int" var="DEPRECATED_objectUid" >
+        <property name="objectUid" type="long" var="DEPRECATED_objectUid" >
             <flags readable="true" modelhashexclude="true" deprecated="true" constant="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="uid" />
@@ -13193,7 +13193,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="1" start-deprecated="2" end="2" />
             <migrate-to name="parent" />
         </property>
-        <property name="parentUid" type="int" var="parentUid" >
+        <property name="parentUid" type="long" var="parentUid" >
             <flags readable="true" modelhashexclude="true" />
             <label>Parent UID</label>
             <description>Parent scene object unique identifier</description>
@@ -13349,7 +13349,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="sceneObject:getDescendants" />
             </see-also>
         </property>
-        <property name="uid" type="int" var="uid" >
+        <property name="uid" type="long" var="uid" >
             <flags readable="true" modelhashexclude="true" constant="true" />
             <label>Object UID</label>
             <description>Scene object unique identifier</description>
