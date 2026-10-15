@@ -1151,7 +1151,7 @@ enum { // property type
     sim_propertytype_floatarray,
     sim_propertytype_table,
     sim_propertytype_intarray,
-    sim_propertytype_intarray2 = 15,
+    sim_propertytype_intarray2 = 15, /* deprecated */
     sim_propertytype_long,
     sim_propertytype_null,
     sim_propertytype_matrix,
