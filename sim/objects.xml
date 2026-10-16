@@ -7703,7 +7703,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="textureApplyMode" type="int" var="DEPRECATED_textureApplyMode" >
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
-            <replaced-by name="textureOpt.applyMode" />
+            <replaced-by name="texture.applyMode" />
         </property>
         <property name="textureID" type="int" var="DEPRECATED_textureID" >
             <flags readable="true" modelhashexclude="true" deprecated="true" />
@@ -18892,7 +18892,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <support start="2" start-deprecated="0" end="0" />
         </property>
         <property name="dynCtrlMode" type="int" var="DEPRECATED_dynCtrlMode" >
-            <enum name="jointDynCtrlMode" />
+            <enum name="jointDynamicsCtrlMode" />
             <flags readable="true" writable="true" modelhashexclude="true" deprecated="true" />
             <support start="1" start-deprecated="2" end="2" />
             <replaced-by name="dynamics.ctrlMode" />
