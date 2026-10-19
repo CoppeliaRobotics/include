@@ -833,6 +833,13 @@ note: the generated see-also section contains the <see-also> items, but also the
                     </description>
                 </param>
             </params>
+            <returns>
+                <param name="path" type="luaObject">
+                    <description>
+                        A path object
+                    </description>
+                </param>
+            </returns>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
             </supersedes>
@@ -1421,13 +1428,20 @@ note: the generated see-also section contains the <see-also> items, but also the
         </method>
     </object-class>
     <object-class name="IK" superclass="">
-        <method name="new" lang="python,lua" call-cmd="IK" module="IK">
+        <method name="new" lang="python,lua" call-cmd="simIK.IK" module="simIK-2">
             <short-description>Creates an IK world</short-description>
             <description>
                 Creates an IK world. An IK world contains one or several IK groups, each one containing one or several IK elements
             </description>
             <params>
             </params>
+            <returns>
+                <param name="ik" type="luaObject">
+                    <description>
+                        An IK object
+                    </description>
+                </param>
+            </returns>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
             </supersedes>
