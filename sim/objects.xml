@@ -4090,7 +4090,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </supersedes>
         </property>
     </object-class>
-    <object-class name="app" superclass="object" singleton="sim.app">
+    <object-class name="app" superclass="object" singleton="true">
         <method name="getEnumInfo" lang="python,lua" var="METHOD_getEnumInfo">
             <short-description>Returns information about an enum</short-description>
             <description>
@@ -8177,7 +8177,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </property>
     </object-class>
-    <object-class name="scene" superclass="object" singleton="sim.scene">
+    <object-class name="scene" superclass="object" singleton="true">
         <method name="copyObjects" lang="python,lua" var="METHOD_copyObjects">
             <short-description>Copies selected objects</short-description>
             <description>
