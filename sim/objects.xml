@@ -6964,9 +6964,12 @@ note: the generated see-also section contains the <see-also> items, but also the
                         User function
                     </description>
                 </param>
-                <param name="execBefore" type="bool" default="true">
+                <param name="options" type="map" default="{}">
                     <description>
-                        If true, the user function is called before the function to hook. Otherwise it is called after
+                        Optional map:
+                        <ul>
+                            <li>when (string, defaults to "before"): indicates when the hook should execute. Possible value are "before" and "after"</li>
+                        </ul>
                     </description>
                 </param>
             </params>
