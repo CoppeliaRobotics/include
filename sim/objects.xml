@@ -7050,7 +7050,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="callFunction" lang="python,lua" var="METHOD_callFunction">
-            <short-description>Calls a script function</short-description>
+            <short-description>Calls a function</short-description>
             <description>
                 Calls a script function. This represents a
                 <a href="../callbackFunctions.htm"> user callback </a>
@@ -7088,7 +7088,50 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="messaging" />
             </categories>
             <see-also>
+                <function-ref name="script:callMethod" />
                 <function-ref name="script:getFunctions" />
+                <function-ref name="script:executeString" />
+            </see-also>
+        </method>
+        <method name="callMethod" lang="python,lua" var="METHOD_callMethod">
+            <short-description>Calls a method</short-description>
+            <description>
+                Calls a method in a script. The
+                target must be initialized for this call to succeed, e.g. when calling
+                from <a href="../simulationScripts.htm"> simulation scripts </a>, then simulation must be running
+            </description>
+            <params>
+                <param name="target" type="handle">
+                    <description>
+                        The target object to call the method upon.
+                    </description>
+                </param>
+                <param name="methodName" type="string">
+                    <description>
+                        The method to call.
+                    </description>
+                </param>
+                <param name="inArg" type="any" default="nil">
+                    <description>
+                        Argument to be handed over to the called method.
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="outArg" type="any">
+                    <description>
+                        Return from the called method.
+                    </description>
+                </param>
+            </returns>
+            <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="scriptObject" />
+                <category name="scriptRelated" />
+                <category name="messaging" />
+            </categories>
+            <see-also>
+                <function-ref name="script:callFunction" />
                 <function-ref name="script:executeString" />
             </see-also>
         </method>
@@ -7115,6 +7158,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
             <see-also>
                 <function-ref name="script:callFunction" />
+                <function-ref name="script:callMethod" />
                 <function-ref name="script:executeString" />
             </see-also>
         </method>
@@ -7156,6 +7200,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
             <see-also>
                 <function-ref name="script:callFunction" />
+                <function-ref name="script:callMethod" />
                 <function-ref name="script:getFunctions" />
             </see-also>
         </method>
