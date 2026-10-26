@@ -4340,6 +4340,10 @@ note: the generated see-also section contains the <see-also> items, but also the
             <see-also>
             </see-also>
         </method>
+        <method name="test" lang="lua" var="METHOD_testFunc">
+            <short-description>Test method</short-description>
+            <support start="2" start-deprecated="0" end="0" />
+        </method>
         <method name="pack" lang="python,lua" var="METHOD_pack">
             <short-description>Packs data using CoppeliaSim format</short-description>
             <description>
