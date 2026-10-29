@@ -8,7 +8,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <method name="new" lang="python,lua" call-cmd="Motion.RuckigPosition" module="Motion">
             <short-description>Initializes a Ruckig position trajectory generator</short-description>
             <description>
-                Initializes a <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>.
+                Initializes a <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator</a>.
                 The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities
                 for motion control systems. This function prepares a position-based trajectory generation object
             </description>
@@ -25,11 +25,11 @@ note: the generated see-also section contains the <see-also> items, but also the
                             <li>maxAccel (vector n): specifies the maximum allowed acceleration with one value per DoF</li>
                             <li>minAccel (vector n, defaults to -maxAccel): optional. Specifies the minimum allowed acceleration with one value per DoF</li>
                             <li>maxJerk (vector n): specifies the maximum allowed jerk with one value per DoF</li>
-                            <li>flags (int): optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a> , -1 for default flags. </li>
+                            <li>flags (int): optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags</a>, -1 for default flags. </li>
                             <li>targetPos (vector n): specifies the target configuration with one value per DoF </li>
                             <li>targetVel (vector n, defaults to zero vector): optional. Specifies the target velocity with one value per DoF</li>
                             <li>baseCycleTime (float, defaults to 0.0001): optional. Smallest expected cycle time</li>
-                            <li>timeStep (float, defaults to 0.0): optional. The desired time step size. A value of 0 indicates that the current simulation time step is used. The timeStep time should always be a multiple of baseCycleTime</li>
+                            <li>timeStep (float, defaults to 0.0): optional. The desired time step size. A value of 0 indicates that the current simulation time step is used. The timeStep should always be a multiple of baseCycleTime</li>
                             <li>selection (int[n], defaults to [1, ..., 1]): optional</li>
                         </ul>
                     </description>
@@ -134,7 +134,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <method name="new" lang="python,lua" call-cmd="Motion.RuckigVelocity" module="Motion">
             <short-description>Initializes a Ruckig velocity trajectory generator</short-description>
             <description>
-                Initializes a <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>.
+                Initializes a <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator</a>.
                 The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities
                 for motion control systems. This function prepares a velocity-based trajectory generation object
             </description>
@@ -149,10 +149,10 @@ note: the generated see-also section contains the <see-also> items, but also the
                             <li>maxAccel (vector n): specifies the maximum allowed acceleration with one value per DoF</li>
                             <li>minAccel (vector n, defaults to -maxAccel): optional. Specifies the minimum allowed acceleration with one value per DoF</li>
                             <li>maxJerk (vector n): specifies the maximum allowed jerk with one value per DoF</li>
-                            <li>flags (int): optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a> , -1 for default flags. </li>
+                            <li>flags (int): optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags</a>, -1 for default flags. </li>
                             <li>targetVel (vector n, defaults to zero vector): optional. Specifies the target velocity with one value per DoF</li>
                             <li>baseCycleTime (float, defaults to 0.0001): optional. Smallest expected cycle time</li>
-                            <li>timeStep (float, defaults to 0.0): optional. The desired time step size. A value of 0 indicates that the current simulation time step is used. The timeStep time should always be a multiple of baseCycleTime</li>
+                            <li>timeStep (float, defaults to 0.0): optional. The desired time step size. A value of 0 indicates that the current simulation time step is used. The timeStep should always be a multiple of baseCycleTime</li>
                             <li>selection (int[n], defaults to [1, ..., 1]): optional</li>
                         </ul>
                     </description>
@@ -254,9 +254,9 @@ note: the generated see-also section contains the <see-also> items, but also the
     </object-class>
     <object-class name="MoveToConfig" superclass="Motion">
         <method name="new" lang="python,lua" call-cmd="Motion.MoveToConfig" module="Motion">
-            <short-description>Initiates a n-DoF motion using Ruckig</short-description>
+            <short-description>Initiates an n-DoF motion using Ruckig</short-description>
             <description>
-                Initiates a n-DoF motion using the
+                Initiates an n-DoF motion using the
                 <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
             </description>
             <params>
@@ -275,7 +275,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                             <li>maxJerk (vector n, defaults to infinity vector): optional. Specifies the maximum allowed jerk with one value per DoF</li>
                             <li>targetVel (vector n, defaults to zero vector): optional. Specifies the target velocity with one value per DoF</li>
                             <li>targetPos (vector n): specifies the target configuration with one value per DoF </li>
-                            <li>flags (int): optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a> , -1 for default flags. </li>
+                            <li>flags (int): optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags</a>, -1 for default flags. </li>
                             <li>callback (function): optional. Callback function called for each motion step. The argument provided to the callback function is the current motion state </li>
                             <li>auxData (any): optional. Data to be forwarded to the callback function </li>
                             <li>cyclicJoints (bool[], defaults to [false, ..., false]): optional. Indicates which joint is cyclic (for cyclic joints, the movement always goes in the direction that represents the shortest distance to the goal)</li>
@@ -405,8 +405,8 @@ note: the generated see-also section contains the <see-also> items, but also the
             <short-description>Initiates pose-based motion using Ruckig</short-description>
             <description>
                 Initiates motion using the
-                <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
-                , by performing interpolations between two poses. The function can operate by handling 4 motion variables (x,y,z and
+                <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator</a>,
+                 by performing interpolations between two poses. The function can operate by handling 4 motion variables (x, y, z and
                 angle between the two poses), or a single movement variable (t, which requires a metric to be specified for distance
                 calculation between the two poses)
             </description>
@@ -415,7 +415,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Parameters of the function:
                         <ul>
-                            <li>pose (pose): mandatory if neither object nor ik are specified. Specifies current pose </li>
+                            <li>pose (pose): mandatory if neither object nor ik are specified. Specifies the current pose </li>
                             <li>object (handle): mandatory if neither pose nor ik are specified. Specifies the object to move </li>
                             <li>ik (map): mandatory if neither pose nor object are specified. Contains IK-relevant information, if a kinematic chain should move via IK to a target:
                                 <ul>
@@ -428,15 +428,15 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>iterations (int, defaults to 20): optional. Specifies the max. number of iterations</li>
                                     <li>constraints (int, defaults to simIK.constraint_pose): optional. Specifies the constraints</li>
                                     <li>precision (int[2], defaults to [0.001, 0.5 * math.pi / 180.0]): optional. Specifies the desired precision (linear and angular)</li>
-                                    <li>allowError (bool, defaults to false): optional. Specifies whether a resolution with precision values over what is allowed will be applied anyway</li>
+                                    <li>allowError (bool, defaults to false): optional. Specifies whether a resolution with precision values beyond what is allowed will be applied anyway</li>
                                     <li>breakFlags (int, defaults to 0): optional. Specifies the reason flags required for simIK.handleGroup to fail</li>
                                 </ul>
                             </li>
                             <li>targetPose (pose): specifies the target pose </li>
                             <li>targetVel (vector n, defaults to zero vector): optional. Specifies the target velocity, with n = 1 or n = 4</li>
-                            <li>flags (int, default to -1): optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a>
+                            <li>flags (int, defaults to -1): optional. <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a>
                             </li>
-                            <li>metric (vector n, defaults to [1.0, 1.0, 1.0, 1.0]): optional. A metric to compute a pose-pose distance. With n = 4, the motion calculation happens in the 4-dimensional space (x, y, z, angle), with n = 1, it happens in the 1-dimensional space (t) </li>
+                            <li>metric (vector n, defaults to [1.0, 1.0, 1.0, 1.0]): optional. A metric to compute a pose-pose distance. With n = 4, the motion calculation happens in the 4-dimensional space (x, y, z, angle); with n = 1, it happens in the 1-dimensional space (t) </li>
                             <li>maxVel (vector n, defaults to infinity vector): optional. Specifies the maximum allowed velocity</li>
                             <li>minVel (vector n, defaults to -maxVel): optional. Specifies the minimum allowed velocity</li>
                             <li>maxAccel (vector n, defaults to infinity vector): optional. Specifies the maximum allowed acceleration</li>
@@ -799,13 +799,13 @@ note: the generated see-also section contains the <see-also> items, but also the
                             <li>closed (bool, defaults to false): whether the path is closed or open</li>
                             <li>closedRepeatsStart (bool, defaults to false): whether a closed path has the first path point identical to the last path point</li>
                             <li>onlyCtrlPoints (bool, defaults to false): if true, then only the control points are taken into account (no interpolated path is generated)</li>
-                            <li>forwardAndUpAxes (string, defaults to "xz"): possible values are "xy", "xz", "yx", "yz", "zx" and "zy". Indicates 2 axis used to reorient ctrl- and path-points in
+                            <li>forwardAndUpAxes (string, defaults to "xz"): possible values are "xy", "xz", "yx", "yz", "zx" and "zy". Indicates 2 axes used to reorient ctrl- and path-points in
                                 a pose-type path: The first axis points along the path direction, the second axis points towards the upVector (if specified)</li>
                             <li>upVector (vector3, defaults to nil): is used together with forwardAndUpAxes to reorient ctrl- and path-points in a specific manner</li>
                             <li>ctrlPoints: optional map describing control point properties:
                                 <ul>
                                     <li>duplicateThreshold (float, defaults to 0.02): distance below which points are merged</li>
-                                    <li>linearityTolerance (float, defaults to 0.001): points within a certain distance to the segment formed by its two neighbours can be discarded</li>
+                                    <li>linearityTolerance (float, defaults to 0.001): points within a certain distance to the segment formed by their two neighbours can be discarded</li>
                                     <li>pointType (enum, defaults to "cube"): allowed values are "none", "sphere" and "cube"</li>
                                     <li>pointColor (color): point color</li>
                                     <li>pointRadius (float): point radius</li>
@@ -911,7 +911,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                             <li>ctrlPoints: optional map describing control point properties:
                                 <ul>
                                     <li>duplicateThreshold (float, defaults to 0.02): distance below which points are merged</li>
-                                    <li>linearityTolerance (float, defaults to 0.001): points within a certain distance to the segment formed by its two neighbours can be discarded</li>
+                                    <li>linearityTolerance (float, defaults to 0.001): points within a certain distance to the segment formed by their two neighbours can be discarded</li>
                                     <li>pointType (enum, defaults to "cube"): allowed values are "none", "sphere" and "cube"</li>
                                     <li>pointColor (color): point color</li>
                                     <li>pointRadius (float): point radius</li>
@@ -974,13 +974,13 @@ note: the generated see-also section contains the <see-also> items, but also the
                             <li>closed (bool, defaults to false): whether the path is closed or open</li>
                             <li>closedRepeatsStart (bool, defaults to false): whether a closed path has the first path point identical to the last path point</li>
                             <li>onlyCtrlPoints (bool, defaults to false): if true, then only the control points are taken into account (no interpolated path is generated)</li>
-                            <li>forwardAndUpAxes (string, defaults to "xz"): possible values are "xy", "xz", "yx", "yz", "zx" and "zy". Indicates 2 axis used to reorient ctrl- and path-points in
+                            <li>forwardAndUpAxes (string, defaults to "xz"): possible values are "xy", "xz", "yx", "yz", "zx" and "zy". Indicates 2 axes used to reorient ctrl- and path-points in
                                 a pose-type path: The first axis points along the path direction, the second axis points towards the upVector (if specified)</li>
                             <li>upVector (vector3, defaults to nil): is used together with forwardAndUpAxes to reorient ctrl- and path-points in a specific manner</li>
                             <li>ctrlPoints: optional map describing control point properties:
                                 <ul>
                                     <li>duplicateThreshold (float, defaults to 0.02): distance below which points are merged</li>
-                                    <li>linearityTolerance (float, defaults to 0.001): points within a certain distance to the segment formed by its two neighbours can be discarded</li>
+                                    <li>linearityTolerance (float, defaults to 0.001): points within a certain distance to the segment formed by their two neighbours can be discarded</li>
                                     <li>pointType (enum, defaults to "cube"): allowed values are "none", "sphere" and "cube"</li>
                                     <li>pointColor (color): point color</li>
                                     <li>pointRadius (float): point radius</li>
@@ -1188,7 +1188,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <method name="createMarkers" lang="python,lua">
             <short-description>Creates markers for path visualization</short-description>
             <description>
-                Creates markers allowing visualization of the path. Only joint-based paths, and paths with following coordinates can be visualized:
+                Creates markers allowing visualization of the path. Only joint-based paths, and paths with the following coordinates can be visualized:
                 ["lin", "lin", ...],
                 ["lin", "lin", "lin", ...],
                 ["lin", "lin", "lin", "quat", "quat", "quat", "quat", ...]
@@ -1458,7 +1458,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <method name="createGroup" lang="python,lua">
             <short-description>Creates an IK group</short-description>
             <description>
-                Creates an IK group inside of the IK world. An IK group contains one or several IK elements, that will be solved together
+                Creates an IK group inside of the IK world. An IK group contains one or several IK elements that will be solved together
             </description>
             <params>
                 <param name="options" type="map" default="{}">
@@ -1502,11 +1502,11 @@ note: the generated see-also section contains the <see-also> items, but also the
                         <ul>
                             <li>debug (int, defaults to 0): the debug verbosity level</li>
                             <li>syncWorlds (bool, defaults to true): whether the IK world and the sim world should be synchronized with each other</li>
-                            <li>returnExtras (bool, defaults to false): whether the two last return arguments should be calculated/returned</li>
+                            <li>returnExtras (bool, defaults to false): whether the last two return arguments should be calculated/returned</li>
                             <li>ignoreTolerance (bool, defaults to false): whether precision/tolerance settings should be ignored when evaluating the result of the solve operation</li>
                             <li>projected (bool, defaults to false): if the object contains more than one group, then a projected IK computation is performed, where each group calculation result is projected into the previous group's null space,
                                 i.e. dq = dq0 + NP0 * (dq1 + NP1 * (dq2 + NP2 * (...))), where dqi is the result of i-th task's IK (i.e. typically J# * e), and NPi is the i-th task's I - J# * J</li>
-                            <li>callback (string/function, defaults to nil): an optional function that allows to compute or modify the Jacobian. The callback has one map argument with following fields:
+                            <li>callback (string/function, defaults to nil): an optional function that allows computing or modifying the Jacobian. The callback has one map argument with the following fields:
                                 <ul>
                                     <li>cols (map[]): one array entry per Jacobian column. Each entry indicates the related IK world joint and DoFIndex</li>
                                     <li>rows (map[]): one array entry per Jacobian row. Each entry indicates the type of constraint, and the IK element it relates to</li>
@@ -1518,13 +1518,13 @@ note: the generated see-also section contains the <see-also> items, but also the
                                 The callback function should return either:
                                 <ul>
                                     <li>nil: in that case, default calculations are applied</li>
-                                    <li>a map with following fields:
+                                    <li>a map with the following fields:
                                         <ul>
                                             <li>jacobian (Matrix): the (modified) Jacobian matrix</li>
                                             <li>e (Vector): the (modified) error vector</li>
                                         </ul>
                                     </li>
-                                    <li>a map with following fields:
+                                    <li>a map with the following fields:
                                         <ul>
                                             <li>jacobianPinv (Matrix): the inverted Jacobian matrix</li>
                                             <li>dq (Vector): the calculated joint error vector</li>
@@ -1684,7 +1684,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
                 <param name="constraints" type="int">
                     <description>
-                        The constraints the tip should try to satisfy relative to the target. Following flags are possible and can be combined:
+                        The constraints the tip should try to satisfy relative to the target. The following flags are possible and can be combined:
                         <ul>
                             <li>IK.constraint_x: constraint along the base object's x-direction</li>
                             <li>IK.constraint_y: constraint along the base object's y-direction</li>
@@ -1736,9 +1736,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                         <ul>
                             <li>debug (int, defaults to 0): the debug verbosity level</li>
                             <li>syncWorlds (bool, defaults to true): whether the IK world and the sim world should be synchronized with each other</li>
-                            <li>returnExtras (bool, defaults to false): whether the two last return arguments should be calculated/returned</li>
+                            <li>returnExtras (bool, defaults to false): whether the last two return arguments should be calculated/returned</li>
                             <li>ignoreTolerance (bool, defaults to false): whether precision/tolerance settings should be ignored when evaluating the result of the solve operation</li>
-                            <li>callback (string/function, defaults to nil): an optional function that allows to compute or modify the Jacobian. The callback has one map argument with following fields:
+                            <li>callback (string/function, defaults to nil): an optional function that allows computing or modifying the Jacobian. The callback has one map argument with the following fields:
                                 <ul>
                                     <li>cols (map[]): one array entry per Jacobian column. Each entry indicates the related IK world joint and DoFIndex</li>
                                     <li>rows (map[]): one array entry per Jacobian row. Each entry indicates the type of constraint, and the IK element it relates to</li>
@@ -1750,13 +1750,13 @@ note: the generated see-also section contains the <see-also> items, but also the
                                 The callback function should return either:
                                 <ul>
                                     <li>nil: in that case, default calculations are applied</li>
-                                    <li>a map with following fields:
+                                    <li>a map with the following fields:
                                         <ul>
                                             <li>jacobian (Matrix): the (modified) Jacobian matrix</li>
                                             <li>e (Vector): the (modified) error vector</li>
                                         </ul>
                                     </li>
-                                    <li>a map with following fields:
+                                    <li>a map with the following fields:
                                         <ul>
                                             <li>jacobianPinv (Matrix): the inverted Jacobian matrix</li>
                                             <li>dq (Vector): the calculated joint error vector</li>
@@ -1878,7 +1878,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <returns>
                 <param name="jacobian" type="matrix">
                     <description>
-                        the jacobian (row major order). Each row corresponds to one constraint in following order (if applicable): x, y, z, alpha, beta, gamma. Each column corresponds to one degree of freedom, from base to tip
+                        the jacobian (row major order). Each row corresponds to one constraint in the following order (if applicable): x, y, z, alpha, beta, gamma. Each column corresponds to one degree of freedom, from base to tip
                     </description>
                 </param>
                 <param name="errorVector" type="vector">
@@ -2010,7 +2010,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>relativeToObject (IKObject, defaults to the world): indicates relative to which reference frame we want the pose. Specify null (or omit) to retrieve the absolute pose, or an IK object relative to whose reference frame we want the pose</li>
+                            <li>relativeToObject (IKObject, defaults to the world): indicates relative to which reference frame the pose is expressed. Specify null (or omit) to retrieve the absolute pose, or an IK object relative to whose reference frame the pose is expressed</li>
                         </ul>
                     </description>
                 </param>
@@ -2078,7 +2078,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>relativeToObject (IKObject, defaults to the world): indicates relative to which reference frame we want the position. Specify null (or omit) to retrieve the absolute position, or an IK object relative to whose reference frame we want the position</li>
+                            <li>relativeToObject (IKObject, defaults to the world): indicates relative to which reference frame the position is expressed. Specify null (or omit) to retrieve the absolute position, or an IK object relative to whose reference frame the position is expressed</li>
                         </ul>
                     </description>
                 </param>
@@ -2146,7 +2146,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>relativeToObject (IKObject, defaults to the world): indicates relative to which reference frame we want the quaternion. Specify null (or omit) to retrieve the absolute orientation, or an IK object relative to whose reference frame we want the quaternion</li>
+                            <li>relativeToObject (IKObject, defaults to the world): indicates relative to which reference frame the quaternion is expressed. Specify null (or omit) to retrieve the absolute orientation, or an IK object relative to whose reference frame the quaternion is expressed</li>
                         </ul>
                     </description>
                 </param>
@@ -3958,7 +3958,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <method name="getPropertyTypeString" lang="python,lua" var="METHOD_getPropertyTypeString">
             <short-description>Gets string for a property type</short-description>
             <description>
-                Fetches the short string equivalent from a property type value
+                Fetches the short string equivalent of a property type value
             </description>
             <params>
                 <param name="propertyType" type="int">
@@ -3986,7 +3986,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <method name="getPropertiesInfos" lang="python,lua" var="METHOD_getPropertiesInfos">
             <short-description>Fetches all property infos of a target</short-description>
             <description>
-                Convenience function to fetch all properties infos of a specific target item
+                Convenience function to fetch all property infos of a specific target item
             </description>
             <params>
                 <param name="options" type="map" default="{}">
@@ -4001,7 +4001,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <returns>
                 <param name="propertiesInfo" type="map">
                     <description>
-                        Properties infos
+                        Property infos
                     </description>
                 </param>
             </returns>
@@ -4165,7 +4165,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
                 <param name="info" type="map">
                     <description>
-                        Map with following optional fields:
+                        Map with the following optional fields:
                         <ul>
                             <li>versionStr (string): name and version</li>
                             <li>buildDate (string): build date</li>
@@ -4228,7 +4228,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <method name="getGenesisEvents" lang="python,lua" var="METHOD_getGenesisEvents">
             <short-description>Retrieves events to reconstruct the app's state</short-description>
             <description>
-                Retrieves all events that allow to reconstruct the app's state remotely
+                Retrieves all events that allow reconstructing the app's state remotely
             </description>
             <returns>
                 <param name="events" type="buffer">
@@ -4325,7 +4325,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <params>
                 <param name="fast" type="bool">
                     <description>
-                        Enables/disable the fast idle loop. Calls to this method are cumulative, i.e. if the method was called n times with the argument enabled, it must be called n times with the argument disabled to fully disable the effect
+                        Enables/disables the fast idle loop. Calls to this method are cumulative, i.e. if the method was called n times with the argument enabled, it must be called n times with the argument disabled to fully disable the effect
                     </description>
                 </param>
             </params>
@@ -4437,8 +4437,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Optional map:
                         <ul>
                             <li> type (string, defaults to "double"): packing type. Allowed values are "double", "float", "int64", "int32", "uint32", "int16", "uint16", "int8" and "uint8"</li>
-                            <li> start (int, defaults to 0): zero-based index from which on data is packed</li>
-                            <li> count (int, defaults to 0): amount of doubles to pack (0 = all)</li>
+                            <li> start (int, defaults to 0): zero-based index from which data is packed</li>
+                            <li> count (int, defaults to 0): number of doubles to pack (0 = all)</li>
                         </ul>
                     </description>
                 </param>
@@ -4482,8 +4482,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Optional map:
                         <ul>
                             <li> type (string, defaults to "double"): packing type. Allowed values are "double", "float", "int64", "int32", "uint32", "int16", "uint16", "int8" and "uint8"</li>
-                            <li> start (int, defaults to 0): zero-based index from which on data is unpacked</li>
-                            <li> count (int, defaults to 0): amount of doubles to unpack (0 = all)</li>
+                            <li> start (int, defaults to 0): zero-based index from which data is unpacked</li>
+                            <li> count (int, defaults to 0): number of doubles to unpack (0 = all)</li>
                             <li> byteOffset (int, defaults to 0): byte offset to be added before reading the data</li>
                         </ul>
                     </description>
@@ -4722,7 +4722,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <info>same method present in both app and scene</info>
             <short-description>Creates various objects (collections, scripts, sensors, etc.)</short-description>
             <description>
-                Creates one of following objects:
+                Creates one of the following objects:
                 <ul>
                     <li>
                         <a href="#collection">collection</a>
@@ -4800,7 +4800,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                 <ul>
                                     <li>type (string): "script"</li>
                                     <li>script.type (string): the script type. As of now only "addon" is supported</li>
-                                    <li>language (string): the script language ("lua" or "python")</li>
+                                    <li>language (string): the script language ("Lua" or "Python")</li>
                                     <li>code (string): the script content</li>
                                 </ul>
                             </li>
@@ -4819,7 +4819,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>fontSize (int): the size of the font</li>
                                     <li>defaultColor (color): text default color</li>
                                     <li>background (color): background color</li>
-                                    <li>sceneUid (int): the scene unique identifier (sim.scene.uid) to which this console belongs to. Set to -1 for visibility across the whole application</li>
+                                    <li>sceneUid (int): the scene unique identifier (sim.scene.uid) to which this console belongs. Set to -1 for visibility across the whole application</li>
                                 </ul>
                             </li>
                             <li id="textEditor">
@@ -4837,7 +4837,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>fontSize (int): the size of the font</li>
                                     <li>defaultColor (color): text default color</li>
                                     <li>background (color): background color</li>
-                                    <li>sceneUid (int): the scene unique identifier (sim.scene.uid) to which this editor belongs to. Set to -1 for visibility across the whole application</li>
+                                    <li>sceneUid (int): the scene unique identifier (sim.scene.uid) to which this editor belongs. Set to -1 for visibility across the whole application</li>
                                 </ul>
                             </li>
                             <li id="dummy">
@@ -4891,7 +4891,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>duplicateTolerance (float): indicates a distance threshold under which points are not added. Does not apply to line- or triangle items</li>
                                     <li>itemCnt (int): maximum item count</li>
                                     <li>itemColor (color): default item color</li>
-                                    <li>mesh: mesh object or mesh table (if the marker is of type "custom"). Following fields are taken into account:
+                                    <li>mesh: mesh object or mesh table (if the marker is of type "custom"). The following fields are taken into account:
                                         <ul>
                                             <li>mesh.vertices (matrix 3 * n): vertices for a mesh item type</li>
                                             <li>mesh.indices (int[]): indices for a mesh item type. One zero-based index for each vertex</li>
@@ -4940,13 +4940,13 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>cube (map/dict): holds parameters for the creation of a cube:
                                         <ul>
                                             <li>size (int[3]): the size of the cube</li>
-                                            <li>rawMesh (bool): whether the shape is registered as a random mesh (i.e. not a primitive)</li>
+                                            <li>rawMesh (bool): whether the shape is registered as a raw mesh (i.e. not a primitive)</li>
                                         </ul>
                                     </li>
                                     <li>sphere (map/dict): holds parameters for the creation of a sphere:
                                         <ul>
                                             <li>radius (float): the radius of the sphere</li>
-                                            <li>rawMesh (bool): whether the shape is registered as a random mesh (i.e. not a primitive)</li>
+                                            <li>rawMesh (bool): whether the shape is registered as a raw mesh (i.e. not a primitive)</li>
                                         </ul>
                                     </li>
                                     <li>cylinder (map/dict): holds parameters for the creation of a cylinder:
@@ -4954,7 +4954,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                             <li>radius (float): the radius of the cylinder</li>
                                             <li>length (float): the length of the cylinder</li>
                                             <li>open (bool): whether the cylinder is open</li>
-                                            <li>rawMesh (bool): whether the shape is registered as a random mesh (i.e. not a primitive)</li>
+                                            <li>rawMesh (bool): whether the shape is registered as a raw mesh (i.e. not a primitive)</li>
                                         </ul>
                                     </li>
                                     <li>cone (map/dict): holds parameters for the creation of a cone:
@@ -4962,33 +4962,33 @@ note: the generated see-also section contains the <see-also> items, but also the
                                             <li>radius (float): the radius of the cone</li>
                                             <li>height (float): the height of the cone</li>
                                             <li>open (bool): whether the cone is open</li>
-                                            <li>rawMesh (bool): whether the shape is registered as a random mesh (i.e. not a primitive)</li>
+                                            <li>rawMesh (bool): whether the shape is registered as a raw mesh (i.e. not a primitive)</li>
                                         </ul>
                                     </li>
                                     <li>capsule (map/dict): holds parameters for the creation of a capsule:
                                         <ul>
                                             <li>radius (float): the radius of the capsule</li>
                                             <li>length (float): the length of the capsule</li>
-                                            <li>rawMesh (bool): whether the shape is registered as a random mesh (i.e. not a primitive)</li>
+                                            <li>rawMesh (bool): whether the shape is registered as a raw mesh (i.e. not a primitive)</li>
                                         </ul>
                                     </li>
                                     <li>plane (map/dict): holds parameters for the creation of a plane:
                                         <ul>
                                             <li>size (int[2]): the size of the plane</li>
-                                            <li>rawMesh (bool): whether the shape is registered as a random mesh (i.e. not a primitive)</li>
+                                            <li>rawMesh (bool): whether the shape is registered as a raw mesh (i.e. not a primitive)</li>
                                         </ul>
                                     </li>
                                     <li>disc (map/dict): holds parameters for the creation of a disc:
                                         <ul>
                                             <li>radius (float): the radius of the disc</li>
-                                            <li>rawMesh (bool): whether the shape is registered as a random mesh (i.e. not a primitive)</li>
+                                            <li>rawMesh (bool): whether the shape is registered as a raw mesh (i.e. not a primitive)</li>
                                         </ul>
                                     </li>
                                     <li>heightField (map/dict): holds parameters for the creation of a height field:
                                         <ul>
                                             <li>heights (matrix): the heights</li>
                                             <li>cellSize (float): the length/width of a cell</li>
-                                            <li>rawMesh (bool): whether the shape is registered as a random mesh (i.e. not a height field)</li>
+                                            <li>rawMesh (bool): whether the shape is registered as a raw mesh (i.e. not a height field)</li>
                                         </ul>
                                     </li>
                                     <li>string (map/dict): holds parameters for the creation of a shape representing a text string:
@@ -5029,7 +5029,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                 <ul>
                                     <li>type (string): "scriptObject"</li>
                                     <li>scriptObject.type (string): the script object type. Allowed values are "simulation" and "customization"</li>
-                                    <li>language (string): "lua" or "python"</li>
+                                    <li>language (string): "Lua" or "Python"</li>
                                     <li>code (string): the content of the script</li>
                                     <li>scriptDisabled (bool): the script is initially disabled</li>
                                 </ul>
@@ -5041,7 +5041,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>size (float): size of the sensor</li>
                                     <li>dynamics.filter (int): filter type (0 = average, 1 = median)</li>
                                     <li>dynamics.filterSampleSize (int): value count the filter operates on</li>
-                                    <li>dynamics.consecutiveViolationsToTrigger (int): number of consecutive threshold violation for the sensor to trigger</li>
+                                    <li>dynamics.consecutiveViolationsToTrigger (int): number of consecutive threshold violations for the sensor to trigger</li>
                                     <li>dynamics.forceThreshold (float): force threshold</li>
                                     <li>dynamics.torqueThreshold (float): torque threshold</li>
                                     <li>color.diffuse (color): diffuse color</li>
@@ -5109,7 +5109,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>type (string): "pointCloud"</li>
                                     <li>cellSize (float): the maximum size of the OC tree voxels containing points</li>
                                     <li>pointSize (int): the point size in pixels</li>
-                                    <li>maxPointsInCell (int): maximum number of points allowed in a same OC tree voxel</li>
+                                    <li>maxPointsInCell (int): maximum number of points allowed in the same OC tree voxel</li>
                                 </ul>
                             </li>
                             <li id="path">
@@ -5120,13 +5120,13 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
                                     <li>orientationMetric (float): the weight of orientation vs position</li>
-                                    <li>forwardAndUpAxes (string, defaults to "xz"): possible values are "xy", "xz", "yx", "yz", "zx" and "zy". Indicates 2 axis used to reorient ctrl- and path-points in
+                                    <li>forwardAndUpAxes (string, defaults to "xz"): possible values are "xy", "xz", "yx", "yz", "zx" and "zy". Indicates 2 axes used to reorient ctrl- and path-points in
                                         a pose-type path: The first axis points along the path direction, the second axis points towards the upVector (if specified)</li>
                                     <li>upVector (vector3, defaults to nil): is used together with forwardAndUpAxes to reorient ctrl- and path-points in a specific manner</li>
                                     <li>ctrlPoints: optional map describing control point properties:
                                         <ul>
                                             <li>duplicateThreshold (float): distance below which points are merged</li>
-                                            <li>linearityTolerance (float): points within a certain distance to the segment formed by its two neighbours can be discarded</li>
+                                            <li>linearityTolerance (float): points within a certain distance to the segment formed by their two neighbours can be discarded</li>
                                             <li>lineType (enum, defaults to "line"): allowed values are "none", "line" and "tube"</li>
                                             <li>lineColor (color): line color</li>
                                         </ul>
@@ -5312,7 +5312,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <params>
                 <param name="filename" type="string">
                     <description>
-                        Model filename. The filename extension is required (ttm, or simmodel.xml)
+                        Model filename. The filename extension is required (ttm or simmodel.xml)
                     </description>
                 </param>
             </params>
@@ -5492,7 +5492,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <method name="handleSandboxes" lang="lua" var="METHOD_handleSandboxScripts">
             <short-description>Calls a system callback in the sandbox</short-description>
             <description>
-                Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a> in the <a href="../sandboxScript.htm"> sandbox </a>.
+                Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a> in the <a href="../sandboxScript.htm"> sandbox</a>.
                 Should only be called from the <a href="../mainScript.htm"> main script </a>
             </description>
             <params>
@@ -5521,7 +5521,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <method name="handleAddOns" lang="lua" var="METHOD_handleAddOnScripts">
             <short-description>Calls a system callback in add-ons</short-description>
             <description>
-                Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a> in <a href="../addOns.htm"> add-ons </a>.
+                Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a> in <a href="../addOns.htm"> add-ons</a>.
                 Should only be called from the <a href="../mainScript.htm"> main script </a>
             </description>
             <params>
@@ -5675,7 +5675,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <returns>
                 <param name="imgBuffer" type="buffer">
                     <description>
-                        A buffer containing the image in packed format (e.g. png, jpg, etc.)
+                        A buffer containing the image in packed format (e.g. png, jpg)
                     </description>
                 </param>
             </returns>
@@ -5810,12 +5810,12 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
                 <param name="inFormat" type="string">
                     <description>
-                        Input data format. Allowed is "uint8", "int8", "uint16", "int16", "uint32", "int32", "uint64", "int64", "float", "double", "rgb", "bgr", "rgba", "argb" and "base64"
+                        Input data format. Allowed values are "uint8", "int8", "uint16", "int16", "uint32", "int32", "uint64", "int64", "float", "double", "rgb", "bgr", "rgba", "argb" and "base64"
                     </description>
                 </param>
                 <param name="outFormat" type="string">
                     <description>
-                        Desired output data format. Allowed is "uint8", "int8", "uint16", "int16", "uint32", "int32", "uint64", "int64", "float", "double", "rgb", "bgr", "rgba", "argb" and "base64"
+                        Desired output data format. Allowed values are "uint8", "int8", "uint16", "int16", "uint32", "int32", "uint64", "int64", "float", "double", "rgb", "bgr", "rgba", "argb" and "base64"
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -6668,7 +6668,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>label (string, defaults to ""): label of the module entry. If handle is -1, then a path can be specified, in order to build sub-menus, e.g. "Menu\nSubmenu1\nSubmenu2\nLabel"</li>
+                            <li>label (string, defaults to ""): label of the module entry. If handle is -1, then a path can be specified, to build sub-menus, e.g. "Menu\nSubmenu1\nSubmenu2\nLabel"</li>
                             <li>enabled (bool, defaults to true): the item is enabled</li>
                             <li>checked (bool, defaults to false): the item is checked</li>
                             <li>checkable (bool, defaults to false): the item is checkable</li>
@@ -6700,7 +6700,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <params>
                 <param name="message" type="map">
                     <description>
-                        Message to broadcast, with following structure: {id --&gt; "msgIdentifyingString", data --&gt; {...}}
+                        Message to broadcast, with the following structure: {id --&gt; "msgIdentifyingString", data --&gt; {...}}
                     </description>
                 </param>
             </params>
@@ -6791,7 +6791,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Optional map:
                         <ul>
                             <li>noError (bool, defaults to false): generates a silent error if an object was not found </li>
-                            <li>index (int, defaults to 0): fetches the n-th object (zero based index) that satisfies the specified objectPath </li>
+                            <li>index (int, defaults to 0): fetches the n-th object (zero-based index) that satisfies the specified objectPath </li>
                         </ul>
                     </description>
                 </param>
@@ -6863,7 +6863,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 to the initial state
                 <br />
                 <br />
-                (Lua specific: in stepping operation mode, automatic thread interruptions, i.e. preemptive threading, is suppressed)
+                (Lua specific: in stepping operation mode, automatic thread interruptions, i.e. preemptive threading, are suppressed)
             </description>
             <params>
                 <param name="enable" type="bool">
@@ -6892,7 +6892,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getStepping" lang="python,lua" var="METHOD_getStepping">
-            <short-description>Informs if stepping operation mode is enabled</short-description>
+            <short-description>Informs whether the stepping operation mode is enabled</short-description>
             <description>
                 Informs whether the stepping operation mode is enabled for the current script
             </description>
@@ -6920,7 +6920,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <method name="lock" lang="python,lua" var="METHOD_lock">
             <short-description>Acquires/releases a script lock to forbid yielding</short-description>
             <description>
-                Acquires or releases a script lock, i.e. in order to forbid yielding or stepping
+                Acquires or releases a script lock, i.e. to forbid yielding or stepping
             </description>
             <params>
                 <param name="acquire" type="bool">
@@ -6946,7 +6946,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <method name="registerFunctionHook" lang="python,lua" var="METHOD_registerFunctionHook">
             <short-description>Registers a function hook for callbacks</short-description>
             <description>
-                Registers a function hook for <a href="../callbackFunctions.htm"> callback functions </a>.
+                Registers a function hook for <a href="../callbackFunctions.htm"> callback functions</a>.
                 The hook is executed either before or after the specified callback function.
                 A hook can be registered from within another before/after hook.
                 In that case, the newly registered hook does not run during the current callback invocation:
@@ -6968,7 +6968,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>when (string, defaults to "before"): indicates when the hook should execute. Possible value are "before" and "after"</li>
+                            <li>when (string, defaults to "before"): indicates when the hook should execute. Possible values are "before" and "after"</li>
                         </ul>
                     </description>
                 </param>
@@ -6994,7 +6994,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <params>
                 <param name="funcToHook" type="string">
                     <description>
-                        Function name, where the hook is attached to
+                        Function name to which the hook is attached
                     </description>
                 </param>
                 <param name="userFunc" type="string">
@@ -7056,7 +7056,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <a href="../callbackFunctions.htm"> user callback </a>
                 inside of a script. The
                 target must be initialized for this call to succeed, e.g. when calling
-                from <a href="../simulationScripts.htm"> simulation scripts </a>, then simulation must be running
+                from <a href="../simulationScripts.htm"> simulation scripts</a>, then simulation must be running
             </description>
             <params>
                 <param name="functionName" type="string">
@@ -7098,7 +7098,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>
                 Calls a method in a script. The
                 target must be initialized for this call to succeed, e.g. when calling
-                from <a href="../simulationScripts.htm"> simulation scripts </a>, then simulation must be running
+                from <a href="../simulationScripts.htm"> simulation scripts</a>, then simulation must be running
             </description>
             <params>
                 <param name="target" type="handle">
@@ -7166,14 +7166,14 @@ note: the generated see-also section contains the <see-also> items, but also the
             <short-description>Executes code from a string</short-description>
             <description>
                 Executes some code from a string. The target must be initialized for this call to succeed, e.g. when calling
-                from <a href="../simulationScripts.htm"> simulation scripts </a>, then simulation must be running
+                from <a href="../simulationScripts.htm"> simulation scripts</a>, then the simulation must be running
                 <br />
                 <br />
             </description>
             <params>
                 <param name="stringToExecute" type="string">
                     <description>
-                        A string representing the code to execute. An optional @python or @lua can be appended, to force a specific language
+                        A string representing the code to execute. An optional @Python or @Lua can be appended, to force a specific language
                     </description>
                 </param>
             </params>
@@ -7556,7 +7556,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="convex" type="bool" var="convex" >
             <flags readable="true" />
             <label>Convex</label>
-            <description>Whether mesh is convex or not</description>
+            <description>Whether the mesh is convex or not</description>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.shapeintparam_convex" />
@@ -7855,7 +7855,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                             <li>position (int[2], defaults to [0, 0]): position where to copy the texture portion. Set to [0, 0] to overwrite the full texture</li>
                             <li>size (int[2], defaults to [0, 0]): size of the texture portion. Set to [0, 0] to overwrite the full texture</li>
                             <li>interpolation (float, defaults to 0.0): fade or interpolation factor</li>
-                            <li>rectangular (bool, defaults true): to write a rectangular or elliptical/circular portion of the texture</li>
+                            <li>rectangular (bool, defaults to true): to write a rectangular or elliptical/circular portion of the texture</li>
                         </ul>
                     </description>
                 </param>
@@ -8057,7 +8057,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>mode (string, defaults to "single"): operation mode. Following are allowed values: "single" (for a single object),
+                            <li>mode (string, defaults to "single"): operation mode. The following are allowed values: "single" (for a single object),
                                 "all" (for all objects in the scene), "tree" (for a tree of objects), "chain" (for a chain of objects (i.e. an inverted tree))</li>
                             <li>excludeObject (bool, defaults to false): if true, then the specified object is not included in the group of objects to add, if sim.handle_tree or sim.handle_chain is specified (i.e. the tree base or tip is excluded)</li>
                         </ul>
@@ -8089,7 +8089,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>mode (string, defaults to "single"): operation mode. Following are allowed values: "single" (for a single object),
+                            <li>mode (string, defaults to "single"): operation mode. The following are allowed values: "single" (for a single object),
                                 "all" (for all objects in the scene), "tree" (for a tree of objects), "chain" (for a chain of objects (i.e. an inverted tree))</li>
                             <li>excludeObject (bool, defaults to false): if true, then the specified object is not included in the group of objects to remove, if sim.handle_tree or sim.handle_chain is specified (i.e. the tree base or tip is excluded)</li>
                         </ul>
@@ -8330,7 +8330,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Optional map:
                         <ul>
                             <li>dynPass (int, defaults to the last dynamic pass): by default, each simulation step runs the dynamics engine x times, i.e. executes sub-steps.
-                            At each of those sub-steps, contacts are created and destroyed. The dynPass parameter allows to focus on a particular sub-step, or on all
+                            At each of those sub-steps, contacts are created and destroyed. The dynPass parameter allows focusing on a particular sub-step, or on all
                             sub-steps if dynPass is sim.handle_all</li>
                         </ul>
                     </description>
@@ -8518,7 +8518,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <short-description>Announces a change in the scene for undo/redo</short-description>
             <description>
                 Announces a change in the scene. This is required for the undo/redo function to operate properly
-                when performing changes via the API. What this call will do is following: the whole scene will be serialized (saved) to memory as a
+                when performing changes via the API. What this call will do is the following: the whole scene will be serialized (saved) to memory as a
                 scene image, and compared to a previously memorized scene image. Differences between both images are memorized.
                 A call to this function has no effect (and doesn't generate any error) when called during simulation or when in edit mode.
             </description>
@@ -8578,7 +8578,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <info>similar method present in both app and scene</info>
             <short-description>Saves the scene to file</short-description>
             <description>
-                Saves the scene to file. Any existing file with same name will be overwritten
+                Saves the scene to file. Any existing file with the same name will be overwritten
             </description>
             <params>
                 <param name="filename" type="string">
@@ -8841,11 +8841,11 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Optional map:
                         <ul>
                             <li>models (bool, defaults to false): whole models are copied. In that case, all specified scene objects should be flagged as model base</li>
-                            <li>noScripts (bool, defaults to false): all script objects are removed away</li>
+                            <li>noScripts (bool, defaults to false): all script objects are removed</li>
                             <li>noCustomData (bool, defaults to false): all scene object <a href="../properties.htm#customData"> custom data properties </a> are stripped away</li>
                             <li>noObjectRefs (bool, defaults to false): all scene object references are stripped away</li>
                             <li>noTextures (bool, defaults to false): all textures are stripped away</li>
-                            <li>noDna (bool, defaults to false): model tags and DNA information is stripped away</li>
+                            <li>noDna (bool, defaults to false): model tags and DNA information are stripped away</li>
                         </ul>
                     </description>
                 </param>
@@ -8875,9 +8875,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <short-description>Calls a system callback in customization scripts</short-description>
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a>
-                in <a href="../customizationScripts.htm"> customization scripts </a>.
+                in <a href="../customizationScripts.htm"> customization scripts</a>.
                 Customization scripts will be executed in a
-                <a href="../scriptExecution.htm"> precise order </a>. This function should only be called from the
+                <a href="../scriptExecution.htm"> precise order</a>. This function should only be called from the
                 <a href="../mainScript.htm"> main script </a>
             </description>
             <params>
@@ -8911,9 +8911,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             <short-description>Calls a system callback in simulation scripts</short-description>
             <description>
                 Calls a <a href="../callbackFunctions.htm#systemCallbacks"> system callback function </a>
-                in <a href="../simulationScripts.htm"> simulation scripts </a>. Simulation scripts will be executed in a
-                <a href="../scriptExecution.htm"> precise order </a>.
-                This function should only be called from the <a href="../mainScript.htm"> main script </a>.
+                in <a href="../simulationScripts.htm"> simulation scripts</a>. Simulation scripts will be executed in a
+                <a href="../scriptExecution.htm"> precise order</a>.
+                This function should only be called from the <a href="../mainScript.htm"> main script</a>.
             </description>
             <params>
                 <param name="callType" type="int">
@@ -8948,7 +8948,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <info>same method present in both app and scene</info>
             <short-description>Creates various objects (collections, scripts, sensors, etc.)</short-description>
             <description>
-                Creates one of following objects:
+                Creates one of the following objects:
                 <ul>
                     <li>
                         <a href="#collection">collection</a>
@@ -9026,7 +9026,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                 <ul>
                                     <li>type (string): "script"</li>
                                     <li>script.type (string): the script type. As of now only "addon" is supported</li>
-                                    <li>language (string): the script language ("lua" or "python")</li>
+                                    <li>language (string): the script language ("Lua" or "Python")</li>
                                     <li>code (string): the script content</li>
                                 </ul>
                             </li>
@@ -9045,7 +9045,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>fontSize (int): the size of the font</li>
                                     <li>defaultColor (color): text default color</li>
                                     <li>background (color): background color</li>
-                                    <li>sceneUid (int): the scene unique identifier (sim.scene.uid) to which this console belongs to. Set to -1 for visibility across the whole application</li>
+                                    <li>sceneUid (int): the scene unique identifier (sim.scene.uid) to which this console belongs. Set to -1 for visibility across the whole application</li>
                                 </ul>
                             </li>
                             <li id="textEditor">
@@ -9063,7 +9063,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>fontSize (int): the size of the font</li>
                                     <li>defaultColor (color): text default color</li>
                                     <li>background (color): background color</li>
-                                    <li>sceneUid (int): the scene unique identifier (sim.scene.uid) to which this editor belongs to. Set to -1 for visibility across the whole application</li>
+                                    <li>sceneUid (int): the scene unique identifier (sim.scene.uid) to which this editor belongs. Set to -1 for visibility across the whole application</li>
                                 </ul>
                             </li>
                             <li id="dummy">
@@ -9117,7 +9117,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>duplicateTolerance (float): indicates a distance threshold under which points are not added. Does not apply to line- or triangle items</li>
                                     <li>itemCnt (int): maximum item count</li>
                                     <li>itemColor (color): default item color</li>
-                                    <li>mesh: mesh object or mesh table (if the marker is of type "custom"). Following fields are taken into account:
+                                    <li>mesh: mesh object or mesh table (if the marker is of type "custom"). The following fields are taken into account:
                                         <ul>
                                             <li>mesh.vertices (matrix 3 * n): vertices for a mesh item type</li>
                                             <li>mesh.indices (int[]): indices for a mesh item type. One zero-based index for each vertex</li>
@@ -9144,7 +9144,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>mode (int): the <a href="#jointMode">joint mode</a></li>
                                     <li>dynamics.ctrlMode (int): the <a href="#dynCtrlMode">joint dynamic control mode</a></li>
                                     <li>bounds (float[]): joint lower and upper bounds, [] for cyclic revolute joints, or for spherical joints</li>
-                                    <li>screwLead (float): a revolute joint with a screw lead different than 0.0 is a screw</li>
+                                    <li>screwLead (float): a revolute joint with a screw lead different from 0.0 is a screw</li>
                                     <li>length (float): length of the joint</li>
                                     <li>diameter (float): diameter of the joint</li>
                                     <li>color.diffuse (color): diffuse color</li>
@@ -9255,7 +9255,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                 <ul>
                                     <li>type (string): "scriptObject"</li>
                                     <li>scriptObject.type (string): the script object type. Allowed values are "simulation" and "customization"</li>
-                                    <li>language (string): "lua" or "python"</li>
+                                    <li>language (string): "Lua" or "Python"</li>
                                     <li>code (string): the content of the script</li>
                                     <li>scriptDisabled (bool): the script is initially disabled</li>
                                 </ul>
@@ -9266,8 +9266,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>type (string): "forceSensor"</li>
                                     <li>size (float): size of the sensor</li>
                                     <li>dynamics.filter (int): filter type (0 = average, 1 = median)</li>
-                                    <li>dynamics.filterSampleSize (int): value count the filter operates on</li>
-                                    <li>dynamics.consecutiveViolationsToTrigger (int): number of consecutive threshold violation for the sensor to trigger</li>
+                                    <li>dynamics.filterSampleSize (int): number of values the filter operates on</li>
+                                    <li>dynamics.consecutiveViolationsToTrigger (int): number of consecutive threshold violations for the sensor to trigger</li>
                                     <li>dynamics.forceThreshold (float): force threshold</li>
                                     <li>dynamics.torqueThreshold (float): torque threshold</li>
                                     <li>color.diffuse (color): diffuse color</li>
@@ -9335,7 +9335,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>type (string): "pointCloud"</li>
                                     <li>cellSize (float): the maximum size of the OC tree voxels containing points</li>
                                     <li>pointSize (int): the point size in pixels</li>
-                                    <li>maxPointsInCell (int): maximum number of points allowed in a same OC tree voxel</li>
+                                    <li>maxPointsInCell (int): maximum number of points allowed in the same OC tree voxel</li>
                                 </ul>
                             </li>
                             <li id="path">
@@ -9346,7 +9346,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>hiddenDuringSim (bool): path is hidden during simulation</li>
                                     <li>closed (bool): last control point connects to the first control point</li>
                                     <li>orientationMetric (float): the weight of orientation vs position</li>
-                                    <li>forwardAndUpAxes (string, defaults to "xz"): possible values are "xy", "xz", "yx", "yz", "zx" and "zy". Indicates 2 axis used to reorient path points in
+                                    <li>forwardAndUpAxes (string, defaults to "xz"): possible values are "xy", "xz", "yx", "yz", "zx" and "zy". Indicates 2 axes used to reorient path points in
                                         a pose-type path: The first axis points along the path direction, the second axis points towards the upVector (if specified)</li>
                                     <li>upVector (vector3, defaults to nil): is used together with forwardAndUpAxes to reorient path points in a specific manner</li>
                                     <li>ctrlPoints: optional map describing control point properties:
@@ -11594,7 +11594,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Optional map:
                         <ul>
                             <li>noError (bool, defaults to false): generates a silent error if an object was not found </li>
-                            <li>index (int, defaults to 0): fetches the n-th object (zero based index) that satisfies the specified objectPath </li>
+                            <li>index (int, defaults to 0): fetches the n-th object (zero-based index) that satisfies the specified objectPath </li>
                         </ul>
                     </description>
                 </param>
@@ -11633,7 +11633,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>tree (bool, defaults to false): set to true, in order to reset the object, together with its hierarchy tree </li>
+                            <li>tree (bool, defaults to false): set to true, to reset the object, together with its hierarchy tree </li>
                         </ul>
                     </description>
                 </param>
@@ -11880,7 +11880,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <params>
                 <param name="entity" type="handle" default="sim.handle_all">
                     <description>
-                        The other entity (can be a collection or another scene object), or sim.handle_all to check this collection against all other measurable scene objects
+                        The other entity (can be a collection or another scene object), or sim.handle_all to check this scene object against all other measurable scene objects
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -11985,10 +11985,10 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>relativeToPose (pose, defaults to nil): indicates a pose relative to which we want the pose expressed</li>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the pose expressed.
+                            <li>relativeToPose (pose, defaults to nil): indicates a pose relative to which the pose is expressed</li>
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame the pose is expressed.
                         Specify sim.handle_world to retrieve the absolute pose,
-                        sim.handle_parent to retrieve the pose relative to the object's parent, or an object relative to whose reference frame we want the pose expressed</li>
+                        sim.handle_parent to retrieve the pose relative to the object's parent, or an object relative to whose reference frame the pose is expressed</li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the pose relative to the joint's moving frame is returned, unless
                         this argument is true, in which case the pose relative to the joint's base frame is returned</li>
                         </ul>
@@ -12028,10 +12028,10 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>relativeToPose (pose, defaults to nil): indicates a pose relative to which we want the position expressed</li>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the position expressed.
+                            <li>relativeToPose (pose, defaults to nil): indicates a pose relative to which the position is expressed</li>
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame the position is expressed.
                         Specify sim.handle_world to retrieve the absolute position,
-                        sim.handle_parent to retrieve the position relative to the object's parent, or an object relative to whose reference frame we want the position expressed</li>
+                        sim.handle_parent to retrieve the position relative to the object's parent, or an object relative to whose reference frame the position is expressed</li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the position relative to the joint's moving frame is returned, unless
                         this argument is true, in which case the position relative to the joint's base frame is returned</li>
                         </ul>
@@ -12070,10 +12070,10 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>relativeToPose (pose, defaults to nil): indicates a pose relative to which we want the quaternion expressed</li>
-                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame we want the quaternion expressed.
+                            <li>relativeToPose (pose, defaults to nil): indicates a pose relative to which the quaternion is expressed</li>
+                            <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame the quaternion is expressed.
                         Specify sim.handle_world to retrieve the absolute quaternion,
-                        sim.handle_parent to retrieve the quaternion relative to the object's parent, or an object relative to whose reference frame we want the quaternion expressed</li>
+                        sim.handle_parent to retrieve the quaternion relative to the object's parent, or an object relative to whose reference frame the quaternion is expressed</li>
                             <li>relativeToJointBase (bool, defaults to false): if <b>relativeToObject</b> is a joint, then the quaternion relative to the joint's moving frame is returned, unless
                         this argument is true, in which case the quaternion relative to the joint's base frame is returned</li>
                         </ul>
@@ -12110,7 +12110,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </description>
             <params>
                 <param name="pose" type="pose">
-                    <description>The pose: [x, y, z, qx, qy, qz, qw])</description>
+                    <description>The pose: [x, y, z, qx, qy, qz, qw]</description>
                 </param>
                 <param name="options" type="map" default="{}">
                     <description>
@@ -12149,7 +12149,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </description>
             <params>
                 <param name="position" type="vector3">
-                    <description>The position: [x, y, z])</description>
+                    <description>The position: [x, y, z]</description>
                 </param>
                 <param name="options" type="map" default="{}">
                     <description>
@@ -12187,7 +12187,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </description>
             <params>
                 <param name="quaternion" type="quaternion">
-                    <description>The quaternion: [qx, qy, qz, qw])</description>
+                    <description>The quaternion: [qx, qy, qz, qw]</description>
                 </param>
                 <param name="options" type="map" default="{}">
                     <description>
@@ -12197,7 +12197,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                             <li>relativeToObject (handle, defaults to sim.handle_world): indicates relative to which reference frame the quaternion is specified. Specify sim.handle_world to set the absolute quaternion,
                         sim.handle_parent to set the quaternion relative to the scene object's parent, or a scene object relative to
                         whose reference frame the quaternion is specified</li>
-                            <li>relativeToJointBase (bool, defaults to false): is a joint, then the quaternion relative to the joint's moving frame is set, unless
+                            <li>relativeToJointBase (bool, defaults to false): if relativeToObject is a joint, then the quaternion relative to the joint's moving frame is set, unless
                         this argument is true, in which case the quaternion relative to the joint's base frame is set</li>
                         </ul>
                     </description>
@@ -12236,7 +12236,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>mode (string, defaults to "keepAbsolutePose"). Possible value are "keepRelativePose", "keepAbsolutePose" and "assembly"</li>
+                            <li>mode (string, defaults to "keepAbsolutePose"). Possible values are "keepRelativePose", "keepAbsolutePose" and "assembly"</li>
                         </ul>
                     </description>
                 </param>
@@ -12259,7 +12259,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <short-description>Scales the object tree isometrically</short-description>
             <description>
                 Scales the specified scene object tree in an isometric fashion. All related values are automatically scaled appropriately
-                (e.g. masses, etc.)
+                (e.g. masses)
             </description>
             <params>
                 <param name="scalingFactor" type="float">
@@ -13665,7 +13665,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Optional map:
                         <ul>
                             <li>dynPass (int, defaults to the last dynamic pass): by default, each simulation step runs the dynamics engine x times, i.e. executes sub-steps.
-                            At each of those sub-steps, contacts are created and destroyed. The dynPass parameter allows to focus on a particular sub-step, or on all
+                            At each of those sub-steps, contacts are created and destroyed. The dynPass parameter allows focusing on a particular sub-step, or on all
                             sub-steps if dynPass is sim.handle_all</li>
                         </ul>
                     </description>
@@ -13812,7 +13812,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <returns>
                 <param name="shapes" type="handle[]">
                     <description>
-                        Array holding the divides shapes
+                        Array holding the divided shapes
                     </description>
                 </param>
             </returns>
@@ -15388,7 +15388,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="dynamics.kinematic" type="bool" var="kinematic" >
             <flags readable="true" writable="true" />
             <label>Kinematic</label>
-            <description>Special flag mainly used for MuJoCo static shapes that move and need to transmit a friction</description>
+            <description>Special flag mainly used for MuJoCo static shapes that move and need to transmit friction</description>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.shapeintparam_kinematic" />
@@ -15994,7 +15994,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                             <li> frontFaces (bool, defaults to sensor's settings): front faces are detected</li>
                             <li> backFaces (bool, defaults to sensor's settings): back faces are detected</li>
                             <li> exact (bool, defaults to sensor's settings): exact mode, otherwise approximate mode (a bit faster)</li>
-                            <li> maxNormal (float, defaults to sensor's settings): the maximum angle between surface normal and detection ray</li>
+                            <li> maxNormal (float, defaults to sensor's settings): the maximum angle between the surface normal and the detection ray</li>
                         </ul>
                     </description>
                 </param>
@@ -16496,7 +16496,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Optional map:
                         <ul>
                             <li>position (int[2], defaults to [0, 0]): position of the image portion to retrieve</li>
-                            <li>size (int[2], defaults to [0, 0]): size of the image portion to retrieve. [0, 0] corresponds to [resolutionX, resolution Y]</li>
+                            <li>size (int[2], defaults to [0, 0]): size of the image portion to retrieve. [0, 0] corresponds to [resolutionX, resolutionY]</li>
                         </ul>
                     </description>
                 </param>
@@ -16536,7 +16536,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Optional map:
                         <ul>
                             <li>position (int[2], defaults to [0, 0]): position of the image portion to retrieve</li>
-                            <li>size (int[2], defaults to [0, 0]): size of the image portion to retrieve. [0, 0] corresponds to [resolutionX, resolution Y]</li>
+                            <li>size (int[2], defaults to [0, 0]): size of the image portion to retrieve. [0, 0] corresponds to [resolutionX, resolutionY]</li>
                             <li>type (string, defaults to "rgb"): the type of the returned image. Valid values are "rgb", "rgba" and "grey"</li>
                             <li>rgbaCutOff (float, defaults to 0.0): when an RGBA image is returned, the alpha component is 255 for all depth values below
                             <em>rgbaCutOff</em>, and 0 for all depth values above <em>rgbaCutOff</em>. 0.0 corresponds to the near clipping plane, 1.0 to the far clipping plane</li>
@@ -16587,7 +16587,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Optional map:
                         <ul>
                             <li>position (int[2], defaults to [0, 0]): position of the image portion to write</li>
-                            <li>size (int[2], defaults to [0, 0]): size of the image portion to write. [0, 0] corresponds to [resolutionX, resolution Y]</li>
+                            <li>size (int[2], defaults to [0, 0]): size of the image portion to write. [0, 0] corresponds to [resolutionX, resolutionY]</li>
                         </ul>
                     </description>
                 </param>
@@ -16610,7 +16610,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Checks whether the vision sensor detects the indicated entity. Detection is silent.
                 The <a href="../visionCallbackFunctions.htm"> vision callback functions </a>
                 are called on the
-                acquired image. Also, the visibility state of the entity is overridden if the entity is an object
+                acquired image. The visibility state of the entity is overridden if the entity is an object
             </description>
             <params>
                 <param name="entity" type="handle" default="sim.handle_all">
@@ -17536,7 +17536,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
                 <param name="point" type="float">
                     <description>
-                        Value to set. When omitting to set a value for a corresponding graph:step() call, then the data point will be missing
+                        Value to set. When no value is set for a corresponding graph:step() call, then the data point will be missing
                     </description>
                 </param>
             </params>

@@ -30,7 +30,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </param>
             <param name="script" type="int">
                 <description>
-                    the handle of a script, that will be used if the method is implemented in Lua. Can be -1, which targets the sandbox script
+                    the handle of a script that will be used if the method is implemented in Lua. Can be -1, which targets the sandbox script
                 </description>
             </param>
         </params>
@@ -118,9 +118,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <description>
                     Error or warning message buffer or null if no error message is present. A warning starts with
                     <em>
-                        warning@
+                        warning@.
                     </em>
-                    . The user has to delete the returned buffer with a call to
+                     The user has to delete the returned buffer with a call to
                     simReleaseBuffer
                 </description>
             </param>
@@ -1025,7 +1025,7 @@ note: the generated see-also section contains the <see-also> items, but also the
 
     <function name="simSetColor4Property" lang="c">
         <description>
-            Sets a RGBA color property
+            Sets an RGBA color property
         </description>
         <params>
             <param name="target" type="long long">
@@ -1062,7 +1062,7 @@ note: the generated see-also section contains the <see-also> items, but also the
 
     <function name="simGetColor4Property" lang="c">
         <description>
-            Fetches a RGBA color property
+            Fetches an RGBA color property
         </description>
         <params>
             <param name="target" type="long long">
@@ -1657,7 +1657,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <returns>
             <param name="return" type="char*">
                 <description>
-                    pointer to a string containing 2 sub-string separated via a comma:
+                    pointer to a string containing 2 sub-strings separated by a comma:
                     <ul>
                         <li> property name </li>
                         <li> object type the property is related to </li>
@@ -1868,7 +1868,7 @@ note: the generated see-also section contains the <see-also> items, but also the
 
     <function name="simGetStackDoubleTable" lang="c">
         <description>
-            Retrieves a double-precision double array from an array-type table at the top of the stack.
+            Retrieves a double-precision array from an array-type table at the top of the stack.
             Table values that are not numbers are converted to 0.0
         </description>
         <params>
@@ -1894,7 +1894,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <returns>
             <param name="return" type="int">
                 <description>
-                    -1 in case of an error, 0 if item is not an array or does not contain only numbers, 1 otherwise.
+                    -1 in case of an error, 0 if the item is not an array or does not contain only numbers, 1 otherwise.
                 </description>
             </param>
         </returns>
@@ -1967,7 +1967,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <returns>
             <param name="return" type="int">
                 <description>
-                    -1 in case of an error, 0 if item is not an array or does not contain only numbers, 1 otherwise.
+                    -1 in case of an error, 0 if the item is not an array or does not contain only numbers, 1 otherwise.
                 </description>
             </param>
         </returns>
@@ -2040,7 +2040,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <returns>
             <param name="return" type="int">
                 <description>
-                    -1 in case of an error, 0 if item is not an array or does not contain only numbers, 1 otherwise.
+                    -1 in case of an error, 0 if the item is not an array or does not contain only numbers, 1 otherwise.
                 </description>
             </param>
         </returns>
@@ -2454,17 +2454,17 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <description>
                     type of information desired:
                     <ul>
-                        <li> <strong> 0 </strong> : whether we have a table, whether the table is an array-type or map-type, and the size of the array-type table </li>
-                        <li> <strong> 1 </strong> : whether the table contains only null values </li>
-                        <li> <strong> 2 </strong> : whether the table contains only number values </li>
-                        <li> <strong> 3 </strong> : whether the table contains only bool values </li>
-                        <li> <strong> 4 </strong> : whether the table contains only string values </li>
-                        <li> <strong> 5 </strong> : whether the table contains only table values </li>
-                        <li> <strong> 6 </strong> : whether the table contains only matrices </li>
-                        <li> <strong> 7 </strong> : whether the table contains only quaternions </li>
-                        <li> <strong> 8 </strong> : whether the table contains only poses </li>
-                        <li> <strong> 9 </strong> : whether the table contains only handles </li>
-                        <li> <strong> 10 </strong> : whether the table contains only colors </li>
+                        <li> <strong> 0</strong>: whether a table is present, whether the table is an array-type or map-type, and the size of the array-type table </li>
+                        <li> <strong> 1</strong>: whether the table contains only null values </li>
+                        <li> <strong> 2</strong>: whether the table contains only number values </li>
+                        <li> <strong> 3</strong>: whether the table contains only bool values </li>
+                        <li> <strong> 4</strong>: whether the table contains only string values </li>
+                        <li> <strong> 5</strong>: whether the table contains only table values </li>
+                        <li> <strong> 6</strong>: whether the table contains only matrices </li>
+                        <li> <strong> 7</strong>: whether the table contains only quaternions </li>
+                        <li> <strong> 8</strong>: whether the table contains only poses </li>
+                        <li> <strong> 9</strong>: whether the table contains only handles </li>
+                        <li> <strong> 10</strong>: whether the table contains only colors </li>
                     </ul>
                 </description>
             </param>
@@ -2472,9 +2472,9 @@ note: the generated see-also section contains the <see-also> items, but also the
         <returns>
             <param name="return" type="int">
                 <description>
-                    -1 in case of an error, otherwise one of following:
+                    -1 in case of an error, otherwise one of the following:
                     <ul>
-                        <li> if <em> infoType </em> is 0: a <a href="../apiConstants.htm#stackTableInfo"> stack table information value </a> . If the returned value is &gt;0, then this means the table is an array-type table, containing value-key pairs, where all the keys are numbers, consecutive, and starting at 1. Use <a href="simUnfoldStackTable_cpp.htm"> simUnfoldStackTable </a> to read the content of the table </li>
+                        <li> if <em> infoType </em> is 0: a <a href="../apiConstants.htm#stackTableInfo"> stack table information value</a>. If the returned value is &gt;0, then this means the table is an array-type table, containing value-key pairs, where all the keys are numbers, consecutive, and starting at 1. Use <a href="simUnfoldStackTable_cpp.htm"> simUnfoldStackTable </a> to read the content of the table </li>
                         <li> if <em> infoType </em> is 1: 1 if the table contains only null values </li>
                         <li> if <em> infoType </em> is 2: 1 if the table contains only number values </li>
                         <li> if <em> infoType </em> is 3: 1 if the table contains only bool values </li>
@@ -2576,7 +2576,7 @@ note: the generated see-also section contains the <see-also> items, but also the
 
     <function name="simMoveStackItemToTop" lang="c">
         <description>
-            Moves a stack into to the top of the stack
+            Moves a stack item onto the top of the stack
         </description>
         <params>
             <param name="stackHandle" type="int">
@@ -2641,7 +2641,7 @@ note: the generated see-also section contains the <see-also> items, but also the
 
     <function name="simPushDoubleOntoStack" lang="c">
         <description>
-            Pushes a double precision value (i.e. a Lua number) onto the stack. The value will then be located at the top of the stack
+            Pushes a double-precision value (i.e. a Lua number) onto the stack. The value will then be located at the top of the stack
         </description>
         <params>
             <param name="stackHandle" type="int">
@@ -3359,7 +3359,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <params>
             <param name="shapeHandle" type="int">
                 <description>
-                    handle of a dynamically enabled shape. Can be combined with sim_handleflag_resetforcetorque in order to clear the accumulated force and torque.
+                    handle of a dynamically enabled shape. Can be combined with sim_handleflag_resetforcetorque to clear the accumulated force and torque.
                 </description>
             </param>
             <param name="position" type="const double*">
@@ -3403,7 +3403,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <params>
             <param name="shapeHandle" type="int">
                 <description>
-                    handle of a dynamically enabled shape. Can be combined with sim_handleflag_resetforce and/or sim_handleflag_resettorque in order to clear the accumulated force or torque.
+                    handle of a dynamically enabled shape. Can be combined with sim_handleflag_resetforce and/or sim_handleflag_resettorque to clear the accumulated force or torque.
                 </description>
             </param>
             <param name="force" type="const double*">
@@ -3538,8 +3538,8 @@ note: the generated see-also section contains the <see-also> items, but also the
             <param name="cyclicRange" type="double">
                 <description>
                     can be used with cyclic values (e.g. angles) for correct data interpretation during
-                    <a href="simSetGraphStreamTransformation.htm"> stream data transformation </a>
-                    . Set to 0 if not used
+                    <a href="simSetGraphStreamTransformation.htm"> stream data transformation</a>.
+                     Set to 0 if not used
                 </description>
             </param>
         </params>
@@ -3574,7 +3574,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </param>
             <param name="what" type="int">
                 <description>
-                    the type of object (or group of objects) to add. Following are allowed values:
+                    the type of object (or group of objects) to add. The following are allowed values:
                     <em>
                         sim_handle_single
                     </em>
@@ -3641,8 +3641,8 @@ note: the generated see-also section contains the <see-also> items, but also the
             <param name="verbosity" type="int">
                 <description>
                     the
-                    <a href="../apiConstants.htm#verbosity"> verbosity level </a>
-                    . Most appropriate values are sim_verbosity_errors (for errors), sim_verbosity_warnings (for warning) and sim_verbosity_infos.
+                    <a href="../apiConstants.htm#verbosity"> verbosity level</a>.
+                     Most appropriate values are sim_verbosity_errors (for errors), sim_verbosity_warnings (for warnings) and sim_verbosity_infos.
                 </description>
             </param>
             <param name="message" type="const char*">
@@ -3678,7 +3678,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </param>
             <param name="associatedViewableObjectHandle" type="int">
                 <description>
-                    handle of the object that you wish to associate with the view. Must be a viewable object. Can also be -1, in which case the view is emptied
+                    handle of the object to associate with the view. Must be a viewable object. Can also be -1, in which case the view is emptied
                 </description>
             </param>
             <param name="options" type="int">
@@ -3760,10 +3760,10 @@ note: the generated see-also section contains the <see-also> items, but also the
             Announces a change in the scene. This is required for the undo/redo function to operate properly
             when performing changes via the API. Only call this function directly after a change was made through
             a dialog element (e.g. a checkbox was checked/unchecked) and that change was reported to the scene.
-            What this call will do is following: the whole scene will be serialized (saved) to memory as a
+            What this call will do is the following: the whole scene will be serialized (saved) to memory as a
             "scene image" and compared to a previously memorized "scene image". If both images
-            are same, then the last image is discarded, otherwise only the changes between the two images are memorized.
-            A call to this function has no effect (and doesn't generate any error) when called during simulation or when in edit mode.
+            are the same, then the last image is discarded, otherwise only the changes between the two images are memorized.
+            A call to this function has no effect (and doesn't generate any error) when performed during simulation or when in edit mode.
         </description>
         <returns>
             <param name="return" type="int">
@@ -3792,7 +3792,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </param>
             <param name="textureCoordinates" type="const double*">
                 <description>
-                    UV texture coordinates. For each of the shape's triangle, there should be exactly 3 UV texture coordinate pairs
+                    UV texture coordinates. For each of the shape's triangles, there should be exactly 3 UV texture coordinate pairs
                 </description>
             </param>
             <param name="textCoordSize" type="int">
@@ -3927,26 +3927,26 @@ note: the generated see-also section contains the <see-also> items, but also the
     <function name="simCallScriptFunctionEx" lang="c">
         <description>
             Calls a script function (from a
-            <a href="../plugins.htm"> plugin </a>
-            ,
-            <a href="../mainClientApplication.htm"> the main client application </a>
-            , or from another script). This
+            <a href="../plugins.htm"> plugin</a>,
+            
+            <a href="../mainClientApplication.htm"> the main client application</a>,
+             or from another script). This
             represents a
             <a href="../callbackFunctions.htm"> user callback </a>
             inside of a script. The target script
             must be initialized for this call to succeed, e.g. when calling
-            <a href="../simulationScripts.htm"> simulation scripts </a>
-            ,
+            <a href="../simulationScripts.htm"> simulation scripts</a>,
+            
             then simulation must be running
             <br />
             <br />
             Data exchange between a plugin and a script happens via a
-            <a href="../apiFunctions.htm#stacks"> stack </a>
-            . Reading and writing arguments from/to the stack gives you a maximum of flexibility, and you wil be able to exchange also complex data structures. But it can also be tedious and error prone. Use instead the helper classes located in
-            <em>
-                programming/include/simStack
-            </em>
-            : they will greatly simplify the task. Have a look at the example plugins
+            <a href="../apiFunctions.htm#stacks"> stack</a>.
+             Reading and writing arguments from/to the stack gives a maximum of flexibility, and complex data structures can also be exchanged. But it can also be tedious and error prone. The helper classes located in <em> programming/include/simStack
+             </em>
+                 can
+             be
+             used instead: they will greatly simplify the task. See also the example plugins
             <a href="https://github.com/CoppeliaRobotics/simSkeleton" target="_blank"> simSkeleton </a>
             and
             <a href="https://github.com/CoppeliaRobotics/simSkel" target="_blank"> simSkel </a>
@@ -3965,10 +3965,10 @@ note: the generated see-also section contains the <see-also> items, but also the
             <param name="stackId" type="int">
                 <description>
                     a
-                    <a href="simCreateStack_cpp.htm"> stack handle </a>
-                    . The stack represents the function's in/out values. See also the
-                    <a href="../apiFunctions.htm#stacks"> available stack functions </a>
-                    .
+                    <a href="simCreateStack_cpp.htm"> stack handle</a>.
+                     The stack represents the function's in/out values. See also the
+                    <a href="../apiFunctions.htm#stacks"> available stack functions</a>.
+                    
                 </description>
             </param>
         </params>
@@ -4000,7 +4000,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <params>
             <param name="viewHandleOrIndex" type="int">
                 <description>
-                    the handle of the view (can also be a floating view), or the index of the view. If the camera is not associated with any view, then you can specify the handle of the camera, together with the
+                    the handle of the view (can also be a floating view), or the index of the view. If the camera is not associated with any view, then it is possible to specify the handle of the camera, together with the
                     <em>
                         sim_handleflag_camera
                     </em>
@@ -4009,7 +4009,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </param>
             <param name="objectCount" type="int">
                 <description>
-                    number of intems in the objectHandles pointer. Can be 0, in which case the whole visible scene will be filling the view.
+                    number of items in the objectHandles pointer. Can be 0, in which case the whole visible scene will be filling the view.
                 </description>
             </param>
             <param name="objectHandles" type="const int*">
@@ -4022,7 +4022,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     bit-coded:
                     <ul>
                         <li> bit0 (1): if set, then individual objects will be filling the view. If not set, then models associated with model base objects will also be included </li>
-                        <li> bit1 (2): if set, then the view proportions will be 1 by 1, independently on what the view size is </li>
+                        <li> bit1 (2): if set, then the view proportions will be 1 by 1, independently of what the view size is </li>
                     </ul>
                 </description>
             </param>
@@ -4055,7 +4055,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <description>
             Checks whether two entities are colliding. The collidable flags of the entities
             are overridden if the entities are objects. If the entities are both the same collection
-            (i.e. with the same collection handle), then same objects will not be checked against themselve
+            (i.e. with the same collection handle), then the same objects will not be checked against themselves
         </description>
         <params>
             <param name="entity1Handle" type="int">
@@ -4088,8 +4088,8 @@ note: the generated see-also section contains the <see-also> items, but also the
         <description>
             Checks the minimum distance between two entities. The measurable flags of the
             entities are overridden if the entities are objects. If the entities are both
-            the same collection (i.e. with the same collection handle), then same objects
-            will not be checked against themselve
+            the same collection (i.e. with the same collection handle), then the same objects
+            will not be checked against themselves
         </description>
         <params>
             <param name="entity1Handle" type="int">
@@ -4165,7 +4165,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             </param>
             <param name="location" type="unsigned long long int*">
                 <description>
-                    pointer to a uint64 value, which specifies the location of the voxel that collides with a single point. If several points are tested, then this pointer is ignored. Can be null. The location value is coded in following way:
+                    pointer to a uint64 value, which specifies the location of the voxel that collides with a single point. If several points are tested, then this pointer is ignored. Can be null. The location value is coded in the following way:
                     <ul>
                         <li> bit0 - bit5: the depth level of the voxel in the OC tree structure (1-63). </li>
                         <li> bit6 - bit63: a triple bit-value for each depth level. triple bit-values represent the node location relative to the parent node:
@@ -4264,8 +4264,8 @@ note: the generated see-also section contains the <see-also> items, but also the
             <param name="auxValues" type="double**">
                 <description>
                     by default CoppeliaSim returns one packet of 15 auxiliary values: the minimum of intensity, red, green, blue, depth value, the maximum of intensity, red, green, blue, depth value, and the average of intensity, red, green, blue, depth value. Additional packets can be appended in the
-                    <a href="../visionCallbackFunctions.htm"> vision callback functions </a>
-                    . AuxValues can be null. The user is in charge of releasing the auxValues buffer with
+                    <a href="../visionCallbackFunctions.htm"> vision callback functions</a>.
+                     AuxValues can be null. The user is in charge of releasing the auxValues buffer with
                     <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
                     (*auxValues).
                 </description>
@@ -4357,9 +4357,9 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
         <description>
             Closes current scene, and switches to another open scene. If there is no other open scene,
             a new scene is then created. Can only be called from an
-            <a href="../addOns.htm"> add-on </a>
-            ,
-            or from the sanbox script, when called from within CoppeliaSim
+            <a href="../addOns.htm"> add-on</a>,
+            
+            or from the sandbox script, when called from within CoppeliaSim
         </description>
         <returns>
             <param name="return" type="int">
@@ -4387,7 +4387,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
         <params>
             <param name="shapeHandle" type="int">
                 <description>
-                    handle of shape
+                    handle of the shape
                 </description>
             </param>
             <param name="density)" type="double">
@@ -4435,9 +4435,9 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
                 <description>
                     bit-coded:
                     <ul>
-                        <li> bit0 set (1): the specified shape will be morphed into its convex decomposition. Otherwise, the convex decomposition will smply be added to the scene </li>
+                        <li> bit0 set (1): the specified shape will be morphed into its convex decomposition. Otherwise, the convex decomposition will simply be added to the scene </li>
                         <li> bit1 set (2): specified convex decomposition parameters will be displayed in a dialog, allowing the user to modify them. </li>
-                        <li> bit2 set (4): same convex decomposition parameters will be used as a previous call to this function. Only when this bit is set can the convex decomposition parameters be omitted. </li>
+                        <li> bit2 set (4): the same convex decomposition parameters will be used as in a previous call to this function. Only when this bit is set can the convex decomposition parameters be omitted. </li>
                         <li> bit3 set (8): HACD: extra points will be added when computing the concavity </li>
                         <li> bit4 set (16): HACD: faces points will be added when computing the concavity </li>
                         <li> bit5 (32): reserved. Do not set </li>
@@ -4511,7 +4511,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
         <params>
             <param name="objectHandles" type="int*">
                 <description>
-                    array containing the handles of the objects to copy and paste. The same array will receive the copied object handles, with the same correspondency.
+                    array containing the handles of the objects to copy and paste. The same array will receive the copied object handles, with the same correspondence.
                 </description>
             </param>
             <param name="objectCount" type="int">
@@ -4523,11 +4523,11 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
                 <description>
                     bit-coded. If bit0 is set (i.e. 1), then whole models will be copied. In that case, all specified objects should be flagged as
                     <em>
-                        model base
+                        model base.
                     </em>
-                    . If bit1 is set (i.e. 2), then all simulation and customization scripts are stripped away. If bit2 is set (i.e. 4), then all object
+                     If bit1 is set (i.e. 2), then all simulation and customization scripts are stripped away. If bit2 is set (i.e. 4), then all object
                     <a href="../properties.htm#customData"> custom data properties </a>
-                    are stripped away. If bit3 is set (i.e. 8), then all object references are stripped away. If bit4 is set (i.e. 16), then all textures are stripped away. If bit5 is set (i.e. 32), then model tags and DNA information is stripped away.
+                    are stripped away. If bit3 is set (i.e. 8), then all object references are stripped away. If bit4 is set (i.e. 16), then all textures are stripped away. If bit5 is set (i.e. 32), then model tags and DNA information are stripped away.
                 </description>
             </param>
         </params>
@@ -4555,15 +4555,15 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
     <function name="simCreateCollectionEx" lang="c">
         <description>
             Creates a new
-            <a href="../collections.htm"> collection </a>
-            . A collection created in a
-            <a href="../simulationScripts.htm"> simulation script </a>
-            , a
-            <a href="../customizationScripts.htm"> customization script </a>
-            or in
-            the
-            <a href="../mainScript.htm"> main script </a>
-            are automatically destroyed when the script ends
+            <a href="../collections.htm"> collection</a>.
+             A collection created in a
+             <a href="../simulationScripts.htm"> simulation script</a>,
+             a
+             <a href="../customizationScripts.htm"> customization script </a>
+             or the
+             <a href="../mainScript.htm">
+             main script </a> is
+             automatically destroyed when the script ends
         </description>
         <params>
             <param name="options" type="int">
@@ -4595,8 +4595,8 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
     <function name="simCreateDummy" lang="c">
         <description>
             Creates a
-            <a href="../dummies.htm"> dummy </a>
-            .
+            <a href="../dummies.htm"> dummy</a>.
+            
         </description>
         <params>
             <param name="size" type="double">
@@ -4629,15 +4629,15 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
     <function name="simCreateScript" lang="c">
         <description>
             Creates a
-            <a href="../scriptObjects.htm"> script object </a>
-            .
+            <a href="../scriptObjects.htm"> script object</a>.
+            
         </description>
         <params>
             <param name="scriptType" type="int">
                 <description>
                     the
-                    <a href="../apiConstants.htm#scriptTypes"> script type </a>
-                    . Only simulation-, customization- or passive scripts are allowed
+                    <a href="../apiConstants.htm#scriptTypes"> script type</a>.
+                     Only simulation-, customization- or passive scripts are allowed
                 </description>
             </param>
             <param name="scriptText" type="const char*">
@@ -4655,7 +4655,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             </param>
             <param name="lang" type="const char*">
                 <description>
-                language. A value different from "lua" or "python" disables the script. null defaults to "lua"
+                language. A value different from "Lua" or "Python" disables the script. null defaults to "Lua"
                 </description>
             </param>
         </params>
@@ -4740,8 +4740,8 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
     <function name="simCreateForceSensor" lang="c">
         <description>
             Creates a
-            <a href="../forceSensors.htm"> force sensor </a>
-            .
+            <a href="../forceSensors.htm"> force sensor</a>.
+            
         </description>
         <params>
             <param name="options" type="int">
@@ -4759,7 +4759,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
                     <ul>
                         <li>intParams[0]: filter type (0=average, 1=median)</li>
                         <li>intParams[1]: value count the filter operates on</li>
-                        <li>intParams[2]: number of consecutive threshold violation for the sensor to break</li>
+                        <li>intParams[2]: number of consecutive threshold violations for the sensor to break</li>
                         <li>intParams[3]: reserved. Set to 0</li>
                         <li>intParams[4]: reserved. Set to 0</li>
                     </ul>
@@ -4999,7 +4999,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
                         <li> bit0 set (1): points have random colors </li>
                         <li> bit1 set (2): show OC tree structure </li>
                         <li> bit2 set (4): reserved. keep unset </li>
-                        <li> bit3 set (8): do not use an OC tree structure. When enabled, point cloud operations are limited, and point clouds will not be <a href="../collidableObjects.htm"> collidable </a> , <a href="../measurableObjects.htm"> measurable </a> or <a href="../detectableObjects.htm"> detectable </a> anymore, but adding points will be much faster </li>
+                        <li> bit3 set (8): do not use an OC tree structure. When enabled, point cloud operations are limited, and point clouds will not be <a href="../collidableObjects.htm"> collidable</a>, <a href="../measurableObjects.htm"> measurable </a> or <a href="../detectableObjects.htm"> detectable </a> anymore, but adding points will be much faster </li>
                         <li> bit4 set (16): color is emissive </li>
                     </ul>
                 </description>
@@ -5207,7 +5207,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             </param>
             <param name="verticesSize" type="int">
                 <description>
-                size of the vertice array
+                size of the vertices array
                 </description>
             </param>
             <param name="indices" type="const int*">
@@ -5217,7 +5217,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             </param>
             <param name="indicesSize" type="int">
                 <description>
-                size of the indice array
+                size of the indices array
                 </description>
             </param>
             <param name="normals" type="const double*">
@@ -5265,12 +5265,12 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
 
     <function name="simCreateTexture" lang="c">
         <description>
-            Creates a planar shape, that will be textured with a new, or imported texture
+            Creates a planar shape that will be textured with a new or imported texture
         </description>
         <params>
             <param name="fileName" type="const char*">
                 <description>
-                    filename of the texure to import, or an empty string if you wish to create a new texture.
+                    filename of the texture to import, or an empty string to create a new texture.
                 </description>
             </param>
             <param name="options" type="int">
@@ -5306,7 +5306,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             </param>
             <param name="textureId" type="int*">
                 <description>
-                a pointer to an integer that will be used to return the new texture ID. If a same texture is already present, the old texture ID will be returned. Can be null
+                a pointer to an integer that will be used to return the new texture ID. If the same texture is already present, the old texture ID will be returned. Can be null
                 </description>
             </param>
             <param name="resolution" type="int*">
@@ -5347,8 +5347,8 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
     <function name="simCreateVisionSensor" lang="c">
         <description>
             Creates a
-            <a href="../visionSensors.htm"> vision sensor </a>
-            .
+            <a href="../visionSensors.htm"> vision sensor</a>.
+            
         </description>
         <params>
             <param name="options" type="int">
@@ -5362,7 +5362,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
                         <li> bit 4 set (16): the sensor will be passive (use an external image) </li>
                         <li> bit 5 set (32): the sensor will use local lights </li>
                         <li> bit 6 set (64): the sensor will not render any fog </li>
-                        <li> bit 7 set (128): the sensor will use a specific color for default background (i.e. null pixels) </li>
+                        <li> bit 7 set (128): the sensor will use a specific color for the default background (i.e. null pixels) </li>
                     </ul>
                 </description>
             </param>
@@ -5546,18 +5546,18 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
     <function name="simExecuteScriptString" lang="c">
         <description>
             Executes some code in a specific script (from a
-            <a href="../plugins.htm"> plugin </a>
-            ,
-            <a href="../mainClientApplication.htm"> the main client application </a>
-            , or from another script).
+            <a href="../plugins.htm"> plugin</a>,
+            
+            <a href="../mainClientApplication.htm"> the main client application</a>,
+             or from another script).
             The target script must be initialized for this call to succeed, e.g. when calling
-            <a href="../simulationScripts.htm"> simulation scripts </a>
-            , then simulation must be running
+            <a href="../simulationScripts.htm"> simulation scripts</a>,
+             then simulation must be running
             <br />
             <br />
             From C/C++, data exchange between a plugin and a script happens via a
-            <a href="../apiFunctions.htm#stacks"> stack </a>
-            . Reading and writing arguments from/to the stack gives you a maximum of flexibility, and you wil be able to exchange also complex data structures. But it can also be tedious and error prone. Use instead the helper classes located in
+            <a href="../apiFunctions.htm#stacks"> stack</a>.
+             Reading and writing arguments from/to the stack offers maximum flexibility, and it is also possible to exchange complex data structures. But it can also be tedious and error prone. Use instead the helper classes located in
             <em>
                 programming/include/simStack
             </em>
@@ -5576,10 +5576,10 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             <param name="stackId" type="int">
                 <description>
                     0 (for no stack) or a
-                    <a href="simCreateStack_cpp.htm"> stack handle </a>
-                    . The stack holds possible out values. See also the
-                    <a href="../apiFunctions.htm#stacks"> available stack functions </a>
-                    .
+                    <a href="simCreateStack_cpp.htm"> stack handle</a>.
+                     The stack holds possible out values. See also the
+                    <a href="../apiFunctions.htm#stacks"> available stack functions</a>.
+                    
                 </description>
             </param>
         </params>
@@ -5642,22 +5642,22 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             </param>
             <param name="vertices" type="double**">
                 <description>
-                an array to vertice arrays
+                an array of vertices arrays
                 </description>
             </param>
             <param name="verticesSizes" type="const int*">
                 <description>
-                an array indicating the individual vertice array sizes
+                an array indicating the individual vertices array sizes
                 </description>
             </param>
             <param name="indices" type="int**">
                 <description>
-                an array to indice arrays
+                an array of indices arrays
                 </description>
             </param>
             <param name="indicesSizes" type="const int*">
                 <description>
-                an array indicating the individual indice array sizes
+                an array indicating the individual indices array sizes
                 </description>
             </param>
             <param name="reserved" type="double**">
@@ -5801,8 +5801,8 @@ delete[] indicesSizes;</code>
     <function name="simFloatingViewRemove" lang="c">
         <description>
             Removes a floating view previously added with
-            <a href="simFloatingViewAdd.htm"> sim_floatingViewAdd </a>
-            .
+            <a href="simFloatingViewAdd.htm"> sim_floatingViewAdd</a>.
+            
         </description>
         <params>
             <param name="floatingViewHandle" type="int">
@@ -5814,7 +5814,7 @@ delete[] indicesSizes;</code>
         <returns>
             <param name="return" type="int">
                 <description>
-                    -1 in case of an error, 0 if the floating view could not be found (e.g. because closed by the user), or 1 if the floating view was closed.
+                    -1 in case of an error, 0 if the floating view could not be found (e.g. because it was closed by the user), or 1 if the floating view was closed.
                 </description>
             </param>
         </returns>
@@ -5834,7 +5834,7 @@ delete[] indicesSizes;</code>
             <param name="path" type="const double*">
                 <description>
                     path, specified in row-major order, with [x y z qx qy qz qw] values for each path point. The orientation parts for each path point are ignored if the two first bits of
-                    are zero.
+                     options are zero.
                 </description>
             </param>
             <param name="pathSize" type="int">
@@ -5856,7 +5856,7 @@ delete[] indicesSizes;</code>
                 <description>
                     bit-coded:
                     <ul>
-                        <li> bit0-bit1: 0 = upVector is <strong> upVector </strong> , 1 = upVector is the x-axis of the path point frame, 2 = upVector is the y-axis of the path point frame, 3 = upVector is the z-axis of the path point frame </li>
+                        <li> bit0-bit1: 0 = upVector is <strong> upVector</strong>, 1 = upVector is the x-axis of the path point frame, 2 = upVector is the y-axis of the path point frame, 3 = upVector is the z-axis of the path point frame </li>
                         <li> bit2 set (4): the path is closed </li>
                     </ul>
                 </description>
@@ -5899,8 +5899,8 @@ delete[] indicesSizes;</code>
         <params>
             <param name="scriptHandle" type="int">
                 <description>
-                    <a href="simGetScript.htm"> handle of the script </a>
-                    . Can be -1 to be script agnostic.
+                    <a href="simGetScript.htm"> handle of the script</a>.
+                     Can be -1 to be script agnostic.
                 </description>
             </param>
             <param name="apiWord" type="const char*">
@@ -5913,8 +5913,8 @@ delete[] indicesSizes;</code>
             <param name="return" type="char*">
                 <description>
                     null in case of an error, or if there is no match. Otherwise all matching API functions and variables, space-separated. The user is in charge of releasing the returned buffer with
-                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
-                    .
+                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
+                    
                 </description>
             </param>
         </returns>
@@ -5936,13 +5936,13 @@ delete[] indicesSizes;</code>
         <params>
             <param name="scriptHandle" type="int">
                 <description>
-                    <a href="simGetScript.htm"> handle of the script </a>
-                    . Can be -1 to be script agnostic
+                    <a href="simGetScript.htm"> handle of the script</a>.
+                     Can be -1 to be script agnostic
                 </description>
             </param>
             <param name="apiWord" type="const char*">
                 <description>
-                    API functions or variable to retrieve the info for, e.g. "sim_getObject". Return is for the latest version of a module by default. For a specific module version, specify its full name, e.g. "sim-1.getObject". Using the wildcard, e.g. "sim-*.getObject", the returned information is prepended by its related module name (e.g. "[sim-1]"), for all available modules
+                    API function or variable to retrieve the info for, e.g. "sim_getObject". Return is for the latest version of a module by default. For a specific module version, specify its full name, e.g. "sim-1.getObject". Using the wildcard, e.g. "sim-*.getObject", the returned information is prepended with its related module name (e.g. "[sim-1]"), for all available modules
                 </description>
             </param>
         </params>
@@ -5950,8 +5950,8 @@ delete[] indicesSizes;</code>
             <param name="return" type="char*">
                 <description>
                     null in case of an error. Otherwise the information related to the API function or variable. The user is in charge of releasing the returned buffer with
-                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
-                    .
+                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
+                    
                 </description>
             </param>
         </returns>
@@ -5984,7 +5984,7 @@ delete[] indicesSizes;</code>
             <param name="pathLengths" type="const double*">
                 <description>
                     lengths of a path. Each path point should have a corresponding length value (as the distance from the path's first point, along the path). See also
-                    <a href="simGetPathLengths.htm"> sim_getPathLengths </a>.
+                    <a href="simGetPathLengths.htm"> sim_getPathLengths</a>.
                 </description>
             </param>
             <param name="absPt" type="const double*">
@@ -6048,26 +6048,26 @@ delete[] indicesSizes;</code>
 
     <function name="simGetContactInfo" lang="c">
         <description>
-            Retrieves contact point information of a dynamic simulation pass.
+            Retrieves contact point information of a dynamic simulation step.
         </description>
         <params>
             <param name="dynamicPass" type="int">
                 <description>
                     specific dynamic sub-step index or sim_handle_all. By default a call to
                     <a href="simHandleDynamics.htm"> simHandleDynamics </a>
-                    executes the dynamics engine x times, with x times smaller time steps (where x is a parameter that can be adjusted). At each of those sub-steps, contacts are created and destroyed. With the dynamicPass argument you can select which sub-step you wish to retrieve contacts from (zero-based index), or sim_handle_all to retrieve the contacts of all sub-steps. See also the
+                    executes the dynamics engine x times, with x times smaller time steps (where x is a parameter that can be adjusted). At each of those sub-steps, contacts are created and destroyed. With the dynamicPass argument it is possible to select which sub-step to retrieve contacts from (zero-based index), or sim_handle_all to retrieve the contacts of all sub-steps. See also the
                     <a href="../propertiesReference.htm#dynamicsStepSize"> dynamicsStepSize </a>
                     property.
                 </description>
             </param>
             <param name="objectHandle" type="int">
                 <description>
-                    handle of a specific object you wish to retrieve contacts from, or sim_handle_all to retrieve all contacts in the scene.
+                    handle of a specific object to retrieve contacts from, or sim_handle_all to retrieve all contacts in the scene.
                 </description>
             </param>
             <param name="index" type="int">
                 <description>
-                    zero-based index of the contact to retrieve. Optionally, you may add sim_handleflag_extended to the index, if you also wish to retrieve the normal vector (see further down)
+                    zero-based index of the contact to retrieve. Optionally, sim_handleflag_extended can be added to the index, if the normal vector should also be retrieved (see further down)
                 </description>
             </param>
             <param name="objectHandles" type="int*">
@@ -6077,7 +6077,7 @@ delete[] indicesSizes;</code>
             </param>
             <param name="contactInfo" type="double*">
                 <description>
-                    pointer to 6 values (or 9 values if sim_handleflag_extended was added to index), where the 3 first values represent the contact position, the 3 next values represent the force generated by the contact, and the (optional) 3 last values represent the normal vector at the contact. The force vector returned by the Bullet engine will omit the component that results from fricition.
+                    pointer to 6 values (or 9 values if sim_handleflag_extended was added to index), where the 3 first values represent the contact position, the 3 next values represent the force generated by the contact, and the (optional) 3 last values represent the normal vector at the contact. The force vector returned by the Bullet engine will omit the component that results from friction.
                 </description>
             </param>
         </params>
@@ -6124,8 +6124,8 @@ delete[] indicesSizes;</code>
             <param name="verticesOut" type="double**">
                 <description>
                     pointer to a pointer to the output vertices. The output vertices are allocated by CoppeliaSim and the user is in charge of releasing the buffer via
-                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
-                    .
+                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
+                    
                 </description>
             </param>
             <param name="verticesOutL" type="int*">
@@ -6136,8 +6136,8 @@ delete[] indicesSizes;</code>
             <param name="indicesOut" type="int**">
                 <description>
                     pointer to a pointer to the output indices. The output indices are allocated by CoppeliaSim and the user is in charge of releasing the buffer via
-                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
-                    .
+                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
+                    
                 </description>
             </param>
             <param name="indicesOutL" type="int*">
@@ -6252,29 +6252,29 @@ delete[] indicesSizes;</code>
         <params>
             <param name="objectHandle" type="int">
                 <description>
-                    the handle of an object, or -1 if you wish to retrieve the extension string of the environment.
+                    the handle of an object, or -1 to retrieve the extension string of the environment.
                 </description>
             </param>
             <param name="index" type="int">
                 <description>
-                    keep to -1, unless the object is a shape, and you wish to retrieve the extension string of a shape component (since a shape can be a compound of several other shapes).
+                    keep to -1, unless the object is a shape, and the extension string of a shape component should be retrieved (since a shape can be a compound of several other shapes).
                 </description>
             </param>
             <param name="key" type="const char*">
                 <description>
                     an optional key indicating what value to retrieve. If none is specified, then the whole extension string will be returned. Keys should have the form of
                     <em>
-                        key@parentKey@...@parentKey
+                        key@parentKey@...@parentKey.
                     </em>
-                    . To retrieve the
+                     To retrieve the
                     <em>
                         shadow enabled
                     </em>
                     value of extension string "povray{ shadow {true} fadeXDist {0.00}}", specify following key:
                     <em>
-                        shadow@povray
+                        shadow@povray.
                     </em>
-                    . The key is case sensitive.
+                     The key is case sensitive.
                 </description>
             </param>
         </params>
@@ -6282,8 +6282,8 @@ delete[] indicesSizes;</code>
             <param name="return" type="char*">
                 <description>
                     a string if the operation was successful. The user is in charge of releasing the buffer with
-                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
-                    .
+                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
+                    
                 </description>
             </param>
         </returns>
@@ -6347,9 +6347,9 @@ delete[] indicesSizes;</code>
         <description>
             Retrieves the force or torque applied to a joint along/about its active axis.
             This function retrieves meaningful information only if the joint is prismatic or revolute,
-            and is dynamically enabled. With the Bullet, MuJoCo and Newton engine, this function returns
+            and is dynamically enabled. With the Bullet, MuJoCo and Newton engines, this function returns
             the force or torque applied to the joint motor  (torques from joint limits are not taken into account).
-            With the ODE and Vortex engine, this function returns the total force or torque applied to a joint
+            With the ODE and Vortex engines, this function returns the total force or torque applied to a joint
             along/about its z-axis
         </description>
         <params>
@@ -6357,7 +6357,7 @@ delete[] indicesSizes;</code>
                 <description>
                     handle of the joint. Can be combined with
                     <a href="../apiConstants.htm#specialHandleFlags"> sim_handleflag_rawvalue </a>
-                    (simply add sim_handleflag_rawvalue to jointHandle), if you wish to access the raw values generated by each individual dynamic simulation step (by default, there are 10 dynamic simulation steps for each simulation step). Raw values can only be accessed from inside a
+                    (simply add sim_handleflag_rawvalue to jointHandle), if the raw values generated by each individual dynamic simulation step are needed (by default, there are 10 dynamic simulation steps for each simulation step). Raw values can only be accessed from inside a
                     <a href="../callbackFunctions.htm"> callback function </a>
                     triggered by the physics engine.
                 </description>
@@ -6448,8 +6448,8 @@ delete[] indicesSizes;</code>
             <param name="return" type="int">
                 <description>
                     -1 if operation was not successful, otherwise the
-                    <a href="../apiConstants.htm#jointModes"> joint mode </a>
-                    .
+                    <a href="../apiConstants.htm#jointModes"> joint mode</a>.
+                    
                 </description>
             </param>
         </returns>
@@ -6520,7 +6520,7 @@ delete[] indicesSizes;</code>
         <returns>
             <param name="return" type="int">
                 <description>
-                    -1 if operation was not successful. .
+                    -1 if operation was not successful.
                 </description>
             </param>
         </returns>
@@ -6822,7 +6822,7 @@ delete[] indicesSizes;</code>
             </param>
             <param name="options" type="int">
                 <description>
-                    alias formating options:
+                    alias formatting options:
                     <ul>
                         <li> -1: naked alias (e.g. "alias") </li>
                         <li> 0: ordered alias (e.g. "alias[0]") </li>
@@ -6949,8 +6949,8 @@ delete[] indicesSizes;</code>
             <param name="colorComponent" type="int">
                 <description>
                     a
-                    <a href="../apiConstants.htm#colorComponents"> color component </a>
-                    .
+                    <a href="../apiConstants.htm#colorComponents"> color component</a>.
+                    
                 </description>
             </param>
             <param name="rgbData" type="float*">
@@ -7023,8 +7023,8 @@ delete[] indicesSizes;</code>
             </param>
             <param name="relativeToObjectHandle" type="int">
                 <description>
-                    indicates relative to which reference frame we want the matrix. Specify sim_handle_world to retrieve the absolute transformation matrix, sim_handle_inverse to retrieve the inverse of the absolute transformation matrix, sim_handle_parent to retrieve the transformation matrix relative to the object's parent, or an object handle relative to whose reference frame we want the transformation matrix. If this handle is the handle of a joint, then the matrix relative to the joint's moving frame will be returned (unless
-                    is combined with sim_handleflag_reljointbaseframe, in which case the matrix relative to the joint's base frame will be returned).
+                    indicates relative to which reference frame the matrix is expressed. Specify sim_handle_world to retrieve the absolute transformation matrix, sim_handle_inverse to retrieve the inverse of the absolute transformation matrix, sim_handle_parent to retrieve the transformation matrix relative to the object's parent, or an object handle relative to whose reference frame the transformation matrix is expressed. If this handle is the handle of a joint, then the matrix relative to the joint's moving frame will be returned (unless
+                     it is combined with sim_handleflag_reljointbaseframe, in which case the matrix relative to the joint's base frame will be returned).
                 </description>
             </param>
             <param name="matrix" type="double*">
@@ -7066,8 +7066,8 @@ delete[] indicesSizes;</code>
             </param>
             <param name="relativeToObjectHandle" type="int">
                 <description>
-                    indicates relative to which reference frame we want the orientation. Specify sim_handle_world to retrieve the absolute orientation, sim_handle_inverse to retrieve the inverse of the absolute orientation, sim_handle_parent to retrieve the orientation relative to the object's parent, or an object handle relative to whose reference frame you want the orientation. If this handle is the handle of a joint, then the orientation relative to the joint's moving frame will be returned (unless
-                    is combined with sim_handleflag_reljointbaseframe, in which case the orientation relative to the joint's base frame will be returned).
+                    indicates relative to which reference frame the orientation is expressed. Specify sim_handle_world to retrieve the absolute orientation, sim_handle_inverse to retrieve the inverse of the absolute orientation, sim_handle_parent to retrieve the orientation relative to the object's parent, or an object handle relative to whose reference frame the orientation is expressed. If this handle is the handle of a joint, then the orientation relative to the joint's moving frame will be returned (unless
+                     it is combined with sim_handleflag_reljointbaseframe, in which case the orientation relative to the joint's base frame will be returned).
                 </description>
             </param>
             <param name="eulerAngles" type="double*">
@@ -7132,13 +7132,13 @@ delete[] indicesSizes;</code>
         <params>
             <param name="objectHandle" type="int">
                 <description>
-                    handle of the object. Combine with sim_handleflag_wxyzquat to retrieve the quaternion as [qw qx qy qz] order instead of [qx qy qz qw] order. Can also be combined with sim_handleflag_reljointbaseframe (see next argument)
+                    handle of the object. Combine with sim_handleflag_wxyzquat to retrieve the quaternion in [qw qx qy qz] order instead of [qx qy qz qw] order. Can also be combined with sim_handleflag_reljointbaseframe (see next argument)
                 </description>
             </param>
             <param name="relativeToObjectHandle" type="int">
                 <description>
-                    indicates relative to which reference frame we want the pose. Specify sim_handle_world to retrieve the absolute pose, sim_handle_inverse to retrieve the inverse of the absolute pose, sim_handle_parent to retrieve the pose relative to the object's parent, or an object handle relative to whose reference frame we want the pose. If this handle is the handle of a joint, then the pose relative to the joint's moving frame will be returned (unless
-                    is combined with sim_handleflag_reljointbaseframe, in which case the pose relative to the joint's base frame will be returned).
+                    indicates relative to which reference frame the pose is expressed. Specify sim_handle_world to retrieve the absolute pose, sim_handle_inverse to retrieve the inverse of the absolute pose, sim_handle_parent to retrieve the pose relative to the object's parent, or an object handle relative to whose reference frame the pose is expressed. If this handle is the handle of a joint, then the pose relative to the joint's moving frame will be returned (unless
+                     it is combined with sim_handleflag_reljointbaseframe, in which case the pose relative to the joint's base frame will be returned).
                 </description>
             </param>
             <param name="pose" type="double*">
@@ -7178,8 +7178,8 @@ delete[] indicesSizes;</code>
             </param>
             <param name="relativeToObjectHandle" type="int">
                 <description>
-                    indicates relative to which reference frame we want the position. Specify sim_handle_world to retrieve the absolute position, sim_handle_parent to retrieve the position relative to the object's parent, or an object handle relative to whose reference frame we want the position. If this handle is the handle of a joint, then the position relative to the joint's moving frame will be returned (unless
-                    is combined with sim_handleflag_reljointbaseframe, in which case the position relative to the joint's base frame will be returned).
+                    indicates relative to which reference frame the position is expressed. Specify sim_handle_world to retrieve the absolute position, sim_handle_parent to retrieve the position relative to the object's parent, or an object handle relative to whose reference frame the position is expressed. If this handle is the handle of a joint, then the position relative to the joint's moving frame will be returned (unless
+                     it is combined with sim_handleflag_reljointbaseframe, in which case the position relative to the joint's base frame will be returned).
                 </description>
             </param>
             <param name="position" type="double*">
@@ -7214,13 +7214,13 @@ delete[] indicesSizes;</code>
         <params>
             <param name="objectHandle" type="int">
                 <description>
-                    handle of the object. Combine with sim_handleflag_wxyzquat to retrieve the quaternion as [qw qx qy qz] order instead of [qx qy qz qw] order. Can also be combined with sim_handleflag_reljointbaseframe (see next argument)
+                    handle of the object. Combine with sim_handleflag_wxyzquat to retrieve the quaternion in [qw qx qy qz] order instead of [qx qy qz qw] order. Can also be combined with sim_handleflag_reljointbaseframe (see next argument)
                 </description>
             </param>
             <param name="relativeToObjectHandle" type="int">
                 <description>
-                    indicates relative to which reference frame we want the orientation. Specify sim_handle_world to retrieve the absolute orientation, sim_handle_inverse to retrieve the inverse of the absolute orientation, sim_handle_parent to retrieve the orientation relative to the object's parent, or an object handle relative to whose reference frame you want the orientation. If this handle is the handle of a joint, then the quaternion relative to the joint's moving frame will be returned (unless
-                    is combined with sim_handleflag_reljointbaseframe, in which case the quaternion relative to the joint's base frame will be returned).
+                    indicates relative to which reference frame the orientation is expressed. Specify sim_handle_world to retrieve the absolute orientation, sim_handle_inverse to retrieve the inverse of the absolute orientation, sim_handle_parent to retrieve the orientation relative to the object's parent, or an object handle relative to whose reference frame the orientation is expressed. If this handle is the handle of a joint, then the quaternion relative to the joint's moving frame will be returned (unless
+                     it is combined with sim_handleflag_reljointbaseframe, in which case the quaternion relative to the joint's base frame will be returned).
                 </description>
             </param>
             <param name="quaternion" type="double*">
@@ -7351,8 +7351,8 @@ delete[] indicesSizes;</code>
             <param name="return" type="int*">
                 <description>
                     a pointer to an array containing object handles, or null in case of an error. The user is in charge of releasing the returned buffer with
-                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
-                    .
+                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
+                    
                 </description>
             </param>
         </returns>
@@ -7437,12 +7437,12 @@ delete[] indicesSizes;</code>
             <param name="objectHandle" type="int">
                 <description>
                     handle of a
-                    <a href="../objects.htm"> scene object </a>
-                    . It is highly recommended to add
+                    <a href="../objects.htm"> scene object</a>.
+                     It is highly recommended to add
                     <em>
                         <a href="../apiConstants.htm#specialHandleFlags"> sim_handleflag_axis </a>
                     </em>
-                    to the object handle, in order to obtain the
+                    to the object handle, to obtain the
                     <em>
                         regular
                     </em>
@@ -7608,7 +7608,7 @@ delete[] indicesSizes;</code>
             </param>
             <param name="maxPtCntPerVoxel" type="int*">
                 <description>
-                    maximum number of points allowed in a same OC tree voxel
+                    maximum number of points allowed in the same OC tree voxel
                 </description>
             </param>
             <param name="options" type="int*">
@@ -7618,7 +7618,7 @@ delete[] indicesSizes;</code>
                         <li> bit0 set (1): points have random colors </li>
                         <li> bit1 set (2): show OC tree structure </li>
                         <li> bit2 set (4): reserved. keep unset </li>
-                        <li> bit3 set (8): do not use an OC tree structure. When enabled, point cloud operations are limited, and point clouds will not be <a href="../collidableObjects.htm"> collidable </a> , <a href="../measurableObjects.htm"> measurable </a> or <a href="../detectableObjects.htm"> detectable </a> anymore, but adding points will be much faster </li>
+                        <li> bit3 set (8): do not use an OC tree structure. When enabled, point cloud operations are limited, and point clouds will not be <a href="../collidableObjects.htm"> collidable</a>, <a href="../measurableObjects.htm"> measurable </a> or <a href="../detectableObjects.htm"> detectable </a> anymore, but adding points will be much faster </li>
                         <li> bit4 set (16): color is emissive </li>
                     </ul>
                 </description>
@@ -7708,8 +7708,8 @@ delete[] indicesSizes;</code>
             <param name="verticesOut" type="double**">
                 <description>
                     pointer to a pointer to the output vertices. The output vertices are allocated by CoppeliaSim and the user is in charge of releasing the buffer via
-                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
-                    .
+                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
+                    
                 </description>
             </param>
             <param name="verticesOutL" type="int*">
@@ -7720,8 +7720,8 @@ delete[] indicesSizes;</code>
             <param name="indicesOut" type="int**">
                 <description>
                     pointer to a pointer to the output indices. The output indices are allocated by CoppeliaSim and the user is in charge of releasing the buffer via
-                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
-                    .
+                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
+                    
                 </description>
             </param>
             <param name="indicesOutL" type="int*">
@@ -7769,16 +7769,16 @@ delete[] indicesSizes;</code>
                 <description>
                     handle of the scene object that stores the list of handles. Can be optionally combined with
                     <em>
-                        sim_handleflag_keeporiginal
+                        sim_handleflag_keeporiginal,
                     </em>
-                    , in which case the handles that link to originals are retrieved.
+                     in which case the handles that link to originals are retrieved.
                 </description>
             </param>
             <param name="referencedHandles" type="int**">
                 <description>
                     a pointer to a pointer that will be allocated and receive the list of scene object handles. The user is in charge of releasing that buffer with
-                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
-                    .
+                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
+                    
                 </description>
             </param>
             <param name="tag" type="const char*">
@@ -7813,7 +7813,7 @@ delete[] indicesSizes;</code>
 
     <function name="simGetScaledImage" lang="c">
         <description>
-            Generates a scaled-up or scaled down version of the input image
+            Generates a scaled-up or scaled-down version of the input image
         </description>
         <params>
             <param name="imageIn" type="const unsigned char*">
@@ -7852,8 +7852,8 @@ delete[] indicesSizes;</code>
             <param name="return" type="unsigned char*">
                 <description>
                     null if operation was not successful, otherwise a buffer containing the output image data. The user is in charge of releasing the buffer with
-                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
-                    .
+                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
+                    
                 </description>
             </param>
         </returns>
@@ -7879,13 +7879,13 @@ delete[] indicesSizes;</code>
             <param name="scriptType" type="int">
                 <description>
                     the
-                    <a href="../apiConstants.htm#scriptTypes"> type of the script </a>
-                    .
+                    <a href="../apiConstants.htm#scriptTypes"> type of the script</a>.
+                    
                 </description>
             </param>
             <param name="objectHandle" type="int">
                 <description>
-                    the object handle the script is attached to (in case of simulation- or customization scripts. Can be -1.
+                    the object handle the script is attached to (in case of simulation- or customization scripts). Can be -1.
                 </description>
             </param>
             <param name="scriptName" type="const char*">
@@ -7921,23 +7921,23 @@ delete[] indicesSizes;</code>
             </param>
             <param name="colorName" type="const char*">
                 <description>
-                    name of a color. If a name is provided, a specific color component will be retrieved (e.g. if a shape is a compound shape. Can be null. If colorName is
+                    name of a color. If a name is provided, a specific color component will be retrieved (e.g. if a shape is a compound shape). Can be null. If colorName is
                     <em>
-                        @compound
+                        @compound,
                     </em>
-                    , then rgb data for every component of a compound shape will be returned (in that case make sure to have enough space in
+                     then rgb data for every component of a compound shape will be returned (in that case make sure to have enough space in
                     <em>
-                        rgbData
+                        rgbData,
                     </em>
-                    , e.g. via the
+                     e.g. via the
                     <a href="../propertiesReference.htm#meshes"> meshes </a>
                     property)
                 </description>
             </param>
             <param name="colorComponent" type="int">
                 <description>
-                    <a href="../apiConstants.htm#colorComponents"> color component </a>
-                    .
+                    <a href="../apiConstants.htm#colorComponents"> color component</a>.
+                    
                 </description>
             </param>
             <param name="rgbData" type="float*">
@@ -8116,8 +8116,8 @@ delete[] indicesSizes;</code>
             <param name="vertices" type="double**">
                 <description>
                     receives the vertices. The user is in charge of destroying the array with
-                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
-                    . See
+                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
+                     See
                     <a href="simExportMesh.htm"> simExportMesh </a>
                     for a usage example.
                 </description>
@@ -8132,15 +8132,15 @@ delete[] indicesSizes;</code>
             <param name="indices" type="int**">
                 <description>
                     receives the indices. The user is in charge of destroying the array with
-                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
-                    . See
+                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
+                     See
                     <a href="simExportMesh.htm"> simExportMesh </a>
                     for a usage example.
                 </description>
             </param>
             <param name="indicesSize" type="int*">
                 <description>
-                    receives the size of the indice array. See
+                    receives the size of the indices array. See
                     <a href="simExportMesh.htm"> simExportMesh </a>
                     for a usage example.
                 </description>
@@ -8148,8 +8148,8 @@ delete[] indicesSizes;</code>
             <param name="normals" type="double**">
                 <description>
                     receives the normals (3 times the size of indicesSize). The user is in charge of destroying the array with
-                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
-                    . Can be null.
+                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
+                     Can be null.
                 </description>
             </param>
         </params>
@@ -8211,7 +8211,7 @@ delete[] indicesSizes;</code>
         <params>
             <param name="shapeHandle" type="int">
                 <description>
-                    handle of the shape. Can be combined with sim_handleflag_extended in order to retrieve extended data
+                    handle of the shape. Can be combined with sim_handleflag_extended to retrieve extended data
                 </description>
             </param>
             <param name="index" type="int">
@@ -8223,25 +8223,25 @@ delete[] indicesSizes;</code>
                 <description>
                     visual information about the shape:
                     <ul>
-                        <li> <strong> vertices </strong> : array of vertices, relative to the shape's reference frame. The user is in charge of releasing this buffer with <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a> if the return value is &gt; 0. </li>
-                        <li> <strong> verticesSize </strong> : the size of the vertices array </li>
-                        <li> <strong> indices </strong> : array of indices. The user is in charge of releasing this buffer with <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a> if the return value is &gt; 0. </li>
-                        <li> <strong> indicesSize </strong> : the size of the indices array </li>
-                        <li> <strong> normals </strong> : array of normals, relative to the shape's reference frame. There are 3*indicesSize normals, i.e. 3 normals per triangle. The user is in charge of releasing this buffer with <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a> if the return value is &gt; 0. </li>
-                        <li> <strong> shadingAngle </strong> : the gouraud shading angle </li>
-                        <li> <strong> colors[9] </strong> : array of colors: RGB for ambient-diffuse, specular, and emission. </li>
-                        <li> <strong> transparency </strong> : transparency value (0.0 = opaque, 1.0 = fully transparent). To have this field written, combine shapeHandle with sim_handleflag_extended </li>
-                        <li> <strong> options </strong> : bit-coded options (to have this field written, combine shapeHandle with sim_handleflag_extended):
+                        <li> <strong> vertices</strong>: array of vertices, relative to the shape's reference frame. The user is in charge of releasing this buffer with <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a> if the return value is &gt; 0. </li>
+                        <li> <strong> verticesSize</strong>: the size of the vertices array </li>
+                        <li> <strong> indices</strong>: array of indices. The user is in charge of releasing this buffer with <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a> if the return value is &gt; 0. </li>
+                        <li> <strong> indicesSize</strong>: the size of the indices array </li>
+                        <li> <strong> normals</strong>: array of normals, relative to the shape's reference frame. There are 3*indicesSize normals, i.e. 3 normals per triangle. The user is in charge of releasing this buffer with <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a> if the return value is &gt; 0. </li>
+                        <li> <strong> shadingAngle</strong>: the gouraud shading angle </li>
+                        <li> <strong> colors[9]</strong>: array of colors: RGB for ambient-diffuse, specular, and emission. </li>
+                        <li> <strong> transparency</strong>: transparency value (0.0 = opaque, 1.0 = fully transparent). To have this field written, combine shapeHandle with sim_handleflag_extended </li>
+                        <li> <strong> options</strong>: bit-coded options (to have this field written, combine shapeHandle with sim_handleflag_extended):
                             <ul>
                                 <li> bit0 set (1): backfaces are culled </li>
                             </ul>
                         </li>
-                        <li> <strong> texture </strong> : the RGBA texture (32bit/pixel). The user is in charge of releasing this buffer with <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a> if the return value is &gt; 1. </li>
-                        <li> <strong> textureId </strong> : a texture id (to identify textures shared among several shapes) </li>
-                        <li> <strong> textureRes[2] </strong> : the resolution of the texture </li>
-                        <li> <strong> textureCoords </strong> : the texture coordinates. There are 3*indicesSize texture coordinates, i.e. 3 coordinates per triangle. The user is in charge of releasing this buffer with <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a> if the return value is &gt; 1. </li>
-                        <li> <strong> textureApplyMode </strong> : 0=modulate, 1=decal, 2=add </li>
-                        <li> <strong> textureOptions </strong> : bit-coded:
+                        <li> <strong> texture</strong>: the RGBA texture (32bit/pixel). The user is in charge of releasing this buffer with <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a> if the return value is &gt; 1. </li>
+                        <li> <strong> textureId</strong>: a texture id (to identify textures shared among several shapes) </li>
+                        <li> <strong> textureRes[2]</strong>: the resolution of the texture </li>
+                        <li> <strong> textureCoords</strong>: the texture coordinates. There are 3*indicesSize texture coordinates, i.e. 3 coordinates per triangle. The user is in charge of releasing this buffer with <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a> if the return value is &gt; 1. </li>
+                        <li> <strong> textureApplyMode</strong>: 0=modulate, 1=decal, 2=add </li>
+                        <li> <strong> textureOptions</strong>: bit-coded:
                             <ul>
                                 <li> bit0 set (1): repeat U </li>
                                 <li> bit1 set (2): repeat V </li>
@@ -8256,7 +8256,7 @@ delete[] indicesSizes;</code>
         <returns>
             <param name="return" type="int">
                 <description>
-                    -1 if operation was not successful, 0 if there is no shape element at the given indexm, 1 if the shape element does not contain any texture, 2 if the shape element contains a texture
+                    -1 if operation was not successful, 0 if there is no shape element at the given index, 1 if the shape element does not contain any texture, 2 if the shape element contains a texture
                 </description>
             </param>
         </returns>
@@ -8314,7 +8314,7 @@ delete[] indicesSizes;</code>
     <function name="simGetSimulationTimeStep" lang="c">
         <description>
             Retrieves the simulation time step (the simulation time (i.e. not real-time) that
-            passes at each main script simulation pass). This value might not be constant for a given simulation.
+            passes at each main script simulation step). This value might not be constant for a given simulation.
         </description>
         <returns>
             <param name="return" type="double">
@@ -8336,7 +8336,7 @@ delete[] indicesSizes;</code>
             Retrieves and removes the next message in the C/C++ or Lua message queues. Use this in a while-loop until
             all messages have been extracted. While the C/C++ interface has one single message queue, each Lua script
             has its own message queue. The C/C++ version of this function should only be called from the CoppeliaSim
-            client application. A given message queue cannot hold more than 64 messages, unread messages will be discarded.
+            client application. A given message queue cannot hold more than 64 messages; unread messages will be discarded.
         </description>
         <params>
             <param name="messageID" type="int*">
@@ -8348,7 +8348,7 @@ delete[] indicesSizes;</code>
             </param>
             <param name="auxiliaryData" type="int*">
                 <description>
-                    array of 4 integers that can describe the returned message in more details
+                    array of 4 integers that can describe the returned message in more detail
                 </description>
             </param>
             <param name="returnedDataSize" type="int*">
@@ -8520,8 +8520,8 @@ delete[] indicesSizes;</code>
                 <description>
                     options, bit-coded:
                     <ul>
-                        <li> bit0 set (1): the returned image will by a greyscale image (1 byte per pixel), otherwise an RGB image </li>
-                        <li> bit1 set (2): the returned image will have one additional byte per pixel, as alpha channel (RGBA or greyscale+A) </li>
+                        <li> bit0 set (1): the returned image will be a greyscale image (1 byte per pixel), otherwise an RGB image </li>
+                        <li> bit1 set (2): the returned image will have one additional byte per pixel, as an alpha channel (RGBA or greyscale+A) </li>
                     </ul>
                 </description>
             </param>
@@ -8537,7 +8537,7 @@ delete[] indicesSizes;</code>
             </param>
             <param name="size" type="const int*">
                 <description>
-                size of the image portion to retrieve. Can be null which defaults to [0 0], which corresponds to [resolutionX resolutionY]
+                size of the image portion to retrieve. Can be null, which defaults to [0 0], which corresponds to [resolutionX resolutionY]
                 </description>
             </param>
             <param name="resolution" type="int*">
@@ -8577,7 +8577,7 @@ delete[] indicesSizes;</code>
             </param>
             <param name="resolution" type="int*">
                 <description>
-                    2 values for the x and y component
+                    2 values for the x and y components
                 </description>
             </param>
         </params>
@@ -8613,7 +8613,7 @@ delete[] indicesSizes;</code>
             <param name="shapeCount" type="int">
                 <description>
                     the size of the
-                    array. A negative number indicates that we want to merge the shapes instead of grouping them.
+                    array. A negative number indicates that the shapes should be merged instead of grouped.
                 </description>
             </param>
         </params>
@@ -8653,7 +8653,7 @@ delete[] indicesSizes;</code>
         <returns>
             <param name="return" type="int">
                 <description>
-                    -1 if operation was not successful. 0 if the sepcified physics engine could not be found, otherwise, the number of calculation steps performed by the physics engine.
+                    -1 if operation was not successful. 0 if the specified physics engine could not be found, otherwise, the number of calculation steps performed by the physics engine.
                 </description>
             </param>
         </returns>
@@ -8679,7 +8679,7 @@ delete[] indicesSizes;</code>
             </param>
             <param name="time" type="double">
                 <description>
-                    the time where next value will be recorded at, usually the simulation time.
+                    the time at which the next value will be recorded, usually the simulation time.
                 </description>
             </param>
         </params>
@@ -8846,22 +8846,22 @@ if (simHandleVisionSensor(visionSensorHandle, &amp;auxValues, &amp;auxValuesCoun
             </param>
             <param name="vertices" type="double***">
                 <description>
-                    an array to vertice arrays. The import operation may generate several meshes depending on the fileformat. The user is in charge of releasing the memory. See the example below
+                    an array of vertex arrays. The import operation may generate several meshes depending on the fileformat. The user is in charge of releasing the memory. See the example below
                 </description>
             </param>
             <param name="verticesSizes" type="int**">
                 <description>
-                    an array indicating the individual vertice array sizes. The user is in charge of releasing the memory. See the example below
+                    an array indicating the individual vertex array sizes. The user is in charge of releasing the memory. See the example below
                 </description>
             </param>
             <param name="indices" type="int***">
                 <description>
-                    an array to indice arrays. The import operation may generate several meshes depending on the fileformat. The user is in charge of releasing the memory. Can be null. See the example below
+                    an array of index arrays. The import operation may generate several meshes depending on the fileformat. The user is in charge of releasing the memory. Can be null. See the example below
                 </description>
             </param>
             <param name="indicesSizes" type="int**">
                 <description>
-                    an array indicating the individual indice array sizes. The user is in charge of releasing the memory. Can be null if indices is also null. See the example below
+                    an array indicating the individual index array sizes. The user is in charge of releasing the memory. Can be null if indices is also null. See the example below
                 </description>
             </param>
             <param name="reserved" type="double***">
@@ -8945,7 +8945,7 @@ if (elementCount &gt; 0)
                     bit-coded:
                     <ul>
                         <li> bit0 set (1): keep identical vertices </li>
-                        <li> bit1 set (2): reserced. keep at 0. </li>
+                        <li> bit1 set (2): reserved. keep at 0. </li>
                         <li> bit2 set (4): reserved. keep at 0. </li>
                         <li> bit3 set (8): do not preserve colors </li>
                         <li> bit4 set (16): tries to preserve textures. </li>
@@ -9014,8 +9014,8 @@ if (elementCount &gt; 0)
     <function name="simInsertObjectIntoOctree" lang="c">
         <description>
             Inserts an object into an
-            <a href="../octrees.htm"> OC tree </a>
-            , as voxels. Each voxel will store
+            <a href="../octrees.htm"> OC tree</a>,
+             as voxels. Each voxel will store
             a color and a tag value
         </description>
         <params>
@@ -9074,8 +9074,8 @@ if (elementCount &gt; 0)
     <function name="simInsertObjectIntoPointCloud" lang="c">
         <description>
             Inserts an object into a
-            <a href="../pointClouds.htm"> point cloud </a>
-            , as points
+            <a href="../pointClouds.htm"> point cloud</a>,
+             as points
         </description>
         <params>
             <param name="pointCloudHandle" type="int">
@@ -9110,7 +9110,7 @@ if (elementCount &gt; 0)
                     can be used to specify additional parameters, or set to null for default parameter values:
                     <ul>
                         <li> ((int*)optionalValues)[0]: integer value that is bit coded. Each bit indicates which additional parameter will be taken into account: </li>
-                        <li> ((float*)optionalValues)[1]: <strong> duplicateTolerance </strong> : a minimum distance tolerance value that is used to avoid duplicate points. To have this parameter taken into account, set bit0 to 1 in ((int*)optionalValues)[0]. Point insertion is slower when the duplicate tolerance is &gt; then 0.0 </li>
+                        <li> ((float*)optionalValues)[1]: <strong> duplicateTolerance</strong>: a minimum distance tolerance value that is used to avoid duplicate points. To have this parameter taken into account, set bit0 to 1 in ((int*)optionalValues)[0]. Point insertion is slower when the duplicate tolerance is &gt; than 0.0 </li>
                     </ul>
                 </description>
             </param>
@@ -9173,7 +9173,7 @@ if (elementCount &gt; 0)
                 can be used to specify additional parameters, or set to null for default parameter values:
                     <ul>
                         <li>((int*)optionalValues)[0]: an integer value that is bit coded. Each bit indicates which additional parameter will be taken into account:</li>
-                        <li>((float*)optionalValues)[1]: <strong>duplicateTolerance</strong>: a minimum distance tolerance value that is used to avoid duplicate points. To have this parameter taken into account, set bit0 to 1 in ((int*)optionalValues)[0]. Point insertion is slower when the duplicate tolerance is &gt; then 0.0</li>
+                        <li>((float*)optionalValues)[1]: <strong>duplicateTolerance</strong>: a minimum distance tolerance value that is used to avoid duplicate points. To have this parameter taken into account, set bit0 to 1 in ((int*)optionalValues)[0]. Point insertion is slower when the duplicate tolerance is &gt; than 0.0</li>
                     </ul>
                 </description>
             </param>
@@ -9199,8 +9199,8 @@ if (elementCount &gt; 0)
     <function name="simInsertVoxelsIntoOctree" lang="c">
         <description>
             Inserts voxels into an
-            <a href="../octrees.htm"> OC tree </a>
-            . Each voxel will store a color and a tag value
+            <a href="../octrees.htm"> OC tree</a>.
+             Each voxel will store a color and a tag value
         </description>
         <params>
             <param name="octreeHandle" type="int">
@@ -9213,7 +9213,7 @@ if (elementCount &gt; 0)
                     bit-coded:
                     <ul>
                         <li> bit0 set (1): specified points are relative to the OC tree reference frame, otherwise they are relative to the world reference frame </li>
-                        <li> bit1 set (2): the color array contains one RGB triple per point, and the tag array contains one value per point. Otherwise it the color array contains a single RGB triple, and the tag array contains a single value. </li>
+                        <li> bit1 set (2): the color array contains one RGB triple per point, and the tag array contains one value per point. Otherwise the color array contains a single RGB triple, and the tag array contains a single value. </li>
                     </ul>
                 </description>
             </param>
@@ -9264,8 +9264,8 @@ if (elementCount &gt; 0)
     <function name="simIntersectPointsWithPointCloud" lang="c">
         <description>
             Removes points from a
-            <a href="../pointClouds.htm"> point cloud </a>
-            , that do not intersect with the
+            <a href="../pointClouds.htm"> point cloud</a>,
+             that do not intersect with the
             provided points (i.e. the result in the point cloud will be the intersection between the two sets of points).
             When a point cloud doesn't use an OC tree calculation structure, then this operation cannot be performed
         </description>
@@ -9467,7 +9467,7 @@ if (elementCount &gt; 0)
             </param>
             <param name="filenameOrBuffer" type="const char*">
                 <description>
-                    name of the file to read. The file extension indicates the format. If you wish to load an image from a memory buffer, then have filename point to that memory buffer
+                    name of the file to read. The file extension indicates the format. If an image is to be loaded from a memory buffer, then have filename point to that memory buffer
                 </description>
             </param>
             <param name="reserved" type="void*">
@@ -9480,8 +9480,8 @@ if (elementCount &gt; 0)
             <param name="return" type="unsigned char*">
                 <description>
                     null if operation was not successful, otherwise a buffer containing the image data. The user is in charge of releasing the buffer with
-                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
-                    .
+                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
+                    
                 </description>
             </param>
         </returns>
@@ -9515,7 +9515,7 @@ if (elementCount &gt; 0)
             </param>
             <param name="options" type="int">
                 <description>
-                    bit-coded. If bit0 and bit1 represent the format of the provided image (0=rgb, 1=rgba, 2=greyscale)
+                    bit-coded.  bit0 and bit1 represent the format of the provided image (0=rgb, 1=rgba, 2=greyscale)
                 </description>
             </param>
             <param name="filename" type="const char*">
@@ -9525,7 +9525,7 @@ if (elementCount &gt; 0)
             </param>
             <param name="quality" type="int">
                 <description>
-                    the quality of the written image: 0 for best compression, 100 for largest file. Use -1 for default behaviour
+                    the quality of the written image: 0 for best compression, 100 for largest file. Use -1 for default behavior
                 </description>
             </param>
             <param name="reserved" type="void*">
@@ -9675,7 +9675,7 @@ if (elementCount &gt; 0)
             </param>
             <param name="label" type="const char*">
                 <description>
-                    label of the module entry. If handle is -1, then a path can be specified, in order to build sub-menus, e.g. "Menu\nSubmenu1\nSubmenu2\nLabel". Can be null if handle is not -1.
+                    label of the module entry. If handle is -1, then a path can be specified, to build sub-menus, e.g. "Menu\nSubmenu1\nSubmenu2\nLabel". Can be null if handle is not -1.
                 </description>
             </param>
             <param name="state" type="int">
@@ -9805,8 +9805,8 @@ if (elementCount &gt; 0)
             <param name="return" type="char*">
                 <description>
                     null in case of an error. Otherwise a pointer to the text. The user is in charge of releasing the returned buffer with
-                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
-                    .
+                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
+                    
                 </description>
             </param>
         </returns>
@@ -9823,14 +9823,14 @@ if (elementCount &gt; 0)
 
     <function name="simPackTable" lang="c">
         <description>
-            Packs a table into a buffer. Functions and other non-serializable items will be packed as string or None/nil values. You can also use sim_packTable to quickly compare two tables
+            Packs a table into a buffer. Functions and other non-serializable items will be packed as string or None/nil values. It is also possible to use sim_packTable to quickly compare two tables
         </description>
         <params>
             <param name="stackHandle" type="int">
                 <description>
                     stack handle obtained with
-                    <a href="simCreateStack_cpp.htm"> simCreateStack </a>
-                    . There must be a table located at the top of the stack.
+                    <a href="simCreateStack_cpp.htm"> simCreateStack</a>.
+                     There must be a table located at the top of the stack.
                 </description>
             </param>
             <param name="bufferSize" type="int*">
@@ -9843,8 +9843,8 @@ if (elementCount &gt; 0)
             <param name="return" type="char*">
                 <description>
                     null in case of an error, otherwise a data buffer. The user is in charge of releasing the returned buffer with
-                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
-                    .
+                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
+                    
                 </description>
             </param>
         </returns>
@@ -9945,7 +9945,7 @@ if (elementCount &gt; 0)
                 <description>
                     handle of the object (must be a force sensor). Can be combined with
                     <a href="../apiConstants.htm#specialHandleFlags"> sim_handleflag_rawvalue </a>
-                    (simply add sim_handleflag_rawvalue to objectHandle), if you wish to access the raw values generated by each individual dynamic simulation step (by default, there are 10 dynamic simulation steps for each simulation step). Raw values can only be accessed from inside a
+                    (simply add sim_handleflag_rawvalue to objectHandle), if the raw values generated by each individual dynamic simulation step are needed (by default, there are 10 dynamic simulation steps for each simulation step). Raw values can only be accessed from inside a
                     <a href="../callbackFunctions.htm"> callback function </a>
                     triggered by the physics engine.
                 </description>
@@ -10039,8 +10039,8 @@ if (elementCount &gt; 0)
             <param name="textureId" type="int">
                 <description>
                     ID of the texture. See also
-                    <a href="simGetTextureId.htm"> simGetTextureId </a>
-                    .
+                    <a href="simGetTextureId.htm"> simGetTextureId</a>.
+                    
                 </description>
             </param>
             <param name="options" type="int">
@@ -10073,8 +10073,8 @@ if (elementCount &gt; 0)
             <param name="return" type="char*">
                 <description>
                     The texture data, or null in case of an error. The texture data contains RGB values between 0-255 (3 bytes per pixel). The user is in charge of releasing the returned buffer with
-                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
-                    .
+                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
+                    
                 </description>
             </param>
         </returns>
@@ -10106,8 +10106,8 @@ if (elementCount &gt; 0)
             <param name="auxValues" type="double**">
                 <description>
                     by default CoppeliaSim returns one packet of 15 auxiliary values: the minimum of [intensity red green blue depth], the maximum of [intensity red green blue depth], and the average of [intensity red green blue depth]. Additional packets can be appended in the
-                    <a href="../visionCallbackFunctions.htm"> vision callback function </a>
-                    . AuxValues can be null. The user is in charge of releasing the auxValues buffer with
+                    <a href="../visionCallbackFunctions.htm"> vision callback function</a>.
+                     AuxValues can be null. The user is in charge of releasing the auxValues buffer with
                     <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
                     (*auxValues).
                 </description>
@@ -10175,36 +10175,36 @@ if (elementCount &gt; 0)
 
     <function name="simRegisterScriptCallbackFunction" lang="c">
         <description>
-            Registers a custom script function, that calls back a c/c++ function. This function is useful for plugins
+            Registers a custom script function, which calls back a c/c++ function. This function is useful for plugins
             that wish to provide their own or customized script functions. Should be called inside of simInit entry point
             <br />
             <br />
             Data exchange between a script and the plugin happens via a
-            <a href="../apiFunctions.htm#stacks"> stack </a>
-            . Reading and writing arguments from/to the stack gives you a maximum of flexibility, and you wil be able to exchange also complex data structures. But it can also be tedious, if your data structures are anyway relatively simple. In that case you can use the helper classes
-            <em>
-                CScriptFunctionData
-            </em>
-            and
-            <em>
-                CScriptFunctionDataItem
-            </em>
-            located in
-            <em>
-                programming/include
-            </em>
-            : they will greatly simplify the task.
+            <a href="../apiFunctions.htm#stacks"> stack</a>.
+             Reading and writing arguments from/to the stack gives a maximum of flexibility, and it is possible to also exchange complex data structures. But it can also be tedious, if the data structures are anyway relatively simple. In that case the helper classes <em> CScriptFunctionData </em>
+             and
+                 <em>
+             CScriptFunctionDataItem
+             </em>
+             located
+                 in
+             <em>
+             programming/include </em>
+             can
+                 be
+             used:
+             they will greatly simplify the task.
             <br />
             <br />
             Use following 4 functions in the helper class:
             <em>
-                readDataFromStack
+                readDataFromStack,
             </em>
-            ,
+            
             <em>
-                getInDataPtr
+                getInDataPtr,
             </em>
-            ,
+            
             <em>
                 pushOutData
             </em>
@@ -10226,7 +10226,7 @@ if (elementCount &gt; 0)
             </param>
             <param name="cb)" type="void(*callBack)(struct SScriptCallBack*">
                 <description>
-                    callback address that is called when the function is called from Lua. See further down for a simple way to call above function, using a helper class. The callback's first argument is a SScriptCallBack structure that holds:
+                    callback address that is called when the function is called from Lua. See further down for a simple way to call the above function, using a helper class. The callback's first argument is an SScriptCallBack structure that holds:
                 </description>
             </param>
         </params>
@@ -10251,8 +10251,8 @@ if (elementCount &gt; 0)
     <function name="simRegisterScriptFuncHook" lang="c">
         <description>
             Registers a script function hook for
-            <a href="../callbackFunctions.htm"> callback functions </a>
-            ,
+            <a href="../callbackFunctions.htm"> callback functions</a>,
+            
             that will be executed before or after the specified function. Calling this function a second
             time with the same arguments will unregister a previous hook
         </description>
@@ -10316,8 +10316,8 @@ if (elementCount &gt; 0)
             <param name="stackhandle" type="int">
                 <description>
                     a stack handle obtained with
-                    <a href="simCreateStack_cpp.htm"> simCreateStack </a>
-                    . Set to 0 if
+                    <a href="simCreateStack_cpp.htm"> simCreateStack</a>.
+                     Set to 0 if
                     <em>
                         varValue
                     </em>
@@ -10386,7 +10386,7 @@ if (elementCount &gt; 0)
         <params>
             <param name="objectHandle" type="int">
                 <description>
-                    handle of the model (i.e. object tagged as model) to remove. A negative value indicates a delayed removal (in that case this argument should be -objectHandle -1
+                    handle of the model (i.e. object tagged as model) to remove. A negative value indicates a delayed removal (in that case this argument should be -objectHandle -1)
                 </description>
             </param>
         </params>
@@ -10445,9 +10445,9 @@ if (elementCount &gt; 0)
     <function name="simRemovePointsFromPointCloud" lang="c">
         <description>
             Removes points from a
-            <a href="../pointClouds.htm"> point cloud </a>
-            . When a point cloud doesn't
-            use an OC tree calculation structure, then individual points cannot be removed,
+            <a href="../pointClouds.htm"> point cloud</a>.
+             When a point cloud doesn't
+            use an OC tree calculation structure, then individual points cannot be removed;
             only all points can be removed in that case
         </description>
         <params>
@@ -10561,16 +10561,16 @@ if (elementCount &gt; 0)
         <description>
             Dynamically resets an object that is dynamically simulated. This means that the object representation
             in the dynamics engine is removed, and added again. This can be useful when the set-up of a dynamically
-            simulated chain needs to be modified during simulation (e.g. joint or shape attachement position/orientation changed)
+            simulated chain needs to be modified during simulation (e.g. joint or shape attachment position/orientation changed)
         </description>
         <params>
             <param name="objectHandle" type="int">
                 <description>
                     handle of the object. Can be combined with
-                    <a href="../apiConstants.htm#specialHandleFlags"> sim_handleflag_model </a>
-                    , if you wish to reset all objects in a
-                    <a href="../models.htm"> model </a>
-                    (where objectHandle would be the model base).
+                     <a href="../apiConstants.htm#specialHandleFlags"> sim_handleflag_model </a>
+                     to reset all objects in a <a href="../models.htm"> model </a> (where
+                     objectHandle would be
+                     the model base).
                 </description>
             </param>
         </params>
@@ -10674,7 +10674,7 @@ if (elementCount &gt; 0)
 
     <function name="simResetVisionSensor" lang="c">
         <description>
-            Clears the detection state, etc. of a proximity sensor object
+            Clears the detection state, etc. of a vision sensor object
         </description>
         <params>
             <param name="sensorHandle" type="int">
@@ -10704,13 +10704,13 @@ if (elementCount &gt; 0)
     <function name="simRuckigPos" lang="c">
         <description>
             Executes a call to the
-            <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
-            .
+            <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator</a>.
+            
             The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities
             for motion control systems. This function prepares a position-based trajectory generation object,
             that can then be calculated with
-            <a href="simRuckigStep.htm"> sim_ruckigStep </a>
-            . When this object
+            <a href="simRuckigStep.htm"> sim_ruckigStep</a>.
+             When this object
             is not needed anymore, remove it with
             <a href="simRuckigRemove.htm"> sim_ruckigRemove </a>
         </description>
@@ -10727,8 +10727,8 @@ if (elementCount &gt; 0)
             </param>
             <param name="flags" type="int">
                 <description>
-                    <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a>
-                    . -1 for default flags.
+                    <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags</a>.
+                     -1 for default flags.
                 </description>
             </param>
             <param name="currentPos" type="const double*">
@@ -10763,7 +10763,7 @@ if (elementCount &gt; 0)
             </param>
             <param name="selection" type="const bool*">
                 <description>
-                    selection vector (one value for each DoF). For a default behaviour, fill the vector with non-zero values.
+                    selection vector (one value for each DoF). For a default behavior, fill the vector with non-zero values.
                 </description>
             </param>
             <param name="targetPos" type="const double*">
@@ -10812,8 +10812,8 @@ if (elementCount &gt; 0)
             Removes an object previously created via
             <a href="simRuckigPos.htm"> sim_ruckigPos </a>
             or
-            <a href="simRuckigVel.htm"> sim_ruckigVel </a>
-            .
+            <a href="simRuckigVel.htm"> sim_ruckigVel</a>.
+            
         </description>
         <params>
             <param name="handle" type="int">
@@ -10821,8 +10821,8 @@ if (elementCount &gt; 0)
                     handle of the object created via
                     <a href="simRuckigPos.htm"> simRuckigPos </a>
                     or
-                    <a href="simRuckigVel.htm"> simRuckigVel </a>
-                    .
+                    <a href="simRuckigVel.htm"> simRuckigVel</a>.
+                    
                 </description>
             </param>
         </params>
@@ -10844,8 +10844,8 @@ if (elementCount &gt; 0)
     <function name="simRuckigStep" lang="c">
         <description>
             Executes a call to the
-            <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
-            .
+            <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator</a>.
+            
             The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities for
             motion control systems. This function steps forward a trajectory generation algorithm previously prepared
             via
@@ -10859,8 +10859,8 @@ if (elementCount &gt; 0)
                     handle of the object created via
                     <a href="simRuckigPos.htm"> simRuckigPos </a>
                     or
-                    <a href="simRuckigVel.htm"> simRuckigVel </a>
-                    .
+                    <a href="simRuckigVel.htm"> simRuckigVel</a>.
+                    
                 </description>
             </param>
             <param name="cycleTime" type="double">
@@ -10885,7 +10885,7 @@ if (elementCount &gt; 0)
             </param>
             <param name="syncTime" type="double*">
                 <description>
-                    synchronization time (output). This is the time needed to reach the desired state. This time does not include the cycle time of the current call to sim_RuckigStep)
+                    synchronization time (output). This is the time needed to reach the desired state. This time does not include the cycle time of the current call to sim_RuckigStep
                 </description>
             </param>
             <param name="reserved1" type="double*">
@@ -10925,13 +10925,13 @@ if (elementCount &gt; 0)
     <function name="simRuckigVel" lang="c">
         <description>
             Executes a call to the
-            <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
-            .
+            <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator</a>.
+            
             The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities for
             motion control systems. This function prepares a velocity-based trajectory generation object,
             that can then be calculated with
-            <a href="simRuckigStep.htm"> sim_ruckigStep </a>
-            . When this object
+            <a href="simRuckigStep.htm"> sim_ruckigStep</a>.
+             When this object
             is not needed anymore, remove it with
             <a href="simRuckigRemove.htm"> sim_ruckigRemove </a>
         </description>
@@ -10948,8 +10948,8 @@ if (elementCount &gt; 0)
             </param>
             <param name="flags" type="int">
                 <description>
-                    <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags </a>
-                    . -1 for default flags.
+                    <a href="../apiConstants.htm#ruckigFunctions"> Ruckig flags</a>.
+                     -1 for default flags.
                 </description>
             </param>
             <param name="currentPos" type="const double*">
@@ -10979,7 +10979,7 @@ if (elementCount &gt; 0)
             </param>
             <param name="selection" type="const bool*">
                 <description>
-                    selection vector (one value for each DoF). For a default behaviour, fill the vector with non-zero values.
+                    selection vector (one value for each DoF). For a default behavior, fill the vector with non-zero values.
                 </description>
             </param>
             <param name="targetVel" type="const double*">
@@ -11019,7 +11019,7 @@ if (elementCount &gt; 0)
     <function name="simSaveModel" lang="c">
         <description>
             Saves a model (an object marked as "Object is model base" and all other
-            objects in its hierarchy tree). Any existing file with same name will be overwritten
+            objects in its hierarchy tree). Any existing file with the same name will be overwritten
         </description>
         <params>
             <param name="baseOfModelHandle" type="int">
@@ -11031,9 +11031,9 @@ if (elementCount &gt; 0)
                 <description>
                     model filename. The filename extension is required (
                     <em>
-                        ttm
+                        ttm,
                     </em>
-                    , or
+                     or
                     <em>
                         simmodel.xml
                     </em>
@@ -11063,7 +11063,7 @@ if (elementCount &gt; 0)
 
     <function name="simSaveScene" lang="c">
         <description>
-            Saves a scene. Any existing file with same name will be overwritten
+            Saves a scene. Any existing file with the same name will be overwritten
         </description>
         <params>
             <param name="filename" type="const char*">
@@ -11144,7 +11144,7 @@ if (elementCount &gt; 0)
     <function name="simScaleObjects" lang="c">
         <description>
             Scales specified objects. All related values are automatically scaled appropriately
-            (e.g. masses, forces, etc.)
+            (e.g. masses, forces)
         </description>
         <params>
             <param name="objectHandles" type="const int*">
@@ -11289,9 +11289,9 @@ if (elementCount &gt; 0)
             </param>
             <param name="value" type="double">
                 <description>
-                    value to set. Omitting to set a value for a corresponding
-                    <a href="simHandleGraph.htm"> sim_handleGraph </a>
-                    call, then the data point will be missing.
+                    value to set. If a value for a corresponding <a href="simHandleGraph.htm"> sim_handleGraph
+                     </a> call is
+                     omitted, then the data point will be missing.
                 </description>
             </param>
         </params>
@@ -11314,7 +11314,7 @@ if (elementCount &gt; 0)
 
     <function name="simSetJointDependency" lang="c">
         <description>
-            Sets a joint dependent of another joint. The dependent joint should first be set
+            Sets a joint dependent on another joint. The dependent joint should first be set
             into dependent mode via
             <a href="simSetJointMode.htm"> sim_setJointMode </a>
         </description>
@@ -11376,7 +11376,7 @@ if (elementCount &gt; 0)
             </param>
             <param name="interval" type="const double*">
                 <description>
-                    joint limits. The first value is the joint lower limit, the second value is the joint range (i.e. the upper limit is lower limit + range)
+                    joint limits. The first value is the joint lower limit, and the second value is the joint range (i.e. the upper limit is lower limit + range)
                 </description>
             </param>
         </params>
@@ -11597,7 +11597,7 @@ if (elementCount &gt; 0)
 
     <function name="simSetLinkDummy" lang="c">
         <description>
-            Defines (or breaks) a dummy-dummy link pair. Useful to create dynamic loop closure
+            Defines (or breaks) a dummy-dummy link pair. Useful for creating dynamic loop closure
             constraints on the fly (among others)
         </description>
         <params>
@@ -11793,7 +11793,7 @@ if (elementCount &gt; 0)
             <param name="relativeToObjectHandle" type="int">
                 <description>
                     indicates relative to which reference frame the matrix is specified. Specify sim_handle_world to set the absolute transformation matrix, sim_handle_inverse to set the inverse of the absolute transformation matrix, sim_handle_parent to set the transformation matrix relative to the object's parent, or an object handle relative to whose reference frame the transformation matrix is specified. If this handle is the handle of a joint, then the matrix is applied relative to the joint's moving frame (unless
-                    is combined with sim_handleflag_reljointbaseframe, in which case the matrix is applied relative to the joint's base frame)
+                     combined with sim_handleflag_reljointbaseframe, in which case the matrix is applied relative to the joint's base frame)
                 </description>
             </param>
             <param name="matrix" type="const double*">
@@ -11838,7 +11838,7 @@ if (elementCount &gt; 0)
             <param name="relativeToObjectHandle" type="int">
                 <description>
                     indicates relative to which reference frame the orientation is specified. Specify sim_handle_world to set the absolute orientation, sim_handle_inverse to set the inverse of the absolute orientation, sim_handle_parent to set the orientation relative to the object's parent, or an object handle relative to whose reference frame the orientation is specified. If this handle is the handle of a joint, then the orientation is applied relative to the joint's moving frame (unless
-                    is combined with sim_handleflag_reljointbaseframe, in which case the orientation is applied relative to the joint's base frame)
+                     combined with sim_handleflag_reljointbaseframe, in which case the orientation is applied relative to the joint's base frame)
                 </description>
             </param>
             <param name="eulerAngles" type="const double*">
@@ -11871,8 +11871,8 @@ if (elementCount &gt; 0)
             Retrieves an axis and rotation angle that brings one pose or transformation matrix
             onto another one. The translation part of the poses/matrices is ignored. This function,
             when used in combination with
-            <a href="simRotateAroundAxis_cpp.htm"> simRotateAroundAxis </a>
-            ,
+            <a href="simRotateAroundAxis_cpp.htm"> simRotateAroundAxis</a>,
+            
             can be used to build interpolations between transformation matrices
         </description>
         <params>
@@ -11926,8 +11926,8 @@ if (elementCount &gt; 0)
         <description>
             Rotates a pose or transformation matrix around a random axis in space. This function,
             when used in combination with
-            <a href="simGetRotationAxis_cpp.htm"> simGetRotationAxis </a>
-            , can
+            <a href="simGetRotationAxis_cpp.htm"> simGetRotationAxis</a>,
+             can
             be used to build interpolations between poses or transformation matrices
         </description>
         <params>
@@ -11982,7 +11982,7 @@ if (elementCount &gt; 0)
         <params>
             <param name="objectHandle" type="int">
                 <description>
-                    handle of the object that will become child of the parent object. Can be or-combined with
+                    handle of the object that will become a child of the parent object. Can be or-combined with
                     <a href="../apiConstants.htm#specialHandleFlags"> sim_handleflag_assembly </a>
                     if an assembly operation is desired instead (in that case,
                     can't be -1, and
@@ -11991,12 +11991,12 @@ if (elementCount &gt; 0)
             </param>
             <param name="parentObjectHandle" type="int">
                 <description>
-                    handle of the object that will become parent, or -1 if the object should become parentless. In an assembly operation, the assembly dummy on the parent object should be specified instead
+                    handle of the object that will become the parent, or -1 if the object should become parentless. In an assembly operation, the assembly dummy on the parent object should be specified instead
                 </description>
             </param>
             <param name="keepInPlace" type="bool">
                 <description>
-                    indicates whether the object's absolute pose should stay same
+                    indicates whether the object's absolute pose should stay the same
                 </description>
             </param>
         </params>
@@ -12026,13 +12026,13 @@ if (elementCount &gt; 0)
         <params>
             <param name="objectHandle" type="int">
                 <description>
-                    handle of the object. Combine with sim_handleflag_wxyzquat to provide the quaternion as [qw qx qy qz] order instead of [qx qy qz qw] order. Can also be combined with sim_handleflag_reljointbaseframe
+                    handle of the object. Combine with sim_handleflag_wxyzquat to provide the quaternion in [qw qx qy qz] order instead of [qx qy qz qw] order. Can also be combined with sim_handleflag_reljointbaseframe
                 </description>
             </param>
             <param name="relativeToObjectHandle" type="int">
                 <description>
                     indicates relative to which reference frame the pose is specified. Specify sim_handle_world to set the absolute pose, sim_handle_inverse to set the inverse of the absolute pose, sim_handle_parent to set the pose relative to the object's parent, or an object handle relative to whose reference frame the pose is specified. If this handle is the handle of a joint, then the pose is applied relative to the joint's moving frame (unless
-                    is combined with sim_handleflag_reljointbaseframe, in which case the pose is applied relative to the joint's base frame)
+                     combined with sim_handleflag_reljointbaseframe, in which case the pose is applied relative to the joint's base frame)
                 </description>
             </param>
             <param name="pose" type="const double*">
@@ -12075,7 +12075,7 @@ if (elementCount &gt; 0)
             <param name="relativeToObjectHandle" type="int">
                 <description>
                     indicates relative to which reference frame the position is specified. Specify sim_handle_world to set the absolute position, sim_handle_parent to set the position relative to the object's parent, or an object handle relative to whose reference frame the position is specified. If this handle is the handle of a joint, then the position is applied relative to the joint's moving frame (unless
-                    is combined with sim_handleflag_reljointbaseframe, in which case the position is applied relative to the joint's base frame)
+                     combined with sim_handleflag_reljointbaseframe, in which case the position is applied relative to the joint's base frame)
                 </description>
             </param>
             <param name="position" type="const double*">
@@ -12111,13 +12111,13 @@ if (elementCount &gt; 0)
         <params>
             <param name="objectHandle" type="int">
                 <description>
-                    handle of the object. Combine with sim_handleflag_wxyzquat to provide the quaternion as [qw qx qy qz] order instead of [qx qy qz qw] order. Can also be combined with sim_handleflag_reljointbaseframe
+                    handle of the object. Combine with sim_handleflag_wxyzquat to provide the quaternion in [qw qx qy qz] order instead of [qx qy qz qw] order. Can also be combined with sim_handleflag_reljointbaseframe
                 </description>
             </param>
             <param name="relativeToObjectHandle" type="int">
                 <description>
                     indicates relative to which reference frame the orientation is specified. Specify sim_handle_world to set the absolute orientation, sim_handle_inverse to set the inverse of the absolute orientation, sim_handle_parent to set the orientation relative to the object's parent, or an object handle relative to whose reference frame the orientation is specified. If this handle is the handle of a joint, then the quaternion is applied relative to the joint's moving frame (unless
-                    is combined with sim_handleflag_reljointbaseframe, in which case the quaternion is applied relative to the joint's base frame)
+                     combined with sim_handleflag_reljointbaseframe, in which case the quaternion is applied relative to the joint's base frame)
                 </description>
             </param>
             <param name="quaternion" type="const double*">
@@ -12272,7 +12272,7 @@ if (elementCount &gt; 0)
             </param>
             <param name="maxPtCntPerVoxel" type="int">
                 <description>
-                    maximum number of points allowed in a same OC tree voxel
+                    maximum number of points allowed in the same OC tree voxel
                 </description>
             </param>
             <param name="options" type="int">
@@ -12281,8 +12281,8 @@ if (elementCount &gt; 0)
                     <ul>
                         <li> bit0 set (1): points have random colors </li>
                         <li> bit1 set (2): show OC tree structure </li>
-                        <li> bit2 set (4): reserved. keep unset </li>
-                        <li> bit3 set (8): do not use an OC tree structure. When enabled, point cloud operations are limited, and point clouds will not be <a href="../collidableObjects.htm"> collidable </a> , <a href="../measurableObjects.htm"> measurable </a> or <a href="../detectableObjects.htm"> detectable </a> anymore, but adding points will be much faster </li>
+                        <li> bit2 set (4): reserved. Keep unset </li>
+                        <li> bit3 set (8): do not use an OC tree structure. When enabled, point cloud operations are limited, and point clouds will not be <a href="../collidableObjects.htm"> collidable</a>, <a href="../measurableObjects.htm"> measurable </a> or <a href="../detectableObjects.htm"> detectable </a> anymore, but adding points will be much faster </li>
                         <li> bit4 set (16): color is emissive </li>
                     </ul>
                 </description>
@@ -12319,9 +12319,9 @@ if (elementCount &gt; 0)
     <function name="simSetReferencedHandles" lang="c">
         <description>
             Attaches a list of custom handles to a given scene object. Those custom handles
-            are handles of other scene objects, that are linked to the given scene object (for whatever purpose).
+            are handles of other scene objects that are linked to the given scene object (for whatever purpose).
             The advantage of storing references to other objects with this function is that CoppeliaSim will take
-            care of correctly adjusting the references if needed: For instance, imagine
+            care of correctly adjusting the references if needed: for instance, imagine
             <em>
                 objectA
             </em>
@@ -12350,18 +12350,18 @@ if (elementCount &gt; 0)
             </em>
             stores the handle of the duplicate of
             <em>
-                objectB
+                objectB.
             </em>
-            . Optionally, if
+             Optionally, if
             <em>
                 sim_handleflag_keeporiginal
             </em>
-            is specified, then linking to original objects is guaranteed, e.g. in above example,
+            is specified, then linking to original objects is guaranteed, e.g. in the above example,
             after a duplication of
             <em>
-                objectA
+                objectA,
             </em>
-            , the duplicate of
+             the duplicate of
             <em>
                 objectA
             </em>
@@ -12381,9 +12381,9 @@ if (elementCount &gt; 0)
                 <description>
                     handle of the scene object that will store the list of handles. Can be optionally combined with
                     <em>
-                        sim_handleflag_keeporiginal
+                        sim_handleflag_keeporiginal,
                     </em>
-                    , in which case the handles that link to originals are retrieved
+                     in which case the handles that link to originals are retrieved
                 </description>
             </param>
             <param name="count" type="int">
@@ -12438,11 +12438,11 @@ if (elementCount &gt; 0)
             </param>
             <param name="colorName" type="char*">
                 <description>
-                    name of a color. Can be null, but if a name is provided, only shapes (or sub-entities of them) with a same color name will be modified. If colorName is
+                    name of a color. Can be null, but if a name is provided, only shapes (or sub-entities of them) with the same color name will be modified. If colorName is
                     <em>
-                        @compound
+                        @compound,
                     </em>
-                    , then all individual colors of a compound shape can be set at once.
+                     then all individual colors of a compound shape can be set at once.
                 </description>
             </param>
             <param name="colorComponent" type="int">
@@ -12582,18 +12582,18 @@ if (elementCount &gt; 0)
             <param name="tId" type="int">
                 <description>
                     ID of the texture or -1 to remove any existing texture. See also
-                    <a href="simGetTextureId.htm"> simGetTextureId </a>
-                    ,
+                    <a href="simGetTextureId.htm"> simGetTextureId</a>,
+                    
                     <a href="simGetShapeTextureId.htm"> simGetShapeTextureId </a>
                     and
-                    <a href="simCreateTexture.htm"> simCreateTexture </a>
-                    .
+                    <a href="simCreateTexture.htm"> simCreateTexture</a>.
+                    
                 </description>
             </param>
             <param name="mode" type="int">
                 <description>
-                    <a href="../apiConstants.htm#textureMappingModes"> texture mapping mode </a>
-                    .
+                    <a href="../apiConstants.htm#textureMappingModes"> texture mapping mode</a>.
+                    
                 </description>
             </param>
             <param name="opt" type="int">
@@ -12680,7 +12680,7 @@ if (elementCount &gt; 0)
             </param>
             <param name="size" type="const int*">
                 <description>
-                size of the image portion to write. Can be null which defaults to [0 0], which corresponds to [resolutionX resolutionY]
+                size of the image portion to write. Can be null, which defaults to [0 0], which corresponds to [resolutionX resolutionY]
                 </description>
             </param>
         </params>
@@ -12752,8 +12752,8 @@ if (elementCount &gt; 0)
     <function name="simSubtractObjectFromOctree" lang="c">
         <description>
             Removes an object from an
-            <a href="../octrees.htm"> OC tree </a>
-            , as voxel subtractions
+            <a href="../octrees.htm"> OC tree</a>,
+             as voxel subtractions
         </description>
         <params>
             <param name="octreeHandle" type="int">
@@ -12801,8 +12801,8 @@ if (elementCount &gt; 0)
     <function name="simSubtractObjectFromPointCloud" lang="c">
         <description>
             Removes an object from a
-            <a href="../pointClouds.htm"> point cloud </a>
-            , as a subtraction
+            <a href="../pointClouds.htm"> point cloud</a>,
+             as a subtraction
         </description>
         <params>
             <param name="pointCloudHandle" type="int">
@@ -12917,7 +12917,7 @@ if (elementCount &gt; 0)
 
     <function name="simTransformVector" lang="c">
         <description>
-            Multiplies a vector with a transformation matrix (v = m * v)
+            Multiplies a vector by a transformation matrix (v = m * v)
         </description>
         <params>
             <param name="matrix" type="const double*">
@@ -12956,7 +12956,7 @@ if (elementCount &gt; 0)
         <params>
             <param name="shapeHandle" type="int">
                 <description>
-                    handles of the shape you wish to ungroup. If you specify for this argument (-2-handleOfShape), then the shape will be divided instead of ungrouped
+                    handles of the shape to be ungrouped. If (-2-handleOfShape) is specified for this argument, then the shape will be divided instead of ungrouped
                 </description>
             </param>
             <param name="shapeCount" type="int*">
@@ -12969,8 +12969,8 @@ if (elementCount &gt; 0)
             <param name="return" type="int*">
                 <description>
                     a pointer to an array holding the handles of the resulting shapes, or null in case of an error. The user is in charge of releasing the array buffer with
-                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer </a>
-                    .
+                    <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
+                    
                 </description>
             </param>
         </returns>
@@ -12995,8 +12995,8 @@ if (elementCount &gt; 0)
             <param name="stackHandle" type="int">
                 <description>
                     stack handle obtained with
-                    <a href="simCreateStack_cpp.htm"> simCreateStack </a>
-                    . The unpacked table will be pushed onto the stack.
+                    <a href="simCreateStack_cpp.htm"> simCreateStack</a>.
+                     The unpacked table will be pushed onto the stack.
                 </description>
             </param>
             <param name="buffer" type="const char*">
@@ -13046,7 +13046,7 @@ if (elementCount &gt; 0)
                     <ul>
                         <li> <strong> bit0 </strong> reserved. Do not set </li>
                         <li> <strong> bit1 </strong> reserved. Do not set </li>
-                        <li> <strong> bit2 </strong> set (4)=only an elliptical/circular portion of the texture data will be written </li>
+                        <li> <strong> bit2 </strong> set (4): only an elliptical/circular portion of the texture data will be written </li>
                     </ul>
                 </description>
             </param>
