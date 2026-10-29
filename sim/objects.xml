@@ -6946,8 +6946,12 @@ note: the generated see-also section contains the <see-also> items, but also the
         <method name="registerFunctionHook" lang="python,lua" var="METHOD_registerFunctionHook">
             <short-description>Registers a function hook for callbacks</short-description>
             <description>
-                Registers a function hook for <a href="../callbackFunctions.htm"> callback functions </a>,
-                that will be executed before or after the specified function
+                Registers a function hook for <a href="../callbackFunctions.htm"> callback functions </a>.
+                The hook is executed either before or after the specified callback function.
+                A hook can be registered from within another before/after hook.
+                In that case, the newly registered hook does not run during the current callback invocation:
+                it takes effect starting with the next invocation of the callback.
+                This applies only when the new hook targets the same callback and the same category (before or after)
             </description>
             <params>
                 <param name="funcToHook" type="string">
