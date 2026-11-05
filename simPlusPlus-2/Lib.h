@@ -1123,7 +1123,8 @@ namespace sim
 
     template<typename... OutputTypes, typename... InputArgs>
     std::tuple<OutputTypes...> callMethod(
-        long long target,
+        sim::handle_t scriptHandle,
+        sim::handle_t target,
         const char* name,
         InputArgs&&... inputs
     )
@@ -1133,8 +1134,7 @@ namespace sim
 
         (pushValueOntoStack(inStack.handle, std::forward<InputArgs>(inputs)), ...);
 
-        handle_t nakedScript = -1;
-        int result = simCallMethod(target, name, inStack.handle, outStack.handle, nakedScript);
+        int result = simCallMethod(target, name, inStack.handle, outStack.handle, scriptHandle);
         if(result == -1)
             throw api_error("simCallMethod");
 
@@ -1143,6 +1143,17 @@ namespace sim
             throw std::runtime_error("Number of outputs on stack does not match requested OutputTypes");
 
         return std::tuple<OutputTypes...>{ readNextStackValue<OutputTypes>(outStack.handle)... };
+    }
+
+    template<typename... OutputTypes, typename... InputArgs>
+    std::tuple<OutputTypes...> callMethod(
+        sim::handle_t target,
+        const char* name,
+        InputArgs&&... inputs
+    )
+    {
+        handle_t noScript = -1; // -1 means lua sandbox
+        return callMethod<OutputTypes...>(noScript, target, name, std::forward<InputArgs>(inputs)...);
     }
 
 } // namespace sim
