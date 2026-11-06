@@ -226,13 +226,14 @@ typedef enum {
     X(scriptstate, uninitialized, 1, uninitialized) \
     X(scriptstate, initialized, 2, initialized) \
     X(scriptstate, ended, 3, ended) \
-    X(scriptstate, error, 8, error) \
-    X(scriptstate, suspended, 16, suspended) \
+    X(scriptstate, suspended, 4, suspended) \
 
 typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     SCRIPTSTATE
     #undef X
+    sim_scriptstate_errorflag = 8,
+    sim_scriptstate_suspendedflag = 16,
 } scriptState_enum;
 
 #ifdef __cplusplus
@@ -388,6 +389,7 @@ typedef enum {
     X(verbosity, errors, 200, errors) \
     X(verbosity, warnings, 300, warnings) \
     X(verbosity, loadinfos, 400, loadInfos) \
+    X(verbosity, dflt, 400, dflt) \
     X(verbosity, questions, 410, questions) \
     X(verbosity, scripterrors, 420, scriptErrors) \
     X(verbosity, scriptwarnings, 430, scriptWarnings) \
@@ -398,15 +400,14 @@ typedef enum {
     X(verbosity, trace, 700, trace) \
     X(verbosity, tracelua, 800, traceLua) \
     X(verbosity, traceall, 900, traceAll) \
-    sim_verbosity_undecorated = 0x0f000, \
-    sim_verbosity_onlyterminal = 0x10000, \
-    sim_verbosity_once = 0x20000, \
-    sim_verbosity_default = sim_verbosity_loadinfos, \
 
 typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     VERBOSITY
     #undef X
+    sim_verbosity_undecorated = 0x0f000,
+    sim_verbosity_onlyterminal = 0x10000,
+    sim_verbosity_once = 0x20000,
 } verbosity_enum;
 
 #ifdef __cplusplus
