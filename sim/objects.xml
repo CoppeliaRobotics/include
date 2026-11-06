@@ -7399,6 +7399,14 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="scriptRelated" />
             </categories>
         </property>
+        <property name="pythonWrapper" type="string" var="pythonWrapper" >
+            <flags readable="true" writable="true" constant="true" />
+            <label>Language</label>
+            <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="scriptRelated" />
+            </categories>
+        </property>
         <property name="restartOnError" type="bool" var="restartOnError" >
             <flags readable="true" writable="true" />
             <label>Restart</label>
