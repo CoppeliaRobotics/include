@@ -6757,9 +6757,12 @@ note: the generated see-also section contains the <see-also> items, but also the
                         Minimum time duration to wait
                     </description>
                 </param>
-                <param name="simulationTime" type="bool" default="true">
+                <param name="options" type="map" default="{}">
                     <description>
-                        Whether waiting in simulation- or real-time
+                        Optional map:
+                        <ul>
+                            <li>realTime (bool, defaults to false): Whether waiting in simulation- or real-time </li>
+                        </ul>
                     </description>
                 </param>
             </params>
@@ -6821,6 +6824,13 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Triggers the next simulation step, when in stepping operation mode and running in a thread. When simulation is running, step()
                 only returns once the simulation time has changed
             </description>
+            <returns>
+                <param name="result" type="bool">
+                    <description>
+                        Whether the step was successful
+                    </description>
+                </param>
+            </returns>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.step" />
@@ -6842,6 +6852,13 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>
                 Identical to step()
             </description>
+            <returns>
+                <param name="result" type="bool">
+                    <description>
+                        Whether the yield was successful
+                    </description>
+                </param>
+            </returns>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
             </supersedes>
@@ -7002,9 +7019,12 @@ note: the generated see-also section contains the <see-also> items, but also the
                         User function
                     </description>
                 </param>
-                <param name="execBefore" type="bool" default="true">
+                <param name="options" type="map" default="{}">
                     <description>
-                        True, if the function is called before the function to hook
+                        Optional map:
+                        <ul>
+                            <li>when (string, defaults to "before"): whether the function is called before or after the function to hook. Possible values are "before" and "after"</li>
+                        </ul>
                     </description>
                 </param>
             </params>
