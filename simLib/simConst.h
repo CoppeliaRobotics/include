@@ -223,7 +223,6 @@ typedef enum {
 // ----------------------------------------------------------------------------------------------------
 #define SCRIPTSTATE \
     X(scriptstate, unloaded, 0, unloaded) \
-    X(scriptstate, uninitialized, 1, uninitialized) \
     X(scriptstate, initialized, 2, initialized) \
     X(scriptstate, ended, 3, ended) \
     X(scriptstate, suspended, 4, suspended) \
@@ -232,6 +231,7 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     SCRIPTSTATE
     #undef X
+    sim_scriptstate_uninitialized = 1, /* hidden state */
     sim_scriptstate_errorflag = 8,
     sim_scriptstate_suspendedflag = 16,
 } scriptState_enum;
