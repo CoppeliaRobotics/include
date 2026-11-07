@@ -4800,7 +4800,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                                 <ul>
                                     <li>type (string): "script"</li>
                                     <li>script.type (string): the script type. As of now only "addon" is supported</li>
-                                    <li>language (string): the script language ("Lua" or "Python")</li>
+                                    <li>language (string): the script language. A string in the form of "language;fileExtension;shortCommentStr;longCommentStartStr;longCommentEndStr",
+                                        where fileExtension, shortCommentStr, longCommentStartStr and longCommentEndStr can be omitted.
+                                        e.g. "Lua", "lua;lua;--;--[=[;--]=]", "python", "python;py;#;''';'''", "", etc.</li>
                                     <li>code (string): the script content</li>
                                 </ul>
                             </li>
@@ -5029,7 +5031,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                                 <ul>
                                     <li>type (string): "scriptObject"</li>
                                     <li>scriptObject.type (string): the script object type. Allowed values are "simulation" and "customization"</li>
-                                    <li>language (string): "Lua" or "Python"</li>
+                                    <li>language (string): the script language. A string in the form of "language;fileExtension;shortCommentStr;longCommentStartStr;longCommentEndStr",
+                                        where fileExtension, shortCommentStr, longCommentStartStr and longCommentEndStr can be omitted.
+                                        e.g. "Lua", "lua;lua;--;--[=[;--]=]", "python", "python;py;#;''';'''", "", etc.</li>
                                     <li>code (string): the content of the script</li>
                                     <li>scriptDisabled (bool): the script is initially disabled</li>
                                 </ul>
@@ -7399,9 +7403,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="scriptRelated" />
             </categories>
         </property>
-        <property name="pythonWrapper" type="string" var="pythonWrapper" >
-            <flags readable="true" writable="true" constant="true" />
-            <label>Language</label>
+        <property name="wrapper" type="string" var="wrapper" >
+            <flags readable="true" writable="true" />
+            <label>Language wrapper</label>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
                 <category name="scriptRelated" />
@@ -9054,7 +9058,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                                 <ul>
                                     <li>type (string): "script"</li>
                                     <li>script.type (string): the script type. As of now only "addon" is supported</li>
-                                    <li>language (string): the script language ("Lua" or "Python")</li>
+                                    <li>language (string): the script language. A string in the form of "language;fileExtension;shortCommentStr;longCommentStartStr;longCommentEndStr",
+                                        where fileExtension, shortCommentStr, longCommentStartStr and longCommentEndStr can be omitted.
+                                        e.g. "Lua", "lua;lua;--;--[=[;--]=]", "python", "python;py;#;''';'''", "", etc.</li>
                                     <li>code (string): the script content</li>
                                 </ul>
                             </li>
@@ -9283,7 +9289,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                                 <ul>
                                     <li>type (string): "scriptObject"</li>
                                     <li>scriptObject.type (string): the script object type. Allowed values are "simulation" and "customization"</li>
-                                    <li>language (string): "Lua" or "Python"</li>
+                                    <li>language (string): the script language. A string in the form of "language;fileExtension;shortCommentStr;longCommentStartStr;longCommentEndStr",
+                                        where fileExtension, shortCommentStr, longCommentStartStr and longCommentEndStr can be omitted.
+                                        e.g. "Lua", "lua;lua;--;--[=[;--]=]", "python", "python;py;#;''';'''", "", etc.</li>
                                     <li>code (string): the content of the script</li>
                                     <li>scriptDisabled (bool): the script is initially disabled</li>
                                 </ul>
