@@ -408,6 +408,7 @@ typedef enum {
     sim_verbosity_undecorated = 0x0f000,
     sim_verbosity_onlyterminal = 0x10000,
     sim_verbosity_once = 0x20000,
+    sim_verbosity_default = sim_verbosity_dflt,
 } verbosity_enum;
 
 #ifdef __cplusplus
