@@ -757,7 +757,7 @@ typedef enum {
         } ruckig_enum;
 
 #ifdef __cplusplus
-    enum class ruckig {
+    enum class ruckig_ {
 #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         RUCKIGENUMS
 #undef X
@@ -916,7 +916,7 @@ typedef enum {
     X(forceSensorFilter) \
     X(renderMode) \
     X(handle) \
-    X(ruckig) \
+    X(ruckig_) \
     X(bulletConstrSolverType) \
     X(vortexBodyFrictionModel) \
     X(propertyInfoFlags) \
