@@ -1,4 +1,9 @@
 <enums>
+  <enum name="ruckig">
+    <item name="phaseSync" value="0" />
+    <item name="timeSync" value="1" />
+    <item name="noSync" value="3" />
+  </enum>
   <enum name="appFlavor">
     <item name="lite" value="0" />
     <item name="edu" value="1" />
@@ -20,12 +25,70 @@
     <item name="median" value="1" />
   </enum>
   <enum name="handle">
+    <item name="all" value="-2" />
     <item name="app" value="-13" />
     <item name="scene" value="-12" />
     <item name="self" value="-4" />
-    <item name="all" value="-2" />
-    <item name="world" value="-1" />
   </enum>
+
+  <enum name="bulletConstrSolverType">
+    <item name="dantzig" value="2" />
+    <item name="nncg" value="1" />
+    <item name="projectedGaussSeidel" value="3" />
+    <item name="sequentialImpulse" value="0" />
+  </enum>
+
+  <enum name="vortexBodyFrictionModel">
+    <item name="box" value="0" />
+    <item name="scaledBox" value="1" />
+    <item name="propLow" value="2" />
+    <item name="propHigh" value="3" />
+    <item name="scaledBoxFast" value="4" />
+    <item name="neutral" value="5" />
+    <item name="none" value="6" />
+  </enum>
+
+  <enum name="propertyInfoFlags">
+    <item name="notWritable" value="1" />
+    <item name="notReadable" value="2" />
+    <item name="removable" value="4" />
+    <item name="modelHashExclude" value="8" />
+    <item name="deprecated" value="16" />
+    <item name="silent" value="32" />
+    <item name="constant" value="64" />
+    <item name="largeData" value="256" />
+    <item name="retMethodsOnly" value="512" />
+  </enum>
+
+  <enum name="propertyType">
+    <item name="boolean" value="0" />
+    <item name="int32" value="1" />
+    <item name="real" value="2" />
+    <item name="string" value="3" />
+    <item name="buffer" value="4" />
+    <item name="vector3" value="5" />
+    <item name="quaternion" value="6" />
+    <item name="pose" value="7" />
+    <item name="color3" value="10" />
+    <item name="floatArray" value="11" />
+    <item name="table" value="12" />
+    <item name="intArray" value="13" />
+    <item name="intArray2" value="15" />
+    <item name="int64" value="16" />
+    <item name="null" value="17" />
+    <item name="matrix" value="18" />
+    <item name="array" value="19" />
+    <item name="map" value="20" />
+    <item name="handle" value="21" />
+    <item name="handleArray" value="22" />
+    <item name="stringArray" value="23" />
+    <item name="group" value="24" />
+    <item name="enumeration" value="25" />
+    <item name="color" value="26" />
+    <item name="method" value="240" />
+  </enum>
+
+
   <enum name="headlessMode">
     <item name="disabled" value="0" />
     <item name="emulated" value="1" />

@@ -707,7 +707,6 @@ typedef enum {
 
 // ----------------------------------------------------------------------------------------------------
 #define HANDLEENUMS \
-    X(handle, world, -1, world) \
     X(handle, all, -2, all) \
     X(handle, self, -4, self) \
     X(handle, scene, -12, scene) \
@@ -717,6 +716,7 @@ typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
     HANDLEENUMS
     #undef X
+    sim_handle_world                    = -1,
     sim_handle_all_except_explicit      = -3,
     sim_handle_mainscript               = -5,
     sim_handle_main_script              = sim_handle_mainscript, // deprecated
@@ -738,6 +738,150 @@ typedef enum {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         HANDLEENUMS
         #undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define RUCKIGENUMS \
+    X(ruckig, phasesync, 0, phaseSync) \
+    X(ruckig, timesync, 1, timeSync) \
+    X(ruckig, nosync, 3, noSync) \
+
+        typedef enum {
+#define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+            RUCKIGENUMS
+#undef X
+        sim_ruckig_minvel =0x0100, // flag
+        sim_ruckig_minaccel =0x0200, // flag
+        } ruckig_enum;
+
+#ifdef __cplusplus
+    enum class ruckig {
+#define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        RUCKIGENUMS
+#undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define BULLETCONSTRSOLVERTYPEENUMS \
+    X(bullet_constraintsolvertype, sequentialimpulse, 0, sequentialImpulse) \
+    X(bullet_constraintsolvertype, nncg, 1, nncg) \
+    X(bullet_constraintsolvertype, dantzig, 2, dantzig) \
+    X(bullet_constraintsolvertype, projectedgaussseidel, 3, projectedGaussSeidel) \
+
+        typedef enum {
+#define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+            BULLETCONSTRSOLVERTYPEENUMS
+#undef X
+        } bulletConstrSolverType_enum;
+
+#ifdef __cplusplus
+    enum class bulletConstrSolverType {
+#define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        BULLETCONSTRSOLVERTYPEENUMS
+#undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define VORTEXBODYFRICTIONMODELENUMS \
+    X(vortex_bodyfrictionmodel, box, 0, box) \
+    X(vortex_bodyfrictionmodel, scaledbox, 1, scaledBox) \
+    X(vortex_bodyfrictionmodel, proplow, 2, propLow) \
+    X(vortex_bodyfrictionmodel, prophigh, 3, propHigh) \
+    X(vortex_bodyfrictionmodel, scaledboxfast, 4, scaledBoxFast) \
+    X(vortex_bodyfrictionmodel, neutral, 5, neutral) \
+    X(vortex_bodyfrictionmodel, none, 6, none) \
+
+        typedef enum {
+#define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+            VORTEXBODYFRICTIONMODELENUMS
+#undef X
+        } vortexBodyFrictionModel_enum;
+
+#ifdef __cplusplus
+    enum class vortexBodyFrictionModel {
+#define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        VORTEXBODYFRICTIONMODELENUMS
+#undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define PROPERTYINFOFLAGSENUMS \
+    X(propertyinfo, notwritable, 0x001, notWritable) \
+    X(propertyinfo, notreadable, 0x002, notReadable) \
+    X(propertyinfo, removable, 0x004, removable) \
+    X(propertyinfo, modelhashexclude, 0x008, modelHashExclude) \
+    X(propertyinfo, deprecated, 0x010, deprecated) \
+    X(propertyinfo, silent, 0x020, silent) \
+    X(propertyinfo, constant, 0x040, constant) \
+    X(propertyinfo, largedata, 0x0100, largeData) \
+    X(propertyinfo, retmethodsonly, 0x0200, retMethodsOnly) \
+
+        typedef enum {
+#define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+            PROPERTYINFOFLAGSENUMS
+#undef X
+        } propertyInfoFlags_enum;
+
+#ifdef __cplusplus
+    enum class propertyInfoFlags {
+#define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        PROPERTYINFOFLAGSENUMS
+#undef X
+    };
+#endif /* __cplusplus */
+// ----------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
+#define PROPERTYTYPESENUMS \
+    X(propertytype, bool, 0, boolean) \
+    X(propertytype, int, 1, int32) \
+    X(propertytype, float, 2, real) \
+    X(propertytype, string, 3, string) \
+    X(propertytype, buffer, 4, buffer) \
+    X(propertytype, vector3, 5, vector3) \
+    X(propertytype, quaternion, 6, quaternion) \
+    X(propertytype, pose, 7, pose) \
+    X(propertytype, color3, 10, color3) \
+    X(propertytype, floatarray, 11, floatArray) \
+    X(propertytype, table, 12, table) \
+    X(propertytype, intarray, 13, intArray) \
+    X(propertytype, intarray2, 15, intArray2) \
+    X(propertytype, long, 16, int64) \
+    X(propertytype, null, 17, null) \
+    X(propertytype, matrix, 18, matrix) \
+    X(propertytype, array, 19, array) \
+    X(propertytype, map, 20, map) \
+    X(propertytype, handle, 21, handle) \
+    X(propertytype, handlearray, 22, handleArray) \
+    X(propertytype, stringarray, 23, stringArray) \
+    X(propertytype, group, 24, group) \
+    X(propertytype, enum, 25, enumeration) \
+    X(propertytype, color, 26, color) \
+    X(propertytype, method, 0xf0, method) \
+
+        typedef enum {
+#define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
+            PROPERTYTYPESENUMS
+#undef X
+        sim_propertytype_start = 0,
+        sim_propertytype_object = 0xe0, /* special. Random object, not directly supported */
+        sim_propertytype_objectarray = 0xe1, /* special. Array of random object, not directly supported */
+        sim_propertytype_objectmap = 0xe2, /* special. Array of random object, not directly supported */
+        } propertyType_enum;
+
+#ifdef __cplusplus
+    enum class propertyType {
+#define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
+        PROPERTYTYPESENUMS
+#undef X
     };
 #endif /* __cplusplus */
 // ----------------------------------------------------------------------------------------------------
@@ -772,6 +916,12 @@ typedef enum {
     X(forceSensorFilter) \
     X(renderMode) \
     X(handle) \
+    X(ruckig) \
+    X(bulletConstrSolverType) \
+    X(vortexBodyFrictionModel) \
+    X(propertyInfoFlags) \
+    X(propertyType) \
+
 
 // General object types. Values are serialized
 enum {
@@ -1009,16 +1159,6 @@ enum { // Navigation and selection modes with the mouse. Lower byte values are m
     sim_navigation_camerarotatemiddlebutton =0x002000
 };
 
-enum { // Ruckig Library flags
-    // enable one of following:
-    sim_ruckig_phasesync                            =0x0000,
-    sim_ruckig_timesync                             =0x0001,
-    sim_ruckig_nosync                               =0x0003,
-    // combine with following:
-    sim_ruckig_minvel                               =0x0100,
-    sim_ruckig_minaccel                             =0x0200,
-};
-
 enum { // texture map modes (serialized)
     sim_texturemap_plane = 0,
     sim_texturemap_cylinder,
@@ -1143,67 +1283,6 @@ enum { // stack table info
     sim_stack_table_not_table=-3,
     sim_stack_table_map=-2,
     sim_stack_table_empty=0
-};
-
-enum { // property type
-    sim_propertytype_start = 0,
-    sim_propertytype_bool = 0,
-    sim_propertytype_int,
-    sim_propertytype_float,
-    sim_propertytype_string,
-    sim_propertytype_buffer,
-    sim_propertytype_vector3,
-    sim_propertytype_quaternion,
-    sim_propertytype_pose,
-    sim_propertytype_color3 = 10,
-    sim_propertytype_floatarray,
-    sim_propertytype_table,
-    sim_propertytype_intarray,
-    sim_propertytype_intarray2 = 15, /* deprecated */
-    sim_propertytype_long,
-    sim_propertytype_null,
-    sim_propertytype_matrix,
-    sim_propertytype_array,
-    sim_propertytype_map,
-    sim_propertytype_handle,
-    sim_propertytype_handlearray,
-    sim_propertytype_stringarray,
-    sim_propertytype_group,
-    sim_propertytype_enum,
-    sim_propertytype_color,
-    sim_propertytype_object = 0xe0, /* special. Random object, not directly supported */
-    sim_propertytype_objectarray = 0xe1, /* special. Array of random object, not directly supported */
-    sim_propertytype_objectmap = 0xe2, /* special. Array of random object, not directly supported */
-    sim_propertytype_method = 0xf0,
-};
-
-enum { // properties info
-    sim_propertyinfo_notwritable        = 0x001,
-    sim_propertyinfo_notreadable        = 0x002,
-    sim_propertyinfo_removable          = 0x004,
-    sim_propertyinfo_modelhashexclude   = 0x008,
-    sim_propertyinfo_deprecated         = 0x010,
-    sim_propertyinfo_silent             = 0x020, // no event generated for that property
-    sim_propertyinfo_constant           = 0x040,
-    sim_propertyinfo_largedata          = 0x100,
-    sim_propertyinfo_retmethodsonly     = 0x200, // internal use
-};
-
-enum { // Vortex friction models
-    sim_vortex_bodyfrictionmodel_box=0,
-    sim_vortex_bodyfrictionmodel_scaledbox,
-    sim_vortex_bodyfrictionmodel_proplow,
-    sim_vortex_bodyfrictionmodel_prophigh,
-    sim_vortex_bodyfrictionmodel_scaledboxfast,
-    sim_vortex_bodyfrictionmodel_neutral,
-    sim_vortex_bodyfrictionmodel_none
-};
-
-enum { // Bullet constraint solver type
-    sim_bullet_constraintsolvertype_sequentialimpulse=0,
-    sim_bullet_constraintsolvertype_nncg,
-    sim_bullet_constraintsolvertype_dantzig,
-    sim_bullet_constraintsolvertype_projectedgaussseidel
 };
 
 enum {
