@@ -4889,6 +4889,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>cyclic (bool): if the marker is full, then the first items are overwritten</li>
                                     <li>local (bool): coordinate data is specified locally</li>
                                     <li>overlay (bool): items are rendered on top of scene objects</li>
+                                    <li>notShaded (bool): items are rendered in plain color, without lighting effect</li>
                                     <li>itemSize (vector3): default item size</li>
                                     <li>duplicateTolerance (float): indicates a distance threshold under which points are not added. Does not apply to line- or triangle items</li>
                                     <li>itemCnt (int): maximum item count</li>
@@ -9147,6 +9148,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>cyclic (bool): if the marker is full, then the first items are overwritten</li>
                                     <li>local (bool): coordinate data is specified locally</li>
                                     <li>overlay (bool): items are rendered on top of scene objects</li>
+                                    <li>notShaded (bool): items are rendered in plain color, without lighting effect</li>
                                     <li>itemSize (vector3): default item size</li>
                                     <li>duplicateTolerance (float): indicates a distance threshold under which points are not added. Does not apply to line- or triangle items</li>
                                     <li>itemCnt (int): maximum item count</li>

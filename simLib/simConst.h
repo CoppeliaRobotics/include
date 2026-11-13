@@ -321,7 +321,7 @@ typedef enum {
     X(markeropts, local, 1, local) \
     X(markeropts, cyclic, 2, cyclic) \
     X(markeropts, overlay, 4, overlay) \
-    X(markeropts, flatshaded, 8, flatShaded) \
+    X(markeropts, notshaded, 8, notShaded) \
 
 typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
@@ -682,10 +682,7 @@ typedef enum {
     X(rendermode, opengl, 0, openGl) \
     X(rendermode, colorcoded, 2, colorCoded) \
     X(rendermode, povray, 3, povray) \
-    X(rendermode, extrenderer, 5, extRenderer) \
     X(rendermode, opengl3, 7, openGl3) \
-    X(rendermode, oglimg, 9, oglImg) \
-    X(rendermode, codedimg, 10, codedImg) \
     X(rendermode, opengl3colorcoded, 11, openGl3ColorCoded) \
 
 typedef enum {
@@ -696,6 +693,10 @@ typedef enum {
     sim_rendermode_reserved = 4, // deprecated
     sim_rendermode_extrendererwindowed = 6, // deprecated
     sim_rendermode_opengl3windowed = 8, // deprecated
+    sim_rendermode_extrenderer = 5, // deprecated
+    sim_rendermode_oglimg = 9, // deprecated
+    sim_rendermode_codedimg = 10, // deprecated
+
 } renderMode_enum;
 
 #if defined(__cplusplus) && defined(COPPELIASIM)

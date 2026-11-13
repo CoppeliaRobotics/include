@@ -130,7 +130,7 @@
     <item name="local" value="1" />
     <item name="cyclic" value="2" />
     <item name="overlay" value="4" />
-    <item name="flatShaded" value="8" />
+    <item name="notShaded" value="8" />
   </enum>
 
   <enum name="markerType">
@@ -212,12 +212,9 @@
   <enum name="renderMode">
     <item name="openGl" value="0" />
     <item name="colorCoded" value="2" />
-    <item name="povray" value="3" />
-    <item name="extRenderer" value="5" />
     <item name="openGl3" value="7" />
     <item name="openGl3ColorCoded" value="11" />
-    <item name="oglImg" value="9" />
-    <item name="codedImg" value="10" />
+    <item name="povray" value="3" />
   </enum>
 
   <enum name="sceneObjectType">
