@@ -48,7 +48,7 @@ typedef enum {
 } proximitySensorType_enum;
 
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class proximitySensorType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         PROXIMITYSENSORTYPE
@@ -71,7 +71,7 @@ typedef enum {
     #undef X
 } simulationState_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class simulationState {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         SIMULATIONSTATE
@@ -104,7 +104,7 @@ typedef enum {
     #undef X
 } sceneObjectType_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class sceneObjectType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         SCENEOBJECTTYPE
@@ -125,7 +125,7 @@ typedef enum {
         #undef X
 } lightType_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class lightType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         LIGHTTYPE
@@ -146,7 +146,7 @@ typedef enum {
     #undef X
 } jointType_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class jointType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         JOINTTYPE
@@ -166,7 +166,7 @@ typedef enum {
     #undef X
 } shapeType_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class shapeType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         SHAPETYPE
@@ -187,7 +187,7 @@ typedef enum {
     #undef X
 } parentingMode_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class parentingMode {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         PARENTINGMODE
@@ -211,7 +211,7 @@ typedef enum {
     #undef X
 } scriptType_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class scriptType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         SCRIPTTYPE
@@ -236,7 +236,7 @@ typedef enum {
     sim_scriptstate_suspendedflag = 16,
 } scriptState_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class scriptState {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         SCRIPTSTATE
@@ -257,7 +257,7 @@ typedef enum {
     #undef X
 } codeLang_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class codeLang {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         CODELANG
@@ -278,7 +278,7 @@ typedef enum {
     #undef X
 } scriptExecOrder_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class scriptExecOrder {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         SCRIPTEXECORDER
@@ -307,7 +307,7 @@ typedef enum {
     #undef X
 } markerType_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class markerType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         MARKEROBJECTTYPE
@@ -321,6 +321,7 @@ typedef enum {
     X(markeropts, local, 1, local) \
     X(markeropts, cyclic, 2, cyclic) \
     X(markeropts, overlay, 4, overlay) \
+    X(markeropts, flatshaded, 8, flatShaded) \
 
 typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
@@ -328,7 +329,7 @@ typedef enum {
     #undef X
 } markerOptions_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class markerOptions {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         MARKEROPTIONS
@@ -349,7 +350,7 @@ typedef enum {
     #undef X
 } jointMode_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class jointMode {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         JOINTMODE
@@ -373,7 +374,7 @@ typedef enum {
     #undef X
 } jointDynamicsCtrlMode_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class jointDynamicsCtrlMode {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         JOINTDYNCTRLMODE
@@ -411,7 +412,7 @@ typedef enum {
     sim_verbosity_default = sim_verbosity_dflt,
 } verbosity_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class verbosity {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         VERBOSITY
@@ -435,7 +436,7 @@ typedef enum {
     #undef X
 } physicsEngine_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class physicsEngine {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         PHYSICSENGINE
@@ -458,7 +459,7 @@ typedef enum {
     sim_dummytype_default = sim_dummytype_neutral
 } dummyType_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class dummyType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         DUMMYTYPE
@@ -480,7 +481,7 @@ typedef enum {
     #undef X
 } materialComponent_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class materialComponent {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         MATERIALCOMPONENT
@@ -501,7 +502,7 @@ typedef enum {
     #undef X
 } stringType_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class stringType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         STRINGTYPE
@@ -530,7 +531,7 @@ typedef enum {
     #undef X
 } propertyReturns_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class propertyReturns {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         PROPERTYRETURNS
@@ -554,7 +555,7 @@ typedef enum {
     #undef X
 } platform_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class platform {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         PLATFORM
@@ -578,7 +579,7 @@ typedef enum {
     #undef X
 } appFlavor_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class appFlavor {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         APPFLAVOR
@@ -599,7 +600,7 @@ typedef enum {
     #undef X
 } headlessMode_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class headlessMode {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         HEADLESSMODE
@@ -620,7 +621,7 @@ typedef enum {
     #undef X
 } textureApplyMode_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class textureApplyMode {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         TEXTUREAPPLYMODE
@@ -647,7 +648,7 @@ typedef enum {
     #undef X
 } primitiveType_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class primitiveType {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         PRIMITIVETYPE
@@ -667,7 +668,7 @@ typedef enum {
     #undef X
 } forceSensorFilter_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class forceSensorFilter {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         FORCESENSORFILTER
@@ -685,6 +686,7 @@ typedef enum {
     X(rendermode, opengl3, 7, openGl3) \
     X(rendermode, oglimg, 9, oglImg) \
     X(rendermode, codedimg, 10, codedImg) \
+    X(rendermode, opengl3colorcoded, 11, openGl3ColorCoded) \
 
 typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
@@ -696,7 +698,7 @@ typedef enum {
     sim_rendermode_opengl3windowed = 8, // deprecated
 } renderMode_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class renderMode {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         RENDERMODE
@@ -733,7 +735,7 @@ typedef enum {
     sim_handle_mesh                     = -18,
 } handle_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class handle {
         #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         HANDLEENUMS
@@ -756,8 +758,8 @@ typedef enum {
         sim_ruckig_minaccel =0x0200, // flag
         } ruckig_enum;
 
-#ifdef __cplusplus
-    enum class ruckig_ {
+#if defined(__cplusplus) && defined(COPPELIASIM)
+    enum class ruckig {
 #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         RUCKIGENUMS
 #undef X
@@ -778,7 +780,7 @@ typedef enum {
 #undef X
         } bulletConstrSolverType_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class bulletConstrSolverType {
 #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         BULLETCONSTRSOLVERTYPEENUMS
@@ -803,7 +805,7 @@ typedef enum {
 #undef X
         } vortexBodyFrictionModel_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class vortexBodyFrictionModel {
 #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         VORTEXBODYFRICTIONMODELENUMS
@@ -830,7 +832,7 @@ typedef enum {
 #undef X
         } propertyInfoFlags_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class propertyInfoFlags {
 #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         PROPERTYINFOFLAGSENUMS
@@ -850,10 +852,10 @@ typedef enum {
     X(propertytype, quaternion, 6, quaternion) \
     X(propertytype, pose, 7, pose) \
     X(propertytype, color3, 10, color3) \
-    X(propertytype, floatarray, 11, floatArray) \
+    X(propertytype, floatarray, 11, realArray) \
     X(propertytype, table, 12, table) \
-    X(propertytype, intarray, 13, intArray) \
-    X(propertytype, intarray2, 15, intArray2) \
+    X(propertytype, intarray, 13, int32Array) \
+    X(propertytype, intarray2, 15, int32Array2) \
     X(propertytype, long, 16, int64) \
     X(propertytype, null, 17, null) \
     X(propertytype, matrix, 18, matrix) \
@@ -877,7 +879,7 @@ typedef enum {
         sim_propertytype_objectmap = 0xe2, /* special. Array of random object, not directly supported */
         } propertyType_enum;
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && defined(COPPELIASIM)
     enum class propertyType {
 #define X(enum_name, item_name, val, item_name_mixed_case) item_name_mixed_case = val,
         PROPERTYTYPESENUMS
@@ -916,7 +918,7 @@ typedef enum {
     X(forceSensorFilter) \
     X(renderMode) \
     X(handle) \
-    X(ruckig_) \
+    X(ruckig) \
     X(bulletConstrSolverType) \
     X(vortexBodyFrictionModel) \
     X(propertyInfoFlags) \
@@ -1483,6 +1485,7 @@ enum { // Check the documentation instead of comments below!!
 
         sim_message_eventcallback_moduleentry, // auxiliaryData[0] indicates the handle of the item, auxiliaryData[1] indicates the state of the item
         sim_message_eventcallback_events, // auxPointer is a const unsigned char* to CBOR data, reflecting (all) the changes that happened in CoppeliaSim. auxData[0] indicates the number of events
+        sim_message_eventcallback_extrenderer_marker,
 
         sim_message_simulation_start_resume_request=0x1000,
         sim_message_simulation_pause_request,
