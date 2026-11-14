@@ -868,6 +868,7 @@ typedef enum {
     X(propertytype, group, 24, group) \
     X(propertytype, enum, 25, enumeration) \
     X(propertytype, color, 26, color) \
+    X(propertytype, longarray, 27, int64Array) \
     X(propertytype, method, 0xf0, method) \
 
         typedef enum {

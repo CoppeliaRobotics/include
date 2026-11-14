@@ -3389,9 +3389,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="getIntArrayProperty" lang="python,lua" var="METHOD_getIntArrayProperty">
-            <short-description>Fetches an int array property</short-description>
+            <short-description>Fetches an int32 array property</short-description>
             <description>
-                Fetches an int array property
+                Fetches an int32 array property
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -3427,9 +3427,9 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
         <method name="setIntArrayProperty" lang="python,lua" var="METHOD_setIntArrayProperty">
-            <short-description>Sets an int array property</short-description>
+            <short-description>Sets an int32 array property</short-description>
             <description>
-                Sets an int array property
+                Sets an int32 array property
             </description>
             <params>
                 <param name="propertyName" type="string">
@@ -3456,6 +3456,70 @@ note: the generated see-also section contains the <see-also> items, but also the
             </categories>
             <see-also>
                 <function-ref name="object:getIntArrayProperty" />
+            </see-also>
+        </method>
+        <method name="getLongArrayProperty" lang="python,lua" var="METHOD_getLongArrayProperty">
+            <short-description>Fetches an int64 array property</short-description>
+            <description>
+                Fetches an int64 array property
+            </description>
+            <params>
+                <param name="propertyName" type="string">
+                    <description>
+                        Property name
+                    </description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        Optional map:
+                        <ul>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <returns>
+                <param name="propertyState" type="long[]">
+                    <description>
+                        Property value
+                    </description>
+                </param>
+            </returns>
+            <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="property" />
+            </categories>
+            <see-also>
+                <function-ref name="object:setLongArrayProperty" />
+            </see-also>
+        </method>
+        <method name="setLongArrayProperty" lang="python,lua" var="METHOD_setLongArrayProperty">
+            <short-description>Sets an int64 array property</short-description>
+            <description>
+                Sets an int64 array property
+            </description>
+            <params>
+                <param name="propertyName" type="string">
+                    <description>Property name</description>
+                </param>
+                <param name="propertyState" type="long[]">
+                    <description>Property value</description>
+                </param>
+                <param name="options" type="map" default="{}">
+                    <description>
+                        Optional map:
+                        <ul>
+                            <li>noError (bool, defaults to false): generates silent errors</li>
+                        </ul>
+                    </description>
+                </param>
+            </params>
+            <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="property" />
+            </categories>
+            <see-also>
+                <function-ref name="object:getLongArrayProperty" />
             </see-also>
         </method>
         <method name="getStringArrayProperty" lang="python,lua" var="METHOD_getStringArrayProperty">
@@ -13432,7 +13496,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="ids" type="int[]">
+                <param name="ids" type="long[]">
                     <description>
                         Item-specific ids (one id per item)
                     </description>
@@ -13479,7 +13543,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                 </param>
             </params>
             <returns>
-                <param name="ids" type="int[]">
+                <param name="ids" type="long[]">
                     <description>
                         Item-specific ids (one id per item)
                     </description>
@@ -13524,7 +13588,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>
                 Removes specific items from a marker
             </description>
-            <param name="ids" type="int[]">
+            <param name="ids" type="long[]">
                 <description>
                         Item-specific ids (one id per item to remove)
                     </description>
@@ -13621,6 +13685,15 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
         </property>
+        <property name="notShaded" type="bool" var="notShaded" >
+            <flags readable="true" constant="true" />
+            <label>Not shaded</label>
+            <description>Items are displayed in plain color, without shading</description>
+            <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
+        </property>
         <property name="packedPoints" type="buffer" var="packedPoints" >
             <flags readable="true" modelhashexclude="true" silent="true" />
             <label>Packed points</label>
@@ -13649,6 +13722,17 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="points" type="matrix" var="points" >
             <flags readable="true" />
             <label>Points</label>
+            <support start="2" start-deprecated="0" end="0" />
+            <categories>
+                <category name="rendering" />
+            </categories>
+            <see-also>
+                <function-ref name="marker:addItems" />
+            </see-also>
+        </property>
+        <property name="ids" type="long[]" var="ids" >
+            <flags readable="true" />
+            <label>Unique item identifiers</label>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
                 <category name="rendering" />

@@ -90,6 +90,7 @@
     <item name="group" value="24" />
     <item name="enumeration" value="25" />
     <item name="color" value="26" />
+    <item name="int64Array" value="27" />
     <item name="method" value="240" />
   </enum>
 
