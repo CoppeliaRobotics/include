@@ -4961,7 +4961,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>mesh: mesh object or mesh table (if the marker is of type "custom"). The following fields are taken into account:
                                         <ul>
                                             <li>mesh.vertices (matrix 3 * n): vertices for a mesh item type</li>
-                                            <li>mesh.indices (int[]): indices for a mesh item type. One zero-based index for each vertex</li>
+                                            <li>mesh.indices (int[]): indices for a mesh item type (zero-based index)</li>
                                             <li>mesh.normals (matrix 3 * n): normals for a mesh item type. One normal for each vertex</li>
                                         </ul>
                                     </li>
@@ -5067,9 +5067,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     </li>
                                     <li>mesh (map/dict): data structure (or mesh object) holding parameters for the creation of a mesh shape:
                                         <ul>
-                                            <li>vertices (matrix 3 * n)</li>
+                                            <li>vertices (matrix 3 * n): vertices</li>
                                             <li>indices (int[]): the zero-based indices</li>
-                                            <li>normals (matrix 3 * 3n)</li>
+                                            <li>normals (matrix 3 * n): normals (one normal per vertex)</li>
                                             <li>boundingBoxQuaternion (quaternion): the orientation of the shape's bounding box</li>
                                             <li>frameOrigin (pose): the pose of the shape's frame</li>
                                             <li>texture (map/dict): holds parameters for an optional texture:
@@ -9220,7 +9220,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     <li>mesh: mesh object or mesh table (if the marker is of type "custom"). The following fields are taken into account:
                                         <ul>
                                             <li>mesh.vertices (matrix 3 * n): vertices for a mesh item type</li>
-                                            <li>mesh.indices (int[]): indices for a mesh item type. One zero-based index for each vertex</li>
+                                            <li>mesh.indices (int[]): indices for a mesh item type (zero-based index)</li>
                                             <li>mesh.normals (matrix 3 * n): normals for a mesh item type. One normal for each vertex</li>
                                         </ul>
                                     </li>
@@ -9326,9 +9326,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                                     </li>
                                     <li>mesh (map/dict): data structure (or mesh object) holding parameters for the creation of a mesh shape:
                                         <ul>
-                                            <li>vertices (matrix 3 * n)</li>
+                                            <li>vertices (matrix 3 * n): vertices</li>
                                             <li>indices (int[]): the zero-based indices</li>
-                                            <li>normals (matrix 3 * 3n)</li>
+                                            <li>normals (matrix 3 * n): normals (one normal per vertex)</li>
                                             <li>boundingBoxQuaternion (quaternion): the orientation of the shape's bounding box</li>
                                             <li>frameOrigin (pose): the pose of the shape's frame</li>
                                             <li>texture (map/dict): holds parameters for an optional texture:
@@ -13622,14 +13622,6 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>Item buffer is cyclic</description>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
-            </categories>
-        </property>
-        <property name="defaultItemSize" type="vector3" var="defaultItemSize" >
-            <flags readable="true" constant="true" />
-            <label>Default size</label>
-            <support start="2" start-deprecated="0" end="0" />
-            <categories>
-                <category name="rendering" />
             </categories>
         </property>
         <property name="indices" type="int[]" var="indices" >
