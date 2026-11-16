@@ -5070,12 +5070,16 @@ note: the generated see-also section contains the <see-also> items, but also the
                                             <li>vertices (matrix 3 * n): vertices</li>
                                             <li>indices (int[]): the zero-based indices</li>
                                             <li>normals (matrix 3 * n): normals (one normal per vertex)</li>
+                                            <li>shadingAngle (float): the shading angle (possibly shadowed by a shadingAngle further up in the data structure)</li>
+                                            <li>culling (bool): whether the shape has its back faces culled (possibly shadowed by a culling further up in the data structure)</li>
+                                            <li>showEdges (bool): whether the shape appears with visible edges (possibly shadowed by a showEdges further up in the data structure)</li>
+                                            <li>color.diffuse (color): diffuse color (possibly shadowed by a color.diffuse further up in the data structure)</li>
+                                            <li>color.specular (color): specular color (possibly shadowed by a color.specular further up in the data structure)</li>
+                                            <li>color.emission (color): emission color (possibly shadowed by a color.emission further up in the data structure)</li>
                                             <li>boundingBoxQuaternion (quaternion): the orientation of the shape's bounding box</li>
                                             <li>frameOrigin (pose): the pose of the shape's frame</li>
                                             <li>texture (map/dict): holds parameters for an optional texture:
                                                 <ul>
-                                                    <li>image (buffer): texture specified as rgb or rgba</li>
-                                                    <li>resolution (int[2]): texture resolution</li>
                                                     <li>scalingUV (float[2], defaults to [1.0, 1.0]): texture scaling along the U or V direction</li>
                                                     <li>repeatU (bool, defaults to false): repeats the texture along the U direction</li>
                                                     <li>repeatV (bool, defaults to false): repeats the texture along the V direction</li>
@@ -5085,6 +5089,12 @@ note: the generated see-also section contains the <see-also> items, but also the
                                                     <li>flipV (bool, defaults to false): flips the texture vertically</li>
                                                     <li>pose (pose, defaults to the identity pose): pose of the texture in relation to the mesh</li>
                                                     <li>coordinates (matrix, defaults to nil): texture coordinates as a 2 * n matrix, where n is the number of vertex indices</li>
+                                                    <li>textudeData (map/dict): holds the texture:
+                                                        <ul>
+                                                            <li>image (buffer): texture specified as rgb or rgba</li>
+                                                            <li>resolution (int[2]): texture resolution</li>
+                                                        </ul>
+                                                    </li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -7689,7 +7699,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="normals" type="matrix" var="normals" >
             <flags readable="true" modelhashexclude="true" />
             <label>Normals</label>
-            <description>Normals (3*3 values per triangle)</description>
+            <description>Normals (3 * n matrix, per-vertex)</description>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.getShapeMesh" />
@@ -7786,9 +7796,10 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <function-ref name="mesh:setTexture" />
             </see-also>
         </property>
-        <property name="textureCoordinates" type="float[]" var="textureCoordinates" >
+        <property name="textureCoordinates" type="matrix" var="textureCoordinates" >
             <flags readable="true" modelhashexclude="true" />
             <label>Texture coordinates</label>
+            <description>Texture coordinates (2 * n matrix, per-vertex)</description>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.getShapeViz" />
@@ -7892,6 +7903,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="vertices" type="matrix" var="vertices" >
             <flags readable="true" modelhashexclude="true" />
             <label>Vertices</label>
+            <description>Vertices (3 * n matrix)</description>
             <support start="2" start-deprecated="0" end="0" />
             <supersedes>
                 <item name="sim.getShapeMesh" />
@@ -9329,12 +9341,16 @@ note: the generated see-also section contains the <see-also> items, but also the
                                             <li>vertices (matrix 3 * n): vertices</li>
                                             <li>indices (int[]): the zero-based indices</li>
                                             <li>normals (matrix 3 * n): normals (one normal per vertex)</li>
+                                            <li>shadingAngle (float): the shading angle (possibly shadowed by a shadingAngle further up in the data structure)</li>
+                                            <li>culling (bool): whether the shape has its back faces culled (possibly shadowed by a culling further up in the data structure)</li>
+                                            <li>showEdges (bool): whether the shape appears with visible edges (possibly shadowed by a showEdges further up in the data structure)</li>
+                                            <li>color.diffuse (color): diffuse color (possibly shadowed by a color.diffuse further up in the data structure)</li>
+                                            <li>color.specular (color): specular color (possibly shadowed by a color.specular further up in the data structure)</li>
+                                            <li>color.emission (color): emission color (possibly shadowed by a color.emission further up in the data structure)</li>
                                             <li>boundingBoxQuaternion (quaternion): the orientation of the shape's bounding box</li>
                                             <li>frameOrigin (pose): the pose of the shape's frame</li>
                                             <li>texture (map/dict): holds parameters for an optional texture:
                                                 <ul>
-                                                    <li>image (buffer): texture specified as rgb or rgba</li>
-                                                    <li>resolution (int[2]): texture resolution</li>
                                                     <li>scalingUV (float[2], defaults to [1.0, 1.0]): texture scaling along the U or V direction</li>
                                                     <li>repeatU (bool, defaults to false): repeats the texture along the U direction</li>
                                                     <li>repeatV (bool, defaults to false): repeats the texture along the V direction</li>
@@ -9344,6 +9360,12 @@ note: the generated see-also section contains the <see-also> items, but also the
                                                     <li>flipV (bool, defaults to false): flips the texture vertically</li>
                                                     <li>pose (pose, defaults to the identity pose): pose of the texture in relation to the mesh</li>
                                                     <li>coordinates (matrix, defaults to nil): texture coordinates as a 2 * n matrix, where n is the number of vertex indices</li>
+                                                    <li>textudeData (map/dict): holds the texture:
+                                                        <ul>
+                                                            <li>image (buffer): texture specified as rgb or rgba</li>
+                                                            <li>resolution (int[2]): texture resolution</li>
+                                                        </ul>
+                                                    </li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -13627,7 +13649,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="indices" type="int[]" var="indices" >
             <flags readable="true" />
             <label>Indices</label>
-            <description>Indices for custom marker</description>
+            <description>Indices for custom marker (3 values per triangle)</description>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
                 <category name="rendering" />
@@ -13662,7 +13684,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="normals" type="matrix" var="normals" >
             <flags readable="true" />
             <label>Normals</label>
-            <description>Normals for custom marker</description>
+            <description>Normals for custom marker (matrix 3 *n, per-vertex)</description>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
                 <category name="rendering" />
@@ -13759,7 +13781,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <property name="vertices" type="matrix" var="vertices" >
             <flags readable="true" />
             <label>Vertices</label>
-            <description>Vertices for custom marker</description>
+            <description>Vertices for custom marker (3 * n matrix)</description>
             <support start="2" start-deprecated="0" end="0" />
             <categories>
                 <category name="rendering" />
