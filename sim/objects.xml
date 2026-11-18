@@ -13503,7 +13503,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <params>
                 <param name="points" type="matrix">
                     <description>
-                        Points, organized column-wise. If the items are point items, the matrix should be 3 * n in size. If the items are line items, the matrix should be 3 * 2n in size, etc.
+                        Points, organized column-wise. If the items are point items, the matrix should be 3 * n in size. If the items are line or tube items, the matrix should be 3 * 2n or 6 * n in size. If the items are triangle items, the matrix should be 3 * 3n or 9 * n in size.
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
