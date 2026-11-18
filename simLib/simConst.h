@@ -298,8 +298,6 @@ typedef enum {
     X(markertype, cubes, 11, cubes) \
     X(markertype, cylinders, 12, cylinders) \
     X(markertype, custom, 13, custom) \
-    X(markertype, tubes, 14, tubes) \
-    X(markertype, axes, 15, axes) \
 
 typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,
@@ -322,6 +320,8 @@ typedef enum {
     X(markeropts, cyclic, 2, cyclic) \
     X(markeropts, overlay, 4, overlay) \
     X(markeropts, notshaded, 8, notShaded) \
+    X(markeropts, tube, 16, tube) \
+    X(markeropts, axis, 32, axis) \
 
 typedef enum {
     #define X(enum_name, item_name, val, item_name_mixed_case) sim_ ## enum_name ## _ ## item_name = val,

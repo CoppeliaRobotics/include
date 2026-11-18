@@ -132,6 +132,8 @@
     <item name="cyclic" value="2" />
     <item name="overlay" value="4" />
     <item name="notShaded" value="8" />
+    <item name="tube" value="16" />
+    <item name="axis" value="32" />
   </enum>
 
   <enum name="markerType">
@@ -144,8 +146,6 @@
     <item name="cubes" value="11" />
     <item name="cylinders" value="12" />
     <item name="custom" value="13" />
-    <item name="tubes" value="14" />
-    <item name="axes" value="15" />
   </enum>
 
   <enum name="materialComponent">

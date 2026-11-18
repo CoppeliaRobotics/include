@@ -13510,7 +13510,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                     <description>
                         Optional map:
                         <ul>
-                            <li>colors (matrix 4 * n, defaults to nil): point-specific colors (one color per point)</li>
+                            <li>colors (matrix 4 * n, defaults to nil): point-specific colors (one color per point, except for tubes: one color per 2 points)</li>
                             <li>quaternions (matrix 4 * n, defaults to nil): quaternions (one quaternion per item)</li>
                             <li>sizes (matrix 3 * n, defaults to nil): x/y/z sizes (one x/y/z per item)</li>
                         </ul>
@@ -13532,56 +13532,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 <category name="rendering" />
             </categories>
             <see-also>
-                <function-ref name="marker:addPackedItems" />
                 <function-ref name="marker:clearItems" />
                 <function-ref name="marker:removeItems" />
                 <function-ref name="scene:createObject" />
-                <property-ref name="marker.points" />
-                <property-ref name="marker.colors" />
-                <property-ref name="marker.quaternions" />
-                <property-ref name="marker.sizes" />
-            </see-also>
-        </method>
-        <method name="addPackedItems" lang="python,lua" var="METHOD_addPackedItems">
-            <short-description>Adds packed items to a marker</short-description>
-            <description>
-                Adds packed items to a marker
-            </description>
-            <params>
-                <param name="points" type="buffer">
-                    <description>
-                        Points, packed as a float array
-                    </description>
-                </param>
-                <param name="options" type="map" default="{}">
-                    <description>
-                        Optional map:
-                        <ul>
-                            <li>colors (buffer, defaults to nil): point-specific colors, packed as a float array</li>
-                            <li>quaternions (buffer, defaults to nil): quaternions, packed as a float array</li>
-                            <li>sizes (buffer, defaults to nil): x/y/z sizes, packed as a float array</li>
-                        </ul>
-                    </description>
-                </param>
-            </params>
-            <returns>
-                <param name="ids" type="long[]">
-                    <description>
-                        Item-specific ids (one id per item)
-                    </description>
-                </param>
-            </returns>
-            <support start="2" start-deprecated="0" end="0" />
-            <supersedes>
-                <item name="sim.addDrawingObjectItem" />
-            </supersedes>
-            <categories>
-                <category name="rendering" />
-            </categories>
-            <see-also>
-                <function-ref name="marker:addItems" />
-                <function-ref name="marker:clearItems" />
-                <function-ref name="marker:removeItems" />
                 <property-ref name="marker.points" />
                 <property-ref name="marker.colors" />
                 <property-ref name="marker.quaternions" />

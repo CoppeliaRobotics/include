@@ -16,25 +16,43 @@ CQuaternion::CQuaternion(simReal w,simReal x,simReal y,simReal z)
     // We don't normalize here
 }
 
-CQuaternion::CQuaternion(const simReal wxyz[4],bool xyzwLayout/*=false*/)
+CQuaternion::CQuaternion(const double wxyz[4],bool xyzwLayout/*=false*/)
 {
     if (xyzwLayout)
     {
-        data[0]=wxyz[3];
-        data[1]=wxyz[0];
-        data[2]=wxyz[1];
-        data[3]=wxyz[2];
+        data[0]=simReal(wxyz[3]);
+        data[1]=simReal(wxyz[0]);
+        data[2]=simReal(wxyz[1]);
+        data[3]=simReal(wxyz[2]);
     }
     else
     {
-        data[0]=wxyz[0];
-        data[1]=wxyz[1];
-        data[2]=wxyz[2];
-        data[3]=wxyz[3];
+        data[0]=simReal(wxyz[0]);
+        data[1]=simReal(wxyz[1]);
+        data[2]=simReal(wxyz[2]);
+        data[3]=simReal(wxyz[3]);
     }
     // We don't normalize here
 }
 
+CQuaternion::CQuaternion(const float wxyz[4],bool xyzwLayout/*=false*/)
+{
+    if (xyzwLayout)
+    {
+        data[0]=simReal(wxyz[3]);
+        data[1]=simReal(wxyz[0]);
+        data[2]=simReal(wxyz[1]);
+        data[3]=simReal(wxyz[2]);
+    }
+    else
+    {
+        data[0]=simReal(wxyz[0]);
+        data[1]=simReal(wxyz[1]);
+        data[2]=simReal(wxyz[2]);
+        data[3]=simReal(wxyz[3]);
+    }
+    // We don't normalize here
+}
 CQuaternion::CQuaternion(const CQuaternion& q)
 {
     data[0]=q(0);
@@ -103,6 +121,29 @@ void CQuaternion::setVectorMapping(const C3Vector& startV,const C3Vector& endV)
         setIdentity();
     else
         setAngleAndAxis(robustAcos(cosAngle),cross);
+}
+
+void CQuaternion::alignQuaternion(const C3Vector& v)
+{
+    if (v.getLength() < 0.00001)
+    {
+        setIdentity();
+        return;
+    }
+
+    C3Vector w = v.getNormalized();
+    const C3Vector zAxis(0.0, 0.0, 1.0);
+    simReal cosAngle = zAxis * w;
+
+    if (cosAngle > 1.0 - 0.00001)
+        setIdentity();
+    else if (cosAngle < -1.0 + 0.00001)
+        setAngleAndAxis(piValue, C3Vector(1.0, 0.0, 0.0));
+    else
+    {
+        C3Vector cross = (zAxis ^ w).getNormalized();
+        setAngleAndAxis(robustAcos(cosAngle), cross);
+    }
 }
 
 C3Vector CQuaternion::getAngleAndAxis(simReal& angle) const

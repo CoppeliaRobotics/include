@@ -9,7 +9,8 @@ class CQuaternion
 public:
     CQuaternion();
     CQuaternion(simReal w,simReal x,simReal y,simReal z);
-    CQuaternion(const simReal wxyz[4],bool xyzwLayout=false);
+    CQuaternion(const double wxyz[4],bool xyzwLayout=false);
+    CQuaternion(const float wxyz[4],bool xyzwLayout=false);
     CQuaternion(const C3Vector& v);
     CQuaternion(const CQuaternion& q);
     CQuaternion(simReal a,simReal b,simReal g);
@@ -21,6 +22,7 @@ public:
     void setEulerAngles(simReal a,simReal b,simReal g);
     void setAngleAndAxis(simReal angle,const C3Vector& axis);
     void setVectorMapping(const C3Vector& startV,const C3Vector& endV);
+    void alignQuaternion(const C3Vector& v);
     void buildInterpolation(const CQuaternion& fromThis,const CQuaternion& toThat,simReal t);
     void buildInterpolation_otherWayRound(const CQuaternion& fromThis,const CQuaternion& toThat,simReal t);
     void buildRandomOrientation();
