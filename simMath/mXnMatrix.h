@@ -17,11 +17,11 @@ public:
 
     void resize(size_t nRows,size_t nCols,simReal def);
     void set(const CMatrix& m);
-    bool inverse();
+    bool inverse(); // only square matrices; content is undefined on failure
     void transpose();
     void clear();
     void setIdentity();
-    void switchStorage();
+    void switchStorage(); // transposes the flat data only (rows/cols are unchanged)
     simReal getAt(size_t row,size_t col) const;
     void setAt(size_t row,size_t col,simReal value);
 
@@ -37,9 +37,9 @@ public:
     CMatrix& operator= (const C3X3Matrix& m);
     CMatrix& operator= (const C4X4Matrix& m);
     CMatrix& operator= (const CMatrix& m);
-    CMatrix operator* (const C3X3Matrix& m) const;
-    CMatrix operator* (const C4X4Matrix& m) const;
-    CMatrix operator* (const CMatrix& m) const;
+    CMatrix operator* (const C3X3Matrix& m) const; // at least 3 columns expected
+    CMatrix operator* (const C4X4Matrix& m) const; // at least 4 columns expected
+    CMatrix operator* (const CMatrix& m) const; // cols==m.rows expected
     CMatrix operator* (simReal d) const;
     CMatrix operator/ (simReal d) const;
     CMatrix operator+ (const CMatrix& m) const;

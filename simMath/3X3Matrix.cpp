@@ -58,7 +58,7 @@ void C3X3Matrix::setEulerAngles(const C3Vector& v)
 }
 
 C3Vector C3X3Matrix::getEulerAngles() const
-{ // Angles are in radians!! // THERE IS ANOTHER SUCH ROUTINE IN C4X4MATRIX
+{ // Angles are in radians. In case of gimbal lock (|sin(beta)|>=0.999995), alpha is returned as 0.0
     C3Vector retV;
     simReal m02=axis[2](0);
     if (m02>1.0)
@@ -192,7 +192,13 @@ void C3X3Matrix::normalize()
     {
         axis[1]=axis[2]^axis[0];
         if (axis[1].normalize()==0.0)
-            axis[1]=axis[2]^C3Vector(SIM_RAND_FLOAT,SIM_RAND_FLOAT,SIM_RAND_FLOAT).getNormalized();
+        { // axis[0] and axis[2] are aligned: use a deterministic fallback axis
+            if (fabs(axis[2](0))<simReal(0.9))
+                axis[1]=axis[2]^C3Vector::unitXVector;
+            else
+                axis[1]=axis[2]^C3Vector::unitYVector;
+            axis[1].normalize();
+        }
         axis[0]=(axis[1]^axis[2]).getNormalized();
     }
 }

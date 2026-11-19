@@ -21,7 +21,7 @@ public:
     ~C4X4Matrix();
 
     void setIdentity();
-    void buildInterpolation(const C4X4Matrix& fromThis,const C4X4Matrix& toThat,simReal t);
+    void buildInterpolation(const C4X4Matrix& fromThis,const C4X4Matrix& toThat,simReal t); // rigid transformations only
     CPose getTransformation() const;
     void buildXRotation(simReal angle);
     void buildYRotation(simReal angle);
@@ -31,17 +31,17 @@ public:
     void rotateAroundY(simReal angle);
     void rotateAroundZ(simReal angle);
     void translate(simReal x,simReal y,simReal z);
-    void inverse();
-    void getData(simReal* m) const;
-    void setData(const simReal* m);
+    void inverse(); // valid only for rigid transformations (orthonormal M)
+    void getData(simReal* m) const; // 12 values, row-major 3x4: R00 R01 R02 X0 R10 R11 R12 X1 R20 R21 R22 X2
+    void setData(const simReal* m); // 12 values, row-major 3x4
     bool isValid() const;
-    C4X4Matrix getInverse() const;
+    C4X4Matrix getInverse() const; // valid only for rigid transformations
     void setMultResult(const C4X4Matrix& m1,const C4X4Matrix& m2);
 
-    C4X4Matrix& operator= (const CMatrix& m);
+    C4X4Matrix& operator= (const CMatrix& m); // m has to be 4x4 (or 3x4), row-major
     C4X4Matrix& operator= (const C4X4Matrix& m);
     void operator*= (const C4X4Matrix& m);
-    C4X4Matrix operator* (const CMatrix& m) const;
+    C4X4Matrix operator* (const CMatrix& m) const; // m has to be 4x4 (or 3x4), row-major
     C4X4Matrix operator* (const C4X4Matrix& m) const;
     C3Vector operator* (const C3Vector& v) const;
 

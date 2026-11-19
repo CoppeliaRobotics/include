@@ -21,7 +21,7 @@ public:
     simReal getAngle(const C3Vector& v) const;
     C3X3Matrix getProductWithStar() const;
     simReal* ptr();
-    bool isColinear(const C3Vector& v,simReal precision) const;
+    bool isColinear(const C3Vector& v,simReal precision) const; // precision is a squared cosine (1.0=colinear)
     simReal getLength() const;
     void sort(int idx[3]=nullptr);
     void setData(const float v[3]);
@@ -38,9 +38,9 @@ public:
     simReal& operator() (size_t i);
     const simReal& operator() (size_t i) const;
 
-    void operator*= (const C4X4Matrix& m);
-    void operator*= (const C3X3Matrix& m);
-    void operator*= (const CPose& transf);
+    void operator*= (const C4X4Matrix& m); // transforms as a point (translation is applied)
+    void operator*= (const C3X3Matrix& m); // rotates only (no translation)
+    void operator*= (const CPose& transf); // transforms as a point (translation is applied)
     void operator*= (simReal d);
     void operator/= (simReal d);
     void operator+= (const C3Vector& v);

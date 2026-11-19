@@ -4,6 +4,10 @@
 #include "3Vector.h"
 #include "3X3Matrix.h"
 
+// Rotation quaternion (w,x,y,z layout). Rotation-related methods such as
+// getMatrix(), operator*(const C3Vector&), getAngleAndAxis(), getInverse()
+// and getAngleBetweenQuaternions() expect a unit-length quaternion. The
+// constructors and setData() do not normalize (by design).
 class CQuaternion  
 {
 public:
@@ -21,8 +25,8 @@ public:
     void setEulerAngles(const C3Vector& v);
     void setEulerAngles(simReal a,simReal b,simReal g);
     void setAngleAndAxis(simReal angle,const C3Vector& axis);
-    void setVectorMapping(const C3Vector& startV,const C3Vector& endV);
-    void alignQuaternion(const C3Vector& v);
+    void setVectorMapping(const C3Vector& startV,const C3Vector& endV); // handles aligned and anti-aligned vectors
+    void alignQuaternion(const C3Vector& v); // aligns the local Z axis with v
     void buildInterpolation(const CQuaternion& fromThis,const CQuaternion& toThat,simReal t);
     void buildInterpolation_otherWayRound(const CQuaternion& fromThis,const CQuaternion& toThat,simReal t);
     void buildRandomOrientation();
@@ -39,7 +43,7 @@ public:
     void normalize();
     void clear();
     void setIdentity();
-    CQuaternion getInverse() const;
+    CQuaternion getInverse() const; // conjugate; only the inverse of a unit quaternion
     void inverse();
 
     simReal& operator() (size_t i);

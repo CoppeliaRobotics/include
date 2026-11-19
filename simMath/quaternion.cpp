@@ -103,7 +103,11 @@ void CQuaternion::setEulerAngles(const C3Vector& v)
 void CQuaternion::setAngleAndAxis(simReal angle,const C3Vector& axis)
 { // angle in radian!
     C3Vector axisTmp=axis;
-    axisTmp.normalize();
+    if (axisTmp.normalize()==0.0)
+    { // Invalid axis: build an identity rotation rather than an invalid quaternion
+        setIdentity();
+        return;
+    }
     simReal sinA=sin(angle/2.0);
     data[1]=axisTmp(0)*sinA;
     data[2]=axisTmp(1)*sinA;
@@ -112,15 +116,33 @@ void CQuaternion::setAngleAndAxis(simReal angle,const C3Vector& axis)
 }
 
 void CQuaternion::setVectorMapping(const C3Vector& startV,const C3Vector& endV)
-{
+{ // Builds the rotation that maps startV onto endV
     C3Vector v0(startV.getNormalized());
     C3Vector v1(endV.getNormalized());
-    C3Vector cross(v0^v1);
-    simReal cosAngle=v0*v1;
-    if (cosAngle>1.0)
+    if ((v0.getLength()==0.0)||(v1.getLength()==0.0))
+    { // Invalid input vector
         setIdentity();
-    else
-        setAngleAndAxis(robustAcos(cosAngle),cross);
+        return;
+    }
+    simReal cosAngle=v0*v1;
+    C3Vector cross(v0^v1);
+    if (cross.getLength()<simReal(0.000001))
+    { // Vectors are aligned or anti-aligned
+        if (cosAngle>0.0)
+            setIdentity();
+        else
+        { // Rotate 180 degrees around an arbitrary axis perpendicular to v0:
+            C3Vector axis;
+            if (fabs(v0(0))<simReal(0.9))
+                axis=C3Vector::unitXVector^v0;
+            else
+                axis=C3Vector::unitYVector^v0;
+            axis.normalize();
+            setAngleAndAxis(piValue,axis);
+        }
+        return;
+    }
+    setAngleAndAxis(robustAcos(cosAngle),cross);
 }
 
 void CQuaternion::alignQuaternion(const C3Vector& v)
@@ -153,6 +175,14 @@ C3Vector CQuaternion::getAngleAndAxis(simReal& angle) const
     if (d(0)<0.0)
         d=d*-1.0;
     simReal l=sqrt(d(0)*d(0)+d(1)*d(1)+d(2)*d(2)+d(3)*d(3));
+    if (l==0.0)
+    { // Invalid quaternion: return a zero rotation
+        angle=0.0;
+        retV(0)=0.0;
+        retV(1)=0.0;
+        retV(2)=1.0;
+        return(retV);
+    }
     simReal cosA=d(0)/l; // Quaternion needs to be normalized
     if (cosA>1.0) // Just make sure..
         cosA=1.0;
@@ -161,12 +191,29 @@ C3Vector CQuaternion::getAngleAndAxis(simReal& angle) const
     {
         simReal sinA=sqrt(1.0-cosA*cosA);
         if (fabs(sinA)<simReal(0.00005))
-            sinA=1.0;
+        { // Very small rotation: the axis is ill-conditioned, so normalize the
+          // (small) vector part to still return a unit axis
+            simReal lv=sqrt(d(1)*d(1)+d(2)*d(2)+d(3)*d(3));
+            if (lv==0.0)
+            {
+                retV(0)=0.0;
+                retV(1)=0.0;
+                retV(2)=1.0;
+            }
+            else
+            {
+                retV(0)=d(1)/lv;
+                retV(1)=d(2)/lv;
+                retV(2)=d(3)/lv;
+            }
+        }
         else
+        {
             sinA*=l; // Quaternion needs to be normalized
-        retV(0)=d(1)/sinA;
-        retV(1)=d(2)/sinA;
-        retV(2)=d(3)/sinA;
+            retV(0)=d(1)/sinA;
+            retV(1)=d(2)/sinA;
+            retV(2)=d(3)/sinA;
+        }
     }
     else
     {
@@ -204,7 +251,7 @@ void CQuaternion::buildInterpolation(const CQuaternion& fromThis,const CQuaterni
         AA=AA*-1.0;
     CQuaternion r((AA.getInverse()*BB).getAngleAndAxis());
     (*this)=(AA*CQuaternion(r(0)*t,C3Vector(r(1),r(2),r(3))));
-    // Already normalized through * operator
+    // The product of two unit quaternions is unit length (up to round-off)
 }
 
 void CQuaternion::buildInterpolation_otherWayRound(const CQuaternion& fromThis,const CQuaternion& toThat,simReal t)
@@ -219,7 +266,7 @@ void CQuaternion::buildInterpolation_otherWayRound(const CQuaternion& fromThis,c
     // r(1),r(2),r(3) is the rotation axis
     // Here, since we want to rotate the other way round, we inverse the axis and rotate by 2*pi-r(0) instead:
     (*this)=(AA*CQuaternion((piValT2-r(0))*t,C3Vector(r(1)*-1.0,r(2)*-1.0,r(3)*-1.0)));
-    // Already normalized through * operator
+    // The product of two unit quaternions is unit length (up to round-off)
 }
 
 void CQuaternion::buildRandomOrientation()
@@ -298,10 +345,13 @@ const simReal& CQuaternion::operator() (size_t i) const
 void CQuaternion::normalize()
 {
     simReal l=sqrt(data[0]*data[0]+data[1]*data[1]+data[2]*data[2]+data[3]*data[3]);
-    data[0]/=l;
-    data[1]/=l;
-    data[2]/=l;
-    data[3]/=l;
+    if (l!=0.0)
+    { // A zero quaternion is left unchanged
+        data[0]/=l;
+        data[1]/=l;
+        data[2]/=l;
+        data[3]/=l;
+    }
 }
 
 void CQuaternion::clear()
@@ -444,7 +494,7 @@ void CQuaternion::operator*= (simReal d)
 void CQuaternion::operator*= (const CQuaternion& v)
 {
     (*this)=(*this)*v;
-    // Already normalized through * operator
+    // Unit-length quaternions stay unit length (up to round-off)
 }
 
 void CQuaternion::operator+= (const CQuaternion& v)

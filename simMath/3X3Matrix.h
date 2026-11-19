@@ -14,15 +14,15 @@ public:
     C3X3Matrix(const C3Vector& xAxis,const C3Vector& yAxis,const C3Vector& zAxis);
     ~C3X3Matrix();
 
-    void buildInterpolation(const C3X3Matrix& fromThis,const C3X3Matrix& toThat,simReal t);
-    CQuaternion getQuaternion() const;
+    void buildInterpolation(const C3X3Matrix& fromThis,const C3X3Matrix& toThat,simReal t); // rotation matrices only
+    CQuaternion getQuaternion() const; // a proper rotation matrix is assumed
     void setEulerAngles(simReal a,simReal b,simReal g);
     void setEulerAngles(const C3Vector& v);
-    C3Vector getEulerAngles() const;
+    C3Vector getEulerAngles() const; // in case of gimbal lock, alpha is returned as 0.0
     void buildXRotation(simReal angle);
     void buildYRotation(simReal angle);
     void buildZRotation(simReal angle);
-    void normalize();
+    void normalize(); // Z axis is the reference; falls back to identity if Z is zero
     C3Vector getNormalVector() const;
 
     void clear();

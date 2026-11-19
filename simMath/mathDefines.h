@@ -4,6 +4,7 @@
 #include <limits>
 #include <float.h>
 #include <cstdlib>
+#include <climits>
 #include <cmath>
 #include <simLib/simTypes.h>
 

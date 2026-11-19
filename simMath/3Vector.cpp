@@ -105,11 +105,14 @@ simReal* C3Vector::ptr()
 }
 
 bool C3Vector::isColinear(const C3Vector& v,simReal precision) const
-{
-    simReal scalProdSq=(*this)*v;
-    scalProdSq=scalProdSq*scalProdSq;
+{ // precision is compared against the squared cosine of the angle between both
+  // vectors (1.0=colinear, 0.0=perpendicular)
     simReal l1=(*this)*(*this);
     simReal l2=v*v;
+    if ((l1==0.0)||(l2==0.0))
+        return(false);
+    simReal scalProdSq=(*this)*v;
+    scalProdSq=scalProdSq*scalProdSq;
     return((scalProdSq/(l1*l2))>=precision);
 }
 

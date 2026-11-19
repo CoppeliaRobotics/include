@@ -6,6 +6,8 @@
 
 class C4X4Matrix;
 
+// Pose: position + rotation quaternion. Q is expected to be unit length;
+// constructors and setters do not normalize it.
 class CPose  
 {
 public:
@@ -20,8 +22,8 @@ public:
 
     void setIdentity();
     C4X4Matrix getMatrix() const;
-    CPose getInverse() const;
-    void setMultResult(const CPose& v1,const CPose& v2);
+    CPose getInverse() const; // Q has to be unit length
+    void setMultResult(const CPose& v1,const CPose& v2); // does not normalize Q
     void buildInterpolation(const CPose& fromThis,const CPose& toThat,simReal t);
     void inverse();
     C3Vector getAxis(size_t index) const;
@@ -32,11 +34,11 @@ public:
     simReal& operator() (size_t i);
     const simReal& operator() (size_t i) const;
 
-    void operator*= (const CPose& v);
+    void operator*= (const CPose& v); // does not normalize Q
 
     CPose& operator= (const CPose& v);
     bool operator!= (const CPose& v);
-    CPose operator* (const CPose& v) const;
+    CPose operator* (const CPose& v) const; // normalizes Q
     C3Vector operator* (const C3Vector& v) const;
 
     static const CPose identityTransformation;

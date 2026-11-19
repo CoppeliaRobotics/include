@@ -50,19 +50,24 @@ C4X4Matrix C4X4Matrix::operator* (const CMatrix& m) const
 }
 
 C4X4Matrix& C4X4Matrix::operator= (const CMatrix& m)
-{
-    M.axis[0](0)=m.data[0];
-    M.axis[0](1)=m.data[4];
-    M.axis[0](2)=m.data[8];
-    M.axis[1](0)=m.data[1];
-    M.axis[1](1)=m.data[5];
-    M.axis[1](2)=m.data[9];
-    M.axis[2](0)=m.data[2];
-    M.axis[2](1)=m.data[6];
-    M.axis[2](2)=m.data[10];
-    X(0)=m.data[3];
-    X(1)=m.data[7];
-    X(2)=m.data[11];
+{ // The matrix has to be 4x4 (or 3x4), row-major. Otherwise this matrix is reset to identity.
+    if ((m.rows<3)||(m.cols<4))
+    {
+        setIdentity();
+        return(*this);
+    }
+    M.axis[0](0)=m(0,0);
+    M.axis[0](1)=m(1,0);
+    M.axis[0](2)=m(2,0);
+    M.axis[1](0)=m(0,1);
+    M.axis[1](1)=m(1,1);
+    M.axis[1](2)=m(2,1);
+    M.axis[2](0)=m(0,2);
+    M.axis[2](1)=m(1,2);
+    M.axis[2](2)=m(2,2);
+    X(0)=m(0,3);
+    X(1)=m(1,3);
+    X(2)=m(2,3);
     return(*this);
 }
 
@@ -137,7 +142,7 @@ void C4X4Matrix::translate(simReal x,simReal y,simReal z)
 }
 
 void C4X4Matrix::inverse()
-{
+{ // Fast inverse, valid only for rigid transformations (M has to be orthonormal)
     // Speed optimized version:
     simReal tmp=M.axis[0](1);
     M.axis[0](1)=M.axis[1](0);

@@ -211,6 +211,8 @@ void CMatrix::operator/= (simReal d)
 
 CMatrix& CMatrix::operator= (const C3X3Matrix& m)
 {
+    if ((rows<3)||(cols<3))
+        resize(3,3,0.0);
     for (size_t i=0;i<3;i++)
     {
         for (size_t j=0;j<3;j++)
@@ -221,6 +223,8 @@ CMatrix& CMatrix::operator= (const C3X3Matrix& m)
 
 CMatrix& CMatrix::operator= (const C4X4Matrix& m)
 {
+    if ((rows<4)||(cols<4))
+        resize(4,4,0.0);
     for (size_t i=0;i<3;i++)
     {
         for (size_t j=0;j<3;j++)
@@ -262,6 +266,9 @@ bool CMatrix::inverse()
 {
 // Found the following routine on internet (numerical recipes) and modified it.
 // Linear equation solution by Gauss-Jordan elimination:
+// Only square matrices can be inverted. On failure, the matrix content is undefined.
+    if (rows!=cols)
+        return(false);
     size_t irow=0;
     simReal big,dum,pivinv;
     size_t* indxc=new size_t[rows+1];
