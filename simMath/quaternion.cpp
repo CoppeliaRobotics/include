@@ -434,10 +434,16 @@ C3Vector CQuaternion::getAxis(size_t index) const
 }
 
 C3Vector CQuaternion::operator* (const C3Vector& v) const
-{ // Rotation of a vector.
-    CQuaternion tmpV(1.0,v(0),v(1),v(2));
-    tmpV=(*this)*(tmpV*getInverse());
-    return(C3Vector(tmpV(1),tmpV(2),tmpV(3)));
+{ // Rotation of a vector (this quaternion has to be unit length)
+    const simReal w=data[0];
+    const simReal x=data[1],y=data[2],z=data[3];
+    const simReal vx=v.data[0],vy=v.data[1],vz=v.data[2];
+    const simReal tx=2.0*(y*vz-z*vy);
+    const simReal ty=2.0*(z*vx-x*vz);
+    const simReal tz=2.0*(x*vy-y*vx);
+    return(C3Vector(vx+w*tx+(y*tz-z*ty),
+                    vy+w*ty+(z*tx-x*tz),
+                    vz+w*tz+(x*ty-y*tx)));
 }
 
 CQuaternion CQuaternion::operator+ (const CQuaternion& v) const
@@ -463,15 +469,15 @@ C3X3Matrix CQuaternion::getMatrix() const
     simReal zz=data[3]*data[3];
     simReal zw=data[3]*data[0];
 
-    retM(0,0)=1.0-2.0*(yy+zz);
-    retM(0,1)=2.0*(xy-zw);
-    retM(0,2)=2.0*(xz+yw);
-    retM(1,0)=2.0*(xy+zw);
-    retM(1,1)=1.0-2.0*(xx+zz);
-    retM(1,2)=2.0*(yz-xw);
-    retM(2,0)=2.0*(xz-yw);
-    retM(2,1)=2.0*(yz+xw);
-    retM(2,2)=1.0-2.0*(xx+yy);
+    retM.axis[0].data[0]=1.0-2.0*(yy+zz);
+    retM.axis[1].data[0]=2.0*(xy-zw);
+    retM.axis[2].data[0]=2.0*(xz+yw);
+    retM.axis[0].data[1]=2.0*(xy+zw);
+    retM.axis[1].data[1]=1.0-2.0*(xx+zz);
+    retM.axis[2].data[1]=2.0*(yz-xw);
+    retM.axis[0].data[2]=2.0*(xz-yw);
+    retM.axis[1].data[2]=2.0*(yz+xw);
+    retM.axis[2].data[2]=1.0-2.0*(xx+yy);
     return(retM);
 }
 

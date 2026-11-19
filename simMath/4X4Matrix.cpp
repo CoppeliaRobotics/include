@@ -56,18 +56,19 @@ C4X4Matrix& C4X4Matrix::operator= (const CMatrix& m)
         setIdentity();
         return(*this);
     }
-    M.axis[0](0)=m(0,0);
-    M.axis[0](1)=m(1,0);
-    M.axis[0](2)=m(2,0);
-    M.axis[1](0)=m(0,1);
-    M.axis[1](1)=m(1,1);
-    M.axis[1](2)=m(2,1);
-    M.axis[2](0)=m(0,2);
-    M.axis[2](1)=m(1,2);
-    M.axis[2](2)=m(2,2);
-    X(0)=m(0,3);
-    X(1)=m(1,3);
-    X(2)=m(2,3);
+    const size_t s=m.cols;
+    M.axis[0].data[0]=m.data[0*s+0];
+    M.axis[0].data[1]=m.data[1*s+0];
+    M.axis[0].data[2]=m.data[2*s+0];
+    M.axis[1].data[0]=m.data[0*s+1];
+    M.axis[1].data[1]=m.data[1*s+1];
+    M.axis[1].data[2]=m.data[2*s+1];
+    M.axis[2].data[0]=m.data[0*s+2];
+    M.axis[2].data[1]=m.data[1*s+2];
+    M.axis[2].data[2]=m.data[2*s+2];
+    X.data[0]=m.data[0*s+3];
+    X.data[1]=m.data[1*s+3];
+    X.data[2]=m.data[2*s+3];
     return(*this);
 }
 
@@ -129,34 +130,34 @@ void C4X4Matrix::buildZRotation(simReal angle)
 void C4X4Matrix::buildTranslation(simReal x,simReal y,simReal z)
 {
     setIdentity();
-    X(0)=x;
-    X(1)=y;
-    X(2)=z;
+    X.data[0]=x;
+    X.data[1]=y;
+    X.data[2]=z;
 }
 
 void C4X4Matrix::translate(simReal x,simReal y,simReal z)
 {
-    X(0)+=x;
-    X(1)+=y;
-    X(2)+=z;
+    X.data[0]+=x;
+    X.data[1]+=y;
+    X.data[2]+=z;
 }
 
 void C4X4Matrix::inverse()
 { // Fast inverse, valid only for rigid transformations (M has to be orthonormal)
     // Speed optimized version:
-    simReal tmp=M.axis[0](1);
-    M.axis[0](1)=M.axis[1](0);
-    M.axis[1](0)=tmp;;
-    tmp=M.axis[0](2);
-    M.axis[0](2)=M.axis[2](0);
-    M.axis[2](0)=tmp;;
-    tmp=M.axis[1](2);
-    M.axis[1](2)=M.axis[2](1);
-    M.axis[2](1)=tmp;;
-    simReal v[3]={-X(0),-X(1),-X(2)};
-    X(0)=M.axis[0](0)*v[0]+M.axis[1](0)*v[1]+M.axis[2](0)*v[2];
-    X(1)=M.axis[0](1)*v[0]+M.axis[1](1)*v[1]+M.axis[2](1)*v[2];
-    X(2)=M.axis[0](2)*v[0]+M.axis[1](2)*v[1]+M.axis[2](2)*v[2];
+    simReal tmp=M.axis[0].data[1];
+    M.axis[0].data[1]=M.axis[1].data[0];
+    M.axis[1].data[0]=tmp;;
+    tmp=M.axis[0].data[2];
+    M.axis[0].data[2]=M.axis[2].data[0];
+    M.axis[2].data[0]=tmp;;
+    tmp=M.axis[1].data[2];
+    M.axis[1].data[2]=M.axis[2].data[1];
+    M.axis[2].data[1]=tmp;;
+    simReal v[3]={-X.data[0],-X.data[1],-X.data[2]};
+    X.data[0]=M.axis[0].data[0]*v[0]+M.axis[1].data[0]*v[1]+M.axis[2].data[0]*v[2];
+    X.data[1]=M.axis[0].data[1]*v[0]+M.axis[1].data[1]*v[1]+M.axis[2].data[1]*v[2];
+    X.data[2]=M.axis[0].data[2]*v[0]+M.axis[1].data[2]*v[1]+M.axis[2].data[2]*v[2];
     // Normal version:
     //  (*this)=getInverse();
 }
@@ -164,10 +165,10 @@ void C4X4Matrix::getData(simReal* m) const
 {
     for (size_t i=0;i<3;i++)
     {
-        m[4*i+0]=M.axis[0](i);
-        m[4*i+1]=M.axis[1](i);
-        m[4*i+2]=M.axis[2](i);
-        m[4*i+3]=X(i);
+        m[4*i+0]=M.axis[0].data[i];
+        m[4*i+1]=M.axis[1].data[i];
+        m[4*i+2]=M.axis[2].data[i];
+        m[4*i+3]=X.data[i];
     }
 }
 
@@ -175,10 +176,10 @@ void C4X4Matrix::setData(const simReal* m)
 {
     for (size_t i=0;i<3;i++)
     {
-        M.axis[0](i)=m[4*i+0];
-        M.axis[1](i)=m[4*i+1];
-        M.axis[2](i)=m[4*i+2];
-        X(i)=m[4*i+3];
+        M.axis[0].data[i]=m[4*i+0];
+        M.axis[1].data[i]=m[4*i+1];
+        M.axis[2].data[i]=m[4*i+2];
+        X.data[i]=m[4*i+3];
     }
 }
 
@@ -200,35 +201,35 @@ C4X4Matrix C4X4Matrix::getInverse() const
 
 void C4X4Matrix::setMultResult(const C4X4Matrix& m1,const C4X4Matrix& m2)
 { // Use this routine to avoid temporary variables
-    M.axis[0](0)=m1.M.axis[0](0)*m2.M.axis[0](0)+m1.M.axis[1](0)*m2.M.axis[0](1)+m1.M.axis[2](0)*m2.M.axis[0](2);
-    M.axis[0](1)=m1.M.axis[0](1)*m2.M.axis[0](0)+m1.M.axis[1](1)*m2.M.axis[0](1)+m1.M.axis[2](1)*m2.M.axis[0](2);
-    M.axis[0](2)=m1.M.axis[0](2)*m2.M.axis[0](0)+m1.M.axis[1](2)*m2.M.axis[0](1)+m1.M.axis[2](2)*m2.M.axis[0](2);
-    M.axis[1](0)=m1.M.axis[0](0)*m2.M.axis[1](0)+m1.M.axis[1](0)*m2.M.axis[1](1)+m1.M.axis[2](0)*m2.M.axis[1](2);
-    M.axis[1](1)=m1.M.axis[0](1)*m2.M.axis[1](0)+m1.M.axis[1](1)*m2.M.axis[1](1)+m1.M.axis[2](1)*m2.M.axis[1](2);
-    M.axis[1](2)=m1.M.axis[0](2)*m2.M.axis[1](0)+m1.M.axis[1](2)*m2.M.axis[1](1)+m1.M.axis[2](2)*m2.M.axis[1](2);
-    M.axis[2](0)=m1.M.axis[0](0)*m2.M.axis[2](0)+m1.M.axis[1](0)*m2.M.axis[2](1)+m1.M.axis[2](0)*m2.M.axis[2](2);
-    M.axis[2](1)=m1.M.axis[0](1)*m2.M.axis[2](0)+m1.M.axis[1](1)*m2.M.axis[2](1)+m1.M.axis[2](1)*m2.M.axis[2](2);
-    M.axis[2](2)=m1.M.axis[0](2)*m2.M.axis[2](0)+m1.M.axis[1](2)*m2.M.axis[2](1)+m1.M.axis[2](2)*m2.M.axis[2](2);
-    X(0)=m1.M.axis[0](0)*m2.X(0)+m1.M.axis[1](0)*m2.X(1)+m1.M.axis[2](0)*m2.X(2)+m1.X(0);
-    X(1)=m1.M.axis[0](1)*m2.X(0)+m1.M.axis[1](1)*m2.X(1)+m1.M.axis[2](1)*m2.X(2)+m1.X(1);
-    X(2)=m1.M.axis[0](2)*m2.X(0)+m1.M.axis[1](2)*m2.X(1)+m1.M.axis[2](2)*m2.X(2)+m1.X(2);
+    M.axis[0].data[0]=m1.M.axis[0].data[0]*m2.M.axis[0].data[0]+m1.M.axis[1].data[0]*m2.M.axis[0].data[1]+m1.M.axis[2].data[0]*m2.M.axis[0].data[2];
+    M.axis[0].data[1]=m1.M.axis[0].data[1]*m2.M.axis[0].data[0]+m1.M.axis[1].data[1]*m2.M.axis[0].data[1]+m1.M.axis[2].data[1]*m2.M.axis[0].data[2];
+    M.axis[0].data[2]=m1.M.axis[0].data[2]*m2.M.axis[0].data[0]+m1.M.axis[1].data[2]*m2.M.axis[0].data[1]+m1.M.axis[2].data[2]*m2.M.axis[0].data[2];
+    M.axis[1].data[0]=m1.M.axis[0].data[0]*m2.M.axis[1].data[0]+m1.M.axis[1].data[0]*m2.M.axis[1].data[1]+m1.M.axis[2].data[0]*m2.M.axis[1].data[2];
+    M.axis[1].data[1]=m1.M.axis[0].data[1]*m2.M.axis[1].data[0]+m1.M.axis[1].data[1]*m2.M.axis[1].data[1]+m1.M.axis[2].data[1]*m2.M.axis[1].data[2];
+    M.axis[1].data[2]=m1.M.axis[0].data[2]*m2.M.axis[1].data[0]+m1.M.axis[1].data[2]*m2.M.axis[1].data[1]+m1.M.axis[2].data[2]*m2.M.axis[1].data[2];
+    M.axis[2].data[0]=m1.M.axis[0].data[0]*m2.M.axis[2].data[0]+m1.M.axis[1].data[0]*m2.M.axis[2].data[1]+m1.M.axis[2].data[0]*m2.M.axis[2].data[2];
+    M.axis[2].data[1]=m1.M.axis[0].data[1]*m2.M.axis[2].data[0]+m1.M.axis[1].data[1]*m2.M.axis[2].data[1]+m1.M.axis[2].data[1]*m2.M.axis[2].data[2];
+    M.axis[2].data[2]=m1.M.axis[0].data[2]*m2.M.axis[2].data[0]+m1.M.axis[1].data[2]*m2.M.axis[2].data[1]+m1.M.axis[2].data[2]*m2.M.axis[2].data[2];
+    X.data[0]=m1.M.axis[0].data[0]*m2.X.data[0]+m1.M.axis[1].data[0]*m2.X.data[1]+m1.M.axis[2].data[0]*m2.X.data[2]+m1.X.data[0];
+    X.data[1]=m1.M.axis[0].data[1]*m2.X.data[0]+m1.M.axis[1].data[1]*m2.X.data[1]+m1.M.axis[2].data[1]*m2.X.data[2]+m1.X.data[1];
+    X.data[2]=m1.M.axis[0].data[2]*m2.X.data[0]+m1.M.axis[1].data[2]*m2.X.data[1]+m1.M.axis[2].data[2]*m2.X.data[2]+m1.X.data[2];
 }
 
 C4X4Matrix C4X4Matrix::operator* (const C4X4Matrix& m) const
 {   // Speed optimized version:
     C4X4Matrix retM;
-    retM.M.axis[0](0)=M.axis[0](0)*m.M.axis[0](0)+M.axis[1](0)*m.M.axis[0](1)+M.axis[2](0)*m.M.axis[0](2);
-    retM.M.axis[0](1)=M.axis[0](1)*m.M.axis[0](0)+M.axis[1](1)*m.M.axis[0](1)+M.axis[2](1)*m.M.axis[0](2);
-    retM.M.axis[0](2)=M.axis[0](2)*m.M.axis[0](0)+M.axis[1](2)*m.M.axis[0](1)+M.axis[2](2)*m.M.axis[0](2);
-    retM.M.axis[1](0)=M.axis[0](0)*m.M.axis[1](0)+M.axis[1](0)*m.M.axis[1](1)+M.axis[2](0)*m.M.axis[1](2);
-    retM.M.axis[1](1)=M.axis[0](1)*m.M.axis[1](0)+M.axis[1](1)*m.M.axis[1](1)+M.axis[2](1)*m.M.axis[1](2);
-    retM.M.axis[1](2)=M.axis[0](2)*m.M.axis[1](0)+M.axis[1](2)*m.M.axis[1](1)+M.axis[2](2)*m.M.axis[1](2);
-    retM.M.axis[2](0)=M.axis[0](0)*m.M.axis[2](0)+M.axis[1](0)*m.M.axis[2](1)+M.axis[2](0)*m.M.axis[2](2);
-    retM.M.axis[2](1)=M.axis[0](1)*m.M.axis[2](0)+M.axis[1](1)*m.M.axis[2](1)+M.axis[2](1)*m.M.axis[2](2);
-    retM.M.axis[2](2)=M.axis[0](2)*m.M.axis[2](0)+M.axis[1](2)*m.M.axis[2](1)+M.axis[2](2)*m.M.axis[2](2);
-    retM.X(0)=M.axis[0](0)*m.X(0)+M.axis[1](0)*m.X(1)+M.axis[2](0)*m.X(2)+X(0);
-    retM.X(1)=M.axis[0](1)*m.X(0)+M.axis[1](1)*m.X(1)+M.axis[2](1)*m.X(2)+X(1);
-    retM.X(2)=M.axis[0](2)*m.X(0)+M.axis[1](2)*m.X(1)+M.axis[2](2)*m.X(2)+X(2);
+    retM.M.axis[0].data[0]=M.axis[0].data[0]*m.M.axis[0].data[0]+M.axis[1].data[0]*m.M.axis[0].data[1]+M.axis[2].data[0]*m.M.axis[0].data[2];
+    retM.M.axis[0].data[1]=M.axis[0].data[1]*m.M.axis[0].data[0]+M.axis[1].data[1]*m.M.axis[0].data[1]+M.axis[2].data[1]*m.M.axis[0].data[2];
+    retM.M.axis[0].data[2]=M.axis[0].data[2]*m.M.axis[0].data[0]+M.axis[1].data[2]*m.M.axis[0].data[1]+M.axis[2].data[2]*m.M.axis[0].data[2];
+    retM.M.axis[1].data[0]=M.axis[0].data[0]*m.M.axis[1].data[0]+M.axis[1].data[0]*m.M.axis[1].data[1]+M.axis[2].data[0]*m.M.axis[1].data[2];
+    retM.M.axis[1].data[1]=M.axis[0].data[1]*m.M.axis[1].data[0]+M.axis[1].data[1]*m.M.axis[1].data[1]+M.axis[2].data[1]*m.M.axis[1].data[2];
+    retM.M.axis[1].data[2]=M.axis[0].data[2]*m.M.axis[1].data[0]+M.axis[1].data[2]*m.M.axis[1].data[1]+M.axis[2].data[2]*m.M.axis[1].data[2];
+    retM.M.axis[2].data[0]=M.axis[0].data[0]*m.M.axis[2].data[0]+M.axis[1].data[0]*m.M.axis[2].data[1]+M.axis[2].data[0]*m.M.axis[2].data[2];
+    retM.M.axis[2].data[1]=M.axis[0].data[1]*m.M.axis[2].data[0]+M.axis[1].data[1]*m.M.axis[2].data[1]+M.axis[2].data[1]*m.M.axis[2].data[2];
+    retM.M.axis[2].data[2]=M.axis[0].data[2]*m.M.axis[2].data[0]+M.axis[1].data[2]*m.M.axis[2].data[1]+M.axis[2].data[2]*m.M.axis[2].data[2];
+    retM.X.data[0]=M.axis[0].data[0]*m.X.data[0]+M.axis[1].data[0]*m.X.data[1]+M.axis[2].data[0]*m.X.data[2]+X.data[0];
+    retM.X.data[1]=M.axis[0].data[1]*m.X.data[0]+M.axis[1].data[1]*m.X.data[1]+M.axis[2].data[1]*m.X.data[2]+X.data[1];
+    retM.X.data[2]=M.axis[0].data[2]*m.X.data[0]+M.axis[1].data[2]*m.X.data[1]+M.axis[2].data[2]*m.X.data[2]+X.data[2];
     return(retM);
     /*  // Normal version:
     C4X4Matrix retM;
@@ -241,9 +242,9 @@ C4X4Matrix C4X4Matrix::operator* (const C4X4Matrix& m) const
 C3Vector C4X4Matrix::operator* (const C3Vector& v) const
 {
     // Speed optimized version:
-    return(C3Vector(M.axis[0](0)*v(0)+M.axis[1](0)*v(1)+M.axis[2](0)*v(2)+X(0),
-        M.axis[0](1)*v(0)+M.axis[1](1)*v(1)+M.axis[2](1)*v(2)+X(1),
-        M.axis[0](2)*v(0)+M.axis[1](2)*v(1)+M.axis[2](2)*v(2)+X(2)));
+    return(C3Vector(M.axis[0].data[0]*v.data[0]+M.axis[1].data[0]*v.data[1]+M.axis[2].data[0]*v.data[2]+X.data[0],
+        M.axis[0].data[1]*v.data[0]+M.axis[1].data[1]*v.data[1]+M.axis[2].data[1]*v.data[2]+X.data[1],
+        M.axis[0].data[2]*v.data[0]+M.axis[1].data[2]*v.data[1]+M.axis[2].data[2]*v.data[2]+X.data[2]));
     // Normal version:
     //  return(C3Vector((M*v)+X));
 }
@@ -251,18 +252,18 @@ C3Vector C4X4Matrix::operator* (const C3Vector& v) const
 C4X4Matrix& C4X4Matrix::operator= (const C4X4Matrix& m)
 {
     // Speed optimized version:
-    M.axis[0](0)=m.M.axis[0](0);
-    M.axis[0](1)=m.M.axis[0](1);
-    M.axis[0](2)=m.M.axis[0](2);
-    M.axis[1](0)=m.M.axis[1](0);
-    M.axis[1](1)=m.M.axis[1](1);
-    M.axis[1](2)=m.M.axis[1](2);
-    M.axis[2](0)=m.M.axis[2](0);
-    M.axis[2](1)=m.M.axis[2](1);
-    M.axis[2](2)=m.M.axis[2](2);
-    X(0)=m.X(0);
-    X(1)=m.X(1);
-    X(2)=m.X(2);
+    M.axis[0].data[0]=m.M.axis[0].data[0];
+    M.axis[0].data[1]=m.M.axis[0].data[1];
+    M.axis[0].data[2]=m.M.axis[0].data[2];
+    M.axis[1].data[0]=m.M.axis[1].data[0];
+    M.axis[1].data[1]=m.M.axis[1].data[1];
+    M.axis[1].data[2]=m.M.axis[1].data[2];
+    M.axis[2].data[0]=m.M.axis[2].data[0];
+    M.axis[2].data[1]=m.M.axis[2].data[1];
+    M.axis[2].data[2]=m.M.axis[2].data[2];
+    X.data[0]=m.X.data[0];
+    X.data[1]=m.X.data[1];
+    X.data[2]=m.X.data[2];
     return(*this);
     /*  // Normal version:
     M=m.M;
