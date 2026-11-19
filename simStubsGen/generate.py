@@ -17,6 +17,7 @@ parser.add_argument("--gen-stubs", help='generate C++ stubs', action='store_true
 parser.add_argument("--gen-lua-xml", help='generate XML translation of Lua docstrings', action='store_true')
 parser.add_argument("--gen-reference-xml", help='generate merged XML (from callbacks.xml and lua.xml)', action='store_true')
 parser.add_argument("--gen-reference-html", help='generate HTML documentation (from reference.xml or callbacks.xml)', action='store_true')
+parser.add_argument("--gen-reference-md", help='generate Markdown documentation (from reference.xml or callbacks.xml)', action='store_true')
 parser.add_argument("--gen-lua-typechecker", help='generate Lua code for type-checking', action='store_true')
 parser.add_argument("--gen-api-index", help='generate api index mapping for CodeEditor plugin', action='store_true')
 parser.add_argument("--gen-ce", help='generate code-editor files', action='store_true')
@@ -62,6 +63,7 @@ if args.gen_all:
     args.gen_lua_xml = True
     args.gen_reference_xml = True
     args.gen_reference_html = True
+    args.gen_reference_md = True
     args.gen_lua_typechecker = True
     args.gen_api_index = True
     args.gen_ce = True
@@ -161,6 +163,9 @@ if args.gen_reference_html:
         else:
             print(f"warning: no {marker} marker in {output('reference.html')}")
 
+if args.gen_reference_md:
+    runtool('generate_docs_md', '--xml-file', args.xml_file, '--md-output-file', output('reference.md'))
+
 if args.gen_lua_typechecker:
     if not lua_files:
         print('no lua file defined. skipping gen_lua_typechecker')
@@ -182,4 +187,3 @@ if args.gen_stubs:
     ]
     for fn in ('stubs.cpp', 'stubs.h', 'plugin.h', 'stubsPlusPlus.cpp'):
         runtool(*tool, '-i', rel('cpp/' + fn), '-o', output(fn))
-
