@@ -307,13 +307,11 @@
                 <xsl:variable name="cmd" select="@name"/>
                 <xsl:if test="not($cmd = $sname)">
                     <xsl:for-each select="categories/category">
-                        <xsl:if test="not(@indirect = 'true')">
-                            <xsl:if test="$cat=@name">
-                                <xsl:text> </xsl:text>
-                                <xsl:call-template name="renderCmdRef">
-                                    <xsl:with-param name="name" select="$cmd"/>
-                                </xsl:call-template>
-                            </xsl:if>
+                        <xsl:if test="$cat=@name">
+                            <xsl:text> </xsl:text>
+                            <xsl:call-template name="renderCmdRef">
+                                <xsl:with-param name="name" select="$cmd"/>
+                            </xsl:call-template>
                         </xsl:if>
                     </xsl:for-each>
                 </xsl:if>

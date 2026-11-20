@@ -89,7 +89,6 @@
             <xsd:element name="category" minOccurs="0" maxOccurs="unbounded">
                 <xsd:complexType>
                     <xsd:attribute name="name" type="xsd:string" use="required" />
-                    <xsd:attribute name="indirect" type="xsd:boolean" />
                 </xsd:complexType>
             </xsd:element>
         </xsd:sequence>
