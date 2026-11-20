@@ -92,22 +92,27 @@ def param_block(params, show_default, empty_msg='No params'):
     return '\n'.join(lines)
 
 
-def render_see_also(obj, all_commands):
+def see_also_lines(obj, all_commands):
     links = []
+    add_link = lambda sa: links.append(f'<a href="#{sa}">{sa}</a>')
+
     for sa in obj.see_also:
         if isinstance(sa, tuple):
-            links.append('-'.join(sa))
+            add_link(sa[1])
         elif isinstance(sa, str):
-            links.append(sa)
+            add_link(sa)
 
     for cat in obj.categories:
         for other in all_commands:
             if other.name == obj.name:
                 continue
             if set(other.categories) & set(obj.categories):
-                links.append(other.name)
+                add_link(other.name)
 
-    return ', '.join(links) if links else '-'
+    if links:
+        return ['#### See also:', ', '.join(links), '']
+    else:
+        return []
 
 
 # ---------------------------------------------------------------------------
@@ -162,7 +167,7 @@ if commands:
     out.append('')
     for c in commands:
         n = c.name
-        out.append(f'### {plugin.name}.{n}')
+        out.append(f'### <a id="{n}"></a> {plugin.name}.{n}')
         out.append('')
 
         d = c.description
@@ -183,9 +188,7 @@ if commands:
             '',
         ]
 
-        sa = render_see_also(c, commands)
-        if sa != '-':
-            out += [f'#### See also:', sa, '']
+        out += see_also_lines(c, commands)
 
 # Enums / constants
 if enums:
@@ -199,7 +202,7 @@ if enums:
     ]
     for e in enums:
         n = e.name
-        out.append(f'### {plugin.name}.{n}')
+        out.append(f'### <a id="{n}"></a> {plugin.name}.{n}')
         out.append('')
         items = getattr(e, 'items', None) or getattr(e, 'constants', None) or []
         if items:
@@ -211,9 +214,7 @@ if enums:
             out.append('-')
         out.append('')
 
-        sa = render_see_also(e, commands)
-        if sa != '-':
-            out += [f'#### See also:', sa, '']
+        out += see_also_lines(e, commands)
 
 # Structs
 if structs:
@@ -227,7 +228,7 @@ if structs:
     ]
     for s in structs:
         n = s.name
-        out.append(f'### {plugin.name}.{n}')
+        out.append(f'### <a id="{n}"></a> {plugin.name}.{n}')
         out.append('')
         d = s.description
         if d:
@@ -236,9 +237,7 @@ if structs:
                   or getattr(s, 'fields', None)
                   or [])
         out += ['#### Fields:', '', param_block(fields, True, 'No fields'), '']
-        sa = render_see_also(s, commands)
-        if sa != '-':
-            out += [f'#### See also:', sa, '']
+        out += see_also_lines(s, commands)
 
 # Script functions
 if script_functions:
@@ -251,7 +250,7 @@ if script_functions:
     ]
     for f in script_functions:
         n = f.name
-        out.append(f'### {plugin.name}.{n}')
+        out.append(f'### <a id="{n}"></a> {plugin.name}.{n}')
         out.append('')
 
         d = f.description
@@ -269,9 +268,7 @@ if script_functions:
             '',
         ]
 
-        sa = render_see_also(f, commands)
-        if sa != '-':
-            out += [f'#### See also:', sa, '']
+        out += see_also_lines(f, commands)
 
 markdown = '\n'.join(out).rstrip() + '\n'
 
