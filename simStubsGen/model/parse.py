@@ -2,13 +2,14 @@ import os
 import sys
 import xml.etree.ElementTree as ET
 import re
+from pathlib import Path
 
 import model
 
 def parse(xml_file):
     try:
         import xmlschema
-        schema = xmlschema.XMLSchema11(os.path.dirname(os.path.realpath(__file__)) + '/xsd/callbacks.xsd')
+        schema = xmlschema.XMLSchema11(Path(__file__).resolve().parent.parent / "xsd" / "callbacks.xsd")
         schema.validate(xml_file)
     except ModuleNotFoundError:
         print(f'warning: missing python package "xmlschema"; input file {os.path.basename(xml_file)} will not be validated.', file=sys.stderr)
