@@ -94,7 +94,7 @@ def param_block(params, show_default, empty_msg='No params'):
 
 def see_also_lines(obj, all_commands):
     links = []
-    add_link = lambda sa: links.append(f'<a href="#{sa}">{sa}</a>')
+    add_link = lambda sa: links.append(f'[{sa}](#{sa})')
 
     for sa in obj.see_also:
         if isinstance(sa, tuple):
@@ -110,7 +110,7 @@ def see_also_lines(obj, all_commands):
                 add_link(other.name)
 
     if links:
-        return ['#### See also:', ', '.join(links), '']
+        return ['#### See also:', '', ', '.join(links), '']
     else:
         return []
 
@@ -143,8 +143,8 @@ script_functions = _sorted([
 # Build markdown
 # ---------------------------------------------------------------------------
 
-def _anchor(aid, label):
-    return f'### <a name="{aid}" id="{aid}"></a>{label}'
+def anchor(aid):
+    return f'<a name="{aid}" id="{aid}"></a>'
 
 
 out = [f'# {plugin.name} Plugin API reference', '']
@@ -167,7 +167,7 @@ if commands:
     out.append('')
     for c in commands:
         n = c.name
-        out.append(f'### <a id="{n}"></a> {plugin.name}.{n}')
+        out.append(f'### {anchor(n)} {plugin.name}.{n}')
         out.append('')
 
         d = c.description
@@ -202,7 +202,7 @@ if enums:
     ]
     for e in enums:
         n = e.name
-        out.append(f'### <a id="{n}"></a> {plugin.name}.{n}')
+        out.append(f'### {anchor(n)} {plugin.name}.{n}')
         out.append('')
         items = getattr(e, 'items', None) or getattr(e, 'constants', None) or []
         if items:
@@ -228,7 +228,7 @@ if structs:
     ]
     for s in structs:
         n = s.name
-        out.append(f'### <a id="{n}"></a> {plugin.name}.{n}')
+        out.append(f'### {anchor(n)} {plugin.name}.{n}')
         out.append('')
         d = s.description
         if d:
@@ -250,7 +250,7 @@ if script_functions:
     ]
     for f in script_functions:
         n = f.name
-        out.append(f'### <a id="{n}"></a> {plugin.name}.{n}')
+        out.append(f'### {anchor(n)} {plugin.name}.{n}')
         out.append('')
 
         d = f.description
