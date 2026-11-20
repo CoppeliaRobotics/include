@@ -356,6 +356,7 @@ function(COPPELIASIM_GENERATE_STUBS GENERATED_OUTPUT_DIR)
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_api_index.py
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_ce.py
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_cmake_metadata.py
+        ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_docs_md.py
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_lua_typechecker.py
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/generate_lua_xml.py
         ${COPPELIASIM_INCLUDE_DIR}/simStubsGen/merge_xml.py

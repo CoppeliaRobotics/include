@@ -1,4 +1,5 @@
 from .param import Param
+from .parse import *
 
 class ScriptFunction(object):
     def __init__(self, plugin, node):
@@ -14,7 +15,7 @@ class ScriptFunction(object):
         self.c_in_name = node.attrib.get('c-in-name', self.c_name + '_in')
         self.c_out_name = node.attrib.get('c-out-name', self.c_name + '_out')
 
-        self.description = node.find('description')
+        self.description = read_description(node)
 
         self.clear_stack_after_reading_input = True
 
@@ -41,6 +42,9 @@ class ScriptFunction(object):
             param = Param.factory(paramNode)
             if param.write_out:
                 self.returns.append(param)
+
+        self.see_also = read_see_also(node)
+        self.categories = read_categories(node)
 
     def c_arg_list(self, defaults=False, pre_args=[], post_args=[]):
         if isinstance(pre_args, str): pre_args = [pre_args]

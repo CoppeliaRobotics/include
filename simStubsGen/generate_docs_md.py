@@ -12,12 +12,6 @@ if args is False:
 
 plugin = parse(args.xml_file)
 
-PLUGIN = plugin.name
-
-# ---------------------------------------------------------------------------
-# Generic helpers (works on lxml elements AND model objects AND raw strings)
-# ---------------------------------------------------------------------------
-
 def _is_element(v):
     return v is not None and hasattr(v, 'tag') and hasattr(v, 'iter')
 
@@ -30,133 +24,33 @@ def _attr(obj, name, default=None):
     return getattr(obj, name, default)
 
 
-def _name(obj):
-    if obj is None:
-        return None
-    if isinstance(obj, str):
-        return obj
-    return _attr(obj, 'name')
-
-
-# ---------------------------------------------------------------------------
-# Description rendering: XML-in -> markdown (mirrors the XSLT templates)
-# ---------------------------------------------------------------------------
-
-def _xml_to_md(node):
-    parts = []
-    if node.text:
-        parts.append(node.text)
-    for child in node:
-        tag = child.tag if isinstance(child.tag, str) else ''
-        inner = _xml_to_md(child)
-        if tag == 'command-ref':
-            n = child.get('name', '')
-            parts.append(f'[{PLUGIN}.{n}](#{n})')
-        elif tag == 'enum-ref':
-            n = child.get('name', '')
-            parts.append(f'[{PLUGIN}.{n}](#enum:{n})')
-        elif tag == 'struct-ref':
-            n = child.get('name', '')
-            parts.append(f'[{n}](#struct:{n})')
-        elif tag == 'script-function-ref':
-            n = child.get('name', '')
-            parts.append(f'[{n}](#scriptfun:{n})')
-        elif tag == 'sub':
-            parts.append(f'~{inner}~')
-        elif tag == 'sup':
-            parts.append(f'^{inner}^')
-        elif tag == 'em':
-            parts.append(f'*{inner}*')
-        elif tag == 'strong':
-            parts.append(f'**{inner}**')
-        elif tag == 'br':
-            parts.append('  \n')
-        elif tag == 'a':
-            parts.append(f'[{inner}]({child.get("href", "")})')
-        elif tag == 'code':
-            lang = child.get('language') or 'lua'
-            if child.get('display', '') == 'inline':
-                parts.append(f'`{inner}`')
-            else:
-                parts.append(f'\n```{lang}\n{inner}\n```\n')
-        elif tag == 'ul':
-            parts.append('\n')
-            for li in child.findall('li'):
-                parts.append(f'- {_xml_to_md(li).strip()}\n')
-            parts.append('\n')
-        elif tag == 'ol':
-            parts.append('\n')
-            for i, li in enumerate(child.findall('li'), 1):
-                parts.append(f'{i}. {_xml_to_md(li).strip()}\n')
-            parts.append('\n')
-        elif tag == 'li':
-            parts.append(inner)
-        else:
-            parts.append(inner)
-        if child.tail:
-            parts.append(child.tail)
-    return ''.join(parts)
-
-
-def _html_to_md(text):
-    text = re.sub(r'<sub>(.*?)</sub>', r'~\1~', text)
-    text = re.sub(r'<sup>(.*?)</sup>', r'^\1^', text)
-    text = re.sub(r'<em>(.*?)</em>', r'*\1*', text)
-    text = re.sub(r'<strong>(.*?)</strong>', r'**\1**', text)
-    text = re.sub(r'<br\s*/?>', '  \n', text)
-    text = re.sub(r'<a\s+href="([^"]*)"[^>]*>(.*?)</a>', r'[\2](\1)', text)
-    text = re.sub(r'<code[^>]*>(.*?)</code>', r'`\1`', text)
-    text = re.sub(r'<li>(.*?)</li>', r'- \1', text)
-    text = re.sub(r'</?(?:ul|ol)>', '\n', text)
-    text = re.sub(r'<[^>]+>', '', text)
-    return text
-
-
-def to_md(value):
-    if value is None:
-        return ''
-    if _is_element(value):
-        return _xml_to_md(value).strip()
-    return _html_to_md(str(value)).strip()
-
-
 # ---------------------------------------------------------------------------
 # Type names + synopsis rendering (mirrors renderLua*/renderPython*)
 # ---------------------------------------------------------------------------
 
 def lua_type(p):
-    t = _attr(p, 'type') or ''
-    item = _attr(p, 'item_type')
-    if t == 'table' and item:
-        it = 'float' if item == 'double' else item
-        return f'{it}[{_attr(p, "size", "") or ""}]'
-    if t == 'double':
+    if p.dtype == 'table':
+        it = p.itype
+        if it == 'double': it = 'float'
+        if p.size:
+            it += f'[{p.size}]'
+        return it
+    if p.dtype == 'double':
         return 'float'
-    return t
+    return p.dtype
 
 
 def py_type(p):
-    t = _attr(p, 'type') or ''
-    if t == 'table':
+    if p.dtype == 'table':
         return 'list'
-    if t == 'double':
+    if p.dtype == 'double':
         return 'float'
-    return t
-
-
-def _params_of(obj):
-    return getattr(obj, 'params', None) or []
-
-
-def _returns_of(obj):
-    return (getattr(obj, 'return_values', None)
-            or getattr(obj, 'returns', None)
-            or [])
+    return p.dtype
 
 
 def synopsis_lines(obj, name, include_python=True):
     """Return markdown lines for the combined Lua/Python synopsis section."""
-    lines = ['**Synopsis**:', '', '```lua',
+    lines = ['#### Synopsis:', '', '```lua',
              _synopsis(obj, lua_type, name), '```', '']
     if include_python:
         lines += ['```python',
@@ -165,10 +59,10 @@ def synopsis_lines(obj, name, include_python=True):
 
 
 def _synopsis(obj, type_fn, name):
-    ret = ', '.join(f'{type_fn(p)} {_name(p)}' for p in _returns_of(obj))
+    ret = ', '.join(f'{type_fn(p)} {p.name}' for p in obj.returns)
     params = ', '.join(
-        f'{type_fn(p)} {_name(p)}' + (f'={_attr(p, "default")}' if _attr(p, 'default') else '')
-        for p in _params_of(obj)
+        f'{type_fn(p)} {p.name}' + (f'={_attr(p, "default")}' if _attr(p, 'default') else '')
+        for p in obj.params
     )
     s = f'{name}({params})'
     return f'{ret} = {s}' if ret else s
@@ -179,80 +73,39 @@ def param_block(params, show_default, empty_msg='No params'):
         return empty_msg
     lines = []
     for p in params:
-        t = _attr(p, 'type') or ''
+        t = p.dtype
         display = 'float' if t == 'double' else t
         if t == 'table':
-            item = _attr(p, 'item_type')
+            item = p.itype
             if item:
                 display += f' of {"float" if item == "double" else item}'
-            size = _attr(p, 'size')
+            size = p.size
             if size and size not in ('', '*'):
                 display += f', size {size}'
-        if show_default and _attr(p, 'default'):
-            display += f', default: {_attr(p, "default")}'
-        line = f'- **{_name(p)}** ({display})'
-        d = to_md(getattr(p, 'description', None))
+        if show_default and p.default:
+            display += f', default: {p.default}'
+        line = f'- **{p.name}** ({display})'
+        d = p.description
         if d:
             line += f': {d}'
         lines.append(line)
     return '\n'.join(lines)
 
 
-# ---------------------------------------------------------------------------
-# See also (manual + category-based auto refs)
-# ---------------------------------------------------------------------------
-
-def _categories(cmd):
-    cats = getattr(cmd, 'categories', None)
-    if not cats:
-        return set()
-    if isinstance(cats, str):
-        return {cats}
-    out = set()
-    for c in cats:
-        if isinstance(c, str):
-            out.add(c)
-            continue
-        n = _attr(c, 'name')
-        indirect = _attr(c, 'indirect')
-        if n and not (indirect is True or indirect == 'true'):
-            out.add(n)
-    return out
-
-
-def _ref_link(tag, name):
-    if tag == 'command-ref':
-        return f'[{PLUGIN}.{name}](#{name})'
-    if tag == 'enum-ref':
-        return f'[{PLUGIN}.{name}](#enum:{name})'
-    if tag == 'struct-ref':
-        return f'[{name}](#struct:{name})'
-    if tag == 'script-function-ref':
-        return f'[{name}](#scriptfun:{name})'
-    return name
-
-
 def render_see_also(obj, all_commands):
     links = []
-    sa = getattr(obj, 'see_also', None)
-    if sa is not None:
-        if _is_element(sa):
-            for child in sa:
-                tag = child.tag if isinstance(child.tag, str) else ''
-                if tag in ('command-ref', 'enum-ref', 'struct-ref', 'script-function-ref'):
-                    links.append(_ref_link(tag, child.get('name', '')))
+    for sa in obj.see_also:
+        if isinstance(sa, tuple):
+            links.append('-'.join(sa))
         elif isinstance(sa, str):
-            for m in re.finditer(r'<a\s+href="([^"]*)"[^>]*>(.*?)</a>', sa):
-                links.append(f'[{m.group(2)}]({m.group(1)})')
+            links.append(sa)
 
-    cats = _categories(obj)
-    if cats:
+    for cat in obj.categories:
         for other in all_commands:
-            if _name(other) == _name(obj):
+            if other.name == obj.name:
                 continue
-            if _categories(other) & cats:
-                n = _name(other)
-                links.append(f'[{PLUGIN}.{n}](#{n})')
+            if set(other.categories) & set(obj.categories):
+                links.append(other.name)
 
     return ', '.join(links) if links else '-'
 
@@ -268,7 +121,7 @@ def _visible(obj):
 
 
 def _sorted(lst):
-    return sorted(lst, key=lambda o: (_name(o) or ''))
+    return sorted(lst, key=lambda o: (o.name or ''))
 
 
 commands = _sorted([c for c in (getattr(plugin, 'commands', None) or []) if _visible(c)])
@@ -289,19 +142,18 @@ def _anchor(aid, label):
     return f'### <a name="{aid}" id="{aid}"></a>{label}'
 
 
-out = [f'# {PLUGIN} Plugin API reference', '']
+out = [f'# {plugin.name} Plugin API reference', '']
 
-desc = to_md(getattr(plugin, 'description', None))
-if desc:
-    out += [desc, '']
+if plugin.info:
+    out += [plugin.info, '']
 
 # Alphabetical list
 if commands:
     out.append('## Alphabetical list')
     out.append('')
     for c in commands:
-        n = _name(c)
-        out.append(f'- [{PLUGIN}.{n}](#{n})')
+        n = c.name
+        out.append(f'- [{plugin.name}.{n}](#{n})')
     out.append('')
 
 # Commands
@@ -309,31 +161,31 @@ if commands:
     out.append('## Commands')
     out.append('')
     for c in commands:
-        n = _name(c)
-        out.append(_anchor(n, f'{PLUGIN}.{n}'))
+        n = c.name
+        out.append(f'### {plugin.name}.{n}')
         out.append('')
 
-        d = to_md(getattr(c, 'description', None))
+        d = c.description
         if d:
-            out += [f'**Description**: {d}', '']
+            out += [d, '']
 
         lua_only = _attr(c, 'lua_only')
         is_lua_only = lua_only is True or lua_only == 'true'
 
-        out += synopsis_lines(c, f'{PLUGIN}.{n}', include_python=not is_lua_only)
+        out += synopsis_lines(c, f'{plugin.name}.{n}', include_python=not is_lua_only)
 
         out += [
-            '**Lua parameters**:', '',
-            param_block(_params_of(c), True),
+            '#### Parameters:', '',
+            param_block(c.params, True),
             '',
-            '**Lua return values**:', '',
-            param_block(_returns_of(c), False, 'No return values'),
+            '#### Return values:', '',
+            param_block(c.returns, False, 'No return values'),
             '',
         ]
 
         sa = render_see_also(c, commands)
         if sa != '-':
-            out += [f'**See also**: {sa}', '']
+            out += [f'#### See also:', sa, '']
 
 # Enums / constants
 if enums:
@@ -341,23 +193,27 @@ if enums:
         '## Constants',
         '',
         f'Constants used in the various functions. Refer to each constant using '
-        f'*enumName.constantName*, i.e. **{PLUGIN}.curve_type.xy** for **xy** '
-        f'constant in **{PLUGIN}.curve_type** enum.',
+        f'*enumName.constantName*, i.e. **{plugin.name}.curve_type.xy** for **xy** '
+        f'constant in **{plugin.name}.curve_type** enum.',
         '',
     ]
     for e in enums:
-        n = _name(e)
-        out.append(_anchor(f'enum:{n}', f'{PLUGIN}.{n}'))
+        n = e.name
+        out.append(f'### {plugin.name}.{n}')
         out.append('')
         items = getattr(e, 'items', None) or getattr(e, 'constants', None) or []
         if items:
             for item in items:
-                iname = _name(item)
-                idesc = to_md(getattr(item, 'description', None))
+                iname = item.name
+                idesc = None # missing in simStubsGen/model/enum.py
                 out.append(f'- **{iname}**' + (f': {idesc}' if idesc else ''))
         else:
             out.append('-')
         out.append('')
+
+        sa = render_see_also(e, commands)
+        if sa != '-':
+            out += [f'#### See also:', sa, '']
 
 # Structs
 if structs:
@@ -370,52 +226,52 @@ if structs:
         '',
     ]
     for s in structs:
-        n = _name(s)
-        out.append(_anchor(f'struct:{n}', n))
+        n = s.name
+        out.append(f'### {plugin.name}.{n}')
         out.append('')
-        d = to_md(getattr(s, 'description', None))
+        d = s.description
         if d:
-            out += [f'**Description**: {d}', '']
+            out += [d, '']
         fields = (getattr(s, 'params', None)
                   or getattr(s, 'fields', None)
                   or [])
-        out += ['**Fields**:', '', param_block(fields, True, 'No fields'), '']
+        out += ['#### Fields:', '', param_block(fields, True, 'No fields'), '']
         sa = render_see_also(s, commands)
         if sa != '-':
-            out += [f'**See also**: {sa}', '']
+            out += [f'#### See also:', sa, '']
 
 # Script functions
 if script_functions:
     out += [
         '## Script functions',
         '',
-        'Script functions are used to call some lua code from the plugin side '
+        'Script functions define the signature of lua functions called by plugins '
         '(typically used for event handlers).',
         '',
     ]
     for f in script_functions:
-        n = _name(f)
-        out.append(_anchor(f'scriptfun:{n}', n))
+        n = f.name
+        out.append(f'### {plugin.name}.{n}')
         out.append('')
 
-        d = to_md(getattr(f, 'description', None))
+        d = f.description
         if d:
-            out += [f'**Description**: {d}', '']
+            out += [d, '']
 
         out += synopsis_lines(f, n, include_python=True)
 
         out += [
-            '**Lua parameters**:', '',
-            param_block(_params_of(f), True),
+            '#### Parameters:', '',
+            param_block(f.params, True),
             '',
-            '**Lua return values**:', '',
-            param_block(_returns_of(f), False, 'No return values'),
+            '#### Return values:', '',
+            param_block(f.returns, False, 'No return values'),
             '',
         ]
 
         sa = render_see_also(f, commands)
         if sa != '-':
-            out += [f'**See also**: {sa}', '']
+            out += [f'#### See also:', sa, '']
 
 markdown = '\n'.join(out).rstrip() + '\n'
 

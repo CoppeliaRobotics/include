@@ -1,4 +1,4 @@
-import re
+from .parse import *
 
 class Param(object):
     mapping = {}
@@ -12,13 +12,7 @@ class Param(object):
         if self.name.startswith('_'):
             raise ValueError('attribute "name" of <param> cannot start with underscore')
 
-        try:
-            descnode = node.find('description')
-            self.description = '' if descnode is None else '' if descnode.text is None else descnode.text
-        except AttributeError:
-            self.description = ''
-        self.description = self.description.split('\n')[0]
-        self.description = re.sub(' +', ' ', self.description)
+        self.description = read_description(node)
 
         if 'type' not in node.attrib:
             raise ValueError('attribute "type" is missing in <param>')
@@ -186,7 +180,11 @@ class ParamTable(Param):
         return f'TypeTag_table<{self.item_dummy().typetag()}>'
 
     def item_dummy(self):
-        n = type('dummyNode', (object,), dict(tag='param', attrib={'name': 'dummy', 'type': self.itype}))
+        n = type('dummyNode', (object,), dict(
+            tag = 'param',
+            attrib = {'name': 'dummy', 'type': self.itype},
+            find = lambda _: None, # called by parse.read_description
+        ))
         return Param.factory(n)
 
     def htype(self):

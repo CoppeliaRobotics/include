@@ -1,5 +1,5 @@
 from .param import Param
-import re
+from .parse import *
 
 class Command(object):
     def __init__(self, plugin, node):
@@ -15,10 +15,7 @@ class Command(object):
         self.c_in_name = node.attrib.get('c-in-name', self.c_name + '_in')
         self.c_out_name = node.attrib.get('c-out-name', self.c_name + '_out')
 
-        descnode = node.find('description')
-        self.description = '' if descnode is None else '' if descnode.text is None else descnode.text
-        self.description = self.description.split('\n')[0]
-        self.description = re.sub(' +', ' ', self.description)
+        self.description = read_description(node)
 
         self.clear_stack_after_reading_input = True
         self.clear_stack_before_writing_output = True
@@ -70,6 +67,9 @@ class Command(object):
         if self.description.strip():
             self.documentation = '\n\n' + self.description.strip()
             self.documentation = self.documentation.rstrip('\n')
+
+        self.see_also = read_see_also(node)
+        self.categories = read_categories(node)
 
     def c_arg_list(self, defaults=False, pre_args=[], post_args=[]):
         if isinstance(pre_args, str): pre_args = [pre_args]
