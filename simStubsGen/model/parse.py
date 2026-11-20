@@ -23,6 +23,7 @@ def escape(s, method='C'):
         return s
 
 def read_description(node):
+    if not isinstance(node, ET.Element): return ''
     desc_node = node.find('description')
     if desc_node is None: return ''
     parts = [desc_node.text or '']
