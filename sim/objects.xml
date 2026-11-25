@@ -3,9 +3,9 @@
 note: the generated see-also section contains the <see-also> items, but also the <categories> items. Make sure not to have duplicates!
 -->
 <object-classes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="objects.xsd">
-    <object-class name="Motion" superclass="" />
-    <object-class name="RuckigPosition" superclass="Motion">
-        <method name="new" lang="python,lua" call-cmd="Motion.RuckigPosition" module="Motion">
+    <object-class name="simMotion" superclass="" />
+    <object-class name="RuckigPosition" superclass="simMotion">
+        <method name="new" lang="python,lua" call-cmd="simMotion.RuckigPosition" module="simMotion">
             <short-description>Initializes a Ruckig position trajectory generator</short-description>
             <description>
                 Initializes a <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator</a>.
@@ -130,8 +130,8 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
     </object-class>
-    <object-class name="RuckigVelocity" superclass="Motion">
-        <method name="new" lang="python,lua" call-cmd="Motion.RuckigVelocity" module="Motion">
+    <object-class name="RuckigVelocity" superclass="simMotion">
+        <method name="new" lang="python,lua" call-cmd="simMotion.RuckigVelocity" module="simMotion">
             <short-description>Initializes a Ruckig velocity trajectory generator</short-description>
             <description>
                 Initializes a <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator</a>.
@@ -252,8 +252,8 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
     </object-class>
-    <object-class name="MoveToConfig" superclass="Motion">
-        <method name="new" lang="python,lua" call-cmd="Motion.MoveToConfig" module="Motion">
+    <object-class name="MoveToConfig" superclass="simMotion">
+        <method name="new" lang="python,lua" call-cmd="simMotion.MoveToConfig" module="simMotion">
             <short-description>Initiates an n-DoF motion using Ruckig</short-description>
             <description>
                 Initiates an n-DoF motion using the
@@ -400,8 +400,8 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
     </object-class>
-    <object-class name="MoveToPose" superclass="Motion">
-        <method name="new" lang="python,lua" call-cmd="Motion.MoveToPose" module="Motion">
+    <object-class name="MoveToPose" superclass="simMotion">
+        <method name="new" lang="python,lua" call-cmd="simMotion.MoveToPose" module="simMotion">
             <short-description>Initiates pose-based motion using Ruckig</short-description>
             <description>
                 Initiates motion using the
@@ -564,8 +564,8 @@ note: the generated see-also section contains the <see-also> items, but also the
             </see-also>
         </method>
     </object-class>
-    <object-class name="TimeOptimalTrajectory" superclass="Motion">
-        <method name="new" lang="python,lua" call-cmd="Motion.TimeOptimalTrajectory" module="Motion">
+    <object-class name="TimeOptimalTrajectory" superclass="simMotion">
+        <method name="new" lang="python,lua" call-cmd="simMotion.TimeOptimalTrajectory" module="simMotion">
             <short-description>Initializes a time optimal trajectory generator</short-description>
             <description>
                 Initializes a time optimal trajectory generator, based on the TOPPRA library
