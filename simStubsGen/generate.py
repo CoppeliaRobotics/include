@@ -164,7 +164,7 @@ if args.gen_reference_html:
             print(f"warning: no {marker} marker in {output('reference.html')}")
 
 if args.gen_reference_md:
-    runtool('generate_docs_md', '--xml-file', args.xml_file, '--md-output-file', output('reference.md'))
+    runtool('generate_docs_md', '--xml-file', input_xml, '--md-output-file', output('reference.md'))
 
 if args.gen_lua_typechecker:
     if not lua_files:
