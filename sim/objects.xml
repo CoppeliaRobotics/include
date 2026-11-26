@@ -3,6 +3,9 @@
 note: the generated see-also section contains the <see-also> items, but also the <categories> items. Make sure not to have duplicates!
 -->
 <object-classes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="objects.xsd">
+    <!-- simMotion: Lua package (simMotion/init.lua, one file per class).
+         Access: simMotion.X (module) | sim.X (lazy, sim-2) | import 'simMotion.*'
+         (five classes, without the abstract Motion) | require 'simMotion.X' | require 'Motion' (deprecated). -->
     <object-class name="simMotion" superclass="" />
     <object-class name="RuckigPosition" superclass="simMotion">
         <method name="new" lang="python,lua" call-cmd="simMotion.RuckigPosition" module="simMotion">
@@ -11,6 +14,16 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Initializes a <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator</a>.
                 The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities
                 for motion control systems. This function prepares a position-based trajectory generation object
+                <ul>
+                    <li>
+                        This class is also available as <b>sim.RuckigPosition</b> after
+                        <b>import 'sim-2'</b> (lua)/<b>import sim</b> (python), and, together with the other motion classes, can be
+                        imported into the global scope with <b>import 'simMotion.*'</b> (lua).
+                    </li>
+                    <li>
+                        Only this class can be loaded with <b>require 'simMotion.RuckigPosition'</b> (lua).
+                    </li>
+                </ul>
             </description>
             <params>
                 <param name="params" type="map">
@@ -137,6 +150,16 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Initializes a <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator</a>.
                 The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities
                 for motion control systems. This function prepares a velocity-based trajectory generation object
+                <ul>
+                    <li>
+                        This class is also available as <b>sim.RuckigVelocity</b> after
+                        <b>import 'sim-2'</b> (lua)/<b>import sim</b> (python), and, together with the other motion classes, can be
+                        imported into the global scope with <b>import 'simMotion.*'</b> (lua).
+                    </li>
+                    <li>
+                        Only this class can be loaded with <b>require 'simMotion.RuckigVelocity'</b> (lua).
+                    </li>
+                </ul>
             </description>
             <params>
                 <param name="params" type="map">
@@ -258,6 +281,16 @@ note: the generated see-also section contains the <see-also> items, but also the
             <description>
                 Initiates an n-DoF motion using the
                 <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator </a>
+                <ul>
+                    <li>
+                        This class is also available as <b>sim.MoveToConfig</b> after
+                        <b>import 'sim-2'</b> (lua)/<b>import sim</b> (python), and, together with the other motion classes, can be
+                        imported into the global scope with <b>import 'simMotion.*'</b> (lua).
+                    </li>
+                    <li>
+                        Only this class can be loaded with <b>require 'simMotion.MoveToConfig'</b> (lua).
+                    </li>
+                </ul>
             </description>
             <params>
                 <param name="params" type="map">
@@ -409,6 +442,16 @@ note: the generated see-also section contains the <see-also> items, but also the
                  by performing interpolations between two poses. The function can operate by handling 4 motion variables (x, y, z and
                 angle between the two poses), or a single movement variable (t, which requires a metric to be specified for distance
                 calculation between the two poses)
+                <ul>
+                    <li>
+                        This class is also available as <b>sim.MoveToPose</b> after
+                        <b>import 'sim-2'</b> (lua)/<b>import sim</b> (python), and, together with the other motion classes, can be
+                        imported into the global scope with <b>import 'simMotion.*'</b> (lua).
+                    </li>
+                    <li>
+                        Only this class can be loaded with <b>require 'simMotion.MoveToPose'</b> (lua).
+                    </li>
+                </ul>
             </description>
             <params>
                 <param name="params" type="map">
@@ -569,6 +612,16 @@ note: the generated see-also section contains the <see-also> items, but also the
             <short-description>Initializes a time optimal trajectory generator</short-description>
             <description>
                 Initializes a time optimal trajectory generator, based on the TOPPRA library
+                <ul>
+                    <li>
+                        This class is also available as <b>sim.TimeOptimalTrajectory</b> after
+                        <b>import 'sim-2'</b> (lua)/<b>import sim (python)</b>, and, together with the other motion classes, can be
+                        imported into the global scope with <b>import 'simMotion.*'</b> (lua).
+                    </li>
+                    <li>
+                        Only this class can be loaded with <b>require 'simMotion.TimeOptimalTrajectory'</b> (lua).
+                    </li>
+                </ul>
             </description>
             <params>
             </params>
@@ -782,6 +835,11 @@ note: the generated see-also section contains the <see-also> items, but also the
             <short-description>Creates a path</short-description>
             <description>
                 Creates a path
+                <ul>
+                    <li>
+                        This class is also available as <b>sim.Path</b> after <b>import 'sim-2'</b> (lua)/<b>import sim</b> (python).
+                    </li>
+                </ul>
             </description>
             <params>
                 <param name="ctrlPoints" type="matrix">
