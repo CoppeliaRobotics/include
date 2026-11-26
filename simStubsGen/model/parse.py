@@ -61,3 +61,8 @@ def read_categories(node):
     for catnode in node.findall('categories/category'):
         categories.append(catnode.attrib['name'])
     return categories
+
+def read_flag(node, name):
+    if not isinstance(node, ET.Element):
+        return False
+    return node.attrib.get(name, '').strip().lower() in ('true', '1')

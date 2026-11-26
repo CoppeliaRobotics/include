@@ -23,4 +23,8 @@ class Struct(object):
         self.see_also = read_see_also(node)
         self.categories = read_categories(node)
 
+        # documentation flags (see reference.xsl and generate_docs_md.py):
+        self.skip_documentation = read_flag(node, 'skip-documentation')
+        self.deprecated = read_flag(node, 'deprecated')
+
         Param.register_type(self.name, lambda node: ParamStruct(node, self.name))

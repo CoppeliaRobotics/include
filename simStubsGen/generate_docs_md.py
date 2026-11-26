@@ -24,17 +24,29 @@ def _attr(obj, name, default=None):
     return getattr(obj, name, default)
 
 
+def _flag(obj, name):
+    """Read a boolean documentation flag from a model object or an XML element."""
+    for key in (name, name.replace('_', '-')):
+        v = _attr(obj, key)
+        if isinstance(v, bool):
+            return v
+        if isinstance(v, str):
+            return v.strip().lower() in ('true', '1')
+    return False
+
+
 # ---------------------------------------------------------------------------
 # Type names + synopsis rendering (mirrors renderLua*/renderPython*)
 # ---------------------------------------------------------------------------
 
 def lua_type(p):
-    if p.dtype == 'table':
+    # mirrors renderLuaParamType: a table with an item-type renders as
+    # 'item-type[size]' (even when the size is empty), otherwise as 'table'
+    if p.dtype == 'table' and getattr(p, 'itype', None):
         it = p.itype
-        if it == 'double': it = 'float'
-        if p.size:
-            it += f'[{p.size}]'
-        return it
+        if it == 'double':
+            it = 'float'
+        return f'{it}[{getattr(p, "size", "") or ""}]'
     if p.dtype == 'double':
         return 'float'
     return p.dtype
@@ -58,11 +70,25 @@ def synopsis_lines(obj, name, include_python=True):
     return lines
 
 
+def _params(obj):
+    """All declared params, as rendered by reference.xsl.
+
+    The model also exposes 'write' params only (``obj.params``), which excludes
+    values the C++ stubs do not convert (e.g. generic tables without item-type,
+    or params marked with skip="true"); documentation shows every declared one.
+    """
+    return getattr(obj, 'all_params', None) or getattr(obj, 'params', None) or []
+
+
+def _returns(obj):
+    return getattr(obj, 'all_returns', None) or getattr(obj, 'returns', None) or []
+
+
 def _synopsis(obj, type_fn, name):
-    ret = ', '.join(f'{type_fn(p)} {p.name}' for p in obj.returns)
+    ret = ', '.join(f'{type_fn(p)} {p.name}' for p in _returns(obj))
     params = ', '.join(
         f'{type_fn(p)} {p.name}' + (f'={_attr(p, "default")}' if _attr(p, 'default') else '')
-        for p in obj.params
+        for p in _params(obj)
     )
     s = f'{name}({params})'
     return f'{ret} = {s}' if ret else s
@@ -120,9 +146,8 @@ def see_also_lines(obj, all_commands):
 # ---------------------------------------------------------------------------
 
 def _visible(obj):
-    skip = _attr(obj, 'skip_documentation')
-    dep = _attr(obj, 'deprecated')
-    return not (skip is True or skip == 'true' or dep is True or dep == 'true')
+    # mirrors reference.xsl: not(@skip-documentation='true') and not(@deprecated='true')
+    return not (_flag(obj, 'skip_documentation') or _flag(obj, 'deprecated'))
 
 
 def _sorted(lst):
@@ -174,17 +199,16 @@ if commands:
         if d:
             out += [d, '']
 
-        lua_only = _attr(c, 'lua_only')
-        is_lua_only = lua_only is True or lua_only == 'true'
+        lua_only = _flag(c, 'lua_only')
 
-        out += synopsis_lines(c, f'{plugin.name}.{n}', include_python=not is_lua_only)
+        out += synopsis_lines(c, f'{plugin.name}.{n}', include_python=not lua_only)
 
         out += [
             '#### Parameters:', '',
-            param_block(c.params, True),
+            param_block(_params(c), True),
             '',
             '#### Return values:', '',
-            param_block(c.returns, False, 'No return values'),
+            param_block(_returns(c), False, 'No return values'),
             '',
         ]
 
@@ -208,7 +232,7 @@ if enums:
         if items:
             for item in items:
                 iname = item.name
-                idesc = None # missing in simStubsGen/model/enum.py
+                idesc = (_attr(item, 'description') or '').strip()
                 out.append(f'- **{iname}**' + (f': {idesc}' if idesc else ''))
         else:
             out.append('-')
@@ -261,10 +285,10 @@ if script_functions:
 
         out += [
             '#### Parameters:', '',
-            param_block(f.params, True),
+            param_block(_params(f), True),
             '',
             '#### Return values:', '',
-            param_block(f.returns, False, 'No return values'),
+            param_block(_returns(f), False, 'No return values'),
             '',
         ]
 

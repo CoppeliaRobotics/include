@@ -17,6 +17,10 @@ class ScriptFunction(object):
 
         self.description = read_description(node)
 
+        # documentation flags (see reference.xsl and generate_docs_md.py):
+        self.skip_documentation = read_flag(node, 'skip-documentation')
+        self.deprecated = read_flag(node, 'deprecated')
+
         self.clear_stack_after_reading_input = True
 
         self.params = []
@@ -24,9 +28,14 @@ class ScriptFunction(object):
         self.optional_params = []
         self.params_min = 0
         self.params_max = 0
+        # store all params/returns here too, as the docs show every declared
+        # param and return value (reference.xsl iterates over all nodes):
+        self.all_params = []
+        self.all_returns = []
         for paramNode in node.findall('params/param'):
             param = Param.factory(paramNode)
             self.params_max += 1
+            self.all_params.append(param)
             if param.skip:
                 self.clear_stack_after_reading_input = False
             elif param.write_in:
@@ -40,6 +49,7 @@ class ScriptFunction(object):
         self.returns = []
         for paramNode in node.findall('return/param'):
             param = Param.factory(paramNode)
+            self.all_returns.append(param)
             if param.write_out:
                 self.returns.append(param)
 

@@ -17,6 +17,11 @@ class Command(object):
 
         self.description = read_description(node)
 
+        # documentation flags (see reference.xsl and generate_docs_md.py):
+        self.skip_documentation = read_flag(node, 'skip-documentation')
+        self.deprecated = read_flag(node, 'deprecated')
+        self.lua_only = read_flag(node, 'lua-only')
+
         self.clear_stack_after_reading_input = True
         self.clear_stack_before_writing_output = True
 
@@ -50,9 +55,13 @@ class Command(object):
         self.params = self.mandatory_params + self.optional_params
 
         self.returns = []
+        # store all returns here too, as the docs show every declared return value
+        # (reference.xsl iterates over all <return>/<param> nodes):
+        self.all_returns = []
         for paramNode in node.findall('return/param'):
             param = Param.factory(paramNode)
             help_out_args.append(param)
+            self.all_returns.append(param)
             if param.skip:
                 self.clear_stack_before_writing_output = False
             elif param.write_out:
