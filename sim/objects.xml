@@ -4741,9 +4741,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Outputs an information message in the status bar
             </description>
             <params>
-                <param name="message" type="string" default="nil">
+                <param name="message" type="string">
                     <description>
-                        The message. None/nil clears the status bar
+                        The message
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -4753,6 +4753,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                             <li> undecorated (bool, defaults to false): an undecorated message is displayed</li>
                             <li> onlyTerminal (bool, defaults to false): the message is displayed only in the terminal</li>
                             <li> once (bool, defaults to false): subsequent calls with the same message are ignored</li>
+                            <li> clear (bool, defaults to false): clears the status bar beforehand</li>
                         </ul>
                     </description>
                 </param>
@@ -4776,9 +4777,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Outputs a warning message in the status bar
             </description>
             <params>
-                <param name="message" type="string" default="nil">
+                <param name="message" type="string">
                     <description>
-                        The message. None/nil clears the status bar
+                        The message
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -4788,6 +4789,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                             <li> undecorated (bool, defaults to false): an undecorated message is displayed</li>
                             <li> onlyTerminal (bool, defaults to false): the message is displayed only in the terminal</li>
                             <li> once (bool, defaults to false): subsequent calls with the same message are ignored</li>
+                            <li> clear (bool, defaults to false): clears the status bar beforehand</li>
                         </ul>
                     </description>
                 </param>
@@ -4811,9 +4813,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                 Outputs an error message in the status bar
             </description>
             <params>
-                <param name="message" type="string" default="nil">
+                <param name="message" type="string">
                     <description>
-                        The message. None/nil clears the status bar
+                        The message
                     </description>
                 </param>
                 <param name="options" type="map" default="{}">
@@ -4823,6 +4825,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                             <li> undecorated (bool, defaults to false): an undecorated message is displayed</li>
                             <li> onlyTerminal (bool, defaults to false): the message is displayed only in the terminal</li>
                             <li> once (bool, defaults to false): subsequent calls with the same message are ignored</li>
+                            <li> clear (bool, defaults to false): clears the status bar beforehand</li>
                         </ul>
                     </description>
                 </param>
