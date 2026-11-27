@@ -11,9 +11,9 @@ class Enum(object):
         self.items = [type('', (), {
                 'name': n.attrib['name'],
                 'value': n.attrib.get('value', self.base + i),
-                'description': read_description(n),
+                'description': read_description(n, plugin.name),
             }) for i, n in enumerate(node.findall('item'))]
-        self.description = read_description(node)
+        self.description = read_description(node, plugin.name)
         self.see_also = read_see_also(node)
         self.categories = read_categories(node)
 

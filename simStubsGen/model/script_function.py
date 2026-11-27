@@ -15,7 +15,7 @@ class ScriptFunction(object):
         self.c_in_name = node.attrib.get('c-in-name', self.c_name + '_in')
         self.c_out_name = node.attrib.get('c-out-name', self.c_name + '_out')
 
-        self.description = read_description(node)
+        self.description = read_description(node, plugin.name)
 
         # documentation flags (see reference.xsl and generate_docs_md.py):
         self.skip_documentation = read_flag(node, 'skip-documentation')
@@ -33,7 +33,7 @@ class ScriptFunction(object):
         self.all_params = []
         self.all_returns = []
         for paramNode in node.findall('params/param'):
-            param = Param.factory(paramNode)
+            param = Param.factory(plugin, paramNode)
             self.params_max += 1
             self.all_params.append(param)
             if param.skip:
@@ -48,7 +48,7 @@ class ScriptFunction(object):
 
         self.returns = []
         for paramNode in node.findall('return/param'):
-            param = Param.factory(paramNode)
+            param = Param.factory(plugin, paramNode)
             self.all_returns.append(param)
             if param.write_out:
                 self.returns.append(param)

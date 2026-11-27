@@ -1,6 +1,6 @@
 import argparse
 import re
-from parse import parse
+from parse import parse, render_xml_ref
 
 parser = argparse.ArgumentParser(description='Generate markdown API reference from XML.')
 parser.add_argument('--xml-file', type=str, default=None, help='the callbacks.xml file')
@@ -120,20 +120,19 @@ def param_block(params, show_default, empty_msg='No params'):
 
 def see_also_lines(obj, all_commands):
     links = []
-    add_link = lambda sa: links.append(f'[{sa}](#{sa})')
 
     for sa in obj.see_also:
         if isinstance(sa, tuple):
-            add_link(sa[1])
+            links.append(render_xml_ref(sa[0], sa[1], plugin.name))
         elif isinstance(sa, str):
-            add_link(sa)
+            links.append(f'[{sa}](#{sa})')
 
     for cat in obj.categories:
         for other in all_commands:
             if other.name == obj.name:
                 continue
             if set(other.categories) & set(obj.categories):
-                add_link(other.name)
+                links.append(render_xml_ref('command-ref', other.name, plugin.name))
 
     if links:
         return ['#### See also:', '', ', '.join(links), '']
@@ -226,7 +225,7 @@ if enums:
     ]
     for e in enums:
         n = e.name
-        out.append(f'### {anchor(n)} {plugin.name}.{n}')
+        out.append(f'### {anchor(f"enum:{n}")} {plugin.name}.{n}')
         out.append('')
         items = getattr(e, 'items', None) or getattr(e, 'constants', None) or []
         if items:
@@ -252,7 +251,7 @@ if structs:
     ]
     for s in structs:
         n = s.name
-        out.append(f'### {anchor(n)} {plugin.name}.{n}')
+        out.append(f'### {anchor(f"struct:{n}")} {n}')
         out.append('')
         d = s.description
         if d:
@@ -274,7 +273,7 @@ if script_functions:
     ]
     for f in script_functions:
         n = f.name
-        out.append(f'### {anchor(n)} {plugin.name}.{n}')
+        out.append(f'### {anchor(f"scriptfun:{n}")} {n}')
         out.append('')
 
         d = f.description

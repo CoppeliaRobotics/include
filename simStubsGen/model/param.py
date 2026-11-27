@@ -3,16 +3,17 @@ from .parse import *
 class Param(object):
     mapping = {}
 
-    def __init__(self, node):
+    def __init__(self, plugin, node):
         if node.tag != 'param':
             raise ValueError('expected <param>, got <%s>' % node.tag)
+        self.plugin = plugin
         self.name = node.attrib['name']
         if self.name == '':
             raise ValueError('attribute "name" of <param> cannot be empty')
         if self.name.startswith('_'):
             raise ValueError('attribute "name" of <param> cannot start with underscore')
 
-        self.description = read_description(node)
+        self.description = read_description(node, self.plugin.name)
 
         if 'type' not in node.attrib:
             raise ValueError('attribute "type" is missing in <param>')
@@ -53,13 +54,13 @@ class Param(object):
         Param.mapping[dtype] = clazz
 
     @staticmethod
-    def factory(node):
+    def factory(plugin, node):
         if 'type' not in node.attrib:
             raise ValueError('attribute "type" is missing in <param>')
         dtype = node.attrib['type']
         if dtype not in Param.mapping:
             print('ERROR: type "{}" not found in mapping; valid types are: {}'.format(dtype, ', '.join('"%s"' % k for k in Param.mapping.keys())))
-        return Param.mapping[dtype](node)
+        return Param.mapping[dtype](plugin, node)
 
     def declaration(self):
         return '{} {}'.format(self.ctype(), self.name)
@@ -68,8 +69,8 @@ class Param(object):
         return self.declaration() + (' = {}'.format(self.cdefault()) if self.cdefault() else '')
 
 class ParamInt(Param):
-    def __init__(self, node):
-        super(ParamInt, self).__init__(node)
+    def __init__(self, plugin, node):
+        super(ParamInt, self).__init__(plugin, node)
 
     def typetag(self):
         return 'TypeTag_int'
@@ -78,8 +79,8 @@ class ParamInt(Param):
         return 'int'
 
 class ParamLong(Param):
-    def __init__(self, node):
-        super(ParamLong, self).__init__(node)
+    def __init__(self, plugin, node):
+        super(ParamLong, self).__init__(plugin, node)
         self.ctype_base = 'long long'
 
     def typetag(self):
@@ -89,8 +90,8 @@ class ParamLong(Param):
         return 'int'
 
 class ParamHandle(Param):
-    def __init__(self, node):
-        super(ParamHandle, self).__init__(node)
+    def __init__(self, plugin, node):
+        super(ParamHandle, self).__init__(plugin, node)
         self.ctype_base = 'sim::handleproperty_t'
 
     def typetag(self):
@@ -100,8 +101,8 @@ class ParamHandle(Param):
         return 'handle'
 
 class ParamFloat(Param):
-    def __init__(self, node):
-        super(ParamFloat, self).__init__(node)
+    def __init__(self, plugin, node):
+        super(ParamFloat, self).__init__(plugin, node)
 
     def typetag(self):
         return 'TypeTag_float'
@@ -110,8 +111,8 @@ class ParamFloat(Param):
         return 'float'
 
 class ParamDouble(Param):
-    def __init__(self, node):
-        super(ParamDouble, self).__init__(node)
+    def __init__(self, plugin, node):
+        super(ParamDouble, self).__init__(plugin, node)
 
     def typetag(self):
         return 'TypeTag_double'
@@ -120,39 +121,39 @@ class ParamDouble(Param):
         return 'float'
 
 class ParamString(Param):
-    def __init__(self, node):
-        super(ParamString, self).__init__(node)
+    def __init__(self, plugin, node):
+        super(ParamString, self).__init__(plugin, node)
         self.ctype_base = 'std::string'
 
     def typetag(self):
         return 'TypeTag_string'
 
 class ParamBuffer(Param):
-    def __init__(self, node):
-        super(ParamBuffer, self).__init__(node)
+    def __init__(self, plugin, node):
+        super(ParamBuffer, self).__init__(plugin, node)
         self.ctype_base = 'std::string'
 
     def typetag(self):
         return 'TypeTag_buffer'
 
 class ParamFunc(Param):
-    def __init__(self, node):
-        super(ParamFunc, self).__init__(node)
+    def __init__(self, plugin, node):
+        super(ParamFunc, self).__init__(plugin, node)
         self.ctype_base = 'std::string'
 
     def typetag(self):
         return 'TypeTag_func'
 
 class ParamBool(Param):
-    def __init__(self, node):
-        super(ParamBool, self).__init__(node)
+    def __init__(self, plugin, node):
+        super(ParamBool, self).__init__(plugin, node)
 
     def typetag(self):
         return 'TypeTag_bool'
 
 class ParamTable(Param):
-    def __init__(self, node):
-        super(ParamTable, self).__init__(node)
+    def __init__(self, plugin, node):
+        super(ParamTable, self).__init__(plugin, node)
         self.itype = node.attrib.get('item-type', None)
         if self.itype is not None:
             self.ctype_base = 'std::vector< %s >' % self.item_dummy().ctype()
@@ -185,7 +186,7 @@ class ParamTable(Param):
             attrib = {'name': 'dummy', 'type': self.itype},
             find = lambda _: None, # called by parse.read_description
         ))
-        return Param.factory(n)
+        return Param.factory(self.plugin, n)
 
     def htype(self):
         if self.itype:
@@ -196,8 +197,8 @@ class ParamTable(Param):
             return 'map'
 
 class ParamStruct(Param):
-    def __init__(self, node, name):
-        super(ParamStruct, self).__init__(node)
+    def __init__(self, plugin, node, name):
+        super(ParamStruct, self).__init__(plugin, node)
         self.structname = name
 
     def typetag(self):
@@ -207,8 +208,8 @@ class ParamStruct(Param):
         return 'map'
 
 class ParamGrid(Param):
-    def __init__(self, node):
-        super(ParamGrid, self).__init__(node)
+    def __init__(self, plugin, node):
+        super(ParamGrid, self).__init__(plugin, node)
         self.size = node.attrib.get('size', '')
         self.itype = node.attrib.get('item-type', None)
         valid_itypes = ('int', 'float', 'double', 'long')
@@ -221,19 +222,19 @@ class ParamGrid(Param):
 
     def item_dummy(self):
         n = type('dummyNode', (object,), dict(tag='param', attrib={'name': 'dummy', 'type': self.itype}))
-        return Param.factory(n)
+        return Param.factory(self.plugin, n)
 
 class ParamVector3(Param):
-    def __init__(self, node):
-        super(ParamVector3, self).__init__(node)
+    def __init__(self, plugin, node):
+        super(ParamVector3, self).__init__(plugin, node)
         self.ctype_base = 'Eigen::Vector3d'
 
     def typetag(self):
         return 'TypeTag_vector3'
 
 class ParamQuaternion(Param):
-    def __init__(self, node):
-        super(ParamQuaternion, self).__init__(node)
+    def __init__(self, plugin, node):
+        super(ParamQuaternion, self).__init__(plugin, node)
         self.ctype_base = 'Eigen::Quaterniond'
 
     def typetag(self):

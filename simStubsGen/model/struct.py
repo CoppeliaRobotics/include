@@ -7,7 +7,7 @@ class Struct(object):
             raise ValueError('expected <struct>, got <%s>' % node.tag)
         self.plugin = plugin
         self.name = node.attrib['name']
-        self.description = read_description(node)
+        self.description = read_description(node, plugin.name)
 
         if self.name in Param.mapping.keys():
             raise ValueError('<struct> name cannot be any of '
@@ -15,7 +15,7 @@ class Struct(object):
 
         self.fields = []
         for fieldNode in node.findall('param'):
-            field = Param.factory(fieldNode)
+            field = Param.factory(plugin, fieldNode)
             if field.skip:
                 raise ValueError('cannot use "skip" option in <struct>')
             self.fields.append(field)
@@ -27,4 +27,4 @@ class Struct(object):
         self.skip_documentation = read_flag(node, 'skip-documentation')
         self.deprecated = read_flag(node, 'deprecated')
 
-        Param.register_type(self.name, lambda node: ParamStruct(node, self.name))
+        Param.register_type(self.name, lambda plugin, node: ParamStruct(plugin, node, self.name))
