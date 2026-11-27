@@ -3928,7 +3928,7 @@ note: the generated see-also section contains the <see-also> items, but also the
         <description>
             Calls a script function (from a
             <a href="../plugins.htm"> plugin</a>,
-            
+
             <a href="../mainClientApplication.htm"> the main client application</a>,
              or from another script). This
             represents a
@@ -3936,12 +3936,12 @@ note: the generated see-also section contains the <see-also> items, but also the
             inside of a script. The target script
             must be initialized for this call to succeed, e.g. when calling
             <a href="../simulationScripts.htm"> simulation scripts</a>,
-            
+
             then simulation must be running
             <br />
             <br />
             Data exchange between a plugin and a script happens via a
-            <a href="../apiFunctions.htm#stacks"> stack</a>.
+            <a href="../apiFunctions.htm#functions_c_stack"> stack</a>.
              Reading and writing arguments from/to the stack gives a maximum of flexibility, and complex data structures can also be exchanged. But it can also be tedious and error prone. The helper classes located in <em> programming/include/simStack
              </em>
                  can
@@ -3967,8 +3967,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                     a
                     <a href="simCreateStack_cpp.htm"> stack handle</a>.
                      The stack represents the function's in/out values. See also the
-                    <a href="../apiFunctions.htm#stacks"> available stack functions</a>.
-                    
+                    <a href="../apiFunctions.htm#functions_c_stack"> available stack functions</a>.
+
                 </description>
             </param>
         </params>
@@ -4358,7 +4358,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             Closes current scene, and switches to another open scene. If there is no other open scene,
             a new scene is then created. Can only be called from an
             <a href="../addOns.htm"> add-on</a>,
-            
+
             or from the sandbox script, when called from within CoppeliaSim
         </description>
         <returns>
@@ -4596,7 +4596,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
         <description>
             Creates a
             <a href="../dummies.htm"> dummy</a>.
-            
+
         </description>
         <params>
             <param name="size" type="double">
@@ -4630,13 +4630,13 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
         <description>
             Creates a
             <a href="../scriptObjects.htm"> script object</a>.
-            
+
         </description>
         <params>
             <param name="scriptType" type="int">
                 <description>
                     the
-                    <a href="../apiConstants.htm#scriptTypes"> script type</a>.
+                    <a href="../apiConstants.htm#scriptType"> script type</a>.
                      Only simulation-, customization- or passive scripts are allowed
                 </description>
             </param>
@@ -4741,7 +4741,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
         <description>
             Creates a
             <a href="../forceSensors.htm"> force sensor</a>.
-            
+
         </description>
         <params>
             <param name="options" type="int">
@@ -4880,7 +4880,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             </param>
             <param name="jointMode" type="int">
                 <description>
-                a <a href="../apiConstants.htm#jointModes">joint mode</a>
+                a <a href="../apiConstants.htm#jointMode">joint mode</a>
                 </description>
             </param>
             <param name="options" type="int">
@@ -5042,7 +5042,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             <param name="primitiveType" type="int">
                 <description>
                     the
-                    <a href="../apiConstants.htm#primitiveTypes"> primitive type </a>
+                    <a href="../apiConstants.htm#primitiveType"> primitive type </a>
                     of the shape
                 </description>
             </param>
@@ -5348,7 +5348,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
         <description>
             Creates a
             <a href="../visionSensors.htm"> vision sensor</a>.
-            
+
         </description>
         <params>
             <param name="options" type="int">
@@ -5547,7 +5547,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
         <description>
             Executes some code in a specific script (from a
             <a href="../plugins.htm"> plugin</a>,
-            
+
             <a href="../mainClientApplication.htm"> the main client application</a>,
              or from another script).
             The target script must be initialized for this call to succeed, e.g. when calling
@@ -5556,7 +5556,7 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
             <br />
             <br />
             From C/C++, data exchange between a plugin and a script happens via a
-            <a href="../apiFunctions.htm#stacks"> stack</a>.
+            <a href="../apiFunctions.htm#functions_c_stack"> stack</a>.
              Reading and writing arguments from/to the stack offers maximum flexibility, and it is also possible to exchange complex data structures. But it can also be tedious and error prone. Use instead the helper classes located in
             <em>
                 programming/include/simStack
@@ -5578,8 +5578,8 @@ if (simCheckVisionSensor(sensorHandle, entityHandle, &amp;auxValues, &amp;auxVal
                     0 (for no stack) or a
                     <a href="simCreateStack_cpp.htm"> stack handle</a>.
                      The stack holds possible out values. See also the
-                    <a href="../apiFunctions.htm#stacks"> available stack functions</a>.
-                    
+                    <a href="../apiFunctions.htm#functions_c_stack"> available stack functions</a>.
+
                 </description>
             </param>
         </params>
@@ -5802,7 +5802,7 @@ delete[] indicesSizes;</code>
         <description>
             Removes a floating view previously added with
             <a href="simFloatingViewAdd.htm"> sim_floatingViewAdd</a>.
-            
+
         </description>
         <params>
             <param name="floatingViewHandle" type="int">
@@ -5914,7 +5914,7 @@ delete[] indicesSizes;</code>
                 <description>
                     null in case of an error, or if there is no match. Otherwise all matching API functions and variables, space-separated. The user is in charge of releasing the returned buffer with
                     <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
-                    
+
                 </description>
             </param>
         </returns>
@@ -5951,7 +5951,7 @@ delete[] indicesSizes;</code>
                 <description>
                     null in case of an error. Otherwise the information related to the API function or variable. The user is in charge of releasing the returned buffer with
                     <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
-                    
+
                 </description>
             </param>
         </returns>
@@ -6125,7 +6125,7 @@ delete[] indicesSizes;</code>
                 <description>
                     pointer to a pointer to the output vertices. The output vertices are allocated by CoppeliaSim and the user is in charge of releasing the buffer via
                     <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
-                    
+
                 </description>
             </param>
             <param name="verticesOutL" type="int*">
@@ -6137,7 +6137,7 @@ delete[] indicesSizes;</code>
                 <description>
                     pointer to a pointer to the output indices. The output indices are allocated by CoppeliaSim and the user is in charge of releasing the buffer via
                     <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
-                    
+
                 </description>
             </param>
             <param name="indicesOutL" type="int*">
@@ -6283,7 +6283,7 @@ delete[] indicesSizes;</code>
                 <description>
                     a string if the operation was successful. The user is in charge of releasing the buffer with
                     <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
-                    
+
                 </description>
             </param>
         </returns>
@@ -6448,8 +6448,8 @@ delete[] indicesSizes;</code>
             <param name="return" type="int">
                 <description>
                     -1 if operation was not successful, otherwise the
-                    <a href="../apiConstants.htm#jointModes"> joint mode</a>.
-                    
+                    <a href="../apiConstants.htm#jointMode"> joint mode</a>.
+
                 </description>
             </param>
         </returns>
@@ -6950,7 +6950,7 @@ delete[] indicesSizes;</code>
                 <description>
                     a
                     <a href="../apiConstants.htm#colorComponents"> color component</a>.
-                    
+
                 </description>
             </param>
             <param name="rgbData" type="float*">
@@ -7352,7 +7352,7 @@ delete[] indicesSizes;</code>
                 <description>
                     a pointer to an array containing object handles, or null in case of an error. The user is in charge of releasing the returned buffer with
                     <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
-                    
+
                 </description>
             </param>
         </returns>
@@ -7709,7 +7709,7 @@ delete[] indicesSizes;</code>
                 <description>
                     pointer to a pointer to the output vertices. The output vertices are allocated by CoppeliaSim and the user is in charge of releasing the buffer via
                     <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
-                    
+
                 </description>
             </param>
             <param name="verticesOutL" type="int*">
@@ -7721,7 +7721,7 @@ delete[] indicesSizes;</code>
                 <description>
                     pointer to a pointer to the output indices. The output indices are allocated by CoppeliaSim and the user is in charge of releasing the buffer via
                     <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
-                    
+
                 </description>
             </param>
             <param name="indicesOutL" type="int*">
@@ -7778,7 +7778,7 @@ delete[] indicesSizes;</code>
                 <description>
                     a pointer to a pointer that will be allocated and receive the list of scene object handles. The user is in charge of releasing that buffer with
                     <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
-                    
+
                 </description>
             </param>
             <param name="tag" type="const char*">
@@ -7853,7 +7853,7 @@ delete[] indicesSizes;</code>
                 <description>
                     null if operation was not successful, otherwise a buffer containing the output image data. The user is in charge of releasing the buffer with
                     <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
-                    
+
                 </description>
             </param>
         </returns>
@@ -7879,8 +7879,8 @@ delete[] indicesSizes;</code>
             <param name="scriptType" type="int">
                 <description>
                     the
-                    <a href="../apiConstants.htm#scriptTypes"> type of the script</a>.
-                    
+                    <a href="../apiConstants.htm#scriptType"> type of the script</a>.
+
                 </description>
             </param>
             <param name="objectHandle" type="int">
@@ -7937,7 +7937,7 @@ delete[] indicesSizes;</code>
             <param name="colorComponent" type="int">
                 <description>
                     <a href="../apiConstants.htm#colorComponents"> color component</a>.
-                    
+
                 </description>
             </param>
             <param name="rgbData" type="float*">
@@ -7978,7 +7978,7 @@ delete[] indicesSizes;</code>
                 <description>
                     pointer to 5 integer values:
                     intData[0]: the
-                    <a href="../apiConstants.htm#primitiveTypes"> primitive type </a>
+                    <a href="../apiConstants.htm#primitiveType"> primitive type </a>
                     of the shape. Undefined if the shape is a compound shape.
                 </description>
             </param>
@@ -8271,13 +8271,13 @@ delete[] indicesSizes;</code>
     <function name="simGetSimulationState" lang="c">
         <description>
             Retrieves current
-            <a href="../apiConstants.htm#simulationStatus"> simulation state </a>
+            <a href="../apiConstants.htm#simulationState"> simulation state </a>
         </description>
         <returns>
             <param name="return" type="int">
                 <description>
                     The current state of the simulation (sim_simulation_stopped, sim_simulation_paused, etc. (see the
-                    <a href="../apiConstants.htm#simulationStatus"> simulation state values </a>
+                    <a href="../apiConstants.htm#simulationState"> simulation state values </a>
                     )), or -1 in case of an error
                 </description>
             </param>
@@ -9481,7 +9481,7 @@ if (elementCount &gt; 0)
                 <description>
                     null if operation was not successful, otherwise a buffer containing the image data. The user is in charge of releasing the buffer with
                     <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
-                    
+
                 </description>
             </param>
         </returns>
@@ -9806,7 +9806,7 @@ if (elementCount &gt; 0)
                 <description>
                     null in case of an error. Otherwise a pointer to the text. The user is in charge of releasing the returned buffer with
                     <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
-                    
+
                 </description>
             </param>
         </returns>
@@ -9844,7 +9844,7 @@ if (elementCount &gt; 0)
                 <description>
                     null in case of an error, otherwise a data buffer. The user is in charge of releasing the returned buffer with
                     <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
-                    
+
                 </description>
             </param>
         </returns>
@@ -10040,7 +10040,7 @@ if (elementCount &gt; 0)
                 <description>
                     ID of the texture. See also
                     <a href="simGetTextureId.htm"> simGetTextureId</a>.
-                    
+
                 </description>
             </param>
             <param name="options" type="int">
@@ -10074,7 +10074,7 @@ if (elementCount &gt; 0)
                 <description>
                     The texture data, or null in case of an error. The texture data contains RGB values between 0-255 (3 bytes per pixel). The user is in charge of releasing the returned buffer with
                     <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
-                    
+
                 </description>
             </param>
         </returns>
@@ -10180,7 +10180,7 @@ if (elementCount &gt; 0)
             <br />
             <br />
             Data exchange between a script and the plugin happens via a
-            <a href="../apiFunctions.htm#stacks"> stack</a>.
+            <a href="../apiFunctions.htm#functions_c_stack"> stack</a>.
              Reading and writing arguments from/to the stack gives a maximum of flexibility, and it is possible to also exchange complex data structures. But it can also be tedious, if the data structures are anyway relatively simple. In that case the helper classes <em> CScriptFunctionData </em>
              and
                  <em>
@@ -10200,11 +10200,11 @@ if (elementCount &gt; 0)
             <em>
                 readDataFromStack,
             </em>
-            
+
             <em>
                 getInDataPtr,
             </em>
-            
+
             <em>
                 pushOutData
             </em>
@@ -10252,7 +10252,7 @@ if (elementCount &gt; 0)
         <description>
             Registers a script function hook for
             <a href="../callbackFunctions.htm"> callback functions</a>,
-            
+
             that will be executed before or after the specified function. Calling this function a second
             time with the same arguments will unregister a previous hook
         </description>
@@ -10705,7 +10705,7 @@ if (elementCount &gt; 0)
         <description>
             Executes a call to the
             <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator</a>.
-            
+
             The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities
             for motion control systems. This function prepares a position-based trajectory generation object,
             that can then be calculated with
@@ -10813,7 +10813,7 @@ if (elementCount &gt; 0)
             <a href="simRuckigPos.htm"> sim_ruckigPos </a>
             or
             <a href="simRuckigVel.htm"> sim_ruckigVel</a>.
-            
+
         </description>
         <params>
             <param name="handle" type="int">
@@ -10822,7 +10822,7 @@ if (elementCount &gt; 0)
                     <a href="simRuckigPos.htm"> simRuckigPos </a>
                     or
                     <a href="simRuckigVel.htm"> simRuckigVel</a>.
-                    
+
                 </description>
             </param>
         </params>
@@ -10845,7 +10845,7 @@ if (elementCount &gt; 0)
         <description>
             Executes a call to the
             <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator</a>.
-            
+
             The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities for
             motion control systems. This function steps forward a trajectory generation algorithm previously prepared
             via
@@ -10860,7 +10860,7 @@ if (elementCount &gt; 0)
                     <a href="simRuckigPos.htm"> simRuckigPos </a>
                     or
                     <a href="simRuckigVel.htm"> simRuckigVel</a>.
-                    
+
                 </description>
             </param>
             <param name="cycleTime" type="double">
@@ -10926,7 +10926,7 @@ if (elementCount &gt; 0)
         <description>
             Executes a call to the
             <a href="https://github.com/pantor/ruckig#readme"> Ruckig online trajectory generator</a>.
-            
+
             The Ruckig online trajectory generator provides instantaneous trajectory generation capabilities for
             motion control systems. This function prepares a velocity-based trajectory generation object,
             that can then be calculated with
@@ -11410,7 +11410,7 @@ if (elementCount &gt; 0)
             </param>
             <param name="jointMode" type="int">
                 <description>
-                    <a href="../apiConstants.htm#jointModes"> joint mode </a>
+                    <a href="../apiConstants.htm#jointMode"> joint mode </a>
                     value
                 </description>
             </param>
@@ -11872,7 +11872,7 @@ if (elementCount &gt; 0)
             onto another one. The translation part of the poses/matrices is ignored. This function,
             when used in combination with
             <a href="simRotateAroundAxis_cpp.htm"> simRotateAroundAxis</a>,
-            
+
             can be used to build interpolations between transformation matrices
         </description>
         <params>
@@ -12583,17 +12583,17 @@ if (elementCount &gt; 0)
                 <description>
                     ID of the texture or -1 to remove any existing texture. See also
                     <a href="simGetTextureId.htm"> simGetTextureId</a>,
-                    
+
                     <a href="simGetShapeTextureId.htm"> simGetShapeTextureId </a>
                     and
                     <a href="simCreateTexture.htm"> simCreateTexture</a>.
-                    
+
                 </description>
             </param>
             <param name="mode" type="int">
                 <description>
                     <a href="../apiConstants.htm#textureMappingModes"> texture mapping mode</a>.
-                    
+
                 </description>
             </param>
             <param name="opt" type="int">
@@ -12970,7 +12970,7 @@ if (elementCount &gt; 0)
                 <description>
                     a pointer to an array holding the handles of the resulting shapes, or null in case of an error. The user is in charge of releasing the array buffer with
                     <a href="simReleaseBuffer_cpp.htm"> simReleaseBuffer</a>.
-                    
+
                 </description>
             </param>
         </returns>

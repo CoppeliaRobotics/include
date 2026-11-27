@@ -3984,7 +3984,7 @@ note: the generated see-also section contains the <see-also> items, but also the
             <returns>
                 <param name="type" type="int">
                     <description>
-                        <a href="../apiConstants.htm#propertyTypes"> Property type </a>
+                        <a href="../apiConstants.htm#propertyType"> Property type </a>
                     </description>
                 </param>
                 <param name="flags" type="int">
@@ -4292,9 +4292,9 @@ note: the generated see-also section contains the <see-also> items, but also the
                             <li>versionStr (string): name and version</li>
                             <li>buildDate (string): build date</li>
                             <li>version (int): version number</li>
-                            <li>consoleVerbosity (int): <a href="#verbosity">console verbosity</a>
+                            <li>consoleVerbosity (int): <a href="../apiConstants.md#verbosity">console verbosity</a>
                             </li>
-                            <li>statusbarVerbosity (int): <a href="#verbosity">status bar verbosity</a>
+                            <li>statusbarVerbosity (int): <a href="../apiConstants.md#verbosity">status bar verbosity</a>
                             </li>
                         </ul>
                     </description>
@@ -4932,7 +4932,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                 </ul>
                             </li>
                             <li id="console">
-                                <a href="../dataVisualizationAndOutput.htm#console">console</a> fields:
+                                <a href="../dataVisualizationAndOutput.htm#auxConsoles">console</a> fields:
                                 <ul>
                                     <li>type (string): "console"</li>
                                     <li>title (string): console title</li>
@@ -4950,7 +4950,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                 </ul>
                             </li>
                             <li id="textEditor">
-                                <a href="../dataVisualizationAndOutput.htm#textEditor">textEditor</a> fields:
+                                <a href="../dataVisualizationAndOutput.htm#textEditors">textEditor</a> fields:
                                 <ul>
                                     <li>type (string): "textEditor"</li>
                                     <li>title (string): editor title</li>
@@ -5043,8 +5043,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                                 <ul>
                                     <li>type (string): "joint"</li>
                                     <li>joint.type (string): the joint type. Allowed values are "revolute", "prismatic" or "spherical"</li>
-                                    <li>mode (int): the <a href="#jointMode">joint mode</a></li>
-                                    <li>dynamics.ctrlMode (int): the <a href="#dynCtrlMode">joint dynamic control mode</a></li>
+                                    <li>mode (int): the <a href="../apiConstants.md#jointMode">joint mode</a></li>
+                                    <li>dynamics.ctrlMode (int): the <a href="../apiConstants.md#jointDynamicsCtrlMode">joint dynamic control mode</a></li>
                                     <li>bounds (float[]): joint lower and upper bounds, [] for cyclic revolute joints, or for spherical joints</li>
                                     <li>screwLead (float): a revolute joint with a screw lead different than 0.0 is a screw</li>
                                     <li>length (float): length of the joint</li>
@@ -9203,7 +9203,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                 </ul>
                             </li>
                             <li id="console">
-                                <a href="../dataVisualizationAndOutput.htm#console">console</a> fields:
+                                <a href="../dataVisualizationAndOutput.htm#auxConsoles">console</a> fields:
                                 <ul>
                                     <li>type (string): "console"</li>
                                     <li>title (string): console title</li>
@@ -9221,7 +9221,7 @@ note: the generated see-also section contains the <see-also> items, but also the
                                 </ul>
                             </li>
                             <li id="textEditor">
-                                <a href="../dataVisualizationAndOutput.htm#textEditor">textEditor</a> fields:
+                                <a href="../dataVisualizationAndOutput.htm#textEditors">textEditor</a> fields:
                                 <ul>
                                     <li>type (string): "textEditor"</li>
                                     <li>title (string): editor title</li>
@@ -9314,8 +9314,8 @@ note: the generated see-also section contains the <see-also> items, but also the
                                 <ul>
                                     <li>type (string): "joint"</li>
                                     <li>joint.type (string): the joint type. Allowed values are "revolute", "prismatic" or "spherical"</li>
-                                    <li>mode (int): the <a href="#jointMode">joint mode</a></li>
-                                    <li>dynamics.ctrlMode (int): the <a href="#dynCtrlMode">joint dynamic control mode</a></li>
+                                    <li>mode (int): the <a href="../apiConstants.md#jointMode">joint mode</a></li>
+                                    <li>dynamics.ctrlMode (int): the <a href="../apiConstants.md#jointDynamicsCtrlMode">joint dynamic control mode</a></li>
                                     <li>bounds (float[]): joint lower and upper bounds, [] for cyclic revolute joints, or for spherical joints</li>
                                     <li>screwLead (float): a revolute joint with a screw lead different from 0.0 is a screw</li>
                                     <li>length (float): length of the joint</li>
